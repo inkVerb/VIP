@@ -1,0 +1,50 @@
+# This is some information about cutting items out of a string, usually a web path
+
+# We have this long directory path:
+/home/inkist/dongxi/long/dir/
+
+# Now, there are different methods to cut things from it...
+
+# Add 2 to the number of segments to remove in the -f option
+$ echo $path | cut -d'/' -f4-
+dongxi/long/dir
+
+# Keep the first two segments:
+
+$ echo $path | cut -d'/' -f-3
+/home/inkist
+
+# rev reverses the string to start from the end:
+
+$ echo $path | rev | cut -d'/' -f4- | rev
+/home/inkist/dongxi
+
+# Keep last three segments:
+
+$ echo $path | rev | cut -d'/' -f-3 | rev
+dongxi/long/dir
+
+# Remove everything before a segment w sed:
+
+$ echo $path | sed 's/.*\(dongxi\)/\1/g'
+dongxi/long/dir
+
+# Remove everything after a segment w sed:
+
+$ echo $path | sed 's/\(inkist\).*/\1/g'
+/home/inkist
+
+# Remove the target segment:
+
+$ echo $path | sed 's/dongxi.*//g'
+/home/inkist/
+
+# Match the trailing slash w sed:
+
+$ echo $path | sed 's/\/dongxi.*//g'
+/home/inkist
+
+# Many slashes w sed:
+
+$ echo $path | sed 's!/dongxi.*!!g'
+/home/inkist

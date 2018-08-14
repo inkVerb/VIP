@@ -1,0 +1,163 @@
+[https://wiki.blender.org/index.php/]
+Blender Hotkeys: [http://download.blender.org/documentation/BlenderHotkeyReference.pdf]
+Filmic Blender
+Filmic-blender: [https://github.com/sobotka/filmic-blender]
+Why filmic-blender: [https://www.youtube.com/watch?v=m9AT7H4GGrA]
+
+#### Differencing Objects
+Snap [https://blender.stackexchange.com/questions/39784/snapping-two-objects-by-edge-in-object-mode]
+Boolean Modifier [https://www.youtube.com/watch?v=lDweCpDAB_o]
+
+#### Pi Menu
+Ctrl + Alt + U (File > User Preferences...)
+> Add-ons > Categories > User Interface
+- Pi Menu
+- Save User Settings
+
+#### Extra Objects
+Ctrl + Alt + U (File > User Preferences...)
+> Add-ons > Categories > Add Mesh
+- Extra Objects
+- Save User Settings
+
+#### Mouse
+Scroll = zoom
+Middle + Move = orbit
+Shift + Middle + Move = pan
+Ctrl + LeftClick = Circle select
+
+Shift + Space / Ctrl + Up/Down = Max
+Ctrl + Space = hide arrows
+Alt + Space = Orientation
+
+Select:
+Ctrl + Tab / Ctrl + LeftClick + Drag
+A = select all/none
+B = border select
+C = circle select
+
+Q = Pi View Menu
+Z = Pi Shade Menu (no Pi = wire frame / solid)
+Tab = Pi Mode Menu (no Pi = Edit mode on/off)
+N = Properties panel (set number values for object size/place, etc.)
+
+Shift + A = add menu
+Shift + S = snap menu
+Shift + Z = quick render
+
+X/Y/Z = axis (again for local)
+Shift + X/Y/Z = plane (again for local)
+G = Grab
+S = Scale
+R = Rotate
+
+Ctrl + A = Apply menu (Apply the Location/Rotation/Scale changes BEFORE doing other operations such as Bevel)
+
+Ctrl + Alt + Shift + C = Set Origin
+- Origin to Geometry, etc
+
+Shift + D = Duplicate
+Alt + D = Duplicate as link
+Ctrl + L = Link objects to last selected
+Shift + L = Select Link menu
+U = Unlink menu
+L = make Local
+
+## Edit Mode:
+Ctrl + Tab = Mesh Select Mode (Vertex, Face, Edge)
+E = extrude
+P = sPlit to new object
+
+**NOTE: Apply any scaling changes (Ctrl + A) BEFORE Bevel, otherwise bevel will be scaled as well.
+Ctrl + R = add mid lines; Mouse Wheel > more
+Ctrl + B = bevel edges; Mouse Wheel > more
+Ctrl + Shift + B = bevel verticies; Mouse Wheel > more
+Ctrl + E = Edges menu
+Ctrl + RightClick = select range
+
+Ctrl + Alt + RightClick = selecte entire UV loop
+...changes with Vertex, Face, Edge Mesh Select Mode
+
+Ctrl + R = loop cut (mouse wheel = add more)
+> LeftClick, move = set place (+ Ctrl = snapping)
+>> LeftClick = apply place
+>> Esc = cancel place and use original
+
+K = Knife tool
+> LeftClick = drag/click to cut
+> Enter/Space = apply cut
+> Esc/RightClick = cancel cuts
+> Ctrl = place cut at midpoint of affected lines
+> Shift = allow cut point NOT on an edge
+> E = start a new cut line
+> C = 45° snapping
+> Z = also cut all edges and surfaces behind view
+
+### View
+1 = front
+2 = orbit back
+3 = right side
+4 = orbit left
+5 = orthogonal/perspective toggle
+6 = orbit right
+7 = top
+8 = orbit forward
+9 = 
+0 = camera view
+1 + Ctrl = back
+2 + Ctrl = pan down
+3 + Ctrl = left side
+4 + Ctrl = pan left
+6 + Ctrl = pan right
+7 + Ctrl = bottom
+8 + Ctrl = pan up
+9 + Ctrl =
+0 + Ctrl = set active opject as camera
+0 + Ctrl + Alt = set user view as camera
++ = zoom in
+- = zoom out
+/ = toggle local view
+. = view selected
+
+### Verticies
+Ctrl + V
+
+Add Modifier > Subdivision Surface (smooth via adding verticies)
+
+####### Pi Menu
+Ctrl + Alt + U (File > User Preferences...)
+> Add-ons > Categories > User Interface
+- Pi Menu
+- Save User Settings
+
+Shift + A = Add
+
+Shift + V = Vertical slide
+
+Ctrl + Alt + Q = 4-View
+
+Ctrl + H = hooks menu
+
+Shift + D = duplicate
+Ctrl + M = merg
+Ctrl + J = join
+Ctrl + Alt + Shift + C = origin to geometry
+
+Shift + D = duplicate
+Alt + D = linked duplicate
+Ctrl + L = make links
+
+#### Groups
+Ctrl + G = new group
+Ctrl + Alt + G = remove from groups
+Ctrl + Ald + Shift + G = remobe from all groups
+Ctrl + Shift + G = add selected to active group
+Alt + Shift + G = remove selected to active group
+Ctrl + 1 = subdivision
+##### See Groups (Two ways)
+- Properties menu (Picture of the cube on right)
+- Shift + G = group/parentselect menu
+
+#### Parenting
+Ctrl + P = parent set
+Alt + P = parent clear

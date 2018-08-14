@@ -1,0 +1,9 @@
+<?php
+
+// Run the script and set the output as the $myShellOutput variable
+$myShellOutput = shell_exec('/var/www/myshell/doodle.sh');
+
+// Display the output on the screen
+echo $myShellOutput;
+
+?>

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+myOutput=$(cat $1 | sed "s/$2/$3/g")
+
+echo "$myOutput"
+
+# This combines many commands
+
+# cat shows a file
+
+# echo shows a value (text from our script)
+
+# Combine commands with a pipe | ...
+## DO THIS | THEN DO THIS TO IT | THEN DO THIS TO THAT
+
+# $(SOMETHING-HERE) puts the output of a command as one object
+#myOutput=$(sed "s/$2/$3/g" $1)
+# v01

@@ -1,0 +1,30 @@
+# These include complex shell embed command formats
+
+# Just the output
+$(SHELL COMMAND HERE)
+
+# Echo the output
+echo "$(SHELL COMMAND HERE)"
+
+# Set output as a variable
+variable=$(SHELL COMMAND HERE)
+
+# Eg
+## cat a file $MYFILE and make it the variable $varfile
+varfile=$(cat $MYFILE)
+
+## cat a file $MYFILE and echo it
+echo "$(cat $MYFILE)"
+
+# Combining
+## sed foo into bar for the contents of the variable $variable
+$(echo $variable | sed -e "s/foo/bar/")
+
+## sed two times for the contents of the variable $variable
+$(echo $variable | sed -e "s/foo1/bar1/" | sed -e "s/foo2/bar2/")
+
+# if test
+if [ $(echo $variable | sed -e "s/foo/bar/") = "bar" ]
+then
+echo "Yep. Foo is at the bar."
+fi

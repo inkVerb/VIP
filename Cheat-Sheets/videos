@@ -1,0 +1,10 @@
+# This rotates video files simply and from the terminal
+
+ffmpeg -i foo.mp4 -vf "transpose=2" bar.mp4
+
+## "transpose" values
+0 = 90 Counter CLockwise & Flip Vertical (default) 
+1 = 90 Clockwise 
+2 = 90 Counter Clockwise 
+3 = 90 Clockwise & Flip Vertical
+

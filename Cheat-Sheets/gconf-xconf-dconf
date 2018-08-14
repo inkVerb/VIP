@@ -1,0 +1,63 @@
+# These are various config settings tools in Linux
+To watch the scriptable commands while you change settings, run this in a terminal:
+dconf watch /
+
+# dbus
+
+# dconf
+## GUI: apt install dconf-tools; dconf-editor
+## Command line info: https://liquidat.wordpress.com/2014/03/18/howto-using-dbus-to-query-status-information-from-networkmanager-or-others/
+
+
+# gsettings
+## GUI: apt install dconf-tools; gconf-editor
+## Command line info:  https://developer.gnome.org/gio/stable/gsettings-tool.html
+gsettings list-schemas
+gsettings list-children net.launchpad.plank
+### Get most of the options available:
+gsettings list-recursively net.launchpad.plank
+### Set a string
+gsettings set org.mate.background picture-filename '/usr/share/backgrounds/mate/abstract/Spring.png'
+### Set a boolean valuedocks   net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/
+gsettings set org.mate.Marco.general compositing-manager falsedocks   net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/
+### Set a listdocks   net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/docks   net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/
+gsettings set org.gnome.nautilus.list-view default-visible-columns ['name', 'size', 'type', 'date_modified', 'owner', 'permissions']
+
+### Get available settings
+gsettings list-recursively net.launchpad.plank
+...shows this...
+net.launchpad.plank enabled-docks ['dock1']
+net.launchpad.plank.dock.settings icon-size 32
+net.launchpad.plank.dock.settings theme 'Gtk+'
+net.launchpad.plank.dock.settings dock-items @as []
+...
+gsettings list-children net.launchpad.plankdocks   net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/
+...shows this...
+docks   net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/
+...
+...Therefore, to get and set settings...
+### Get settings
+gsettings get net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ dock-items
+gsettings get net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme
+### Set settings
+gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme 'Transparent'
+gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ hide-mode 'auto'
+gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ dock-items "['nautilus.dockitem', 'chromium-browser.dockitem', 'firefox.dockitem', 'thunderbird.dockitem', 'gedit.dockitem', 'libreoffice-writer.dockitem', 'rhythmbox.dockitem', 'org.gnome.Calculator.dockitem', 'gnome-control-center.dockitem']"
+
+
+
+# gconftool-2
+## GUI: gconf-editor
+## Command line info: https://people.gnome.org/~shaunm/admin-guide/gconf-6.html
+## Get info:
+gconftool-2 --all-dirs /apps/docky-2/Docky/Services
+gconftool-2 --all-entries /apps/docky-2/Docky/Interface/DockPreferences/Dock1
+## Set:
+gconftool-2 --set "/apps/docky-2/Docky/Services/ThemeService/Theme" --type string "Transparent"
+gconftool-2 --type list --list-type string --set "/apps/docky-2/Docky/Interface/DockPreferences/Dock1/SortList" "[usr/share/applications/nautilus.desktop,/usr/share/applications/chromium-browser.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/thunderbird.desktop,/usr/share/applications/libreoffice-writer.desktop,/usr/share/applications/gedit.desktop,/usr/share/applications/rhythmbox.desktop]"
+
+
+# xfconf-query
+### For Xfce
+## Eg to view specific settings
+xfconf-query -c xfce4-desktop -l -v

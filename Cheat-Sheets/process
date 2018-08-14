@@ -1,0 +1,13 @@
+top
+
+ps aux
+
+pgrep command-name
+
+kill -9 [PID]
+
+killall command-name
+
+apt-cache policy command-name
+
+systemctrl start/stop/restart/... service-name

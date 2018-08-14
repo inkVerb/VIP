@@ -1,0 +1,7 @@
+#!/bin/sh
+
+myOutput=$(sed "s/$2/$3/g" $1)
+
+echo "$myOutput" >> sedoutput.text
+
+# v02

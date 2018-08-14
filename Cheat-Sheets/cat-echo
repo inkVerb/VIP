@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# echo
+
+## echo a variable
+echo $variable
+
+## echo text
+echo "This is my text."
+
+## echo text with quotes, canceled with \
+echo "This is my \"text\"."
+
+## echo text to replace contents of a file
+echo "This is the new file contents." > file
+
+## echo text to replace contents at the end of a file
+echo "This is the added file contents." >> file
+
+
+# cat
+
+## Show the contents of a file
+cat file
+
+## Copy the contents of file "foo" to file "bar"
+cat foo > bar
+
+## Copy the contents of file "foo" to the end of file "bar"
+cat foo >> bar

@@ -1,0 +1,16 @@
+Best Friend, all main fonts: http://www.gust.org.pl/projects/e-foundry
+GUST Foundry fonts begin with
+- LM ...
+- Tex Gyre ...
+...These cover most main typefaces and are free viz http://www.gust.org.pl/fonts/licenses/GUST-FONT-LICENSE.txt
+
+More fonts: https://www.fontsquirrel.com
+
+copy fonts to ~/.fonts
+run: fc-cache -f -v
+
+Intro to fonts
+https://drive.google.com/file/d/0BwTdjnieHEEndkR3OFZjdVJ0QWM/view
+
+Roman fonts
+https://drive.google.com/file/d/0BwTdjnieHEEnNjF3RktZbmhiaTg/view

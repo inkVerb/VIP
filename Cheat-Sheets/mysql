@@ -1,0 +1,6 @@
+All MySQL information is usually in /var/lib/mysql/
+
+This will set usual permissions for the /var/lib/mysql directory
+
+chown -R mysql:mysql /var/lib/mysql/
+chmod -R 755 /var/lib/mysql/

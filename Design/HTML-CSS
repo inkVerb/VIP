@@ -1,0 +1,76 @@
+Best Friend: https://www.w3schools.com
+
+tag {
+
+}
+
+
+.class {
+
+}
+
+.normal
+.italic
+.oblique
+
+
+#id {
+
+}
+
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+}
+
+
+Pseudo Classes
+
+:pseudo-class {
+
+}
+
+a:link
+a:visited
+a:hover
+a:active
+:first-child
+:only-child
+:last-child
+:first-of-type
+:lang
+:focus
+:active
+:checked
+:required
+:target
+...more
+
+{
+
+}
+
+
+Pseudo Elements
+
+::pseudo-element {
+
+}
+
+::selection
+::first-letter
+::first-line
+::before
+::after {
+    font properties
+    color properties
+    background properties
+    word-spacing
+    letter-spacing
+    text-decoration
+    vertical-align
+    text-transform
+    line-height
+    clear
+}

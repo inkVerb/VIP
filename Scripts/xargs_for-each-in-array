@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# This runs a command for each item in a space-separated array
+
+# Set the array variable
+MY_ARRAY="one two three four"
+## "echo" is the command
+echo "${MY_ARRAY}" | xargs -n1 echo ${g};
+## "mkdir" is the command
+echo "${MY_ARRAY}" | xargs -n1 mkdir ${g};

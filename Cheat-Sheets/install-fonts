@@ -1,0 +1,4 @@
+# install fonts
+## Put fonts in the .fonts folder of home directory
+## Run this to refresh fonts:
+fc-cache -f -v

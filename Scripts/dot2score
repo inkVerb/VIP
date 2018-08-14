@@ -1,0 +1,6 @@
+#!/bin/sh
+# This changes a string with dots to a string with underscores, based on the first variable
+
+DOTVAR=$1
+SCOREVAR="$(echo $DOTVAR | sed 's/\./_/g')"
+echo $SCOREVAR
