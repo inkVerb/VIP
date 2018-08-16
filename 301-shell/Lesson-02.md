@@ -9,8 +9,6 @@
 
 ___
 
-
-
 ### I. `odt2txt`
 
 *Convert .odt files to .txt*
@@ -61,11 +59,11 @@ ___
 
 `ls`
 
-`rename "s/.t./.T./" *`
+`rename "s/\.t\./\.T\./" *`
 
 `ls`
 
-`rename "s/.T./.t./" *`
+`rename "s/\.T\./\.t\./" *`
 
 `ls`
 

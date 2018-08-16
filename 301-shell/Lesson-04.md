@@ -13,11 +13,11 @@ ___
 
 ### I. `while`
 
-`gedit 04-while-question`
+`gedit 04-while-read`
 
 *Note -z means "Zero" or "Zilch" for a variable that is empty*
 
-`./04-while-question`
+`./04-while-read`
 
 *Only press Enter to see what happens again and again, comply or use Ctrl + C to close*
 
@@ -26,6 +26,14 @@ ___
 *Note ! means "not"*
 
 `./04-while-count`
+
+*Let's put it together into something useful*
+
+`gedit 04-while-count-read`
+
+*Note ! means "not"*
+
+`./04-while-count-read`
 
 ### II. `until`
 
@@ -43,13 +51,13 @@ ___
 
 `ls *.sixtn`
 
-`gedit 04-until-question`
+`gedit 04-until-read`
 
-`./04-until-question werdup`
+`./04-until-read werdup`
 
 *Input wrong "passwords" to see what it does, input "werdup" or use Ctrl + C to close*
 
-`./04-until-question thepassword`
+`./04-until-read thepassword`
 
 *Input wrong "passwords" to see what it does, input "thepassword" or use Ctrl + C to close*
 

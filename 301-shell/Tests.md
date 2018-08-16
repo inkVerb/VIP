@@ -10,6 +10,8 @@ ___
 
 ### II. `while` `do` `done`
 
+- A `while` test will `do` an action "while" a test returns `true`
+- Once the test returns `false`, the loop will break
 - A `while` test loops and is used to change something if needed
 - A `while` test "loop" repeats the test, the script only continues when the test finally returns `false`
 - `while :` will always return `true` and will repeat until `break` occurs in its loop or the user terminates the script
@@ -32,7 +34,26 @@ done
 ```
 ___
 
-### III. `if` `then` `fi`
+### III. `until` `do` `done`
+
+- An `until` test will `do` an action while a test returns `false`, "until" the test returns `true`
+- Once the test returns `true`, the loop will break
+- An `until` test loops and is similar to a `while` loop
+- `until :` will always return `true` and will thus `break` before it can run `do`
+
+```sh
+until [ THIS IS THE TEST ]
+
+do
+
+# Something happens here if the test answers false
+
+done
+
+```
+___
+
+### IV. `if` `then` `fi`
 
 - An `if` test runs once and does something only under certain circumstances
 - Once the `if` test is finished, the script continues
@@ -111,7 +132,7 @@ fi
 ```
 ___
 
-### IV. `for` VARIABL `in` WUT
+### V. `for` VARIABL `in` WUT
 
 - A `for` test loops and does the same thing for each among many items
 
@@ -125,7 +146,7 @@ echo $VARIABL
 done
 ```
 
-### V. `case`... `esac`
+### VI. `case`... `esac`
 
 - `case` is a simple multiple `if` test
 - `a)` is the `case` argument for using the `-a` flag
@@ -168,7 +189,7 @@ esac
 
 ___
 
-### VI. `getopts`
+### VII. `getopts`
 - `getopts` is processed via: `while` [`getopts...`] `do` `case`
 - Each `case` can execute the script
 - `getopts` only allows single-letter flags, like: `-a` `-b` `-c` and together `-abc`
@@ -274,7 +295,7 @@ This can take arguments:
 
 ___
 
-### VII. `getopt`
+### VIII. `getopt`
 - `getopt` is processed via: `while [[ $# > 0 ]]; do` `case`
 - Each `case` sets a variable to `true`, then the script should run later in an `if` test for those variables
 - `getopt` allows single-letter flags, AND "long" option alternatives like: `--alpha` `--bravo` in place of `-a` `-b` and together `-ab`
