@@ -9,6 +9,10 @@ If you are not a "sudoer", you need the machine (computer) administrator (mom, d
 
 ___
 
+## Never use `sudo` in a shell script
+## Instead, use `sudo ./my-shell-script`, if you need root permissions in your script
+___
+
 *This sets a password for* `su` *if it has not been done already...*
 
 *You MUST be a "sudoer" for this..."
