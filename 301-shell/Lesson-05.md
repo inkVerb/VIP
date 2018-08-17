@@ -31,18 +31,17 @@ ___
 
 `./05-case-options`
 
-*Input any of the following: a, b, f, g, v, z, quit, and others*
-
+*Input any of the following: a, b, f, g, v, z, and others, finally "quit"*
 
 `gedit 05-case-chat`
 
 `./05-case-chat one two three`
 
-*Input any of the following: verb, ink, hi, yoyo, byebye, done, one, two, three, and others*
+*Input any of the following: verb, ink, hi, yoyo, byebye, done, one, two, three, and others, finally "quit"*
 
 `./05-case-chat apple pineapple pen`
 
-*Input any of the following: verb, ink, hi, yoyo, byebye, done, apple, pineapple, pen, and others*
+*Input any of the same, also the following: apple, pineapple, pen, finally "quit"*
 
 ### II. `case` with `y/n`
 
@@ -52,7 +51,7 @@ ___
 
 *Run it multiple times with: y, n, Y, N, Yes, No, yes, no, YES, NO, yES, nO, yeS, yEs, and other answers*
 
-### III. `case` `y/n` loop & `exit 1`
+### III. `case` `y/n` & `exit 1`
 
 `gedit 05-case-yn-loop`
 
