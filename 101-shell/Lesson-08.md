@@ -1,7 +1,7 @@
 # Shell 101
 ## Lesson 8: echo, cat & tee in scripts
 
-`cd ~/Work/VIP/shell/101`
+`cd ~/School/VIP/shell/101`
 
 `gedit &`
 

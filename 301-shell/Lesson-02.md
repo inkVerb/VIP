@@ -1,7 +1,7 @@
 # Shell 301
 ## Lesson 2: odt2txt, rename, sleep & read
 
-`cd ~/Work/VIP/shell/301`
+`cd ~/School/VIP/shell/301`
 
 `gedit &`
 

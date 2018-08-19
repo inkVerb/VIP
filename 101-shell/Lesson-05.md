@@ -1,7 +1,7 @@
 # Shell 101
 ## Lesson 5: Combine & Pipe Commands into Variables
 
-`cd ~/Work/VIP/shell/101`
+`cd ~/School/VIP/shell/101`
 
 `gedit &`
 

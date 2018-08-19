@@ -1,7 +1,7 @@
 # Shell 301
 ## Lesson 12: BASH select, getopts, getopt & SH dialog
 
-`cd ~/Work/VIP/shell/301`
+`cd ~/School/VIP/shell/301`
 
 `gedit &`
 

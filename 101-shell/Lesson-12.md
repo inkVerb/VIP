@@ -1,7 +1,7 @@
 # Shell 101
 ## Lesson 12: grep with Special Characters
 
-`cd ~/Work/VIP/shell/101`
+`cd ~/School/VIP/shell/101`
 
 `gedit &`
 

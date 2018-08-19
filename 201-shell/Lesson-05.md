@@ -1,7 +1,7 @@
 # Shell 201
 ## Lesson 5: adduser, deluser, chown
 
-`cd ~/Work/VIP/shell/201`
+`cd ~/School/VIP/shell/201`
 
 `gedit &`
 

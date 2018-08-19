@@ -2,7 +2,7 @@
 ## Lesson 6: tee
 ## tee = T
 
-`cd ~/Work/VIP/shell/101`
+`cd ~/School/VIP/shell/101`
 
 `gedit &`
 

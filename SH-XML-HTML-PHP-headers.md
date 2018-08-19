@@ -3,15 +3,15 @@ ___
 
 ## Prep Folders
 
-*Watch in the file explorer if you want, in your Work folder*
+*Watch in the file explorer if you want, in your School folder*
 
 Open Terminal *F12 (if Vrk or Guake is installed) / Ctrl+Alt+T (normal)*
 
 `cd `
 
-*IF* you don't have a `Work` folder, create it: `mkdir Work`
+*IF* you don't have a `School` folder, create it: `mkdir School`
 
-`cd Work`
+`cd School`
 
 `mkdir VIP`
 
@@ -127,7 +127,7 @@ To edit any file, html for example, type:
 
 `cd `
 
-`cd Work/VIP/html`
+`cd School/VIP/html`
 
 `gedit new.html`
 

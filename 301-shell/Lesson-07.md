@@ -1,7 +1,7 @@
 # Shell 301
 ## Lesson 7: Combo && || Include
 
-`cd ~/Work/VIP/shell/301`
+`cd ~/School/VIP/shell/301`
 
 `gedit &`
 
@@ -57,7 +57,7 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 `./07-include`
 
-*Uncomment the line with* `. ~/Work/VIP/shell/301/07-included` *and run it again*
+*Uncomment the line with* `. ~/School/VIP/shell/301/07-included` *and run it again*
 
 `./07-include`
 

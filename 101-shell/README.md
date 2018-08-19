@@ -4,7 +4,7 @@
 
 *F12 (guake) OR Ctrl + Alt + T (new terminal)*
 
-`mkdir -p ~/Work/VIP/shell/101`
+`mkdir -p ~/School/VIP/shell/101`
 
 ### [Lesson 0: Terminal Control](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-00.md)
 

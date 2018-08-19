@@ -1,7 +1,7 @@
 # Shell 201
 ## Lesson 3: su, sudo, apt update, apt upgrade, apt install, lsb_release
 
-`cd ~/Work/VIP/shell/201`
+`cd ~/School/VIP/shell/201`
 
 `gedit &`
 

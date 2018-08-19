@@ -1,7 +1,7 @@
 # Shell 201
 ## Lesson 7: tar, xz, zip, gzip, bzip2
 
-`cd ~/Work/VIP/shell/201`
+`cd ~/School/VIP/shell/201`
 
 `gedit &`
 
@@ -150,7 +150,7 @@ ___
 
 ## Part II `xz -9` `gzip` `bzip2` `tar xf`
 
-`cd ~/Work/VIP/shell/201/compress`
+`cd ~/School/VIP/shell/201/compress`
 
 ___
 
@@ -278,7 +278,7 @@ ___
 
 ## Part III `tar cf` `tar tf` `tar rf`
 
-`cd ~/Work/VIP/shell/201/compress`
+`cd ~/School/VIP/shell/201/compress`
 
 ___
 

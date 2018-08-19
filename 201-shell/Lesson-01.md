@@ -1,7 +1,7 @@
 # Shell 201
 ## Lesson 1: cp, mv, ln -s, mkdir, rm
 
-`cd ~/Work/VIP/shell/201`
+`cd ~/School/VIP/shell/201`
 
 `gedit &`
 

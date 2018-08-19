@@ -1,7 +1,7 @@
 # Shell 201
 ## Lesson 8: Hash – md5sum, sha1sum, sha256sum, sha512sum
 
-`cd ~/Work/VIP/shell/201`
+`cd ~/School/VIP/shell/201`
 
 `gedit &`
 

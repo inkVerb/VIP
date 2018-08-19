@@ -6,9 +6,9 @@
 
 *F12 (guake) OR Ctrl + Alt + T (new terminal)*
 
-`mkdir -p ~/Work/VIP/shell/401`
+`mkdir -p ~/School/VIP/shell/401`
 
-`cd ~/Work/VIP/shell`
+`cd ~/School/VIP/shell`
 
 `git clone https://github.com/inkVerb/401`
 

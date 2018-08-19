@@ -1,7 +1,7 @@
 # Shell 301
 ## Lesson 8: date & pwgen
 
-`cd ~/Work/VIP/shell/301`
+`cd ~/School/VIP/shell/301`
 
 `gedit &`
 

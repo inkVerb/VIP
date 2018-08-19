@@ -1,7 +1,7 @@
 # Shell 101
 ## Lesson 1: gedit, echo & sed
 
-`cd ~/Work/VIP/shell/101`
+`cd ~/School/VIP/shell/101`
 
 `gedit &`
 

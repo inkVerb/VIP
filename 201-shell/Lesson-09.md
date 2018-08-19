@@ -1,7 +1,7 @@
 # Shell 201
 ## Lesson 9: du, df, top, ps aux, pgrep, kill
 
-`cd ~/Work/VIP/shell/201`
+`cd ~/School/VIP/shell/201`
 
 `gedit &`
 
@@ -11,6 +11,8 @@ ___
 *Go to your home directory*
 
 `cd ~/`
+
+### `du` & `df`
 
 `du -sh *`
 
@@ -24,13 +26,15 @@ ___
 
 *Note it listed everything in megabytes and gigabytes, et cetera*
 
-`du -sh Work`
+`du -sh School`
 
 *Note it can tell you the size of just one directory*
 
 *Now go back to where our 201 directory*
 
-`cd ~/Work/VIP/shell/201`
+`cd ~/School/VIP/shell/201`
+
+### `top`
 
 `top`
 
@@ -45,6 +49,8 @@ Ctrl + C *This will CLOSE the top program*
 `top -n 1 -b`
 
 *Notice* `-b` *shows everything, not limited by the size of the terminal window, only limited by the* `-n 1` *option*
+
+### `ps aux`
 
 `ps aux`
 
@@ -66,6 +72,8 @@ Select ONE browser you are NOT using:
 
 *This does the same thing*
 
+### `pgrep` & `kill`
+
 `pgrep firefox` or `pgrep chromium-browser` or `pgrep google-chrome` or `pgrep vivaldi`
 
 *Note the PID, it's the number*
@@ -80,21 +88,7 @@ Select ONE browser you are NOT using:
 
 `killall firefox` or `killall chromium-browser` or `killall google-chrome` or `killall vivaldi`
 
-*Some processes, such as VLC can only be killed by PID*
-
-`vlc &`
-
-`killall vlc`
-
-*Note it doesn't work*
-
-`pgrep vlc`
-
-*Note the number*
-
-`kill PID` e.g `kill 71771`
-
-*Now, VLC is closed*
+*Some processes can only be killed by PID*
 
 *FYI, this is a little program we installed in Lesson 3, a little more colorful than* `top`
 

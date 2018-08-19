@@ -1,7 +1,7 @@
 # Shell 201
 ## Lesson 12: more, less, head, tail, sort, diff, nano, vi
 
-`cd ~/Work/VIP/shell/201`
+`cd ~/School/VIP/shell/201`
 
 `gedit &`
 
@@ -12,7 +12,7 @@ ___
 
 `cat verb.ink.html`
 
-### more
+### `more`
 
 *One page at a time: Spacebar*
 
@@ -24,13 +24,13 @@ ___
 
 `more -8 verb.ink.html` *(Q to quit)*
 
-### less
+### `less`
 
 *Up and down: Spacebar, PageUp, PageDown, Up, Down*
 
 `less verb.ink.html` *(Q to quit)*
 
-### head
+### `head`
 
 *First ten lines*
 
@@ -40,7 +40,7 @@ ___
 
 `head -4 verb.ink.html`
 
-### tail
+### `tail`
 
 *Last ten lines*
 
@@ -50,7 +50,7 @@ ___
 
 `tail -5 verb.ink.html`
 
-### sort
+### `sort`
 
 *Lines in alphabetical order*
 
@@ -64,7 +64,7 @@ ___
 
 `man sort` *(Q to quit)*
 
-### diff
+### `diff`
 
 *First,* `wget` *some files*
 

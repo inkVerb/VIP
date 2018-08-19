@@ -1,12 +1,14 @@
 # Shell 201
-## Lesson 11: tcpdump, netstat -natu, man, info
+## Lesson 11: netstat -natu, tcpdump, man, info
 
-`cd ~/Work/VIP/shell/201`
+`cd ~/School/VIP/shell/201`
 
 `gedit &`
 
 `nautilus . &`
 ___
+
+### `netstat -natu` & `sudo tcpdump`
 
 `netstat -natu`
 
@@ -35,7 +37,9 @@ ___
 > `exit`
 > ___
 
-*This is a great tool to change settings from the terminal:* `gsettings`
+### `man` & `info`
+
+*FYI, this is a great tool to change settings from the terminal:* `gsettings`
 
 `man gsettings`
 
@@ -47,7 +51,9 @@ ___
 
 `info gsettings`
 
-*The* `man` *are* `info`*tools are useful for many things*
+*Press Q to quit*
+
+*The* `man` *and* `info`*tools are useful for many things*
 
 *Consider* `lsb_release` *which shows detailed information about your current Linux distribution*
 
@@ -75,11 +81,11 @@ ___
 
 `info echo`
 
-*...but not all...*
-
 `man imagemagick`
 
 `info imagemagick`
+
+*...but not always*
 
 *Note* `imagemagick` *changes images from the terminal, learn to use at:*
 - [www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)

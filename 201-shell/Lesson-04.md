@@ -1,7 +1,7 @@
 # Shell 201
 ## Lesson 4: ls -l, chmod
 
-`cd ~/Work/VIP/shell/201`
+`cd ~/School/VIP/shell/201`
 
 `gedit &`
 

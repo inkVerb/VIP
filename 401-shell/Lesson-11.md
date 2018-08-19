@@ -1,7 +1,7 @@
 # Shell 401
 ## Lesson 11: NEW
 
-`cd ~/Work/VIP/shell/401`
+`cd ~/School/VIP/shell/401`
 
 `gedit &`
 
