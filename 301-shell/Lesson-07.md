@@ -21,6 +21,8 @@ ___
 
 `./07-while-count-read`
 
+*Enter a high number, such as 9001*
+
 ### II. Read files & types, then check
 
 `gedit 07-create`

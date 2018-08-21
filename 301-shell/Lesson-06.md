@@ -17,7 +17,19 @@ ___
 
 `journalctl`
 
-*Use Space to scroll down, Ctrl+C to close*
+### For an administrator to use `su`
+> ___
+> 
+> `su` *input the password*
+> 
+> `journalctl`
+> ___
+
+*Space to scroll down*
+
+*Ctrl+C to close*
+
+*Q to quit*
 
 *That is a log file on your machine*
 
@@ -29,6 +41,12 @@ ___
 > 
 > *When tutorials only have* `exit` *in the example, it is up to you to put the correct number after, probably* `exit 0`
 > 
+
+### Recording output logs
+
+`mkdir logs`
+
+`cd logs`
 
 *Send* STDOUT *(output) to a file with:* `> OUTPUTFILE`
 
@@ -44,23 +62,21 @@ ___
 
 `gedit error.log`
 
-`ls dumbo 2> error.log`
-
 *gedit: Reload error.log*
 
 `ls dumbo 2>> error.log`
 
 *gedit: Reload error.log*
 
-*Combine this into one command with:* `> NORMALOUT 2> ERROROUT`
-
-`ls bozo > normal.log 2>> error.log`
-
-`ls > normal.log 2>> error.log`
-
-*gedit: Reload error.log*
+`ls >> normal.log`
 
 `gedit normal.log`
+
+*Combine this into one command with:* `> STDOUT 2> STDERR`
+
+`ls bozo >> normal.log 2>> error.log`
+
+*gedit: Reload error.log*
 
 *Send* STDERR *(error output) into the nothingness with:* `> /dev/null 2>&1`
 
@@ -72,9 +88,51 @@ ___
 
 *Note* `journalctl` *is for system logs, but you can create your own logs*
 
-#### Creat log files for normal STDOUT and error STDERR in Shell
+### Review output numbers
 
-`gedit 06-logging-1`
+#### Generate normal output
+
+*Outputs nothing:*
+
+`ls 0> 0.log`
+
+`cat 0.log`
+
+*Outputs STDOUT (present):*
+
+`ls 1> 1.log`
+
+`cat 1.log`
+
+*Outputs STDERR (absent):*
+
+`ls 2> 2.log`
+
+`cat 2.log`
+
+#### Generate error output
+
+*Outputs nothing:*
+
+`ls bozo 0> 0.log`
+
+`cat 0.log`
+
+*Outputs STDOUT (absent):*
+
+`ls bozo 1> 1.log`
+
+`cat 1.log`
+
+*Outputs STDERR (present):*
+
+`ls bozo 2> 2.log`
+
+`cat 2.log`
+
+### Creat log files for normal STDOUT and error STDERR in Shell
+
+`gedit ../06-logging-1`
 
 *Note* `exec` *basically means "whatever the current command is", don't lose sleep over it, just see how it is used*
 
@@ -82,21 +140,19 @@ ___
 
 `ls`
 
-*Note, the file errors.log was created*
+*gedit Reload: error.log*
 
-`gedit errors.log`
-
-`gedit 06-logging-2`
+`gedit ../06-logging-2`
 
 *Note* `> OUTFILE` *is the same as* `1> OUTFILE` *because* `>` *&* `1>` *are for* STDOUT (`exit 1`) *while* `2>` *is always for* STDERR (`exit 2`)
 
 `./06-logging-2`
 
-*gedit Reload: errors.log*
+*gedit Reload: error.log*
 
-`gedit normal.log`
+*gedit Reload: normal.log*
 
-`gedit 06-logging-3`
+`gedit ../06-logging-3`
 
 `./06-logging-3`
 
@@ -106,7 +162,7 @@ ___
 
 *Both* STDOUT *and* STDERR *went to the same file because this makes errors behave like normal output:* `2>&1`
 
-`gedit 06-logging-4`
+`gedit ../06-logging-4`
 
 `./06-logging-4`
 
@@ -118,7 +174,7 @@ ___
 
 *Note setting exit messages only works 3-9*
 
-`gedit 06-logging-5`
+`gedit ../06-logging-5`
 
 `./06-logging-5`
 
@@ -132,7 +188,7 @@ ___
 
 *Note you can set exit 0 also, but that's strange*
 
-`gedit 06-logging-6`
+`gedit ../06-logging-6`
 
 `./06-logging-6`
 
@@ -141,6 +197,8 @@ ___
 *Note the file exit-0.log was created*
 
 `gedit exit-0.log`
+
+`cd ..`
 
 *Moral of the story: always use* `exit` *with a number!*
 - `exit 0` everything is normal, no output  ( with `echo "something"` `>&0` ...if you are strange )
@@ -151,7 +209,7 @@ ___
 
 *FYI, you can create a read-only system log file for your script*
 
-`gedit 06-logging-7`
+`gedit ../06-logging-7`
 
 *Learn more for read-only system logs* [https://ops.tips/gists/redirect-all-outputs-of-a-bash-script-to-a-file/]
 
