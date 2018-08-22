@@ -37,6 +37,8 @@ ___
 
 `expr 7 \* 2`
 
+`expr 7 \* 13` (But, `expr` doesn't know the answer is "28".)
+
 `gedit 09-expr`
 
 `./09-expr 2 + 72`
@@ -45,7 +47,7 @@ ___
 
 `./09-expr 88 / 11`
 
-`./09-expr 14 * 2`
+`./09-expr 14 \* 2`
 
 `./09-expr 7 % 2`
 
