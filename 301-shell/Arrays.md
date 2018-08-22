@@ -12,7 +12,7 @@ VAR=Something
 
 echo $VAR
 
-# Output is: "Something"
+# Output: "Something"
 
 ```
 
@@ -27,7 +27,6 @@ echo ${ARRAY[1]}
 # Output: "Otherthing"
 
 # Note: If you don't define an alternate multiverse, it will use the base, 0
-
 echo $ARRAY
 # Output: "Something"
 
@@ -39,7 +38,7 @@ In a normal array, each value has a "key" number, the first is `0`.
 
 ```bash
 # Set the values of the array all at once:
-# key: [0] [1] [2]   [3]  [4]
+# key: [0] [1] [2]   [3]  [4]  (alternative multiverse numbers, 0 is the base multiverse)
 ARRAY=(one two three four five)
 
 # Above is the same as...
@@ -49,7 +48,7 @@ ARRAY[2]=three
 ARRAY[3]=four
 ARRAY[4]=five
 
-# echo the array value like this...
+# echo the array values like this...
 echo ${ARRAY[0]}
 echo ${ARRAY[1]}
 echo ${ARRAY[2]}
@@ -71,7 +70,7 @@ In an associative array, the key can become an alpha-numeric value, such as a wo
 declare -A ASCRAY
 
 # Set the values of the array all at once:
-# key:      [a]     [b]     [c]       [d]      [e]
+# key:      [a]     [b]     [c]       [d]      [e]  (multiverse names)
 ASCRAY=([a]=one [b]=two [c]=three [d]=four [e]=five)
 
 # Above is the same as...
@@ -81,7 +80,7 @@ ASCRAY[c]=three
 ASCRAY[d]=four
 ASCRAY[e]=five
 
-# echo the array value like this...
+# echo the array values like this...
 echo ${ASCRAY[a]}
 echo ${ASCRAY[b]}
 echo ${ASCRAY[c]}
