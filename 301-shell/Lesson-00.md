@@ -5,6 +5,8 @@
 ___
 ### [Tests](https://github.com/inkVerb/vip/blob/master/301-shell/Tests.md)
 ___
+### [Arrays](https://github.com/inkVerb/vip/blob/master/301-shell/Arrays.md)
+___
 ## Prepare
 
 *F12 (guake) OR Ctrl + Alt + T (new terminal)*

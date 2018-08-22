@@ -7,6 +7,7 @@
 
 `nautilus . &`
 
+- [Arrays](https://github.com/inkVerb/vip/blob/master/301-shell/Arrays.md)
 - [Variables](https://github.com/inkVerb/vip/blob/master/301-shell/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/301-shell/Tests.md)
 ___
