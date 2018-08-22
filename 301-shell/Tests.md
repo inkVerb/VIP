@@ -154,13 +154,13 @@ then; echo yes; fi
 ##### Comparison
 
 ```bash
-#Shell BASH
--eq     == # is equal to
--ne     != # is not equal to
--gt     >  # is greater than
--lt     <  # is less than
--ge     >= # is greater than or equal to
--le     <= # is less than or equal to
+# Shell BASH
+  -eq   == # is equal to
+  -ne   != # is not equal to
+  -gt   >  # is greater than
+  -lt   <  # is less than
+  -ge   >= # is greater than or equal to
+  -le   <= # is less than or equal to
 ```
 
 Shell: `if [ $NUM1 -eq $NUM2 ]` - Variables may use quotes, but do NOT need to.
