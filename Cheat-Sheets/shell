@@ -1,5 +1,8 @@
 # These include complex shell embed command formats
 
+# Watch the GUI commands in the terminal
+dconf watch /
+
 # Just the output
 $(SHELL COMMAND HERE)
 
