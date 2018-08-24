@@ -1,4 +1,4 @@
-# File Permissions
+# Permissions
 
 ```shell
 Numeric  Readable    Explanation
