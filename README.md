@@ -3,6 +3,10 @@
 
 Whether you want to become a computer genuis or if you're a "computer dummy" and want to make computers less scary, start with Linux. Start simple. Start right here.
 
+## Get the apps used in this course
+
+`sudo apt install gedit guake nautilus chromium-browser`
+
 ## Shell Crash Course
 
 # [Shell 101](https://github.com/inkVerb/vip/tree/master/101-shell)

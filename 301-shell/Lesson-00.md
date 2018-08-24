@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 0: Cheet Sheets
+## Lesson 0: 301 Cheat Sheets
 
 ### [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 ___
