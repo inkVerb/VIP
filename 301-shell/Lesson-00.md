@@ -1,11 +1,11 @@
 # Shell 301
 ## Lesson 0: Cheet Sheets
 
-### [Variables](https://github.com/inkVerb/vip/blob/master/301-shell/Variables.md)
+### [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 ___
-### [Tests](https://github.com/inkVerb/vip/blob/master/301-shell/Tests.md)
+### [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
 ___
-### [Arrays](https://github.com/inkVerb/vip/blob/master/301-shell/Arrays.md)
+### [Arrays](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Arrays.md)
 ___
 ## Prepare
 

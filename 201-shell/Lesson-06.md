@@ -12,13 +12,23 @@ ___
 
 `wget -r http://verb.ink`
 
+`ls`
+
+*Take a peek inside*
+
+`cd verb.ink`
+
+`gedit index.html`
+
 *Download the verb.ink index page using curl*
 
 `curl http://verb.ink`
 
 `ls`
 
-*Note it only showed the html content, to save it specify an output file:*
+*Note it either output the content or returned an error*
+- `curl` *needs an output file specified*
+- `wget` *saves the file by the same name unless otherwise specified*
 
 `curl http://verb.ink > verb.ink.html`
 
@@ -42,7 +52,7 @@ ___
 
 `ls`
 
-*Specify an output file*
+*Specify an output file with:* `-O SAVEASNAME` (CAPITAL '-O'!)
 
 `wget -O vrk.zip https://github.com/inkVerb/vrk/archive/master.zip`
 
@@ -118,9 +128,21 @@ ___
 
 `ls`
 
+*Take a peek inside*
+
+`cd vrk`
+
+`ls -a`
+
+*Note the ".git" directory, it containes a few read-only files*
+
+`cd ..`
+
 `rm -r vrk`
 
-*Note the error message; you don't own it!* (Ctrl + C to get out of there!)
+*Note the error message because of the read-only files* (Ctrl + C to get out of there!)
+
+*Removing a git-cloned directory is easier with* `sudo`
 
 `sudo rm -r vrk`
 
