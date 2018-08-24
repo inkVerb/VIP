@@ -7,7 +7,7 @@
 
 `nautilus . &`
 
-##### ### [chmod Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/chmod.md)
+#### [chmod Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/chmod.md)
 ___
 
 *Prepare our "permissions" directory and enter it in one command*
