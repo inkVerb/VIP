@@ -14,7 +14,7 @@ ___
 
 *Prep, copy, and cd in one command*
 
-`mkdir one && cp *.odt one && cd one`
+`mkdir one && cp *.odt one && cp markdown.md one && cd one`
 
 *Convert .odt files to .txt*
 
@@ -58,7 +58,19 @@ ___
 
 `cat ODT-FILE.txt`
 
-#### The `pandoc` tool can be glitchy, but it handles:
+*Let's do markdown*
+
+`pandoc -s markdown.md -o markdown.odt`
+
+`ls`
+
+`lowriter markdown.odt &`
+
+*View the rendered file* [markdown.md](https://github.com/inkVerb/301/blob/master/markdown.md)
+
+`killall soffice.bin`
+
+#### The `pandoc` tool can be glitchy if you do something too complex, but it handles:
 - plain text
 - LaTex
 - ConTeXt
