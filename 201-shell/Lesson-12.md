@@ -6,6 +6,7 @@
 `gedit &`
 
 `nautilus . &`
+
 ___
 
 *Let's get another look at verb.ink.html*

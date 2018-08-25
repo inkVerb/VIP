@@ -6,6 +6,7 @@
 `gedit &`
 
 `nautilus . &`
+
 ___
 
 `gedit abcd comboshell sedoutput.text`

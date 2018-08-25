@@ -6,6 +6,7 @@
 `gedit &`
 
 `nautilus . &`
+
 ___
 
 *Compression cheat-sheet:* [VIP: tar-gzip-bzip2-zip-xz](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/tar-gzip-bzip2-zip-xz)
@@ -146,11 +147,13 @@ ___
 
 `ls -l`
 
+
 ___
 
 ## Part II `xz -9` `gzip` `bzip2` `tar xf`
 
 `cd ~/School/VIP/shell/201/compress`
+
 
 ___
 
@@ -274,11 +277,13 @@ ___
 
 `tar xf vrk.tar.xz && ls -l`
 
+
 ___
 
 ## Part III `tar cf` `tar tf` `tar rf`
 
 `cd ~/School/VIP/shell/201/compress`
+
 
 ___
 

@@ -9,6 +9,7 @@
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
+
 ___
 
 ### I. `while`

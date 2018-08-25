@@ -7,6 +7,7 @@
 `gedit &`
 
 `nautilus . &`
+
 ___
 
 `gedit applefoo`

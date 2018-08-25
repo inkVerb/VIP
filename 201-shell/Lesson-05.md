@@ -8,6 +8,7 @@
 `nautilus . &`
 
 #### [Permissions Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Permissions.md)
+
 ___
 
 *Prepare our "permissions" directory and enter it in one command*
@@ -239,12 +240,14 @@ ___
 
 *WARNING: If you already have a user "pinkypink" and/or "pinkypurple", then you are very interesting and should there substitute those names for users not on your system.*
 
-> ___
+> 
+___
 > 
 > If running as `su` after runing via `sudo`, input this as your normal user to set everything aright:
 > 
 > `touch whoown iown theyown youown`
-> ___
+> 
+___
 > 
 > *Try this commands without* `su` *and note the error messages because it requires* `su`:
 > 
@@ -484,6 +487,7 @@ ___
 > `ls /home`
 > 
 > `cd ..`
-> ___
+> 
+___
 
 #### [Lesson 6: wget, curl, git clone](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-06.md)

@@ -3,6 +3,7 @@
 
 `cd ~/School/VIP/shell/101`
 
+
 ___
 
 `gedit`

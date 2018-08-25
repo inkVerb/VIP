@@ -58,6 +58,5 @@ For the official Shell/BASH manual, read the [GNU Bash Reference manual](https:/
 
 *Ctrl+Shift+W* Close current tab
 
-
 *Ctrl+Shift+W* Close a tab
 

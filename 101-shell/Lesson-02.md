@@ -7,6 +7,7 @@
 
 `nautilus . &`
 
+
 ___
 
 `gedit abcsed abcd`

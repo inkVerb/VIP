@@ -6,6 +6,7 @@
 - `true`  = `1`
 
 When a test answers `true` or `1`, then shell does something via `then` or `do` 
+
 ___
 
 ### II. `while` `do` `done`
@@ -32,6 +33,7 @@ do
 done
 
 ```
+
 ___
 
 ### III. `until` `do` `done`
@@ -51,6 +53,7 @@ do
 done
 
 ```
+
 ___
 
 ### IV. `if` `then` `fi`
@@ -193,6 +196,7 @@ if (( "$NUM1" < "$NUM2" ))
 if (( "$NUM1" >= "$NUM2" ))
 if (( "$NUM1" <= "$NUM2" ))
 ```
+
 ___
 
 ### V. `for` VARIABL `in` WUT
@@ -249,6 +253,7 @@ case $VARIABL in
 
 esac
 ```
+
 
 ___
 
@@ -355,6 +360,7 @@ This can take arguments:
 - `./myscript -a A-option`
 - `./myscript -b`
 ...Anything else will echo "Dude, get right."
+
 
 ___
 

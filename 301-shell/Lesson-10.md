@@ -10,6 +10,7 @@
 - [Arrays](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Arrays.md)
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
+
 ___
 
 ## Welcome to BASH: Bourne Again Shell! `#!/bin/bash`
@@ -78,6 +79,7 @@ Some things can only be done in BASH
 
 `./10-array-associative-declare`
 
+
 ___
 
 ## Rule 1: You CAN'T put an array inside an array
@@ -89,6 +91,7 @@ OR
 ### indexed: `MyArry=(one two) .. MyArry[0] MyArry[1]`
 
 NOT BOTH
+
 ___
 
 `gedit 10-array-keys`

@@ -9,6 +9,7 @@
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
+
 ___
 
 ### *Note* `exit` *&* `journalctl` *are used for logs*
@@ -18,12 +19,14 @@ ___
 `journalctl`
 
 ### For an administrator to use `su`
-> ___
+> 
+___
 > 
 > `su` *input the password*
 > 
 > `journalctl`
-> ___
+> 
+___
 
 *Space to scroll down*
 

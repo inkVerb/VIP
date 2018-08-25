@@ -6,6 +6,7 @@
 `gedit &`
 
 `nautilus . &`
+
 ___
 
 `echo "jjj" > abc/yoyo`

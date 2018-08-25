@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 2: odt2txt, rename, sleep & read
+## Lesson 2: odt2txt, pandoc, rename, sleep & read
 
 `cd ~/School/VIP/shell/301`
 
@@ -7,9 +7,14 @@
 
 `nautilus . &`
 
+
 ___
 
-### I. `odt2txt`
+### I. `odt2txt` & `pandoc`
+
+*Prep, copy, and cd in one command*
+
+`mkdir one && cp *.odt one && cd one`
 
 *Convert .odt files to .txt*
 
@@ -43,7 +48,37 @@ ___
 
 `rm ODT-FILE.txt`
 
+`ls`
+
+### Note `pandoc` does more than `odt2txt`
+
+`pandoc -s ODT-FILE.odt -o ODT-FILE.txt`
+
+`ls`
+
+`cat ODT-FILE.txt`
+
+#### The `pandoc` tool can be glitchy, but it handles:
+- plain text
+- LaTex
+- ConTeXt
+- TeX math
+- HTML (incl TOC & CSS)
+- markdown
+- RTF
+- PDF
+- ODT
+- DOCX
+- EPUB
+- MediaWiki
+- `man` page
+- ...and more!
+
 ## II. `rename`
+
+`cd ~/School/VIP/shell/301/one`
+
+___
 
 `ls`
 
@@ -66,6 +101,8 @@ ___
 `rename "s/\.T\./\.t\./" *`
 
 `ls`
+
+`cd ..`
 
 ### III. `sleep`
 

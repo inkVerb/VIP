@@ -6,6 +6,7 @@
 `gedit &`
 
 `nautilus . &`
+
 ___
 
 *Check the Linux version info*
@@ -32,12 +33,13 @@ ___
 
 *You can install more than one package...*
 
-*Install the* `curl` `net-tools` `htop` `odt2txt` `rename` and `pwgen` *packages* (the command `netstat` comes from the package `net-tools`)
+*Install the* `curl` `net-tools` `htop` `odt2txt` `pandoc` `rename` and `pwgen` *packages* (the command `netstat` comes from the package `net-tools`)
 
-`sudo apt install -y curl net-tools htop odt2txt rename pwgen` *Use* `-y` *so you DO NOT need to press Y, then Enter*
+`sudo apt install -y curl net-tools htop odt2txt pandoc rename pwgen` *Use* `-y` *so you DO NOT need to press Y, then Enter*
 
 ### For an administrator to use `su`
-> ___
+> 
+___
 > If you don't have permission as a "sudoer", the person who administers your machine can use:
 > 
 > `su` *input the password*
@@ -56,11 +58,12 @@ ___
 > 
 > *You can install more than one package...*
 > 
-> *Install the* `curl` `net-tools` `htop` `odt2txt` `rename` and `pwgen` *packages* (the command `netstat` comes from the package `net-tools`)
+> *Install the* `curl` `net-tools` `htop` `odt2txt` `pandoc` `rename` and `pwgen` *packages* (the command `netstat` comes from the package `net-tools`)
 > 
-> `apt install -y curl net-tools htop odt2txt rename pwgen` *Use* `-y` *so you DO NOT need to press Y, then Enter*
+> `apt install -y curl net-tools htop odt2txt pandoc rename pwgen` *Use* `-y` *so you DO NOT need to press Y, then Enter*
 > 
 > `exit`
-> ___
+> 
+___
 
 #### [Lesson 4: ls -l, chmod](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)

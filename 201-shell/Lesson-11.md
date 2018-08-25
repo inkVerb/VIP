@@ -6,6 +6,7 @@
 `gedit &`
 
 `nautilus . &`
+
 ___
 
 ### `netstat -natu` & `sudo tcpdump`
@@ -23,7 +24,8 @@ ___
 *Ctrl + C will close the dump*
 
 ### For an administrator to use `su`
-> ___
+> 
+___
 > If you don't have permission as a "sudoer", the person who administers your machine can use:
 > 
 > `su` *input the password*
@@ -35,7 +37,8 @@ ___
 > *Ctrl + C will close the dump*
 > 
 > `exit`
-> ___
+> 
+___
 
 ### `man` & `info`
 

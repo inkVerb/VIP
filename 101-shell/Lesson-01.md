@@ -6,6 +6,7 @@
 `gedit &`
 
 `nautilus . &`
+
 ___
 
 `echo "No destination? Output to terminal, just like this."`

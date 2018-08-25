@@ -6,6 +6,7 @@
 `gedit &`
 
 `nautilus . &`
+
 ___
 
 *Download the entire verb.ink page using wget*
@@ -134,7 +135,7 @@ ___
 
 `ls -a`
 
-*Note the ".git" directory, it containes a few read-only files*
+*Note the hidden ".git" directory, it containes a few read-only files*
 
 `cd ..`
 
@@ -146,7 +147,8 @@ ___
 
 `sudo rm -r vrk`
 
-> ___
+> 
+___
 > If you don't have permission as a "sudoer", the person who administers your machine can use:
 > 
 > `su` *input the password*
@@ -154,7 +156,8 @@ ___
 > `rm -r vrk`
 > 
 > `exit`
-> ___
+> 
+___
 
 `ls`
 

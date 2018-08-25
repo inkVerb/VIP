@@ -35,6 +35,7 @@ read VARIABL
 ... now $VARIABL has a value
 
 ```
+
 ___
 
 ### II. Find-replace in a variable's value
@@ -59,6 +60,7 @@ returning
 applebar
 ```
 
+
 ___
 
 ### III. `for` VARIABL `in` WUT
@@ -79,6 +81,7 @@ done
 - `*.txt` can be anything, usually returning many items
 - `${VARIABL%txt}md` will replace "txt" with "md" in the output
 - All of this is used in a `do`... `done` loop that follows
+
 ___
 
 ### IV. `case` $VARIABL `in` ...`esac`
@@ -92,6 +95,7 @@ DO SOMETHING FOR EACH SCENARIO OF WHAT $VARIABL COULD BE
 
 esac
 ```
+
 ___
 
 ### V. `getopts`
@@ -103,6 +107,7 @@ while getopts ":a:b:c:" VARIABL
 ...
 ```
 - Now, `$VARIABL` can be used in the `while getopts`... `case` loop
+
 
 ___
 

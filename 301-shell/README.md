@@ -42,6 +42,7 @@
 ### [Lesson 11: BASH Functions](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-11.md)
 
 ### [Lesson 12: BASH select, getopts, getopt & SH dialog](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
+
 ___
 
 # In Progress To-Do List

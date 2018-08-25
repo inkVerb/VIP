@@ -38,6 +38,7 @@
 
 ### [Lesson 12: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
 
+
 ___
 # Under Construction
 
