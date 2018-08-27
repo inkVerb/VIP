@@ -23,7 +23,7 @@ Some things can only be done in BASH
 
 `gedit 10-varvar`
 
-`./10-varvar 123abcyouandme`
+`./10-varvar abcyoume`
 
 *Take a good look and try to see how that makes sense; it can be VERY useful!*
 
@@ -43,7 +43,7 @@ Some things can only be done in BASH
 
 `./10-array-index-id 0`
 
-*Note the first element's index ID is 0*
+*Note the first element's index ID (key) is 0*
 
 `gedit 10-array-associative`
 
@@ -84,7 +84,7 @@ ___
 
 ## Rule 1: You CAN'T put an array inside an array
 ## Rule 2: Associative arrays need this first `declare -A ARRAYNAME`
-## Rule 3: Choose associative or indexed
+## Rule 3: Choose associative or key-indexed
 EITHER
 ### associative: `MyArry=([key]=frst [ky2]=sec) .. MyArry[key] MyArry[ky2]`
 OR
@@ -113,3 +113,4 @@ ___
 *Note associative arrays can have strings as elements too*
 
 #### [Lesson 11: BASH Functions](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-11.md)
+
