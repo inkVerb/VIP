@@ -111,9 +111,7 @@ ___
 
 `ls -l`
 
-### Compare types
-
-`ls -l`
+*Compare types*
 
 *Note which files are larger and smaller: .tar .zip .tar.xz*
 
@@ -131,7 +129,7 @@ ___
 - `-c` *"Create" something new*
 - `-f` *"File" output filename will be specified*
 - `-` *placeholder where the output tarball filename normally goes, i.e.* `vrk.tar`
-- `vrk` *the tarball contents, here one directory, being tarred up*
+- `vrk` *the tarball content source, here one directory, being tarred up*
 - `|` *"pipe" (send) that output to whatever comes next*
 - `xz` *the next command, using* `xz` *compression*
 - `>` *...to an output file...*
