@@ -64,7 +64,7 @@ ___
 
 `ls`
 
-`lowriter markdown.odt &`
+`lowriter markdown.odt &` *(if asked, Discard)*
 
 *View the rendered file* [markdown.md](https://github.com/inkVerb/301/blob/master/markdown.md)
 

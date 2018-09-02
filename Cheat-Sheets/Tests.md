@@ -17,12 +17,6 @@ ___
 - A `while` test "loop" repeats the test, the script only continues when the test finally returns `false`
 - `while :` will always return `true` and will repeat until `break` occurs in its loop or the user terminates the script
 
-This is similar to the `if` test
-- `while` works the same as an `if` test, but it repeats
-- `if` --> `while`
-- `then` --> `do`
-- `fi` --> `done`
-
 ```sh
 while [ THIS IS THE TEST ]
 
@@ -60,6 +54,12 @@ ___
 
 - An `if` test runs once and does something only under certain circumstances
 - Once the `if` test is finished, the script continues
+
+The `if` test is similar to the `while` looping test, but...
+- `if` does NOT repeat, it only runs ONE TIME
+- `while` --> `if`
+- `do` --> `then`
+- `done` --> `fi`
 
 ```sh
 if [ THIS IS THE TEST ]

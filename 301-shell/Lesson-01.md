@@ -14,6 +14,8 @@ ___
 
 ### I. `if`
 
+Test for an existing *file* by name
+
 `gedit 01-if-file`
 
 `./01-if-file`
@@ -34,6 +36,8 @@ ___
 
 *Note the response because the file exists*
 
+Test for an existing *directory* by name
+
 `gedit 01-if-dir`
 
 `./01-if-dir mydir`
@@ -47,6 +51,16 @@ ___
 `./01-if-file otherfile`
 
 `./01-if-dir otherdir`
+
+*Note* `-d` *will return false for a file of the same name*
+
+*This also happens for* `-f` *testing a directory*
+
+*So,* `-d` *tests only an existing directory,* `-f` *tests only an existing file*
+
+`./01-if-file mydir`
+
+`./01-if-dir myfile`
 
 ### II. `else`
 
