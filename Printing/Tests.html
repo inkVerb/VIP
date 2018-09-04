@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="vip-markdown.css" />
+</header>
+<body>
+<h1 id="tests">Tests</h1>
+<h3 id="i.-true-false">I. <code>true</code> &amp; <code>false</code></h3>
+<ul>
+<li><code>false</code> = <code>0</code></li>
+<li><code>true</code> = <code>1</code></li>
+</ul>
+<p>When a test answers <code>true</code> or <code>1</code>, then shell does something via <code>then</code> or <code>do</code></p>
+<hr />
+<h3 id="ii.-while-do-done">II. <code>while</code> <code>do</code> <code>done</code></h3>
+<ul>
+<li>A <code>while</code> test will <code>do</code> an action &quot;while&quot; a test returns <code>true</code></li>
+<li>Once the test returns <code>false</code>, the loop will break</li>
+<li>A <code>while</code> test loops and is used to change something if needed</li>
+<li>A <code>while</code> test &quot;loop&quot; repeats the test, the script only continues when the test finally returns <code>false</code></li>
+<li><code>while :</code> will always return <code>true</code> and will repeat until <code>break</code> occurs in its loop or the user terminates the script</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">while</span><span class="bu"> [</span> THIS IS THE TEST<span class="bu"> ]</span>
+
+<span class="kw">do</span>
+
+<span class="co"># Something happens here if the test answers true</span>
+
+<span class="kw">done</span></code></pre></div>
+<hr />
+<h3 id="iii.-until-do-done">III. <code>until</code> <code>do</code> <code>done</code></h3>
+<ul>
+<li>An <code>until</code> test will <code>do</code> an action while a test returns <code>false</code>, &quot;until&quot; the test returns <code>true</code></li>
+<li>Once the test returns <code>true</code>, the loop will break</li>
+<li>An <code>until</code> test loops and is similar to a <code>while</code> loop</li>
+<li><code>until :</code> will always return <code>true</code> and will thus <code>break</code> before it can run <code>do</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">until</span><span class="bu"> [</span> THIS IS THE TEST<span class="bu"> ]</span>
+
+<span class="kw">do</span>
+
+<span class="co"># Something happens here if the test answers false</span>
+
+<span class="kw">done</span></code></pre></div>
+<hr />
+<h3 id="iv.-if-then-fi">IV. <code>if</code> <code>then</code> <code>fi</code></h3>
+<ul>
+<li>An <code>if</code> test runs once and does something only under certain circumstances</li>
+<li>Once the <code>if</code> test is finished, the script continues</li>
+</ul>
+<p>The <code>if</code> test is similar to the <code>while</code> looping test, but...</p>
+<ul>
+<li><code>if</code> does NOT repeat, it only runs ONE TIME
+<li><code>while</code> --&gt; <code>if</code></li>
+<li><code>do</code> --&gt; <code>then</code></li>
+<li><code>done</code> --&gt; <code>fi</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">if</span><span class="bu"> [</span> THIS IS THE TEST<span class="bu"> ]</span>
+
+<span class="kw">then</span>
+
+<span class="co"># Something happens here if the test answers true</span>
+
+<span class="kw">fi</span></code></pre></div>
+<ul>
+<li>We can also use <code>elif</code> to run a different test, if the previous test returns <code>false</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">if</span><span class="bu"> [</span> THIS IS THE TEST<span class="bu"> ]</span>
+
+<span class="kw">then</span>
+
+<span class="co"># Something happens here if the test answers true</span>
+
+<span class="kw">elif</span><span class="bu"> [</span> THIS IS ANOTHER TEST IF THE PREVIOUS TEST RETURNED FALSE<span class="bu"> ]</span>
+
+<span class="co"># Something happens here if this other test answers true</span>
+
+<span class="kw">elif</span><span class="bu"> [</span> THIS IS ANOTHER TEST IF THE PREVIOUS TESTS ALL RETURNED FALSE<span class="bu"> ]</span>
+
+<span class="co"># Something happens here if this other other test answers true</span>
+
+<span class="kw">fi</span></code></pre></div>
+<ul>
+<li>We can also use <code>else</code> to do something without any test, if the previous test returns <code>false</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">if</span><span class="bu"> [</span> THIS IS THE TEST<span class="bu"> ]</span>
+
+<span class="kw">then</span>
+
+<span class="co"># Something happens here if the test answers true</span>
+
+<span class="kw">elif</span><span class="bu"> [</span> THIS IS ANOTHER TEST IF THE PREVIOUS TEST RETURNED FALSE<span class="bu"> ]</span>
+
+<span class="co"># Something happens here if this other test answers true</span>
+
+<span class="kw">elif</span><span class="bu"> [</span> THIS IS ANOTHER TEST IF THE PREVIOUS TESTS ALL RETURNED FALSE<span class="bu"> ]</span>
+
+<span class="co"># Something happens here if this other other test answers true</span>
+
+<span class="kw">else</span>
+
+<span class="co"># Something happens here because all previous tests failed</span>
+
+<span class="kw">fi</span></code></pre></div>
+<ul>
+<li><code>else</code> can work with or without <code>elif</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">if</span><span class="bu"> [</span> THIS IS THE TEST<span class="bu"> ]</span>
+
+<span class="kw">then</span>
+
+<span class="co"># Something happens here if the test answers true</span>
+
+<span class="kw">else</span>
+
+<span class="co"># Something happens here because the test failed</span>
+
+<span class="kw">fi</span></code></pre></div>
+<h4 id="bash-vs-shell">BASH vs Shell</h4>
+<p>BASH and Shell do some <code>if</code> tests differently.</p>
+<h5 id="quoting-tested-variables">Quoting tested variables</h5>
+<p>Shell: <code>$1</code> - Variables may use quotes, but do NOT need to.</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#!/bin/sh</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="ot">-d</span> <span class="va">$1</span><span class="bu"> ]</span> <span class="kw">||</span><span class="bu"> [</span> <span class="ot">-f</span> <span class="va">$1</span><span class="bu"> ]</span> <span class="kw">||</span><span class="bu"> [</span> <span class="ot">-e</span> <span class="va">$1</span><span class="bu"> ]</span> <span class="kw">||</span><span class="bu"> [</span> <span class="ot">-n</span> <span class="va">$1</span><span class="bu"> ]</span> <span class="kw">||</span><span class="bu"> [</span> <span class="ot">-z</span> <span class="va">$1</span><span class="bu"> ]</span>
+<span class="kw">then</span>; <span class="bu">echo</span> yes<span class="kw">;</span> <span class="kw">fi</span></code></pre></div>
+<p>BASH: <code>&quot;$1&quot;</code> - Variables must always ALWAYS use quotes.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="ot">-d</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="bu"> ]</span> <span class="kw">||</span><span class="bu"> [</span> <span class="ot">-f</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="bu"> ]</span> <span class="kw">||</span><span class="bu"> [</span> <span class="ot">-e</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="bu"> ]</span> <span class="kw">||</span><span class="bu"> [</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="bu"> ]</span> <span class="kw">||</span><span class="bu"> [</span> <span class="ot">-z</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="bu"> ]</span>
+<span class="kw">then</span>; <span class="bu">echo</span> yes<span class="kw">;</span> <span class="kw">fi</span></code></pre></div>
+<h5 id="comparison">Comparison</h5>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Shell BASH</span>
+  <span class="ex">-eq</span>   ==   # is equal to
+  <span class="ex">-ne</span>   !=   # is not equal to
+  <span class="ex">-gt</span>   <span class="op">&gt;</span>    # is greater than
+  <span class="ex">-lt</span>   <span class="op">&lt;</span>    # is less than
+  <span class="ex">-ge</span>   <span class="op">&gt;</span>=   # is greater than or equal to
+  <span class="ex">-le</span>   <span class="op">&lt;</span>=   # is less than or equal to</code></pre></div>
+<p>Shell: <code>if [ $NUM1 -eq $NUM2 ]</code> - Variables may use quotes, but do NOT need to.</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#!/bin/sh</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$NUM1</span> <span class="ot">-eq</span> <span class="va">$NUM2</span><span class="bu"> ]</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$NUM1</span> <span class="ot">-ne</span> <span class="va">$NUM2</span><span class="bu"> ]</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$NUM1</span> <span class="ot">-gt</span> <span class="va">$NUM2</span><span class="bu"> ]</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$NUM1</span> <span class="ot">-lt</span> <span class="va">$NUM2</span><span class="bu"> ]</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$NUM1</span> <span class="ot">-ge</span> <span class="va">$NUM2</span><span class="bu"> ]</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$NUM1</span> <span class="ot">-le</span> <span class="va">$NUM2</span><span class="bu"> ]</span></code></pre></div>
+<p>BASH: <code>if [ &quot;$NUM1&quot; -eq &quot;$NUM2&quot; ]</code> - Variables must always ALWAYS use quotes.</p>
+<p>BASH: <code>if (( &quot;$NUM1&quot; == &quot;$NUM2&quot; ))</code> - Symbol operators require double <code>((</code>parentheses<code>))</code>.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> <span class="ot">-eq</span> <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span><span class="bu"> ]</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> <span class="ot">-ne</span> <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span><span class="bu"> ]</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> <span class="ot">-gt</span> <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span><span class="bu"> ]</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> <span class="ot">-lt</span> <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span><span class="bu"> ]</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> <span class="ot">-ge</span> <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span><span class="bu"> ]</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> <span class="ot">-le</span> <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span><span class="bu"> ]</span>
+
+<span class="kw">if</span> <span class="kw">((</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> == <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span> <span class="kw">))</span>
+<span class="kw">if</span> <span class="kw">((</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> != <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span> <span class="kw">))</span>
+<span class="kw">if</span> <span class="kw">((</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> &gt; <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span> <span class="kw">))</span>
+<span class="kw">if</span> <span class="kw">((</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> &lt; <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span> <span class="kw">))</span>
+<span class="kw">if</span> <span class="kw">((</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> &gt;= <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span> <span class="kw">))</span>
+<span class="kw">if</span> <span class="kw">((</span> <span class="st">&quot;</span><span class="va">$NUM1</span><span class="st">&quot;</span> &lt;= <span class="st">&quot;</span><span class="va">$NUM2</span><span class="st">&quot;</span> <span class="kw">))</span></code></pre></div>
+<hr />
+<h3 id="v.-for-variabl-in-wut">V. <code>for</code> VARIABL <code>in</code> WUT</h3>
+<ul>
+<li>A <code>for</code> test loops and does the same thing for each among many items</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">for</span> <span class="ex">VARIABL</span> in *.txt
+
+<span class="kw">do</span>
+
+<span class="bu">echo</span> <span class="va">$VARIABL</span>
+
+<span class="kw">done</span></code></pre></div>
+<hr />
+<h3 id="vi.-case...-esac">VI. <code>case</code>... <code>esac</code></h3>
+<ul>
+<li><code>case</code> is a simple multiple <code>if</code> test</li>
+<li><code>a)</code> is the <code>case</code> argument for using the <code>-a</code> flag</li>
+<li><code>case</code> arguments close with <code>;;</code></li>
+<li><code>*</code> is the &quot;everything not listed&quot; <code>case</code> argument, usually to recognize an error and display &quot;help&quot; instructions</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">case</span> <span class="va">$VARIABL</span><span class="kw"> in</span>
+
+<span class="co"># If $VARIABL=a</span>
+  a<span class="kw">)</span>
+   <span class="ex">DO</span> SOMETHING <span class="st">&quot;A&quot;</span>, maybe with <span class="va">$VARIABL</span>
+  <span class="kw">;;</span>
+
+<span class="co"># If $VARIABL=b</span>
+  b<span class="kw">)</span>
+   <span class="ex">DO</span> SOMETHING <span class="st">&quot;B&quot;</span>, maybe with <span class="va">$VARIABL</span>
+  <span class="kw">;;</span>
+
+<span class="kw">esac</span></code></pre></div>
+<ul>
+<li><code>case</code> options can be separated with a pipe <code>|</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">case</span> <span class="va">$VARIABL</span><span class="kw"> in</span>
+
+<span class="co"># If $VARIABL=a</span>
+  a<span class="kw">)</span>
+   <span class="ex">DO</span> SOMETHING <span class="st">&quot;A&quot;</span>, maybe with <span class="va">$VARIABL</span>
+  <span class="kw">;;</span>
+
+<span class="co"># If $VARIABL=b OR $VARIABL=c</span>
+  b<span class="kw">|</span>c<span class="kw">)</span>
+   <span class="ex">DO</span> SOMETHING <span class="st">&quot;B or C&quot;</span>, maybe with <span class="va">$VARIABL</span>
+  <span class="kw">;;</span>
+
+<span class="kw">esac</span></code></pre></div>
+<hr />
+<h3 id="vii.-getopts">VII. <code>getopts</code></h3>
+<ul>
+<li><code>getopts</code> is processed via: <code>while</code> [<code>getopts...</code>] <code>do</code> <code>case</code></li>
+<li>Each <code>case</code> can execute the script</li>
+<li><code>getopts</code> only allows single-letter flags, like: <code>-a</code> <code>-b</code> <code>-c</code> and together <code>-abc</code></li>
+</ul>
+<h4 id="format-getopts-options-string-variable-name-arguments">Format: <code>getopts OPTIONS-STRING VARIABLE-NAME [ARGUMENTS]</code></h4>
+<h4 id="options-string-not-a-variable-name-the-allowed-flags">OPTIONS-STRING (not a variable name): The allowed flags</h4>
+<ul>
+<li>Each letter is a new flag, no separators necessary</li>
+<li><code>:</code> first means that <code>?</code> will be assigned to any flag not listed, which can be used later in a <code>case</code> argument</li>
+<li><code>:</code> after any letter means that the letter's flag will take an option set as <code>$OPTARG</code> in the <code>while getopts</code> loop</li>
+</ul>
+<h4 id="variable-name-not-a-variable-name-the-flag-actually-used">VARIABLE-NAME (not a variable name): The flag actually used</h4>
+<ul>
+<li>This variable is used in the <code>case</code> that follows</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">while</span> <span class="bu">getopts</span> <span class="st">&quot;ab&quot;</span> Flag<span class="kw">;</span> <span class="kw">do</span>
+ <span class="kw">case</span> <span class="va">$Flag</span><span class="kw"> in</span>
+
+  a<span class="kw">)</span>
+   <span class="ex">DO</span> SOMETHING BECAUSE OF FLAG -a
+  <span class="kw">;;</span>
+
+  b<span class="kw">)</span> 
+   <span class="ex">DO</span> SOMETHING BECAUSE OF FLAG -b
+  <span class="kw">;;</span>
+
+ <span class="kw">esac</span>
+<span class="kw">done</span></code></pre></div>
+<p>The variable <code>$Flag</code> became either &quot;a&quot; or &quot;b&quot;</p>
+<h4 id="arguments-not-a-variable-name-optional-normal-humans-dont-use-this">[ARGUMENTS] (not a variable name, optional): Normal humans don't use this!</h4>
+<ul>
+<li>The default value is &quot;<code>$@</code>&quot;, which is exactly what is entered in the terminal</li>
+<li>Anything here will override what is entered in the terminal</li>
+<li>This is a way to make the script automatically run a specific <code>case</code> argument</li>
+</ul>
+<p>Running <code>./myscript</code></p>
+<p>with:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">while</span> <span class="bu">getopts</span> <span class="st">&quot;a:b&quot;</span> FlagVAR -a iLoveGrapes<span class="kw">;</span> <span class="kw">do</span></code></pre></div>
+<p>...will have the same effect as</p>
+<p>running <code>./myscript -a iLoveGrapes</code></p>
+<p>with:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">while</span> <span class="bu">getopts</span> <span class="st">&quot;a:b&quot;</span> FlagVAR<span class="kw">;</span> <span class="kw">do</span></code></pre></div>
+<h4 id="optarg"><code>$OPTARG</code></h4>
+<ul>
+<li><p><code>$OPTARG</code> is the argument applied to a flag with <code>:</code></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">./myscript</span> -f MyBig-Option</code></pre></div>
+<p>In this, <code>-f</code> is the flag and &quot;MyBig-Option&quot; is <code>$OPTARG</code></p></li>
+</ul>
+<h4 id="optind"><code>$OPTIND</code></h4>
+<ul>
+<li><code>$OPTIND</code> will be the index number of the &quot;next argument&quot; to be processed. It can be confusing, but remember...</li>
+<li>If there are no arguments, <code>$OPTIND</code> will be empty</li>
+<li>After <code>getopts</code> finishes, <code>$OPTIND</code> will be set to &quot;?&quot;, which may or may not be a problem later on</li>
+</ul>
+<h4 id="opterr"><code>$OPTERR</code></h4>
+<ul>
+<li>The value is either <code>1</code> or <code>0</code> (<code>true</code> or <code>false</code>)</li>
+<li>The default is <code>1</code> (<code>true</code>)</li>
+<li>If <code>1</code> (<code>true</code>), BASH will display errors from <code>getopts</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">while</span> <span class="bu">getopts</span> <span class="st">&quot;:a:b&quot;</span> Flag<span class="kw">;</span> <span class="kw">do</span>
+ <span class="kw">case</span> <span class="va">$Flag</span><span class="kw"> in</span>
+
+  a<span class="kw">)</span>
+   <span class="bu">echo</span> <span class="st">&quot;Work with </span><span class="va">$OPTARG</span><span class="st"> using flag -</span><span class="va">$Flag</span><span class="st">&quot;</span>
+  <span class="kw">;;</span>
+
+  b<span class="kw">)</span> 
+   <span class="bu">echo</span> <span class="st">&quot;Work with </span><span class="va">$OPTARG</span><span class="st"> using flag -</span><span class="va">$Flag</span><span class="st">&quot;</span>
+  <span class="kw">;;</span>
+
+<span class="co"># Everything else</span>
+  *<span class="kw">)</span>
+   <span class="bu">echo</span> <span class="st">&quot;Dude, get right.&quot;</span>
+   <span class="bu">exit</span> 1
+  <span class="kw">;;</span>
+
+ <span class="kw">esac</span>
+<span class="kw">done</span>
+
+<span class="co">#Clear $OPTIND from this getopts() function, just in case it is used later in this script</span>
+<span class="bu">shift</span> <span class="st">&quot;</span><span class="va">$((</span>OPTIND-1<span class="va">))</span><span class="st">&quot;</span></code></pre></div>
+<p>This can take arguments: - <code>./myscript -a A-option -b</code> - <code>./myscript -a A-option</code> - <code>./myscript -b</code> ...Anything else will echo &quot;Dude, get right.&quot;</p>
+<hr />
+<h3 id="viii.-getopt">VIII. <code>getopt</code></h3>
+<ul>
+<li><code>getopt</code> is processed via: <code>while [[ $# &gt; 0 ]]; do</code> <code>case</code></li>
+<li>Each <code>case</code> sets a variable to <code>true</code>, then the script should run later in an <code>if</code> test for those variables</li>
+<li><code>getopt</code> allows single-letter flags, AND &quot;long&quot; option alternatives like: <code>--alpha</code> <code>--bravo</code> in place of <code>-a</code> <code>-b</code> and together <code>-ab</code></li>
+<li><code>getopt</code> is not as user-friendly for programmers and requires many things done manually</li>
+<li>The main lesson in using <code>getopt</code> is: Don't, to use <code>getopts</code> instead!</li>
+</ul>
+<h4 id="shift"><code>shift</code></h4>
+<ul>
+<li><code>shift</code> tells BASH to process different arguments entered in the terminal</li>
+<li><code>shift 1</code> moves to process the next argument</li>
+<li><code>shift 2</code> moves two arguments over</li>
+<li>If you don't use <code>shift</code> with <code>getopt</code>, the <code>case</code> loop will continue processing the same argument again and again</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="va">myOptions=</span><span class="kw">`</span><span class="fu">getopt</span> -o a:b -l alpha:,beetle,charlie,delta,ecko,help -n <span class="st">&quot;</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$0</span><span class="st">&quot;</span><span class="va">)</span><span class="st">&quot;</span> -- <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span><span class="kw">`</span>
+<span class="co">#Alternative way to do the same thing:</span>
+<span class="va">myOptions=$(</span><span class="fu">getopt</span> --options a:b --longoptions :alpha:,bravo --name <span class="st">&quot;</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$0</span><span class="st">&quot;</span><span class="va">)</span><span class="st">&quot;</span> -- <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span><span class="va">)</span>
+
+<span class="co"># Make sure it&#39;s working</span>
+<span class="bu">eval</span> set --<span class="st">&quot;</span><span class="va">$myOptions</span><span class="st">&quot;</span>
+
+<span class="co"># Fix OPTIND</span>
+<span class="va">OPTIND=</span>1
+
+<span class="co"># Set the variables to false</span>
+<span class="va">alpha=</span>false
+<span class="va">bravo=</span>false
+
+<span class="kw">while [[</span> <span class="va">$#</span> <span class="ot">&gt;</span> 0<span class="kw"> ]]</span>; <span class="kw">do</span>
+ <span class="kw">case</span> <span class="va">$1</span><span class="kw"> in</span>
+
+  -a <span class="kw">|</span> --alpha <span class="kw">)</span>
+   <span class="va">alpha=</span>true
+   <span class="va">alphaOPTION=</span><span class="st">&quot;</span><span class="va">$2</span><span class="st">&quot;</span>
+<span class="co"># shift 2 moves 2 variables over since one variable is the setting for option -a</span>
+   <span class="bu">shift</span> 2
+   <span class="kw">;;</span>
+
+  -b <span class="kw">|</span> --bravo <span class="kw">)</span>
+   <span class="va">bravo=</span>true
+<span class="co"># shift 1 only moves 1 variable over since these options don&#39;t have settings</span>
+   <span class="bu">shift</span> 1
+   <span class="kw">;;</span>
+
+<span class="co"># Finally break the loop (this will run &#39;break&#39; no matter what)</span>
+  *<span class="kw">)</span>
+   <span class="bu">break</span>
+  <span class="kw">;;</span>
+
+ <span class="kw">esac</span>
+<span class="kw">done</span>
+
+<span class="co">#Clear $OPTIND from this getopt() function, just in case it is used later in this script</span>
+<span class="bu">shift</span> <span class="st">&quot;</span><span class="va">$((</span>OPTIND-1<span class="va">))</span><span class="st">&quot;</span>
+
+<span class="co">## Normal options</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$alpha</span> <span class="ot">=</span> true<span class="bu"> ]</span>; <span class="kw">then</span>
+   <span class="bu">echo</span> <span class="st">&quot;Work option A with </span><span class="va">$alphaOPTION</span><span class="st">&quot;</span>
+<span class="kw">fi</span>
+
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$beetle</span> <span class="ot">=</span> true<span class="bu"> ]</span>; <span class="kw">then</span>
+   <span class="bu">echo</span> <span class="st">&quot;Work option B&quot;</span>
+<span class="kw">fi</span></code></pre></div>
+<p>This can take arguments:</p>
+<ul>
+<li><code>./myscript -a A-option -b</code></li>
+<li><code>./myscript --alpha A-option -b</code></li>
+<li><code>./myscript --alpha A-option --bravo</code></li>
+<li><code>./myscript -a A-option --bravo</code></li>
+<li><code>./myscript -a A-option</code></li>
+<li><code>./myscript --alpha A-option</code></li>
+<li><code>./myscript -b</code></li>
+<li><code>./myscript --bravo</code></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,95 @@
+p {
+  color: #000;
+  font-family: "TeXGyreHeros", "Liberation Sans";
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+li {
+  color: #000;
+  font-family: "TeXGyreHeros", "Liberation Sans";
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1 {
+  line-height: 1.5;
+  color: #222;
+  font-weight: bold;
+  font-family: "TeXGyreHeros", "Liberation Sans";
+  font-size: 32px;
+}
+
+h2 {
+  line-height: 1.5;
+  color: #222;
+  font-weight: bold;
+  font-family: "TeXGyreHeros", "Liberation Sans";
+  font-size: 28px;
+}
+
+h3 {
+  line-height: 1.5;
+  color: #222;
+  font-weight: bold;
+  font-family: "TeXGyreHeros", "Liberation Sans";
+  font-size: 24px;
+}
+
+h4 {
+  line-height: 1.5;
+  color: #222;
+  font-weight: bold;
+  font-family: "TeXGyreHeros", "Liberation Sans";
+  font-size: 22px;
+}
+
+h5 {
+  line-height: 1.5;
+  color: #222;
+  font-family: "TeXGyreHeros", "Liberation Sans";
+  font-size: 20px;
+}
+
+h6 {
+  line-height: 1.5;
+  color: #222;
+  font-weight: bold;
+  font-family: "TeXGyreHeros", "Liberation Sans";
+  font-size: 18px;
+}
+
+
+pre {
+  background-color: #ddd;
+  padding-right: 3px;
+  padding-left: 3px;
+  font-family: "Ubuntu Mono", monospace;
+}
+
+code {
+  background-color: #ddd;
+  padding-right: 3px;
+  padding-left: 3px;
+  font-family: "Ubuntu Mono", monospace;
+}
+
+.co {
+  background-color: #ddd;
+  font-family: "Ubuntu Mono", monospace;
+  font-style: italic;
+}
+
+.kw {
+  background-color: #ddd;
+  font-family: "Courier Prime", monospace;
+  font-weight: bold;
+}
+
+.sourceCode {
+  background-color: #ddd;
+  padding-right: 3px;
+  padding-left: 3px;
+  font-family: "Courier Prime", monospace;
+}
+

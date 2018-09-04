@@ -1,5 +1,14 @@
 This explains the workflow for the VIP books to be converted into publishable documents.
 
+Use:
+
+Best raw dump:
+pandoc Tests.md \
+       --output=Tests.html \
+       --to=html5
+
+Embed the output in TMPL.html
+
 References:
 
 - https://github.com/otsaloma/markdown-css
