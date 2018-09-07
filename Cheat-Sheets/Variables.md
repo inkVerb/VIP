@@ -1,6 +1,20 @@
 # Variables
 
-### I. Two ways to create variables
+### I. Argument variables
+myshellscript.sh arg-1 argument-two three arg4 arg-5
+
+$0 = myshellscript.sh
+$1 = arg-1
+$2 = argument-two
+$3 = three
+$4 = arg4
+$5 = arg-5
+
+$@ = myshellscript.sh arg-1 argument-two three arg4 arg-5
+
+___
+
+### II. Two ways to create variables
 1. Declare the variable & value
 
 ```sh
@@ -38,7 +52,7 @@ read VARIABL
 
 ___
 
-### II. Find-replace in a variable's value
+### III. Find-replace in a variable's value
 
 - `${VARIABL%foo}bar` will replace "foo" in the value output with "bar"
 
@@ -63,7 +77,7 @@ applebar
 
 ___
 
-### III. `for` VARIABL `in` WUT
+### IV. `for` VARIABL `in` WUT
 
 - `for VARIABL` sets `$VARIABL` as a changing varable for each occurrence in `WUT`
 - `WUT` can be anything, such as files, such as `*.odt` or `*.png`
@@ -84,7 +98,7 @@ done
 
 ___
 
-### IV. `case` $VARIABL `in` ...`esac`
+### V. `case` $VARIABL `in` ...`esac`
 - `case` uses a varible, but the variable must already be set
 - `case` does NOT set a variable
 
@@ -98,7 +112,7 @@ esac
 
 ___
 
-### V. `getopts`
+### VI. `getopts`
 - `getopts` sets a variable in a `while` loop
 
 
@@ -111,7 +125,7 @@ while getopts ":a:b:c:" VARIABL
 
 ___
 
-### VI. `getopt`
+### VII. `getopt`
 - `getopt` HELPS to set a variable in a nested command using `VAR=$(getopt ...)` or `` VAR=`getopt ...` ``
 
 

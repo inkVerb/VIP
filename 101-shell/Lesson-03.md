@@ -47,4 +47,26 @@ ___
 
 `./how2var $USER USER rocks`
 
+*Knowing this could save your life and explain life's meaning later on...*
+
+`gedit allvar`
+
+*Create how2var as this:* [allvar-01](https://github.com/inkVerb/vip/blob/master/101-shell/allvar-01)
+
+`ls`
+
+`chmod +x allvar`
+
+`ls`
+
+`./allvar`
+
+`./allvar 1 2 3 4 5 6 7 8 9`
+
+`./allvar I like to eat bananas in the morning, with eggs, over easy that is.`
+
+*So,* `$@` *is everything...*
+
+*This* `@` *means "everything" in web DNS, arrays (Shell 301), and many other things*
+
 #### [Lesson 4: Setting Variables & Setting Files](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-04.md)

@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 11: BASH Functions
+## Lesson 11: BASH Functions, select & dialog
 
 `cd ~/School/VIP/shell/301`
 
@@ -172,4 +172,4 @@ Then, call the function with its name...
 
 `dialog man`
 
-#### [Lesson 12: BASH select, getopts, getopt & SH dialog](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
+#### [Lesson 12: BASH getopts & getopt](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)

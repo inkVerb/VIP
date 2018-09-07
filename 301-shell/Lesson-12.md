@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 12: BASH select, getopts, getopt & SH dialog
+## Lesson 12: BASH getopts & getopt
 
 `cd ~/School/VIP/shell/301`
 
