@@ -1,6 +1,6 @@
 # Tests
 
-### I. `true` & `false`
+### I. Test: `true` & `false`
 
 - `false` = `0`
 - `true`  = `1`
@@ -9,57 +9,10 @@ When a test answers `true` or `1`, then shell does something via `then` or `do`
 
 ___
 
-### II. `while` `do` `done`
-
-- A `while` test will `do` an action "while" a test returns `true`
-- Once the test returns `false`, the loop will break
-- A `while` test loops and is used to change something if needed
-- A `while` test "loop" repeats the test, the script only continues when the test finally returns `false`
-- `while :` will always return `true` and will repeat until `break` occurs in its loop or the user terminates the script
-
-```sh
-while [ THIS IS THE TEST ]
-
-do
-
-# Something happens here if the test answers true
-
-done
-
-```
-
-___
-
-### III. `until` `do` `done`
-
-- An `until` test will `do` an action while a test returns `false`, "until" the test returns `true`
-- Once the test returns `true`, the loop will break
-- An `until` test loops and is similar to a `while` loop
-- `until :` will always return `true` and will thus `break` before it can run `do`
-
-```sh
-until [ THIS IS THE TEST ]
-
-do
-
-# Something happens here if the test answers false
-
-done
-
-```
-
-___
-
-### IV. `if` `then` `fi`
+### II. `if` `then` (`else` / `elif`) `fi`
 
 - An `if` test runs once and does something only under certain circumstances
 - Once the `if` test is finished, the script continues
-
-The `if` test is similar to the `while` looping test, but...
-- `if` does NOT repeat, it only runs ONE TIME
-- `while` --> `if`
-- `do` --> `then`
-- `done` --> `fi`
 
 ```sh
 if [ THIS IS THE TEST ]
@@ -67,6 +20,23 @@ if [ THIS IS THE TEST ]
 then
 
 # Something happens here if the test answers true
+
+fi
+
+```
+
+- We can also use `else` to do something without any test, if the previous test returns `false`
+
+```sh
+if [ THIS IS THE TEST ]
+
+then
+
+# Something happens here if the test answers true
+
+else
+
+# Something happens here because the test failed
 
 fi
 
@@ -93,7 +63,7 @@ fi
 
 ```
 
-- We can also use `else` to do something without any test, if the previous test returns `false`
+- `else` can also work with `elif`
 
 ```sh
 if [ THIS IS THE TEST ]
@@ -117,26 +87,190 @@ else
 fi
 
 ```
-- `else` can work with or without `elif`
+
+___
+
+### III. `for` VARIABL `in` WUT
+
+- A `for` test loops and does the same thing for each among many items
+
+The `if` test is similar to the `for` looping test, but...
+- `if` does NOT repeat, it only runs ONE TIME
+- `if` --> `for`
+- `then` --> `do`
+- `fi` --> `done`
 
 ```sh
-if [ THIS IS THE TEST ]
+for VARIABL in *.txt
 
-then
+do
+
+echo $VARIABL
+
+done
+```
+
+___
+
+### IV. `while` `do` `done`
+
+- A `while` test will `do` an action "while" a test returns `true`
+- Once the test returns `false`, the loop will break
+- A `while` test loops and is used to change something if needed
+- A `while` test "loop" repeats the test, the script only continues when the test finally returns `false`
+- `while :` will always return `true` and will repeat until `break` occurs in its loop or the user terminates the script
+
+The `if` test is similar to the `while` looping test, but...
+- `if` does NOT repeat, it only runs ONE TIME
+- `if` --> `while`
+- `then` --> `do`
+- `fi` --> `done`
+
+```sh
+while [ THIS IS THE TEST ]
+
+do
 
 # Something happens here if the test answers true
 
-else
-
-# Something happens here because the test failed
-
-fi
+done
 
 ```
 
+___
+
+### V. `until` `do` `done`
+
+- An `until` test will `do` an action while a test returns `false`, "until" the test returns `true`
+- Once the test returns `true`, the loop will break
+- An `until` test loops and is similar to a `while` loop
+- `until :` will always return `true` and will thus `break` before it can run `do`
+
+```sh
+until [ THIS IS THE TEST ]
+
+do
+
+# Something happens here if the test answers false
+
+done
+
+```
+
+___
+
+### VI. `case`... `esac`
+
+- `case` is a simple multiple `if` test
+- `a)` is the `case` argument for using the `-a` flag
+- `case` arguments close with `;;`
+- `*` is the "everything not listed" `case` argument, usually to recognize an error and display "help" instructions
+
+```sh
+case $VARIABL in
+
+# If $VARIABL=a
+  a)
+   DO SOMETHING "A", maybe with $VARIABL
+  ;;
+
+# If $VARIABL=b
+  b)
+   DO SOMETHING "B", maybe with $VARIABL
+  ;;
+
+# If $VARIABL=wallawalla
+  wallawalla)
+   DO SOMETHING "Walla Walla", maybe with $VARIABL
+  ;;
+
+# If $VARIABL= anything else
+  *)
+   DO SOMETHING ELSE, maybe with $VARIABL
+  ;;
+
+esac
+```
+
+- `case` options can be separated with a pipe `|`
+
+```sh
+case $VARIABL in
+
+# If $VARIABL=a
+  a)
+   DO SOMETHING "A", maybe with $VARIABL
+  ;;
+
+# If $VARIABL=b OR $VARIABL=c
+  b|c)
+   DO SOMETHING "B or C", maybe with $VARIABL
+  ;;
+
+esac
+```
+
+- `case` options can ignore case using brackets
+
+```sh
+case $VARIABL in
+
+# If $VARIABL=a
+  [aA] )
+   DO SOMETHING "A", maybe with $VARIABL
+  ;;
+
+# If $VARIABL=b OR $VARIABL=c
+  [bB] | [cC] )
+   DO SOMETHING "B or C", maybe with $VARIABL
+  ;;
+
+# If $VARIABL=yes OR $VARIABL=y
+  [yY] | [yY][eE][sS] )
+   DO SOMETHING "yes", maybe with $VARIABL
+  ;;
+
+# If $VARIABL=no OR $VARIABL=n
+  [nN] | [nN][oO] )
+   DO SOMETHING "no", maybe with $VARIABL
+  ;;
+
+esac
+```
+
+- `case` can work with an "always true" loop using `while :`
+- End this "always true" loop with `break`
+
+```sh
+while :
+
+do
+
+case $VARIABL in
+
+# If $VARIABL=a
+  a)
+   DO SOMETHING "A", maybe with $VARIABL
+  ;;
+
+# If $VARIABL=stopit
+  stopit)
+   DO SOMETHING about stopping, maybe with $VARIABL
+   break
+  ;;
+
+esac
+
+done
+```
+
+___
+
+### Welcome to BASH
+#### `#!/bin/bash`
 #### BASH vs Shell
 
-BASH and Shell do some `if` tests differently.
+BASH and Shell do some `if`/`for`/`while`/`until` tests differently.
 
 ##### Quoting tested variables
 
@@ -195,65 +329,6 @@ if (( "$NUM1" > "$NUM2" ))
 if (( "$NUM1" < "$NUM2" ))
 if (( "$NUM1" >= "$NUM2" ))
 if (( "$NUM1" <= "$NUM2" ))
-```
-
-___
-
-### V. `for` VARIABL `in` WUT
-
-- A `for` test loops and does the same thing for each among many items
-
-```sh
-for VARIABL in *.txt
-
-do
-
-echo $VARIABL
-
-done
-```
-
-___
-
-### VI. `case`... `esac`
-
-- `case` is a simple multiple `if` test
-- `a)` is the `case` argument for using the `-a` flag
-- `case` arguments close with `;;`
-- `*` is the "everything not listed" `case` argument, usually to recognize an error and display "help" instructions
-
-```sh
-case $VARIABL in
-
-# If $VARIABL=a
-  a)
-   DO SOMETHING "A", maybe with $VARIABL
-  ;;
-
-# If $VARIABL=b
-  b)
-   DO SOMETHING "B", maybe with $VARIABL
-  ;;
-
-esac
-```
-
-- `case` options can be separated with a pipe `|`
-
-```sh
-case $VARIABL in
-
-# If $VARIABL=a
-  a)
-   DO SOMETHING "A", maybe with $VARIABL
-  ;;
-
-# If $VARIABL=b OR $VARIABL=c
-  b|c)
-   DO SOMETHING "B or C", maybe with $VARIABL
-  ;;
-
-esac
 ```
 
 ___

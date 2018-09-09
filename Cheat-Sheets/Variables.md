@@ -1,8 +1,11 @@
 # Variables
 
 ### I. Argument variables
-myshellscript.sh arg-1 argument-two three arg4 arg-5
+`myshellscript.sh arg-1 argument-two three arg4 arg-5`
 
+...has these values...
+
+```sh
 $0 = myshellscript.sh
 $1 = arg-1
 $2 = argument-two
@@ -11,7 +14,7 @@ $4 = arg4
 $5 = arg-5
 
 $@ = myshellscript.sh arg-1 argument-two three arg4 arg-5
-
+```
 ___
 
 ### II. Two ways to create variables
@@ -21,8 +24,8 @@ ___
 VARIABL=doggy
 myColor=pink
 ```
-- Now, when using the variable `VARIABL` with `$` it will have the value "doggy"
-- And, when using the variable `myColor` with `$` it will have the value "pink"
+- Now, when using the variable `$VARIABL` with `$` it will have the value "doggy"
+- And, when using the variable `$myColor` with `$` it will have the value "pink"
 ...such as...
 
 ```sh

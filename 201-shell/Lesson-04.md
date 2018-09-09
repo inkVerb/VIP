@@ -27,11 +27,21 @@ ___
 
 *Note the "x" now on whoown*
 
+*This is DANGEROUS:* `chmod +x whoown`
+
+*...for personal files, use* `chmod ug+x whoown` *instead so the public can't execute the file*
+
 `chmod -x whoown`
 
 `ls -l`
 
 *Note the "x" has been removed from whoown*
+
+`chmod ug+x whoown`
+
+*Note it is green, but the "x" doesn't exist in the third group of public permissions; this is safer*
+
+*You can also use numbers to set these, which is more normal*
 
 `chmod 777 whoown`
 

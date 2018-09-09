@@ -38,6 +38,10 @@ ___
 
 ### II. `until`
 
+*Do some prep first...*
+
+`mkdir 04COUNT && cp 04-until-count 04COUNT/ && cd 04COUNT`
+
 `gedit 04-until-count`
 
 `ls *.shell`
@@ -51,6 +55,8 @@ ___
 `./04-until-count 16 sixtn`
 
 `ls *.sixtn`
+
+`cd ..`
 
 `gedit 04-until-read`
 

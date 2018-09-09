@@ -36,6 +36,8 @@ one-1*
 
 `gedit 03-do-echo-3`
 
+*Note* `do` *is on the same line as* `for` *via* `;`
+
 `./03-do-echo-3`
 
 *t.one
@@ -72,6 +74,8 @@ one-1*
 
 ### II. Replacing within Variables
 
+*Note* `${VAR%foo}bar` *will replace "foo" with "bar" if it appears in the variable*
+
 *.one %one
 
 `gedit 03-do-echo-8`
@@ -97,6 +101,12 @@ one-1*
 `gedit 03-do-mv-2`
 
 `./03-do-mv-2`
+
+`ls`
+
+`gedit 03-do-mv-3`
+
+`./03-do-mv-3`
 
 `ls`
 
