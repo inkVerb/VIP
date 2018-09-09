@@ -145,8 +145,18 @@ ___
 
 *Removing a git-cloned directory is easier with* `sudo`
 
+### For a "sudoer" who can use `sudo`
+>
+___
+> Optional: You may login as a "sudoer" if needed
+> 
+> `su USERNAME`
+>
+___
+
 `sudo rm -r vrk`
 
+### For an administrator to use `su`
 > 
 ___
 > If you don't have permission as a "sudoer", the person who administers your machine can use:
@@ -155,6 +165,12 @@ ___
 > 
 > `rm -r vrk`
 > 
+___
+
+### IF needed, `exit` from `su` or the other "sudoer"
+>
+___
+>
 > `exit`
 > 
 ___

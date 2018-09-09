@@ -15,9 +15,16 @@ ___
 
 `mkdir permissions && cd permissions`
 
-### For a "sudoer" who can use `sudo`
-
 *WARNING: If you already have a user "pinkypink" and/or "pinkypurple", then you are very interesting and should there substitute those names for users not on your system.*
+
+### For a "sudoer" who can use `sudo`
+>
+___
+> Optional: You may login as a "sudoer" if needed
+> 
+> `su USERNAME`
+>
+___
 
 ### I. `adduser`
 
@@ -237,9 +244,6 @@ ___
 `cd ..`
 
 ### For an administrator to use `su`
-
-*WARNING: If you already have a user "pinkypink" and/or "pinkypurple", then you are very interesting and should there substitute those names for users not on your system.*
-
 > 
 ___
 > 
@@ -487,6 +491,14 @@ ___
 > `ls /home`
 > 
 > `cd ..`
+> 
+___
+
+### IF needed, `exit` from `su` or the other "sudoer"
+>
+___
+>
+> `exit`
 > 
 ___
 

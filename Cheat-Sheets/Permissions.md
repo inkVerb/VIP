@@ -19,6 +19,14 @@ u # user (owner)
 g # group (owner's group)
 o # others (public)
 
+# Example:
+
+`ls -l` returns:
+
+-rwxrwxrwx vip vip SIZE MOD-DATE filename
+drwxrwxrwx vip vip SIZE MOD-DATE DIRECTORYname
+lrwxrwxrwx vip vip SIZE MOD-DATE SYMLINKname
+
 rwx
 ugo = 777, 000, etc
 uuugggooo = rwxrwxrwx, ---------, etc
@@ -28,6 +36,9 @@ uuugggooo = rwxrwxrwx, ---------, etc
 = only
 
 # examples
+
+chmod +x filename
+# makes the file executable
 
 chmod 700 foo
 # 7 for owner, 0 for group, 0 for public; replaces all other settings

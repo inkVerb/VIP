@@ -18,6 +18,13 @@ ___
 `lsb_release -r -s`
 
 ### For a "sudoer" who can use `sudo`
+>
+___
+> Optional: You may login as a "sudoer" if needed
+> 
+> `su USERNAME`
+>
+___
 
 *Update the current lists (no updates are installed)*
 
@@ -62,6 +69,12 @@ ___
 > 
 > `apt install -y curl net-tools htop odt2txt pandoc rename pwgen` *Use* `-y` *so you DO NOT need to press Y, then Enter*
 > 
+___
+
+### IF needed, `exit` from `su` or the other "sudoer"
+>
+___
+>
 > `exit`
 > 
 ___

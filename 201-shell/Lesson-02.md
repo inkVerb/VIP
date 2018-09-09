@@ -39,10 +39,6 @@ ___
 
 `ls`
 
-`cd subdirectory`
-
-`ls`
-
 `cd ../../directory/subdirectory`
 
 `ls`
