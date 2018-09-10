@@ -65,7 +65,7 @@ ___
 
 *Create comboshell as this:* [comboshell-01](https://github.com/inkVerb/vip/blob/master/101-shell/comboshell-01)
 
-`chmod +x comboshell`
+`chmod ug+x comboshell`
 
 `./comboshell applefoo foo bar`
 

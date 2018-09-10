@@ -15,7 +15,7 @@ ___
 
 `ls`
 
-`chmod +x how2var`
+`chmod ug+x how2var`
 
 `ls`
 
@@ -24,6 +24,22 @@ ___
 `./how2var a b abcd`
 
 `./how2var ink "is a" verb`
+
+*Arguments can be placed on multiple lines*
+
+```sh
+./how2var \
+one \
+two \
+three \
+```
+
+```sh
+./how2var \
+first \
+2nd \
+"third line" \
+```
 
 `printenv`
 
@@ -55,7 +71,7 @@ ___
 
 `ls`
 
-`chmod +x allvar`
+`chmod ug+x allvar`
 
 `ls`
 

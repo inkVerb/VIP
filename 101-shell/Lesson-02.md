@@ -24,7 +24,7 @@ ___
 
 *Note the colors of the files and letters "-rw-"*
 
-`chmod +x abcsed`
+`chmod ug+x abcsed`
 
 `ls -l`
 
