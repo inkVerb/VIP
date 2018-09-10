@@ -31,14 +31,14 @@ ___
 ./how2var \
 one \
 two \
-three \
+three
 ```
 
 ```sh
 ./how2var \
 first \
 2nd \
-"third line" \
+"third line"
 ```
 
 `printenv`
