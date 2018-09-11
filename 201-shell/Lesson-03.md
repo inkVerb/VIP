@@ -26,9 +26,21 @@ ___
 >
 ___
 
+*See the list of all available packages*
+
+`sudo apt list`
+
 *Update the current lists (no updates are installed)*
 
 `sudo apt update`
+
+*If there is a problem, usually fix it with* `--fix-missing`
+
+`sudo apt update --fix-missing`
+
+*See what can be upgraded on your machine*
+
+`sudo apt list --upgradable`
 
 *Upgrade (install updates)*
 
@@ -53,9 +65,21 @@ ___
 > 
 > *As the* `su` *(root) user, you DO NOT need to use* `sudo` *at the start of your commands*
 > 
+> *See the list of all available packages*
+> 
+> `sudo apt list`
+> 
 > *Update the current lists (no updates are installed)*
 > 
-> `apt update`
+> `sudo apt update`
+> 
+> *If there is a problem, usually fix it with* `--fix-missing`
+> 
+> `sudo apt update --fix-missing`
+> 
+> *See what can be upgraded on your machine*
+> 
+> `sudo apt list --upgradable`
 > 
 > *Upgrade (install updates)*
 > 
