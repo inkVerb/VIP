@@ -179,7 +179,21 @@ ___
 
 *"youown" now belongs to pinkypurple*
 
+### IF needed, `su` into the original user
+>
+___
+>
+> `su ORIGINALUSER`
+> 
+___
+
 `mkdir ownrship`
+
+___
+>
+> `exit`
+> 
+___
 
 `ls -l`
 
