@@ -52,6 +52,16 @@ ___
 
 *Note the user directories & settings were created at the first GUI login*
 
+*Login via the terminal*
+
+`su pinkypink`
+
+`ls`
+
+`ls -a`
+
+`exit`
+
 ### II. `useradd`
 
 `sudo useradd pinkypurple`
@@ -68,7 +78,7 @@ ___
 
 *Try to login as pinkypurple in the terminal*
 
-`su - pinkypurple`
+`su pinkypurple`
 
 *You can't login because pinkypurple doesn't have a password!*
 
@@ -78,19 +88,19 @@ ___
 
 *Login as pinkypurple in the terminal*
 
-`su - pinkypurple`
+`su pinkypurple`
 
 *Note the message: pinkypurple doesn't even have a home*
 
 `exit`
 
-*Set a home for pinkypurple*
+*Now assign a "directory" to home (*`-d`*) and "move" any existing contents to that directory (*`-m`*)*
 
 `sudo usermod -d /home/ppurple -m pinkypurple`
 
 *Login as pinkypurple in the terminal*
 
-`su - pinkypurple`
+`su pinkypurple`
 
 *The directory still doesn't exist!*
 
@@ -102,13 +112,13 @@ ___
 
 *Login as pinkypurple in the terminal*
 
-`su - pinkypurple`
+`su pinkypurple`
 
 *Try to create a file*
 
 `touch newfile`
 
-*The home directory exists, but pinkypurple doesn't even own its own home!*
+*The home directory exists, it was assigned as the home, but pinkypurple doesn't even own its own home!*
 
 `exit`
 
@@ -118,7 +128,7 @@ ___
 
 *Login as pinkypurple in the terminal*
 
-`su - pinkypurple`
+`su pinkypurple`
 
 *Create a file*
 
@@ -243,6 +253,20 @@ ___
 
 `cd ..`
 
+### IV. sudoers
+
+*This is the list of users that can use* `sudo`
+
+`sudo cat /etc/sudoers`
+
+*Viewing the "sudoers" file requires* `sudo` *permissions*
+
+`cat /etc/sudoers`
+
+*You may not see yourself, this handy little* `grep` *code shows all sudoers*
+
+`grep -Po '^sudo.+:\K.*$' /etc/group`
+
 ### For an administrator to use `su`
 > 
 ___
@@ -285,6 +309,16 @@ ___
 >
 > *Note the user directories & settings were created at the first GUI login*
 > 
+> *Login via the terminal*
+> 
+> `su pinkypink`
+> 
+> `ls`
+> 
+> `ls -a`
+> 
+> `exit`
+> 
 > ### II. `useradd`
 > 
 > `useradd pinkypurple`
@@ -301,19 +335,19 @@ ___
 > 
 > *Login as pinkypurple in the terminal*
 > 
-> `su - pinkypurple` *No password needed because you are root*
+> `su pinkypurple` *No password needed because you are root*
 > 
 > *Note the message: pinkypurple doesn't even have a home*
 > 
 > `exit`
 > 
-> *Set a home for pinkypurple*
+> *Now assign a "directory" to home (*`-d`*) and "move" any existing contents to that directory (*`-m`*)*
 > 
 > `usermod -d /home/ppurple -m pinkypurple`
 > 
 > *Login as pinkypurple in the terminal*
 > 
-> `su - pinkypurple`
+> `su pinkypurple`
 > 
 > *The directory still doesn't exist!*
 > 
@@ -325,13 +359,13 @@ ___
 > 
 > *Login as pinkypurple in the terminal*
 > 
-> `su - pinkypurple`
+> `su pinkypurple`
 > 
 > *Try to create a file*
 > 
 > `touch newfile`
 > 
-> *The home directory exists, but pinkypurple doesn't even own its own home!*
+> *The home directory exists, it was assigned as the home, but pinkypurple doesn't even own its own home!*
 > 
 > `exit`
 > 
@@ -341,7 +375,7 @@ ___
 > 
 > *Login as pinkypurple in the terminal*
 > 
-> `su - pinkypurple`
+> `su pinkypurple`
 > 
 > *Create a file*
 > 
@@ -492,6 +526,11 @@ ___
 > 
 > `cd ..`
 > 
+> ### IV. sudoers
+> 
+> *This is the list of users that can use* `sudo`
+> 
+> `cat /etc/sudoers`
 ___
 
 ### IF needed, `exit` from `su` or the other "sudoer"
@@ -501,5 +540,13 @@ ___
 > `exit`
 > 
 ___
+
+*Viewing the "sudoers" file requires* `sudo` *permissions*
+
+`cat /etc/sudoers`
+
+*You may not see yourself, this handy little* `grep` *code shows all sudoers*
+
+`grep -Po '^sudo.+:\K.*$' /etc/group`
 
 #### [Lesson 6: wget, curl, git clone](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-06.md)
