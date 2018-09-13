@@ -14,6 +14,10 @@ ___
 
 ### I. `newFunction()`
 
+A function is like a script inside a script.
+
+It even takes $1 $2 etc arguments, then runs inside the script.
+
 `gedit 11-function`
 
 *Note functions require* `#!/bin/bash` *on the first line, not* `#!/bin/sh`
@@ -23,26 +27,29 @@ ___
 `gedit 11-function-breakdown`
 
 *Note a few things before we continue...*
-
-Create the function: `functionName() {`
-
-Put your code between the curlies *starting on a new line*.
-
-`$1` and `$2` and all their friends work just the same within the function.
-
-Create a variable that only exists inside the function with this:
-
-`local` `myVariable=Saucy`
-
-Make sure you do something...
-
-`echo "VIP Linux tutorials are $myVariable!"`
-
-`}` And close the function
-
-Then, call the function with its name...
-
-`functionName`
+___
+> Create the function:
+> 
+> - `functionName() {`
+> 
+> Put your code between the curlies *starting on a new line*.
+> 
+> - `$1` and `$2` and all their friends work just the same within the function.
+> 
+> Create a variable that only exists inside the function with this:
+> 
+> - `local` `myVariable=Saucy`
+> 
+> Make sure you do something...
+> 
+> - `echo "VIP Linux tutorials are $myVariable!"`
+> 
+> - `}` And close the function
+> 
+> Then, call the function with its name...
+> 
+> - `functionName`
+___
 
 *Let's get back to work...*
 

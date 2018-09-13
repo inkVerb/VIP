@@ -261,7 +261,7 @@ ___
 
 *...remove them*
 
-`sudo rm -r /home/pinkypink /home/pinkypurple`
+`sudo rm -r /home/pinkypink /home/ppurple`
 
 `ls /home`
 
@@ -280,6 +280,24 @@ ___
 *You may not see yourself, this handy little* `grep` *code shows all sudoers*
 
 `grep -Po '^sudo.+:\K.*$' /etc/group`
+
+*You can also* `sudo` *desktop GUI apps, but it can be dangerous...*
+
+`sudo gedit` *Look, then close right away, use Ctrl + C in the terminal*
+
+`sudo nautilus` *Look, then close right away, use Ctrl + C in the terminal*
+
+___
+
+### IF needed, `exit` from `su` or the other "sudoer"
+>
+___
+>
+> `exit`
+> 
+___
+
+# Normal user finish point for this lesson
 
 ### For an administrator to use `su`
 > 
@@ -534,7 +552,7 @@ ___
 > 
 > *...remove them*
 > 
-> `rm -r /home/pinkypink /home/pinkypurple`
+> `rm -r /home/pinkypink /home/ppurple`
 > 
 > `ls /home`
 > 
@@ -545,22 +563,34 @@ ___
 > *This is the list of users that can use* `sudo`
 > 
 > `cat /etc/sudoers`
-___
-
-### IF needed, `exit` from `su` or the other "sudoer"
->
-___
 >
 > `exit`
 > 
+### For a "sudoer" who can use `sudo`
+>
+___
+> Optional: You may login as a "sudoer" if needed
+> 
+> `su USERNAME`
+>
+___
+> 
+> *Viewing the "sudoers" file requires* `sudo` *permissions*
+> 
+> `cat /etc/sudoers`
+> 
+> *You may not see yourself, this handy little* `grep` *code shows all sudoers*
+> 
+> `grep -Po '^sudo.+:\K.*$' /etc/group`
+> 
+> *You can also* `sudo` *desktop GUI apps, but it can be dangerous...*
+> 
+> `sudo gedit` *Look, then close right away, use Ctrl + C in the terminal*
+> 
+> `sudo nautilus` *Look, then close right away, use Ctrl + C in the terminal*
+> 
 ___
 
-*Viewing the "sudoers" file requires* `sudo` *permissions*
-
-`cat /etc/sudoers`
-
-*You may not see yourself, this handy little* `grep` *code shows all sudoers*
-
-`grep -Po '^sudo.+:\K.*$' /etc/group`
+# "root" user finish point for this lesson
 
 #### [Lesson 6: wget, curl, git clone](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-06.md)
