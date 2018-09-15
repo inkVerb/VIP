@@ -6,7 +6,7 @@ ___
 
 *Watch in the file explorer if you want, in your School folder*
 
-Open Terminal *F12 (if Vrk or Guake is installed) / Ctrl+Alt+T (normal)*
+Open Terminal *F12 (if Vrk or Guake is installed) / Ctrl + Alt + T (normal)*
 
 `cd `
 
@@ -38,13 +38,13 @@ Each of these folders is for different projects.
 
 `gedit head.sh`
 
-Copy and paste. *Ctrl+C, Ctrl+V*
+Copy and paste. *Ctrl + C, Ctrl + V*
 
 `#!/bin/sh`
 
-Save *Ctrl+S*
+Save *Ctrl + S*
 
-Close *Alt+F4*
+Close *Alt + F4*
 
 `ls`
 
@@ -52,13 +52,13 @@ Close *Alt+F4*
 
 `gedit head.xml`
 
-Copy and paste. *Ctrl+C, Ctrl+V*
+Copy and paste. *Ctrl + C, Ctrl + V*
 
 `<?xml version="1.0" encoding="utf-8"?>`
 
-Save *Ctrl+S*
+Save *Ctrl + S*
 
-Close *Alt+F4*
+Close *Alt + F4*
 
 `ls`
 
@@ -66,7 +66,7 @@ Close *Alt+F4*
 
 `gedit head.html`
 
-Copy and paste. *Ctrl+C, Ctrl+V*
+Copy and paste. *Ctrl + C, Ctrl + V*
 
 `<!DOCTYPE html>`
 
@@ -86,9 +86,9 @@ Copy and paste. *Ctrl+C, Ctrl+V*
 
 `</html>`
 
-Save *Ctrl+S*
+Save *Ctrl + S*
 
-Close *Alt+F4*
+Close *Alt + F4*
 
 `ls`
 
@@ -96,15 +96,15 @@ Close *Alt+F4*
 
 `gedit head.php`
 
-Copy and paste. *Ctrl+C, Ctrl+V*
+Copy and paste. *Ctrl + C, Ctrl + V*
 
 `<?php`
 
 `?>`
 
-Save *Ctrl+S*
+Save *Ctrl + S*
 
-Close *Alt+F4*
+Close *Alt + F4*
 
 `ls`
 

@@ -13,19 +13,25 @@ ___
 
 `ls`
 
+*Search for files with* `find`
+
 `find "abc*"`
 
 *Note the error message*
 
 `find . "abc"`
 
-*Note it found everything*
+*Note it found everything, it needs:* `-name`
 
 `find . -name "abc"`
 
 `find . -name "abc*"`
 
+*...for "Directories":* `-d`
+
 `find . -type d -name "abc*"`
+
+*...for "Files":* `-f`
 
 `find . -type f -name "abc*"`
 
@@ -40,6 +46,8 @@ ___
 `find . -name "*.png"`
 
 `find . -name "*png"`
+
+*Note* `find` *is case-sensitive, ignore case with:* `-iname`
 
 `find . -iname "*png"`
 

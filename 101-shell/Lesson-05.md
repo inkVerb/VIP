@@ -37,25 +37,25 @@ ___
 
 `sed "s/foo/bar/" applefoo`
 
+*Now we see what* `cat` *and* `sed` *do, "pipe" the output of* `cat` *into* `sed`
+
 `cat applefoo | sed "s/foo/bar/"`
 
 `echo $(cat applefoo | sed "s/foo/bar/")`
 
 `` echo `cat applefoo | sed "s/foo/bar/"` ``
 
-`echo $PWD`
-
-`printenv PWD`
-
-`echo $USER`
-
-`printenv USER`
-
 `echo $DESKTOP_SESSION`
 
 `printenv DESKTOP_SESSION`
 
 `dpkg --print-architecture`
+
+*You can set output of any terminal command as if it is a variable using:* `$(...)` or `` `...` ``
+
+`echo $(printenv DESKTOP_SESSION)`
+
+`` echo `printenv DESKTOP_SESSION` ``
 
 `echo $(dpkg --print-architecture)`
 

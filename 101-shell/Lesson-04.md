@@ -33,4 +33,12 @@ ___
 
 *gedit: Reload abcd*
 
+*Note this format "includes" the text of any file as if it was text of the script itself*
+
+```sh
+
+. some/file/with/text/to/be/included
+
+```
+
 #### [Lesson 5: Combine & Pipe Commands into Variables](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-05.md)

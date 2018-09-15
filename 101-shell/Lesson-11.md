@@ -13,13 +13,15 @@ ___
 
 `gedit money.file`
 
+*Note how special characters don't always work correctly...*
+
 `echo "\$\$//" > money.file`
 
 *gedit: Reload money.file*
 
 `sed -i "s///!/g" money.file`
 
-*Notice the error*
+*Notice the error, "cancel" (some say "quote") special characters with:* `\`
 
 `sed -i "s/\//\!/g" money.file`
 
@@ -36,6 +38,8 @@ ___
 `sed -i 's/\$/@/g' money.file`
 
 *gedit: Reload money.file*
+
+*Use* `\` *with letters to work with non-characters*
 
 *Note* `\t` = tab, `\n` = new line
 

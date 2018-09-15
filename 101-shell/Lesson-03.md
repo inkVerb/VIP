@@ -43,9 +43,13 @@ first \
 
 `printenv`
 
+*These are "environment" variables that can always be called in the terminal or a script*
+
 `echo $USER`
 
 `printenv USER`
+
+*...two ways to do the same thing*
 
 `echo $DESKTOP_SESSION`
 

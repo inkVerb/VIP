@@ -15,6 +15,43 @@ Whether you want to become a computer genuis or if you're a "computer dummy" and
 
 # [Shell 301](https://github.com/inkVerb/vip/tree/master/301-shell)
 
+## First
+
+*This is italics, giving you instructions or explanation; they never end with a period*
+
+*Here is monospace code style:* `cp /alldirs ./bookkeeping/`
+
+*In monospace, every character is the same width, it is meant to indicate a coding language*
+
+*This is because both terminals and text editors use monospace fonts, being easier to use*
+
+*Only and always enter monospace into the terminal if it is:*
+1. Normal size, not a header size
+2. Begins the line, not later in the line like this `cd .trash`
+
+*Note that you would normally enter this, below, into the terminal...*
+
+`cd ~/`
+
+*Below is a block of code, merely for your reference; do not enter it in the terminal*
+
+```sh
+#!/bin/sh
+
+# This is a comment in the code
+
+echo "I am actually a real command."
+
+exit 0
+
+# That is all there is to this block of code
+
+```
+
+That is the end of the instructions. You should feel like a better person.
+
+# Oh, and have a cookie for finishing: ### #
+
 ## Installing Linux & Vrk
 *Optional free tools: If you want your own Linux PC super media workstation...*
 1. Install Ubuntu via [these fast instructions on YouTube](https://www.youtube.com/watch?v=_9NvmAitlwA&list=PLizgE6nGB1Kx8jIY1JE2v9rcL9G9s_UDj)
@@ -34,29 +71,29 @@ For the official Shell/BASH manual, read the [GNU Bash Reference manual](https:/
 
 ## Tips
 
-*Ctrl+A* select All
+*Ctrl + A* select All
 
-*Ctrl+X* Cut
+*Ctrl + X* Cut
 
-*Ctrl+Z* Undo
+*Ctrl + Z* Undo
 
-*Ctrl+Shift+Z / Ctrl+Y* Redo
+*Ctrl + Shift + Z / Ctrl + Y* Redo
 
-*Ctrl+T* Open a new tab
+*Ctrl + T* Open a new tab
 
-*Ctrl+W* Close a tab
+*Ctrl + W* Close a tab
 
-*Ctrl+LEFT_CLICK* Open link in a new tab
+*Ctrl + LEFT_CLICK* Open link in a new tab
 
 ## In Terminal
 
-*Ctrl+Shift+C* Copy
+*Ctrl + Shift + C* Copy
 
-*Ctrl+Shift+V* Paste
+*Ctrl + Shift + V* Paste
 
-*Ctrl+Shift+T* Open a new tab
+*Ctrl + Shift + T* Open a new tab
 
-*Ctrl+Shift+W* Close current tab
+*Ctrl + Shift + W* Close current tab
 
-*Ctrl+Shift+W* Close a tab
+*Ctrl + Shift + W* Close a tab
 

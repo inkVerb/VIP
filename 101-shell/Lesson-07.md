@@ -11,9 +11,15 @@ ___
 
 `gedit abcd sedoutput.text`
 
+*Note* `cat` *displays contents of a file on the screen*
+
 `cat abcd`
 
+*Note* `echo` *sends output as output to the screen*
+
 `echo $(cat abcd)`
+
+*...and* `echo` *doesn't make paragraph breaks when it does*
 
 `sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd`
 

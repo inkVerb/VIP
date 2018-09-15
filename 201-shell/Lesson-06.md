@@ -19,6 +19,8 @@ ___
 
 `cd verb.ink`
 
+`ls`
+
 `gedit index.html`
 
 *Download the verb.ink index page using curl*

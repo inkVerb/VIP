@@ -47,6 +47,8 @@ ___
 
 *gedit: Reload*
 
+*Note the number of lines*
+
 `echo "foo :-)" >> abcd`
 
 *gedit: Reload*
@@ -67,8 +69,12 @@ ___
 
 *gedit: Reload*
 
+*Note the line number of* "add bar and then some"
+
 `sed -i "/bar/d" abcd`
 
 *gedit: Reload*
+
+*Ctrl + D deletes a line in gedit*
 
 #### [Lesson 2: Arguments & Variables](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-02.md)

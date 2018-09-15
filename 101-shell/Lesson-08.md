@@ -11,6 +11,8 @@ ___
 
 `gedit abcd comboshell sedoutput.text`
 
+*Note* `tee` *will overwrite any contents in the output file*
+
 `cat abcd`
 
 `./comboshell abcd j "z-"`

@@ -13,19 +13,25 @@ ___
 
 `echo "Apple Jay" > abc/jayapple`
 
+*Search contents inside files with* `grep`
+
 `grep jj *`
 
 *Note the error about directories*
 
 `grep jj *.*`
 
+*Like* `cp -r`*,* `rm -r`*,* *and* `chown -R`*,* `grep` *also needs* `-R` *with directories*
+
 `grep -R jj *`
+
+*...no error*
 
 `grep -R Apple *`
 
 `grep -R Apples like *`
 
-*Notice the errors*
+*Notice the errors, you must "quote" multiple words with spaces*
 
 `grep -R "Apples like" *`
 
