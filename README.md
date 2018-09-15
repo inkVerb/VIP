@@ -16,7 +16,8 @@ Whether you want to become a computer genuis or if you're a "computer dummy" and
 
 ### 1. Universal: web server, desktop, Android — All open source! All the same language!
 Linux is the most-used webserver operating system in the world, with no near rivals. It's desktop market share grows every year!
-Linux is free and secure, for web servers, desktops, and Android. The Linux language is the same everywhere; learn all devices; learn only once!
+Linux is free and secure, for web servers, desktops, and Android. The Linux language is the same everywhere.
+Learn all devices; learn what is secure; learn what is free; learn only once!
 
 ### 2. Ultra Simple — Better preparation to learn other languages!
 The Linux "Shell/BASH" language is simpler than other languages, but shares many universal concepts of code.
