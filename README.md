@@ -16,21 +16,16 @@ Whether you want to become a computer genuis or if you're a "computer dummy" and
 
 ### 1. Universal: web server, desktop, Android — All open source! All the same language!
 Linux is the most-used webserver operating system in the world, with no near rivals. It's desktop market share grows every year!
-
 Linux is free and secure, for web servers, desktops, and Android. The Linux language is the same everywhere; learn all devices; learn only once!
 
 ### 2. Ultra Simple — Better preparation to learn other languages!
 The Linux "Shell/BASH" language is simpler than other languages, but shares many universal concepts of code.
-
 Learn computer code concepts the easy, simple way, using a simple, universal platform language.
-
 By learning one "byte" at a time, you don't have to learn a difficult concept while learning a more complex coding language at the same time.
 
 ### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Pearl, Node.js, HTML, CSS... sit atop Linux
 It's one thing to learn a web app or server programming language; it's awesome to know the language under the language so you can control the machine it runs on.
-
 PHP will make more sense if you have seen what this does: `sudo apt install php`
-
 Once you know how to work with a computer terminal (Linux language), all code will be less scary because you'll know where code lives!
 
 ## Install the apps used in this course
