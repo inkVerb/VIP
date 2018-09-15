@@ -3,6 +3,14 @@
 
 Whether you want to become a computer genuis or if you're a "computer dummy" and want to make computers less scary, start with Linux. Start simple. Start right here.
 
+## Shell Crash Course
+
+# [Shell 101](https://github.com/inkVerb/vip/tree/master/101-shell)
+
+# [Shell 201](https://github.com/inkVerb/vip/tree/master/201-shell)
+
+# [Shell 301](https://github.com/inkVerb/vip/tree/master/301-shell)
+
 ### Why learn Linux first?
 *...Love for renaissance. Learn the roots first, everything else makes more sense...*
 
@@ -24,14 +32,6 @@ It's one thing to learn a web app or server programming language; it's awesome t
 PHP will make more sense if you have seen what this does: `sudo apt install php`
 
 Once you know how to work with a computer terminal (Linux language), all code will be less scary because you'll know where code lives!
-
-## Shell Crash Course
-
-# [Shell 101](https://github.com/inkVerb/vip/tree/master/101-shell)
-
-# [Shell 201](https://github.com/inkVerb/vip/tree/master/201-shell)
-
-# [Shell 301](https://github.com/inkVerb/vip/tree/master/301-shell)
 
 ## Install the apps used in this course
 
