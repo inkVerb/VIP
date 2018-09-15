@@ -29,7 +29,7 @@ Whether you want to become a computer genuis or if you're a "computer dummy" and
 1. Normal size, not a header size
 2. Begins the line, not later in the line like this `cd .trash`
 
-*Note that you would normally enter this, below, into the terminal...*
+*Note that you would normally enter this* `cd` *command on the next line into the terminal...*
 
 `cd ~/`
 
