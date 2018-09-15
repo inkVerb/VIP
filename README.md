@@ -25,7 +25,7 @@ Learn computer code concepts the easy, simple way, using a simple, universal pla
 By learning one "byte" at a time, you don't have to learn a difficult concept while learning a more complex coding language at the same time.
 
 ### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Pearl, Node.js, HTML, CSS... sit atop Linux
-It's one thing to learn a web app or server programming language; it's awesome to know the language under the language so you can control the machine it runs on.
+It's one thing to learn a web app or server programming language; it's awesome to know the language under the language so you can *control the machine it runs on.*
 PHP will make more sense if you have seen what this does: `sudo apt install php`
 Once you know how to work with a computer terminal (Linux language), all code will be less scary because you'll know where code lives!
 
