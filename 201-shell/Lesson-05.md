@@ -267,6 +267,10 @@ ___
 
 `cd ..`
 
+*"Own" everything in your home directory*
+
+`sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME`
+
 ### IV. sudoers
 
 *This is the list of users that can use* `sudo`
@@ -588,6 +592,10 @@ ___
 > `sudo gedit` *Look, then close right away, use Ctrl + C in the terminal*
 > 
 > `sudo nautilus` *Look, then close right away, use Ctrl + C in the terminal*
+> 
+> *"Own" everything in your home directory (YOURUSERNAME is your username)*
+> 
+> `sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME`
 > 
 ___
 
