@@ -67,21 +67,29 @@ ___
 
 ### II. `select`
 
-`gedit 11-menu`
+`gedit 11-menu-if`
 
-`./11-menu`
+`./11-menu-if`
 
 *You must use numbers to make your selection*
 
 *(3 to quit)*
 
+*Do the same thing with a* `case` *loop*
+
+`gedit 11-menu-case`
+
+`./11-menu-case`
+
+*It works the same way*
+
 *You can* `echo` *your answer in advance*
 
-`echo 2 | ./11-menu`
+`echo 2 | ./11-menu-case`
 
-`echo 1 | ./11-menu`
+`echo 1 | ./11-menu-case`
 
-`echo 3 | ./11-menu`
+`echo 3 | ./11-menu-case`
 
 *Auto-answer works wtih most shell commands:* `echo "y" | SHELL-COMMAND`
 
@@ -103,6 +111,8 @@ ___
 
 *Show contents of a file*
 
+`gedit 11-dialog-text.txt`
+
 `dialog --textbox 11-dialog-text.txt 9 51` (try arrow keys, see what happens)
 
 *Same thing, but title in the background*
@@ -118,6 +128,8 @@ ___
 `dialog --inputbox "Enter a color" 7 21`
 
 *Note your entry appeared in the middle of the box because it needs some place to go*
+
+`ls *.file`
 
 *Send "2>" output to color.file*
 
@@ -161,6 +173,8 @@ ___
 
 `gedit 11-dialog-3`
 
+`ls *.file`
+
 *Run this in the terminal and output to size.file*
 
 `dialog --menu "Choose a Size:" 11 23 4 1 X-Large 2 Large 3 Medium 4 Small 2> size.file`
@@ -169,11 +183,25 @@ ___
 
 `gedit size.file`
 
+`rm size.file`
+
 *This can work in a shell script, but it needs this exit code redirect on the end:* `3>&1 1>&2 2>&3 3>&-`
 
-`./11-dialog-3`
+`./11-dialog-3` (select any size)
 
-`./11-dialog-3`
+*gedit: Reload size.file*
+
+`./11-dialog-3` (select any size)
+
+*gedit: Reload size.file*
+
+*Do the same thing with* `if` *tests*
+
+`gedit 11-dialog-4`
+
+`./11-dialog-4` (select any size)
+
+*gedit: Reload size.file*
 
 *Lots more to learn, easily*
 
