@@ -171,8 +171,6 @@ ___
 
 #### gzip `gzip -c file > file.gz`; `gzip -d file.gz`
 
-`ls -l`
-
 `gzip vrk.tar > vrk.tar.gz`
 
 *Answer "y" to overwrite, though the file doesn't already exist (this is another drawback of* `gzip`*)*
