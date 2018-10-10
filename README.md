@@ -11,6 +11,8 @@ Whether you want to become a computer genuis or if you're a "computer dummy" and
 
 # [Shell 301](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)
 
+## [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets)
+
 ## Why learn Linux first?
 *...Love for renaissance. Learn the roots first, everything else makes more sense...*
 
