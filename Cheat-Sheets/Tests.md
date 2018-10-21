@@ -277,14 +277,20 @@ BASH and Shell do some `if`/`for`/`while`/`until` tests differently.
 Shell: `$1` - Variables may use quotes, but do NOT need to.
 ```sh
 #!/bin/sh
-if [ -d $1 ] || [ -f $1 ] || [ -e $1 ] || [ -n $1 ] || [ -z $1 ]
+if [ -d $1 ] || [ -f $1 ] || [ -e $1 ] || [ -n $1 ] || [ -z $1 ] || [ $1 = $2 ] || [ $1 = sometext ]
+then; echo yes; fi
+# NOT...
+if [ ! -d $1 ] || [ ! -f $1 ] || [ ! -e $1 ] || [ ! -n $1 ] || [ ! -z $1 ] || [ $1 != $2 ] || [ $1 != sometext ]
 then; echo yes; fi
 ```
 
 BASH: `"$1"` - Variables must always ALWAYS use quotes.
 ```bash
 #!/bin/bash
-if [ -d "$1" ] || [ -f "$1" ] || [ -e "$1" ] || [ -n "$1" ] || [ -z "$1" ]
+if [ -d "$1" ] || [ -f "$1" ] || [ -e "$1" ] || [ -n "$1" ] || [ -z "$1" ] || [ "$1" = "$2" ] || [ "$1" = "sometext" ]
+then; echo yes; fi
+# NOT...
+if [ ! -d "$1" ] || [ ! -f "$1" ] || [ ! -e "$1" ] || [ ! -n "$1" ] || [ ! -z "$1" ] || [ "$1" != "$2" ] || [ "$1" != "sometext" ]
 then; echo yes; fi
 ```
 
