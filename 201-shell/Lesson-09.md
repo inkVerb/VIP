@@ -41,15 +41,27 @@ ___
 
 *Notice the realtime process list*
 
-Ctrl + C *This will CLOSE the top program*
+Q (or Ctrl + C) *This will CLOSE the top program*
 
-`top -n 1`
+`top -n 1` Q
 
 *Notice the* `top` *list is not realtime;* `-n 1` *shows only one "iteration",* `-n 3` *would show three*
 
-`top -n 1 -b`
+`top -n 1 -b` Q
 
 *Notice* `-b` *shows everything, not limited by the size of the terminal window, only limited by the* `-n 1` *option*
+
+*Put it in a file so it is easier to read*
+
+`top -n 1 -b > my-top-file.smthng`
+
+`gedit my-top-file.smthng`
+
+*FYI, this is a little program we installed in Lesson 3, a little more colorful than* `top`
+
+`htop`
+
+F10 (or Q to Quit)
 
 ### `ps aux`
 
@@ -90,9 +102,5 @@ Select ONE browser you are NOT using:
 `killall firefox` or `killall chromium-browser` or `killall google-chrome` or `killall vivaldi`
 
 *Some processes can only be killed by PID*
-
-*FYI, this is a little program we installed in Lesson 3, a little more colorful than* `top`
-
-`htop`
 
 #### [Lesson 10: COMMAND > FILE, pwd, uname, who, w](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-10.md)

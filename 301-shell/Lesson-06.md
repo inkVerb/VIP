@@ -14,9 +14,60 @@ ___
 
 ### *Note* `exit` *&* `journalctl` *are used for logs*
 
+## I. System logs via `journalctl`
+
 *Look at some log entries on your machine*
 
+*Space to scroll down*
+
+*Ctrl+C to close*
+
 `journalctl`
+
+*Q to quit*
+
+*Use* `-r` *to "reverse" the order and view most recent log entries first*
+
+`journalctl -r`
+
+*Create a system log entry*
+
+`logger "I logged this just now."`
+
+`journalctl -r` *Q to quit*
+
+*Use* `-i` *to include PID number,* `-t SOME_TEXT` *to add a "tag"*
+
+`logger -i -t myTag "I logged this just now."`
+
+`journalctl -r` *Q to quit*
+
+*Use* `-p` *with a "facility", then "severity"*
+
+`logger -i -t myTag -p local0.info "I logged this just now."`
+
+`journalctl -r` *Q to quit*
+
+*"Severity" has seven levels:*
+- 1 Alert:	`alert`
+- 2 Critical	`crit`
+- 3 Error	`err`
+- 4 Warning	`warn`
+- 5 Notice	`notice` (normal, but significant)
+- 6 Info	`info`
+- 7 Debug	`debug` (so much info that only geeks & developers are interested)
+
+*There are many "facilities", some include:*
+- `ftp`
+- `cron`
+- `auth`
+- `news`
+- `clock`
+- `mail`
+- `syslog`
+- `user`
+
+*For your own "facilities", you can use* `local0` – `local7`
 
 ### For an administrator to use `su`
 > 
@@ -26,15 +77,38 @@ ___
 > 
 > `journalctl`
 > 
+> *Q to quit*
+> 
+> *Use* `-r` *to "reverse" the order and view most recent log entries first*
+> 
+> `journalctl -r`
+> 
+> *Create a system log entry*
+> 
+> `logger "I logged this just now."`
+> 
+> `journalctl -r` *Q to quit*
+> 
+> *Use* `-i` *to include PID number,* `-t SOME_TEXT` *to add a "tag"*
+> 
+> `logger -i -t myTag "I logged this just now."`
+> 
+> `journalctl -r` *Q to quit*
+> 
+> *Use* `-p` *with a "facility", then "severity"*
+> 
+> `logger -i -t myTag -p local0.info "I logged this just now."`
+> 
+> `journalctl -r` *Q to quit*
+> 
 ___
 
-*Space to scroll down*
 
-*Ctrl+C to close*
+## II. Custom output logs
 
-*Q to quit*
+### *Notes about* `exit` codes
 
-*That is a log file on your machine*
+*Logs &* `exit` *codes are both important, but different*
 
 *Errors are important, handle them correctlyin Shell scripts!*
 
@@ -45,7 +119,7 @@ ___
 > *When tutorials only have* `exit` *in the example, it is up to you to put the correct number after, probably* `exit 0`
 > 
 
-### Recording output logs
+### A custom log can be useful for keeping track of what happens in your own software
 
 `mkdir logs`
 
