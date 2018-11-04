@@ -51,12 +51,6 @@ Q (or Ctrl + C) *This will CLOSE the top program*
 
 *Notice* `-b` *shows everything, not limited by the size of the terminal window, only limited by the* `-n 1` *option*
 
-*Put it in a file so it is easier to read*
-
-`top -n 1 -b > my-top-file.smthng`
-
-`gedit my-top-file.smthng`
-
 *FYI, this is a little program we installed in Lesson 3, a little more colorful than* `top`
 
 `htop`
