@@ -4,7 +4,7 @@
 #### If you did Shell 201, but on a different machine
 Install the tools:
 
-`sudo apt install -y curl net-tools htop odt2txt pandoc rename pwgen`
+`sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen`
 
 ### [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 

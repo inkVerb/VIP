@@ -5,18 +5,6 @@
 
 ## Prerequisite: [Shell 201](https://github.com/inkVerb/VIP/tree/master/201-shell)
 
-## Prepare
-
-*F12 (guake) OR Ctrl + Alt + T (new terminal)*
-
-`mkdir -p ~/School/VIP/shell`
-
-`cd ~/School/VIP/shell`
-
-`git clone https://github.com/inkVerb/301`
-
-`cd 301`
-
 ### [Lesson 0: 301 Cheat Sheets](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-00.md)
 
 ### [Lesson 1: if then fi, else & elif](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-01.md)
@@ -60,4 +48,3 @@ functions, menues, etc
 - [http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-9.html]
 - [http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-11.html]
 - [https://www.thegeekstuff.com/2010/06/bash-if-statement-examples/]
-
