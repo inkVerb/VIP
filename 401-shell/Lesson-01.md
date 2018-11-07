@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 1: Details
+## Lesson 1: Text & Terminal
 
 `cd ~/School/VIP/shell/401`
 

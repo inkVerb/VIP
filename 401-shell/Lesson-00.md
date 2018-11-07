@@ -46,4 +46,4 @@ ___
 
 `cd 401`
 
-### [Lesson 1: Details](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-01.md)
+### [Lesson 1: Text & Terminal](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)
