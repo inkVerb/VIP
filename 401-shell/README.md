@@ -2,19 +2,9 @@
 
 ## Prerequisite: [Shell 301](https://github.com/inkVerb/VIP/tree/master/301-shell)
 
-## Prepare
+### [Lesson 0: Setup](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-00.md)
 
-*F12 (guake) OR Ctrl + Alt + T (new terminal)*
-
-`mkdir -p ~/School/VIP/shell/401`
-
-`cd ~/School/VIP/shell`
-
-`git clone https://github.com/inkVerb/401`
-
-`cd 401`
-
-### [Lesson 1: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)
+### [Lesson 1: Details](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)
 
 ### [Lesson 2: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)
 
@@ -82,4 +72,3 @@ https://linuxcontainers.org/lxd/
 ### create/add/manage snap ??
 
 ### create/add/manage docker ??
-
