@@ -11,6 +11,8 @@ ___
 
 *Let's get another look at verb.ink.html*
 
+`cd verb.ink`
+
 `cat verb.ink.html`
 
 ### `more`
@@ -65,9 +67,11 @@ ___
 
 `man sort` *(Q to quit)*
 
+`cd ..`
+
 ### `diff`
 
-*First,* `wget` *some files*
+*First, download some files*
 
 `git clone https://github.com/inkVerb/201-12`
 
@@ -148,6 +152,8 @@ ___
 ### nano
 
 *The simple text editor in the terminal*
+
+`cd verb.ink`
 
 `nano verb.ink.html`
 
