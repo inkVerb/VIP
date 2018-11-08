@@ -45,6 +45,72 @@ ___
 - Carriage returns can create some problems in programming for Unix & Linux
 - `dos2unix` & `unix2dos` convert text files between the DOS & Unix format
 
+## Multiple lines via `\`
+
+*Enter this in the terminal:*
+
+```sh
+echo "Hello there. This is all on one line."
+```
+
+*Enter this in the terminal, ONE LINE AT A TIME:*
+
+```sh
+echo "Hello there.\
+This is a second line."
+```
+
+*Enter this in the terminal, ONE LINE AT A TIME:* (including the empty line)
+
+```sh
+echo "Hello there.\
+
+This is a second line."
+```
+
+*Consider this command:*
+
+`ls -l ~/School/VIP/shell/401`
+
+*Enter the same thing, but on multiple lines:*
+
+```sh
+ls \
+-l \
+~/School/VIP/shell/401
+```
+
+*Spaces matter, try without them:*
+
+*Enter the same thing, but on multiple lines:*
+
+```sh
+ls\
+-l\
+~/School/VIP/shell/401
+```
+Press: Up *to see your last command was:* `ls-l~/School/VIP/shell/401`
+
+*Even breakup words! Enter ONE LINE AT A TIME:*
+
+```sh
+l\
+s \
+-\
+l \
+~/School/VIP/shell/401
+```
+
+*Same thing, but copy and past ALL AT ONCE:*
+
+```sh
+l\
+s \
+-\
+l \
+~/School/VIP/shell/401
+```
+
 ## Shell History
 
 `history`
@@ -91,4 +157,25 @@ ___
 
 `cd ~/School/VIP/shell/401`
 
-#### [Lesson 2: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)
+
+## "Reverse Search"
+
+Press: Ctrl + r
+
+*This is reverse search*
+
+Type: `echo` *and notice the results*
+
+Press: Down *to get back to the normal prompt*
+
+`echo $DESKTOP_SESSION`
+
+*Go again*
+
+Press: Ctrl + r
+
+Type: `echo "` *and notice the DIFFERENT results as you type*
+
+Press: Down *to get back to the normal prompt*
+
+#### [Lesson 2: Hierarchy & cron](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)

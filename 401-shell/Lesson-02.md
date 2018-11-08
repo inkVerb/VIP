@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 2: NEW
+## Lesson 2: Hierarchy & cron
 
 `cd ~/School/VIP/shell/401`
 

@@ -35,7 +35,7 @@ ___
 
 `cd ~/School/VIP/shell/201`
 
-### `top`
+### `top` & `uptime`
 
 `top`
 
@@ -56,6 +56,10 @@ Q (or Ctrl + C) *This will CLOSE the top program*
 `htop`
 
 F10 (or Q to Quit)
+
+*For a quick peek:*
+
+`uptime`
 
 ### `ps aux`
 

@@ -64,4 +64,6 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 `./07-include`
 
+*It can be good practice to include the shebang* (`#!/bin/sh`) *in any "included" files for formatting purposes*
+
 #### [Lesson 8: date & pwgen](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)

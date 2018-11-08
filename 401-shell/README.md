@@ -6,7 +6,7 @@
 
 ### [Lesson 1: Text & Terminal](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)
 
-### [Lesson 2: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)
+### [Lesson 2: Hierarchy & cron](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)
 
 ### [Lesson 3: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)
 
