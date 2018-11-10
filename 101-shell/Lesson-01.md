@@ -75,6 +75,16 @@ ___
 
 *gedit: Reload*
 
-*Ctrl + D deletes a line in gedit*
+*Note the line with "bar" is gone*
+
+`echo "Replace this Apple delBar line." >> abcd`
+
+*gedit: Reload*
+
+`sed -i "/Replace.*/ c\The line with Mr. Apple delBar has been replaced" abcd`
+
+*gedit: Reload*
+
+*Ctrl + D deletes a line in gedit, use it to delete the line about "Mr. Apple delBar"*
 
 #### [Lesson 2: Arguments & Variables](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-02.md)
