@@ -77,6 +77,17 @@ returning
 applebar
 ```
 
+Replace a string with nothing with: `${VARIABL%foo}`
+
+```sh
+echo ${VARIABL%foo}
+```
+
+returning
+
+```sh
+apple
+```
 
 ___
 
@@ -90,7 +101,13 @@ for VARIABL in *.txt
 
 do
 
+# Change to .md files:
+
 echo ${VARIABL%txt}md
+
+# Change to files with no extension:
+
+echo ${VARIABL%.txt}
 
 done
 ```
