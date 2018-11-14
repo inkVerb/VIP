@@ -94,7 +94,8 @@ ___
 ### IV. `for` VARIABL `in` WUT
 
 - `for VARIABL` sets `$VARIABL` as a changing varable for each occurrence in `WUT`
-- `WUT` can be anything, such as files, such as `*.odt` or `*.png`
+- `WUT` can be anything, such as files, such as `*.odt` or `*.png` or `*`
+- If `WUT` includes a full path, then each `do` cycle will set `$VARIABL` to include the same full path
 
 ```sh
 for VARIABL in *.txt
