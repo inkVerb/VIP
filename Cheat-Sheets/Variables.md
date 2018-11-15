@@ -91,7 +91,38 @@ apple
 
 ___
 
-### IV. `for` VARIABL `in` WUT
+### IV. Variable Variables via `${!VAR}` (requires BASH)
+
+```bash
+#!/bin/bash
+# Set these variables:
+myVAR="apple"
+one="my"
+TWO="VAR"
+three="myVAR"
+four="${one}${TWO}" # This does not require BASH, only SH
+
+# Call the variables
+echo "$three"
+# returns: myVAR
+
+echo "${!three}"
+# returns: apple
+# $three = "myVAR" hence ${!three} = $myVAR = "apple"
+# This requires BASH
+
+echo "$four"
+# returns: myVAR
+
+echo "${!four}"
+# returns: apple
+# This requires BASH
+
+```
+
+___
+
+### V. `for` VARIABL `in` WUT
 
 - `for VARIABL` sets `$VARIABL` as a changing varable for each occurrence in `WUT`
 - `WUT` can be anything, such as files, such as `*.odt` or `*.png` or `*`
@@ -119,7 +150,7 @@ done
 
 ___
 
-### V. `case` $VARIABL `in` ...`esac`
+### VI. `case` $VARIABL `in` ...`esac`
 - `case` uses a varible, but the variable must already be set
 - `case` does NOT set a variable
 
@@ -133,7 +164,7 @@ esac
 
 ___
 
-### VI. `getopts`
+### VII. `getopts`
 - `getopts` sets a variable in a `while` loop
 
 
@@ -146,7 +177,7 @@ while getopts ":a:b:c:" VARIABL
 
 ___
 
-### VII. `getopt`
+### VIII. `getopt`
 - `getopt` HELPS to set a variable in a nested command using `VAR=$(getopt ...)` or `` VAR=`getopt ...` ``
 
 
@@ -156,4 +187,3 @@ VARIABL=`getopt -o a:bcdeh` # Backticks do the same thing
 ...
 ```
 - Now, `$VARIABL` can be used in the `while`... `case` loop
-
