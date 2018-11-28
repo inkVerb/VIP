@@ -50,3 +50,12 @@ ___
 *...'single quotes' can behave differently in* `grep` *and most other commands*
 
 # Done! Have a cookie: ### #
+
+Oh, what's this?
+
+`cowsay Moo! or something`
+
+Don't have it yet?
+
+`sudo apt install cowsay`
+

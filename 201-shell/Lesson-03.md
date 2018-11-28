@@ -50,6 +50,10 @@ ___
 
 `sudo apt install git` *Unless it is installed already, you will need to press Y, then Enter*
 
+*Install* `cowsay`
+
+`sudo apt install cowsay` *Unless it is installed already, you will need to press Y, then Enter*
+
 *You can install more than one package...*
 
 *Install the* `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `rename` and `pwgen` *packages* (the command `netstat` comes from the package `net-tools`)
@@ -85,7 +89,13 @@ ___
 >
 > `apt upgrade` *If updates are available, you will need to press Y, then Enter*
 >
+> *Install the* `git` *package*
+> 
 > `apt install git` *Unless it is installed already, you will need to press Y, then Enter*
+>
+> *Install* `cowsay`
+>
+> `apt install cowsay` *Unless it is installed already, you will need to press Y, then Enter*
 >
 > *You can install more than one package...*
 >
