@@ -64,6 +64,8 @@ debconf-set-selections
 
 ### create .deb installer
 
+### ssh & pining other servers, such as mail
+
 ### create/add/manage ppa
 
 ### create/add/manage containers & LXC/LXD ??
