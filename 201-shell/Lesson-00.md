@@ -25,4 +25,4 @@ ___
 
 *That's it, all done.*
 
-### [Lesson 1: cp, mv, ln -s, rm](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-01.md)
+#### [Lesson 1: cp, mv, ln -s, rm](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-01.md)

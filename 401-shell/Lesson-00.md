@@ -14,25 +14,9 @@ ___
 ___
 
 
-`sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen`
+`sudo apt install -y mysql-server dos2unix`
 
-## Install Atom
 
-`mkdir -p .atom-key.tmp`
-
-`cd .atom-key.tmp`
-
-`sudo curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -`
-
-`sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'`
-
-`cd ..`
-
-`sudo rm -r .atom-key.tmp`
-
-`sudo apt update`
-
-`sudo apt install atom`
 
 ## Prepare
 
@@ -46,4 +30,4 @@ ___
 
 `cd 401`
 
-### [Lesson 1: Text & Terminal](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)
+#### [Lesson 1: Returns & Terminal](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)

@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 1: Text & Terminal
+## Lesson 1: Returns & Terminal
 
 `cd ~/School/VIP/shell/401`
 
@@ -9,7 +9,7 @@
 
 ___
 
-## Carriage Returns: DOS v Unix
+### I. Carriage Returns: DOS v Unix
 
 `vim text-doc.txt`
 
@@ -45,7 +45,7 @@ ___
 - Carriage returns can create some problems in programming for Unix & Linux
 - `dos2unix` & `unix2dos` convert text files between the DOS & Unix format
 
-## Multiple lines via `\`
+### II. Multiple lines via `\`
 
 *Enter this in the terminal:*
 
@@ -111,7 +111,7 @@ l \
 ~/School/VIP/shell/401
 ```
 
-## Shell History
+### III. Shell History
 
 `history`
 
@@ -158,9 +158,9 @@ l \
 `cd ~/School/VIP/shell/401`
 
 
-## "Reverse Search"
+### IV. "Reverse Search"
 
-Press: Ctrl + r
+Press: Ctrl + R
 
 *This is reverse search*
 
@@ -172,10 +172,10 @@ Press: Down *to get back to the normal prompt*
 
 *Go again*
 
-Press: Ctrl + r
+Press: Ctrl + R
 
 Type: `echo "` *and notice the DIFFERENT results as you type*
 
 Press: Down *to get back to the normal prompt*
 
-#### [Lesson 2: Hierarchy & cron](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)
+#### [Lesson 2: File System Hierarchy](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)

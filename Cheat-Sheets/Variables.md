@@ -14,6 +14,8 @@ $4 = arg4
 $5 = arg-5
 
 $@ = myshellscript.sh arg-1 argument-two three arg4 arg-5
+$# = 5 # because there are 5 arguments
+$? = # whatever the last exit code was, such as from a program
 ```
 ___
 
@@ -43,16 +45,22 @@ shellcommand VARIABL
 ...here are real examples...
 
 ```sh
-for VARIABL in *.md
-... now $VARIABL has a value
+for VARIABL in *.md; do
+# Do something
+done
 ```
+... now `$VARIABL` has a value
 
 ```sh
 read VARIABL
-... now $VARIABL has a value
+```
+... now `$VARIABL` has a value
 
+```sh
+echo "I am a sweet potato."
 ```
 
+... Now `$?` = "0" because echo ran successfully and exited without error.
 ___
 
 ### III. Find-replace in a variable's value

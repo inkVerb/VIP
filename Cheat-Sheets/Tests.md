@@ -5,7 +5,7 @@
 - `false` = `0`
 - `true`  = `1`
 
-When a test answers `true` or `1`, then shell does something via `then` or `do` 
+When a test answers `true` or `1`, then shell does something via `then` or `do`
 
 ___
 
@@ -264,6 +264,57 @@ esac
 done
 ```
 
+### VII. Multiple Tests
+
+#### Operators:
+
+##### `&&` = "and"
+
+##### `||` = "or"
+
+##### `;` = "end of line"
+
+#### Order of Logic: `&&` ... `||` ... `;`
+
+**`&&` AND test**
+```sh
+if [ TEST_ONE ] && [ TEST_TWO ]; then
+  # This will happen if both tests return "true".
+fi
+```
+
+**`||` OR test**
+```sh
+if [ TEST_ONE ] || [ TEST_TWO ]; then
+  # This will happen if either or both tests return "true".
+fi
+```
+
+**`&&` AND with `||` OR test**
+```sh
+if [ TEST_ONE_A ] && [ TEST_ONE_B ] || [ TEST_TWO_A ] && [ TEST_TWO_B ]; then
+  # This will happen either:
+  # 1. if both TEST_ONE_? tests return "true" or
+  # 2. if both TEST_TWO_? tests return "true".
+fi
+```
+
+*This can work with more than two tests.*
+
+**Three `&&` AND tests**
+```sh
+if [ TEST_ONE ] && [ TEST_TWO ] && [ TEST_THREE ]; then
+  # This will happen if all three tests return "true".
+fi
+```
+
+**Three `||` OR tests**
+```sh
+if [ TEST_ONE ] || [ TEST_TWO ] || [ TEST_THREE ]; then
+  # This will happen if any one or all tests return "true".
+fi
+```
+
 ___
 
 ### Welcome to BASH
@@ -362,7 +413,7 @@ while getopts "ab" Flag; do
    DO SOMETHING BECAUSE OF FLAG -a
   ;;
 
-  b) 
+  b)
    DO SOMETHING BECAUSE OF FLAG -b
   ;;
 
@@ -420,7 +471,7 @@ while getopts ":a:b" Flag; do
    echo "Work with $OPTARG using flag -$Flag"
   ;;
 
-  b) 
+  b)
    echo "Work with $OPTARG using flag -$Flag"
   ;;
 
@@ -520,4 +571,3 @@ This can take arguments:
 - `./myscript --alpha A-option`
 - `./myscript -b`
 - `./myscript --bravo`
-
