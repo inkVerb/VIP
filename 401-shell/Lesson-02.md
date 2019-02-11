@@ -15,6 +15,8 @@ ___
 
 `ls`
 
+`nautilus . &` *Follow along in the file browser through this lesson.*
+
 *This is the root of the Linux file system.*
 
 #### `/` – Root Directory

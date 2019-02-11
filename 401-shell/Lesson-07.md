@@ -11,13 +11,13 @@ ___
 
 ## Under Constrcution (below)
 
-### Counter loop
+### I. Counter `while` loop
 
 *Edit a new file*
 
 `gedit loopcount`
 
-*Put this code in the file and save it:*
+*Put this code in the new file and save it:*
 
 ```sh
 #!/bin/sh
@@ -48,16 +48,48 @@ done
 
 `gedit countfile`
 
-### `sed`: `$` = "end of line"
+### II. `sed` special characters
+
+#### `$` = "end of line"
+
+This is the same in `vim`, so get used to it.
+
+*Add something to the end of each line*
 
 `sed -i "s/$/add2end/" countfile`
 
 *gedit: Reload countfile*
 
+#### `\n` = new line
+
+*Add a new line to the end of each line*
+
+`sed -i "s/$/\n/" countfile`
+
+*gedit: Reload countfile*
+
+#### `\t` = tab
+
+*Replace each tab with two tabs*
+
+`sed -i "s/\t/\t\t/" countfile`
+
+*gedit: Reload countfile*
+
+#### `.` periods
+
+*Change "No." to "Number"*
+
+`sed -i "s/No\./Number/" countfile`
+
+*gedit: Reload countfile*
+
 ## Under Constrcution (here)
 
-### Characters
+### III. Characters
 Character class [abc] [!abc] [a-h] [2-8]
 Named character classes [:alpha:] etc
+
+
 
 #### [Lesson 8: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)
