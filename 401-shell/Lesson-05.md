@@ -231,4 +231,4 @@ myShiftedCount = $myShiftedCount
 
 `./varunset one two three four five six`
 
-#### [Lesson 6: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)
+#### [Lesson 6: Data Types & Quotes](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)

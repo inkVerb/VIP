@@ -14,23 +14,16 @@
 
 ### [Lesson 5: More with Variables](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-05.md)
 
-### [Lesson 6: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)
+### [Lesson 6: Data Types & Quotes](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)
 
-### [Lesson 7: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)
+### [Lesson 7: More with `sed` & files](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)
 
-### [Lesson 8: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)
+### [Lesson 8: `$IFS` (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)
 
-### [Lesson 9: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)
+### [Lesson 9: Simple Tests & heredoc `cat <<EOF`](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)
 
 ### [Lesson 10: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-10.md)
 
 ### [Lesson 11: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
 
 ### [Lesson 12: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
-
-___
-# Under Construction
-
-## This tutorial should eventually include information about...
-
-cat EOF

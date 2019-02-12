@@ -9,8 +9,6 @@
 
 ___
 
-## Under Constrcution (below)
-
 ### I. Counter `while` loop
 
 *Edit a new file*
@@ -84,12 +82,4 @@ This is the same in `vim`, so get used to it.
 
 *gedit: Reload countfile*
 
-## Under Constrcution (here)
-
-### III. Characters
-Character class [abc] [!abc] [a-h] [2-8]
-Named character classes [:alpha:] etc
-
-
-
-#### [Lesson 8: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)
+#### [Lesson 8: `$IFS` (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)

@@ -33,10 +33,6 @@
 
 ___
 
-# In Progress To-Do List
-- Lesson 6 exit code to `journalctl`
-- Lesson 12 expand `getops` & create `dialog`
-
 # Further Reference
 
 ## if then elif else fi

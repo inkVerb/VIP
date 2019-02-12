@@ -134,4 +134,4 @@ unset IFS # We don't want our strange settings messing with other things.
 
 `./looptab`
 
-#### [Lesson 9: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)
+#### [Lesson 9: Simple Tests & heredoc `cat <<EOF`](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)

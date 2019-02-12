@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 4: MySQL & systemctl
+## Lesson 4: MySQL & `systemctl`
 
 `cd ~/School/VIP/shell/401`
 

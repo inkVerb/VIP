@@ -9,8 +9,7 @@
 
 ___
 
-## Under Constrcution
-Lessons will continue here in the future.
+## Under Construction
 
 Interpreters
 
@@ -39,7 +38,6 @@ OFF...
 `set +e`
 `set +x`
 `set +v`
-
 
 Functions: must be declared before called.
 
