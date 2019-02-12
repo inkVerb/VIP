@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 10: NEW
+## Lesson 10: Using functions
 
 `cd ~/School/VIP/shell/401`
 
@@ -11,23 +11,12 @@ ___
 
 ## Under Construction
 
-### I. Simple tests via `&&` & `||`
+Functions: must be declared before called.
 
-VAR=true
-$VAR && echo "Is true."
-VAR=false
-$VAR || echo "Is false."
-VAR="true"
-echo "Is $VAR."
-VAR="false"
-echo "Is $VAR"
+Functions take arguments
 
--z & unset "the proper way" (VAR=$1; $VAR # Is $VAR set? # Use some arithmetic to see.) [top three answers here](https://serverfault.com/questions/7503/how-to-determine-if-a-bash-variable-is-empty)
+In functions, parameters are looped: `funct one two three` will loop if only $1 is used in the function.
 
-
-### II. heredoc `cat <<EOF`
-
-cat <<EOF (https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash)
-
+Functions: return, local, echo $?
 
 #### [Lesson 11: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)

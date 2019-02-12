@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 9: Simple Tests & heredoc `cat <<EOF`
+## Lesson 9: NEW
 
 `cd ~/School/VIP/shell/401`
 
@@ -13,15 +13,15 @@ ___
 
 ### I. Interpreters
 
+`#!/bin/sh`
+
+`#!/bin/bash`
+
 `#!/bin/csh`
 
 `#!/bin/ksh`
 
 `#!/bin/zsh`
-
-`#!/bin/sh`
-
-`#!/bin/bash`
 
 ### II. Errors & debugging
 
@@ -32,21 +32,28 @@ ON...
 `set -ev`
 `set -vex`
 OR...
-#!/bin/bash -ex
 #!/bin/sh -vxe
+#!/bin/bash -ex
 OFF...
 `set +e`
 `set +x`
 `set +v`
 
-### III. Using functions
+### III. Simple tests via `&&` & `||`
 
-Functions: must be declared before called.
+VAR=true
+$VAR && echo "Is true."
+VAR=false
+$VAR || echo "Is false."
+VAR="true"
+echo "Is $VAR."
+VAR="false"
+echo "Is $VAR"
 
-Functions take arguments
+### IV. Using `-z` & `unset` "the proper way"
 
-In functions, parameters are looped: `funct one two three` will loop if only $1 is used in the function.
+(VAR=$1; $VAR # Is $VAR set? # Use some arithmetic to see.) [top three answers here](https://serverfault.com/questions/7503/how-to-determine-if-a-bash-variable-is-empty)
 
-Functions: return, local, echo $?
+
 
 #### [Lesson 10: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-10.md)

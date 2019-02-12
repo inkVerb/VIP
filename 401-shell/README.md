@@ -20,7 +20,7 @@
 
 ### [Lesson 8: `$IFS` (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)
 
-### [Lesson 9: Simple Tests & heredoc `cat <<EOF`](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)
+### [Lesson 9: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)
 
 ### [Lesson 10: NEW](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-10.md)
 
