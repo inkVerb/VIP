@@ -221,7 +221,7 @@ echo 4 x 7 =  `expr $d4 \* $d7`
 echo 9 - 3 =  `expr $d9 - $d3`
 echo 10 / 5 = `expr $d10 / $d2`
 
-# Below, Shell will figure out that the values of 5, 6, and 8 are strings, not integers:
+# Below, Shell will figure out that the values of 5, 6, and 8 are strings, not integers, and thus report an error:
 echo eight - 3 = `expr $_8 - $_3`
 echo five \* six = `expr $_5 \* $_6`
 echo eight - 3 = `expr $s8 - $s3`
@@ -242,4 +242,4 @@ echo five \* six = `expr $d5 \* $d6`
 
 *Case and point: quotes make no difference in how a value is treated, even in arithmetic.*
 
-#### [Lesson 7: More with `sed` & files](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)
+#### [Lesson 7: More with `while` & `sed`](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)

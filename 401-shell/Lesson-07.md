@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 7: More with `sed` & files
+## Lesson 7: More with `while` & `sed`
 
 `cd ~/School/VIP/shell/401`
 

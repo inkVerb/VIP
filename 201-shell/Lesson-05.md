@@ -17,7 +17,7 @@ ___
 
 *WARNING: If you already have a user "pinkypink" and/or "pinkypurple", then you are very interesting and should there substitute those names for users not on your system.*
 
-### For a "sudoer" who can use `sudo`
+### This lesson requires a "sudoer" who can use `sudo`
 >
 ___
 > Optional: You may login as a "sudoer" if needed
@@ -114,6 +114,8 @@ ___
 
 `su pinkypurple`
 
+*Now, you are logged in and executing commands as the user "pinkypurple"*
+
 *Try to create a file*
 
 `touch newfile`
@@ -179,20 +181,22 @@ ___
 
 *"youown" now belongs to pinkypurple*
 
-### IF needed, `su` into the original user
+### IF you logged in as sudoer with `su SUDOER`, `exit` back to your original user
 >
 ___
 >
-> `su ORIGINALUSER`
+> `exit`
 > 
 ___
 
 `mkdir ownrship`
 
-___
+### If you need to log back in as a "sudoer" who can use `sudo`
 >
-> `exit`
+___
 > 
+> `su USERNAME`
+>
 ___
 
 `ls -l`

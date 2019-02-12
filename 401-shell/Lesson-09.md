@@ -11,23 +11,42 @@ ___
 
 ## Under Construction
 
-### I. Simple tests
+### I. Interpreters
 
-VAR=true
-$VAR && echo "Is true."
-VAR=false
-$VAR || echo "Is false."
-VAR="true"
-echo "Is $VAR."
-VAR="false"
-echo "Is $VAR"
+`#!/bin/csh`
 
--z & unset "the proper way" (VAR=$1; $VAR # Is $VAR set? # Use some arithmetic to see.) [top three answers here](https://serverfault.com/questions/7503/how-to-determine-if-a-bash-variable-is-empty)
+`#!/bin/ksh`
 
+`#!/bin/zsh`
 
-### II. heredoc `cat <<EOF`
+`#!/bin/sh`
 
-cat <<EOF (https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash)
+`#!/bin/bash`
 
+### II. Errors & debugging
+
+ON...
+`set -e`
+`set -x`
+`set -v`
+`set -ev`
+`set -vex`
+OR...
+#!/bin/bash -ex
+#!/bin/sh -vxe
+OFF...
+`set +e`
+`set +x`
+`set +v`
+
+### III. Using functions
+
+Functions: must be declared before called.
+
+Functions take arguments
+
+In functions, parameters are looped: `funct one two three` will loop if only $1 is used in the function.
+
+Functions: return, local, echo $?
 
 #### [Lesson 10: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-10.md)

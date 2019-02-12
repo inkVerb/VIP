@@ -1,24 +1,24 @@
 # Shell 401
 ## Lesson 0: Setup
 
-#### If you did Shell 201, but on a different machine
-Install the tools:
-
-### For a "sudoer" who can use `sudo`
+### This lesson requires a "sudoer" who can use `sudo`
 >
 ___
-> Optional: You may login as a "sudoer" if needed
+> Optional: You may login as a "sudoer" first
 >
 > `su USERNAME`
 >
+>
 ___
 
+#### If you did Shell 201, but on a different machine
+Install the tools:
 
-`sudo apt install -y mysql-server dos2unix`
-
-
+`sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen`
 
 ## Prepare
+
+`sudo apt install -y mysql-server dos2unix`
 
 *F12 (guake) OR Ctrl + Alt + T (new terminal)*
 

@@ -16,7 +16,7 @@
 
 ### [Lesson 6: Data Types & Quotes](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)
 
-### [Lesson 7: More with `sed` & files](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)
+### [Lesson 7: More with `while` & `sed`](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)
 
 ### [Lesson 8: `$IFS` (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)
 
