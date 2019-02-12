@@ -13,28 +13,45 @@ ___
 
 *The value of a variable can be one of many different "types of data".*
 
+VAR=5
+- The value "data type" is a number.
+
+VAR=H
+- The value "data type" is a single letter.
+
+VAR="I'm a cucumber!"
+- The value "data type" is a sentence (what coders call a 'string').
+
+VAR=false
+- The value "data type" is a true/false value (what coders call 'boolean').
+
 #### Common data types:
-- character (char, C) *- a single, one-byte character (a-z, 0-9, and most keyboard special characters)*
-- varchar *- "character varying", can be 80 characters long*
-- string *- any kind of raw text*
+- character (char, C) *- a single, one-byte character (a-z, A-Z, 0-9, and most keyboard special characters)*
+- varchar *- "character varying", usually up to 80 characters long*
+- string *- any kind of raw text, usually "any length"*
 - integer (int) *- whole numbers, positive or negative*
-- float *- numbers with a decimal*
-- array *- a complex variable; like a mini database, with a list of many values, each with a number/key for reference*
-- boolean *- only `true` or `false` (many times `1` or `0` is the same thing)*
-- NULL *- empty data, not set*
-- NUL *- value similar to `false` or `0`*
+- float *- numbers with a "floating" decimal, up to 7 decimal digits*
+- double float (double) *- "double" precision floating decimal, up to 15 decimal digits*
+- array *- a complex variable; a "mini database variable"; a list (array) of multiple values, each with a number/key for reference*
+- boolean *- only `true` or `false` (usually `1` or `0` is the same thing as `true` or `false`)*
+- NULL *- empty data, not set (ie: before declaring a variable's value or after using `unset`)*
 
-#### In Shell:
-1. Shell "doesn't use" data types, AKA Shell "only uses the string" data type. But, Shell still knows if a data set is empty or a true/false (boolean) value. (Other languages often require data types to be declared.)
-2. Shell only uses a three data types: *(...in practicality; officially Shell 'doesn't use data types'.)*
-- NULL (ie: after using `unset`)
+*Shell* ***utilizes*** *data types; but Shell does not* ***use*** *(store as) data types other than "string".*
+
+#### Data types in Shell:
+1. Shell "doesn't **use**" data types, AKA Shell only stores all variable value data as the **string** data type. *(In many other languages, you must declare data types for variables.)* But, Shell can **utilize** data different ways...
+2. Shell mainly **utilizes** three data types:
 - boolean (`true`/`false`)
-- string (everything else)
 - integer (can be used in arithmetic operations, floats/decimals can't)
+- string (everything else)
+3. BASH can **utilize** a fourth data type:
+- array (multiple values, called with a **key**)
 
-*The fact that Shell "doesn't use" data types makes Shell a great first language!*
+*Since Shell "doesn't use" data types, that's one less thing to worry about. This makes Shell a great first language!*
 
 ### II. Quotes: single vs double
+
+*Quoting with 'single' vs "double" quotes makes a difference.*
 
 #### Rules of quotes:
 - Quotes are not always necessary for Shell variable values, but BASH requires quotes for values in tests (`if`, `for`, `while`, etc.)
@@ -96,6 +113,7 @@ FALSEsq='false'
 FALSEdq="false"
 FALSEvar=false
 
+# These tests already have the answer, "true" or "false"; true/false is how Shell tests work!
 if $TRUEsq ; then
     echo TRUEsq $TRUEsq
 else
@@ -147,7 +165,7 @@ fi
 
 ### IV. Arithmetic
 
-Example of boolean values and quotes:
+Example of integer values and quotes:
 
 *Edit a new file*
 
