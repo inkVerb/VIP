@@ -9,7 +9,7 @@
 
 ___
 
-### I. Exit Variable: `$?`
+### I. Exit code variable: `$?`
 
 *Prepare*
 

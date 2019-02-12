@@ -11,6 +11,12 @@ ___
 ___
 ### [Arrays](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Arrays.md)
 
+___
+### [Resources & Things That Run](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md)
+
+___
+### [Cron Schedule Format](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
+
 ### Style & Documents
 
 [GitHub's Markdown](https://github.com/sindresorhus/github-markdown-css)

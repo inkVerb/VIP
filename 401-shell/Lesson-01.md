@@ -178,4 +178,4 @@ Type: `echo "` *and notice the DIFFERENT results as you type*
 
 Press: Down *to get back to the normal prompt*
 
-#### [Lesson 2: File System Hierarchy](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)
+#### [Lesson 2: File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)

@@ -17,9 +17,69 @@ $@ = myshellscript.sh arg-1 argument-two three arg4 arg-5
 $# = 5 # because there are 5 arguments
 $? = # whatever the last exit code was, such as from a program
 ```
+
+The `shift` command will move these arguments to different numbers:
+- `shift` = The `$2` value will become `$1`, etc.
+- `shift 3` = The `$4` value will become `$1`, etc.
+- `shift` will *never* change the `$0` variable
+
 ___
 
-### II. Two ways to create variables
+### II. Custom variable names
+
+#### Three types of variables:
+- Environment variables (can't change, view many of these with `printenv` in the terminal)
+- Argument variables (assigned by following the executable command; `$0`, `$1`, `$2`, etc.)
+- Custom variables (you invent and assign these in a script)
+
+#### Custom variable rules:
+Custom variables...
+1. must NOT begin with a number
+2. may contain numbers after the first character
+3. may contain: uppercase, lowercase, digits, and underscore (`A-Z`, `a-z`, `0-9`, `_`)
+4. are case sensitive
+
+#### Examples of valid custom variables:
+
+- `_MyFile`
+- `MY_FILE`
+- `myfile`
+- `mYfIlE`
+- `my_file_23`
+- `_15`
+- `_1`
+- `file4`
+- `my4_files_`
+
+#### Examples of invalid custom variables:
+
+- `9myfile` (can't begin with digit)
+- `28` (can't begin with digit)
+- `TWO&THREE` (can't use `&`, only allowed special character is `_`)
+- `four-five` (can't use `-`, only allowed special character is `_`)
+
+#### Clearing a variable's value via `unset`
+
+Using `unset VARIABLE_NAME` will remove a variable's value, technically making it "NULL".
+
+For example:
+
+```sh
+VAR="fifty"
+
+echo $VAR
+
+# The screen will display "fifty".
+
+unset VAR
+
+echo $VAR
+
+# The screen will display nothing.
+```
+___
+
+### III. Two ways to create variables
 1. Declare the variable & value
 
 ```sh
@@ -63,7 +123,7 @@ echo "I am a sweet potato."
 ... Now `$?` = "0" because echo ran successfully and exited without error.
 ___
 
-### III. Find-replace in a variable's value
+### IV. Find-replace in a variable's value
 
 - `${VARIABL%foo}bar` will replace "foo" in the value output with "bar"
 
@@ -99,7 +159,7 @@ apple
 
 ___
 
-### IV. Variable Variables via `${!VAR}` (requires BASH)
+### V. Variable Variables via `${!VAR}` (requires BASH)
 
 ```bash
 #!/bin/bash
@@ -130,7 +190,7 @@ echo "${!four}"
 
 ___
 
-### V. `for` VARIABL `in` WUT
+### VI. `for` VARIABL `in` WUT
 
 - `for VARIABL` sets `$VARIABL` as a changing varable for each occurrence in `WUT`
 - `WUT` can be anything, such as files, such as `*.odt` or `*.png` or `*`
@@ -158,7 +218,7 @@ done
 
 ___
 
-### VI. `case` $VARIABL `in` ...`esac`
+### VII. `case` $VARIABL `in` ...`esac`
 - `case` uses a varible, but the variable must already be set
 - `case` does NOT set a variable
 
@@ -172,7 +232,7 @@ esac
 
 ___
 
-### VII. `getopts`
+### VIII. `getopts`
 - `getopts` sets a variable in a `while` loop
 
 
@@ -185,7 +245,7 @@ while getopts ":a:b:c:" VARIABL
 
 ___
 
-### VIII. `getopt`
+### IX. `getopt`
 - `getopt` HELPS to set a variable in a nested command using `VAR=$(getopt ...)` or `` VAR=`getopt ...` ``
 
 

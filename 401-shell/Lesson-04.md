@@ -257,4 +257,6 @@ host = localhost
 
 `sudo mysql -u root -pnewpassword -e "DROP USER newadminuser@localhost;"`
 
+*Refer to this cheat-sheet for more about systemctl and others:* [VIP/Cheet-Sheets: Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
+
 #### [Lesson 5: More with Variables](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-05.md)

@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 2: File System Hierarchy
+## Lesson 2: File System Hierarchy (FSH)
 
 `cd ~/School/VIP/shell/401`
 
@@ -9,8 +9,6 @@
 
 ___
 
-### I. File System Hierarchy (FSH)
-
 `cd /`
 
 `ls`
@@ -19,13 +17,13 @@ ___
 
 *This is the root of the Linux file system.*
 
-#### `/` – Root Directory
+### `/` – Root Directory
 
 This is the directory of all directories.
 
-#### Settings that change
+### Settings that change
 
-##### `/home/` — Home Directory (for normal users)
+#### `/home/` — Home Directory (for normal users)
 
 `cd home`
 
@@ -33,7 +31,7 @@ This is the directory of all directories.
 
 This is where your stuff goes. All your `Documents/` and `Downloads/` and `Desktop/` and other folders are in `/home/YOURUSER/`, which is also the same as `~/` since it changes from user to user.
 
-##### `/root/` – "Root" user Home Directory (also what `sudo` calls 'home')
+#### `/root/` – "Root" user Home Directory (also what `sudo` calls 'home')
 
 `cd ../root`
 
@@ -43,7 +41,7 @@ This is the "home" folder where stuff is kept when the "root" user needs to do s
 
 It might contain nothing.
 
-##### `/etc/` — Et Cetera (settings)
+#### `/etc/` — Et Cetera (settings)
 
 `cd ../etc`
 
@@ -57,15 +55,15 @@ This has been "[backronymed](https://unix.stackexchange.com/a/56159/315069)" as 
 
 This directory has a lot of stuff.
 
-##### `/lost+found/` Lost & Found (corrupt-but-found files)
+#### `/lost+found/` Lost & Found (corrupt-but-found files)
 
 If the system crashes, then runs a file system check, then finds damaged files, they will go here.
 
 Don't look here, you have better things to do.
 
-#### Read-only
+### Read-only
 
-##### `/boot/` – Boot files (for system boot)
+#### `/boot/` – Boot files (for system boot)
 
 `cd ../boot`
 
@@ -73,7 +71,7 @@ Don't look here, you have better things to do.
 
 This is for stuff that helps the computer to turn on. Don't mess.
 
-##### `/lib/` — Shared Libraries (may be used by many different applications)
+#### `/lib/` — Shared Libraries (may be used by many different applications)
 
 `cd ../lib`
 
@@ -81,7 +79,7 @@ This is for stuff that helps the computer to turn on. Don't mess.
 
 Files that go here may be occasionally be called "dependencies". Such a "library" is a set of files used by a variety of different software applications. These libraries are used quite often by graphic and media apps since many desktop media apps actually share many of the same backend tools.
 
-##### `/bin/` — Binaries (system-wide applications)
+#### `/bin/` — Binaries (system-wide applications)
 
 `cd ../bin`
 
@@ -91,7 +89,7 @@ A "binary" is a computer program that has been "compiled" into using core comput
 
 This is for base-system commands, this is *NOT* where installed software goes.
 
-##### `/sbin/` — System Binaries (root only)
+#### `/sbin/` — System Binaries (root only)
 
 `cd ../sbin`
 
@@ -99,9 +97,9 @@ This is for base-system commands, this is *NOT* where installed software goes.
 
 These are more basic binaries, but they are used by the system processes, not a normal part of the Shell language because most users won't use these.
 
-#### Installed Packages
+### Installed Packages
 
-##### `/usr/` — User Binaries (mostly desktop programs)
+#### `/usr/` — User Binaries (mostly desktop programs)
 
 `cd ../usr`
 
@@ -113,7 +111,7 @@ It is called the "user" directory because, for the most part, all desktop users 
 
 Debian (.deb files) should install here in order to be "properly" installed.
 
-##### `/opt/` – Optional Packages (resident aliens)
+#### `/opt/` – Optional Packages (resident aliens)
 
 `cd ../opt`
 
@@ -121,7 +119,7 @@ Debian (.deb files) should install here in order to be "properly" installed.
 
 This is where applications go when they don't follow the rules of this file system hierarchy. This is a great place to put your own software while you are being inventive.
 
-##### `/snap/`
+#### `/snap/`
 
 `cd ../snap`
 
@@ -131,9 +129,9 @@ This is where "snap" applications are installed. Snap is different from the syst
 
 Snap is a more powerful way of managing apps because it runs every app in its own "container", so if it crashes it does not risk crashing the entire system.
 
-#### Connected gadgets
+### Connected gadgets
 
-##### `/cdrom/` – CD-ROM mount path location in days of yore and lore
+#### `/cdrom/` – CD-ROM mount path location in days of yore and lore
 
 `cd ../cdrom`
 
@@ -141,7 +139,7 @@ Snap is a more powerful way of managing apps because it runs every app in its ow
 
 This is the classic path to the on-board CD-ROM drive.
 
-##### `/dev/` — Devices
+#### `/dev/` — Devices
 
 `cd ../dev`
 
@@ -149,7 +147,7 @@ This is the classic path to the on-board CD-ROM drive.
 
 A bluetooth device may be in here somewhere.
 
-##### `/mnt/` — Mount (temporarily mount permanently connected drives)
+#### `/mnt/` — Mount (temporarily mount permanently connected drives)
 
 `cd ../mnt`
 
@@ -157,7 +155,7 @@ A bluetooth device may be in here somewhere.
 
 This is where that Windows partition may show up if you decide to take a look at it while booted in Linux. It's also where other, non-system storage drives will appear when mounted
 
-##### `/media/` — Removable Media (i.e. USB drives)
+#### `/media/` — Removable Media (i.e. USB drives)
 
 `cd ../media`
 
@@ -165,9 +163,9 @@ This is where that Windows partition may show up if you decide to take a look at
 
 This is where USB-connected drives usually mount.
 
-#### Ever-changing
+### Ever-changing
 
-##### `/var/` — Variable Data
+#### `/var/` — Variable Data
 
 `cd ../var`
 
@@ -181,7 +179,7 @@ This is usually where the .swp "swap file" (virtual RAM) goes, if it is a file a
 
 Things here can and may need to change often.
 
-##### `/srv/` – Service Data (data for services provided by the system)
+#### `/srv/` – Service Data (data for services provided by the system)
 
 `cd ../srv`
 
@@ -189,7 +187,7 @@ Things here can and may need to change often.
 
 This is another place the `www/` directory can go, or where a server will keep shared/served files to make them available on a local network.
 
-##### `/run/` – Running processes (a place to keep stuff that won't get deleted)
+#### `/run/` – Running processes (a place to keep stuff that won't get deleted)
 
 `cd ../run`
 
@@ -197,7 +195,7 @@ This is another place the `www/` directory can go, or where a server will keep s
 
 This is where some applications put their own "while-running" files, caches, and other files that may need to be semi-temporary, but that shouldn't be automatically deleted.
 
-##### `/proc/` — Kernel & Process (files used by the kernel)
+#### `/proc/` — Kernel & Process (files used by the kernel)
 
 `cd ../proc`
 
@@ -205,7 +203,7 @@ This is where some applications put their own "while-running" files, caches, and
 
 These are essential for the most basic part of the system to function.
 
-##### `/sys/` – System's virtual file (live kernel information)
+#### `/sys/` – System's virtual file (live kernel information)
 
 `cd /sys`
 
@@ -213,17 +211,12 @@ These are essential for the most basic part of the system to function.
 
 This is a virtual file system, allowing normal text-file-like access to information about the system. It can contain live (virtual) text files that change as the system changes.
 
-##### `/tmp/` — Temporary files (one-time files)
+#### `/tmp/` — Temporary files (one-time files)
 
 `cd ../tmp`
 
 `ls`
 
 These eventually get deleted by the system. Usually, when you choose to "open" a file from the Internet, rather than "save" it, the file is saved here.
-
-### II. Cron Daemon
-
-
-
 
 #### [Lesson 3: Cron Daemon](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)

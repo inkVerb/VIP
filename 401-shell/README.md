@@ -6,7 +6,7 @@
 
 ### [Lesson 1: Returns & Terminal](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)
 
-### [Lesson 2: File System Hierarchy](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)
+### [Lesson 2: File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)
 
 ### [Lesson 3: Cron Daemon](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)
 
@@ -33,12 +33,4 @@ ___
 
 ## This tutorial should eventually include information about...
 
-### Scripting
--z & unset "the proper way" (VAR=$1; $VAR # Is $VAR set? # Use some arithmetic to see.) [top three answers here](https://serverfault.com/questions/7503/how-to-determine-if-a-bash-variable-is-empty)
-
 cat EOF
-
-### Filesystem Hierarchy Standard
-- https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/
-- https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
-- cron.d
