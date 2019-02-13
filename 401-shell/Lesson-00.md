@@ -20,7 +20,12 @@ Install the tools:
 
 `sudo apt install -y mysql-server dos2unix`
 
-*F12 (guake) OR Ctrl + Alt + T (new terminal)*
+> Optional: IF you logged in as a "sudoer", now exit
+>
+> `exit`
+>
+>
+___
 
 `mkdir -p ~/School/VIP/shell`
 
