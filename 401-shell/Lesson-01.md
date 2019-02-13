@@ -68,6 +68,8 @@ echo "Hello there.\
 This is a second line."
 ```
 
+*Note the extra line resulted in a single line break*
+
 *Consider this command:*
 
 `ls -l ~/School/VIP/shell/401`
@@ -143,10 +145,6 @@ l \
 
 *Vim: `:q!`*
 
-`!2`
-
-*Note* `!2` *calls line 2 form the history file, as for all* `!N` *useage*
-
 `!-2`
 
 *Note* `!-2` *calles the 2nd to last command, as for all* `!-Nth` *usage*
@@ -168,7 +166,7 @@ Type: `echo` *and notice the results*
 
 Press: Down *to get back to the normal prompt*
 
-`echo $DESKTOP_SESSION`
+`echo Hello world`
 
 *Go again*
 
