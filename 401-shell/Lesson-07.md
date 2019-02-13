@@ -11,7 +11,7 @@ ___
 
 ### I. Counter `while` loop
 
-*Edit a new file*
+*Edit this script*
 
 `gedit loopcount`
 
@@ -30,11 +30,9 @@ Count=$(expr $Count + 1)
 done
 ```
 
-*Make it executable*
+*Make sure it's executable*
 
-`chmod ug+x loopcount`
-
-`ls`
+`chmod ug+x loopcount && ls`
 
 *Run it and watch carefully*
 

@@ -22,7 +22,7 @@ ___
 
 ### I. Simple loop
 
-*Edit a new file*
+*Edit this script*
 
 `gedit looplines`
 
@@ -40,11 +40,9 @@ echo "IFS looped this once: $EachLine"
 done
 ```
 
-*Make it executable*
+*Make sure it's executable*
 
-`chmod ug+x looplines`
-
-`ls`
+`chmod ug+x looplines && ls`
 
 *Run it and watch carefully*
 
@@ -54,7 +52,7 @@ done
 
 Integrate `pwgen` with `sed` in a `for` loop...
 
-*Edit a new file*
+*Edit this script*
 
 `gedit looprandom`
 
@@ -76,11 +74,9 @@ done
 unset IFS # We don't want our strange settings messing with other things.
 ```
 
-*Make it executable*
+*Make sure it's executable*
 
-`chmod ug+x looprandom`
-
-`ls`
+`chmod ug+x looprandom && ls`
 
 *Run it*
 
@@ -104,7 +100,7 @@ sed -i "s/\t\t/\tword1\tword2\tword3\t/" randomlooped
 
 Set `$IFS` to a "tab"
 
-*Edit a new file*
+*Edit this script*
 
 `gedit looptab`
 
@@ -124,11 +120,9 @@ done
 unset IFS # We don't want our strange settings messing with other things.
 ```
 
-*Make it executable*
+*Make sure it's executable*
 
-`chmod ug+x looptab`
-
-`ls`
+`chmod ug+x looptab && ls`
 
 *Run it and watch carefully*
 
