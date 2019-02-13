@@ -15,7 +15,7 @@ ___
 
 `gedit loopcount`
 
-*Put this code in the new file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh

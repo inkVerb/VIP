@@ -26,7 +26,7 @@ ___
 
 `gedit looplines`
 
-*Put this code in the new file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
@@ -56,7 +56,7 @@ Integrate `pwgen` with `sed` in a `for` loop...
 
 `gedit looprandom`
 
-*Put this code in the new file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
@@ -104,7 +104,7 @@ Set `$IFS` to a "tab"
 
 `gedit looptab`
 
-*Put this code in the new file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
