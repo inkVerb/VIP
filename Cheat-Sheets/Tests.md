@@ -325,7 +325,7 @@ BASH and Shell do some `if`/`for`/`while`/`until` tests differently.
 
 ##### Quoting tested variables
 
-Shell: `$1` - Variables may use quotes, but do NOT need to.
+Shell: `$1` – Variables in tests **MAY** use quotes, but **DO NOT** need to.
 ```sh
 #!/bin/sh
 if [ -d $1 ] || [ -f $1 ] || [ -e $1 ] || [ -n $1 ] || [ -z $1 ] || [ $1 = $2 ] || [ $1 = sometext ]
@@ -335,7 +335,7 @@ if [ ! -d $1 ] || [ ! -f $1 ] || [ ! -e $1 ] || [ ! -n $1 ] || [ ! -z $1 ] || [ 
 then; echo yes; fi
 ```
 
-BASH: `"$1"` - Variables must always ALWAYS use quotes.
+BASH: `"$1"` – Variables in tests **MUST ALWAYS** use quotes.
 ```bash
 #!/bin/bash
 if [ -d "$1" ] || [ -f "$1" ] || [ -e "$1" ] || [ -n "$1" ] || [ -z "$1" ] || [ "$1" = "$2" ] || [ "$1" = "sometext" ]
@@ -348,16 +348,16 @@ then; echo yes; fi
 ##### Comparison
 
 ```bash
-# Shell BASH
-  -eq   ==   # is equal to
-  -ne   !=   # is not equal to
-  -gt   >    # is greater than
-  -lt   <    # is less than
-  -ge   >=   # is greater than or equal to
-  -le   <=   # is less than or equal to
+# Shell | BASH
+  -eq     ==    # is equal to
+  -ne     !=    # is not equal to
+  -gt     >     # is greater than
+  -lt     <     # is less than
+  -ge     >=    # is greater than or equal to
+  -le     <=    # is less than or equal to
 ```
 
-Shell: `if [ $NUM1 -eq $NUM2 ]` - Variables may use quotes, but do NOT need to.
+Shell: `if [ $NUM1 -eq $NUM2 ]` – Variables **MAY** use quotes, but do **NOT NEED** to.
 ```sh
 #!/bin/sh
 if [ $NUM1 -eq $NUM2 ]
@@ -368,9 +368,9 @@ if [ $NUM1 -ge $NUM2 ]
 if [ $NUM1 -le $NUM2 ]
 ```
 
-BASH: `if [ "$NUM1" -eq "$NUM2" ]` - Variables must always ALWAYS use quotes.
+BASH: `if [ "$NUM1" -eq "$NUM2" ]` – Variables **MUST ALWAYS** use quotes.
 
-BASH: `if (( "$NUM1" == "$NUM2" ))` - Symbol operators require double `((`parentheses`))`.
+BASH: `if (( "$NUM1" == "$NUM2" ))` – Symbol operators require double `((`parentheses`))`.
 ```bash
 #!/bin/bash
 if [ "$NUM1" -eq "$NUM2" ]
