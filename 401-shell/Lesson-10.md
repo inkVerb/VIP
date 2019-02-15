@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 10: Using functions
+## Lesson 10: Dynamics of Functions
 
 `cd ~/School/VIP/shell/401`
 
@@ -19,14 +19,17 @@ ___
 5. Functions don't `exit`; they `return`, but `exit` & `return` codes are the same
 6. If a `return` code is not set, the last executed command's `exit` status will be used instead
 
-*Consider this script:*
+
+### I. Argument & `return`
+
+*Edit this script*
 
 `gedit functionreturns`
 
-*It looks like this:*
+*It should look like this:*
 
 ```bash
-#!/bin/sh
+#!/bin/bash
 
 # Create a simple echo function
 echofunction() {
@@ -68,9 +71,16 @@ returnfunction 3
 # Show the "return" code
 echo "Return code: $?"
 
+# Call the multi-return code function as "apples"
+echo "Running returnfunction apples..."
+returnfunction apples
+
+# Show the "return" code
+echo "Return code: $?"
+
 ```
 
-*Run the script and watch closely*
+*Run it and watch carefully*
 
 `./functionreturns`
 
@@ -78,11 +88,50 @@ echo "Return code: $?"
 1. *The `return` code takes arguments and is called via `$?`, just like `exit`*
 2. *Functions take arguments, like `$1`, `$2`, etc*
 
+### II. Variables as `local` & functions declared first
 
-## Under Construction
+*Edit this script*
 
-In functions, parameters are looped: `funct one two three` will loop if only $1 is used in the function.
+`gedit functionlocal`
 
-Function variabless: local
+*It should look like this:*
+
+```bash
+#!/bin/bash
+
+# Create the function (nothing happens yet)
+varfunction() {
+local VARa="apricots"
+VARb="berries"
+
+echo "function VARa = $VARa"
+echo "function VARb = $VARb"
+}
+
+# Set the global variables
+VARa="apples"
+VARb="bananas"
+
+# echo the global variables
+echo "script VARa = $VARa"
+echo "script VARb = $VARb"
+
+# Call the function
+# VARa sets "local"
+# VARb sets "global"
+varfunction
+
+# echo the global variables again to see what changed
+echo "script VARa = $VARa"
+echo "script VARb = $VARb"
+```
+
+*Run it and watch carefully*
+
+`./functionlocal`
+
+*Note that the function changed the value of VARb "globally", but VARa only "locally" inside the function*
+
+*Cast and point: `local VARIABLE_NAME` sets a variable value that expires outside the function*
 
 #### [Lesson 11: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
