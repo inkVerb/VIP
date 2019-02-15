@@ -1,5 +1,8 @@
 # Tests
 
+*Refer to this lesson for more about shells, errors, and debugging:* [VIP/Shell 401 – Lesson 9](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)
+___
+
 ### I. Test: `true` & `false`
 
 - `false` = `0`
