@@ -9,8 +9,6 @@
 
 ___
 
-## Under Construction
-
 ### Rules of functions:
 1. Functions only work in BASH, not Shell.
 2. Functions must be declared before called.
@@ -80,8 +78,11 @@ echo "Return code: $?"
 1. *The `return` code takes arguments and is called via `$?`, just like `exit`*
 2. *Functions take arguments, like `$1`, `$2`, etc*
 
+
+## Under Construction
+
 In functions, parameters are looped: `funct one two three` will loop if only $1 is used in the function.
 
-Functions: return, local, echo $?
+Function variabless: local
 
 #### [Lesson 11: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
