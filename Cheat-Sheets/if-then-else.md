@@ -1,4 +1,5 @@
-#!/bin/sh
+# `if` `then` `else`
+```sh
 
 # Perform a test with response
 if [ THIS IS THE TEST ]
@@ -78,6 +79,7 @@ fi
 if [ "$variable" != "I am blue." ]; then
 echo "It's not a blueberry!"
 fi
+```
 
 # More with math:
 ## http://www.thegeekstuff.com/2010/06/bash-conditional-expression/
