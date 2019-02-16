@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 11: Characters & 'heredoc' `cat <<EOF`
+## Lesson 11: Characters & Heredocs
 
 `cd ~/School/VIP/shell/401`
 
@@ -9,11 +9,95 @@
 
 ___
 
-## Under Construction
+### I. Heredoc `cat <<EOF`
 
-### I. heredoc `cat <<EOF`
+Format:
+```sh
+SHELL_COMMAND <<DELIMETER
+DOCUMENT TEXT HERE
+ON MANY LINES
+DELIMETER
+```
 
-cat <<EOF (https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash)
+#### Common examples:
+
+*Copy-paste as one command, then again line-by-line:*
+
+**Delimeter: `EOF`**
+```sh
+cat <<EOF
+I am a super pumpkin.
+I like python, zen, code, and poetry.
+EOF
+```
+
+*Copy-paste as one command, then again line-by-line:*
+
+**Delimeter: `END`:**
+```sh
+cat <<END
+I am a here document.
+This is what I am.
+I'm at my end.
+END
+```
+
+#### Rules of heredocs
+1. A "heredoc" is text in a script treated as a separate text document.
+2. A heredoc's "delimeter" (often 'EOF' or 'END') can be anything, as long as both uses are the same.
+3. A heredoc is useful for using large amounts of text easily.
+
+#### Heredocs applied
+
+`ls`
+
+**Write text to a file:**
+```sh
+cat <<EOF | cat > neweof
+I am a here document.
+This is what I am.
+I'm at my end.
+EOF
+```
+
+`ls`
+
+`gedit neweof`
+
+**Variable in a script:**
+
+*Edit this script*
+
+`gedit eofvar`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+# Declare the variable and start the heredoc on one line
+EOFVAR=$(cat <<EOF
+I'm the heredoc variable.
+I have multiple lines.
+I done.
+EOF
+)
+# End the heredoc with the normal $() format, but on multiple lines
+
+echo "No quote echo:"
+echo $EOFVAR
+
+echo "Quoted echo:"
+echo "$EOFVAR"
+```
+
+*Run it*
+
+`./eofvar`
+
+*Note echoing without "quotess" makes everything appears on one line.*
+
+*Refer to this Wikipedia article about heredocs in Unix:* [Here document](https://en.wikipedia.org/wiki/Here_document#Unix_shells)
 
 ### II. Characters Classes
 

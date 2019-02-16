@@ -134,4 +134,4 @@ echo "script VARb = $VARb"
 
 *Cast and point: `local VARIABLE_NAME` sets a variable value that expires outside the function*
 
-#### [Lesson 11: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
+#### [Lesson 11: Characters & Heredocs](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)

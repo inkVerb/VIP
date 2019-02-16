@@ -47,7 +47,31 @@ ___
 
 Shell:
 
+*Edit this script*
+
 `gedit math-sh`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+_5=5
+_6=6
+
+# Shell:
+echo "Trying Shell..."
+if [ $_5 -lt $_6 ]; then
+echo "Less than! It works!"
+fi
+
+# BASH:
+echo "Trying BASH..."
+if (( $_5 < $_6 )); then
+echo "Less than! It works!"
+fi
+
+```
 
 `./math-sh`
 
@@ -55,7 +79,31 @@ Shell:
 
 BASH:
 
+*Edit this script*
+
 `gedit math-bash`
+
+*It should look like this:*
+
+```bash
+#!/bin/bash
+
+_5=5
+_6=6
+
+# Shell:
+echo "Trying Shell..."
+if [ $_5 -lt $_6 ]; then
+echo "Less than! It works!"
+fi
+
+# BASH:
+echo "Trying BASH..."
+if (( $_5 < $_6 )); then
+echo "Less than! It works!"
+fi
+
+```
 
 `./math-bash`
 
@@ -146,7 +194,28 @@ $VAR || echo "OR is false."
 
 Stating `true`/`false`:
 
+*Edit this script*
+
 `gedit truefalse`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+echo "No variable, stating \"true\""
+# Simple test: true
+true && echo "AND/OR is true." || echo "AND/OR is false."
+true && echo "AND is true."
+true || echo "OR is false."
+
+echo "No variable, stating \"false\""
+# Same simple test: false
+false && echo "AND/OR is true." || echo "AND/OR is false."
+false && echo "AND is true."
+false || echo "OR is false."
+
+```
 
 `./truefalse`
 
@@ -154,7 +223,32 @@ Stating `true`/`false`:
 
 Variable as `true`/`false`:
 
+*Edit this script*
+
 `gedit truefalsevar`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+VAR=true
+echo "Variable set to: $VAR"
+
+# Simple test:
+$VAR && echo "AND/OR is true." || echo "AND/OR is false."
+$VAR && echo "AND is true."
+$VAR || echo "OR is false."
+
+VAR=false
+echo "Variable set to: $VAR"
+
+# Same simple test:
+$VAR && echo "AND/OR is true." || echo "AND/OR is false."
+$VAR && echo "AND is true."
+$VAR || echo "OR is false."
+
+```
 
 `./truefalsevar`
 
@@ -162,7 +256,31 @@ Variable as `true`/`false`:
 
 Variable as other **"string"**:
 
+*Edit this script*
+
 `gedit truefalsevarstring`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+VAR=apples
+echo "Variable set to: $VAR"
+
+# Simple test:
+$VAR && echo "AND/OR is true." || echo "AND/OR is false."
+$VAR && echo "AND is true."
+$VAR || echo "OR is false."
+
+VAR=pencils
+echo "Variable set to: $VAR"
+
+# Same simple test:
+$VAR && echo "AND/OR is true." || echo "AND/OR is false."
+$VAR && echo "AND is true."
+$VAR || echo "OR is false."
+```
 
 `./truefalsevarstring`
 
@@ -176,13 +294,87 @@ Variable as other **"string"**:
 
 Test with `-z`:
 
+*Edit this script*
+
 `gedit varset-z`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+# The variable $VAR is NOT set
+echo "1. \$VAR is NOT yet set!"
+
+if [ -z $VAR ]; then
+echo "NOT set: $VAR"
+else
+echo "IS set: $VAR"
+fi
+
+# Now, the variable $VAR IS set:
+VAR=varSet
+echo "2. \$VAR has been set!"
+
+if [ -z $VAR ]; then
+echo "NOT set: $VAR"
+else
+echo "IS set: $VAR"
+fi
+
+# Now, the variable $VAR is unset:
+unset VAR
+echo "3. \$VAR has been UNset!"
+
+if [ -z $VAR ]; then
+echo "NOT set: $VAR"
+else
+echo "IS set: $VAR"
+fi
+```
 
 `./varset-z`
 
 Test with `-n`:
 
+*Edit this script*
+
 `gedit varset-n`
+
+*It should look like this:*
+
+```bash
+#!/bin/bash
+
+# The variable $VAR is NOT set
+echo "1. \$VAR is NOT yet set!"
+
+if [ -n $VAR ]; then
+echo "NOT empty set: $VAR"
+else
+echo "IS empty set: $VAR"
+fi
+
+# Now, the variable $VAR IS set:
+VAR=varSet
+echo "2. \$VAR has been set!"
+
+if [ -n $VAR ]; then
+echo "NOT empty set: $VAR"
+else
+echo "IS empty set: $VAR"
+fi
+
+# Now, the variable $VAR is unset:
+unset VAR
+echo "3. \$VAR has been UNset!"
+
+if [ -n $VAR ]; then
+echo "NOT empty set: $VAR"
+else
+echo "IS empty set: $VAR"
+fi
+```
 
 `./varset-n`
 
