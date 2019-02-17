@@ -11,6 +11,12 @@ ___
 
 ### I. Heredoc `cat <<EOF`
 
+#### Rules of heredocs
+1. A "heredoc" is text in a script treated as a separate text document.
+2. A heredoc's "delimeter" (often 'EOF' or 'END') can be anything, as long as both uses are the same.
+3. A heredoc is a multi-line argument for a command.
+4. A heredoc conveniently handles large amounts of text.
+
 Format:
 ```sh
 SHELL_COMMAND <<DELIMETER
@@ -42,11 +48,6 @@ I'm at my end.
 END
 ```
 
-#### Rules of heredocs
-1. A "heredoc" is text in a script treated as a separate text document.
-2. A heredoc's "delimeter" (often 'EOF' or 'END') can be anything, as long as both uses are the same.
-3. A heredoc is useful for using large amounts of text easily.
-
 #### Heredocs applied
 
 `ls`
@@ -61,6 +62,8 @@ EOF
 ```
 
 `ls`
+
+*Note the new file created: "neweof"*
 
 `gedit neweof`
 
