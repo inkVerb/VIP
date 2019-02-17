@@ -26,4 +26,4 @@
 
 ### [Lesson 11: Characters & Heredocs](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
 
-### [Lesson 12: Path Plus](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
+### [Lesson 12: `$PATH` Plus](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
