@@ -102,11 +102,19 @@ ___
 
 # Done! Have a cookie: ### #
 
-Wait, what's pacman4console?
+Wait, what are these?
 
-`sudo apt install pacman4console`
+`sudo apt install bastet moon-buggy ninvaders nsnake pacman4console`
 
-F11 (terminal to fullscreen)
+(Make sure the terminal is big enough!)
+
+`bastet`
+
+`moon-buggy`
+
+`ninvaders`
+
+`nsnake`
 
 `pacman4console`
 
