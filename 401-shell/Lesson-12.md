@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 12: Path Plus
+## Lesson 12: `$PATH` Plus
 
 `cd ~/School/VIP/shell/401`
 
@@ -61,9 +61,29 @@ done
 
 *Files in these directories can be run without entering the entire path.*
 
-**Add dirs to path:**
+**You can check** `which` **directory of the $PATH a command is located in...**
 
-*You can add as many extra directories as you want to your user's path...*
+`which expr`
+
+`which cp`
+
+`which sed`
+
+`which grep`
+
+`which which`
+
+`which git`
+
+`which gedit`
+
+`which firefox`
+
+*You should find that these locations generally respect the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md).*
+
+**Add dirs to $PATH:**
+
+*You can add as many extra directories as you want to your user's $PATH...*
 - In this file: `~/.bashrc`
 - Add a line with: `export PATH=$PATH:/ADDED/DIR:/ADD/ANOTHER/DIR:/ADD/MORE/DIRS`
 - Careful, adding insecure files could be a way to hack your machine, use mindfully and only add directories you ***need***.
@@ -76,19 +96,27 @@ done
 
 `cd $OLDPWD`
 
-`ls -f ~/`
+`mkdir space\ names`
 
-`mkdir "space names"`
+`ls`
 
 `cd "space names"`
 
 `touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
 
+`ls`
+
 `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
+
+`ls`
 
 `touch song.mp3 image.png media.ogg jpeg.jpg`
 
+`ls`
+
 `touch exec comm execomm`
+
+`ls`
 
 `chmod ug+x exec comm execomm`
 
@@ -100,7 +128,11 @@ done
 
 `touch alpha bravo charlie delta`
 
+`ls`
+
 `touch alpha2 bravo2 charlie2 delta2`
+
+`ls`
 
 `touch 1 2 3 4`
 
@@ -120,22 +152,6 @@ done
 
 *You can overwrite each, or not, or Ctrl + C to close*
 
-`which expr`
-
-`which cp`
-
-`which sed`
-
-`which grep`
-
-`which which`
-
-`which git`
-
-`which gedit`
-
-`which firefox`
-
 `view code-of-poetry.txt`
 
 *Try "i" for insert*
@@ -150,7 +166,7 @@ done
 
 *Open a new terminal window: Ctrl + Alt + T (not F12)*
 
-**Run in the new terminal window** *(...and keep watch in the first terminal)*
+**Run in the new terminal window:** *(...and keep watch in the first terminal)*
 > `cd ~/School/VIP/shell/401`
 >
 > `echo "I am fruit." >> rtfile.md`
