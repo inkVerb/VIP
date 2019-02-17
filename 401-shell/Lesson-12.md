@@ -120,6 +120,22 @@ done
 
 *You can overwrite each, or not, or Ctrl + C to close*
 
+`which expr`
+
+`which cp`
+
+`which sed`
+
+`which grep`
+
+`which which`
+
+`which git`
+
+`which gedit`
+
+`which firefox`
+
 `view code-of-poetry.txt`
 
 *Try "i" for insert*
@@ -127,8 +143,6 @@ done
 *Oh no! It's read-only with `view`*
 
 *Exit with:* `:q`
-
-***Realtime changes in a file...***
 
 `touch rtfile.md`
 
@@ -140,6 +154,7 @@ done
 > `cd ~/School/VIP/shell/401`
 >
 > `echo "I am fruit." >> rtfile.md`
+>
 > *Did you see that?*
 >
 > `echo "I am kruit." >> rtfile.md`
