@@ -54,10 +54,10 @@ The favorite way for a system admin to set up a custom cron task is using the `c
 This will edit the file `/etc/crontab`, which is managed by the system.
 
 **Instructions:**
-1. The crontab file has one to-be-run Shell script *per line* with cron schedule settings (below).
+1. The 'crontab' file has one to-be-run Shell script *per line* with cron schedule settings (below).
 2. The Shell script listed at the end of the line *must be executable*, probably using: `chmod ug+x SCRIPT_FILE`
-
-*The first time you run* `crontab` *you will be asked to choose an editor, that's normal.*
+3. The first time you run `crontab` you will be asked to choose an editor, that's normal.
+4. `crontab` records are usually kept here: `/var/spool/cron/crontabs/USERNAME`, don't touch!
 
 ### Cron schedule format
 

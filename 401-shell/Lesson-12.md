@@ -9,7 +9,7 @@
 
 ___
 
-### `$PATH`
+### The `$PATH` environment variable
 
 `echo $PATH`
 
@@ -68,23 +68,160 @@ done
 - Add a line with: `export PATH=$PATH:/ADDED/DIR:/ADD/ANOTHER/DIR:/ADD/MORE/DIRS`
 - Careful, adding insecure files could be a way to hack your machine, use mindfully and only add directories you ***need***.
 
-### Locations for `crontab` files
+### Other command line hacks
 
-- /etc/cron.d/ chmod 640 & `crontab` how to /var/spool/cron/crontabs/USERNAME ; chown USER:crontab
+`cd ..`
 
+`echo $OLDPWD`
 
-- previous directory $OLDPWD
-- with pinkypurple, run command as other user
-- copydir... ls -R, ls -d, tree, tree -d, tree -C, ls -b for escape codes ( ) & | ' < > TAB
-- ...and `file` to determine a file type
-- dir structure, `which` to show file location
-- `cp -i` interactive for replacing files
-- `rmdir -p` only for empty dirs, -p includes parents
-- `ls -a` and include creating hidden files `ls -F` for file types, -t time, -r reverse order
-- chmod a ...for all of ugo, = only, + add, - remove
-- vim... `view` for read only vim
-- ...diff add: sdiff, vimdiff
-- 201-12: cat more less head tail... `tail -f` with `cat` to watch a file be appended in real time
+`cd $OLDPWD`
 
+`ls -f ~/`
+
+`mkdir "space names"`
+
+`cd "space names"`
+
+`touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
+
+`touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
+
+`touch song.mp3 image.png media.ogg jpeg.jpg`
+
+`touch exec comm execomm`
+
+`chmod ug+x exec comm execomm`
+
+`ls -a`
+
+`ls -f`
+
+`ls -b`
+
+`touch alpha bravo charlie delta`
+
+`touch alpha2 bravo2 charlie2 delta2`
+
+`touch 1 2 3 4`
+
+`ls`
+
+`ls -r`
+
+`ls -t`
+
+`ls -rt`
+
+`cd ..`
+
+`cp -r space\ names "space also"`
+
+`cp -i space\ also/* space\ names/`
+
+*You can overwrite each, or not, or Ctrl + C to close*
+
+`view code-of-poetry.txt`
+
+*Try "i" for insert*
+
+*Oh no! It's read-only with `view`*
+
+*Exit with:* `:q`
+
+***Realtime changes in a file...***
+
+`touch rtfile.md`
+
+`tail -f rtfile.md`
+
+*Open a new terminal window: Ctrl + Alt + T (not F12)*
+
+**Run in the new terminal window** *(...and keep watch in the first terminal)*
+> `cd ~/School/VIP/shell/401`
+>
+> `echo "I am fruit." >> rtfile.md`
+> *Did you see that?*
+>
+> `echo "I am kruit." >> rtfile.md`
+>
+> `echo "I am vruit." >> rtfile.md`
+>
+> `echo "I am gruit." >> rtfile.md`
+>
+> `exit`
+
+*Ctrl + C*
 
 # Done! Have a cookie: ### #
+
+Wait, what?
+
+Now, for the [BSD games](http://wiki.linuxquestions.org/wiki/BSD_games) (from the package `bsdgames`)...
+
+`sudo apt install bsdgames`
+
+(Make sure the terminal is big enough!)
+
+**Action games:**
+- `hunt` - a multi-player multi-terminal game
+- `worm` - Play the growing worm game
+
+**Board games:**
+- `backgammon` - the game of backgammon
+- `gomoku` - game of 5 in a row
+- `monop` - Monopoly game
+
+**Card games:**
+- `canfield` - the solitaire card game canfield
+- `cribbage` - the card game cribbage
+- `fish` - play Go Fish
+- `mille` - play Mille Bornes
+
+**Formatting fun:**
+- `banner` - print large banner on printer
+- `bcd` - reformat input as punch cards, paper tape or morse code
+- `morse` - reformat input as punch cards, paper tape or morse code
+- `number` - convert Arabic numerals to English
+- `pig` - eformatray inputway asway Igpay Atinlay
+- `ppt` - reformat input as punch cards, paper tape or morse code
+- `random` - random lines from a file or random numbers
+- `rot13` - rot13 encrypt/decrypt
+
+**Puzzle/Quiz:**
+- `arithmetic` - quiz on simple arithmetic
+- `boggle` - word search game
+- `hangman` - Computer version of the game hangman
+- `robots` - fight off villainous robots
+- `snake` - display chase game
+- `tetris`-bsd - the game of tetris
+- `quiz` - random knowledge tests
+- `wump` - hunt the wumpus in an underground cave
+
+**Role playing:**
+- `adventure` - an exploration game
+- `battlestar` - a tropical adventure game
+- `phantasia` - an interterminal fantasy game
+
+**"Screensavers":**
+- `rain` - animated raindrops display
+- `worms` - animate worms on a display terminal
+
+**Simulation games:**
+- `atc` - air traffic controller game
+- `sail` - multi-user wooden ships and iron men
+- `trek` - trekkie game
+
+**Various calculations:**
+- `caesar` - decrypt caesar cyphers
+- `pom` - display the phase of the moon
+- `primes` - generate primes
+
+**Other:**
+- `cfscores` - show scores for canfield
+- `huntd` - hunt daemon, back-end for hunt game
+- `snscore` - show scores for snake
+- `teachgammon` - learn to play backgammon
+- `wargames` - shall we play a game?
+- `wtf` - translates acronyms for you
+
+And then there's the "Scorched Earth" clone: [xscorch](http://www.xscorch.org/)
