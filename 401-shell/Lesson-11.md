@@ -149,4 +149,4 @@ echo "$EOFVAR"
 
 `sed "s/[a-z]/x/g" code-of-poetry.txt`
 
-#### [Lesson 12: NEXT](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
+#### [Lesson 12: Path Plus](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
