@@ -43,23 +43,29 @@ Once you know how to work with a computer terminal (Linux language), all code wi
 
 `sudo apt install gedit guake nautilus chromium-browser firefox`
 
-## First, a Quick Orientation
+## Orientation
 
-*This is italics, giving you instructions or explanation*
+This is normal text, which may label or tell something, it is rare.
 
-*Instructions never end with a period since it could be confusing in code*
+*This italics text is a note that helps teach and explain something in a lesson.*
 
-*Sometimes instructions end with an exclamation mark! Could they end with a question mark?*
+*The following is called "preformatted" text, which uses a "monospace" font:* `preformatted monospace text`
 
-*Here is monospace code style:* `cp /alldirs ./bookkeeping/`
+*Preformatted text indicates computer code. Many websites do this.* `i am computer code`
 
-*In monospace, every character is the same width, it is meant to indicate a coding language*
+*This note explains code later on this line, but don't enter it in the terminal* `read me but not for terminal`
 
-*This is because both terminals and text editors use monospace fonts, being easier to use*
+`i am a command to be entered in the terminal`
 
-*Only and always enter monospace into the terminal if it is:*
-1. Normal size, not a header size
-2. Begins the line, not later in the line like this `cd .trash`
+`i am another terminal command` *This is a very important note specifically about the command just entered*
+
+`third terminal command`
+
+*Note that was the third terminal command, but it won't actually work*
+
+*Let's enter the fourth and final command, which also won't work*
+
+`fourth broken command`
 
 *Note that you would normally enter this* `cd` *command on the next line into the terminal...*
 
