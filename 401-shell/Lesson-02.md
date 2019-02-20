@@ -1,12 +1,5 @@
 # Shell 401
 ## Lesson 2: File System Hierarchy (FSH)
-
-`cd ~/School/VIP/shell/401`
-
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 `cd /`
@@ -57,6 +50,10 @@ This directory has a lot of stuff.
 
 #### `/lost+found/` Lost & Found (corrupt-but-found files)
 
+`cd ../lost+found`
+
+`ls`
+
 If the system crashes, then runs a file system check, then finds damaged files, they will go here.
 
 Don't look here, you have better things to do.
@@ -105,11 +102,19 @@ These are more basic binaries, but they are used by the system processes, not a 
 
 `ls`
 
+*Peek in this directory:*
+
+`cd bin`
+
+`ls`
+
 This is where installable binaries go from installable packages. When you run `sudo apt install SOMETHING` the installed program will usually put its executable files here.
 
 It is called the "user" directory because, for the most part, all desktop users will access binaries (programs) that have been installed to this directory.
 
 Debian (.deb files) should install here in order to be "properly" installed.
+
+`cd ..`
 
 #### `/opt/` – Optional Packages (resident aliens)
 
@@ -218,5 +223,21 @@ This is a virtual file system, allowing normal text-file-like access to informat
 `ls`
 
 These eventually get deleted by the system. Usually, when you choose to "open" a file from the Internet, rather than "save" it, the file is saved here.
+
+### What's important?
+
+Here are some of the more "important" directories to remember, at first:
+
+- `/home/`
+- `/bin/`
+- `/lib/`
+- `/etc/`
+- `/usr/`
+- `/opt/`
+- `/mnt/`
+- `/media/`
+- `/dev/`
+- `/var/`
+- `/tmp/`
 
 #### [Lesson 3: Cron Daemon](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)
