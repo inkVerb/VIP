@@ -3,35 +3,6 @@
 
 `cd ~/School/VIP/shell/101`
 
-
-___
-
-### Orientation
-
-This is normal text, which may label or tell something, it is rare.
-
-*This italics text is a note that helps teach and explain something in a lesson.*
-
-*The following is called "preformatted" text, which uses a "monospace" font:* `preformatted monospace text`
-
-*Preformatted text indicates computer code. Many websites do this.* `i am computer code`
-
-*This note explains code later on this line, but don't enter it in the terminal* `read me but not for terminal`
-
-`i am a command to be entered in the terminal`
-
-`i am another terminal command` *This is a very important note specifically about the command just entered*
-
-`third terminal command`
-
-*Note that was the third terminal command, but it won't actually work*
-
-*Let's enter the fourth and final command, which also won't work*
-
-`fourth broken command`
-
-*That's the end of the Orientation*
-
 ___
 
 `gedit`
