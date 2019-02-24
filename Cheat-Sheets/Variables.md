@@ -159,7 +159,45 @@ apple
 
 ___
 
-### V. Variable Variables via `${!VAR}` (requires BASH)
+### V. Variable Variables
+
+#### Method 1: via `eval` (capable in Shell)
+
+```sh
+#!/bin/sh
+VARONE="VARTWO"
+eval "$VARONE='$(echo "I love apples.")'"
+echo $VARTWO # -> "I love apples."
+
+```
+
+OR, to be cleaner and more complex...
+
+```sh
+#!/bin/sh
+VARONE="VARTWO"
+MyMessage="I love apples."
+eval "$VARONE='$(echo "$MyMessage")'"
+echo $VARTWO # -> "I love apples."
+```
+
+OR, to include a [heredoc](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md#i-heredoc-cat-eof)...
+```sh
+#!/bin/sh
+VARONE="VARTWO"
+MyHeredoc="$(cat <<EOF
+This is my message.
+I am using $VARONE.
+This is the third line.
+EOF
+)"
+eval "$VARONE='$(echo "$MyHeredoc")'"
+echo $VARTWO # -> "No quotes: This is my message. I'm using $VARONE. This is the third line." (all on one line)
+echo Now, with quotes:
+echo "$VARTWO" # -> Note lines are preserved because `echo` only preserves variable lines with double quotes, as also in the `eval` statement.
+```
+
+#### Method 2: via `${!VAR}` (requires BASH)
 
 ```bash
 #!/bin/bash
