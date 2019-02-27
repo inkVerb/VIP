@@ -8,7 +8,6 @@ ___
 >
 > | **1** : `su USERNAME`
 >
->
 ___
 
 #### If you did Shell 201, but on a different machine
