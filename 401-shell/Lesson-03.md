@@ -1,8 +1,6 @@
 # Shell 401
 ## Lesson 3: Cron Daemon
 
-`cd ~/School/VIP/shell/401`
-
 ___
 
 Cron tasks are processes (usually in a Shell script) that are automatically run by the system on a regular basis.
@@ -27,13 +25,18 @@ The system will automatically run cron scripts on its own scheduled basis in thr
 2. File Permissions: `rwxr-xr-x` set with: `chmod 755 CRON_FILE_NAME`
 
 ### Custom scheduled jobs
+To have more control of the time a cron task will run, put cron files here:
+- Cron directory: `/etc/cron.d/`
 
 | **5** : `cd cron.d/`
 
 | **6** : `ls -l`
 
-To have more control of the time a cron task will run, put generic cron files here:
-- Cron directory: `/etc/cron.d/`
+Cron files (like these) contain simple lines that look like this:
+
+```shell
+0 5 * * * /path/to/script
+```
 
 **Instructions:**
 1. Each cron file has one to-be-run Shell script *per line* with cron schedule settings (below).
@@ -49,13 +52,15 @@ The favorite way for a system admin to set up a custom cron task is using the `c
 
 This will edit the file `/etc/crontab`, which is managed by the system.
 
+Crontab entries follow the same format as the files in `cd cron.d/` (see *Cron file schedule format* below)
+
 **Instructions:**
 1. The 'crontab' file has one to-be-run Shell script *per line* with cron schedule settings (below).
 2. The Shell script listed at the end of the line *must be executable*, probably using: `chmod ug+x SCRIPT_FILE`
 3. The first time you run `crontab` you will be asked to choose an editor, that's normal.
 4. `crontab` records are usually kept here: `/var/spool/cron/crontabs/USERNAME`, don't touch!
 
-### Cron schedule format
+### Cron file schedule format
 
 Format of a cron line:
 
@@ -64,9 +69,9 @@ Format of a cron line:
 Example of a cron line:
 
 **Everyday at 3:00 pm:**
-| **8** : ```shell
+```shell
 0 15 * * * /path/to/script
-| **9** : ```
+```
 
 *An astric* **\*** *will run at all times for that setting.*
 
