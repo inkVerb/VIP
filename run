@@ -1,9 +1,0 @@
-#!/bin/bash
-
-cd $1
-
-for L in Lesson-*; do
-
-  sed -i "s/^\`/\| \*\*XX\*\* : \`/" $L
-
-done
