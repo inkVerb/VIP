@@ -10,20 +10,19 @@ ___
 >
 ___
 
-#### If you did Shell 201, but on a different machine
-Install the tools:
-
-| **2** : `sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen`
-
 ## Prepare
 
-| **3** : `sudo apt install -y mysql-server dos2unix`
+#### If you did Shell 201, but not on this machine
+Install the tools:
+
+| **2** : `sudo apt update`
+
+| **3** : `sudo apt install -y git dos2unix pwgen`
 
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **4** : `exit`
->
 >
 ___
 
