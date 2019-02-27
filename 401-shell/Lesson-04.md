@@ -20,7 +20,11 @@ ___
 >
 ___
 
-*MySQL can be installed with:* `sudo apt install mysql-server` *(which should have been done in Lesson 0)*
+*MySQL can be installed with:* `sudo apt install mysql-server`
+
+*If you install MySQL for this lesson, then you **MAY** completely remove*
+
+*it after with this:* `sudo apt install mysql-server && sudo apt purge mysql-server`
 
 *Use* `systemctl` *to start, stop, restart, and check the status of services, such as MySQL*
 

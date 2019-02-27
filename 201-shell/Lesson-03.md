@@ -109,4 +109,9 @@ ___
 >
 ___
 
+**Tip:** If you ever get an `apt upgrade` message with something like "some packages were held back", here are two easy fixes that often work:
+
+1. `sudo apt install PACKAGE` *Yes, just install the listed package directly*
+2. `sudo apt full-upgrade`
+
 #### [Lesson 4: ls -l, chmod](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)
