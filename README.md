@@ -43,52 +43,17 @@ Once you know how to work with a computer terminal (Linux language), all code wi
 
 `sudo apt install gedit tilda nautilus chromium-browser firefox`
 
-## First, a Quick Orientation
+## First day of school
 
-*This is italics, giving you instructions or explanation*
-
-*Instructions never end with a period since it could be confusing in code*
-
-*Sometimes instructions end with an exclamation mark! Could they end with a question mark?*
-
-*Here is monospace code style:* `cp /alldirs ./bookkeeping/`
-
-*In monospace, every character is the same width, it is meant to indicate a coding language*
-
-*This is because both terminals and text editors use monospace fonts, being easier to use*
-
-*Only and always enter monospace into the terminal if it is:*
-1. Normal size, not a header size
-2. Begins the line, not later in the line like this `cd .trash`
-
-*Note that you would normally enter this* `cd` *command on the next line into the terminal...*
-
-`cd ~/`
-
-*Below is a block of code, merely for your reference; do NOT enter it in the terminal:*
-
-```sh
-# This is a comment in the code
-
-echo "I am actually a real command."
-
-exit 0
-
-# That is all there is to this block of code
-
-```
-
-*There are twelve lessons per level, sometimes they are divided into sections with Roman numerals*
-
-*Each lesson begins with commands you may need, but not necessarily, like this:*
+*Many lessons begin with commands or links you may need, but not necessarily, like this:*
 
 `cd ~/School/VIP/shell/101`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
+
+*There are twelve lessons per level, sometimes they are divided into sections with Roman numerals*
+
+*Lessons are separated by **TOPIC**, NOT **TIME**, so some may be longer than others*
 
 *Each lesson has a "homework" comparison folder that can be checked at* [inkVerb/VIP Homework](https://github.com/inkVerb/vip-homework/)
 
@@ -98,7 +63,7 @@ Udemy! *You can get more teaching tips, take quizzes, work with a community, and
 
 *You might learn some things merely by watching the videos, but you learn much more if you have Linux installed on your computer and participate*
 
-*It is also very helpful if you know how to type correctly!*
+*It is also very helpful if you know how to type correctly!* [write.pink/88](http://write.pink/88)
 
 That is the end of these instructions. You should feel like a better person.
 
