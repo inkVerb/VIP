@@ -3,15 +3,11 @@
 
 `cd ~/School/VIP/shell/401`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 ### The `$PATH` environment variable
 
-`echo $PATH`
+| **1** : `echo $PATH`
 
 *This is the "$PATH", the list of directories where executable files can be run by filename only*
 
@@ -19,20 +15,20 @@ ___
 
 ***Using the full path*** *let's run a small script containing this:*
 
-```sh
+| **2** : ```sh
 #!/bin/sh
 echo "I am executable, but I am not in the \$PATH."
-```
+| **3** : ```
 1. Relative `/home/` path:
 
-`~/School/VIP/shell/401/iamexec`
+| **4** : `~/School/VIP/shell/401/iamexec`
 
 2. "here" path:
-`./iamexec`
+| **5** : `./iamexec`
 
 3. "full path" (get with `pwd`)
 
-`pwd` *Execute this output, plus* `/iamexec`
+| **6** : `pwd` *Execute this output, plus* `/iamexec`
 
 Something like: `/home/USERNAME/School/VIP/shell/401/iamexec`
 
@@ -40,11 +36,11 @@ Something like: `/home/USERNAME/School/VIP/shell/401/iamexec`
 
 *Edit the script*
 
-`gedit listpath`
+| **7** : `gedit listpath`
 
 *It should look like this:*
 
-```sh
+| **8** : ```sh
 #!/bin/sh
 
 # Set the field separator for the `for` loop to the `:` that separates dirs in the $PATH
@@ -55,29 +51,29 @@ IFS=:
 for pdir in $(echo "$PATH"); do
   echo $pdir
 done
-```
+| **9** : ```
 
-`./listpath`
+| **10** : `./listpath`
 
 *Files in these directories can be run without entering the entire path.*
 
 **You can check** `which` **directory of the $PATH a command is located in...**
 
-`which expr`
+| **11** : `which expr`
 
-`which cp`
+| **12** : `which cp`
 
-`which sed`
+| **13** : `which sed`
 
-`which grep`
+| **14** : `which grep`
 
-`which which`
+| **15** : `which which`
 
-`which git`
+| **16** : `which git`
 
-`which gedit`
+| **17** : `which gedit`
 
-`which firefox`
+| **18** : `which firefox`
 
 *You should find that these locations generally respect the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md).*
 
@@ -90,69 +86,69 @@ done
 
 ### Other command line hacks
 
-`cd ..`
+| **19** : `cd ..`
 
-`echo $OLDPWD`
+| **20** : `echo $OLDPWD`
 
-`cd $OLDPWD`
+| **21** : `cd $OLDPWD`
 
-`mkdir space\ names`
+| **22** : `mkdir space\ names`
 
-`ls`
+| **23** : `ls`
 
-`cd "space names"`
+| **24** : `cd "space names"`
 
-`touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
+| **25** : `touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
 
-`ls`
+| **26** : `ls`
 
-`touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
+| **27** : `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
 
-`ls`
+| **28** : `ls`
 
-`touch song.mp3 image.png media.ogg jpeg.jpg`
+| **29** : `touch song.mp3 image.png media.ogg jpeg.jpg`
 
-`ls`
+| **30** : `ls`
 
-`touch exec comm execomm`
+| **31** : `touch exec comm execomm`
 
-`ls`
+| **32** : `ls`
 
-`chmod ug+x exec comm execomm`
+| **33** : `chmod ug+x exec comm execomm`
 
-`ls -a`
+| **34** : `ls -a`
 
-`ls -f`
+| **35** : `ls -f`
 
-`ls -b`
+| **36** : `ls -b`
 
-`touch alpha bravo charlie delta`
+| **37** : `touch alpha bravo charlie delta`
 
-`ls`
+| **38** : `ls`
 
-`touch alpha2 bravo2 charlie2 delta2`
+| **39** : `touch alpha2 bravo2 charlie2 delta2`
 
-`ls`
+| **40** : `ls`
 
-`touch 1 2 3 4`
+| **41** : `touch 1 2 3 4`
 
-`ls`
+| **42** : `ls`
 
-`ls -r`
+| **43** : `ls -r`
 
-`ls -t`
+| **44** : `ls -t`
 
-`ls -rt`
+| **45** : `ls -rt`
 
-`cd ..`
+| **46** : `cd ..`
 
-`cp -r space\ names "space also"`
+| **47** : `cp -r space\ names "space also"`
 
-`cp -i space\ also/* space\ names/`
+| **48** : `cp -i space\ also/* space\ names/`
 
 *You can overwrite each, or not, or Ctrl + C to close*
 
-`view code-of-poetry.txt`
+| **49** : `view code-of-poetry.txt`
 
 *Try "i" for insert*
 
@@ -160,26 +156,26 @@ done
 
 *Exit with:* `:q`
 
-`touch rtfile.md`
+| **50** : `touch rtfile.md`
 
-`tail -f rtfile.md`
+| **51** : `tail -f rtfile.md`
 
 *Open a new terminal window: Ctrl + Alt + T (not F12)*
 
 **Run in the new terminal window:** *(...and keep watch in the first terminal)*
-> `cd ~/School/VIP/shell/401`
+> | **52** : `cd ~/School/VIP/shell/401`
 >
-> `echo "I am fruit." >> rtfile.md`
+> | **53** : `echo "I am fruit." >> rtfile.md`
 >
 > *Did you see that?*
 >
-> `echo "I am kruit." >> rtfile.md`
+> | **54** : `echo "I am kruit." >> rtfile.md`
 >
-> `echo "I am vruit." >> rtfile.md`
+> | **55** : `echo "I am vruit." >> rtfile.md`
 >
-> `echo "I am gruit." >> rtfile.md`
+> | **56** : `echo "I am gruit." >> rtfile.md`
 >
-> `exit`
+> | **57** : `exit`
 
 *Ctrl + C*
 
@@ -189,7 +185,7 @@ Wait, what?
 
 Now, for the [BSD games](http://wiki.linuxquestions.org/wiki/BSD_games) (from the package `bsdgames`)...
 
-`sudo apt install bsdgames`
+| **58** : `sudo apt install bsdgames`
 
 (Make sure the terminal is big enough!)
 

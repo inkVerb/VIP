@@ -3,10 +3,6 @@
 
 `cd ~/School/VIP/shell/301`
 
-`gedit &`
-
-`nautilus . &`
-
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
 
@@ -14,112 +10,112 @@ ___
 
 ### I. `date`
 
-`date`
+| **1** : `date`
 
 *Different format*
 
-`date +%c`
+| **2** : `date +%c`
 
 *MM/DD/YY*
 
-`date +%D`
+| **3** : `date +%D`
 
 *YYYY-MM-DD*
 
-`date +%F`
+| **4** : `date +%F`
 
 *HH:mm:SS*
 
-`date +%T`
+| **5** : `date +%T`
 
 *YYYY*
 
-`date +%Y`
+| **6** : `date +%Y`
 
 *Mon*
 
-`date +%b`
+| **7** : `date +%b`
 
 *Month*
 
-`date +%B`
+| **8** : `date +%B`
 
 *MM*
 
-`date +%m`
+| **9** : `date +%m`
 
 *DD*
 
-`date +%d`
+| **10** : `date +%d`
 
 *Dy*
 
-`date +%a`
+| **11** : `date +%a`
 
 *Day*
 
-`date +%A`
+| **12** : `date +%A`
 
 *HH*
 
-`date +%H`
+| **13** : `date +%H`
 
 *mm (minute)*
 
-`date +%M`
+| **14** : `date +%M`
 
 *SS (seconds)*
 
-`date +%S`
+| **15** : `date +%S`
 
 *Nifty combos*
 
-`date +%Y_%m_%d_%T`
+| **16** : `date +%Y_%m_%d_%T`
 
-`date +%Y/%m/%d_%T`
+| **17** : `date +%Y/%m/%d_%T`
 
-`date +%Y/%m/%d_%H:%M:%S`
+| **18** : `date +%Y/%m/%d_%H:%M:%S`
 
-`date +%Y-%m-%d.%H-%M-%S`
+| **19** : `date +%Y-%m-%d.%H-%M-%S`
 
 *Read more options here:* [https://www.computerhope.com/unix/udate.htm]
 
 ### II. `pwgen`
 
-`pwgen`
+| **20** : `pwgen`
 
 *Only 1* `-1`
 
-`pwgen -1`
+| **21** : `pwgen -1`
 
 *36 characters long* `36`
 
-`pwgen -1 36`
+| **22** : `pwgen -1 36`
 
 *Include at least 1 special character* `-y`
 
-`pwgen -1 10 -y`
+| **23** : `pwgen -1 10 -y`
 
 *No numerals* `-0`
 
-`pwgen -1 10 -0`
+| **24** : `pwgen -1 10 -0`
 
 *No caps* `-A`
 
-`pwgen -1 10 -A`
+| **25** : `pwgen -1 10 -A`
 
 *Combine options into one*
 
-`pwgen -A01y 10`
+| **26** : `pwgen -A01y 10`
 
 *Read more options here:* [https://linux.die.net/man/1/pwgen]
 
 ### III. `pwgen` + `date` is useful
 
-`echo $(date +%Y-%m-%d_%H-%M-%S)_$(pwgen -1 9)`
+| **27** : `echo $(date +%Y-%m-%d_%H-%M-%S)_$(pwgen -1 9)`
 
-`gedit 08-date-name`
+| **28** : `gedit 08-date-name`
 
-`./08-date-name yoyo`
+| **29** : `./08-date-name yoyo`
 
 #### [Lesson 9: Arithmetic](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-09.md)

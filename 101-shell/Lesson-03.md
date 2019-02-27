@@ -3,30 +3,27 @@
 
 `cd ~/School/VIP/shell/101`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`gedit how2var`
+| **1** : `gedit how2var`
 
 *Create how2var as this:* [how2var-01](https://github.com/inkVerb/vip/blob/master/101-shell/how2var-01)
 
-`ls`
+| **2** : `ls`
 
-`chmod ug+x how2var`
+| **3** : `chmod ug+x how2var`
 
-`ls`
+| **4** : `ls`
 
-`./how2var one two three`
+| **5** : `./how2var one two three`
 
-`./how2var a b abcd`
+| **6** : `./how2var a b abcd`
 
-`./how2var ink "is a" verb`
+| **7** : `./how2var ink "is a" verb`
 
 *Arguments can be placed on multiple lines*
 
+| **8** :
 ```sh
 ./how2var \
 one \
@@ -34,6 +31,7 @@ two \
 three
 ```
 
+| **9** :
 ```sh
 ./how2var \
 first \
@@ -41,49 +39,49 @@ first \
 "third line"
 ```
 
-`printenv`
+| **10** : `printenv`
 
 *These are "environment" variables that can always be called in the terminal or a script*
 
-`echo $USER`
+| **11** : `echo $USER`
 
-`printenv USER`
+| **12** : `printenv USER`
 
 *...two ways to do the same thing*
 
-`echo $DESKTOP_SESSION`
+| **13** : `echo $DESKTOP_SESSION`
 
-`printenv DESKTOP_SESSION`
+| **14** : `printenv DESKTOP_SESSION`
 
-`echo $PWD`
+| **15** : `echo $PWD`
 
-`printenv PWD`
+| **16** : `printenv PWD`
 
 *Here is a little trick, just for the PWD (Present Working Directory)... ;-)*
 
-`pwd`
+| **17** : `pwd`
 
-`./how2var $PWD $DESKTOP_SESSION VIP`
+| **18** : `./how2var $PWD $DESKTOP_SESSION VIP`
 
-`./how2var $USER USER rocks`
+| **19** : `./how2var $USER USER rocks`
 
 *Knowing this could save your life and explain life's meaning later on...*
 
-`gedit allvar`
+| **20** : `gedit allvar`
 
 *Create how2var as this:* [allvar-01](https://github.com/inkVerb/vip/blob/master/101-shell/allvar-01)
 
-`ls`
+| **21** : `ls`
 
-`chmod ug+x allvar`
+| **22** : `chmod ug+x allvar`
 
-`ls`
+| **23** : `ls`
 
-`./allvar`
+| **24** : `./allvar`
 
-`./allvar 1 2 3 4 5 6 7 8 9`
+| **25** : `./allvar 1 2 3 4 5 6 7 8 9`
 
-`./allvar I like to eat bananas in the morning, with eggs, over easy that is.`
+| **26** : `./allvar I like to eat bananas in the morning, with eggs, over easy that is.`
 
 *So,* `$@` *is everything...*
 

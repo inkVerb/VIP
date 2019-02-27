@@ -3,10 +3,6 @@
 
 `cd ~/School/VIP/shell/401`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 ### Rules of functions:
@@ -24,11 +20,11 @@ ___
 
 *Edit this script*
 
-`gedit functionreturns`
+| **1** : `gedit functionreturns`
 
 *It should look like this:*
 
-```bash
+| **2** : ```bash
 #!/bin/bash
 
 # Create a simple echo function
@@ -78,11 +74,11 @@ returnfunction apples
 # Show the "return" code
 echo "Return code: $?"
 
-```
+| **3** : ```
 
 *Run it and watch carefully*
 
-`./functionreturns`
+| **4** : `./functionreturns`
 
 *Note:*
 1. *The `return` code takes arguments and is called via `$?`, just like `exit`*
@@ -92,7 +88,7 @@ echo "Return code: $?"
 
 *Edit this script*
 
-`gedit functionlocal`
+| **5** : `gedit functionlocal`
 
 *It should look like this:*
 
@@ -128,7 +124,7 @@ echo "script VARb = $VARb"
 
 *Run it and watch carefully*
 
-`./functionlocal`
+| **6** : `./functionlocal`
 
 *Note that the function changed the value of VARb "globally", but VARa only "locally" inside the function*
 

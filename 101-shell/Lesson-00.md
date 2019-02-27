@@ -1,40 +1,47 @@
 # Shell 101
 ## Lesson 0: Terminal Control
 
-`cd ~/School/VIP/shell/101`
-
-
 ___
 
 ### Orientation
 
-This is normal text, which may label or tell something, it is rare.
+This is normal text, which may label or tell something, it is rare in these lessons.
 
-*This italics text is a note that helps teach and explain something in a lesson.*
+*This italics text is a note that helps teach and explain something in a lesson*
 
 *The following is called "preformatted" text, which uses a "monospace" font:* `preformatted monospace text`
 
-*Preformatted text indicates computer code. Many websites do this.* `i am computer code`
+*Preformatted text indicates computer code. Many websites do this* `i am computer code`
 
 *This note explains code later on this line, but don't enter it in the terminal* `read me but not for terminal`
 
-`i am a command to be entered in the terminal`
+*When a line begins with a number like this number 257:* | **257** : *enter the* `preformatted text` *after it into the terminal*
 
-`i am another terminal command` *This is a very important note specifically about the command just entered*
+| **1** : `echo i am a command to be entered in the terminal`
 
-`third terminal command`
+| **2** : `echo i am another terminal command` *This is a very important note specifically about the command just entered*
 
-*Note that was the third terminal command, but it won't actually work*
+| **3** : `third terminal command`
+
+*Note those were three terminal commands, but the third one didn't actually work, but you should have entered it anyway just to watch it not work*
+
+*These numbers help keep track of your place in the lesson and clarify which code you should enter into the terminal*
+
+`preformatted code like this` *that does not have a number is only for reference, not to be entered into the terminal*
 
 *Let's enter the fourth and final command, which also won't work*
 
-`fourth broken command`
+| **4** : `fourth broken command`
 
 *That's the end of the Orientation*
 
+*Now, on to a basic understanding of controlling an app from the terminal...*
+
 ___
 
-`gedit`
+### Controlling apps via terminal
+
+| **5** : `gedit`
 
 *Note gedit opened*
 
@@ -42,64 +49,62 @@ ___
 
 *Note gedit won't respond*
 
-`jobs`
+| **6** : `jobs`
 
 *gedit's job number should be 1*
 
-`fg 1`
+| **7** : `fg 1`
 
 *Note gedit is no longer dark*
 
 *Terminal: Ctrl + Z*
 
-`bg 1`
+| **8** : `bg 1`
 
-`jobs`
+| **9** : `jobs`
 
-`killall gedit`
+| **10** : `killall gedit`
 
 *Note gedit closed*
 
-`jobs`
+| **11** : `jobs`
 
 *Note the terminal registeres gedit "Terminated"*
 
-`gedit`
+| **12** : `gedit`
 
 *Terminal: Ctrl + C*
 
 *Note gedit closed*
 
-`jobs`
+| **13** : `jobs`
 
 *Note gedit either does not register or registers "Done"*
 
-`gedit`
+| **14** : `gedit`
 
 *Terminal: Ctrl + Z*
 
-`jobs`
+| **15** : `jobs`
 
 *This is how to kill job number 1:*
 
-`kill %1`
+| **16** : `kill %1`
 
 *Note gedit closed*
 
-`jobs`
+| **17** : `jobs`
 
 *Note the terminal registeres gedit "Terminated"*
 
 *Start gedit so it does not occupy the terminal foreground*
 
-`gedit &`
 
 *Change directory to .../shell/101*
 
-`cd ~/School/VIP/shell/101`
+A`cd ~/School/VIP/shell/101`
 
 *Open Nautilus file explorer in that directory with:* `.`
 
-`nautilus . &`
 
 #### [Lesson 1: gedit, echo & sed](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-01.md)

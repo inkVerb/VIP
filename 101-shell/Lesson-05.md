@@ -3,74 +3,70 @@
 
 `cd ~/School/VIP/shell/101`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`gedit applefoo`
+| **1** : `gedit applefoo`
 
-`cat applefoo`
+| **2** : `cat applefoo`
 
-`sed -i "s/bar/foo/" applefoo`
+| **3** : `sed -i "s/bar/foo/" applefoo`
 
 *gedit: Reload applefoo*
 
-`cat applefoo`
+| **4** : `cat applefoo`
 
-`sed "s/foo/bar/" applefoo`
+| **5** : `sed "s/foo/bar/" applefoo`
 
-`ls`
+| **6** : `ls`
 
-`sed -e "s/foo/bar/g" applefoo > newapplefoo`
+| **7** : `sed -e "s/foo/bar/g" applefoo > newapplefoo`
 
-`ls`
+| **8** : `ls`
 
-`cat newapplefoo`
+| **9** : `cat newapplefoo`
 
-`rm newapplefoo`
+| **10** : `rm newapplefoo`
 
-`ls`
+| **11** : `ls`
 
-`cat applefoo`
+| **12** : `cat applefoo`
 
-`sed "s/foo/bar/" applefoo`
+| **13** : `sed "s/foo/bar/" applefoo`
 
 *Now we see what* `cat` *and* `sed` *do, "pipe" the output of* `cat` *into* `sed`
 
-`cat applefoo | sed "s/foo/bar/"`
+| **14** : `cat applefoo | sed "s/foo/bar/"`
 
-`echo $(cat applefoo | sed "s/foo/bar/")`
+| **15** : `echo $(cat applefoo | sed "s/foo/bar/")`
 
-`` echo `cat applefoo | sed "s/foo/bar/"` ``
+| **16** : `` echo `cat applefoo | sed "s/foo/bar/"` ``
 
-`echo $DESKTOP_SESSION`
+| **17** : `echo $DESKTOP_SESSION`
 
-`printenv DESKTOP_SESSION`
+| **18** : `printenv DESKTOP_SESSION`
 
-`dpkg --print-architecture`
+| **19** : `dpkg --print-architecture`
 
 *You can set output of any terminal command as if it is a variable using:* `$(...)` or `` `...` ``
 
-`echo $(printenv DESKTOP_SESSION)`
+| **20** : `echo $(printenv DESKTOP_SESSION)`
 
-`` echo `printenv DESKTOP_SESSION` ``
+| **21** : `` echo `printenv DESKTOP_SESSION` ``
 
-`echo $(dpkg --print-architecture)`
+| **22** : `echo $(dpkg --print-architecture)`
 
-`` echo `dpkg --print-architecture` ``
+| **23** : `` echo `dpkg --print-architecture` ``
 
-`gedit comboshell`
+| **24** : `gedit comboshell`
 
 *Create comboshell as this:* [comboshell-01](https://github.com/inkVerb/vip/blob/master/101-shell/comboshell-01)
 
-`chmod ug+x comboshell`
+| **25** : `chmod ug+x comboshell`
 
-`./comboshell applefoo foo bar`
+| **26** : `./comboshell applefoo foo bar`
 
-`./comboshell abcd jjjjjjjjj "Apple likes to say abcdefghi and "`
+| **27** : `./comboshell abcd jjjjjjjjj "Apple likes to say abcdefghi and "`
 
-`./comboshell abcd j " zz"`
+| **28** : `./comboshell abcd j " zz"`
 
 #### [Lesson 6: tee](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-06.md)

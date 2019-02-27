@@ -3,98 +3,94 @@
 
 `cd ~/School/VIP/shell/201`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`mkdir comdump`
+| **1** : `mkdir comdump`
 
-`cd comdump`
+| **2** : `cd comdump`
 
-`ls`
+| **3** : `ls`
 
-`top -n 1 -b > top.file`
+| **4** : `top -n 1 -b > top.file`
 
-`ls`
+| **5** : `ls`
 
-`gedit top.file`
+| **6** : `gedit top.file`
 
-`top -n 1 -b > top.file`
+| **7** : `top -n 1 -b > top.file`
 
 *gedit: Reload top.file*
 
 *Note the file contents changed*
 
-`ps aux > psaux.file`
+| **8** : `ps aux > psaux.file`
 
-`ls`
+| **9** : `ls`
 
-`gedit psaux.file`
+| **10** : `gedit psaux.file`
 
 *Some other useful commands...*
 
-`pwd`
+| **11** : `pwd`
 
 *Whoah, that's where you are!*
 
-`pwd > pwd.file`
+| **12** : `pwd > pwd.file`
 
-`gedit pwd.file`
+| **13** : `gedit pwd.file`
 
-`uname`
+| **14** : `uname`
 
 *eXcellent operationg system, I might add*
 
-`uname > uname.file`
+| **15** : `uname > uname.file`
 
-`who`
+| **16** : `who`
 
 *That's everyone*
 
-`who > who.file`
+| **17** : `who > who.file`
 
-`w`
+| **18** : `w`
 
 *That's everyone with a lot more info*
 
-`w > w.file`
+| **19** : `w > w.file`
 
-`ls`
+| **20** : `ls`
 
-`ls > ls.file`
+| **22** : `ls > ls.file`
 
-`ls`
+| **23** : `ls`
 
-`gedit ls.file`
+| **24** : `gedit ls.file`
 
 *You can even output* `ls` *into a file!*
 
-`ls ..`
+| **25** : `ls ..`
 
 *Now output that other directory's contents into a file*
 
-`ls .. > ls.file`
+| **26** : `ls .. > ls.file`
 
 *gedit: Reload ls.file*
 
 *...or into another directory*
 
-`mkdir -p outputs`
+| **27** : `mkdir -p outputs`
 
-`ls outputs`
+| **28** : `ls outputs`
 
-`ls .. > outputs/ls.file`
+| **29** : `ls .. > outputs/ls.file`
 
-`ls outputs`
+| **30** : `ls outputs`
 
 *That's in the directory you just made*
 
-`gedit outputs/ls.file`
+| **31** : `gedit outputs/ls.file`
 
 *All done, get ready for the next lesson*
 
-`cd ..`
+| **32** : `cd ..`
 
 #### [Lesson 11: netstat -natu, tcpdump, man, info](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md)

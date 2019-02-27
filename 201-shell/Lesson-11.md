@@ -3,15 +3,13 @@
 
 `cd ~/School/VIP/shell/201`
 
-`gedit &`
 
-`nautilus . &`
 
 ___
 
 ### `netstat -natu` & `sudo tcpdump`
 
-`netstat -natu`
+| **1** : `netstat -natu`
 
 *This gives a list of all network connections*
 
@@ -19,45 +17,45 @@ ___
 >
 ___
 > Optional: You may login as a "sudoer" if needed
-> 
-> `su USERNAME`
+>
+> | **2** : `su USERNAME`
 >
 ___
 
-`sudo tcpdump`
+| **3** : `sudo tcpdump`
 
 *Note the ongoing list of network activity*
 
 *Ctrl + C will close the dump*
 
 ### For an administrator to use `su`
-> 
+>
 ___
 > If you don't have permission as a "sudoer", the person who administers your machine can use:
-> 
-> `su` *input the password*
-> 
-> `tcpdump`
-> 
+>
+> | **4** : `su` *input the password*
+>
+> | **5** : `tcpdump`
+>
 > *Note the ongoing list of network activity*
-> 
+>
 > *Ctrl + C will close the dump*
-> 
+>
 ___
 
 ### IF needed, `exit` from `su` or the other "sudoer"
 >
 ___
 >
-> `exit`
-> 
+> | **6** : `exit`
+>
 ___
 
 ### `man` & `info`
 
 *FYI, this is a great tool to change settings from the terminal:* `gsettings`
 
-`man gsettings`
+| **7** : `man gsettings`
 
 *This is a how-to manual for a terminal program that manages settings for the desktop environment*
 
@@ -65,7 +63,7 @@ ___
 
 *You can use* `man` *or* `info`
 
-`info gsettings`
+| **8** : `info gsettings`
 
 *Press Q to quit*
 
@@ -73,33 +71,33 @@ ___
 
 *Consider* `lsb_release` *which shows detailed information about your current Linux distribution*
 
-`man lsb_release`
+| **9** : `man lsb_release`
 
-`info lsb_release`
+| **10** : `info lsb_release`
 
-`man tcpdump`
+| **11** : `man tcpdump`
 
-`info tcpdump`
+| **12** : `info tcpdump`
 
-`man netstat`
+| **13** : `man netstat`
 
-`info netstat`
+| **14** : `info netstat`
 
-`man grep`
+| **15** : `man grep`
 
-`info grep`
+| **16** : `info grep`
 
-`man sed`
+| **17** : `man sed`
 
-`info sed`
+| **18** : `info sed`
 
-`man echo`
+| **19** : `man echo`
 
-`info echo`
+| **20** : `info echo`
 
-`man imagemagick`
+| **21** : `man imagemagick`
 
-`info imagemagick`
+| **22** : `info imagemagick`
 
 *...but not always*
 

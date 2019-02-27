@@ -3,47 +3,43 @@
 
 `cd ~/School/VIP/shell/201`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 *Download the entire verb.ink page using wget*
 
-`wget -r http://verb.ink`
+| **1** : `wget -r http://verb.ink`
 
-`ls`
+| **2** : `ls`
 
 *Take a peek inside*
 
-`cd verb.ink`
+| **3** : `cd verb.ink`
 
-`ls`
+| **4** : `ls`
 
-`gedit index.html`
+| **5** : `gedit index.html`
 
 *Download the verb.ink index page using curl*
 
-`curl http://verb.ink`
+| **6** : `curl http://verb.ink`
 
-`ls`
+| **7** : `ls`
 
 *Note it either output the content or returned an error*
 - `curl` *needs an output file specified*
 - `wget` *saves the file by the same name unless otherwise specified*
 
-`curl http://verb.ink > verb.ink.html`
+| **8** : `curl http://verb.ink > verb.ink.html`
 
-`ls`
+| **9** : `ls`
 
 *Take a peek inside*
 
-`gedit verb.ink.html`
+| **10** : `gedit verb.ink.html`
 
 *Open it with whatever browser you are using:*
 
-`firefox verb.ink.html` or `chromium-browser verb.ink.html` or `google-chrome verb.ink.html` or `vivaldi verb.ink.html`
+| **11** : `firefox verb.ink.html` or `chromium-browser verb.ink.html` or `google-chrome verb.ink.html` or `vivaldi verb.ink.html`
 
 ## Download the inkVerb/vrk repo from GitHub
 
@@ -51,27 +47,27 @@ ___
 
 *Download Vrk using wget*
 
-`wget https://github.com/inkVerb/vrk/archive/master.zip`
+| **12** : `wget https://github.com/inkVerb/vrk/archive/master.zip`
 
-`ls`
+| **13** : `ls`
 
 *Specify an output file with:* `-O SAVEASNAME` (CAPITAL '-O'!)
 
-`wget -O vrk.zip https://github.com/inkVerb/vrk/archive/master.zip`
+| **14** : `wget -O vrk.zip https://github.com/inkVerb/vrk/archive/master.zip`
 
-`ls`
+| **15** : `ls`
 
 *Clean up*
 
-`rm master.zip`
+| **16** : `rm master.zip`
 
 ### zip via curl
 
-`curl https://github.com/inkVerb/vrk/archive/master.zip` (wrong)
+| **17** : `curl https://github.com/inkVerb/vrk/archive/master.zip` (wrong)
 
 *Note the redirect message; use* `-L` *to follow redirects*
 
-`curl -L https://github.com/inkVerb/vrk/archive/master.zip` (wrong)
+| **18** : `curl -L https://github.com/inkVerb/vrk/archive/master.zip` (wrong)
 
 *Note it dumped the raw output to the terminal rather than saving it*
 
@@ -79,69 +75,69 @@ ___
 
 *Solution: Specify an output file*
 
-`curl -L https://github.com/inkVerb/vrk/archive/master.zip > vkr-curl.zip`
+| **19** : `curl -L https://github.com/inkVerb/vrk/archive/master.zip > vkr-curl.zip`
 
-`ls`
+| **20** : `ls`
 
 *Now that you get the point, we don't need it anymore*
 
-`rm vkr-curl.zip`
+| **21** : `rm vkr-curl.zip`
 
 ### tarball via curl
 
 *Substitute* `github.com` *for* `api.github.com/repos/` *& append with* `/tarball` *& include output file*
 
-`curl -L https://api.github.com/repos/inkVerb/vrk/tarball > vrk.tar`
+| **22** : `curl -L https://api.github.com/repos/inkVerb/vrk/tarball > vrk.tar`
 
-`ls`
+| **23** : `ls`
 
 *Now, untar it*
 
-`tar xzf vrk.tar`
+| **24** : `tar xzf vrk.tar`
 
-`ls`
+| **25** : `ls`
 
 *Note the strange new directory* `inkVerb-vrk-SOME_CRAZY_NUMBER`
 
 *...that's it, delete it with:*
 
-> `rm -r inkVerb-vrk-SOME_CRAZY_NUMBER`
+> | **26** : `rm -r inkVerb-vrk-SOME_CRAZY_NUMBER`
 
 *We don't need to keep that tarball either*
 
-`rm vrk.tar`
+| **27** : `rm vrk.tar`
 
 ### tarball via curl & untar (single command)
 
 *Substitute* `github.com` *for* `api.github.com/repos/` *& append with* `/tarball` *& untar it right away*
 
-`curl -L https://api.github.com/repos/inkVerb/vrk/tarball | tar xz`
+| **28** : `curl -L https://api.github.com/repos/inkVerb/vrk/tarball | tar xz`
 
-`ls`
+| **29** : `ls`
 
 *Note the same strange directory* `inkVerb-vrk-SOME_CRAZY_NUMBER`
 
 *...that's it, delete it with:*
 
-> `rm -r inkVerb-vrk-SOME_CRAZY_NUMBER`
+> | **30** : `rm -r inkVerb-vrk-SOME_CRAZY_NUMBER`
 
 ### repo via git clone
 
-`git clone https://github.com/inkVerb/vrk`
+| **31** : `git clone https://github.com/inkVerb/vrk`
 
-`ls`
+| **32** : `ls`
 
 *Take a peek inside*
 
-`cd vrk`
+| **33** : `cd vrk`
 
-`ls -a`
+| **34** : `ls -a`
 
 *Note the hidden ".git" directory, it containes a few read-only files*
 
-`cd ..`
+| **35** : `cd ..`
 
-`rm -r vrk`
+| **36** : `rm -r vrk`
 
 *Note the error message because of the read-only files* (Ctrl + C to get out of there!)
 
@@ -151,32 +147,32 @@ ___
 >
 ___
 > Optional: You may login as a "sudoer" if needed
-> 
-> `su USERNAME`
+>
+> | **37** : `su USERNAME`
 >
 ___
 
-`sudo rm -r vrk`
+| **38** : `sudo rm -r vrk`
 
 ### For an administrator to use `su`
-> 
+>
 ___
 > If you don't have permission as a "sudoer", the person who administers your machine can use:
-> 
-> `su` *input the password*
-> 
-> `rm -r vrk`
-> 
+>
+> | **39** : `su` *input the password*
+>
+> | **40** : `rm -r vrk`
+>
 ___
 
 ### IF needed, `exit` from `su` or the other "sudoer"
 >
 ___
 >
-> `exit`
-> 
+> | **41** : `exit`
+>
 ___
 
-`ls`
+| **42** : `ls`
 
 #### [Lesson 7: tar, xz, zip, gzip, bzip2](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-07.md)

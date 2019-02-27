@@ -3,84 +3,80 @@
 
 `cd ~/School/VIP/shell/201`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`mkdir directory`
+| **1** : `mkdir directory`
 
-`ls`
+| **2** : `ls`
 
-`ln -s directory dirlink`
+| **3** : `ln -s directory dirlink`
 
-`ls`
+| **4** : `ls`
 
-`ls -l`
+| **5** : `ls -l`
 
-`cd directory`
+| **6** : `cd directory`
 
-`ls`
+| **7** : `ls`
 
-`mkdir subdirectory`
+| **8** : `mkdir subdirectory`
 
-`ls`
+| **9** : `ls`
 
-`touch file`
+| **10** : `touch file`
 
-`cd ../dirlink`
+| **11** : `cd ../dirlink`
 
-`ls`
+| **12** : `ls`
 
-`touch subdirectory/alsofile`
+| **13** : `touch subdirectory/alsofile`
 
-`cd subdirectory`
+| **14** : `cd subdirectory`
 
-`ls`
+| **15** : `ls`
 
-`cd ../../directory/subdirectory`
+| **16** : `cd ../../directory/subdirectory`
 
-`ls`
+| **17** : `ls`
 
-`cd ../..`
+| **18** : `cd ../..`
 
-`ls`
+| **19** : `ls`
 
-`mkdir newdir`
+| **20** : `mkdir newdir`
 
-`ls`
+| **21** : `ls`
 
-`rm newdir`
+| **22** : `rm newdir`
 
 *Note the error message about directories*
 
-`cd newdir`
+| **23** : `cd newdir`
 
-`touch delfile`
+| **24** : `touch delfile`
 
-`ls`
+| **25** : `ls`
 
-`cd ..`
+| **26** : `cd ..`
 
 *Use* `-r` *(RECURSIVE) to remove directories*
 
-`rm -r newdir`
+| **27** : `rm -r newdir`
 
-`ls`
+| **28** : `ls`
 
-`cp directory cpdir`
+| **29** : `cp directory cpdir`
 
 *Note the error message about directories; use* `-r` *with* `cp` *as well as* `rm` *for directories*
 
-`cp -r directory cpdir`
+| **30** : `cp -r directory cpdir`
 
-`ls`
+| **31** : `ls`
 
-`cd cpdir`
+| **32** : `cd cpdir`
 
-`ls`
+| **33** : `ls`
 
-`cd ..`
+| **34** : `cd ..`
 
 #### [Lesson 3: su, sudo, apt update, apt upgrade, apt install, lsb_release](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-03.md)

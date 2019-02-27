@@ -3,21 +3,17 @@
 
 `cd ~/School/VIP/shell/101`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`gedit abcsed abcsed.setting abcd`
+| **1** : `gedit abcsed abcsed.setting abcd`
 
 *Update abcsed to this:* [abcsed-05](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-05)
 
-`./abcsed h z abcd`
+| **2** : `./abcsed h z abcd`
 
 *gedit: Reload abcd*
 
-`./abcsed z j abcd`
+| **3** : `./abcsed z j abcd`
 
 *gedit: Reload abcd*
 
@@ -25,20 +21,20 @@ ___
 
 *Create abcsed.setting as this:* [abcsed.setting-01](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed.setting-01)
 
-`./abcsed i z`
+| **4** : `./abcsed i z`
 
 *gedit: Reload abcd*
 
-`./abcsed z j`
+| **5** : `./abcsed z j`
 
 *gedit: Reload abcd*
 
 *Note this format "includes" the text of any file as if it was text of the script itself*
 
-```sh
+| **6** : ```sh
 
 . some/file/with/text/to/be/included
 
-```
+| **7** : ```
 
 #### [Lesson 5: Combine & Pipe Commands into Variables](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-05.md)

@@ -3,10 +3,6 @@
 
 `cd ~/School/VIP/shell/401`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 ### I. Introduction to "data types"
@@ -63,11 +59,11 @@ VAR=false
 
 Example of 'single' & "double" quotes in declaring variable values:
 
-*Edit a new file*
+*Edit this script*
 
-`gedit varquote`
+| **1** : `gedit varquote`
 
-*Put this code in the file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
@@ -84,24 +80,24 @@ echo $VARdq
 
 *Make it executable*
 
-`chmod ug+x varquote`
+| **2** : `chmod ug+x varquote`
 
-`ls`
+| **3** : `ls`
 
 *Run it and watch carefully*
 
-`./varquote`
+| **4** : `./varquote`
 
 
 ### III. Boolean values
 
 Example of boolean values and quotes:
 
-*Edit a new file*
+*Edit this script*
 
-`gedit varbool`
+| **5** : `gedit varbool`
 
-*Put this code in the file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
@@ -153,13 +149,13 @@ fi
 
 *Make it executable*
 
-`chmod ug+x varbool`
+| **6** : `chmod ug+x varbool`
 
-`ls`
+| **7** : `ls`
 
 *Run it and watch carefully*
 
-`./varbool`
+| **8** : `./varbool`
 
 *Case and point: quotes make no difference in how a value is treated, even boolean.*
 
@@ -167,11 +163,11 @@ fi
 
 Example of integer values and quotes:
 
-*Edit a new file*
+*Edit this script*
 
-`gedit varmath`
+| **9** : `gedit varmath`
 
-*Put this code in the file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
@@ -232,13 +228,13 @@ echo five \* six = `expr $d5 \* $d6`
 
 *Make it executable*
 
-`chmod ug+x varmath`
+| **10** : `chmod ug+x varmath`
 
-`ls`
+| **11** : `ls`
 
 *Run it and watch carefully*
 
-`./varmath`
+| **12** : `./varmath`
 
 *Case and point: quotes make no difference in how a value is treated, even in arithmetic.*
 

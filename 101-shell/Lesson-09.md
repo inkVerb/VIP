@@ -3,58 +3,54 @@
 
 `cd ~/School/VIP/shell/101`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`mkdir abc abc-dir`
+| **1** : `mkdir abc abc-dir`
 
-`ls`
+| **2** : `ls`
 
 *Search for files with* `find`
 
-`find "abc*"`
+| **3** : `find "abc*"`
 
 *Note the error message*
 
-`find . "abc"`
+| **4** : `find . "abc"`
 
 *Note it found everything, it needs:* `-name`
 
-`find . -name "abc"`
+| **5** : `find . -name "abc"`
 
-`find . -name "abc*"`
+| **6** : `find . -name "abc*"`
 
 *...for "Directories":* `-d`
 
-`find . -type d -name "abc*"`
+| **7** : `find . -type d -name "abc*"`
 
 *...for "Files":* `-f`
 
-`find . -type f -name "abc*"`
+| **8** : `find . -type f -name "abc*"`
 
-`touch abcsed.Setting`
+| **9** : `touch abcsed.Setting`
 
-`touch ink.png ink.PNG ink.jpg ink.JPG`
+| **10** : `touch ink.png ink.PNG ink.jpg ink.JPG`
 
-`mkdir png PNG jpg JPG`
+| **11** : `mkdir png PNG jpg JPG`
 
-`find . -name "png"`
+| **12** : `find . -name "png"`
 
-`find . -name "*.png"`
+| **13** : `find . -name "*.png"`
 
-`find . -name "*png"`
+| **14** : `find . -name "*png"`
 
 *Note* `find` *is case-sensitive, ignore case with:* `-iname`
 
-`find . -iname "*png"`
+| **15** : `find . -iname "*png"`
 
-`find . -iname "*jpg"`
+| **16** : `find . -iname "*jpg"`
 
-`find . -type f -iname "*png"`
- 
-`find . -type d -iname "*png"`
+| **17** : `find . -type f -iname "*png"`
+
+| **18** : `find . -type d -iname "*png"`
 
 #### [Lesson 10: grep](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-10.md)

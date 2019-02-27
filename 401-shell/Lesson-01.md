@@ -3,15 +3,11 @@
 
 `cd ~/School/VIP/shell/401`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 ### I. Carriage Returns: DOS v Unix
 
-`vim text-doc.txt`
+| **1** : `vim text-doc.txt`
 
 *Vim: `:e ++ff=unix`*
 
@@ -19,9 +15,9 @@ ___
 
 *Vim: `:q!`*
 
-`unix2dos text-doc.txt`
+| **2** : `unix2dos text-doc.txt`
 
-`vim text-doc.txt`
+| **3** : `vim text-doc.txt`
 
 *Vim: `:e ++ff=unix`*
 
@@ -29,9 +25,9 @@ ___
 
 *Vim: `:q!`*
 
-`dos2unix text-doc.txt`
+| **4** : `dos2unix text-doc.txt`
 
-`vim text-doc.txt`
+| **5** : `vim text-doc.txt`
 
 *Vim: `:e ++ff=unix`*
 
@@ -49,12 +45,14 @@ ___
 
 *Enter this in the terminal:*
 
+| **6** :
 ```sh
 echo "Hello there. This is all on one line."
 ```
 
 *Enter this in the terminal, ONE LINE AT A TIME:*
 
+| **7** :
 ```sh
 echo "Hello there.\
 This is a second line."
@@ -62,6 +60,7 @@ This is a second line."
 
 *Enter this in the terminal, ONE LINE AT A TIME:* (including the empty line)
 
+| **8** :
 ```sh
 echo "Hello there.\
 
@@ -72,10 +71,11 @@ This is a second line."
 
 *Consider this command:*
 
-`ls -l ~/School/VIP/shell/401`
+| **9** : `ls -l ~/School/VIP/shell/401`
 
 *Enter the same thing, but on multiple lines:*
 
+| **10** :
 ```sh
 ls \
 -l \
@@ -86,15 +86,18 @@ ls \
 
 *Enter the same thing, but on multiple lines:*
 
+| **11** :
 ```sh
 ls\
 -l\
 ~/School/VIP/shell/401
 ```
+
 Press: Up *to see your last command was:* `ls-l~/School/VIP/shell/401`
 
 *Even breakup words! Enter ONE LINE AT A TIME:*
 
+| **12** :
 ```sh
 l\
 s \
@@ -105,6 +108,7 @@ l \
 
 *Same thing, but copy and past ALL AT ONCE:*
 
+| **13** :
 ```sh
 l\
 s \
@@ -115,13 +119,13 @@ l \
 
 ### III. Shell History
 
-`history`
+| **14** : `history`
 
-`cd ~/`
+| **15** : `cd ~/`
 
-`ls .*history`
+| **16** : `ls .*history`
 
-`vim .bash_history` *(or whatever the file name is)*
+| **17** : `vim .bash_history` *(or whatever the file name is)*
 
 *Vim: `:set number`*
 
@@ -129,13 +133,13 @@ l \
 
 *Vim: `:q!`*
 
-`echo $HISTSIZE`
+| **18** : `echo $HISTSIZE`
 
 *History is preserved for the number of lines set in the `$HISTSIZE` environment variable*
 
 *Again...*
 
-`vim .bash_history` *(or whatever the file name is)*
+| **19** : `vim .bash_history` *(or whatever the file name is)*
 
 *Vim: `:set number`*
 
@@ -145,15 +149,15 @@ l \
 
 *Vim: `:q!`*
 
-`!-2`
+| **20** : `!-2`
 
 *Note* `!-2` *calles the 2nd to last command, as for all* `!-Nth` *usage*
 
-`!echo`
+| **21** : `!echo`
 
 *Note* `!echo` *calls the first BASH command that began with "echo", as for all* `!TEST` *usage*
 
-`cd ~/School/VIP/shell/401`
+| **22** : `cd ~/School/VIP/shell/401`
 
 
 ### IV. "Reverse Search"
@@ -166,7 +170,7 @@ Type: `echo` *and notice the results*
 
 Press: Down *to get back to the normal prompt*
 
-`echo Hello world`
+| **23** : `echo Hello world`
 
 *Go again*
 

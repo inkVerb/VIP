@@ -4,21 +4,17 @@
 
 `cd ~/School/VIP/shell/101`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`gedit applefoo`
+| **1** : `gedit applefoo`
 
-`sed "s/foo/bar/" applefoo`
+| **2** : `sed "s/foo/bar/" applefoo`
 
-`echo $(sed "s/foo/bar/" applefoo) > sedoutput.text`
+| **3** : `echo $(sed "s/foo/bar/" applefoo) > sedoutput.text`
 
-`gedit sedoutput.text`
+| **4** : `gedit sedoutput.text`
 
-`echo "Add a line" >> sedoutput.text`
+| **5** : `echo "Add a line" >> sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
@@ -28,7 +24,7 @@ ___
 
 *But better yet, piping into* `tee` *will do both!*
 
-`echo $(sed "s/foo/bar/" applefoo) | tee sedoutput.text`
+| **6** : `echo $(sed "s/foo/bar/" applefoo) | tee sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 

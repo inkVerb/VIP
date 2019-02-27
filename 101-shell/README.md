@@ -1,11 +1,5 @@
 # Shell 101
 
-## Prepare
-
-*F12 (guake) OR Ctrl + Alt + T (new terminal)*
-
-`mkdir -p ~/School/VIP/shell/101`
-
 ### [Lesson 0: Terminal Control](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-00.md)
 
 ### [Lesson 1: gedit, echo & sed](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-01.md)

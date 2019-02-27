@@ -41,7 +41,7 @@ Once you know how to work with a computer terminal (Linux language), all code wi
 
 ## Install the apps used in this course
 
-`sudo apt install gedit guake nautilus chromium-browser firefox`
+`sudo apt install gedit tilda nautilus chromium-browser firefox`
 
 ## First, a Quick Orientation
 

@@ -3,23 +3,19 @@
 
 `cd ~/School/VIP/shell/401`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 Cron tasks are processes (usually in a Shell script) that are automatically run by the system on a regular basis.
 
-`cd /etc`
+| **1** : `cd /etc`
 
-`ls` *(Scroll up to find the cron directories.)*
+| **2** : `ls` *(Scroll up to find the cron directories.)*
 
 ### Regular scheduled jobs
 
-`cd cron.daily/`
+| **3** : `cd cron.daily/`
 
-`ls -l`
+| **4** : `ls -l`
 
 The system will automatically run cron scripts on its own scheduled basis in three cron directories:
 - Daily: `/etc/cron.daily/`
@@ -32,9 +28,9 @@ The system will automatically run cron scripts on its own scheduled basis in thr
 
 ### Custom scheduled jobs
 
-`cd cron.d/`
+| **5** : `cd cron.d/`
 
-`ls -l`
+| **6** : `ls -l`
 
 To have more control of the time a cron task will run, put generic cron files here:
 - Cron directory: `/etc/cron.d/`
@@ -63,14 +59,14 @@ This will edit the file `/etc/crontab`, which is managed by the system.
 
 Format of a cron line:
 
-`[minute] [hour] [date_of_the_month] [month] [day_of_the_week] [Shell_command]`
+| **7** : `[minute] [hour] [date_of_the_month] [month] [day_of_the_week] [Shell_command]`
 
 Example of a cron line:
 
 **Everyday at 3:00 pm:**
-```shell
+| **8** : ```shell
 0 15 * * * /path/to/script
-```
+| **9** : ```
 
 *An astric* **\*** *will run at all times for that setting.*
 

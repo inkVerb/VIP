@@ -3,17 +3,13 @@
 
 `cd ~/School/VIP/shell/401`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 ### I. Counter `while` loop
 
 *Edit this script*
 
-`gedit loopcount`
+| **1** : `gedit loopcount`
 
 *It should look like this:*
 
@@ -32,17 +28,17 @@ done
 
 *Make sure it's executable*
 
-`chmod ug+x loopcount && ls`
+| **2** : `chmod ug+x loopcount && ls`
 
 *Run it and watch carefully*
 
-`./loopcount 15`
+| **3** : `./loopcount 15`
 
-`ls`
+| **4** : `ls`
 
 *Note the file created:* `countfile`
 
-`gedit countfile`
+| **5** : `gedit countfile`
 
 ### II. `sed` special characters
 
@@ -52,7 +48,7 @@ This is the same in `vim`, so get used to it.
 
 *Add something to the end of each line*
 
-`sed -i "s/$/add2end/" countfile`
+| **6** : `sed -i "s/$/add2end/" countfile`
 
 *gedit: Reload countfile*
 
@@ -60,7 +56,7 @@ This is the same in `vim`, so get used to it.
 
 *Add a new line to the end of each line*
 
-`sed -i "s/$/\n/" countfile`
+| **7** : `sed -i "s/$/\n/" countfile`
 
 *gedit: Reload countfile*
 
@@ -68,7 +64,7 @@ This is the same in `vim`, so get used to it.
 
 *Replace each tab with two tabs*
 
-`sed -i "s/\t/\t\t/" countfile`
+| **8** : `sed -i "s/\t/\t\t/" countfile`
 
 *gedit: Reload countfile*
 
@@ -76,7 +72,7 @@ This is the same in `vim`, so get used to it.
 
 *Change "No." to "Number"*
 
-`sed -i "s/No\./Number/" countfile`
+| **9** : `sed -i "s/No\./Number/" countfile`
 
 *gedit: Reload countfile*
 

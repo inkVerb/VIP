@@ -3,68 +3,64 @@
 
 `cd ~/School/VIP/shell/101`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`gedit abcd sedoutput.text`
+| **1** : `gedit abcd sedoutput.text`
 
 *Note* `cat` *displays contents of a file on the screen*
 
-`cat abcd`
+| **2** : `cat abcd`
 
 *Note* `echo` *sends output as output to the screen*
 
-`echo $(cat abcd)`
+| **3** : `echo $(cat abcd)`
 
 *...and* `echo` *doesn't make paragraph breaks when it does*
 
-`sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd`
+| **4** : `sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd`
 
-`echo $(sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd)`
+| **5** : `echo $(sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd)`
 
-`cat abcd | tee sedoutput.text`
-
-*gedit: Reload sedoutput.text*
-
-`echo $(cat abcd) | tee sedoutput.text`
+| **6** : `cat abcd | tee sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
-`sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd | tee sedoutput.text`
+| **7** : `echo $(cat abcd) | tee sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
-`echo $(sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd) | tee sedoutput.text`
+| **8** : `sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd | tee sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
-`echo OneOneOne > one`
+| **9** : `echo $(sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd) | tee sedoutput.text`
 
-`echo TwoTwoTwo > two`
+*gedit: Reload sedoutput.text*
 
-`cat one`
+| **10** : `echo OneOneOne > one`
 
-`cat two`
+| **11** : `echo TwoTwoTwo > two`
 
-`cat one two`
+| **12** : `cat one`
 
-`cat one two > onetwo`
+| **13** : `cat two`
 
-`cat onetwo`
+| **14** : `cat one two`
+
+| **15** : `cat one two > onetwo`
+
+| **16** : `cat onetwo`
 
 *Note cat combined one and two into onetwo*
 
-`echo ThreeThreeThree > three`
+| **17** : `echo ThreeThreeThree > three`
 
-`cat three two one >> onetwo`
+| **18** : `cat three two one >> onetwo`
 
-`cat onetwo`
+| **19** : `cat onetwo`
 
 *Note cat also appended to onetwo via >>*
 
-`rm one two three onetwo`
+| **20** : `rm one two three onetwo`
 
 #### [Lesson 8: echo, cat & tee in scripts](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-08.md)

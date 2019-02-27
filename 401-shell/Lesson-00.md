@@ -6,7 +6,7 @@
 ___
 > Optional: You may login as a "sudoer" first
 >
-> `su USERNAME`
+> | **1** : `su USERNAME`
 >
 >
 ___
@@ -14,25 +14,26 @@ ___
 #### If you did Shell 201, but on a different machine
 Install the tools:
 
-`sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen`
+| **2** : `sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen`
 
 ## Prepare
 
-`sudo apt install -y mysql-server dos2unix`
+| **3** : `sudo apt install -y mysql-server dos2unix`
 
+___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> `exit`
+> | **4** : `exit`
 >
 >
 ___
 
-`mkdir -p ~/School/VIP/shell`
+| **5** : `mkdir -p ~/School/VIP/shell`
 
-`cd ~/School/VIP/shell`
+| **6** : `cd ~/School/VIP/shell`
 
-`git clone https://github.com/inkVerb/401`
+| **7** : `git clone https://github.com/inkVerb/401`
 
-`cd 401`
+| **8** : `cd 401`
 
 #### [Lesson 1: Returns & Terminal](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)

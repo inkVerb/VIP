@@ -3,17 +3,13 @@
 
 `cd ~/School/VIP/shell/201`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 *Let's get another look at verb.ink.html*
 
-`cd verb.ink`
+| **1** : `cd verb.ink`
 
-`cat verb.ink.html`
+| **2** : `cat verb.ink.html`
 
 ### `more`
 
@@ -21,141 +17,141 @@ ___
 
 *One line at a time: Enter*
 
-`more verb.ink.html`
+| **3** : `more verb.ink.html`
 
 *Eight lines at a time*
 
-`more -8 verb.ink.html` *(Q to quit)*
+| **4** : `more -8 verb.ink.html` *(Q to quit)*
 
 ### `less`
 
 *Up and down: Spacebar, PageUp, PageDown, Up, Down*
 
-`less verb.ink.html` *(Q to quit)*
+| **5** : `less verb.ink.html` *(Q to quit)*
 
 ### `head`
 
 *First ten lines*
 
-`head verb.ink.html`
+| **6** : `head verb.ink.html`
 
 *First four lines*
 
-`head -4 verb.ink.html`
+| **7** : `head -4 verb.ink.html`
 
 ### `tail`
 
 *Last ten lines*
 
-`tail verb.ink.html`
+| **8** : `tail verb.ink.html`
 
 *Last five lines*
 
-`tail -5 verb.ink.html`
+| **9** : `tail -5 verb.ink.html`
 
 ### `sort`
 
 *Lines in alphabetical order*
 
-`sort verb.ink.html`
+| **10** : `sort verb.ink.html`
 
 *Reverse alphabetical order*
 
-`sort -r verb.ink.html`
+| **11** : `sort -r verb.ink.html`
 
 *Lots more you can do*
 
-`man sort` *(Q to quit)*
+| **12** : `man sort` *(Q to quit)*
 
-`cd ..`
+| **13** : `cd ..`
 
 ### `diff`
 
 *First, download some files*
 
-`git clone https://github.com/inkVerb/201-12`
+| **14** : `git clone https://github.com/inkVerb/201-12`
 
-`cd 201-12`
+| **15** : `cd 201-12`
 
 *Look inside*
 
-`gedit frc-*`
+| **16** : `gedit frc-*`
 
 *Compare 1 & 2*
 
-`diff frc-1 frc-2`
+| **17** : `diff frc-1 frc-2`
 
 *Note* "a" *means that lines are* "Added"
 
-`diff frc-1 frc-3`
+| **18** : `diff frc-1 frc-3`
 
 *Note* "d" *means that lines are* "Deleted"
 
-`diff frc-1 frc-4`
+| **19** : `diff frc-1 frc-4`
 
 *Note* "c" *means that the lines* "Change"
 
 *Note* "13,17" *means* "lines 13–17"
 
-`diff frc-1 frc-5`
+| **20** : `diff frc-1 frc-5`
 
 *Note* frc-5 line 3 *has several spaces at the end of the line; ignore with* `-Z`
 
-`diff -Z frc-1 frc-5`
+| **21** : `diff -Z frc-1 frc-5`
 
 *Ignore all white space with* `-w`
 
-`diff -w frc-1 frc-5`
+| **22** : `diff -w frc-1 frc-5`
 
 *Ignore case with* `-i`
 
-`diff -i frc-1 frc-5`
+| **23** : `diff -i frc-1 frc-5`
 
 *Ignore case and white space with* `-iw`
 
-`diff -iw frc-1 frc-5`
+| **24** : `diff -iw frc-1 frc-5`
 
 *Note nothing happens if files are the same*
 
-`diff frc-1 frc-6`
+| **25** : `diff frc-1 frc-6`
 
 *Get a message to say so with* `-s`
 
-`diff -s frc-1 frc-6`
+| **26** : `diff -s frc-1 frc-6`
 
 *Combine* `-s` *with other options*
 
-`diff -iws frc-1 frc-5`
+| **27** : `diff -iws frc-1 frc-5`
 
 *Get a quiet message if files differ*
 
-`diff -q frc-1 frc-4`
+| **28** : `diff -q frc-1 frc-4`
 
 *Compare side-by-side wtih* `-y`
 
-`diff -y frc-1 frc-4`
+| **29** : `diff -y frc-1 frc-4`
 
 *Remember* frc-2
 
-`diff frc-1 frc-2`
+| **30** : `diff frc-1 frc-2`
 
 *Ignore blank lines with* `-B`
 
-`diff -B frc-1 frc-2`
+| **31** : `diff -B frc-1 frc-2`
 
 *There is always more to learn*
 
-`man diff` *(Q to quit)*
+| **32** : `man diff` *(Q to quit)*
 
-`cd ..`
+| **33** : `cd ..`
 
 ### nano
 
 *The simple text editor in the terminal*
 
-`cd verb.ink`
+| **34** : `cd verb.ink`
 
-`nano verb.ink.html`
+| **35** : `nano verb.ink.html`
 
 *Options listed at the bottom*
 
@@ -172,7 +168,7 @@ ___
 
 *The terminal editor used by cool people*
 
-`vi verb.ink.html`
+| **36** : `vi verb.ink.html`
 
 *To quit, type these to characters:*
 
@@ -180,7 +176,7 @@ ___
 
 *Vim has a tutorial*
 
-`vimtutor` *( :q to quit)*
+| **37** : `vimtutor` *( :q to quit)*
 
 *Have fun!*
 
@@ -188,11 +184,11 @@ ___
 
 Oh, what's this?
 
-`alsamixer`
+| **38** : `alsamixer`
 
 Don't have it yet?
 
-`sudo apt install alsamixer`
+| **39** : `sudo apt install alsamixer`
 
 *Some older Linux distros not supported*
 

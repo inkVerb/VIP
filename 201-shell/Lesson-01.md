@@ -3,108 +3,104 @@
 
 `cd ~/School/VIP/shell/201`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`echo FILE-1 >> file1`
+| **1** : `echo FILE-1 >> file1`
 
-`ls`
+| **2** : `ls`
 
-`cat file1`
+| **3** : `cat file1`
 
-`cp file1 file2`
+| **4** : `cp file1 file2`
 
-`ls`
+| **5** : `ls`
 
-`cat file2`
+| **6** : `cat file2`
 
-`gedit file1 file2`
+| **7** : `gedit file1 file2`
 
-`cp file1 file3`
+| **8** : `cp file1 file3`
 
-`ls`
+| **9** : `ls`
 
-`mv file3 file4`
+| **10** : `mv file3 file4`
 
-`ls`
+| **11** : `ls`
 
-`ln -s file4 file5`
+| **12** : `ln -s file4 file5`
 
-`ls`
+| **13** : `ls`
 
 *Note file5 is a different color because it is a symlink*
 
-`ls -l`
+| **14** : `ls -l`
 
 *Note file5 points to file4, indicating where the symlink leads*
 
 *You can also use list-long on only the link to see where it points*
 
-`ls -l file5`
+| **15** : `ls -l file5`
 
 *Let's take a peek*
 
-`gedit file4 file5`
+| **16** : `gedit file4 file5`
 
-`echo FILE-5 >> file5`
+| **17** : `echo FILE-5 >> file5`
 
 *gedit: Reload file4 & file5*
 
 *Note both file4 and file5 say the same thing*
 
-`echo SILLY-FILE5 >> file5`
+| **18** : `echo SILLY-FILE5 >> file5`
 
 *gedit: Reload file4 & file5*
 
-`echo INTO-FILE4 >> file4`
+| **19** : `echo INTO-FILE4 >> file4`
 
 *gedit: Reload file4 & file5*
 
-`ln -s file4 file6`
+| **20** : `ln -s file4 file6`
 
-`ls`
+| **21** : `ls`
 
-`ls -l`
+| **22** : `ls -l`
 
-`cat file6`
+| **23** : `cat file6`
 
-`gedit file6`
+| **24** : `gedit file6`
 
 *Note file6 is the same as file4 & file5*
 
-`rm file6`
+| **25** : `rm file6`
 
-`ls`
+| **26** : `ls`
 
-`ls -l`
+| **27** : `ls -l`
 
 *Note file4 remains*
 
-`rm file4`
+| **28** : `rm file4`
 
-`ls`
+| **29** : `ls`
 
-`ls -l`
+| **30** : `ls -l`
 
 *Note file5 is "broken"*
 
-`touch file4`
+| **31** : `touch file4`
 
-`cat file4`
+| **32** : `cat file4`
 
 *gedit: Reload file4 & file5*
 
-`ls -l`
+| **33** : `ls -l`
 
 *Note file5 is no longer broken, but file4 has changed*
 
 *gedit: Save file6*
 
-`ls`
+| **34** : `ls`
 
-`cat file6`
+| **35** : `cat file6`
 
 #### [Lesson 2: cd, ../.., mkdir, rm -r](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-02.md)

@@ -3,39 +3,35 @@
 
 `cd ~/School/VIP/shell/101`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`echo "$$//" > money.file`
+| **1** : `echo "$$//" > money.file`
 
-`gedit money.file`
+| **2** : `gedit money.file`
 
 *Note how special characters don't always work correctly...*
 
-`echo "\$\$//" > money.file`
+| **3** : `echo "\$\$//" > money.file`
 
 *gedit: Reload money.file*
 
-`sed -i "s///!/g" money.file`
+| **4** : `sed -i "s///!/g" money.file`
 
 *Notice the error, "cancel" (some say "quote") special characters with:* `\`
 
-`sed -i "s/\//\!/g" money.file`
+| **5** : `sed -i "s/\//\!/g" money.file`
 
 *gedit: Reload money.file*
 
-`sed -i "s/$/@/g" money.file`
+| **6** : `sed -i "s/$/@/g" money.file`
 
 *gedit: Reload money.file*
 
-`sed -i "s/\$/@/g" money.file`
+| **7** : `sed -i "s/\$/@/g" money.file`
 
 *gedit: Reload money.file*
 
-`sed -i 's/\$/@/g' money.file`
+| **8** : `sed -i 's/\$/@/g' money.file`
 
 *gedit: Reload money.file*
 
@@ -43,33 +39,33 @@ ___
 
 *Note* `\t` = tab, `\n` = new line
 
-`echo "no tab one line" > tab.file`
+| **9** : `echo "no tab one line" > tab.file`
 
-`gedit tab.file`
+| **10** : `gedit tab.file`
 
-`sed -i "s/no/\t no/" tab.file`
+| **11** : `sed -i "s/no/\t no/" tab.file`
 
 *gedit: Reload tab.file*
 
 *Note the tab*
 
-`sed -i "s/\t no/no/" tab.file`
+| **12** : `sed -i "s/\t no/no/" tab.file`
 
 *gedit: Reload tab.file*
 
 *Note the tab is gone*
 
-`sed -i "s/one/one\n/" tab.file`
+| **13** : `sed -i "s/one/one\n/" tab.file`
 
 *gedit: Reload tab.file*
 
-`sed -i "s/one\n/one/g" tab.file`
+| **14** : `sed -i "s/one\n/one/g" tab.file`
 
 *gedit: Reload tab.file*
 
 *Note the line was not removed, use* `-z` *so* `sed` *is not confused*
 
-`sed -i -z "s/one\n/one/g" tab.file`
+| **15** : `sed -i -z "s/one\n/one/g" tab.file`
 
 *gedit: Reload tab.file*
 

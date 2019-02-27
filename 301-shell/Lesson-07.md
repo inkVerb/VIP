@@ -3,10 +3,6 @@
 
 `cd ~/School/VIP/shell/301`
 
-`gedit &`
-
-`nautilus . &`
-
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
 
@@ -14,29 +10,29 @@ ___
 
 ### I. Read a max number and count
 
-`gedit 07-while-count-read`
+| **1** : `gedit 07-while-count-read`
 
-`./07-while-count-read`
+| **2** : `./07-while-count-read`
 
 *Enter nothing, then enter letters, then enter nothing*
 
-`./07-while-count-read`
+| **3** : `./07-while-count-read`
 
 *Enter a high number, such as 9001*
 
 ### II. Read files & types, then check
 
-`gedit 07-create`
+| **4** : `gedit 07-create`
 
-`./07-create`
+| **5** : `./07-create`
 
-`ls`
+| **6** : `ls`
 
-`gedit 07-check`
+| **7** : `gedit 07-check`
 
 *Note* `&&` *means "AND"* `||` *means "OR"*
 
-`./07-check`
+| **8** : `./07-check`
 
 *Run* `07-check` *many times, consider these:*
 
@@ -50,19 +46,19 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 ### III. Include `.`
 
-`gedit 07-include 07-included`
+| **9** : `gedit 07-include 07-included`
 
-`ls -l 07-include*`
+| **10** : `ls -l 07-include*`
 
 *Note "07-include" is executable, but "07-included" is not*
 
 *And "07-included" has no* `#!/bin/sh` *declaration*
 
-`./07-include`
+| **11** : `./07-include`
 
 *Uncomment the line with* `. ~/School/VIP/shell/301/07-included` *and run it again*
 
-`./07-include`
+| **12** : `./07-include`
 
 *It can be good practice to include the shebang* (`#!/bin/sh`) *in any "included" files for formatting purposes*
 

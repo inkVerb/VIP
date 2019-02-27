@@ -2,12 +2,6 @@
 
 ## Prerequisite: [Shell 101](https://github.com/inkVerb/VIP/tree/master/101-shell)
 
-## Prepare
-
-*F12 (guake) OR Ctrl + Alt + T (new terminal)*
-
-`mkdir -p ~/School/VIP/shell/201`
-
 ### [Lesson 0: sudo passwd](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-00.md)
 
 ### [Lesson 1: cp, mv, ln -s, rm](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-01.md)

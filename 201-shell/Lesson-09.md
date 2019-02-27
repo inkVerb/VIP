@@ -3,101 +3,97 @@
 
 `cd ~/School/VIP/shell/201`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 *Go to your home directory*
 
-`cd ~/`
+| **1** : `cd ~/`
 
 ### `du` & `df`
 
-`du -sh *`
+| **2** : `du -sh *`
 
 *Note the list of each directory's size*
 
-`df -k`
+| **3** : `df -k`
 
 *Note it listed everything in kilobytes*
 
-`df -h`
+| **4** : `df -h`
 
 *Note it listed everything in megabytes and gigabytes, et cetera*
 
-`du -sh School`
+| **5** : `du -sh School`
 
 *Note it can tell you the size of just one directory*
 
 *Now go back to where our 201 directory*
 
-`cd ~/School/VIP/shell/201`
+| **6** : `cd ~/School/VIP/shell/201`
 
 ### `top` & `uptime`
 
-`top`
+| **7** : `top`
 
 *Notice the realtime process list*
 
 Q (or Ctrl + C) *This will CLOSE the top program*
 
-`top -n 1` Q
+| **8** : `top -n 1` Q
 
 *Notice the* `top` *list is not realtime;* `-n 1` *shows only one "iteration",* `-n 3` *would show three*
 
-`top -n 1 -b` Q
+| **9** : `top -n 1 -b` Q
 
 *Notice* `-b` *shows everything, not limited by the size of the terminal window, only limited by the* `-n 1` *option*
 
 *FYI, this is a little program we installed in Lesson 3, a little more colorful than* `top`
 
-`htop`
+| **10** : `htop`
 
 F10 (or Q to Quit)
 
 *For a quick peek:*
 
-`uptime`
+| **11** : `uptime`
 
 ### `ps aux`
 
-`ps aux`
+| **12** : `ps aux`
 
 *Note the list of every running process, but it is not realtime, so you can scroll through it*
 
 Select ONE browser you are NOT using:
 
-`firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
+| **13** : `firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
 
 *Note we used* `&`*to keep it from blocking the terminal*
 
-`ps aux`
+| **14** : `ps aux`
 
 *Scroll to look for that browser's process ID (PID)*
 
 *This uses pipe and grep to find it*
 
-`ps aux | grep firefox` or `ps aux | grep chromium-browser` or `ps aux | grep google-chrome` or `ps aux | grep vivaldi`
+| **15** : `ps aux | grep firefox` or `ps aux | grep chromium-browser` or `ps aux | grep google-chrome` or `ps aux | grep vivaldi`
 
 *This does the same thing*
 
 ### `pgrep` & `kill`
 
-`pgrep firefox` or `pgrep chromium-browser` or `pgrep google-chrome` or `pgrep vivaldi`
+| **16** : `pgrep firefox` or `pgrep chromium-browser` or `pgrep google-chrome` or `pgrep vivaldi`
 
 *Note the PID, it's the number*
 
-`kill PID` e.g. `kill 71771`
+| **17** : `kill PID` e.g. `kill 71771`
 
 *Run it again*
 
-`firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
+| **18** : `firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
 
 *Now kill it by process name using* `killall`
 
-`killall firefox` or `killall chromium-browser` or `killall google-chrome` or `killall vivaldi`
+| **19** : `killall firefox` or `killall chromium-browser` or `killall google-chrome` or `killall vivaldi`
 
 *Some processes can only be killed by PID*
 

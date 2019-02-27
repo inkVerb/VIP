@@ -1,15 +1,19 @@
 # Shell 101
 ## Lesson 1: gedit, echo & sed
 
-`cd ~/School/VIP/shell/101`
+___
 
-`gedit &`
+## Prepare
 
-`nautilus . &`
+*F12 (guake/tilda) OR Ctrl + Alt + T (new terminal)*
+
+| **1** : `mkdir -p ~/School/VIP/shell/101`
+
+| **2** : `cd ~/School/VIP/shell/101`
 
 ___
 
-`echo "No destination? Output to terminal, just like this."`
+| **3** : `echo "No destination? Output to terminal, just like this."`
 
 *The "output" you see in the terminal is called:* "STDOUT"
 
@@ -17,71 +21,71 @@ ___
 
 *Below, the* STDIN *is* `echo "Hello ink!"` *and the* STDOUT *is* `Hello ink!`
 
-`echo "Hello ink!"`
+| **4** : `echo "Hello ink!"`
 
-`echo "abcdefghijklmnopqrstuvwxyz"`
+| **5** : `echo "abcdefghijklmnopqrstuvwxyz"`
 
-`ls`
+| **6** : `ls`
 
 *See, there are no files here*
 
 *We can send* STDOUT *to a file with:* `> MYFILE`
 
-`echo "Designate a file? Output goes to the file, just like this." > abcd`
+| **7** : `echo "Designate a file? Output goes to the file, just like this." > abcd`
 
-`ls`
+| **8** : `ls`
 
 *See, now there's a new file here*
 
-`gedit abcd`
+| **9** : `gedit abcd`
 
-`echo "abcdefghijklmnopqrstuvwxyz" > abcd`
-
-*gedit: Reload*
-
-`echo "abcdefghijklmnopqrstuvwxyz" >> abcd`
+| **10** : `echo "abcdefghijklmnopqrstuvwxyz" > abcd`
 
 *gedit: Reload*
 
-`echo "abcdefghijklmnopqrstuvwxyz" >> abcd`
+| **11** : `echo "abcdefghijklmnopqrstuvwxyz" >> abcd`
+
+*gedit: Reload*
+
+| **12** : `echo "abcdefghijklmnopqrstuvwxyz" >> abcd`
 
 *gedit: Reload*
 
 *Note the number of lines*
 
-`echo "foo :-)" >> abcd`
+| **13** : `echo "foo :-)" >> abcd`
 
 *gedit: Reload*
 
-`sed -i "s/foo/bar/" abcd`
+| **14** : `sed -i "s/foo/bar/" abcd`
 
 *gedit: Reload*
 
-`sed -i "s/bar//" abcd`
+| **15** : `sed -i "s/bar//" abcd`
 
 *gedit: Reload*
 
-`echo "add foo and then some" >> abcd`
+| **16** : `echo "add foo and then some" >> abcd`
 
 *gedit: Reload*
 
-`sed -i "s/foo/bar/" abcd`
+| **17** : `sed -i "s/foo/bar/" abcd`
 
 *gedit: Reload*
 
 *Note the line number of* "add bar and then some"
 
-`sed -i "/bar/d" abcd`
+| **18** : `sed -i "/bar/d" abcd`
 
 *gedit: Reload*
 
 *Note the line with "bar" is gone*
 
-`echo "Replace this Apple delBar line." >> abcd`
+| **19** : `echo "Replace this Apple delBar line." >> abcd`
 
 *gedit: Reload*
 
-`sed -i "/Replace.*/ c\The line with Mr. Apple delBar has been replaced" abcd`
+| **20** : `sed -i "/Replace.*/ c\The line with Mr. Apple delBar has been replaced" abcd`
 
 *gedit: Reload*
 

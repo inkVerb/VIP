@@ -3,10 +3,6 @@
 
 `cd ~/School/VIP/shell/401`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 The `$IFS` variable is a character that separates "fields". You could say it separates words (fields). It's related to looping, but not directly.
@@ -24,7 +20,7 @@ ___
 
 *Edit this script*
 
-`gedit looplines`
+| **1** : `gedit looplines`
 
 *It should look like this:*
 
@@ -42,11 +38,11 @@ done
 
 *Make sure it's executable*
 
-`chmod ug+x looplines && ls`
+| **2** : `chmod ug+x looplines && ls`
 
 *Run it and watch carefully*
 
-`./looplines`
+| **3** : `./looplines`
 
 ### II. Complex loop
 
@@ -54,7 +50,7 @@ Integrate `pwgen` with `sed` in a `for` loop...
 
 *Edit this script*
 
-`gedit looprandom`
+| **4** : `gedit looprandom`
 
 *It should look like this:*
 
@@ -76,17 +72,17 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Make sure it's executable*
 
-`chmod ug+x looprandom && ls`
+| **5** : `chmod ug+x looprandom && ls`
 
 *Run it*
 
-`./looprandom`
+| **6** : `./looprandom`
 
-`ls`
+| **7** : `ls`
 
 *Note the file created:* `randomlooped`
 
-`gedit randomlooped`
+| **8** : `gedit randomlooped`
 
 ### III. `$IFS` = TAB
 
@@ -102,7 +98,7 @@ Set `$IFS` to a "tab"
 
 *Edit this script*
 
-`gedit looptab`
+| **9** : `gedit looptab`
 
 *It should look like this:*
 
@@ -122,10 +118,10 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Make sure it's executable*
 
-`chmod ug+x looptab && ls`
+| **10** : `chmod ug+x looptab && ls`
 
 *Run it and watch carefully*
 
-`./looptab`
+| **11** : `./looptab`
 
 #### [Lesson 9: Interpreters, errors, logic, and empty testing](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)

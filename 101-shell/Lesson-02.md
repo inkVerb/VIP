@@ -3,13 +3,9 @@
 
 `cd ~/School/VIP/shell/101`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
-`gedit abcsed abcd`
+| **1** : `gedit abcsed abcd`
 
 *Note the two tabs in gedit; abcsed is open, but the file does not exist*
 
@@ -33,85 +29,85 @@ Ctrl + Click *this link to open in a new tab:* [abcsed-01](https://github.com/in
 
 *Create abcsed as that same file we just looked at:* [abcsed-01](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-01)
 
-`./abcsed`
+| **2** : `./abcsed`
 
 *Note the error message*
 
-`ls -l`
+| **3** : `ls -l`
 
 *Note the colors of the files and letters "-rw-"*
 
-`chmod ug+x abcsed`
+| **4** : `chmod ug+x abcsed`
 
-`ls -l`
+| **5** : `ls -l`
 
 *Note the colors of the files and letters "-rw-"*
 
-`./abcsed a`
+| **6** : `./abcsed a`
 
 *Now, it works, no error*
 
 *gedit: Reload abcd*
 
-`./abcsed b`
+| **7** : `./abcsed b`
 
 *gedit: Reload abcd*
 
-`./abcsed c`
+| **8** : `./abcsed c`
 
 *gedit: Reload abcd*
 
 *Update abcsed to this:* [abcsed-02](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-02)
 
-`./abcsed d z`
+| **9** : `./abcsed d z`
 
 *gedit: Reload abcd*
 
-`./abcsed e z`
+| **10** : `./abcsed e z`
 
 *gedit: Reload abcd*
 
-`./abcsed z j`
+| **11** : `./abcsed z j`
 
 *gedit: Reload abcd*
 
-`./abcsed z j`
+| **12** : `./abcsed z j`
 
 *gedit: Reload abcd*
 
-`./abcsed z j`
+| **13** : `./abcsed z j`
 
 *gedit: Reload abcd*
 
 *Update abcsed to this:* [abcsed-03](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-03)
 
-`./abcsed z j`
+| **14** : `./abcsed z j`
 
 *gedit: Reload abcd*
 
-`./abcsed f z`
+| **15** : `./abcsed f z`
 
 *gedit: Reload abcd*
 
-`./abcsed z j`
+| **16** : `./abcsed z j`
 
 *gedit: Reload abcd*
 
 *Update abcsed to this:* [abcsed-04](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-04)
 
-`echo "Apples like foo." > applefoo`
+| **17** : `echo "Apples like foo." > applefoo`
 
-`gedit applefoo`
+| **18** : `gedit applefoo`
 
-`./abcsed foo bar applefoo`
+| **19** : `./abcsed foo bar applefoo`
 
 *gedit: Reload applefoo*
 
-`./abcsed g z abcd`
+| **20** : `./abcsed g z abcd`
 
 *gedit: Reload abcd*
 
-`./abcsed z j abcd`
+| **21** : `./abcsed z j abcd`
 
 *gedit: Reload abcd*
 

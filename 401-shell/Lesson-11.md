@@ -3,10 +3,6 @@
 
 `cd ~/School/VIP/shell/401`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 ### I. Heredoc `cat <<EOF`
@@ -50,28 +46,28 @@ END
 
 #### Heredocs applied
 
-`ls`
+| **1** : `ls`
 
 **Write text to a file:**
-```sh
+| **2** : ```sh
 cat <<EOF | cat > neweof
 I am a here document.
 This is what I am.
 I'm at my end.
 EOF
-```
+| **3** : ```
 
-`ls`
+| **4** : `ls`
 
 *Note the new file created: "neweof"*
 
-`gedit neweof`
+| **5** : `gedit neweof`
 
 **Variable in a script:**
 
 *Edit this script*
 
-`gedit eofvar`
+| **6** : `gedit eofvar`
 
 *It should look like this:*
 
@@ -96,7 +92,7 @@ echo "$EOFVAR"
 
 *Run it*
 
-`./eofvar`
+| **7** : `./eofvar`
 
 *Note echoing without "quotess" makes everything appears on one line.*
 
@@ -111,42 +107,42 @@ echo "$EOFVAR"
 
 **Examples:**
 
-`grep "^[[:upper:]]" code-of-poetry.txt`
+| **8** : `grep "^[[:upper:]]" code-of-poetry.txt`
 
-`grep "^[[:punct:]]" code-of-poetry.txt`
+| **9** : `grep "^[[:punct:]]" code-of-poetry.txt`
 
-`grep "^[[:digit:]]" code-of-poetry.txt`
+| **10** : `grep "^[[:digit:]]" code-of-poetry.txt`
 
 *Note no results because no digits appear first on any line.*
 
 *Try without the carrot `^`...*
 
-`grep "[[:digit:]]" code-of-poetry.txt`
+| **11** : `grep "[[:digit:]]" code-of-poetry.txt`
 
-`grep "^[[:lower:]]" code-of-poetry.txt`
+| **12** : `grep "^[[:lower:]]" code-of-poetry.txt`
 
 *Try some simple replacements...*
 
-`sed "s/[[:digit:]]/#/g" code-of-poetry.txt`
+| **13** : `sed "s/[[:digit:]]/#/g" code-of-poetry.txt`
 
 *Cpombine that with `grep` to show only what it affects...*
 
-`grep "[[:digit:]]" code-of-poetry.txt | sed "s/[[:digit:]]/#/g"`
+| **14** : `grep "[[:digit:]]" code-of-poetry.txt | sed "s/[[:digit:]]/#/g"`
 
 *More...*
 
-`sed "s/[[:upper:]]/X/g" code-of-poetry.txt`
+| **15** : `sed "s/[[:upper:]]/X/g" code-of-poetry.txt`
 
-`sed "s/[[:punct:]]/@/g" code-of-poetry.txt`
+| **16** : `sed "s/[[:punct:]]/@/g" code-of-poetry.txt`
 
-`sed "s/[[:blank:]]/_/g" code-of-poetry.txt`
+| **17** : `sed "s/[[:blank:]]/_/g" code-of-poetry.txt`
 
 *Custom ranges...*
 
-`sed "s/[A-Z]/X/" code-of-poetry.txt`
+| **18** : `sed "s/[A-Z]/X/" code-of-poetry.txt`
 
-`sed "s/[1-6]/%/" code-of-poetry.txt`
+| **19** : `sed "s/[1-6]/%/" code-of-poetry.txt`
 
-`sed "s/[a-z]/x/g" code-of-poetry.txt`
+| **20** : `sed "s/[a-z]/x/g" code-of-poetry.txt`
 
 #### [Lesson 12: `$PATH` Plus](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)

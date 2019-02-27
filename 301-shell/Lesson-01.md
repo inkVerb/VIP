@@ -3,10 +3,6 @@
 
 `cd ~/School/VIP/shell/301`
 
-`gedit &`
-
-`nautilus . &`
-
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
 
@@ -16,41 +12,41 @@ ___
 
 Test for an existing *file* by name
 
-`gedit 01-if-file`
+| **1** : `gedit 01-if-file`
 
-`./01-if-file`
+| **2** : `./01-if-file`
 
 *Note it says "Yes." because "nothing" technically exists*
 
-`./01-if-file myfile`
+| **3** : `./01-if-file myfile`
 
 *Note it says nothing because "myfile" does not exist*
 
-`ls`
+| **4** : `ls`
 
-`touch myfile`
+| **5** : `touch myfile`
 
-`ls`
+| **6** : `ls`
 
-`./01-if-file myfile`
+| **7** : `./01-if-file myfile`
 
 *Note the response because the file exists*
 
 Test for an existing *directory* by name
 
-`gedit 01-if-dir`
+| **8** : `gedit 01-if-dir`
 
-`./01-if-dir mydir`
+| **9** : `./01-if-dir mydir`
 
-`mkdir mydir`
+| **10** : `mkdir mydir`
 
-`ls`
+| **11** : `ls`
 
-`./01-if-dir mydir`
+| **12** : `./01-if-dir mydir`
 
-`./01-if-file otherfile`
+| **13** : `./01-if-file otherfile`
 
-`./01-if-dir otherdir`
+| **14** : `./01-if-dir otherdir`
 
 *Note* `-d` *will return false for a file of the same name*
 
@@ -58,66 +54,66 @@ Test for an existing *directory* by name
 
 *So,* `-d` *tests only an existing directory,* `-f` *tests only an existing file*
 
-`./01-if-file mydir`
+| **15** : `./01-if-file mydir`
 
-`./01-if-dir myfile`
+| **16** : `./01-if-dir myfile`
 
 ### II. `else`
 
-`gedit 01-if-else-file`
+| **17** : `gedit 01-if-else-file`
 
-`./01-if-else-file myfile`
+| **18** : `./01-if-else-file myfile`
 
-`./01-if-else-file otherfile`
+| **19** : `./01-if-else-file otherfile`
 
-`gedit 01-if-else-dir`
+| **20** : `gedit 01-if-else-dir`
 
-`./01-if-else-dir mydir`
+| **21** : `./01-if-else-dir mydir`
 
-`./01-if-else-dir otherdir`
+| **22** : `./01-if-else-dir otherdir`
 
-`gedit 01-if-else-e`
+| **23** : `gedit 01-if-else-e`
 
-`./01-if-else-e myfile`
+| **24** : `./01-if-else-e myfile`
 
-`./01-if-else-e otherfile`
+| **25** : `./01-if-else-e otherfile`
 
-`./01-if-else-e mydir`
+| **26** : `./01-if-else-e mydir`
 
-`./01-if-else-e otherdir`
+| **27** : `./01-if-else-e otherdir`
 
 ### III. `elif`
 
-`gedit 01-if-elif`
+| **28** : `gedit 01-if-elif`
 
-`./01-if-elif`
+| **29** : `./01-if-elif`
 
-`./01-if-elif yoyo`
+| **30** : `./01-if-elif yoyo`
 
-`./01-if-elif iamhere`
+| **31** : `./01-if-elif iamhere`
 
-`./01-if-elif mydir`
+| **32** : `./01-if-elif mydir`
 
-`./01-if-elif`
+| **33** : `./01-if-elif`
 
 ### IV. `;` & Whitespace
 
-`gedit 01-lines`
+| **34** : `gedit 01-lines`
 
 *Note* `;` *means "new line of logic" and whitespace at the beginning of lines is ignored*
 
-`./01-lines`
+| **35** : `./01-lines`
 
-`./01-lines yoyo`
+| **36** : `./01-lines yoyo`
 
-`./01-lines urtheir`
+| **37** : `./01-lines urtheir`
 
-`gedit 01-line`
+| **38** : `gedit 01-line`
 
-`./01-line`
+| **39** : `./01-line`
 
-`./01-line yoyo`
+| **40** : `./01-line yoyo`
 
-`./01-line greatagain`
+| **41** : `./01-line greatagain`
 
 #### [Lesson 2: odt2txt, rename, sleep & read](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md)

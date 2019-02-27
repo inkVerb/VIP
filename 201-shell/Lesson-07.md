@@ -3,113 +3,109 @@
 
 `cd ~/School/VIP/shell/201`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 *Compression cheat-sheet:* [VIP: tar-gzip-bzip2-zip-xz](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/tar-gzip-bzip2-zip-xz)
 
 *First some prep*
 
-`mkdir compress`
+| **1** : `mkdir compress`
 
 ## Part I: `zip` `tar` `xz`
 
-`ls -l`
+| **2** : `ls -l`
 
-`unzip vrk.zip`
+| **3** : `unzip vrk.zip`
 
-`ls -l`
+| **4** : `ls -l`
 
 *What a strange name, "vrk-master"*
 
-`mv vrk-master vrk`
+| **5** : `mv vrk-master vrk`
 
-`ls -l`
+| **6** : `ls -l`
 
 *That zip file was strange, let's delete it*
 
-`rm vrk.zip`
+| **7** : `rm vrk.zip`
 
-`ls -l`
+| **8** : `ls -l`
 
 ### zip `zip -r file.zip dir`; `unzip file.zip`
 
-`zip -r vrk.zip vrk`
+| **9** : `zip -r vrk.zip vrk`
 
-`ls -l`
+| **10** : `ls -l`
 
 *You can see the* `vrk` *directory*
 
 *This time, unzip it to the* `compress` *directory*
 
-`unzip vrk.zip -d compress/`
+| **11** : `unzip vrk.zip -d compress/`
 
-`cp vrk.zip compress/`
+| **12** : `cp vrk.zip compress/`
 
-`cd compress`
+| **13** : `cd compress`
 
-`ls -l`
+| **14** : `ls -l`
 
 *It works, but we don't need this extra* `vrk` *directory; delete it*
 
-`rm -r vrk`
+| **15** : `rm -r vrk`
 
-`cd ..`
+| **16** : `cd ..`
 
 ### tar (Tape ARchive) `tar -cvf file.tar dir`; `tar -xvf file.tar`
 
 *Note* `-c` *is for "Create";* `-v` *is for "Verbose";* `-f` *is for "File"*
 
-`tar -cvf vrk.tar vrk`
+| **17** : `tar -cvf vrk.tar vrk`
 
-`ls -l`
+| **18** : `ls -l`
 
-`cp vrk.tar compress/`
+| **19** : `cp vrk.tar compress/`
 
-`cd compress`
+| **20** : `cd compress`
 
-`ls -l`
+| **21** : `ls -l`
 
 *Note* `vrk.tar` *is not compressed, larger than* `vrk.zip`
 
 *Note* `-x` *is for "eXtract";* `-v` *is for "Verbose";* `-f` *is for "File"*
 
-`tar -xvf vrk.tar`
+| **22** : `tar -xvf vrk.tar`
 
-`ls -l`
+| **23** : `ls -l`
 
-`rm -r vrk`
+| **24** : `rm -r vrk`
 
 ### xz `xz file`; `xz -d file.xz`
 
-`xz vrk.tar`
+| **25** : `xz vrk.tar`
 
-`ls -l`
+| **26** : `ls -l`
 
 *Note it replaced the original file* `vrk.tar`
 
 *Note* `-d` *is for "Decompress"*
 
-`xz -d vrk.tar.xz`
+| **27** : `xz -d vrk.tar.xz`
 
-`ls -l`
+| **28** : `ls -l`
 
 *Note the .tar.xz file is gone*
 
 *Now you would normally want to untar it*
 
-`tar -xf vrk.tar`
+| **29** : `tar -xf vrk.tar`
 
-`ls -l`
+| **30** : `ls -l`
 
 *Create the .tar.xz file without removing the original using* `-c`
 
-`xz -c vrk.tar > vrk.tar.xz`
+| **31** : `xz -c vrk.tar > vrk.tar.xz`
 
-`ls -l`
+| **32** : `ls -l`
 
 *Compare types*
 
@@ -117,13 +113,13 @@ ___
 
 ### Combine tar & xz into one command
 
-`rm vrk.tar.xz`
+| **33** : `rm vrk.tar.xz`
 
-`ls -l`
+| **34** : `ls -l`
 
 *Note without* `-v` *for "Verbose" it is nice and quiet*
 
-`tar -cf - vrk | xz > vrk.tar.xz`
+| **35** : `tar -cf - vrk | xz > vrk.tar.xz`
 
 *Breakdown:*
 - `-c` *"Create" something new*
@@ -135,16 +131,15 @@ ___
 - `>` *...to an output file...*
 - `vrk.tar.xz` *is the actual output file*
 
-`rm vrk.tar.xz`
+| **36** : `rm vrk.tar.xz`
 
-`ls -l`
+| **37** : `ls -l`
 
 *You can drop the "File" parameters altogether*
 
-`tar -c vrk | xz > vrk.tar.xz`
+| **38** : `tar -c vrk | xz > vrk.tar.xz`
 
-`ls -l`
-
+| **39** : `ls -l`
 
 ___
 
@@ -152,18 +147,17 @@ ___
 
 `cd ~/School/VIP/shell/201/compress`
 
-
 ___
 
 ### tar (slightly stronger) compression level 9
 
-`ls -l`
+| **40** : `ls -l`
 
 *Note* `-9` *is the compression level*
 
-`xz -9 -c vrk.tar > vrk.9.tar.xz`
+| **41** : `xz -9 -c vrk.tar > vrk.9.tar.xz`
 
-`ls -l`
+| **42** : `ls -l`
 
 *Note the size difference*
 
@@ -171,73 +165,73 @@ ___
 
 #### gzip `gzip -c file > file.gz`; `gzip -d file.gz`
 
-`gzip vrk.tar > vrk.tar.gz`
+| **43** : `gzip vrk.tar > vrk.tar.gz`
 
 *Answer "y" to overwrite, though the file doesn't already exist (this is another drawback of* `gzip`*)*
 
-`ls -l`
+| **44** : `ls -l`
 
 *Note it replaced the original file* `vrk.tar`
 
-`cp ../vrk.tar .`
+| **45** : `cp ../vrk.tar .`
 
-`ls -l`
+| **46** : `ls -l`
 
 *There's a slightly better way...*
 
-`rm vrk.tar.gz`
+| **47** : `rm vrk.tar.gz`
 
-`ls -l`
+| **48** : `ls -l`
 
 *Note* `-c` *is for "Create, keep original"*
 
-`gzip -c vrk.tar > vrk.tar.gz`
+| **49** : `gzip -c vrk.tar > vrk.tar.gz`
 
 *Note there was no question this time;* `-c` *is a good idea with* `gzip`
 
-`ls -l`
+| **50** : `ls -l`
 
-`rm vrk.tar`
+| **51** : `rm vrk.tar`
 
 *Note* `-d` *is for "Decompress"*
 
-`ls -l`
+| **52** : `ls -l`
 
-`gzip -d vrk.tar.gz`
+| **53** : `gzip -d vrk.tar.gz`
 
-`ls -l`
+| **54** : `ls -l`
 
 *Note* `vrk.tar.gz` *is was replaced, just as with xz*
 
 *We want* `vrk.tar.gz` *for reference*
 
-`gzip -c vrk.tar > vrk.tar.gz`
+| **55** : `gzip -c vrk.tar > vrk.tar.gz`
 
 #### bzip2 `bzip2 -c file > file.bz2`; `bzip2 -d file.bz2`
 
 *Note* `-c` *is for "Create, keep original" just as with* `gzip`
 
-`bzip2 -c vrk.tar > vrk.tar.bz2`
+| **56** : `bzip2 -c vrk.tar > vrk.tar.bz2`
 
-`ls -l`
+| **57** : `ls -l`
 
 *Note* `vrk.tar` *still exists, delete before extracting*
 
-`rm vrk.tar`
+| **58** : `rm vrk.tar`
 
 *Note* `-d` *is for "Decompress" as with gzip*
 
-`bzip2 -d vrk.tar.bz2`
+| **59** : `bzip2 -d vrk.tar.bz2`
 
-`ls -l`
+| **60** : `ls -l`
 
 *Note* `vrk.tar.bz2` *is gone, we want it back for reference*
 
-`bzip2 -c vrk.tar > vrk.tar.bz2`
+| **61** : `bzip2 -c vrk.tar > vrk.tar.bz2`
 
 ### Review sizes
 
-`ls -l`
+| **62** : `ls -l`
 
 *Case and point:* `xz` *is smallest, simplest to use, and takes just a little more time*
 
@@ -245,33 +239,33 @@ ___
 
 *Note* `tar` *can figure out the format, also with decompressing:*
 
-`rm -r vrk`
+| **63** : `rm -r vrk`
 
-`ls -l`
+| **64** : `ls -l`
 
-`tar -xf vrk.tar.gz`
+| **65** : `tar -xf vrk.tar.gz`
 
-`ls -l`
+| **66** : `ls -l`
 
 *Done in one step AND the original vrk.tar.gz file is still there!*
 
 *"Again!" — Baby Dinosaur*
 
-`rm -r vrk`
+| **67** : `rm -r vrk`
 
-`ls -l`
+| **68** : `ls -l`
 
 *(Oh, and the dash* `-` *is optional with* `tar` *options)*
 
-`tar xf vrk.tar.bz2`
+| **69** : `tar xf vrk.tar.bz2`
 
-`ls -l`
+| **70** : `ls -l`
 
 *Now with* `xz`
 
-`rm -r vrk && ls -l`
+| **71** : `rm -r vrk && ls -l`
 
-`tar xf vrk.tar.xz && ls -l`
+| **72** : `tar xf vrk.tar.xz && ls -l`
 
 
 ___
@@ -280,88 +274,87 @@ ___
 
 `cd ~/School/VIP/shell/201/compress`
 
-
 ___
 
 *Remember* `tar cf` *creates the tarball*
 
 ### Peek inside any tarball with `tar tf`
 
-`ls -l`
+| **73** : `ls -l`
 
 *Look at what's in the tarballs (notice the speed)*
 
-`tar tf vrk.tar`
+| **74** : `tar tf vrk.tar`
 
-`tar tf vrk.tar.gz`
+| **75** : `tar tf vrk.tar.gz`
 
-`tar tf vrk.tar.bz2`
+| **76** : `tar tf vrk.tar.bz2`
 
-`tar tf vrk.tar.xz`
+| **77** : `tar tf vrk.tar.xz`
 
 *The list is quite long, so put it into a file for easy viewing*
 
-`tar tf vrk.tar.xz > vrk-tar-tf`
+| **78** : `tar tf vrk.tar.xz > vrk-tar-tf`
 
-`ls -l`
+| **79** : `ls -l`
 
-`gedit vrk-tar-tf`
+| **80** : `gedit vrk-tar-tf`
 
 *tar up the* `cpdir` *directory*
 
-`cd ..`
+| **81** : `cd ..`
 
-`tar cvf cpdir.tar cpdir`
+| **82** : `tar cvf cpdir.tar cpdir`
 
-`tar tf cpdir.tar`
+| **83** : `tar tf cpdir.tar`
 
 *Note that* `-v` *"Verbose" basically does the same as* `-t` *"contenT" while tarring*
- 
+
 ### Add to a .tar file
 
 *Make some prep*
 
-`cp cpdir.tar compress/`
+| **84** : `cp cpdir.tar compress/`
 
-`cp -r cpdir compress/`
+| **85** : `cp -r cpdir compress/`
 
-`cd compress`
+| **86** : `cd compress`
 
-`touch file1 file2 file3`
+| **87** : `touch file1 file2 file3`
 
 *Note the following order:* `tar cf TARBALL-FILE.tar CONTENTS CONTENTS CONTENTS ETC`
 
-`tar cf files.tar file1 file2 cpdir`
+| **88** : `tar cf files.tar file1 file2 cpdir`
 
 *Have a look inside*
 
-`tar tf files.tar`
+| **89** : `tar tf files.tar`
 
 *Add a file with* `-r`
 
-`tar rf files.tar file3`
+| **90** : `tar rf files.tar file3`
 
 *See if* `file3` *has been added*
 
-`tar tf files.tar`
+| **91** : `tar tf files.tar`
 
 ### Review: tar & xz
 
-`rm vrk.tar.xz`
+| **92** : `rm vrk.tar.xz`
 
 *Tar up and xz-compress in one command:*
 
-`tar c vrk | xz > vrk.tar.xz`
+| **93** : `tar c vrk | xz > vrk.tar.xz`
 
 *Cleanup*
 
-`rm -r vrk`
+| **94** : `rm -r vrk`
 
-`ls -l`
+| **95** : `ls -l`
 
 *Untar and decompress in one command:*
 
-`tar xf vrk.tar.xz`
+| **96** : `tar xf vrk.tar.xz`
 
 *Case and point:* `xz` *is probably best,* `gzip` *and* `bzip2` *exist in the Linuxverse, and* `tar xf FILE` *works on any* `.tar*` *file*
 

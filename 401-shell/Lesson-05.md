@@ -3,25 +3,21 @@
 
 `cd ~/School/VIP/shell/401`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 ### I. Exit code variable: `$?`
 
 *Prepare*
 
-`touch iamhere`
+| **1** : `touch iamhere`
 
-`ls` *The file exists:* `iamhere`
+| **2** : `ls` *The file exists:* `iamhere`
 
-*Edit a new file*
+*Edit this script*
 
-`gedit varexit`
+| **3** : `gedit varexit`
 
-*Put this code in the file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
@@ -49,21 +45,21 @@ echo "$? notacommand is not a real command, so exit code \"127\""
 
 *Make it executable*
 
-`chmod ug+x varexit`
+| **4** : `chmod ug+x varexit`
 
-`ls`
+| **5** : `ls`
 
 *Run it and watch carefully*
 
-`./varexit`
+| **6** : `./varexit`
 
 ### II. `shift` argument variable numbers
 
-*Edit a new file*
+*Edit this script*
 
-`gedit varshift`
+| **7** : `gedit varshift`
 
-*Put this code in the file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
@@ -102,23 +98,23 @@ echo "After shift 3
 
 *Make it executable*
 
-`chmod ug+x varshift`
+| **8** : `chmod ug+x varshift`
 
-`ls`
+| **9** : `ls`
 
 *Run it and watch carefully*
 
-`./varshift one two three four five six`
+| **10** : `./varshift one two three four five six`
 
 *Note the* `$0` *variable does not shift,* ***only argument variables***
 
 ### III. `$@` all arguments
 
-*Edit a new file*
+*Edit this script*
 
-`gedit varargs`
+| **11** : `gedit varargs`
 
-*Put this code in the file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
@@ -134,21 +130,21 @@ $@"
 
 *Make it executable*
 
-`chmod ug+x varargs`
+| **12** : `chmod ug+x varargs`
 
-`ls`
+| **13** : `ls`
 
 *Run it and watch carefully*
 
-`./varargs one two three four five six`
+| **14** : `./varargs one two three four five six`
 
 ### IV. `$#` argument count
 
-*Edit a new file*
+*Edit this script*
 
-`gedit vargcount`
+| **15** : `gedit vargcount`
 
-*Put this code in the file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
@@ -164,21 +160,21 @@ $#"
 
 *Make it executable*
 
-`chmod ug+x vargcount`
+| **16** : `chmod ug+x vargcount`
 
-`ls`
+| **17** : `ls`
 
 *Run it and watch carefully*
 
-`./vargcount one two three four five six`
+| **18** : `./vargcount one two three four five six`
 
 ### V. `unset` Variables
 
-*Edit a new file*
+*Edit this script*
 
-`gedit varunset`
+| **19** : `gedit varunset`
 
-*Put this code in the file and save it:*
+*It should look like this:*
 
 ```sh
 #!/bin/sh
@@ -225,10 +221,10 @@ myShiftedCount = $myShiftedCount
 
 *Make it executable*
 
-`chmod ug+x varunset`
+| **20** : `chmod ug+x varunset`
 
 *Run it and watch carefully*
 
-`./varunset one two three four five six`
+| **21** : `./varunset one two three four five six`
 
 #### [Lesson 6: Data Types & Quotes](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)

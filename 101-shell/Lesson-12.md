@@ -3,49 +3,45 @@
 
 `cd ~/School/VIP/shell/101`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 *Special characters with* `grep` *need* `-F`
 
-`grep -R "$" *`
+| **1** : `grep -R "$" *`
 
 *Note it found everything*
 
-`grep -F "$" *`
+| **2** : `grep -F "$" *`
 
 *Note the directory error, combine flags into one*
 
-`grep -RF "$" *`
+| **3** : `grep -RF "$" *`
 
-`grep -RF "@" *`
+| **4** : `grep -RF "@" *`
 
-`grep -RF "!" *`
+| **5** : `grep -RF "!" *`
 
 *So far everything works*
 
-`grep -RF "!!" *`
+| **6** : `grep -RF "!!" *`
 
 *But, that didn't work, why?*
 
-`ls -l`
+| **7** : `ls -l`
 
-`!!`
+| **8** : `!!`
 
-`echo "Hello Apple pie."`
+| **9** : `echo "Hello Apple pie."`
 
-`!!`
+| **10** : `!!`
 
 *In scripts,* `!!` *means "whatever the last command was, watch..."*
 
-`grep -RF "!!" *`
+| **11** : `grep -RF "!!" *`
 
 *Sometimes, special characters can only be "canceled" with 'single quotes'*
 
-`grep -RF '!!' *`
+| **12** : `grep -RF '!!' *`
 
 *...'single quotes' can behave differently in* `grep` *and most other commands*
 
@@ -53,9 +49,8 @@ ___
 
 Oh, what's this?
 
-`cowsay Moo! or something`
+| **13** : `cowsay Moo! or something`
 
 Don't have it yet?
 
-`sudo apt install cowsay`
-
+| **14** : `sudo apt install cowsay`

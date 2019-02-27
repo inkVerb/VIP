@@ -162,7 +162,53 @@ done
 
 ___
 
-### VI. `case`... `esac`
+### VI. Count with `for`, `while` & `until`
+
+This is a classic example of a "counting" loop:
+
+```sh
+#!/bin/sh
+
+MAX="$1" # Set a maxiumum when run from the command line as argument $1
+
+COUNT=1
+
+while [ "$COUNT" -le "$MAX" ]; do
+echo "Line #$COUNT"
+# Uncomment the line below to echo each new count into a file
+#echo "Line #$COUNT" >> countfile
+COUNT=$(expr $COUNT + 1)
+done
+
+```
+
+- This works with Shell (`#!/bin/sh`) and does not require BASH (`#!/bin/bash`)
+- Put the above script into a file, make it executable with `chmod ug+x` and run it to see how it works.
+- Note the example includes an `echo ... >> FILE` use, but this counting variable can be used with many commands.
+- This example uses `while`, but the counter can also work with `for` and `until` loops
+
+Here is an example of the code re-written for `until`:
+
+```sh
+#!/bin/sh
+
+MAX="$1" # Set a maxiumum when run from the command line as argument $1
+MAXPLUSONE=$(expr $MAX + 1) # Set a variable above the maximum so the loop will run the $MAX value
+
+COUNT=1
+
+until [ "$COUNT" = "$MAXPLUSONE" ]; do
+echo "Line #$COUNT"
+# Uncomment the line below to echo each new count into a file
+#echo "Line #$COUNT" >> countfile
+COUNT=$(expr $COUNT + 1)
+done
+
+```
+
+___
+
+### VII. `case`... `esac`
 
 - `case` is a simple multiple `if` test
 - `a)` is the `case` argument for using the `-a` flag
@@ -267,7 +313,7 @@ esac
 done
 ```
 
-### VII. Multiple Tests
+### VIII. Multiple Tests
 
 #### Operators:
 
@@ -393,7 +439,7 @@ if (( "$NUM1" <= "$NUM2" ))
 
 ___
 
-### VII. `getopts`
+### IX. `getopts`
 - `getopts` is processed via: `while` [`getopts...`] `do` `case`
 - Each `case` can execute the script
 - `getopts` only allows single-letter flags, like: `-a` `-b` `-c` and together `-abc`
@@ -499,7 +545,7 @@ This can take arguments:
 
 ___
 
-### VIII. `getopt`
+### X. `getopt`
 - `getopt` is processed via: `while [[ $# > 0 ]]; do` `case`
 - Each `case` sets a variable to `true`, then the script should run later in an `if` test for those variables
 - `getopt` allows single-letter flags, AND "long" option alternatives like: `--alpha` `--bravo` in place of `-a` `-b` and together `-ab`

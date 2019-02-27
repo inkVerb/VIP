@@ -3,10 +3,6 @@
 
 `cd ~/School/VIP/shell/401`
 
-`gedit &`
-
-`nautilus . &`
-
 ___
 
 ### I. Interpreters (shells)
@@ -49,7 +45,7 @@ Shell:
 
 *Edit this script*
 
-`gedit math-sh`
+| **1** : `gedit math-sh`
 
 *It should look like this:*
 
@@ -73,7 +69,7 @@ fi
 
 ```
 
-`./math-sh`
+| **2** : `./math-sh`
 
 *Note the BASH operators only work with `#!/bin/bash`*
 
@@ -81,7 +77,7 @@ BASH:
 
 *Edit this script*
 
-`gedit math-bash`
+| **3** : `gedit math-bash`
 
 *It should look like this:*
 
@@ -105,7 +101,7 @@ fi
 
 ```
 
-`./math-bash`
+| **4** : `./math-bash`
 
 *Refer to this cheat-sheet section for more about Shell-BASH differences:* [VIP/Cheet-Sheets: Tests – Welcome to BASH](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Tests.md#welcome-to-bash)
 
@@ -127,14 +123,14 @@ fi
 - `+X` turns an option off
 
 ON...
-`set -e`
-`set -v`
-`set -x`
+| **XX** : `set -e`
+| **XX** : `set -v`
+| **XX** : `set -x`
 
 OFF...
-`set +e`
-`set +v`
-`set +x`
+| **XX** : `set +e`
+| **XX** : `set +v`
+| **XX** : `set +x`
 
 **Combining options** *(into one line)*
 - `set -ev`
@@ -196,7 +192,7 @@ Stating `true`/`false`:
 
 *Edit this script*
 
-`gedit truefalse`
+| **5** : `gedit truefalse`
 
 *It should look like this:*
 
@@ -217,7 +213,7 @@ false || echo "OR is false."
 
 ```
 
-`./truefalse`
+| **6** : `./truefalse`
 
 *It works whether* `true`/`false` *is stated or a variable:*
 
@@ -225,7 +221,7 @@ Variable as `true`/`false`:
 
 *Edit this script*
 
-`gedit truefalsevar`
+| **7** : `gedit truefalsevar`
 
 *It should look like this:*
 
@@ -250,7 +246,7 @@ $VAR || echo "OR is false."
 
 ```
 
-`./truefalsevar`
+| **8** : `./truefalsevar`
 
 *It does* ***NOT*** *work*
 
@@ -258,7 +254,7 @@ Variable as other **"string"**:
 
 *Edit this script*
 
-`gedit truefalsevarstring`
+| **9** : `gedit truefalsevarstring`
 
 *It should look like this:*
 
@@ -282,7 +278,7 @@ $VAR && echo "AND is true."
 $VAR || echo "OR is false."
 ```
 
-`./truefalsevarstring`
+| **10** : `./truefalsevarstring`
 
 ### IV. Using `-z`/`-n` & `unset` "the proper way"
 
@@ -296,7 +292,7 @@ Test with `-z`:
 
 *Edit this script*
 
-`gedit varset-z`
+| **11** : `gedit varset-z`
 
 *It should look like this:*
 
@@ -333,17 +329,17 @@ echo "IS set: $VAR"
 fi
 ```
 
-`./varset-z`
+| **12** : `./varset-z`
 
 Test with `-n`:
 
 *Edit this script*
 
-`gedit varset-n`
+| **13** : `gedit varset-n`
 
 *It should look like this:*
 
-```bash
+ ```bash
 #!/bin/bash
 
 # The variable $VAR is NOT set
@@ -376,6 +372,6 @@ echo "IS empty set: $VAR"
 fi
 ```
 
-`./varset-n`
+| **14** : `./varset-n`
 
 #### [Lesson 10: Dynamics of Functions](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-10.md)
