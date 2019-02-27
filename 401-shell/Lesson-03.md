@@ -3,13 +3,15 @@
 
 ___
 
+## Schedule software to run at a regular time
+
 Cron tasks are processes (usually in a Shell script) that are automatically run by the system on a regular basis.
 
 | **1** : `cd /etc`
 
 | **2** : `ls` *(Scroll up to find the cron directories.)*
 
-### Regular scheduled jobs
+### Normal schedules
 
 | **3** : `cd cron.daily/`
 
@@ -24,7 +26,7 @@ The system will automatically run cron scripts on its own scheduled basis in thr
 1. Each file here is a simple BASH or Shell script.
 2. File Permissions: `rwxr-xr-x` set with: `chmod 755 CRON_FILE_NAME`
 
-### Custom scheduled jobs
+### Custom schedules
 To have more control of the time a cron task will run, put cron files here:
 - Cron directory: `/etc/cron.d/`
 
