@@ -17,7 +17,8 @@ Cron tasks are processes (usually in a Shell script) that are automatically run 
 
 | **4** : `ls -l`
 
-The system will automatically run cron scripts on its own scheduled basis in three cron directories:
+The system will automatically run cron scripts on its own scheduled basis in four cron directories:
+- Hourly: `/etc/cron.hourly/`
 - Daily: `/etc/cron.daily/`
 - Weekly: `/etc/cron.weekly/`
 - Monthly: `/etc/cron.monthly/`
