@@ -24,7 +24,14 @@ ___
 
 *If you install MySQL for this lesson, then you **MAY** completely remove*
 
-*it after with this:* `sudo apt install mysql-server && sudo apt purge mysql-server`
+*it after with this:*
+
+```sh
+sudo apt remove mysql-server mysql-common
+sudo apt purge mysql-server mysql-common
+sudo apt autoremove mysql-server mysql-common
+sudo apt update
+```
 
 *Use* `systemctl` *to start, stop, restart, and check the status of services, such as MySQL*
 
