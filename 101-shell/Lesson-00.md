@@ -109,9 +109,9 @@ ___
 
 | **19** : `cd ~/School`
 
-| **20** : `nautilus .`
-
 *Open Nautilus file explorer in that directory with:* `.`
+
+| **20** : `nautilus .`
 
 
 #### [Lesson 1: gedit, echo & sed](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-01.md)
