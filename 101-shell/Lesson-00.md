@@ -19,13 +19,13 @@ This is normal text, which may label or tell something, it is rare in these less
 
 | **1** : `echo i am a command to be entered in the terminal`
 
+*These numbers help keep track of your place in the lesson and clarify which code you should enter into the terminal*
+
 | **2** : `echo i am another terminal command` *This is a very important note specifically about the command just entered*
 
 | **3** : `third terminal command`
 
 *Note those were three terminal commands, but the third one didn't actually work, but you should have entered it anyway just to watch it not work*
-
-*These numbers help keep track of your place in the lesson and clarify which code you should enter into the terminal*
 
 `preformatted code like this` *that does not have a number is only for reference, not to be entered into the terminal*
 
@@ -97,12 +97,19 @@ ___
 
 *Note the terminal registeres gedit "Terminated"*
 
-*Start gedit so it does not occupy the terminal foreground*
+*Nautilus (file explorer), also does wonders in the terminal*
 
+*(Open Nautilus if you want)*
 
-*Change directory to .../shell/101*
+*First, make the directory "School" (if it doesn't already exist)...*
 
-A`cd ~/School/VIP/shell/101`
+| **18** : `mkdir ~/School`
+
+*Change the terminal to that directory*
+
+| **19** : `cd ~/School`
+
+| **20** : `nautilus .`
 
 *Open Nautilus file explorer in that directory with:* `.`
 
