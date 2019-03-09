@@ -81,19 +81,23 @@ ___
 
 *Note gedit either does not register or registers "Done"*
 
-| **14** : `gedit`
+| **14** : `gedit &`
 
-*Terminal: Ctrl + Z*
+*Note the terminal is not occupied because we added* `&`
 
-| **15** : `jobs`
+*Run another program, Mines*
 
-*This is how to kill job number 1:*
+| **15** : `gnome-mines &`
 
-| **16** : `kill %1`
+| **16** : `jobs`
 
-*Note gedit closed*
+*This is how to kill job number 2:*
 
-| **17** : `jobs`
+| **17** : `kill %2`
+
+*Note mines closed*
+
+| **18** : `jobs`
 
 *Note the terminal registeres gedit "Terminated"*
 
@@ -103,15 +107,15 @@ ___
 
 *First, make the directory "School" (if it doesn't already exist)...*
 
-| **18** : `mkdir ~/School`
+| **19** : `mkdir ~/School`
 
 *Change the terminal to that directory*
 
-| **19** : `cd ~/School`
+| **20** : `cd ~/School`
 
 *Open Nautilus file explorer in that directory with:* `.`
 
-| **20** : `nautilus .`
+| **21** : `nautilus .`
 
 
 #### [Lesson 1: gedit, echo & sed](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-01.md)
