@@ -85,7 +85,7 @@ ___
 
 *Note the terminal is not occupied because we added* `&`
 
-*Run another program, Mines*
+*Run another program, Mines (`gnome-mines`)*
 
 | **15** : `gnome-mines &`
 
@@ -95,11 +95,11 @@ ___
 
 | **17** : `kill %2`
 
-*Note mines closed*
+*Note Mines closed*
 
 | **18** : `jobs`
 
-*Note the terminal registeres gedit "Terminated"*
+*Note the terminal registeres Mines "Terminated"*
 
 *Nautilus (file explorer), also does wonders in the terminal*
 
