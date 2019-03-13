@@ -31,7 +31,7 @@ The system will automatically run cron scripts on its own scheduled basis in fou
 To have more control of the time a cron task will run, put cron files here:
 - Cron directory: `/etc/cron.d/`
 
-| **5** : `cd cron.d/`
+| **5** : `cd ../cron.d/`
 
 | **6** : `ls -l`
 
@@ -67,7 +67,7 @@ Crontab entries follow the same format as the files in `cd cron.d/` (see *Cron f
 
 Format of a cron line:
 
-| **7** : `[minute] [hour] [date_of_the_month] [month] [day_of_the_week] [Shell_command]`
+`[minute] [hour] [date_of_the_month] [month] [day_of_the_week] [Shell_command]`
 
 Example of a cron line:
 
