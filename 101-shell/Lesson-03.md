@@ -92,9 +92,10 @@ ___
 # The Take
 
 - Arguments (like )`$1`, `$2`, and `$3`, etc) work in order after their command
+- Arguments that contain spaces must be wrapped with 'single' or "double" quotes
 - `$0` is the variable for the command that was run in the terminal
 - Terminal commands may be continued to multiple lines using `\` (this helps organize stuff)
-- `$@` will echo all arguments
+- `$@` includes all arguments; `@` can mean "everything" in computer code
 - The terminal and Shell scripts have many other "environment variables" that can be called anytime
 - *In the terminal* `echo $ENVIRONMENT_VARIABLE` = `printenv ENVIRONMENT_VARIABLE`
 - `pwd` = `printenv PWD` = `echo $PWD` ...This shows the full, current location used by the terminal, AKA the "Present Working Directory"

@@ -29,6 +29,8 @@ Ctrl + Click *this link to open in a new tab:* [abcsed-01](https://github.com/in
 
 *Create abcsed as that same file we just looked at:* [abcsed-01](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-01)
 
+*(...do this by using Copy-Paste)*
+
 | **2** : `./abcsed`
 
 *Note the error message*
@@ -116,11 +118,13 @@ ___
 # The Take
 
 - gedit can open multiple files from the terminal
+- Sometimes, programmers create a Shell script or any file by copying and pasting the entire contents of the file from a webpage
 - `#!` is read "shebang"
 - `#!/bin/sh` on line 1 of a file makes it a Shell script
 - "Running" a command in the terminal may also be called "executing" the command
 - Shell scripts can't be run unless they are made "executable", usually with: `chmod ug+x SHELL-SCRIPT-FILE`
 - `sed` commands can work inside a Shell script just as in a terminal
+- A command is followed by "arguments", which are separated by spaces
 - `$1`, `$2`, and `$3`, etc, are "arguments" that replace parts of a Shell script
 
 ___
