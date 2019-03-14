@@ -32,7 +32,10 @@ ___
 
 # The Take
 
--
+- Several commands can be combined into one command, including an output file
+- "Piping" output into "tee" (`command | tee output-file`) sends the output to both the output file *and* is displayed as raw output in the terminal
+- You should already know that "output-file" (just above) represents any file name you may choose
+- `| tee` should be practiced using many commands
 
 ___
 

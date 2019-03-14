@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cat $1 | sed "s/$2/$3/g" | tee sedoutput.text
+
+# v05

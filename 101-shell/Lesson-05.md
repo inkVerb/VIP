@@ -81,7 +81,10 @@ ___
 - The output of one command can be sent as input to the next command using a "pipe": `|`
 - The output of a command can be treated as an argument if wrapped in one of two ways:
   - $ and parentheses: `$(command)`
-  - backticks: ``` `command` ``` 
+  - backticks: ``` `command` ```
+  - Both of these are called "**command substitution**"
+- Command substitution can set the value of a variable in a Shell script
+- The word "command" in this: `echo $(command)` is not an actual command, but represents any command you may use
 
 ___
 

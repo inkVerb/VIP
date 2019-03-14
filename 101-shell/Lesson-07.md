@@ -11,7 +11,7 @@ ___
 
 | **2** : `cat abcd`
 
-*Note* `echo` *sends output as output to the screen*
+*Note* `echo` *sends output as raw output to the screen*
 
 | **3** : `echo $(cat abcd)`
 
@@ -67,8 +67,12 @@ ___
 
 # The Take
 
--
+- `echo` removes paragraph breaks when used against a `$(cat file)` command substitution
+- `cat` preserves paragraph breaks when used by itself
+- `cat` can source from multiple files separated by spaces, *before* the output file indicator: `>`
+- `cat` can append to an existing file with the output file indicator: `>>`
+
 
 ___
 
-#### [Lesson 8: echo, cat & tee in scripts](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-08.md)
+#### [Lesson 8: echo, sed, cat, tee & pipe scripts](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-08.md)

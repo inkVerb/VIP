@@ -43,6 +43,7 @@ ___
 
 - A variable can be used to set the value of another variable
 - A file can be "included" in a Shell script using: `. /included/file/here`
+- This file path: `/included/file/here` is not an actual file, but represents any file you may use
 - "Including" files with a small amount of content is one way to keep a "settings" file
 - A "settings file" keeps track of "settings" changes without changing the actual Shell script file
 

@@ -55,6 +55,8 @@ ___
 
 *Lessons are separated by **TOPIC**, NOT **TIME**, so some may be longer than others*
 
+*At the end of each lesson is a section called* **The Take** *which lists learning objectives for that lesson; this is useful information for students, teachers, crafting exams, or developing a curriculum core*
+
 *Each lesson has a "homework" comparison folder that can be checked at* [inkVerb/VIP Homework](https://github.com/inkVerb/vip-homework/)
 
 *There is a free video series that explains these lessons at the* [inkVerb YouTube channel](https://www.youtube.com/channel/UCILld59lH8VOsT9gfyAb77g)

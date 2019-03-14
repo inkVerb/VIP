@@ -16,7 +16,7 @@
 
 ### [Lesson 7: cat vs echo](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-07.md)
 
-### [Lesson 8: echo, cat & tee in scripts](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-08.md)
+### [Lesson 8: echo, sed, cat, tee & pipe scripts](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-08.md)
 
 ### [Lesson 9: find](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-09.md)
 

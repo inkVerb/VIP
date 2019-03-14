@@ -1,5 +1,5 @@
 # Shell 101
-## Lesson 8: echo, cat & tee in scripts
+## Lesson 8: echo, sed, cat, tee & pipe scripts
 
 `cd ~/School/VIP/shell/101`
 
@@ -35,11 +35,21 @@ ___
 
 *gedit: Reload sedoutput.text*
 
+*Update comboshell to this:* [comboshell-05](https://github.com/inkVerb/vip/blob/master/101-shell/comboshell-05)
+
+| **8** : `./comboshell abcd j "vip-"`
+
+*gedit: Reload sedoutput.text*
+
 ___
 
 # The Take
 
--
+- Argument variables (`$1`, `$2`, etc) can be used inside `$(`**command substitution**`)`
+- `echo` can send variables to output
+- `echo` can pipe variables to a tee output with `echo $variable | tee output/file/here`
+- a pipe chain can link more than two commands
+- `tee` will overwrite the contents of its output file
 
 ___
 
