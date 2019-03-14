@@ -116,6 +116,19 @@ ___
 *Open Nautilus file explorer in that directory with:* `.`
 
 | **21** : `nautilus .`
+___
 
+# The Take
 
+- Commands can be entered into the terminal
+- Non-commands entered into the terminal will return an error message
+- `preformatted` text (AKA `code`) is either a terminal command or part of a program
+- | **1** : `code for terminal` indicates a command to be entered in the terminal (for this VIP Linux tutorial)
+- "gedit" is a text editor
+- The terminal can control desktop app sessions, such as gedit
+- **Ctrl + Z** and **Ctrl + C** manage apps started from their terminal
+- `jobs`, `fg #`, `bg #`, `kill &#`, and `command &` also manage apps started from their terminal
+- `killall app-name` will end all sessions "app-name", whether started from the same terminal or not
+
+___
 #### [Lesson 1: gedit, echo & sed](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-01.md)

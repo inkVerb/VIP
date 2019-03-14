@@ -203,4 +203,12 @@ ___
 
 | **47** : `dialog man`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 12: BASH getopts & getopt](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)

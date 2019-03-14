@@ -601,4 +601,12 @@ ___
 
 # "root" user finish point for this lesson
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 6: wget, curl, git clone](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-06.md)

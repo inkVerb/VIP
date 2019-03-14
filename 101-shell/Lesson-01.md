@@ -91,4 +91,19 @@ ___
 
 *Ctrl + D deletes a line in gedit, use it to delete the line about "Mr. Apple delBar"*
 
+___
+
+# The Take
+
+- Computers (the terminal also) work with *input* & *output*
+- STDIN = input
+- STDOUT = output
+- `echo` is a command that inputs something for simple text output
+- `echo` can send output to a file with `>` & `>>`
+- `sed` can replace or delete text in a file
+- `sed` uses "d" to delete a line
+- gedit usees **Ctrl + D** to delete a line
+
+___
+
 #### [Lesson 2: Arguments & Variables](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-02.md)

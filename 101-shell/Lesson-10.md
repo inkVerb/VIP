@@ -31,4 +31,12 @@ ___
 
 | **8** : `grep -R "Apples like" *`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 11: grep with Special Characters](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-11.md)

@@ -175,4 +175,12 @@ ___
 
 | **42** : `ls`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 7: tar, xz, zip, gzip, bzip2](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-07.md)

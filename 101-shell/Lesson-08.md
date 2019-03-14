@@ -35,4 +35,12 @@ ___
 
 *gedit: Reload sedoutput.text*
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 9: find](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-09.md)

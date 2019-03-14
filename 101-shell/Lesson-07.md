@@ -63,4 +63,12 @@ ___
 
 | **20** : `rm one two three onetwo`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 8: echo, cat & tee in scripts](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-08.md)

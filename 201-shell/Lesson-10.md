@@ -93,4 +93,12 @@ ___
 
 | **32** : `cd ..`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 11: netstat -natu, tcpdump, man, info](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md)

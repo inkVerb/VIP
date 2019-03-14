@@ -192,4 +192,12 @@ Don't have it yet?
 
 *Some older Linux distros not supported*
 
+___
+
+# The Take
+
+-
+
+___
+
 [alsamixer](https://linux.die.net/man/1/alsamixer)

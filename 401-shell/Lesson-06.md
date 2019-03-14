@@ -238,4 +238,12 @@ echo five \* six = `expr $d5 \* $d6`
 
 *Case and point: quotes make no difference in how a value is treated, even in arithmetic.*
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 7: More with `while` & `sed`](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)

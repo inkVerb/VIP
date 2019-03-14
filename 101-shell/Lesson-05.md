@@ -69,4 +69,12 @@ ___
 
 | **28** : `./comboshell abcd j " zz"`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 6: tee](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-06.md)

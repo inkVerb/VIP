@@ -145,4 +145,12 @@ echo "$EOFVAR"
 
 | **20** : `sed "s/[a-z]/x/g" code-of-poetry.txt`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 12: `$PATH` Plus](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)

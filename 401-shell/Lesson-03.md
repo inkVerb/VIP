@@ -80,4 +80,12 @@ Example of a cron line:
 
 *Refer to this cheat-sheet for more about cron scheduling:* [VIP/Cheet-Sheets: Cron Schedule Format](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md)
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 4: MySQL & systemctl](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-04.md)

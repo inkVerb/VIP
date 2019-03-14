@@ -116,4 +116,12 @@ Test for an existing *directory* by name
 
 | **41** : `./01-line greatagain`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 2: odt2txt, rename, sleep & read](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md)

@@ -39,52 +39,68 @@ first \
 "third line"
 ```
 
-| **10** : `printenv`
-
-*These are "environment" variables that can always be called in the terminal or a script*
-
-| **11** : `echo $USER`
-
-| **12** : `printenv USER`
-
-*...two ways to do the same thing*
-
-| **13** : `echo $DESKTOP_SESSION`
-
-| **14** : `printenv DESKTOP_SESSION`
-
-| **15** : `echo $PWD`
-
-| **16** : `printenv PWD`
-
-*Here is a little trick, just for the PWD (Present Working Directory)... ;-)*
-
-| **17** : `pwd`
-
-| **18** : `./how2var $PWD $DESKTOP_SESSION VIP`
-
-| **19** : `./how2var $USER USER rocks`
-
 *Knowing this could save your life and explain life's meaning later on...*
 
-| **20** : `gedit allvar`
+| **10** : `gedit allvar`
 
-*Create how2var as this:* [allvar-01](https://github.com/inkVerb/vip/blob/master/101-shell/allvar-01)
+*Create allvar as this:* [allvar-01](https://github.com/inkVerb/vip/blob/master/101-shell/allvar-01)
 
-| **21** : `ls`
+| **11** : `ls`
 
-| **22** : `chmod ug+x allvar`
+| **12** : `chmod ug+x allvar`
 
-| **23** : `ls`
+| **13** : `ls`
 
-| **24** : `./allvar`
+| **14** : `./allvar`
 
-| **25** : `./allvar 1 2 3 4 5 6 7 8 9`
+| **15** : `./allvar 1 2 3 4 5 6 7 8 9`
 
-| **26** : `./allvar I like to eat bananas in the morning, with eggs, over easy that is.`
+| **16** : `./allvar I like to eat bananas in the morning, with eggs, over easy that is.`
 
 *So,* `$@` *is everything...*
 
 *This* `@` *means "everything" in web DNS, arrays (Shell 301), and many other things*
+
+*These are "environment" variables that can always be called in the terminal or a script...*
+
+| **17** : `printenv`
+
+| **18** : `echo $USER`
+
+| **19** : `printenv USER`
+
+*...two ways to do the same thing*
+
+| **20** : `echo $DESKTOP_SESSION`
+
+| **21** : `printenv DESKTOP_SESSION`
+
+| **22** : `echo $PWD`
+
+| **23** : `printenv PWD`
+
+*Here is a little trick, just for the PWD (Present Working Directory)... ;-)*
+
+| **24** : `pwd`
+
+| **25** : `./how2var $PWD $DESKTOP_SESSION VIP`
+
+| **26** : `./how2var $USER USER rocks`
+
+___
+
+# The Take
+
+- Arguments (like )`$1`, `$2`, and `$3`, etc) work in order after their command
+- `$0` is the variable for the command that was run in the terminal
+- Terminal commands may be continued to multiple lines using `\` (this helps organize stuff)
+- `$@` will echo all arguments
+- The terminal and Shell scripts have many other "environment variables" that can be called anytime
+- *In the terminal* `echo $ENVIRONMENT_VARIABLE` = `printenv ENVIRONMENT_VARIABLE`
+- `pwd` = `printenv PWD` = `echo $PWD` ...This shows the full, current location used by the terminal, AKA the "Present Working Directory"
+- Variables (environment variables also) can be used in a command
+- Variables used as arguments will pass their "value" as the argument
+
+___
 
 #### [Lesson 4: Setting Variables & Setting Files](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-04.md)

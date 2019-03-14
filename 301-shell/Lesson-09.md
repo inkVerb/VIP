@@ -116,4 +116,12 @@ ___
 
 | **41** : `./09-operators-symbol 12 13 eq`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 10: BASH Variable Variables & Arrays](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-10.md)

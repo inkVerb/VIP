@@ -103,4 +103,12 @@ ___
 
 | **35** : `cat file6`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 2: cd, ../.., mkdir, rm -r](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-02.md)

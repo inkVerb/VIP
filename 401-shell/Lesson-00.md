@@ -33,5 +33,11 @@ ___
 | **7** : `git clone https://github.com/inkVerb/401`
 
 | **8** : `cd 401`
+___
 
+# The Take
+
+-
+
+___
 #### [Lesson 1: Returns & Terminal](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)

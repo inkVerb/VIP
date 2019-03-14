@@ -77,4 +77,12 @@ ___
 
 | **23** : `cd ..`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 9: du, df, top, ps aux, pgrep, kill](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-09.md)

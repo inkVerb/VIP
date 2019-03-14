@@ -76,4 +76,12 @@ This is the same in `vim`, so get used to it.
 
 *gedit: Reload countfile*
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 8: `$IFS` (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)

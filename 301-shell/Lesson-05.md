@@ -58,4 +58,12 @@ ___
 
 *Input "wrong" answers to see it loop*
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 6: exit & journalctl](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)

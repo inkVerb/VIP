@@ -99,4 +99,12 @@ Select ONE browser you are NOT using:
 
 *Refer to this cheat-sheet for more about `ps`, `du`, `df` and others:* [VIP/Cheet-Sheets: Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 10: COMMAND > FILE, pwd, uname, who, w](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-10.md)

@@ -37,4 +37,12 @@ ___
 
 | **7** : ```
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 5: Combine & Pipe Commands into Variables](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-05.md)

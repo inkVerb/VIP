@@ -64,4 +64,12 @@ ___
 
 *Input wrong "passwords" to see what it does, input "thepassword" or use Ctrl + C to close*
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 5: case](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)

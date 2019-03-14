@@ -114,4 +114,12 @@ ___
 1. `sudo apt install PACKAGE` *Yes, just install the listed package directly*
 2. `sudo apt full-upgrade`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 4: ls -l, chmod](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)

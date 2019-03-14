@@ -29,5 +29,11 @@ ___
 *To become* `su` *after this, just input in the terminal:* `su`
 
 *That's it, all done.*
+___
 
+# The Take
+
+-
+
+___
 #### [Lesson 1: cp, mv, ln -s, rm](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-01.md)

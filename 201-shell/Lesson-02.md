@@ -79,4 +79,12 @@ ___
 
 | **34** : `cd ..`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 3: su, sudo, apt update, apt upgrade, apt install, lsb_release](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-03.md)

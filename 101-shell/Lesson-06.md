@@ -28,4 +28,12 @@ ___
 
 *gedit: Reload sedoutput.text*
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 7: cat vs echo](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-07.md)

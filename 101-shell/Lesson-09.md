@@ -53,4 +53,12 @@ ___
 
 | **18** : `find . -type d -iname "*png"`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 10: grep](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-10.md)

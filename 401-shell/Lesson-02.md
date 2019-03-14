@@ -214,4 +214,12 @@ This is a virtual file system, allowing normal text-file-like access to informat
 
 These eventually get deleted by the system. Usually, when you choose to "open" a file from the Internet, rather than "save" it, the file is saved here.
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 3: Cron Daemon](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)

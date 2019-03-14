@@ -358,4 +358,12 @@ ___
 
 *Case and point:* `xz` *is probably best,* `gzip` *and* `bzip2` *exist in the Linuxverse, and* `tar xf FILE` *works on any* `.tar*` *file*
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 8: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-08.md)

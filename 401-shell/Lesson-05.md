@@ -227,4 +227,12 @@ myShiftedCount = $myShiftedCount
 
 | **21** : `./varunset one two three four five six`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 6: Data Types & Quotes](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)

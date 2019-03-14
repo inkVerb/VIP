@@ -25,5 +25,11 @@ ___
 | **4** : `git clone https://github.com/inkVerb/301`
 
 | **5** : `ls`
+___
 
+# The Take
+
+-
+
+___
 #### [Lesson 1: if then fi, else & elif](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-01.md)

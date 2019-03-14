@@ -118,4 +118,12 @@ ___
 
 | **29** : `./08-date-name yoyo`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 9: Arithmetic](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-09.md)

@@ -152,4 +152,12 @@ one-1*
 
 | **48** : `mv ODT-*.txt 03-THREE/`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 4: while & until](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)

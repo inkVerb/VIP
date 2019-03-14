@@ -107,4 +107,12 @@ ___
 
 *Note associative arrays can have strings as elements too*
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 11: BASH Functions, select & dialog](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-11.md)

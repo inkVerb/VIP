@@ -69,7 +69,7 @@ ___
 >
 ___
 > Optional: If you need, you may login as a "sudoer" first
-> 
+>
 > | **9** : `su USERNAME` *input the password*
 >
 > | **10** : `journalctl`
@@ -289,5 +289,13 @@ ___
 *Learn more for read-only system logs* [https://ops.tips/gists/redirect-all-outputs-of-a-bash-script-to-a-file/]
 
 *Learn more about error exit codes* [http://tldp.org/LDP/abs/html/exitcodes.html]
+
+___
+
+# The Take
+
+-
+
+___
 
 #### [Lesson 7: Combo && || Include](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)

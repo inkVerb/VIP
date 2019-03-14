@@ -171,4 +171,12 @@ ___
 
 | **52** : `./02-read-6`
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 3: for VAR in WUT do done](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md)

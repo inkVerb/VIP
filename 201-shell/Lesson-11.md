@@ -104,4 +104,12 @@ ___
 *Note* `imagemagick` *changes images from the terminal, learn to use at:*
 - [www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 12: more, less, head, tail, sort, diff, nano, vi](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-12.md)

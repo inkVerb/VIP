@@ -69,4 +69,12 @@ ___
 
 *gedit: Reload tab.file*
 
+___
+
+# The Take
+
+-
+
+___
+
 #### [Lesson 12: grep with Special Characters](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-12.md)
