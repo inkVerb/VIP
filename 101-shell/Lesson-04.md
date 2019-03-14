@@ -31,17 +31,20 @@ ___
 
 *Note this format "includes" the text of any file as if it was text of the script itself*
 
-| **6** : ```sh
+```sh
 
 . some/file/with/text/to/be/included
 
-| **7** : ```
+```
 
 ___
 
 # The Take
 
--
+- A variable can be used to set the value of another variable
+- A file can be "included" in a Shell script using: `. /included/file/here`
+- "Including" files with a small amount of content is one way to keep a "settings" file
+- A "settings file" keeps track of "settings" changes without changing the actual Shell script file
 
 ___
 

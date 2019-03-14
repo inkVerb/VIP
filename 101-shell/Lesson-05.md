@@ -73,7 +73,15 @@ ___
 
 # The Take
 
--
+- "Raw output" is basic text STDOUT output (AKA output in the terminal)
+- `cat` will dump a file as raw output
+- `sed` without `-i` will dump the results as raw output, rather than changing the file
+- `sed -e` designates a new file as the destination for the output
+- `rm` deletes a file
+- The output of one command can be sent as input to the next command using a "pipe": `|`
+- The output of a command can be treated as an argument if wrapped in one of two ways:
+  - `$(command)`
+  - ```command``` 
 
 ___
 
