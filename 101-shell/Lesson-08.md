@@ -48,7 +48,7 @@ ___
 - Argument variables (`$1`, `$2`, etc) can be used inside `$( command substitution )`
 - `echo` can send variables to output
 - `echo` can pipe variables to a tee output with `echo $variable | tee output/file/here`
-- a pipe chain can link more than two commands
+- a pipe chain can link more than two commands: `comm 1 | comm 2 | comm 3 | output-to > file`
 - `tee` will overwrite the contents of its output file
 
 ___
