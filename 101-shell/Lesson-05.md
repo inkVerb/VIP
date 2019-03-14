@@ -81,7 +81,7 @@ ___
 - The output of one command can be sent as input to the next command using a "pipe": `|`
 - The output of a command can be treated as an argument if wrapped in one of two ways:
   - `$(command)`
-  - ```command``` 
+  - ````command```` 
 
 ___
 
