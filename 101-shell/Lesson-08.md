@@ -45,7 +45,7 @@ ___
 
 # The Take
 
-- Argument variables (`$1`, `$2`, etc) can be used inside `$(`**command substitution**`)`
+- Argument variables (`$1`, `$2`, etc) can be used inside `$( *command substitution* )`
 - `echo` can send variables to output
 - `echo` can pipe variables to a tee output with `echo $variable | tee output/file/here`
 - a pipe chain can link more than two commands
