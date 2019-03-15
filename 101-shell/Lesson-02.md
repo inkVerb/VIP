@@ -9,27 +9,27 @@ ___
 
 *Note the two tabs in gedit; abcsed is open, but the file does not exist*
 
-Ctrl + Click *this link to open in a new tab:* [abcsed-01](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-01)
-
-*Look at the first line*
-
 ### Say "HaSHSHSH" `#`
 
 ### Say "BANG!" `!`
 
 ### Say "shebang" `#!`
 
-## shebang
+## shebang in Shell scripts
 
-*"shebang" is what we call the* `#!` *at the start of the first line*
-
-*Note line one with the "shebang"* `#!/bin/sh` *is what makes this file a "Shell script" that we can run or "execute"*
+*"shebang" is what we call the* `#!` *in a Shell script*
 
 *Now, to our first Shell script...*
 
-*Create abcsed as that same file we just looked at:* [abcsed-01](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-01)
+Ctrl + Click *this link to open in a new tab:* [abcsed-01](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-01)
 
-*(...do this by using Copy-Paste)*
+*Create abcsed as that same file we just opened in a new tab:* ([abcsed-01](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-01))
+
+*(...do this by using Copy-Paste into abcsed in gedit, then Ctrl + S to save)*
+
+*Look at the first line*
+
+*Note line one with the "shebang"* `#!/bin/sh` *is what makes this file a "Shell script" that we can run or "execute"*
 
 | **2** : `./abcsed`
 
