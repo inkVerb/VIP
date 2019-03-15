@@ -36,7 +36,9 @@ ___
 ## `su`, `sudo` & and "root":
 - `sudo command` will run `command` as a "super user" AKA "root", what Windows calls an "admin"
 - `su` will login as "root" so all commands will run as "root", without needing `sudo`
+- `passwd` is how any user changes its own login password
 - To login as "root" with `su`, a password must be set first using: `sudo passwd`
+
 ## Remember:
 - `sudo command` runs commands as root without loging in as root
 - `sudo passwd` creates the password to allow root login via `su`
