@@ -33,7 +33,16 @@ ___
 
 # The Take
 
--
+## `su`, `sudo` & and "root":
+- `sudo command` will run `command` as a "super user" AKA "root", what Windows calls an "admin"
+- `su` will login as "root" so all commands will run as "root", without needing `sudo`
+- To login as "root" with `su`, a password must be set first using: `sudo passwd`
+## Remember:
+- `sudo command` runs commands as root without loging in as root
+- `sudo passwd` creates the password to allow root login via `su`
+- `su` logs in as root, thus all commands will be run as root
+- Logging in as root is generally considered dangerous, best use `sudo command`
+
 
 ___
 #### [Lesson 1: cp, mv, ln -s, rm](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-01.md)
