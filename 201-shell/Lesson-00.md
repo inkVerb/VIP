@@ -41,7 +41,7 @@ ___
 
 ## Remember:
 - `sudo command` runs commands as root without loging in as root
-- `sudo passwd` creates the password to allow root login via `su`
+- `sudo passwd` creates/changes the password for root login via `su`
 - `su` logs in as root, thus all commands will be run as root
 - Logging in as root is generally considered dangerous, best use `sudo command`
 
