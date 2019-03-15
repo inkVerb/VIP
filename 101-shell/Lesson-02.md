@@ -43,7 +43,7 @@ Ctrl + Click *this link to open in a new tab:* [abcsed-01](https://github.com/in
 
 | **5** : `ls -l`
 
-*Note the colors of the files and letters "-rw-"*
+*Note the colors of the files and letters "-rwx"*
 
 | **6** : `./abcsed a`
 
