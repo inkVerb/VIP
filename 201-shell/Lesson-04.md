@@ -1,5 +1,5 @@
 # Shell 201
-## Lesson 4: ls -l, chmod
+## Lesson 4: ls -1, ls -l, chmod
 
 `cd ~/School/VIP/shell/201`
 
@@ -57,7 +57,9 @@ ___
 
 # The Take
 
--
+- `ls -1` (with the number one `-1`, not `-l`) will list files vertically
+- `chmod` will change file permissions, see the [VIP/Cheet-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md) for a full list of options and examples
+- `ls -l` will output a list of files with information that includes the permissions that `chmod` changes
 
 ___
 

@@ -107,7 +107,21 @@ ___
 
 # The Take
 
--
+- `cp` copies files this way:
+  - `cp source-file file-copy`
+- `mv` moves files this way:
+  - `mv source-file moved-file`
+  - *Note: `mv` is also the way to change the name of a file*
+- `ln -s` makes a "symlink" of a file this way:
+  - `ln -s source-file new-symlink`
+- `ls -l` will show the destination (original file) of a symlink
+- `rm` removes a file this way:
+  - `rm file-to-remove`
+- `touch` creates an empty file, if the file doesn't already exist this way:
+  - `touch file-to-touch`
+- A symlinked file can be changed and the original will also change
+- Removing a symlinked's destination file will "break" the symlink
+- Recreating a symlinked's destination file will "unbreak" the symlink
 
 ___
 

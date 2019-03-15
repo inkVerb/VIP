@@ -111,15 +111,30 @@ ___
 
 **Tip:** If you ever get an `apt upgrade` message with something like "some packages were held back", here are two easy fixes that often work:
 
-1. `sudo apt install PACKAGE` *Yes, just install the listed package directly*
+1. `sudo apt install PACKAGE` *Yes, just install the listed package again*
 2. `sudo apt full-upgrade`
 
 ___
 
 # The Take
 
--
+- `lsb_release -a` outputs information about the current version of Linux
+- `lsb_release -r -s` will only output the basic version number
+- `sudo apt list` outputs a list of *all* packages that can be installed with `apt`
+- `sudo apt list --upgradable` outputs installed packages that have new versions available
+- `sudo apt update` will update the `list`, including new versions available
+- `sudo apt upgrade` will "upgrade" (install updates) for packages with new versions available
+- `sudo apt install` will install a new package this way:
+  - `sudo apt install package-to-install`
+- `-y` will tell `apt` to automatically answer "yes" rather than prompting
+  - eg:`sudo apt install -y cowsay`
+- *Note `sudo apt remove package-to-remove` will remove (uninstall) a package*
+## Ways to fix some problems
+- `sudo apt update --fix-missing` can fix some problems
+- With the **"some packages were held back"** error message , these might fix the problem:
+  - `sudo apt full-upgrade`
+  - `sudo apt install held-back-package` (install it again)
 
 ___
 
-#### [Lesson 4: ls -l, chmod](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)
+#### [Lesson 4: ls -1, ls -l, chmod](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)
