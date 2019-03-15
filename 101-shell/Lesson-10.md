@@ -35,8 +35,15 @@ ___
 
 # The Take
 
--
+- `grep` searches the contents of files
+- `grep` needs two arguments in order to work:
+  - Contents to search
+  - Location
+  - Order: `grep what-to-search-for /files/to/search`
+  it can search them also
+- `grep` can search within and for wildcards `*`, much like `find`
+- If there are directories in the search location, `grep` wants the `-R` option so
 
 ___
 
-#### [Lesson 11: grep with Special Characters](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-11.md)
+#### [Lesson 11: Quote/Escape Special Characters](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-11.md)

@@ -73,7 +73,12 @@ ___
 
 # The Take
 
--
+- Some special characters "mean something" and will therefore "work" AKA "operate"
+- These special characters might be called "**operators**", but the word "**operator**" is more often used to describe special characters used in math functions
+- If you want to use a special character literally, without it "working", it must be "escaped" AKA "quoted"
+- These often include: `$`, `^`, `/`, `?`, `*`, `.`, among others
+- A common "quote" character is the "backslash" `\`
+- You can get a more in-depth information here: [find-grep-sed-rename.md](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/find-grep-sed-rename.md)
 
 ___
 

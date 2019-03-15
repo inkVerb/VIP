@@ -49,7 +49,11 @@ ___
 
 # The Take
 
--
+- `grep` handles special characters differently
+- `grep` uses `-F` to ignore special characters
+- The double exclamation `!!` means "the last command" almost everywhere in Shell, not only in `grep`
+- `!!` might only be ignored as an operator if used with 'single' quotes: `'!!'`
+- Using 'single' quotes rather than "double" quotes means some special characters don't need to be quoted to prevent them from "operating"
 
 ___
 

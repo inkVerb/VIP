@@ -57,7 +57,22 @@ ___
 
 # The Take
 
--
+- `find` searches for files
+- `find` needs two arguments in order to work:
+  - Location
+  - `-name TEXT-TO-SEARCH-FOR`
+  - Order: `find /path/to/search -name what-to-search-for`
+- `*` is a "wildcard" for text
+- `.` is considered text to search for, not "concatenate" as in some languages
+  - `file.*` can return with "file.jpg", "file.png", and "file." (must contain a period)
+  - `file*` can return with "file.jpg", "file.png", and "files.jpg" and "files" (even with no period)
+  - `*.png` is a normal way to search for all PNG files
+- ".png", ".jpg", ".pdf", ".doc", etc are called "(file) extensions"
+- `find` is normally case-sensitive, unless using the `-iname` flag
+- It may be best to name files with lowercase extensions because of how `find` works
+- `find` uses `-type` flags to narrow results
+  - `-type d` (directories only)
+  - `-type f` (files only)
 
 ___
 
