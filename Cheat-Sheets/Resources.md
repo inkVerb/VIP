@@ -70,8 +70,23 @@
 
 ## V. `dpkg`
 - This manages Debian packages
-- This is not commonly used in Linux tutorials or Q&A/forums because most Debian machines use Aptitude (`apt`) to manage packages
+- This is not commonly used in Linux tutorials or Q&A/forums because most Debian machines use Aptitude (`apt`) to manage debian packages (uses `dpkg` [and does a whole lot more](https://askubuntu.com/a/309121/880404))
 - Sometimes you will see `dpkg` in tutorials or Q&A/forums
-- Examples of real use:
-  - `dpkg -i some-file-prolly-dl-v_555.1.89+annoy_64.deb` install a package
-  - `dpkg -i package.deb` same as above, but named by an awesome developer who likes to things simple
+- Flags:
+  - `-i` install
+  - `-r` remove (uninstall)
+  - `-p` remove package *and* any settings files
+  - `-l` list all installed packages
+  - `-L` list the location of an installed package
+  - `-c` check (view) contents of a package
+  - `-s` see whether a package is installed or not
+  - `-R --install` install from a directory
+  - `--unpack` "unpack" (decompress) the package, but do *not* install it
+  - `--licence` see the license information for a package
+- Examples of use:
+  - `dpkg -i some-file-prolly-downloaded-version_555.1.89+annoy_64.deb` install a package
+  - `dpkg -i package.deb` same as above, but named by an awesome developer who likes to keep things simple
+  - `dpkg -r package-name` uninstall the package `package-name`
+  - `dpkg -p package-name` uninstall and remove settings for `package-name`
+  - `dpkg -s package-name` see whether `package-name` is installed or not
+  - `dpkg -l` list all installed packages
