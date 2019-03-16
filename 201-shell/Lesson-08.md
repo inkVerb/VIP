@@ -89,28 +89,29 @@ ___
   - ***Storing a password*** for a user (so the user can be authenticated without the password being known)
   - ***Verifying that a file downloaded*** correctly (so the file was not hacked or corrupted during the download)
 - `md5sum` is the oldest hash still used today, from early 1990s
-  - It's hashes are small
-  - ***It is convenient for learning***, not software for "production" use
+  - Its hashes are small
+  - It ***is convenient for learning***, not software for "production" use
   - Sometimes we still need it because some developers have not moved on
   - It is generally considered "outdated" and thus "not safe" in "production" (used in real life) software today
   - Though outdated it is much better than nothing!
 - `sha1sum` is the second-oldest used today, from the late 1990s
-  - It's hashes are a little larger and a little more difficult to crack
+  - Its hashes are a little larger and a little more difficult to crack
   - Because it's not too big, it doesn't slow down software and Internet too much, but is safer than `md5sum`
   - ***Some developers consider it "outdated"***, but not all; it depends on how important the project is
   - Developers who used `md5sum` for a long time will think it is more than enough
-- `sha256sum` is ***probably best for normal computing*** well through the year 2020
-  - It's hashes are much longer than `sha1sum` and much more difficult to crack
+- `sha256sum` ***is probably best for normal computing*** well through the year 2020
+  - Its hashes are much longer than `sha1sum` and much more difficult to crack
   - Internet and CPU speeds are fast enough that the longer hash shouldn't slow down software too much
   - Anything longer could slow down software and usually wouldn't be necessary
 - `sha512sum` is the largest as of 2019
-  - ***It's probably overkill*** for most software even after 2020
+  - It ***is probably overkill*** for most software even after 2020
   - Its hashes are very long, requiring more Internet bandwidth and CPU load
   - It would probably be necessary for higher levels of government or top secrecy, such as banking
-  - ***It's not enough by itself*** anyway
+  - It ***is not enough by itself*** anyway
     - If software is targeted by hackers who can crack a `sha256sum` hash, the same hackers could probably crack a `sha512sum` with more time
     - If `sha512sum` is necessary, then other security measures are also necessary
-- ***Most important*** in choosing the hash difficulty level is *whether it can reasonably be cracked by interested hackers* ***with available technology today***.
+## *Most important* in choosing the hash difficulty level:
+*Whether it can reasonably be cracked by interested hackers* ***with available technology today***
   - If a hash can't be reasonably cracked today, but will be tomorrow, then update the software to use the larger hash *tomorrow*, not today
 
 ___
