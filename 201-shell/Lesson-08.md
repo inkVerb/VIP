@@ -86,8 +86,8 @@ ___
 - The original file or text cannot be discovered from the hash, but the original file or text will always result in the same hash
 - The only way to "crak" (hack) a hash is with "brute force" testing, which tests many random files and texts to try to re-create the identical hash
 - A "hash" is used for two main reasons:
-  - ***Storing a password*** for a user (so the user can be authenticated without the password being known)
-  - ***Verifying that a file downloaded*** correctly (so the file was not hacked or corrupted during the download)
+  - ***Storing passwords*** for users (so the password can work without being known)
+  - ***Verifying file downloads*** are correct (to know the file was not hacked or corrupted)
 - `sha256sum` is probably best
 
 ## *Most important* in choosing the hash difficulty level:
@@ -110,7 +110,7 @@ ___
   - It ***is probably overkill*** for most software even after 2020
   - It would probably be necessary for higher levels of government or top secrecy, such as banking
   - It ***is not enough by itself*** anyway
-    - If software is targeted by hackers who can crack a `sha256sum` hash, the same hackers could probably crack a `sha512sum` with more time
+    - Hackers who can crack a `sha256sum` hash could probably crack a `sha512sum` with more time
     - If `sha512sum` is necessary, then other security measures are also necessary
 - There are others, but not covered in this lesson
 
