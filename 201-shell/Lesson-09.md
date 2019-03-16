@@ -103,8 +103,17 @@ ___
 
 # The Take
 
--
-
+- *`du` & `df` output disk and directory size*
+- `du` lists directories and size
+  - `du` all by itself lists everything
+  - `du DIRECTORY` lists only the argued directory
+  - `du *` lists *all* present directories
+  - `du` output kilobytes and all subdirectories by default
+  - `-h` lists in "human-readble" numbers
+  - `-s` does *not* list subdirectories
+- `df` shows more system and "available space" information
+  - `df -h` lists numbers with "human-readable" numbers
+  - `df -k` lists numbers with "human-readable" numbers
 ___
 
 #### [Lesson 10: COMMAND > FILE, pwd, uname, who, w](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-10.md)
