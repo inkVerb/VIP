@@ -7,6 +7,8 @@ ___
 
 | **1** : `gedit how2var`
 
+### Arguments (`$1`, `$2`, etc)
+
 *Create how2var as this:* [how2var-01](https://github.com/inkVerb/vip/blob/master/101-shell/how2var-01)
 
 | **2** : `ls`
@@ -21,7 +23,7 @@ ___
 
 | **7** : `./how2var ink "is a" verb`
 
-*Arguments can be placed on multiple lines*
+### Multiple lines with `\`
 
 | **8** :
 ```sh
@@ -38,6 +40,8 @@ first \
 2nd \
 "third line"
 ```
+
+### `$@` *is everything...*
 
 *Knowing this could save your life and explain life's meaning later on...*
 
@@ -57,9 +61,9 @@ first \
 
 | **16** : `./allvar I like to eat bananas in the morning, with eggs, over easy that is.`
 
-*So,* `$@` *is everything...*
-
 *This* `@` *means "everything" in web DNS, arrays (Shell 301), and many other things*
+
+### Environment variables
 
 *These are "environment" variables that can always be called in the terminal or a script...*
 

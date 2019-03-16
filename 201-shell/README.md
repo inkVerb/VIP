@@ -4,7 +4,7 @@
 
 ### [Lesson 0: sudo passwd](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-00.md)
 
-### [Lesson 1: cp, mv, ln -s, rm](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-01.md)
+### [Lesson 1: cp, mv, ln -s, rm, touch](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-01.md)
 
 ### [Lesson 2: cd, ../.., mkdir, rm -r](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-02.md)
 

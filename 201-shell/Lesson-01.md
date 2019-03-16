@@ -1,5 +1,5 @@
 # Shell 201
-## Lesson 1: cp, mv, ln -s, rm
+## Lesson 1: cp, mv, ln -s, rm, touch
 
 `cd ~/School/VIP/shell/201`
 

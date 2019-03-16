@@ -59,25 +59,33 @@ ___
 
 | **26** : `cd ..`
 
+*Use `touch` & `ls` with a different directory...*
+
+| **27** : `ls newdir`
+
+| **28** : `touch newdir/alsodel newdir/alsoalso`
+
+| **29** : `ls -l newdir`
+
 *Use* `-r` *(RECURSIVE) to remove directories*
 
-| **27** : `rm -r newdir`
-
-| **28** : `ls`
-
-| **29** : `cp directory cpdir`
-
-*Note the error message about directories; use* `-r` *with* `cp` *as well as* `rm` *for directories*
-
-| **30** : `cp -r directory cpdir`
+| **30** : `rm -r newdir`
 
 | **31** : `ls`
 
-| **32** : `cd cpdir`
+| **32** : `cp directory cpdir`
 
-| **33** : `ls`
+*Note the error message about directories; use* `-r` *with* `cp` *as well as* `rm` *for directories*
 
-| **34** : `cd ..`
+| **33** : `cp -r directory cpdir`
+
+| **34** : `ls`
+
+| **35** : `cd cpdir`
+
+| **36** : `ls`
+
+| **37** : `cd ..`
 
 ___
 
@@ -93,6 +101,12 @@ ___
   - `cd ../directory` will move up one level in the directory tree, then into another directory from there
   - `cd directory/subdirectory` will move in two levels of a directory
   - `cd ../../directory` will move up two levels in the directory tree, then into another directory from there
+- `ls` can list other directories these ways:
+  - `ls path/to/dir`
+  - `ls -l path/to/dir`
+- `touch` can create onr or many files in different directories this way:
+  - `touch directory/path/touchfile`
+  - `touch directory/path/touchone diralso/path/touchtwo`
 - `rm -r` removes a directory this way:
   - `rm -r directory-to-remove`
 - `cp -r` copies a directory this way:
