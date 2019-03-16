@@ -58,7 +58,7 @@ ___
 # The Take
 
 - `ls -1` (with the number one `-1`, not `-l`) will list files vertically
-- `chmod` will change file permissions, see the [VIP/Cheet-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md) for a full list of options and examples
+- `chmod` will change file permissions, see usage and examples here: [VIP/Cheet-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
 - `ls -l` will output a list of files with information that includes the permissions that `chmod` changes
 
 ___

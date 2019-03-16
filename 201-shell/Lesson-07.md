@@ -362,8 +362,20 @@ ___
 
 # The Take
 
--
-
+- These are all common compression utilities in Linux: `tar`, `xz`, `zip`, `gzip`, `bzip2`
+- `tar` puts many files into one file
+  - the single file is called a "tarball"
+  - the size stays the same
+- `tar` stands for "tape archive" and dates back to "cassette backup" technology
+- `tar` works with `gzip`, `bzip2`, and `xz` (listed oldest to newest)
+- `zip` is popular for Windows users, but does not work with `tar`
+- `zip` makes the biggest files, `xz` makes the smallest
+- `tar` can completely open a tarball compressed with `gzip`, `bzip2`, or `xz`
+- compressing with `tar` requires `tar` and `|` into `gzip`, `bzip2`, or `xz`
+- Here are two commands to work with compressed tarballs:
+  - Compress with `xz`: `tar c DIRECTORY | xz > TARFILE.tar.xz`
+  - Decompress `.tar.xz`: `tar xf TARFILE.tar.xz`
+  - *Decompress is the same with `.tar.gzip` and `.tar.bzip2`*
 ___
 
 #### [Lesson 8: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-08.md)

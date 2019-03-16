@@ -104,7 +104,7 @@ ___
 - `ls` can list other directories these ways:
   - `ls path/to/dir`
   - `ls -l path/to/dir`
-- `touch` can create onr or many files in different directories this way:
+- `touch` can create one or many files in different directories this way:
   - `touch directory/path/touchfile`
   - `touch directory/path/touchone diralso/path/touchtwo`
 - `rm -r` removes a directory this way:

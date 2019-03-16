@@ -605,7 +605,24 @@ ___
 
 # The Take
 
--
+- `adduser` & `deluser` create and delete a complete group of settings for the user
+- `useradd` & `userdel` only create and delete a user, no more
+- A user's "home" is in `/home/` by default
+- File "permissions" relate to users who own the files
+- `chown` sets file "ownership" (`chmod` sets permissions, from [401-04](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)), see usage and examples here: [VIP/Cheet-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
+- `ls -l` includes file ownership in the output list of files
+- Ownership is set in: `user:group`
+- Normal users have a group by the same name, only that user belongs to that group
+  - The user `jason` will belong to the group `jason` as the only user in that group
+  - `ls -l` displays this as: `jason:jason`
+- "System" (non-human) users, such as a puppet user for a computer program like an email server or web server, may have a different user and group, but those details are not part of this tutorial
+- Most users can view all files
+- Some users can use `sudo` (they are like admins)
+  - Not all users can use `sudo`
+  - Users that can use `sudo` are called "sudoers"
+  - The user created at installation can use `sudo` and is therefore a "sudoer"
+  - There is a list of sudoers somewhere in the system files, which is the settings file, but the desktop settings GUI can also change which users are and are not sudoers on a graphical desktop installation
+- "Writing" (changing/moving/removing) files can only be done by the file "owner" or "group" member or a "sudoer" using `sudo`
 
 ___
 

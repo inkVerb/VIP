@@ -51,7 +51,7 @@ ___
 
 | **13** : `ls`
 
-*Specify an output file with:* `-O SAVEASNAME` (CAPITAL '-O'!)
+*Specify a different output filename with:* `-O SAVEASNAME` (CAPITAL '-O'!)
 
 | **14** : `wget -O vrk.zip https://github.com/inkVerb/vrk/archive/master.zip`
 
@@ -179,7 +179,16 @@ ___
 
 # The Take
 
--
+- `wget` simply downloads and saves a file from a Web address
+- `wget -O filename` specifies a "Save as..." filename for the download
+- `curl` dumps a Web address's content as raw output
+- `curl -L` may be needed to follow links, otherwise it won't (`wget` will)
+- `curl http://web-address > save-as-filename` is how `curl` saves the downloaded file
+- `git` is GitHub's app that syncs and downloads a GitHub repo (files) on your local computer with the GitHub repo (on the GitHub website)
+- `git clone GitHub-REPOSITORY-address` is how `git` "downloads" a GitHub repo
+- When downloading a .zip file from GitHub, the contents will have a strange name
+- Using `git clone` is the simplest way to download a GitHub repo
+
 
 ___
 
