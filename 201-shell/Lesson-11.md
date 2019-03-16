@@ -97,9 +97,9 @@ ___
 
 | **21** : `man imagemagick`
 
-| **22** : `info imagemagick`
+*...but not always...*
 
-*...but not always*
+| **22** : `info imagemagick`
 
 *Note* `imagemagick` *changes images from the terminal, learn to use at:*
 - [www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)
@@ -108,7 +108,12 @@ ___
 
 # The Take
 
--
+- `tcpdump` displays network (including Internet) connections to your machine
+  - This is useful for finding hackers, but anti-hacking is beyond the scope of this lesson
+- `tcpdump` can only be run as root, `sudo tcpdump`
+- `man` & `info` are the "help" tools for most terminal apps, packages, and Linux commands
+  - **Q** will quit both
+  - Not every package has the information for `man` & `info`, but most do
 
 ___
 

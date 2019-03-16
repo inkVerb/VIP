@@ -196,7 +196,51 @@ ___
 
 # The Take
 
--
+## **more, less, head & tail** display the contents of a file in small amounts
+- `more`
+  - One page at a time: Spacebar
+  - One line at a time: Enter
+  - `more -8 file` shows 8 lines at a time
+  - **Q** will quit
+- `less`
+  - Up and down: Spacebar, PageUp, PageDown, Up, Down
+  - **Q** will quit
+- `head`
+  - First 10 lines
+  - `head -8 file` shows the first 8 lines
+- `tail`
+  - Last 10 lines
+  - `tail -8 file` shows the last 8 lines
+
+## Other file view tools
+- `sort` re-orders the lines of a file alphabetically
+  - `-r` for reverse alphabetical
+- `diff` compares two files by line
+  - Usage: `diff file1 file2`
+  - a = "added"
+  - d = "deleted"
+  - c = "changed" (different)
+  - 13,17 = lines 13 through 17
+  - `-i` ignore case
+  - `-w` ignore all "white space" (Returns and extra spaces)
+  - `-y` displays files side-by-side
+
+## Terminal text editors
+### `nano` is great for beginners
+- ^ = **Ctrl**
+- M- = **Alt**
+- If you **Ctrl + Z** as "undo" on accident, `fg nano` will take you back
+### `vim` is for awesome people
+- It should be on every kindergarten's entry exam because kindergartners can learn it easily (if kindergartens had entry exams, but they don't)
+- `vim` emulates the terminal text editor (`vi`) made by Bill Joy, billions of years ago, when computers first walked the earth in 1976
+  - `vim` is "`vi` improved" and does everything `vi` does
+  - (Ubuntu starts `vim` when you run `vi`)
+  - See the official differences in `vim` by typing: `:h vi-differences`
+- Learn vim with: `vimtutor`
+- `vim` is easier to operate than `nano` after only 30 minutes of the `vimtutor` tutorial
+- If your teacher, boss, parents, or spouse force you to learn `vim`, it's because they think you're so awesome that only learning `vim` can make you awesomerer
+- Read about the rich history of terminal text editors like `vim` in this awesome article, *[The Differences Between Vi, Vim, and Emacs](https://danielmiessler.com/blog/differences-vi-vim-emacs/)* by Daniel Miessler
+
 
 ___
 
