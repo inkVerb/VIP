@@ -338,6 +338,7 @@ case $VARIABL in
 # If $VARIABL= anything else
   *)
    echo "Freak out! I didn't plan for this!"
+   break
   ;;
 
 esac
