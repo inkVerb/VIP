@@ -378,6 +378,7 @@ ___
   - Compress with `xz`: `tar c DIRECTORY | xz > TARFILE.tar.xz`
   - Decompress `.tar.xz`: `tar xf TARFILE.tar.xz`
   - *Decompress is the same with `.tar.gzip` and `.tar.bzip2`*
+  
 ___
 
 #### [Lesson 8: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-08.md)

@@ -39,11 +39,11 @@ ___
 
 Q (or Ctrl + C) *This will CLOSE the top program*
 
-| **8** : `top -n 1` Q
+| **8** : `top -n 1`
 
 *Notice the* `top` *list is not realtime;* `-n 1` *shows only one "iteration",* `-n 3` *would show three*
 
-| **9** : `top -n 1 -b` Q
+| **9** : `top -n 1 -b`
 
 *Notice* `-b` *shows everything, not limited by the size of the terminal window, only limited by the* `-n 1` *option*
 
@@ -106,6 +106,21 @@ ___
 - `du` & `df` output disk and directory size
   - `du` lists directories and size
   - `df` shows more system and "available space" information
+- "PID" stands for "process ID", it is the ID number used to control a running app
+- `ps` outputs information about running processes
+  - `ps aux` is probably the most common usage
+  - `ps aux | grep PROCESS` helps to find a running process in the `ps aux` output list
+- `pgrep` outputs only a processes PID
+  - This is useful to kill an app from the terminal via `kill PID`
+- See usage and examples here: [VIP/Cheet-Sheets: Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
+- `top` outputs a realtime list of the system's top-biggest processes
+  - **Q** will quit
+  - `top` will only output what the height of the terminal can display without scrolling
+  - `top -n 1` shows only one "itteration", not realtime
+  - `top -n 1 -b` same as above, `-b` shows all info regardless of terminal height
+- `htop` is like `top`, but prettier and easier to read
+  - **F10** will quit, but so will **Q** if **F10** is unavailable
+- `uptime` shows only the uptime, which equals the "demigod" status of a Linux guru
 
 ___
 

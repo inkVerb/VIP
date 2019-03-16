@@ -189,7 +189,6 @@ ___
 - When downloading a .zip file from GitHub, the contents will have a strange name
 - Using `git clone` is the simplest way to download a GitHub repo
 
-
 ___
 
 #### [Lesson 7: tar, xz, zip, gzip, bzip2](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-07.md)

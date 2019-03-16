@@ -22,6 +22,7 @@
     - Can be used with most other apps, it `gedit`, `vlc`, etc
 ## II. `pgrep`
 - This lists only PIDs for a process
+- This is useful to get a PID so you can kill it from the terminal with `kill PID`
 - Usage: `pgrep PROCESS`
 - Examples:
   - `pgrep gedit`
@@ -72,7 +73,7 @@
 - This manages Debian packages
 - This is not commonly used in Linux tutorials or Q&A/forums because most Debian machines use Aptitude (`apt`) to manage debian packages (uses `dpkg` [and does a whole lot more](https://askubuntu.com/a/309121/880404))
 - Sometimes you will see `dpkg` in tutorials or Q&A/forums
-- Flags:
+- Common flags:
   - `-i` install
   - `-r` remove (uninstall)
   - `-p` remove package *and* any settings files
