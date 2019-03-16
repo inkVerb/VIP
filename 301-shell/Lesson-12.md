@@ -120,7 +120,7 @@ ___
 
 - See usage and examples here: [Tests: getopts](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#ix-getopts)
 
-## *Explaining `getopt` in detail is beyond the scope of this lesson, this is only a survey*
+## *Explaining `getopt` in detail is beyond the scope of this survey lesson*
 ## `getopt` (for one-letter OR long-word flags)
 - Procedure of a `getopt` flag set:
   - `optionsVariable=$(getopt ...)` defines the allowed flags (optionsVariable can be any variable)
