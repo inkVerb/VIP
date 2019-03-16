@@ -70,7 +70,7 @@ ___
   3. Adapt to custom flag arguments (or more in-depth with BASH using `getopts`, later lessons)
   4. Do the job of a long `if`-`elif` test series without being as complex
   5. Work based on a variable's value set earlier in the script
-- Usually, the simplest way to
+- *Note One common way to organize a `case` scenario is for each "case" to simply set a variable as `true`, then process that variable based on an `if` test later in the script. This makes scripts longer, but the `case` index is easier to read. This is seen in the cheat-sheet [Tests: case](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#vii-case-esac) under the "Lazy case" method example*
 - Procedure of a `case` index:
   - `case` defines the variable to be matched
   - `in` opens the case index of possible value matches

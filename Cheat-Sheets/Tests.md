@@ -313,6 +313,51 @@ esac
 done
 ```
 
+- "Lazy case" (variable-if) method:
+
+```sh
+# First, the case index
+
+case $VARIABL in
+
+# If $VARIABL=a
+  a)
+   caseA=true
+  ;;
+
+# If $VARIABL=b
+  b)
+   caseB=true
+  ;;
+
+# If $VARIABL=wallawalla
+  wallawalla)
+   casewallawalla=true
+  ;;
+
+# If $VARIABL= anything else
+  *)
+   echo "Freak out! I didn't plan for this!"
+  ;;
+
+esac
+
+# Now, the series of if tests for each above case
+
+if [ "$caseA" = "true" ]; then
+  DO SOMETHING "A"
+fi
+
+if [ "$caseB" = "true" ]; then
+  DO SOMETHING "B"
+fi
+
+if [ "$casewallawalla" = "true" ]; then
+  DO SOMETHING "wallawalla"
+fi
+
+```
+
 ### VIII. Multiple Tests
 
 #### Operators:

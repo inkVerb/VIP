@@ -100,7 +100,46 @@ ___
 
 # The Take
 
--
+## `getopts` & `getopt` (similar, yet worlds apart)
+- Both receive, check, and process flags and related arguments for a BASH script
+- Both require `while` and `case` loops
+- `getopts` only allows one-letter flags and is relatively simple
+- `getopt` allows one-letter flags or long-word flags and is much more complicated
+
+## `getopts` (for one-letter flags)
+- Procedure of a `getopts` flag set:
+  - `while getopts` defines the allowed flags
+  - `do` opens a case loop
+  - `case` defines the flag variable to be matched
+  - `in` opens the case index of possible flag matches
+  - `f)` what to do if this flag was argued (as many as needed)
+  - `f)` what to do if this flag was argued (as many as needed)
+  - `f)` what to do if this flag was argued (as many as needed)
+  - `esac` closes the case index
+  - `done` closes the getopt loop
+
+- See usage and examples here: [Tests: getopts](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#ix-getopts)
+
+## `getopt` (for one-letter OR long-word flags)
+- Procedure of a `getopt` flag set:
+  - `optionsVariable=$(getopt ...)` defines the allowed flags (optionsVariable can be any variable)
+  - `eval set --"$optionsVariable"` checks that the variables will work
+  - `OPTIND=1` resets one of the `getopt` native variables
+  - `flagoption=false` resets the flag to `false` (as many as needed)
+  - `flagoption=false` resets the flag to `false` (as many as needed)
+  - `flagoption=false` resets the flag to `false` (as many as needed)
+  - `while [[ $# > 0 ]]` tests whether accepted flags have been argued
+  - `do` opens a case loop
+  - `case $1 in` defines whatever flag getopt will process
+  - `-f | --flagoption )` what to do if this flag was argued (as many as needed)
+  - `-f | --flagoption )` what to do if this flag was argued (as many as needed)
+  - `-f | --flagoption )` what to do if this flag was argued (as many as needed)
+  - `*)` sets the final case for what's next: break
+  - `break` ends the loop
+  - `esac` closes the case index
+  - `done` closes the getopt loop
+  - `shift "$((OPTIND-1))"` resets the same `getopt` native variables as before (good housekeeping)
+- See usage and examples here: [Tests: getopt](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#x-getopt)
 
 ___
 
