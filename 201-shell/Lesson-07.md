@@ -362,6 +362,8 @@ ___
 
 # The Take
 
+- "Flags" (say `-f`, `-v`) can be combined like this: `-fv`
+- The `-` hyphen is optional with flags for `tar`; `tar -fv` = `tar fv`
 - These are all common compression utilities in Linux: `tar`, `xz`, `zip`, `gzip`, `bzip2`
 - `tar` puts many files into one file
   - the single file is called a "tarball"
