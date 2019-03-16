@@ -192,9 +192,13 @@ Don't have it yet?
 
 *Some older Linux distros not supported*
 
+Learn more at the [alsamixer manual page](https://linux.die.net/man/1/alsamixer)
+
 ___
 
 # The Take
+
+- `alsamixer` controls audio volume from the terminal
 
 ## **more, less, head & tail** display the contents of a file in small amounts
 - `more`
@@ -240,8 +244,3 @@ ___
 - `vim` is easier to operate than `nano` after only 30 minutes of the `vimtutor` tutorial
 - If your teacher, boss, parents, children, spouse, or family dog force you to learn `vim`, it's because they think you're so awesome that only learning `vim` can make you awesomerer
 - Read about the rich history of terminal text editors like `vim` in the dazzling article, *[The Differences Between Vi, Vim, and Emacs](https://danielmiessler.com/blog/differences-vi-vim-emacs/)* by Daniel Miessler
-
-
-___
-
-[alsamixer](https://linux.die.net/man/1/alsamixer)
