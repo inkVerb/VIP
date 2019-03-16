@@ -29,7 +29,8 @@ ___
 
 # The Take
 
--
+- Your machine is up to speed with the necessary packages installed
+- You have the GitHub "301" files needed for this course
 
 ___
 #### [Lesson 1: if then fi, else & elif](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-01.md)

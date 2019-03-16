@@ -156,8 +156,24 @@ ___
 
 # The Take
 
--
+## `for` (a loop for each of many)
+- `for` is a "loop", not a "test" like `if`
+- `for` runs (loops) a mini-script "for" each instance of a thing
+- `for` is useful to do the same or a similar thing to each of many files
+- Procedure of a `for` loop:
+  - `for` opens and defines the conditions
+  - `do` opens the mini-script to be looped
+  - `done` closes the mini-script
+- Syntax of the `for` line:
+  - `for` `VARIABLE` `in` `CONDITIONS`
+- See usage and examples here: [Tests: for](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iii-for-variabl-in-wut)
 
+## Replacement within variables
+- `${VAR%foo}bar` will change the variable $VARfoo to retrieve the value of $VARbar instead
+  - This can be useful to:
+    1. Set a variable that may be unknown within the script
+    2. Call a known variable based on arguments or a settings file, etc
+- See usage and examples here: [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 ___
 
 #### [Lesson 4: while & until](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)

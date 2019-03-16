@@ -62,7 +62,26 @@ ___
 
 # The Take
 
--
+## `case` (multiple scripts for each of multiple conditions)
+- `case` runs any of many mini-scripts based on the value of a variable
+- `case` is useful to
+  1. Fit different scenarios in a `while`/`until` loop
+  2. Respond appropriately to a `read` dialog with the human user
+  3. Adapt to custom flag arguments (or more in-depth with BASH using `getopts`, later lessons)
+  4. Do the job of a long `if`-`elif` test series without being as complex
+  5. Work based on a variable's value set earlier in the script
+- Usually, the simplest way to
+- Procedure of a `case` index:
+  - `case` defines the variable to be matched
+  - `in` opens the case index of possible value matches
+  - `value)` what to do if the case variable has this value (as many as needed)
+  - `value)` what to do if the case variable has this value (as many as needed)
+  - `value)` what to do if the case variable has this value (as many as needed)
+  - `*)` what to do if the case variable doesn't match any above case
+  - `esac` closes the case index
+- Syntax of the `while` line:
+  - `case` `$VARIABLE_BEING_MATCHED`
+- See usage and examples here: [Tests: case](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#vii-case-esac)
 
 ___
 

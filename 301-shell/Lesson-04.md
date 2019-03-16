@@ -68,8 +68,35 @@ ___
 
 # The Take
 
--
+- `while` & `until` loops work the same way, but with opposite tests
 
+## `while` (do something while `true` until `false`)
+- `while` loops a mini-script that runs as long as a test returns `true`, until a test returns `false`
+- `while` is useful to
+  1. Count numbers sequentially
+  2. Run a script that needs to run multiple times in order to succeed
+  3. Keep trying until the "correct" response is input
+- Procedure of a `while` loop:
+  - `while` opens and defines the test
+  - `do` opens the mini-script to be looped
+  - `done` closes the mini-script
+- Syntax of the `while` line:
+  - `while` `CONDITIONS TO BE TESTED`
+- See usage and examples here: [Tests: while](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iv-while-do-done)
+
+## `until` (do something while `false` until `true`)
+- `until` loops a mini-script that runsas long as a test returns `false`, until a test returns `true`
+- `until` is useful to
+  1. Count numbers sequentially
+  2. Run a script that needs to run multiple times in order to succeed
+  3. Keep trying until the "correct" response is input
+- Procedure of a `until` loop:
+  - `until` opens and defines the test
+  - `do` opens the mini-script to be looped
+  - `done` closes the mini-script
+- Syntax of the `until` line:
+  - `until` `CONDITIONS TO BE TESTED`
+- See usage and examples here: [Tests: until](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#v-until-do-done)
 ___
 
 #### [Lesson 5: case](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)

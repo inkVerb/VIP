@@ -162,7 +162,7 @@ done
 
 ___
 
-### VI. Count with `for`, `while` & `until`
+### VI. Count with `while` & `until`
 
 This is a classic example of a "counting" loop:
 

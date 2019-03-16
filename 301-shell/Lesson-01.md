@@ -120,8 +120,19 @@ ___
 
 # The Take
 
--
+- Shell scripts use logic tests
 
+## `if` (a logical test)
+- Procedure of an `if` test:
+  - `if` opens the test
+  - `then` runs if the test returns `true`
+  - `elif` runs another test if the previous test returns `false` (optional)
+  - `else` runs if all previous tests return `false` (optional)
+  - `fi` closes the test
+- `;` makes a "logical line break" without putting code on a new line  
+- Syntax of the `if` line:
+  - `for` `CONDITIONS TO BE TESTED`
+- See usage and examples here: [Tests: if](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#ii-if-then-else--elif-fi)
 ___
 
 #### [Lesson 2: odt2txt, rename, sleep & read](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md)
