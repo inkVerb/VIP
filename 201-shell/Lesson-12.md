@@ -232,14 +232,14 @@ ___
 - If you **Ctrl + Z** as "undo" on accident, `fg nano` will take you back
 ### `vim` is for awesome people
 - It should be on every kindergarten's entry exam because kindergartners can learn it easily (if kindergartens had entry exams, but they don't)
-- `vim` emulates the terminal text editor (`vi`) made by Bill Joy, billions of years ago, when computers first walked the earth in 1976
-  - `vim` is "`vi` improved" and does everything `vi` does
-  - (Ubuntu starts `vim` when you run `vi`)
-  - See the official differences in `vim` by typing: `:h vi-differences`
-- Learn vim with: `vimtutor`
+- `vim` emulates the terminal text editor `vi` made by Bill Joy, billions of years ago, when computers first walked the earth in 1976
+  - `vim` is "`vi` improved", is built on `vi`, and does everything `vi` does
+  - Ubuntu starts `vim` when you run `vi`
+  - Read all about the official differences; run: `vim`, then type: `:h vi-differences`
+- Learn `vim` by running: `vimtutor`
 - `vim` is easier to operate than `nano` after only 30 minutes of the `vimtutor` tutorial
-- If your teacher, boss, parents, or spouse force you to learn `vim`, it's because they think you're so awesome that only learning `vim` can make you awesomerer
-- Read about the rich history of terminal text editors like `vim` in this awesome article, *[The Differences Between Vi, Vim, and Emacs](https://danielmiessler.com/blog/differences-vi-vim-emacs/)* by Daniel Miessler
+- If your teacher, boss, parents, children, spouse, or family dog force you to learn `vim`, it's because they think you're so awesome that only learning `vim` can make you awesomerer
+- Read about the rich history of terminal text editors like `vim` in the dazzling article, *[The Differences Between Vi, Vim, and Emacs](https://danielmiessler.com/blog/differences-vi-vim-emacs/)* by Daniel Miessler
 
 
 ___
