@@ -86,28 +86,28 @@ ___
 - The original file or text cannot be discovered from the hash, but the original file or text will always result in the same hash
 - The only way to "crak" (hack) a hash is with "brute force" testing, which tests many random files and texts to try to re-create the identical hash
 - A "hash" is used for two main reasons:
-  - **Storing a password** for a user (so the user can be authenticated without the password being known)
-  - **Verifying that a file downloaded** correctly (so the file was not hacked or corrupted during the download)
+  - ***Storing a password*** for a user (so the user can be authenticated without the password being known)
+  - ***Verifying that a file downloaded*** correctly (so the file was not hacked or corrupted during the download)
 - `md5sum` is the oldest hash still used today, from early 1990s
   - It's hashes are small
-  - **It is convenient for learning**, not software for "production" use
+  - ***It is convenient for learning***, not software for "production" use
   - Sometimes we still need it because some developers have not moved on
   - It is generally considered "outdated" and thus "not safe" in "production" (used in real life) software today
   - Though outdated it is much better than nothing!
 - `sha1sum` is the second-oldest used today, from the late 1990s
   - It's hashes are a little larger and a little more difficult to crack
   - Because it's not too big, it doesn't slow down software and Internet too much, but is safer than `md5sum`
-  - **Some developers consider it "outdated"**, but not all; it depends on how important the project is
+  - ***Some developers consider it "outdated"***, but not all; it depends on how important the project is
   - Developers who used `md5sum` for a long time will think it is more than enough
-- `sha256sum` is **probably best for normal computing** well through the year 2020
+- `sha256sum` is ***probably best for normal computing*** well through the year 2020
   - It's hashes are much longer than `sha1sum` and much more difficult to crack
   - Internet and CPU speeds are fast enough that the longer hash shouldn't slow down software too much
   - Anything longer could slow down software and usually wouldn't be necessary
 - `sha512sum` is the largest as of 2019
-  - **It's probably overkill** for most software even after 2020
+  - ***It's probably overkill*** for most software even after 2020
   - Its hashes are very long, requiring more Internet bandwidth and CPU load
   - It would probably be necessary for higher levels of government or top secrecy, such as banking
-  - **It's not enough by itself** anyway
+  - ***It's not enough by itself*** anyway
     - If software is targeted by hackers who can crack a `sha256sum` hash, the same hackers could probably crack a `sha512sum` with more time
     - If `sha512sum` is necessary, then other security measures are also necessary
 - ***Most important*** in choosing the hash difficulty level is *whether it can reasonably be cracked by interested hackers* ***with available technology today***.
