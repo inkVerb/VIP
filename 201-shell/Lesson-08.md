@@ -88,8 +88,15 @@ ___
 - A "hash" is used for two main reasons:
   - ***Storing a password*** for a user (so the user can be authenticated without the password being known)
   - ***Verifying that a file downloaded*** correctly (so the file was not hacked or corrupted during the download)
+- `sha256sum` is probably best
+
+## *Most important* in choosing the hash difficulty level:
+*Whether it can reasonably be cracked by interested hackers* ***with available technology today***
+  - If a hash can't be reasonably cracked today, but will be tomorrow, then update the software to use the larger hash *tomorrow*, not today
+
+## About each hash
 - `md5sum` is the oldest hash still used today, from early 1990s
-  - It ***is convenient for learning***, not software for "production" use
+  - It ***is easy when learning***, not for "production" use (real life)
   - Sometimes we still need it because some developers have not moved on
   - Though outdated it is much better than nothing!
 - `sha1sum` is the second-oldest used today, from the late 1990s
@@ -105,9 +112,7 @@ ___
   - It ***is not enough by itself*** anyway
     - If software is targeted by hackers who can crack a `sha256sum` hash, the same hackers could probably crack a `sha512sum` with more time
     - If `sha512sum` is necessary, then other security measures are also necessary
-## *Most important* in choosing the hash difficulty level:
-*Whether it can reasonably be cracked by interested hackers* ***with available technology today***
-  - If a hash can't be reasonably cracked today, but will be tomorrow, then update the software to use the larger hash *tomorrow*, not today
+- There are others, but not covered in this lesson
 
 ___
 
