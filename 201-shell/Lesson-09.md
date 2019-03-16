@@ -103,7 +103,7 @@ ___
 
 # The Take
 
-- *`du` & `df` output disk and directory size*
+- **`du` & `df` output disk and directory size**
 - `du` lists directories and size
   - `du` all by itself lists everything
   - `du DIRECTORY` lists only the argued directory
