@@ -3,7 +3,7 @@
 
 `cd ~/School/VIP/shell/301`
 
-- [VIP/Cheet-Sheets: Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
+- [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
 
 ___
 
@@ -350,12 +350,13 @@ ___
 - These have some common flags
   - `-t TAG` add/search a tag
   - `-p` add/search priority
-
 - `journalctl` views system logs
   - `-r` reverse order (most recent first)
   - `-f` follows real time entries
   - `-o verbose` shows more
 - `logger` makes system log entries
+- See usage and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#vi-logger--journalctl)
+
 
 ## `exit` codes & app log files
 - `exit` code numbers are important, always use an exit code with `exit`!
