@@ -25,17 +25,17 @@ ___
 
 *Ctrl+C to close*
 
-| **1** : `journalctl`
+| **2** : `journalctl`
 
 *Q to quit*
 
 *Use* `-r` *to "reverse" the order and view most recent log entries first*
 
-| **2** : `journalctl -r`
+| **3** : `journalctl -r`
 
 *Use* `-f` *to "follow" the most recent entries in real time*
 
-| **2** : `journalctl -f`
+| **4** : `journalctl -f`
 
 *...now click some actions in the desktop GUI and watch entries appear*
 
@@ -43,35 +43,35 @@ ___
 
 *Create a system log entry...*
 
-| **3** : `logger "I logged this just now."`
+| **5** : `logger "I logged this just now."`
 
 *Look for your entry...*
 
-| **4** : `journalctl -r` *Q to quit*
+| **6** : `journalctl -r` *Q to quit*
 
 *Use* `-t SOME_TAG` *to add your own "tag"*
 
-| **5** : `logger -t dazzleTag "I logged this dazzling tag."`
+| **7** : `logger -t dazzleTag "I logged this dazzling tag."`
 
 *Now search for only that tag...*
 
-| **6** : `journalctl -t dazzleTag` *Q to quit*
+| **8** : `journalctl -t dazzleTag` *Q to quit*
 
 *Set a "priority" level at "info"...*
 
-| **77** : `logger -p info "I logged this info mere moments ago."`
+| **9** : `logger -p info "I logged this info mere moments ago."`
 
 *Look for the "info" priority* (`-p info`) *in the most recent* (`-r`) *logs first...*
 
-| **77** : `journalctl -r -p info` *Q to quit*
+| **10** : `journalctl -r -p info` *Q to quit*
 
 *Note your "dazzleTag" log also shows up because "info" is the default priority for `logger`*
 
 *...because `info` = `6`, that is the same as...*
 
-| **77** : `logger -p 6 "I also logged this number mere moments ago."`
+| **11** : `logger -p 6 "I also logged this number mere moments ago."`
 
-| **77** : `journalctl -r -p 6` *Q to quit*
+| **12** : `journalctl -r -p 6` *Q to quit*
 
 *Also use* `-p` *with a "facility" before the "priority":*
 
@@ -111,9 +111,9 @@ ___
 
 ***...enter these quickly, before another entry gets made...***
 
-| **77** : `logger -p daemon.debug "I a text debug daemon."`
+| **13** : `logger -p daemon.debug "I a text debug daemon."`
 
-| **77** : `journalctl -ro verbose` *Q to quit*
+| **14** : `journalctl -ro verbose` *Q to quit*
 
 *Look for:*
 
@@ -122,13 +122,13 @@ ___
 
 *Now do the same thing using the nubmers; facility "user" (1) and priority "info" (6)...*
 
-| **77** : `logger -p 1.6 "I a text debug daemon."`
+*Note numbers don't work to enter a facility*
 
-*...oops, numbers don't work to enter a facility*
+**WILL NOT WORK:** ~~`logger -p 1.6 "I a text debug daemon."`~~
 
-| **77** : `logger -p user.6 "I a text debug daemon."`
+| **15** : `logger -p user.6 "I a text debug daemon."`
 
-| **77** : `journalctl -ro verbose` *Q to quit*
+| **16** : `journalctl -ro verbose` *Q to quit*
 
 *Look for:*
 
@@ -137,12 +137,11 @@ ___
 
 *This is just cool:*
 
-| **77** : `journalctl --since today > journalctl-today.txt`
+| **17** : `journalctl --since today > journalctl-today.txt`
 
-| **77** : `journalctl --since yesterday > journalctl-txt-yesterday.txt`
+*If you dare:* `gedit journalctl-today.txt`
 
-| **77** : `gedit journalctl-txt*`
-
+*Also try:* `--since yesterday`
 
 ### IF logged in as a separate "sudoer"
 >
