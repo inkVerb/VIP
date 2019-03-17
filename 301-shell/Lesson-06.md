@@ -80,7 +80,7 @@ ___
 
 *Note numbers don't work to enter the facility via `logger`*
 
-**There are many "facilities", some include:** *(input either text or the number)*
+**There are many "facilities", some include:** ***(input ONLY TEXT!)***
 
 - `0` = `kern` (kernel)
 - `1` = `user`
