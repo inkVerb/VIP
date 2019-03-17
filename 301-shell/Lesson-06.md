@@ -4,6 +4,7 @@
 `cd ~/School/VIP/shell/301`
 
 - [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
+- [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
 
 ___
 
@@ -337,9 +338,8 @@ ___
 
 | **63** : `gedit ../06-logging-7`
 
-*Learn more for read-only system logs* [https://ops.tips/gists/redirect-all-outputs-of-a-bash-script-to-a-file/]
 
-*Learn more about error exit codes* [http://tldp.org/LDP/abs/html/exitcodes.html]
+
 
 ___
 

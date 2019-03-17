@@ -16,9 +16,7 @@ ___
 
 *Note on line 12* `$OPTIND`
 
-
 *Note on line 20* `:`
-
 
 | **2** : `./12-flags-1 -h` (help)
 
@@ -117,10 +115,10 @@ ___
   - `f)` what to do if this flag was argued (as many as needed)
   - `esac` closes the case index
   - `done` closes the getopt loop
-
 - See usage and examples here: [Tests: getopts](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#ix-getopts)
 
 ## *Explaining `getopt` in detail is beyond the scope of this survey lesson*
+
 ## `getopt` (for one-letter OR long-word flags)
 - Procedure of a `getopt` flag set:
   - `optionsVariable=$(getopt ...)` defines the allowed flags (optionsVariable can be any variable)

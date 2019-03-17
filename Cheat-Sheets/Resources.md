@@ -20,6 +20,10 @@
   - `ps -A ux` (pr `ps -A u x`) same as above, plus extra details  
   - `ps aux | grep firefox` limits results to `firefox` processes
     - Can be used with most other apps, it `gedit`, `vlc`, etc
+
+Also see: [VIP/Shell 201 – Lesson 9](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-09.md)
+___
+
 ## II. `pgrep`
 - This lists only PIDs for a process
 - This is useful to get a PID so you can kill it from the terminal with `kill PID`
@@ -30,6 +34,9 @@
   - `pgrep apache2`
   - `pgrep chromium` (`chromium-browser` won't work for Chromium, FYI)
   - `pgrep chrome`
+
+Also see: [VIP/Shell 201 – Lesson 9](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-09.md)
+___
 
 ## III. `df` & `du`
 ### `df` shows more system and "available space" information
@@ -43,6 +50,9 @@
 - `du` output kilobytes and all subdirectories by default
 - `-h` lists in "human-readble" numbers
 - `-s` does *not* list subdirectories
+
+Also see: [VIP/Shell 201 – Lesson 9](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-09.md)
+___
 
 ## IV. `systemctl` vs `service`
 - These manage "services" on the system, such as a webserver or mysql
@@ -69,6 +79,10 @@
     - ~~`systemctl graceful-stop apache2`~~ **no such thing!**
     - `systemctl status apache2` *view status information and possible errors*
 
+Also see: [VIP/Shell 401 – Lesson 4](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-04.md)
+
+___
+
 ## V. `dpkg`
 - This manages Debian packages
 - This is not commonly used in Linux tutorials or Q&A/forums because most Debian machines use Aptitude (`apt`) to manage debian packages (uses `dpkg` [and does a whole lot more](https://askubuntu.com/a/309121/880404))
@@ -91,6 +105,8 @@
   - `dpkg -p package-name` uninstall and remove settings for `package-name`
   - `dpkg -s package-name` see whether `package-name` is installed or not
   - `dpkg -l` list all installed packages
+
+___
 
 ## VI. `logger` & `journalctl`
 - Keeping and reading logs can be helpful in troubleshooting
@@ -163,3 +179,67 @@
   - `journalctl -r -p 6` = `journalctl -rp 6`
   - `journalctl -f`
   - `journalctl -t sometag`
+
+*Learn more for read-only system logs* [https://ops.tips/gists/redirect-all-outputs-of-a-bash-script-to-a-file/]
+
+Also see: [VIP/Shell 301 – Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
+
+___
+
+## VII. `date`
+- `date` outputs time information
+- Syntax: `date +ARGUMENTS`
+- Arguments can be combined with other characters
+- Examples:
+  - `date +%Y_%m_%d_%T`
+  - `date +%Y/%m/%d_%T`
+  - `date +%Y/%m/%d_%H:%M:%S`
+  - `date +%Y-%m-%d.%H-%M-%S`
+
+### Common format arguments
+- `+%D` MM/DD/YY
+- `+%F` YYYY-MM-DD
+- `+%T` HH:mm:SS
+- `+%Y` YYYY
+- `+%b` Mon
+- `+%B` Month
+- `+%m` MM
+- `+%d` DD
+- `+%a` Dy
+- `+%A` Day
+- `+%H` HH
+- `+%M` mm (minute)
+- `+%S` SS (seconds)
+
+*Read more options here:* [https://www.computerhope.com/unix/udate.htm]
+
+Also see: [VIP/Shell 301 – Lesson 8](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)
+___
+
+## VIII. `pwgen`
+- `pwgen` creates sets of random characters, usually useful as passwords
+- Syntax: `pwgen ARGUMENTS`
+- `pwgen` normal produces a large number of random character sets and needs `-1` not to
+- Flags can be combined
+- Examples:
+  - `pwgen -1 10 -0` one set, ten characters, no numerals
+  - `pwgen -1y 15` one set, at least 1 special character, fifteen characters
+
+### Common arguments
+- `-1` Only 1 character set
+- `-y` Include at least 1 special character
+- `-n` Include at least 1 numeral
+- `-0` No numerals
+- `-c` Include at least 1 capital letter
+- `-A` No caps
+- `-s` "Secure" hard-to-memorize set (not recommended)
+- `-v` No vowels (not recommended)
+- Number of characters:
+  - Include the number of in the arguments as simple digits
+  - `5` five characters
+  - `23` twenty-three characters
+  - etc
+
+*Read more options here:* [https://linux.die.net/man/1/pwgen]
+
+Also see: [VIP/Shell 301 – Lesson 8](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)

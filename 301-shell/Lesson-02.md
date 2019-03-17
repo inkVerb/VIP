@@ -223,8 +223,6 @@ ___
 
 *...Now, close Writer in the GUI, then* `wait` *will report the process as "Done" in the terminal*
 
-
-
 ___
 
 # The Take

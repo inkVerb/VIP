@@ -3,8 +3,7 @@
 
 `cd ~/School/VIP/shell/301`
 
-- [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
-- [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
+- [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
 
 ___
 
@@ -78,13 +77,11 @@ ___
 
 | **19** : `date +%Y-%m-%d.%H-%M-%S`
 
-*Read more options here:* [https://www.computerhope.com/unix/udate.htm]
-
 ### II. `pwgen`
 
 | **20** : `pwgen`
 
-*Only 1* `-1`
+*Only 1 character set* `-1`
 
 | **21** : `pwgen -1`
 
@@ -108,8 +105,6 @@ ___
 
 | **26** : `pwgen -A01y 10`
 
-*Read more options here:* [https://linux.die.net/man/1/pwgen]
-
 ### III. `pwgen` + `date` is useful
 
 | **27** : `echo $(date +%Y-%m-%d_%H-%M-%S)_$(pwgen -1 9)`
@@ -122,7 +117,15 @@ ___
 
 # The Take
 
+## `date`
 -
+
+- See usage and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#vii-date)
+
+## `pwgen`
+-
+
+- See usage and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#viii-pwgen)
 
 ___
 

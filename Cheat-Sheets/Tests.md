@@ -1,6 +1,8 @@
 # Tests
 
 *Refer to this lesson for more about shells, errors, and debugging:* [VIP/Shell 401 – Lesson 9](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)
+
+*Learn more about error exit codes* [http://tldp.org/LDP/abs/html/exitcodes.html]
 ___
 
 ### I. Test: `true` & `false`
@@ -91,6 +93,8 @@ fi
 
 ```
 
+Also see: [VIP/Shell 301 – Lesson 1](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-01.md)
+
 ___
 
 ### III. `for` VARIABL `in` WUT
@@ -112,6 +116,8 @@ echo $VARIABL
 
 done
 ```
+
+Also see: [VIP/Shell 301 – Lesson 3](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md)
 
 ___
 
@@ -140,6 +146,8 @@ done
 
 ```
 
+Also see: [VIP/Shell 301 – Lesson 4](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)
+
 ___
 
 ### V. `until` `do` `done`
@@ -159,6 +167,8 @@ do
 done
 
 ```
+
+Also see: [VIP/Shell 301 – Lesson 4](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)
 
 ___
 
@@ -359,6 +369,10 @@ fi
 
 ```
 
+Also see: [VIP/Shell 301 – Lesson 5](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
+
+___
+
 ### VIII. Multiple Tests
 
 #### Operators:
@@ -409,6 +423,8 @@ if [ TEST_ONE ] || [ TEST_TWO ] || [ TEST_THREE ]; then
   # This will happen if any one or all tests return "true".
 fi
 ```
+
+Also see: [VIP/Shell 301 – Lesson 7](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
 
 ___
 
@@ -482,6 +498,8 @@ if (( "$NUM1" < "$NUM2" ))
 if (( "$NUM1" >= "$NUM2" ))
 if (( "$NUM1" <= "$NUM2" ))
 ```
+
+Also see: [VIP/Shell 301 – Lesson 9](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-09.md)
 
 ___
 
@@ -589,6 +607,8 @@ This can take arguments:
 - `./myscript -b`
 ...Anything else will echo "Dude, get right."
 
+Also see: [VIP/Shell 301 – Lesson 12](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
+
 ___
 
 ### X. `getopt`
@@ -666,3 +686,5 @@ This can take arguments:
 - `./myscript --alpha A-option`
 - `./myscript -b`
 - `./myscript --bravo`
+
+Also see: [VIP/Shell 301 – Lesson 12](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
