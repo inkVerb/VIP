@@ -91,3 +91,75 @@
   - `dpkg -p package-name` uninstall and remove settings for `package-name`
   - `dpkg -s package-name` see whether `package-name` is installed or not
   - `dpkg -l` list all installed packages
+
+## VI. `logger` & `journalctl`
+- Keeping and reading logs can be helpful in troubleshooting
+- Flags may be combined (`-p` & `-r` might become `-rp`, but flags with options can create confusion)
+
+### Available priorities & facilities
+#### Priorities: (use either text or the number)
+- `0` = `emerg` (emergency, system unusable)
+- `1` = `alert` (alert, take immediate action)
+- `2` = `crit` (critical)
+- `3` = `err` (error)
+- `4` = `warn` (warning)
+- `5` = `notice` (notice, normal but significant)
+- `6` = `info` (information)
+- `7` = `debug` (debug, so much info that only geeks & developers are interested)
+
+#### Facilities:
+- `0` = `kern` (kernel)
+- `1` = `user`
+- `2` = `mail`
+- `3` = `daemon`
+- `4` = `auth` (authorization)
+- `5` = `syslog` (messages originating from `syslogd`)
+- `6` = `lpr` (line printer)
+- `7` = `news` (network news subsystem)
+- `8` = `uucp` (UUCP)
+- `9` = `cron` (clock daemon)
+- `10` = `authpriv` (security/authorization)
+- `11` = `ftp`
+- `12` = `ntp`
+- `13` = `audit`
+- `14` = `console`
+- `15` = `cron2` (clock daemon)
+*Below are custom (local) facilities, probably defined by the developer (you)*
+- `16` = `local0`
+- `17` = `local1`
+- `18` = `local2`
+- `19` = `local3`
+- `20` = `local4`
+- `21` = `local5`
+- `22` = `local6`
+- `23` = `local7`
+
+### `logger` makes log entries
+- Syntax: `logger FLAGS OPTIONS`
+- Common flags:
+  - `-t TAG` tag, input any text to use a tag
+  - `-p PRIORITY` priority, sets the "facility" and "priority significance"
+- Examples:
+  - `logger "My log message."`
+  - `logger -t sometag "My log message."`
+  - `logger -p info "My log message."` = `logger -p 6 "My log message."`
+  - `logger -p mail.err "My mail error message."` = `logger -p mail.3 "My mail error message."`
+
+### `journalctl` reads logs
+- Syntax: `journalctl FLAGS OPTIONS "Message for log entry"`
+- Common flags & "options":
+  - `-t TAG` tag, search a tag
+  - `-p PRIORITY` priority, search "priority significance"
+    - **Syntax:** `-p FACILITY.PRIORITY` (see key below)
+  - `-r` reverse order, to view most recent log entries first
+  - `-f` follow most recent entries *(Ctrl + C to close)*
+  - `-o OPTION` option
+    - `verbose` outputs about a page per entry, rather than one line per entry
+    - `short-full` less info, but includes time
+    - `cat` only shows the message of the log entry
+- Examples:
+  - `journalctl -o verbose`
+  - `journalctl -r -o verbose` = `journalctl -ro verbose`
+  - `journalctl -r -p 6` = `journalctl -rp 6`
+  - `journalctl -f`
+  - `journalctl -t sometag`

@@ -3,14 +3,21 @@
 
 `cd ~/School/VIP/shell/301`
 
-- [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
-- [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
+- [VIP/Cheet-Sheets: Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
 
+___
+
+### This lesson requires a "sudoer" who can use `sudo`
+>
+___
+> Optional: If you need, you may login as a "sudoer" first
+>
+> | **1** : `su USERNAME` *input the password*
 ___
 
 ### *Note* `exit` *&* `journalctl` *are used for logs*
 
-## I. System logs via `journalctl`
+## I. System logs via `journalctl` & `logger`
 
 *Look at some log entries on your machine*
 
@@ -26,81 +33,126 @@ ___
 
 | **2** : `journalctl -r`
 
-*Create a system log entry*
+*Use* `-f` *to "follow" the most recent entries in real time*
+
+| **2** : `journalctl -f`
+
+*...now click some actions in the desktop GUI and watch entries appear*
+
+*Ctrl + C to close*
+
+*Create a system log entry...*
 
 | **3** : `logger "I logged this just now."`
 
+*Look for your entry...*
+
 | **4** : `journalctl -r` *Q to quit*
 
-*Use* `-i` *to include PID number,* `-t SOME_TEXT` *to add a "tag"*
+*Use* `-t SOME_TAG` *to add your own "tag"*
 
-| **5** : `logger -i -t myTag "I logged this just now."`
+| **5** : `logger -t dazzleTag "I logged this dazzling tag."`
 
-| **6** : `journalctl -r` *Q to quit*
+*Now search for only that tag...*
 
-*Use* `-p` *with a "facility", then "severity"*
+| **6** : `journalctl -t dazzleTag` *Q to quit*
 
-| **7** : `logger -i -t myTag -p local0.info "I logged this just now."`
+*Set a "priority" level at "info"...*
 
-| **8** : `journalctl -r` *Q to quit*
+| **77** : `logger -p info "I logged this info mere moments ago."`
 
-*"Severity" has seven levels:*
-- 1 Alert:	`alert`
-- 2 Critical	`crit`
-- 3 Error	`err`
-- 4 Warning	`warn`
-- 5 Notice	`notice` (normal, but significant)
-- 6 Info	`info`
-- 7 Debug	`debug` (so much info that only geeks & developers are interested)
+*Look for the "info" priority* (`-p info`) *in the most recent* (`-r`) *logs first...*
 
-*There are many "facilities", some include:*
-- `ftp`
-- `cron`
-- `auth`
-- `news`
-- `clock`
-- `mail`
-- `syslog`
-- `user`
+| **77** : `journalctl -r -p info` *Q to quit*
 
-*For your own "facilities", you can use* `local0` – `local7`
+*Note your "dazzleTag" log also shows up because "info" is the default priority for `logger`*
 
-### This lesson requires a "sudoer" who can use `sudo`
+*...because `info` = `6`, that is the same as...*
+
+| **77** : `logger -p 6 "I also logged this number mere moments ago."`
+
+| **77** : `journalctl -r -p 6` *Q to quit*
+
+*Also use* `-p` *with a "facility" before the "priority":*
+
+- Usage: `-p FACILITY.PRIORITY`
+- Example: `-p local0.alert` = `-p local0.1` *Note `local0` = `16`, `alert` = `1` (see below)*
+
+*Note numbers don't work to enter the facility via `logger`*
+
+**There are many "facilities", some include:** *(input either text or the number)*
+
+- `0` = `kern` (kernel)
+- `1` = `user`
+- `2` = `mail`
+- `3` = `daemon`
+- `7` = `news` (network news subsystem)
+
+*Note for your own "local facilities", you can use "local0–7"*
+
+- `16`–`23` = `local0`–`local7`
+
+**"Priority" has seven levels:** *(input either text or the number)*
+
+- `0` = `emerg` (emergency, system unusable)
+- `1` = `alert` (alert, take immediate action)
+- `2` = `crit` (critical)
+- `3` = `err` (error)
+- `4` = `warn` (warning)
+- `5` = `notice` (notice, normal but significant)
+- `6` = `info` (information)
+- `7` = `debug` (debug, so much info that only geeks & developers are interested)
+
+*Note the "facility" doesn't show up in most log views, it needs "verbose"*
+
+*Use* `-o verbose` *with* `-r` *(`-ro verbose`) to see enough info to find the "facility"*
+
+*Make an entry with the facility "daemon" (3) and priority "debug" (7)*
+
+***...enter these quickly, before another entry gets made...***
+
+| **77** : `logger -p daemon.debug "I a text debug daemon."`
+
+| **77** : `journalctl -ro verbose` *Q to quit*
+
+*Look for:*
+
+- `PRIORITY` *(7 = debug)*
+- `SYSLOG_FACILITY` *(3 = daemon)*
+
+*Now do the same thing using the nubmers; facility "user" (1) and priority "info" (6)...*
+
+| **77** : `logger -p 1.6 "I a text debug daemon."`
+
+*...oops, numbers don't work to enter a facility*
+
+| **77** : `logger -p user.6 "I a text debug daemon."`
+
+| **77** : `journalctl -ro verbose` *Q to quit*
+
+*Look for:*
+
+- `PRIORITY` *(6 = info)*
+- `SYSLOG_FACILITY` *(1 = user)*
+
+*This is just cool:*
+
+| **77** : `journalctl --since today > journalctl-today.txt`
+
+| **77** : `journalctl --since yesterday > journalctl-txt-yesterday.txt`
+
+| **77** : `gedit journalctl-txt*`
+
+
+### IF logged in as a separate "sudoer"
 >
 ___
-> Optional: If you need, you may login as a "sudoer" first
->
-> | **9** : `su USERNAME` *input the password*
->
-> | **10** : `journalctl`
->
-> *Q to quit*
->
-> *Use* `-r` *to "reverse" the order and view most recent log entries first*
->
-> | **11** : `journalctl -r`
->
-> *Create a system log entry*
->
-> | **12** : `logger "I logged this just now."`
->
-> | **13** : `journalctl -r` *Q to quit*
->
-> *Use* `-i` *to include PID number,* `-t SOME_TEXT` *to add a "tag"*
->
-> | **14** : `logger -i -t myTag "I logged this just now."`
->
-> | **15** : `journalctl -r` *Q to quit*
->
-> *Use* `-p` *with a "facility", then "severity"*
->
-> | **16** : `logger -i -t myTag -p local0.info "I logged this just now."`
->
-> | **17** : `journalctl -r` *Q to quit*
+>  Optional: `exit` from the "sudoer"
 >
 > | **18** : `exit`
 >
 ___
+
 
 ## II. Custom output logs
 
@@ -161,7 +213,7 @@ ___
 
 *See! Nothing at all!*
 
-*Note* `journalctl` *is for system logs, but you can create your own logs*
+*Note* `journalctl` *is for system logs, but you can create your own log files this way*
 
 ### Review output numbers
 
@@ -294,7 +346,35 @@ ___
 
 # The Take
 
-- 
+## `journalctl` & `logger`
+- These have some common flags
+  - `-t TAG` add/search a tag
+  - `-p` add/search priority
+
+- `journalctl` views system logs
+  - `-r` reverse order (most recent first)
+  - `-f` follows real time entries
+  - `-o verbose` shows more
+- `logger` makes system log entries
+
+## `exit` codes & app log files
+- `exit` code numbers are important, always use an exit code with `exit`!
+- This will hide any and all messages: `command > /dev/null 2>&1`
+- System `exit` codes:
+  - STDOUT = `1` (normal output)
+  - STDERR = `2` (error output)
+  - `2>&1` redirects `2` into `1` output
+  - `>&1` redirecs *all* output into `1` output
+- Custom `exit` codes:
+  - Most numbers above `2` are either reserved by other processes or customized by the developer (you)
+  - `3>&5` redirects `3` into `5` output
+  - `>&7` redirecs *all* output into `7` output
+  - This may not always be useful to a developer, but it makes everything easier to understand
+  - Custom exit methods require `set -o errexit` early in the script
+  - `exec N>> file` (`N` = exit number) defines the custom exit log file
+- Arguments like `3>&5` & `2>&1` can follow:
+  - Any command, ie: `ls 2>&1` or `ls 3>&5`
+  - `exec` as a global setting BEFORE relevant commands in the script, ie: `exec 2>&1` or `exec 3>&5`
 
 ___
 
