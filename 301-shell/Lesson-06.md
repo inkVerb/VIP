@@ -124,7 +124,7 @@ ___
 
 *Note numbers don't work to enter a facility*
 
-**WILL NOT WORK:** ~~`logger -p ***1***.6 "I a text debug daemon."`~~
+**WILL NOT WORK:** ~~`logger -p 1.6 "I a text debug daemon."`~~
 
 | **15** : `logger -p user.6 "I a text debug daemon."`
 
