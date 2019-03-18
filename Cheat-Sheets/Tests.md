@@ -216,6 +216,8 @@ done
 
 ```
 
+Also see: [VIP/Shell 301 – Lesson 7](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
+
 ___
 
 ### VII. `case`... `esac`

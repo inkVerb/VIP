@@ -66,7 +66,13 @@ ___
 
 # The Take
 
-- 
+- `while` can be used to count up to a given number, producing output at each count
+- `while` can be used to repeatedly request the human user input a response until the response is accepted
+- `&&` and `||` combine tests
+  - `&&` means "and": the test after is run if the previous test answers `true`
+  - `||` means "or": the test after is run if the previous test answers `false`
+- Files can be invluded via `source` or a period `.`
+- Variables can be declared in "included" files
 
 ___
 

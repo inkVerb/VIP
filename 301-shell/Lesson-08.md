@@ -118,13 +118,22 @@ ___
 # The Take
 
 ## `date`
--
-
+- `date` outputs information about time ranging from year to seconds
+- `date` options
+  - all options begin with `+`
+  - each option begins with `%`
+  - other characters may be included as a means of formatting the output
+- Syntax: `date +OPTIONS`
 - See usage and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#vii-date)
 
 ## `pwgen`
--
-
+- `pwgen` is often used to create random sets of characters (AKA passwords)
+- `pwgen` outputs many passwords by default, `-1` (number 'one') will output only one password
+- `pwgen` has many options
+  - number of characters (use numeral digits to declare the amount of characters, no flag needed)
+  - whether to include special characters
+  - whether to include capital letters
+  - whether to include numerals
 - See usage and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#viii-pwgen)
 
 ___
