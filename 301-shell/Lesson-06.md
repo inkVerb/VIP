@@ -338,9 +338,6 @@ ___
 
 | **63** : `gedit ../06-logging-7`
 
-
-
-
 ___
 
 # The Take
@@ -355,7 +352,6 @@ ___
   - `-o verbose` shows more
 - `logger` makes system log entries
 - See usage and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#vi-logger--journalctl)
-
 
 ## `exit` codes & app log files
 - `exit` code numbers are important, always use an exit code with `exit`!
