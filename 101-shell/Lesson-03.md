@@ -17,21 +17,22 @@ ___
 
 | **4** : `ls`
 
-| **5** : `./how2var one two three`
+| **5** : `./how2var a b abcd`
 
-| **6** : `./how2var a b abcd`
-
-| **7** : `./how2var ink "is a" verb`
+| **6** : `./how2var one two three`
 
 ### Multiple lines with `\`
 
-| **8** :
+| **7** :
 ```sh
 ./how2var \
 one \
 two \
 three
 ```
+### Multiple words `"`with quotes`"`
+
+| **8** : `./how2var one 2nd "third word"`
 
 | **9** :
 ```sh
@@ -41,7 +42,7 @@ first \
 "third line"
 ```
 
-### `$@` *is everything...*
+### `$@` *is "all arguments" (everything after $0)*
 
 *Knowing this could save your life and explain life's meaning later on...*
 
@@ -96,10 +97,10 @@ ___
 # The Take
 
 - Arguments (like )`$1`, `$2`, and `$3`, etc) work in order after their command
-- Arguments that contain spaces must be wrapped with 'single' or "double" quotes
 - `$0` is the variable for the command that was run in the terminal
 - Terminal commands may be continued to multiple lines using `\` (this helps organize stuff)
-- `$@` includes all arguments; `@` can mean "everything" in computer code
+- Arguments that contain spaces must be wrapped with 'single' or "double" quotes
+- `$@` includes all arguments; `@` often means "everything" in computer code
 - The terminal and Shell scripts have many other "environment variables" that can be called anytime
 - *In the terminal* `echo $ENVIRONMENT_VARIABLE` = `printenv ENVIRONMENT_VARIABLE`
 - `pwd` = `printenv PWD` = `echo $PWD` ...This shows the full, current location used by the terminal, AKA the "Present Working Directory"
