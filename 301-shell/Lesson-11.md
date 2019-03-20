@@ -171,41 +171,48 @@ ___
 
 *Menu with multiple options*
 
-| **37** : `gedit 11-dialog-3`
+| **37** : `dialog --menu "Choose a Size:" 11 23 4 1 X-Large 2 Large 3 Medium 4 Small 2> size.file`
 
-| **38** : `ls *.file`
+*This also works in a script...*
 
-*Run this in the terminal and output to size.file*
+| **38** : `./11-dialog-3`
 
-| **39** : `dialog --menu "Choose a Size:" 11 23 4 1 X-Large 2 Large 3 Medium 4 Small 2> size.file`
+*That method was simple, but having a follow-up dialog is more complex...*
+
+| **39** : `gedit 11-dialog-4`
 
 | **40** : `ls *.file`
 
-| **41** : `gedit size.file`
+*Run this in the terminal and output to size.file*
 
-| **42** : `rm size.file`
+
+| **41** : `ls *.file`
+
+| **42** : `gedit size.file`
+
+| **43** : `rm size.file`
 
 *This can work in a shell script, but it needs this exit code redirect on the end:* `3>&1 1>&2 2>&3 3>&-`
 
-| **43** : `./11-dialog-3` (select any size)
+| **44** : `./11-dialog-4` (select any size)
 
 *gedit: Reload size.file*
 
-| **44** : `./11-dialog-3` (select any size)
+| **45** : `./11-dialog-4` (select any size)
 
 *gedit: Reload size.file*
 
 *Do the same thing with* `if` *tests*
 
-| **45** : `gedit 11-dialog-4`
+| **46** : `gedit 11-dialog-5`
 
-| **46** : `./11-dialog-4` (select any size)
+| **47** : `./11-dialog-5` (select any size)
 
 *gedit: Reload size.file*
 
 *Lots more to learn, easily*
 
-| **47** : `dialog man`
+| **48** : `dialog man`
 
 ___
 
@@ -245,18 +252,22 @@ select inputVariable in $options
 ## `dialog`
 - `dialog` can work in Shell and BASH, but must be installed via `sudo apt install dialog`
 - Syntax: `dialog OPTIONS`
-- Basic syntax: `dialog --title "Title Here" --msgbox "Longer message here..." WIDTH HEIGHT`
+- Basic syntax: `dialog --title "Title Here" --msgbox "Longer message here..." HEIGHT WIDTH`
 - Common flags:
   - `--title` (one argument)
   - `--msgbox` (one argument)
   - `--yesno` *(no arguments)*
-  - `--menu "Heading" WIDTH HEIGHT NUM-OF-OPTIONS 1 OPT1 2 OPT2 TAIL-COMMANDS`
+  - `--menu "Heading" HEIGHT WIDTH NUM-OF-OPTIONS 1 OPT1 2 OPT2 TAIL-COMMANDS`
 - `--menu` is a complex flag, but necessary for multiple choice
-  - Eg: `dialog --menu "Choose an option:" 11 23 3 1 "Option 1" 2 Two 3 Third 2> output.file`
-  - To work with a `case` loop:
-    1. output is determined in the cases or after
-    2. the "tail commands" must be: `3>&1 1>&2 2>&3 3>&-` *and not* output
-
+  - Basic example:
+    -`dialog --menu "Choose an option:" 11 23 3 1 "Option 1" 2 Two 3 Third 2> output-file`
+  - In a script, the tail command can directly output to a file via `2> output-file`
+    - This returns no follow-up dialog
+  - For a dialog response, send output to a `case` loop:
+    1. Put the entire `dialog` command inside a `$(`Command Substitution`)`
+    2. Output is determined in the cases or after, `dialog ... 2> output-file` won't work!
+    3. The "tail commands" must be: `3>&1 1>&2 2>&3 3>&-`
+- Consult the manual for more `dialog man`
 ___
 
 #### [Lesson 12: BASH getopts & getopt](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
