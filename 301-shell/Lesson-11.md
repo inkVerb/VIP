@@ -212,8 +212,8 @@ ___
 # The Take
 
 ## Functions
-- A "function" is like a small script inside the script
 - Functions only work in BASH
+- A "function" is like a small script inside the script
 - A BASH function uses parentheses as `function()` when the function is defined
 - A BASH function does not use parentheses when called, only the name, such as `function`
 - A BASH function uses variables and arguments
@@ -225,8 +225,9 @@ ___
   - `local variable="value"`
 
 ## `select`
+- `select` only works in BASH
 - `select` creates a simple text input menu for terminal dialog
-- Syntax: `select VARIABLE in option1 option2 options3`
+- Syntax: `select inputVariable in option1 option2 options3`
 - Procedure of a `select` dialog:
   - `select` sets the variable assigned to human user input and the options allowed
   - `do` opens a dialog loop
@@ -235,13 +236,26 @@ ___
   - `esac`/`fi` ...close either appropriately
   - `done` closes the dialog loop
 - The options may be placed in a variable, then called later, like this:
-```sh
+```bash
 options="option1 'option 2' Three"
 select inputVariable in $options
 ```
 
-## `dialog`
 
+## `dialog`
+- `dialog` can work in Shell and BASH, but must be installed via `sudo apt install dialog`
+- Syntax: `dialog OPTIONS`
+- Basic syntax: `dialog --title "Title Here" --msgbox "Longer message here..." WIDTH HEIGHT`
+- Common flags:
+  - `--title` (one argument)
+  - `--msgbox` (one argument)
+  - `--yesno` *(no arguments)*
+  - `--menu "Heading" WIDTH HEIGHT NUM-OF-OPTIONS 1 OPT1 2 OPT2 TAIL-COMMANDS`
+- `--menu` is a complex flag, but necessary for multiple choice
+  - Eg: `dialog --menu "Choose an option:" 11 23 3 1 "Option 1" 2 Two 3 Third 2> output.file`
+  - To work with a `case` loop:
+    1. output is determined in the cases or after
+    2. the "tail commands" must be: `3>&1 1>&2 2>&3 3>&-` *and not* output
 
 ___
 
