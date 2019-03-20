@@ -235,7 +235,7 @@ ___
   - `esac`/`fi` ...close either appropriately
   - `done` closes the dialog loop
 - The options may be placed in a variable, then called later, like this:
-```
+```sh
 options="option1 'option 2' Three"
 select inputVariable in $options
 ```
