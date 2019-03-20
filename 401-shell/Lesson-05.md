@@ -96,7 +96,7 @@ echo "After shift 3
 
 *Note the* `$0` *variable does not shift,* ***only argument variables***
 
-### III. `$@` vs `$*` all arguments
+### III. `$@` vs `$*` (all arguments)
 
 *These are different:*
 

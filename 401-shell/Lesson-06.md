@@ -78,15 +78,9 @@ echo $VARsq
 echo $VARdq
 ```
 
-*Make it executable*
-
-| **2** : `chmod ug+x varquote`
-
-| **3** : `ls`
-
 *Run it and watch carefully*
 
-| **4** : `./varquote`
+| **2** : `./varquote`
 
 
 ### III. Boolean values
@@ -95,7 +89,7 @@ Example of boolean values and quotes:
 
 *Edit this script*
 
-| **5** : `gedit varbool`
+| **3** : `gedit varbool`
 
 *It should look like this:*
 
@@ -147,15 +141,9 @@ else
 fi
 ```
 
-*Make it executable*
-
-| **6** : `chmod ug+x varbool`
-
-| **7** : `ls`
-
 *Run it and watch carefully*
 
-| **8** : `./varbool`
+| **4** : `./varbool`
 
 *Case and point: quotes make no difference in how a value is treated, even boolean.*
 
@@ -165,7 +153,7 @@ Example of integer values and quotes:
 
 *Edit this script*
 
-| **9** : `gedit varmath`
+| **5** : `gedit varmath`
 
 *It should look like this:*
 
@@ -226,15 +214,9 @@ echo eight - 3 = `expr $d8 - $d3`
 echo five \* six = `expr $d5 \* $d6`
 ```
 
-*Make it executable*
-
-| **10** : `chmod ug+x varmath`
-
-| **11** : `ls`
-
 *Run it and watch carefully*
 
-| **12** : `./varmath`
+| **6** : `./varmath`
 
 *Case and point: quotes make no difference in how a value is treated, even in arithmetic.*
 

@@ -24,7 +24,8 @@ ___
 
 *It should look like this:*
 
-| **2** : ```bash
+| **2** :
+```bash
 #!/bin/bash
 
 # Create a simple echo function
@@ -73,12 +74,11 @@ returnfunction apples
 
 # Show the "return" code
 echo "Return code: $?"
-
-| **3** : ```
+```
 
 *Run it and watch carefully*
 
-| **4** : `./functionreturns`
+| **3** : `./functionreturns`
 
 *Note:*
 1. *The `return` code takes arguments and is called via `$?`, just like `exit`*
@@ -88,7 +88,7 @@ echo "Return code: $?"
 
 *Edit this script*
 
-| **5** : `gedit functionlocal`
+| **4** : `gedit functionlocal`
 
 *It should look like this:*
 
@@ -124,7 +124,7 @@ echo "script VARb = $VARb"
 
 *Run it and watch carefully*
 
-| **6** : `./functionlocal`
+| **5** : `./functionlocal`
 
 *Note that the function changed the value of VARb "globally", but VARa only "locally" inside the function*
 

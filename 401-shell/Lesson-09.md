@@ -122,15 +122,15 @@ fi
 - `-X` turns an option on
 - `+X` turns an option off
 
-ON...
-| **XX** : `set -e`
-| **XX** : `set -v`
-| **XX** : `set -x`
+**ON...**
+- `set -e`
+- `set -v`
+- `set -x`
 
-OFF...
-| **XX** : `set +e`
-| **XX** : `set +v`
-| **XX** : `set +x`
+**OFF...**
+- `set +e`
+- `set +v`
+- `set +x`
 
 **Combining options** *(into one line)*
 - `set -ev`

@@ -36,13 +36,9 @@ echo "IFS looped this once: $EachLine"
 done
 ```
 
-*Make sure it's executable*
-
-| **2** : `chmod ug+x looplines && ls`
-
 *Run it and watch carefully*
 
-| **3** : `./looplines`
+| **2** : `./looplines`
 
 ### II. Complex loop
 
@@ -50,7 +46,7 @@ Integrate `pwgen` with `sed` in a `for` loop...
 
 *Edit this script*
 
-| **4** : `gedit looprandom`
+| **3** : `gedit looprandom`
 
 *It should look like this:*
 
@@ -70,19 +66,15 @@ done
 unset IFS # We don't want our strange settings messing with other things.
 ```
 
-*Make sure it's executable*
-
-| **5** : `chmod ug+x looprandom && ls`
-
 *Run it*
 
-| **6** : `./looprandom`
+| **4** : `./looprandom`
 
-| **7** : `ls`
+| **5** : `ls`
 
 *Note the file created:* `randomlooped`
 
-| **8** : `gedit randomlooped`
+| **6** : `gedit randomlooped`
 
 ### III. `$IFS` = TAB
 
@@ -98,7 +90,7 @@ Set `$IFS` to a "tab"
 
 *Edit this script*
 
-| **9** : `gedit looptab`
+| *7** : `gedit looptab`
 
 *It should look like this:*
 
@@ -116,13 +108,9 @@ done
 unset IFS # We don't want our strange settings messing with other things.
 ```
 
-*Make sure it's executable*
-
-| **10** : `chmod ug+x looptab && ls`
-
 *Run it and watch carefully*
 
-| **11** : `./looptab`
+| **7** : `./looptab`
 
 ___
 

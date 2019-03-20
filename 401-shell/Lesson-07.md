@@ -26,19 +26,15 @@ Count=$(expr $Count + 1)
 done
 ```
 
-*Make sure it's executable*
-
-| **2** : `chmod ug+x loopcount && ls`
-
 *Run it and watch carefully*
 
-| **3** : `./loopcount 15`
+| **2** : `./loopcount 15`
 
-| **4** : `ls`
+| **3** : `ls`
 
 *Note the file created:* `countfile`
 
-| **5** : `gedit countfile`
+| **4** : `gedit countfile`
 
 ### II. `sed` special characters
 
@@ -48,7 +44,7 @@ This is the same in `vim`, so get used to it.
 
 *Add something to the end of each line*
 
-| **6** : `sed -i "s/$/add2end/" countfile`
+| **5** : `sed -i "s/$/add2end/" countfile`
 
 *gedit: Reload countfile*
 
@@ -56,7 +52,7 @@ This is the same in `vim`, so get used to it.
 
 *Add a new line to the end of each line*
 
-| **7** : `sed -i "s/$/\n/" countfile`
+| **6** : `sed -i "s/$/\n/" countfile`
 
 *gedit: Reload countfile*
 
@@ -64,7 +60,7 @@ This is the same in `vim`, so get used to it.
 
 *Replace each tab with two tabs*
 
-| **8** : `sed -i "s/\t/\t\t/" countfile`
+| **7** : `sed -i "s/\t/\t\t/" countfile`
 
 *gedit: Reload countfile*
 
@@ -72,7 +68,7 @@ This is the same in `vim`, so get used to it.
 
 *Change "No." to "Number"*
 
-| **9** : `sed -i "s/No\./Number/" countfile`
+| **8** : `sed -i "s/No\./Number/" countfile`
 
 *gedit: Reload countfile*
 
