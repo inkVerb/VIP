@@ -29,9 +29,9 @@ Some things can only be done in BASH
 
 | **4** : `./10-array`
 
-*Note @ means all elements*
+*Note @ means all elements (BASH thinks of them as separate values)*
 
-*Note * does the same thing as @*
+*Note * does the same thing as @ (BASH thinks it is one, long value)*
 
 | **5** : `gedit 10-array-index-id`
 
@@ -39,7 +39,7 @@ Some things can only be done in BASH
 
 | **7** : `./10-array-index-id 0`
 
-*Note the first element's index ID (key) is 0*
+*Note the first element's index key ID is 0*
 
 | **8** : `gedit 10-array-associative`
 
@@ -79,11 +79,11 @@ ___
 
 ## Rule 1: You CAN'T put an array inside an array
 ## Rule 2: Associative arrays need this first `declare -A ARRAYNAME`
-## Rule 3: Choose associative or key-indexed
+## Rule 3: Choose associative or auto-indexed
 EITHER
 ### associative: `MyArry=([key]=frst [ky2]=sec) .. MyArry[key] MyArry[ky2]`
 OR
-### indexed: `MyArry=(one two) .. MyArry[0] MyArry[1]`
+### auto-indexed: `MyArry=(one two) .. MyArry[0] MyArry[1]`
 
 NOT BOTH
 
@@ -111,7 +111,24 @@ ___
 
 # The Take
 
--
+- An "array" is a variable with multiple values
+- Arrays only work in BASH, not Shell
+- Each value is called with an index "key", which is a sequential number unless declared otherwise
+- The default array key numbers begin with `0` for the first value
+- An "associative" array has customized keys, which are not numbers
+- An associative array must be declared *before* it's values and keys are declared
+  - The array can be declared while empty using `declare -A` or
+  - The array can be declared with values, later replacing the values with associated keys
+- Syntax:
+  - `arrayName=(value0 value1 value2)` declares the array and its values
+  - `${arrayName[1]}` calls the second value, "value1"
+  - `arrayName[3]=value3` sets the fourth value as "value3"
+  - `declare -A arrayName` declares an empty array (usually before associative declarations)
+  - `arrayName[KeyA]=valueForA` sets the key and its value, if the array has already been declared
+  - `$arrayName[@]` returns all array values *as separate values*
+  - `$arrayName[*]` returns all array values *as a single, long value*
+  - `$arrayName[!]` returns all index keys *as separate values*
+  - `$arrayName[#]` returns the total number of values
 
 ___
 

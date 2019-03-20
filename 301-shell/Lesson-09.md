@@ -120,7 +120,26 @@ ___
 
 # The Take
 
--
+- `expr` runs basic arithmetic
+- Arithmetic "operates" are mostly conventional: `+` `-` `/`
+- The "times" symbol is `\*` because `*` is a wildcard symbol and needs `\`
+- `%` "modulus" refers to the remainder after dividing in whold numbers
+- Tests can do number comparisons
+  - `-eq` "equal to"
+  - `-ne` "not equal to"
+  - `-gt` "greater than"
+  - `-lt` "less than"
+  - `-ge` "greater than or equal to"
+  - `-le` "less than or equal to"
+- Shell does not allow "operators", only flags
+- Comparison "operators" require BASH
+  - `==` "equal to"
+  - `!=` "not equal to"
+  - `>` "greater than"
+  - `<` "less than"
+  - `>=` "greater than or equal to"
+  - `<=` "less than or equal to"
+- See usage and examples here: [Tests: Comparison](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#comparison)
 
 ___
 

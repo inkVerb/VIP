@@ -34,7 +34,7 @@ echo $ARRAY
 
 ### II. Normal Keys
 
-In a normal array, each value has a "key" number, the first is `0`.
+In a normal array, each value has an index "key" number, the first is `0`.
 
 ```bash
 # Set the values of the array all at once:
@@ -56,13 +56,11 @@ echo ${ARRAY[3]}
 echo ${ARRAY[4]}
 ```
 
-
-
 ___
 
 ### III. Associative Arrays
 
-In an associative array, the key can become an alpha-numeric value, such as a word.
+In an associative array, the index key can become an alpha-numeric value, such as a word.
 
 *(It is easier to find your way around different multiverses if they have names rather than numbers.)*
 
@@ -89,3 +87,8 @@ echo ${ASCRAY[d]}
 echo ${ASCRAY[e]}
 ```
 
+### IV. Special Characters: `@` `*` `!` `#`
+- `$array[@]` returns all array values *as separate values*
+- `$array[*]` returns all array values *as a single, long value*
+- `$array[!]` returns all index keys *as separate values*
+- `$array[#]` returns the total number of values

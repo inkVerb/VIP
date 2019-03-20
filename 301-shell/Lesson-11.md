@@ -71,19 +71,23 @@ ___
 
 *(3 to quit)*
 
+*Using a variable to declare the options makes the code easier to read*
+
+| **10** : `gedit 11-menu-if-var`
+
+| **11** : `./11-menu-if-var`
+
+*(3 to quit)*
+
 *Do the same thing with a* `case` *loop*
 
-| **10** : `gedit 11-menu-case`
+| **12** : `gedit 11-menu-case`
 
-| **11** : `./11-menu-case`
+| **13** : `./11-menu-case`
 
 *It works the same way*
 
 *You can* `echo` *your answer in advance*
-
-| **12** : `echo 2 | ./11-menu-case`
-
-| **13** : `echo 1 | ./11-menu-case`
 
 | **14** : `echo 3 | ./11-menu-case`
 
@@ -207,7 +211,37 @@ ___
 
 # The Take
 
--
+## Functions
+- A "function" is like a small script inside the script
+- Functions only work in BASH
+- A BASH function uses parentheses as `function()` when the function is defined
+- A BASH function does not use parentheses when called, only the name, such as `function`
+- A BASH function uses variables and arguments
+- BASH function variables can be set as:
+  - `global` *(default)*
+  - `local`
+- BASH function variable syntax:
+  - `global variable="value"` *(optional)*
+  - `local variable="value"`
+
+## `select`
+- `select` creates a simple text input menu for terminal dialog
+- Syntax: `select VARIABLE in option1 option2 options3`
+- Procedure of a `select` dialog:
+  - `select` sets the variable assigned to human user input and the options allowed
+  - `do` opens a dialog loop
+  - `case`/`if` ...either may be used
+  - test contents as appropriate for `case`/`if`
+  - `esac`/`fi` ...close either appropriately
+  - `done` closes the dialog loop
+- The options may be placed in a variable, then called later, like this:
+```
+options="option1 'option 2' Three"
+select inputVariable in $options
+```
+
+## `dialog`
+
 
 ___
 
