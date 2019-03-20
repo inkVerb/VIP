@@ -43,21 +43,15 @@ notacommand
 echo "$? notacommand is not a real command, so exit code \"127\""
 ```
 
-*Make it executable*
-
-| **4** : `chmod ug+x varexit`
-
-| **5** : `ls`
-
 *Run it and watch carefully*
 
-| **6** : `./varexit`
+| **4** : `./varexit`
 
 ### II. `shift` argument variable numbers
 
 *Edit this script*
 
-| **7** : `gedit varshift`
+| **5** : `gedit varshift`
 
 *It should look like this:*
 
@@ -96,53 +90,92 @@ echo "After shift 3
 \$6=$6"
 ```
 
-*Make it executable*
-
-| **8** : `chmod ug+x varshift`
-
-| **9** : `ls`
-
 *Run it and watch carefully*
 
-| **10** : `./varshift one two three four five six`
+| **6** : `./varshift one two three four five six`
 
 *Note the* `$0` *variable does not shift,* ***only argument variables***
 
-### III. `$@` all arguments
+### III. `$@` vs `$*` all arguments
+
+*These are different:*
+
+- `$@` = all arguments as separate variables
+- `$*` = all arguments, but as one long string
+
+*But, they almost always behave the same way...*
 
 *Edit this script*
 
-| **11** : `gedit varargs`
+| **7** : `gedit varargs`
 
 *It should look like this:*
 
 ```sh
 #!/bin/sh
 
-echo "Before shift
-$@"
+echo "
+@ Before shift @@@@@
+$@
+
+* Before shift *****
+$*
+"
 
 shift
 
-echo "After shift
-$@"
+echo "
+@ After shift @@@@@
+$@
+
+* After shift *****
+$*
+"
 ```
-
-*Make it executable*
-
-| **12** : `chmod ug+x varargs`
-
-| **13** : `ls`
 
 *Run it and watch carefully*
 
-| **14** : `./varargs one two three four five six`
+| **8** : `./varargs one two three four five six`
+
+*Now, we will embed this into another script and pass those arguments via* `$@` *&* `$*` *...*
+
+*Edit this script*
+
+| **9** : `gedit varargsvar`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+echo "
+Arguments entered via \$@ ..."
+./varargs $@
+
+echo "
+Arguments entered via \$(echo \$@) ..."
+./varargs $(echo $@)
+
+echo "
+Arguments entered via \$* ..."
+./varargs $*
+
+echo "
+Arguments entered via \$(echo \$*) ..."
+./varargs $(echo $*)
+```
+
+*Run it and watch carefully*
+
+| **10** : `./varargsvar one two three four five six`
+
+*...No matter how we run it,* `$@` *&* `$*` *basically behave the same.*
 
 ### IV. `$#` argument count
 
 *Edit this script*
 
-| **15** : `gedit vargcount`
+| **11** : `gedit vargcount`
 
 *It should look like this:*
 
@@ -158,21 +191,15 @@ echo "After shift
 $#"
 ```
 
-*Make it executable*
-
-| **16** : `chmod ug+x vargcount`
-
-| **17** : `ls`
-
 *Run it and watch carefully*
 
-| **18** : `./vargcount one two three four five six`
+| **12** : `./vargcount one two three four five six`
 
 ### V. `unset` Variables
 
 *Edit this script*
 
-| **19** : `gedit varunset`
+| **13** : `gedit varunset`
 
 *It should look like this:*
 
@@ -219,13 +246,7 @@ myShiftedCount = $myShiftedCount
 "
 ```
 
-*Make it executable*
-
-| **20** : `chmod ug+x varunset`
-
-*Run it and watch carefully*
-
-| **21** : `./varunset one two three four five six`
+| **14** : `./varunset one two three four five six`
 
 ___
 
