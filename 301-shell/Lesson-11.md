@@ -169,50 +169,49 @@ ___
 
 | **36** : `./11-dialog-2`
 
-*Menu with multiple options*
+*Menu with multiple options...*
+
+*Run this in the terminal and output to size.file...*
 
 | **37** : `dialog --menu "Choose a Size:" 11 23 4 1 X-Large 2 Large 3 Medium 4 Small 2> size.file`
 
+| **38** : `ls *.file`
+
+| **39** : `gedit size.file`
+
 *This also works in a script...*
 
-| **38** : `./11-dialog-3`
-
-*That method was simple, but having a follow-up dialog is more complex...*
-
-| **39** : `gedit 11-dialog-4`
-
-| **40** : `ls *.file`
-
-*Run this in the terminal and output to size.file*
-
-
-| **41** : `ls *.file`
-
-| **42** : `gedit size.file`
-
-| **43** : `rm size.file`
-
-*This can work in a shell script, but it needs this exit code redirect on the end:* `3>&1 1>&2 2>&3 3>&-`
-
-| **44** : `./11-dialog-4` (select any size)
+| **40** : `./11-dialog-3`
 
 *gedit: Reload size.file*
 
-| **45** : `./11-dialog-4` (select any size)
+*That method was simple, but having a follow-up dialog is more complex...*
+
+| **41** : `gedit 11-dialog-4`
+
+*gedit: Reload size.file*
+
+*This needs this exit code redirect on the end:* `3>&1 1>&2 2>&3 3>&-`
+
+| **42** : `./11-dialog-4` (select any size)
+
+*gedit: Reload size.file*
+
+| **43** : `./11-dialog-4` (select any size)
 
 *gedit: Reload size.file*
 
 *Do the same thing with* `if` *tests*
 
-| **46** : `gedit 11-dialog-5`
+| **44** : `gedit 11-dialog-5`
 
-| **47** : `./11-dialog-5` (select any size)
+| **45** : `./11-dialog-5` (select any size)
 
 *gedit: Reload size.file*
 
 *Lots more to learn, easily*
 
-| **48** : `dialog man`
+| **46** : `dialog man`
 
 ___
 
