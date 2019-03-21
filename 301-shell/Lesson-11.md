@@ -247,7 +247,6 @@ options="option1 'option 2' Three"
 select inputVariable in $options
 ```
 
-
 ## `dialog`
 - `dialog` can work in Shell and BASH, but must be installed via `sudo apt install dialog`
 - Syntax: `dialog OPTIONS`

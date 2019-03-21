@@ -5,7 +5,7 @@
 
 ___
 
-### Rules of Functions:
+### 5 Rules of Functions:
 1. Functions only work in BASH, not Shell.
 2. Functions must be declared before called.
 3. Functions take arguments.
@@ -13,7 +13,7 @@ ___
 - `global` (for the entire script)
 - `local` (for the function only)
 5. Functions don't `exit`; they `return`, but `exit` & `return` codes are the same
-6. If a `return` code is not set, the last executed command's `exit` status will be used instead
+  - If a `return` code is not set, the last executed command's `exit` status will be used instead
 
 
 ### I. Argument & `return`
@@ -128,13 +128,26 @@ echo "script VARb = $VARb"
 
 *Note that the function changed the value of VARb "globally", but VARa only "locally" inside the function*
 
-*Cast and point: `local VARIABLE_NAME` sets a variable value that expires outside the function*
-
 ___
 
 # The Take
 
--
+- Remember the *5 Rules of Functions*
+1. Functions only work in BASH, not Shell
+2. Functions ***in scripts*** must be declared (defined) before they are called
+  - This is not true in other "compiles" programs, only scripts because scripts are processed in order while compiled programs are run by the computer all at once
+  - Understanding this, that scripts are processed "in order" helps to understand what a "script" is among programming languages
+3. Functions take arguments; `$1`, `$2`, etc work within the function
+4. Variables in functions can be `local` or `global`
+  - `global` is the default
+  - Examples:
+    - `local VARIABLE=value`
+    - `global VARIABLE=value`
+5. `exit` & `return`
+  - Terminal commands have `exit` codes
+  - BASH functions have `return` codes
+  - `exit` & `return` code numbers mean the same things
+  - If undeclared, `return` inherits the code of the last `exit` in the function
 
 ___
 

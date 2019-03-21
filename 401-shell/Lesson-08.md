@@ -143,7 +143,6 @@ ___
 - This is useful in case you need to run a loop per item, but only items separated by line or tab or colon, etc
 - Know what the IFS is and that it can be changed will make some parts of programming make much more sense
 
-
 ___
 
 #### [Lesson 9: Interpreters, errors, logic, and empty testing](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)

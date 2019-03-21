@@ -117,7 +117,7 @@ ___
 
 # The Take
 
-- gedit can open multiple files from the terminal
+- Gedit can open multiple files from the terminal
 - Sometimes, programmers create a Shell script or any file by copying and pasting the entire contents of the file from a webpage
 - `#!` is read "shebang"
 - `#!/bin/sh` on line 1 of a file makes it a Shell script
@@ -125,7 +125,10 @@ ___
 - Shell scripts can't be run unless they are made "executable", usually with: `chmod ug+x SHELL-SCRIPT-FILE`
 - `sed` commands can work inside a Shell script just as in a terminal
 - A command is followed by "arguments", which are separated by spaces
-- `$1`, `$2`, and `$3`, etc, are "arguments" that replace parts of a Shell script
+  - In `sed -i "s/foo/bar/" file`, the "arguments" are: `-i "s/foo/bar/" file`
+  - In `gedit file1 file2`, the "arguments" are: `file1 file2`
+- Shell scripts can also be followed by "arguments" separated by spaces
+- `$1`, `$2`, `$3`, etc, are the Shell "arguments" that change things inside their Shell script
 
 ___
 

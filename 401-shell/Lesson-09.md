@@ -163,8 +163,8 @@ OR
 
 ### III. Simple Tests via `&&` & `||`
 
-1. If a condition is `true`, after the `&&` executes
-2. If a condition is `false`, after the `||` executes
+1. If a condition is `true`, the the test `&&` runs next
+2. If a condition is `false`, then the test `||` runs next
 
 *Consider these simple patterns:*
 ```sh
@@ -378,7 +378,45 @@ ___
 
 # The Take
 
--
+## Interpreters
+- In `#!/bin/sh`, "sh" is the interpreter
+- There are many interpreters for Linux, "bash" & "sh" are probably the most common
+- Different interpreters can do different things, much how "bash" & "sh" are mostly similar, but a little different
+
+## Errors & Debugging
+- `set` will make Shell report errors to help find problems
+- `set` has several one-letter flags
+  - `+` turns a flag/option off
+  - `-` turns a flag/option on
+  - `-e` exits the script immediately if an error is reported
+  - `-n` will not execute commands, only read them
+- Examples:
+  - `set -e`
+  - `set -n`
+  - `set -en`
+
+## Simple Tests
+- `&&` = "and"
+  - If the first test is `true`, then the next test runs
+  - If all tests answer `true`, the final return is `true`
+- `||` = "or"
+  - If the first test is `false`, then the next test runs
+  - If once a test answers `true`, the final return is `true`
+
+## Using `-z`/`-n` & `unset` "the Proper Way"
+- `-z` tests if a variable is not set
+- `-n` tests if a variable is not empty
+- If a variable has been set:
+  - `-z` answers `true`
+  - `-n` answers `false`
+- If a variable has not been set OR been `unset`:
+  - `-z` answers `false`
+  - `-n` answers `true`
+- Examples:
+  - `if [ -z "$1" ]` will return `false` if the script had a first argument from the terminal
+  - `if [ -z "$IFS" ]` will return `true` if the Internal Field Separator (IPS) is still set to something
+  - `if [ -n "$(cat SOME-FILE)" ]` will return `false` if "SOME-FILE" as no contents
+    - This is because the contents of SOME-FILE would be the value of the Command Substitute; no contents = nothing to set as the value, so it would be "empty"
 
 ___
 

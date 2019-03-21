@@ -105,7 +105,7 @@ ___
 - `ls` "lists" what's in the current directory as output (STDOUT)
 - `sed` can replace or delete text in a file
 - `sed` uses "d" to delete a line
-- gedit usees **Ctrl + D** to delete a line
+- Gedit usees **Ctrl + D** to delete a line
 
 ___
 
