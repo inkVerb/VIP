@@ -15,7 +15,7 @@ ___
 ___
 > Install the tools:
 >
-> | **1** : `sudo apt install -y curl cowsay git net-tools htop odt2txt dos2unix pandoc rename pwgen`
+> | **1** : `sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc rename pwgen`
 ___
 
 | **2** : `mkdir -p ~/School/VIP/shell`

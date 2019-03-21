@@ -5,7 +5,7 @@
 
 ___
 
-### I. Interpreters (shells)
+### I. Interpreters (Shells)
 
 *That first "she-bang" line* **(#!/...)** *defines the "interpreter" or the shell.*
 
@@ -107,7 +107,7 @@ fi
 
 *Here's a great Wiki article about shells: [List of command-line interpreters](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)*
 
-### II. `set` errors & debugging
+### II. `set` Errors & Debugging
 
 **Main `set` commands:** *(there are more than these)*
 - `set -a` ***A****ll* variables to be exported to environment
@@ -161,7 +161,7 @@ OR
 *If you need to handle errors in a normal-production script, use `if` tests with `$?` exit codes.*
 -See: [Lesson 5: More with Variables](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-05.md)
 
-### III. Simple tests via `&&` & `||`
+### III. Simple Tests via `&&` & `||`
 
 1. If a condition is `true`, after the `&&` executes
 2. If a condition is `false`, after the `||` executes
@@ -280,7 +280,7 @@ $VAR || echo "OR is false."
 
 | **10** : `./truefalsevarstring`
 
-### IV. Using `-z`/`-n` & `unset` "the proper way"
+### IV. Using `-z`/`-n` & `unset` "the Proper Way"
 
 *Use `-z` & `-n` to determine if a variable is set or empty.*
 - `-z` Tests if a variable is NOT set

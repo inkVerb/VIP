@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 8: `$IFS` (Internal Field Separator)
+## Lesson 8: $IFS (Internal Field Separator)
 
 `cd ~/School/VIP/shell/401`
 
@@ -16,7 +16,7 @@ If we define the `$IFS` variable as "a new line", that's like saying, "Each '*'w
 Let's run a `for` loop that separates each field as a "new line"...
 ___
 
-### I. Simple loop
+### I. Simple Loop
 
 *Edit this script*
 
@@ -40,7 +40,7 @@ done
 
 | **2** : `./looplines`
 
-### II. Complex loop
+### II. Complex Loop
 
 Integrate `pwgen` with `sed` in a `for` loop...
 

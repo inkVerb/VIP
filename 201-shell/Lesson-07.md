@@ -149,7 +149,7 @@ ___
 
 ___
 
-### tar (slightly stronger) compression level 9
+### tar Slightly Stronger Compression Level 9
 
 | **40** : `ls -l`
 
@@ -161,7 +161,7 @@ ___
 
 *Note the size difference*
 
-### Other compression tools: gzip & bzip2
+### Other Compression Tools: gzip & bzip2
 
 #### gzip `gzip -c file > file.gz`; `gzip -d file.gz`
 
@@ -229,7 +229,7 @@ ___
 
 | **61** : `bzip2 -c vrk.tar > vrk.tar.bz2`
 
-### Review sizes
+### Review the file sizes
 
 | **62** : `ls -l`
 
@@ -378,7 +378,7 @@ ___
   - Compress with `xz`: `tar c DIRECTORY | xz > TARFILE.tar.xz`
   - Decompress `.tar.xz`: `tar xf TARFILE.tar.xz`
   - *Decompress is the same with `.tar.gzip` and `.tar.bzip2`*
-  
+
 ___
 
 #### [Lesson 8: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-08.md)

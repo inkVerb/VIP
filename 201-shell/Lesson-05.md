@@ -271,7 +271,7 @@ ___
 
 | **63** : `sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME`
 
-### IV. sudoers
+### IV. Sudoers
 
 *This is the list of users that can use* `sudo`
 

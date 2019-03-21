@@ -1,11 +1,11 @@
 # Shell 401
-## Lesson 7: More with `while` & `sed`
+## Lesson 7: More with while & sed
 
 `cd ~/School/VIP/shell/401`
 
 ___
 
-### I. Counter `while` loop
+### I. Counter `while` Loop
 
 *Edit this script*
 
@@ -36,7 +36,7 @@ done
 
 | **4** : `gedit countfile`
 
-### II. `sed` special characters
+### II. `sed` Special Characters
 
 #### `$` = "end of line"
 
@@ -80,4 +80,4 @@ ___
 
 ___
 
-#### [Lesson 8: `$IFS` (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)
+#### [Lesson 8: $IFS (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)

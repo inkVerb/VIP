@@ -218,7 +218,25 @@ ___
 
 # The Take
 
--
+- Directories in Linux hold different things
+  - This is called "File System Hierarchy (FSH)"
+- `/` is the beginning of all directories in the FSH
+  - ***Any*** path beginning with `/` will refer to the root of the FSH!
+- All home directories (with personal user stuff) are in `/home/`
+- The "root" (AKA `su`) user's home is `/root/`, ***not*** `/home/root/`!
+- `/var/` holds
+  - Logs
+  - The `/var/www/` "web" folder used by Apache and Nginx web servers
+  - The `/var/lib/mysql/` MySQL database folder
+  - Email folders
+- `/usr/` has the core "binary" files for most desktop apps
+- Settings for apps usually reside in either:
+  - `/home/USER/.CONFIG-DIR/` "hidden" directories that begin with a `.` in a user's home (most desktop apps)
+  - `/etc/` (most non-desktop apps)
+- `/etc/` has settings for system apps like MySQL, PHP, Python, Apache, Nginx, et cetera
+- `/media/` is where USB drives are usually mounted
+- `/sbin/` & `/boot/` are core operating system folders, don't touch!
+- `/opt/` is for software that doesn't always follow these rules
 
 ___
 

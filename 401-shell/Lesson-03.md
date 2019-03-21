@@ -11,7 +11,7 @@ Cron tasks are processes (usually in a Shell script) that are automatically run 
 
 | **2** : `ls` *(Scroll up to find the cron directories)*
 
-### Normal schedules
+### Normal Schedules
 
 | **3** : `cd cron.daily/`
 
@@ -27,7 +27,7 @@ The system will automatically run cron scripts on its own scheduled basis in fou
 1. Each file here is a simple BASH or Shell script.
 2. File Permissions: `rwxr-xr-x` set with: `chmod 755 CRON_FILE_NAME`
 
-### Custom schedules
+### Custom Schedules
 To have more control of the time a cron task will run, put cron files here:
 - Cron directory: `/etc/cron.d/`
 
@@ -63,7 +63,7 @@ Crontab entries follow the same format as the files in `cd cron.d/` (see *Cron f
 3. The first time you run `crontab` you will be asked to choose an editor, that's normal.
 4. `crontab` records are usually kept here: `/var/spool/cron/crontabs/USERNAME`, don't touch!
 
-### Cron file schedule format
+### Cron File Schedule Format
 
 Format of a cron line:
 
@@ -84,7 +84,23 @@ ___
 
 # The Take
 
--
+- The system used "cron" to run programs on a given schedule
+- A cron setting looks like a lot like:
+  - `0 5 * * * /path/to/program`
+  - `* * 4 * * /path/to/program`
+  - The numbers and asterisks in these represent minutes, hours, dates, months, and weekdays (in that order)
+- Many regular cron schedules are in `/etc/cron-SOMETHING`
+  - `/etc/cron.hourly/`
+  - `/etc/cron.daily/`
+  - `/etc/cron.weekly/`
+  - `/etc/cron.monthly/`
+  - `/etc/cron.d/`
+  - `/etc/crontab` *(file, not a directory)*
+- `crontab` is the "proper" way for a user to set up a regular cron task from the terminal
+- Cron files are very finicky about location, permissions, and using `'single quotes'` to `echo` contents into their files
+  - Permissions requirements can be different for cron files in different locations!
+  - Usually, cron files in `/etc/cron.SOMEDIR/` directories need to be `644`
+- Follow cron structure carefully and don't be sloppy!
 
 ___
 

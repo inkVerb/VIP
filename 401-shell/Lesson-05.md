@@ -5,7 +5,7 @@
 
 ___
 
-### I. Exit code variable: `$?`
+### I. Exit Code Variable: `$?`
 
 *Prepare*
 
@@ -47,7 +47,7 @@ echo "$? notacommand is not a real command, so exit code \"127\""
 
 | **4** : `./varexit`
 
-### II. `shift` argument variable numbers
+### II. `shift` Argument Variable Numbers
 
 *Edit this script*
 
@@ -96,7 +96,7 @@ echo "After shift 3
 
 *Note the* `$0` *variable does not shift,* ***only argument variables***
 
-### III. `$@` vs `$*` (all arguments)
+### III. `$@` vs `$*` (All Arguments)
 
 *These are different:*
 
@@ -171,7 +171,7 @@ Arguments entered via \$(echo \$*) ..."
 
 *...No matter how we run it,* `$@` *&* `$*` *basically behave the same.*
 
-### IV. `$#` argument count
+### IV. `$#` Argument Count
 
 *Edit this script*
 
@@ -252,7 +252,17 @@ ___
 
 # The Take
 
--
+- `$?` is the most recent exit code
+- `shift` reassigns arguments to different argument variables (`$2` becomes `$1`, etc.)
+- `$0` is the "command" variable, not an "argument" variable
+- `$@` & `$*` both mean "all arguments" (`$1` and after, ***NOT*** `$0`)
+  - Both behave much the same way
+  - `$@` is more "proper" because the arguments are separated
+  - `$*` considers all arguments to be in a single string
+  - Don't let the similarity make you lazy, avoid `$*` unless you need it specifically!
+- `$#` is the number of arguments
+- `unset` unsets (removes) a variable's value
+  - Syntax: `unset VARIABLE_TO_UNSET`
 
 ___
 

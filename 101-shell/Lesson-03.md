@@ -21,7 +21,7 @@ ___
 
 | **6** : `./how2var one two three`
 
-### Multiple lines with `\`
+### Multiple Lines with `\`
 
 | **7** :
 ```sh
@@ -30,7 +30,7 @@ one \
 two \
 three
 ```
-### Multiple words `"`with quotes`"`
+### Multiple Words `"`with quotes`"`
 
 | **8** : `./how2var one 2nd "third word"`
 
@@ -64,7 +64,7 @@ first \
 
 *This* `@` *means "everything" in web DNS, arrays (Shell 301), and many other things*
 
-### Environment variables
+### Environment Variables
 
 *These are "environment" variables that can always be called in the terminal or a script...*
 

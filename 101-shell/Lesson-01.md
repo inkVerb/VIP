@@ -13,6 +13,8 @@ ___
 
 ___
 
+## Ready... Set... Go!!!
+
 | **3** : `echo "No destination? Output to terminal, just like this."`
 
 *The "output" you see in the terminal is called:* "STDOUT"

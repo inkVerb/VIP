@@ -5,7 +5,7 @@
 
 ___
 
-### I. Introduction to "data types"
+### I. Introduction to "Data Types"
 
 *The value of a variable can be one of many different "types of data".*
 
@@ -21,7 +21,7 @@ VAR="I'm a cucumber!"
 VAR=false
 - The value "data type" is a true/false value (what coders call 'boolean').
 
-#### Common data types:
+#### Common Data Types:
 - character (char, C) *- a single, one-byte character (a-z, A-Z, 0-9, and most keyboard special characters)*
 - varchar *- "character varying", usually up to 80 characters long*
 - string *- any kind of raw text, usually "any length"*
@@ -34,7 +34,7 @@ VAR=false
 
 *Shell* ***utilizes*** *data types; but Shell does not* ***use*** *(store as) data types other than "string".*
 
-#### Data types in Shell:
+#### Data Types in Shell:
 1. Shell "doesn't **use**" data types, AKA Shell only stores all variable value data as the **string** data type. *(In many other languages, you must declare data types for variables.)* But, Shell can **utilize** data different ways...
 2. Shell mainly **utilizes** three data types:
 - boolean (`true`/`false`)
@@ -45,11 +45,11 @@ VAR=false
 
 *Since Shell "doesn't use" data types, that's one less thing to worry about. This makes Shell a great first language!*
 
-### II. Quotes: single vs double
+### II. Quotes: Single vs Double
 
 *Quoting with 'single' vs "double" quotes makes a difference.*
 
-#### Rules of quotes:
+#### Rules of Quotes:
 - Quotes are not always necessary for Shell variable values, but BASH requires quotes for values in tests (`if`, `for`, `while`, etc.)
 - Variables do not ***work*** (call their values) in 'single quotes', but they ***work*** in "double quotes".
 - Anything in "double quotes" will be stored as a string, even "true" and "false".
@@ -83,7 +83,7 @@ echo $VARdq
 | **2** : `./varquote`
 
 
-### III. Boolean values
+### III. Boolean Values
 
 Example of boolean values and quotes:
 
@@ -224,8 +224,28 @@ ___
 
 # The Take
 
--
+- Variables must be stored as any of many different "data types"
+- Some basic data types include:
+  - string
+  - integer
+  - float
+  - array
+  - boolean
+- A "boolean" is only `true` (1) or `false` (0)
+- Shell stores all variables as a "string" type
+- BASH, of course, also allows the "array" type for arrays (duh)
+- Shell and BASH adapt to whatever specific data type a variable may be used for
+  - *This means worrying less about data types in Shell & BASH*
+  - *This is one of the strongest arguments for learning Shell/BASH before any other language*
+- 'Single' and "double" quotes allow a string to contain spaces
+- 'Single' quotes often take characters more literally, making them not "work", such as
+  - `*`
+  - `$`
+  - `!`
+  - and others, but it depends on the situation
+- The difference between 'single' and "double" quotes applies to many programming languages
+- 'Single' or "double" quotes will not change how a variable is stored in Shell & BASH, ***except whether to include spaces in a string***, but this may not apply to other languages
 
 ___
 
-#### [Lesson 7: More with `while` & `sed`](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)
+#### [Lesson 7: More with while & sed](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)

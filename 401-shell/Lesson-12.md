@@ -1,11 +1,11 @@
 # Shell 401
-## Lesson 12: `$PATH` Plus
+## Lesson 12: $PATH Plus
 
 `cd ~/School/VIP/shell/401`
 
 ___
 
-### The `$PATH` environment variable
+### The `$PATH` Environment Variable
 
 | **1** : `echo $PATH`
 
@@ -84,7 +84,7 @@ done
 - Add a line with: `export PATH=$PATH:/ADDED/DIR:/ADD/ANOTHER/DIR:/ADD/MORE/DIRS`
 - Careful, adding insecure files could be a way to hack your machine, use mindfully and only add directories you ***need***.
 
-### Other command line hacks
+### Other Command Line Hacks
 
 | **19** : `cd ..`
 
@@ -184,6 +184,9 @@ ___
 # The Take
 
 -
+
+*Be sure to read...*
+# [Moving On](https://github.com/inkVerb/vip/blob/master/Moving-On.md)
 
 ___
 

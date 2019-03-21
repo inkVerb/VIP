@@ -16,9 +16,9 @@
 
 ### [Lesson 6: Data Types & Quotes](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)
 
-### [Lesson 7: More with `while` & `sed`](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)
+### [Lesson 7: More with while & sed](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-07.md)
 
-### [Lesson 8: `$IFS` (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)
+### [Lesson 8: $IFS (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)
 
 ### [Lesson 9: Interpreters, errors, logic, and empty testing](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)
 
@@ -26,4 +26,4 @@
 
 ### [Lesson 11: Characters & Heredocs](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
 
-### [Lesson 12: `$PATH` Plus](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
+### [Lesson 12: $PATH Plus](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)

@@ -30,7 +30,7 @@ ___
 
 | **7** : `expr 7 % 2`
 
-*Look, the asterisk must be cancelled because all by itself an asterisk "means something"*
+*Look, the asterisk must be canceled because all by itself an asterisk "means something"*
 
 | **8** : `expr 7 \* 2`
 

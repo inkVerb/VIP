@@ -5,7 +5,7 @@
 
 ___
 
-### Rules of functions:
+### Rules of Functions:
 1. Functions only work in BASH, not Shell.
 2. Functions must be declared before called.
 3. Functions take arguments.
@@ -84,7 +84,7 @@ echo "Return code: $?"
 1. *The `return` code takes arguments and is called via `$?`, just like `exit`*
 2. *Functions take arguments, like `$1`, `$2`, etc*
 
-### II. Variables as `local` & functions declared first
+### II. Variables as `local` & Functions Declared First
 
 *Edit this script*
 

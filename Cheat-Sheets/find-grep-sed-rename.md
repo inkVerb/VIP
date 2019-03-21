@@ -119,7 +119,7 @@ $ ^ * [ ] / \
 # sed characters to never cancel
 ? + { } ( ) |
 
-# $ in variables are not cancelled
+# $ in variables are not canceled
 $i_am_variable
 ${also_variable}
 

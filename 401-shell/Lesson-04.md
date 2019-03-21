@@ -3,6 +3,8 @@
 
 `cd ~/School/VIP/shell/401`
 
+[Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
+
 ___
 
 SQL language is generally the same across database platforms.
@@ -81,9 +83,9 @@ sudo apt update
 
 | **8** : `sudo mysql`
 
-##### 2. Password already set
+##### 2. Password already set (but we will set it again)
 
-| **9** : `sudo mysql -u root -p`
+| **9** : `mysql -u root -p`
 
 ### The MySQL command prompt: `mysql>_`
 
@@ -99,7 +101,6 @@ ___
 | **11** : `FLUSH PRIVILEGES;`
 
 | **12** : `QUIT`
-___
 
 *Note you exited MySQL*
 
@@ -107,9 +108,11 @@ ___
 
 *Note, because MySQL's root password is now setup, we no longer need* `sudo` *with* `mysql`
 
+___
+
 | **13** : `mysql -u root -p` *And enter the password: newpassword*
 
-*You are back in MySQL*
+*You are in MySQL*
 
 #### Basic MySQL commands (users & databases)
 ___
@@ -276,13 +279,23 @@ ___
 >
 ___
 
-*Refer to this cheat-sheet for more about systemctl and others:* [VIP/Cheet-Sheets: Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
-
-___
-
 # The Take
 
--
+## `systemctl`
+- `systemctl` manages background server "services", such as an SQL or web server
+- Syntax: `systemctl COMMAND SERVICE`
+- See usage and examples here: [Resources & Things That Run: systemctl vs service](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
+
+## MySQL in Shell
+- A MySQL server is managed from the terminal
+- AFter install, production MySQL servers should be made secure with `sudo mysql_secure_installation`
+- MySQL can be "queried" two ways:
+  1. By entering MySQL to use the prompt, normally using `sudo mysql -u USER -p`
+  2. By entering the full query command from the Linux terminal via:
+  - `mysql -u USER -pUSERPASSWORD -e "MYSQL COMMAND GOES HERE;"`
+- For writing Shell scripts that query MySQL, ***the password should NOT be in the Shell script***, but in a separate file with user information
+  - This uses a special flag, eg:
+    `mysql --defaults-extra-file=/path/to/user/file -e "MYSQL COMMAND;"`
 
 ___
 

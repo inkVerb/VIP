@@ -7,7 +7,7 @@ ___
 
 ### I. Heredoc `cat <<EOF`
 
-#### Rules of heredocs
+#### Rules of Heredocs
 1. A "heredoc" is text in a script treated as a separate text document.
 2. A heredoc's "delimeter" (often 'EOF' or 'END') can be anything, as long as both uses are the same.
 3. A heredoc is a multi-line argument for a command.
@@ -21,7 +21,7 @@ ON MANY LINES
 DELIMETER
 ```
 
-#### Common examples:
+#### Common Examples:
 
 *Copy-paste as one command, then again line-by-line:*
 
@@ -44,7 +44,7 @@ I'm at my end.
 END
 ```
 
-#### Heredocs applied
+#### Heredocs Applied
 
 | **1** : `ls`
 
@@ -153,4 +153,4 @@ ___
 
 ___
 
-#### [Lesson 12: `$PATH` Plus](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
+#### [Lesson 12: $PATH Plus](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)

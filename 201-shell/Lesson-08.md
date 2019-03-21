@@ -9,7 +9,7 @@ ___
 
 | **1** : `cd compress`
 
-### Hash security
+### Hash Security
 
 | **2** : `md5sum vrk.tar.xz` (1990s, out of date, never use)
 

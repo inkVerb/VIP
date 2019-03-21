@@ -13,7 +13,7 @@ ___
 
 *No difference*
 
-*Vim: `:q!`*
+*Vim: `:q`*
 
 | **2** : `unix2dos text-doc.txt`
 
@@ -41,7 +41,7 @@ ___
 - Carriage returns can create some problems in programming for Unix & Linux
 - `dos2unix` & `unix2dos` convert text files between the DOS & Unix format
 
-### II. Multiple lines via `\`
+### II. Multiple Lines, One Command via `\`
 
 *Enter this in the terminal:*
 
@@ -184,7 +184,26 @@ ___
 
 # The Take
 
--
+## Carriage Returns
+- A "carriage return" is a hidden character at the end of DOS/Windows text lines
+- Carriage returns can cause unexpected problems in code
+- `vim` will display carriage returns as `^M` by entering the `vim` command: `:e ++ff=unix`
+- There are three ways to fix problems relating to carriage returns:
+  1. Don't use Windows in the first place
+  2. Copy and paste raw text from the questionable file into a Linux text editor like Atom, gedit, `nano`, or `vim`
+    - There's a slim chance it might not work
+  3. Use `dos2unix FILE-TO-FIX`, installed with `sudo apt install dos2unix`
+    - Most certain conversion
+
+## Multiple Lines, One Command: `\`
+- Like "working" special characters, `\` also cancels a "return" on the terminal line
+- A non-canceled return will render, even if the line before was canceled
+- Returns can be canceled even between letters of a word, preserving the word (canceled returns do not become a space)
+
+## Shell History
+- View terminal history with `history`
+- History is usually kept in `~/.bash_history`
+- Search history from the terminal with **Ctrl + R**
 
 ___
 

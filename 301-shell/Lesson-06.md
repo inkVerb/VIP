@@ -18,7 +18,7 @@ ___
 
 ### *Note* `exit` *&* `journalctl` *are used for logs*
 
-## I. System logs via `journalctl` & `logger`
+## I. System Logs via `journalctl` & `logger`
 
 *Look at some log entries on your machine*
 

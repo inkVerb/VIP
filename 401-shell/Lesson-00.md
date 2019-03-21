@@ -37,7 +37,8 @@ ___
 
 # The Take
 
--
+- Your machine is up to speed with the necessary packages installed
+- You have the GitHub "401" files needed for this course
 
 ___
 #### [Lesson 1: Returns & Terminal](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)
