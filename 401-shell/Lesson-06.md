@@ -50,10 +50,10 @@ VAR=false
 *Quoting with 'single' vs "double" quotes makes a difference.*
 
 #### Rules of Quotes:
-- Quotes are not always necessary for Shell variable values, but BASH requires quotes for values in tests (`if`, `for`, `while`, etc.)
+- Quotes are not always necessary for Shell variable values, but BASH requires quotes for values in tests (`if`, `for`, `while`, etc)
 - Variables do not ***work*** (call their values) in 'single quotes', but they ***work*** in "double quotes".
 - Anything in "double quotes" will be stored as a string, even "true" and "false".
-- If a value can be used as a boolean value, Shell can use it for tests (`if`, `for`, `while`, etc.)
+- If a value can be used as a boolean value, Shell can use it for tests (`if`, `for`, `while`, etc)
 - If a value can be used as an integer, Shell can use it for arithmetic, regardless of whether it was stored with "double" or 'single' quotes or without quotes.
 - Any value with spaces must be stored using quotes, either 'single' or "double".
 

@@ -39,7 +39,7 @@ C = circle select
 Q = Pi View Menu
 Z = Pi Shade Menu (no Pi = wire frame / solid)
 Tab = Pi Mode Menu (no Pi = Edit mode on/off)
-N = Properties panel (set number values for object size/place, etc.)
+N = Properties panel (set number values for object size/place, etc)
 
 Shift + A = add menu
 Shift + S = snap menu

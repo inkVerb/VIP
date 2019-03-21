@@ -19,8 +19,8 @@ $? = # whatever the last exit code was, such as from a program
 ```
 
 The `shift` command will move these arguments to different numbers:
-- `shift` = The `$2` value will become `$1`, etc.
-- `shift 3` = The `$4` value will become `$1`, etc.
+- `shift` = The `$2` value will become `$1`, etc
+- `shift 3` = The `$4` value will become `$1`, etc
 - `shift` will *never* change the `$0` variable
 
 ___
@@ -29,7 +29,7 @@ ___
 
 #### Three types of variables:
 - Environment variables (can't change, view many of these with `printenv` in the terminal)
-- Argument variables (assigned by following the executable command; `$0`, `$1`, `$2`, etc.)
+- Argument variables (assigned by following the executable command; `$0`, `$1`, `$2`, etc)
 - Custom variables (you invent and assign these in a script)
 
 #### Custom variable rules:

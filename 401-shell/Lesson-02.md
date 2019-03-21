@@ -44,7 +44,7 @@ It might contain nothing.
 
 This is where most system-specific settings are stored, for example Apache, PHP, MySQL and others will have there core, most fundamental settings here. As an admin, you will need to adjust settings in this directory often.
 
-Originally, this was the directory with all the stuff that didn't seem to belong anywhere else and was, accordingly called the *"et cetera" (etc.)* directory. It should probably still be  called that.
+Originally, this was the directory with all the stuff that didn't seem to belong anywhere else and was, accordingly called the *"etc" (etc)* directory. It should probably still be  called that.
 
 This has been "[backronymed](https://unix.stackexchange.com/a/56159/315069)" as *"Editable Text Configuration"* (which makes a lot of sense) and also *"Extended Tool Chest"* (which doesn't make sense, but it's more fun).
 
@@ -80,7 +80,7 @@ Files that go here may be occasionally be called "dependencies". Such a "library
 
 | **14** : `ls`
 
-A "binary" is a computer program that has been "compiled" into using core computer language that humans can't read or understand. This is where programs like `sed`, `cat`, `echo`, `cp`, `ls`, `grep`, et cetera actually live. Most Linux commands are actually small programs that can be found in this directory, `sh` and `bash` from `#!/bin/sh` and `#!/bin/bash` included!
+A "binary" is a computer program that has been "compiled" into using core computer language that humans can't read or understand. This is where programs like `sed`, `cat`, `echo`, `cp`, `ls`, `grep`, etc actually live. Most Linux commands are actually small programs that can be found in this directory, `sh` and `bash` from `#!/bin/sh` and `#!/bin/bash` included!
 
 This is for base-system commands, this is *NOT* where installed software goes.
 
@@ -233,7 +233,7 @@ ___
 - Settings for apps usually reside in either:
   - `/home/USER/.CONFIG-DIR/` "hidden" directories that begin with a `.` in a user's home (most desktop apps)
   - `/etc/` (most non-desktop apps)
-- `/etc/` has settings for system apps like MySQL, PHP, Python, Apache, Nginx, et cetera
+- `/etc/` has settings for system apps like MySQL, PHP, Python, Apache, Nginx, etc
 - `/media/` is where USB drives are usually mounted
 - `/sbin/` & `/boot/` are core operating system folders, don't touch!
 - `/opt/` is for software that doesn't always follow these rules

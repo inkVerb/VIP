@@ -17,7 +17,7 @@ Recoveries are semi-special boot moads, comparable to the GRUB menu on steroids 
 - Though recoveries don't seem like it at first, they are the professional way to modify an Android phone.
 - There are links to various recoveries on the Internet. Sometimes the very newest versions won't work.
 - Recoveries can format your phone, install a ROM, perform "root" operations.
-- Recoveries can have other tools, like a terminal emulator, file manager, etc.
+- Recoveries can have other tools, like a terminal emulator, file manager, etc
 - Recoveries are very, very small, maybe 12MB.
 
 ###### *You DO NOT need an Android .apk or app from the Play market for any of this! Ubuntu/Linux terminal is easier!*

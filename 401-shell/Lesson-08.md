@@ -7,6 +7,18 @@ ___
 
 The `$IFS` variable is a character that separates "fields". You could say it separates words (fields). It's related to looping, but not directly.
 
+Usually, the default `$IFS` is a space or tab or new line. This is partially why spaces separate arguments. So...
+
+```sh
+command arg1 arg2 arg3
+```
+
+...is seen by the terminal as...
+
+```sh
+command${IFS}arg1${IFS}arg2${IFS}arg3
+```
+
 "Fields" are important because a `for` loop will loop once per field.
 
 ...The question is: ***What constitutes a field?***
@@ -76,7 +88,7 @@ unset IFS # We don't want our strange settings messing with other things.
 
 | **6** : `gedit randomlooped`
 
-### III. `$IFS` = TAB
+### III. `$IFS` = tab
 
 *Remember those tabs in the file? Find the double tabs and expand them...*
 
@@ -116,7 +128,21 @@ ___
 
 # The Take
 
--
+- The `$IFS` variable is the "Internal Field Separator"
+  - This separates one field from another, such as in:
+    - `do` items in a `for`/`while`/`until` loop
+    - arguments from a command line or BASH functions
+- `$IFS` can be set to almost anything, including:
+  - `\t` tab
+  - `\n` newline
+  - `:` colon
+  - `|` pipe
+  - Whatever you set it to
+- Seting Syntax:
+  - `IFS=$'NEW_IFS'`
+- This is useful in case you need to run a loop per item, but only items separated by line or tab or colon, etc
+- Know what the IFS is and that it can be changed will make some parts of programming make much more sense
+
 
 ___
 

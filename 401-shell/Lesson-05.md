@@ -253,7 +253,7 @@ ___
 # The Take
 
 - `$?` is the most recent exit code
-- `shift` reassigns arguments to different argument variables (`$2` becomes `$1`, etc.)
+- `shift` reassigns arguments to different argument variables (`$2` becomes `$1`, etc)
 - `$0` is the "command" variable, not an "argument" variable
 - `$@` & `$*` both mean "all arguments" (`$1` and after, ***NOT*** `$0`)
   - Both behave much the same way

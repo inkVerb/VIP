@@ -21,7 +21,7 @@ ___
 
 | **4** : `df -h`
 
-*Note it listed everything in megabytes and gigabytes, et cetera*
+*Note it listed everything in megabytes and gigabytes, etc*
 
 | **5** : `du -sh School`
 
