@@ -183,7 +183,13 @@ ___
 
 # The Take
 
--
+- The `$PATH` is the list of directories of files that can be executed from the terminal, regardless of the present working directory
+- To find the current path, enter: `echo $PATH`
+- The `$PATH` is defined for each user in: `~/.bashrc`
+- To add a directory to the `$PATH`, put a line in `~/.bashrc` like:
+  - `export PATH=$PATH:/ADD/DIR:/ANOTHER/DIR`
+- `which COMMAND` outputs the location of the command, somewhere in the FSH
+
 
 *Be sure to read...*
 # [Moving On](https://github.com/inkVerb/vip/blob/master/Moving-On.md)

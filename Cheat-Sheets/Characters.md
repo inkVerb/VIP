@@ -7,13 +7,13 @@
 Ranges of most alphanumeric characters can be listed intuitively, `!` means "not", `|` mans "or".
 
 **Examples:**
-- [abc]
-- [!abc]
-- [a-h]
-- [2-8]
-- [A-Z]
-- [y|Y]
-- [a|b|c]
+- `[abc]`
+- `[!abc]`
+- `[a-h]`
+- `[2-8]`
+- `[A-Z]`
+- `[y|Y]`
+- `[a|b|c]`
 
 ### Classes
 

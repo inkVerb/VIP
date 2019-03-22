@@ -9,7 +9,23 @@ ___
 
 ### Arguments (`$1`, `$2`, etc)
 
-*Create how2var as this:* [how2var-01](https://github.com/inkVerb/vip/blob/master/101-shell/how2var-01)
+*Create how2var as this:*
+```sh
+#!/bin/sh
+
+echo "These are the variables:
+\$0: $0
+\$1: $1
+\$2: $2
+\$3: $3"
+
+# For $10 and above, use: ${10}
+
+# This file explains how variables and shell scripts work
+# This is a comment
+## We have "commented" the line below so it is here, but does nothing:
+#sed -i "s/$FOO/$BAR/" $FILE
+```
 
 | **2** : `ls`
 
@@ -48,7 +64,12 @@ first \
 
 | **10** : `gedit allvar`
 
-*Create allvar as this:* [allvar-01](https://github.com/inkVerb/vip/blob/master/101-shell/allvar-01)
+*Create allvar as this:*
+```sh
+#!/bin/sh
+
+echo $@
+```
 
 | **11** : `ls`
 

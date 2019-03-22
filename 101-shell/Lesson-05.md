@@ -59,7 +59,27 @@ ___
 
 | **24** : `gedit comboshell`
 
-*Create comboshell as this:* [comboshell-01](https://github.com/inkVerb/vip/blob/master/101-shell/comboshell-01)
+*Create comboshell as this:*
+```sh
+#!/bin/sh
+
+myOutput=$(cat $1 | sed "s/$2/$3/g")
+
+echo "$myOutput"
+
+# This combines many commands
+
+# cat shows a file
+
+# echo shows a value (text from our script)
+
+# Combine commands with a pipe | ...
+## DO THIS | THEN DO THIS TO IT | THEN DO THIS TO THAT
+
+# $(SOMETHING-HERE) puts the output of a command as one object
+#myOutput=$(sed "s/$2/$3/g" $1)
+# v01
+```
 
 | **25** : `chmod ug+x comboshell`
 

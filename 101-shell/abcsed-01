@@ -1,5 +1,0 @@
-#!/bin/sh
-
-sed -i "s/$1/z/" abcd
-
-# v01

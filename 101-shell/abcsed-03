@@ -1,6 +1,0 @@
-#!/bin/sh
-
-sed -i "s/$1/$2/g" abcd
-
-# Add "g" at the end to "globally" replace every occurance in each line
-# v03

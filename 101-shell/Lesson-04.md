@@ -7,7 +7,18 @@ ___
 
 | **1** : `gedit abcsed abcsed.setting abcd`
 
-*Update abcsed to this:* [abcsed-05](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-05)
+*Update abcsed to version 05:*
+```sh
+#!/bin/sh
+
+myFOO=$1
+myBAR=$2
+myFILE=$3
+
+sed -i "s/$myFOO/$myBAR/g" $myFILE
+# Set the variables first, then use them in the sed command
+# v05
+```
 
 | **2** : `./abcsed h z abcd`
 
@@ -17,9 +28,24 @@ ___
 
 *gedit: Reload abcd*
 
-*Update abcsed to this:* [abcsed-06](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-06)
+*Update abcsed to version 06:*
+```sh
+#!/bin/sh
 
-*Create abcsed.setting as this:* [abcsed.setting-01](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed.setting-01)
+myFOO=$1
+myBAR=$2
+. ./abcsed.setting
+
+sed -i "s/$myFOO/$myBAR/g" $myFILE
+# The variable $File comes from the setting file, include it this way:
+#. ./abcsed.setting
+# v06
+```
+
+*Create abcsed.setting as this:*
+```sh
+myFILE=abcd
+```
 
 | **4** : `./abcsed i z`
 
@@ -32,9 +58,7 @@ ___
 *Note this format "includes" the text of any file as if it was text of the script itself*
 
 ```sh
-
 . some/file/with/text/to/be/included
-
 ```
 
 ___

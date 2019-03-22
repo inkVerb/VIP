@@ -13,13 +13,31 @@ ___
 
 | **3** : `./comboshell abcd j "z-"`
 
-*Update comboshell to this:* [comboshell-02](https://github.com/inkVerb/vip/blob/master/101-shell/comboshell-02)
+*Update comboshell to version 2:*
+```sh
+#!/bin/sh
+
+myOutput=$(sed "s/$2/$3/g" $1)
+
+echo "$myOutput" >> sedoutput.text
+
+# v02
+```
 
 | **4** : `./comboshell abcd j "z-"`
 
 *gedit: Reload sedoutput.text*
 
-*Update comboshell to this:* [comboshell-03](https://github.com/inkVerb/vip/blob/master/101-shell/comboshell-03)
+*Update comboshell to version 3:*
+```sh
+#!/bin/sh
+
+myOutput=$(sed "s/$2/$3/g" $1)
+
+echo "$myOutput" | tee sedoutput.text
+
+# v03
+```
 
 | **5** : `./comboshell abcd j "z00 zoo "`
 
@@ -29,13 +47,27 @@ ___
 
 *gedit: Reload sedoutput.text*
 
-*Update comboshell to this:* [comboshell-04](https://github.com/inkVerb/vip/blob/master/101-shell/comboshell-04)
+*Update comboshell to version 4:*
+```sh
+#!/bin/sh
+
+sed "s/$2/$3/g" $1 | tee sedoutput.text
+
+# v04
+```
 
 | **7** : `./comboshell abcd j "z-"`
 
 *gedit: Reload sedoutput.text*
 
-*Update comboshell to this:* [comboshell-05](https://github.com/inkVerb/vip/blob/master/101-shell/comboshell-05)
+*Update comboshell to version 5:*
+```sh
+#!/bin/sh
+
+cat $1 | sed "s/$2/$3/g" | tee sedoutput.text
+
+# v05
+```
 
 | **8** : `./comboshell abcd j "vip-"`
 

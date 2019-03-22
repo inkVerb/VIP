@@ -21,11 +21,14 @@ ___
 
 *Now, to our first Shell script...*
 
-Ctrl + Click *this link to open in a new tab:* [abcsed-01](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-01)
+*Copy-Paste this into abcsed in gedit, then Ctrl + S to save:*
+```sh
+#!/bin/sh
 
-*Create abcsed as that same file we just opened in a new tab:* ([abcsed-01](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-01))
+sed -i "s/$1/z/" abcd
 
-*(...do this by using Copy-Paste into abcsed in gedit, then Ctrl + S to save)*
+# v01
+```
 
 *Look at the first line*
 
@@ -59,7 +62,14 @@ Ctrl + Click *this link to open in a new tab:* [abcsed-01](https://github.com/in
 
 *gedit: Reload abcd*
 
-*Update abcsed to this:* [abcsed-02](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-02)
+*Update abcsed to version 02:*
+```sh
+#!/bin/sh
+
+sed -i "s/$1/$2/" abcd
+
+# v02
+```
 
 | **9** : `./abcsed d z`
 
@@ -81,7 +91,14 @@ Ctrl + Click *this link to open in a new tab:* [abcsed-01](https://github.com/in
 
 *gedit: Reload abcd*
 
-*Update abcsed to this:* [abcsed-03](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-03)
+*Update abcsed to version 03:*
+```sh
+#!/bin/sh
+
+sed -i "s/$1/$2/g" abcd
+# Add "g" at the end to "globally" replace every occurance in each line
+# v03
+```
 
 | **14** : `./abcsed z j`
 
@@ -95,7 +112,14 @@ Ctrl + Click *this link to open in a new tab:* [abcsed-01](https://github.com/in
 
 *gedit: Reload abcd*
 
-*Update abcsed to this:* [abcsed-04](https://github.com/inkVerb/vip/blob/master/101-shell/abcsed-04)
+*Update abcsed to version 04:*
+```sh
+#!/bin/sh
+
+sed -i "s/$1/$2/g" $3
+
+# v04
+```
 
 | **17** : `echo "Apples like foo." > applefoo`
 
