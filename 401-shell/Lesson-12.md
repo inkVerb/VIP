@@ -111,6 +111,11 @@ echo $USERNAME
 
 #### Beginner Security Solutions
 
+Three Golden Rules of General Security & Safety:
+  1. **Don't do more than necessary**
+  2. **Don't do more less necessary**
+  3. **Be proper: follow formatting and procedure**
+
 ##### 1. Sanitize a user-input variables with a [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) test (requires BASH)
 - This test would reject non-alphanumerics characters (`[:alnum:]`):
   - `[[ "$USERNAME" =~ [:alnum:] ]]`
@@ -127,25 +132,14 @@ echo "Your username is valid: $USERNAME"
 fi
 ```
 
-##### 2. Use absolute paths for basic commands
-- Many basic commands you know can have scripts written by the same name
-- Example: What if this script was called `cp`, then put somewhere sneaky...
-```sh
-rm -r /*
-```
-- ***DO NOT*** do this in your script:
-```sh
-cp file destination
-```
+##### 2. Shell script file names get no extension, `.sh` if you must
+- Shell scripts get functionality from `#!/bin/...` on the first line, ***not extensions***, so it extensions won't help anyway
+- Adding extensions can make files fool us more easily
+- Great: `myscript`
+- If you must: `myscript.sh`
+- NEVER: `myscript.work` `myscript.exe` `myscript.scripts` `sh.myscript`
 
-- **DO THIS** in your script:
-```sh
-/bin/cp file destination
-```
-- Find the absolute path with `which`
-  - For`cp`: `which cp`
-
-##### 3. Always quote & use other good form
+##### 3. Always quote variables
 - ***DO NOT*** do this in your script:
 ```sh
 VAR1=Apples
@@ -167,12 +161,33 @@ VAR2="$(echo "${VAR1}")"
 echo "${VAR2}" >> somefile
 ```
 
-##### 4. Shell scripts get no extension, `.sh` if you must
-- Shell scripts get functionality from `#!/bin/...` on the first line, ***not extensions***
-- Adding extensions can make files easier to fool
-- **Don't do more than necessary**
+##### 4. Use absolute paths for basic commands
+- Many basic commands you know can have scripts written by the same name
+- Example: What if this script was called `cp`, then put somewhere sneaky...
+```sh
+rm -r /*
+```
+- ***DO NOT*** do this in your script:
+```sh
+cp file destination
+```
 
-##### 5. Consider guides from Apple and Google
+- **DO THIS** in your script:
+```sh
+/bin/cp file destination
+```
+- Find the absolute path with `which`
+  - For`cp`: `which cp`
+
+##### 5. Don't put `.` (here) in your `$PATH` setting
+- Section I. explained how directories can be added to your `$PATH`
+- It's tempting to add `.` to `$PATH` so testing scrips won't need the "here" path `./` like in these VIP Linux lessons
+  - Developers might do this on test machines to make work faster
+- This would allow a deadly script named `ls` or `sed` do destroy everything
+- This security measure is similar to putting absolute paths in your scripts
+
+##### 6. Consider guides from Apple and Google
+- *(Yep, Google uses Linux and Apple uses Unix, similar)*
 - [Shell Style Guide from Google](https://google.github.io/styleguide/shell.xml)
 - [Shell Script Security from Apple](https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/ShellScriptSecurity/ShellScriptSecurity.html)
 
@@ -286,12 +301,17 @@ ___
 ## Secure Scripts
 - ***This lesson was only the beginning, security is a career in itself!!***
 - Security concepts are similar in most programming languages
+- Three Golden Rules of General Security & Safety:
+  1. **Don't do more than necessary**
+  2. **Don't do more less necessary**
+  3. **Be proper: follow formatting and procedure**
 - Best practices:
   1. Sanitize user input for what it should be, [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) tests are great!
-  2. Use absolute paths for normal commands, find them with: `which COMMAND`
-  3. Quote variables & use normal formatting, you should anyway
-  4. Don't use file extensions on scripts, `.sh` if you must
-  5. Read other guides, such as:
+  2. Don't use file extensions in script file names, `.sh` if you must
+  3. Always quote variables
+  4. Use absolute paths for normal commands, find them with: `which COMMAND`
+  5. Don't put `.` (here) in your `$PATH` setting
+  6. Read other guides, such as:
     - [Shell Style Guide from Google](https://google.github.io/styleguide/shell.xml)
     - [Shell Script Security from Apple](https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/ShellScriptSecurity/ShellScriptSecurity.html)
 
