@@ -1,11 +1,11 @@
 # Shell 401
-## Lesson 12: $PATH Plus
+## Lesson 12: $PATH Plus, Secure Scripts & Command Hacks
 
 `cd ~/School/VIP/shell/401`
 
 ___
 
-### The `$PATH` Environment Variable
+### I. The `$PATH` Environment Variable
 
 | **1** : `echo $PATH`
 
@@ -59,21 +59,23 @@ done
 
 **You can check** `which` **directory of the $PATH a command is located in...**
 
-| **11** : `which expr`
+| **11** : `which cp`
 
-| **12** : `which cp`
+| **12** : `which sed`
 
-| **13** : `which sed`
+| **13** : `which grep`
 
-| **14** : `which grep`
+| **14** : `which which`
 
-| **15** : `which which`
+| **15** : `which git`
 
-| **16** : `which git`
+| **16** : `which gedit`
 
-| **17** : `which gedit`
+| **17** : `which firefox`
 
-| **18** : `which firefox`
+*Similar, but returns more information:* `whereis`
+
+| **18** : `whereis firefox`
 
 *You should find that these locations generally respect the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md).*
 
@@ -84,7 +86,97 @@ done
 - Add a line with: `export PATH=$PATH:/ADDED/DIR:/ADD/ANOTHER/DIR:/ADD/MORE/DIRS`
 - Careful, adding insecure files could be a way to hack your machine, use mindfully and only add directories you ***need***.
 
-### Other Command Line Hacks
+### II. Secure Scripts
+- ***This lesson is only an introduction.***
+- ***Cybersecurity is a career in itself!!***
+
+#### Yes, Linux is hackable, but mainly from sloppy scripting
+
+*Consider this:*
+
+```sh
+read USERNAME
+echo $USERNAME
+```
+
+*What if the user types* `rm -r /*` *at the input?*
+
+*This is a normal problem in many programming languages, which is why inputs are "sanitized".*
+
+#### Sanitize
+1. Most computer languages automatically sanitize inputs enough
+  - So, the above example would only damage an ancient Shell machine, not BASH or other modern interpreters
+2. Using quotes: `echo "$USERNAME"` also prevents most of the problem, *(but, you should be doing that anyway)*
+3. There are some other commands, like above, that prevent things like this
+
+#### Beginner Security Solutions
+
+##### 1. Sanitize a user-input variables with a [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) test (requires BASH)
+- This test would reject non-alphanumerics characters (`[:alnum:]`):
+  - `[[ "$USERNAME" =~ [:alnum:] ]]`
+  - `[:alnum:]` from: [Characters: Grouped classes](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md#grouped-classes)
+  - Example using `read`:
+```bash
+#!/bin/bash
+
+read USERNAME
+if [[ "$USERNAME" =~ [:alnum:] ]]; then
+echo "Username  valid."
+else
+echo "Your username is valid: $USERNAME"
+fi
+```
+
+##### 2. Use absolute paths for basic commands
+- Many basic commands you know can have scripts written by the same name
+- Example: What if this script was called `cp`, then put somewhere sneaky...
+```sh
+rm -r /*
+```
+- ***DO NOT*** do this in your script:
+```sh
+cp file destination
+```
+
+- **DO THIS** in your script:
+```sh
+/bin/cp file destination
+```
+- Find the absolute path with `which`
+  - For`cp`: `which cp`
+
+##### 3. Always quote & use other good form
+- ***DO NOT*** do this in your script:
+```sh
+VAR1=Apples
+VAR2=$(echo $VAR1)
+echo $VAR2 >> somefile
+```
+
+- **DO THIS** in your script:
+```sh
+VAR1="Apples"
+VAR2="$(echo "$VAR1")"
+echo "$VAR2" >> somefile
+```
+
+- **Do this TO BE AWESOME** in your script:
+```sh
+VAR1="Apples"
+VAR2="$(echo "${VAR1}")"
+echo "${VAR2}" >> somefile
+```
+
+##### 4. Shell scripts get no extension, `.sh` if you must
+- Shell scripts get functionality from `#!/bin/...` on the first line, ***not extensions***
+- Adding extensions can make files easier to fool
+- **Don't do more than necessary**
+
+##### 5. Consider guides from Apple and Google
+- [Shell Style Guide from Google](https://google.github.io/styleguide/shell.xml)
+- [Shell Script Security from Apple](https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/ShellScriptSecurity/ShellScriptSecurity.html)
+
+### III. Other Command Line Hacks
 
 | **19** : `cd ..`
 
@@ -183,6 +275,7 @@ ___
 
 # The Take
 
+## $PATH
 - The `$PATH` is the list of directories of files that can be executed from the terminal, regardless of the present working directory
 - To find the current path, enter: `echo $PATH`
 - The `$PATH` is defined for each user in: `~/.bashrc`
@@ -190,6 +283,22 @@ ___
   - `export PATH=$PATH:/ADD/DIR:/ANOTHER/DIR`
 - `which COMMAND` outputs the location of the command, somewhere in the FSH
 
+## Secure Scripts
+- ***This lesson was only the beginning, security is a career in itself!!***
+- Security concepts are similar in most programming languages
+- Best practices:
+  1. Sanitize user input for what it should be, [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) tests are great!
+  2. Use absolute paths for normal commands, find them with: `which COMMAND`
+  3. Quote variables & use normal formatting, you should anyway
+  4. Don't use file extensions on scripts, `.sh` if you must
+  5. Read other guides, such as:
+    - [Shell Style Guide from Google](https://google.github.io/styleguide/shell.xml)
+    - [Shell Script Security from Apple](https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/ShellScriptSecurity/ShellScriptSecurity.html)
+
+## Other Command Line Hacks
+- There's no limit
+- Be creative
+- Study reference lists & charts, they come in handy
 
 *Be sure to read...*
 # [Moving On](https://github.com/inkVerb/vip/blob/master/Moving-On.md)

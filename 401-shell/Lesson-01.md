@@ -69,46 +69,54 @@ This is a second line."
 
 *Note the extra line resulted in a single line break*
 
-*Consider this command:*
+*Let's look at "401/"...*
 
-| **9** : `ls -l ~/School/VIP/shell/401`
+| **9** : `cd ~/School/VIP/shell`
+
+*Consider the `ls` command:*
+
+| **10** : `ls -l 401`
 
 *Enter the same thing, but on multiple lines:*
 
-| **10** :
+| **11** :
 ```sh
 ls \
 -l \
-~/School/VIP/shell/401
+401
 ```
 
 *Spaces matter, try without them:*
 
 *Enter the same thing, but on multiple lines:*
 
-| **11** :
+| **12** :
 ```sh
 ls\
 -l\
-~/School/VIP/shell/401
+401
 ```
 
 Press: Up *to see your last command was:* `ls-l~/School/VIP/shell/401`
 
-*Even breakup words! Enter ONE LINE AT A TIME:*
+*Even breakup character by character, even SPACES! Enter ONE LINE AT A TIME:*
 
-| **12** :
+| **13** :
 ```sh
 l\
-s \
+s\
+ \
 -\
-l \
-~/School/VIP/shell/401
+l\
+ \
+4\
+0\
+1
 ```
 
 *Same thing, but copy and past ALL AT ONCE:*
 
-| **13** :
+| **14** :
 ```sh
 l\
 s \
@@ -119,13 +127,13 @@ l \
 
 ### III. Shell History
 
-| **14** : `history`
+| **15** : `history`
 
-| **15** : `cd ~/`
+| **16** : `cd ~/`
 
-| **16** : `ls .*history`
+| **17** : `ls .*history`
 
-| **17** : `vim .bash_history` *(or whatever the file name is)*
+| **18** : `vim .bash_history` *(or whatever the file name is)*
 
 *Vim: `:set number`*
 
@@ -133,13 +141,13 @@ l \
 
 *Vim: `:q!`*
 
-| **18** : `echo $HISTSIZE`
+| **19** : `echo $HISTSIZE`
 
 *History is preserved for the number of lines set in the `$HISTSIZE` environment variable*
 
 *Again...*
 
-| **19** : `vim .bash_history` *(or whatever the file name is)*
+| **20** : `vim .bash_history` *(or whatever the file name is)*
 
 *Vim: `:set number`*
 
@@ -149,15 +157,15 @@ l \
 
 *Vim: `:q!`*
 
-| **20** : `!-2`
+| **21** : `!-2`
 
 *Note* `!-2` *calles the 2nd to last command, as for all* `!-Nth` *usage*
 
-| **21** : `!echo`
+| **22** : `!echo`
 
 *Note* `!echo` *calls the first BASH command that began with "echo", as for all* `!TEST` *usage*
 
-| **22** : `cd ~/School/VIP/shell/401`
+| **23** : `cd ~/School/VIP/shell/401`
 
 
 ### IV. "Reverse Search"
@@ -170,7 +178,7 @@ Type: `echo` *and notice the results*
 
 Press: Down *to get back to the normal prompt*
 
-| **23** : `echo Hello world`
+| **24** : `echo Hello world`
 
 *Go again*
 
