@@ -117,7 +117,7 @@ ___
 
 # The Take
 
-- Arguments (like )`$1`, `$2`, and `$3`, etc) work in order after their command
+- Arguments (`$1`, `$2`, and `$3`, etc) work in order after their command
 - `$0` is the variable for the command that was run in the terminal
 - Terminal commands may be continued to multiple lines using `\` (this helps organize stuff)
 - Arguments that contain spaces must be wrapped with 'single' or "double" quotes
