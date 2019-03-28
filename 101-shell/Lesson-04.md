@@ -65,7 +65,19 @@ ___
 
 # The Take
 
-- A variable can be used to set the value of another variable
+## Variables
+- A variable (`$variable`) or argument (`$1`, `$2`, etc) can be used to set the value of another variable
+- A variable name **must**:
+  - Start with an uppercase or lowercase letter or underscore `_`
+  - Contain only uppercase or lowercase letters, underscore `_`, or numerals `0–9`
+- Variables are declared with NO spaces between the variable and equals sign `=`
+  - `variable=VALUE` (no space before or after `=`)
+- Variables may be wrapped in curly brackets `${variable}` when called
+  - This is for arguments (`$1`, `$2`, etc) larger than 9
+    - `$10` would register as `$1`; `${10}` would register as a ten
+  - This also helps variables work in some situations they otherwise wouldn't
+
+## Include
 - A file can be "included" in a Shell script using: `. /included/file/here`
 - This file path: `/included/file/here` is not an actual file, but represents any file you may use
 - "Including" files with a small amount of content is one way to keep a "settings" file
