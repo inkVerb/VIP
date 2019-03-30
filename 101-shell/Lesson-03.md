@@ -37,6 +37,10 @@ echo "These are the variables:
 
 | **6** : `./how2var one two three`
 
+*In Terminal: Up*
+
+*This shows the previous command*
+
 ### Multiple Lines with `\`
 
 | **7** :
@@ -46,6 +50,11 @@ one \
 two \
 three
 ```
+
+*In Terminal: Up*
+
+*This shows the previous command, but it all appears on one line*
+
 ### Multiple Words `"`with quotes`"`
 
 | **8** : `./how2var one 2nd "third word"`
@@ -120,6 +129,7 @@ ___
 - Arguments (`$1`, `$2`, and `$3`, etc) work in order after their command
 - `$0` is the variable for the command that was run in the terminal
 - Terminal commands may be continued to multiple lines using `\` (this helps organize stuff)
+- **Up** & **Down** in the terminal cycle through previous commands
 - Arguments that contain spaces must be wrapped with 'single' or "double" quotes
 - `$@` includes all arguments; `@` often means "everything" in computer code
 - The terminal and Shell scripts have many other "environment variables" that can be called anytime
