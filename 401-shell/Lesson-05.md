@@ -351,7 +351,7 @@ ___
 - `unset` unsets (removes) a variable's value
   - Syntax: `unset VARIABLE_TO_UNSET`
 - Variables may be wrapped in curly brackets `${variable}` when called
-  - ***In BASH (not Shell)***, this is necessary for arguments (`$1`, `$2`, etc) larger than 9
+  - ***In BASH (not Shell)*** this is necessary for arguments (`$1`, `$2`, etc) larger than 9
     - `$10` would register as `$1`; `${10}` would register as a ten
   - This also helps variables work in some situations they otherwise wouldn't
 
