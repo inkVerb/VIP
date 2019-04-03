@@ -9,13 +9,15 @@ The `$IFS` variable is a character that separates "fields". You could say it sep
 
 Usually, the default `$IFS` is a space or tab or new line. This is partially why spaces separate arguments. So...
 
-```sh
+***This needs BASH to work correctly!***
+
+```bash
 command arg1 arg2 arg3
 ```
 
 ...is seen by the terminal as...
 
-```sh
+```bash
 command${IFS}arg1${IFS}arg2${IFS}arg3
 ```
 
@@ -28,7 +30,7 @@ If we define the `$IFS` variable as "a new line", that's like saying, "Each '*'w
 Let's run a `for` loop that separates each field as a "new line"...
 ___
 
-### I. Simple Loop
+### I. `$IFS` = new line
 
 *Edit this script*
 
@@ -36,14 +38,14 @@ ___
 
 *It should look like this:*
 
-```sh
+```bash
 #!/bin/sh
 
-IFS=$'\n' # Use the $IFS variable to define a "loopable" field as "each" new line"
+IFS=$'\n' # Use the $IFS variable to define a "loopable" field as "each" new line
 
 for EachLine in $(cat countfile); do
 
-echo "IFS looped this once: $EachLine"
+echo "IFS_ $EachLine"
 
 done
 ```
@@ -52,7 +54,7 @@ done
 
 | **2** : `./looplines`
 
-### II. Complex Loop
+### II. Complex Loop Applied
 
 Integrate `pwgen` with `sed` in a `for` loop...
 
@@ -62,8 +64,8 @@ Integrate `pwgen` with `sed` in a `for` loop...
 
 *It should look like this:*
 
-```sh
-#!/bin/sh
+```bash
+#!/bin/bash
 
 IFS=$'\n' # Use the $IFS variable to define a "loopable" field as "each" new line"
 
@@ -71,7 +73,7 @@ for EveryLine in $(cat countfile); do
 
 RANDOM_string="$(pwgen -s -1 8)" # Each $RANDOM_string will be different in each loop
 
-echo "$EveryLine" | sed "s/add2end/$RANDOM_string/" >> randomlooped
+echo "$EveryLine" | sed "s/add2end/IFS_$RANDOM_string/" >> randomlooped
 
 done
 
@@ -94,7 +96,7 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Remember:* `\t` *= tab*
 
-sed -i "s/\t\t/\tword1\tword2\tword3\t/" randomlooped
+`sed -i "s/\t\t/\tword1\tword2\tword3\t/" randomlooped`
 
 *gedit: Reload randomlooped*
 
@@ -106,14 +108,14 @@ Set `$IFS` to a "tab"
 
 *It should look like this:*
 
-```sh
-#!/bin/sh
+```bash
+#!/bin/bash
 
 IFS=$'\t' # Use the $IFS variable to define a "loopable" field as "each" new line"
 
 for EveryTAB in $(cat randomlooped); do
 
-echo "IFS set as \"\t\" will loop this once: $EveryTAB"
+echo "IFS_tab_ $EveryTAB"
 
 done
 
@@ -122,7 +124,61 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Run it and watch carefully*
 
-| **7** : `./looptab`
+| **8** : `./looptab`
+
+*Take a look at countfile again*
+
+| **9** : `gedit countfile`
+
+*Note that the IFS separated items at the tab after "add2start_" on each line*
+
+### IV. `$IFS` = colon `:`
+
+*Edit this script*
+
+| **10** : `gedit loopcolon`
+
+*It should look like this:*
+
+```bash
+#!/bin/sh
+
+IFS=$':' # Use the $IFS variable to define a "loopable" field as "each" colon
+
+for EachColon in $(cat countfile); do
+
+echo "IFS_Colon_ $EachColon"
+
+done
+```
+
+*Run it and watch carefully*
+
+| **11** : `./loopcolon`
+
+### V. `$IFS` = pipe `|`
+
+*Edit this script*
+
+| **12** : `gedit looppipe`
+
+*It should look like this:*
+
+```bash
+#!/bin/sh
+
+IFS=$'|' # Use the $IFS variable to define a "loopable" field as "each" pipe
+
+for EachPipe in $(cat countfile); do
+
+echo "IFS_Pipe_ $EachPipe"
+
+done
+```
+
+*Run it and watch carefully*
+
+| **13** : `./looppipe`
 
 ___
 
@@ -133,8 +189,8 @@ ___
     - `do` items in a `for`/`while`/`until` loop
     - arguments from a command line or BASH functions
 - `$IFS` can be set to almost anything, including:
-  - `\t` tab
   - `\n` newline
+  - `\t` tab
   - `:` colon
   - `|` pipe
   - Whatever you set it to

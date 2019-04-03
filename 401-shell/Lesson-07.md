@@ -21,7 +21,7 @@ Max="$1"
 Count=1
 
 while [ "$Count" -le "$Max" ]; do
-echo "Line No. $Count:	" >> countfile  # Note `echo "$Count	" >> countfile` contains a "tab" in the echo statement
+echo "Line No. $Count:	" >> countfile  # Note this contains a "tab"
 Count=$(expr $Count + 1)
 done
 ```
@@ -56,7 +56,9 @@ done
 
 *Note it now reads "Nummber" because* `*` *needs concatenating*
 
-| **7** : `sed -i "s/Nu.*/Num/" countfile`
+*Let's use* `.*.` *to replace anything between "Nu" and the space after...*
+
+| **7** : `sed -i "s/Nu.*. /Num /" countfile`
 
 *gedit: Reload countfile*
 
@@ -70,7 +72,15 @@ This is the same in `vim`, so get used to it.
 
 *Add something to the end of each line*
 
-| **8** : `sed -i "s/$/add2end/" countfile`
+| **8** : `sed -i "s/$/_add2end/" countfile`
+
+*gedit: Reload countfile*
+
+#### `^` = "start of line"
+
+*Add something to the start of each line*
+
+| **9** : `sed -i "s/^/add2start_/" countfile`
 
 *gedit: Reload countfile*
 
@@ -78,7 +88,7 @@ This is the same in `vim`, so get used to it.
 
 *Add a new line to the end of each line*
 
-| **9** : `sed -i "s/$/\n/" countfile`
+| **10** : `sed -i "s/$/\n/" countfile`
 
 *gedit: Reload countfile*
 
@@ -86,7 +96,17 @@ This is the same in `vim`, so get used to it.
 
 *Replace each tab with two tabs*
 
-| **10** : `sed -i "s/\t/\t\t/" countfile`
+| **11** : `sed -i "s/\t/ TAB /" countfile`
+
+*Let's change this text "TAB" into a pipe* `|`
+
+| **12** : `sed -i "s/TAB/|/" countfile`
+
+*gedit: Reload countfile*
+
+*Let's put a tab after the "start_" string...*
+
+| **13** : `sed -i "s/start_/start_\t/" countfile`
 
 *gedit: Reload countfile*
 
@@ -98,6 +118,7 @@ ___
 - Some special characters have meaning in text tools like `sed`:
   - `.` "concatenate" ***(needs canceling)***
   - `$` end of line ***(needs canceling)***
+  - `^` start of line ***(needs canceling)***
   - `\n` new line **(already canceled)**
   - `\t` tab **(already canceled)**
 
