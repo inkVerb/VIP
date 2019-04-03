@@ -50,7 +50,7 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 | **10** : `ls -l 07-source*`
 
-*Note "07-source" is executable, but "07-sourced" is not*
+*Note the file "07-source" is executable, but "07-sourced" is not*
 
 *And "07-sourced" has no* `#!/bin/sh` *declaration*
 

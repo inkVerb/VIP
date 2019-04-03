@@ -20,7 +20,7 @@ Test for an existing *file* by name
 
 | **3** : `./01-if-file myfile`
 
-*Note it says nothing because "myfile" does not exist*
+*Note it says nothing because the file "myfile" does not exist*
 
 | **4** : `ls`
 
@@ -30,7 +30,7 @@ Test for an existing *file* by name
 
 | **7** : `./01-if-file myfile`
 
-*Note the response because the file exists*
+*Note the response because the file "myfile" exists*
 
 Test for an existing *directory* by name
 

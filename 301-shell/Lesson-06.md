@@ -160,7 +160,7 @@ ___
 
 *Logs &* `exit` *codes are both important, but different*
 
-*Errors are important, handle them correctlyin Shell scripts!*
+*Errors are important, handle them correctly in Shell scripts!*
 
 > *An* `exit` *is a way to "break" out of a script, such as* `if - then` *tests, but always use* `exit 0` *unless a problem or event needs to be logged!*
 >
