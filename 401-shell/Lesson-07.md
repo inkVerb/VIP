@@ -98,7 +98,7 @@ This is the same in `vim`, so get used to it.
 
 | **11** : `sed -i "s/\t/ TAB /" countfile`
 
-*Let's change this text "TAB" into a pipe* `|`
+*Let's change this "TAB" text into a pipe* `|`
 
 | **12** : `sed -i "s/TAB/|/" countfile`
 
