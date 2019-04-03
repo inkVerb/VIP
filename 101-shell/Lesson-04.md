@@ -28,7 +28,7 @@ sed -i "s/$myFOO/$myBAR/g" $myFILE
 
 *gedit: Reload abcd*
 
-*Update abcsed to version 06:*
+*Update **abcsed** to version 06:*
 ```sh
 #!/bin/sh
 
@@ -37,7 +37,7 @@ myBAR=$2
 . ./abcsed.setting
 
 sed -i "s/$myFOO/$myBAR/g" $myFILE
-# The variable $File comes from the setting file, include it this way:
+# The variable $myFile comes from the setting file, include it this way:
 #. ./abcsed.setting
 # v06
 ```
