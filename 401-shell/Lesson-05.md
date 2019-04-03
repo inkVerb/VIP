@@ -258,6 +258,7 @@ myShiftedCount = $myShiftedCount
 
 ```sh
 #!/bin/sh
+
 myVAR="Pineapple pie"
 
 echo "without quotes:"
@@ -302,6 +303,7 @@ echo "${myVAR}"
 
 ```bash
 #!/bin/bash
+
 myVAR="Pineapple pie"
 
 echo "without quotes:"
