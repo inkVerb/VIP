@@ -248,6 +248,93 @@ myShiftedCount = $myShiftedCount
 
 | **14** : `./varunset one two three four five six`
 
+### VI. Variables in `${bracketts}`
+
+*Edit this script*
+
+| **15** : `gedit varbrackett-sh`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+echo "without quotes:"
+echo $9
+echo $10
+echo $11
+echo $12
+echo $13
+
+echo "with quotes:"
+echo "$9"
+echo "$10"
+echo "$11"
+echo "$12"
+echo "$13"
+
+echo "{brackets} without quotes:"
+echo ${9}
+echo ${10}
+echo ${11}
+echo ${12}
+echo ${13}
+
+echo "{brackets} with quotes:"
+echo "${9}"
+echo "${10}"
+echo "${11}"
+echo "${12}"
+echo "${13}"
+```
+*Run it and watch carefully*
+
+| **16** : `./varbrackett-sh one two three four five six seven eight nine ten eleven twelve thirteen`
+
+*Again, but with **BASH**...*
+
+*Edit this script*
+
+| **17** : `gedit varbrackett-bash`
+
+*It should look like this:*
+
+```bash
+#!/bin/bash
+
+echo "without quotes:"
+echo $9
+echo $10
+echo $11
+echo $12
+echo $13
+
+echo "with quotes:"
+echo "$9"
+echo "$10"
+echo "$11"
+echo "$12"
+echo "$13"
+
+echo "{brackets} without quotes:"
+echo ${9}
+echo ${10}
+echo ${11}
+echo ${12}
+echo ${13}
+
+echo "{brackets} with quotes:"
+echo "${9}"
+echo "${10}"
+echo "${11}"
+echo "${12}"
+echo "${13}"
+```
+
+*Run it and watch carefully*
+
+| **18** : `./varbrackett-bash one two three four five six seven eight nine ten eleven twelve thirteen`
+
 ___
 
 # The Take
@@ -263,6 +350,10 @@ ___
 - `$#` is the number of arguments
 - `unset` unsets (removes) a variable's value
   - Syntax: `unset VARIABLE_TO_UNSET`
+- Variables may be wrapped in curly brackets `${variable}` when called
+  - ***In BASH (not Shell)***, this is necessary for arguments (`$1`, `$2`, etc) larger than 9
+    - `$10` would register as `$1`; `${10}` would register as a ten
+  - This also helps variables work in some situations they otherwise wouldn't
 
 ___
 

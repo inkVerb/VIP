@@ -72,10 +72,6 @@ ___
   - Contain only uppercase or lowercase letters, underscore `_`, or numerals `0–9`
 - Variables are declared with NO spaces between the variable and equals sign `=`
   - `variable=VALUE` (no space before or after `=`)
-- Variables may be wrapped in curly brackets `${variable}` when called
-  - This is for arguments (`$1`, `$2`, etc) larger than 9
-    - `$10` would register as `$1`; `${10}` would register as a ten
-  - This also helps variables work in some situations they otherwise wouldn't
 
 ## Include
 - A file can be "included" in a Shell script using: `. /included/file/here`
