@@ -258,38 +258,39 @@ myShiftedCount = $myShiftedCount
 
 ```sh
 #!/bin/sh
+myVAR="Pineapple pie"
 
 echo "without quotes:"
 echo $9
 echo $10
 echo $11
 echo $12
-echo $13
+echo $myVAR
 
 echo "with quotes:"
 echo "$9"
 echo "$10"
 echo "$11"
 echo "$12"
-echo "$13"
+echo "$myVAR"
 
 echo "{brackets} without quotes:"
 echo ${9}
 echo ${10}
 echo ${11}
 echo ${12}
-echo ${13}
+echo ${myVAR}
 
 echo "{brackets} with quotes:"
 echo "${9}"
 echo "${10}"
 echo "${11}"
 echo "${12}"
-echo "${13}"
+echo "${myVAR}"
 ```
 *Run it and watch carefully*
 
-| **16** : `./varbrackett-sh one two three four five six seven eight nine ten eleven twelve thirteen`
+| **16** : `./varbrackett-sh one two three four five six seven eight nine ten eleven twelve`
 
 *Again, but with **BASH**...*
 
@@ -301,39 +302,40 @@ echo "${13}"
 
 ```bash
 #!/bin/bash
+myVAR="Pineapple pie"
 
 echo "without quotes:"
 echo $9
 echo $10
 echo $11
 echo $12
-echo $13
+echo $myVAR
 
 echo "with quotes:"
 echo "$9"
 echo "$10"
 echo "$11"
 echo "$12"
-echo "$13"
+echo "$myVAR"
 
 echo "{brackets} without quotes:"
 echo ${9}
 echo ${10}
 echo ${11}
 echo ${12}
-echo ${13}
+echo ${myVAR}
 
 echo "{brackets} with quotes:"
 echo "${9}"
 echo "${10}"
 echo "${11}"
 echo "${12}"
-echo "${13}"
+echo "${myVAR}"
 ```
 
 *Run it and watch carefully*
 
-| **18** : `./varbrackett-bash one two three four five six seven eight nine ten eleven twelve thirteen`
+| **18** : `./varbrackett-bash one two three four five six seven eight nine ten eleven twelve`
 
 ___
 
