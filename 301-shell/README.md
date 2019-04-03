@@ -19,7 +19,7 @@
 
 ### [Lesson 6: exit & journalctl](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
 
-### [Lesson 7: Combo && || Include](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
+### [Lesson 7: Combo && || Source](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
 
 ### [Lesson 8: date & pwgen](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)
 

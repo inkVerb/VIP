@@ -55,7 +55,7 @@ myFILE=abcd
 
 *gedit: Reload abcd*
 
-*Note this format "includes" the text of any file as if it was text of the script itself*
+*Note this format "includes" or "sources" the text of any file as if it was text of the script itself*
 
 ```sh
 . some/file/with/text/to/be/included
@@ -73,7 +73,7 @@ ___
 - Variables are declared with NO spaces between the variable and equals sign `=`
   - `variable=VALUE` (no space before or after `=`)
 
-## Include
+## Source (include)
 - A file can be "included" in a Shell script using: `. /included/file/here`
 - This file path: `/included/file/here` is not an actual file, but represents any file you may use
 - "Including" files with a small amount of content is one way to keep a "settings" file

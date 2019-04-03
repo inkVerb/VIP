@@ -44,21 +44,21 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 *These will be added*
 
-### III. Include `.`
+### III. Source `.`
 
-| **9** : `gedit 07-include 07-included`
+| **9** : `gedit 07-source 07-sourced`
 
-| **10** : `ls -l 07-include*`
+| **10** : `ls -l 07-source*`
 
-*Note "07-include" is executable, but "07-included" is not*
+*Note "07-source" is executable, but "07-sourced" is not*
 
-*And "07-included" has no* `#!/bin/sh` *declaration*
+*And "07-sourced" has no* `#!/bin/sh` *declaration*
 
-| **11** : `./07-include`
+| **11** : `./07-source`
 
-*Uncomment the line with* `. ~/School/VIP/shell/301/07-included` *and run it again*
+*Uncomment the line with* `. ~/School/VIP/shell/301/07-sourced` *and run it again*
 
-| **12** : `./07-include`
+| **12** : `./07-source`
 
 *It can be good practice to include the shebang* (`#!/bin/sh`) *in any "included" files for formatting purposes*
 
@@ -72,7 +72,7 @@ ___
   - `&&` means "and": the test after is run if the previous test answers `true`
   - `||` means "or": the test after is run if the previous test answers `false`
 - Files can be invluded via `source` or a period `.`
-- Variables can be declared in "included" files
+- Variables can be declared in "sourced" (included) files
 
 ___
 
