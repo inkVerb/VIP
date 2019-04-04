@@ -13,7 +13,7 @@ ___
 
 *gedit: Reload applefoo*
 
-*Now, do that without the* `-i`
+*Now, use* `sed` *without the* `-i` *...*
   - *It won't change the file*
   - *It outputs to the terminal*
 
@@ -21,7 +21,7 @@ ___
 
 | **5** : `ls`
 
-*Now, do that with* `-e` *and see what happens...*
+*Now, use* `sed` *with* `-e` *and see what happens...*
 
 | **6** : `sed -e "s/foo/bar/g" applefoo > newapplefoo`
 
