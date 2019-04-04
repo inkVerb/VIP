@@ -61,9 +61,13 @@ ___
 
 | **16** : `` echo `cat applefoo | sed "s/foo/bar/"` ``
 
+*Remember some of these...*
+
 | **17** : `echo $DESKTOP_SESSION`
 
 | **18** : `printenv DESKTOP_SESSION`
+
+*This is useful...*
 
 | **19** : `dpkg --print-architecture`
 
@@ -87,17 +91,6 @@ myOutput=$(cat $1 | sed "s/$2/$3/g")
 
 echo "$myOutput"
 
-# This combines many commands
-
-# cat shows a file
-
-# echo shows a value (text from our script)
-
-# Combine commands with a pipe | ...
-## DO THIS | THEN DO THIS TO IT | THEN DO THIS TO THAT
-
-# $(SOMETHING-HERE) puts the output of a command as one object
-#myOutput=$(sed "s/$2/$3/g" $1)
 # v01
 ```
 
@@ -119,12 +112,16 @@ ___
 - `sed -e` designates a new file as the destination for the output
 - `rm` deletes a file
 - The output of one command can be sent as input to the next command using a "pipe": `|`
+  - Syntax: `command one | command two`
 - The output of a command can be treated as an argument if wrapped in one of two ways:
   - $ and parentheses: `$(command substitution)`
   - backticks: `` `command substitution` ``
   - Both of these are called "**command substitution**"
-- Command substitution can set the value of a variable in a Shell script
-- The word "command" in this: `echo $(command)` is not an actual command, but represents any command you may use
+- Command Substitution can set the value of a variable in a Shell script
+  - Example: `thisVariable=$(cat somefile)`
+- And, use it directly, like this:
+  - `echo $(command substitution)` (echo outputs to terminal)
+  - `echo $(command substitution) > filename` (echo output into a file)
 
 ___
 
