@@ -262,7 +262,7 @@ select inputVariable in $options
   - In a script, the tail command can directly output to a file via `2> output-file`
     - This returns no follow-up dialog
   - For a dialog response, send output to a `case` loop:
-    1. Put the entire `dialog` command inside a `$(`Command Substitution`)`
+    1. Put the entire `dialog` command inside a `$(command substitution)`
     2. Output is determined in the cases or after, `dialog ... 2> output-file` won't work!
     3. The "tail commands" must be: `3>&1 1>&2 2>&3 3>&-`
 - Consult the manual for more `dialog man`
