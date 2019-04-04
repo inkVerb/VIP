@@ -53,7 +53,7 @@ ___
 
 | **14** : `cat applefoo | sed "s/foo/bar/"`
 
-*Put it into one command, this is called "Command Substitution":* `$(Command-Substitution)`
+*Put those commands into a kind of variable value; this is called "Command Substitution":* `$(Command-Substitution)`
 
 | **15** : `echo $(cat applefoo | sed "s/foo/bar/")`
 
