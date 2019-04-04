@@ -113,10 +113,10 @@ ___
 - `rm` deletes a file
 - The output of one command can be sent as input to the next command using a "pipe": `|`
   - Syntax: `command one | command two`
-- The output of a command can be treated as an argument if wrapped in one of two ways:
+- The output of a command can be treated as an argument or value if wrapped in one of two ways:
   - $ and parentheses: `$(command substitution)`
   - backticks: `` `command substitution` ``
-  - Both of these are called "**command substitution**"
+  - Both of these are called "**Command Substitution**"
 - Command Substitution can set the value of a variable in a Shell script
   - Example: `thisVariable=$(cat somefile)`
 - And, use it directly, like this:
