@@ -13,27 +13,41 @@ ___
 
 *gedit: Reload applefoo*
 
-| **4** : `cat applefoo`
+*Now, do that without the* `-i`
+  - *It won't change the file*
+  - *It outputs to the terminal*
 
-| **5** : `sed "s/foo/bar/" applefoo`
+| **4** : `sed "s/foo/bar/" applefoo`
 
-| **6** : `ls`
+| **5** : `ls`
 
-| **7** : `sed -e "s/foo/bar/g" applefoo > newapplefoo`
+*Now, do that with* `-e` *and see what happens...*
 
-| **8** : `ls`
+| **6** : `sed -e "s/foo/bar/g" applefoo > newapplefoo`
 
-| **9** : `cat newapplefoo`
+| **7** : `ls`
 
-| **10** : `rm newapplefoo`
+| **8** : `cat newapplefoo`
 
-| **11** : `ls`
+*Note what* `cat` *does*
+
+| **9** : `cat abcsed`
+
+| **10** : `cat abcsed.setting`
+
+| **11** : `cat abcd`
+
+*Review with the next two commands...*
+
+*Output file contents:*
 
 | **12** : `cat applefoo`
 
+*Output* `sed` *search-replace results:* (without `-i` or `-e` flags)
+
 | **13** : `sed "s/foo/bar/" applefoo`
 
-*Now we see what* `cat` *and* `sed` *do, "pipe" the output of* `cat` *into* `sed`
+*Now we see what* `cat` *and* `sed` *do, "pipe"* `|` *the output of* `cat` *into* `sed`
 
 | **14** : `cat applefoo | sed "s/foo/bar/"`
 
