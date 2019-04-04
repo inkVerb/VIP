@@ -29,7 +29,7 @@ ___
 
 | **8** : `cat newapplefoo`
 
-*Note what* `cat` *does*
+*Note what* `cat` *does...*
 
 | **9** : `cat abcsed`
 
@@ -47,7 +47,9 @@ ___
 
 | **13** : `sed "s/foo/bar/" applefoo`
 
-*Now we see what* `cat` *and* `sed` *do, "pipe"* `|` *the output of* `cat` *into* `sed`
+*Now we see what* `cat` *and* `sed` *do*
+
+*Next "pipe"* `|` *the output of* `cat` *into* `sed`*...*
 
 | **14** : `cat applefoo | sed "s/foo/bar/"`
 
