@@ -57,7 +57,7 @@ ___
 
 | **15** : `echo $(cat applefoo | sed "s/foo/bar/")`
 
-*"Command Substitution" can also be done with backticks:* `` `Command-Substitution` `` (considered lazy, though)
+*"Command Substitution" can also be done with backticks:* `` `command substitution` `` (considered lazy, though)
 
 | **16** : `` echo `cat applefoo | sed "s/foo/bar/"` ``
 
@@ -120,8 +120,8 @@ ___
 - `rm` deletes a file
 - The output of one command can be sent as input to the next command using a "pipe": `|`
 - The output of a command can be treated as an argument if wrapped in one of two ways:
-  - $ and parentheses: `$(command)`
-  - backticks: ``` `command` ```
+  - $ and parentheses: `$(command substitution)`
+  - backticks: `` `command substitution` ``
   - Both of these are called "**command substitution**"
 - Command substitution can set the value of a variable in a Shell script
 - The word "command" in this: `echo $(command)` is not an actual command, but represents any command you may use
