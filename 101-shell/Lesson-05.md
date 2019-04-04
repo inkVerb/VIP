@@ -96,13 +96,15 @@ echo "$myOutput"
 
 | **25** : `chmod ug+x comboshell`
 
+*Watch Command Substitution work...*
+
+| **26** : `./comboshell applefoo foo bar`
+
 *Review the contents of abcd...*
 
-| **26** : `gedit abcd`
+| **27** : `gedit abcd`
 
-*Now, watch Command Substitution work...*
-
-| **27** : `./comboshell applefoo foo bar`
+*Watch Command Substitution work...*
 
 | **28** : `./comboshell abcd jjjjjjjjj "Apple likes to say abcdefghi and "`
 
