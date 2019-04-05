@@ -28,7 +28,7 @@ This is where your stuff goes. All your `Documents/` and `Downloads/` and `Deskt
 
 #### `/root/` – "Root" user Home Directory (also what `sudo` calls 'home')
 
-| **5** : `cd ../root`
+| **5** : `cd ../root` *"Permission denied" ?? Sometimes it doesn't exist, depending on whether root has created it*
 
 | **6** : `ls`
 
