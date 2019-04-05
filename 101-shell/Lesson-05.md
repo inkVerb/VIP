@@ -37,17 +37,15 @@ ___
 
 | **11** : `cat abcd`
 
-*Review with the next two commands...*
+*Review what* `sed` *and* `cat` *do with the next two commands...*
 
-*Output file contents:*
+- *Output* `sed` *search-replace results:* (without `-i` or `-e` flags)
 
-| **12** : `cat applefoo`
+| **12** : `sed "s/foo/bar/" applefoo`
 
-*Output* `sed` *search-replace results:* (without `-i` or `-e` flags)
+- *Output file contents:*
 
-| **13** : `sed "s/foo/bar/" applefoo`
-
-*Now we see what* `cat` *and* `sed` *do*
+| **13** : `cat applefoo`
 
 *Next "pipe"* `|` *the output of* `cat` *into* `sed`*...*
 
