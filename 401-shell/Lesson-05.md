@@ -339,6 +339,56 @@ echo "${myVAR}"
 
 | **18** : `./varbrackett-bash one two three four five six seven eight nine ten eleven twelve`
 
+### VII. 'export' variables
+
+*Edit these scripts*
+
+| **19** : `gedit variable-no-export`
+
+*They should look like this:*
+
+variable-no-export:
+
+```sh
+#!/bin/sh
+
+MYVAR="Hello world!"
+
+~/School/VIP/shell/401/variable-exported
+```
+*The above script is in the next file...*
+
+variable-exported:
+
+```sh
+#!/bin/sh
+
+echo "${MYVAR}"
+```
+
+*Run the first script and watch carefully*
+
+| **20** : `./variable-no-export`
+
+*Edit this script*
+
+| **21** : `gedit variable-yes-export`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+export MYVAR="Hello world!"
+
+~/School/VIP/shell/401/variable-exported
+```
+
+*Run it and watch carefully*
+
+| **22** : `./variable-yes-export`
+
+*Note a variable only carries into another script if declared with:* `export`
 ___
 
 # The Take
@@ -359,6 +409,8 @@ ___
     - `$10` would register as *argument one* (`$1`)
     - `${10}` would register as a *argument ten*
   - This also helps variables work in some situations they otherwise wouldn't
+- `export` carries a variable into other scripts
+  - Syntax: `export NEWVARIABLE="Variable's value"`
 
 ___
 
