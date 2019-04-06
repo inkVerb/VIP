@@ -41,6 +41,14 @@ Cron files (like these) contain simple lines that look like this:
 0 5 * * * /path/to/script
 ```
 
+Or, maybe with a user, such as "jim":
+
+```shell
+0 5 * * * jim /path/to/script
+```
+
+*All cron tasks are run as the "root" user unless specified otherwise*
+
 **Instructions:**
 1. Each cron file has one to-be-run Shell script *per line* with cron schedule settings (below).
 2. File Permissions: `rw-r--r--` set with: `chmod 644 CRON_FILE_NAME`
@@ -67,13 +75,13 @@ Crontab entries follow the same format as the files in `cd cron.d/` (see *Cron f
 
 Format of a cron line:
 
-`[minute] [hour] [date_of_the_month] [month] [day_of_the_week] [Shell_command]`
+`[minute] [hour] [date_of_the_month] [month] [day_of_the_week] (user) [Shell_command]`
 
 Example of a cron line:
 
-**Everyday at 3:00 pm:**
+**Everyday at 3:00 pm, run by user "john":**
 ```shell
-0 15 * * * /path/to/script
+0 15 * * * john /path/to/script
 ```
 
 *An astric* **\*** *will run at all times for that setting.*
@@ -85,9 +93,10 @@ ___
 # The Take
 
 - The system used "cron" to run programs on a given schedule
+- All cron tasks run as the "root" user unless stated otherwise
 - A cron setting looks like a lot like:
   - `0 5 * * * /path/to/program`
-  - `* * 4 * * /path/to/program`
+  - `* * 4 * * jim /path/to/program`
   - The numbers and asterisks in these represent minutes, hours, dates, months, and weekdays (in that order)
 - Many regular cron schedules are in `/etc/cron-SOMETHING`
   - `/etc/cron.hourly/`

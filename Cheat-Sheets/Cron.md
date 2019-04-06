@@ -6,16 +6,18 @@ Learn more about using cron tasks in: **[Shell 401 Lesson 3: Cron Daemon](https:
 
 Format of a cron line:
 
-`[minute] [hour] [date_of_the_month] [month] [day_of_the_week] [Shell_command]`
+`[minute] [hour] [date_of_the_month] [month] [day_of_the_week] (user) [Shell_command]`
 
 *An astric* **\*** *will run at all times for that setting.*
 
 Examples of a cron line:
 
-**Everyday at 3:00 pm:**
+**Everyday at 3:00 pm by user "jim":**
 ```shell
-0 15 * * * /path/to/script
+0 15 * * * jim /path/to/script
 ```
+
+*All the cron tasks below will run as user "root" because a user is not specified...*
 
 **Everyday Monday at 9:37 am:**
 ```shell
@@ -79,4 +81,3 @@ Examples of a cron line:
 - `@daily` = `0 0 * * *`
 - `@hourly` = `0 * * * *`
 - `@reboot` = at every system startup
-
