@@ -29,10 +29,10 @@ ___
 
 *Generally,:*
 - `sh` (Bourne shell) *is simple, though mostly standard*
-  - arithmetic comparison must use alphabet operators [`-lt`, `-gt`, `-le`, `-ge`, `-eq`, `-ne`]
+  - arithmetic comparison must use alphabet operators `[` `-lt`, `-gt`, `-le`, `-ge`, `-eq`, `-ne` `]`
   - arrays **are not** allowed in variables
 - `bash` (Bourne again shell) *is much the same, more useful, but...*
-  - arithmetic allows comparison symbol operators ((`<`, `>`, `=<`, `>=`, `==`, `!=`))
+  - arithmetic allows comparison symbol operators `((` `<`, `>`, `=<`, `>=`, `==`, `!=` `))`
   - comparison operators require `((`double parentheses`))`
   - variables may contain arrays
   - *and, there may be other differences you can look into*
@@ -434,6 +434,8 @@ ___
 - In `#!/bin/sh`, "sh" is the interpreter
 - There are many interpreters for Linux, "bash" & "sh" are probably the most common
 - Different interpreters can do different things, much how "bash" & "sh" are mostly similar, but a little different
+- BASH allows arrays and arithmetic operator symbols `((` `<`, `>`, `=<`, `>=`, `==`, `!=` `))`
+- Bourne shell disallows arrays and only uses normal arithmetic operators `[` `-lt`, `-gt`, `-le`, `-ge`, `-eq`, `-ne` `]`
 
 ## Errors & Debugging
 - `set` will make Shell report errors to help find problems
