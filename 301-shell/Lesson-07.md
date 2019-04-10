@@ -78,25 +78,25 @@ It even takes $1 $2 etc arguments, then runs inside the script.
 
 *Note a few things before we continue...*
 ___
-> Create the function:
+> 1. Create the function:
 >
 > `functionName() {`
 >
-> Put your code between the curlies *starting on a new line*.
+> 2. Put your code between the curlies *starting on a new line*.
 >
-> `$1` and `$2` and all their friends work just the same within the function.
+> 3. Arguments like `$1` and `$2` and all their friends work just the same within the function.
 >
-> Create a variable that only exists inside the function with this:
+> 4. Create a variable that only exists inside the function with this:
 >
 > `local` `myVariable=Saucy`
 >
-> Make sure you do something...
+> 6. Make sure you do something...
 >
 > `echo "VIP Linux tutorials are $myVariable!"`
 >
-> `}` And close the function
+> 7. `}` And close the function
 >
-> Then, call the function with its name...
+> 8. Then, call the function with its name...
 >
 > `functionName`
 ___
