@@ -374,4 +374,4 @@ ___
 
 ___
 
-#### [Lesson 7: Combo && || Source](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
+#### [Lesson 7: Functions, source & Combining Tests](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)

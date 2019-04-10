@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 7: Combo && || Include
+## Lesson 7: Functions, source & Combining Tests
 
 `cd ~/School/VIP/shell/301`
 
@@ -44,7 +44,7 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 *These will be added*
 
-### III. Source `.`
+### III. source `.`
 
 | **9** : `gedit 07-source 07-sourced`
 
@@ -62,18 +62,85 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 *It can be good practice to include the shebang* (`#!/bin/sh`) *in any "included" files for formatting purposes*
 
+### IV. `newFunction()`
+
+A function is like a script inside a script.
+
+It even takes $1 $2 etc arguments, then runs inside the script.
+
+| **13** : `gedit 7-function`
+
+*Note functions work with* `#!/bin/sh` *on the first line, but also work with* `#!/bin/bash`
+
+| **14** : `./7-function`
+
+| **15** : `gedit 7-function-breakdown`
+
+*Note a few things before we continue...*
+___
+> Create the function:
+>
+> `functionName() {`
+>
+> Put your code between the curlies *starting on a new line*.
+>
+> `$1` and `$2` and all their friends work just the same within the function.
+>
+> Create a variable that only exists inside the function with this:
+>
+> `local` `myVariable=Saucy`
+>
+> Make sure you do something...
+>
+> `echo "VIP Linux tutorials are $myVariable!"`
+>
+> `}` And close the function
+>
+> Then, call the function with its name...
+>
+> `functionName`
+___
+
+*Let's get back to work...*
+
+| **16** : `./7-function-breakdown`
+
+*Let's get a little more involved with variables...*
+
+| **17** : `gedit 7-function-variables`
+
+*Note the three global variables and the two local-function variables*
+
+| **18** : `./7-function-variables ONe TWo THRee`
+
+| **19** : `./7-function-variables pine apple pen`
+
 ___
 
 # The Take
 
+## Combining tests
 - `while` can be used to count up to a given number, producing output at each count
 - `while` can be used to repeatedly request the human user input a response until the response is accepted
 - `&&` and `||` combine tests
   - `&&` means "and": the test after is run if the previous test answers `true`
   - `||` means "or": the test after is run if the previous test answers `false`
+
+## Sourcing
 - Files can be invluded via `source` or a period `.`
 - Variables can be declared in "sourced" (included) files
 
+## Functions
+- A "function" is like a small script inside the script
+- A BASH function uses parentheses as `function()` when the function is defined
+- A BASH function does not use parentheses when called, only the name, such as `function`
+- A BASH function uses variables and arguments
+- BASH function variables can be set as:
+  - `global` *(default)*
+  - `local`
+- BASH function variable syntax:
+  - `global variable="value"` *(optional)*
+  - `local variable="value"`
 ___
 
 #### [Lesson 8: date & pwgen](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)

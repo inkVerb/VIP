@@ -19,7 +19,7 @@
 
 ### [Lesson 6: exit & journalctl](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
 
-### [Lesson 7: Combo && || Source](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
+### [Lesson 7: Functions, source & Combining Tests](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
 
 ### [Lesson 8: date & pwgen](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)
 
@@ -27,7 +27,7 @@
 
 ### [Lesson 10: BASH Variable Variables & Arrays](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-10.md)
 
-### [Lesson 11: BASH Functions, select & dialog](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-11.md)
+### [Lesson 11: BASH select & dialog](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-11.md)
 
 ### [Lesson 12: BASH getopts & getopt](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
 
