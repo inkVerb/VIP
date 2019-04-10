@@ -16,7 +16,7 @@ It even takes $1 $2 etc arguments, then runs inside the script.
 
 | **1** : `gedit 11-function`
 
-*Note functions require* `#!/bin/bash` *on the first line, not* `#!/bin/sh`
+*Note functions work with* `#!/bin/sh` *on the first line, but also work with* `#!/bin/bash`
 
 | **2** : `./11-function`
 
@@ -218,7 +218,7 @@ ___
 # The Take
 
 ## Functions
-- Functions only work in BASH
+- Functions work in Boure shell (`#!/bin/sh`) and BASH (`#!/bin/bash`)
 - A "function" is like a small script inside the script
 - A BASH function uses parentheses as `function()` when the function is defined
 - A BASH function does not use parentheses when called, only the name, such as `function`
