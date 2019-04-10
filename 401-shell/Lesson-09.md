@@ -25,11 +25,13 @@ ___
 - `#!/bin/ksh`    Korn shell
 - `#!/bin/zsh`    Z shell
 
-*Be careful about writing code in too many different shells because your code may not work on all computers.*
+*Avoid writing code in too many different shells because your code may not work on all machines*
 
 *Generally,:*
-- `[ "$QUOTING_TEST_VARIABLES" ]` can be important at different times in different shells
-- safest is to always "quote", usually "double quote"; if you have problems try 'single quotes'
+- `[ "$QUOTING_VARIABLES" ]` in a test is required in BASH, not Bourne shell
+- `"$QUOTING_VARIABLES"` is generally wise every time they are called
+- `VARIABLE="quotting variable values"` is generally wise every time they are set
+- The safest habit is to always "quote", usually "double quote"; if you have problems try 'single quotes'
 - `sh` (Bourne shell) *is simple, though mostly standard*
   - arithmetic comparison must use alphabet operators [`-lt`, `-gt`, `-le`, `-ge`, `-eq`, `-ne`]
   - arrays **are not** allowed in variables
@@ -39,7 +41,9 @@ ___
   - variables may contain arrays
   - *and, there may be other differences you can look into*
 
-*Consider comparisons in Shell vs BASH:*
+*Consider a comparison in Shell vs BASH:*
+
+#### Arithmetic
 
 Shell:
 
@@ -102,6 +106,124 @@ fi
 ```
 
 | **4** : `./math-bash`
+
+*Consider another comparison in Shell vs BASH:*
+
+#### Arrays
+
+Shell:
+
+*Edit this script*
+
+| **5** : `gedit array-sh`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+ARRAY=(one two three)
+
+echo ${Array[0]}
+echo ${Array[1]}
+echo ${Array[2]}
+echo ${ARRAY[@]}
+
+```
+
+| **6** : `./array-sh`
+
+*Note the array does not work in Borune shell (`#!/bin/sh`)*
+
+BASH:
+
+*Edit this script*
+
+| **7** : `gedit array-bash`
+
+*It should look like this:*
+
+```bash
+#!/bin/bash
+
+ARRAY=(one two three)
+
+echo ${Array[0]}
+echo ${Array[1]}
+echo ${Array[2]}
+echo ${ARRAY[@]}
+
+```
+
+| **8** : `./array-bash`
+
+*...the array works in BASH (`#!/bin/bash`)*
+
+*Consider another comparison in Shell vs BASH:*
+
+#### Quotes in tests
+
+Shell:
+
+*Edit this script*
+
+| **9** : `gedit quote-sh`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+VARIABLE="vip"
+
+# Shell:
+echo "Trying Shell..."
+if [ $VARIABLE = vip ]; then
+echo "No quotes! It works!"
+fi
+
+# BASH:
+echo "Trying BASH..."
+if [ "$VARIABLE" = "vip" ]; then
+echo "Quotes It works!"
+fi
+
+```
+
+| **10** : `./quote-sh`
+
+*Note variables work whether quoted or not in Bourne shell (`#!/bin/sh`)*
+
+BASH:
+
+*Edit this script*
+
+| **11** : `gedit quote-bash`
+
+*It should look like this:*
+
+```bash
+#!/bin/bash
+
+VARIABLE="vip"
+
+# Shell:
+echo "Trying Shell..."
+if [ $VARIABLE = vip ]; then
+echo "No quotes! It works!"
+fi
+
+# BASH:
+echo "Trying BASH..."
+if [ "$VARIABLE" = "vip" ]; then
+echo "Quotes It works!"
+fi
+
+```
+
+| **12** : `./quote-bash`
+
+*...variables only work when quoted in BASH (`#!/bin/bash`)*
 
 *Refer to this cheat-sheet section for more about Shell-BASH differences:* [VIP/Cheet-Sheets: Tests – Welcome to BASH](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Tests.md#welcome-to-bash)
 
@@ -192,7 +314,7 @@ Stating `true`/`false`:
 
 *Edit this script*
 
-| **5** : `gedit truefalse`
+| **13** : `gedit truefalse`
 
 *It should look like this:*
 
@@ -213,7 +335,7 @@ false || echo "OR is false."
 
 ```
 
-| **6** : `./truefalse`
+| **14** : `./truefalse`
 
 *It works whether* `true`/`false` *is stated or a variable:*
 
@@ -221,7 +343,7 @@ Variable as `true`/`false`:
 
 *Edit this script*
 
-| **7** : `gedit truefalsevar`
+| **15** : `gedit truefalsevar`
 
 *It should look like this:*
 
@@ -246,7 +368,7 @@ $VAR || echo "OR is false."
 
 ```
 
-| **8** : `./truefalsevar`
+| **16** : `./truefalsevar`
 
 *It does* ***NOT*** *work*
 
@@ -254,7 +376,7 @@ Variable as other **"string"**:
 
 *Edit this script*
 
-| **9** : `gedit truefalsevarstring`
+| **17** : `gedit truefalsevarstring`
 
 *It should look like this:*
 
@@ -278,7 +400,7 @@ $VAR && echo "AND is true."
 $VAR || echo "OR is false."
 ```
 
-| **10** : `./truefalsevarstring`
+| **18** : `./truefalsevarstring`
 
 ### IV. Using `-z`/`-n` & `unset` "the Proper Way"
 
@@ -292,7 +414,7 @@ Test with `-z`:
 
 *Edit this script*
 
-| **11** : `gedit varset-z`
+| **19** : `gedit varset-z`
 
 *It should look like this:*
 
@@ -329,13 +451,13 @@ echo "IS set: $VAR"
 fi
 ```
 
-| **12** : `./varset-z`
+| **20** : `./varset-z`
 
 Test with `-n`:
 
 *Edit this script*
 
-| **13** : `gedit varset-n`
+| **21** : `gedit varset-n`
 
 *It should look like this:*
 
@@ -372,7 +494,7 @@ echo "IS empty set: $VAR"
 fi
 ```
 
-| **14** : `./varset-n`
+| **22** : `./varset-n`
 
 ___
 

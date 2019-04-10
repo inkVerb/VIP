@@ -81,9 +81,9 @@ ___
 ## Rule 2: Associative arrays need this first `declare -A ARRAYNAME`
 ## Rule 3: Choose associative or auto-indexed
 EITHER
-### associative: `MyArry=([key]=frst [ky2]=sec) .. MyArry[key] MyArry[ky2]`
+### associative: `MyArray=([key]=frst [ky2]=sec) .. MyArray[key] MyArray[ky2]`
 OR
-### auto-indexed: `MyArry=(one two) .. MyArry[0] MyArry[1]`
+### auto-indexed: `MyArray=(one two) .. MyArray[0] MyArray[1]`
 
 NOT BOTH
 
@@ -112,12 +112,12 @@ ___
 # The Take
 
 - An "array" is a variable with multiple values
-- Arrays only work in BASH, not Shell
+- Arrays only work in "BASH" (`#!/bin/bash`), not the "Bourne shell" (`#!/bin/sh`)
 - Each value is called with an index "key", which is a sequential number unless declared otherwise
 - The default array key numbers begin with `0` for the first value
 - An "associative" array has customized keys, which are not numbers
 - An associative array must be declared *before* it's values and keys are declared
-  - The array can be declared while empty using `declare -A` or
+  - The array can be declared while empty using `declare -A ARRAY_NAME` or
   - The array can be declared with values, later replacing the values with associated keys
 - Syntax:
   - `arrayName=(value0 value1 value2)` declares the array and its values

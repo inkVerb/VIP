@@ -18,7 +18,7 @@ ___
 
 *gedit: Reload sedoutput.text*
 
-*Both* `sed` *without* `-i` *and* `echo` *will send output to the terminal*
+*Both* `echo` *and* `sed` *without* `-i` *will send output to the terminal*
 
 *But* `sed -i` *and* `echo ... > ` *will output to a file*
 
@@ -34,8 +34,8 @@ ___
 
 - Several commands can be combined into one command, including an output file
 - "Piping" output into "tee" (`command | tee output-file`) sends the output to both the output file *and* is displayed as raw output in the terminal
-- You should already know that "output-file" (just above) represents any file name you may choose
-- `| tee` should be practiced using many commands
+- `| tee` will overwrite the destination file!
+- `| tee` can be used with many commands
 
 ___
 
