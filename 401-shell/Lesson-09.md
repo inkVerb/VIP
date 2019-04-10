@@ -381,7 +381,7 @@ echo "IS set: $VAR"
 fi
 ```
 
-| **160** : `./varset-z`
+| **16** : `./varset-z`
 
 Test with `-n`:
 
