@@ -155,6 +155,54 @@ echo ${ARRAY[@]}
 
 *...the array works in BASH (`#!/bin/bash`)*
 
+#### Functions
+
+Shell:
+
+*Edit this script*
+
+| **9** : `gedit function-sh`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+theFunction() {
+echo "I am functional."  
+}
+
+theFunction
+
+```
+
+| **10** : `./function-sh`
+
+*Note the function is not recognized in Borune shell (`#!/bin/sh`)*
+
+BASH:
+
+*Edit this script*
+
+| **11** : `gedit function-bash`
+
+*It should look like this:*
+
+```bash
+#!/bin/bash
+
+theFunction() {
+echo "I am functional."  
+}
+
+theFunction
+
+```
+
+| **12** : `./function-bash`
+
+*...the function works in BASH (`#!/bin/bash`)*
+
 *Refer to this cheat-sheet section for more about Shell-BASH differences:* [VIP/Cheet-Sheets: Tests – Welcome to BASH](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Tests.md#welcome-to-bash)
 
 *Here's a great Wiki article about shells: [List of command-line interpreters](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)*
@@ -244,7 +292,7 @@ Stating `true`/`false`:
 
 *Edit this script*
 
-| **9** : `gedit truefalse`
+| **13** : `gedit truefalse`
 
 *It should look like this:*
 
@@ -265,7 +313,7 @@ false || echo "OR is false."
 
 ```
 
-| **10** : `./truefalse`
+| **14** : `./truefalse`
 
 *It works whether* `true`/`false` *is stated or a variable:*
 
@@ -273,7 +321,7 @@ Variable as `true`/`false`:
 
 *Edit this script*
 
-| **11** : `gedit truefalsevar`
+| **15** : `gedit truefalsevar`
 
 *It should look like this:*
 
@@ -298,7 +346,7 @@ $VAR || echo "OR is false."
 
 ```
 
-| **12** : `./truefalsevar`
+| **16** : `./truefalsevar`
 
 *It does* ***NOT*** *work*
 
@@ -306,7 +354,7 @@ Variable as other **"string"**:
 
 *Edit this script*
 
-| **13** : `gedit truefalsevarstring`
+| **17** : `gedit truefalsevarstring`
 
 *It should look like this:*
 
@@ -330,7 +378,7 @@ $VAR && echo "AND is true."
 $VAR || echo "OR is false."
 ```
 
-| **14** : `./truefalsevarstring`
+| **18** : `./truefalsevarstring`
 
 ### IV. Using `-z`/`-n` & `unset` "the Proper Way"
 
@@ -344,7 +392,7 @@ Test with `-z`:
 
 *Edit this script*
 
-| **15** : `gedit varset-z`
+| **19** : `gedit varset-z`
 
 *It should look like this:*
 
@@ -381,13 +429,13 @@ echo "IS set: $VAR"
 fi
 ```
 
-| **16** : `./varset-z`
+| **20** : `./varset-z`
 
 Test with `-n`:
 
 *Edit this script*
 
-| **17** : `gedit varset-n`
+| **21** : `gedit varset-n`
 
 *It should look like this:*
 
@@ -424,18 +472,19 @@ echo "IS empty set: $VAR"
 fi
 ```
 
-| **18** : `./varset-n`
+| **22** : `./varset-n`
 
 ___
 
 # The Take
 
 ## Interpreters
-- In `#!/bin/sh`, "sh" is the interpreter
-- There are many interpreters for Linux, "bash" & "sh" are probably the most common
-- Different interpreters can do different things, much how "bash" & "sh" are mostly similar, but a little different
-- BASH allows arrays and arithmetic operator symbols ((`<`, `>`, `=<`, `>=`, `==`, `!=`))
-- Bourne shell disallows arrays and only uses normal arithmetic operators [`-lt`, `-gt`, `-le`, `-ge`, `-eq`, `-ne`]
+- In `#!/bin/sh`, "`sh`" is the interpreter
+- There are many interpreters for Linux, "`bash`" & "`sh`" are probably the most common
+- Different interpreters can do different things, much how "`bash`" & "`sh`" are mostly similar, but a little different
+- BASH (`bash`) allows arrays and arithmetic operator symbols ((`<`, `>`, `=<`, `>=`, `==`, `!=`))
+- Bourne shell (`sh`) disallows arrays and only uses normal arithmetic operators [`-lt`, `-gt`, `-le`, `-ge`, `-eq`, `-ne`]
+-
 
 ## Errors & Debugging
 - `set` will make Shell report errors to help find problems
