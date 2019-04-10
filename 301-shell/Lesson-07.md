@@ -132,13 +132,13 @@ ___
 
 ## Functions
 - A "function" is like a small script inside the script
-- A BASH function uses parentheses as `function()` when the function is defined
-- A BASH function does not use parentheses when called, only the name, such as `function`
-- A BASH function uses variables and arguments
-- BASH function variables can be set as:
+- A function uses parentheses as `function()` when the function is defined
+- A function does not use parentheses when called, only the name, such as `function`
+- A function uses variables and arguments
+- Function variables can be set as:
   - `global` *(default)*
   - `local`
-- BASH function variable syntax:
+- Function variable syntax:
   - `global variable="value"` *(optional)*
   - `local variable="value"`
 ___
