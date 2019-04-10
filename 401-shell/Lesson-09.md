@@ -120,9 +120,9 @@ Shell:
 
 ARRAY=(one two three)
 
-echo ${Array[0]}
-echo ${Array[1]}
-echo ${Array[2]}
+echo ${ARRAY[0]}
+echo ${ARRAY[1]}
+echo ${ARRAY[2]}
 echo ${ARRAY[@]}
 
 ```
@@ -144,9 +144,9 @@ BASH:
 
 ARRAY=(one two three)
 
-echo ${Array[0]}
-echo ${Array[1]}
-echo ${Array[2]}
+echo ${ARRAY[0]}
+echo ${ARRAY[1]}
+echo ${ARRAY[2]}
 echo ${ARRAY[@]}
 
 ```
