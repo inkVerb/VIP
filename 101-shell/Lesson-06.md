@@ -20,7 +20,7 @@ ___
 
 *Both* `echo` *and* `sed` *(without* `-i`*) will send output to the terminal*
 
-*But* `sed -i` *and* `echo ... > ` *will output to a file*
+*But,* `sed -i` *and* `echo ... > ` *will output to a file*
 
 *But better yet, piping into* `tee` *will do both!*
 
