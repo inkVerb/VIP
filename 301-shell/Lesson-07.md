@@ -62,7 +62,7 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 *It can be good practice to include the shebang* (`#!/bin/sh`) *in any "included" files for formatting purposes*
 
-### IV. `newFunction()`
+### IV. `function()`
 
 A function is like a script inside a script.
 
