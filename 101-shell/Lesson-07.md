@@ -51,17 +51,21 @@ ___
 
 | **16** : `cat onetwo`
 
-*Note cat combined one and two into onetwo*
+*Note* `cat` *combined one and two into onetwo*
 
-| **17** : `echo ThreeThreeThree > three`
+*Note note also that* `cat` *preserved the lines*
 
-| **18** : `cat three two one >> onetwo`
+| **17** : `echo $(cat one two)`
 
-| **19** : `cat onetwo`
+*Note* `echo $(COMMAND_SUBSTITUTION)` *removed the new lines like it always does*
 
-*Note cat also appended to onetwo via >>*
+| **18** : `echo ThreeThreeThree > three`
 
-| **20** : `rm one two three onetwo`
+| **19** : `cat three two one >> onetwo`
+
+| **20** : `cat onetwo`
+
+*Note* `cat` *also appended to onetwo via >>*
 
 ___
 
