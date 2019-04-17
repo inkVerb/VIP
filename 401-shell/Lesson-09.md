@@ -361,7 +361,7 @@ $VAR || echo "OR is false."
 
 *Let's try a real command: `ls /directory`*
 
-#### 4. Stating `true`/`false`:
+#### 4. Test with example command `ls`:
 
 | **21** : `mkdir iamhere && touch iamhere/file1 iamhere/file2`
 
