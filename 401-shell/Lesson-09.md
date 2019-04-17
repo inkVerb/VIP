@@ -403,7 +403,7 @@ Test with `-z`:
 
 *Edit this script*
 
-| **21** : `gedit varset-z`
+| **24** : `gedit varset-z`
 
 *It should look like this:*
 
@@ -440,13 +440,13 @@ echo "IS set: $VAR"
 fi
 ```
 
-| **22** : `./varset-z`
+| **25** : `./varset-z`
 
 Test with `-n`:
 
 *Edit this script*
 
-| **23** : `gedit varset-n`
+| **26** : `gedit varset-n`
 
 *It should look like this:*
 
@@ -483,7 +483,7 @@ echo "IS empty set: $VAR"
 fi
 ```
 
-| **24** : `./varset-n`
+| **27** : `./varset-n`
 
 ___
 
