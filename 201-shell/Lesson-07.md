@@ -37,9 +37,9 @@ ___
 
 | **10** : `ls -l`
 
-*You can see the* `vrk` *directory*
+*You can see the `vrk` directory*
 
-*This time, unzip it to the* `compress` *directory*
+*This time, unzip it to the `compress` directory*
 
 | **11** : `unzip vrk.zip -d compress/`
 
@@ -49,7 +49,7 @@ ___
 
 | **14** : `ls -l`
 
-*It works, but we don't need this extra* `vrk` *directory; delete it*
+*It works, but we don't need this extra `vrk` directory; delete it*
 
 | **15** : `rm -r vrk`
 
@@ -57,7 +57,7 @@ ___
 
 ### tar (Tape ARchive) `tar -cvf file.tar dir`; `tar -xvf file.tar`
 
-*Note* `-c` *is for "Create";* `-v` *is for "Verbose";* `-f` *is for "File"*
+*Note `-c` is for "Create"; `-v` is for "Verbose"; `-f` is for "File"*
 
 | **17** : `tar -cvf vrk.tar vrk`
 
@@ -69,9 +69,9 @@ ___
 
 | **21** : `ls -l`
 
-*Note* `vrk.tar` *is not compressed, larger than* `vrk.zip`
+*Note `vrk.tar` is not compressed, larger than `vrk.zip`
 
-*Note* `-x` *is for "eXtract";* `-v` *is for "Verbose";* `-f` *is for "File"*
+*Note `-x` is for "eXtract"; `-v` is for "Verbose"; `-f` is for "File"*
 
 | **22** : `tar -xvf vrk.tar`
 
@@ -85,9 +85,9 @@ ___
 
 | **26** : `ls -l`
 
-*Note it replaced the original file* `vrk.tar`
+*Note it replaced the original file `vrk.tar`
 
-*Note* `-d` *is for "Decompress"*
+*Note `-d` is for "Decompress"*
 
 | **27** : `xz -d vrk.tar.xz`
 
@@ -101,7 +101,7 @@ ___
 
 | **30** : `ls -l`
 
-*Create the .tar.xz file without removing the original using* `-c`
+*Create the .tar.xz file without removing the original using `-c`
 
 | **31** : `xz -c vrk.tar > vrk.tar.xz`
 
@@ -117,19 +117,19 @@ ___
 
 | **34** : `ls -l`
 
-*Note without* `-v` *for "Verbose" it is nice and quiet*
+*Note without `-v` for "Verbose" it is nice and quiet*
 
 | **35** : `tar -cf - vrk | xz > vrk.tar.xz`
 
 *Breakdown:*
-- `-c` *"Create" something new*
-- `-f` *"File" output filename will be specified*
-- `-` *placeholder where the output tarball filename normally goes, i.e.* `vrk.tar`
-- `vrk` *the tarball content source, here one directory, being tarred up*
-- `|` *"pipe" (send) that output to whatever comes next*
-- `xz` *the next command, using* `xz` *compression*
-- `>` *...to an output file...*
-- `vrk.tar.xz` *is the actual output file*
+- `-c` "Create" something new*
+- `-f` "File" output filename will be specified*
+- `-` placeholder where the output tarball filename normally goes, i.e. `vrk.tar`
+- `vrk` the tarball content source, here one directory, being tarred up*
+- `|` "pipe" (send) that output to whatever comes next*
+- `xz` the next command, using `xz` compression*
+- `>` ...to an output file...*
+- `vrk.tar.xz` is the actual output file*
 
 | **36** : `rm vrk.tar.xz`
 
@@ -153,7 +153,7 @@ ___
 
 | **40** : `ls -l`
 
-*Note* `-9` *is the compression level*
+*Note `-9` is the compression level*
 
 | **41** : `xz -9 -c vrk.tar > vrk.9.tar.xz`
 
@@ -167,11 +167,11 @@ ___
 
 | **43** : `gzip vrk.tar > vrk.tar.gz`
 
-*Answer "y" to overwrite, though the file doesn't already exist (this is another drawback of* `gzip`*)*
+*Answer "y" to overwrite, though the file doesn't already exist (this is another drawback of `gzip`*)*
 
 | **44** : `ls -l`
 
-*Note it replaced the original file* `vrk.tar`
+*Note it replaced the original file `vrk.tar`
 
 | **45** : `cp ../vrk.tar .`
 
@@ -183,17 +183,17 @@ ___
 
 | **48** : `ls -l`
 
-*Note* `-c` *is for "Create, keep original"*
+*Note `-c` is for "Create, keep original"*
 
 | **49** : `gzip -c vrk.tar > vrk.tar.gz`
 
-*Note there was no question this time;* `-c` *is a good idea with* `gzip`
+*Note there was no question this time; `-c` is a good idea with `gzip`
 
 | **50** : `ls -l`
 
 | **51** : `rm vrk.tar`
 
-*Note* `-d` *is for "Decompress"*
+*Note `-d` is for "Decompress"*
 
 | **52** : `ls -l`
 
@@ -201,31 +201,31 @@ ___
 
 | **54** : `ls -l`
 
-*Note* `vrk.tar.gz` *is was replaced, just as with xz*
+*Note `vrk.tar.gz` is was replaced, just as with xz*
 
-*We want* `vrk.tar.gz` *for reference*
+*We want `vrk.tar.gz` for reference*
 
 | **55** : `gzip -c vrk.tar > vrk.tar.gz`
 
 #### bzip2 `bzip2 -c file > file.bz2`; `bzip2 -d file.bz2`
 
-*Note* `-c` *is for "Create, keep original" just as with* `gzip`
+*Note `-c` is for "Create, keep original" just as with `gzip`
 
 | **56** : `bzip2 -c vrk.tar > vrk.tar.bz2`
 
 | **57** : `ls -l`
 
-*Note* `vrk.tar` *still exists, delete before extracting*
+*Note `vrk.tar` still exists, delete before extracting*
 
 | **58** : `rm vrk.tar`
 
-*Note* `-d` *is for "Decompress" as with gzip*
+*Note `-d` is for "Decompress" as with gzip*
 
 | **59** : `bzip2 -d vrk.tar.bz2`
 
 | **60** : `ls -l`
 
-*Note* `vrk.tar.bz2` *is gone, we want it back for reference*
+*Note `vrk.tar.bz2` is gone, we want it back for reference*
 
 | **61** : `bzip2 -c vrk.tar > vrk.tar.bz2`
 
@@ -233,11 +233,11 @@ ___
 
 | **62** : `ls -l`
 
-*Case and point:* `xz` *is smallest, simplest to use, and takes just a little more time*
+*Case and point: `xz` is smallest, simplest to use, and takes just a little more time*
 
 ### Decompress any tarball `tar xf`
 
-*Note* `tar` *can figure out the format, also with decompressing:*
+*Note `tar` can figure out the format, also with decompressing:*
 
 | **63** : `rm -r vrk`
 
@@ -255,13 +255,13 @@ ___
 
 | **68** : `ls -l`
 
-*(Oh, and the dash* `-` *is optional with* `tar` *options)*
+*(Oh, and the dash `-` is optional with `tar` options)*
 
 | **69** : `tar xf vrk.tar.bz2`
 
 | **70** : `ls -l`
 
-*Now with* `xz`
+*Now with `xz`
 
 | **71** : `rm -r vrk && ls -l`
 
@@ -276,7 +276,7 @@ ___
 
 ___
 
-*Remember* `tar cf` *creates the tarball*
+*Remember `tar cf` creates the tarball*
 
 ### Peek inside any tarball with `tar tf`
 
@@ -300,7 +300,7 @@ ___
 
 | **80** : `gedit vrk-tar-tf`
 
-*tar up the* `cpdir` *directory*
+*tar up the `cpdir` directory*
 
 | **81** : `cd ..`
 
@@ -308,7 +308,7 @@ ___
 
 | **83** : `tar tf cpdir.tar`
 
-*Note that* `-v` *"Verbose" basically does the same as* `-t` *"contenT" while tarring*
+*Note that `-v` "Verbose" basically does the same as `-t` "contenT" while tarring*
 
 ### Add to a .tar file
 
@@ -322,7 +322,7 @@ ___
 
 | **87** : `touch file1 file2 file3`
 
-*Note the following order:* `tar cf TARBALL-FILE.tar CONTENTS CONTENTS CONTENTS ETC`
+*Note the following order: `tar cf TARBALL-FILE.tar CONTENTS CONTENTS CONTENTS ETC`
 
 | **88** : `tar cf files.tar file1 file2 cpdir`
 
@@ -330,11 +330,11 @@ ___
 
 | **89** : `tar tf files.tar`
 
-*Add a file with* `-r`
+*Add a file with `-r`
 
 | **90** : `tar rf files.tar file3`
 
-*See if* `file3` *has been added*
+*See if `file3` has been added*
 
 | **91** : `tar tf files.tar`
 
@@ -356,7 +356,7 @@ ___
 
 | **96** : `tar xf vrk.tar.xz`
 
-*Case and point:* `xz` *is probably best,* `gzip` *and* `bzip2` *exist in the Linuxverse, and* `tar xf FILE` *works on any* `.tar*` *file*
+*Case and point: `xz` is probably best, `gzip` and `bzip2` exist in the Linuxverse, and `tar xf FILE` works on any `.tar*` file*
 
 ___
 

@@ -33,7 +33,7 @@ ___
 ___
 > If you don't have permission as a "sudoer", the person who administers your machine can use:
 >
-> | **4** : `su` *input the password*
+> | **4** : `su` input the password*
 >
 > | **5** : `tcpdump`
 >
@@ -53,7 +53,7 @@ ___
 
 ### `man` & `info`
 
-*FYI, this is a great tool to change settings from the terminal:* `gsettings`
+*FYI, this is a great tool to change settings from the terminal: `gsettings`
 
 | **7** : `man gsettings`
 
@@ -61,15 +61,15 @@ ___
 
 *Press Q to quit*
 
-*You can use* `man` *or* `info`
+*You can use `man` or `info`
 
 | **8** : `info gsettings`
 
 *Press Q to quit*
 
-*The* `man` *and* `info`*tools are useful for many things*
+*The `man` and `info`*tools are useful for many things*
 
-*Consider* `lsb_release` *which shows detailed information about your current Linux distribution*
+*Consider `lsb_release` which shows detailed information about your current Linux distribution*
 
 | **9** : `man lsb_release`
 
@@ -101,7 +101,7 @@ ___
 
 | **22** : `info imagemagick`
 
-*Note* `imagemagick` *changes images from the terminal, learn to use at:*
+*Note `imagemagick` changes images from the terminal, learn to use at:*
 - [www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)
 
 ___

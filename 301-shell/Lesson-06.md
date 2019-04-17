@@ -13,10 +13,10 @@ ___
 ___
 > Optional: If you need, you may login as a "sudoer" first
 >
-> | **1** : `su USERNAME` *input the password*
+> | **1** : `su USERNAME` input the password*
 ___
 
-### *Note* `exit` *&* `journalctl` *are used for logs*
+### *Note `exit` & `journalctl` are used for logs*
 
 ## I. System Logs via `journalctl` & `logger`
 
@@ -30,11 +30,11 @@ ___
 
 *Q to quit*
 
-*Use* `-r` *to "reverse" the order and view most recent log entries first*
+*Use `-r` to "reverse" the order and view most recent log entries first*
 
 | **3** : `journalctl -r`
 
-*Use* `-f` *to "follow" the most recent entries in real time*
+*Use `-f` to "follow" the most recent entries in real time*
 
 | **4** : `journalctl -f`
 
@@ -48,15 +48,15 @@ ___
 
 *Look for your entry...*
 
-| **6** : `journalctl -r` *Q to quit*
+| **6** : `journalctl -r` Q to quit*
 
-*Use* `-t SOME_TAG` *to add your own "tag"*
+*Use `-t SOME_TAG` to add your own "tag"*
 
 | **7** : `logger -t dazzleTag "I logged this dazzling tag."`
 
 *Now search for only that tag...*
 
-| **8** : `journalctl -t dazzleTag` *Q to quit*
+| **8** : `journalctl -t dazzleTag` Q to quit*
 
 *Set a "priority" level at "info"...*
 
@@ -64,7 +64,7 @@ ___
 
 *Look for the "info" priority* (`-p info`) *in the most recent* (`-r`) *logs first...*
 
-| **10** : `journalctl -r -p info` *Q to quit*
+| **10** : `journalctl -r -p info` Q to quit*
 
 *Note your "dazzleTag" log also shows up because "info" is the default priority for `logger`*
 
@@ -72,12 +72,12 @@ ___
 
 | **11** : `logger -p 6 "I also logged this number mere moments ago."`
 
-| **12** : `journalctl -r -p 6` *Q to quit*
+| **12** : `journalctl -r -p 6` Q to quit*
 
-*Also use* `-p` *with a "facility" before the "priority":*
+*Also use `-p` with a "facility" before the "priority":*
 
 - Usage: `-p FACILITY.PRIORITY`
-- Example: `-p local0.alert` = `-p local0.1` *Note `local0` = `16`, `alert` = `1` (see below)*
+- Example: `-p local0.alert` = `-p local0.1` Note `local0` = `16`, `alert` = `1` (see below)*
 
 *Note numbers don't work to enter the facility via `logger`*
 
@@ -106,7 +106,7 @@ ___
 
 *Note the "facility" doesn't show up in most log views, it needs "verbose"*
 
-*Use* `-o verbose` *with* `-r` *(`-ro verbose`) to see enough info to find the "facility"*
+*Use `-o verbose` with `-r` (`-ro verbose`) to see enough info to find the "facility"*
 
 *Make an entry with the facility "daemon" (3) and priority "debug" (7)*
 
@@ -114,12 +114,12 @@ ___
 
 | **13** : `logger -p daemon.debug "I a text debug daemon."`
 
-| **14** : `journalctl -ro verbose` *Q to quit*
+| **14** : `journalctl -ro verbose` Q to quit*
 
 *Look for:*
 
-- `PRIORITY` *(7 = debug)*
-- `SYSLOG_FACILITY` *(3 = daemon)*
+- `PRIORITY` (7 = debug)*
+- `SYSLOG_FACILITY` (3 = daemon)*
 
 *Now do the same thing using the nubmers; facility "user" (1) and priority "info" (6)...*
 
@@ -129,20 +129,20 @@ ___
 
 | **15** : `logger -p user.6 "I a text debug daemon."`
 
-| **16** : `journalctl -ro verbose` *Q to quit*
+| **16** : `journalctl -ro verbose` Q to quit*
 
 *Look for:*
 
-- `PRIORITY` *(6 = info)*
-- `SYSLOG_FACILITY` *(1 = user)*
+- `PRIORITY` (6 = info)*
+- `SYSLOG_FACILITY` (1 = user)*
 
 *This is just cool:*
 
 | **17** : `journalctl --since today > journalctl-today.txt`
 
-*If you dare:* `gedit journalctl-today.txt`
+*If you dare: `gedit journalctl-today.txt`
 
-*Also try:* `--since yesterday`
+*Also try: `--since yesterday`
 
 ### IF logged in as a separate "sudoer"
 >
@@ -156,17 +156,17 @@ ___
 
 ## II. Custom output logs
 
-### *Notes about* `exit` codes
+### *Notes about `exit` codes
 
-*Logs &* `exit` *codes are both important, but different*
+*Logs & `exit` codes are both important, but different*
 
 *Errors are important, handle them correctly in Shell scripts!*
 
-> *An* `exit` *is a way to "break" out of a script, such as* `if - then` *tests, but always use* `exit 0` *unless a problem or event needs to be logged!*
+> *An `exit` is a way to "break" out of a script, such as `if - then` tests, but always use `exit 0` unless a problem or event needs to be logged!*
 >
-> *It is considered "bad coding" to use* `exit` *without a number or to use an exit other than* `exit 0` *without need for a log entry*
+> *It is considered "bad coding" to use `exit` without a number or to use an exit other than `exit 0` without need for a log entry*
 >
-> *When tutorials only have* `exit` *in the example, it is up to you to put the correct number after, probably* `exit 0`
+> *When tutorials only have `exit` in the example, it is up to you to put the correct number after, probably `exit 0`
 >
 
 ### A custom log can be useful for keeping track of what happens in your own software
@@ -175,9 +175,9 @@ ___
 
 | **20** : `cd logs`
 
-*Send* STDOUT *(output) to a file with:* `> OUTPUTFILE`
+*Send* STDOUT *(output) to a file with: `> OUTPUTFILE`
 
-*Send* STDERR *(error output) to a file with:* `2> OUTPUTFILE`
+*Send* STDERR *(error output) to a file with: `2> OUTPUTFILE`
 
 | **21** : `ls dumbo`
 
@@ -199,13 +199,13 @@ ___
 
 | **26** : `gedit normal.log`
 
-*Combine this into one command with:* `> STDOUT 2> STDERR`
+*Combine this into one command with: `> STDOUT 2> STDERR`
 
 | **27** : `ls bozo >> normal.log 2>> error.log`
 
 *gedit: Reload error.log*
 
-*Send* STDERR *(error output) into the nothingness with:* `> /dev/null 2>&1`
+*Send* STDERR *(error output) into the nothingness with: `> /dev/null 2>&1`
 
 | **28** : `ls dumbo > /dev/null 2>&1`
 
@@ -213,7 +213,7 @@ ___
 
 *See! Nothing at all!*
 
-*Note* `journalctl` *is for system logs, but you can create your own log files this way*
+*Note `journalctl` is for system logs, but you can create your own log files this way*
 
 ### Review output numbers
 
@@ -261,7 +261,7 @@ ___
 
 | **42** : `gedit ../06-logging-1`
 
-*Note* `exec` *basically means "whatever the current command is", don't lose sleep over it, just see how it is used*
+*Note `exec` basically means "whatever the current command is", don't lose sleep over it, just see how it is used*
 
 | **43** : `./06-logging-1`
 
@@ -271,7 +271,7 @@ ___
 
 | **45** : `gedit ../06-logging-2`
 
-*Note* `> OUTFILE` *is the same as* `1> OUTFILE` *because* `>` *&* `1>` *are for* STDOUT (`exit 1`) *while* `2>` *is always for* STDERR (`exit 2`)
+*Note `> OUTFILE` is the same as `1> OUTFILE` because `>` & `1>` are for* STDOUT (`exit 1`) *while `2>` is always for* STDERR (`exit 2`)
 
 | **46** : `./06-logging-2`
 
@@ -287,7 +287,7 @@ ___
 
 | **49** : `gedit all.log`
 
-*Both* STDOUT *and* STDERR *went to the same file because this makes errors behave like normal output:* `2>&1`
+*Both* STDOUT *and* STDERR *went to the same file because this makes errors behave like normal output: `2>&1`
 
 | **50** : `gedit ../06-logging-4`
 
@@ -327,7 +327,7 @@ ___
 
 | **62** : `cd ..`
 
-*Moral of the story: always use* `exit` *with a number!*
+*Moral of the story: always use `exit` with a number!*
 - `exit 0` everything is normal, no output  ( with `echo "something"` `>&0` ...if you are strange )
 - `exit 1` everything is normal, with STDOUT
 - `exit 2` something is wrong, with STDERR error messages

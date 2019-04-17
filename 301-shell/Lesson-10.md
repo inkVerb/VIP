@@ -43,7 +43,7 @@ Some things can only be done in BASH
 
 | **8** : `gedit 10-array-associative`
 
-*Note* `declare -A ARRAYNAME` *precedes*
+*Note `declare -A ARRAYNAME` precedes*
 
 | **9** : `./10-array-associative i`
 
@@ -71,7 +71,7 @@ Some things can only be done in BASH
 
 | **20** : `./10-array-associative-declare`
 
-*Tip: Uncomment the* `#declare` *lines (5 & 13) to* `declare` *and see that it works...*
+*Tip: Uncomment the `#declare` lines (5 & 13) to `declare` and see that it works...*
 
 | **21** : `./10-array-associative-declare`
 

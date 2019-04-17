@@ -21,13 +21,13 @@ ___
 
 *Eight lines at a time*
 
-| **4** : `more -8 verb.ink.html` *(Q to quit)*
+| **4** : `more -8 verb.ink.html` (Q to quit)*
 
 ### `less`
 
 *Up and down: Spacebar, PageUp, PageDown, Up, Down*
 
-| **5** : `less verb.ink.html` *(Q to quit)*
+| **5** : `less verb.ink.html` (Q to quit)*
 
 ### `head`
 
@@ -61,7 +61,7 @@ ___
 
 *Lots more you can do*
 
-| **12** : `man sort` *(Q to quit)*
+| **12** : `man sort` (Q to quit)*
 
 | **13** : `cd ..`
 
@@ -95,19 +95,19 @@ ___
 
 | **20** : `diff frc-1 frc-5`
 
-*Note* frc-5 line 3 *has several spaces at the end of the line; ignore with* `-Z`
+*Note* frc-5 line 3 *has several spaces at the end of the line; ignore with `-Z`
 
 | **21** : `diff -Z frc-1 frc-5`
 
-*Ignore all white space with* `-w`
+*Ignore all white space with `-w`
 
 | **22** : `diff -w frc-1 frc-5`
 
-*Ignore case with* `-i`
+*Ignore case with `-i`
 
 | **23** : `diff -i frc-1 frc-5`
 
-*Ignore case and white space with* `-iw`
+*Ignore case and white space with `-iw`
 
 | **24** : `diff -iw frc-1 frc-5`
 
@@ -115,11 +115,11 @@ ___
 
 | **25** : `diff frc-1 frc-6`
 
-*Get a message to say so with* `-s`
+*Get a message to say so with `-s`
 
 | **26** : `diff -s frc-1 frc-6`
 
-*Combine* `-s` *with other options*
+*Combine `-s` with other options*
 
 | **27** : `diff -iws frc-1 frc-5`
 
@@ -127,7 +127,7 @@ ___
 
 | **28** : `diff -q frc-1 frc-4`
 
-*Compare side-by-side wtih* `-y`
+*Compare side-by-side wtih `-y`
 
 | **29** : `diff -y frc-1 frc-4`
 
@@ -135,13 +135,13 @@ ___
 
 | **30** : `diff frc-1 frc-2`
 
-*Ignore blank lines with* `-B`
+*Ignore blank lines with `-B`
 
 | **31** : `diff -B frc-1 frc-2`
 
 *There is always more to learn*
 
-| **32** : `man diff` *(Q to quit)*
+| **32** : `man diff` (Q to quit)*
 
 | **33** : `cd ..`
 
@@ -176,7 +176,7 @@ ___
 
 *Vim has a tutorial*
 
-| **37** : `vimtutor` *( :q to quit)*
+| **37** : `vimtutor` ( :q to quit)*
 
 *Have fun!*
 

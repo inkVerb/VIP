@@ -32,7 +32,7 @@ one-1*
 
 | **XX** : `gedit 03-do-echo-3`
 
-*Note* `do` *is on the same line as* `for` *via* `;`
+*Note `do` is on the same line as `for` via `;`
 
 | **8** : `./03-do-echo-3`
 
@@ -70,7 +70,7 @@ one-1*
 
 ### II. Replacing within Variables
 
-*Note* `${VAR%foo}bar` *will replace "foo" with "bar" if it appears in the variable*
+*Note `${VAR%foo}bar` will replace "foo" with "bar" if it appears in the variable*
 
 *.one %one
 
@@ -124,7 +124,7 @@ one-1*
 
 ### IV. Applied: `odt2txt`
 
-*Now, use* `odt2txt` *in a* `for` `...` `do` *loop*
+*Now, use `odt2txt` in a `for` `...` `do` loop*
 
 | **40** : `gedit 03-do-odt2txt-1`
 
@@ -134,7 +134,7 @@ one-1*
 
 | **43** : `gedit ODT-*.txt`
 
-*Note the files are either empty or on one line because we used* `echo`*, this method didn't work*
+*Note the files are either empty or on one line because we used `echo`*, this method didn't work*
 
 | **44** : `gedit 03-do-odt2txt-2`
 

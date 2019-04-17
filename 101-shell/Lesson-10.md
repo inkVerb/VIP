@@ -9,7 +9,7 @@ ___
 
 | **2** : `echo "Apple Jay" > abc/jayapple`
 
-*Search contents inside files with* `grep`
+*Search contents inside files with `grep`
 
 | **3** : `grep jj *`
 
@@ -17,7 +17,7 @@ ___
 
 | **4** : `grep jj *.*`
 
-*Like* `cp -r`*,* `rm -r`*,* *and* `chown -R`*,* `grep` *also needs* `-R` *with directories*
+*Like `cp -r`*, `rm -r`*,* *and `chown -R`*, `grep` also needs `-R` with directories*
 
 | **5** : `grep -R jj *`
 

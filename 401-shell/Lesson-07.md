@@ -32,7 +32,7 @@ done
 
 | **3** : `ls`
 
-*Note the file created:* `countfile`
+*Note the file created: `countfile`
 
 | **4** : `gedit countfile`
 
@@ -42,7 +42,7 @@ done
 
 *Change "No." to "Number"...*
 
-*`.` is canceled with* `\` *in this* `sed` *command...*
+*`.` is canceled with `\` in this `sed` command...*
 
 | **5** : `sed -i "s/No\./Number/" countfile`
 
@@ -54,9 +54,9 @@ done
 
 *gedit: Reload countfile*
 
-*Note it now reads "Nummber" because* `*` *needs concatenating*
+*Note it now reads "Nummber" because `*` needs concatenating*
 
-*Let's use* `.*.` *to replace anything between "Nu" and the space after...*
+*Let's use `.*.` to replace anything between "Nu" and the space after...*
 
 | **7** : `sed -i "s/Nu.*. /Num /" countfile`
 
@@ -64,7 +64,7 @@ done
 
 *Now it reads "Num" correctly*
 
-*The period* `.` *means "more being added", in some circumstances, like* `sed` *and many programming languages*
+*The period `.` means "more being added", in some circumstances, like `sed` and many programming languages*
 
 #### `$` = "end of line"
 
@@ -98,7 +98,7 @@ This is the same in `vim`, so get used to it.
 
 | **11** : `sed -i "s/\t/ TAB /" countfile`
 
-*Let's change this "TAB" text into a pipe* `|`
+*Let's change this "TAB" text into a pipe `|`
 
 | **12** : `sed -i "s/TAB/|/" countfile`
 

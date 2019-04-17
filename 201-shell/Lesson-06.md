@@ -26,8 +26,8 @@ ___
 | **7** : `ls`
 
 *Note it either output the content or returned an error*
-- `curl` *needs an output file specified*
-- `wget` *saves the file by the same name unless otherwise specified*
+- `curl` needs an output file specified*
+- `wget` saves the file by the same name unless otherwise specified*
 
 | **8** : `curl http://verb.ink > verb.ink.html`
 
@@ -51,7 +51,7 @@ ___
 
 | **13** : `ls`
 
-*Specify a different output filename with:* `-O SAVEASNAME` (CAPITAL '-O'!)
+*Specify a different output filename with: `-O SAVEASNAME` (CAPITAL '-O'!)
 
 | **14** : `wget -O vrk.zip https://github.com/inkVerb/vrk/archive/master.zip`
 
@@ -65,7 +65,7 @@ ___
 
 | **17** : `curl https://github.com/inkVerb/vrk/archive/master.zip` (wrong)
 
-*Note the redirect message; use* `-L` *to follow redirects*
+*Note the redirect message; use `-L` to follow redirects*
 
 | **18** : `curl -L https://github.com/inkVerb/vrk/archive/master.zip` (wrong)
 
@@ -85,7 +85,7 @@ ___
 
 ### tarball via curl
 
-*Substitute* `github.com` *for* `api.github.com/repos/` *& append with* `/tarball` *& include output file*
+*Substitute `github.com` for `api.github.com/repos/` & append with `/tarball` & include output file*
 
 | **22** : `curl -L https://api.github.com/repos/inkVerb/vrk/tarball > vrk.tar`
 
@@ -97,7 +97,7 @@ ___
 
 | **25** : `ls`
 
-*Note the strange new directory* `inkVerb-vrk-SOME_CRAZY_NUMBER`
+*Note the strange new directory `inkVerb-vrk-SOME_CRAZY_NUMBER`
 
 *...that's it, delete it with:*
 
@@ -109,13 +109,13 @@ ___
 
 ### tarball via curl & untar (single command)
 
-*Substitute* `github.com` *for* `api.github.com/repos/` *& append with* `/tarball` *& untar it right away*
+*Substitute `github.com` for `api.github.com/repos/` & append with `/tarball` & untar it right away*
 
 | **28** : `curl -L https://api.github.com/repos/inkVerb/vrk/tarball | tar xz`
 
 | **29** : `ls`
 
-*Note the same strange directory* `inkVerb-vrk-SOME_CRAZY_NUMBER`
+*Note the same strange directory `inkVerb-vrk-SOME_CRAZY_NUMBER`
 
 *...that's it, delete it with:*
 
@@ -141,7 +141,7 @@ ___
 
 *Note the error message because of the read-only files* (Ctrl + C to get out of there!)
 
-*Removing a git-cloned directory is easier with* `sudo`
+*Removing a git-cloned directory is easier with `sudo`
 
 ### For a "sudoer" who can use `sudo`
 >
@@ -159,7 +159,7 @@ ___
 ___
 > If you don't have permission as a "sudoer", the person who administers your machine can use:
 >
-> | **39** : `su` *input the password*
+> | **39** : `su` input the password*
 >
 > | **40** : `rm -r vrk`
 >

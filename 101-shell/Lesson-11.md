@@ -17,7 +17,7 @@ ___
 
 | **4** : `sed -i "s///!/g" money.file`
 
-*Notice the error, "cancel" (some say "quote") special characters with:* `\`
+*Notice the error, "cancel" (some say "quote") special characters with: `\`
 
 | **5** : `sed -i "s/\//\!/g" money.file`
 
@@ -35,9 +35,9 @@ ___
 
 *gedit: Reload money.file*
 
-*Use* `\` *with letters to work with non-characters*
+*Use `\` with letters to work with non-characters*
 
-*Note* `\t` = tab, `\n` = new line
+*Note `\t` = tab, `\n` = new line
 
 | **9** : `echo "no tab one line" > tab.file`
 
@@ -63,7 +63,7 @@ ___
 
 *gedit: Reload tab.file*
 
-*Note the line was not removed, use* `-z` *so* `sed` *is not confused*
+*Note the line was not removed, use `-z` so `sed` is not confused*
 
 | **15** : `sed -i -z "s/one\n/one/g" tab.file`
 

@@ -20,13 +20,13 @@ ___
 
 ___
 
-*This sets a password for* `su` *if it has not been done already...*
+*This sets a password for `su` if it has not been done already...*
 
 *You MUST be a "sudoer" for this..."*
 
-| **2** : `sudo passwd` *Input your password, then input the new password for the* `su` *user*
+| **2** : `sudo passwd` Input your password, then input the new password for the `su` user*
 
-*To become* `su` *after this, just input in the terminal:* `su`
+*To become `su` after this, just input in the terminal: `su`
 
 *That's it, all done.*
 ___

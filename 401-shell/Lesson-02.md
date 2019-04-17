@@ -28,7 +28,7 @@ This is where your stuff goes. All your `Documents/` and `Downloads/` and `Deskt
 
 #### `/root/` – "Root" user Home Directory (also what `sudo` calls 'home')
 
-| **5** : `cd ../root` *"Permission denied" ?? Sometimes it doesn't exist, depending on whether root has created it*
+| **5** : `cd ../root` "Permission denied" ?? Sometimes it doesn't exist, depending on whether root has created it*
 
 | **6** : `ls`
 
@@ -223,7 +223,7 @@ ___
 - `/` is the beginning of all directories in the FSH
   - ***Any*** path beginning with `/` will refer to the root of the FSH!
 - All home directories (with personal user stuff) are in `/home/`
-- The "root" (AKA `su`) user's home is `/root/`, ***not*** `/home/root/`!
+- The "root" (AKA `su`) user's home is `/root/`, ***not** `/home/root/`!
 - `/var/` holds
   - Logs
   - The `/var/www/` "web" folder used by Apache and Nginx web servers

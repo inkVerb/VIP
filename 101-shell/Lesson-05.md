@@ -13,7 +13,7 @@ ___
 
 *gedit: Reload applefoo*
 
-*Now, use* `sed` *without the* `-i` *...*
+*Now, use `sed` without the `-i` ...*
   - *It won't change the file*
   - *It outputs to the terminal*
 
@@ -21,7 +21,7 @@ ___
 
 | **5** : `ls`
 
-*Now, use* `sed` *with* `-e` *and see what happens...*
+*Now, use `sed` with `-e` and see what happens...*
 
 | **6** : `sed -e "s/foo/bar/g" applefoo > newapplefoo`
 
@@ -29,7 +29,7 @@ ___
 
 | **8** : `cat newapplefoo`
 
-*Note what* `cat` *does...*
+*Note what `cat` does...*
 
 | **9** : `cat abcsed`
 
@@ -37,9 +37,9 @@ ___
 
 | **11** : `cat abcd`
 
-*Review what* `sed` *and* `cat` *do with the next two commands...*
+*Review what `sed` and `cat` do with the next two commands...*
 
-- *Output* `sed` *search-replace results:* (without `-i` or `-e` flags)
+- *Output `sed` search-replace results:* (without `-i` or `-e` flags)
 
 | **12** : `sed "s/foo/bar/" applefoo`
 
@@ -47,15 +47,15 @@ ___
 
 | **13** : `cat applefoo`
 
-*Next "pipe"* `|` *the output of* `cat` *into* `sed`*...*
+*Next "pipe" `|` the output of `cat` into `sed`*...*
 
 | **14** : `cat applefoo | sed "s/foo/bar/"`
 
-*Put those commands into a kind of variable value; this is called "Command Substitution":* `$(command substitution)`
+*Put those commands into a kind of variable value; this is called "Command Substitution": `$(command substitution)`
 
 | **15** : `echo $(cat applefoo | sed "s/foo/bar/")`
 
-*"Command Substitution" can also be done with backticks:* `` `command substitution` `` (considered lazy, though)
+*"Command Substitution" can also be done with backticks: `` `command substitution` `` (considered lazy, though)
 
 | **16** : `` echo `cat applefoo | sed "s/foo/bar/"` ``
 
@@ -69,7 +69,7 @@ ___
 
 | **19** : `dpkg --print-architecture`
 
-*You can set output of any terminal command as if it is a variable using:* `$(...)` or `` `...` ``
+*You can set output of any terminal command as if it is a variable using: `$(...)` or `` `...` ``
 
 | **20** : `echo $(printenv DESKTOP_SESSION)`
 

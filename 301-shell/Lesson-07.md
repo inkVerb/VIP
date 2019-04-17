@@ -30,11 +30,11 @@ ___
 
 | **7** : `gedit 07-check`
 
-*Note* `&&` *means "AND"* `||` *means "OR"*
+*Note `&&` means "AND" `||` means "OR"*
 
 | **8** : `./07-check`
 
-*Run* `07-check` *many times, consider these:*
+*Run `07-check` many times, consider these:*
 
 Files: `1.z` `2.z` `3.z` `4.z` `5.z` `6.z` `7.z` `8.z` `9.z` `0.z`
 
@@ -52,11 +52,11 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 *Note the file "07-source" is executable, but "07-sourced" is not*
 
-*And "07-sourced" has no* `#!/bin/sh` *declaration*
+*And "07-sourced" has no `#!/bin/sh` declaration*
 
 | **11** : `./07-source`
 
-*Uncomment the line with* `. ~/School/VIP/shell/301/07-sourced` *and run it again*
+*Uncomment the line with `. ~/School/VIP/shell/301/07-sourced` and run it again*
 
 | **12** : `./07-source`
 
@@ -70,7 +70,7 @@ It even takes $1 $2 etc arguments, then runs inside the script.
 
 | **13** : `gedit 7-function`
 
-*Note functions work with* `#!/bin/sh` *on the first line, but also work with* `#!/bin/bash`
+*Note functions work with `#!/bin/sh` on the first line, but also work with `#!/bin/bash`
 
 | **14** : `./7-function`
 
@@ -136,10 +136,10 @@ ___
 - A function does not use parentheses when called, only the name, such as `function`
 - A function uses variables and arguments
 - Function variables can be set as:
-  - `global` *(default)*
+  - `global` (default)*
   - `local`
 - Function variable syntax:
-  - `global variable="value"` *(optional)*
+  - `global variable="value"` (optional)*
   - `local variable="value"`
 ___
 

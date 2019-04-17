@@ -21,7 +21,7 @@ ___
 
 *The "input" you enter into the terminal is called:* "STDIN"
 
-*Below, the* STDIN *is* `echo "Hello ink!"` *and the* STDOUT *is* `Hello ink!`
+*Below, the* STDIN *is `echo "Hello ink!"` and the* STDOUT *is `Hello ink!`
 
 | **4** : `echo "Hello ink!"`
 
@@ -31,7 +31,7 @@ ___
 
 *See, there are no files here*
 
-*We can send* STDOUT *to a file with:* `> MYFILE`
+*We can send* STDOUT *to a file with: `> MYFILE`
 
 | **7** : `echo "Designate a file? Output goes to the file, just like this." > abcd`
 

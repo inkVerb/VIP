@@ -18,11 +18,11 @@ ___
 
 *gedit: Reload sedoutput.text*
 
-*Both* `echo` *and* `sed` *(without* `-i`*) will send output to the terminal*
+*Both `echo` and `sed` (without `-i`*) will send output to the terminal*
 
-*But,* `sed -i` *and* `echo ... > ` *will output to a file*
+*But, `sed -i` and `echo ... > ` will output to a file*
 
-*But better yet, piping into* `tee` *will do both!*
+*But better yet, piping into `tee` will do both!*
 
 | **6** : `echo $(sed "s/foo/bar/" applefoo) | tee sedoutput.text`
 

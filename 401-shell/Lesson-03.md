@@ -9,7 +9,7 @@ Cron tasks are processes (usually in a Shell script) that are automatically run 
 
 | **1** : `cd /etc`
 
-| **2** : `ls` *(Scroll up to find the cron directories)*
+| **2** : `ls` (Scroll up to find the cron directories)*
 
 ### Normal Schedules
 
@@ -104,7 +104,7 @@ ___
   - `/etc/cron.weekly/`
   - `/etc/cron.monthly/`
   - `/etc/cron.d/`
-  - `/etc/crontab` *(file, not a directory)*
+  - `/etc/crontab` (file, not a directory)*
 - `crontab` is the "proper" way for a user to set up a regular cron task from the terminal
 - Cron files are very finicky about location, permissions, and using `'single quotes'` to `echo` contents into their files
   - Permissions requirements can be different for cron files in different locations!

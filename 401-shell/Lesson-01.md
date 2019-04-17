@@ -21,7 +21,7 @@ ___
 
 *Vim: `:e ++ff=unix`*
 
-*Now* `^M` *at the end of the line, indicating a "carriage return"*
+*Now `^M` at the end of the line, indicating a "carriage return"*
 
 *Vim: `:q!`*
 
@@ -97,7 +97,7 @@ ls\
 401
 ```
 
-Press: Up *to see your last command was:* `ls-l~/School/VIP/shell/401`
+Press: Up *to see your last command was: `ls-l~/School/VIP/shell/401`
 
 *Even breakup character by character, even SPACES! Enter ONE LINE AT A TIME:*
 
@@ -133,7 +133,7 @@ l \
 
 | **17** : `ls .*history`
 
-| **18** : `vim .bash_history` *(or whatever the file name is)*
+| **18** : `vim .bash_history` (or whatever the file name is)*
 
 *Vim: `:set number`*
 
@@ -147,7 +147,7 @@ l \
 
 *Again...*
 
-| **20** : `vim .bash_history` *(or whatever the file name is)*
+| **20** : `vim .bash_history` (or whatever the file name is)*
 
 *Vim: `:set number`*
 
@@ -159,11 +159,11 @@ l \
 
 | **21** : `!-2`
 
-*Note* `!-2` *calles the 2nd to last command, as for all* `!-Nth` *usage*
+*Note `!-2` calles the 2nd to last command, as for all `!-Nth` usage*
 
 | **22** : `!echo`
 
-*Note* `!echo` *calls the first BASH command that began with "echo", as for all* `!TEST` *usage*
+*Note `!echo` calls the first BASH command that began with "echo", as for all `!TEST` usage*
 
 | **23** : `cd ~/School/VIP/shell/401`
 
@@ -174,7 +174,7 @@ Press: Ctrl + R
 
 *This is reverse search*
 
-Type: `echo` *and notice the results*
+Type: `echo` and notice the results*
 
 Press: Down *to get back to the normal prompt*
 
@@ -184,7 +184,7 @@ Press: Down *to get back to the normal prompt*
 
 Press: Ctrl + R
 
-Type: `echo "` *and notice the DIFFERENT results as you type*
+Type: `echo "` and notice the DIFFERENT results as you type*
 
 Press: Down *to get back to the normal prompt*
 

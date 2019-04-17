@@ -48,11 +48,11 @@ Test for an existing *directory* by name
 
 | **14** : `./01-if-dir otherdir`
 
-*Note* `-d` *will return false for a file of the same name*
+*Note `-d` will return false for a file of the same name*
 
-*This also happens for* `-f` *testing a directory*
+*This also happens for `-f` testing a directory*
 
-*So,* `-d` *tests only an existing directory,* `-f` *tests only an existing file*
+*So, `-d` tests only an existing directory, `-f` tests only an existing file*
 
 | **15** : `./01-if-file mydir`
 
@@ -100,7 +100,7 @@ Test for an existing *directory* by name
 
 | **34** : `gedit 01-lines`
 
-*Note* `;` *means "new line of logic" and whitespace at the beginning of lines is ignored*
+*Note `;` means "new line of logic" and whitespace at the beginning of lines is ignored*
 
 | **35** : `./01-lines`
 

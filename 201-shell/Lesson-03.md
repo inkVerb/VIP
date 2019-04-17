@@ -30,7 +30,7 @@ ___
 
 | **4** : `sudo apt update`
 
-*If there is a problem, usually fix it with* `--fix-missing`
+*If there is a problem, usually fix it with `--fix-missing`
 
 | **5** : `sudo apt update --fix-missing`
 
@@ -40,30 +40,30 @@ ___
 
 *Upgrade (install updates)*
 
-| **7** : `sudo apt upgrade` *If updates are available, you will need to press Y, then Enter*
+| **7** : `sudo apt upgrade` If updates are available, you will need to press Y, then Enter*
 
-*Install the* `git` *package*
+*Install the `git` package*
 
-| **8** : `sudo apt install git` *Unless it is installed already, you will need to press Y, then Enter*
+| **8** : `sudo apt install git` Unless it is installed already, you will need to press Y, then Enter*
 
-*Install* `cowsay`
+*Install `cowsay`
 
-| **9** : `sudo apt install cowsay` *Unless it is installed already, you will need to press Y, then Enter*
+| **9** : `sudo apt install cowsay` Unless it is installed already, you will need to press Y, then Enter*
 
 *You can install more than one package...*
 
-*Install the* `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `rename` and `pwgen` *packages* (the command `netstat` comes from the package `net-tools`)
+*Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `rename` and `pwgen` packages* (the command `netstat` comes from the package `net-tools`)
 
-| **10** : `sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` *Use* `-y` *so you DO NOT need to press Y, then Enter*
+| **10** : `sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` Use `-y` so you DO NOT need to press Y, then Enter*
 
 ### For an administrator to use `su`
 >
 ___
 > If you don't have permission as a "sudoer", the person who administers your machine can use:
 >
-> | **11** : `su` *input the password*
+> | **11** : `su` input the password*
 >
-> *As the* `su` *(root) user, you DO NOT need to use* `sudo` *at the start of your commands*
+> *As the `su` (root) user, you DO NOT need to use `sudo` at the start of your commands*
 >
 > *See the list of all available packages*
 >
@@ -73,7 +73,7 @@ ___
 >
 > | **13** : `sudo apt update`
 >
-> *If there is a problem, usually fix it with* `--fix-missing`
+> *If there is a problem, usually fix it with `--fix-missing`
 >
 > | **14** : `sudo apt update --fix-missing`
 >
@@ -83,21 +83,21 @@ ___
 >
 > *Upgrade (install updates)*
 >
-> | **16** : `apt upgrade` *If updates are available, you will need to press Y, then Enter*
+> | **16** : `apt upgrade` If updates are available, you will need to press Y, then Enter*
 >
-> *Install the* `git` *package*
+> *Install the `git` package*
 >
-> | **17** : `apt install git` *Unless it is installed already, you will need to press Y, then Enter*
+> | **17** : `apt install git` Unless it is installed already, you will need to press Y, then Enter*
 >
-> *Install* `cowsay`
+> *Install `cowsay`
 >
-> | **18** : `apt install cowsay` *Unless it is installed already, you will need to press Y, then Enter*
+> | **18** : `apt install cowsay` Unless it is installed already, you will need to press Y, then Enter*
 >
 > *You can install more than one package...*
 >
-> *Install the* `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `rename` and `pwgen` *packages* (the command `netstat` comes from the package `net-tools`)
+> *Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `rename` and `pwgen` packages* (the command `netstat` comes from the package `net-tools`)
 >
-> | **19** : `apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` *Use* `-y` *so you DO NOT need to press Y, then Enter*
+> | **19** : `apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` Use `-y` so you DO NOT need to press Y, then Enter*
 >
 ___
 
@@ -111,7 +111,7 @@ ___
 
 **Tip:** If you ever get an `apt upgrade` message with something like "some packages were held back", here are two easy fixes that often work:
 
-1. `sudo apt install PACKAGE` *Yes, just install the listed package again*
+1. `sudo apt install PACKAGE` Yes, just install the listed package again*
 2. `sudo apt full-upgrade`
 
 ___

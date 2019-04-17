@@ -17,7 +17,7 @@ ___
 
 ## shebang in Shell scripts
 
-*"shebang" is what we call the* `#!` *in a Shell script*
+*"shebang" is what we call the `#!` in a Shell script*
 
 *Now, to our first Shell script...*
 
@@ -32,7 +32,7 @@ sed -i "s/$1/z/" abcd
 
 *Look at the first line*
 
-*Note line one with the "shebang"* `#!/bin/sh` *is what makes this file a "Shell script" that we can run or "execute"*
+*Note line one with the "shebang" `#!/bin/sh` is what makes this file a "Shell script" that we can run or "execute"*
 
 | **2** : `./abcsed`
 

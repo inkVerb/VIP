@@ -67,7 +67,7 @@ ___
 
 | **29** : `ls -l newdir`
 
-*Use* `-r` *(RECURSIVE) to remove directories*
+*Use `-r` (RECURSIVE) to remove directories*
 
 | **30** : `rm -r newdir`
 
@@ -75,7 +75,7 @@ ___
 
 | **32** : `cp directory cpdir`
 
-*Note the error message about directories; use* `-r` *with* `cp` *as well as* `rm` *for directories*
+*Note the error message about directories; use `-r` with `cp` as well as `rm` for directories*
 
 | **33** : `cp -r directory cpdir`
 

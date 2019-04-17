@@ -22,7 +22,7 @@ ___
 >
 ___
 
-*MySQL can be installed with:* `sudo apt install mysql-server`
+*MySQL can be installed with: `sudo apt install mysql-server`
 
 *If you install MySQL for this lesson, then you **MAY** completely remove*
 
@@ -35,7 +35,7 @@ sudo apt autoremove mysql-server mysql-common
 sudo apt update
 ```
 
-*Use* `systemctl` *to start, stop, restart, and check the status of services, such as MySQL*
+*Use `systemctl` to start, stop, restart, and check the status of services, such as MySQL*
 
 | **2** : `sudo systemctl status mysql`
 
@@ -104,13 +104,13 @@ ___
 
 *Note you exited MySQL*
 
-*Go back into MySQL* `-u [user]` *is the user* `-p` *means to prompt for a password*
+*Go back into MySQL `-u [user]` is the user `-p` means to prompt for a password*
 
-*Note, because MySQL's root password is now setup, we no longer need* `sudo` *with* `mysql`
+*Note, because MySQL's root password is now setup, we no longer need `sudo` with `mysql`
 
 ___
 
-| **13** : `mysql -u root -p` *And enter the password: newpassword*
+| **13** : `mysql -u root -p` And enter the password: newpassword*
 
 *You are in MySQL*
 
@@ -177,10 +177,10 @@ ___
 *Look at this carefully:*
 
 - `mysql -u root -pnewpassword -e "MYSQL COMMAND GOES HERE;"`
-- `mysql -u root -pPASSWORD_HERE` *This starts the MySQL command.*
-- `-pPASSWORD_HERE` *No space between* `-p` *and the password! **This is normally bad!***
-- `-e` *We need this for it to work in Shell.*
-- `"MYSQL COMMAND GOES HERE;"` *The normal MySQL command can go in the quotes.*
+- `mysql -u root -pPASSWORD_HERE` This starts the MySQL command.*
+- `-pPASSWORD_HERE` No space between `-p` and the password! **This is normally bad!***
+- `-e` We need this for it to work in Shell.*
+- `"MYSQL COMMAND GOES HERE;"` The normal MySQL command can go in the quotes.*
 
 | **28** : `mysql -u root -pnewpassword -e "SHOW DATABASES;"`
 
@@ -188,7 +188,7 @@ ___
 
 *This is the normal way:*
 
-| **29** : `mysql -u root -p -e "SHOW DATABASES;"` *Enter the password: newpassword*
+| **29** : `mysql -u root -p -e "SHOW DATABASES;"` Enter the password: newpassword*
 
 *But, we're being lazy and this is a tutorial, so we don't care...*
 
@@ -228,11 +228,11 @@ ___
 
 *Create a new admin user in MySQL* ***only*** *for your Shell scripts...*
 
-| **42** : `sudo mysql -u root -p` *Enter your password; annoying, but this is the "secure" way.*
+| **42** : `sudo mysql -u root -p` Enter your password; annoying, but this is the "secure" way.*
 
 | **43** : `GRANT ALL PRIVILEGES ON *.* TO 'newadminuser'@'localhost' IDENTIFIED BY 'newpassword' WITH GRANT OPTION;`
 
-| **44** : `SELECT User FROM mysql.user;` *(If you really, badly want to see that the user is there.)*
+| **44** : `SELECT User FROM mysql.user;` (If you really, badly want to see that the user is there.)*
 
 | **45** : `FLUSH PRIVILEGES;`
 

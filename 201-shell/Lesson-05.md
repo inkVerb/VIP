@@ -24,13 +24,13 @@ ___
 
 ### I. `adduser`
 
-*Look at the* `/home` *directory to see the users on the machine*
+*Look at the `/home` directory to see the users on the machine*
 
 | **3** : `ls /home`
 
-| **4** : `sudo adduser pinkypink` *When prompted, Enter any simple password; press* `Enter` *for remaining questions.*
+| **4** : `sudo adduser pinkypink` When prompted, Enter any simple password; press `Enter` for remaining questions.*
 
-*Look at* `/home` *again to see* `pinkypink` *has been added*
+*Look at `/home` again to see `pinkypink` has been added*
 
 | **5** : `ls /home`
 
@@ -64,13 +64,13 @@ ___
 
 *No questions this time!*
 
-*Look at* `/home` *again,* `pinkypurple` *doesn't exist!*
+*Look at `/home` again, `pinkypurple` doesn't exist!*
 
 | **14** : `ls /home`
 
-*Note* `useradd` *is simple and doesn't even create a password*
+*Note `useradd` is simple and doesn't even create a password*
 
-*Note* `adduser` *makes use of* `useradd` *and does other tasks, like setting the password*
+*Note `adduser` makes use of `useradd` and does other tasks, like setting the password*
 
 *Try to login as pinkypurple in the terminal*
 
@@ -80,7 +80,7 @@ ___
 
 *Set a password for pinkypurple*
 
-| **16** : `sudo passwd pinkypurple` *Enter a simple password*
+| **16** : `sudo passwd pinkypurple` Enter a simple password*
 
 *Login as pinkypurple in the terminal*
 
@@ -136,7 +136,7 @@ ___
 
 *Everything works, but the command prompt is unstyled because creating a user requires many steps*
 
-*Note* `adduser` *creates many user settings in creating a user, but* `useradd` *only does the simple minimum*
+*Note `adduser` creates many user settings in creating a user, but `useradd` only does the simple minimum*
 
 *This difference is the same with:*
 - `SETTINGS` vs `SIMPLE`
@@ -169,9 +169,9 @@ ___
 
 | **36** : `chown pinkypurple:pinkypurple youown`
 
-*Note the error message because* `chown` *requires* `sudo`
+*Note the error message because `chown` requires `sudo`
 
-| **37** : `sudo chown pinkypurple:pinkypurple youown` *Enter your password*
+| **37** : `sudo chown pinkypurple:pinkypurple youown` Enter your password*
 
 | **38** : `ls -l`
 
@@ -201,7 +201,7 @@ ___
 
 *Note the error message*
 
-*Use* `-R` *for directories (must be CAPITAL with* `chown`*!)*
+*Use `-R` for directories (must be CAPITAL with `chown`*!)*
 
 | **43** : `sudo chown -R pinkypink:pinkypink ownrship`
 
@@ -211,13 +211,13 @@ ___
 
 | **45** : `rm youown`
 
-*Note the error message because you don't own it anymore! Use* `sudo`
+*Note the error message because you don't own it anymore! Use `sudo`
 
 | **46** : `sudo rm youown`
 
 | **47** : `ls -l`
 
-*Note* `sudo` *allows you to delete files and directories you don't own*
+*Note `sudo` allows you to delete files and directories you don't own*
 
 *Create a file owned by root*
 
@@ -233,7 +233,7 @@ ___
 
 | **51** : `sudo rm iamroot`
 
-*Let's cleanup with* `sudo` *...*
+*Let's cleanup with `sudo` ...*
 
 | **52** : `sudo rm theyown`
 
@@ -241,7 +241,7 @@ ___
 
 | **54** : `ls -l`
 
-*...also use* `sudo` *to delete the puppet users we created for this lesson...*
+*...also use `sudo` to delete the puppet users we created for this lesson...*
 
 | **55** : `sudo deluser pinkypink`
 
@@ -249,13 +249,13 @@ ___
 
 | **56** : `sudo delgroup pinkypink`
 
-*We don't want to use* `userdel` *because it is too minimum*
+*We don't want to use `userdel` because it is too minimum*
 
 | **57** : `sudo deluser pinkypurple`
 
 | **58** : `sudo delgroup pinkypurple`
 
-*The users still have* `/home` *directories*
+*The users still have `/home` directories*
 
 | **59** : `ls /home`
 
@@ -273,23 +273,23 @@ ___
 
 ### IV. Sudoers
 
-*This is the list of users that can use* `sudo`
+*This is the list of users that can use `sudo`
 
 | **64** : `sudo cat /etc/sudoers`
 
-*Viewing the "sudoers" file requires* `sudo` *permissions*
+*Viewing the "sudoers" file requires `sudo` permissions*
 
 | **65** : `cat /etc/sudoers`
 
-*You may not see yourself, this handy little* `grep` *code shows all sudoers*
+*You may not see yourself, this handy little `grep` code shows all sudoers*
 
 | **66** : `grep -Po '^sudo.+:\K.*$' /etc/group`
 
-*You can also* `sudo` *desktop GUI apps, but it can be dangerous...*
+*You can also `sudo` desktop GUI apps, but it can be dangerous...*
 
-| **67** : `sudo gedit` *Look, then close right away, use Ctrl + C in the terminal*
+| **67** : `sudo gedit` Look, then close right away, use Ctrl + C in the terminal*
 
-| **68** : `sudo nautilus` *Look, then close right away, use Ctrl + C in the terminal*
+| **68** : `sudo nautilus` Look, then close right away, use Ctrl + C in the terminal*
 
 ___
 
@@ -313,21 +313,21 @@ ___
 >
 ___
 >
-> *Try this commands without* `su` *and note the error messages because it requires* `su`:
+> *Try this commands without `su` and note the error messages because it requires `su`:
 >
 > | **71** : `adduser pinkypink`
 >
-> | **72** : `su` *input the password*
+> | **72** : `su` input the password*
 >
 > ### I. `adduser`
 >
-> *Look at the* `/home` *directory to see the users on the machine*
+> *Look at the `/home` directory to see the users on the machine*
 >
 > | **73** : `ls /home`
 >
-> | **74** : `adduser pinkypink` *When prompted, Enter any simple password; press* `Enter` *for remaining questions.*
+> | **74** : `adduser pinkypink` When prompted, Enter any simple password; press `Enter` for remaining questions.*
 >
-> *Look at* `/home` *again to see* `pinkypink` *has been added*
+> *Look at `/home` again to see `pinkypink` has been added*
 >
 > | **75** : `ls /home`
 >
@@ -361,17 +361,17 @@ ___
 >
 > *No questions this time! Remember, pinkypurple doesn't have a password and thus can't login*
 >
-> *Look at* `/home` *again,* `pinkypurple` *doesn't exist!*
+> *Look at `/home` again, `pinkypurple` doesn't exist!*
 >
 > | **84** : `ls /home`
 >
-> *Note* `useradd` *is simple and doesn't even create a password*
+> *Note `useradd` is simple and doesn't even create a password*
 >
-> *Note* `adduser` *makes use of* `useradd` *and does other tasks, like setting the password*
+> *Note `adduser` makes use of `useradd` and does other tasks, like setting the password*
 >
 > *Login as pinkypurple in the terminal*
 >
-> | **85** : `su pinkypurple` *No password needed because you are root*
+> | **85** : `su pinkypurple` No password needed because you are root*
 >
 > *Note the message: pinkypurple doesn't even have a home*
 >
@@ -421,7 +421,7 @@ ___
 >
 > *Everything works, but the command prompt is unstyled because creating a user requires many steps*
 >
-> *Note* `adduser` *creates many user settings in creating a user, but* `useradd` *only does the simple minimum*
+> *Note `adduser` creates many user settings in creating a user, but `useradd` only does the simple minimum*
 >
 > *This difference is the same with:*
 > - `SETTINGS` vs `SIMPLE`
@@ -460,9 +460,9 @@ ___
 >
 > | **105** : `chown pinkypurple:pinkypurple youown`
 >
-> *Note the error message because `chown` *requires "root" AKA* `sudo` *or* `su`
+> *Note the error message because `chown` requires "root" AKA `sudo` or `su`
 >
-> | **106** : `su` *input the password*
+> | **106** : `su` input the password*
 >
 > | **107** : `chown pinkypurple:pinkypurple youown`
 >
@@ -478,7 +478,7 @@ ___
 >
 > *Note the error message*
 >
-> *Use* `-R` *for directories (must be CAPITAL with* `chown`*!)*
+> *Use `-R` for directories (must be CAPITAL with `chown`*!)*
 >
 > | **112** : `chown -R pinkypink:pinkypink ownrship`
 >
@@ -486,7 +486,7 @@ ___
 >
 > *Note a new owner of "ownrship"*
 >
-> *Exit* `su` *status to see what happened*
+> *Exit `su` status to see what happened*
 >
 > | **114** : `exit`
 >
@@ -500,13 +500,13 @@ ___
 >
 > | **117** : `ls -l`
 >
-> | **118** : `su` *input the password*
+> | **118** : `su` input the password*
 >
 > | **119** : `rm youown`
 >
 > | **120** : `ls -l`
 >
-> *Note* `su` *permissions allow you to delete any files and directories you don't own*
+> *Note `su` permissions allow you to delete any files and directories you don't own*
 >
 > *Create a file owned by root*
 >
@@ -516,7 +516,7 @@ ___
 >
 > *Note root owns "iamroot"*
 >
-> *Exit* `su` *status to see what happened*
+> *Exit `su` status to see what happened*
 >
 > | **123** : `exit`
 >
@@ -524,7 +524,7 @@ ___
 >
 > *Note only root can delete the file "iamroot"*
 >
-> | **125** : `su` *input the password*
+> | **125** : `su` input the password*
 >
 > | **126** : `rm iamroot`
 >
@@ -536,7 +536,7 @@ ___
 >
 > | **129** : `ls -l`
 >
-> *...also use your* `su` *permissions to delete the puppet users we created for this lesson...*
+> *...also use your `su` permissions to delete the puppet users we created for this lesson...*
 >
 > | **130** : `deluser pinkypink`
 >
@@ -544,13 +544,13 @@ ___
 >
 > | **131** : `delgroup pinkypink`
 >
-> *We don't want to use* `userdel` *because it is too minimum*
+> *We don't want to use `userdel` because it is too minimum*
 >
 > | **132** : `deluser pinkypurple`
 >
 > | **133** : `delgroup pinkypurple`
 >
-> *The users still have* `/home` *directories*
+> *The users still have `/home` directories*
 >
 > | **134** : `ls /home`
 >
@@ -564,7 +564,7 @@ ___
 >
 > ### IV. sudoers
 >
-> *This is the list of users that can use* `sudo`
+> *This is the list of users that can use `sudo`
 >
 > | **138** : `cat /etc/sudoers`
 >
@@ -579,19 +579,19 @@ ___
 >
 ___
 >
-> *Viewing the "sudoers" file requires* `sudo` *permissions*
+> *Viewing the "sudoers" file requires `sudo` permissions*
 >
 > | **141** : `cat /etc/sudoers`
 >
-> *You may not see yourself, this handy little* `grep` *code shows all sudoers*
+> *You may not see yourself, this handy little `grep` code shows all sudoers*
 >
 > | **142** : `grep -Po '^sudo.+:\K.*$' /etc/group`
 >
-> *You can also* `sudo` *desktop GUI apps, but it can be dangerous...*
+> *You can also `sudo` desktop GUI apps, but it can be dangerous...*
 >
-> | **143** : `sudo gedit` *Look, then close right away, use Ctrl + C in the terminal*
+> | **143** : `sudo gedit` Look, then close right away, use Ctrl + C in the terminal*
 >
-> | **144** : `sudo nautilus` *Look, then close right away, use Ctrl + C in the terminal*
+> | **144** : `sudo nautilus` Look, then close right away, use Ctrl + C in the terminal*
 >
 > *"Own" everything in your home directory (YOURUSERNAME is your username)*
 >

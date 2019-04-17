@@ -108,7 +108,7 @@ ___
 
 | **39** : `gedit 09-operators-symbol`
 
-*Note at the top:* `#!/bin/bash`
+*Note at the top: `#!/bin/bash`
 
 *These symbols require BASH. Nemo, we're not in Shellfish anymore...*
 

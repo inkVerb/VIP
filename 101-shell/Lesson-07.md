@@ -7,15 +7,15 @@ ___
 
 | **1** : `gedit abcd sedoutput.text`
 
-*Note* `cat` *displays contents of a file on the screen*
+*Note `cat` displays contents of a file on the screen*
 
 | **2** : `cat abcd`
 
-*Note* `echo` *sends output as raw output to the screen*
+*Note `echo` sends output as raw output to the screen*
 
 | **3** : `echo $(cat abcd)`
 
-*...and* `echo` *doesn't make paragraph breaks when it does*
+*...and `echo` doesn't make paragraph breaks when it does*
 
 | **4** : `sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd`
 
@@ -51,13 +51,13 @@ ___
 
 | **16** : `cat onetwo`
 
-*Note* `cat` *combined one and two into onetwo*
+*Note `cat` combined one and two into onetwo*
 
-*Note note also that* `cat` *preserved the lines*
+*Note note also that `cat` preserved the lines*
 
 | **17** : `echo $(cat one two)`
 
-*Note* `echo $(COMMAND_SUBSTITUTION)` *removed the new lines like it always does*
+*Note `echo $(COMMAND_SUBSTITUTION)` removed the new lines like it always does*
 
 | **18** : `echo ThreeThreeThree > three`
 
@@ -65,7 +65,7 @@ ___
 
 | **20** : `cat onetwo`
 
-*Note* `cat` *also appended onetwo via* `>>`
+*Note `cat` also appended onetwo via `>>`
 
 ___
 

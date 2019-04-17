@@ -28,7 +28,7 @@ echo "I am executable, but I am not in the \$PATH."
 
 3. "full path" (get with `pwd`)
 
-| **6** : `pwd` *Execute this output, plus* `/iamexec`
+| **6** : `pwd` Execute this output, plus `/iamexec`
 
 Something like: `/home/USERNAME/School/VIP/shell/401/iamexec`
 
@@ -57,7 +57,7 @@ done
 
 *Files in these directories can be run without entering the entire path.*
 
-**You can check** `which` **directory of the $PATH a command is located in...**
+**You can check* `which` *directory of the $PATH a command is located in...**
 
 | **11** : `which cp`
 
@@ -73,7 +73,7 @@ done
 
 | **17** : `which firefox`
 
-*Similar, but returns more information:* `whereis`
+*Similar, but returns more information: `whereis`
 
 | **18** : `whereis firefox`
 
@@ -99,7 +99,7 @@ read USERNAME
 echo $USERNAME
 ```
 
-*What if the user types* `rm -r /*` *at the input?*
+*What if the user types `rm -r /*` at the input?*
 
 *This is a normal problem in many programming languages, which is why inputs are "sanitized".*
 
@@ -261,7 +261,7 @@ cp file destination
 
 *Oh no! It's read-only with `view`*
 
-*Exit with:* `:q`
+*Exit with: `:q`
 
 | **50** : `touch rtfile.md`
 

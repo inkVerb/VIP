@@ -86,7 +86,7 @@ unset IFS # We don't want our strange settings messing with other things.
 
 | **5** : `ls`
 
-*Note the file created:* `randomlooped`
+*Note the file created: `randomlooped`
 
 | **6** : `gedit randomlooped`
 
@@ -94,7 +94,7 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Remember those tabs in the file? Find the double tabs and expand them...*
 
-*Remember:* `\t` *= tab*
+*Remember: `\t` = tab*
 
 `sed -i "s/\t\t/\tword1\tword2\tword3\t/" randomlooped`
 

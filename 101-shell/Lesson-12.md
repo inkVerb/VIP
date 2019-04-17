@@ -5,7 +5,7 @@
 
 ___
 
-*Special characters with* `grep` *need* `-F`
+*Special characters with `grep` need `-F`
 
 | **1** : `grep -R "$" *`
 
@@ -35,7 +35,7 @@ ___
 
 | **10** : `!!`
 
-*In scripts,* `!!` *means "whatever the last command was, watch..."*
+*In scripts, `!!` means "whatever the last command was, watch..."*
 
 | **11** : `grep -RF "!!" *`
 
@@ -43,7 +43,7 @@ ___
 
 | **12** : `grep -RF '!!' *`
 
-*...'single quotes' can behave differently in* `grep` *and most other commands*
+*...'single quotes' can behave differently in `grep` and most other commands*
 
 ___
 

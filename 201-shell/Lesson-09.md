@@ -41,13 +41,13 @@ Q (or Ctrl + C) *This will CLOSE the top program*
 
 | **8** : `top -n 1`
 
-*Notice the* `top` *list is not realtime;* `-n 1` *shows only one "iteration",* `-n 3` *would show three*
+*Notice the `top` list is not realtime; `-n 1` shows only one "iteration", `-n 3` would show three*
 
 | **9** : `top -n 1 -b`
 
-*Notice* `-b` *shows everything, not limited by the size of the terminal window, only limited by the* `-n 1` *option*
+*Notice `-b` shows everything, not limited by the size of the terminal window, only limited by the `-n 1` option*
 
-*FYI, this is a little program we installed in Lesson 3, a little more colorful than* `top`
+*FYI, this is a little program we installed in Lesson 3, a little more colorful than `top`
 
 | **10** : `htop`
 
@@ -67,7 +67,7 @@ Select ONE browser you are NOT using:
 
 | **13** : `firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
 
-*Note we used* `&`*to keep it from blocking the terminal*
+*Note we used `&`*to keep it from blocking the terminal*
 
 | **14** : `ps aux`
 
@@ -91,7 +91,7 @@ Select ONE browser you are NOT using:
 
 | **18** : `firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
 
-*Now kill it by process name using* `killall`
+*Now kill it by process name using `killall`
 
 | **19** : `killall firefox` or `killall chromium-browser` or `killall google-chrome` or `killall vivaldi`
 

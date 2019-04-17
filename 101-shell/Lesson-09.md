@@ -9,7 +9,7 @@ ___
 
 | **2** : `ls`
 
-*Search for files with* `find`
+*Search for files with `find`
 
 | **3** : `find "abc*"`
 
@@ -17,17 +17,17 @@ ___
 
 | **4** : `find . "abc"`
 
-*Note it found everything, it needs:* `-name`
+*Note it found everything, it needs: `-name`
 
 | **5** : `find . -name "abc"`
 
 | **6** : `find . -name "abc*"`
 
-*...for "Directories":* `-d`
+*...for "Directories": `-d`
 
 | **7** : `find . -type d -name "abc*"`
 
-*...for "Files":* `-f`
+*...for "Files": `-f`
 
 | **8** : `find . -type f -name "abc*"`
 
@@ -43,7 +43,7 @@ ___
 
 | **14** : `find . -name "*png"`
 
-*Note* `find` *is case-sensitive, ignore case with:* `-iname`
+*Note `find` is case-sensitive, ignore case with: `-iname`
 
 | **15** : `find . -iname "*png"`
 

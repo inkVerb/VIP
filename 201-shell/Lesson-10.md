@@ -65,7 +65,7 @@ ___
 
 | **24** : `gedit ls.file`
 
-*You can even output* `ls` *into a file!*
+*You can even output `ls` into a file!*
 
 | **25** : `ls ..`
 

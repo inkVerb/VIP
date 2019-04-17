@@ -52,7 +52,7 @@ ___
 
 | **15** : `gedit 05-case-yn-loop`
 
-*Note* `exit 1` *will produce* STDOUT *to* `1>` *but* `exit 0` *has no output just as* `2>` *is from an unwritten* `exit 2` *event*
+*Note `exit 1` will produce* STDOUT *to `1>` but `exit 0` has no output just as `2>` is from an unwritten `exit 2` event*
 
 | **16** : `./05-case-yn-loop`
 

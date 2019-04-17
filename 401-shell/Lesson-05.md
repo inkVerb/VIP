@@ -11,7 +11,7 @@ ___
 
 | **1** : `touch iamhere`
 
-| **2** : `ls` *The file exists:* `iamhere`
+| **2** : `ls` The file exists: `iamhere`
 
 *Edit this script*
 
@@ -94,7 +94,7 @@ echo "After shift 3
 
 | **6** : `./varshift one two three four five six`
 
-*Note the* `$0` *variable does not shift,* ***only argument variables***
+*Note the `$0` variable does not shift,* ***only argument variables***
 
 ### III. `$@` vs `$*` (All Arguments)
 
@@ -137,7 +137,7 @@ $*
 
 | **8** : `./varargs one two three four five six`
 
-*Now, we will embed this into another script and pass those arguments via* `$@` *&* `$*` *...*
+*Now, we will embed this into another script and pass those arguments via `$@` & `$*` ...*
 
 *Edit this script*
 
@@ -169,7 +169,7 @@ Arguments entered via \$(echo \$*) ..."
 
 | **10** : `./varargsvar one two three four five six`
 
-*...No matter how we run it,* `$@` *&* `$*` *basically behave the same.*
+*...No matter how we run it, `$@` & `$*` basically behave the same.*
 
 ### IV. `$#` Argument Count
 
@@ -388,7 +388,7 @@ export MYVAR="Hello world!"
 
 | **22** : `./variable-yes-export`
 
-*Note a variable only carries into another script if declared with:* `export`
+*Note a variable only carries into another script if declared with: `export`
 ___
 
 # The Take
@@ -396,7 +396,7 @@ ___
 - `$?` is the most recent exit code
 - `shift` reassigns arguments to different argument variables (`$2` becomes `$1`, etc)
 - `$0` is the "command" variable, not an "argument" variable
-- `$@` & `$*` both mean "all arguments" (`$1` and after, ***NOT*** `$0`)
+- `$@` & `$*` both mean "all arguments" (`$1` and after, ***NOT** `$0`)
   - Both behave much the same way
   - `$@` is more "proper" because the arguments are separated
   - `$*` considers all arguments to be in a single string

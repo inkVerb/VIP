@@ -81,23 +81,23 @@ ___
 
 | **20** : `pwgen`
 
-*Only 1 character set* `-1`
+*Only 1 character set `-1`
 
 | **21** : `pwgen -1`
 
-*36 characters long* `36`
+*36 characters long `36`
 
 | **22** : `pwgen -1 36`
 
-*Include at least 1 special character* `-y`
+*Include at least 1 special character `-y`
 
 | **23** : `pwgen -1 10 -y`
 
-*No numerals* `-0`
+*No numerals `-0`
 
 | **24** : `pwgen -1 10 -0`
 
-*No caps* `-A`
+*No caps `-A`
 
 | **25** : `pwgen -1 10 -A`
 

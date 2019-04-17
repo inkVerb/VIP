@@ -26,7 +26,7 @@ ___
 
 *(3 to quit)*
 
-*Do the same thing with a* `case` *loop*
+*Do the same thing with a `case` loop*
 
 | **5** : `gedit 11-menu-case`
 
@@ -34,11 +34,11 @@ ___
 
 *It works the same way*
 
-*You can* `echo` *your answer in advance*
+*You can `echo` your answer in advance*
 
 | **7** : `echo 3 | ./11-menu-case`
 
-*Auto-answer works wtih most shell commands:* `echo "y" | SHELL-COMMAND`
+*Auto-answer works wtih most shell commands: `echo "y" | SHELL-COMMAND`
 
 ### II. `dialog`
 
@@ -48,7 +48,7 @@ ___
 
 | **8** : `dialog --title "Read This" --msgbox "Ink is a verb." 5 18`
 
-*Use* `\n` *for a new line*
+*Use `\n` for a new line*
 
 | **9** : `dialog --title "Read This" --msgbox "Ink\nis a\nverb." 12 9`
 
@@ -92,7 +92,7 @@ ___
 
 | **20** : `dialog --title "Quick Question" --yesno "Do you ink?" 5 17` (answer yes)
 
-*Note your answer does nothing, so echo the last exit code, which is the variable* `$?`
+*Note your answer does nothing, so echo the last exit code, which is the variable `$?`
 
 | **21** : `echo $?`
 
@@ -110,7 +110,7 @@ ___
 
 | **26** : `./11-dialog-1`
 
-*Let's use a different* `if` *method and answer with more dialogs*
+*Let's use a different `if` method and answer with more dialogs*
 
 | **27** : `gedit 11-dialog-2`
 
@@ -140,7 +140,7 @@ ___
 
 *gedit: Reload size.file*
 
-*This needs this exit code redirect on the end:* `3>&1 1>&2 2>&3 3>&-`
+*This needs this exit code redirect on the end: `3>&1 1>&2 2>&3 3>&-`
 
 | **35** : `./11-dialog-4` (select any size)
 
@@ -150,7 +150,7 @@ ___
 
 *gedit: Reload size.file*
 
-*Do the same thing with* `if` *tests*
+*Do the same thing with `if` tests*
 
 | **37** : `gedit 11-dialog-5`
 
@@ -190,7 +190,7 @@ select inputVariable in $options
 - Common flags:
   - `--title` (one argument)
   - `--msgbox` (one argument)
-  - `--yesno` *(no arguments)*
+  - `--yesno` (no arguments)*
   - `--menu "Heading" HEIGHT WIDTH NUM-OF-OPTIONS 1 OPT1 2 OPT2 TAIL-COMMANDS`
 - `--menu` is a complex flag, but necessary for multiple choice
   - Basic example:

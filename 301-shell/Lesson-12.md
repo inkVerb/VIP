@@ -14,9 +14,9 @@ ___
 
 | **1** : `gedit 12-flags-1`
 
-*Note on line 12* `$OPTIND`
+*Note on line 12 `$OPTIND`
 
-*Note on line 20* `:`
+*Note on line 20 `:`
 
 | **2** : `./12-flags-1 -h` (help)
 
@@ -68,19 +68,19 @@ ___
 
 ### II. `getopt`
 
-*Note* `getops` *only accepts one-letter options,* `getopt` *is for* `--long` *options and requires more variables and checks*
+*Note `getops` only accepts one-letter options, `getopt` is for `--long` options and requires more variables and checks*
 
 | **25** : `gedit 12-long`
 
-*Note* `--long` *alternative options are included*
+*Note `--long` alternative options are included*
 
-*Note the global option was removed since* `getopt` *checks requirements by itself*
+*Note the global option was removed since `getopt` checks requirements by itself*
 
 | **26** : `./12-long -a Alpha -bce`
 
 | **27** : `./12-long --alpha Alpha --ecko --delta --beetle --charlie `
 
-*Note the order no longer affects the output since everything is done by* `if` *statements in order, at the end of the script*
+*Note the order no longer affects the output since everything is done by `if` statements in order, at the end of the script*
 
 | **28** : `./12-long --alpha Alpha -bcd --ecko`
 

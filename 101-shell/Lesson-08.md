@@ -7,7 +7,7 @@ ___
 
 | **1** : `gedit abcd comboshell sedoutput.text`
 
-*Note* `tee` *will overwrite any contents in the output file*
+*Note `tee` will overwrite any contents in the output file*
 
 | **2** : `cat abcd`
 

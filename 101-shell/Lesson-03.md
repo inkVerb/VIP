@@ -67,7 +67,7 @@ first \
 "third line"
 ```
 
-### `$@` *is "all arguments" (everything after $0)*
+### `$@` is "all arguments" (everything after $0)*
 
 *Knowing this could save your life and explain life's meaning later on...*
 
@@ -92,7 +92,7 @@ echo $@
 
 | **16** : `./allvar I like to eat bananas in the morning, with eggs, over easy that is.`
 
-*This* `@` *means "everything" in web DNS, arrays (Shell 301), and many other things*
+*This `@` means "everything" in web DNS, arrays (Shell 301), and many other things*
 
 ### Environment Variables
 
@@ -133,7 +133,7 @@ ___
 - Arguments that contain spaces must be wrapped with 'single' or "double" quotes
 - `$@` includes all arguments; `@` often means "everything" in computer code
 - The terminal and Shell scripts have many other "environment variables" that can be called anytime
-- *In the terminal* `echo $ENVIRONMENT_VARIABLE` = `printenv ENVIRONMENT_VARIABLE`
+- *In the terminal `echo $ENVIRONMENT_VARIABLE` = `printenv ENVIRONMENT_VARIABLE`
 - `pwd` = `printenv PWD` = `echo $PWD` ...This shows the full, current location used by the terminal, AKA the "Present Working Directory"
 - Variables (environment variables also) can be used in a command
 - Variables used as arguments will pass their "value" as the argument

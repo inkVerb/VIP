@@ -59,7 +59,7 @@ ___
 
 | **16** : `ls`
 
-| **17** : `lowriter markdown.odt &` *(if asked, Discard)*
+| **17** : `lowriter markdown.odt &` (if asked, Discard)*
 
 *...that file came from this...*
 
@@ -67,7 +67,7 @@ ___
 
 *View the rendered markdown file:* [markdown.md](https://github.com/inkVerb/301/blob/master/markdown.md)
 
-*You may close LibreOffice Writer from the GUI, or the terminal with:* `killall soffice.bin`
+*You may close LibreOffice Writer from the GUI, or the terminal with: `killall soffice.bin`
 
 #### The `pandoc` tool can be glitchy if you do something too complex, but it handles:
 - plain text
@@ -161,7 +161,7 @@ ___
 
 | **48** : `./02-read-4`
 
-*Copy-paste this with "special" characters:* `Yo & ^^ / hello \ \ \ Dolly! :-)`
+*Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`
 
 *Note -r is for "Raw", to allow all special characters*
 
@@ -169,7 +169,7 @@ ___
 
 | **50** : `./02-read-5`
 
-*Copy-paste this with "special" characters:* `Yo & ^^ / hello \ \ \ Dolly! :-)`
+*Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`
 
 | **51** : `gedit 02-read-6`
 
@@ -177,7 +177,7 @@ ___
 
 ### V. `wait`
 
-*This command forces the script to "wait" until the previous command finishes before moving on to the next command. It is useful when running many complex processes, to keep a script from stumbling over its own feet. Sometimes, scripts break and using* `wait` *between the broken commands is the solution.*
+*This command forces the script to "wait" until the previous command finishes before moving on to the next command. It is useful when running many complex processes, to keep a script from stumbling over its own feet. Sometimes, scripts break and using `wait` between the broken commands is the solution.*
 
 *Take LibreOffice Writer for example...*
 
@@ -217,11 +217,11 @@ ___
 
 **OR**
 
-| **58b** : `wait $(pgrep lowriter)` *(or you can use this instead)*
+| **58b** : `wait $(pgrep lowriter)` (or you can use this instead)*
 
-*Note* `wait` *is "waiting" for Writer's PID to end*
+*Note `wait` is "waiting" for Writer's PID to end*
 
-*...Now, close Writer in the GUI, then* `wait` *will report the process as "Done" in the terminal*
+*...Now, close Writer in the GUI, then `wait` will report the process as "Done" in the terminal*
 
 ___
 
@@ -240,7 +240,7 @@ ___
   - `wait` without arguments will simply wait for the previous process
   - `wait PID` will wait for a specific process to end, by PID
   - You can add `; wait` to the end of a command line in a script, if you go for that sort of thing
-  - *Note do not use* `command &; wait` *because* `&` *and* `;` *can't work together*
+  - *Note do not use `command &; wait` because `&` and `;` can't work together*
 
 ___
 

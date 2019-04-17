@@ -162,12 +162,12 @@ echo ${ARRAY[@]}
 ### II. `set` Errors & Debugging
 
 **Main `set` commands:** *(there are more than these)*
-- `set -a` ***A****ll* variables to be exported to environment
-- `set -e` ***E****xit* immediately if a command returns an exit code other than zero
+- `set -a` **A****ll* variables to be exported to environment
+- `set -e` **E****xit* immediately if a command returns an exit code other than zero
 - `set -n` Do ***N****ot* execute commands, only read them
-- `set -t` *Exi****T*** after executing only one command
+- `set -t` Exi****T*** after executing only one command
 - `set -u` Treat ***U****nset* variables as errors
-- `set -v` ***V****erbose* (Print shell inputs line by line as the script executes)
+- `set -v` **V****erbose* (Print shell inputs line by line as the script executes)
 - `set -x` Print *e****X****ecuted* commands and their arguments line by line
 
 **ON/OFF**
@@ -205,7 +205,7 @@ set -ev
 
 OR
 ```sh
-#!/bin/sh set -ev
+#!/bin/sh -ev
 ```
 
 *A `set` declaration is for debugging and should not normally be standard in a script.*
@@ -224,40 +224,63 @@ true && EXECUTE_COMMAND_IF_TRUE
 false || EXECUTE_COMMAND_IF_FALSE
 ```
 
+*Yes, `true` and `false` can be run in the terminal as commands*
+
+| **9** : `true`
+
+| **10** : `false`
+
+*They don't return any output, only an "exit" code: `0` (true) or `1` (false)*
+
+*Remember `$?` is the last exit code, watch...*
+
+| **11** : `true && echo $?`
+
+| **12** : `false || echo $?`
+
+*These work because:*
+- `true &&` **THIS WILL HAPPEN**
+- `false ||` **THIS WILL HAPPEN**
+
+*But:*
+- `true ||` **THIS WON'T HAPPEN**
+- `false &&` **THIS WON'T HAPPEN**
+
+| **13** : `true || echo $?`
+
+| **14** : `false && echo $?`
+
 *Example in a Script:*
 ```sh
-#!/bin/sh
-VAR=true
-$VAR && echo "AND/OR is true." || echo "AND/OR is false."
-$VAR && echo "AND is true."
-$VAR || echo "OR is false."
+true && echo "AND/OR is true." || echo "AND/OR is false."
+true && echo "AND is true."
+true || echo "OR is false."
 
-VAR=false
-$VAR && echo "AND/OR is true." || echo "AND/OR is false."
-$VAR && echo "AND is true."
-$VAR || echo "OR is false."
+false && echo "AND/OR is true." || echo "AND/OR is false."
+false && echo "AND is true."
+false || echo "OR is false."
 ```
 
 *Consider three scripts:*
 
-Stating `true`/`false`:
+#### 1. Stating `true`/`false`:
 
 *Edit this script*
 
-| **9** : `gedit truefalse`
+| **15** : `gedit truefalse`
 
 *It should look like this:*
 
 ```sh
 #!/bin/sh
 
-echo "No variable, stating \"true\""
+echo "No variable, simply stating \"true\""
 # Simple test: true
 true && echo "AND/OR is true." || echo "AND/OR is false."
 true && echo "AND is true."
 true || echo "OR is false."
 
-echo "No variable, stating \"false\""
+echo "No variable, simply stating \"false\""
 # Same simple test: false
 false && echo "AND/OR is true." || echo "AND/OR is false."
 false && echo "AND is true."
@@ -265,15 +288,15 @@ false || echo "OR is false."
 
 ```
 
-| **10** : `./truefalse`
+| **16** : `./truefalse`
 
-*It works whether* `true`/`false` *is stated or a variable:*
+*It works whether `true`/`false` is stated or a variable:*
 
-Variable as `true`/`false`:
+#### 2. Variable as `true`/`false`:
 
 *Edit this script*
 
-| **11** : `gedit truefalsevar`
+| **17** : `gedit truefalsevar`
 
 *It should look like this:*
 
@@ -298,15 +321,15 @@ $VAR || echo "OR is false."
 
 ```
 
-| **12** : `./truefalsevar`
+| **18** : `./truefalsevar`
 
 *It does* ***NOT*** *work*
 
-Variable as other **"string"**:
+#### 3. Variable as other *"string"*:
 
 *Edit this script*
 
-| **13** : `gedit truefalsevarstring`
+| **19** : `gedit truefalsevarstring`
 
 *It should look like this:*
 
@@ -330,7 +353,9 @@ $VAR && echo "AND is true."
 $VAR || echo "OR is false."
 ```
 
-| **14** : `./truefalsevarstring`
+| **20** : `./truefalsevarstring`
+
+*...So, this only works with `true` & `false` or some other command that returns a `0` or `1` exit code*
 
 ### IV. Using `-z`/`-n` & `unset` "the Proper Way"
 
@@ -344,7 +369,7 @@ Test with `-z`:
 
 *Edit this script*
 
-| **15** : `gedit varset-z`
+| **21** : `gedit varset-z`
 
 *It should look like this:*
 
@@ -381,13 +406,13 @@ echo "IS set: $VAR"
 fi
 ```
 
-| **16** : `./varset-z`
+| **22** : `./varset-z`
 
 Test with `-n`:
 
 *Edit this script*
 
-| **17** : `gedit varset-n`
+| **23** : `gedit varset-n`
 
 *It should look like this:*
 
@@ -424,7 +449,7 @@ echo "IS empty set: $VAR"
 fi
 ```
 
-| **18** : `./varset-n`
+| **24** : `./varset-n`
 
 ___
 
