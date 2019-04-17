@@ -261,7 +261,7 @@ false && echo "AND is true."
 false || echo "OR is false."
 ```
 
-*Consider three scripts:*
+*Consider four scripts:*
 
 #### 1. Stating `true`/`false`:
 
@@ -323,7 +323,7 @@ $VAR || echo "OR is false."
 
 | **18** : `./truefalsevar`
 
-*It does* ***NOT*** *work*
+*This next script does* ***NOT*** *work...*
 
 #### 3. Variable as other *"string"*:
 
@@ -355,7 +355,41 @@ $VAR || echo "OR is false."
 
 | **20** : `./truefalsevarstring`
 
+*Note the errors...*
+
 *...So, this only works with `true` & `false` or some other command that returns a `0` or `1` exit code*
+
+*Let's try a real command: `ls /directory`*
+
+#### 4. Stating `true`/`false`:
+
+| **21** : `mkdir iamhere && touch iamhere/file1 iamhere/file2`
+
+*Edit this script*
+
+| **22** : `gedit lstest`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+echo "Listing a real directory: iamhere"
+# ls a real directory
+ls iamhere && echo "AND/OR is true, exit code: $?" || echo "AND/OR is false, exit code: $?"
+ls iamhere && echo "AND is true, exit code: $?"
+ls iamhere || echo "OR is false, exit code: $?"
+
+echo "Listing a fake directory: nothere"
+# ls a fake directory
+ls nothere && echo "AND/OR is true, exit code: $?" || echo "AND/OR is false, exit code: $?"
+ls nothere && echo "AND is true, exit code: $?"
+ls nothere || echo "OR is false, exit code: $?"
+```
+
+| **23** : `./lstest`
+
+*So, `&&` and `||` work with any command that returns *
 
 ### IV. Using `-z`/`-n` & `unset` "the Proper Way"
 
@@ -474,13 +508,13 @@ ___
   - `set -n`
   - `set -en`
 
-## Simple Tests
+## `true`/`false` in Tests
 - `&&` = "and"
-  - If the first test is `true`, then the next test runs
-  - If all tests answer `true`, the final return is `true`
+  - If the first command/test returns `0`/`true`, then the next command/test runs
+  - If all commands/test returns `0`/`true`, the final return is `true`
 - `||` = "or"
-  - If the first test is `false`, then the next test runs
-  - If once a test answers `true`, the final return is `true`
+  - If the first command/test is `1`/`false`, then the next command/test runs
+  - If once a command/test answers `0`/`true`, the final return is `0`/`true`
 
 ## Using `-z`/`-n` & `unset` "the Proper Way"
 - `-z` tests if a variable is not set
