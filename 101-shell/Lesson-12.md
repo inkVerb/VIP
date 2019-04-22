@@ -5,7 +5,7 @@
 
 ___
 
-*Special characters with `grep` need `-F`
+*Special characters with `grep` need `-F`*
 
 | **1** : `grep -R "$" *`
 
