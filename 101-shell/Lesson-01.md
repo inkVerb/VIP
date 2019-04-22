@@ -17,11 +17,11 @@ ___
 
 | **3** : `echo "No destination? Output to terminal, just like this."`
 
-*The "output" you see in the terminal is called:* "STDOUT"
+*The "output" you see in the terminal is called: "STDOUT"*
 
-*The "input" you enter into the terminal is called:* "STDIN"
+*The "input" you enter into the terminal is called: "STDIN"*
 
-*Below, the* STDIN *is `echo "Hello ink!"` and the* STDOUT *is `Hello ink!`
+*Below, the STDIN is `echo "Hello ink!"` and the STDOUT is `Hello ink!`*
 
 | **4** : `echo "Hello ink!"`
 
@@ -31,7 +31,7 @@ ___
 
 *See, there are no files here*
 
-*We can send* STDOUT *to a file with: `> MYFILE`
+*We can send STDOUT to a file with: `> MYFILE`*
 
 | **7** : `echo "Designate a file? Output goes to the file, just like this." > abcd`
 
@@ -75,7 +75,7 @@ ___
 
 *gedit: Reload*
 
-*Note the line number of* "add bar and then some"
+*Note the line number of "add bar and then some"*
 
 | **18** : `sed -i "/bar/d" abcd`
 
