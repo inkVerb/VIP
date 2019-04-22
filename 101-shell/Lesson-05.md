@@ -116,7 +116,6 @@ ___
 - `cat` will dump a file as raw output
 - `sed` without `-i` will dump the results as raw output, rather than changing the file
 - `sed -e` designates a new file as the destination for the output
-- `rm` deletes a file
 - The output of one command can be sent as input to the next command using a "pipe": `|`
   - Syntax: `command one | command two`
 - The output of a command can be treated as an argument or value if wrapped in one of two ways:
