@@ -388,7 +388,7 @@ export MYVAR="Hello world!"
 
 | **22** : `./variable-yes-export`
 
-*Note a variable only carries into another script if declared with: `export`
+*Note a variable only carries into another script if declared with: `export`*
 ___
 
 # The Take
