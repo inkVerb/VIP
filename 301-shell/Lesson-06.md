@@ -140,9 +140,9 @@ ___
 
 | **17** : `journalctl --since today > journalctl-today.txt`
 
-*If you dare: `gedit journalctl-today.txt`
+*If you dare: `gedit journalctl-today.txt`*
 
-*Also try: `--since yesterday`
+*Also try: `--since yesterday`*
 
 ### IF logged in as a separate "sudoer"
 >
@@ -156,7 +156,7 @@ ___
 
 ## II. Custom output logs
 
-### *Notes about `exit` codes
+### Notes about `exit` codes
 
 *Logs & `exit` codes are both important, but different*
 
@@ -166,7 +166,7 @@ ___
 >
 > *It is considered "bad coding" to use `exit` without a number or to use an exit other than `exit 0` without need for a log entry*
 >
-> *When tutorials only have `exit` in the example, it is up to you to put the correct number after, probably `exit 0`
+> *When tutorials only have `exit` in the example, it is up to you to put the correct number after, probably `exit 0`*
 >
 
 ### A custom log can be useful for keeping track of what happens in your own software
@@ -199,13 +199,13 @@ ___
 
 | **26** : `gedit normal.log`
 
-*Combine this into one command with: `> STDOUT 2> STDERR`
+*Combine this into one command with: `> STDOUT 2> STDERR`*
 
 | **27** : `ls bozo >> normal.log 2>> error.log`
 
 *gedit: Reload error.log*
 
-*Send* STDERR *(error output) into the nothingness with: `> /dev/null 2>&1`
+*Send STDERR (error output) into the nothingness with: `> /dev/null 2>&1`*
 
 | **28** : `ls dumbo > /dev/null 2>&1`
 
