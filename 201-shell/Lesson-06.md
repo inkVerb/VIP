@@ -51,7 +51,7 @@ ___
 
 | **13** : `ls`
 
-*Specify a different output filename with: `-O SAVEASNAME` (CAPITAL '-O'!)
+*Specify a different output filename with: `-O SAVEASNAME` (CAPITAL '-O'!)*
 
 | **14** : `wget -O vrk.zip https://github.com/inkVerb/vrk/archive/master.zip`
 
@@ -97,7 +97,7 @@ ___
 
 | **25** : `ls`
 
-*Note the strange new directory `inkVerb-vrk-SOME_CRAZY_NUMBER`
+*Note the strange new directory `inkVerb-vrk-SOME_CRAZY_NUMBER`*
 
 *...that's it, delete it with:*
 
@@ -115,7 +115,7 @@ ___
 
 | **29** : `ls`
 
-*Note the same strange directory `inkVerb-vrk-SOME_CRAZY_NUMBER`
+*Note the same strange directory `inkVerb-vrk-SOME_CRAZY_NUMBER`*
 
 *...that's it, delete it with:*
 
@@ -141,7 +141,7 @@ ___
 
 *Note the error message because of the read-only files* (Ctrl + C to get out of there!)
 
-*Removing a git-cloned directory is easier with `sudo`
+*Removing a git-cloned directory is easier with `sudo`*
 
 ### For a "sudoer" who can use `sudo`
 >
