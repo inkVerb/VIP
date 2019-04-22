@@ -21,7 +21,7 @@ ___
 
 *Vim: `:e ++ff=unix`*
 
-*Now `^M` at the end of the line, indicating a "carriage return"*
+*Now see `^M` at the end of the line, indicating a "carriage return"*
 
 *Vim: `:q!`*
 
