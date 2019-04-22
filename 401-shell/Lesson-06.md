@@ -149,7 +149,7 @@ fi
 
 ### IV. Arithmetic
 
-Example of integer values and quotes:
+*Examples of integer values and quotes...*
 
 *Edit this script*
 
