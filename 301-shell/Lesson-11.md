@@ -38,7 +38,7 @@ ___
 
 | **7** : `echo 3 | ./11-menu-case`
 
-*Auto-answer works wtih most shell commands: `echo "y" | SHELL-COMMAND`
+*Auto-answer works wtih most shell commands: `echo "y" | SHELL-COMMAND`*
 
 ### II. `dialog`
 
@@ -62,7 +62,7 @@ ___
 
 | **11** : `gedit 11-dialog-text.txt`
 
-| **12** : `dialog --textbox 11-dialog-text.txt 9 51` (try arrow keys, see what happens)
+| **12** : `dialog --textbox 11-dialog-text.txt 9 51` *(try arrow keys, see what happens)*
 
 *Same thing, but title in the background*
 
@@ -90,15 +90,15 @@ ___
 
 *Yes/No question*
 
-| **20** : `dialog --title "Quick Question" --yesno "Do you ink?" 5 17` (answer yes)
+| **20** : `dialog --title "Quick Question" --yesno "Do you ink?" 5 17` *(answer yes)*
 
-*Note your answer does nothing, so echo the last exit code, which is the variable `$?`
+*Note your answer does nothing, so echo the last exit code, which is the variable `$?`*
 
 | **21** : `echo $?`
 
 *Change your answer this time*
 
-| **22** : `dialog --title "Quick Question" --yesno "Do you ink?" 5 17` (answer no)
+| **22** : `dialog --title "Quick Question" --yesno "Do you ink?" 5 17` *(answer no)*
 
 | **23** : `echo $?`
 
@@ -142,11 +142,11 @@ ___
 
 *This needs this exit code redirect on the end: `3>&1 1>&2 2>&3 3>&-`
 
-| **35** : `./11-dialog-4` (select any size)
+| **35** : `./11-dialog-4` *(select any size)*
 
 *gedit: Reload size.file*
 
-| **36** : `./11-dialog-4` (select any size)
+| **36** : `./11-dialog-4` *(select any size)*
 
 *gedit: Reload size.file*
 
@@ -154,7 +154,7 @@ ___
 
 | **37** : `gedit 11-dialog-5`
 
-| **38** : `./11-dialog-5` (select any size)
+| **38** : `./11-dialog-5` *(select any size)*
 
 *gedit: Reload size.file*
 
