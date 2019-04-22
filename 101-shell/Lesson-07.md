@@ -65,7 +65,7 @@ ___
 
 | **20** : `cat onetwo`
 
-*Note `cat` also appended onetwo via `>>`
+*Note `cat` also appended onetwo via `>>`*
 
 ___
 
