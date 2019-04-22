@@ -40,7 +40,7 @@ Something like: `/home/USERNAME/School/VIP/shell/401/iamexec`
 
 *It should look like this:*
 
-| **8** : ```sh
+```sh
 #!/bin/sh
 
 # Set the field separator for the `for` loop to the `:` that separates dirs in the $PATH
@@ -51,31 +51,31 @@ IFS=:
 for pdir in $(echo "$PATH"); do
   echo $pdir
 done
-| **9** : ```
+```
 
-| **10** : `./listpath`
+| **8** : `./listpath`
 
 *Files in these directories can be run without entering the entire path.*
 
-**You can check* `which` *directory of the $PATH a command is located in...**
+*You can check "`which`" directory of the $PATH a command is located in...*
 
-| **11** : `which cp`
+| **9** : `which cp`
 
-| **12** : `which sed`
+| **10** : `which sed`
 
-| **13** : `which grep`
+| **11** : `which grep`
 
-| **14** : `which which`
+| **12** : `which which`
 
-| **15** : `which git`
+| **13** : `which git`
 
-| **16** : `which gedit`
+| **14** : `which gedit`
 
-| **17** : `which firefox`
+| **15** : `which firefox`
 
-*Similar, but returns more information: `whereis`
+*Similar, but returns more information: `whereis`*
 
-| **18** : `whereis firefox`
+| **16** : `whereis firefox`
 
 *You should find that these locations generally respect the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md).*
 
@@ -193,96 +193,96 @@ cp file destination
 
 ### III. Other Command Line Hacks
 
-| **19** : `cd ..`
+| **17** : `cd ..`
 
-| **20** : `echo $OLDPWD`
+| **18** : `echo $OLDPWD`
 
-| **21** : `cd $OLDPWD`
+| **19** : `cd $OLDPWD`
 
-| **22** : `mkdir space\ names`
+| **20** : `mkdir space\ names`
 
-| **23** : `ls`
+| **21** : `ls`
 
-| **24** : `cd "space names"`
+| **22** : `cd "space names"`
 
-| **25** : `touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
+| **23** : `touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
+
+| **24** : `ls`
+
+| **25** : `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
 
 | **26** : `ls`
 
-| **27** : `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
+| **27** : `touch song.mp3 image.png media.ogg jpeg.jpg`
 
 | **28** : `ls`
 
-| **29** : `touch song.mp3 image.png media.ogg jpeg.jpg`
+| **29** : `touch exec comm execomm`
 
 | **30** : `ls`
 
-| **31** : `touch exec comm execomm`
+| **31** : `chmod ug+x exec comm execomm`
 
-| **32** : `ls`
+| **32** : `ls -a`
 
-| **33** : `chmod ug+x exec comm execomm`
+| **33** : `ls -f`
 
-| **34** : `ls -a`
+| **34** : `ls -b`
 
-| **35** : `ls -f`
+| **35** : `touch alpha bravo charlie delta`
 
-| **36** : `ls -b`
+| **36** : `ls`
 
-| **37** : `touch alpha bravo charlie delta`
+| **37** : `touch alpha2 bravo2 charlie2 delta2`
 
 | **38** : `ls`
 
-| **39** : `touch alpha2 bravo2 charlie2 delta2`
+| **39** : `touch 1 2 3 4`
 
 | **40** : `ls`
 
-| **41** : `touch 1 2 3 4`
+| **41** : `ls -r`
 
-| **42** : `ls`
+| **42** : `ls -t`
 
-| **43** : `ls -r`
+| **43** : `ls -rt`
 
-| **44** : `ls -t`
+| **44** : `cd ..`
 
-| **45** : `ls -rt`
+| **45** : `cp -r space\ names "space also"`
 
-| **46** : `cd ..`
-
-| **47** : `cp -r space\ names "space also"`
-
-| **48** : `cp -i space\ also/* space\ names/`
+| **46** : `cp -i space\ also/* space\ names/`
 
 *You can overwrite each, or not, or Ctrl + C to close*
 
-| **49** : `view code-of-poetry.txt`
+| **47** : `view code-of-poetry.txt`
 
 *Try "i" for insert*
 
 *Oh no! It's read-only with `view`*
 
-*Exit with: `:q`
+*Exit with: `:q`*
 
-| **50** : `touch rtfile.md`
+| **48** : `touch rtfile.md`
 
-| **51** : `tail -f rtfile.md`
+| **49** : `tail -f rtfile.md`
 
 *Open a new terminal window: Ctrl + Alt + T (not F12)*
 
 **Run in the new terminal window:** *(...and keep watch in the first terminal)*
-> | **52** : `cd ~/School/VIP/shell/401`
+> | **50** : `cd ~/School/VIP/shell/401`
 >
-> | **53** : `echo "I am fruit." >> rtfile.md`
+> | **51** : `echo "I am fruit." >> rtfile.md`
 >
 > *Did you see that?*
 >
-> | **54** : `echo "I am kruit." >> rtfile.md`
+> | **52** : `echo "I am kruit." >> rtfile.md`
 >
-> | **55** : `echo "I am vruit." >> rtfile.md`
+> | **53** : `echo "I am vruit." >> rtfile.md`
 >
-> | **56** : `echo "I am gruit." >> rtfile.md`
+> | **54** : `echo "I am gruit." >> rtfile.md`
 >
-> | **57** : `exit`
+> | **55** : `exit`
 
 *Ctrl + C*
 
