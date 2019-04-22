@@ -81,17 +81,17 @@ ___
 
 | **17** : `diff frc-1 frc-2`
 
-*Note* "a" *means that lines are* "Added"
+*Note "a" means that lines are "Added"*
 
 | **18** : `diff frc-1 frc-3`
 
-*Note* "d" *means that lines are* "Deleted"
+*Note "d" means that lines are "Deleted"*
 
 | **19** : `diff frc-1 frc-4`
 
-*Note* "c" *means that the lines* "Change"
+*Note "c" *means that the lines "Change"*
 
-*Note* "13,17" *means* "lines 13–17"
+*Note "13,17" means "lines 13–17"*
 
 | **20** : `diff frc-1 frc-5`
 
@@ -141,7 +141,7 @@ ___
 
 *There is always more to learn*
 
-| **32** : `man diff` (Q to quit)*
+| **32** : `man diff` *(Q to quit)*
 
 | **33** : `cd ..`
 
