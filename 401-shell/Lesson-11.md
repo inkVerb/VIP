@@ -144,7 +144,7 @@ echo "$EOFVAR"
 
 *Note echoing without "quotess" makes everything appears on one line.*
 
-*Refer to this Wikipedia article about heredocs in Unix:* [Here document](https://en.wikipedia.org/wiki/Here_document#Unix_shells)
+*Refer to this Wikipedia article about heredocs in Unix: [Here document](https://en.wikipedia.org/wiki/Here_document#Unix_shells)*
 
 ___
 
