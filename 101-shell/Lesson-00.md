@@ -9,7 +9,7 @@ This is normal text, which may label or tell something, it is rare in these less
 
 *This italics text is a note that helps teach and explain something in a lesson*
 
-*The following is called "preformatted" text, which uses a "monospace" font:* `preformatted monospace text` *`maybe italics, maybe, still preformatted monospace text just the same`*
+*The following is called "preformatted" text, which uses a "monospace" font:* `preformatted monospace text` *`maybe italics all same`*
 
 *Preformatted text indicates computer code. Many websites do this `i am computer code`*
 
