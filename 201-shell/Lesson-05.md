@@ -90,7 +90,7 @@ ___
 
 | **18** : `exit`
 
-*Now assign a "directory" to home (*`-d`*) and "move" any existing contents to that directory (*`-m`*)*
+*Now assign a "directory" to home (`-d`) and "move" any existing contents to that directory (`-m`)*
 
 | **19** : `sudo usermod -d /home/ppurple -m pinkypurple`
 
