@@ -18,7 +18,7 @@ ___
 
 *gedit: Reload sedoutput.text*
 
-*Both `echo` and `sed` (without `-i`*) will send output to the terminal*
+*Both `echo` and `sed` (without `-i`) will send output to the terminal*
 
 *But, `sed -i` and `echo ... > ` will output to a file*
 
