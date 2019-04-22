@@ -64,13 +64,12 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 ### IV. `function()`
 
-A function is like a script inside a script.
-
-It even takes $1 $2 etc arguments, then runs inside the script.
+1. A function is like a script inside a script.
+2. It even takes `$1`, `$2`, etc arguments that run inside the script.
 
 | **13** : `gedit 7-function`
 
-*Note functions work with `#!/bin/sh` on the first line, but also work with `#!/bin/bash`
+*Note functions work with `#!/bin/sh` on the first line, but also work with `#!/bin/bash`*
 
 | **14** : `./7-function`
 
