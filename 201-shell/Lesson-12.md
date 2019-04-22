@@ -176,7 +176,7 @@ ___
 
 *Vim has a tutorial*
 
-| **37** : `vimtutor` ( :q to quit)*
+| **37** : `vimtutor` *(inside Vim, use* :q *to quit)*
 
 *Have fun!*
 
