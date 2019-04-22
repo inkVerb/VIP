@@ -14,9 +14,9 @@ ___
 
 | **1** : `gedit 12-flags-1`
 
-*Note on line 12 `$OPTIND`
+*Note on line 12 `$OPTIND`*
 
-*Note on line 20 `:`
+*Note on line 20 `:`*
 
 | **2** : `./12-flags-1 -h` (help)
 
