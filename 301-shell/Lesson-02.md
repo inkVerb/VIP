@@ -65,9 +65,9 @@ ___
 
 | **18** : `gedit markdown.md`
 
-*View the rendered markdown file:* [markdown.md](https://github.com/inkVerb/301/blob/master/markdown.md)
+*View the rendered markdown file: [markdown.md](https://github.com/inkVerb/301/blob/master/markdown.md)*
 
-*You may close LibreOffice Writer from the GUI, or the terminal with: `killall soffice.bin`
+*You may close LibreOffice Writer from the GUI, or the terminal with: `killall soffice.bin`*
 
 #### The `pandoc` tool can be glitchy if you do something too complex, but it handles:
 - plain text
@@ -161,7 +161,7 @@ ___
 
 | **48** : `./02-read-4`
 
-*Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`
+*Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 *Note -r is for "Raw", to allow all special characters*
 
@@ -169,7 +169,7 @@ ___
 
 | **50** : `./02-read-5`
 
-*Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`
+*Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 | **51** : `gedit 02-read-6`
 
