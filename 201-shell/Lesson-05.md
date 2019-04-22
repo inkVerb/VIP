@@ -28,7 +28,7 @@ ___
 
 | **3** : `ls /home`
 
-| **4** : `sudo adduser pinkypink` When prompted, Enter any simple password; press `Enter` for remaining questions.*
+| **4** : `sudo adduser pinkypink` *When prompted, Enter any simple password; press `Enter` for remaining questions.*
 
 *Look at `/home` again to see `pinkypink` has been added*
 
@@ -169,9 +169,9 @@ ___
 
 | **36** : `chown pinkypurple:pinkypurple youown`
 
-*Note the error message because `chown` requires `sudo`
+*Note the error message because `chown` requires `sudo`*
 
-| **37** : `sudo chown pinkypurple:pinkypurple youown` Enter your password*
+| **37** : `sudo chown pinkypurple:pinkypurple youown` *Enter your password*
 
 | **38** : `ls -l`
 
@@ -201,7 +201,7 @@ ___
 
 *Note the error message*
 
-*Use `-R` for directories (must be CAPITAL with `chown`*!)*
+*Use `-R` for directories (must be CAPITAL with `chown`!)*
 
 | **43** : `sudo chown -R pinkypink:pinkypink ownrship`
 
@@ -211,7 +211,7 @@ ___
 
 | **45** : `rm youown`
 
-*Note the error message because you don't own it anymore! Use `sudo`
+*Note the error message because you don't own it anymore! Use `sudo`*
 
 | **46** : `sudo rm youown`
 
@@ -273,7 +273,7 @@ ___
 
 ### IV. Sudoers
 
-*This is the list of users that can use `sudo`
+*This is the list of users that can use `sudo`*
 
 | **64** : `sudo cat /etc/sudoers`
 
@@ -313,7 +313,7 @@ ___
 >
 ___
 >
-> *Try this commands without `su` and note the error messages because it requires `su`:
+> *Try this commands without `su` and note the error messages because it requires `su`:*
 >
 > | **71** : `adduser pinkypink`
 >
@@ -325,7 +325,7 @@ ___
 >
 > | **73** : `ls /home`
 >
-> | **74** : `adduser pinkypink` When prompted, Enter any simple password; press `Enter` for remaining questions.*
+> | **74** : `adduser pinkypink` *When prompted, Enter any simple password; press `Enter` for remaining questions.*
 >
 > *Look at `/home` again to see `pinkypink` has been added*
 >
@@ -377,7 +377,7 @@ ___
 >
 > | **86** : `exit`
 >
-> *Now assign a "directory" to home (*`-d`*) and "move" any existing contents to that directory (*`-m`*)*
+> *Now assign a "directory" to home (`-d`) and "move" any existing contents to that directory (`-m`)*
 >
 > | **87** : `usermod -d /home/ppurple -m pinkypurple`
 >
@@ -460,7 +460,7 @@ ___
 >
 > | **105** : `chown pinkypurple:pinkypurple youown`
 >
-> *Note the error message because `chown` requires "root" AKA `sudo` or `su`
+> *Note the error message because `chown` requires "root" AKA `sudo` or `su`*
 >
 > | **106** : `su` input the password*
 >
@@ -478,7 +478,7 @@ ___
 >
 > *Note the error message*
 >
-> *Use `-R` for directories (must be CAPITAL with `chown`*!)*
+> *Use `-R` for directories (must be CAPITAL with `chown`!)*
 >
 > | **112** : `chown -R pinkypink:pinkypink ownrship`
 >
@@ -564,7 +564,7 @@ ___
 >
 > ### IV. sudoers
 >
-> *This is the list of users that can use `sudo`
+> *This is the list of users that can use `sudo`*
 >
 > | **138** : `cat /etc/sudoers`
 >
