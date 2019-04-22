@@ -23,9 +23,9 @@ ___
 
 *Note the "x" now on whoown*
 
-*This is DANGEROUS: `chmod +x whoown`
+*This is DANGEROUS: `chmod +x whoown`*
 
-*...for personal files, use `chmod ug+x whoown` instead so the public can't execute the file*
+*...for personal files, use `chmod ug+x whoown` so the public can't execute the file*
 
 | **7** : `chmod -x whoown`
 
