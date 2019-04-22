@@ -69,7 +69,7 @@ ___
 
 | **19** : `dpkg --print-architecture`
 
-*You can set output of any terminal command as if it is a variable using: `$(...)` or `` `...` ``*
+*You can set output of any terminal command as if it is a variable using: `$(...)` or* _`` `...` ``_
 
 | **20** : `echo $(printenv DESKTOP_SESSION)`
 
