@@ -53,7 +53,7 @@ ___
 
 ### `man` & `info`
 
-*FYI, this is a great tool to change settings from the terminal: `gsettings`
+*FYI, this is a great tool to change settings from the terminal: `gsettings`*
 
 | **7** : `man gsettings`
 
@@ -61,13 +61,13 @@ ___
 
 *Press Q to quit*
 
-*You can use `man` or `info`
+*You can use `man` or `info`*
 
 | **8** : `info gsettings`
 
 *Press Q to quit*
 
-*The `man` and `info`*tools are useful for many things*
+*The `man` and `info` tools are useful for many things*
 
 *Consider `lsb_release` which shows detailed information about your current Linux distribution*
 
