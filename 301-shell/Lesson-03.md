@@ -30,43 +30,43 @@ one-1*
 
 | **7** : `ls *.one`
 
-| **XX** : `gedit 03-do-echo-3`
+| **8** : `gedit 03-do-echo-3`
 
-*Note `do` is on the same line as `for` via `;`
+*Note `do` is on the same line as `for` via `;`*
 
-| **8** : `./03-do-echo-3`
+| **9** : `./03-do-echo-3`
 
 *t.one
 
-| **9** : `ls *t.one`
+| **10** : `ls *t.one`
 
-| **10** : `gedit 03-do-echo-4`
+| **11** : `gedit 03-do-echo-4`
 
-| **11** : `./03-do-echo-4`
+| **12** : `./03-do-echo-4`
 
 3.*
 
-| **12** : `ls 3.*`
+| **13** : `ls 3.*`
 
-| **13** : `gedit 03-do-echo-5`
+| **14** : `gedit 03-do-echo-5`
 
-| **14** : `./03-do-echo-5`
+| **15** : `./03-do-echo-5`
 
 \*3*
 
-| **15** : `ls *3*`
+| **16** : `ls *3*`
 
-| **16** : `gedit 03-do-echo-6`
+| **17** : `gedit 03-do-echo-6`
 
-| **17** : `./03-do-echo-6`
+| **18** : `./03-do-echo-6`
 
 \*one* "is a file."
 
-| **18** : `ls *one*`
+| **19** : `ls *one*`
 
-| **19** : `gedit 03-do-echo-7`
+| **20** : `gedit 03-do-echo-7`
 
-| **20** : `./03-do-echo-7`
+| **21** : `./03-do-echo-7`
 
 ### II. Replacing within Variables
 
@@ -74,83 +74,83 @@ one-1*
 
 *.one %one
 
-| **21** : `gedit 03-do-echo-8`
+| **22** : `gedit 03-do-echo-8`
 
-| **22** : `./03-do-echo-8`
+| **23** : `./03-do-echo-8`
 
 *t.one %t.one
 
-| **23** : `gedit 03-do-echo-9`
+| **24** : `gedit 03-do-echo-9`
 
-| **24** : `./03-do-echo-9`
+| **25** : `./03-do-echo-9`
 
-| **25** : `ls`
+| **26** : `ls`
 
 ### III. Renaming Multiple Files at Once
 
-| **26** : `gedit 03-do-mv-1`
+| **27** : `gedit 03-do-mv-1`
 
-| **27** : `./03-do-mv-1`
+| **28** : `./03-do-mv-1`
 
-| **28** : `ls`
+| **29** : `ls`
 
-| **29** : `gedit 03-do-mv-2`
+| **30** : `gedit 03-do-mv-2`
 
-| **30** : `./03-do-mv-2`
+| **31** : `./03-do-mv-2`
 
-| **31** : `ls`
+| **32** : `ls`
 
-| **32** : `gedit 03-do-mv-3`
+| **33** : `gedit 03-do-mv-3`
 
-| **33** : `./03-do-mv-3`
+| **34** : `./03-do-mv-3`
 
-| **34** : `ls`
+| **35** : `ls`
 
 *Make a backup of today's work*
 
-| **35** : `mkdir -p 03-THREE`
+| **36** : `mkdir -p 03-THREE`
 
-| **36** : `mv *THREE* 03-THREE/`
+| **37** : `mv *THREE* 03-THREE/`
 
 *Delete*
 
-| **37** : `gedit 03-do-rm`
+| **38** : `gedit 03-do-rm`
 
-| **38** : `./03-do-rm`
+| **39** : `./03-do-rm`
 
 *Ignore the directory error because we want to keep that directory*
 
-| **39** : `ls`
+| **40** : `ls`
 
 ### IV. Applied: `odt2txt`
 
 *Now, use `odt2txt` in a `for` `...` `do` loop*
 
-| **40** : `gedit 03-do-odt2txt-1`
+| **41** : `gedit 03-do-odt2txt-1`
 
-| **41** : `./03-do-odt2txt-1`
+| **42** : `./03-do-odt2txt-1`
 
-| **42** : `ls`
+| **43** : `ls`
 
-| **43** : `gedit ODT-*.txt`
+| **44** : `gedit ODT-*.txt`
 
 *Note the files are either empty or on one line because we used `echo`*, this method didn't work*
 
-| **44** : `gedit 03-do-odt2txt-2`
+| **45** : `gedit 03-do-odt2txt-2`
 
-| **45** : `./03-do-odt2txt-2`
+| **46** : `./03-do-odt2txt-2`
 
 *gedit: Reload both .txt files*
 
-| **46** : `gedit 03-do-odt2txt-3`
+| **47** : `gedit 03-do-odt2txt-3`
 
-| **47** : `./03-do-odt2txt-3`
+| **48** : `./03-do-odt2txt-3`
 
 *gedit: Reload both .txt files*
 
 *Backup today's work*
 
-| **48** : `mv ODT-*.txt 03-THREE/`
+| **49** : `mv ODT-*.txt 03-THREE/`
 
 ___
 
