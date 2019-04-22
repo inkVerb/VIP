@@ -97,7 +97,7 @@ ls\
 401
 ```
 
-Press: Up *to see your last command was: `ls-l~/School/VIP/shell/401`
+*Press Up to see what your last command was: `ls-l~/School/VIP/shell/401`*
 
 *Even breakup character by character, even SPACES! Enter ONE LINE AT A TIME:*
 
@@ -137,7 +137,7 @@ l \
 
 *Vim: `:set number`*
 
-*Vim: PgDown* (until last line)
+*Vim: PgDown (until last line)*
 
 *Vim: `:q!`*
 
@@ -151,7 +151,7 @@ l \
 
 *Vim: `:set number`*
 
-*Vim: PgUp* (until first line)
+*Vim: PgUp (repeat until first line)*
 
 *Note the command on line 2*
 
@@ -170,23 +170,23 @@ l \
 
 ### IV. "Reverse Search"
 
-Press: Ctrl + R
+*Press Ctrl + R*
 
 *This is reverse search*
 
-Type: `echo` and notice the results*
+*Type `echo` and notice the results*
 
-Press: Down *to get back to the normal prompt*
+*Press Down to get back to the normal prompt*
 
 | **24** : `echo Hello world`
 
 *Go again*
 
-Press: Ctrl + R
+*Press Ctrl + R*
 
-Type: `echo "` and notice the DIFFERENT results as you type*
+*Type `echo "` and notice the DIFFERENT results as you type*
 
-Press: Down *to get back to the normal prompt*
+*Press Down to get back to the normal prompt*
 
 ___
 
