@@ -9,7 +9,7 @@ ___
 
 | **2** : `echo "Apple Jay" > abc/jayapple`
 
-*Search contents inside files with `grep`
+*Search contents inside files with `grep`*
 
 | **3** : `grep jj *`
 
