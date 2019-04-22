@@ -389,7 +389,7 @@ ls nothere || echo "OR is false, exit code: $?"
 
 | **23** : `./lstest`
 
-*So, `&&` and `||` work with any command that returns *
+*So, `&&` and `||` work with any command that returns*
 
 ### IV. Using `-z`/`-n` & `unset` "the Proper Way"
 
