@@ -89,7 +89,7 @@ ___
 
 | **19** : `diff frc-1 frc-4`
 
-*Note "c" *means that the lines "Change"*
+*Note "c" means that the lines "Change"*
 
 *Note "13,17" means "lines 13–17"*
 
