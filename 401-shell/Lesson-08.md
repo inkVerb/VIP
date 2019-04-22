@@ -86,7 +86,7 @@ unset IFS # We don't want our strange settings messing with other things.
 
 | **5** : `ls`
 
-*Note the file created: `randomlooped`
+*Note the file created: `randomlooped`*
 
 | **6** : `gedit randomlooped`
 
@@ -104,7 +104,7 @@ Set `$IFS` to a "tab"
 
 *Edit this script*
 
-| *7** : `gedit looptab`
+| **7** : `gedit looptab`
 
 *It should look like this:*
 
