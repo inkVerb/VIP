@@ -30,7 +30,7 @@ ___
 
 | **4** : `sudo apt update`
 
-*If there is a problem, usually fix it with `--fix-missing`
+*If there is a problem, usually fix it with `--fix-missing`*
 
 | **5** : `sudo apt update --fix-missing`
 
@@ -46,7 +46,7 @@ ___
 
 | **8** : `sudo apt install git` Unless it is installed already, you will need to press Y, then Enter*
 
-*Install `cowsay`
+*Install `cowsay`*
 
 | **9** : `sudo apt install cowsay` Unless it is installed already, you will need to press Y, then Enter*
 
@@ -54,7 +54,7 @@ ___
 
 *Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `rename` and `pwgen` packages* (the command `netstat` comes from the package `net-tools`)
 
-| **10** : `sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` Use `-y` so you DO NOT need to press Y, then Enter*
+| **10** : `sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` *Use `-y` so you DO NOT need to press Y, then Enter*
 
 ### For an administrator to use `su`
 >
@@ -89,15 +89,16 @@ ___
 >
 > | **17** : `apt install git` Unless it is installed already, you will need to press Y, then Enter*
 >
-> *Install `cowsay`
+> *Install `cowsay`*
 >
 > | **18** : `apt install cowsay` Unless it is installed already, you will need to press Y, then Enter*
 >
 > *You can install more than one package...*
 >
-> *Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `rename` and `pwgen` packages* (the command `netstat` comes from the package `net-tools`)
+> *Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `rename` and `pwgen` packages*
+- *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
 >
-> | **19** : `apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` Use `-y` so you DO NOT need to press Y, then Enter*
+> | **19** : `apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` *Use `-y` so you DO NOT need to press Y, then Enter*
 >
 ___
 
