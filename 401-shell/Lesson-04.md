@@ -22,7 +22,7 @@ ___
 >
 ___
 
-*MySQL can be installed with: `sudo apt install mysql-server`
+*MySQL can be installed with: `sudo apt install mysql-server`*
 
 *If you install MySQL for this lesson, then you **MAY** completely remove*
 
@@ -106,7 +106,7 @@ ___
 
 *Go back into MySQL `-u [user]` is the user `-p` means to prompt for a password*
 
-*Note, because MySQL's root password is now setup, we no longer need `sudo` with `mysql`
+*Note, because MySQL's root password is now setup, we no longer need `sudo` with `mysql`*
 
 ___
 
