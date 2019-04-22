@@ -69,7 +69,7 @@ ___
 
 | **21** : `ls -l`
 
-*Note `vrk.tar` is not compressed, larger than `vrk.zip`
+*Note `vrk.tar` is not compressed, larger than `vrk.zip`*
 
 *Note `-x` is for "eXtract"; `-v` is for "Verbose"; `-f` is for "File"*
 
@@ -85,7 +85,7 @@ ___
 
 | **26** : `ls -l`
 
-*Note it replaced the original file `vrk.tar`
+*Note it replaced the original file `vrk.tar`*
 
 *Note `-d` is for "Decompress"*
 
@@ -101,7 +101,7 @@ ___
 
 | **30** : `ls -l`
 
-*Create the .tar.xz file without removing the original using `-c`
+*Create the .tar.xz file without removing the original using `-c`*
 
 | **31** : `xz -c vrk.tar > vrk.tar.xz`
 
@@ -171,7 +171,7 @@ ___
 
 | **44** : `ls -l`
 
-*Note it replaced the original file `vrk.tar`
+*Note it replaced the original file `vrk.tar`*
 
 | **45** : `cp ../vrk.tar .`
 
@@ -187,7 +187,7 @@ ___
 
 | **49** : `gzip -c vrk.tar > vrk.tar.gz`
 
-*Note there was no question this time; `-c` is a good idea with `gzip`
+*Note there was no question this time; `-c` is a good idea with `gzip`*
 
 | **50** : `ls -l`
 
@@ -209,7 +209,7 @@ ___
 
 #### bzip2 `bzip2 -c file > file.bz2`; `bzip2 -d file.bz2`
 
-*Note `-c` is for "Create, keep original" just as with `gzip`
+*Note `-c` is for "Create, keep original" just as with `gzip`*
 
 | **56** : `bzip2 -c vrk.tar > vrk.tar.bz2`
 
@@ -261,7 +261,7 @@ ___
 
 | **70** : `ls -l`
 
-*Now with `xz`
+*Now with `xz`*
 
 | **71** : `rm -r vrk && ls -l`
 
@@ -322,7 +322,7 @@ ___
 
 | **87** : `touch file1 file2 file3`
 
-*Note the following order: `tar cf TARBALL-FILE.tar CONTENTS CONTENTS CONTENTS ETC`
+*Note the following order: `tar cf TARBALL-FILE.tar CONTENTS CONTENTS CONTENTS ETC`*
 
 | **88** : `tar cf files.tar file1 file2 cpdir`
 
@@ -330,7 +330,7 @@ ___
 
 | **89** : `tar tf files.tar`
 
-*Add a file with `-r`
+*Add a file with `-r`*
 
 | **90** : `tar rf files.tar file3`
 
