@@ -17,7 +17,7 @@ ___
 
 | **4** : `sed -i "s///!/g" money.file`
 
-*Notice the error, "cancel" (some say "quote") special characters with: `\`
+*Notice the error, "cancel" (some say "quote") special characters with: `\`*
 
 | **5** : `sed -i "s/\//\!/g" money.file`
 
@@ -37,7 +37,7 @@ ___
 
 *Use `\` with letters to work with non-characters*
 
-*Note `\t` = tab, `\n` = new line
+*Note `\t` = tab, `\n` = new line*
 
 | **9** : `echo "no tab one line" > tab.file`
 
