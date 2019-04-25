@@ -433,7 +433,7 @@ fi
 unset VAR
 echo "3. \$VAR has been UNset!"
 
-if [ -z $VAR ]; then
+if [ -z "$VAR" ]; then
 echo "NOT set: $VAR"
 else
 echo "IS set: $VAR"
@@ -476,7 +476,7 @@ fi
 unset VAR
 echo "3. \$VAR has been UNset!"
 
-if [ -n $VAR ]; then
+if [ -n "$VAR" ]; then
 echo "NOT empty set: $VAR"
 else
 echo "IS empty set: $VAR"
