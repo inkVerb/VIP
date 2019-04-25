@@ -413,7 +413,7 @@ Test with `-z`:
 # The variable $VAR is NOT set
 echo "1. \$VAR is NOT yet set!"
 
-if [ -z $VAR ]; then
+if [ -z "$VAR" ]; then
 echo "NOT set: $VAR"
 else
 echo "IS set: $VAR"
@@ -423,7 +423,7 @@ fi
 VAR=varSet
 echo "2. \$VAR has been set!"
 
-if [ -z $VAR ]; then
+if [ -z "$VAR" ]; then
 echo "NOT set: $VAR"
 else
 echo "IS set: $VAR"
@@ -451,12 +451,12 @@ Test with `-n`:
 *It should look like this:*
 
  ```bash
-#!/bin/bash
+#!/bin/sh
 
 # The variable $VAR is NOT set
 echo "1. \$VAR is NOT yet set!"
 
-if [ -n $VAR ]; then
+if [ -n "$VAR" ]; then
 echo "NOT empty set: $VAR"
 else
 echo "IS empty set: $VAR"
@@ -466,7 +466,7 @@ fi
 VAR=varSet
 echo "2. \$VAR has been set!"
 
-if [ -n $VAR ]; then
+if [ -n "$VAR" ]; then
 echo "NOT empty set: $VAR"
 else
 echo "IS empty set: $VAR"

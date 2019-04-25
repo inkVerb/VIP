@@ -6,7 +6,9 @@
 ___
 
 ### 5 Rules of Functions:
-1. Functions only work in BASH, not Shell.
+1. Functions ***MIGHT NOT*** work in Shell ***before 2018***...
+  - **On 32 bit Linux machines**, functions only work in BASH, ***NOT*** Shell.
+  - **On 64 bit Linux machines**, (most 2018 & later), functions work in ***BOTH*** BASH ***AND*** Shell.
 2. Functions must be declared before called.
 3. Functions take arguments.
 4. Variables in functions can be either:
