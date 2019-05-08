@@ -57,7 +57,7 @@ ___
 
 | **17** : `ls`
 
-*Note you can't see the files, because files that start with a period `.` are "hidden"*
+*Note you can't see the files just created, because files that start with a period `.` are "hidden"*
 
 | **18** : `ls -a`
 
