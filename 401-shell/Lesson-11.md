@@ -113,7 +113,7 @@ EOF
 
 **Variable in a script:**
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **18** : `gedit eofvar`
 

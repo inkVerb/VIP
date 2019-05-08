@@ -59,7 +59,7 @@ VAR=false
 
 Example of 'single' & "double" quotes in declaring variable values:
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **1** : `gedit varquote`
 
@@ -87,7 +87,7 @@ echo $VARdq
 
 Example of boolean values and quotes:
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **3** : `gedit varbool`
 
@@ -151,7 +151,7 @@ fi
 
 *Examples of integer values and quotes...*
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **5** : `gedit varmath`
 

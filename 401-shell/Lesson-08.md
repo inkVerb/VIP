@@ -32,7 +32,7 @@ ___
 
 ### I. `$IFS` = new line
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **1** : `gedit looplines`
 
@@ -58,7 +58,7 @@ done
 
 Integrate `pwgen` with `sed` in a `for` loop...
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **3** : `gedit looprandom`
 
@@ -102,7 +102,7 @@ unset IFS # We don't want our strange settings messing with other things.
 
 Set `$IFS` to a "tab"
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **7** : `gedit looptab`
 
@@ -134,7 +134,7 @@ unset IFS # We don't want our strange settings messing with other things.
 
 ### IV. `$IFS` = colon `:`
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **10** : `gedit loopcolon`
 
@@ -158,7 +158,7 @@ done
 
 ### V. `$IFS` = pipe `|`
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **12** : `gedit looppipe`
 

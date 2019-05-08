@@ -7,7 +7,7 @@ ___
 
 ### I. Counter `while` Loop
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **1** : `gedit loopcount`
 

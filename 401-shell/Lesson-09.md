@@ -43,7 +43,7 @@ ___
 
 Shell:
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **1** : `gedit math-sh`
 
@@ -75,7 +75,7 @@ fi
 
 BASH:
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **3** : `gedit math-bash`
 
@@ -109,7 +109,7 @@ fi
 
 Shell:
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **5** : `gedit array-sh`
 
@@ -133,7 +133,7 @@ echo ${ARRAY[@]}
 
 BASH:
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **7** : `gedit array-bash`
 
@@ -210,7 +210,9 @@ OR
 
 *A `set` declaration is for debugging and should not normally be standard in a script.*
 
-*If you need to handle errors in a normal-production script, use `if` tests with `$?` exit codes.*
+*Note `$?` is the variable for the last `exit` code*
+
+*If you need to handle errors in a normal-production script, use `if` tests with `$?` `exit` codes.*
 -See: [Lesson 5: More with Variables](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-05.md)
 
 ### III. Simple Tests via `&&` & `||`
@@ -265,7 +267,7 @@ false || echo "OR is false."
 
 #### 1. Stating `true`/`false`:
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **15** : `gedit truefalse`
 
@@ -294,7 +296,7 @@ false || echo "OR is false."
 
 #### 2. Variable as `true`/`false`:
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **17** : `gedit truefalsevar`
 
@@ -327,7 +329,7 @@ $VAR || echo "OR is false."
 
 #### 3. Variable as other *"string"*:
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **19** : `gedit truefalsevarstring`
 
@@ -361,13 +363,25 @@ $VAR || echo "OR is false."
 
 *Let's try a real command: `ls /directory`*
 
-#### 4. Test with example command `ls`:
+#### 4. Test with example command `ls` & `$?` for numeric `true`/`false`:
 
-| **21** : `mkdir iamhere && touch iamhere/file1 iamhere/file2`
+*Watch this...*
 
-*Edit this script*
+| **21** : `true`
 
-| **22** : `gedit lstest`
+| **22** : `echo $?`
+
+| **23** : `false`
+
+| **24** : `echo $?`
+
+*Now, let's put that to use...*
+
+| **25** : `mkdir iamhere && touch iamhere/file1 iamhere/file2`
+
+*Edit this script to see the short version*
+
+| **26** : `gedit lstest`
 
 *It should look like this:*
 
@@ -387,7 +401,7 @@ ls nothere && echo "AND is true, exit code: $?"
 ls nothere || echo "OR is false, exit code: $?"
 ```
 
-| **23** : `./lstest`
+| **27** : `./lstest`
 
 *So, `&&` and `||` work with any command that returns*
 
@@ -401,9 +415,9 @@ ls nothere || echo "OR is false, exit code: $?"
 
 Test with `-z`:
 
-*Edit this script*
+*Edit this script to see the short version*
 
-| **24** : `gedit varset-z`
+| **28** : `gedit varset-z`
 
 *It should look like this:*
 
@@ -440,13 +454,13 @@ echo "IS set: $VAR"
 fi
 ```
 
-| **25** : `./varset-z`
+| **29** : `./varset-z`
 
 Test with `-n`:
 
-*Edit this script*
+*Edit this script to see the short version*
 
-| **26** : `gedit varset-n`
+| **30** : `gedit varset-n`
 
 *It should look like this:*
 
@@ -483,7 +497,7 @@ echo "IS empty set: $VAR"
 fi
 ```
 
-| **27** : `./varset-n`
+| **31** : `./varset-n`
 
 ___
 
@@ -515,6 +529,9 @@ ___
 - `||` = "or"
   - If the first command/test is `1`/`false`, then the next command/test runs
   - If once a command/test answers `0`/`true`, the final return is `0`/`true`
+- `$?` is the variable for the last `exit` code
+  - `$?` = `0` if it was `true`
+  - `$?` = `1` if it was `false`
 
 ## Using `-z`/`-n` & `unset` "the Proper Way"
 - `-z` tests if a variable is not set

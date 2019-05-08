@@ -13,7 +13,7 @@ ___
 
 | **2** : `ls` The file exists: `iamhere`
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **3** : `gedit varexit`
 
@@ -49,7 +49,7 @@ echo "$? notacommand is not a real command, so exit code \"127\""
 
 ### II. `shift` Argument Variable Numbers
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **5** : `gedit varshift`
 
@@ -105,7 +105,7 @@ echo "After shift 3
 
 *But, they almost always behave the same way...*
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **7** : `gedit varargs`
 
@@ -139,7 +139,7 @@ $*
 
 *Now, we will embed this into another script and pass those arguments via `$@` & `$*` ...*
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **9** : `gedit varargsvar`
 
@@ -173,7 +173,7 @@ Arguments entered via \$(echo \$*) ..."
 
 ### IV. `$#` Argument Count
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **11** : `gedit vargcount`
 
@@ -197,7 +197,7 @@ $#"
 
 ### V. `unset` Variables
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **13** : `gedit varunset`
 
@@ -250,7 +250,7 @@ myShiftedCount = $myShiftedCount
 
 ### VI. Variables in `${bracketts}`
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **15** : `gedit varbrackett-sh`
 
@@ -295,7 +295,7 @@ echo "${myVAR}"
 
 *Again, but with **BASH**...*
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **17** : `gedit varbrackett-bash`
 
@@ -370,7 +370,7 @@ echo "${MYVAR}"
 
 | **20** : `./variable-no-export`
 
-*Edit this script*
+*Edit this script to see the short version*
 
 | **21** : `gedit variable-yes-export`
 

@@ -12,21 +12,57 @@ ___
 2. Functions must be declared before called.
 3. Functions take arguments.
 4. Variables in functions can be either:
-- `global` (for the entire script)
-- `local` (for the function only)
+  - `global` (for the entire script)
+  - `local` (for the function only)
 5. Functions don't `exit`; they `return`, but `exit` & `return` codes are the same
   - If a `return` code is not set, the last executed command's `exit` status will be used instead
-
+  - `$?` is the variable for the last `return` or `exit` code
 
 ### I. Argument & `return`
 
-*Edit this script*
+#### First, playtime with `exit` codes & `$?`
 
-| **1** : `gedit functionreturns`
+| **1** : `ls`
+
+*It worked, so the `exit` code should be `0`*
+
+| **2** : `echo $?`
+
+*List a non-existent directory*
+
+| **3** : `ls nothere`
+
+*That doesn't exist, so it would return a fail, usually `2`*
+
+| **4** : `echo $?`
+
+*Try a command that doesn't exist*
+
+| **5** : `nocom`
+
+*Bigger fail, bigger number*
+
+| **6** : `echo $?`
+
+*Good old-fashioned `true`/`false` as commands, again...*
+
+| **7** : `true`
+
+| **8** : `echo $?`
+
+| **9** : `false`
+
+| **10** : `echo $?`
+
+#### Watch `return` codes function in functions
+
+*Edit this script to see the short version*
+
+| **11** : `gedit functionreturns`
 
 *It should look like this:*
 
-| **2** :
+| **12** :
 ```bash
 #!/bin/bash
 
@@ -80,7 +116,7 @@ echo "Return code: $?"
 
 *Run it and watch carefully*
 
-| **3** : `./functionreturns`
+| **13** : `./functionreturns`
 
 *Note:*
 1. *The `return` code takes arguments and is called via `$?`, just like `exit`*
@@ -88,9 +124,9 @@ echo "Return code: $?"
 
 ### II. Variables as `local` & Functions Declared First
 
-*Edit this script*
+*Edit this script to see the short version*
 
-| **4** : `gedit functionlocal`
+| **14** : `gedit functionlocal`
 
 *It should look like this:*
 
@@ -126,7 +162,7 @@ echo "script VARb = $VARb"
 
 *Run it and watch carefully*
 
-| **5** : `./functionlocal`
+| **15** : `./functionlocal`
 
 *Note that the function changed the value of VARb "globally", but VARa only "locally" inside the function*
 
@@ -146,6 +182,7 @@ ___
     - `local VARIABLE=value`
     - `global VARIABLE=value`
 5. `exit` & `return`
+  - `$?` is the variable for the last `exit` or `return` code
   - Terminal commands have `exit` codes
   - BASH functions have `return` codes
   - `exit` & `return` code numbers mean the same things
