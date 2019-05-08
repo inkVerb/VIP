@@ -10,7 +10,7 @@
 
 ### [Lesson 3: su, sudo, apt update, apt upgrade, apt install, lsb_release](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-03.md)
 
-### [Lesson 4: ls -1, ls -l, chmod](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)
+### [Lesson 4: ls -1, ls -l, ls -a, chmod](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)
 
 ### [Lesson 5: adduser, deluser, chown](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-05.md)
 

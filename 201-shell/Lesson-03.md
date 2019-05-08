@@ -139,4 +139,4 @@ ___
 
 ___
 
-#### [Lesson 4: ls -1, ls -l, chmod](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)
+#### [Lesson 4: ls -1, ls -l, ls -a, chmod](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)
