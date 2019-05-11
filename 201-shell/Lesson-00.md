@@ -20,13 +20,13 @@ ___
 
 ___
 
+*Command 2 is optional, necessary if you are not a sudoer*
+
+| **2** : `su SUDOER_USERNAME` *Input your password, then the sudoer will be logged into the terminal*
+
 *This sets a password for `su` if it has not been done already...*
 
 *You MUST be a "sudoer" for this..."*
-
-*Command 2 is optional, only if you are not a sudoer*
-
-| **2** : `su SUDOER_USERNAME` *Input your password, then the sudoer will be logged into the terminal*
 
 | **3** : `sudo passwd` *Input your password, then input the new password for the `su` user*
 
@@ -45,6 +45,8 @@ ___
 - `su` (all by itself) will login as "root" so all commands will run as "root", without needing `sudo`
 - To login as "root" with `su`, a password must be set first using: `sudo passwd`
 - Logging in as root is generally considered dangerous, best use `sudo command`
+- Never use `sudo` inside a shell script
+- Always use `sudo ./my-shell-script`, if your script needs root permissions
 
 ___
 #### [Lesson 1: cp, mv, ln -s, rm, touch](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-01.md)
