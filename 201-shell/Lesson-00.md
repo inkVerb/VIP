@@ -24,7 +24,11 @@ ___
 
 *You MUST be a "sudoer" for this..."*
 
-| **2** : `sudo passwd` *Input your password, then input the new password for the `su` user*
+*Command 2 is optional, only if you are not a sudoer*
+
+| **2** : `su SUDOER_USERNAME` *Input your password, then the sudoer will be logged into the terminal*
+
+| **3** : `sudo passwd` *Input your password, then input the new password for the `su` user*
 
 *To become `su` after this, just input in the terminal: `su`*
 
@@ -33,18 +37,14 @@ ___
 
 # The Take
 
-## `su`, `sudo` & and "root":
+## `su`, `sudo` & "root":
 - `sudo command` will run `command` as a "super user" AKA "root", what Windows calls an "admin"
-- `su` will login as "root" so all commands will run as "root", without needing `sudo`
 - `passwd` will change the user's own login password
-- To login as "root" with `su`, a password must be set first using: `sudo passwd`
-
-## Remember:
-- `sudo command` runs commands as root without loging in as root
 - `sudo passwd` creates/changes the password for root login via `su`
-- `su` logs in as root, thus all commands will be run as root
+- `su OTHER_USER` will log you in as another user in a terminal
+- `su` (all by itself) will login as "root" so all commands will run as "root", without needing `sudo`
+- To login as "root" with `su`, a password must be set first using: `sudo passwd`
 - Logging in as root is generally considered dangerous, best use `sudo command`
-
 
 ___
 #### [Lesson 1: cp, mv, ln -s, rm, touch](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-01.md)
