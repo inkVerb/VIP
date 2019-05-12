@@ -77,11 +77,11 @@ sudo apt update
 
 ### Login to MySQL
 
-#### Two ways:
+#### Choose one of two ways:
 
 ##### 1. First time ever
 
-| **8** : `sudo mysql`
+| **8** : `sudo mysql` *(If you need, type `exit` to leave)*
 
 ##### 2. Password already set (but we will set it again)
 

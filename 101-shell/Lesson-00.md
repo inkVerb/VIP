@@ -21,7 +21,7 @@ This is normal text, which may label or tell something, it is rare in these less
 
 *These numbers help keep track of your place in the lesson and clarify which code you should enter into the terminal*
 
-| **2** : `echo i am another terminal command` This is a very important note specifically about the command just entered*
+| **2** : `echo i am another terminal command` *This is a very important note specifically about the command just entered*
 
 | **3** : `third terminal command`
 
@@ -83,7 +83,7 @@ ___
 
 | **14** : `gedit &`
 
-*Note the terminal is not occupied because we added `&`
+*Note the terminal is not occupied because we added `&`*
 
 *Run another program, Mines (`gnome-mines`)*
 
