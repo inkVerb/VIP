@@ -107,7 +107,7 @@ ___
 
 *First, make the directory "School" (if it doesn't already exist)...*
 
-| **19** : `mkdir ~/School`
+| **19** : `mkdir -p ~/School`
 
 *Change the terminal to that directory*
 

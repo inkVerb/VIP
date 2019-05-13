@@ -5,7 +5,7 @@
 
 ___
 
-| **1** : `echo FILE-1 >> file1`
+| **1** : `echo FILE-1 > file1`
 
 | **2** : `ls`
 
