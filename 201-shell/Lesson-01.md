@@ -35,13 +35,13 @@ ___
 
 | **14** : `l`
 
-*Note the `l` command works like `ls`, the `@` after a filename also indicates it's a symlink*
+*Note the `l` command works like `ls`; the `@` after a filename also indicates it's a symlink*
 
 | **15** : `ls -l`
 
 *Note file5 points to file4, indicating where the symlink leads*
 
-*You can also use list-long on only the link to see where it points*
+*You can also use list-long on only the symlink to see where it points*
 
 | **16** : `ls -l file5`
 
@@ -95,19 +95,21 @@ ___
 
 | **33** : `touch file4`
 
+*Note file4 is empty now...*
+
 | **34** : `cat file4`
 
 *gedit: Reload file4 & file5*
 
 | **35** : `ls -l`
 
-*Note file5 is no longer a broken symlink, but file4 has changed*
+*Note file5 is no longer a broken symlink, but file4 isn't the same as it used to be*
 
 *gedit: Save file6*
 
 | **36** : `l`
 
-*file6 is no longer a symlink*
+*Note file6 is no longer a symlink*
 
 | **37** : `cat file6`
 
