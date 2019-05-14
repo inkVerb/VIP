@@ -33,75 +33,83 @@ ___
 
 *Note file5 is a different color because it is a symlink*
 
-| **14** : `ls -l`
+| **14** : `l`
+
+*Note the `l` command works like `ls`, the `@` after a filename also indicates it's a symlink*
+
+| **15** : `ls -l`
 
 *Note file5 points to file4, indicating where the symlink leads*
 
 *You can also use list-long on only the link to see where it points*
 
-| **15** : `ls -l file5`
+| **16** : `ls -l file5`
 
 *Let's take a peek*
 
-| **16** : `gedit file4 file5`
+| **17** : `gedit file4 file5`
 
-| **17** : `echo FILE-5 >> file5`
+| **18** : `echo FILE-5 >> file5`
 
 *gedit: Reload file4 & file5*
 
 *Note both file4 and file5 say the same thing*
 
-| **18** : `echo SILLY-FILE5 >> file5`
+| **19** : `echo SILLY-FILE5 >> file5`
 
 *gedit: Reload file4 & file5*
 
-| **19** : `echo INTO-FILE4 >> file4`
+| **20** : `echo INTO-FILE4 >> file4`
 
 *gedit: Reload file4 & file5*
 
-| **20** : `ln -s file4 file6`
+| **21** : `ln -s file4 file6`
 
-| **21** : `ls`
+| **22** : `l`
 
-| **22** : `ls -l`
+| **23** : `ls -l`
 
-| **23** : `cat file6`
+| **24** : `cat file6`
 
-| **24** : `gedit file6`
+| **25** : `gedit file6`
 
 *Note file6 is the same as file4 & file5*
 
-| **25** : `rm file6`
+| **26** : `rm file6`
 
-| **26** : `ls`
+| **27** : `l`
 
-| **27** : `ls -l`
+| **28** : `ls -l`
 
 *Note file4 remains*
 
-| **28** : `rm file4`
+| **29** : `rm file4`
 
-| **29** : `ls`
+| **30** : `l`
 
-| **30** : `ls -l`
+| **31** : `ls`
+
+| **32** : `ls -l`
 
 *Note file5 is "broken"*
 
-| **31** : `touch file4`
+| **33** : `touch file4`
 
-| **32** : `cat file4`
+| **34** : `cat file4`
 
 *gedit: Reload file4 & file5*
 
-| **33** : `ls -l`
+| **35** : `ls -l`
 
-*Note file5 is no longer broken, but file4 has changed*
+*Note file5 is no longer a broken symlink, but file4 has changed*
 
 *gedit: Save file6*
 
-| **34** : `ls`
+| **36** : `l`
 
-| **35** : `cat file6`
+*file6 is no longer a symlink*
+
+| **37** : `cat file6`
 
 ___
 
@@ -115,13 +123,14 @@ ___
 - `ln -s` makes a "symlink" of a file this way:
   - `ln -s source-file new-symlink`
 - `ls -l` will show the destination (original file) of a symlink
+- `l` works like `ls` but adds characters to indicate file types; this helps with monochrome displays
 - `rm` removes a file this way:
   - `rm file-to-remove`
 - `touch` creates an empty file, if the file doesn't already exist this way:
   - `touch file-to-touch`
-- A symlinked file can be changed and the original will also change
-- Removing a symlinked's destination file will "break" the symlink
-- Recreating a symlinked's destination file will "unbreak" the symlink
+- A symlink file can be changed and the original will also change
+- Removing a symlink's target file will "break" the symlink
+- Recreating a symlink's target file will "unbreak" the symlink
 
 ___
 
