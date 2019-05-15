@@ -75,6 +75,9 @@ DELIMETER
 *Copy-paste as one command, then again line-by-line:*
 
 **Delimeter: `EOF`**
+
+| **15** :
+
 ```sh
 cat <<EOF
 I am a super pumpkin.
@@ -85,6 +88,9 @@ EOF
 *Copy-paste as one command, then again line-by-line:*
 
 **Delimeter: `END`**
+
+| **16** :
+
 ```sh
 cat <<END
 I am a here document.
@@ -95,10 +101,12 @@ END
 
 #### Heredocs Applied
 
-| **15** : `ls`
+| **17** : `ls`
 
 **Write text to a file:**
-| **16** :
+
+| **18** :
+
 ```sh
 cat <<EOF | cat > neweof
 I am a here document.
@@ -107,17 +115,17 @@ I'm at my end.
 EOF
 ```
 
-| **17** : `ls`
+| **19** : `ls`
 
 *Note the new file created: "neweof"*
 
-| **18** : `gedit neweof`
+| **20** : `gedit neweof`
 
 **Variable in a script:**
 
 *Edit this script to see the short version*
 
-| **19** : `gedit eofvar`
+| **21** : `gedit eofvar`
 
 *It should look like this:*
 
@@ -142,7 +150,7 @@ echo "$EOFVAR"
 
 *Run it*
 
-| **20** : `./eofvar`
+| **22** : `./eofvar`
 
 *Note echoing without "quotess" makes everything appears on one line.*
 
