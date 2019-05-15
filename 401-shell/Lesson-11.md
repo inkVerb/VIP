@@ -84,7 +84,7 @@ EOF
 
 *Copy-paste as one command, then again line-by-line:*
 
-**Delimeter: `END`:**
+**Delimeter: `END`**
 ```sh
 cat <<END
 I am a here document.
