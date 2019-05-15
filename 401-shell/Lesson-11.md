@@ -103,6 +103,8 @@ END
 
 | **17** : `ls`
 
+*Copy-paste as one command, then again line-by-line:*
+
 **Write text to a file:**
 
 | **18** :
