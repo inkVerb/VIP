@@ -14,43 +14,45 @@ ___
 
 **Examples:**
 
-| **1** : `grep "^[[:upper:]]" code-of-poetry.txt`
+| **1** : `gedit code-of-poetry.txt`
 
-| **2** : `grep "^[[:punct:]]" code-of-poetry.txt`
+| **2** : `grep "^[[:upper:]]" code-of-poetry.txt`
 
-| **3** : `grep "^[[:digit:]]" code-of-poetry.txt`
+| **3** : `grep "^[[:punct:]]" code-of-poetry.txt`
+
+| **4** : `grep "^[[:digit:]]" code-of-poetry.txt`
 
 *Note no results because no digits appear first on any line.*
 
 *Try without the carrot `^`...*
 
-| **4** : `grep "[[:digit:]]" code-of-poetry.txt`
+| **5** : `grep "[[:digit:]]" code-of-poetry.txt`
 
-| **5** : `grep "^[[:lower:]]" code-of-poetry.txt`
+| **6** : `grep "^[[:lower:]]" code-of-poetry.txt`
 
 *Try some simple replacements...*
 
-| **6** : `sed "s/[[:digit:]]/#/g" code-of-poetry.txt`
+| **7** : `sed "s/[[:digit:]]/#/g" code-of-poetry.txt`
 
-*Cpombine that with `grep` to show only what it affects...*
+*Combine that with `grep` to show only what it affects...*
 
-| **7** : `grep "[[:digit:]]" code-of-poetry.txt | sed "s/[[:digit:]]/#/g"`
+| **8** : `grep "[[:digit:]]" code-of-poetry.txt | sed "s/[[:digit:]]/#/g"`
 
 *More...*
 
-| **8** : `sed "s/[[:upper:]]/X/g" code-of-poetry.txt`
+| **9** : `sed "s/[[:upper:]]/X/g" code-of-poetry.txt`
 
-| **9** : `sed "s/[[:punct:]]/@/g" code-of-poetry.txt`
+| **10** : `sed "s/[[:punct:]]/@/g" code-of-poetry.txt`
 
-| **10** : `sed "s/[[:blank:]]/_/g" code-of-poetry.txt`
+| **11** : `sed "s/[[:blank:]]/_/g" code-of-poetry.txt`
 
 *Custom ranges...*
 
-| **11** : `sed "s/[A-Z]/X/" code-of-poetry.txt`
+| **12** : `sed "s/[D-H]/X/" code-of-poetry.txt`
 
-| **12** : `sed "s/[1-6]/%/" code-of-poetry.txt`
+| **13** : `sed "s/[2-6]/%/" code-of-poetry.txt`
 
-| **13** : `sed "s/[a-z]/x/g" code-of-poetry.txt`
+| **14** : `sed "s/[a-u]/x/g" code-of-poetry.txt`
 
 ### II. Heredoc: `cat <<EOF`
 
@@ -93,10 +95,10 @@ END
 
 #### Heredocs Applied
 
-| **14** : `ls`
+| **15** : `ls`
 
 **Write text to a file:**
-| **15** :
+| **16** :
 ```sh
 cat <<EOF | cat > neweof
 I am a here document.
@@ -105,17 +107,17 @@ I'm at my end.
 EOF
 ```
 
-| **16** : `ls`
+| **17** : `ls`
 
 *Note the new file created: "neweof"*
 
-| **17** : `gedit neweof`
+| **18** : `gedit neweof`
 
 **Variable in a script:**
 
 *Edit this script to see the short version*
 
-| **18** : `gedit eofvar`
+| **19** : `gedit eofvar`
 
 *It should look like this:*
 
@@ -140,7 +142,7 @@ echo "$EOFVAR"
 
 *Run it*
 
-| **19** : `./eofvar`
+| **20** : `./eofvar`
 
 *Note echoing without "quotess" makes everything appears on one line.*
 
