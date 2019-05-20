@@ -67,6 +67,10 @@ ___
 
 *Note `cat` also appended onetwo via `>>`*
 
+| **21** : `echo $(cat onetwo)`
+
+*Note `echo $(COMMAND_SUBSTITUTION)` removed the new lines like it always does*
+
 ___
 
 # The Take
