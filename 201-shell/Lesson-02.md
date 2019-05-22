@@ -73,19 +73,27 @@ ___
 
 | **31** : `ls`
 
-| **32** : `cp directory cpdir`
+| **32** : `cp directory cpnewdir`
 
 *Note the error message about directories; use `-r` with `cp` as well as `rm` for directories*
 
-| **33** : `cp -r directory cpdir`
+| **33** : `cp -r directory cpnewdir`
 
 | **34** : `ls`
 
-| **35** : `cd cpdir`
+| **35** : `mv -r cpnewdir cpdir`
 
-| **36** : `ls`
+*Note, `mv` rejects `-r`, just use `mv` even for directories*
 
-| **37** : `cd ..`
+| **36** : `mv cpnewdir cpdir`
+
+| **37** : `ls`
+
+| **38** : `cd cpdir`
+
+| **39** : `ls`
+
+| **40** : `cd ..`
 
 ___
 
@@ -111,7 +119,8 @@ ___
   - `rm -r directory-to-remove`
 - `cp -r` copies a directory this way:
   - `cp -r source-directory directory-copy`
-- *Note: `mv` can also move and change the name of a directory, same as with files*
+- `mv` can also move and change the name of a directory, same as with files
+  - `mv` does not require `-r`, it will reject `-r` if you try
 
 ___
 
