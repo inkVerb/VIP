@@ -47,27 +47,27 @@ ___
 
 | **21** : `ls`
 
-| **22** : `rm newdir`
+| **22** : `cd newdir`
 
-*Note the error message about directories*
+| **23** : `touch delfile`
 
-| **23** : `cd newdir`
+| **24** : `ls`
 
-| **24** : `touch delfile`
-
-| **25** : `ls`
-
-| **26** : `cd ..`
+| **25** : `cd ..`
 
 *Use `touch` & `ls` with a different directory...*
 
-| **27** : `ls newdir`
+| **26** : `ls newdir`
 
-| **28** : `touch newdir/alsodel newdir/alsoalso`
+| **27** : `touch newdir/alsodel newdir/alsoalso`
 
-| **29** : `ls -l newdir`
+| **28** : `ls -l newdir`
 
-*Use `-r` (RECURSIVE) to remove directories*
+| **29** : `rm newdir`
+
+*Note the error message about directories*
+
+*Use `-r` (Recursive) to remove directories*
 
 | **30** : `rm -r newdir`
 
@@ -75,7 +75,9 @@ ___
 
 | **32** : `cp directory cpnewdir`
 
-*Note the error message about directories; use `-r` with `cp` as well as `rm` for directories*
+*Note the error message about directories*
+
+*Use `-r` with `cp` as well as `rm` for directories*
 
 | **33** : `cp -r directory cpnewdir`
 
