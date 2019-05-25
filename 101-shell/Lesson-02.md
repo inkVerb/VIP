@@ -123,7 +123,7 @@ sed -i "s/$1/$2/g" $3
 
 | **17** : `echo "Apples like foo." >> applefoo`
 
-*Yes, `>>` will also create a file if it doesn't already exist*
+*Note `echo ... >>` will also create a file if it doesn't already exist*
 
 | **18** : `gedit applefoo`
 
