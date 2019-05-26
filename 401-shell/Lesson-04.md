@@ -312,6 +312,14 @@ ___
 - For writing Shell scripts that query MySQL, ***the password should NOT be in the Shell script***, but in a separate file with user information
   - This uses a special flag, eg:
     `mysql --defaults-extra-file=/path/to/user/file -e "MYSQL COMMAND;"`
+  - Example file:
+
+  ```shell
+  [client]
+  user = MYSQLUSERNAME
+  password = MYSQLUSERPASSWORD
+  host = localhost
+  ```
 
 ___
 
