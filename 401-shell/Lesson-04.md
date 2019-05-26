@@ -279,7 +279,7 @@ ___
 
 *...and that's how to put MySQL commands in a Shell script.*
 
-*(This was for a MySQL admin user, which is useful in Shell scripts, but you could do it for a normal MySQL user with the right SQL commands.)*
+*(This was for a MySQL admin user, which is useful in Shell scripts, but you could do it for a normal MySQL user with the appropriate SQL commands.)*
 
 *DISCLAIMER: On a production server, this method has some security problems of having an admin MySQL user's password in a readable file. But, you need to find your own way to deal with that securely, probably by keeping it in a secure location and not readable by the public.*
 
