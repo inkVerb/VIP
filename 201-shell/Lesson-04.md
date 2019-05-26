@@ -93,7 +93,7 @@ ___
 
 | **29** : `ls -a`
 
-*In Nautilus (the file explorer) press Ctrl + H to toggle view of hidden files*
+*In Nautilus (the file explorer) press Ctrl + H to toggle view of hidden files and directories*
 
 ___
 
@@ -105,7 +105,7 @@ ___
 - `ls -a` shows "All" files and directories, even those hidden
 - `ls -la` and `ls -al` combine the flags `-a` and `-l`
 - `.` at the beginning of a file or directory name make it "hidden"
-- Ctrl + H toggles hidden file view in Nautilus
+- Ctrl + H toggles hidden file and directory view in Nautilus
 ___
 
 #### [Lesson 5: adduser, deluser, chown](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-05.md)
