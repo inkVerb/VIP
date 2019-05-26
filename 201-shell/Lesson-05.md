@@ -293,7 +293,6 @@ ___
 
 | **66** : `sudo nautilus` Look, then close right away, use Ctrl + C in the terminal*
 
-___
 
 ### IF needed, `exit` from the other "sudoer"
 >
