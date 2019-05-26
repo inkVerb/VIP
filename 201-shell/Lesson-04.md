@@ -43,11 +43,11 @@ ___
 
 *You can also use numbers to set permissions, which is more normal for programmers*
 
-| **11** : `chmod 777 whoown` (`-rwxrwxrwx`)
+| **11** : `chmod 777 whoown` *Note the new permissions (`-rwxrwxrwx`)*
 
 | **12** : `ls -l`
 
-| **13** : `chmod 444 whoown` (`-r--r--r--`)
+| **13** : `chmod 444 whoown` *Note the new permissions (`-r--r--r--`)*
 
 | **14** : `ls -l`
 
@@ -59,17 +59,17 @@ ___
 
 *The permissions are now `-r-xr-xr--`, different from last time we used `chmod ug+x`*
 
-| **17** : `chmod 664 whoown` (`-rw-rw-r--`) *Our original permissions*
+| **17** : `chmod 664 whoown` *Note the new permissions (`-rw-rw-r--`) are the original permissions*
 
 | **18** : `ls -l`
 
-| **19** : `chmod 774 whoown` (`-rwxrwxr--`) *Our non-dangerous executable permissions*
+| **19** : `chmod 774 whoown` *Note the new permissions (`-rwxrwxr--`) are the non-dangerous executable permissions*
 
 | **20** : `ls -l`
 
 *Note, that was what we had before: `-rwxrwxr--`*
 
-| **21** : `chmod 600 whoown`
+| **21** : `chmod 600 whoown` *Note the new permissions (`-rw-------`)*
 
 | **22** : `ls -l`
 
