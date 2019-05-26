@@ -21,11 +21,11 @@ ___
 
 | **6** : `ls -l`
 
-*Note the "x" now on whoown*
+*Note the "x" now on whoown: `-rwxrwxr-x` ('x' appears 3 times, the last one can be dangerous because it is public)*
 
-*This is DANGEROUS: `chmod +x whoown`*
+*This is the danger: `chmod +x whoown`*
 
-*...for personal files, use `chmod ug+x whoown` so the public can't execute the file*
+*For personal files, use `chmod ug+x whoown` so the last "x" won't be there, so the public can't execute the file*
 
 | **7** : `chmod -x whoown`
 
@@ -35,41 +35,65 @@ ___
 
 | **9** : `chmod ug+x whoown`
 
-*Note it is green, but the "x" doesn't exist in the third group of public permissions; this is safer*
+| **10** : `ls -l`
 
-*You can also use numbers to set these, which is more normal*
+*Note it is green, but "x" only appears 2 times: `-rwxrwxr--`, so only the owner can execute the file*
 
-| **10** : `chmod 777 whoown`
+*These are "permissions" (`-rw-rw-r--`, `-rwxrwxr--`, `-rwxrwxr-x`, etc )*
 
-| **11** : `ls -l`
+*You can also use numbers to set permissions, which is more normal for programmers*
 
-| **12** : `chmod 444 whoown`
+| **11** : `chmod 777 whoown` (`-rwxrwxrwx`)
 
-| **13** : `ls -l`
+| **12** : `ls -l`
 
-| **14** : `chmod 600 whoown`
+| **13** : `chmod 444 whoown` (`-r--r--r--`)
 
-| **15** : `ls -l`
+| **14** : `ls -l`
+
+*Note `chmod ug+x` is "relative" while using `chmod` with numbers is absolute...*
+
+| **15** : `chmod ug+x whoown`
+
+| **16** : `ls -l`
+
+*The permissions are now `-r-xr-xr--`, different from last time we used `chmod ug+x`*
+
+| **17** : `chmod 664 whoown` (`-rw-rw-r--`) *Our original permissions*
+
+| **18** : `ls -l`
+
+| **19** : `chmod 774 whoown` (`-rwxrwxr--`) *Our non-dangerous executable permissions*
+
+| **20** : `ls -l`
+
+*Note, that was what we had before: `-rwxrwxr--`*
+
+| **21** : `chmod 600 whoown`
+
+| **22** : `ls -l`
 
 *Refer to this cheat-sheet for more about chmod:* [VIP/Cheet-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
 
-| **16** : `touch .hideme .hidemealso .cantseeme`
+| **23** : `touch .hideme .hidemealso .cantseeme`
 
-| **17** : `ls`
+| **24** : `ls`
 
 *Note you can't see the files just created, because files that start with a period `.` are "hidden"*
 
-| **18** : `ls -a`
+| **25** : `ls -a`
 
-| **19** : `ls -la`
+| **26** : `ls -la`
 
-| **20** : `mkdir .hidedir .cantseedir`
+| **27** : `mkdir .hidedir .cantseedir`
 
-| **21** : `ls`
+| **28** : `ls`
 
 *Directories also can be "hidden"*
 
-| **22** : `ls -a`
+| **29** : `ls -a`
+
+*In Nautilus (the file explorer) press Ctrl + H to toggle view of hidden files*
 
 ___
 
@@ -79,7 +103,9 @@ ___
 - `chmod` will change file permissions, see usage and examples here: [VIP/Cheet-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
 - `ls -l` will output a list of files with information that includes the permissions that `chmod` changes
 - `ls -a` shows "All" files and directories, even those hidden
+- `ls -la` and `ls -al` combine the flags `-a` and `-l`
 - `.` at the beginning of a file or directory name make it "hidden"
+- Ctrl + H toggles hidden file view in Nautilus
 ___
 
 #### [Lesson 5: adduser, deluser, chown](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-05.md)

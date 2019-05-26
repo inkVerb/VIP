@@ -13,12 +13,14 @@ This does not teach SQL language.
 
 This teaches basic SQL control operations in MySQL from Shell, without having to login to MySQL.
 
+***This lesson uses and modifies essential settings in MySQL, so any MySQL installation on your machine should not be used for production or other purposes without this consideration***
+
 ### This lesson requires a "sudoer" who can use `sudo`
 >
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **1** : `su USERNAME`
+> | **A1** : `su USERNAME`
 >
 ___
 
@@ -85,7 +87,7 @@ sudo apt update
 
 ##### 2. Password already set (but we will set it again)
 
-| **9** : `mysql -u root -p`
+| **9** : `mysql -u root -p` *Enter this tutorial's password ( newpassword )*
 
 ### The MySQL command prompt: `mysql>_`
 
@@ -110,7 +112,7 @@ ___
 
 ___
 
-| **13** : `mysql -u root -p` And enter the password: newpassword*
+| **13** : `mysql -u root -p` *And enter the password: ( newpassword )*
 
 *You are in MySQL*
 
@@ -177,10 +179,10 @@ ___
 *Look at this carefully:*
 
 - `mysql -u root -pnewpassword -e "MYSQL COMMAND GOES HERE;"`
-- `mysql -u root -pPASSWORD_HERE` This starts the MySQL command.*
-- `-pPASSWORD_HERE` No space between `-p` and the password! **This is normally bad!***
-- `-e` We need this for it to work in Shell.*
-- `"MYSQL COMMAND GOES HERE;"` The normal MySQL command can go in the quotes.*
+- `mysql -u root -pPASSWORD_HERE` *This starts the MySQL command.*
+- `-pPASSWORD_HERE` *No space between `-p` and the password! **This is normally bad!***
+- `-e` *We need this for it to work in Shell.*
+- `"MYSQL COMMAND GOES HERE;"` *The normal MySQL command can go in the quotes.*
 
 | **28** : `mysql -u root -pnewpassword -e "SHOW DATABASES;"`
 
@@ -188,7 +190,7 @@ ___
 
 *This is the normal way:*
 
-| **29** : `mysql -u root -p -e "SHOW DATABASES;"` Enter the password: newpassword*
+| **29** : `mysql -u root -p -e "SHOW DATABASES;"` *Enter the password ( newpassword )*
 
 *But, we're being lazy and this is a tutorial, so we don't care...*
 
@@ -228,15 +230,22 @@ ___
 
 *Create a new admin user in MySQL* ***only*** *for your Shell scripts...*
 
-| **42** : `sudo mysql -u root -p` Enter your password; annoying, but this is the "secure" way.*
+| **42** : `sudo mysql -u root -p` *Enter your password ( newpassword ); annoying, but this is the "secure" way.*
 
 | **43** : `GRANT ALL PRIVILEGES ON *.* TO 'newadminuser'@'localhost' IDENTIFIED BY 'newpassword' WITH GRANT OPTION;`
 
-| **44** : `SELECT User FROM mysql.user;` (If you really, badly want to see that the user is there.)*
+| **44** : `SELECT User FROM mysql.user;` *(If you really, badly want to see that the user is there.)*
 
 | **45** : `FLUSH PRIVILEGES;`
 
 | **46** : `QUIT`
+
+___
+> Optional: Logout if using a different "sudoer"
+>
+> | **A2** : `exit`
+>
+___
 
 *Put the same username & info into a file:*
 
@@ -248,6 +257,13 @@ password = newpassword
 host = localhost
 " > mysqlinfofile
 ```
+
+___
+> Optional: Login again as a "sudoer" if needed
+>
+> | **A3** : `su USERNAME`
+>
+___
 
 | **48** : `ls`
 
@@ -267,9 +283,9 @@ host = localhost
 
 *DISCLAIMER: On a production server, this method has some security problems of having an admin MySQL user's password in a readable file. But, you need to find your own way to deal with that securely, probably by keeping it in a secure location and not readable by the public.*
 
-#### Now remove that tutorial admin user because it can cause the codepocalypse...
+#### Now remove that tutorial admin user so it doesn't cause the codepocalypse...
 
-| **51** : `sudo mysql -u root -pnewpassword -e "DROP USER newadminuser@localhost;"`
+| **51** : `mysql --defaults-extra-file=~/School/VIP/shell/401/mysqlinfofile -e "DROP USER newadminuser@localhost;"`
 
 ___
 > Optional: IF you logged in as a "sudoer", now exit
