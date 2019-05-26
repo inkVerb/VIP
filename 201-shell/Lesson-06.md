@@ -148,32 +148,22 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **37** : `su USERNAME`
+> | **A1** : `su USERNAME`
 >
 ___
 
-| **38** : `sudo rm -r vrk`
+| **37** : `sudo rm -r vrk`
 
-### For an administrator to use `su`
->
-___
-> If you don't have permission as a "sudoer", the person who administers your machine can use:
->
-> | **39** : `su` input the password*
->
-> | **40** : `rm -r vrk`
->
-___
+| **38** : `ls`
 
-### IF needed, `exit` from `su` or the other "sudoer"
+### IF needed, `exit` from the other "sudoer"
 >
 ___
+> Optional: IF you logged in as a "sudoer", now exit
 >
-> | **41** : `exit`
+> | **A2** : `exit`
 >
 ___
-
-| **42** : `ls`
 
 ___
 

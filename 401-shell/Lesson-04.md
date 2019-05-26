@@ -240,8 +240,10 @@ ___
 
 | **46** : `QUIT`
 
+### IF needed, `exit` from the other "sudoer"
+>
 ___
-> Optional: Logout if using a different "sudoer"
+> Optional: IF you logged in as a "sudoer", now exit
 >
 > | **A2** : `exit`
 >

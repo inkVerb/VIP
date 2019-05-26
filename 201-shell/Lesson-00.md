@@ -20,19 +20,42 @@ ___
 
 ___
 
-*Command 2 is optional, necessary if you are not a sudoer*
-
-| **2** : `su SUDOER_USERNAME` *Input your password, then the sudoer will be logged into the terminal*
+### This lesson requires a "sudoer" who can use `sudo`
+>
+___
+> Optional: You may login as a "sudoer" if needed
+>
+> | **A1** : `su USERNAME`
+>
+___
 
 *This sets a password for `su` if it has not been done already...*
 
 *You MUST be a "sudoer" for this..."*
 
-| **3** : `sudo passwd` *Input your password, then input the new password for the `su` user*
+| **2** : `sudo passwd` *Input your password, then input the new password for the `su` user*
 
 *To become `su` after this, just input in the terminal: `su`*
 
-*That's it, all done.*
+### IF needed, `exit` from the other "sudoer"
+>
+___
+> Optional: IF you logged in as a "sudoer", now exit
+>
+> | **A2** : `exit`
+>
+___
+
+*Login as `su` to see what it's like*
+
+| **3** : `su` *Input the password you just set*
+
+*Look, you're root!*
+
+*Bye*
+
+| **4** : `exit`
+
 ___
 
 # The Take

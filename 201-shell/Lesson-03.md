@@ -18,7 +18,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> `su USERNAME`
+> | **A1** :  `su USERNAME`
 >
 ___
 
@@ -56,57 +56,12 @@ ___
 
 | **9** : `sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` *Use `-y` so you DO NOT need to press Y, then Enter*
 
-### For an administrator to use `su`
+### IF needed, `exit` from the other "sudoer"
 >
 ___
-> If you don't have permission as a "sudoer", the person who administers your machine can use:
+> Optional: IF you logged in as a "sudoer", now exit
 >
-> | **10** : `su` input the password*
->
-> *As the `su` (root) user, you DO NOT need to use `sudo` at the start of your commands*
->
-> *See the list of all available packages*
->
-> | **11** : `sudo apt list`
->
-> *Update the current lists (no updates are installed)*
->
-> | **12** : `sudo apt update`
->
-> *If there is a problem, usually fix it with `--fix-missing`
->
-> | **13** : `sudo apt update --fix-missing`
->
-> *See what can be upgraded on your machine*
->
-> | **14** : `sudo apt list --upgradable`
->
-> *Upgrade (install updates)*
->
-> | **15** : `apt upgrade` If updates are available, you will need to press Y, then Enter*
->
-> *Install the `git` package*
->
-> | **16** : `apt install git` Unless it is installed already, you will need to press Y, then Enter*
->
-> *Install `cowsay`*
->
-> | **17** : `apt install cowsay` Unless it is installed already, you will need to press Y, then Enter*
->
-> *You can install more than one package...*
->
-> *Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `rename` and `pwgen` packages*
-> - *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
->
-> | **18** : `apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` *Use `-y` so you DO NOT need to press Y, then Enter*
->
-___
-
-### IF needed, `exit` from `su` or the other "sudoer"
->
-___
->
-> | **19** : `exit`
+> | **A2** : `exit`
 >
 ___
 

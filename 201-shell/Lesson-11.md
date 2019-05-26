@@ -18,36 +18,22 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **2** : `su USERNAME`
+> | **A1** : `su USERNAME`
 >
 ___
 
-| **3** : `sudo tcpdump`
+| **2** : `sudo tcpdump`
 
 *Note the ongoing list of network activity*
 
 *Ctrl + C will close the dump*
 
-### For an administrator to use `su`
+### IF needed, `exit` from the other "sudoer"
 >
 ___
-> If you don't have permission as a "sudoer", the person who administers your machine can use:
+> Optional: IF you logged in as a "sudoer", now exit
 >
-> | **4** : `su` input the password*
->
-> | **5** : `tcpdump`
->
-> *Note the ongoing list of network activity*
->
-> *Ctrl + C will close the dump*
->
-___
-
-### IF needed, `exit` from `su` or the other "sudoer"
->
-___
->
-> | **6** : `exit`
+> | **A2** : `exit`
 >
 ___
 
@@ -55,7 +41,7 @@ ___
 
 *FYI, this is a great tool to change settings from the terminal: `gsettings`*
 
-| **7** : `man gsettings`
+| **3** : `man gsettings`
 
 *This is a how-to manual for a terminal program that manages settings for the desktop environment*
 
@@ -63,7 +49,7 @@ ___
 
 *You can use `man` or `info`*
 
-| **8** : `info gsettings`
+| **4** : `info gsettings`
 
 *Press Q to quit*
 
@@ -71,35 +57,35 @@ ___
 
 *Consider `lsb_release` which shows detailed information about your current Linux distribution*
 
-| **9** : `man lsb_release`
+| **5** : `man lsb_release`
 
-| **10** : `info lsb_release`
+| **6** : `info lsb_release`
 
-| **11** : `man tcpdump`
+| **7** : `man tcpdump`
 
-| **12** : `info tcpdump`
+| **8** : `info tcpdump`
 
-| **13** : `man netstat`
+| **9** : `man netstat`
 
-| **14** : `info netstat`
+| **10** : `info netstat`
 
-| **15** : `man grep`
+| **11** : `man grep`
 
-| **16** : `info grep`
+| **12** : `info grep`
 
-| **17** : `man sed`
+| **13** : `man sed`
 
-| **18** : `info sed`
+| **14** : `info sed`
 
-| **19** : `man echo`
+| **15** : `man echo`
 
-| **20** : `info echo`
+| **16** : `info echo`
 
-| **21** : `man imagemagick`
+| **17** : `man imagemagick`
 
 *...but not always...*
 
-| **22** : `info imagemagick`
+| **18** : `info imagemagick`
 
 *Note `imagemagick` changes images from the terminal, learn to use at:*
 - [www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)

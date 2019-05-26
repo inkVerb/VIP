@@ -6,7 +6,7 @@
 ___
 > Optional: You may login as a "sudoer" first
 >
-> | **1** : `su USERNAME`
+> | **A1** : `su USERNAME`
 >
 ___
 
@@ -15,24 +15,26 @@ ___
 #### If you did Shell 201, but not on this machine
 Install the tools:
 
-| **2** : `sudo apt update`
+| **1** : `sudo apt update`
 
-| **3** : `sudo apt install -y git dos2unix pwgen`
+| **2** : `sudo apt install -y git dos2unix pwgen`
 
+### IF needed, `exit` from the other "sudoer"
+> 
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **4** : `exit`
+> | **A2** : `exit`
 >
 ___
 
-| **5** : `mkdir -p ~/School/VIP/shell`
+| **3** : `mkdir -p ~/School/VIP/shell`
 
-| **6** : `cd ~/School/VIP/shell`
+| **4** : `cd ~/School/VIP/shell`
 
-| **7** : `git clone https://github.com/inkVerb/401`
+| **5** : `git clone https://github.com/inkVerb/401`
 
-| **8** : `cd 401`
+| **6** : `cd 401`
 ___
 
 # The Take
