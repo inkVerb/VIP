@@ -54,7 +54,7 @@ ___
 
 *Note the path is only `~` because `/home/pinkypink` is home for the user pinkypink*
 
-| **9** : `ls`q
+| **9** : `ls`
 
 *Look at all the new directories*
 
