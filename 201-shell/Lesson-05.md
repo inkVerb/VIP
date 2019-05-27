@@ -34,29 +34,37 @@ ___
 
 | **4** : `ls /home`
 
+*See what's at "home"*
+
 | **5** : `ls /home/pinkypink`
-
-*Look again with "All" files, including anything hidden*
-
-| **6** : `ls /home/pinkypink -a`
 
 *Login as pinkypink in the GUI...*
 
 *..."Switch User", login as pinkypink, "Log Out", then return to this GUI session*
 
-| **7** : `ls /home/pinkypink -a`
+| **6** : `ls /home/pinkypink`
 
 *Note the user directories & settings were created at the first GUI login*
 
 *Login via the terminal*
 
-| **8** : `su pinkypink`
+| **7** : `su pinkypink`
 
-| **9** : `ls`
+| **8** : `cd /home/pinkypink`
+
+*Note the path is only `~` because `/home/pinkypink` is home for the user pinkypink*
+
+| **9** : `ls`q
+
+*Look at all the new directories*
 
 | **10** : `ls -a`
 
+*Look at all the hidden directories, these are for settings and config files*
+
 | **11** : `exit`
+
+*Note you are no longer in `/home/pinkypink`, but are back where you were when you logged in as pinkypink*
 
 ### II. `useradd`
 
