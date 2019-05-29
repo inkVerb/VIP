@@ -23,13 +23,13 @@ ___
 
 *Let's use `sed` to resort them to go onto each line*
 
-| **3** : `sed -i 's/:/\n/g' mypath`
+| **3** : `sed -i "s/:/\n/g" mypath`
 
-*gedit: reload mypath*
+*gedit: Reload mypath*
 
 *Let's do it in one command:*
 
-| **4** : `echo $PATH | sed 's/:/\n/g'`
+| **4** : `echo $PATH | sed "s/:/\n/g"`
 
 **This nifty little script basically does the same thing with a `do` loop, listing each directory of the $PATH on a new line:**
 
