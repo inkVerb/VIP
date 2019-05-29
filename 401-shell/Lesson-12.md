@@ -19,7 +19,7 @@ ___
 
 | **2** : `gedit mypath`
 
-*Note each colon `:` separates a different directory included in the path*
+*Note each colon `:` separates a different directory path included in the $PATH*
 
 *Let's use `sed` to resort them to go onto each line*
 
@@ -149,8 +149,8 @@ echo $USERNAME
 
 Three Golden Rules of General Security & Safety:
   1. **Don't do more than necessary**
-  2. **Don't do more less necessary**
-  3. **Be proper: follow formatting and procedure**
+  2. **Don't do less than necessary**
+  3. **Be proper: Follow formatting and procedure**
 
 ##### 1. Sanitize a user-input variables with a [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) test (requires BASH)
 - This test would reject non-alphanumerics characters (`[:alnum:]`):
