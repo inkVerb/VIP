@@ -7,45 +7,42 @@ ___
 
 ### I. The `$PATH` Environment Variable
 
-| **1** : `echo $PATH`
+#### What is `$PATH`?
+
+| **1** : `echo $PATH | tee mypath`
 
 *This is the "$PATH", the list of directories where executable files can be run by filename only*
 
-*Any file not in the $PATH can only be run by including the path to the file, like `./FILE` or `/full/path/to/FILE`*
+*Let's take a peek inside*
 
-***Using the full path*** *let's run a small script containing this:*
+| **2** : `gedit mypath`
 
-| **2** : ```sh
-#!/bin/sh
-echo "I am executable, but I am not in the \$PATH."
-| **3** : ```
-1. Relative `/home/` path:
+*Note each colon `:` separates a different directory included in the path*
 
-| **4** : `~/School/VIP/shell/401/iamexec`
+*Let's use `sed` to resort them to go onto each line*
 
-2. "here" path:
-| **5** : `./iamexec`
+| **3** : `sed -i 's/:/\n/g' mypath`
 
-3. "full path" (get with `pwd`)
+*gedit: reload mypath*
 
-| **6** : `pwd` Execute this output, plus `/iamexec`
+*Let's do it in one command:*
 
-Something like: `/home/USERNAME/School/VIP/shell/401/iamexec`
+| **4** : `echo $PATH | sed 's/:/\n/g'`
 
-*This nifty little script lists each directory of the $PATH on a new line:*
+**This nifty little script basically does the same thing with a `do` loop, listing each directory of the $PATH on a new line:**
 
 *Edit the script*
 
-| **7** : `gedit listpath`
+| **5** : `gedit listpath`
 
 *It should look like this:*
 
 ```sh
 #!/bin/sh
 
-# Set the field separator for the `for` loop to the `:` that separates dirs in the $PATH
+# Set the field separator for the `for` loop to the `:` that separates dirs in the "$PATH"
 IFS=:
-# If we don't put $PATH in "double-quotes", each dir will appear on one line
+# If we don't put "$PATH" in "double-quotes", each dir will appear on one line
 # Try removing the "double-quotes" from "$PATH" on the line below to see what happens
 # Also try changing the "double-quotes" to 'single-quotes' to see what happens
 for pdir in $(echo "$PATH"); do
@@ -53,21 +50,58 @@ for pdir in $(echo "$PATH"); do
 done
 ```
 
-| **8** : `./listpath`
+| **6** : `./listpath`
 
-*Files in these directories can be run without entering the entire path.*
+**The point of all this so far:**
+- *$PATH contains many directories*
+- *Each directory in $PATH is separated by a colon `:`*
+- *Files in these directories can be run without entering the entire path.*
+
+#### Running non-`$PATH` scripts
+
+***Using the full path*** *let's run a small script containing this:*
+
+*Edit the script*
+
+| **7** : `gedit iamexec`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+echo "I am executable, but I am not in the \$PATH."
+```
+
+*Same script, same location, three different ways to execute...*
+
+1. Relative `/home/` path: `~/...`
+
+| **8** : `~/School/VIP/shell/401/iamexec`
+
+2. "here" path: `./`
+
+| **9** : `./iamexec`
+
+3. "full path" (get with `pwd`)
+
+*Enter the output of this as a new command in the terminal:*
+
+| **10** : `echo "$(pwd)/iamexec"`
+
+*...Something like: `/home/USERNAME/School/VIP/shell/401/iamexec` ...enter it as a command*
+
+**The point of all this so far:**
+- *Any file not in a directory listed in $PATH can only be run by including the path to the file, like `./FILE` or `/full/path/to/FILE`*
+
+#### Find a command's full path using `which` & `whereis`
 
 *You can check "`which`" directory of the $PATH a command is located in...*
 
-| **9** : `which cp`
+| **11** : `which cp`
 
-| **10** : `which sed`
+| **12** : `which sed`
 
-| **11** : `which grep`
-
-| **12** : `which which`
-
-| **13** : `which git`
+| **13** : `which grep`
 
 | **14** : `which gedit`
 
@@ -292,6 +326,10 @@ ___
 
 ## $PATH
 - The `$PATH` is the list of directories of files that can be executed from the terminal, regardless of the present working directory
+  - *$PATH contains many directories*
+  - *Each directory in $PATH is separated by a colon `:`*
+  - *Files in these directories can be run without entering the entire path.*
+  - *Any file not in a directory listed in $PATH can only be run by including the path to the file, like `./FILE` or `/full/path/to/FILE`*
 - To find the current path, enter: `echo $PATH`
 - The `$PATH` is defined for each user in: `~/.bashrc`
 - To add a directory to the `$PATH`, put a line in `~/.bashrc` like:
