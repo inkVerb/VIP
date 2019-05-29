@@ -1,5 +1,9 @@
 # Shell 101
 
+### [0-Rientation: (Orientation) How these lessons work](https://github.com/inkVerb/vip/blob/master/101-shell/0-Rientation.md)
+
+___
+
 ### [Lesson 0: Terminal Control](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-00.md)
 
 ### [Lesson 1: gedit, echo & sed](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-01.md)
