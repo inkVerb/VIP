@@ -11,9 +11,11 @@ ___
 
 | **1** : `echo $PATH | tee mypath`
 
-*This is the "$PATH", the list of directories where executable files can be run by filename only*
+*This is the "$PATH" environment variable, the list of directories where executable files can be run by filename only*
 
-*Let's take a peek inside*
+*The $PATH is why commands work as commands, why `echo` isn't `./echo`*
+
+*Let's take a peek inside...*
 
 | **2** : `gedit mypath`
 
