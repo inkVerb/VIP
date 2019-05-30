@@ -90,39 +90,47 @@ ___
 
 | **15** : `sudo passwd pinkypurple` Enter a simple password*
 
-*Login as pinkypurple in the terminal*
+*Look at `/home` again*
 
-| **16** : `su pinkypurple`
+| **16** : `ls /home`
 
-*Note the message: pinkypurple doesn't even have a home*
-
-| **17** : `exit`
+*Note pinkypurple doesn't even have a home*
 
 *Now assign a "directory" to home (`-d`) and "move" any existing contents to that directory (`-m`)*
 
-| **18** : `sudo usermod -d /home/ppurple -m pinkypurple`
+| **17** : `sudo usermod -d /home/ppurple -m pinkypurple`
 
-*Login as pinkypurple in the terminal*
+*Look at `/home` again*
 
-| **19** : `su pinkypurple`
+| **18** : `ls /home`
 
 *The directory still doesn't exist!*
 
-| **20** : `exit`
-
 *Create the home directory for pinkypurple*
 
-| **21** : `sudo mkdir /home/ppurple`
+| **19** : `sudo mkdir /home/ppurple`
+
+| **20** : `ls /home`
 
 *Login as pinkypurple in the terminal*
 
-| **22** : `su pinkypurple`
+| **21** : `su pinkypurple`
 
 *Now, you are logged in and executing commands as the user "pinkypurple"*
+
+*Go home*
+
+| **22** : `cd ` *(Note the space after `cd`)*
+
+*See where you are*
+
+| **23** : `pwd`
 
 *Try to create a file*
 
 | **23** : `touch newfile`
+
+*You can't create a file in your own home!*
 
 *The home directory exists, it was assigned as the home, but pinkypurple doesn't even own its own home!*
 
@@ -196,6 +204,8 @@ ___
 
 | **38** : `mkdir ownrship`
 
+| **39** : `touch ownrship/file`
+
 ### If you need to log back in as a "sudoer" who can use `sudo`
 >
 ___
@@ -205,79 +215,77 @@ ___
 >
 ___
 
-| **39** : `ls -l`
+| **40** : `ls -l`
 
-| **40** : `sudo chown pinkypink:pinkypink ownrship`
-
-*Note the error message*
-
-*Use `-R` for directories (must be CAPITAL with `chown`!)*
-
-| **41** : `sudo chown -R pinkypink:pinkypink ownrship`
+| **41** : `sudo chown pinkypink:pinkypink ownrship`
 
 | **42** : `ls -l`
 
-*Note a new owner of "ownrship"*
+| **43** : `ls -l ownrship/`
 
-| **43** : `rm youown`
+*Use `-R` for directories (must be CAPITAL with `chown`!)*
 
-*Note the error message because you don't own it anymore! Use `sudo`*
-
-| **44** : `sudo rm youown`
+| **44** : `sudo chown -R pinkypink:pinkypink ownrship`
 
 | **45** : `ls -l`
 
+*Note a new owner of "ownrship"*
+
+| **46** : `rm youown`
+
+*Note the error message because you don't own it anymore! Use `sudo`*
+
+| **47** : `sudo rm youown`
+
+| **48** : `ls -l`
+
 *Note `sudo` allows you to delete files and directories you don't own*
+
+*`sudo` acts as "root", meaning files created with `sudo` are owned by root*
 
 *Create a file owned by root*
 
-| **46** : `sudo touch iamroot`
+| **49** : `sudo touch iamroot`
 
-| **47** : `ls -l`
+| **50** : `ls -l`
 
 *Note root owns "iamroot"*
 
-| **48** : `rm iamroot`
+| **51** : `rm iamroot`
 
 *Note only root can delete the file "iamroot"*
 
-| **49** : `sudo rm iamroot`
+| **52** : `sudo rm iamroot`
 
-*Let's cleanup with `sudo` ...*
+*Let's cleanup after our mess with `sudo` ...*
 
-| **50** : `sudo rm theyown`
+| **53** : `sudo rm theyown`
 
-| **51** : `sudo rm -r ownrship`
+| **54** : `sudo rm -r ownrship theyown`
 
-| **52** : `ls -l`
+| **55** : `ls -l`
 
 *...also use `sudo` to delete the puppet users we created for this lesson...*
 
-| **53** : `sudo deluser pinkypink`
+| **56** : `sudo deluser pinkypink`
 
-*Note the message about the "pinkypink" group being empty, delete that group also*
-
-| **54** : `sudo delgroup pinkypink`
+*Note the message about the "pinkypink" group being empty, that's because `deluser` also deleted the group*
 
 *We don't want to use `userdel` because it is too minimum*
 
-| **55** : `sudo deluser pinkypurple`
-
-| **56** : `sudo delgroup pinkypurple`
+| **57** : `sudo deluser pinkypurple`
 
 *The users still have `/home` directories*
 
-| **57** : `ls /home`
+| **58** : `ls /home`
 
 *...remove them*
 
-| **58** : `sudo rm -r /home/pinkypink /home/ppurple`
+| **59** : `sudo rm -r /home/pinkypink /home/ppurple`
 
-| **59** : `ls /home`
+| **60** : `ls /home`
 
-| **60** : `cd ..`
-
-*"Own" everything in your home directory*
+*"Own" everything in your home directory, just to make sure all is well (always a good idea)*
 
 | **61** : `sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME`
 
