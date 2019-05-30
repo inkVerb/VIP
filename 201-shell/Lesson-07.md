@@ -3,7 +3,7 @@
 
 `cd ~/School/VIP/shell/201`
 
-#### *Compression cheat-sheet:* [VIP: tar-gzip-bzip2-zip-xz](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/tar-gzip-bzip2-zip-xz)
+#### [Compression Cheat Sheet](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Compression.md)
 
 ___
 

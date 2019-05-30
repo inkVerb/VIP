@@ -65,7 +65,7 @@ ___
 
 | **18** : `ls -l` *Note the new permissions (`-rw-rw-r--`) are the original permissions*
 
-| **19** : `chmod 774 whoown` *Note the new permissions (`-rwxrwxr--`) are the non-dangerous executable permissions*
+| **19** : `chmod 774 whoown`
 
 | **20** : `ls -l` *Note, that was what we had before: `-rwxrwxr--`*
 
