@@ -3,9 +3,9 @@
 
 `cd ~/School/VIP/shell/201`
 
-___
+#### *Compression cheat-sheet:* [VIP: tar-gzip-bzip2-zip-xz](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/tar-gzip-bzip2-zip-xz)
 
-*Compression cheat-sheet:* [VIP: tar-gzip-bzip2-zip-xz](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/tar-gzip-bzip2-zip-xz)
+___
 
 *First some prep*
 

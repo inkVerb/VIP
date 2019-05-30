@@ -3,6 +3,8 @@
 
 `cd ~/School/VIP/shell/201`
 
+#### [VIP/Cheet-Sheets: Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
+
 ___
 
 *Go to your home directory*
