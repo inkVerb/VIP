@@ -3,7 +3,11 @@
 
 `cd ~/School/VIP/shell/201`
 
+#### [Permissions Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Permissions.md)
+
 ___
+
+#### Permissions
 
 | **1** : `touch whoown iown theyown youown`
 
@@ -43,37 +47,35 @@ ___
 
 *You can also use numbers to set permissions, which is more normal for programmers*
 
-| **11** : `chmod 777 whoown` *Note the new permissions (`-rwxrwxrwx`)*
+| **11** : `chmod 777 whoown`
 
-| **12** : `ls -l`
+| **12** : `ls -l` *Note the new permissions (`-rwxrwxrwx`)*
 
-| **13** : `chmod 444 whoown` *Note the new permissions (`-r--r--r--`)*
+| **13** : `chmod 444 whoown`
 
-| **14** : `ls -l`
+| **14** : `ls -l` *Note the new permissions (`-r--r--r--`)*
 
 *Note `chmod ug+x` is "relative" while using `chmod` with numbers is absolute...*
 
 | **15** : `chmod ug+x whoown`
 
-| **16** : `ls -l`
+| **16** : `ls -l` *Note the permissions are now `-r-xr-xr--`, different from last time we used `chmod ug+x`*
 
-*The permissions are now `-r-xr-xr--`, different from last time we used `chmod ug+x`*
+| **17** : `chmod 664 whoown`
 
-| **17** : `chmod 664 whoown` *Note the new permissions (`-rw-rw-r--`) are the original permissions*
-
-| **18** : `ls -l`
+| **18** : `ls -l` *Note the new permissions (`-rw-rw-r--`) are the original permissions*
 
 | **19** : `chmod 774 whoown` *Note the new permissions (`-rwxrwxr--`) are the non-dangerous executable permissions*
 
-| **20** : `ls -l`
+| **20** : `ls -l` *Note, that was what we had before: `-rwxrwxr--`*
 
-*Note, that was what we had before: `-rwxrwxr--`*
+| **21** : `chmod 600 whoown`
 
-| **21** : `chmod 600 whoown` *Note the new permissions (`-rw-------`)*
-
-| **22** : `ls -l`
+| **22** : `ls -l` *Note the new permissions (`-rw-------`)*
 
 *Refer to this cheat-sheet for more about chmod:* [VIP/Cheet-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
+
+#### Hidden files
 
 | **23** : `touch .hideme .hidemealso .cantseeme`
 
@@ -104,7 +106,7 @@ ___
 - `ls -l` will output a list of files with information that includes the permissions that `chmod` changes
 - `ls -a` shows "All" files and directories, even those hidden
 - `ls -la` and `ls -al` combine the flags `-a` and `-l`
-- `.` at the beginning of a file or directory name make it "hidden"
+- `.` at the beginning of a file or directory name makes it "hidden"
 - Ctrl + H toggles hidden file and directory view in Nautilus
 ___
 
