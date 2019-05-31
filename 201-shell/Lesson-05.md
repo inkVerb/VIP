@@ -7,10 +7,6 @@
 
 ___
 
-*Prepare our "permissions" directory and enter it in one command*
-
-| **1** : `mkdir permissions && cd permissions`
-
 *WARNING: If you already have a user "pinkypink" and/or "pinkypurple", then you are very interesting and should there substitute those names for users not on your system.*
 
 ### This lesson requires a "sudoer" who can use `sudo`
@@ -26,55 +22,55 @@ ___
 
 *Look at the `/home` directory to see the users on the machine*
 
-| **2** : `ls /home`
+| **1** : `ls /home`
 
-| **3** : `sudo adduser pinkypink` *When prompted, Enter any simple password; press `Enter` for remaining questions.*
+| **2** : `sudo adduser pinkypink` *When prompted, Enter any simple password; press `Enter` for remaining questions.*
 
 *Look at `/home` again to see `pinkypink` has been added*
 
-| **4** : `ls /home`
+| **3** : `ls /home`
 
 *See what's at "home"*
 
-| **5** : `ls /home/pinkypink`
+| **4** : `ls /home/pinkypink`
 
 *Login as pinkypink in the GUI...*
 
 *..."Switch User", login as pinkypink, "Log Out", then return to this GUI session*
 
-| **6** : `ls /home/pinkypink`
+| **5** : `ls /home/pinkypink`
 
 *Note the user directories & settings were created at the first GUI login*
 
 *Login via the terminal*
 
-| **7** : `su pinkypink`
+| **6** : `su pinkypink`
 
-| **8** : `cd /home/pinkypink`
+| **7** : `cd /home/pinkypink`
 
 *Note the path is only `~` because `/home/pinkypink` is home for the user pinkypink*
 
-| **9** : `ls`
+| **8** : `ls`
 
 *Look at all the new directories*
 
-| **10** : `ls -a`
+| **9** : `ls -a`
 
 *Look at all the hidden directories, these are for settings and config files*
 
-| **11** : `exit`
+| **10** : `exit`
 
 *Note you are no longer in `/home/pinkypink`, but are back where you were when you logged in as pinkypink*
 
 ### II. `useradd`
 
-| **12** : `sudo useradd pinkypurple`
+| **11** : `sudo useradd pinkypurple`
 
 *No questions this time!*
 
 *Look at `/home` again, `pinkypurple` doesn't exist!*
 
-| **13** : `ls /home`
+| **12** : `ls /home`
 
 *Note `useradd` is simple and doesn't even create a password*
 
@@ -82,41 +78,47 @@ ___
 
 *Try to login as pinkypurple in the terminal*
 
-| **14** : `su pinkypurple`
+| **13** : `su pinkypurple`
 
 *You can't login because pinkypurple doesn't have a password!*
 
 *Set a password for pinkypurple*
 
-| **15** : `sudo passwd pinkypurple` Enter a simple password*
+| **14** : `sudo passwd pinkypurple` Enter a simple password*
 
 *Look at `/home` again*
 
-| **16** : `ls /home`
+| **15** : `ls /home`
 
 *Note pinkypurple doesn't even have a home*
 
 *Now assign a "directory" to home (`-d`) and "move" any existing contents to that directory (`-m`)*
 
-| **17** : `sudo usermod -d /home/ppurple -m pinkypurple`
+| **16** : `sudo usermod -d /home/ppurple -m pinkypurple`
 
 *Look at `/home` again*
 
-| **18** : `ls /home`
+| **17** : `ls /home`
 
 *The directory still doesn't exist!*
 
 *Create the home directory for pinkypurple*
 
-| **19** : `sudo mkdir /home/ppurple`
+| **18** : `sudo mkdir /home/ppurple`
 
-| **20** : `ls /home`
+| **19** : `ls /home`
 
 *Login as pinkypurple in the terminal*
 
-| **21** : `su pinkypurple`
+| **20** : `su pinkypurple`
 
 *Now, you are logged in and executing commands as the user "pinkypurple"*
+
+*See where you are*
+
+| **21** : `pwd`
+
+*Same as before you loggeded in*
 
 *Go home*
 
