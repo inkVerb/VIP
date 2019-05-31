@@ -120,7 +120,7 @@ ___
 
 *Go home*
 
-| **22** : `cd ` *(Note the space after `cd`)*
+| **22** : `cd` *(This takes you to your home directory, wherever it is)*
 
 *See where you are*
 
@@ -128,27 +128,41 @@ ___
 
 *Try to create a file*
 
-| **23** : `touch newfile`
+| **24** : `touch newfile`
 
-*You can't create a file in your own home!*
+*Note the error message, you can't create a file in your own home!*
 
-*The home directory exists, it was assigned as the home, but pinkypurple doesn't even own its own home!*
+*The home directory exists, it was assigned as home, but pinkypurple doesn't even own its own home!*
 
-| **24** : `exit`
+| **25** : `exit`
 
-*Let pinkypurple own its own home (this will be explained in the next section of this lesson)*
+*Let pinkypurple own its own home (this will be explained more in the next section of this lesson)*
 
-| **25** : `sudo chown -R pinkypurple:pinkypurple /home/ppurple`
+| **26** : `sudo chown -R pinkypurple:pinkypurple /home/ppurple`
 
 *Login as pinkypurple in the terminal*
 
-| **26** : `su pinkypurple`
+| **27** : `su pinkypurple`
+
+*See where you are*
+
+| **28** : `pwd`
+
+*It didn't remember where you were because this user doesn't even have settings!*
+
+| **29** : `cd`
+
+| **30** : `pwd`
+
+| **31** : `ls`
+
+*Nothing there*
 
 *Create a file*
 
-| **27** : `touch newfile`
+| **32** : `touch newfile`
 
-| **28** : `ls`
+| **33** : `ls`
 
 *Everything works, but the command prompt is unstyled because creating a user requires many steps*
 
@@ -163,33 +177,33 @@ ___
 
 *Now exit as pinkypurple*
 
-| **29** : `exit`
+| **34** : `exit`
 
 ### III. Permissions
 
-| **30** : `ls -l`
+| **35** : `ls -l`
 
 *Note the owner of "youown"*
 
-| **31** : `sudo chown pinkypink:pinkypink youown`
+| **36** : `sudo chown pinkypink:pinkypink youown`
 
-| **32** : `ls -l`
+| **37** : `ls -l`
 
 *Note a new owner of "youown"*
 
-| **33** : `sudo chown pinkypurple:pinkypink theyown`
+| **38** : `sudo chown pinkypurple:pinkypink theyown`
 
-| **34** : `ls -l`
+| **39** : `ls -l`
 
 *Note a new owner of "theyown", the user and group are different*
 
-| **35** : `chown pinkypurple:pinkypurple youown`
+| **40** : `chown pinkypurple:pinkypurple youown`
 
 *Note the error message because `chown` requires `sudo`*
 
-| **36** : `sudo chown pinkypurple:pinkypurple youown` *Enter your password*
+| **41** : `sudo chown pinkypurple:pinkypurple youown` *Enter your password*
 
-| **37** : `ls -l`
+| **42** : `ls -l`
 
 *"youown" now belongs to pinkypurple*
 
@@ -202,9 +216,9 @@ ___
 >
 ___
 
-| **38** : `mkdir ownrship`
+| **43** : `mkdir ownrship`
 
-| **39** : `touch ownrship/file`
+| **44** : `touch ownrship/file`
 
 ### If you need to log back in as a "sudoer" who can use `sudo`
 >
@@ -215,29 +229,29 @@ ___
 >
 ___
 
-| **40** : `ls -l`
+| **45** : `ls -l`
 
-| **41** : `sudo chown pinkypink:pinkypink ownrship`
+| **46** : `sudo chown pinkypink:pinkypink ownrship`
 
-| **42** : `ls -l`
+| **47** : `ls -l`
 
-| **43** : `ls -l ownrship/`
+| **48** : `ls -l ownrship/`
 
 *Use `-R` for directories (must be CAPITAL with `chown`!)*
 
-| **44** : `sudo chown -R pinkypink:pinkypink ownrship`
+| **49** : `sudo chown -R pinkypink:pinkypink ownrship`
 
-| **45** : `ls -l`
+| **50** : `ls -l`
 
 *Note a new owner of "ownrship"*
 
-| **46** : `rm youown`
+| **51** : `rm youown`
 
 *Note the error message because you don't own it anymore! Use `sudo`*
 
-| **47** : `sudo rm youown`
+| **52** : `sudo rm youown`
 
-| **48** : `ls -l`
+| **53** : `ls -l`
 
 *Note `sudo` allows you to delete files and directories you don't own*
 
@@ -245,69 +259,69 @@ ___
 
 *Create a file owned by root*
 
-| **49** : `sudo touch iamroot`
-
-| **50** : `ls -l`
-
-*Note root owns "iamroot"*
-
-| **51** : `rm iamroot`
-
-*Note only root can delete the file "iamroot"*
-
-| **52** : `sudo rm iamroot`
-
-*Let's cleanup after our mess with `sudo` ...*
-
-| **53** : `sudo rm theyown`
-
-| **54** : `sudo rm -r ownrship theyown`
+| **54** : `sudo touch iamroot`
 
 | **55** : `ls -l`
 
+*Note root owns "iamroot"*
+
+| **56** : `rm iamroot`
+
+*Note only root can delete the file "iamroot"*
+
+| **57** : `sudo rm iamroot`
+
+*Let's cleanup after our mess with `sudo` ...*
+
+| **58** : `sudo rm theyown`
+
+| **59** : `sudo rm -r ownrship theyown`
+
+| **60** : `ls -l`
+
 *...also use `sudo` to delete the puppet users we created for this lesson...*
 
-| **56** : `sudo deluser pinkypink`
+| **61** : `sudo deluser pinkypink`
 
 *Note the message about the "pinkypink" group being empty, that's because `deluser` also deleted the group*
 
 *We don't want to use `userdel` because it is too minimum*
 
-| **57** : `sudo deluser pinkypurple`
+| **62** : `sudo deluser pinkypurple`
 
 *The users still have `/home` directories*
 
-| **58** : `ls /home`
+| **63** : `ls /home`
 
 *...remove them*
 
-| **59** : `sudo rm -r /home/pinkypink /home/ppurple`
+| **64** : `sudo rm -r /home/pinkypink /home/ppurple`
 
-| **60** : `ls /home`
+| **65** : `ls /home`
 
 *"Own" everything in your home directory, just to make sure all is well (always a good idea)*
 
-| **61** : `sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME`
+| **66** : `sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME`
 
 ### IV. Sudoers
 
 *This is the list of users that can use `sudo`*
 
-| **62** : `sudo cat /etc/sudoers`
+| **67** : `sudo cat /etc/sudoers`
 
 *Viewing the "sudoers" file requires `sudo` permissions*
 
-| **63** : `cat /etc/sudoers`
+| **68** : `cat /etc/sudoers`
 
 *You may not see yourself, this handy little `grep` code shows all sudoers*
 
-| **64** : `grep -Po '^sudo.+:\K.*$' /etc/group`
+| **69** : `grep -Po '^sudo.+:\K.*$' /etc/group`
 
 *You can also `sudo` desktop GUI apps, but it can be dangerous...*
 
-| **65** : `sudo gedit` Look, then close right away, use Ctrl + C in the terminal*
+| **70** : `sudo gedit` Look, then close right away, use Ctrl + C in the terminal*
 
-| **66** : `sudo nautilus` Look, then close right away, use Ctrl + C in the terminal*
+| **71** : `sudo nautilus` Look, then close right away, use Ctrl + C in the terminal*
 
 
 ### IF needed, `exit` from the other "sudoer"
