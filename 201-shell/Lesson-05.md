@@ -295,7 +295,7 @@ ___
 
 | **63** : `ls /home`
 
-*...remove them*
+*...remove them both*
 
 | **64** : `sudo rm -r /home/pinkypink /home/ppurple`
 
