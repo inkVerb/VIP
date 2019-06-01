@@ -307,13 +307,13 @@ ___
 
 ### IV. Sudoers
 
-*This is the list of users that can use `sudo`*
+*This is the file with settings for "sudoers" (users that can use `sudo`)*
 
-| **67** : `sudo cat /etc/sudoers`
+| **67** : `cat /etc/sudoers`
 
 *Viewing the "sudoers" file requires `sudo` permissions*
 
-| **68** : `cat /etc/sudoers`
+| **68** : `sudo cat /etc/sudoers`
 
 *You may not see yourself, this handy little `grep` code shows all sudoers*
 
@@ -321,9 +321,9 @@ ___
 
 *You can also `sudo` desktop GUI apps, but it can be dangerous...*
 
-| **70** : `sudo gedit` Look, then close right away, use Ctrl + C in the terminal*
+| **70** : `sudo gedit` *Look, then close right away, use Ctrl + C in the terminal*
 
-| **71** : `sudo nautilus` Look, then close right away, use Ctrl + C in the terminal*
+| **71** : `sudo nautilus` *Look, then close right away, use Ctrl + C in the terminal*
 
 
 ### IF needed, `exit` from the other "sudoer"
