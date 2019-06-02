@@ -3,6 +3,7 @@
 
 `cd ~/School/VIP/shell/201`
 
+**AFTER** | **3** : `cd verb.ink`
 ___
 
 *Download the entire verb.ink page using wget*
@@ -26,8 +27,8 @@ ___
 | **7** : `ls`
 
 *Note it either output the content or returned an error*
-- `curl` needs an output file specified*
-- `wget` saves the file by the same name unless otherwise specified*
+- `curl` *needs an output file specified*
+- `wget` *saves the file by the same name unless otherwise specified*
 
 | **8** : `curl http://verb.ink > verb.ink.html`
 

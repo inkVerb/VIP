@@ -175,9 +175,9 @@ ___
 
 | **18** : `cd logs`
 
-*Send* STDOUT *(output) to a file with: `> OUTPUTFILE`
+*Send* STDOUT *(output) to a file with: `> OUTPUTFILE`*
 
-*Send* STDERR *(error output) to a file with: `2> OUTPUTFILE`
+*Send* STDERR *(error output) to a file with: `2> OUTPUTFILE`*
 
 | **19** : `ls dumbo`
 
@@ -185,31 +185,35 @@ ___
 
 | **20** : `ls dumbo 2> error.log`
 
+| **21** : `ls`
+
 *Not the same error message went into the file*
 
-| **21** : `gedit error.log`
+| **22** : `gedit error.log`
 
 *gedit: Reload error.log*
 
-| **22** : `ls dumbo 2>> error.log`
+| **23** : `ls dumbo 2>> error.log`
 
 *gedit: Reload error.log*
 
-| **23** : `ls >> normal.log`
+| **24** : `ls >> normal.log`
 
-| **24** : `gedit normal.log`
+| **25** : `ls`
+
+| **26** : `gedit normal.log`
 
 *Combine this into one command with: `> STDOUT 2> STDERR`*
 
-| **25** : `ls bozo >> normal.log 2>> error.log`
+| **27** : `ls bozo >> normal.log 2>> error.log`
 
 *gedit: Reload error.log*
 
 *Send STDERR (error output) into the nothingness with: `> /dev/null 2>&1`*
 
-| **26** : `ls dumbo > /dev/null 2>&1`
+| **28** : `ls dumbo > /dev/null 2>&1`
 
-| **27** : `ls`
+| **29** : `ls`
 
 *See! Nothing at all!*
 
@@ -219,43 +223,49 @@ ___
 
 #### Generate normal output
 
-*Outputs nothing:*
+*Outputs nothing to file:*
 
-| **28** : `ls 0> 0.log`
+| **30** : `ls 0> 0.log`
 
-| **29** : `cat 0.log`
+*Outputs STDOUT to file (present):*
 
-*Outputs STDOUT (present):*
+| **31** : `ls 1> 1.log`
 
-| **30** : `ls 1> 1.log`
-
-| **31** : `cat 1.log`
-
-*Outputs STDERR (absent):*
+*Outputs STDERR to file (absent):*
 
 | **32** : `ls 2> 2.log`
 
-| **33** : `cat 2.log`
+*Look at the three ".log" files created...*
+
+| **33** : `ls`
+
+*View each of them in gedit*
+
+| **34** : `gedit 0.log` *...nothing—because "0" is not relevant*
+
+| **35** : `gedit 1.log` *...file list—because it succeeded*
+
+| **36** : `gedit 2.log` *...nothing—because it succeeded*
 
 #### Generate error output
 
-*Outputs nothing:*
+*Outputs nothing to file:*
 
-| **34** : `ls bozo 0> 0.log`
+| **37** : `ls bozo 0> 0.log`
 
-| **35** : `cat 0.log`
+*gedit: Reload 0.log ...nothing—because "0" is not relevant*
 
-*Outputs STDOUT (absent):*
+*Outputs STDOUT to file (absent):*
 
-| **36** : `ls bozo 1> 1.log`
+| **38** : `ls bozo 1> 1.log`
 
-| **37** : `cat 1.log`
+*gedit: Reload 1.log ...nothing—because it failed*
 
-*Outputs STDERR (present):*
+*Outputs STDERR to file (present):*
 
-| **38** : `ls bozo 2> 2.log`
+| **39** : `ls bozo 2> 2.log`
 
-| **39** : `cat 2.log`
+*gedit: Reload 2.log ...error message—because it failed*
 
 ### Creat log files for normal STDOUT and error STDERR in Shell
 
@@ -263,7 +273,7 @@ ___
 
 *Note `exec` basically means "whatever the current command is", don't lose sleep over it, just see how it is used*
 
-| **41** : `./06-logging-1`
+| **41** : `../06-logging-1`
 
 | **42** : `ls`
 
@@ -273,7 +283,7 @@ ___
 
 *Note `> OUTFILE` is the same as `1> OUTFILE` because `>` & `1>` are for* STDOUT (`exit 1`) *while `2>` is always for* STDERR (`exit 2`)
 
-| **44** : `./06-logging-2`
+| **44** : `../06-logging-2`
 
 *gedit Reload: error.log*
 
@@ -281,17 +291,17 @@ ___
 
 | **45** : `gedit ../06-logging-3`
 
-| **46** : `./06-logging-3`
+| **46** : `../06-logging-3`
 
 *Note, the file all.log was created*
 
 | **47** : `gedit all.log`
 
-*Both* STDOUT *and* STDERR *went to the same file because this makes errors behave like normal output: `2>&1`
+*Both* STDOUT *and* STDERR *went to the same file because this makes errors behave like normal output: `2>&1`*
 
 | **48** : `gedit ../06-logging-4`
 
-| **49** : `./06-logging-4`
+| **49** : `../06-logging-4`
 
 | **50** : `ls`
 
@@ -303,7 +313,7 @@ ___
 
 | **52** : `gedit ../06-logging-5`
 
-| **53** : `./06-logging-5`
+| **53** : `../06-logging-5`
 
 | **54** : `ls`
 
@@ -317,15 +327,13 @@ ___
 
 | **56** : `gedit ../06-logging-6`
 
-| **57** : `./06-logging-6`
+| **57** : `../06-logging-6`
 
 | **58** : `ls`
 
 *Note the file exit-0.log was created*
 
 | **59** : `gedit exit-0.log`
-
-| **60** : `cd ..`
 
 *Moral of the story: always use `exit` with a number!*
 - `exit 0` everything is normal, no output  ( with `echo "something"` `>&0` ...if you are strange )
@@ -336,7 +344,11 @@ ___
 
 *FYI, you can create a read-only system log file for your script*
 
-| **61** : `gedit ../06-logging-7`
+| **60** : `gedit ../06-logging-7`
+
+*Finished*
+
+| **61** : `cd ..`
 
 ___
 
