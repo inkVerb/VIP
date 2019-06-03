@@ -187,27 +187,27 @@ ___
 
 *Note the owner of "youown"*
 
-| **36** : `sudo chown pinkypink:pinkypink youown`
+| **36** : `sudo chown pinkypink:pinkypink youown` *Enter your password*
 
 | **37** : `ls -l`
 
-*Note a new owner of "youown"*
+*Note a new owner of "youown" is pinkypink*
 
-| **38** : `sudo chown pinkypurple:pinkypink theyown`
+| **38** : `chown pinkypurple:pinkypurple youown`
 
-| **39** : `ls -l`
+*Note the error message because `chown` requires `sudo`, that's what happens if you don't use `sudo`*
 
-*Note a new owner of "theyown", the user and group are different*
+| **39** : `sudo chown pinkypurple:pinkypurple youown`
 
-| **40** : `chown pinkypurple:pinkypurple youown`
+| **40** : `ls -l`
 
-*Note the error message because `chown` requires `sudo`*
+*Note "youown" now belongs to pinkypurple*
 
-| **41** : `sudo chown pinkypurple:pinkypurple youown` *Enter your password*
+| **41** : `sudo chown pinkypurple:pinkypink theyown`
 
 | **42** : `ls -l`
 
-*"youown" now belongs to pinkypurple*
+*Note a new owner of "theyown", the user and group are different*
 
 ### IF you logged in as sudoer with `su SUDOER`, `exit` back to your original user
 >
@@ -237,15 +237,21 @@ ___
 
 | **47** : `ls -l`
 
+*Note a new owner of "ownrship"*
+
 | **48** : `ls -l ownrship/`
+
+*Note you own the directory "ownrship", but not the file inside*
 
 *Use `-R` for directories (must be CAPITAL with `chown`!)*
 
 | **49** : `sudo chown -R pinkypink:pinkypink ownrship`
 
-| **50** : `ls -l`
+| **50** : `ls -l ownrship/`
 
-*Note a new owner of "ownrship"*
+*Now you own "ownrship" and the file inside*
+
+*Let's cleanup these files you don't own so they don't cause problems later...*
 
 | **51** : `rm youown`
 
