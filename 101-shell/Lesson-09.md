@@ -23,11 +23,11 @@ ___
 
 | **6** : `find . -name "abc*"`
 
-*...for "Directories": `-d`*
+*...for "Directories": `-type d`*
 
 | **7** : `find . -type d -name "abc*"`
 
-*...for "Files": `-f`*
+*...for "Files": `-type f`*
 
 | **8** : `find . -type f -name "abc*"`
 
