@@ -94,13 +94,13 @@ ___
 
 *Note your answer does nothing, so echo the last exit code, which is the variable `$?`*
 
-| **21** : `echo $?`
+| **21** : `echo $?` *"yes" = `0`*
 
 *Change your answer this time*
 
 | **22** : `dialog --title "Quick Question" --yesno "Do you ink?" 5 17` *(answer no)*
 
-| **23** : `echo $?`
+| **23** : `echo $?` *"no" = `1`*
 
 *This belongs in a script to work properly*
 

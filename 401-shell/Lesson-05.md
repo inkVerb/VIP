@@ -11,11 +11,25 @@ ___
 
 | **1** : `touch iamhere`
 
-| **2** : `ls` The file exists: `iamhere`
+| **2** : `ls iamhere`
+
+*The file exists: `iamhere`*
+
+| **3** : `echo $?` *`$?` is "the last exit code"*
+
+*Exit code `0` means the last command was a success and returned STDOUT "true"*
+
+| **4** : `ls iamNOThere`
+
+| **5** : `echo $?`
+
+*Exit code `2` means the last command was a failure and returned with STDERR error*
+
+*Exit code `1` would mean the last command was a success and returned STDOUT "false"*
 
 *Edit this script to see the short version*
 
-| **3** : `gedit varexit`
+| **6** : `gedit varexit`
 
 *It should look like this:*
 
@@ -45,13 +59,13 @@ echo "$? notacommand is not a real command, so exit code \"127\""
 
 *Run it and watch carefully*
 
-| **4** : `./varexit`
+| **7** : `./varexit`
 
 ### II. `shift` Argument Variable Numbers
 
 *Edit this script to see the short version*
 
-| **5** : `gedit varshift`
+| **8** : `gedit varshift`
 
 *It should look like this:*
 
@@ -92,7 +106,7 @@ echo "After shift 3
 
 *Run it and watch carefully*
 
-| **6** : `./varshift one two three four five six`
+| **9** : `./varshift one two three four five six`
 
 *Note the `$0` variable does not shift,* ***only argument variables***
 
@@ -107,7 +121,7 @@ echo "After shift 3
 
 *Edit this script to see the short version*
 
-| **7** : `gedit varargs`
+| **10** : `gedit varargs`
 
 *It should look like this:*
 
@@ -135,13 +149,13 @@ $*
 
 *Run it and watch carefully*
 
-| **8** : `./varargs one two three four five six`
+| **11** : `./varargs one two three four five six`
 
 *Now, we will embed this into another script and pass those arguments via `$@` & `$*` ...*
 
 *Edit this script to see the short version*
 
-| **9** : `gedit varargsvar`
+| **12** : `gedit varargsvar`
 
 *It should look like this:*
 
@@ -167,7 +181,7 @@ Arguments entered via \$(echo \$*) ..."
 
 *Run it and watch carefully*
 
-| **10** : `./varargsvar one two three four five six`
+| **13** : `./varargsvar one two three four five six`
 
 *...No matter how we run it, `$@` & `$*` basically behave the same.*
 
@@ -175,7 +189,7 @@ Arguments entered via \$(echo \$*) ..."
 
 *Edit this script to see the short version*
 
-| **11** : `gedit vargcount`
+| **14** : `gedit vargcount`
 
 *It should look like this:*
 
@@ -193,13 +207,13 @@ $#"
 
 *Run it and watch carefully*
 
-| **12** : `./vargcount one two three four five six`
+| **15** : `./vargcount one two three four five six`
 
 ### V. `unset` Variables
 
 *Edit this script to see the short version*
 
-| **13** : `gedit varunset`
+| **16** : `gedit varunset`
 
 *It should look like this:*
 
@@ -246,13 +260,13 @@ myShiftedCount = $myShiftedCount
 "
 ```
 
-| **14** : `./varunset one two three four five six`
+| **17** : `./varunset one two three four five six`
 
 ### VI. Variables in `${bracketts}`
 
 *Edit this script to see the short version*
 
-| **15** : `gedit varbrackett-sh`
+| **18** : `gedit varbrackett-sh`
 
 *It should look like this:*
 
@@ -291,13 +305,13 @@ echo "${myVAR}"
 ```
 *Run it and watch carefully*
 
-| **16** : `./varbrackett-sh one two three four five six seven eight nine ten eleven twelve`
+| **19** : `./varbrackett-sh one two three four five six seven eight nine ten eleven twelve`
 
 *Again, but with **BASH**...*
 
 *Edit this script to see the short version*
 
-| **17** : `gedit varbrackett-bash`
+| **20** : `gedit varbrackett-bash`
 
 *It should look like this:*
 
@@ -337,13 +351,13 @@ echo "${myVAR}"
 
 *Run it and watch carefully*
 
-| **18** : `./varbrackett-bash one two three four five six seven eight nine ten eleven twelve`
+| **21** : `./varbrackett-bash one two three four five six seven eight nine ten eleven twelve`
 
 ### VII. 'export' variables
 
 *Edit these scripts*
 
-| **19** : `gedit variable-no-export`
+| **22** : `gedit variable-no-export`
 
 *They should look like this:*
 
@@ -368,11 +382,11 @@ echo "${MYVAR}"
 
 *Run the first script and watch carefully*
 
-| **20** : `./variable-no-export`
+| **23** : `./variable-no-export`
 
 *Edit this script to see the short version*
 
-| **21** : `gedit variable-yes-export`
+| **24** : `gedit variable-yes-export`
 
 *It should look like this:*
 
@@ -386,7 +400,7 @@ export MYVAR="Hello world!"
 
 *Run it and watch carefully*
 
-| **22** : `./variable-yes-export`
+| **25** : `./variable-yes-export`
 
 *Note a variable only carries into another script if declared with: `export`*
 ___
