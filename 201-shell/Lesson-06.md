@@ -26,9 +26,9 @@ ___
 
 | **7** : `ls`
 
-*Note it either output the content or returned an error*
-- `curl` *needs an output file specified*
-- `wget` *saves the file by the same name unless otherwise specified*
+*Note the error*
+- `curl` *"opens" files; to save, specify an output file*
+- `wget` *saves files; specify otherwise for a different file name*
 
 | **8** : `curl http://verb.ink > verb.ink.html`
 
@@ -174,7 +174,7 @@ ___
 
 - `wget` simply downloads and saves a file from a Web address
 - `wget -O filename` specifies a "Save as..." filename for the download
-- `curl` dumps a Web address's content as raw output
+- `curl` opens a Web address's content as raw output
 - `curl -L` may be needed to follow links, otherwise it won't (`wget` will)
 - `curl http://web-address > save-as-filename` is how `curl` saves the downloaded file
 - `git` is GitHub's app that syncs and downloads a GitHub repo (files) on your local computer with the GitHub repo (on the GitHub website)
