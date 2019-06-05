@@ -3,6 +3,8 @@
 
 `cd ~/School/VIP/shell/201`
 
+`wget -O vip.zip https://github.com/inkVerb/vip/archive/master.zip`
+
 ___
 
 *Look at the files we will use*
