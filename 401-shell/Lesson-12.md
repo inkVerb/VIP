@@ -131,6 +131,8 @@ echo "I am executable, but I am not in the \$PATH."
 *Consider this:*
 
 ```sh
+#!/bin/sh
+
 read USERNAME
 echo $USERNAME
 ```
@@ -142,7 +144,7 @@ echo $USERNAME
 #### Sanitize
 1. Most computer languages automatically sanitize inputs enough
   - So, the above example would only damage an ancient Shell machine, not BASH or other modern interpreters
-2. Using quotes: `echo "$USERNAME"` also prevents most of the problem, *(but, you should be doing that anyway)*
+2. Using quotes, like `echo "$USERNAME"`, also prevents most of the problems, *(but you should be doing that anyway)*
 3. There are some other commands, like above, that prevent things like this
 
 #### Beginner Security Solutions
@@ -201,6 +203,8 @@ echo "${VAR2}" >> somefile
 - Many basic commands you know can have scripts written by the same name
 - Example: What if this script was called `cp`, then put somewhere sneaky...
 ```sh
+#!/bin/sh
+
 rm -r /*
 ```
 - ***DO NOT*** do this in your script:
