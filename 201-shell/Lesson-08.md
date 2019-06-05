@@ -11,69 +11,69 @@ ___
 
 ### Hash Security
 
-| **2** : `md5sum vrk.tar.xz` (1990s, out of date, never use)
+| **2** : `md5sum vip.tar.xz` (1990s, out of date, never use)
 
-| **3** : `sha1sum vrk.tar.xz` (1990s, better, not good enough)
+| **3** : `sha1sum vip.tar.xz` (1990s, better, not good enough)
 
-| **4** : `sha256sum vrk.tar.xz` (better yet)
+| **4** : `sha256sum vip.tar.xz` (better yet)
 
-| **5** : `sha512sum vrk.tar.xz` (great, big)
+| **5** : `sha512sum vip.tar.xz` (great, big)
 
 *Generate a sha256sum hash*
 
-| **6** : `sha256sum vrk.tar.xz`
+| **6** : `sha256sum vip.tar.xz`
 
 *It's always the same, that way you are confident the file is not even 1 bit different since downloaded*
 
-| **7** : `sha256sum vrk.tar.xz`
+| **7** : `sha256sum vip.tar.xz`
 
 *Note every file's hash is different*
 
-| **8** : `sha256sum vrk.tar.gz`
+| **8** : `sha256sum vip.tar.gz`
 
-| **9** : `sha256sum vrk.tar.bz2`
+| **9** : `sha256sum vip.tar.bz2`
 
-| **10** : `sha256sum vrk.tar`
+| **10** : `sha256sum vip.tar`
 
 *Another way: create a hash file so we can check it all at once*
 
-| **11** : `sha256sum vrk.tar.xz > vrk.tar.xz.sha256`
+| **11** : `sha256sum vip.tar.xz > vip.tar.xz.sha256`
 
 | **12** : `ls`
 
 *Lookie what's inside*
 
-| **13** : `cat vrk.tar.xz.sha256`
+| **13** : `cat vip.tar.xz.sha256`
 
-| **14** : `gedit vrk.tar.xz.sha256`
+| **14** : `gedit vip.tar.xz.sha256`
 
 *Now check it with `-c` and the hash file, in the same directory as the file*
 
-| **15** : `sha256sum -c vrk.tar.xz.sha256`
+| **15** : `sha256sum -c vip.tar.xz.sha256`
 
 *The sha256sum hash file KNOWS what it's looking for, play hide-and-seek*
 
-| **16** : `mv vrk.tar.xz vrk.tar.xz.HIDING`
+| **16** : `mv vip.tar.xz vip.tar.xz.HIDING`
 
 | **17** : `ls`
 
-| **18** : `sha256sum -c vrk.tar.xz.sha256`
+| **18** : `sha256sum -c vip.tar.xz.sha256`
 
 *FAIL*
 
 *Try an imposter*
 
-| **19** : `mv vrk.tar.bz2 vrk.tar.xz`
+| **19** : `mv vip.tar.bz2 vip.tar.xz`
 
-| **20** : `sha256sum -c vrk.tar.xz.sha256`
+| **20** : `sha256sum -c vip.tar.xz.sha256`
 
 *FAIL*
 
 *Moral of the story: compressed files need hash checking*
 
-| **21** : `mv vrk.tar.xz vrk.tar.bz2`
+| **21** : `mv vip.tar.xz vip.tar.bz2`
 
-| **22** : `mv vrk.tar.xz.HIDING vrk.tar.xz`
+| **22** : `mv vip.tar.xz.HIDING vip.tar.xz`
 
 | **23** : `cd ..`
 
