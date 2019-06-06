@@ -21,9 +21,9 @@ ___
 
 | **4** : `ls -l`
 
-*What a strange name, "vip-master"*
+*What a strange name, "VIP-master"*
 
-| **5** : `mv vip-master vip`
+| **5** : `mv VIP-master vip`
 
 | **6** : `ls -l`
 
@@ -124,14 +124,14 @@ ___
 | **35** : `tar -cf - vip | xz > vip.tar.xz`
 
 *Breakdown:*
-- `-c` "Create" something new*
-- `-f` "File" output filename will be specified*
-- `-` placeholder where the output tarball filename normally goes, i.e. `vip.tar`
-- `vip` the tarball content source, here one directory, being tarred up*
-- `|` "pipe" (send) that output to whatever comes next*
-- `xz` the next command, using `xz` compression*
-- `>` ...to an output file...*
-- `vip.tar.xz` is the actual output file*
+- `-c` *"Create" something new*
+- `-f` *"File" output filename will be specified*
+- `-` *placeholder where the output tarball filename normally goes, i.e. `vip.tar`*
+- `vip` *the tarball content source, here one directory, being tarred up*
+- `|` *"pipe" (send) that output to whatever comes next*
+- `xz` *the next command, using `xz` compression*
+- `>` *...to an output file...*
+- `vip.tar.xz` *is the actual output file*
 
 | **36** : `rm vip.tar.xz`
 
@@ -151,7 +151,7 @@ ___
 
 ___
 
-### tar Slightly Stronger Compression Level 9
+### `tar`: Slightly Stronger Compression Level 9
 
 | **40** : `ls -l`
 
