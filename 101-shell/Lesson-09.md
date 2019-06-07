@@ -15,6 +15,8 @@ ___
 
 *Note the error message*
 
+*Specify to search somewhere; we'll search "here" (`.` = here)*
+
 | **4** : `find . "abc"`
 
 *Note it found everything, it needs: `-name`*

@@ -41,7 +41,7 @@ ___
 
 *You can see the `vip` directory*
 
-*This time, unzip it to the `compress` directory*
+*This time use `-d` to unzip it to the `compress` directory*
 
 | **11** : `unzip vip.zip -d compress/`
 
@@ -115,9 +115,11 @@ ___
 
 ### Combine tar & xz into one command
 
-| **33** : `rm vip.tar.xz`
+| **33** : `rm vip.tar.xz vip.tar`
 
 | **34** : `ls -l`
+
+*Note we will *
 
 *Note without `-v` for "Verbose" it is nice and quiet*
 
@@ -169,7 +171,7 @@ ___
 
 | **43** : `gzip vip.tar > vip.tar.gz`
 
-*Answer "y" to overwrite, though the file doesn't already exist (this is another drawback of `gzip`*)*
+*Answer "y" to overwrite, though the file doesn't already exist (this is another drawback of `gzip`)*
 
 | **44** : `ls -l`
 
@@ -195,9 +197,9 @@ ___
 
 | **51** : `rm vip.tar`
 
-*Note `-d` is for "Decompress"*
-
 | **52** : `ls -l`
+
+*Note `-d` is for "Decompress"*
 
 | **53** : `gzip -d vip.tar.gz`
 
@@ -253,22 +255,21 @@ ___
 
 *"Again!" — Baby Dinosaur*
 
-| **67** : `rm -r vip`
-
-| **68** : `ls -l`
+| **67** : `rm -r vip && ls -l`
 
 *(Oh, and the dash `-` is optional with `tar` options)*
 
-| **69** : `tar xf vip.tar.bz2`
+| **68** : `tar xf vip.tar.bz2`
 
-| **70** : `ls -l`
+| **69** : `ls -l`
 
 *Now with `xz`*
 
-| **71** : `rm -r vip && ls -l`
+| **70** : `rm -r vip && ls -l`
 
-| **72** : `tar xf vip.tar.xz && ls -l`
+| **71** : `tar xf vip.tar.xz`
 
+| **72** : `ls -l`
 
 ___
 
