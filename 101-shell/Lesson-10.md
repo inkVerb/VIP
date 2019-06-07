@@ -5,31 +5,35 @@
 
 ___
 
+*Look inside the "abc" directory in the Nautilus file explorer*
+
 | **1** : `echo "jjj" > abc/yoyo`
 
 | **2** : `echo "Apple Jay" > abc/jayapple`
 
+| **3** : `gedit abc/*`
+
 *Search contents inside files with `grep`*
 
-| **3** : `grep jj *`
+| **4** : `grep jj *`
 
 *Note the error about directories*
 
-| **4** : `grep jj *.*`
+| **5** : `grep jj *.*`
 
 *Like `cp -r`, `rm -r`, and `chown -R`, `grep` also needs `-R` with directories*
 
-| **5** : `grep -R jj *`
+| **6** : `grep -R jj *`
 
 *...no error*
 
-| **6** : `grep -R Apple *`
+| **7** : `grep -R Apple *`
 
-| **7** : `grep -R Apples like *`
+| **8** : `grep -R Apples like *`
 
 *Notice the errors, you must "quote" multiple words with spaces*
 
-| **8** : `grep -R "Apples like" *`
+| **9** : `grep -R "Apples like" *`
 
 ___
 
