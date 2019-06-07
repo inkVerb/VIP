@@ -119,7 +119,7 @@ ___
 
 | **34** : `ls -l`
 
-*Note we will *
+*Now we will create a .*
 
 *Note without `-v` for "Verbose" it is nice and quiet*
 
@@ -155,9 +155,11 @@ ___
 
 ### `tar`: Slightly Stronger Compression Level 9
 
-| **40** : `ls -l`
+*Some quick prep...*
 
-*Note `-9` is the compression level*
+| **40** : `cp ../vip.tar . && ls -l`
+
+*Note `-9` is the compression level...*
 
 | **41** : `xz -9 -c vip.tar > vip.9.tar.xz`
 
