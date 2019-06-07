@@ -11,6 +11,8 @@ ___
 
 | **2** : `echo "Apple Jay" > abc/jayapple`
 
+*Take a peek at those just-made files*
+
 | **3** : `gedit abc/*`
 
 *Search contents inside files with `grep`*
