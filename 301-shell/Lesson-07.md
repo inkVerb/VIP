@@ -12,13 +12,9 @@ ___
 
 | **1** : `gedit 07-while-count-read`
 
-| **2** : `./07-while-count-read`
+| **2** : `./07-while-count-read` *Enter nothing, then enter letters, then enter nothing*
 
-*Enter nothing, then enter letters, then enter nothing*
-
-| **3** : `./07-while-count-read`
-
-*Enter a high number, such as 9001*
+| **3** : `./07-while-count-read` *Enter a high number, such as 9001*
 
 ### II. Read files & types, then check
 
@@ -52,15 +48,15 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 *Note the file "07-source" is executable, but "07-sourced" is not*
 
-*And "07-sourced" has no `#!/bin/sh` declaration*
+*And "07-sourced" has no `#!/bin/bash` declaration*
 
 | **11** : `./07-source`
 
-*Uncomment the line with `. ~/School/VIP/shell/301/07-sourced` and run it again*
+*Uncomment lines 24 & 27 and run it again*
 
 | **12** : `./07-source`
 
-*It can be good practice to include the shebang* (`#!/bin/sh`) *in any "included" files for formatting purposes*
+*It can be good practice to include the shebang-BASH (`#!/bin/bash`) in any "included" files so they are easier to see in text editors*
 
 ### IV. `function()`
 

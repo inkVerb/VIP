@@ -48,7 +48,7 @@ ___
 
 *Look for your entry...*
 
-| **5** : `journalctl -r` Q to quit*
+| **5** : `journalctl -r` *Q to quit*
 
 *Use `-t SOME_TAG` to add your own "tag"*
 
@@ -56,13 +56,13 @@ ___
 
 *Now search for only that tag...*
 
-| **7** : `journalctl -t dazzleTag` Q to quit*
+| **7** : `journalctl -t dazzleTag` *Q to quit*
 
 *Set a "priority" level at "info"...*
 
 | **8** : `logger -p info "I logged this info mere moments ago."`
 
-*Look for the "info" priority* (`-p info`) *in the most recent* (`-r`) *logs first...*
+*Look for the "info" priority (`-p info`) in the most recent (`-r`) *logs first...*
 
 | **9** : `journalctl -r -p info` Q to quit*
 
@@ -72,12 +72,13 @@ ___
 
 | **10** : `logger -p 6 "I also logged this number mere moments ago."`
 
-| **11** : `journalctl -r -p 6` Q to quit*
+| **11** : `journalctl -r -p 6` *Q to quit*
 
 *Also use `-p` with a "facility" before the "priority":*
 
 - Usage: `-p FACILITY.PRIORITY`
-- Example: `-p local0.alert` = `-p local0.1` Note `local0` = `16`, `alert` = `1` (see below)*
+- Example: `-p local0.alert` = `-p local0.1`
+  - `local0` = `16`, `alert` = `1` *(see below)*
 
 *Note numbers don't work to enter the facility via `logger`*
 
@@ -114,12 +115,12 @@ ___
 
 | **12** : `logger -p daemon.debug "I a text debug daemon."`
 
-| **13** : `journalctl -ro verbose` Q to quit*
+| **13** : `journalctl -ro verbose` *Q to quit*
 
 *Look for:*
 
-- `PRIORITY` (7 = debug)*
-- `SYSLOG_FACILITY` (3 = daemon)*
+- `PRIORITY` *(7 = debug)*
+- `SYSLOG_FACILITY` *(3 = daemon)*
 
 *Now do the same thing using the nubmers; facility "user" (1) and priority "info" (6)...*
 
@@ -129,12 +130,12 @@ ___
 
 | **14** : `logger -p user.6 "I a text debug daemon."`
 
-| **15** : `journalctl -ro verbose` Q to quit*
+| **15** : `journalctl -ro verbose` *Q to quit*
 
 *Look for:*
 
-- `PRIORITY` (6 = info)*
-- `SYSLOG_FACILITY` (1 = user)*
+- `PRIORITY` *(6 = info)*
+- `SYSLOG_FACILITY` *(1 = user)*
 
 *This is just cool:*
 
@@ -281,7 +282,7 @@ ___
 
 | **43** : `gedit ../06-logging-2`
 
-*Note `> OUTFILE` is the same as `1> OUTFILE` because `>` & `1>` are for* STDOUT (`exit 1`) *while `2>` is always for* STDERR (`exit 2`)
+*Note `> OUTFILE` is the same as `1> OUTFILE` because `>` & `1>` are for STDOUT (`exit 1`) while `2>` is always for STDERR (`exit 2`)*
 
 | **44** : `../06-logging-2`
 
@@ -336,10 +337,10 @@ ___
 | **59** : `gedit exit-0.log`
 
 *Moral of the story: always use `exit` with a number!*
-- `exit 0` everything is normal, no output  ( with `echo "something"` `>&0` ...if you are strange )
+- `exit 0` everything is normal, no output *(with `echo "something"` `>&0` ...if you are strange)*
 - `exit 1` everything is normal, with STDOUT
 - `exit 2` something is wrong, with STDERR error messages
-- `exit 3-9` you are cool and make your own exit messages ( with `echo "something"` `>&3`-`>&9` )
+- `exit 3-9` you are cool and make your own exit messages *(with `echo "something"` `>&3`-`>&9`)*
 - `exit` you are lazy and something is wrong with YOU!
 
 *FYI, you can create a read-only system log file for your script*
