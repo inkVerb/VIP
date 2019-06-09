@@ -13,7 +13,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **A1** : `su USERNAME` input the password*
+> | **A1** : `su USERNAME` *input the password*
 ___
 
 ### *Note `exit` & `journalctl` are used for logs*
@@ -64,7 +64,7 @@ ___
 
 *Look for the "info" priority (`-p info`) in the most recent (`-r`) logs first...*
 
-| **9** : `journalctl -r -p info` Q to quit*
+| **9** : `journalctl -r -p info` *Q to quit*
 
 *Note your "dazzleTag" log also shows up because "info" is the default priority for `logger`*
 
