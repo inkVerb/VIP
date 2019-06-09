@@ -62,7 +62,7 @@ ___
 
 | **8** : `logger -p info "I logged this info mere moments ago."`
 
-*Look for the "info" priority (`-p info`) in the most recent (`-r`) *logs first...*
+*Look for the "info" priority (`-p info`) in the most recent (`-r`) logs first...*
 
 | **9** : `journalctl -r -p info` Q to quit*
 
