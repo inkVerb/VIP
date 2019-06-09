@@ -283,11 +283,11 @@ ___
 
 *Remember `tar cf` creates the tarball*
 
-### Peek inside any tarball with `tar tf`
+### Take a peek inside any tarball with `tar tf`
 
 | **73** : `ls -l`
 
-*Look at what's in the tarballs (notice the speed)*
+*Take a peek at what's in the tarballs (notice the speed of each)*
 
 | **74** : `tar tf vip.tar`
 
@@ -331,7 +331,7 @@ ___
 
 | **88** : `tar cf files.tar file1 file2 cpdir`
 
-*Have a look inside*
+*Take a peek inside*
 
 | **89** : `tar tf files.tar`
 

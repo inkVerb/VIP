@@ -192,26 +192,35 @@ d9="9"
 d10="10"
 
 # Below, Shell will figure out that the values are integers, so it can do arithmetic with them:
-echo 1 + 2 =  `expr $_1 + $_2`
-echo 4 x 7 =  `expr $_4 \* $_7`
-echo 9 - 3 =  `expr $_9 - $_3`
-echo 10 / 5 = `expr $_10 / $_2`
-echo 1 + 2 =  `expr $s1 + $s2`
-echo 4 x 7 =  `expr $s4 \* $s7`
-echo 9 - 3 =  `expr $s9 - $s3`
-echo 10 / 5 = `expr $s10 / $s2`
-echo 1 + 2 =  `expr $d1 + $d2`
-echo 4 x 7 =  `expr $d4 \* $d7`
-echo 9 - 3 =  `expr $d9 - $d3`
-echo 10 / 5 = `expr $d10 / $d2`
+echo "First... all numbers as integers..."
+echo "No quote variables..."
+echo "1 + 2 =  $(expr $_1 + $_2)"
+echo "4 x 7 =  $(expr $_4 \* $_7)"
+echo "9 - 3 =  $(expr $_9 - $_3)"
+echo "10 / 2 = $(expr $_10 / $_2)"
+echo "Single quote variables..."
+echo "1 + 2 =  $(expr $s1 + $s2)"
+echo "4 x 7 =  $(expr $s4 \* $s7)"
+echo "9 - 3 =  $(expr $s9 - $s3)"
+echo "10 / 2 = $(expr $s10 / $s2)"
+echo "Double quote variables..."
+echo "1 + 2 =  $(expr $d1 + $d2)"
+echo "4 x 7 =  $(expr $d4 \* $d7)"
+echo "9 - 3 =  $(expr $d9 - $d3)"
+echo "10 / 2 = $(expr $d10 / $d2)"
 
 # Below, Shell will figure out that the values of 5, 6, and 8 are strings, not integers, and thus report an error:
-echo eight - 3 = `expr $_8 - $_3`
-echo five \* six = `expr $_5 \* $_6`
-echo eight - 3 = `expr $s8 - $s3`
-echo five \* six = `expr $s5 \* $s6`
-echo eight - 3 = `expr $d8 - $d3`
-echo five \* six = `expr $d5 \* $d6`
+echo "
+And now... \"five\", \"six\", and \"eight\" as strings, not integers..."
+echo "No quote variables..."
+echo "eight - 3 = $(expr $_8 - $_3)"
+echo "five \* six = $(expr $_5 \* $_6)"
+echo "Single quote variables..."
+echo "eight - 3 = $(expr $s8 - $s3)"
+echo "five \* six = $(expr $s5 \* $s6)"
+echo "Double quote variables..."
+echo "eight - 3 = $(expr $d8 - $d3)"
+echo "five \* six = $(expr $d5 \* $d6)"
 ```
 
 *Run it and watch carefully*
