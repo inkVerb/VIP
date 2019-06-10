@@ -56,7 +56,7 @@ ___
 *gedit: Reload tab.file*
 
 *Note the tab*
-
+backslash
 | **13** : `sed -i "s/\t no/no/" tab.file`
 
 *gedit: Reload tab.file*
@@ -85,7 +85,7 @@ ___
 - These special characters might be called "**operators**", but the word "**operator**" is more often used to describe special characters used in math functions
 - If you want to use a special character literally, without it "working", it must be "escaped" AKA "quoted"
 - These often include: `$`, `^`, `/`, `?`, `*`, `.`, among others
-- A common "quote" character is the "backslash" `\`
+- A common "quote" character is the "backslash" (`\`)
 - "Backslash" (`\`) also works with letters to define non-characters in text
   - `\n` = "new line"
   - `\t` = "tab"
