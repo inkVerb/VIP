@@ -21,21 +21,19 @@ ___
 
 *Note the error about directories*
 
-| **5** : `grep jj *.*`
-
 *Like `cp -r`, `rm -r`, and `chown -R`, `grep` also needs `-R` with directories*
 
-| **6** : `grep -R jj *`
+| **5** : `grep -R jj *`
 
 *...no error*
 
-| **7** : `grep -R Apple *`
+| **6** : `grep -R Apple *`
 
-| **8** : `grep -R Apples like *`
+| **7** : `grep -R Apples like *`
 
 *Notice the errors, you must "quote" multiple words with spaces*
 
-| **9** : `grep -R "Apples like" *`
+| **8** : `grep -R "Apples like" *`
 
 ___
 
