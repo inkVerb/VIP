@@ -41,7 +41,7 @@ ___
 
 *gedit: Reload money.file*
 
-*Sometimes we need BOTH 'single quotes' AND the `\` backslash quote/escape character!*
+*Sometimes we need BOTH 'single quotes' AND the "backslash" (`\`) quote/escape character!*
 
 *Use `\` with letters to work with non-characters*
 
