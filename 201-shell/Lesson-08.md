@@ -73,11 +73,11 @@ ___
 
 *Moral of the story: compressed files need hash checking*
 
-| **21** : `mv vip.tar.xz vip.tar.bz2`
+*We're done, cleanup...*
 
-| **22** : `mv vip.tar.xz.HIDING vip.tar.xz`
+| **21** : `mv vip.tar.xz vip.tar.bz2 && mv vip.tar.xz.HIDING vip.tar.xz`
 
-| **23** : `cd ..`
+| **22** : `cd ..`
 
 ___
 
