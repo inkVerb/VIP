@@ -31,41 +31,49 @@ ___
 
 *gedit: Reload money.file*
 
-| **8** : `sed -i 's/\$/@/g' money.file`
+| **8** : `sed -i 's/$/@/g' money.file`
 
 *gedit: Reload money.file*
+
+*Note even with 'single quotes' it still doesn't work...*
+
+| **9** : `sed -i 's/\$/@/g' money.file`
+
+*gedit: Reload money.file*
+
+*Sometimes we need BOTH 'single quotes' AND the `\` backslash quote/escape character!*
 
 *Use `\` with letters to work with non-characters*
 
 *Note `\t` = tab, `\n` = new line*
 
-| **9** : `echo "no tab one line" > tab.file`
+| **10** : `echo "no tab one line" > tab.file`
 
-| **10** : `gedit tab.file`
+| **11** : `gedit tab.file`
 
-| **11** : `sed -i "s/no/\t no/" tab.file`
+| **12** : `sed -i "s/no/\t no/" tab.file`
 
 *gedit: Reload tab.file*
 
 *Note the tab*
 
-| **12** : `sed -i "s/\t no/no/" tab.file`
+| **13** : `sed -i "s/\t no/no/" tab.file`
 
 *gedit: Reload tab.file*
 
 *Note the tab is gone*
 
-| **13** : `sed -i "s/one/one\n/" tab.file`
+| **14** : `sed -i "s/one/one\n/" tab.file`
 
 *gedit: Reload tab.file*
 
-| **14** : `sed -i "s/one\n/one/g" tab.file`
+| **15** : `sed -i "s/one\n/one/g" tab.file`
 
 *gedit: Reload tab.file*
 
 *Note the line was not removed, use `-z` so `sed` is not confused*
 
-| **15** : `sed -i -z "s/one\n/one/g" tab.file`
+| **16** : `sed -i -z "s/one\n/one/g" tab.file`
 
 *gedit: Reload tab.file*
 
@@ -78,7 +86,11 @@ ___
 - If you want to use a special character literally, without it "working", it must be "escaped" AKA "quoted"
 - These often include: `$`, `^`, `/`, `?`, `*`, `.`, among others
 - A common "quote" character is the "backslash" `\`
-- You can get a more in-depth information here: [find-grep-sed-rename.md](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/find-grep-sed-rename.md)
+- "Backslash" (`\`) also works with letters to define non-characters in text
+  - `\n` = "new line"
+  - `\t` = "tab"
+- There is much more to working with special characters
+  - You can get a more in-depth information here: [find-grep-sed-rename.md](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/find-grep-sed-rename.md)
 
 ___
 
