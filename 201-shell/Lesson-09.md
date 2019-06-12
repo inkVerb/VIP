@@ -7,6 +7,26 @@
 
 ___
 
+### File sizes
+
+i. Watch this video & notice the numbers: [RGB](https://www.youtube.com/watch?v=HX46ILgwTNk)
+- Top row: Binary (0&1)
+- Mid Row: Decimal (0–9)
+- Bottom Row: Hexadecimal (0-F)
+
+ii. bites, etc
+- A single binary digit (0 or 1) = **1 bit**
+- 8 bits = 1 Byte
+- 1,000 Bytes = 1 Kilobyte (KB)
+- 1,000 Kilobytes = 1 Megabyte (MB)
+- 1,000 Megabytes = 1 Gigabyte (GB)
+- 1,000 Gigabytes = 1 Terabyte (TB)
+
+iii. File sizes (very generic approximation)
+- 1 minute of audio is about 10MB for normal files (128 bit)
+- 1 picture is about 1MB (1920x1080px, .png; 2560x1600px, .jpg)
+- 1 90-minute movie is about 900MB (1280x720) or 2GB (1920x1080)
+
 *Go to your home directory*
 
 | **1** : `cd ~/`
