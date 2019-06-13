@@ -14,7 +14,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **A1** : `su USERNAME`
+> | **S1** : `su USERNAME`
 >
 ___
 
@@ -214,7 +214,7 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **A2** : `exit`
+> | **S2** : `exit`
 >
 ___
 
@@ -227,7 +227,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **A3** : `su USERNAME`
+> | **S3** : `su USERNAME`
 >
 ___
 
@@ -337,7 +337,7 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **A4** : `exit`
+> | **S4** : `exit`
 >
 ___
 

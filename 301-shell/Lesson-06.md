@@ -13,7 +13,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **A1** : `su USERNAME` *input the password*
+> | **S1** : `su USERNAME` *input the password*
 ___
 
 ### *Note `exit` & `journalctl` are used for logs*
@@ -150,7 +150,7 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **A2** : `exit`
+> | **S2** : `exit`
 >
 ___
 

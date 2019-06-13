@@ -18,7 +18,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **A1** :  `su USERNAME`
+> | **S1** : `su USERNAME`
 >
 ___
 
@@ -31,7 +31,7 @@ ___
 | **4** : `sudo apt update`
 
 *If there is a problem, usually fix it with `--fix-missing`*
-(`sudo apt update --fix-missing`)
+- (`sudo apt update --fix-missing`)
 
 *See what can be upgraded on your machine*
 
@@ -39,15 +39,15 @@ ___
 
 *Upgrade (install updates)*
 
-| **6** : `sudo apt upgrade` If updates are available, you will need to press Y, then Enter*
+| **6** : `sudo apt upgrade` *If updates are available, you will need to press Y, then Enter*
 
 *Install the `git` package*
 
-| **7** : `sudo apt install git` Unless it is installed already, you will need to press Y, then Enter*
+| **7** : `sudo apt install git` *Unless it is installed already, you will need to press Y, then Enter*
 
 *Install `cowsay`*
 
-| **8** : `sudo apt install cowsay` Unless it is installed already, you will need to press Y, then Enter*
+| **8** : `sudo apt install cowsay` *Unless it is installed already, you will need to press Y, then Enter*
 
 *You can install more than one package...*
 
@@ -61,7 +61,7 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **A2** : `exit`
+> | **S2** : `exit`
 >
 ___
 

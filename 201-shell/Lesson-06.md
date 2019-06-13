@@ -64,11 +64,11 @@ ___
 
 ### zip via curl
 
-| **17** : `curl https://github.com/inkVerb/vip/archive/master.zip` (wrong)
+| **17** : `curl https://github.com/inkVerb/vip/archive/master.zip` *(wrong)*
 
 *Note the redirect message; use `-L` to follow redirects*
 
-| **18** : `curl -L https://github.com/inkVerb/vip/archive/master.zip` (wrong)
+| **18** : `curl -L https://github.com/inkVerb/vip/archive/master.zip` *(wrong)*
 
 *Note it dumped the raw output to the terminal rather than saving it*
 
@@ -140,7 +140,7 @@ ___
 
 | **36** : `rm -r vip`
 
-*Note the error message because of the read-only files* (Ctrl + C to get out of there!)
+*Note the error message because of the read-only files (Ctrl + C to get out of there!)*
 
 *Removing a git-cloned directory is easier with `sudo`*
 
@@ -149,7 +149,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **A1** : `su USERNAME`
+> | **S1** : `su USERNAME`
 >
 ___
 
@@ -162,7 +162,7 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **A2** : `exit`
+> | **S2** : `exit`
 >
 ___
 

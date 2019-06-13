@@ -6,7 +6,7 @@
 ___
 > Optional: You may login as a "sudoer" first
 >
-> | **A1** : `su USERNAME`
+> | **S1** : `su USERNAME`
 >
 ___
 
@@ -24,7 +24,7 @@ Install the tools:
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **A2** : `exit`
+> | **S2** : `exit`
 >
 ___
 
