@@ -225,7 +225,7 @@ ___
 ### If you need to log back in as a "sudoer" who can use `sudo`
 >
 ___
-> Optional: You may login as a "sudoer" if needed
+> Optional: Login again as a "sudoer" if needed
 >
 > | **S3** : `su USERNAME`
 >

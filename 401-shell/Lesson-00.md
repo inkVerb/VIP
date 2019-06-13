@@ -4,7 +4,7 @@
 ### This lesson requires a "sudoer" who can use `sudo`
 >
 ___
-> Optional: You may login as a "sudoer" first
+> Optional: You may login as a "sudoer" if needed
 >
 > | **S1** : `su USERNAME`
 >

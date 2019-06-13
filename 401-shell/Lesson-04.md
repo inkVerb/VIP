@@ -292,7 +292,7 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **52** : `exit`
+> | **S4** : `exit`
 >
 >
 ___
