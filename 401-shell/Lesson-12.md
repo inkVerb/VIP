@@ -233,6 +233,8 @@ cp file destination
 
 ### III. Other Command Line Hacks
 
+*Pay close attention to what happens...*
+
 | **17** : `cd ..`
 
 | **18** : `echo $OLDPWD`
@@ -247,11 +249,15 @@ cp file destination
 
 | **23** : `touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
 
-| **24** : `ls`
+| **24** : `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
 
-| **25** : `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
+| **25** : `ls`
 
-| **26** : `ls`
+*What? Only the files from command 23!?*
+
+| **26** : `ls -a`
+
+*Oh, there the hidden (`.startswithdot`) files are*
 
 | **27** : `touch song.mp3 image.png media.ogg jpeg.jpg`
 
@@ -261,7 +267,11 @@ cp file destination
 
 | **30** : `ls`
 
+*Note the colors*
+
 | **31** : `chmod ug+x exec comm execomm`
+
+*...`chmod` works on more than one file at a time*
 
 | **32** : `ls -a`
 
@@ -281,9 +291,15 @@ cp file destination
 
 | **40** : `ls`
 
+*Reverse order...*
+
 | **41** : `ls -r`
 
+*Sort by Time...*
+
 | **42** : `ls -t`
+
+*Reverse Time order...*
 
 | **43** : `ls -rt`
 
@@ -324,7 +340,7 @@ cp file destination
 >
 > | **55** : `exit`
 
-*Ctrl + C*
+*In the original terminal: Ctrl + C*
 
 ___
 

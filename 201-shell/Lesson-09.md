@@ -67,7 +67,7 @@ Q (or Ctrl + C) *This will CLOSE the top program*
 
 | **9** : `top -n 1 -b`
 
-*Notice `-b` shows everything, not limited by the size of the terminal window, only limited by the `-n 1` option*
+*Notice `-b` shows everything all the way to the Bottom ( not limited by the size of the terminal window, only limited by the `-n 1` iteration option)*
 
 *FYI, this is a little program we installed in Lesson 3, a little more colorful than `top`*
 
