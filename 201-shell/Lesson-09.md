@@ -15,12 +15,12 @@ i. Watch this video & notice the numbers: [RGB](https://www.youtube.com/watch?v=
 - Bottom Row: Hexadecimal (0-F)
 
 ii. bites, etc
-- A single binary digit (0 or 1) = **1 bit**
-- 8 bits = 1 Byte
-- 1,000 Bytes = 1 Kilobyte (KB)
-- 1,000 Kilobytes = 1 Megabyte (MB)
-- 1,000 Megabytes = 1 Gigabyte (GB)
-- 1,000 Gigabytes = 1 Terabyte (TB)
+- **1 bit** = A single binary digit (0 or 1)
+- **1 Byte** = 8 bits
+- **1 Kilobyte (KB)** = 1,000 Bytes
+- **1 Megabyte (MB)** = 1,000 Kilobytes
+- **1 Gigabyte (GB)** = 1,000 Megabytes
+- **1 Terabyte (TB)** = 1,000 Gigabytes
 
 iii. File sizes (very generic approximation)
 - 1 minute of audio is about 10MB for normal files (128 bit)
