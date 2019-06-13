@@ -265,9 +265,11 @@ ___
 
 | **69** : `ls -l`
 
-*Now with `xz`*
+*Quick cleanup...*
 
 | **70** : `rm -r vip && ls -l`
+
+*Now with `xz`*
 
 | **71** : `tar xf vip.tar.xz`
 
@@ -382,7 +384,7 @@ ___
 - Here are two commands to work with compressed tarballs:
   - Compress with `xz`: `tar c DIRECTORY | xz > TARFILE.tar.xz`
   - Decompress `.tar.xz`: `tar xf TARFILE.tar.xz`
-  - *Decompress is the same with `.tar.gzip` and `.tar.bzip2`*
+  - *Decompress is the same with `.tar.xz`, `.tar.gzip`, and `.tar.bzip2`*
 
 ___
 
