@@ -94,7 +94,7 @@ This is the same in `vim`, so get used to it.
 
 #### `\t` = tab
 
-*Replace each tab with two tabs*
+*Replace each tab with the string " TAB "*
 
 | **11** : `sed -i "s/\t/ TAB /" countfile`
 

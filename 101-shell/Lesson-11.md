@@ -43,6 +43,8 @@ ___
 
 *Sometimes we need BOTH 'single quotes' AND the "backslash" (`\`) quote/escape character!*
 
+*(Can you figure out what `$` means? The answer is in 401 Lesson 7)*
+
 *Use `\` with letters to work with non-characters*
 
 *Note `\t` = tab, `\n` = new line*
