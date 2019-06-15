@@ -7,9 +7,9 @@ ___
 
 | **1** : `echo "No destination? Output to terminal, just like this."`
 
-*The "output" you see in the terminal is called: "STDOUT"*
-
 *The "input" you enter into the terminal is called: "STDIN"*
+
+*The "output" you see in the terminal is called: "STDOUT"*
 
 *Below, the STDIN is `echo "Hello ink!"` and the STDOUT is `Hello ink!`*
 
@@ -81,7 +81,9 @@ ___
 
 *gedit: Reload*
 
-*Ctrl + D deletes a line in gedit, use it to delete the line about "Mr. Apple delBar"*
+*Ctrl + D deletes a line in gedit*
+- Use it to delete the line about "Mr. Apple delBar"
+- Then Ctrl + S to save the file
 
 ___
 
