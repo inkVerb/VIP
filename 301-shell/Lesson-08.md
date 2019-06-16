@@ -111,7 +111,13 @@ ___
 
 | **28** : `gedit 08-date-name`
 
+*See your new mad skills with `date` and `pwgen` at work in this script...*
+
 | **29** : `./08-date-name yoyo`
+
+*Let's see what we just made...*
+
+| **30** : `ls yoyo*`
 
 ___
 
