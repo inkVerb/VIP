@@ -21,13 +21,13 @@ ___
 
 *Eight lines at a time*
 
-| **4** : `more -8 verb.ink.html` (Q to quit)*
+| **4** : `more -8 verb.ink.html` *(Q to quit)*
 
 ### `less`
 
 *Up and down: Spacebar, PageUp, PageDown, Up, Down*
 
-| **5** : `less verb.ink.html` (Q to quit)*
+| **5** : `less verb.ink.html` *(Q to quit)*
 
 ### `head`
 
@@ -164,11 +164,13 @@ ___
 *Note* ^Z *will "stop" the nano session, not "undo"*
 - If you ^Z back to the terminal, resume with `fg nano`, see [Shell 101 Lesson 0](https://github.com/inkVerb/VIP/blob/master/101-shell/Lesson-00.md)
 
-### vi (Vim)
+*(Ctrl + X to eXit)*
+
+### vim
 
 *The terminal editor used by cool people*
 
-| **36** : `vi verb.ink.html`
+| **36** : `vim verb.ink.html`
 
 *To quit, type these to characters:*
 
@@ -179,20 +181,6 @@ ___
 | **37** : `vimtutor` *(inside Vim, use* :q *to quit)*
 
 *Have fun!*
-
-# Done! Have a cookie: ### #
-
-Oh, what's this?
-
-| **38** : `alsamixer`
-
-Don't have it yet?
-
-| **39** : `sudo apt install alsamixer`
-
-*Some older Linux distros not supported*
-
-Learn more at the [alsamixer manual page](https://linux.die.net/man/1/alsamixer)
 
 ___
 
@@ -244,3 +232,19 @@ ___
 - `vim` is easier to operate than `nano` after only 30 minutes of the `vimtutor` tutorial
 - If your teacher, boss, parents, children, spouse, or family dog force you to learn `vim`, it's because they think you're so awesome that only learning `vim` can make you awesomerer
 - Read about the rich history of terminal text editors like `vim` in the dazzling article, *[The Differences Between Vi, Vim, and Emacs](https://danielmiessler.com/blog/differences-vi-vim-emacs/)* by Daniel Miessler
+
+___
+
+# Done! Have a cookie: ### #
+
+Oh, what's this?
+
+| **38** : `alsamixer`
+
+Don't have it yet?
+
+| **39** : `sudo apt install alsamixer`
+
+*Some older Linux distros not supported*
+
+Learn more at the [alsamixer manual page](https://linux.die.net/man/1/alsamixer)

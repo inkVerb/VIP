@@ -9,16 +9,16 @@ The `$IFS` variable is a character that separates "fields". You could say it sep
 
 Usually, the default `$IFS` is a space or tab or new line. This is partially why spaces separate arguments. So...
 
-***This needs BASH to work correctly!***
+For example, if you run `ls`, you get this:
 
 ```bash
-command arg1 arg2 arg3
+file1 file2 file3 file4 file5
 ```
 
-...is seen by the terminal as...
+...but Linux sees it as this...
 
 ```bash
-command${IFS}arg1${IFS}arg2${IFS}arg3
+file1${$IFS}file2${$IFS}file3${$IFS}file4${$IFS}file5
 ```
 
 "Fields" are important because a `for` loop will loop once per field.
@@ -73,6 +73,7 @@ for EveryLine in $(cat countfile); do
 
 RANDOM_string="$(pwgen -s -1 8)" # Each $RANDOM_string will be different in each loop
 
+echo "$EveryLine" | sed "s/add2end/IFS_$RANDOM_string/"
 echo "$EveryLine" | sed "s/add2end/IFS_$RANDOM_string/" >> randomlooped
 
 done

@@ -11,7 +11,7 @@ ___
 
 The Shell 201 course occasionally requires `sudo` AKA `su` AKA "root" permissions.
 
-If you are not a "sudoer", you need the machine (computer) administrator (mom, dad, owner, teacher?) nearby to input the password for some `su` jobs in the lessons.
+If you are not a "sudoer", you need the machine (computer) administrator (mom, dad, owner, teacher?) nearby to input the password for some `sudo` jobs in the lessons.
 
 ___
 

@@ -47,13 +47,13 @@ ___
 
 | **16** : `who`
 
-*That's everyone*
+*That's you*
 
 | **17** : `who > who.file`
 
 | **18** : `w`
 
-*That's everyone with a lot more info*
+*That's you with a lot more info*
 
 | **19** : `w > w.file`
 
