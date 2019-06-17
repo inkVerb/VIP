@@ -5,7 +5,7 @@
 
 ___
 
-The `$IFS` variable is a character that separates "fields". You could say it separates words (fields). It's related to looping, but not directly.
+The `$IFS` variable is a character that separates "fields". You could say it separates words, in many cases. It's related to looping, but not directly.
 
 Usually, the default `$IFS` is a space or tab or new line. This is partially why spaces separate arguments. So...
 
