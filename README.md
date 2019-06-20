@@ -5,13 +5,13 @@ Whether you want to become a computer genuis or if you're a "computer dummy" and
 
 ## Shell Crash Course
 
-# [Shell 101](https://github.com/inkVerb/VIP/blob/master/101-shell/README.md)
+# [Shell 101: Arguments](https://github.com/inkVerb/VIP/blob/master/101-shell/README.md)
 
-# [Shell 201](https://github.com/inkVerb/VIP/blob/master/201-shell/README.md)
+# [Shell 201: Files](https://github.com/inkVerb/VIP/blob/master/201-shell/README.md)
 
-# [Shell 301](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)
+# [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)
 
-# [Shell 401](https://github.com/inkVerb/VIP/blob/master/401-shell/README.md)
+# [Shell 401: Onward](https://github.com/inkVerb/VIP/blob/master/401-shell/README.md)
 
 ## [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets)
 
@@ -117,4 +117,3 @@ For the official Shell/BASH manual, read the [GNU Bash Reference manual](https:/
 *Ctrl + Shift + W* Close current tab
 
 *Ctrl + Shift + W* Close a tab
-

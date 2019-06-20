@@ -162,4 +162,4 @@ Wait, what are these?
 
 ___
 
-## Next: [Shell 401](https://github.com/inkVerb/VIP/blob/master/401-shell/README.md)
+## Next: [Shell 401: Onward](https://github.com/inkVerb/VIP/blob/master/401-shell/README.md)

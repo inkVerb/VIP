@@ -251,4 +251,4 @@ Learn more at the [alsamixer manual page](https://linux.die.net/man/1/alsamixer)
 
 ___
 
-## Next: [Shell 301](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)
+## Next: [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)

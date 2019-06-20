@@ -1,4 +1,4 @@
-# Shell 401
+# Shell 401: Onward
 
 ## Prerequisite: [Shell 301](https://github.com/inkVerb/VIP/tree/master/301-shell)
 
@@ -24,6 +24,6 @@
 
 ### [Lesson 10: Dynamics of Functions](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-10.md)
 
-### [Lesson 11: Characters Classes & Heredocs](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
+### [Lesson 11: Character Classes & Heredocs](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
 
 ### [Lesson 12: $PATH Plus, Secure Scripts & Command Hacks](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)

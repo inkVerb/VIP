@@ -1,4 +1,4 @@
-# Shell 301
+# Shell 301: Logic
 # Shell to BASH
 ## SH: Shell `#!/bin/sh`
 ## BASH: Bourne Again Shell `#!/bin/bash`

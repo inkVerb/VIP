@@ -1,5 +1,5 @@
 # Shell 401
-## Lesson 11: Characters Classes & Heredocs
+## Lesson 11: Character Classes & Heredocs
 
 `cd ~/School/VIP/shell/401`
 

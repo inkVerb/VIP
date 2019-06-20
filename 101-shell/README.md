@@ -1,4 +1,4 @@
-# Shell 101
+# Shell 101: Arguments
 
 ### [0-Rientation: (Orientation) How these lessons work](https://github.com/inkVerb/vip/blob/master/101-shell/0-Rientation.md)
 

@@ -69,4 +69,4 @@ Don't have it yet?
 
 ___
 
-## Next: [Shell 201](https://github.com/inkVerb/VIP/blob/master/201-shell/README.md)
+## Next: [Shell 201: Files](https://github.com/inkVerb/VIP/blob/master/201-shell/README.md)
