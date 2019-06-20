@@ -248,3 +248,7 @@ Don't have it yet?
 *Some older Linux distros not supported*
 
 Learn more at the [alsamixer manual page](https://linux.die.net/man/1/alsamixer)
+
+___
+
+## Next: [Shell 301](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)
