@@ -84,7 +84,7 @@ ___
 
 *Set a password for pinkypurple*
 
-| **14** : `sudo passwd pinkypurple` Enter a simple password*
+| **14** : `sudo passwd pinkypurple` *Enter a simple password*
 
 *Look at `/home` again*
 
@@ -251,7 +251,7 @@ ___
 
 *Now you own "ownrship" and the file inside*
 
-*Let's cleanup these files you don't own so they don't cause problems later...*
+*Remove it...*
 
 | **51** : `rm youown`
 
@@ -279,11 +279,11 @@ ___
 
 | **57** : `sudo rm iamroot`
 
-*Let's cleanup after our mess with `sudo` ...*
+*Let's cleanup these files you don't own so they don't cause problems later ...*
 
 | **58** : `sudo rm theyown`
 
-| **59** : `sudo rm -r ownrship theyown`
+| **59** : `sudo rm -r ownrship`
 
 | **60** : `ls -l`
 

@@ -17,7 +17,7 @@ ___
 
 *One line at a time: Enter*
 
-| **3** : `more verb.ink.html`
+| **3** : `more verb.ink.html` *(Space to the end or Q to quit)*
 
 *Eight lines at a time*
 
