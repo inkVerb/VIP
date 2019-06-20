@@ -78,14 +78,14 @@ Some things can only be done in BASH
 | **21** : `./10-array-associative-declare`
 
 ___
-# Rules of Arrays
-## Rule 1: No 3-D arrays – an array CAN'T go inside an array
+# Rules of BASH Arrays
+## Rule 1: An array CAN'T go inside an array (no 3-D)
 ## Rule 2: Declare associative arrays first `declare -A ARRAYNAME`
 ## Rule 3: Choose associative or auto-indexed
 EITHER
-### associative: `MyArray=([key]=frst [ky2]=sec) .. MyArray[key] MyArray[ky2]`
+### associative: `MyArray=([key]=frst [ky2]=sec) ... MyArray[key] MyArray[ky2]`
 OR
-### auto-indexed: `MyArray=(one two) .. MyArray[0] MyArray[1]`
+### auto-indexed: `MyArray=(one two) ... MyArray[0] MyArray[1]`
 
 NOT BOTH
 
