@@ -10,7 +10,7 @@
 ___
 
 ## Welcome to BASH
-## SH: Shell `#!/bin/sh`
+## SH: Bourne Shell `#!/bin/sh`
 ## BASH: Bourne Again Shell `#!/bin/bash`
 
 Nemo, we're not in Shellfish anymore... *(Hehe, see what I did there?)*
