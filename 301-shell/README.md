@@ -1,7 +1,4 @@
 # Shell 301: Logic
-# Shell to BASH
-## SH: Shell `#!/bin/sh`
-## BASH: Bourne Again Shell `#!/bin/bash`
 
 ## Prerequisite: [Shell 201](https://github.com/inkVerb/VIP/tree/master/201-shell)
 
