@@ -15,14 +15,18 @@ ___
 ___
 > Install the tools:
 >
-> | **1** : `sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc rename pwgen`
+> | **M1** : `sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc rename pwgen`
+>
+> | **M2** : `mkdir -p ~/School/VIP/shell`
 ___
 
-| **2** : `mkdir -p ~/School/VIP/shell`
+| **1** : `cd ~/School/VIP/shell`
 
-| **3** : `cd ~/School/VIP/shell`
+| **2** : `git clone https://github.com/inkVerb/301`
 
-| **4** : `git clone https://github.com/inkVerb/301`
+| **3** : `ls`
+
+| **4** : `cd 301`
 
 | **5** : `ls`
 ___
