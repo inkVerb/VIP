@@ -1,4 +1,5 @@
-# Characters for RegEx
+# Characters for Classes & RegEx
+**RegEx** meas "Regular Expression", which is what we call a way to express characters like this
 
 ## Class key
 
