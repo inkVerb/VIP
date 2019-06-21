@@ -3,8 +3,6 @@
 
 `cd ~/School/VIP/shell/201`
 
-
-
 ___
 
 ### `netstat -natu` & `sudo tcpdump`
@@ -19,7 +17,6 @@ ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** : `su USERNAME`
->
 ___
 
 | **2** : `sudo tcpdump`
@@ -34,7 +31,6 @@ ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** : `exit`
->
 ___
 
 ### `man` & `info`

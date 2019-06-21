@@ -1,19 +1,21 @@
-# Characters
+# Characters for RegEx
 
 ## Class key
 
-### Custom ranges
+### Custom character class ranges
 
-Ranges of most alphanumeric characters can be listed intuitively, `!` means "not", `|` mans "or".
+Ranges of most alphanumeric characters can be listed intuitively, `!` means "not", `|` means "or".
 
 **Examples:**
-- `[abc]`
-- `[!abc]`
-- `[a-h]`
-- `[2-8]`
-- `[A-Z]`
-- `[y|Y]`
-- `[a|b|c]`
+- `[abc]` (any characters of `a`, `b`, and `c`)
+- `[!abc]` ('negative character set': all lowercase characters other than `a`, `b`, and `c`)
+- `[!a-m]` ('negative character set': all lowercase characters outside the range of `a`-`m`)
+- `[a-h]` (lowercase letters `a`-`h`)
+- `[2-8]` (numbers `2`-`8`)
+- `[A-Z]` (all capical letters `A`- `Z`)
+- `[y|Y]` (one lowercase or uppercase `y`)
+- `[a|b|c]` (one character: `a` or `b` or `c`)
+- `[dog|fish|cat]` (one word of: `dog` or `fish` or `cat`)
 
 ### Classes
 
@@ -55,7 +57,7 @@ Space characters, containing 'tab', 'newline', 'vertical tab', 'form feed', 'car
 - `[:cntrl:]`
 Control characters: In ASCII, these characters have octal codes 000 through 037, and 177 (DEL). In other character sets, these are the equivalent characters, if any.
 
-### Meta characters with special meaning:
+### Characters with special meaning:
 
 - `]`
 
@@ -66,11 +68,12 @@ Control characters: In ASCII, these characters have octal codes 000 through 037,
 *"range" - put first or last in list to use this character*
 
 - `^`
+
 *characters "not in the list" - put anywhere but first to use this character*
 
 *Much of this information was taken from the GNU sed manual:* [5.5 Character Classes and Bracket Expressions](https://www.gnu.org/software/sed/manual/html_node/Character-Classes-and-Bracket-Expressions.html)
 
-## Shell command examples that "transform" characters
+### Shell command examples that "transform" characters
 
 - from upper to lower case
 `tr "[A-Z]" "[a-z]"`
@@ -80,3 +83,18 @@ Control characters: In ASCII, these characters have octal codes 000 through 037,
 
 - all to lower case
 `sed -i 's/\(.*\)/\L\1/' file`
+
+## RegEx Metacharacters
+(NOT character class ranges in `[`brackets`]`)
+
+- `\` Quote/cancel special characters
+- `^` Beginning of line/string
+- `$` End of line/string
+- `*` Wildcard
+- `\f` Form-feed character
+- `\n` New line
+- `\r` Carriage return character
+- `\s` Any whitespace (space, empty line, tab, vertical tab, carriage return, form-feed)
+- `\S` Any non-whitespace
+- `\t` Tab
+- `\v` Vertical tab

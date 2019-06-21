@@ -150,7 +150,6 @@ ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** : `su USERNAME`
->
 ___
 
 | **37** : `sudo rm -r vip`
@@ -163,7 +162,6 @@ ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** : `exit`
->
 ___
 
 | **39** : `cd ..`

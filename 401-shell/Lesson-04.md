@@ -21,7 +21,6 @@ ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** : `su USERNAME`
->
 ___
 
 *MySQL can be installed with: `sudo apt install mysql-server`*
@@ -246,7 +245,6 @@ ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** : `exit`
->
 ___
 
 *Put the same username & info into a file:*
@@ -264,7 +262,6 @@ ___
 > Optional: Login again as a "sudoer" if needed
 >
 > | **S3** : `su USERNAME`
->
 ___
 
 | **48** : `ls`
@@ -293,8 +290,6 @@ ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S4** : `exit`
->
->
 ___
 
 # The Take

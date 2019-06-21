@@ -91,7 +91,8 @@ ___
 - "Backslash" (`\`) also works with letters to define non-characters in text
   - `\n` = "new line"
   - `\t` = "tab"
-  - These are called "Metacharacters", whcih you can study more on your own
+  - These are called "Metacharacters", which you can study more on your own
+    - See a short list here: [Characters](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Characters.md#RegEx-Metacharacters)
 - There is much more to working with special characters
   - You can get a more in-depth information here: [find-grep-sed-rename.md](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/find-grep-sed-rename.md)
 

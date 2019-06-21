@@ -15,7 +15,6 @@ ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** : `su USERNAME`
->
 ___
 
 ### I. `adduser`
@@ -215,7 +214,6 @@ ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** : `exit`
->
 ___
 
 | **43** : `mkdir ownrship`
@@ -228,7 +226,6 @@ ___
 > Optional: Login again as a "sudoer" if needed
 >
 > | **S3** : `su USERNAME`
->
 ___
 
 | **45** : `ls -l`
@@ -338,7 +335,6 @@ ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S4** : `exit`
->
 ___
 
 ___

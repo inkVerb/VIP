@@ -1,40 +1,38 @@
 # Shell 401
 ## Lesson 0: Setup
 
-### This lesson requires a "sudoer" who can use `sudo`
+__
+## Prepare
+
+### If you did Shell 201, but on a different machine
 >
 ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** : `su USERNAME`
 >
-___
-
-## Prepare
-
-#### If you did Shell 201, but not on this machine
-Install the tools:
-
-| **1** : `sudo apt update`
-
-| **2** : `sudo apt install -y git dos2unix pwgen`
-
-### IF needed, `exit` from the other "sudoer"
-> 
-___
+> Install the tools:
+>
+> | **M1** : `sudo apt update`
+>
+> | **M2** : `sudo apt install -y git dos2unix pwgen`
+>
+> | **M3** : `mkdir -p ~/School/VIP/shell`
+>
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** : `exit`
->
 ___
 
-| **3** : `mkdir -p ~/School/VIP/shell`
+| **1** : `cd ~/School/VIP/shell`
 
-| **4** : `cd ~/School/VIP/shell`
+| **2** : `git clone https://github.com/inkVerb/401`
 
-| **5** : `git clone https://github.com/inkVerb/401`
+| **3** : `ls`
 
-| **6** : `cd 401`
+| **4** : `cd 401`
+
+| **5** : `ls`
 ___
 
 # The Take

@@ -151,7 +151,6 @@ ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** : `exit`
->
 ___
 
 

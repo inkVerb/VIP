@@ -26,7 +26,6 @@ ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** : `su USERNAME`
->
 ___
 
 *This sets a password for `su` if it has not been done already...*
@@ -43,7 +42,6 @@ ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** : `exit`
->
 ___
 
 *Login as `su` to see what it's like*
