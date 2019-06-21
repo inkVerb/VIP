@@ -5,7 +5,7 @@
 
 ### Custom character class ranges
 
-Ranges of most alphanumeric characters can be listed intuitively, `!` means "not", `|` means "or".
+Ranges of most alphanumeric characters can be listed intuitively, `!` means "not", `|` means "or", `-` indicates range.
 
 **Examples:**
 - `[abc]` (any characters of `a`, `b`, and `c`)
@@ -13,7 +13,8 @@ Ranges of most alphanumeric characters can be listed intuitively, `!` means "not
 - `[!a-m]` ('negative character set': all lowercase characters outside the range of `a`-`m`)
 - `[a-h]` (lowercase letters `a`-`h`)
 - `[2-8]` (numbers `2`-`8`)
-- `[A-Z]` (all capical letters `A`- `Z`)
+- `[A-Z]` (all uppercase letters `A`- `Z`)
+- `[A-Za-z]` (all uppercase or lowercase letters)
 - `[y|Y]` (one lowercase or uppercase `y`)
 - `[a|b|c]` (one character: `a` or `b` or `c`)
 - `[dog|fish|cat]` (one word of: `dog` or `fish` or `cat`)
