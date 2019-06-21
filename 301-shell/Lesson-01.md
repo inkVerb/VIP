@@ -74,6 +74,8 @@ Test for an existing *directory* by name
 
 | **23** : `gedit 01-if-else-e`
 
+*Note `-e` checks whether something exists, whether as a file, directory, or link*
+
 | **24** : `./01-if-else-e myfile`
 
 | **25** : `./01-if-else-e otherfile`
@@ -85,6 +87,8 @@ Test for an existing *directory* by name
 ### III. `elif`
 
 | **28** : `gedit 01-if-elif`
+
+*Note `-z` checks whether a variable is empty (not set)*
 
 | **29** : `./01-if-elif`
 
@@ -129,9 +133,15 @@ ___
   - `elif` runs another test if the previous test returns `false` (optional)
   - `else` runs if all previous tests return `false` (optional)
   - `fi` closes the test
+- Character tests:
+  - `-f` tests whether a file exists
+  - `-d` tests whether a directory exists
+  - `-e` tests whether a something exists at all, file, directory, or even link
+  - `-z` tests whether a variable is empty
+  - *`-n` tests whether a variable is not empty (not used in this lesson)*
 - `;` makes a "logical line break" without putting code on a new line  
 - Syntax of the `if` line:
-  - `for` `CONDITIONS TO BE TESTED`
+  - `if` `CONDITIONS TO BE TESTED`
 - See usage and examples here: [Tests: if](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#ii-if-then-else--elif-fi)
 ___
 
