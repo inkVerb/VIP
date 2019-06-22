@@ -11,33 +11,33 @@ ___
 
 *There are many shells to choose from...*
 
-- `#!/bin/sh`     Bourne shell
-- `#!/bin/bash`   Bourne again shell
-- `#!/bin/ash`    Almquist shell
-- `#!/bin/dash`   Debian almquist shell
-- `#!/bin/csh`    C shell *(Ha, get it?)*
-- `#!/bin/tcsh`   TENEX C shell
-- `#!/bin/ch`     Ch shell
-- `#!/bin/eshell` Emacs shell
-- `#!/bin/fish`   Friendly interactive shell
-- `#!/bin/psh`    Pearl shell
-- `#!/bin/rc`     rc shell
-- `#!/bin/ksh`    Korn shell
-- `#!/bin/zsh`    Z shell
+- `#!/bin/sh`     Bourne Shell
+- `#!/bin/bash`   Bourne Again Shell
+- `#!/bin/ash`    Almquist Shell
+- `#!/bin/dash`   Debian Almquist Shell
+- `#!/bin/csh`    C Shell *(Ha, get it?)*
+- `#!/bin/tcsh`   TENEX C Shell
+- `#!/bin/ch`     Ch Shell
+- `#!/bin/eshell` Emacs Shell
+- `#!/bin/fish`   Friendly Interactive shell
+- `#!/bin/psh`    Pearl Shell
+- `#!/bin/rc`     RC Shell
+- `#!/bin/ksh`    Korn Shell
+- `#!/bin/zsh`    Z Shell
 
 *Avoid writing code in too many different shells because your code may not work on all machines*
 
-*Generally,:*
-- `sh` (Bourne shell) *is simple, though mostly standard*
+*Generally:*
+- `sh` (Bourne Shell) *is simple, though mostly standard*
   - arithmetic comparison must use alphabet operators [`-lt`, `-gt`, `-le`, `-ge`, `-eq`, `-ne`]
   - arrays **are not** allowed in variables
-- `bash` (Bourne again shell) *is much the same, more useful, but...*
+- `bash` (Bourne Again Shell) *is much the same, more useful, but...*
   - arithmetic allows comparison symbol operators ((`<`, `>`, `=<`, `>=`, `==`, `!=`))
   - comparison operators require `((`double parentheses`))`
   - variables may contain arrays
   - *and, there may be other differences you can look into*
 
-*Consider a comparison in Bourne shell vs BASH:*
+*Consider a comparison in Bourne Shell vs BASH:*
 
 #### Arithmetic
 
@@ -103,7 +103,7 @@ fi
 
 | **4** : `./math-bash`
 
-*Consider another comparison in Bourne shell vs BASH:*
+*Consider another comparison in Bourne Shell vs BASH:*
 
 #### Arrays
 
@@ -508,7 +508,7 @@ ___
 - There are many interpreters for Linux, "`bash`" & "`sh`" are probably the most common
 - Different interpreters can do different things, much how "`bash`" & "`sh`" are mostly similar, but a little different
 - BASH (`bash`) allows arrays and arithmetic operator symbols ((`<`, `>`, `=<`, `>=`, `==`, `!=`))
-- Bourne shell (`sh`) disallows arrays and only uses normal arithmetic operators [`-lt`, `-gt`, `-le`, `-ge`, `-eq`, `-ne`]
+- Bourne Shell (`sh`) disallows arrays and only uses normal arithmetic operators [`-lt`, `-gt`, `-le`, `-ge`, `-eq`, `-ne`]
 
 ## Errors & Debugging
 - `set` will make Shell report errors to help find problems
