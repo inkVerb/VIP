@@ -456,5 +456,3 @@ Now, for the [BSD games](http://wiki.linuxquestions.org/wiki/BSD_games) (from th
 - `teachgammon` - learn to play backgammon
 - `wargames` - shall we play a game?
 - `wtf` - translates acronyms for you
-
-And then there's the "Scorched Earth" clone: [xscorch](http://www.xscorch.org/)
