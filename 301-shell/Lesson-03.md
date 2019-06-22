@@ -68,89 +68,7 @@ one-1*
 
 | **21** : `./03-do-echo-7`
 
-### II. Replacing within Variables
-
-*Note `${VAR%foo}bar` will replace "foo" with "bar" if it appears in the variable*
-
-*.one %one
-
-| **22** : `gedit 03-do-echo-8`
-
-| **23** : `./03-do-echo-8`
-
-*t.one %t.one
-
-| **24** : `gedit 03-do-echo-9`
-
-| **25** : `./03-do-echo-9`
-
-| **26** : `ls`
-
-### III. Renaming Multiple Files at Once
-
-| **27** : `gedit 03-do-mv-1`
-
-| **28** : `./03-do-mv-1`
-
-| **29** : `ls`
-
-| **30** : `gedit 03-do-mv-2`
-
-| **31** : `./03-do-mv-2`
-
-| **32** : `ls`
-
-| **33** : `gedit 03-do-mv-3`
-
-| **34** : `./03-do-mv-3`
-
-| **35** : `ls`
-
-*Make a backup of today's work*
-
-| **36** : `mkdir -p 03-THREE`
-
-| **37** : `mv *THREE* 03-THREE/`
-
-*Delete*
-
-| **38** : `gedit 03-do-rm`
-
-| **39** : `./03-do-rm`
-
-*Ignore the directory error because we want to keep that directory*
-
-| **40** : `ls`
-
-### IV. Applied: `odt2txt`
-
-*Now, use `odt2txt` in a `for` `...` `do` loop*
-
-| **41** : `gedit 03-do-odt2txt-1`
-
-| **42** : `./03-do-odt2txt-1`
-
-| **43** : `ls`
-
-| **44** : `gedit ODT-*.txt`
-
-*Note the files are either empty or on one line because we used `echo`*, this method didn't work*
-
-| **45** : `gedit 03-do-odt2txt-2`
-
-| **46** : `./03-do-odt2txt-2`
-
-*gedit: Reload both .txt files*
-
-| **47** : `gedit 03-do-odt2txt-3`
-
-| **48** : `./03-do-odt2txt-3`
-
-*gedit: Reload both .txt files*
-
-*Backup today's work*
-
-| **49** : `mv ODT-*.txt 03-THREE/`
+### II. break & continue
 
 ___
 
@@ -164,16 +82,11 @@ ___
   - `for` opens and defines the conditions
   - `do` opens the mini-script to be looped
   - `done` closes the mini-script
+- `break` will end the loop (usually in an `if` test)
+- `continue` will skip to the next loop cycle, doing nothing else (usually in an `if` test)
 - Syntax of the `for` line:
   - `for` `VARIABLE` `in` `CONDITIONS`
 - See usage and examples here: [Tests: for](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iii-for-variabl-in-wut)
-
-## Replacement within variables
-- `${VAR%foo}bar` will change the variable $VARfoo to retrieve the value of $VARbar instead
-  - This can be useful to:
-    1. Set a variable that may be unknown within the script
-    2. Call a known variable based on arguments or a settings file, etc
-- See usage and examples here: [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 ___
 
-#### [Lesson 4: while & until](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)
+#### [Lesson 4: ](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)

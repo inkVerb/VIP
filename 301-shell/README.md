@@ -10,9 +10,9 @@
 
 ### [Lesson 3: for VAR in WUT do done](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md)
 
-### [Lesson 4: while & until](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)
+### [Lesson 4: for Applied](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)
 
-### [Lesson 5: case](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
+### [Lesson 5: while, until & case](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
 
 ### [Lesson 6: exit & journalctl](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
 

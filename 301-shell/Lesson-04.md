@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 4: while & until
+## Lesson 4: for Applied
 
 `cd ~/School/VIP/shell/301`
 
@@ -8,95 +8,100 @@
 
 ___
 
-### I. `while`
+### I. Replacing within Variables
 
-| **1** : `gedit 04-while-read`
+*Note `${VAR%foo}bar` will replace "foo" with "bar" if it appears in the variable*
 
-*Note -z means "Zero" or "Zilch" for a variable that is empty*
+*.one %one
 
-| **2** : `./04-while-read`
+| **1** : `gedit 04-echo-rename-1`
 
-*Only press Enter to see what happens again and again, comply or use Ctrl + C to close*
+| **2** : `./04-echo-rename-1`
 
-| **3** : `gedit 04-while-count`
+*t.one %t.one
 
-*Note ! means "not"*
+| **3** : `gedit 04-echo-rename-2`
 
-| **4** : `./04-while-count`
+| **4** : `./04-echo-rename-2`
 
-*Let's put it together into something useful*
+| **5** : `ls`
 
-| **5** : `gedit 04-while-count-read`
+### II. Renaming Multiple Files at Once
 
-*Note ! means "not"*
+| **6** : `gedit 04-do-mv-1`
 
-| **6** : `./04-while-count-read`
+| **7** : `./04-do-mv-1`
 
-### II. `until`
+| **8** : `ls`
 
-*Do some prep first...*
+| **9** : `gedit 04-do-mv-2`
 
-| **7** : `mkdir 04COUNT && cp 04-until-count 04COUNT/ && cd 04COUNT`
+| **10** : `./04-do-mv-2`
 
-| **8** : `gedit 04-until-count`
+| **11** : `ls`
 
-| **9** : `ls *.shell`
+| **12** : `gedit 04-do-mv-3`
 
-| **10** : `./04-until-count 5 shell`
+| **13** : `./04-do-mv-3`
 
-| **11** : `ls *.shell`
+| **14** : `ls`
 
-| **12** : `ls *.sixtn`
+*Make a backup of today's work*
 
-| **13** : `./04-until-count 16 sixtn`
+| **15** : `mkdir -p 04-THREE`
 
-| **14** : `ls *.sixtn`
+| **16** : `mv *THREE* 04-THREE/`
 
-| **15** : `cd ..`
+*Delete*
 
-| **16** : `gedit 04-until-read`
+| **17** : `gedit 04-do-rm`
 
-| **17** : `./04-until-read werdup`
+| **18** : `./04-do-rm`
 
-*Input wrong "passwords" to see what it does, input "werdup" or use Ctrl + C to close*
+*Ignore the directory error because we want to keep that directory*
 
-| **18** : `./04-until-read thepassword`
+| **19** : `ls`
 
-*Input wrong "passwords" to see what it does, input "thepassword" or use Ctrl + C to close*
+### III. Applied: `odt2txt`
+
+*Now, use `odt2txt` in a `for` `...` `do` loop*
+
+| **20** : `gedit 04-do-odt2txt-1`
+
+| **21** : `./04-do-odt2txt-1`
+
+| **22** : `ls`
+
+| **23** : `gedit ODT-*.txt`
+
+*Note the files are either empty or on one line because we used `echo`*, this method didn't work*
+
+| **24** : `gedit 04-do-odt2txt-2`
+
+| **25** : `./04-do-odt2txt-2`
+
+*gedit: Reload both .txt files*
+
+| **26** : `gedit 04-do-odt2txt-3`
+
+| **27** : `./04-do-odt2txt-3`
+
+*gedit: Reload both .txt files*
+
+*Backup today's work*
+
+| **28** : `mv ODT-*.txt 04-THREE/`
 
 ___
 
 # The Take
 
-- `while` & `until` loops work the same way, but with opposite tests
-
-## `while` (do something while `true` until `false`)
-- `while` loops a mini-script that runs as long as a test returns `true`, until a test returns `false`
-- `while` is useful to
-  1. Count numbers sequentially
-  2. Run a script that needs to run multiple times in order to succeed
-  3. Keep trying until the "correct" response is input
-- Procedure of a `while` loop:
-  - `while` opens and defines the test
-  - `do` opens the mini-script to be looped
-  - `done` closes the mini-script
-- Syntax of the `while` line:
-  - `while` `CONDITIONS TO BE TESTED`
-- See usage and examples here: [Tests: while](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iv-while-do-done)
-
-## `until` (do something while `false` until `true`)
-- `until` loops a mini-script that runsas long as a test returns `false`, until a test returns `true`
-- `until` is useful to
-  1. Count numbers sequentially
-  2. Run a script that needs to run multiple times in order to succeed
-  3. Keep trying until the "correct" response is input
-- Procedure of a `until` loop:
-  - `until` opens and defines the test
-  - `do` opens the mini-script to be looped
-  - `done` closes the mini-script
-- Syntax of the `until` line:
-  - `until` `CONDITIONS TO BE TESTED`
-- See usage and examples here: [Tests: until](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#v-until-do-done)
+## Replacement within variables
+- `${VAR%foo}bar` will change the variable $VARfoo to retrieve the value of $VARbar instead
+  - This can be useful to:
+    1. Set a variable that may be unknown within the script
+    2. Call a known variable based on arguments or a settings file, etc
+- See usage and examples here: [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 ___
 
-#### [Lesson 5: case](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
+#### [Lesson 5: while, until & case](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)

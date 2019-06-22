@@ -117,6 +117,42 @@ echo $VARIABL
 done
 ```
 
+- `continue` will skip a loop cycle, doing nothing else
+
+```sh
+for VARIABL in *.txt
+
+do
+
+  if [ -f "skip-me" ]
+
+    continue
+
+  fi
+
+echo $VARIABL
+
+done
+```
+
+- `break` will end the loop
+
+```sh
+for VARIABL in *.txt
+
+do
+
+  if [ -f "stop-at-me" ]
+
+    break
+
+  fi
+
+echo $VARIABL
+
+done
+```
+
 Also see: [VIP/Shell 301 – Lesson 3](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md)
 
 ___
@@ -146,7 +182,7 @@ done
 
 ```
 
-Also see: [VIP/Shell 301 – Lesson 4](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)
+Also see: [VIP/Shell 301 – Lesson 5](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
 
 ___
 
@@ -168,7 +204,7 @@ done
 
 ```
 
-Also see: [VIP/Shell 301 – Lesson 4](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)
+Also see: [VIP/Shell 301 – Lesson 5](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
 
 ___
 
