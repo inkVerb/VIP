@@ -5,7 +5,7 @@
 
 ___
 
-| **1** : `echo "No destination? Output to terminal, just like this."`
+| **1** : `echo "Output to terminal"`
 
 *The "input" you enter into the terminal is called: "STDIN"*
 
@@ -23,7 +23,7 @@ ___
 
 *We can send STDOUT to a file with: `> MYFILE`*
 
-| **5** : `echo "Designate a file? Output goes to the file, just like this." > abcd`
+| **5** : `echo "Output to file" > abcd`
 
 | **6** : `ls`
 

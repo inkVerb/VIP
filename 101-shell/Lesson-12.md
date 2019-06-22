@@ -61,11 +61,11 @@ ___
 
 Oh, what's this?
 
-| **13** : `cowsay Moo! or something`
+| **D1** : `cowsay Moo! or something`
 
 Don't have it yet?
 
-| **14** : `sudo apt install cowsay`
+| **D2** : `sudo apt install cowsay`
 
 ___
 

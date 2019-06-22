@@ -186,8 +186,6 @@ ___
 
 # The Take
 
-- `alsamixer` controls audio volume from the terminal
-
 ## **more, less, head & tail** display the contents of a file in small amounts
 - `more`
   - One page at a time: Spacebar
@@ -239,11 +237,11 @@ ___
 
 Oh, what's this?
 
-| **38** : `alsamixer`
+| **D1** : `alsamixer`
 
 Don't have it yet?
 
-| **39** : `sudo apt install alsamixer`
+| **D2** : `sudo apt install alsamixer`
 
 *Some older Linux distros not supported*
 

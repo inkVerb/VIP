@@ -391,7 +391,7 @@ Wait, what?
 
 Now, for the [BSD games](http://wiki.linuxquestions.org/wiki/BSD_games) (from the package `bsdgames`)...
 
-| **58** : `sudo apt install bsdgames`
+| **D1** : `sudo apt install bsdgames`
 
 (Make sure the terminal is big enough!)
 

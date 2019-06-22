@@ -146,19 +146,19 @@ ___
 
 Wait, what are these?
 
-| **33** : `sudo apt install bastet moon-buggy ninvaders nsnake pacman4console`
+| **D1** : `sudo apt install bastet moon-buggy ninvaders nsnake pacman4console`
 
 (Make sure the terminal is big enough!)
 
-| **34** : `bastet`
+| **D2** : `bastet`
 
-| **35** : `moon-buggy`
+| **D3** : `moon-buggy`
 
-| **36** : `ninvaders`
+| **D4** : `ninvaders`
 
-| **37** : `nsnake`
+| **D5** : `nsnake`
 
-| **38** : `pacman4console`
+| **D6** : `pacman4console`
 
 ___
 
