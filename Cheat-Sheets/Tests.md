@@ -117,6 +117,8 @@ echo $VARIABL
 done
 ```
 
+#### `continue` & `break`
+
 - `continue` will skip a loop cycle, doing nothing else
 
 ```sh
