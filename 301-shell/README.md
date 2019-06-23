@@ -27,14 +27,3 @@
 ### [Lesson 11: BASH select & dialog](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-11.md)
 
 ### [Lesson 12: BASH getopts & getopt](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
-
-___
-
-# Further Reference
-
-## Bourne Again Shell extras
-functions, menues, etc
-- [http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-8.html]
-- [http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-9.html]
-- [http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-11.html]
-- [https://www.thegeekstuff.com/2010/06/bash-if-statement-examples/]
