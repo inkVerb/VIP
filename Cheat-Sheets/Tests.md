@@ -102,6 +102,7 @@ ___
 - A `for` test loops and does the same thing for each among many items
 
 The `if` test is similar to the `for` looping test, but...
+
 - `if` does NOT repeat, it only runs ONE TIME
 - `if` --> `for`
 - `then` --> `do`
@@ -118,6 +119,8 @@ done
 ```
 
 #### `continue` & `break`
+
+Both of these can also be used in `until` and `while` loops
 
 - `continue` will skip a loop cycle, doing nothing else
 

@@ -108,7 +108,7 @@ ___
 - `break` will end the loop (usually in an `if` test)
 - `continue` will skip to the next loop cycle, doing nothing else (usually in an `if` test)
 - Both of these can also be used in `until` and `while` loops (covered later)
-- See usage and examples here: [Tests: for](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iii-for-variabl-in-wut)
+- See usage and examples here: [Tests: for](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#continue--break)
 
 ___
 
