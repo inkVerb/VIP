@@ -68,7 +68,7 @@ one-1*
 
 | **21** : `./03-do-echo-7`
 
-### II. break & continue
+### II. `break` & `continue`
 
 #### *Usually, `break` & `continue` are wrapped in an `if` test*
 
