@@ -355,9 +355,9 @@ echo "${myVAR}"
 
 ### VII. 'export' variables
 
-*Edit these scripts*
+*Edit these scripts to see the short version*
 
-| **22** : `gedit variable-no-export`
+| **22** : `gedit variable-no-export variable-exported`
 
 *They should look like this:*
 
@@ -366,7 +366,7 @@ variable-no-export:
 ```sh
 #!/bin/sh
 
-MYVAR="Hello world!"
+myVAR="Hello world!"
 
 ~/School/VIP/shell/401/variable-exported
 ```
@@ -377,7 +377,7 @@ variable-exported:
 ```sh
 #!/bin/sh
 
-echo "${MYVAR}"
+echo "${myVAR}"
 ```
 
 *Run the first script and watch carefully*
@@ -393,7 +393,7 @@ echo "${MYVAR}"
 ```sh
 #!/bin/sh
 
-export MYVAR="Hello world!"
+export myVAR="Hello world!"
 
 ~/School/VIP/shell/401/variable-exported
 ```
@@ -403,6 +403,65 @@ export MYVAR="Hello world!"
 | **25** : `./variable-yes-export`
 
 *Note a variable only carries into another script if declared with: `export`*
+
+### VII. `readonly` variables (constants)
+
+*"Constants" are, basically, variables that can't change (oxymoron, but you get the idea)*
+
+**Usually, "should-be-constant variables" are ALL-CAPS, it's just a good Shell coder's healthy habit**
+
+#### 1. You can't change a `readonly` variable's value
+
+*Edit this script to see the short version*
+
+| **26** : `gedit variable-readonly-1`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+# Create a variable as read-only
+readonly MYROVAR="I am read-only, a never-changing constant!"
+
+# echo the variable
+echo "Whatami: $MYROVAR"
+
+# Try to change the variable
+MYROVAR="I am changed!"
+```
+
+*Run it and watch carefully*
+
+| **27** : `./variable-readonly-1`
+
+#### 2. You can't `unset` a `readonly` variable
+
+*Edit this script to see the short version*
+
+| **28** : `gedit variable-readonly-2`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+# Create a variable as read-only
+readonly MYROVAR="I am read-only, a never-changing constant!"
+
+# echo the variable
+echo "Whatami: $MYROVAR"
+
+# Try to unset the variable
+unset MYROVAR
+```
+
+*Run it and watch carefully*
+
+| **29** : `./variable-readonly-2`
+
+
+
 ___
 
 # The Take
@@ -425,7 +484,9 @@ ___
   - This also helps variables work in some situations they otherwise wouldn't
 - `export` carries a variable into other scripts
   - Syntax: `export NEWVARIABLE="Variable's value"`
-
+- `readonly` makes a variable both unable to change and unable to `unset`
+  - Syntax: `readonly NEWVARIABLE="Variable's value"`
+- See usage and examples here: [Variables](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Variables.md)
 ___
 
 #### [Lesson 6: Data Types & Quotes](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)

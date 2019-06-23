@@ -58,24 +58,34 @@ Custom variables...
 - `TWO&THREE` (can't use `&`, only allowed special character is `_`)
 - `four-five` (can't use `-`, only allowed special character is `_`)
 
-#### Clearing a variable's value via `unset`
+#### `unset`: Clearing a variable's value
 
-Using `unset VARIABLE_NAME` will remove a variable's value, technically making it "NULL".
+Using `unset VariablE_NAME` will remove a variable's value, technically making it "NULL"
 
 For example:
 
 ```sh
-VAR="fifty"
+var="fifty"
 
-echo $VAR
+echo $var
 
 # The screen will display "fifty".
 
-unset VAR
+unset var
 
-echo $VAR
+echo $var
 
 # The screen will display nothing.
+```
+
+#### `readonly`: Making a read-only variable
+
+Using `readonly VariablE_NAME` will create a variable that can neither be changed nor `unset`
+
+For example:
+
+```sh
+readonly READONLYVAR="I can never be changed in this script."
 ```
 ___
 
@@ -83,60 +93,60 @@ ___
 1. Declare the variable & value
 
 ```sh
-VARIABL=doggy
+Variabl=doggy
 myColor=pink
 ```
-- Now, when using the variable `$VARIABL` with `$` it will have the value "doggy"
+- Now, when using the variable `$Variabl` with `$` it will have the value "doggy"
 - And, when using the variable `$myColor` with `$` it will have the value "pink"
 ...such as...
 
 ```sh
-echo $VARIALE
+echo $Variabl
 touch $myColor
 ```
 
 2. Use a shell command, which does something so the variable gets its value
 
 ```sh
-shellcommand VARIABL
+shellcommand Variabl
 ```
 
 - But, `shellcommand` isn't a real comand
 ...here are real examples...
 
 ```sh
-for VARIABL in *.md; do
+for Variabl in *.md; do
 # Do something
 done
 ```
-... now `$VARIABL` has a value
+... now `$Variabl` has a value
 
 ```sh
-read VARIABL
+read Variabl
 ```
-... now `$VARIABL` has a value
+... now `$Variabl` has a value
 
 ```sh
 echo "I am a sweet potato."
 ```
 
-... Now `$?` = "0" because echo ran successfully and exited without error.
+... Now `$?` = "0" because echo ran successfully and exited without error
 ___
 
 ### IV. Find-replace in a variable's value
 
-- `${VARIABL%foo}bar` will replace "foo" in the value output with "bar"
+- `${Variabl%foo}bar` will replace "foo" in the value output with "bar"
 
 Say the variable's value is set to "applefoo"
 
 ```sh
-VARIABL=applefoo
+Variabl=applefoo
 ```
 
-Using `${VARIABL%foo}bar` will change the variable's output to "applebar"
+Using `${Variabl%foo}bar` will change the variable's output to "applebar"
 
 ```sh
-echo ${VARIABL%foo}bar
+echo ${Variabl%foo}bar
 ```
 
 returning
@@ -145,10 +155,10 @@ returning
 applebar
 ```
 
-Replace a string with nothing with: `${VARIABL%foo}`
+Replace a string with nothing with: `${Variabl%foo}`
 
 ```sh
-echo ${VARIABL%foo}
+echo ${Variabl%foo}
 ```
 
 returning
@@ -165,9 +175,9 @@ ___
 
 ```sh
 #!/bin/sh
-VARONE="VARTWO"
-eval "$VARONE='$(echo "I love apples.")'"
-echo $VARTWO # -> "I love apples."
+varONE="varTWO"
+eval "$varONE='$(echo "I love apples.")'"
+echo $varTWO # -> "I love apples."
 
 ```
 
@@ -175,50 +185,50 @@ OR, to be cleaner and more complex...
 
 ```sh
 #!/bin/sh
-VARONE="VARTWO"
+varONE="varTWO"
 MyMessage="I love apples."
-eval "$VARONE='$(echo "$MyMessage")'"
-echo $VARTWO # -> "I love apples."
+eval "$varONE='$(echo "$MyMessage")'"
+echo $varTWO # -> "I love apples."
 ```
 
 OR, to include a [heredoc](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md#i-heredoc-cat-eof)...
 ```sh
 #!/bin/sh
-VARONE="VARTWO"
+varONE="varTWO"
 MyHeredoc="$(cat <<EOF
 This is my message.
-I am using $VARONE.
+I am using $varONE.
 This is the third line.
 EOF
 )"
-eval "$VARONE='$(echo "$MyHeredoc")'"
-echo $VARTWO # -> "No quotes: This is my message. I'm using $VARONE. This is the third line." (all on one line)
+eval "$varONE='$(echo "$MyHeredoc")'"
+echo $varTWO # -> "No quotes: This is my message. I'm using $varONE. This is the third line." (all on one line)
 echo Now, with quotes:
-echo "$VARTWO" # -> Note lines are preserved because `echo` only preserves variable lines with double quotes, as also in the `eval` statement.
+echo "$varTWO" # -> Note lines are preserved because `echo` only preserves variable lines with double quotes, as also in the `eval` statement.
 ```
 
-#### Method 2: via `${!VAR}` (requires BASH)
+#### Method 2: via `${!var}` (requires BASH)
 
 ```bash
 #!/bin/bash
 # Set these variables:
-myVAR="apple"
+myvar="apple"
 one="my"
-TWO="VAR"
-three="myVAR"
+TWO="var"
+three="myvar"
 four="${one}${TWO}" # This does not require BASH, only SH
 
 # Call the variables
 echo "$three"
-# returns: myVAR
+# returns: myvar
 
 echo "${!three}"
 # returns: apple
-# $three = "myVAR" hence ${!three} = $myVAR = "apple"
+# $three = "myvar" hence ${!three} = $myvar = "apple"
 # This requires BASH
 
 echo "$four"
-# returns: myVAR
+# returns: myvar
 
 echo "${!four}"
 # returns: apple
@@ -228,42 +238,42 @@ echo "${!four}"
 
 ___
 
-### VI. `for` VARIABL `in` WUT
+### VI. `for` Variabl `in` WUT
 
-- `for VARIABL` sets `$VARIABL` as a changing varable for each occurrence in `WUT`
-- `WUT` can be anything, such as files, such as `*.odt` or `*.png` or `*`
-- If `WUT` includes a full path, then each `do` cycle will set `$VARIABL` to include the same full path
+- `for Variabl` sets `$Variabl` as a changing varable for each occurrence in "WUT"
+- "WUT" can be anything, such as files, such as `*.odt` or `*.png` or `*`
+- If "WUT" includes a full path, then each `do` cycle will set `$Variabl` to include the same full path
 
 ```sh
-for VARIABL in *.txt
+for Variabl in *.txt
 
 do
 
 # Change to .md files:
 
-echo ${VARIABL%txt}md
+echo ${Variabl%txt}md
 
 # Change to files with no extension:
 
-echo ${VARIABL%.txt}
+echo ${Variabl%.txt}
 
 done
 ```
 
 - `*.txt` can be anything, usually returning many items
-- `${VARIABL%txt}md` will replace "txt" with "md" in the output
+- `${Variabl%txt}md` will replace "txt" with "md" in the output
 - All of this is used in a `do`... `done` loop that follows
 
 ___
 
-### VII. `case` $VARIABL `in` ...`esac`
+### VII. `case` $Variabl `in` ...`esac`
 - `case` uses a varible, but the variable must already be set
 - `case` does NOT set a variable
 
 ```sh
-case $VARIABL in
+case $Variabl in
 
-DO SOMETHING FOR EACH SCENARIO OF WHAT $VARIABL COULD BE
+DO SOMETHING FOR EACH SCENARIO OF WHAT $Variabl COULD BE
 
 esac
 ```
@@ -275,21 +285,21 @@ ___
 
 
 ```sh
-while getopts ":a:b:c:" VARIABL
+while getopts ":a:b:c:" Variabl
 ...
 ```
-- Now, `$VARIABL` can be used in the `while getopts`... `case` loop
+- Now, `$Variabl` can be used in the `while getopts`... `case` loop
 
 
 ___
 
 ### IX. `getopt`
-- `getopt` HELPS to set a variable in a nested command using `VAR=$(getopt ...)` or `` VAR=`getopt ...` ``
+- `getopt` HELPS to set a variable in a nested command using `var=$(getopt ...)` or `` var=`getopt ...` ``
 
 
 ```sh
-VARIABL=$(getopt -o a:bcdeh) # OR...
-VARIABL=`getopt -o a:bcdeh` # Backticks do the same thing
+Variabl=$(getopt -o a:bcdeh) # OR...
+Variabl=`getopt -o a:bcdeh` # Backticks do the same thing
 ...
 ```
-- Now, `$VARIABL` can be used in the `while`... `case` loop
+- Now, `$Variabl` can be used in the `while`... `case` loop
