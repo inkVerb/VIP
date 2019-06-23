@@ -70,6 +70,24 @@ one-1*
 
 ### II. break & continue
 
+#### *Usually, `break` & `continue` are wrapped in an `if` test*
+
+#### `break` will "break out" a loop
+
+*Note the two `echo` commands and where the `break` applies...*
+
+| **20** : `gedit 03-do-echo-8`
+
+| **21** : `./03-do-echo-8`
+
+#### `continue` will skip whatever is left in a loop cycle and "continue" on to the next cycle
+
+*Note the two `echo` commands and where the `continue` applies...*
+
+| **20** : `gedit 03-do-echo-9`
+
+| **21** : `./03-do-echo-9`
+
 ___
 
 # The Take
