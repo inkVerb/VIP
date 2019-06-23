@@ -32,9 +32,6 @@ ___
 
 # Further Reference
 
-## if then elif else fi
-[https://www.thegeekstuff.com/2010/06/bash-if-statement-examples/]
-
 ## Bourne Again Shell extras
 functions, menues, etc
 - [http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-8.html]
