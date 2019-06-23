@@ -80,6 +80,8 @@ echo $var
 
 #### `readonly`: Making a read-only variable
 
+*Read-only variables are usually named with ALL_UPPERCASE; it's not necessary, just Shell coder common practice*
+
 Using `readonly VariablE_NAME` will create a variable that can neither be changed nor `unset`
 
 For example:

@@ -408,8 +408,6 @@ export myVAR="Hello world!"
 
 *"Constants" are, basically, variables that can't change (oxymoron, but you get the idea)*
 
-**Usually, "should-be-constant variables" are ALL-CAPS, it's just a good Shell coder's healthy habit**
-
 #### 1. You can't change a `readonly` variable's value
 
 *Edit this script to see the short version*
@@ -460,7 +458,11 @@ unset MYROVAR
 
 | **29** : `./variable-readonly-2`
 
+**Usually, "should-be-constant variables" are ALL_UPPERCASE, it's just a good Shell coder's healthy habit**
 
+*(This is why environment variables are ALL_UPPERCASE, see with `printenv`)*
+
+*ALL_UPPERCASE variables may or may not be "`readonly`"; they just "shouldn't" be changed, according to common practice*
 
 ___
 
@@ -486,6 +488,7 @@ ___
   - Syntax: `export NEWVARIABLE="Variable's value"`
 - `readonly` makes a variable both unable to change and unable to `unset`
   - Syntax: `readonly NEWVARIABLE="Variable's value"`
+  - It's common practice in Shell coding to name variables that "shouldn't" change with ALL_UPPERCASE
 - See usage and examples here: [Variables](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Variables.md)
 ___
 
