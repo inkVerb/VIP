@@ -100,11 +100,15 @@ ___
   - `for` opens and defines the conditions
   - `do` opens the mini-script to be looped
   - `done` closes the mini-script
-- `break` will end the loop (usually in an `if` test)
-- `continue` will skip to the next loop cycle, doing nothing else (usually in an `if` test)
 - Syntax of the `for` line:
   - `for` `VARIABLE` `in` `CONDITIONS`
+
+##  `break` & `continue`
+- `break` will end the loop (usually in an `if` test)
+- `continue` will skip to the next loop cycle, doing nothing else (usually in an `if` test)
+- Both of these can also be used in `until` and `while` loops (covered later)
+
 - See usage and examples here: [Tests: for](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iii-for-variabl-in-wut)
 ___
 
-#### [Lesson 4: ](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)
+#### [Lesson 4: for Applied](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)

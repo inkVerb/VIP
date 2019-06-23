@@ -124,10 +124,8 @@ for VARIABL in *.txt
 
 do
 
-  if [ -f "skip-me" ]
-
+  if [ -f "skip-me" ]; then
     continue
-
   fi
 
 echo $VARIABL
@@ -142,10 +140,8 @@ for VARIABL in *.txt
 
 do
 
-  if [ -f "stop-at-me" ]
-
+  if [ -f "stop-at-me" ]; then
     break
-
   fi
 
 echo $VARIABL
