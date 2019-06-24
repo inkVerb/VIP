@@ -207,6 +207,7 @@ ___
 ## Other file view tools
 - `sort` re-orders the lines of a file alphabetically
   - `-r` for reverse alphabetical
+- `tac` reverse line order
 - `diff` compares two files by line
   - Usage: `diff file1 file2`
   - a = "added"
