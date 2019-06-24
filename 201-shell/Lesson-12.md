@@ -1,5 +1,5 @@
 # Shell 201
-## Lesson 12: more, less, head, tail, sort, diff, nano, vi
+## Lesson 12: more, less, head, tail, sort, tac, diff, nano, vi
 
 `cd ~/School/VIP/shell/201`
 
@@ -59,9 +59,11 @@ ___
 
 | **11** : `sort -r verb.ink.html`
 
-*Lots more you can do*
+### `tac`
 
-| **12** : `man sort` *(Q to quit)*
+*Lines in reverse order*
+
+| **12** : `tac verb.ink.html`
 
 | **13** : `cd ..`
 

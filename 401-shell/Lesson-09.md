@@ -162,12 +162,12 @@ echo ${ARRAY[@]}
 ### II. `set` Errors & Debugging
 
 **Main `set` commands:** *(there are more than these)*
-- `set -a` **A****ll* variables to be exported to environment
-- `set -e` **E****xit* immediately if a command returns an exit code other than zero
+- `set -a` ***A****ll* variables to be exported to environment
+- `set -e` ***E****xit* immediately if a command returns an exit code other than zero
 - `set -n` Do ***N****ot* execute commands, only read them
 - `set -t` Exi****T*** after executing only one command
 - `set -u` Treat ***U****nset* variables as errors
-- `set -v` **V****erbose* (Print shell inputs line by line as the script executes)
+- `set -v` ***V****erbose* (Print shell inputs line by line as the script executes)
 - `set -x` Print *e****X****ecuted* commands and their arguments line by line
 
 **ON/OFF**
@@ -208,9 +208,145 @@ OR
 #!/bin/sh -ev
 ```
 
+*Try some examples*
+
+
+**Normal script**
+
+*Edit this script to see the short version*
+
+| **9** : `gedit set-normal`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+# echo that we started
+echo "Starting verbchacho test"
+
+# ls a directory that DOES NOT work!
+ls iamnothere
+
+# echo
+echo "Done with verbchacho test"
+
+```
+
+*Run it and watch carefully*
+
+| **10** : `./set-normal`
+
+*Edit this script to see the short version*
+
+| **11** : `gedit set-e`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+set -e
+
+# echo that we started
+echo "Starting verbchacho test"
+
+# ls a directory that DOES NOT work!
+ls iamnothere
+
+# echo
+echo "Done with verbchacho test"
+
+```
+
+*Run it and watch carefully*
+
+| **12** : `./set-e`
+
+*Edit this script to see the short version*
+
+| **13** : `gedit set-x`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+set -x
+
+# echo that we started
+echo "Starting verbchacho test"
+
+# ls a directory that DOES NOT work!
+ls iamnothere
+
+# echo
+echo "Done with verbchacho test"
+
+```
+
+*Run it and watch carefully*
+
+| **14** : `./set-x`
+
+*Edit this script to see the short version*
+
+| **15** : `gedit set-v`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh -v
+
+# echo that we started
+echo "Starting verbchacho test"
+
+# ls a directory that DOES NOT work!
+ls iamnothere
+
+# echo
+echo "Done with verbchacho test"
+
+```
+
+*Run it and watch carefully*
+
+| **16** : `./set-v`
+
+*So, `-v` and `-x` are basically the same, but `-x` has the pretty `+`*
+
+*Edit this script to see the short version*
+
+| **17** : `gedit set-xe`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh -xe
+
+# echo that we started
+echo "Starting verbchacho test"
+
+# ls the directory, this works
+ls
+
+# echo
+echo "Done with verbchacho test"
+
+```
+
+*Run it and watch carefully*
+
+| **17** : `./set-xe`
+
+
+
+
+***Summary:***
+
 *A `set` declaration is for debugging and should not normally be standard in a script.*
 
-*Note `$?` is the variable for the last `exit` code*
+*Remember `$?` is the variable for the last `exit` code*
 
 *If you need to handle errors in a normal-production script, use `if` tests with `$?` `exit` codes.*
 -See: [Lesson 5: More with Variables](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-05.md)
@@ -228,17 +364,17 @@ false || EXECUTE_COMMAND_IF_FALSE
 
 *Yes, `true` and `false` can be run in the terminal as commands*
 
-| **9** : `true`
+| **19** : `true`
 
-| **10** : `false`
+| **20** : `false`
 
 *They don't return any output, only an "exit" code: `0` (true) or `1` (false)*
 
 *Remember `$?` is the last exit code, watch...*
 
-| **11** : `true && echo $?`
+| **21** : `true && echo $?`
 
-| **12** : `false || echo $?`
+| **22** : `false || echo $?`
 
 *These work because:*
 - `true &&` **THIS WILL HAPPEN**
@@ -248,11 +384,12 @@ false || EXECUTE_COMMAND_IF_FALSE
 - `true ||` **THIS WON'T HAPPEN**
 - `false &&` **THIS WON'T HAPPEN**
 
-| **13** : `true || echo $?`
+| **23** : `true || echo $?`
 
-| **14** : `false && echo $?`
+| **24** : `false && echo $?`
 
 *Example in a Script:*
+
 ```sh
 true && echo "AND/OR is true." || echo "AND/OR is false."
 true && echo "AND is true."
@@ -269,7 +406,7 @@ false || echo "OR is false."
 
 *Edit this script to see the short version*
 
-| **15** : `gedit truefalse`
+| **25** : `gedit truefalse`
 
 *It should look like this:*
 
@@ -290,7 +427,9 @@ false || echo "OR is false."
 
 ```
 
-| **16** : `./truefalse`
+*Run it and watch carefully*
+
+| **26** : `./truefalse`
 
 *It works whether `true`/`false` is stated or a variable:*
 
@@ -298,7 +437,7 @@ false || echo "OR is false."
 
 *Edit this script to see the short version*
 
-| **17** : `gedit truefalsevar`
+| **27** : `gedit truefalsevar`
 
 *It should look like this:*
 
@@ -323,7 +462,9 @@ $VAR || echo "OR is false."
 
 ```
 
-| **18** : `./truefalsevar`
+*Run it and watch carefully*
+
+| **28** : `./truefalsevar`
 
 *This next script does* ***NOT*** *work...*
 
@@ -331,7 +472,7 @@ $VAR || echo "OR is false."
 
 *Edit this script to see the short version*
 
-| **19** : `gedit truefalsevarstring`
+| **29** : `gedit truefalsevarstring`
 
 *It should look like this:*
 
@@ -355,7 +496,9 @@ $VAR && echo "AND is true."
 $VAR || echo "OR is false."
 ```
 
-| **20** : `./truefalsevarstring`
+*Run it and watch carefully*
+
+| **30** : `./truefalsevarstring`
 
 *Note the errors...*
 
@@ -367,21 +510,21 @@ $VAR || echo "OR is false."
 
 *Watch this...*
 
-| **21** : `true`
+| **31** : `true`
 
-| **22** : `echo $?`
+| **32** : `echo $?`
 
-| **23** : `false`
+| **33** : `false`
 
-| **24** : `echo $?`
+| **34** : `echo $?`
 
 *Now, let's put that to use...*
 
-| **25** : `mkdir iamhere && touch iamhere/file1 iamhere/file2`
+| **35** : `mkdir iamhere && touch iamhere/file1 iamhere/file2`
 
 *Edit this script to see the short version*
 
-| **26** : `gedit lstest`
+| **36** : `gedit lstest`
 
 *It should look like this:*
 
@@ -401,7 +544,9 @@ ls nothere && echo "AND is true, exit code: $?"
 ls nothere || echo "OR is false, exit code: $?"
 ```
 
-| **27** : `./lstest`
+*Run it and watch carefully*
+
+| **37** : `./lstest`
 
 *So, `&&` and `||` work with any command that returns*
 
@@ -417,7 +562,7 @@ Test with `-z`:
 
 *Edit this script to see the short version*
 
-| **28** : `gedit varset-z`
+| **38** : `gedit varset-z`
 
 *It should look like this:*
 
@@ -454,13 +599,15 @@ echo "IS set: $VAR"
 fi
 ```
 
-| **29** : `./varset-z`
+*Run it and watch carefully*
+
+| **39** : `./varset-z`
 
 Test with `-n`:
 
 *Edit this script to see the short version*
 
-| **30** : `gedit varset-n`
+| **40** : `gedit varset-n`
 
 *It should look like this:*
 
@@ -497,7 +644,9 @@ echo "IS empty set: $VAR"
 fi
 ```
 
-| **31** : `./varset-n`
+*Run it and watch carefully*
+
+| **41** : `./varset-n`
 
 ___
 
