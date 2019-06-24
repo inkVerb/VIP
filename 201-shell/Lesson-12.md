@@ -59,7 +59,7 @@ ___
 
 | **11** : `sort -r verb.ink.html`
 
-### `tac`
+### `tac` *(`cat` backwards)*
 
 *Lines in reverse order*
 
