@@ -26,7 +26,7 @@ ___
 
 | **7** : `ls`
 
-*Note the error*
+*Note it only output the code of the web page and saved nothing*
 - `curl` *"opens" files; to save, specify an output file*
 - `wget` *saves files; specify otherwise for a different file name*
 
