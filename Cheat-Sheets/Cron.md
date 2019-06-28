@@ -1,6 +1,4 @@
-# Arrays
-
-## Cron Schedule Format
+# Cron Schedule Format
 
 Learn more about using cron tasks in: **[Shell 401 Lesson 3: Cron Daemon](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)**
 
