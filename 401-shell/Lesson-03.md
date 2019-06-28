@@ -9,7 +9,7 @@ Cron tasks are processes (usually in a Shell script) that are automatically run 
 
 | **1** : `cd /etc`
 
-| **2** : `ls` (Scroll up to find the cron directories)*
+| **2** : `ls` *(Scroll up to find the cron directories)*
 
 ### Normal Schedules
 
