@@ -345,7 +345,7 @@ ___
 - `useradd` & `userdel` only create and delete a user, no more
 - A user's "home" is in `/home/` by default
 - File "permissions" relate to users who own the files
-- `chown` sets file "ownership" (`chmod` sets permissions, from [401-04](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)), see usage and examples here: [VIP/Cheet-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
+- `chown` sets file "ownership" (`chmod` sets permissions, from [401-04](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)), see usage and examples here: [VIP/Cheat-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
 - `ls -l` includes file ownership in the output list of files
 - Ownership is set with the syntax: `user:group`
 - Normal users have a group by the same name, only that user belongs to that group

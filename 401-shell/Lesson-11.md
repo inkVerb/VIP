@@ -7,7 +7,7 @@ ___
 
 ### I. Characters Classes
 
-*Refer to this cheat-sheet section for more about working with characters:* [VIP/Cheet-Sheets: Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
+*Refer to this cheat-sheet section for more about working with characters:* [VIP/Cheat-Sheets: Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
 
 1. In `sed` & `grep` use `[[double brackets]]` not `[single brackets]`
 2. Carrot `^` means "only first in the line".

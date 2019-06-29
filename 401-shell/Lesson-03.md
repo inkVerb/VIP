@@ -181,7 +181,7 @@ Or, maybe with a user, such as "jim":
 *All cron tasks are run as the "root" user unless specified otherwise*
 
 **Instructions:**
-1. Each `cron` file has one to-be-run Shell script *per line* with `cron` schedule settings (below & here: [VIP/Cheet-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
+1. Each `cron` file has one to-be-run Shell script *per line* with `cron` schedule settings (below & here: [VIP/Cheat-Sheets: Cron Schedule Tasks: I. Proper cron Task Line Formatting](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting))
 2. File Permissions: `rw-r--r--` set with: `chmod 644 CRON_TASK_NAME`
 3. If creating the file by using `echo` use single 'quotes' since double "quotes" will change the meaning of some characters, though you may never see the difference in the text file
 4. The Shell script listed at the end of the line *must be executable*, probably `rwxr-xr-x` set with: `chmod 755 SCRIPT_NAME`
@@ -194,7 +194,7 @@ The favorite way for a system admin to set up a custom `cron` task is using the 
 
 This will edit the file `/etc/crontab`, which is managed by the system
 
-Crontab entries follow the same format as the files in `cd cron.d/` (see *Cron file schedule format* (below & here: [VIP/Cheet-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
+Crontab entries follow the same format as the files in `cd cron.d/` (see *Cron file schedule format* (below & here: [VIP/Cheat-Sheets: Cron Schedule Tasks: I. Proper cron Task Line Formatting](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting))
 
 **Know this:**
 1. The `crontab` profile has one to-be-run Shell script *per line* with `cron` schedule line formatting (below)
@@ -207,7 +207,7 @@ Crontab entries follow the same format as the files in `cd cron.d/` (see *Cron f
 **Instructions:**
 1. Edit and make entries in your `crontab` profile with:
   - `crontab -e`
-2. Use proper `cron` task line formatting (below & here: [VIP/Cheet-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
+2. Use proper `cron` task line formatting (below & here: [VIP/Cheat-Sheets: Cron Schedule Tasks: I. Proper cron Task Line Formatting](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting))
 
 #### `cron` File Schedule Format
 
@@ -224,11 +224,20 @@ Example of a cron line:
 
 *An astric* **\*** *will run at all times for that setting.*
 
-*Refer to this cheat-sheet for more about `cron` scheduling:* [VIP/Cheet-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md)
+*Refer to this cheat-sheet for more about `cron` scheduling:* [VIP/Cheat-Sheets: Cron Schedule Tasks: I. Proper cron Task Line Formatting](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting)
 
 ### III. `cron` Problems
 
+`cron` is a system-level process, so it is unforgiving, problems are common
 
+**Consider:**
+1. Proper formatting of the task line - *[cheat sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting)*
+2. File permissions (`cron` task file & the script to run) - *[cheat sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#1-permissions)*
+3. $PATH declaration inside the `cron` task file - *[cheat sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#2-path)*
+4. If using `echo` to create the `cron` task file, use 'single quotes' - *[cheat sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#3-characters-matter)*
+5. Watch `journalctl` for `cron` errors and sear the Internet for solutions - *[cheat sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#4-use-journalctl--f-to-troubleshoot-your-cron-task)*
+
+- [VIP/Cheat-Sheets: Cron Schedule Tasks: III. Troubleshooting](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md#iii-troubleshooting)
 
 ___
 
@@ -271,6 +280,7 @@ ___
   - Permissions requirements can be different for `cron` files in different locations!
   - Usually, `cron` files in `/etc/cron.SOMEDIR/` directories need to be `644`
 - Follow `cron` structure carefully and don't be sloppy!
+- Refer to this cheat-sheet for more about `cron` scheduling: [VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md)
 
 ___
 

@@ -155,7 +155,7 @@ echo ${ARRAY[@]}
 
 *...the array works in BASH (`#!/bin/bash`)*
 
-*Refer to this cheat-sheet section for more about Shell-BASH differences:* [VIP/Cheet-Sheets: Tests – Welcome to BASH](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Tests.md#welcome-to-bash)
+*Refer to this cheat-sheet section for more about Shell-BASH differences:* [VIP/Cheat-Sheets: Tests – Welcome to BASH](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Tests.md#welcome-to-bash)
 
 *Here's a great Wiki article about shells: [List of command-line interpreters](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)*
 

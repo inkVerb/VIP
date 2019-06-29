@@ -100,7 +100,7 @@ Put a **`cron` task file** in this directory:
 - Cron directory: `/etc/cron.d/`
 
 **Instructions:**
-1. Each `cron` file has one to-be-run Shell script *per line* with `cron` schedule settings (here: [VIP/Cheet-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
+1. Each `cron` file has one to-be-run Shell script *per line* with `cron` schedule settings (here: [VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
 2. File Permissions: `rw-r--r--` set with: `chmod 644 CRON_TASK_NAME`
 3. If creating the file by using `echo` use single 'quotes' since double "quotes" will change the meaning of some characters, though you may never see the difference in the text file
 4. The Shell script listed at the end of the line *must be executable*, probably `rwxr-xr-x` set with: `chmod 755 SCRIPT_NAME`
@@ -110,7 +110,7 @@ Put a **`cron` task file** in this directory:
 Every user gets a `crontab` file
 
 **Before you start:**
-1. The `crontab` profile has one to-be-run Shell script *per line* with `cron` schedule line formatting (here: [VIP/Cheet-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
+1. The `crontab` profile has one to-be-run Shell script *per line* with `cron` schedule line formatting (here: [VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
 2. The Shell script listed at the end of the line *must be executable*, probably using: `chmod ug+x SCRIPT_FILE`
 3. The first time you run `crontab` you will be asked to choose an editor, that's normal
 4. `crontab` records are usually kept here: `/var/spool/cron/crontabs/USERNAME`, don't touch!
@@ -120,15 +120,22 @@ Every user gets a `crontab` file
 **Instructions:**
 1. Edit and make entries in your `crontab` profile with:
   - `crontab -e`
-2. Use proper `cron` task line formatting (here: [VIP/Cheet-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
+2. Use proper `cron` task line formatting (here: [VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
 
-## Troubleshooting
+## III. Troubleshooting
 
 ### `cron` is a system-level process, so it is unforgiving
+Problems with cron tasks are normal when developing, here are some things to check
 
 ### 1. Permissions
-Check your file permissions:
-
+1. Scripts must be executable, usually:
+  - `rwxr-xr-x` set with: `chmod 755 SCRIPT_NAME`
+  - `rwxrwxr-x` set with: `chmod 775 SCRIPT_NAME` (less secure, may be needed for groups)
+2. `cron` task schedules
+  - `rw-r--r--` set with: `chmod 644 CRON_TASK_NAME`
+3. Which files go where - *[II. Ways to Run cron Tasks](#ii-ways-to-run-cron-tasks)*
+  - Actual scripts go in directories like: `/etc/cron.hourly/`, `/etc/cron.weekly/`, etc (`755`)
+  - `cron` task files go in `cron.d` (`644`)
 
 ### 2. `$PATH`
 **Remember: a `cron` task automatically restricts the `$PATH` to: `/bin:/usr/bin`**

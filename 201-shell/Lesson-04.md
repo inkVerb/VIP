@@ -73,7 +73,7 @@ ___
 
 | **22** : `ls -l` *Note the new permissions (`-rw-------`)*
 
-*Refer to this cheat-sheet for more about chmod:* [VIP/Cheet-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
+*Refer to this cheat-sheet for more about chmod:* [VIP/Cheat-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
 
 #### Hidden files
 
@@ -102,7 +102,7 @@ ___
 # The Take
 
 - `ls -1` (with the number one `-1`, not `-l`) will list files vertically
-- `chmod` will change file permissions, see usage and examples here: [VIP/Cheet-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
+- `chmod` will change file permissions, see usage and examples here: [VIP/Cheat-Sheets: chmod](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
 - `ls -l` will output a list of files with information that includes the permissions that `chmod` changes
 - `ls -a` shows "All" files and directories, even those hidden
 - `ls -la` and `ls -al` combine the flags `-a` and `-l`
