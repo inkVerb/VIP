@@ -200,4 +200,4 @@ ___
 
 ___
 
-#### [Lesson 12: $PATH Plus, Secure Scripts & Command Hacks](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
+#### [Lesson 12: Secure Scripting & Command Hacks](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)

@@ -8,7 +8,7 @@
 
 ### [Lesson 2: File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)
 
-### [Lesson 3: Cron Daemon](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)
+### [Lesson 3: Cron Daemon & $PATH Variable](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)
 
 ### [Lesson 4: MySQL & systemctl](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-04.md)
 
@@ -26,4 +26,4 @@
 
 ### [Lesson 11: Character Classes & Heredocs](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
 
-### [Lesson 12: $PATH Plus, Secure Scripts & Command Hacks](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
+### [Lesson 12: Secure Scripting & Command Hacks](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)

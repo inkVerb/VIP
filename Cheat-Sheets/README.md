@@ -15,7 +15,7 @@ ___
 ### [Resources & Things That Run](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md)
 
 ___
-### [Cron Schedule Format](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
+### [Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
 
 ### Style & Documents
 

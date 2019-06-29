@@ -240,4 +240,4 @@ ___
 
 ___
 
-#### [Lesson 3: Cron Daemon](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)
+#### [Lesson 3: Cron Daemon & $PATH Variable](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)

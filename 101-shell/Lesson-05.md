@@ -85,7 +85,7 @@ ___
 ```sh
 #!/bin/sh
 
-myOutput=$(cat $1 | sed "s/$2/$3/g")
+myOutput="$(cat $1 | sed "s/$2/$3/g")"
 
 echo "$myOutput"
 
@@ -124,6 +124,13 @@ ___
   - Both of these are called "**Command Substitution**"
 - Command Substitution can set the value of a variable in a Shell script
   - Example: `thisVariable=$(cat somefile)`
+- "Quotes" work cleanly with Command Substitution
+  - Example **in a script**:
+```shell
+variable="$(echo "something here")"
+```
+  - ...these "quotes" will won't be confused as starting and beginning inside `$(CS brackets)`
+  - Using quotes like this is the "correct" way to use Command Substitution to set variables
 - And, use it directly, like this:
   - `echo $(command substitution)` (echo outputs to terminal)
   - `echo $(command substitution) > filename` (echo output into a file)

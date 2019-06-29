@@ -17,7 +17,7 @@ ___
 ```sh
 #!/bin/sh
 
-myOutput=$(sed "s/$2/$3/g" $1)
+myOutput="$(sed "s/$2/$3/g" $1)"
 
 echo "$myOutput" >> sedoutput.text
 
@@ -32,7 +32,7 @@ echo "$myOutput" >> sedoutput.text
 ```sh
 #!/bin/sh
 
-myOutput=$(sed "s/$2/$3/g" $1)
+myOutput="$(sed "s/$2/$3/g" $1)"
 
 echo "$myOutput" | tee sedoutput.text
 

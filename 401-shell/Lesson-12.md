@@ -1,132 +1,15 @@
 # Shell 401
-## Lesson 12: $PATH Plus, Secure Scripts & Command Hacks
+## Lesson 12: Secure Scripting & Command Hacks
 
 `cd ~/School/VIP/shell/401`
 
 ___
 
-### I. The `$PATH` Environment Variable
-
-#### What is `$PATH`?
-
-| **1** : `echo $PATH | tee mypath`
-
-*This is the "$PATH" environment variable, the list of directories where executable files can be run by filename only*
-
-*The $PATH is why commands work as commands, why `echo` isn't `./echo`*
-
-*Let's take a peek inside...*
-
-| **2** : `gedit mypath`
-
-*Note each colon `:` separates a different directory path included in the $PATH*
-
-*Let's use `sed` to resort them to go onto each line*
-
-| **3** : `sed -i "s/:/\n/g" mypath`
-
-*gedit: Reload mypath*
-
-*Let's do it in one command:*
-
-| **4** : `echo $PATH | sed "s/:/\n/g"`
-
-**This nifty little script basically does the same thing with a `do` loop, listing each directory of the $PATH on a new line:**
-
-*Edit the script*
-
-| **5** : `gedit listpath`
-
-*It should look like this:*
-
-```sh
-#!/bin/sh
-
-# Set the field separator for the `for` loop to the `:` that separates dirs in the "$PATH"
-IFS=:
-# If we don't put "$PATH" in "double-quotes", each dir will appear on one line
-# Try removing the "double-quotes" from "$PATH" on the line below to see what happens
-# Also try changing the "double-quotes" to 'single-quotes' to see what happens
-for pdir in $(echo "$PATH"); do
-  echo $pdir
-done
-```
-
-| **6** : `./listpath`
-
-**The point of all this so far:**
-- *$PATH contains many directories*
-- *Each directory in $PATH is separated by a colon `:`*
-- *Files in these directories can be run without entering the entire path.*
-
-#### Running non-`$PATH` scripts
-
-***Using the full path*** *let's run a small script containing this:*
-
-*Edit the script*
-
-| **7** : `gedit iamexec`
-
-*It should look like this:*
-
-```sh
-#!/bin/sh
-echo "I am executable, but I am not in the \$PATH."
-```
-
-*Same script, same location, three different ways to execute...*
-
-1. Relative `/home/` path: `~/...`
-
-| **8** : `~/School/VIP/shell/401/iamexec`
-
-2. "here" path: `./`
-
-| **9** : `./iamexec`
-
-3. "full path" (get with `pwd`)
-
-*Enter the output of this as a new command in the terminal:*
-
-| **10** : `echo "$(pwd)/iamexec"`
-
-*...Something like: `/home/USERNAME/School/VIP/shell/401/iamexec` ...enter it as a command*
-
-**The point of all this so far:**
-- *Any file not in a directory listed in $PATH can only be run by including the path to the file, like `./FILE` or `/full/path/to/FILE`*
-
-#### Find a command's full path using `which` & `whereis`
-
-*You can check "`which`" directory of the $PATH a command is located in...*
-
-| **11** : `which cp`
-
-| **12** : `which sed`
-
-| **13** : `which grep`
-
-| **14** : `which gedit`
-
-| **15** : `which firefox`
-
-*Similar, but returns more information: `whereis`*
-
-| **16** : `whereis firefox`
-
-*You should find that these locations generally respect the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md).*
-
-**Add dirs to $PATH:**
-
-*You can add as many extra directories as you want to your user's $PATH...*
-- In this file: `~/.bashrc`
-- Add a line with: `export PATH=$PATH:/ADDED/DIR:/ADD/ANOTHER/DIR:/ADD/MORE/DIRS`
-- Careful, adding insecure files could be a way to hack your machine, use mindfully and only add directories you ***need***.
-
-### II. Secure Scripts
+### I. Secure Scripts
 - ***This lesson is only an introduction.***
 - ***Cybersecurity is a career in itself!!***
 
-#### Yes, Linux is hackable, but mainly from sloppy scripting
+#### A. Yes, Linux is hackable, but mainly from sloppy scripting
 
 *Consider this:*
 
@@ -137,17 +20,23 @@ read USERNAME
 echo $USERNAME
 ```
 
-*What if the user types `rm -r /*` at the input?*
+*What if the user types `rm -r *` at the input?*
 
 *This is a normal problem in many programming languages, which is why inputs are "sanitized".*
 
-#### Sanitize
-1. Most computer languages automatically sanitize inputs enough
+#### B. Sanitize
+1. You can use tools like `sed` or `grep` or something else to reject or remove certain characters a user inputs
+  - This is called **"sanitizing"**
+  - E.g. consider HTML <form><input> tags that do this automatically with the `type` attribute
+    - `type="email"` will only allow email addresses
+    - `type="url"` will only allow a web address
+    - This had to be done with extra code in older versions of HTML and in more basic computer languages
+2. Most computer languages automatically sanitize inputs enough, so you don't need to as often
   - So, the above example would only damage an ancient Shell machine, not BASH or other modern interpreters
-2. Using quotes, like `echo "$USERNAME"`, also prevents most of the problems, *(but you should be doing that anyway)*
-3. There are some other commands, like above, that prevent things like this
+3. Using quotes, like `echo "$USERNAME"`, also prevents most of the problems, *(but you should be doing that anyway)*
+4. There are some other commands, like above, that prevent things like this
 
-#### Beginner Security Solutions
+#### C. Starting Security Solutions
 
 Three Golden Rules of General Security & Safety:
   1. **Don't do more than necessary**
@@ -155,6 +44,7 @@ Three Golden Rules of General Security & Safety:
   3. **Be proper: Follow formatting and procedure**
 
 ##### 1. Sanitize a user-input variables with a [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) test (requires BASH)
+- **Sanitizing is generally a good idea anyway, so a user mistake doesn't break your script**
 - This test would reject non-alphanumerics characters (`[:alnum:]`):
   - `[[ "$USERNAME" =~ [:alnum:] ]]`
   - `[:alnum:]` from: [Characters: Grouped classes](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md#grouped-classes)
@@ -180,23 +70,23 @@ fi
 ##### 3. Always quote variables
 - ***DO NOT*** do this in your script:
 ```sh
-VAR1=Apples
-VAR2=$(echo $VAR1)
-echo $VAR2 >> somefile
+var1=Apples
+var2=$(echo $var1)
+echo $var2 >> somefile
 ```
 
 - **DO THIS** in your script:
 ```sh
-VAR1="Apples"
-VAR2="$(echo "$VAR1")"
-echo "$VAR2" >> somefile
+var1="Apples"
+var2="$(echo "$var1")"
+echo "$var2" >> somefile
 ```
 
-- **Do this TO BE AWESOME** in your script:
+- **Do `{this}` TO BE AWESOME** in your script:
 ```sh
-VAR1="Apples"
-VAR2="$(echo "${VAR1}")"
-echo "${VAR2}" >> somefile
+var1="Apples"
+var2="$(echo "${var1}")"
+echo "${var2}" >> somefile
 ```
 
 ##### 4. Use absolute paths for basic commands
@@ -225,93 +115,94 @@ cp file destination
   - Developers might do this on test machines to make work faster
 - This would allow a deadly script named `ls` or `sed` do destroy everything
 - This security measure is similar to putting absolute paths in your scripts
+- Review the `$PATH` environment variable in [Lesson 03](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)
 
 ##### 6. Consider guides from Apple and Google
 - *(Yep, Google uses Linux and Apple uses Unix, similar)*
 - [Shell Style Guide from Google](https://google.github.io/styleguide/shell.xml)
 - [Shell Script Security from Apple](https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/ShellScriptSecurity/ShellScriptSecurity.html)
 
-### III. Other Command Line Hacks
+### II. Other Command Line Hacks
 
 *Pay close attention to what happens...*
 
-| **17** : `cd ..`
+| **1** : `cd ..`
 
-| **18** : `echo $OLDPWD`
+| **2** : `echo $OLDPWD`
 
-| **19** : `cd $OLDPWD`
+| **3** : `cd $OLDPWD`
 
-| **20** : `mkdir space\ names`
+| **4** : `mkdir space\ names`
 
-| **21** : `ls`
+| **5** : `ls`
 
-| **22** : `cd "space names"`
+| **6** : `cd "space names"`
 
-| **23** : `touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
+| **7** : `touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
 
-| **24** : `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
+| **8** : `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
 
-| **25** : `ls`
+| **9** : `ls`
 
 *What? Only the files from command 23!?*
 
-| **26** : `ls -a`
+| **10** : `ls -a`
 
 *Oh, there the hidden (`.startswithdot`) files are*
 
-| **27** : `touch song.mp3 image.png media.ogg jpeg.jpg`
+| **11** : `touch song.mp3 image.png media.ogg jpeg.jpg`
 
-| **28** : `ls`
+| **12** : `ls`
 
-| **29** : `touch exec comm execomm`
+| **13** : `touch exec comm execomm`
 
-| **30** : `ls`
+| **14** : `ls`
 
 *Note the colors*
 
-| **31** : `chmod ug+x exec comm execomm`
+| **15** : `chmod ug+x exec comm execomm`
 
 *...`chmod` works on more than one file at a time*
 
-| **32** : `ls -a`
+| **16** : `ls -a`
 
-| **33** : `ls -f`
+| **17** : `ls -f`
 
-| **34** : `ls -b`
+| **18** : `ls -b`
 
-| **35** : `touch alpha bravo charlie delta`
+| **19** : `touch alpha bravo charlie delta`
 
-| **36** : `ls`
+| **20** : `ls`
 
-| **37** : `touch alpha2 bravo2 charlie2 delta2`
+| **21** : `touch alpha2 bravo2 charlie2 delta2`
 
-| **38** : `ls`
+| **22** : `ls`
 
-| **39** : `touch 1 2 3 4`
+| **23** : `touch 1 2 3 4`
 
-| **40** : `ls`
+| **24** : `ls`
 
 *Reverse order...*
 
-| **41** : `ls -r`
+| **25** : `ls -r`
 
 *Sort by Time...*
 
-| **42** : `ls -t`
+| **26** : `ls -t`
 
 *Reverse Time order...*
 
-| **43** : `ls -rt`
+| **27** : `ls -rt`
 
-| **44** : `cd ..`
+| **28** : `cd ..`
 
-| **45** : `cp -r space\ names "space also"`
+| **29** : `cp -r space\ names "space also"`
 
-| **46** : `cp -i space\ also/* space\ names/`
+| **30** : `cp -i space\ also/* space\ names/`
 
 *You can overwrite each, or not, or Ctrl + C to close*
 
-| **47** : `view code-of-poetry.txt`
+| **31** : `view code-of-poetry.txt`
 
 *Try "i" for insert*
 
@@ -319,26 +210,26 @@ cp file destination
 
 *Exit with: `:q`*
 
-| **48** : `touch rtfile.md`
+| **32** : `touch rtfile.md`
 
-| **49** : `tail -f rtfile.md`
+| **33** : `tail -f rtfile.md`
 
 *Open a new terminal window: Ctrl + Alt + T (not F12)*
 
 **Run in the new terminal window:** *(...and keep watch in the first terminal)*
-> | **50** : `cd ~/School/VIP/shell/401`
+> | **34** : `cd ~/School/VIP/shell/401`
 >
-> | **51** : `echo "I am fruit." >> rtfile.md`
+> | **35** : `echo "I am fruit." >> rtfile.md`
 >
 > *Did you see that?*
 >
-> | **52** : `echo "I am kruit." >> rtfile.md`
+> | **36** : `echo "I am kruit." >> rtfile.md`
 >
-> | **53** : `echo "I am vruit." >> rtfile.md`
+> | **37** : `echo "I am vruit." >> rtfile.md`
 >
-> | **54** : `echo "I am gruit." >> rtfile.md`
+> | **38** : `echo "I am gruit." >> rtfile.md`
 >
-> | **55** : `exit`
+> | **39** : `exit`
 
 *In the original terminal: Ctrl + C*
 
@@ -346,19 +237,7 @@ ___
 
 # The Take
 
-## $PATH
-- The `$PATH` is the list of directories of files that can be executed from the terminal, regardless of the present working directory
-  - *$PATH contains many directories*
-  - *Each directory in $PATH is separated by a colon `:`*
-  - *Files in these directories can be run without entering the entire path.*
-  - *Any file not in a directory listed in $PATH can only be run by including the path to the file, like `./FILE` or `/full/path/to/FILE`*
-- To find the current path, enter: `echo $PATH`
-- The `$PATH` is defined for each user in: `~/.bashrc`
-- To add a directory to the `$PATH`, put a line in `~/.bashrc` like:
-  - `export PATH=$PATH:/ADD/DIR:/ANOTHER/DIR`
-- `which COMMAND` outputs the location of the command, somewhere in the FSH
-
-## Secure Scripts
+## Secure Scripting
 - ***This lesson was only the beginning, security is a career in itself!!***
 - Security concepts are similar in most programming languages
 - Three Golden Rules of General Security & Safety:
