@@ -253,19 +253,21 @@ ___
 
 | **37** : `ls bozo 0> 0.log`
 
-*gedit: Reload 0.log* ...nothing—because "0" is not relevant
-
 *Outputs STDOUT to file (absent):*
 
 | **38** : `ls bozo 1> 1.log`
-
-*gedit: Reload 1.log* ...nothing—because `ls` didn't succeed
 
 *Outputs STDERR to file (present):*
 
 | **39** : `ls bozo 2> 2.log`
 
-*gedit: Reload 2.log* ...error message—because `ls` failed
+*Review at the three ".log" files just updated...*
+
+- *gedit: Reload `0.log`* ...nothing—because "0" is not relevant
+
+- *gedit: Reload `1.log`* ...nothing—because `ls` didn't succeed
+
+- *gedit: Reload `2.log`* ...error message—because `ls` failed
 
 ### Creat log files for normal STDOUT and error STDERR in Shell
 
