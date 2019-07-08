@@ -29,7 +29,10 @@ VAR=false
 - float *- numbers with a "floating" decimal, up to 7 decimal digits*
 - double float (double) *- "double" precision floating decimal, up to 15 decimal digits*
 - array *- a complex variable; a "mini database variable"; a list (array) of multiple values, each with a number/key for reference*
-- boolean *- only `true` or `false` (usually `1` or `0` is the same thing as `true` or `false`)*
+- boolean *- only `true` or `false`*
+  - In ***other languages*** `1` or `0` is the same thing as `true` or `false`
+  - Shell only recognizes `true` or `false`, not `1` or `0`
+  - Do not confuse boolean `1` and `0` (non-Shell languages) with STDIN (`0`), STDOUT (`1`), and STDERR (`2`), nor with other `exit` codes. ***Boolean only allows TWO values!***
 - NULL *- empty data, not set (ie: before declaring a variable's value or after using `unset`)*
 
 *Shell* ***utilizes*** *data types; but Shell does not* ***use*** *(store as) data types other than "string".*
