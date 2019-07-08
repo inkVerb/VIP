@@ -259,13 +259,13 @@ ___
 
 | **38** : `ls bozo 1> 1.log`
 
-*gedit: Reload 1.log* ...nothing—because it didn't succeed
+*gedit: Reload 1.log* ...nothing—because `ls` didn't succeed
 
 *Outputs STDERR to file (present):*
 
 | **39** : `ls bozo 2> 2.log`
 
-*gedit: Reload 2.log* ...error message—because it failed
+*gedit: Reload 2.log* ...error message—because `ls` failed
 
 ### Creat log files for normal STDOUT and error STDERR in Shell
 
