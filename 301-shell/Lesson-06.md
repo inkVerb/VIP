@@ -241,11 +241,11 @@ ___
 
 *View each of them in gedit*
 
-| **34** : `gedit 0.log` *...nothing—because "0" is not relevant*
+| **34** : `gedit 0.log` ...nothing—because "0" (no output) is not relevant because it's nothing
 
-| **35** : `gedit 1.log` *...file list—because it succeeded*
+| **35** : `gedit 1.log` ...file list—because `ls` succeeded
 
-| **36** : `gedit 2.log` *...nothing—because it succeeded*
+| **36** : `gedit 2.log` ...nothing—because `ls` didn't fail
 
 #### Generate error output
 
@@ -253,19 +253,19 @@ ___
 
 | **37** : `ls bozo 0> 0.log`
 
-*gedit: Reload 0.log ...nothing—because "0" is not relevant*
+*gedit: Reload 0.log* ...nothing—because "0" is not relevant
 
 *Outputs STDOUT to file (absent):*
 
 | **38** : `ls bozo 1> 1.log`
 
-*gedit: Reload 1.log ...nothing—because it failed*
+*gedit: Reload 1.log* ...nothing—because it didn't succeed
 
 *Outputs STDERR to file (present):*
 
 | **39** : `ls bozo 2> 2.log`
 
-*gedit: Reload 2.log ...error message—because it failed*
+*gedit: Reload 2.log* ...error message—because it failed
 
 ### Creat log files for normal STDOUT and error STDERR in Shell
 
