@@ -241,7 +241,7 @@ ___
 
 *View each of them in gedit*
 
-| **34** : `gedit 0.log` ...nothing—because "0" (no output) is not relevant because it's nothing
+| **34** : `gedit 0.log` ...nothing—because "0" (no output) is nothing
 
 | **35** : `gedit 1.log` ...file list—because `ls` succeeded
 
@@ -263,7 +263,7 @@ ___
 
 *Review at the three ".log" files just updated...*
 
-- *gedit: Reload `0.log`* ...nothing—because "0" is not relevant
+- *gedit: Reload `0.log`* ...nothing—because "0" (no output) is nothing
 
 - *gedit: Reload `1.log`* ...nothing—because `ls` didn't succeed
 
