@@ -32,7 +32,8 @@ VAR=false
 - boolean *- only `true` or `false`*
   - In ***other languages*** boolean `1` and `0` are interchangeable with `true` and `false` respectively, ***not Shell***
   - Shell only recognizes `true` or `false` as boolean, not `1` or `0` because, in Shell, `1` and `0` are `exit` codes, along with `2`, `3`, `128`, and more...
-  - Do not confuse boolean `1` and `0` (non-Shell languages) with STDIN (`0`), STDOUT (`1`), and STDERR (`2`), nor with other `exit` codes. ***Boolean only allows TWO values, `exit`/error/`return` codes have many more!***
+  - Do not confuse boolean `1` and `0` (non-Shell languages) with STDIN (`0`), STDOUT (`1`), and STDERR (`2`), nor with other `exit` codes.
+  - ***Boolean only allows TWO values, `exit`/error/`return` codes have many more!***
     - `return` codes covered in in [VIP/Shell 401 – Lesson 10](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-10.md)
   - Review `exit` codes (which are different) in [VIP/Shell 301 – Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
 - NULL *- empty data, not set (ie: before declaring a variable's value or after using `unset`)*
