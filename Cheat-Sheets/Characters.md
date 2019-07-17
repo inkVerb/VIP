@@ -20,6 +20,7 @@ Ranges of most alphanumeric characters can be listed intuitively, `!` means "not
 - `[dog|fish|cat]` (one word of: `dog` or `fish` or `cat`)
 
 ### Classes
+Note these must go inside brackets, like this: `[[:upper:]]` or `[a-Z[:lower:]]` or `[[:upper:][:punct:]]`
 
 - `[:upper:]`
 Upper-case letters: `[A-Z]`, containing `A B C D E F G H I J K L M N O P Q R S T U V W X Y Z`
