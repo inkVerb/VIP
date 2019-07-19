@@ -54,7 +54,10 @@ Access any MySQL user you created later with
   - `cd /var/www/html/phpMyAdmin`
   - `sudo cp config.sample.inc.php config.inc.php`
 5. Set the blowfish salt
-  - `vim `
+  - Edit with `vim`:
+    - `sudo vim /var/www/html/phpMyAdmin/config.inc.php`
+  - Or edit with `gedit`:
+    - `sudo gedit /var/www/html/phpMyAdmin/config.inc.php`
   - Add the salt here:
     - Change: `$cfg['blowfish_secret'] = '';`
     - To: `$cfg['blowfish_secret'] = 'SomeRANDOmThing678goeshere';`
