@@ -3,12 +3,17 @@
 *This is for your local desktop developer environment only!*
 
 1. `sudo apt install mysql-server php lamp-server^`
-2. Turn on the PHP-MySQL functionality
-  - `sudo vim /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
-  - Uncomment `extension=mysqli`
-    - Type: `/mysqli` to find the line, then Enter
-    - Move the cursor to `;` then press `x`
-    - Save & quit: `:wq`
+2. Turn on the PHP-MySQL functionality in your `php.ini` file
+  - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
+  - Edit with `vim`:
+    - `sudo vim /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
+    - Search with: `/mysqli` to find the line, then Enter
+  - Edit with `nano`:
+    - `sudo nano /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
+    - Search with: Ctrl + W, `mysqli` to find the line
+  - Edit with `gedit`:
+    - `sudo gedit /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
+    - Search with: Ctrl + F, `mysqli` to find the line
 4. Restart Everything
   - `sudo systemctl restart apache2`
 5. Look for the green dot for the All-OK
@@ -17,8 +22,11 @@
 Now, everything at
 - `/var/www/html/SOMETHING/`
 
-can be accessed in your browser at
+can be accessed in your browser at the web address
 - `localhost/SOMETHING/`
+
+**Always own it first!**
+- `sudo chown -R www-data:www-data /var/www/html/`
 
 ## MySQL via command line
 
@@ -49,7 +57,7 @@ Login the first time with:
 - Password: Your normal desktop root user password
 - Create a new admin or database & user ASAP, use that in the future!
 
-**Don't have a "root user" password?**
-- `sudo passwd`
+***Don't have a "root user" password?***
+- `sudo passwd` (password three times)
 - Now you can login to the MySQL as `root` or the terminal with `su`
 - ***But this can be dangerous, be careful!***
