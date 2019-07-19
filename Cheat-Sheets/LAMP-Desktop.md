@@ -2,6 +2,8 @@
 ## *This is not secure, not for a production server!*
 *This is for your local desktop developer environment only!*
 
+Set up your PHP/MySQL developer environment directly in Ubuntu, rather than WAMPP or XAMPP in Windows, and all that "jazz"...
+
 1. `sudo apt install mysql-server php lamp-server^`
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
   - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
