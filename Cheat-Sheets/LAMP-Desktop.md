@@ -10,22 +10,17 @@
   - Edit with `vim`:
     - `sudo vim /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
     - Search with: `/mysqli` to find the line, then Enter
-  - Edit with `nano`:
-    - `sudo nano /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
-    - Search with: Ctrl + W, `mysqli` to find the line
-  - Edit with `gedit`:
+  - Or edit with `gedit`:
     - `sudo gedit /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
     - Search with: Ctrl + F, `mysqli` to find the line
 4. Restart Everything
   - `sudo systemctl restart apache2`
 5. Look for the green dot for the All-OK
-  `sudo systemctl status apache2`
+  - `sudo systemctl status apache2`
 
-Now, everything at
-- `/var/www/html/SOMETHING/`
+Now...
 
-can be accessed in your browser at the web address
-- `localhost/SOMETHING/`
+`/var/www/html/SOMETHING/` = WebBrowser: `localhost/SOMETHING/`
 
 **Always own it first!**
 - `sudo chown -R www-data:www-data /var/www/html/`
