@@ -22,9 +22,6 @@ Now...
 
 `/var/www/html/SOMETHING/` = WebBrowser: `localhost/SOMETHING/`
 
-**Always own it first!**
-- `sudo chown -R www-data:www-data /var/www/html/`
-
 Life is easier with a local "Work" folder symlink
 - `mkdir -p ~/Work/vip`
 - `sudo ln -sfn ~/Work/vip /var/www/html/`
@@ -33,10 +30,16 @@ Life is easier with a local "Work" folder symlink
   - Use the web address: `localhost/vip/SOMETHING/`
   - No permissions problems! You're welcome.
 
+**Always own stuff first!**
+- `sudo chown -R www-data:www-data /var/www/html/`
+
 ## MySQL via command line
 
-Access MySQL as root user with
-- `sudo mysql`
+1. Access MySQL as root user with
+  - `sudo mysql`
+2. Create a database admin in MySQL with: (replace `admin` & `adminpassword`)
+  -  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
+  - `FLUSH PRIVILEGES;`
 
 Access any MySQL user you created later with
 - `mysql -u USERNAME -p` (then enter the password)
@@ -50,8 +53,13 @@ Access any MySQL user you created later with
 4. Create the config
   - `cd /var/www/html/phpMyAdmin`
   - `sudo cp config.sample.inc.php config.inc.php`
+5. Set the blowfish salt
+  - `vim `
+  - Add the salt here:
+    - Change: `$cfg['blowfish_secret'] = '';`
+    - To: `$cfg['blowfish_secret'] = 'SomeRANDOmThing678goeshere';`
 
-5. Own everything properly
+6. Own everything properly
   - `sudo chown -R www-data:www-data /var/www/html/phpMyAdmin`
 
 Now, you should be able to access this in your browser at the address:
