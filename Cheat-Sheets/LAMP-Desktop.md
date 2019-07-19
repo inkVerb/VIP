@@ -1,6 +1,6 @@
 # LAMP Desktop
-## *PHP/MySQL developer environment directly in Ubuntu
-*(rather than WAMPP or XAMPP in Windows, and all that "jazz")*
+## PHP/MySQL developer environment directly in Ubuntu
+*(rather than WAMPP or XAMPP in Windows)*
 
 ### *This is for your local desktop developer environment only, not secure for production!*
 
