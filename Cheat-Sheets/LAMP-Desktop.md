@@ -59,8 +59,8 @@ Access any MySQL user you created later with
   - Or edit with `gedit`:
     - `sudo gedit /var/www/html/phpMyAdmin/config.inc.php`
   - Add the salt here:
-    - Change: `$cfg['blowfish_secret'] = '';`
-    - To: `$cfg['blowfish_secret'] = 'SomeRANDOmThing678goeshere';`
+    - `$cfg['blowfish_secret'] = '';` ...becomes...
+    - `$cfg['blowfish_secret'] = 'SomeRANDOmThing678goeshere';`
 
 6. Own everything properly
   - `sudo chown -R www-data:www-data /var/www/html/phpMyAdmin`
