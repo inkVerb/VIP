@@ -25,6 +25,14 @@ Now...
 **Always own it first!**
 - `sudo chown -R www-data:www-data /var/www/html/`
 
+Put it in a local "Work" folder
+- `mkdir -p ~/Work/vip`
+- `sudo ln -sfn ~/Work/vip /var/www/html/`
+- Now:
+  - Your projects go in: `~/Work/vip/`
+  - Use the web address: `localhost/vip/SOMETHING/`
+  - No permissions problems! You're welcome.
+
 ## MySQL via command line
 
 Access MySQL as root user with
