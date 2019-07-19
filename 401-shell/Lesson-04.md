@@ -5,6 +5,8 @@
 
 [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
 
+[LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)
+
 ___
 
 SQL language is generally the same across database platforms.
@@ -317,6 +319,8 @@ ___
   password = MYSQLUSERPASSWORD
   host = localhost
   ```
+## Develop PHP & MySQL on your Ubuntu desktop
+- For your own Ubuntu desktop developer setup for PHP & MySQL, follow the instructions here: [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)
 
 ___
 
