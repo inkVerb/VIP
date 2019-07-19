@@ -25,7 +25,7 @@ Now...
 **Always own it first!**
 - `sudo chown -R www-data:www-data /var/www/html/`
 
-Put it in a local "Work" folder
+Life is easier with a local "Work" folder symlink
 - `mkdir -p ~/Work/vip`
 - `sudo ln -sfn ~/Work/vip /var/www/html/`
 - Now:
