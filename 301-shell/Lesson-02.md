@@ -19,13 +19,15 @@ ___
 
 *Note the contents of the .odt files*
 
-| **4** : `odt2txt ODT-FILE.odt`
+*Close the file, just to make sure we don't have any problems...*
 
-*If you revieve an error because LibreOffice Writer is running, close all LO Writer sessions wtih this simple hack, then try again:*
+| **4** : `killall soffice.bin`
 
-| **5** : `killall soffice.bin`
+*Try to open one .odt file with gedit...*
 
-*Now, try this*
+| **5** : `gedit ODT-FILE.odt`
+
+*Note .odt files are very big and can't be opened with text editors, but we can convert them...*
 
 | **6** : `odt2txt ODT-FILE.odt`
 
@@ -37,9 +39,9 @@ ___
 
 | **8** : `odt2txt ODT-FILE.odt > ODT-FILE.txt`
 
-| **9** : `cat ODT-FILE.txt`
+| **9** : `gedit ODT-FILE.txt`
 
-*Delete the .txt file*
+*Delete the .txt file so we can try another way...*
 
 | **10** : `rm ODT-FILE.txt`
 
