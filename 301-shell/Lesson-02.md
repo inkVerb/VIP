@@ -53,7 +53,7 @@ ___
 
 | **13** : `ls`
 
-| **14** : `cat ODT-FILE.txt`
+| **14** : `gedit ODT-FILE.txt`
 
 *Let's do markdown*
 
