@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 2: odt2txt, pandoc, rename, sleep & read
+## Lesson 2: Docs & Pausing (odt2txt, pandoc, rename, sleep, read & wait)
 
 `cd ~/School/VIP/shell/301`
 
