@@ -179,47 +179,61 @@ ___
 
 ### V. `wait`
 
-*This command forces the script to "wait" until the previous command finishes before moving on to the next command. It is useful when running many complex processes, to keep a script from stumbling over its own feet. Sometimes, scripts break and using `wait` between the broken commands is the solution.*
+*The `wait` command forces the script to "wait" until the previous command finishes before moving on to the next command. It is useful when running many complex processes, to keep a script from stumbling over its own feet. Sometimes, scripts break and using `wait` between the broken commands is the solution.*
 
 *Take LibreOffice Writer for example...*
 
-| **53** : `gedit 02-waiter-1`
+*This is how to open LibreOffice Writer from the terminal...*
 
-| **54** : `./02-waiter-1`
+| **53** : `lowriter &`
+
+*This is how to terminate all LibreOffice apps from the terminal...*
+
+| **54** : `killall soffice.bin`
+
+*Let's use `wait` in a script...*
+
+| **55** : `gedit 02-waiter-1`
+
+| **56** : `./02-waiter-1`
 
 *Note that the script finished with it's message and the terminal returned to the prompt without closing Writer*
 
 *...Now, close Writer in the GUI*
 
-| **53** : `gedit 02-waiter-2`
+| **57** : `gedit 02-waiter-2`
 
-| **54** : `./02-waiter-2`
+| **58** : `./02-waiter-2`
 
 *Note the script did not finish and the terminal is still busy*
 
 *...Now, close Writer in the GUI and watch for the message in the terminal*
 
-*...Now, watch the script open Writer again after "waiting" the first process to close*
+*...Now, watch the script open Writer again after "waiting" for the first process to close*
 
 *...Now, close Writer in the GUI and watch the final message in the terminal*
 
 *Do this manually:*
 
-*Make sure LibreOffice is not running*
+*Make sure LibreOffice is not running...*
 
-| **55** : `killall soffice.bin`
+| **59** : `killall soffice.bin`
 
-| **56** : `lowriter &`
+*Start Writer...*
 
-| **57** : `pgrep lowriter`
+| **60** : `lowriter &`
+
+*Now, "wait" for it to close by watching for its PID to close...*
+
+| **61** : `pgrep lowriter`
 
 *Note the PID number and replace 55555 with that number below:*
 
-| **58a** : `wait 55555`
+| **62a** : `wait 55555`
 
 **OR**
 
-| **58b** : `wait $(pgrep lowriter)` (or you can use this instead)*
+| **62b** : `wait $(pgrep lowriter)` *(or you can use this instead)*
 
 *Note `wait` is "waiting" for Writer's PID to end*
 
