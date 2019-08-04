@@ -179,15 +179,15 @@ ___
 
 ### V. `wait`
 
-*The `wait` command forces the script to "wait" until the previous command finishes before moving on to the next command. It is useful when running many complex processes, to keep a script from stumbling over its own feet. Sometimes, scripts break and using `wait` between the broken commands is the solution.*
+*`wait` will "wait" until the previous command finishes before moving on. It keeps Shell from stumbling over its own feet. Sometimes, scripts break and the solution is to `wait`.*
 
-*Take LibreOffice Writer for example...*
+***Let's `wait` for LibreOffice Writer:***
 
-*This is how to open LibreOffice Writer from the terminal...*
+*Open LibreOffice Writer from the terminal...*
 
 | **53** : `lowriter &`
 
-*This is how to terminate all LibreOffice apps from the terminal...*
+*Terminate all LibreOffice apps from the terminal...*
 
 | **54** : `killall soffice.bin`
 
@@ -211,9 +211,9 @@ ___
 
 *...Now, watch the script open Writer again after "waiting" for the first process to close*
 
-*...Now, close Writer in the GUI and watch the final message in the terminal*
+*...Now, close Writer in the GUI again and watch the final message in the terminal*
 
-*Do this manually:*
+***Next, do the same thing manually:***
 
 *Make sure LibreOffice is not running...*
 
