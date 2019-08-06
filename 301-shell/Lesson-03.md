@@ -1,72 +1,78 @@
 # Shell 301
 ## Lesson 3: for VAR in WUT do done
 
-`cd ~/School/VIP/shell/301`
+`cd ~/School/VIP/shell/301/one`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
 
 ___
 
+*Quick prep first: Make symlinks of this lesson's scripts in the directory we will use*
+
+*Note, we aren't in our usual place; we are here: `~/School/VIP/shell/301/one`*
+
+| **1** : `ln -sfn ~/School/VIP/shell/301/03-* .` *Make sure you include that period at the end!*
+
 ### I. `for VAR in WUT; do`
 
 one*
 
-| **1** : `ls one*`
+| **2** : `ls one*`
 
-| **2** : `gedit 03-do-echo-1`
+| **3** : `gedit 03-do-echo-1`
 
-| **3** : `./03-do-echo-1`
+| **4** : `./03-do-echo-1`
 
 one-1*
 
-| **4** : `ls one-1*`
+| **5** : `ls one-1*`
 
-| **5** : `gedit 03-do-echo-2`
+| **6** : `gedit 03-do-echo-2`
 
-| **6** : `./03-do-echo-2`
+| **7** : `./03-do-echo-2`
 
 *.one
 
-| **7** : `ls *.one`
+| **8** : `ls *.one`
 
-| **8** : `gedit 03-do-echo-3`
+| **9** : `gedit 03-do-echo-3`
 
 *Note `do` is on the same line as `for` via `;`*
 
-| **9** : `./03-do-echo-3`
+| **10** : `./03-do-echo-3`
 
 *t.one
 
-| **10** : `ls *t.one`
+| **11** : `ls *t.one`
 
-| **11** : `gedit 03-do-echo-4`
+| **12** : `gedit 03-do-echo-4`
 
-| **12** : `./03-do-echo-4`
+| **13** : `./03-do-echo-4`
 
 3.*
 
-| **13** : `ls 3.*`
+| **14** : `ls 3.*`
 
-| **14** : `gedit 03-do-echo-5`
+| **15** : `gedit 03-do-echo-5`
 
-| **15** : `./03-do-echo-5`
+| **16** : `./03-do-echo-5`
 
 \*3*
 
-| **16** : `ls *3*`
+| **17** : `ls *3*`
 
-| **17** : `gedit 03-do-echo-6`
+| **18** : `gedit 03-do-echo-6`
 
-| **18** : `./03-do-echo-6`
+| **19** : `./03-do-echo-6`
 
 \*one* "is a file."
 
-| **19** : `ls *one*`
+| **20** : `ls *one*`
 
-| **20** : `gedit 03-do-echo-7`
+| **21** : `gedit 03-do-echo-7`
 
-| **21** : `./03-do-echo-7`
+| **22** : `./03-do-echo-7`
 
 ### II. `break` & `continue`
 
@@ -76,17 +82,17 @@ one-1*
 
 *Note the two `echo` commands and where the `break` applies...*
 
-| **20** : `gedit 03-do-echo-8`
+| **23** : `gedit 03-do-echo-8`
 
-| **21** : `./03-do-echo-8`
+| **24** : `./03-do-echo-8`
 
 #### `continue` will skip whatever is left in a loop cycle and "continue" on to the next cycle
 
 *Note the two `echo` commands and where the `continue` applies...*
 
-| **20** : `gedit 03-do-echo-9`
+| **25** : `gedit 03-do-echo-9`
 
-| **21** : `./03-do-echo-9`
+| **26** : `./03-do-echo-9`
 
 ___
 
