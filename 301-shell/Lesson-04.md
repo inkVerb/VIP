@@ -1,12 +1,18 @@
 # Shell 301
 ## Lesson 4: for Applied
 
-`cd ~/School/VIP/shell/301`
+`cd ~/School/VIP/shell/301/one`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
 
 ___
+
+*Quick prep first: Make symlinks of this lesson's scripts in the directory we will use*
+
+*Note, we aren't in our usual place; we are here: `~/School/VIP/shell/301/one`*
+
+| **1** : `ln -sfn ~/School/VIP/shell/301/04-* .` *Make sure you include that period at the end!*
 
 ### I. Replacing within Variables
 
@@ -14,83 +20,97 @@ ___
 
 *.one %one
 
-| **1** : `gedit 04-echo-rename-1`
+| **2** : `ls *.one`
 
-| **2** : `./04-echo-rename-1`
+| **3** : `gedit 04-echo-rename-1`
+
+| **4** : `./04-echo-rename-1`
 
 *t.one %t.one
 
-| **3** : `gedit 04-echo-rename-2`
+| **5** : `ls *t.one`
 
-| **4** : `./04-echo-rename-2`
+| **6** : `gedit 04-echo-rename-2`
 
-| **5** : `ls`
+| **7** : `./04-echo-rename-2`
 
 ### II. Renaming Multiple Files at Once
 
-| **6** : `gedit 04-do-mv-1`
-
-| **7** : `./04-do-mv-1`
+*t.one --> *T-ONE
 
 | **8** : `ls`
 
-| **9** : `gedit 04-do-mv-2`
+| **9** : `gedit 04-do-mv-1`
 
-| **10** : `./04-do-mv-2`
+| **10** : `./04-do-mv-1`
 
 | **11** : `ls`
 
-| **12** : `gedit 04-do-mv-3`
+*T-ONE --> *t.one
 
-| **13** : `./04-do-mv-3`
+| **12** : `gedit 04-do-mv-2`
+
+| **13** : `./04-do-mv-2`
 
 | **14** : `ls`
 
+*t.one --> *t.THREE
+
+| **15** : `gedit 04-do-mv-3`
+
+| **16** : `./04-do-mv-3`
+
+| **17** : `ls`
+
 *Make a backup of today's work*
 
-| **15** : `mkdir -p 04-THREE`
+| **18** : `mkdir -p 04-THREE`
 
-| **16** : `mv *THREE* 04-THREE/`
+| **19** : `cp *THREE* 04-THREE/`
 
 *Delete*
 
-| **17** : `gedit 04-do-rm`
+| **20** : `gedit 04-do-rm`
 
-| **18** : `./04-do-rm`
+| **21** : `./04-do-rm`
 
-*Ignore the directory error because we want to keep that directory*
+*Don't mind the directory error because we want to keep that directory anyway*
 
-| **19** : `ls`
+| **22** : `ls`
 
 ### III. Applied: `odt2txt`
 
 *Now, use `odt2txt` in a `for` `...` `do` loop*
 
-| **20** : `gedit 04-do-odt2txt-1`
+| **23** : `gedit 04-do-odt2txt-1`
 
-| **21** : `./04-do-odt2txt-1`
+| **24** : `./04-do-odt2txt-1`
 
-| **22** : `ls`
+| **25** : `ls`
 
-| **23** : `gedit ODT-*.txt`
+| **26** : `gedit ODT-*.txt`
 
 *Note the files are either empty or on one line because we used `echo`*, this method didn't work*
 
-| **24** : `gedit 04-do-odt2txt-2`
+| **27** : `gedit 04-do-odt2txt-2`
 
-| **25** : `./04-do-odt2txt-2`
+| **28** : `./04-do-odt2txt-2`
 
 *gedit: Reload both .txt files*
 
-| **26** : `gedit 04-do-odt2txt-3`
+| **29** : `gedit 04-do-odt2txt-3`
 
-| **27** : `./04-do-odt2txt-3`
+| **30** : `./04-do-odt2txt-3`
 
 *gedit: Reload both .txt files*
 
 *Backup today's work*
 
-| **28** : `mv ODT-*.txt 04-THREE/`
+| **31** : `mv ODT-*.txt 04-THREE/`
+
+| **32** : `ls`
+
+*...See all gone*
 
 ___
 
