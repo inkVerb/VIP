@@ -16,7 +16,7 @@ ___
 
 ### I. Replacing within Variables
 
-*Note `${VAR%foo}bar` will replace "foo" with "bar" if it appears in the variable*
+*Note `${VAR%foo}bar` will delete "foo", then append "bar" (like find-replace), if "foo" appears in the variable*
 
 *.one %one
 
@@ -26,89 +26,97 @@ ___
 
 | **4** : `./04-echo-rename-1`
 
+| **5** : `ls`
+
 *t.one %t.one
 
-| **5** : `ls *t.one`
+| **6** : `ls *t.one`
 
-| **6** : `gedit 04-echo-rename-2`
+| **7** : `gedit 04-echo-rename-2`
 
-| **7** : `./04-echo-rename-2`
+| **8** : `./04-echo-rename-2`
+
+| **9** : `ls`
 
 ### II. Renaming Multiple Files at Once
 
 *t.one --> *T-ONE
 
-| **8** : `ls`
+| **10** : `ls *t.one`
 
-| **9** : `gedit 04-do-mv-1`
+| **11** : `gedit 04-do-mv-1`
 
-| **10** : `./04-do-mv-1`
+| **12** : `./04-do-mv-1`
 
-| **11** : `ls`
+| **13** : `ls`
 
 *T-ONE --> *t.one
 
-| **12** : `gedit 04-do-mv-2`
+| **14** : `ls *T-ONE`
 
-| **13** : `./04-do-mv-2`
+| **15** : `gedit 04-do-mv-2`
 
-| **14** : `ls`
-
-*t.one --> *t.THREE
-
-| **15** : `gedit 04-do-mv-3`
-
-| **16** : `./04-do-mv-3`
+| **16** : `./04-do-mv-2`
 
 | **17** : `ls`
 
+*t.one --> *t.THREE
+
+| **18** : `ls *t.one`
+
+| **19** : `gedit 04-do-mv-3`
+
+| **20** : `./04-do-mv-3`
+
+| **21** : `ls`
+
 *Make a backup of today's work*
 
-| **18** : `mkdir -p 04-THREE`
+| **22** : `mkdir -p 04-THREE`
 
-| **19** : `cp *THREE* 04-THREE/`
+| **23** : `cp *THREE* 04-THREE/` *(Don't mind the directory error)*
 
 *Delete*
 
-| **20** : `gedit 04-do-rm`
+| **24** : `gedit 04-do-rm`
 
-| **21** : `./04-do-rm`
+| **25** : `./04-do-rm` *(Don't mind the directory error)*
 
 *Don't mind the directory error because we want to keep that directory anyway*
 
-| **22** : `ls`
+| **26** : `ls`
 
 ### III. Applied: `odt2txt`
 
 *Now, use `odt2txt` in a `for` `...` `do` loop*
 
-| **23** : `gedit 04-do-odt2txt-1`
+| **27** : `gedit 04-do-odt2txt-1`
 
-| **24** : `./04-do-odt2txt-1`
+| **28** : `./04-do-odt2txt-1`
 
-| **25** : `ls`
+| **29** : `ls`
 
-| **26** : `gedit ODT-*.txt`
+| **30** : `gedit ODT-*.txt`
 
 *Note the files are either empty or on one line because we used `echo`*, this method didn't work*
 
-| **27** : `gedit 04-do-odt2txt-2`
+| **31** : `gedit 04-do-odt2txt-2`
 
-| **28** : `./04-do-odt2txt-2`
+| **32** : `./04-do-odt2txt-2`
 
 *gedit: Reload both .txt files*
 
-| **29** : `gedit 04-do-odt2txt-3`
+| **33** : `gedit 04-do-odt2txt-3`
 
-| **30** : `./04-do-odt2txt-3`
+| **34** : `./04-do-odt2txt-3`
 
 *gedit: Reload both .txt files*
 
 *Backup today's work*
 
-| **31** : `mv ODT-*.txt 04-THREE/`
+| **35** : `mv ODT-*.txt 04-THREE/`
 
-| **32** : `ls`
+| **36** : `ls`
 
 *...See all gone*
 
@@ -117,9 +125,10 @@ ___
 # The Take
 
 ## Replacement within variables
-- `${VAR%foo}bar` will change the variable $VARfoo to retrieve the value of $VARbar instead
+- `${VAR%foo}` will remove "foo" from the value of variable $VAR
+- `${VAR%foo}bar` will remove "foo", then add "bar" to the end the value of variable $VAR
   - This can be useful to:
-    1. Set a variable that may be unknown within the script
+    1. Change a string quickly inside a script
     2. Call a known variable based on arguments or a settings file, etc
 - See usage and examples here: [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 ___
