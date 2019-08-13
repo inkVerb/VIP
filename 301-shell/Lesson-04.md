@@ -90,33 +90,41 @@ ___
 
 *Now, use `odt2txt` in a `for` `...` `do` loop*
 
-| **27** : `gedit 04-do-odt2txt-1`
+| **27** : `rm *.txt` *(start with a clean slate)*
 
-| **28** : `./04-do-odt2txt-1`
+| **28** : `ls *.txt *.odt`
 
-| **29** : `ls`
+*Note there are only .odt files*
 
-| **30** : `gedit ODT-*.txt`
+| **29** : `gedit 04-do-odt2txt-1`
 
-*Note the files are either empty or on one line because we used `echo`*, this method didn't work*
+| **30** : `./04-do-odt2txt-1`
 
-| **31** : `gedit 04-do-odt2txt-2`
+| **31** : `ls *.txt *.odt`
 
-| **32** : `./04-do-odt2txt-2`
+*Note the new .txt files, have a look inside...*
 
-*gedit: Reload both .txt files*
+| **32** : `gedit *.txt`
 
-| **33** : `gedit 04-do-odt2txt-3`
+*Note the files are either empty or on one line because we used `echo`, this method isn't best*
 
-| **34** : `./04-do-odt2txt-3`
+| **33** : `gedit 04-do-odt2txt-2`
 
-*gedit: Reload both .txt files*
+| **34** : `./04-do-odt2txt-2`
+
+*gedit: Reload all .txt files*
+
+| **35** : `gedit 04-do-odt2txt-3`
+
+| **36** : `./04-do-odt2txt-3`
+
+*gedit: Reload all .txt files*
 
 *Backup today's work*
 
-| **35** : `mv ODT-*.txt 04-THREE/`
+| **37** : `mv *.txt 04-THREE/`
 
-| **36** : `ls`
+| **38** : `ls *.txt`
 
 *...See all gone*
 
