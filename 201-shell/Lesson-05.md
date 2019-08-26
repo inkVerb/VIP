@@ -250,7 +250,7 @@ ___
 
 *Remove it...*
 
-| **51** : `rm youown`
+| **51** : `rm youown` *"n" for No*
 
 *Note the error message because you don't own it anymore! Use `sudo`*
 
@@ -270,7 +270,7 @@ ___
 
 *Note root owns "iamroot"*
 
-| **56** : `rm iamroot`
+| **56** : `rm iamroot` *"n" for No*
 
 *Note only root can delete the file "iamroot"*
 

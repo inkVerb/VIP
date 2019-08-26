@@ -15,7 +15,7 @@ ___
 
 | **2** : `ls`
 
-| **3** : `lowriter *.odt &` (may need a few seconds to load, then press Enter)
+| **3** : `lowriter *.odt &` *(may need a few seconds to load, then press Enter)*
 
 *Note the contents of the .odt files*
 
@@ -39,13 +39,13 @@ ___
 
 | **8** : `odt2txt ODT-FILE.odt > ODT-FILE.txt`
 
-| **9** : `gedit ODT-FILE.txt`
+| **9** : `ls`
+
+| **10** : `gedit ODT-FILE.txt`
 
 *Delete the .txt file so we can try another way...*
 
-| **10** : `rm ODT-FILE.txt`
-
-| **11** : `ls`
+| **11** : `rm ODT-FILE.txt`
 
 ### Note `pandoc` does more than `odt2txt`
 
@@ -61,7 +61,7 @@ ___
 
 | **16** : `ls`
 
-| **17** : `lowriter markdown.odt &` (if asked, Discard)*
+| **17** : `lowriter markdown.odt &` *(if asked, Discard)*
 
 *...that file came from this...*
 
@@ -89,7 +89,7 @@ ___
 
 ## II. `rename`
 
-| **19** : `cd ~/School/VIP/shell/301/one`
+| **19** : `cd ~/School/VIP/shell/301/one` *(make sure we're in the right place)*
 
 ___
 
