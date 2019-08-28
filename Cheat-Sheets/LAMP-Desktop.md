@@ -37,7 +37,7 @@ Life is easier with a local "Work" folder symlink
 **Make PHP rewrites work**
 1. Enable the Rewrite mod for Apache
 - `sudo a2enmod rewrite`
-- `systemctl restart apache2`
+- `sudo systemctl restart apache2`
 2. Add some important settings
 - Edit with `vim`:
   - `sudo vim /etc/apache2/sites-available/000-default.conf`
