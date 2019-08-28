@@ -4,7 +4,8 @@
 
 ### *This is for your local desktop developer environment only, not secure for production!*
 
-1. `sudo apt install mysql-server php lamp-server^`
+1. Install the LAMP server
+- `sudo apt install mysql-server php lamp-server^`
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
   - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
   - Edit with `vim`:
@@ -34,19 +35,24 @@ Life is easier with a local "Work" folder symlink
 - `sudo chown -R www-data:www-data /var/www/html/`
 
 **Make PHP rewrites work**
+1. Enable the Rewrite mod for Apache
+- `sudo a2enmod rewrite`
+- `systemctl restart apache2`
+2. Add some important settings
 - Edit with `vim`:
   - `sudo vim /etc/apache2/sites-available/000-default.conf`
 - Or edit with `gedit`:
   - `sudo gedit /etc/apache2/sites-available/000-default.conf`
-- Add these lines:
+- After `DocumentRoot /var/www/html` Add these lines:
 ```
-DocumentRoot /var/www/html
 <Directory "/var/www/html">
 Options Indexes FollowSymLinks
 AllowOverride All
 Require all granted
 </Directory>
 ```
+3. Reload Apache after any changes to files in `/etc/apache2/sites-available/_____.conf`
+- `sudo systemctl reload apache2`
 
 ## MySQL via command line
 
