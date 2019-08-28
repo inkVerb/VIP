@@ -34,7 +34,7 @@ Life is easier with a local "Work" folder symlink
 **Always own stuff first!**
 - `sudo chown -R www-data:www-data /var/www/html/`
 
-**Make PHP rewrites work**
+#### Make PHP rewrites work
 1. Enable the Rewrite mod for Apache
 - `sudo a2enmod rewrite`
 - `sudo systemctl restart apache2`
