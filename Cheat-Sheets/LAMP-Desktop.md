@@ -33,6 +33,18 @@ Life is easier with a local "Work" folder symlink
 **Always own stuff first!**
 - `sudo chown -R www-data:www-data /var/www/html/`
 
+**Make PHP rewrites work**
+- `sudo vim /etc/apache2/sites-available/000-default.conf`
+- Add these lines:
+```
+DocumentRoot /var/www/html
+<Directory "/var/www/html">
+Options Indexes FollowSymLinks
+AllowOverride All
+Require all granted
+</Directory>
+```
+
 ## MySQL via command line
 
 1. Access MySQL as root user with

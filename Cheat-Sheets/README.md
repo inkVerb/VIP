@@ -17,6 +17,9 @@ ___
 ___
 ### [Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
 
+___
+### [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)
+
 ### Style & Documents
 
 [GitHub's Markdown](https://github.com/sindresorhus/github-markdown-css)
