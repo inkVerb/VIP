@@ -2,7 +2,10 @@
 ## PHP/MySQL developer environment directly in Ubuntu
 *(rather than WAMPP or XAMPP in Windows)*
 
-### *This is for your local desktop developer environment only, not secure for production!*
+### Setup LAMP
+*This is for your local desktop developer environment only, not secure for production!*
+
+#### Install
 
 1. Install the LAMP server
 - `sudo apt install mysql-server php lamp-server^`
@@ -19,7 +22,7 @@
 5. Look for the green dot for the All-OK
   - `sudo systemctl status apache2`
 
-Now...
+#### Using your local dev server
 
 `/var/www/html/SOMETHING/` = WebBrowser: `localhost/SOMETHING/`
 
