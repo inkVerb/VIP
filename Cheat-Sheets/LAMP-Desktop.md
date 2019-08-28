@@ -23,7 +23,7 @@
 5. Look for the green dot for the All-OK
   - `sudo systemctl status apache2`
 
-#### Using your local dev server
+#### Using your local dev server on desktop
 
 `/var/www/html/SOMETHING/` = WebBrowser: `localhost/SOMETHING/`
 
@@ -35,7 +35,7 @@ Life is easier with a local "Work" folder symlink
   - Use the web address: `localhost/vip/SOMETHING/`
   - No permissions problems! You're welcome.
 
-**Always own stuff first!**
+#### Always own stuff first!
 - `sudo chown -R www-data:www-data /var/www/html/`
 
 #### Make Apache rewrites work
