@@ -31,7 +31,7 @@ Life is easier with a local "Work" folder symlink
 - `mkdir -p ~/Work/vip`
 - `sudo ln -sfn ~/Work/vip /var/www/html/`
 - Now:
-  - Your projects go in: `~/Work/vip/`
+  - Your projects go in: `~/Work/vip/SOMETHING/`
   - Use the web address: `localhost/vip/SOMETHING/`
   - No permissions problems! You're welcome.
 
