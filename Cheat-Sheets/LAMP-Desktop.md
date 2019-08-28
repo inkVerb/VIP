@@ -34,7 +34,10 @@ Life is easier with a local "Work" folder symlink
 - `sudo chown -R www-data:www-data /var/www/html/`
 
 **Make PHP rewrites work**
-- `sudo vim /etc/apache2/sites-available/000-default.conf`
+- Edit with `vim`:
+  - `sudo vim /etc/apache2/sites-available/000-default.conf`
+- Or edit with `gedit`:
+  - `sudo gedit /etc/apache2/sites-available/000-default.conf`
 - Add these lines:
 ```
 DocumentRoot /var/www/html
