@@ -54,6 +54,10 @@ Require all granted
 3. Reload Apache after any changes to files in `/etc/apache2/sites-available/_____.conf`
 - `sudo systemctl reload apache2`
 
+4. Remember with rewrites...
+
+*Your code must reflect the names of any URLs as you want them rewritten, not as they actually are.*
+
 ## MySQL via command line
 
 1. Access MySQL as root user with
