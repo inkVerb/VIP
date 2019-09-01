@@ -22,6 +22,7 @@
   - `sudo systemctl restart apache2`
 4. Look for the green dot for the All-OK
   - `sudo systemctl status apache2`
+  - Type "q" to quit. ;-)
 
 #### Using your local dev server on desktop
 
