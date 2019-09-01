@@ -35,6 +35,7 @@ Life is easier with a local "Work" folder symlink
   - Your projects go in: `~/Work/vip/SOMETHING`
   - Use the web address: `localhost/vip/SOMETHING`
   - No permissions problems while you do your dev work! You're welcome.
+- ***Note: this location won't work with using `<script ... src="files.js">` to include JavaScript. Both the served page and the `src="files.js"` files MUST be physically in `/var/www/html/...` somewhere, not in a symlinked location like this!***
 
 #### Always own web stuff first!
 - `sudo chown -R www-data:www-data /var/www/html/`
