@@ -7,15 +7,15 @@ ___
 
 | **1** : `gedit abcd sedoutput.text`
 
-*Note `cat` displays contents of a file on the screen*
+*Remember `cat` outputs contents of a file as raw output (STDOUT)...*
 
 | **2** : `cat abcd`
 
-*Note `echo` sends output as raw output to the screen*
+*Remember `echo` sends whatever raw input (STDIN) as raw output (STDOUT)...*
 
 | **3** : `echo $(cat abcd)`
 
-*...and `echo` doesn't make paragraph breaks when it does*
+*...and `echo` doesn't preserves "new lines" (paragraph breaks) when it does*
 
 | **4** : `sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd`
 
@@ -75,8 +75,8 @@ ___
 
 # The Take
 
-- `echo` removes paragraph breaks when used against a `$(cat file)` command substitution
-- `cat` preserves paragraph breaks when used by itself
+- `echo` removes "new lines" (paragraph breaks) when used to output a `$(cat file)` command substitution
+- `cat` preserves "new lines" (paragraph breaks) when used by itself
 - `cat` can source from multiple files separated by spaces, *before* the output file indicator: `>`
 - `cat` can append to an existing file with the output file indicator: `>>`
 
