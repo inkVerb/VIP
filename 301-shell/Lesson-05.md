@@ -10,6 +10,8 @@ ___
 
 ### I. `while`
 
+## "If the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
+
 | **1** : `gedit 05-while-read`
 
 *Note -z means "Zero" or "Zilch" for a variable that is empty*
@@ -33,6 +35,8 @@ ___
 | **6** : `./05-while-count-read`
 
 ### II. `until`
+
+## "If the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
 
 *Do some prep first...*
 
@@ -65,6 +69,8 @@ ___
 *Input wrong "passwords" to see what it does, input "thepassword" or use Ctrl + C to close*
 
 ### III. `case`
+
+## "Multiple choice, multiple `case`, a variable is anything of many things."
 
 | **19** : `gedit 05-case-numlett`
 
@@ -119,6 +125,10 @@ ___
 # The Take
 
 - `while` & `until` loops work the same way, but with opposite tests
+  - "If the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
+  - "If the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
+- `case` is a multiple choice test for variables
+  - "Multiple choice, multiple `case`, a variable is anything of many things."
 
 ## `while` (do something while `true` until `false`)
 - `while` loops a mini-script that runs as long as a test returns `true`, until a test returns `false`
@@ -135,7 +145,7 @@ ___
 - See usage and examples here: [Tests: while](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iv-while-do-done)
 
 ## `until` (do something while `false` until `true`)
-- `until` loops a mini-script that runsas long as a test returns `false`, until a test returns `true`
+- `until` loops a mini-script that runs as long as a test returns `false`, until a test returns `true`
 - `until` is useful to
   1. Count numbers sequentially
   2. Run a script that needs to run multiple times in order to succeed
