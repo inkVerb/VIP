@@ -10,7 +10,7 @@ ___
 
 ### I. `while`
 
-### "When the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
+### "If the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
 
 | **1** : `gedit 05-while-read`
 
@@ -36,7 +36,7 @@ ___
 
 ### II. `until`
 
-### "When the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
+### "If the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
 
 *Do some prep first...*
 
@@ -125,8 +125,8 @@ ___
 # The Take
 
 - `while` & `until` loops work the same way, but with opposite tests
-  - "When the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
-  - "When the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
+  - "If the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
+  - "If the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
 - `case` is a multiple choice test for variables
   - "Multiple choice, multiple `case`, a variable is anything of many things."
 
