@@ -36,7 +36,7 @@ ___
 
 ### II. `until`
 
-## "If the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
+### "If the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
 
 *Do some prep first...*
 
@@ -70,7 +70,7 @@ ___
 
 ### III. `case`
 
-## "Multiple choice, multiple `case`, a variable is anything of many things."
+### "Multiple choice, multiple `case`, a variable is anything of many things."
 
 | **19** : `gedit 05-case-numlett`
 
