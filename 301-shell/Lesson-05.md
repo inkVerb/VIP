@@ -10,7 +10,7 @@ ___
 
 ### I. `while`
 
-## "If the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
+### "If the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
 
 | **1** : `gedit 05-while-read`
 
