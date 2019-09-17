@@ -104,7 +104,7 @@ ___
 
 > | **26** : `rm -r inkVerb-vip-SOME_CRAZY_NUMBER`
 
-*We don't need to keep that tarball either*
+*We don't need to keep that tarball either...*
 
 | **27** : `rm vip.tar`
 
@@ -132,13 +132,21 @@ ___
 
 | **33** : `cd vip`
 
-| **34** : `ls -a`
+| **34** : `ls`
 
-*Note the hidden ".git" directory, it containes a few read-only files*
+*Note, you can't see the hidden directory ".git" with a normal `ls` command, use `-a`...*
 
-| **35** : `cd ..`
+| **35** : `ls -a`
 
-| **36** : `rm -r vip`
+*Note the hidden ".git" directory*
+
+| **36** : `ls -l .git`
+
+*Note the ".git" directory contains a few read-only files, making it harder to delete*
+
+| **37** : `cd ..`
+
+| **38** : `rm -r vip`
 
 *Note the error message because of the read-only files (Ctrl + C to get out of there!)*
 
@@ -152,9 +160,11 @@ ___
 > | **S1** : `su USERNAME`
 ___
 
-| **37** : `sudo rm -r vip`
+| **39** : `sudo rm -r vip`
 
-| **38** : `ls`
+| **40** : `ls`
+
+*...all gone, no problem*
 
 ### IF needed, `exit` from the other "sudoer"
 >
@@ -164,7 +174,6 @@ ___
 > | **S2** : `exit`
 ___
 
-| **39** : `cd ..`
 
 ___
 

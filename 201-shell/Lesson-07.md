@@ -147,25 +147,27 @@ ___
 
 ___
 
-## Part II `xz -9` `gzip` `bzip2` `tar xf`
+## Part II `xz -2` `gzip` `bzip2` `tar xf`
 
 `cd ~/School/VIP/shell/201/compress`
 
 ___
 
-### `tar`: Slightly Stronger Compression Level 9
+### `tar`: Compression Levels
 
 *Some quick prep...*
 
 | **40** : `cp ../vip.tar . && ls -l`
 
-*Note `-9` is the compression level...*
+*Note `-2` is the compression level...*
 
-| **41** : `xz -9 -c vip.tar > vip.9.tar.xz`
+| **41** : `xz -2 -c vip.tar > vip.9.tar.xz`
 
 | **42** : `ls -l`
 
 *Note the size difference*
+
+*Compression level 9 (`-9`) is the highest*
 
 ### Other Compression Tools: gzip & bzip2
 
