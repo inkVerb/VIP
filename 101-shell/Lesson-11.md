@@ -58,7 +58,7 @@ ___
 *gedit: Reload tab.file*
 
 *Note the tab*
-backslash
+
 | **13** : `sed -i "s/\t no/no/" tab.file`
 
 *gedit: Reload tab.file*
