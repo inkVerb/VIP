@@ -10,7 +10,13 @@
 ## Prepare your work projects and install Jupyter there
 *Note `work_dir` and `work_env` can be anything*
 
-`mkdir ~/work_dir`
+### VERY FIRST TIME: Create your project directory
+>
+___
+>  
+> `mkdir ~/work_dir`
+>
+___
 
 `cd ~/work_dir`
 
@@ -24,7 +30,7 @@
 ___
 >  
 > `pip install jupyter`
-> 
+>
 ___
 
 ## Run Jupyter Noteboook
