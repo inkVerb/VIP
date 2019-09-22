@@ -1,5 +1,11 @@
 # Jupyter Notebook
 
+*This is for `python3`*
+
+## Python
+
+`sudo apt install python3`
+
 ## Install the framework
 `sudo apt install python3-pip python3-dev`
 
