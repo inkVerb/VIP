@@ -18,7 +18,14 @@
 
 `source work_env/bin/activate`
 
-`pip install jupyter`
+
+### VERY FIRST TIME: Install Jupyter
+>
+___
+>  
+> `pip install jupyter`
+> 
+___
 
 ## Run Jupyter Noteboook
 *Open a terminal you can allow to be busy*
