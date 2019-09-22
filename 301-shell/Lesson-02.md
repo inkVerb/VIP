@@ -155,6 +155,8 @@ ___
 
 | **45** : `./02-read-3`
 
+*Enter whatever you want, only letters & numbers, no spaces*
+
 | **46** : `ls`
 
 *Note it created the file*
