@@ -7,16 +7,10 @@
 
 `sudo -H pip3 install virtualenv`
 
-## Prepare your work projects and install Jupyter there
+## Create your work project directory and install Jupyter there
 *Note `work_dir` and `work_env` can be anything*
 
-### VERY FIRST TIME: Create your project directory
->
-___
->  
-> `mkdir ~/work_dir`
->
-___
+`mkdir ~/work_dir`
 
 `cd ~/work_dir`
 
@@ -24,17 +18,22 @@ ___
 
 `source work_env/bin/activate`
 
+`pip install jupyter`
 
-### VERY FIRST TIME: Install Jupyter
->
-___
->  
-> `pip install jupyter`
->
-___
+*Now, run Jupyter Notebook for the first time*
+
+`jupyter notebook`
+
+*Copy and paste into the browser a one of the links like this: `http://localhost:8888/...`*
 
 ## Run Jupyter Noteboook
 *Open a terminal you can allow to be busy*
+
+`cd ~/work_dir`
+
+`virtualenv work_env`
+
+`source work_env/bin/activate`
 
 `jupyter notebook`
 
