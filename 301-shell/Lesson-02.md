@@ -141,7 +141,7 @@ ___
 
 | **40** : `./02-read-1`
 
-*Now you have to type something, then press Enter*
+*Now type something, then press Enter*
 
 | **41** : `gedit 02-read-2`
 
@@ -178,6 +178,8 @@ ___
 | **51** : `gedit 02-read-6`
 
 | **52** : `./02-read-6`
+
+*Now type something, then press Enter*
 
 ### V. `wait`
 
