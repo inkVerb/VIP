@@ -83,12 +83,16 @@ ___
 
 # The Take
 
-- Some special characters "mean something" and will therefore "work" AKA "operate"
-- These special characters might be called "**operators**", but the word "**operator**" is more often used to describe special characters used in math functions
+- Some special characters "mean something" and will "work"
+  - These often include: `$`, `^`, `/`, `?`, `*`, `.`, among others
+  - These special characters might be called "**operators**", but the word "**operator**" is more often used to describe special characters used in math functions
 - If you want to use a special character literally, without it "working", it must be "escaped" AKA "quoted"
-- These often include: `$`, `^`, `/`, `?`, `*`, `.`, among others
-- A common "quote" character is the "backslash" (`\`)
-- "Backslash" (`\`) also works with letters to define non-characters in text
+- Common ways of "escaping" working characters:
+  1. Backslash (`\`)
+  2. 'Single quotes' (`'single_quotes'`)
+  3. Flags (`-F` or `-z` etc)
+  - Sometimes we need a combination of the above
+- Backslash (`\`) also works with letters to define non-characters in text
   - `\n` = "new line"
   - `\t` = "tab"
   - These are called "Metacharacters", which you can study more on your own
