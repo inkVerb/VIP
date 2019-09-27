@@ -10,6 +10,13 @@ ___
 
 ### I. `if`
 
+```sh
+if [ TEST ]
+then
+  ...do something
+fi
+```
+
 Test for an existing *file* by name
 
 | **1** : `gedit 01-if-file`
@@ -60,6 +67,15 @@ Test for an existing *directory* by name
 
 ### II. `else`
 
+```sh
+if [ TEST ]
+then
+  ...do something
+else
+  ...do another thing
+fi
+```
+
 | **17** : `gedit 01-if-else-file`
 
 | **18** : `./01-if-else-file myfile`
@@ -85,6 +101,17 @@ Test for an existing *directory* by name
 | **27** : `./01-if-else-e otherdir`
 
 ### III. `elif`
+
+```sh
+if [ TEST ]
+then
+  ...do something
+elif [ ANOTHER TEST ]
+  ...do another thing
+else
+  ...do another another thing
+fi
+```
 
 | **28** : `gedit 01-if-elif`
 

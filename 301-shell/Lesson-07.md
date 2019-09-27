@@ -8,6 +8,22 @@
 
 ___
 
+### Combining tests
+
+```sh
+if [ TEST IS TRUE ] && [ TEST THIS ]... ;fi
+
+if [ TEST IS FALSE ] || [ TEST THIS ]... ;fi
+```
+
+**...BUT it does NOT need to be in a test...**
+
+```sh
+command success && run this command also...
+
+command failure || run this command also...
+```
+
 ### I. Read a max number and count
 
 | **1** : `gedit 07-while-count-read`

@@ -12,6 +12,13 @@ ___
 
 ### "If the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
 
+```sh
+while [ TEST IS TRUE ]
+do
+  ...doing something
+done
+```
+
 | **1** : `gedit 05-while-read`
 
 *Note -z means "Zero" or "Zilch" for a variable that is empty*
@@ -37,6 +44,13 @@ ___
 ### II. `until`
 
 ### "If the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
+
+```sh
+until [ TEST IS FALSE ]
+do
+  ...doing something
+done
+```
 
 *Do some prep first...*
 
@@ -70,7 +84,18 @@ ___
 
 ### III. `case`
 
-### "Multiple choice, multiple `case`, a variable is anything of many things."
+### "Multiple choice variable `case`"
+
+```sh
+case $VARIABLE in
+  apples)
+    ...do something because $VARIABLE = apples
+  ;;
+  berries)
+    ...do something because $VARIABLE = berries
+  ;;
+esac
+```
 
 | **19** : `gedit 05-case-numlett`
 

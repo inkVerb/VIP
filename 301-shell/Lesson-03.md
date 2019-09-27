@@ -16,6 +16,15 @@ ___
 
 ### I. `for VAR in WUT; do`
 
+```sh
+for VARIABLE in SOME_LIST
+do
+  ...do something, maybe with $VARIABLE
+done
+```
+
+...This runs many times, every time `$VARIABLE` is something different
+
 one*
 
 | **2** : `ls one*`

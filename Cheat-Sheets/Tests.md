@@ -7,10 +7,7 @@ ___
 
 ### I. Test: `true` & `false`
 
-- `false` = `0`
-- `true`  = `1`
-
-When a test answers `true` or `1`, then shell does something via `then` or `do`
+When a test answers `true`, then shell does something via `then` or `do`
 
 ___
 
@@ -100,6 +97,16 @@ ___
 ### III. `for` VARIABL `in` WUT
 
 - A `for` test loops and does the same thing for each among many items
+
+```sh
+for VARIABLE in SOME_LIST
+
+do
+
+  # ...do something, maybe with $VARIABLE
+
+done
+```
 
 The `if` test is similar to the `for` looping test, but...
 
@@ -211,6 +218,26 @@ ___
 
 ### VI. Count with `while` & `until`
 
+```sh
+while [ TEST IS TRUE ]
+
+do
+
+  # ...doing something
+
+done
+```
+
+```sh
+until [ TEST IS FALSE ]
+
+do
+
+  # ...doing something
+
+done
+```
+
 This is a classic example of a "counting" loop:
 
 ```sh
@@ -259,8 +286,22 @@ ___
 
 ### VII. `case`... `esac`
 
-- `case` is a simple multiple `if` test
-- `a)` is the `case` argument for using the `-a` flag
+```sh
+case $VARIABLE in
+
+  apples)
+    # ...do something because $VARIABLE = apples
+  ;;
+
+  berries)
+    # ...do something because $VARIABLE = berries
+  ;;
+
+esac
+```
+
+- `case` is a multiple-choice `if` test for a variable
+- `a)` is the `case` when the variable = "`a`"
 - `case` arguments close with `;;`
 - `*` is the "everything not listed" `case` argument, usually to recognize an error and display "help" instructions
 
@@ -423,6 +464,20 @@ ___
 ##### `;` = "end of line"
 
 #### Order of Logic: `&&` ... `||` ... `;`
+
+```sh
+if [ TEST IS TRUE ] && [ TEST THIS ]... ;fi
+
+if [ TEST IS FALSE ] || [ TEST THIS ]... ;fi
+```
+
+**...BUT it does NOT need to be in a test...**
+
+```sh
+command success && run this command also...
+
+command failure || run this command also...
+```
 
 **`&&` AND test**
 ```sh
