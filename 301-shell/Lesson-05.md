@@ -84,23 +84,27 @@ ___
 
 | **24** : `./05-case-numlett b`
 
-| **25** : `./05-case-numlett c`
+*Now try something that isn't among the `case` options...*
+
+| **25** : `./05-case-numlett d`
 
 | **26** : `gedit 05-case-options`
 
 | **27** : `./05-case-options`
 
-*Input any of the following: a, b, f, g, v, z, and others, finally "quit"*
+*Input any of the following: a, b, f, g, v, z, and others; finally: quit*
 
 | **28** : `gedit 05-case-chat`
 
+*Note `:` makes a `while` or `until` loop continue forever, `break` ends a loop*
+
 | **29** : `./05-case-chat one two three`
 
-*Input any of the following: verb, ink, hi, yoyo, byebye, done, one, two, three, and others, finally "quit"*
+*Input any of the following: verb, ink, hi, yoyo, one, two, three, and others; finally: byebye, done, or quit*
 
 | **30** : `./05-case-chat apple pineapple pen`
 
-*Input any of the same, also the following: apple, pineapple, pen, finally "quit"*
+*Input any of the same, also the following: apple, pineapple, pen; finally: quit*
 
 ### IV. `case` with `y/n`
 
