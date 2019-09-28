@@ -1,4 +1,3 @@
-# Shell 201
 ## Lesson 12: more, less, head, tail, sort, tac, diff, nano, vi
 
 `cd ~/School/VIP/shell/201`
@@ -174,7 +173,7 @@ ___
 
 | **36** : `vim verb.ink.html`
 
-*To quit, type these to characters:*
+*To quit, type these two characters:*
 
 :q
 
