@@ -143,6 +143,8 @@ esac
 
 | **33** : `gedit 05-case-yn-loop`
 
+*Note `while :` will loop without a test and only stop with a `break` or `exit`*
+
 *Note `exit 1` will produce* STDOUT *to `1>` but `exit 0` has no output just as `2>` is from an unwritten `exit 2` event*
 
 | **34** : `./05-case-yn-loop`
@@ -171,6 +173,7 @@ ___
   - `done` closes the mini-script
 - Syntax of the `while` line:
   - `while` `CONDITIONS TO BE TESTED`
+  - `while :` will loop without a test until a `break` or `exit`
 - See usage and examples here: [Tests: while](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iv-while-do-done)
 
 ## `until` (do something while `false` until `true`)
@@ -185,6 +188,7 @@ ___
   - `done` closes the mini-script
 - Syntax of the `until` line:
   - `until` `CONDITIONS TO BE TESTED`
+  - `until :` will loop without a test until a `break` or `exit`
 - See usage and examples here: [Tests: until](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#v-until-do-done)
 
 ## `case` (multiple scripts for each of multiple conditions)
