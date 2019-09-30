@@ -137,14 +137,6 @@ ___
 - `PRIORITY` *(6 = info)*
 - `SYSLOG_FACILITY` *(1 = user)*
 
-*This is just cool:*
-
-| **16** : `journalctl --since today > journalctl-today.txt`
-
-*If you dare: `gedit journalctl-today.txt`*
-
-*Also try: `--since yesterday`*
-
 ### IF needed, `exit` from the other "sudoer"
 >
 ___
@@ -153,6 +145,14 @@ ___
 > | **S2** : `exit`
 ___
 
+
+*This is just cool:*
+
+| **16** : `journalctl --since today > journalctl-today.txt`
+
+*If you dare: `gedit journalctl-today.txt`*
+
+*Also try: `--since yesterday`*
 
 ## II. Custom output logs
 

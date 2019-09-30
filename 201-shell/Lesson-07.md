@@ -161,7 +161,7 @@ ___
 
 *Note `-2` is the compression level...*
 
-| **41** : `xz -2 -c vip.tar > vip.9.tar.xz`
+| **41** : `xz -2 -c vip.tar > vip.2.tar.xz`
 
 | **42** : `ls -l`
 
@@ -225,7 +225,7 @@ ___
 
 *Note `vip.tar` still exists, delete before extracting*
 
-| **58** : `rm vip.tar`
+| **58** : `rm vip.tar && ls -l`
 
 *Note `-d` is for "Decompress" as with gzip*
 
