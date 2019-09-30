@@ -33,7 +33,7 @@ ___
 # The Take
 
 - Several commands can be combined into one command, including an output file
-- "Piping" output into "tee" (`command | tee output-file`) sends the output to both the output file *and* is displayed as raw output in the terminal
+- "Piping" output into "tee" (`command | tee output-file`) sends the STDOUT output to both the output file *and* is displayed as raw output in the terminal
 - `| tee` will overwrite the destination file!
 - `| tee` can be used with many commands
 
