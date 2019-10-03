@@ -154,66 +154,93 @@ ___
 
 *Also try: `--since yesterday`*
 
+*Prepare for the next section...*
+
+| **17** : `mkdir logs && cd logs && touch one-file`
+
 ## II. Custom output logs
 
-### Notes about `exit` codes
+`cd ~/School/VIP/shell/301/logs`
 
-*Logs & `exit` codes are both important, but different*
+___
 
-*Errors are important, handle them correctly in Shell scripts!*
+### A custom log can be useful for keeping track of what happens on your machine
 
-> *An `exit` is a way to "break" out of a script, such as `if - then` tests, but always use `exit 0` unless a problem or event needs to be logged!*
->
-> *It is considered "bad coding" to use `exit` without a number or to use an exit other than `exit 0` without need for a log entry*
->
-> *When tutorials only have `exit` in the example, it is up to you to put the correct number after, probably `exit 0`*
->
+*First `ls` the directory like normal...*
 
-### A custom log can be useful for keeping track of what happens in your own software
+| **18** : `ls`
 
-| **17** : `mkdir logs`
+*Send the output to a file called "log"...*
 
-| **18** : `cd logs`
+| **19** : `ls > log`
 
-*Send* STDOUT *(output) to a file with: `> OUTPUTFILE`*
+| **20** : `gedit log`
 
-*Send* STDERR *(error output) to a file with: `2> OUTPUTFILE`*
+*Now `ls` something that doesn't exist, the output is an error...*
 
-| **19** : `ls dumbo`
+| **21** : `ls dumbo`
+
+*Try sending that error output to the file called "log"...*
+
+| **22** : `ls dumbo > log`
+
+*gedit: Reload log*
+
+*Nothing is there!*
+
+*Error output can't go to a file with `>` or `>>`*
+
+*Error output only goes to a file with `2>` or `>>`*
+
+| **23** : `ls dumbo 2> log`
+
+*gedit: Reload log*
+
+*Cleanup...*
+
+| **24** : `rm log`
+
+### Ouput to file
+- *Send* STDOUT *(output) to a file with: `> OUTPUTFILE`*
+- *Send* STDERR *(error output) to a file with: `2> OUTPUTFILE`*
+
+*Send our STDOUT and STDERR to different log files*
+
+| **25** : `ls dumbo`
 
 *Note the error message in the terminal*
 
-| **20** : `ls dumbo 2> error.log`
+| **26** : `ls dumbo 2> error.log`
 
-| **21** : `ls`
+| **27** : `ls`
 
 *Not the same error message went into the file*
 
-| **22** : `gedit error.log`
+| **28** : `gedit error.log`
 
 *gedit: Reload error.log*
 
-| **23** : `ls dumbo 2>> error.log`
+| **29** : `ls dumbo 2>> error.log`
 
 *gedit: Reload error.log*
 
-| **24** : `ls >> normal.log`
+| **30** : `ls >> normal.log`
 
-| **25** : `ls`
+| **31** : `ls`
 
-| **26** : `gedit normal.log`
+| **32** : `gedit normal.log`
 
 *Combine this into one command with: `> STDOUT 2> STDERR`*
 
-| **27** : `ls bozo >> normal.log 2>> error.log`
+| **33** : `ls bozo >> normal.log 2>> error.log`
 
 *gedit: Reload error.log*
 
 *Send STDERR (error output) into the nothingness with: `> /dev/null 2>&1`*
 
-| **28** : `ls dumbo > /dev/null 2>&1`
+| **34** : `ls dumbo > /dev/null 2>&1`
 
-| **29** : `ls`
+| **35** : `ls`
 
 *See! Nothing at all!*
 
@@ -225,41 +252,41 @@ ___
 
 *Outputs nothing to file:*
 
-| **30** : `ls 0> 0.log`
+| **36** : `ls 0> 0.log`
 
 *Outputs STDOUT to file (present):*
 
-| **31** : `ls 1> 1.log`
+| **37** : `ls 1> 1.log`
 
 *Outputs STDERR to file (absent):*
 
-| **32** : `ls 2> 2.log`
+| **38** : `ls 2> 2.log`
 
 *Look at the three ".log" files created...*
 
-| **33** : `ls`
+| **39** : `ls`
 
 *View each of them in gedit*
 
-| **34** : `gedit 0.log` ...nothing—because "0" (no output) is nothing
+| **40** : `gedit 0.log` ...nothing—because "0" (no output) is nothing
 
-| **35** : `gedit 1.log` ...file list—because `ls` succeeded
+| **41** : `gedit 1.log` ...file list—because `ls` succeeded
 
-| **36** : `gedit 2.log` ...nothing—because `ls` didn't fail
+| **42** : `gedit 2.log` ...nothing—because `ls` didn't fail
 
 #### Generate error output
 
 *Outputs nothing to file:*
 
-| **37** : `ls bozo 0> 0.log`
+| **43** : `ls bozo 0> 0.log`
 
 *Outputs STDOUT to file (absent):*
 
-| **38** : `ls bozo 1> 1.log`
+| **44** : `ls bozo 1> 1.log`
 
 *Outputs STDERR to file (present):*
 
-| **39** : `ls bozo 2> 2.log`
+| **45** : `ls bozo 2> 2.log`
 
 *Review at the three ".log" files just updated...*
 
@@ -269,73 +296,94 @@ ___
 
 - *gedit: Reload `2.log`* ...error message—because `ls` failed
 
+## III. Logging with `exit` codes
+
+`cd ~/School/VIP/shell/301/logs`
+
+___
+
+### Notes about `exit` codes
+
+> *Logs & `exit` codes are related*
+> 
+> *Errors are important, handle them correctly with `exit`*
+>
+> *`exit` creates different types of output, depending on the `exit` number, such as `exit 0` or `exit 5` et cetera*
+> 
+> *An `exit` is a way to "break" out of a script, such as `if - then` tests, but always use `exit 0` unless a problem or event needs to be logged!*
+>
+> *It is considered "bad coding" to use `exit` without a number or to use an exit other than `exit 0` without need for a log entry*
+>
+> *When tutorials only have `exit` in the example, it is up to you to put the correct number after, probably `exit 0`*
+>
+
 ### Creat log files for normal STDOUT and error STDERR in Shell
 
-| **40** : `gedit ../06-logging-1`
+| **46** : `gedit ../06-logging-1`
 
 *Note `exec` basically means "whatever the current command is", don't lose sleep over it, just see how it is used*
 
-| **41** : `../06-logging-1`
+| **47** : `../06-logging-1`
 
-| **42** : `ls`
+| **48** : `ls`
 
 *gedit Reload: error.log*
 
-| **43** : `gedit ../06-logging-2`
+| **49** : `gedit ../06-logging-2`
 
 *Note `> OUTFILE` is the same as `1> OUTFILE` because `>` & `1>` are for STDOUT (`exit 1`) while `2>` is always for STDERR (`exit 2`)*
 
-| **44** : `../06-logging-2`
+| **50** : `../06-logging-2`
 
 *gedit Reload: error.log*
 
 *gedit Reload: normal.log*
 
-| **45** : `gedit ../06-logging-3`
+| **51** : `gedit ../06-logging-3`
 
-| **46** : `../06-logging-3`
+| **52** : `../06-logging-3`
 
 *Note, the file all.log was created*
 
-| **47** : `gedit all.log`
+| **53** : `gedit all.log`
 
 *Both* STDOUT *and* STDERR *went to the same file because this makes errors behave like normal output: `2>&1`*
 
-| **48** : `gedit ../06-logging-4`
+| **54** : `gedit ../06-logging-4`
 
-| **49** : `../06-logging-4`
+| **55** : `../06-logging-4`
 
-| **50** : `ls`
+| **56** : `ls`
 
 *Note the file exit-3.log was created*
 
-| **51** : `gedit exit-3.log`
+| **57** : `gedit exit-3.log`
 
 *Note setting exit messages only works 3-9*
 
-| **52** : `gedit ../06-logging-5`
+| **58** : `gedit ../06-logging-5`
 
-| **53** : `../06-logging-5`
+| **59** : `../06-logging-5`
 
-| **54** : `ls`
+| **60** : `ls`
 
 *Note the file exit-2.log was created*
 
-| **55** : `gedit exit-2.log`
+| **61** : `gedit exit-2.log`
 
 *Note setting exit 2 messages will appear before STDERR error messages in a 2> error log*
 
 *Note you can set exit 0 also, but that's strange*
 
-| **56** : `gedit ../06-logging-6`
+| **62** : `gedit ../06-logging-6`
 
-| **57** : `../06-logging-6`
+| **63** : `../06-logging-6`
 
-| **58** : `ls`
+| **64** : `ls`
 
 *Note the file exit-0.log was created*
 
-| **59** : `gedit exit-0.log`
+| **65** : `gedit exit-0.log`
 
 *Moral of the story: always use `exit` with a number!*
 - `exit 0` everything is normal, no output *(with `echo "something"` `>&0` ...if you are strange)*
@@ -346,11 +394,7 @@ ___
 
 *FYI, you can create a read-only system log file for your script*
 
-| **60** : `gedit ../06-logging-7`
-
-*Finished*
-
-| **61** : `cd ..`
+| **66** : `gedit ../06-logging-7`
 
 ___
 
