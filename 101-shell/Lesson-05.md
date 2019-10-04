@@ -107,7 +107,7 @@ ___
 
 | **31** : `kill 55555`
 
-*Now, replace the PID number with `$(`what gets the number`)` (`$(pgrep gnome-mines)`)...*
+*Now, replace the PID number with `$(what gets the number)` (`$(pgrep gnome-mines)`)...*
 
 | **32** : `gnome-mines &`
 
