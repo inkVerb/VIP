@@ -148,7 +148,7 @@ ___
 
 # The Take
 
-## Pipi `|`
+## Pipe `|`
 - STDIN input is, more or less what you type into the terminal
 - "Raw output" is basic text STDOUT output, more or less output in the terminal
 - `cat` will dump a file's contents as raw output (STDOUT)
