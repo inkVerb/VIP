@@ -1,5 +1,5 @@
 # Shell 101
-## Lesson 5: Combine & Pipe Commands into Variables
+## Lesson 5: Variables from Pipe & Command Substitution
 
 `cd ~/School/VIP/shell/101`
 
@@ -59,7 +59,7 @@ ___
 
 | **17** : `cat applefoo | sed "s/foo/bar/"`
 
-*Put those commands into a kind of variable value; this is called "Command Substitution": `$(command substitution)`*
+*Put those commands into a kind of variable value; this is called "Command Substitution": `$(Command Substitution)`*
 
 | **18** : `echo $(cat applefoo | sed "s/foo/bar/")`
 
@@ -71,33 +71,51 @@ ___
 
 | **21** : `cat echocatsed_applefoo`
 
-*"Command Substitution" can also be done with backticks: `` `command substitution` `` (considered lazy, though)*
+*"Command Substitution" can also be done with backticks: `` `Command Substitution` `` (considered lazy, though)*
 
 | **22** : `` echo `cat applefoo | sed "s/foo/bar/"` ``
 
-*Remember some of these...*
+*This is useful to get your CPU type...*
 
-| **23** : `echo $DESKTOP_SESSION`
+| **23** : `dpkg --print-architecture`
 
-| **24** : `printenv DESKTOP_SESSION`
+*`echo` it into a file...*
 
-*You can set output of any terminal command as if it is a variable using: `$(...)` or `` `...` ``*
+| **24** : `echo $(dpkg --print-architecture) > print-architecture_chodpkg`
 
-| **25** : `echo $(printenv DESKTOP_SESSION)`
+| **25** : `gedit print-architecture_chodpkg`
 
-| **26** : `` echo `printenv DESKTOP_SESSION` ``
+*You can "substitute" any command for its output using: `$(...)` or `` `...` ``*
 
-*This is useful...*
+*Let's `kill` a desktop app using Command Substitution...*
 
-| **27** : `dpkg --print-architecture`
+| **26** : `gnome-mines &`
 
-| **28** : `echo $(dpkg --print-architecture)`
+*Get the app's "process ID" (PID)...*
 
-| **29** : `echo $(dpkg --print-architecture) > print-architecture_chodpkg`
+| **27** : `pgrep gnome-mines`
 
-| **30** : `gedit print-architecture_chodpkg`
+*Note the PID number and replace 55555 with that number below:*
 
-| **31** : `gedit comboshell`
+| **28** : `kill 55555`
+
+*Do it again, note the number changes...*
+
+| **29** : `gnome-mines &`
+
+| **30** : `pgrep gnome-mines`
+
+| **31** : `kill 55555`
+
+*Now, replace the PID number with `$(`what gets the number`)` (`$(pgrep gnome-mines)`)...*
+
+| **32** : `gnome-mines &`
+
+| **33** : `kill $(pgrep gnome-mines)`
+
+*...Try it a few more times if you want, always the same, no changing numbers!*
+
+| **34** : `gedit comboshell`
 
 *Create comboshell as this:*
 ```sh
@@ -110,48 +128,55 @@ echo "$myOutput"
 # v01
 ```
 
-| **32** : `chmod ug+x comboshell`
+| **35** : `chmod ug+x comboshell`
 
 *Watch Command Substitution work...*
 
-| **33** : `./comboshell applefoo foo bar`
+| **36** : `./comboshell applefoo foo bar`
 
 *Review the contents of abcd...*
 
-| **34** : `cat abcd`
+| **37** : `cat abcd`
 
 *Watch Command Substitution work...*
 
-| **35** : `./comboshell abcd jjjjjjjjj "Apple likes to say abcdefghi and "`
+| **38** : `./comboshell abcd jjjjjjjjj "Apple likes to say abcdefghi and "`
 
-| **36** : `./comboshell abcd j " zz"`
+| **39** : `./comboshell abcd j " zz"`
 
 ___
 
 # The Take
 
-- "Raw output" is basic text STDOUT output (AKA output in the terminal)
+## Pipi `|`
+- STDIN input is, more or less what you type into the terminal
+- "Raw output" is basic text STDOUT output, more or less output in the terminal
 - `cat` will dump a file's contents as raw output (STDOUT)
-- `sed` without `-i` will dump the results as raw output, rather than changing the file
-- `sed -e` designates a new file as the destination for the output
-- The output of one command can be sent as input to the next command using a "pipe": `|`
+- `sed` *without `-i`* will dump the results as raw output, rather than changing the file
+- `sed -e` "exports" the output to a different file with `> outputfile`
+- Many commands use a file for their STDIN input "source"
+  - The file `cat` uses is the STDIN input "source"
+  - The file `sed` changes is the STDIN input "source"
+- STDOUT (output) of one command can be sent as STDIN (input) "source" to the next command using a "pipe": `|`
   - Syntax: `command one | command two`
-- The output of a command can be treated as an argument or value if wrapped in one of two ways:
-  - $ and parentheses: `$(command substitution)`
-  - backticks: `` `command substitution` ``
+
+## `$(`Command Substitution`)`
+- The output of a command can be treated as an argument or value if wrapped one of two ways:
+  - $ and parentheses: `$(Command Substitution)`
+  - backticks: `` `Command Substitution` ``
   - Both of these are called "**Command Substitution**"
 - Command Substitution can set the value of a variable in a Shell script
   - Example: `thisVariable=$(cat somefile)`
-- "Quotes" work cleanly with Command Substitution
+- "Quotes" work cleanly inside Command Substitution
   - Example **in a script**:
 ```shell
 variable="$(echo "something here")"
 ```
-  - ...these "quotes" will not be confused as starting and beginning inside `$(CS brackets)`
+  - ...these "quotes" will not be confused as starting and beginning inside `$(CS wrapper)`
   - Using quotes like this is the "correct" way to use Command Substitution to set variables
 - And, use it directly, like this:
-  - `echo $(command substitution)` (echo outputs to terminal)
-  - `echo $(command substitution) > filename` (echo output into a file)
+  - `some-command $(Command Substitution)` (the Command Substitution can be an argument)
+  - `some-command $(Command Substitution) > filename` (send STDOUT output into a file)
 
 ___
 

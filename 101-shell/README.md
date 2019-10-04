@@ -14,7 +14,7 @@ ___
 
 ### [Lesson 4: Setting Variables & Setting Files](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-04.md)
 
-### [Lesson 5: Combine & Pipe Commands into Variables](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-05.md)
+### [Lesson 5: Variables from Pipe & Command Substitution](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-05.md)
 
 ### [Lesson 6: tee](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-06.md)
 
