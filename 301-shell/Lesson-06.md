@@ -178,11 +178,11 @@ ___
 
 *Now `ls` something that doesn't exist, the output is an error...*
 
-| **21** : `ls dumbo`
+| **21** : `ls bozo`
 
 *Try sending that error output to the file called "log"...*
 
-| **22** : `ls dumbo > log`
+| **22** : `ls bozo > log`
 
 *gedit: Reload log*
 
@@ -192,7 +192,7 @@ ___
 
 *Error output only goes to a file with `2>` or `>>`*
 
-| **23** : `ls dumbo 2> log`
+| **23** : `ls bozo 2> log`
 
 *gedit: Reload log*
 
@@ -206,11 +206,11 @@ ___
 
 *Send our STDOUT and STDERR to different log files*
 
-| **25** : `ls dumbo`
+| **25** : `ls bozo`
 
 *Note the error message in the terminal*
 
-| **26** : `ls dumbo 2> error.log`
+| **26** : `ls bozo 2> error.log`
 
 | **27** : `ls`
 
@@ -220,7 +220,7 @@ ___
 
 *gedit: Reload error.log*
 
-| **29** : `ls dumbo 2>> error.log`
+| **29** : `ls bozo 2>> error.log`
 
 *gedit: Reload error.log*
 
@@ -230,7 +230,7 @@ ___
 
 | **32** : `gedit normal.log`
 
-*Combine this into one command with: `> STDOUT 2> STDERR`*
+*Combine this into one command with: `> STDOUT-file 2> STDERR-file`*
 
 | **33** : `ls bozo >> normal.log 2>> error.log`
 
@@ -238,7 +238,7 @@ ___
 
 *Send STDERR (error output) into the nothingness with: `> /dev/null 2>&1`*
 
-| **34** : `ls dumbo > /dev/null 2>&1`
+| **34** : `ls bozo > /dev/null 2>&1`
 
 | **35** : `ls`
 
@@ -305,11 +305,11 @@ ___
 ### Notes about `exit` codes
 
 > *Logs & `exit` codes are related*
-> 
+>
 > *Errors are important, handle them correctly with `exit`*
 >
 > *`exit` creates different types of output, depending on the `exit` number, such as `exit 0` or `exit 5` et cetera*
-> 
+>
 > *An `exit` is a way to "break" out of a script, such as `if - then` tests, but always use `exit 0` unless a problem or event needs to be logged!*
 >
 > *It is considered "bad coding" to use `exit` without a number or to use an exit other than `exit 0` without need for a log entry*
