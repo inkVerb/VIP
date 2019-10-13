@@ -75,8 +75,6 @@ ___
 
 | **21** : `mv vip.tar.xz vip.tar.bz2 && mv vip.tar.xz.HIDING vip.tar.xz`
 
-| **22** : `cd ..`
-
 ___
 
 # The Take

@@ -10,21 +10,23 @@ ___
 
 | **2** : `sed "s/foo/bar/" applefoo`
 
-| **3** : `echo $(sed "s/foo/bar/" applefoo) > sedoutput.text`
+| **3** : `echo $(sed "s/foo/bar/" applefoo)`
 
-| **4** : `gedit sedoutput.text`
+| **4** : `echo $(sed "s/foo/bar/" applefoo) > sedoutput.text`
 
-| **5** : `echo "Add a line" >> sedoutput.text`
+| **5** : `gedit sedoutput.text`
+
+| **6** : `echo "Add a line" >> sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
 *Both `echo` and `sed` (without `-i`) will send output to the terminal*
 
-*But, `sed -i` and `echo ... > ` will output to a file*
+*But, `sed -e ... > ` and `echo ... > ` will output to a file*
 
 *But better yet, piping into `tee` will do both!*
 
-| **6** : `echo $(sed "s/foo/bar/" applefoo) | tee sedoutput.text`
+| **7** : `echo $(sed "s/foo/bar/" applefoo) | tee sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
