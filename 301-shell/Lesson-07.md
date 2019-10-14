@@ -82,10 +82,10 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 #### 3. Uses `local VAR="value"` for a variable to be used only inside the function
 
 ```bash
-# Create the function:
+# Define (create) the function:
 newFunctionName() {
-#... function script goes here, including arguments $1, $2, etc
-# Set a local, "in-function-only" variable:
+# Script, commands, arguments $1, $2, etc
+# Set a local (in-function-only) variable:
 local VARIABLE="Apple pie"
 }
 
