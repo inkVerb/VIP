@@ -67,55 +67,61 @@ Q (or Ctrl + C) *This will CLOSE the top program*
 
 | **9** : `top -n 1 -b`
 
-*Notice `-b` shows everything all the way to the Bottom ( not limited by the size of the terminal window, only limited by the `-n 1` iteration option)*
+*Notice `-b` shows everything all the way to the Bottom (not limited by the size of the terminal window, only limited by the `-n 1` iteration option)*
 
-*FYI, this is a little program we installed in Lesson 3, a little more colorful than `top`*
+*It might be useful to put it in a file...*
 
-| **10** : `htop`
+| **10** : `top -n 1 -b > top.file`
+
+| **11** : `gedit top.file`
+
+*FYI, this is a little program we installed in Lesson 3, a little more colorful than `top`...*
+
+| **12** : `htop`
 
 F10 (or Q to Quit)
 
 *For a quick peek:*
 
-| **11** : `uptime`
+| **13** : `uptime`
 
 ### `ps aux`
 
-| **12** : `ps aux`
+| **14** : `ps aux`
 
 *Note the list of every running process, but it is not realtime, so you can scroll through it*
 
 Select ONE browser you are NOT using:
 
-| **13** : `firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
+| **15** : `firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
 
 *Note we used `&` to keep it from blocking the terminal*
 
-| **14** : `ps aux`
+| **16** : `ps aux`
 
 *Scroll to look for that browser's process ID (PID)*
 
 *This uses pipe and grep to find it*
 
-| **15** : `ps aux | grep firefox` or `ps aux | grep chromium-browser` or `ps aux | grep google-chrome` or `ps aux | grep vivaldi`
+| **17** : `ps aux | grep firefox` or `ps aux | grep chromium-browser` or `ps aux | grep google-chrome` or `ps aux | grep vivaldi`
 
 *This does the same thing*
 
 ### `pgrep` & `kill`
 
-| **16** : `pgrep firefox` or `pgrep chromium-browser` or `pgrep google-chrome` or `pgrep vivaldi`
+| **18** : `pgrep firefox` or `pgrep chromium-browser` or `pgrep google-chrome` or `pgrep vivaldi`
 
 *Note the PID, it's the number*
 
-| **17** : `kill PID` e.g. `kill 71771`
+| **19** : `kill PID` e.g. `kill 71771`
 
 *Run it again*
 
-| **18** : `firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
+| **20** : `firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
 
 *Now kill it by process name using `killall`*
 
-| **19** : `killall firefox` or `killall chromium-browser` or `killall google-chrome` or `killall vivaldi`
+| **21** : `killall firefox` or `killall chromium-browser` or `killall google-chrome` or `killall vivaldi`
 
 *Some processes can only be killed by PID*
 
@@ -143,6 +149,10 @@ ___
 - `htop` is like `top`, but prettier and easier to read
   - **F10** will quit, but so will **Q** if **F10** is unavailable
 - `uptime` shows only the uptime, which equals the "demigod" status of a Linux guru
+- **"human"**: The "h" stands for "human" in many commands, including:
+  - `du -sh *`
+  - `df -h`
+  - `htop`
 
 ___
 

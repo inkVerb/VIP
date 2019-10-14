@@ -76,8 +76,25 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 ### IV. `function()`
 
-1. A function is like a script inside a script.
-2. It even takes `$1`, `$2`, etc arguments that run inside the script.
+#### A function...
+#### 1. Is like a script inside a script
+#### 2. Takes `$1`, `$2`, etc arguments that run inside the script
+#### 3. Uses `local VAR="value"` for a variable to be used only inside the function
+
+```bash
+# Create the function:
+newFunctionName() {
+#... function script goes here, including arguments $1, $2, etc
+# Set a local, "in-function-only" variable:
+local VARIABLE="Apple pie"
+}
+
+# Call (use) the function:
+newFunctionName
+
+# Call with arguments:
+newFunctionName arg1 arg2 etc3
+```
 
 | **13** : `gedit 7-function`
 
@@ -89,23 +106,23 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 *Note a few things before we continue...*
 ___
-> 1. Create the function:
+> 1. Create a function...
 >
 > `functionName() {`
 >
-> 2. Put your code between the curlies *starting on a new line*.
+> 2. Put your code between the `{`curlies`}` *usually starting on a new line*
 >
-> 3. Arguments like `$1` and `$2` and all their friends work just the same within the function.
+> 3. Arguments like `$1` and `$2` and all their friends work just the same within the function
 >
-> 4. Create a variable that only exists inside the function with this:
+> 4. You may create a variable that only exists inside the function with this:
 >
 > `local` `myVariable=Saucy`
 >
-> 6. Make sure you do something...
+> 6. Do something...
 >
 > `echo "VIP Linux tutorials are $myVariable!"`
 >
-> 7. `}` And close the function
+> 7. `}` Close the function
 >
 > 8. Then, call the function with its name...
 >
