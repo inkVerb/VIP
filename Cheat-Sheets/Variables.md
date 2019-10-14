@@ -135,38 +135,37 @@ ___
 1. Declare the variable & value
 
 ```sh
-Variabl=doggy
+var=doggy
 myColor=pink
 ```
-- Now, when using the variable `$Variabl` with `$` it will have the value "doggy"
+- Now, when using the variable `$var` with `$` it will have the value "doggy"
 - And, when using the variable `$myColor` with `$` it will have the value "pink"
 ...such as...
 
 ```sh
-echo $Variabl
+echo $var
 touch $myColor
 ```
 
 2. Use a shell command, which does something so the variable gets its value
 
 ```sh
-shellcommand Variabl
+SHELLCOMMAND var
 ```
 
-- But, `shellcommand` isn't a real comand
-...here are real examples...
+...real examples...
 
 ```sh
-for Variabl in *.md; do
+for var in *.md; do
 # Do something
 done
 ```
-... now `$Variabl` has a value
+... now `$var` has a value
 
 ```sh
-read Variabl
+read var
 ```
-... now `$Variabl` has a value
+... now `$var` has a value
 
 ```sh
 echo "I am a sweet potato."
@@ -177,18 +176,18 @@ ___
 
 ### IV. Find-replace in a variable's value
 
-- `${Variabl%foo}bar` will replace "foo" in the value output with "bar"
+- `${var%foo}bar` will replace "foo" in the value output with "bar"
 
 Say the variable's value is set to "applefoo"
 
 ```sh
-Variabl=applefoo
+var=applefoo
 ```
 
-Using `${Variabl%foo}bar` will change the variable's output to "applebar"
+Using `${var%foo}bar` will change the variable's output to "applebar"
 
 ```sh
-echo ${Variabl%foo}bar
+echo ${var%foo}bar
 ```
 
 returning
@@ -197,10 +196,10 @@ returning
 applebar
 ```
 
-Replace a string with nothing with: `${Variabl%foo}`
+Replace a string with nothing with: `${var%foo}`
 
 ```sh
-echo ${Variabl%foo}
+echo ${var%foo}
 ```
 
 returning
@@ -280,42 +279,42 @@ echo "${!four}"
 
 ___
 
-### VI. `for` Variabl `in` WUT
+### VI. `for` var `in` WUT
 
-- `for Variabl` sets `$Variabl` as a changing varable for each occurrence in "WUT"
+- `for var` sets `$var` as a changing varable for each occurrence in "WUT"
 - "WUT" can be anything, such as files, such as `*.odt` or `*.png` or `*`
-- If "WUT" includes a full path, then each `do` cycle will set `$Variabl` to include the same full path
+- If "WUT" includes a full path, then each `do` cycle will set `$var` to include the same full path
 
 ```sh
-for Variabl in *.txt
+for var in *.txt
 
 do
 
 # Change to .md files:
 
-echo ${Variabl%txt}md
+echo ${var%txt}md
 
 # Change to files with no extension:
 
-echo ${Variabl%.txt}
+echo ${var%.txt}
 
 done
 ```
 
 - `*.txt` can be anything, usually returning many items
-- `${Variabl%txt}md` will replace "txt" with "md" in the output
+- `${var%txt}md` will replace "txt" with "md" in the output
 - All of this is used in a `do`... `done` loop that follows
 
 ___
 
-### VII. `case` $Variabl `in` ...`esac`
+### VII. `case` $var `in` ...`esac`
 - `case` uses a varible, but the variable must already be set
 - `case` does NOT set a variable
 
 ```sh
-case $Variabl in
+case $var in
 
-DO SOMETHING FOR EACH SCENARIO OF WHAT $Variabl COULD BE
+DO SOMETHING FOR EACH SCENARIO OF WHAT $var COULD BE
 
 esac
 ```
@@ -327,10 +326,10 @@ ___
 
 
 ```sh
-while getopts ":a:b:c:" Variabl
+while getopts ":a:b:c:" var
 ...
 ```
-- Now, `$Variabl` can be used in the `while getopts`... `case` loop
+- Now, `$var` can be used in the `while getopts`... `case` loop
 
 
 ___
@@ -340,8 +339,8 @@ ___
 
 
 ```sh
-Variabl=$(getopt -o a:bcdeh) # OR...
-Variabl=`getopt -o a:bcdeh` # Backticks do the same thing
+var=$(getopt -o a:bcdeh) # OR...
+var=`getopt -o a:bcdeh` # Backticks do the same thing
 ...
 ```
-- Now, `$Variabl` can be used in the `while`... `case` loop
+- Now, `$var` can be used in the `while`... `case` loop
