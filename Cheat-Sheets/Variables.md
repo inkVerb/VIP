@@ -131,7 +131,7 @@ export var
 ```
 ___
 
-### III. Two ways to create variables
+### III. Two ways to define variables
 1. Declare the variable & value
 
 ```sh
