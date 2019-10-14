@@ -60,7 +60,7 @@ Custom variables...
 
 #### `unset`: Clearing a variable's value
 
-Using `unset VariablE_NAME` will remove a variable's value, technically making it "NULL"
+Using `unset variable` will remove a variable's value, technically making it "NULL"
 
 For example:
 
@@ -82,12 +82,52 @@ echo $var
 
 *Read-only variables are usually named with ALL_UPPERCASE; it's not necessary, just Shell coder common practice*
 
-Using `readonly VariablE_NAME` will create a variable that can neither be changed nor `unset`
+Using `readonly variable=...` will create a variable that can neither be changed nor `unset`
 
 For example:
 
 ```sh
 readonly READONLYVAR="I can never be changed in this script."
+```
+
+#### `local`: Works only *inside* a function
+
+Using `local variable=...` will create a variable that only has its value inside the function where it is used
+
+For example:
+
+```sh
+myFunction() {
+
+# works only inside this function:
+local var1="something"
+
+# works everywhere in the script:
+var2="something"
+
+}
+
+# variables only work after the function is called:
+myFunction
+
+```
+
+#### `export`: Works also *outside* a script
+
+Using `export variable` will make a variable retain its value even after the script exits
+
+For example:
+
+```sh
+# This variable retain its value even after the script finishes:
+export var="something"
+```
+
+Or, define first, `export` later:
+
+```sh
+var="something"
+export var
 ```
 ___
 
