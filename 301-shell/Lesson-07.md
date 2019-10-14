@@ -76,11 +76,11 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 ### IV. `function()`
 
-#### A function...
-#### 1. Is like a script inside a script
-#### 2. Takes `$1`, `$2`, etc arguments that run inside the script
-#### 3. Uses `local VAR="value"` for a variable to be used only inside the function
-#### 4. Is defined first, called later
+#### 4 Rules of a function:
+#### 1. Script inside a script
+#### 2. Arguments work (`$1`, `$2`, etc)
+#### 3. `local VAR="value"` (function-only variables)
+#### 4. Define first, call later
 
 ```bash
 # Define (create):
