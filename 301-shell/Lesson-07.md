@@ -80,20 +80,18 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 #### 1. Is like a script inside a script
 #### 2. Takes `$1`, `$2`, etc arguments that run inside the script
 #### 3. Uses `local VAR="value"` for a variable to be used only inside the function
+#### 4. Is defined first, called later
 
 ```bash
 # Define (create) the function:
 newFunctionName() {
-# Script, commands, arguments $1, $2, etc
-# Set a local (in-function-only) variable:
-local VARIABLE="Apple pie"
+# Script, for example:
+local VARIABLE="apple pie"
+echo "$1 and $VARIABLE"
 }
 
 # Call (use) the function:
-newFunctionName
-
-# Call with arguments:
-newFunctionName arg1 arg2 etc3
+newFunctionName Lemmons
 ```
 
 | **13** : `gedit 7-function`
