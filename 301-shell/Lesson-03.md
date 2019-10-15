@@ -27,25 +27,25 @@ done
 
 one*
 
-| **2** : `ls one*`
+| **2** : `gedit 03-do-echo-1`
 
-| **3** : `gedit 03-do-echo-1`
+| **3** : `ls one*`
 
 | **4** : `./03-do-echo-1`
 
 one-1*
 
-| **5** : `ls one-1*`
+| **5** : `gedit 03-do-echo-2`
 
-| **6** : `gedit 03-do-echo-2`
+| **6** : `ls one-1*`
 
 | **7** : `./03-do-echo-2`
 
 *.one
 
-| **8** : `ls *.one`
+| **8** : `gedit 03-do-echo-3`
 
-| **9** : `gedit 03-do-echo-3`
+| **9** : `ls *.one`
 
 *Note `do` is on the same line as `for` via `;`*
 
@@ -53,33 +53,33 @@ one-1*
 
 *t.one
 
-| **11** : `ls *t.one`
+| **11** : `gedit 03-do-echo-4`
 
-| **12** : `gedit 03-do-echo-4`
+| **12** : `ls *t.one`
 
 | **13** : `./03-do-echo-4`
 
 3.*
 
-| **14** : `ls 3.*`
+| **14** : `gedit 03-do-echo-5`
 
-| **15** : `gedit 03-do-echo-5`
+| **15** : `ls 3.*`
 
 | **16** : `./03-do-echo-5`
 
 \*3*
 
-| **17** : `ls *3*`
+| **17** : `gedit 03-do-echo-6`
 
-| **18** : `gedit 03-do-echo-6`
+| **18** : `ls *3*`
 
 | **19** : `./03-do-echo-6`
 
 \*one* "is a file."
 
-| **20** : `ls *one*`
+| **20** : `gedit 03-do-echo-7`
 
-| **21** : `gedit 03-do-echo-7`
+| **21** : `ls *one*`
 
 | **22** : `./03-do-echo-7`
 
@@ -93,15 +93,19 @@ one-1*
 
 | **23** : `gedit 03-do-echo-8`
 
-| **24** : `./03-do-echo-8`
+| **24** : `ls one-*`
+
+| **25** : `./03-do-echo-8`
 
 #### `continue` will skip whatever is left in a loop cycle and "continue" on to the next cycle
 
 *Note the two `echo` commands and where the `continue` applies...*
 
-| **25** : `gedit 03-do-echo-9`
+| **26** : `gedit 03-do-echo-9`
 
-| **26** : `./03-do-echo-9`
+| **27** : `ls one-*`
+
+| **28** : `./03-do-echo-9`
 
 ___
 
