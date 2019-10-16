@@ -96,9 +96,11 @@ sed -i "s/$1/$2/" abcd
 #!/bin/sh
 
 sed -i "s/$1/$2/g" abcd
-# Add "g" at the end to "globally" replace every occurance in each line
+
 # v03
 ```
+
+*Note "g" to "globally" replace every occurance per line*
 
 | **14** : `./abcsed z j`
 
