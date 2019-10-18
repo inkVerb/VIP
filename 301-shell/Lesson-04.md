@@ -20,9 +20,9 @@ ___
 
 *.one %one
 
-| **2** : `ls *.one`
+| **2** : `gedit 04-echo-rename-1`
 
-| **3** : `gedit 04-echo-rename-1`
+| **3** : `ls *.one`
 
 | **4** : `./04-echo-rename-1`
 
@@ -30,9 +30,9 @@ ___
 
 *t.one %t.one
 
-| **6** : `ls *t.one`
+| **6** : `gedit 04-echo-rename-2`
 
-| **7** : `gedit 04-echo-rename-2`
+| **7** : `ls *t.one`
 
 | **8** : `./04-echo-rename-2`
 
@@ -42,9 +42,9 @@ ___
 
 *t.one --> *T-ONE
 
-| **10** : `ls *t.one`
+| **10** : `gedit 04-do-mv-1`
 
-| **11** : `gedit 04-do-mv-1`
+| **11** : `ls *t.one`
 
 | **12** : `./04-do-mv-1`
 
@@ -52,9 +52,9 @@ ___
 
 *T-ONE --> *t.one
 
-| **14** : `ls *T-ONE`
+| **14** : `gedit 04-do-mv-2`
 
-| **15** : `gedit 04-do-mv-2`
+| **15** : `ls *T-ONE`
 
 | **16** : `./04-do-mv-2`
 
@@ -62,9 +62,9 @@ ___
 
 *t.one --> *t.THREE
 
-| **18** : `ls *t.one`
+| **18** : `gedit 04-do-mv-3`
 
-| **19** : `gedit 04-do-mv-3`
+| **19** : `ls *t.one`
 
 | **20** : `./04-do-mv-3`
 

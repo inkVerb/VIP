@@ -58,6 +58,10 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 
 ### III. source `.`
 
+```bash
+. file/to/include
+```
+
 | **9** : `gedit 07-source 07-sourced 07-sourced-also`
 
 | **10** : `ls -l 07-source*`
@@ -162,10 +166,10 @@ ___
 - A function does not use parentheses when called, only the name, such as `function`
 - A function uses variables and arguments
 - Function variables can be set as:
-  - `global` (default)*
+  - `global` *(default)*
   - `local`
 - Function variable syntax:
-  - `global variable="value"` (optional)*
+  - `global variable="value"` *(optional)*
   - `local variable="value"`
 ___
 
