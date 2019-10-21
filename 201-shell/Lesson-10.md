@@ -89,10 +89,6 @@ ___
 
 | **31** : `gedit outputs/ls.file`
 
-*All done, get ready for the next lesson*
-
-| **32** : `cd ..`
-
 ___
 
 # The Take
