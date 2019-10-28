@@ -1,9 +1,13 @@
 # Android root, custom ROM, and using adb & fastboot
 
-#### adb (tool)
+This repo is merely a list of instructions about Android mods and development.
+
+*For custom ROMs and rooting your Android device, learn how to use [adb-fastboot page](https://github.com/inkVerb/VIP/blob/master/Android/adb-fastboot.md).*
+
+## adb (tool)
 `adb` accesses the phone when it's running the normal Android OS or a "recovery" (like TWRP).
 
-#### fastboot (PC tool & phone boot mode)
+## fastboot (PC tool & phone boot mode)
 `fastboot` accesses the phone when it's booted to "fastboot" mode.
 
 "Fastboot" is the very early boot mode, similar to how BIOS is the first mode you can access on a PC.
@@ -11,7 +15,7 @@
 - On a Sony Xperia, fastboot is the same as the bootloader and the screen is blank the entire time.
 - Usually you access fastboot/bootloader by pressing volume keys combined with power. Each model is different. (Sony: hold a volume key while connecting to PC via USB)
 
-#### Recovery: Clockwork Mod (CWM) & Team Win Recovery Project (TWRP)
+## Recovery: Clockwork Mod (CWM) & Team Win Recovery Project (TWRP)
 Recoveries are semi-special boot moads, comparable to the GRUB menu on steroids on a PC.
 - Recoveries are used by developers.
 - Though recoveries don't seem like it at first, they are the professional way to modify an Android phone.
@@ -20,10 +24,10 @@ Recoveries are semi-special boot moads, comparable to the GRUB menu on steroids 
 - Recoveries can have other tools, like a terminal emulator, file manager, etc
 - Recoveries are very, very small, maybe 12MB.
 
-###### *You DO NOT need an Android .apk or app from the Play market for any of this! Ubuntu/Linux terminal is easier!*
+### *You DO NOT need an Android .apk or app from the Play market for any of this! Ubuntu/Linux terminal is easier!*
 Many instructions for "rooting" your phone and installing a custom ROM involve Android apps. But, it's not necessary. Keep it simple. Making things complicated just to be simple often just makes things too complicated. If you have Ubuntu then you already have what you need.
 
-#### ROM
+## ROM
 A ROM is the actual operating system, the "flavor" of Android in a zip file that you download and install after unlocking the phone.
 - A "stock" ROM is the ROM that comes with the phone.
 - A stock ROM is usually locked and unlocking it requires a key from the manufacturer's website, usually with a registration and signin. If a phone is "locked", it means the "bootloader" is locked and the ROM can't be changed... yet ;-)
@@ -32,14 +36,14 @@ A ROM is the actual operating system, the "flavor" of Android in a zip file that
 - ROM developers are called "chefs" because Android versions are named after deserts.
 - ROMs are usually 200MB-1GB or more.
 
-#### Bootloader
+## Bootloader
 - This is simply the start of the bootup of your phone, much like BIOS.
 - A "locked bootloader" means the ROM can't be changed.
 - Many phones come "locked", meaning the bootloader is locked, meaning you can't make any changes to the operating system.
 - This must be unlocked before you can install a custom ROM, usually involving the manufacturer's unique key and using fastboot from the PC terminal.
 - Sometimes, this is a menu allowing you to choose "recovery" or "fastboot" modes, othertimes you never see it on the screen at all; it all depends on the manufacturer.
 
-#### How adb and fastboot work
+## How adb and fastboot work
 - fastboot will "flash" files onto the phone.
 - adb will "push" files onto the phone.
 - Both must be run via `sudo` (even when online instructions omit 'sudo', you need to use it in the Linux PC terminal.)
@@ -100,7 +104,7 @@ Here are some other examples of other devices:
 
 `sudo fastboot -i 0x2a96 oem unlock`
 
-##### Some brands developer unlock links...
+#### Some brands developer unlock links...
 - HTC: [http://htcdev.com/]
 - Sony: [https://developer.sonymobile.com/unlockbootloader/unlock-yourboot-loader/]
 - Samsung: (Some say it's easy.) [https://www.youtube.com/watch?v=oQ2t-6qyxTY] then `sudo fastboot oem unlock`
@@ -129,12 +133,12 @@ Here are some other examples of other devices:
 6. Install the ROM
 - In the recovery CWM/TWRP menues, find the options to choose and Install a ROM.
 
-### adb and fastboot commands
+## adb and fastboot commands
 
-###### Install adb and fastboot
+### Install adb and fastboot
 `sudo apt install android-tools-adb android-tools-fastboot`
 
-###### fastboot Commands
+### fastboot Commands
 `sudo fastboot devices` # list attached devices to see if everything is working
 
 `sudo fastboot oem device-info`
@@ -153,7 +157,7 @@ Here are some other examples of other devices:
 
 `sudo fastboot -w` # format the phone (Erased the known universe!)
 
-###### adb Commands
+### adb Commands
 `adb kill-server` # kill any normal process just in case
 
 `sudo adb start-server`

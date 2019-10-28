@@ -47,6 +47,7 @@ ___
   it can search them also
 - `grep` can search within and for wildcards `*`, much like `find`
 - If there are directories in the search location, `grep` wants the `-R` option so
+- Use `"quotes to contain spaces"` in the search text
 
 ___
 

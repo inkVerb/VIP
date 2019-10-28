@@ -8,7 +8,11 @@ ___
 
 | **1** : `cd verb.ink`
 
-| **2** : `cat verb.ink.html`
+| **2** : `gedit verb.ink.html`
+
+### `cat`
+
+| **3** : `cat verb.ink.html`
 
 ### `more`
 
@@ -16,143 +20,145 @@ ___
 
 *One line at a time: Enter*
 
-| **3** : `more verb.ink.html` *(Space to the end or Q to quit)*
+| **4** : `more verb.ink.html` *(Space to the end or Q to quit)*
 
 *Eight lines at a time*
 
-| **4** : `more -8 verb.ink.html` *(Q to quit)*
+| **5** : `more -8 verb.ink.html` *(Q to quit)*
 
 ### `less`
 
 *Up and down: Spacebar, PageUp, PageDown, Up, Down*
 
-| **5** : `less verb.ink.html` *(Q to quit)*
+| **6** : `less verb.ink.html` *(Q to quit)*
 
 ### `head`
 
 *First ten lines*
 
-| **6** : `head verb.ink.html`
+| **7** : `head verb.ink.html`
 
 *First four lines*
 
-| **7** : `head -4 verb.ink.html`
+| **8** : `head -4 verb.ink.html`
 
 ### `tail`
 
 *Last ten lines*
 
-| **8** : `tail verb.ink.html`
+| **9** : `tail verb.ink.html`
 
 *Last five lines*
 
-| **9** : `tail -5 verb.ink.html`
+| **10** : `tail -5 verb.ink.html`
 
-### `sort`
-
-*Lines in alphabetical order*
-
-| **10** : `sort verb.ink.html`
-
-*Reverse alphabetical order*
-
-| **11** : `sort -r verb.ink.html`
+## A few other tools
 
 ### `tac` *(`cat` backwards)*
 
 *Lines in reverse order*
 
-| **12** : `tac verb.ink.html`
+| **11** : `tac verb.ink.html`
 
-| **13** : `cd ..`
+*Next, download some files...*
+
+| **12** : `cd ..`
+
+| **13** : `git clone https://github.com/inkVerb/201-12`
+
+| **14** : `cd 201-12`
+
+### `sort`
+
+| **15** : `gedit sortme`
+
+*Lines in alphabetical order*
+
+| **16** : `sort sortme`
+
+*Reverse alphabetical order*
+
+| **17** : `sort -r sortme`
 
 ### `diff`
 
-*First, download some files*
-
-| **14** : `git clone https://github.com/inkVerb/201-12`
-
-| **15** : `cd 201-12`
-
-*Look inside*
-
-| **16** : `gedit frc-*`
+| **18** : `gedit frc-*`
 
 *Compare 1 & 2*
 
-| **17** : `diff frc-1 frc-2`
+| **19** : `diff frc-1 frc-2`
 
 *Note "a" means that lines are "Added"*
 
-| **18** : `diff frc-1 frc-3`
+| **20** : `diff frc-1 frc-3`
 
 *Note "d" means that lines are "Deleted"*
 
-| **19** : `diff frc-1 frc-4`
+| **21** : `diff frc-1 frc-4`
 
 *Note "c" means that the lines "Change"*
 
 *Note "13,17" means "lines 13–17"*
 
-| **20** : `diff frc-1 frc-5`
+| **22** : `diff frc-1 frc-5`
 
 *Note frc-5 line 3 has several spaces at the end of the line; ignore with `-Z`*
 
-| **21** : `diff -Z frc-1 frc-5`
+| **23** : `diff -Z frc-1 frc-5`
 
 *Ignore all white space with `-w`*
 
-| **22** : `diff -w frc-1 frc-5`
+| **24** : `diff -w frc-1 frc-5`
 
 *Ignore case with `-i`*
 
-| **23** : `diff -i frc-1 frc-5`
+| **25** : `diff -i frc-1 frc-5`
 
 *Ignore case and white space with `-iw`*
 
-| **24** : `diff -iw frc-1 frc-5`
+| **26** : `diff -iw frc-1 frc-5`
 
 *Note nothing happens if files are the same*
 
-| **25** : `diff frc-1 frc-6`
+| **27** : `diff frc-1 frc-6`
 
 *Get a message to say so with `-s`*
 
-| **26** : `diff -s frc-1 frc-6`
+| **28** : `diff -s frc-1 frc-6`
 
 *Combine `-s` with other options*
 
-| **27** : `diff -iws frc-1 frc-5`
+| **29** : `diff -iws frc-1 frc-5`
 
 *Get a quiet message if files differ*
 
-| **28** : `diff -q frc-1 frc-4`
+| **30** : `diff -q frc-1 frc-4`
 
 *Compare side-by-side wtih `-y`*
 
-| **29** : `diff -y frc-1 frc-4`
+| **31** : `diff -y frc-1 frc-4`
 
 *Remember* frc-2
 
-| **30** : `diff frc-1 frc-2`
+| **32** : `diff frc-1 frc-2`
 
 *Ignore blank lines with `-B`*
 
-| **31** : `diff -B frc-1 frc-2`
+| **33** : `diff -B frc-1 frc-2`
 
 *There is always more to learn*
 
-| **32** : `man diff` *(Q to quit)*
+| **34** : `man diff` *(Q to quit)*
 
-| **33** : `cd ..`
+| **35** : `cd ..`
 
-### nano
+### `nano`
 
 *The simple text editor in the terminal*
 
-| **34** : `cd verb.ink`
+| **36** : `cd verb.ink`
 
-| **35** : `nano verb.ink.html`
+| **37** : `nano verb.ink.html`
 
 *Options listed at the bottom*
 
@@ -167,11 +173,11 @@ ___
 
 *(Ctrl + X to eXit)*
 
-### vim
+### `vim`
 
 *The terminal editor used by cool people*
 
-| **36** : `vim verb.ink.html`
+| **38** : `vim verb.ink.html`
 
 *To quit, type these two characters:*
 
@@ -179,7 +185,7 @@ ___
 
 *Vim has a tutorial*
 
-| **37** : `vimtutor` *(inside Vim, use* :q *to quit)*
+| **39** : `vimtutor` *(inside Vim, use* :q *to quit)*
 
 *Have fun!*
 
@@ -204,9 +210,9 @@ ___
   - `tail -8 file` shows the last 8 lines
 
 ## Other file view tools
+- `tac` reverse line order
 - `sort` re-orders the lines of a file alphabetically
   - `-r` for reverse alphabetical
-- `tac` reverse line order
 - `diff` compares two files by line
   - Usage: `diff file1 file2`
   - a = "added"
