@@ -89,6 +89,8 @@ Here is an example with an HTC: [https://htc-one.gadgethacks.com/how-to/unlock-b
 
 Here is another site with concise instructions: [https://forum.xda-developers.com/showthread.php?t=1432199]
 
+Here is a video applicable to many HTC phones: [How To Unlock The HTC 10 Bootloader or Any HTC Device](https://www.youtube.com/watch?v=KKpzAcTqEys)
+
 For HTC...
 
 `sudo fastboot oem get_identifier_token`
