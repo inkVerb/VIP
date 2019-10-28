@@ -1,4 +1,5 @@
-# Android root, custom ROM, and using adb & fastboot
+# Android: adb & fastboot
+## *For `root` & custom ROMs*
 
 This repo is merely a list of instructions about Android mods and development.
 

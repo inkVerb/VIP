@@ -20,6 +20,9 @@ ___
 ___
 ### [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)
 
+___
+### [Android: adb & fastboot](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Android-adb-fastboot.md)
+
 ### Style & Documents
 
 [GitHub's Markdown](https://github.com/sindresorhus/github-markdown-css)
