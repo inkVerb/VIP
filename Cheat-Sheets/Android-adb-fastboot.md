@@ -161,13 +161,41 @@ Here are some other examples of other devices:
 `sudo fastboot -w` # format the phone (Erased the known universe!)
 
 ### adb Commands
+
+#### Run on the device
+
+| **A1** : `adb shell` # Open a shell terminal with the user on the device
+
+| **A2** : `run-as com.your.package` # Use the package as the user (Requires debugging mode)
+
+| **A3** : `cp /data/data/com.package/` # Copy locally to your desktop
+
+#### Backup a package
+
+`adb backup -noapk com.package`
+
+#### Copying files
+
+*First, get ready...*
+
 `adb kill-server` # kill any normal process just in case
 
 `sudo adb start-server`
 
 `sudo adb devices` # list attached devices to see if everything is working
 
-`sudo adb push my-custom-rom.zip destination/on/phone` # copies ROM to phone if you didn't in Android or the SD, ie: `sudo adb push my-custom-rom.zip sdcard`
+*Now we are ready...*
+
+##### Push (copy) something onyour Desktop to the device
+
+`sudo adb push my-custom-rom.zip /destination/on/phone` # copies ROM to phone if you didn't in Android or the SD, ie: `sudo adb push my-custom-rom.zip sdcard`
 
 `sudo adb sideload my-custom-rom.zip` # sideload install method, select this option in the recovery CWM/TWRP before you enter it in the terminal
+
+##### Pull (copy) something on the device to your Desktop
+
+`adb pull sdcard/somefile.txt /home/james/Desktop` # Linux
+
+`adb pull /sdcard/somefile.txt %USERPROFILE%\Desktop\` # Windows
+
 
