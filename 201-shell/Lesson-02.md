@@ -103,13 +103,12 @@ ___
 
 - `mkdir` makes a new directory this way:
   - `mkdir new-directory`
-- `mkdir` can also make a directory inside of the present working directory
 - `cd` will change the terminal's working directory this way:
   - `cd directory-to-change-to`
   - `cd ..` will move up one level in the directory tree
   - `cd ../..` will move up two levels in the directory tree
   - `cd ../directory` will move up one level in the directory tree, then into another directory from there
-  - `cd directory/subdirectory` will move in two levels of a directory
+  - `cd directory/subdirectory` will move in two levels of a directory tree
   - `cd ../../directory` will move up two levels in the directory tree, then into another directory from there
 - `ls` can list other directories these ways:
   - `ls path/to/dir`
@@ -121,7 +120,7 @@ ___
   - `rm -r directory-to-remove`
 - `cp -r` copies a directory this way:
   - `cp -r source-directory directory-copy`
-- `mv` can also move and change the name of a directory, same as with files
+- `mv` can move and change the name of a directory, same as with files
   - `mv` does not require `-r`, it will reject `-r` if you try
 
 ___
