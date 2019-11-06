@@ -67,7 +67,7 @@ first \
 "third line"
 ```
 
-### `$@` is "all arguments" (everything after $0)*
+### `$@` is "all arguments" *(everything after `$0`)*
 
 *Knowing this could save your life and explain life's meaning later on...*
 
