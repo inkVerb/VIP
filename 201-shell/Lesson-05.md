@@ -133,37 +133,41 @@ ___
 
 *Note the error message, you can't create a file in your own home!*
 
-*The home directory exists, it was assigned as home, but pinkypurple doesn't even own its own home!*
-
 | **25** : `exit`
 
-*Let pinkypurple own its own home (this will be explained more in the next section of this lesson)*
+*See why...*
 
-| **26** : `sudo chown -R pinkypurple:pinkypurple /home/ppurple`
+| **26** : `ls -l /home`
+
+*The home directory exists, it was assigned as home, but pinkypurple doesn't even own its own home!*
+
+*Let pinkypurple own its own home (this will be explained more in the next section of this lesson)...*
+
+| **27** : `sudo chown -R pinkypurple:pinkypurple /home/ppurple`
 
 *Login as pinkypurple in the terminal*
 
-| **27** : `su pinkypurple`
+| **28** : `su pinkypurple`
 
 *See where you are*
 
-| **28** : `pwd`
+| **29** : `pwd`
 
 *It didn't remember where you were because this user doesn't even have settings!*
 
-| **29** : `cd`
+| **30** : `cd`
 
-| **30** : `pwd`
+| **31** : `pwd`
 
-| **31** : `ls`
+| **32** : `ls`
 
 *Nothing there*
 
 *Create a file*
 
-| **32** : `touch newfile`
+| **33** : `touch newfile`
 
-| **33** : `ls`
+| **34** : `ls`
 
 *Everything works, but the command prompt is unstyled because creating a user requires many steps*
 
@@ -178,33 +182,33 @@ ___
 
 *Now exit as pinkypurple*
 
-| **34** : `exit`
+| **35** : `exit`
 
 ### III. Permissions
 
-| **35** : `ls -l`
+| **36** : `ls -l`
 
 *Note the owner of "youown"*
 
-| **36** : `sudo chown pinkypink:pinkypink youown` *Enter your password*
+| **37** : `sudo chown pinkypink:pinkypink youown` *Enter your password*
 
-| **37** : `ls -l`
+| **38** : `ls -l`
 
 *Note a new owner of "youown" is pinkypink*
 
-| **38** : `chown pinkypurple:pinkypurple youown`
+| **39** : `chown pinkypurple:pinkypurple youown`
 
 *Note the error message because `chown` requires `sudo`, that's what happens if you don't use `sudo`*
 
-| **39** : `sudo chown pinkypurple:pinkypurple youown`
+| **40** : `sudo chown pinkypurple:pinkypurple youown`
 
-| **40** : `ls -l`
+| **41** : `ls -l`
 
 *Note "youown" now belongs to pinkypurple*
 
-| **41** : `sudo chown pinkypurple:pinkypink theyown`
+| **42** : `sudo chown pinkypurple:pinkypink theyown`
 
-| **42** : `ls -l`
+| **43** : `ls -l`
 
 *Note a new owner of "theyown", the user and group are different*
 
@@ -216,9 +220,9 @@ ___
 > | **S2** : `exit`
 ___
 
-| **43** : `mkdir ownrship`
+| **44** : `mkdir ownrship`
 
-| **44** : `touch ownrship/file`
+| **45** : `touch ownrship/file`
 
 ### If you need to log back in as a "sudoer" who can use `sudo`
 >
@@ -228,35 +232,35 @@ ___
 > | **S3** : `su USERNAME`
 ___
 
-| **45** : `ls -l`
+| **46** : `ls -l`
 
-| **46** : `sudo chown pinkypink:pinkypink ownrship`
+| **47** : `sudo chown pinkypink:pinkypink ownrship`
 
-| **47** : `ls -l`
+| **48** : `ls -l`
 
 *Note a new owner of "ownrship"*
 
-| **48** : `ls -l ownrship/`
+| **49** : `ls -l ownrship/`
 
 *Note you own the directory "ownrship", but not the file inside*
 
 *Use `-R` for directories (must be CAPITAL with `chown`!)*
 
-| **49** : `sudo chown -R pinkypink:pinkypink ownrship`
+| **50** : `sudo chown -R pinkypink:pinkypink ownrship`
 
-| **50** : `ls -l ownrship/`
+| **51** : `ls -l ownrship/`
 
 *Now you own "ownrship" and the file inside*
 
 *Remove it...*
 
-| **51** : `rm youown` *"n" for No*
+| **52** : `rm youown` *"n" for No*
 
 *Note the error message because you don't own it anymore! Use `sudo`*
 
-| **52** : `sudo rm youown`
+| **53** : `sudo rm youown`
 
-| **53** : `ls -l`
+| **54** : `ls -l`
 
 *Note `sudo` allows you to delete files and directories you don't own*
 
@@ -264,69 +268,71 @@ ___
 
 *Create a file owned by root*
 
-| **54** : `sudo touch iamroot`
+| **55** : `sudo touch iamroot`
 
-| **55** : `ls -l`
+| **56** : `ls -l`
 
 *Note root owns "iamroot"*
 
-| **56** : `rm iamroot` *"n" for No*
+| **57** : `rm iamroot` *"n" for No*
 
 *Note only root can delete the file "iamroot"*
 
-| **57** : `sudo rm iamroot`
+| **58** : `sudo rm iamroot`
 
 *Let's cleanup these files you don't own so they don't cause problems later ...*
 
-| **58** : `sudo rm theyown`
+| **59** : `sudo rm theyown`
 
-| **59** : `sudo rm -r ownrship`
+| **60** : `sudo rm -r ownrship`
 
-| **60** : `ls -l`
+| **61** : `ls -l`
 
 *...also use `sudo` to delete the puppet users we created for this lesson...*
 
-| **61** : `sudo deluser pinkypink`
+| **62** : `sudo deluser pinkypink`
 
 *Note the message about the "pinkypink" group being empty, that's because `deluser` also deleted the group*
 
 *We don't want to use `userdel` because it is too minimum*
 
-| **62** : `sudo deluser pinkypurple`
+| **63** : `sudo deluser pinkypurple`
 
 *The users still have `/home` directories*
 
-| **63** : `ls /home`
+| **64** : `ls -l /home`
+
+*Note the users' old home directories are still there, but owned by some number!*
 
 *...remove them both*
 
-| **64** : `sudo rm -r /home/pinkypink /home/ppurple`
+| **65** : `sudo rm -r /home/pinkypink /home/ppurple`
 
-| **65** : `ls /home`
+| **66** : `ls /home`
 
 *"Own" everything in your home directory, just to make sure all is well (always a good idea)*
 
-| **66** : `sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME`
+| **67** : `sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME`
 
 ### IV. Sudoers
 
 *This is the file with settings for "sudoers" (users that can use `sudo`)*
 
-| **67** : `cat /etc/sudoers`
+| **68** : `cat /etc/sudoers`
 
 *Note the error, viewing the "sudoers" file requires `sudo` permissions*
 
-| **68** : `sudo cat /etc/sudoers`
+| **69** : `sudo cat /etc/sudoers`
 
 *You may not see yourself, this handy little `grep` code shows all sudoers*
 
-| **69** : `grep -Po '^sudo.+:\K.*$' /etc/group`
+| **70** : `grep -Po '^sudo.+:\K.*$' /etc/group`
 
 *You can also `sudo` desktop GUI apps, but it can be dangerous...*
 
-| **70** : `sudo gedit` *Look, then close right away, use Ctrl + C in the terminal*
+| **71** : `sudo gedit` *Look, then close right away, use Ctrl + C in the terminal*
 
-| **71** : `sudo nautilus` *Look, then close right away, use Ctrl + C in the terminal*
+| **72** : `sudo nautilus` *Look, then close right away, use Ctrl + C in the terminal*
 
 
 ### IF needed, `exit` from the other "sudoer"
