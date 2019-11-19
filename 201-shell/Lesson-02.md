@@ -43,11 +43,11 @@ ___
 
 | **19** : `ls`
 
-| **20** : `mkdir newdir`
+| **20** : `mkdir dirnew`
 
 | **21** : `ls`
 
-| **22** : `cd newdir`
+| **22** : `cd dirnew`
 
 | **23** : `touch delfile`
 
@@ -57,37 +57,37 @@ ___
 
 *Use `touch` & `ls` with a different directory...*
 
-| **26** : `ls newdir`
+| **26** : `ls dirnew`
 
-| **27** : `touch newdir/alsodel newdir/alsoalso`
+| **27** : `touch dirnew/alsodel dirnew/alsoalso`
 
-| **28** : `ls -l newdir`
+| **28** : `ls -l dirnew`
 
-| **29** : `rm newdir`
+| **29** : `rm dirnew`
 
 *Note the error message about directories*
 
 *Use `-r` (Recursive) to remove directories*
 
-| **30** : `rm -r newdir`
+| **30** : `rm -r dirnew`
 
 | **31** : `ls`
 
-| **32** : `cp directory cpnewdir`
+| **32** : `cp directory cpdirnew`
 
 *Note the error message about directories*
 
 *Use `-r` with `cp` as well as `rm` for directories*
 
-| **33** : `cp -r directory cpnewdir`
+| **33** : `cp -r directory cpdirnew`
 
 | **34** : `ls`
 
-| **35** : `mv -r cpnewdir cpdir`
+| **35** : `mv -r cpdirnew cpdir`
 
 *Note, `mv` rejects `-r`, just use `mv` even for directories*
 
-| **36** : `mv cpnewdir cpdir`
+| **36** : `mv cpdirnew cpdir`
 
 | **37** : `ls`
 
