@@ -3,7 +3,7 @@
 
 `cd ~/School/VIP/shell/201`
 
-**AFTER** | **3** : `cd verb.ink`
+**FOR** | **3 - 11** : `cd verb.ink`
 ___
 
 *Download the entire verb.ink page using wget*
@@ -42,33 +42,35 @@ ___
 
 | **11** : `firefox verb.ink.html` or `chromium-browser verb.ink.html` or `google-chrome verb.ink.html` or `vivaldi verb.ink.html`
 
-## Download the inkVerb/vip repo from GitHub
+| **12** : `cd ..`
 
-### zip via wget
+## Download the inkVerb/VIP repo from GitHub
 
-*Download Vrk using wget*
+### `.zip` file via wget
 
-| **12** : `wget https://github.com/inkVerb/vip/archive/master.zip`
+*Download VIP using wget*
 
-| **13** : `ls`
+| **13** : `wget https://github.com/inkVerb/vip/archive/master.zip`
+
+| **14** : `ls`
 
 *Specify a different output filename with: `-O SAVEASNAME` (CAPITAL '-O'!)*
 
-| **14** : `wget -O vip.zip https://github.com/inkVerb/vip/archive/master.zip`
+| **15** : `wget -O vip.zip https://github.com/inkVerb/vip/archive/master.zip`
 
-| **15** : `ls`
+| **16** : `ls`
 
 *Clean up*
 
-| **16** : `rm master.zip`
+| **17** : `rm master.zip`
 
-### zip via curl
+### `.zip` file via curl
 
-| **17** : `curl https://github.com/inkVerb/vip/archive/master.zip` *(wrong)*
+| **18** : `curl https://github.com/inkVerb/vip/archive/master.zip` *(wrong)*
 
 *Note the redirect message; use `-L` to follow redirects*
 
-| **18** : `curl -L https://github.com/inkVerb/vip/archive/master.zip` *(wrong)*
+| **19** : `curl -L https://github.com/inkVerb/vip/archive/master.zip` *(wrong)*
 
 *Note it dumped the raw output to the terminal rather than saving it*
 
@@ -76,77 +78,77 @@ ___
 
 *Solution: Specify an output file*
 
-| **19** : `curl -L https://github.com/inkVerb/vip/archive/master.zip > vkr-curl.zip`
+| **20** : `curl -L https://github.com/inkVerb/vip/archive/master.zip > vip-curl.zip`
 
-| **20** : `ls`
+| **21** : `ls`
 
 *Now that you get the point, we don't need it anymore*
 
-| **21** : `rm vkr-curl.zip`
+| **22** : `rm vip-curl.zip`
 
-### tarball via curl
+### `.tar` file (tarball) via curl
 
 *Substitute `github.com` for `api.github.com/repos/` & append with `/tarball` & include output file*
 
-| **22** : `curl -L https://api.github.com/repos/inkVerb/vip/tarball > vip.tar`
+| **23** : `curl -L https://api.github.com/repos/inkVerb/vip/tarball > vip.tar`
 
-| **23** : `ls`
+| **24** : `ls`
 
 *Now, untar it*
 
-| **24** : `tar xzf vip.tar`
+| **25** : `tar xzf vip.tar`
 
-| **25** : `ls`
+| **26** : `ls`
 
-*Note the strange new directory `inkVerb-vip-SOME_CRAZY_NUMBER`*
+*Note the strange new directory `inkVerb-VIP-SOME_CRAZY_NUMBER`*
 
 *...that's it, delete it with:*
 
-> | **26** : `rm -r inkVerb-vip-SOME_CRAZY_NUMBER`
+> | **27** : `rm -r inkVerb-VIP-SOME_CRAZY_NUMBER`
 
 *We don't need to keep that tarball either...*
 
-| **27** : `rm vip.tar`
+| **28** : `rm vip.tar`
 
 ### tarball via curl & untar (single command)
 
 *Substitute `github.com` for `api.github.com/repos/` & append with `/tarball` & untar it right away*
 
-| **28** : `curl -L https://api.github.com/repos/inkVerb/vip/tarball | tar xz`
+| **29** : `curl -L https://api.github.com/repos/inkVerb/vip/tarball | tar xz`
 
-| **29** : `ls`
+| **30** : `ls`
 
-*Note the same strange directory `inkVerb-vip-SOME_CRAZY_NUMBER`*
+*Note the same strange directory `inkVerb-VIP-SOME_CRAZY_NUMBER`*
 
 *...that's it, delete it with:*
 
-> | **30** : `rm -r inkVerb-vip-SOME_CRAZY_NUMBER`
+> | **31** : `rm -r inkVerb-VIP-SOME_CRAZY_NUMBER`
 
 ### repo via git clone
 
-| **31** : `git clone https://github.com/inkVerb/vip`
+| **32** : `git clone https://github.com/inkVerb/vip`
 
-| **32** : `ls`
+| **33** : `ls`
 
 *Take a peek inside*
 
-| **33** : `cd vip`
+| **34** : `cd vip`
 
-| **34** : `ls`
+| **35** : `ls`
 
 *Note, you can't see the hidden directory ".git" with a normal `ls` command, use `-a`...*
 
-| **35** : `ls -a`
+| **36** : `ls -a`
 
 *Note the hidden ".git" directory*
 
-| **36** : `ls -l .git`
+| **37** : `ls -l .git`
 
 *Note the ".git" directory contains a few read-only files, making it harder to delete*
 
-| **37** : `cd ..`
+| **38** : `cd ..`
 
-| **38** : `rm -r vip`
+| **39** : `rm -r vip`
 
 *Note the error message because of the read-only files (Ctrl + C to get out of there!)*
 
@@ -160,9 +162,9 @@ ___
 > | **S1** : `su USERNAME`
 ___
 
-| **39** : `sudo rm -r vip`
+| **40** : `sudo rm -r vip`
 
-| **40** : `ls`
+| **41** : `ls`
 
 *...all gone, no problem*
 
@@ -186,7 +188,7 @@ ___
 - `curl http://web-address > save-as-filename` is how `curl` saves the downloaded file
 - `git` is GitHub's app that syncs and downloads a GitHub repo (files) on your local computer with the GitHub repo (on the GitHub website)
 - `git clone GitHub-REPOSITORY-address` is how `git` "downloads" a GitHub repo
-- When downloading a .zip file from GitHub, the contents will have a strange name
+- When downloading a .zip file or .tar file (tarball) from GitHub, the contents will have a strange name
 - Using `git clone` is the simplest way to download a GitHub repo
 
 ___
