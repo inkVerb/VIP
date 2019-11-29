@@ -85,15 +85,17 @@ ___
 
 | **25** : `ls -a`
 
-| **26** : `ls -la`
+| **26** : `ls -l`
 
-| **27** : `mkdir .hidedir .cantseedir`
+| **27** : `ls -la`
 
-| **28** : `ls`
+| **28** : `mkdir .hidedir .cantseedir`
+
+| **29** : `ls`
 
 *Directories also can be "hidden"*
 
-| **29** : `ls -a`
+| **30** : `ls -a`
 
 *In Nautilus (the file explorer) press Ctrl + H to toggle view of hidden files and directories*
 
