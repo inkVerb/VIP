@@ -43,7 +43,7 @@ ___
 
 | **10** : `gedit ODT-FILE.txt`
 
-*Delete the .txt file so we can try another way...*
+*Close the file in gedit with Ctrl + W, then delete the .txt file so we can try another way...*
 
 | **11** : `rm ODT-FILE.txt`
 
