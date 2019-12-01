@@ -75,6 +75,16 @@ Require all granted
 Access any MySQL user you created later with
 - `mysql -u USERNAME -p` (then enter the password)
 
+***If*** you ever need to wipe MySQL clean and completely start over:
+
+```sh
+sudo apt-get clean
+sudo apt-get purge mysql*
+sudo apt-get update
+sudo apt-get install -f
+sudo apt-get install mysql-server
+```
+
 ## MySQL phpMyAdmin
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
