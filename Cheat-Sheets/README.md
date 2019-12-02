@@ -1,6 +1,6 @@
 # VIP Cheat Sheets
 
-### [chmod](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/chmod.md)
+### [Permissions](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
 
 ___
 ### [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
