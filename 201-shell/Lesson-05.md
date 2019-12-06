@@ -258,7 +258,7 @@ ___
 
 *Remove it...*
 
-| **53** : `rm youown` *"y" for Yes, though it won't work*
+| **53** : `rm youown` *"y" for Yes, might not work; "n" for No is better for this lesson*
 
 *Note the error message because you don't own it anymore! Use `sudo`*
 
@@ -278,7 +278,7 @@ ___
 
 *Note root owns "iamroot"*
 
-| **58** : `rm iamroot` *"y" for Yes, though it won't work*
+| **58** : `rm iamroot` *"y" for Yes, might not work; "n" for No is better for this lesson*
 
 *Note only root can delete the file "iamroot"*
 

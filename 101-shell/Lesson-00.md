@@ -94,7 +94,7 @@ ___
 - **kill**/**killing** - When an app is forcefully closed, without the app closing itself
   - If you turn off the computer without closing an app, the system "kills" the app
   - "Killing" an app means it does not save its work
-  - "Killing" a browser may cause a "did not close properly... restore session?" dialog the next time it opens
+  - "Killing" a web browser may cause a "did not close properly... restore session?" dialog the next time it opens
   - "Killing" an app from the terminal should be a last resort if it it crashes and won't respond
 
 ___
