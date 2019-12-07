@@ -217,15 +217,13 @@ ___
 
 #### bzip2 `bzip2 -c file > file.bz2`; `bzip2 -d file.bz2`
 
-*Note `-c` is for "Create, keep original" just as with `gzip`*
+| **56** : `ls -l`
 
-| **56** : `bzip2 -c vip.tar > vip.tar.bz2`
+| **57** : `bzip2 vip.tar`
 
-| **57** : `ls -l`
+*Note `vip.tar.bz2` replaced `vip.tar`, just as with xz and gzip*
 
-*Note `vip.tar` still exists, delete before extracting*
-
-| **58** : `rm vip.tar && ls -l`
+| **58** : `ls -l`
 
 *Note `-d` is for "Decompress" as with gzip*
 
@@ -234,6 +232,8 @@ ___
 | **60** : `ls -l`
 
 *Note `vip.tar.bz2` is gone, we want it back for reference*
+
+*Note `-c` is for "Create, keep original" just as with `gzip`*
 
 | **61** : `bzip2 -c vip.tar > vip.tar.bz2`
 
@@ -283,17 +283,23 @@ ___
 
 `cd ~/School/VIP/shell/201/compress`
 
+`ls -l`
+
 ___
 
 *Remember `tar cf` creates the tarball*
 
 ### Take a peek inside any tarball with `tar tf`
 
-| **73** : `ls -l`
-
 *Take a peek at what's in the tarballs (notice the speed of each)*
 
-| **74** : `tar tf vip.tar`
+| **73** : `tar tf vip.tar`
+
+*Note that only shows the contents, no files changed*
+
+| **74** : `ls -l`
+
+*Note `tar t...` works with .tar files and with its compressors (gzip, bzip2, and xz)*
 
 | **75** : `tar tf vip.tar.gz`
 
