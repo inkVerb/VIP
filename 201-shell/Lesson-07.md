@@ -13,7 +13,7 @@ ___
 
 | **1** : `mkdir compress`
 
-## Part I: `zip` `tar` `xz`
+## I. `zip` `tar` `xz`
 
 | **2** : `ls -l`
 
@@ -33,7 +33,7 @@ ___
 
 | **8** : `ls -l`
 
-### zip `zip -r file.zip dir`; `unzip file.zip`
+### zip: `zip -r file.zip dir`; `unzip file.zip`
 
 | **9** : `zip -r vip.zip vip`
 
@@ -57,7 +57,7 @@ ___
 
 | **16** : `cd ..`
 
-### tar (Tape ARchive) `tar -cvf file.tar dir`; `tar -xvf file.tar`
+### tar (Tape ARchive): `tar -cvf file.tar dir`; `tar -xvf file.tar`
 
 *Note `-c` is for "Create"; `-v` is for "Verbose"; `-f` is for "File"*
 
@@ -81,7 +81,7 @@ ___
 
 | **24** : `rm -r vip`
 
-### xz `xz file`; `xz -d file.xz`
+### xz: `xz file`; `xz -d file.xz`
 
 | **25** : `xz vip.tar`
 
@@ -113,7 +113,7 @@ ___
 
 *Note which files are larger and smaller: .tar .zip .tar.xz*
 
-### Combine tar & xz into one command
+### Combine `tar` & `xz` into one command
 
 | **33** : `rm vip.tar.xz vip.tar`
 
@@ -147,7 +147,7 @@ ___
 
 ___
 
-## Part II `xz -2` `gzip` `bzip2` `tar xf`
+## II. `xz -2` `gzip` `bzip2` `tar xf`
 
 `cd ~/School/VIP/shell/201/compress`
 
@@ -169,17 +169,15 @@ ___
 
 *Compression level 9 (`-9`) is the highest*
 
-### Other Compression Tools: gzip & bzip2
+### Other Compression Tools: `gzip` & `bzip2`
 
-#### gzip `gzip -c file > file.gz`; `gzip -d file.gz`
+#### gzip: `gzip -c file > file.gz`; `gzip -d file.gz`
 
-| **43** : `gzip vip.tar > vip.tar.gz`
-
-*Answer "y" to overwrite, though the file doesn't already exist (this is another drawback of `gzip`)*
+| **43** : `gzip vip.tar`
 
 | **44** : `ls -l`
 
-*Note it replaced the original file `vip.tar`*
+*Note vip.tar.gz replaced the original file `vip.tar`*
 
 | **45** : `cp ../vip.tar .`
 
@@ -211,11 +209,11 @@ ___
 
 *Note `vip.tar.gz` is was replaced, just as with xz*
 
-*We want `vip.tar.gz` for reference*
+*We want `vip.tar.gz` for reference, so cleanup...*
 
 | **55** : `gzip -c vip.tar > vip.tar.gz`
 
-#### bzip2 `bzip2 -c file > file.bz2`; `bzip2 -d file.bz2`
+#### bzip2: `bzip2 -c file > file.bz2`; `bzip2 -d file.bz2`
 
 | **56** : `ls -l`
 
@@ -231,11 +229,11 @@ ___
 
 | **60** : `ls -l`
 
-*Note `vip.tar.bz2` is gone, we want it back for reference*
-
-*Note `-c` is for "Create, keep original" just as with `gzip`*
+*Note `vip.tar.bz2` is gone, we want it back for reference...*
 
 | **61** : `bzip2 -c vip.tar > vip.tar.bz2`
+
+*Note `-c` is for "Create, keep original" just as with `gzip`*
 
 ### Review the file sizes
 
@@ -243,7 +241,7 @@ ___
 
 *Case and point: `xz` is smallest, simplest to use, and takes just a little more time*
 
-### Decompress any tarball `tar xf`
+### Deconpress and extract any tarball: `tar xf`
 
 *Note `tar` can figure out the format, also with decompressing:*
 
@@ -279,7 +277,7 @@ ___
 
 ___
 
-## Part III `tar cf` `tar tf` `tar rf`
+## III. `tar cf` `tar tf` `tar rf`
 
 `cd ~/School/VIP/shell/201/compress`
 
@@ -289,7 +287,7 @@ ___
 
 *Remember `tar cf` creates the tarball*
 
-### Take a peek inside any tarball with `tar tf`
+### Take a peek inside any tarball: `tar tf`
 
 *Take a peek at what's in the tarballs (notice the speed of each)*
 
@@ -353,9 +351,9 @@ ___
 
 | **91** : `tar tf files.tar`
 
-### Review: tar & xz
+### Review: `tar` & `xz`
 
-| **92** : `rm vip.tar.xz`
+| **92** : `rm vip.tar.xz && ls -l`
 
 *Tar up and xz-compress in one command:*
 
@@ -363,13 +361,15 @@ ___
 
 *Cleanup*
 
-| **94** : `rm -r vip`
-
-| **95** : `ls -l`
+| **94** : `rm -r vip && ls -l`
 
 *Untar and decompress in one command:*
 
-| **96** : `tar xf vip.tar.xz`
+| **95** : `tar xf vip.tar.xz`
+
+*See, it worked...*
+
+| **96** : `ls -l`
 
 *Case and point: `xz` is probably best, `gzip` and `bzip2` exist in the Linuxverse, and `tar xf FILE` works on any `.tar*` file*
 

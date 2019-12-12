@@ -39,6 +39,8 @@ ___
 
 `cd ~/School/VIP/shell/201` (if needed)
 
+`su USERNAME` (if needed)
+
 | **5** : `ls /home/pinkypink`
 
 *Note the user directories & settings were created at the first GUI login*
@@ -189,6 +191,12 @@ ___
 | **36** : `exit`
 
 ### III. Permissions
+
+`cd ~/School/VIP/shell/201`
+
+`su USERNAME`
+
+___
 
 | **37** : `ls -l`
 
