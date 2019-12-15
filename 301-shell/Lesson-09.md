@@ -34,7 +34,7 @@ ___
 
 | **8** : `expr 7 \* 2`
 
-| **9** : `expr 7 \* 13` *(But, `expr` doesn't know the answer is "28".)*
+| **9** : `expr 7 \* 13`
 
 | **10** : `gedit 09-expr`
 
