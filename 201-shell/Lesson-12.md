@@ -255,6 +255,10 @@ Don't have it yet?
 
 Learn more at the [alsamixer manual page](https://linux.die.net/man/1/alsamixer)
 
+Oh, and then there's this...
+
+| **D3** : `sudo apt install gnome-nibbles`
+
 ___
 
 ## Next: [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)
