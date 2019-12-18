@@ -51,4 +51,4 @@ ___
 
 ___
 
-#### [Lesson 11: Quote/Escape Special Characters](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-11.md)
+#### [Lesson 11: RegEx: Quote/Escape Special Characters](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-11.md)

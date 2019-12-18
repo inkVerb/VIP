@@ -24,6 +24,6 @@
 
 ### [Lesson 10: Dynamics of Functions](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-10.md)
 
-### [Lesson 11: Character Classes & Heredocs](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
+### [Lesson 11: RegEx Character Classes & Heredocs](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
 
 ### [Lesson 12: Secure Scripting & Command Hacks](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)

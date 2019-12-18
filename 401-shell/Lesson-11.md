@@ -1,11 +1,11 @@
 # Shell 401
-## Lesson 11: Character Classes & Heredocs
+## Lesson 11: RegEx Character Classes & Heredocs
 
 `cd ~/School/VIP/shell/401`
 
 ___
 
-### I. Characters Classes
+### I. RegEx Characters Classes
 
 *Refer to this cheat-sheet section for more about working with characters:* [VIP/Cheat-Sheets: Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
 
@@ -162,8 +162,9 @@ ___
 
 # The Take
 
-## Character Classes
+## Regex Character Classes
 - A "character class" is a group of character types
+- Character classes are part of creating a "RegEx" (as introduced in [Lesson 101-11](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-11.md))
 - Examples
   - All uppercase
   - All lowercase

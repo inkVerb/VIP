@@ -1,5 +1,5 @@
 # Shell 101
-## Lesson 11: Quote/Escape Special Characters
+## Lesson 11: RegEx: Quote/Escape Special Characters
 
 `cd ~/School/VIP/shell/101`
 
@@ -83,6 +83,12 @@ ___
 
 # The Take
 
+## "RegEx"
+- "RegEx" is short for "regular expression"
+- Knowing when and how to escape certain characters is part of making a "RegEx"
+- We will revisit RegEx again briefly in [Lesson 401-11](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md) when we discuss "[Character Classes](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Characters.md#Classes)" (ie: 'only letters' or 'only numbers' or 'only letters and numbers')
+
+## Why "escape" some characters?
 - Some special characters "mean something" and will "work"
   - These often include: `$`, `^`, `/`, `?`, `*`, `.`, among others
   - These special characters might be called "**operators**", but the word "**operator**" is more often used to describe special characters used in math functions
