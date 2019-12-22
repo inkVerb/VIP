@@ -132,39 +132,49 @@ ___
 
 | **32** : `gedit size.file`
 
+*Note numbers "11, 23, 4" are for "height, width, menu height", let's change the menu height...*
+
+| **33** : `dialog --menu "Choose a Size:" 11 23 2 1 X-Large 2 Large 3 Medium 4 Small 2> size.file`
+
 *This also works in a script...*
 
-| **33** : `./11-dialog-3`
+| **34** : `gedit 11-dialog-3`
+
+*Note it is the same*
+
+| **35** : `./11-dialog-3`
 
 *gedit: Reload size.file*
 
-*That method was simple, but having a follow-up dialog is more complex...*
+*Cleanup...*
 
-| **34** : `gedit 11-dialog-4`
+| **36** : `echo "Size List" > size.file`
+
+*That method was simple, but building a follow-up dialog is more complex...*
+
+| **37** : `gedit 11-dialog-4`
+
+*This needs an exit code redirect on the end: `3>&1 1>&2 2>&3 3>&-`*
+
+| **38** : `./11-dialog-4` *(select any size)*
 
 *gedit: Reload size.file*
 
-*This needs this exit code redirect on the end: `3>&1 1>&2 2>&3 3>&-`
-
-| **35** : `./11-dialog-4` *(select any size)*
-
-*gedit: Reload size.file*
-
-| **36** : `./11-dialog-4` *(select any size)*
+| **39** : `./11-dialog-4` *(select any size)*
 
 *gedit: Reload size.file*
 
 *Do the same thing with `if` tests*
 
-| **37** : `gedit 11-dialog-5`
+| **40** : `gedit 11-dialog-5`
 
-| **38** : `./11-dialog-5` *(select any size)*
+| **41** : `./11-dialog-5` *(select any size)*
 
 *gedit: Reload size.file*
 
 *Lots more to learn, easily*
 
-| **39** : `dialog man`
+| **42** : `dialog man` *(different from `man dialog`)*
 
 ___
 
