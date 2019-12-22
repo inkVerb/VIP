@@ -16,7 +16,7 @@ ___
 
 *You must use numbers to make your selection*
 
-*(3 to quit)*
+*(Try different things, 3 to quit)*
 
 *Using a variable to declare the options makes the code easier to read*
 
@@ -34,9 +34,11 @@ ___
 
 *It works the same way*
 
-*You can `echo` your answer in advance*
+*You can `echo` your answer in advance with a pipe `|`*
 
-| **7** : `echo 3 | ./11-menu-case`
+| **7** : `echo 2 | ./11-menu-case`
+
+*Note that it broke using the piped input*
 
 *Auto-answer works wtih most shell commands: `echo "y" | SHELL-COMMAND`*
 
@@ -101,6 +103,8 @@ ___
 | **22** : `dialog --title "Quick Question" --yesno "Do you ink?" 5 17` *(answer no)*
 
 | **23** : `echo $?` *"no" = `1`*
+
+*Note exit codes matter! We learned about them in [Lesson 6: exit & journalctl](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)*
 
 *This belongs in a script to work properly*
 
@@ -201,6 +205,7 @@ select inputVariable in $options
     1. Put the entire `dialog` command inside a `$(command substitution)`
     2. Output is determined in the cases or after, `dialog ... 2> output-file` won't work!
     3. The "tail commands" must be: `3>&1 1>&2 2>&3 3>&-`
+- `dialog` uses exit codes, which we learned in [Lesson 6: exit & journalctl](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
 - Consult the manual for more `dialog man`
 ___
 
