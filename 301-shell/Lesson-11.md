@@ -140,7 +140,7 @@ ___
 
 | **34** : `gedit 11-dialog-3`
 
-*Note it is the same*
+*Note it is the same, just in a Shell script*
 
 | **35** : `./11-dialog-3`
 
