@@ -12,11 +12,14 @@ ___
 
 #### Note: `$OPTARG` & `$OPTIND` are native variables for `getopts`
 
+#### A. Each flag gets one argument (but not help)
+
 | **1** : `gedit 12-flags-1`
 
-*Note on line 12 `$OPTIND`*
+*Note the line with `while getopts`*
 
-*Note on line 20 `:`*
+- `:` first means that missing bad arguments won't error messages
+- `a:` means the `-a` flag requires & allows an argument set as `$OPTARG` in the `while getopts` loop
 
 | **2** : `./12-flags-1 -h` (help)
 
@@ -26,73 +29,158 @@ ___
 
 | **5** : `./12-flags-1 -a Alpha -b Beta -c C Charlie -d Dogma`
 
+*...Two arguments broke it after `-c C`*
+
 | **6** : `./12-flags-1 -a Alpha -b Beta -c "C Charlie" -d Dogma`
 
-| **7** : `./12-flags-1  -b Beta -a Alpha -d "Do Dogma" -c "C Charlie" `
+| **7** : `./12-flags-1 -b Beta -a Alpha -d Dogma -c Charlie `
 
-| **8** : `gedit 12-flags-2`
+*...Keeps your order*
 
-| **9** : `./12-flags-2 -h`
+| **8** : `./12-flags-1 -b`
 
-| **10** : `./12-flags-2 -ad Dunno`
+*...`-b` requires an argument because it is `b:` in the `while getopts` line*
 
-| **11** : `./12-flags-2 -cadb Dunno`
+#### B. No arguments allowed
 
-| **12** : `./12-flags-2 -abcd Dunno Dumbo`
+| **9** : `gedit 12-flags-2`
 
-| **13** : `./12-flags-2 -abcd "Dunno Dumbo"`
+| **10** : `./12-flags-2 -b`
 
-| **14** : `./12-flags-2 -abcd 'Dunno Dumbo'`
+*...`-b` does NOT require an argument because `b` is not followed by `:` in the `while getopts` line*
 
-| **15** : `./12-flags-2 -b`
+| **11** : `./12-flags-2 -d Dunno`
 
-| **16** : `./12-flags-2 -r`
+*...The `$OPTARG` variable doesn't recognize the argument because there was no `:` for flag `-d` in the `while getopts` line*
 
-| **17** : `./12-flags-2 -h`
+#### C. Global argument
 
-| **18** : `gedit 12-flags-3`
+This nifty code allows for a global argument (use with, not part of, `getopts`):
 
-| **19** : `./12-flags-3 -a Alpha -bcd Bogma`
+```bash
+# Create $GLOBALARG
+eval "GLOBALARG=\${${OPTIND}}"
+# If no argument input
+if [ -z "${GLOBALARG}" ]; then
+ echo "You didn't set any options!"
+ echo " How to use:
+ $0 -a|b|c|d <option>
+ $0 -h ...will show this message."
+ exit 1
+fi
 
-| **20** : `./12-flags-3 -a Alpha -e "Emancipation" -bcd Bogma`
+OPTIND=1 # Reset $OPTIND
 
-| **21** : `./12-flags-3 -e "Emancipation" -bcd Bogma -a Alpha`
+## case loop here ##
+
+shift "$((OPTIND-1))" # Get $OPTIND out of the way just in case
+```
+
+And, put this before the main flag `case` loop to handle help and display false flags:
+
+```bash
+while getopts ":abcdh" flg; do
+ case $flg in
+## Do nothing for valid flags
+  abcd)
+   :
+  ;;
+
+## Error for invalid flags
+  \?)
+   echo "You used an invalid flag: -${OPTARG}" >&2
+   echo " How to use:
+ $0 -a|b|c|d <option>
+ $0 -h ...will show this message."
+   exit 1
+  ;;
+
+## Help
+  h)
+   echo "You asked for help!"
+   echo " How to use:
+ $0 -a|b|c|d <option>
+ $0 -h ...will show this message."
+   exit 0
+  ;;
+ esac
+done
+```
+
+| **12** : `./12-flags-3 -ad Dunno`
+
+*...Flags `-a` and `-d` take the same argument*
+
+| **13** : `./12-flags-3 -abcd Dunno Dubbo`
+
+*...Note no "Dubbo", only one argument allowed this way*
+
+| **14** : `./12-flags-3 -a Dunno -bcd Dubbo`
+
+*...No flags allowed after the only argument*
+
+#### D. Global argument
+
+| **15** : `gedit 12-flags-4`
+
+| **16** : `./12-flags-4 -a Alpha -bcd Bogma`
+
+*...Note "Bogma" came from our `$GLOBALARG` cluster, not from `getopts`*
+
+| **17** : `./12-flags-4 -a Alpha -e Emancipation -bcd Bogma`
+
+| **18** : `./12-flags-4 -e "Emancipation" -bcd Bogma -a Alpha`
 
 *Note anything after the -bcd options is ignored because they accept a global argument, be aware when combining specific options and global options*
 
-| **22** : `./12-flags-3 -a`
+#### E. Use a function for help
 
-| **23** : `./12-flags-3 -k`
+Create a function to call the help message, rather than repeating it in both the `case` for `-h` and wildcard
 
-| **24** : `./12-flags-3 -h`
+```bash
+# Create a help message function
+function how_to_use()
+{
+ echo " How to use:
+ $0 -a <option> -b <option>
+ $0 -h ...will show this message."
+}
+
+# Use the function
+how_to_use
+```
+
+| **19** : `gedit 12-flags-5`
+
+| **20** : `./12-flags-5 -h`
 
 ### II. `getopt`
 
 *Note `getops` only accepts one-letter options, `getopt` is for `--long` options and requires more variables and checks*
 
-| **25** : `gedit 12-long`
+| **21** : `gedit 12-long`
 
 *Note `--long` alternative options are included*
 
 *Note the global option was removed since `getopt` checks requirements by itself*
 
-| **26** : `./12-long -a Alpha -bce`
+| **22** : `./12-long -a Alpha -bce`
 
-| **27** : `./12-long --alpha Alpha --ecko --delta --beetle --charlie `
+| **23** : `./12-long --alpha Alpha --ecko --delta --beetle --charlie `
 
 *Note the order no longer affects the output since everything is done by `if` statements in order, at the end of the script*
 
-| **28** : `./12-long --alpha Alpha -bcd --ecko`
+| **24** : `./12-long --alpha Alpha -bcd --ecko`
 
-| **29** : `./12-long -a Alpha --beetle --delta -e --charlie`
+| **25** : `./12-long -a Alpha --beetle --delta -e --charlie`
 
 *Note both short and long are accepted*
 
-| **30** : `./12-long -k` (invalid option)
+| **26** : `./12-long -k` (invalid option)
 
-| **31** : `./12-long` (no options)
+| **27** : `./12-long` (no options)
 
-| **32** : `./12-long --help`
+| **28** : `./12-long --help`
 
 ___
 
@@ -111,8 +199,6 @@ ___
   - `case` defines the flag variable to be matched
   - `in` opens the case index of possible flag matches
   - `f)` what to do if this flag was argued (as many as needed)
-  - `f)` what to do if this flag was argued (as many as needed)
-  - `f)` what to do if this flag was argued (as many as needed)
   - `esac` closes the case index
   - `done` closes the getopt loop
 - See usage and examples here: [Tests: getopts](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#ix-getopts)
@@ -125,13 +211,9 @@ ___
   - `eval set --"$optionsVariable"` checks that the variables will work
   - `OPTIND=1` resets one of the `getopt` native variables
   - `flagoption=false` resets the flag to `false` (as many as needed)
-  - `flagoption=false` resets the flag to `false` (as many as needed)
-  - `flagoption=false` resets the flag to `false` (as many as needed)
   - `while [[ $# > 0 ]]` tests whether accepted flags have been argued
   - `do` opens a case loop
   - `case $1 in` defines whatever flag getopt will process
-  - `-f | --flagoption )` what to do if this flag was argued (as many as needed)
-  - `-f | --flagoption )` what to do if this flag was argued (as many as needed)
   - `-f | --flagoption )` what to do if this flag was argued (as many as needed)
   - `*)` sets the final case for what's next: break
   - `break` ends the loop

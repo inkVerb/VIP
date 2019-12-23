@@ -606,8 +606,8 @@ ___
 
 #### OPTIONS-STRING (not a variable name): The allowed flags
 - Each letter is a new flag, no separators necessary
-- `:` first means that `?` will be assigned to any flag not listed, which can be used later in a `case` argument
-- `:` after any letter means that the letter's flag will take an option set as `$OPTARG` in the `while getopts` loop
+- `:` first means that missing bad arguments won't error messages
+- `a:` means the `-a` flag requires & allows an argument set as `$OPTARG` in the `while getopts` loop
 
 #### VARIABLE-NAME (not a variable name): The flag actually used
 - This variable is used in the `case` that follows

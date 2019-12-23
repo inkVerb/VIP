@@ -104,7 +104,7 @@ ___
 
 *...that's it, delete it with:*
 
-> | **27** : `rm -r inkVerb-VIP-SOME_CRAZY_NUMBER`
+| **27** : `rm -r inkVerb-VIP-SOME_CRAZY_NUMBER`
 
 *We don't need to keep that tarball either...*
 

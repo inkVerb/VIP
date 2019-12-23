@@ -27,6 +27,8 @@ ___
 
 | **5** : `gedit ODT-FILE.odt`
 
+*Close the file in gedit with Ctrl + W*
+
 *Note .odt files are very big and can't be opened with text editors, but we can convert them...*
 
 | **6** : `odt2txt ODT-FILE.odt`
@@ -87,7 +89,7 @@ ___
 - `man` page
 - ...and more!
 
-## II. `rename`
+### II. `rename`
 
 | **19** : `cd ~/School/VIP/shell/301/one` *(make sure we're in the right place)*
 

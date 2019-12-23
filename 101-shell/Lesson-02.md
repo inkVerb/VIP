@@ -114,6 +114,12 @@ sed -i "s/$1/$2/g" abcd
 
 *gedit: Reload abcd*
 
+| **17** : `echo "Apples like foo." >> applefoo`
+
+*Note `echo ... >>` will also create a file if it doesn't already exist*
+
+| **18** : `gedit applefoo`
+
 *Update abcsed to version 04:*
 ```sh
 #!/bin/sh
@@ -122,12 +128,6 @@ sed -i "s/$1/$2/g" $3
 
 # v04
 ```
-
-| **17** : `echo "Apples like foo." >> applefoo`
-
-*Note `echo ... >>` will also create a file if it doesn't already exist*
-
-| **18** : `gedit applefoo`
 
 | **19** : `./abcsed foo bar applefoo`
 
