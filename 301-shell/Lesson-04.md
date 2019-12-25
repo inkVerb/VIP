@@ -90,7 +90,7 @@ ___
 
 *Now, use `odt2txt` in a `for` `...` `do` loop*
 
-| **27** : `rm *.txt` *(start with a clean slate)*
+| **27** : `rm ODT*.txt` *(start with a clean slate, just to be sure)*
 
 | **28** : `ls *.txt *.odt`
 
@@ -104,7 +104,7 @@ ___
 
 *Note the new .txt files, have a look inside...*
 
-| **32** : `gedit *.txt`
+| **32** : `gedit ODT*.txt`
 
 *Note the files are either empty or on one line because we used `echo`, this method isn't best*
 
@@ -122,7 +122,7 @@ ___
 
 *Backup today's work*
 
-| **37** : `mv *.txt 04-THREE/`
+| **37** : `mv ODT*.txt 04-THREE/`
 
 | **38** : `ls *.txt`
 
