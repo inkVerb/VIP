@@ -91,95 +91,97 @@ ___
 
 ### II. `rename`
 
-| **19** : `cd ~/School/VIP/shell/301/one` *(make sure we're in the right place)*
+`cd ~/School/VIP/shell/301/one` *(make sure we're in the right place)*
 
 ___
 
-| **20** : `ls`
+| **19** : `ls`
 
-| **21** : `touch 1.t.one 2.t.one 3.t.one 4.t.one 1.c.one 2.c.one 3.c.one 4.c.one one one-1 one-2 one-3 one-4 one-5 one-1-c one-2-c one-3-c one-4-c one-5-c one-1-t one-2-t one-3-t one-4-t one-5-t`
+| **20** : `touch 1.t.one 2.t.one 3.t.one 4.t.one 1.c.one 2.c.one 3.c.one 4.c.one one one-1 one-2 one-3 one-4 one-5 one-1-c one-2-c one-3-c one-4-c one-5-c one-1-t one-2-t one-3-t one-4-t one-5-t`
 
-| **22** : `ls`
+| **21** : `ls`
 
-| **23** : `rename "s/one/TWO/" *`
+| **22** : `rename "s/one/TWO/" *`
 
-| **24** : `ls`
+| **23** : `ls`
 
-| **25** : `rename "s/TWO/one/" *`
+| **24** : `rename "s/TWO/one/" *`
 
-| **26** : `ls`
+| **25** : `ls`
 
-| **27** : `rename "s/\.t\./\.T\./" *`
+| **26** : `rename "s/\.t\./\.T\./" *`
 
-| **28** : `ls`
+| **27** : `ls`
 
-| **29** : `rename "s/\.T\./\.t\./" *`
+| **28** : `rename "s/\.T\./\.t\./" *`
 
-| **30** : `ls`
+| **29** : `ls`
 
-| **31** : `cd ..`
+| **30** : `cd ..`
 
-### III. `sleep`
+### III. `read`
 
-| **32** : `sleep 1`
-
-| **33** : `sleep 3`
-
-| **34** : `gedit 02-sleep-1`
-
-| **35** : `./02-sleep-1`
-
-| **36** : `gedit 02-sleep-2`
-
-| **37** : `./02-sleep-2 "I like apples."`
-
-### IV. `read`
-
-| **38** : `read`
+| **31** : `read`
 
 *Now type something and/or press Enter*
 
-| **39** : `gedit 02-read-1`
+| **32** : `gedit 02-read-1`
 
-| **40** : `./02-read-1`
+| **33** : `./02-read-1`
 
 *Now type something, then press Enter*
 
-| **41** : `gedit 02-read-2`
+| **34** : `gedit 02-read-2`
 
 *Note -p is for "Prompt", making things simpler*
 
-| **42** : `./02-read-2`
+| **35** : `./02-read-2`
 
-| **43** : `gedit 02-read-3`
+| **36** : `gedit 02-read-3`
 
-| **44** : `ls`
+| **37** : `ls`
 
-| **45** : `./02-read-3`
+| **38** : `./02-read-3`
 
 *Enter whatever you want, only letters & numbers, no spaces*
 
-| **46** : `ls`
+| **39** : `ls`
 
 *Note it created the file*
 
-| **47** : `gedit 02-read-4`
+| **40** : `gedit 02-read-4`
 
-| **48** : `./02-read-4`
+| **41** : `./02-read-4`
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 *Note -r is for "Raw", to allow all special characters*
 
-| **49** : `gedit 02-read-5`
+| **42** : `gedit 02-read-5`
 
-| **50** : `./02-read-5`
+| **43** : `./02-read-5`
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
-| **51** : `gedit 02-read-6`
+### IV. `sleep`
 
-| **52** : `./02-read-6`
+| **44** : `sleep 1`
+
+| **45** : `sleep 3`
+
+| **46** : `gedit 02-sleep-1`
+
+| **47** : `./02-sleep-1`
+
+| **48** : `gedit 02-sleep-2`
+
+| **49** : `./02-sleep-2 "I like apples."`
+
+*Put it together...*
+
+| **50** : `gedit 02-sleep-3`
+
+| **51** : `./02-sleep-3`
 
 *Now type something, then press Enter*
 
@@ -189,13 +191,23 @@ ___
 
 ***Let's `wait` for LibreOffice Writer:***
 
+*Make sure LibreOffice is not running, ignore any error message...*
+
+| **52** : `killall soffice.bin`
+
 *Open LibreOffice Writer from the terminal...*
 
-| **53** : `lowriter &`
+| **53** : `lowriter`
 
-*Terminate all LibreOffice apps from the terminal...*
+*Now, close Writer in the GUI (click the X to close the window)...*
 
-| **54** : `killall soffice.bin`
+*...The terminal returns to the prompt*
+
+| **54** : `lowriter &`
+
+*Note the terminal returned directly to the prompt because we used `&`*
+
+*Again, close Writer in the GUI*
 
 *Let's use `wait` in a script...*
 
@@ -203,13 +215,19 @@ ___
 
 | **56** : `./02-waiter-1`
 
-*Note that the script finished with it's message and the terminal returned to the prompt without closing Writer*
-
-*...Now, close Writer in the GUI*
+*Again, close Writer in the GUI, then watch for the message in the terminal*
 
 | **57** : `gedit 02-waiter-2`
 
 | **58** : `./02-waiter-2`
+
+*Note that the script finished with it's message and the terminal returned to the prompt without closing Writer*
+
+*Again, close Writer in the GUI*
+
+| **59** : `gedit 02-waiter-3`
+
+| **60** : `./02-waiter-3`
 
 *Note the script did not finish and the terminal is still busy*
 
@@ -221,25 +239,21 @@ ___
 
 ***Next, do the same thing manually:***
 
-*Make sure LibreOffice is not running...*
-
-| **59** : `killall soffice.bin`
-
 *Start Writer...*
 
-| **60** : `lowriter &`
+| **61** : `lowriter &`
 
 *Now, "wait" for it to close by watching for its PID to close...*
 
-| **61** : `pgrep lowriter`
+| **62** : `pgrep lowriter`
 
 *Note the PID number and replace 55555 with that number below:*
 
-| **62a** : `wait 55555`
+| **63a** : `wait 55555`
 
 **OR**
 
-| **62b** : `wait $(pgrep lowriter)` *(or you can use this instead)*
+| **63b** : `wait $(pgrep lowriter)` *(or you can use this instead)*
 
 *Note `wait` is "waiting" for Writer's PID to end*
 
@@ -253,10 +267,10 @@ ___
 - `pandoc` can do many more conversions than `odt2txt`, including markdown, PDF, EPUB, and even MediaWiki!
 - `rename` runs a find-and-replace for parts of file names
   - It uses syntax similar to `sed`
-- `sleep` will wait a number of seconds, then continue
-  - This can be useful in scripts, such as pausing the needed 2 seconds between Apache web server restarts
 - `read` accepts STDIN input and sets it as a variable
   - It has many options, but it is a simple way to let the human input variables during a script
+- `sleep` will wait a number of seconds, then continue
+  - This can be useful in scripts, such as pausing the needed 2 seconds between Apache web server restarts
 - `wait` "waits" for the previous process to finish until moving on
   - This can prevent busy scripts from breaking
   - `wait` without arguments will simply wait for the previous process
