@@ -233,6 +233,48 @@ cp file destination
 
 *In the original terminal: Ctrl + C*
 
+It never stops...
+
+*Did you know? `--` terminates flags, like `-l`...*
+
+| **40** : `ls -l`
+
+| **41** : `mkdir -l`
+
+| **42** : `mkdir "-l"`
+
+| **43** : `mkdir -- -l`
+
+| **44** : `ls`
+
+| **45** : `touch -l/newfile`
+
+| **46** : `touch "-l/newfile"`
+
+| **47** : `touch -- -l/newfile`
+
+| **48** : `ls -l`
+
+| **49** : `ls -l "-l"`
+
+| **50** : `ls -l -- -l`
+
+| **51** : `cd -l`
+
+| **52** : `cd "-l"`
+
+| **53** : `cd -- -l`
+
+| **54** : `cd ..`
+
+| **55** : `rm -r -l`
+
+| **56** : `rm -r "-l"`
+
+| **57** : `rm -r -- -l`
+
+| **58** : `ls`
+
 ___
 
 # The Take
