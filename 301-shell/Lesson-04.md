@@ -72,9 +72,9 @@ ___
 
 *Make a backup of today's work*
 
-| **22** : `mkdir -p 04-THREE`
+| **22** : `mkdir -p 04-FOR`
 
-| **23** : `cp *THREE* 04-THREE/` *(Don't mind the directory error)*
+| **23** : `cp *THREE* 04-FOR/` *(Don't mind the directory error)*
 
 *Delete*
 
@@ -122,7 +122,7 @@ ___
 
 *Backup today's work*
 
-| **37** : `mv ODT*.txt 04-THREE/`
+| **37** : `mv *.txt 04-FOR/`
 
 | **38** : `ls *.txt`
 
@@ -131,6 +131,12 @@ ___
 ___
 
 # The Take
+
+## `for` has useful application
+- It can list items and modify them
+- It can rename, move, or delete files
+- It can modify or do complex processes on many files
+- It does many things in a short time and with a single command
 
 ## Replacement within variables
 - `${VAR%foo}` will remove "foo" from the value of variable $VAR
