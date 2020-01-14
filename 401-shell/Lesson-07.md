@@ -42,7 +42,7 @@ done
 
 *Change "No." to "Number"...*
 
-*`.` is canceled with `\` in this `sed` command...*
+*`.` is escaped with `\` in this `sed` command...*
 
 | **5** : `sed -i "s/No\./Number/" countfile`
 
@@ -110,18 +110,100 @@ This is the same in `vim`, so get used to it.
 
 *gedit: Reload countfile*
 
+## III. `sed` "Delimiter"
+
+*The "delimiter" separates "foo" from "bar" in `sed "s/foo/bar/"`, here: `/`*
+
+*The delimiter in `sed` can technically be anything!*
+
+```
+sed "s/foo/bar/"
+
+sed "s:foo:bar:"
+
+sed "s@foo@bar@"
+
+sed "s?foo?bar?"
+
+sed "s foo bar " # ...Yes, spaces too!
+
+sed "s\afoo\abar\a" # ...Yes, \a can be a delimiter!
+```
+
+*This can help solve problems...*
+
+*First, this is the most simple way to use `sed`...*
+
+| **14** : `sed "s/foo/bar/" <<< food`
+
+*What if we want to replace the slash...*
+
+| **XX** : `sed "s/foo/daa/bar/pii/" <<< foo/daa`
+
+*...That didn't work because we must escape the delimeter...*
+
+| **XX** : `sed "s/foo\/daa/bar\/pii/" <<< foo/daa`
+
+*...But, not with a different delimiter...*
+
+| **XX** : `sed "s:foo/daa:bar/pii:" <<< foo/daa`
+
+*...Whatever you're content, use a different character for the delimiter...*
+
+| **XX** : `sed "s:foo.daa:bar.pii:" <<< foo.daa`
+
+*Note we just searched `.` without escaping it, it doesn't **always** need escaped*
+
+*And escape your delimiter character if you need it literal...*
+
+| **XX** : `sed "s:foo\:daa:bar\:pii:" <<< foo:daa`
+
+*This may be useful in a script with a variable containing your delimiter*
+
+| **XX** : `echo "YOUR_CITY" > sedfile`
+
+| **XX** : `gedit sed-delim-var-1 sedfile`
+
+| **XX** : `./sed-delim-var-1 America/Chicago`
+
+*Why the error? Let's look at what Linux saw...*
+
+| **XX** : `./sed-delim-var-2 America/Chicago`
+
+*Try using a non-conflicting delimiter...*
+
+| **XX** : `gedit sed-delim-var-3`
+
+| **XX** : `./sed-delim-var-3 America/Chicago`
+
+*Use any delimiter you want...*
+
+| **XX** : `./sed-delim-var-4 America/Chicago`
+
+| **XX** : `./sed-delim-var-5 America/Chicago`
+
+*Almost every character...*
+
+| **XX** : `./sed-delim-var-6 America/Chicago`
+
+*But, special characters can be escaped with `\` and still delimit...*
+
+| **XX** : `./sed-delim-var-7 America/Chicago`
+
 ___
 
 # The Take
 
 - `while` can create an auto-counting loop when combined with `expr` for arithmetic
 - Some special characters have meaning in text tools like `sed`:
-  - `.` "concatenate" ***(needs canceling)***
-  - `$` end of line ***(needs canceling)***
-  - `^` start of line ***(needs canceling)***
-  - `\n` new line **(already canceled)**
-  - `\t` tab **(already canceled)**
-
+  - `.` "concatenate" ***(may need escaping, not always)***
+  - `$` end of line ***(needs escaping)***
+  - `^` start of line ***(needs escaping)***
+  - `\n` new line **(already escaped)**
+  - `\t` tab **(already escaped)**
+- `sed` **delimiters** can be any character
+  - "Working" characters can be delimiters if escaped with `\`
+  - Whatever character you use in the pattern becomes the delimiter
 ___
 
 #### [Lesson 8: $IFS (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)

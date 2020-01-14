@@ -17,7 +17,7 @@ ___
 
 | **4** : `sed -i "s///!/g" money.file`
 
-*Notice the error, "cancel" (some say "quote") special characters with: `\`*
+*Notice the error, "escape" (some say "quote") special characters with: `\`*
 
 | **5** : `sed -i "s/\//\!/g" money.file`
 

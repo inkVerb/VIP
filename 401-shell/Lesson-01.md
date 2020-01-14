@@ -204,9 +204,9 @@ ___
     - Most certain conversion
 
 ## Multiple Lines, One Command: `\`
-- Like "working" special characters, `\` also cancels a "return" on the terminal line
-- A non-canceled return will render, even if the line before was canceled
-- Returns can be canceled even between letters of a word, preserving the word (canceled returns do not become a space)
+- Like "working" special characters, `\` also escapes a "return" on the terminal line
+- A non-escaped return will render, even if the line before was escaped
+- Returns can be escaped even between letters of a word, preserving the word (escaped returns do not become a space)
 
 ## Shell History
 - View terminal history with `history`

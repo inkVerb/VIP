@@ -39,7 +39,7 @@ ___
 
 | **11** : `grep -RF "!!" *`
 
-*Sometimes, special characters can only be "canceled" with 'single quotes'*
+*Sometimes, special characters can only be "escaped" with 'single quotes'*
 
 | **12** : `grep -RF '!!' *`
 

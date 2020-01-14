@@ -30,6 +30,8 @@ ___
 
 | **7** : `./04-var-form-3`
 
+*`$variable` is the same as `${variable}`, but `${variable}` can do more...*
+
 | **8** : `gedit 04-var-form-4`
 
 | **9** : `./04-var-form-4`
