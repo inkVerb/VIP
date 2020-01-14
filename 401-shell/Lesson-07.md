@@ -138,57 +138,57 @@ sed "s\afoo\abar\a" # ...Yes, \a can be a delimiter!
 
 *What if we want to replace the slash...*
 
-| **XX** : `sed "s/foo/daa/bar/pii/" <<< foo/daa`
+| **15** : `sed "s/foo/daa/bar/pii/" <<< foo/daa`
 
 *...That didn't work because we must escape the delimeter...*
 
-| **XX** : `sed "s/foo\/daa/bar\/pii/" <<< foo/daa`
+| **16** : `sed "s/foo\/daa/bar\/pii/" <<< foo/daa`
 
 *...But, not with a different delimiter...*
 
-| **XX** : `sed "s:foo/daa:bar/pii:" <<< foo/daa`
+| **17** : `sed "s:foo/daa:bar/pii:" <<< foo/daa`
 
 *...Whatever you're content, use a different character for the delimiter...*
 
-| **XX** : `sed "s:foo.daa:bar.pii:" <<< foo.daa`
+| **18** : `sed "s:foo.daa:bar.pii:" <<< foo.daa`
 
-*Note we just searched `.` without escaping it, it doesn't **always** need escaped*
+*Note we just searched `.` without escaping it; `.` doesn't **always** need escaped*
 
 *And escape your delimiter character if you need it literal...*
 
-| **XX** : `sed "s:foo\:daa:bar\:pii:" <<< foo:daa`
+| **19** : `sed "s:foo\:daa:bar\:pii:" <<< foo:daa`
 
 *This may be useful in a script with a variable containing your delimiter*
 
-| **XX** : `echo "YOUR_CITY" > sedfile`
+| **20** : `echo "YOUR_CITY" > sedfile`
 
-| **XX** : `gedit sed-delim-var-1 sedfile`
+| **21** : `gedit sed-delim-var-1 sedfile`
 
-| **XX** : `./sed-delim-var-1 America/Chicago`
+| **22** : `./sed-delim-var-1 America/Chicago`
 
 *Why the error? Let's look at what Linux saw...*
 
-| **XX** : `./sed-delim-var-2 America/Chicago`
+| **23** : `./sed-delim-var-2 America/Chicago`
 
 *Try using a non-conflicting delimiter...*
 
-| **XX** : `gedit sed-delim-var-3`
+| **24** : `gedit sed-delim-var-3`
 
-| **XX** : `./sed-delim-var-3 America/Chicago`
+| **25** : `./sed-delim-var-3 America/Chicago`
 
 *Use any delimiter you want...*
 
-| **XX** : `./sed-delim-var-4 America/Chicago`
+| **26** : `./sed-delim-var-4 America/Chicago`
 
-| **XX** : `./sed-delim-var-5 America/Chicago`
+| **27** : `./sed-delim-var-5 America/Chicago`
 
 *Almost every character...*
 
-| **XX** : `./sed-delim-var-6 America/Chicago`
+| **28** : `./sed-delim-var-6 America/Chicago`
 
 *But, special characters can be escaped with `\` and still delimit...*
 
-| **XX** : `./sed-delim-var-7 America/Chicago`
+| **29** : `./sed-delim-var-7 America/Chicago`
 
 ___
 
