@@ -18,113 +18,133 @@ ___
 
 *Note `${VAR%foo}bar` will delete "foo", then append "bar" (like find-replace), if "foo" appears in the variable*
 
+| **2** : `gedit 04-var-form-1`
+
+| **3** : `./04-var-form-1`
+
+| **4** : `gedit 04-var-form-2`
+
+| **5** : `./04-var-form-2`
+
+| **6** : `gedit 04-var-form-3`
+
+| **7** : `./04-var-form-3`
+
+| **8** : `gedit 04-var-form-4`
+
+| **9** : `./04-var-form-4`
+
+| **10** : `gedit 04-var-form-5`
+
+| **11** : `./04-var-form-5`
+
 *.one %one
 
-| **2** : `gedit 04-echo-rename-1`
+| **12** : `gedit 04-echo-rename-1`
 
-| **3** : `ls *.one`
+| **13** : `ls *.one`
 
-| **4** : `./04-echo-rename-1`
+| **14** : `./04-echo-rename-1`
 
-| **5** : `ls`
+| **15** : `ls`
 
 *t.one %t.one
 
-| **6** : `gedit 04-echo-rename-2`
+| **16** : `gedit 04-echo-rename-2`
 
-| **7** : `ls *t.one`
+| **17** : `ls *t.one`
 
-| **8** : `./04-echo-rename-2`
+| **18** : `./04-echo-rename-2`
 
-| **9** : `ls`
+| **19** : `ls`
 
 ### II. Renaming Multiple Files at Once
 
 *t.one --> *T-ONE
 
-| **10** : `gedit 04-do-mv-1`
+| **20** : `gedit 04-do-mv-1`
 
-| **11** : `ls *t.one`
+| **21** : `ls *t.one`
 
-| **12** : `./04-do-mv-1`
+| **22** : `./04-do-mv-1`
 
-| **13** : `ls`
+| **23** : `ls`
 
 *T-ONE --> *t.one
 
-| **14** : `gedit 04-do-mv-2`
+| **24** : `gedit 04-do-mv-2`
 
-| **15** : `ls *T-ONE`
+| **25** : `ls *T-ONE`
 
-| **16** : `./04-do-mv-2`
+| **26** : `./04-do-mv-2`
 
-| **17** : `ls`
+| **27** : `ls`
 
 *t.one --> *t.THREE
 
-| **18** : `gedit 04-do-mv-3`
+| **28** : `gedit 04-do-mv-3`
 
-| **19** : `ls *t.one`
+| **29** : `ls *t.one`
 
-| **20** : `./04-do-mv-3`
+| **30** : `./04-do-mv-3`
 
-| **21** : `ls`
+| **31** : `ls`
 
 *Make a backup of today's work*
 
-| **22** : `mkdir -p 04-FOR`
+| **32** : `mkdir -p 04-FOR`
 
-| **23** : `cp *THREE* 04-FOR/` *(Don't mind the directory error)*
+| **33** : `cp *THREE* 04-FOR/`
 
 *Delete*
 
-| **24** : `gedit 04-do-rm`
+| **34** : `gedit 04-do-rm`
 
-| **25** : `./04-do-rm` *(Don't mind the directory error)*
+| **35** : `./04-do-rm`
 
 *Don't mind the directory error because we want to keep that directory anyway*
 
-| **26** : `ls`
+| **36** : `ls`
 
 ### III. Applied: `odt2txt`
 
 *Now, use `odt2txt` in a `for` `...` `do` loop*
 
-| **27** : `rm ODT*.txt` *(start with a clean slate, just to be sure)*
+| **37** : `rm ODT*.txt` *(Start with a clean slate, just to be sure)*
 
-| **28** : `ls *.txt *.odt`
+| **38** : `ls *.txt *.odt`
 
 *Note there are only .odt files*
 
-| **29** : `gedit 04-do-odt2txt-1`
+| **39** : `gedit 04-do-odt2txt-1`
 
-| **30** : `./04-do-odt2txt-1`
+| **40** : `./04-do-odt2txt-1`
 
-| **31** : `ls *.txt *.odt`
+| **41** : `ls *.txt *.odt`
 
 *Note the new .txt files, have a look inside...*
 
-| **32** : `gedit ODT*.txt`
+| **42** : `gedit ODT*.txt`
 
 *Note the files are either empty or on one line because we used `echo`, this method isn't best*
 
-| **33** : `gedit 04-do-odt2txt-2`
+| **43** : `gedit 04-do-odt2txt-2`
 
-| **34** : `./04-do-odt2txt-2`
+| **44** : `./04-do-odt2txt-2`
 
 *gedit: Reload all .txt files*
 
-| **35** : `gedit 04-do-odt2txt-3`
+| **45** : `gedit 04-do-odt2txt-3`
 
-| **36** : `./04-do-odt2txt-3`
+| **46** : `./04-do-odt2txt-3`
 
 *gedit: Reload all .txt files*
 
 *Backup today's work*
 
-| **37** : `mv *.txt 04-FOR/`
+| **47** : `mv *.txt 04-FOR/`
 
-| **38** : `ls *.txt`
+| **48** : `ls *.txt`
 
 *...See all gone*
 
