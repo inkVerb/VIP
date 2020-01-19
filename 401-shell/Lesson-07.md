@@ -190,6 +190,32 @@ sed "s\afoo\abar\a" # ...Yes, \a can be a delimiter!
 
 | **29** : `./sed-delim-var-7 America/Chicago`
 
+### IV. `sed` wildcards
+
+*Replace everything after a match*
+
+| **30** : `sed "s/foo.*//" <<< 12345foo6789`
+
+*...Keep the `foo`*
+
+| **31** : `sed "s/foo.*/foo/" <<< 12345foo6789`
+
+*Replace everything before a match*
+
+| **32** : `sed "s/^.*foo//" <<< 12345foo6789`
+
+*...Keep the `foo`*
+
+| **33** : `sed "s/^.*foo/foo/" <<< 12345foo6789`
+
+*Removing something in the middle*
+
+| **34** : `sed "s/foo.*.bar//" <<< 12345fooSOMETHINGbar6789`
+
+*...Keep the `foobar`*
+
+| **35** : `sed "s/foo.*.bar/foobar/" <<< 12345fooSOMETHINGbar6789`
+
 ___
 
 # The Take
@@ -204,6 +230,10 @@ ___
 - `sed` **delimiters** can be any character
   - "Working" characters can be delimiters if escaped with `\`
   - Whatever character you use in the pattern becomes the delimiter
+- `sed` **wildcards** `*`
+  - `^.*foo` matches the **start** of a string
+  - `foo.*` matches the **end** of a string
+  - `foo.*.bar` matches **between** "foo" and "bar"
 ___
 
 #### [Lesson 8: $IFS (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-08.md)
