@@ -174,38 +174,66 @@ echo "I am a sweet potato."
 ... Now `$?` = "0" because echo ran successfully and exited without error
 ___
 
-### IV. Find-replace in a variable's value
+### IV. Removing text in a variable's value
+#### `${var#START}`
+#### `${var%END}`
 
-- `${var%foo}bar` will replace "foo" in the value output with "bar"
-
-Say the variable's value is set to "applefoo"
-
-```sh
-var=applefoo
-```
-
-Using `${var%foo}bar` will change the variable's output to "applebar"
+1. Remove text at start: `${var#foo}`
 
 ```sh
-echo ${var%foo}bar
+var=fooapplefoo
+echo ${var#foo}
 ```
 
 returning
 
 ```sh
-applebar
+applefoo
 ```
 
-Replace a string with nothing with: `${var%foo}`
+2. Remove text at end: `${var%foo}`
 
 ```sh
+var=fooapplefoo
 echo ${var%foo}
 ```
 
 returning
 
 ```sh
-apple
+fooapple
+```
+
+3. Nifty trick to replace text at the start or end
+
+(Remove end, then append)
+
+- `${var%foo}bar` will replace "foo" in the value output with "bar"
+
+```sh
+var=fooapplefoo
+echo ${var%foo}bar
+```
+
+returns
+
+```sh
+fooapplebar
+```
+
+(Prepend, then remove start)
+
+- `bar${var#foo}` will replace "foo" in the value output with "bar"
+
+```sh
+var=fooapplefoo
+echo bar${var#foo}
+```
+
+returns
+
+```sh
+barapplefoo
 ```
 
 ___

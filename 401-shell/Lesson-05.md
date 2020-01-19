@@ -27,7 +27,7 @@ ___
 
 *Exit code `1` would mean the last command was a success and returned STDOUT "false"*
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **6** : `gedit varexit`
 
@@ -63,7 +63,7 @@ echo "$? notacommand is not a real command, so exit code \"127\""
 
 ### II. `shift` Argument Variable Numbers
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **8** : `gedit varshift`
 
@@ -119,7 +119,7 @@ echo "After shift 3
 
 *But, they almost always behave the same way...*
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **10** : `gedit varargs`
 
@@ -153,7 +153,7 @@ $*
 
 *Now, we will embed this into another script and pass those arguments via `$@` & `$*` ...*
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **12** : `gedit varargsvar`
 
@@ -187,7 +187,7 @@ Arguments entered via \$(echo \$*) ..."
 
 ### IV. `$#` Argument Count
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **14** : `gedit vargcount`
 
@@ -211,7 +211,7 @@ $#"
 
 ### V. `unset` Variables
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **16** : `gedit varunset`
 
@@ -264,7 +264,7 @@ myShiftedCount = $myShiftedCount
 
 ### VI. Variables in `${bracketts}`
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **18** : `gedit varbrackett-sh`
 
@@ -309,7 +309,7 @@ echo "${myVAR}"
 
 *Again, but with **BASH**...*
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **20** : `gedit varbrackett-bash`
 
@@ -384,7 +384,7 @@ echo "${myVAR}"
 
 | **23** : `./variable-no-export`
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **24** : `gedit variable-yes-export`
 
@@ -408,9 +408,11 @@ export myVAR="Hello world!"
 
 *"Constants" are, basically, variables that can't change (oxymoron, but you get the idea)*
 
+*Generally, only/always use ALL CAPS for naming a "constant" so other Shell coders understand you*
+
 #### 1. You can't change a `readonly` variable's value
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **26** : `gedit variable-readonly-1`
 
@@ -435,7 +437,7 @@ MYROVAR="I am changed!"
 
 #### 2. You can't `unset` a `readonly` variable
 
-*Edit this script to see the short version*
+*Edit this script*
 
 | **28** : `gedit variable-readonly-2`
 
@@ -464,6 +466,30 @@ unset MYROVAR
 
 *ALL_UPPERCASE variables may or may not be "`readonly`"; they just "shouldn't" be changed, according to common practice*
 
+### VIII. Removing text in a variable's value: `${var#foo}` vs `${var%foo}`
+
+*Edit this script*
+
+| **30** : `gedit varfoo`
+
+*It should look like this:*
+
+```sh
+#!/bin/sh
+
+var="fooapplefoo"
+var1=${var#foo}
+var2=${var%foo}
+
+echo "var: $var
+var1: $var1
+var2: $var2"
+```
+
+| **31** : `./varfoo`
+
+*Take a good look at that, would ya!*
+
 ___
 
 # The Take
@@ -489,6 +515,9 @@ ___
 - `readonly` makes a variable both unable to change and unable to `unset`
   - Syntax: `readonly NEWVARIABLE="Variable's value"`
   - It's common practice in Shell coding to name variables that "shouldn't" change with ALL_UPPERCASE
+- Removal:
+  - `${var#foo}` removes test at the **beginning** of a variable's value
+  - `${var%foo}` removes test at the **end** of a variable's value
 - See usage and examples here: [Variables](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Variables.md)
 ___
 
