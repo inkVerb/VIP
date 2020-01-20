@@ -55,3 +55,11 @@ chmod ug+rx,o-rwx foo
 chmod u=x foo
 # make the file only executable for the user and allow no other permissions
 ```
+
+# Fixing directories
+
+Generally, directories need `755` permissions
+
+If you ever do a `chmod -R` on a directory and mess up the permissions for all subdirectories, this might help fix it:
+
+`find /path/to/dir -type d -exec chmod 755 {} +`
