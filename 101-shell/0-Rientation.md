@@ -89,7 +89,7 @@ This is a new file.
 
 *After copying the text below via Ctrl + C, in gedit, use Ctrl + A, Ctrl + V, Ctrl + S*
 
-**`first-file`**:
+```first-file```:
 
 ```sh
 This is the same file, but a new version
