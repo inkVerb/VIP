@@ -71,6 +71,8 @@ Example of 'single' & "double" quotes in declaring variable values:
 
 *It should look like this:*
 
+| **varquote** :
+
 ```sh
 #!/bin/sh
 
@@ -98,6 +100,8 @@ Example of boolean values and quotes:
 | **3** : `gedit varbool`
 
 *It should look like this:*
+
+| **varbool** :
 
 ```sh
 #!/bin/sh
@@ -162,6 +166,8 @@ fi
 | **5** : `gedit varmath`
 
 *It should look like this:*
+
+| **varmath** :
 
 ```sh
 #!/bin/sh

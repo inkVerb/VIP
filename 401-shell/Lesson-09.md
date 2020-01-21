@@ -49,6 +49,8 @@ Shell:
 
 *It should look like this:*
 
+| **math-sh** :
+
 ```sh
 #!/bin/sh
 
@@ -80,6 +82,8 @@ BASH:
 | **3** : `gedit math-bash`
 
 *It should look like this:*
+
+| **math-bash** :
 
 ```bash
 #!/bin/bash
@@ -115,6 +119,8 @@ Shell:
 
 *It should look like this:*
 
+| **array-sh** :
+
 ```sh
 #!/bin/sh
 
@@ -138,6 +144,8 @@ BASH:
 | **7** : `gedit array-bash`
 
 *It should look like this:*
+
+| **array-bash** :
 
 ```bash
 #!/bin/bash
@@ -219,6 +227,8 @@ OR
 
 *It should look like this:*
 
+| **set-normal** :
+
 ```sh
 #!/bin/sh
 
@@ -242,6 +252,8 @@ echo "Done with verbchacho test"
 | **11** : `gedit set-e`
 
 *It should look like this:*
+
+| **set-e** :
 
 ```sh
 #!/bin/sh
@@ -269,6 +281,8 @@ echo "Done with verbchacho test"
 
 *It should look like this:*
 
+| **set-x** :
+
 ```sh
 #!/bin/sh
 
@@ -295,6 +309,8 @@ echo "Done with verbchacho test"
 
 *It should look like this:*
 
+| **set-v** :
+
 ```sh
 #!/bin/sh -v
 
@@ -320,6 +336,8 @@ echo "Done with verbchacho test"
 | **17** : `gedit set-xe`
 
 *It should look like this:*
+
+| **set-xe** :
 
 ```sh
 #!/bin/sh -xe
@@ -410,6 +428,8 @@ false || echo "OR is false."
 
 *It should look like this:*
 
+| **truefalse** :
+
 ```sh
 #!/bin/sh
 
@@ -440,6 +460,8 @@ false || echo "OR is false."
 | **27** : `gedit truefalsevar`
 
 *It should look like this:*
+
+| **truefalsevar** :
 
 ```sh
 #!/bin/sh
@@ -475,6 +497,8 @@ $VAR || echo "OR is false."
 | **29** : `gedit truefalsevarstring`
 
 *It should look like this:*
+
+| **truefalsevarstring** :
 
 ```sh
 #!/bin/sh
@@ -528,6 +552,8 @@ $VAR || echo "OR is false."
 
 *It should look like this:*
 
+| **ls-test** :
+
 ```sh
 #!/bin/sh
 
@@ -565,6 +591,8 @@ Test with `-z`:
 | **38** : `gedit varset-z`
 
 *It should look like this:*
+
+| **varset-z** :
 
 ```sh
 #!/bin/sh
@@ -610,6 +638,8 @@ Test with `-n`:
 | **40** : `gedit varset-n`
 
 *It should look like this:*
+
+| **varset-n** :
 
  ```bash
 #!/bin/sh

@@ -49,6 +49,8 @@ But, scripts and programs with directories listed in the `$PATH` can be run this
 
 *It should look like this:*
 
+| **listpath** :
+
 ```sh
 #!/bin/sh
 
@@ -78,6 +80,8 @@ done
 | **7** : `gedit iamexec`
 
 *It should look like this:*
+
+| **iamexec** :
 
 ```sh
 #!/bin/sh

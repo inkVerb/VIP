@@ -14,6 +14,9 @@ ___
 | **3** : `./comboshell abcd j "z-"`
 
 *Update comboshell to version 2:*
+
+| **comboshell** :
+
 ```sh
 #!/bin/sh
 
@@ -29,6 +32,9 @@ echo "$myOutput" >> sedoutput.text
 *gedit: Reload sedoutput.text*
 
 *Update comboshell to version 3:*
+
+| **comboshell** :
+
 ```sh
 #!/bin/sh
 
@@ -48,6 +54,9 @@ echo "$myOutput" | tee sedoutput.text
 *gedit: Reload sedoutput.text*
 
 *Update comboshell to version 4:*
+
+| **comboshell** :
+
 ```sh
 #!/bin/sh
 
@@ -61,6 +70,9 @@ sed "s/$2/$3/g" $1 | tee sedoutput.text
 *gedit: Reload sedoutput.text*
 
 *Update comboshell to version 5:*
+
+| **comboshell** :
+
 ```sh
 #!/bin/sh
 

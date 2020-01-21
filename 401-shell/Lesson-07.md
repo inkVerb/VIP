@@ -13,6 +13,8 @@ ___
 
 *It should look like this:*
 
+| **loopcount** :
+
 ```sh
 #!/bin/sh
 

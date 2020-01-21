@@ -21,7 +21,10 @@ ___
 
 *Now, to our first Shell script...*
 
-*Copy-Paste this into abcsed in gedit, then Ctrl + S to save:*
+*Create abcsed as this:*
+
+| **abcsed** :
+
 ```sh
 #!/bin/sh
 
@@ -63,6 +66,9 @@ sed -i "s/$1/z/" abcd
 *gedit: Reload abcd*
 
 *Update abcsed to version 02:*
+
+| **abcsed** :
+
 ```sh
 #!/bin/sh
 
@@ -92,6 +98,9 @@ sed -i "s/$1/$2/" abcd
 *gedit: Reload abcd*
 
 *Update abcsed to version 03:*
+
+| **abcsed** :
+
 ```sh
 #!/bin/sh
 
@@ -121,6 +130,9 @@ sed -i "s/$1/$2/g" abcd
 | **18** : `gedit applefoo`
 
 *Update abcsed to version 04:*
+
+| **abcsed** :
+
 ```sh
 #!/bin/sh
 

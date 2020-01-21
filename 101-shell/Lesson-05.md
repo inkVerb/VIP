@@ -118,6 +118,9 @@ ___
 | **34** : `gedit comboshell`
 
 *Create comboshell as this:*
+
+| **comboshell** :
+
 ```sh
 #!/bin/sh
 

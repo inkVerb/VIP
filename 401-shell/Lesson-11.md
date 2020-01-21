@@ -131,6 +131,8 @@ EOF
 
 *It should look like this:*
 
+| **eofvar** :
+
 ```sh
 #!/bin/sh
 

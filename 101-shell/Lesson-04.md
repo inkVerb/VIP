@@ -8,6 +8,9 @@ ___
 | **1** : `gedit abcsed abcsed.setting abcd`
 
 *Update abcsed to version 05:*
+
+| **abcsed** :
+
 ```sh
 #!/bin/sh
 
@@ -29,6 +32,9 @@ sed -i "s/$myFOO/$myBAR/g" $myFILE
 *gedit: Reload abcd*
 
 *Update abcsed to version 06:*
+
+| **abcsed** :
+
 ```sh
 #!/bin/sh
 
@@ -43,6 +49,9 @@ sed -i "s/$myFOO/$myBAR/g" $myFILE
 ```
 
 *Create abcsed.setting as this:*
+
+| **abcsed.setting** :
+
 ```sh
 myFILE=abcd
 ```

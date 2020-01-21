@@ -62,6 +62,8 @@ ___
 
 *It should look like this:*
 
+| **functionreturns** :
+
 | **12** :
 ```bash
 #!/bin/bash
@@ -129,6 +131,8 @@ echo "Return code: $?"
 | **14** : `gedit functionlocal`
 
 *It should look like this:*
+
+| **functionlocal** :
 
 ```bash
 #!/bin/bash

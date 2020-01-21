@@ -10,6 +10,9 @@ ___
 ### Arguments (`$1`, `$2`, etc)
 
 *Create how2var as this:*
+
+| **how2var** :
+
 ```sh
 #!/bin/sh
 
@@ -74,6 +77,9 @@ first \
 | **10** : `gedit allvar`
 
 *Create allvar as this:*
+
+| **allvar** :
+
 ```sh
 #!/bin/sh
 

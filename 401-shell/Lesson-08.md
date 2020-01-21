@@ -38,6 +38,8 @@ ___
 
 *It should look like this:*
 
+| **looplines** :
+
 ```bash
 #!/bin/sh
 
@@ -63,6 +65,8 @@ Integrate `pwgen` with `sed` in a `for` loop...
 | **3** : `gedit looprandom`
 
 *It should look like this:*
+
+| **looprandom** :
 
 ```bash
 #!/bin/bash
@@ -109,6 +113,8 @@ Set `$IFS` to a "tab"
 
 *It should look like this:*
 
+| **looptab** :
+
 ```bash
 #!/bin/bash
 
@@ -141,6 +147,8 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *It should look like this:*
 
+| **loopcolon** :
+
 ```bash
 #!/bin/sh
 
@@ -164,6 +172,8 @@ done
 | **12** : `gedit looppipe`
 
 *It should look like this:*
+
+| **looppipe** :
 
 ```bash
 #!/bin/sh

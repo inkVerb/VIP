@@ -33,6 +33,8 @@ ___
 
 *It should look like this:*
 
+| **varexit** :
+
 ```sh
 #!/bin/sh
 
@@ -68,6 +70,8 @@ echo "$? notacommand is not a real command, so exit code \"127\""
 | **8** : `gedit varshift`
 
 *It should look like this:*
+
+| **varshift** :
 
 ```sh
 #!/bin/sh
@@ -125,6 +129,8 @@ echo "After shift 3
 
 *It should look like this:*
 
+| **varargs** :
+
 ```sh
 #!/bin/sh
 
@@ -158,6 +164,8 @@ $*
 | **12** : `gedit varargsvar`
 
 *It should look like this:*
+
+| **varargsvar** :
 
 ```sh
 #!/bin/sh
@@ -193,6 +201,8 @@ Arguments entered via \$(echo \$*) ..."
 
 *It should look like this:*
 
+| **vargcount** :
+
 ```sh
 #!/bin/sh
 
@@ -216,6 +226,8 @@ $#"
 | **16** : `gedit varunset`
 
 *It should look like this:*
+
+| **varunset** :
 
 ```sh
 #!/bin/sh
@@ -270,6 +282,8 @@ myShiftedCount = $myShiftedCount
 
 *It should look like this:*
 
+| **varbrackett-sh** :
+
 ```sh
 #!/bin/sh
 
@@ -314,6 +328,8 @@ echo "${myVAR}"
 | **20** : `gedit varbrackett-bash`
 
 *It should look like this:*
+
+| **varbrackett-bash** :
 
 ```bash
 #!/bin/bash
@@ -361,7 +377,7 @@ echo "${myVAR}"
 
 *They should look like this:*
 
-variable-no-export:
+| **variable-no-export** :
 
 ```sh
 #!/bin/sh
@@ -372,7 +388,7 @@ myVAR="Hello world!"
 ```
 *The above script is in the next file...*
 
-variable-exported:
+| **variable-exported** :
 
 ```sh
 #!/bin/sh
@@ -389,6 +405,8 @@ echo "${myVAR}"
 | **24** : `gedit variable-yes-export`
 
 *It should look like this:*
+
+| **variable-yes-export** :
 
 ```sh
 #!/bin/sh
@@ -418,6 +436,8 @@ export myVAR="Hello world!"
 
 *It should look like this:*
 
+| **variable-readonly-1** :
+
 ```sh
 #!/bin/sh
 
@@ -442,6 +462,8 @@ MYROVAR="I am changed!"
 | **28** : `gedit variable-readonly-2`
 
 *It should look like this:*
+
+| **variable-readonly-2** :
 
 ```sh
 #!/bin/sh
@@ -473,6 +495,8 @@ unset MYROVAR
 | **30** : `gedit varfoo`
 
 *It should look like this:*
+
+| **varfoo** :
 
 ```sh
 #!/bin/sh
