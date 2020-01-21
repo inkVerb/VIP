@@ -71,7 +71,7 @@ This is normal text, which may label or tell something, it is rare in these less
 
 *(Copy-Paste this into first-file in gedit:)*
 
-**first-file**:
+| **first-file** :
 
 ```sh
 This is a new file.
