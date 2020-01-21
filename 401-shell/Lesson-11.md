@@ -186,7 +186,7 @@ ___
   - `END`
   - `hErEdoC`
   - `DOC`
-  - `WUTeverUwant`
+  - `LSTeverUwant`
   - *This is called a* ***"delimeter"***
 - The opening `cat <<EOF | cat > file-name` will send the heredoc directly to a file
   - The lines after this, until `EOF`, will contain the heredoc sent to the file

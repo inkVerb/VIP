@@ -29,7 +29,7 @@ ___
 
 | **5** : `fg 1`
 
-*Note gedit is no longer dark*
+*Note gedit is no longer stopped*
 
 *Terminal: Ctrl + Z*
 

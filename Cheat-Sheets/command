@@ -19,10 +19,10 @@ for x in * .[!.]* ..?*; do if [ -L "$x" ] && ! [ -e "$x" ]; then rm -- "$x"; fi;
 
 # Do something for each file in a directory
 cd /path/to/dir
-for wut in * 
+for lst in * 
 do
- if [ -f "$wut" ]; the
-  echo "I found $wut"
+ if [ -f "$lst" ]; the
+  echo "I found $lst"
  fi
 done
 

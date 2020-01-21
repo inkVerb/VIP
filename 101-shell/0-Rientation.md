@@ -69,7 +69,9 @@ This is normal text, which may label or tell something, it is rare in these less
 
 *Create first-file as this:*
 
-*Copy-Paste this into first-file in gedit:*
+*(Copy-Paste this into first-file in gedit:)*
+
+**first-file**:
 
 ```sh
 This is a new file.
@@ -86,6 +88,8 @@ This is a new file.
 *Update first-file to version 02:*
 
 *After copying the text below via Ctrl + C, in gedit, use Ctrl + A, Ctrl + V, Ctrl + S*
+
+**`first-file`**:
 
 ```sh
 This is the same file, but a new version

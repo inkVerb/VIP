@@ -60,6 +60,8 @@ chmod u=x foo
 
 Generally, directories need `755` permissions
 
-If you ever do a `chmod -R` on a directory and mess up the permissions for all subdirectories, this might help fix it:
+Without some special reason, never do `chmod -R ...`
+
+If you do and obviously mess up the permissions for all subdirectories, this might help fix it:
 
 `find /path/to/dir -type d -exec chmod 755 {} +`

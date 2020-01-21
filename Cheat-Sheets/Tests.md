@@ -94,7 +94,7 @@ Also see: [VIP/Shell 301 – Lesson 1](https://github.com/inkVerb/vip/blob/maste
 
 ___
 
-### III. `for` VARIABL `in` WUT
+### III. `for` VARIABL `in` LST
 
 - A `for` test loops and does the same thing for each among many items
 

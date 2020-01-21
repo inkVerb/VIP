@@ -199,7 +199,7 @@ if (( "$NUM1" <= "$NUM2" ))
 
 ___
 
-### V. `for` VARIABL `in` WUT
+### V. `for` VARIABL `in` LST
 
 - A `for` test loops and does the same thing for each among many items
 

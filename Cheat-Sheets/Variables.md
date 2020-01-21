@@ -307,11 +307,11 @@ echo "${!four}"
 
 ___
 
-### VI. `for` var `in` WUT
+### VI. `for` var `in` LST
 
-- `for var` sets `$var` as a changing varable for each occurrence in "WUT"
-- "WUT" can be anything, such as files, such as `*.odt` or `*.png` or `*`
-- If "WUT" includes a full path, then each `do` cycle will set `$var` to include the same full path
+- `for var` sets `$var` as a changing varable for each occurrence in "LST"
+- "LST" can be anything, such as files, such as `*.odt` or `*.png` or `*`
+- If "LST" includes a full path, then each `do` cycle will set `$var` to include the same full path
 
 ```sh
 for var in *.txt

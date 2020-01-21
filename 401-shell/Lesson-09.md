@@ -524,7 +524,7 @@ $VAR || echo "OR is false."
 
 *Edit this script to see the short version*
 
-| **36** : `gedit lstest`
+| **36** : `gedit ls-test`
 
 *It should look like this:*
 
@@ -546,7 +546,7 @@ ls nothere || echo "OR is false, exit code: $?"
 
 *Run it and watch carefully*
 
-| **37** : `./lstest`
+| **37** : `./ls-test`
 
 *So, `&&` and `||` work with any command that returns*
 

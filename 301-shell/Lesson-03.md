@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 3: for VAR in WUT do done
+## Lesson 3: for VAR in LST do done
 
 `cd ~/School/VIP/shell/301/one`
 
@@ -14,7 +14,7 @@ ___
 
 | **1** : `ln -sfn ~/School/VIP/shell/301/03-* .` *Make sure you include that period at the end!*
 
-### I. `for VAR in WUT; do`
+### I. `for VAR in LST; do`
 
 ```sh
 for VARIABLE in SOME_LIST
@@ -121,7 +121,7 @@ ___
   - `done` closes the mini-script
 - Syntax of the `for` line:
   - `for` `VARIABLE` `in` `CONDITIONS`
-- See usage and examples here: [Tests: for](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iii-for-variabl-in-wut)
+- See usage and examples here: [Tests: for](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iii-for-variabl-in-lst)
 
 ##  `break` & `continue`
 - `break` will end the loop (usually in an `if` test)
