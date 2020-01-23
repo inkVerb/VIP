@@ -93,9 +93,21 @@ ___
 
 | **38** : `cd cpdir`
 
-| **39** : `ls`
+*Note that `.` = "current directory" and `..` = "parent directory"... even with `ls`...*
 
-| **40** : `cd ..`
+| **39** : `ls .`
+
+| **40** : `ls ..`
+
+| **41** : `cd ..`
+
+| **42** : `ls .`
+
+| **43** : `ls ..`
+
+*These are even listed with the "all" flag (`-a`)*
+
+| **44** : `ls -a`
 
 ___
 
@@ -122,6 +134,9 @@ ___
   - `cp -r source-directory directory-copy`
 - `mv` can move and change the name of a directory, same as with files
   - `mv` does not require `-r`, it will reject `-r` if you try
+- `.` & `..`
+  - `.` = "current directory"
+  - `..` = "parent directory"
 
 ___
 
