@@ -21,31 +21,27 @@ But, scripts and programs with directories listed in the `$PATH` can be run this
 
 *Look for "PATH"*
 
-*Get a closer look via terminal and gedit...*
+*More specifically...*
 
-| **2** : `echo $PATH | tee mypath && gedit mypath`
+| **2** : `echo $PATH`
 
-*This is the "$PATH" environment variable, the list of directories where executable files can be run by filename only*
+*This is a colon (`:`) -separated list of directories where executable files may be executed from **without entering the /complete/path/to/the/file***
 
-*The $PATH is why commands work as commands, why `echo` isn't `./echo`*
+*Let's make this $PATH more readable...*
+
+| **3** : `echo $PATH | sed -i "s/:/\n/g" | tee mypath && gedit mypath`
+
+*The $PATH is why commands work as commands, why we can type `echo` istead of `./echo`*
 
 *Note each colon `:` separates a different directory path included in the $PATH*
 
 *Let's use `sed` to resort them to go onto each line*
 
-| **3** : `sed -i "s/:/\n/g" mypath`
-
-*gedit: Reload mypath*
-
-*Let's do it in one command:*
-
-| **4** : `echo $PATH | sed "s/:/\n/g"`
-
 **This nifty little script basically does the same thing with a `do` loop, listing each directory of the $PATH on a new line:**
 
 *Edit the script*
 
-| **5** : `gedit listpath`
+| **4** : `gedit listpath`
 
 *It should look like this:*
 
@@ -64,7 +60,7 @@ for pdir in $(echo "$PATH"); do
 done
 ```
 
-| **6** : `./listpath`
+| **5** : `./listpath`
 
 **The point of all this so far:**
 - *$PATH contains many directories*
@@ -77,7 +73,7 @@ done
 
 *Edit the script*
 
-| **7** : `gedit iamexec`
+| **6** : `gedit iamexec`
 
 *It should look like this:*
 
@@ -92,17 +88,19 @@ echo "I am executable, but I am not in the \$PATH."
 
 1. Relative `/home/` path: `~/...`
 
-| **8** : `~/School/VIP/shell/401/iamexec`
+| **7** : `~/School/VIP/shell/401/iamexec`
+
+*...or (since `.` = "current directory") this an easier way to do the same thing...*
 
 2. "here" path: `./`
 
-| **9** : `./iamexec`
+| **8** : `./iamexec`
 
 3. "full path" (get with `pwd`)
 
 *Enter the output of this as a new command in the terminal:*
 
-| **10** : `echo "$(pwd)/iamexec"`
+| **9** : `echo "$(pwd)/iamexec"`
 
 *...Something like: `/home/USERNAME/School/VIP/shell/401/iamexec` ...enter it as a command*
 
@@ -113,19 +111,19 @@ echo "I am executable, but I am not in the \$PATH."
 
 *You can check "`which`" directory of the $PATH a command is located in...*
 
-| **11** : `which cp`
+| **10** : `which cp`
 
-| **12** : `which sed`
+| **11** : `which sed`
 
-| **13** : `which grep`
+| **12** : `which grep`
 
-| **14** : `which gedit`
+| **13** : `which gedit`
 
-| **15** : `which firefox`
+| **14** : `which firefox`
 
 *Similar, but returns more information: `whereis`*
 
-| **16** : `whereis firefox`
+| **15** : `whereis firefox`
 
 *You should find that these locations generally respect the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md).*
 
@@ -142,15 +140,15 @@ echo "I am executable, but I am not in the \$PATH."
 
 Cron tasks are processes (usually in a Shell script) that are automatically run by the system on a regular basis
 
-| **17** : `cd /etc`
+| **16** : `cd /etc`
 
-| **18** : `ls` *(Scroll up to find the `cron` directories)*
+| **17** : `ls` *(Scroll up to find the `cron` directories)*
 
 #### Normal Schedules
 
-| **19** : `cd cron.daily/`
+| **18** : `cd cron.daily/`
 
-| **20** : `ls -l`
+| **19** : `ls -l`
 
 The system will automatically run `cron` scripts on its own scheduled basis in four `cron` directories:
 - Hourly: `/etc/cron.hourly/`
@@ -166,9 +164,9 @@ The system will automatically run `cron` scripts on its own scheduled basis in f
 To have more control of the time a `cron` task will run, put `cron` files here:
 - Cron directory: `/etc/cron.d/`
 
-| **21** : `cd ../cron.d/`
+| **20** : `cd ../cron.d/`
 
-| **22** : `ls -l`
+| **21** : `ls -l`
 
 `cron` files (like these) contain simple lines that look like this:
 
