@@ -23,57 +23,32 @@ But, scripts and programs with directories listed in the `$PATH` can be run this
 
 *More specifically...*
 
-| **2** : `echo $PATH`
+| **2** : `printenv PATH`
 
 *This is a colon (`:`) -separated list of directories where executable files may be executed from **without entering the /complete/path/to/the/file***
 
-*Let's make this $PATH more readable...*
+*Let's make this $PATH more readable,  use `sed` to resort them to go onto each line...*
 
 | **3** : `echo $PATH | sed -i "s/:/\n/g" | tee mypath && gedit mypath`
 
 *The $PATH is why commands work as commands, why we can type `echo` istead of `./echo`*
 
+| **4** : `echo $PATH`
+
 *Note each colon `:` separates a different directory path included in the $PATH*
-
-*Let's use `sed` to resort them to go onto each line*
-
-**This nifty little script basically does the same thing with a `do` loop, listing each directory of the $PATH on a new line:**
-
-*Edit the script*
-
-| **4** : `gedit listpath`
-
-*It should look like this:*
-
-| **listpath** :
-
-```sh
-#!/bin/sh
-
-# Set the field separator for the `for` loop to the `:` that separates dirs in the "$PATH"
-IFS=:
-# If we don't put "$PATH" in "double-quotes", each dir will appear on one line
-# Try removing the "double-quotes" from "$PATH" on the line below to see what happens
-# Also try changing the "double-quotes" to 'single-quotes' to see what happens
-for pdir in $(echo "$PATH"); do
-  echo $pdir
-done
-```
-
-| **5** : `./listpath`
 
 **The point of all this so far:**
 - *$PATH contains many directories*
 - *Each directory in $PATH is separated by a colon `:`*
 - *Files in these directories can be run without entering the entire path.*
 
-#### Running non-`$PATH` scripts
+#### Executing a script or other file outside the `$PATH`
 
 ***Using the full path*** *let's run a small script containing this:*
 
 *Edit the script*
 
-| **6** : `gedit iamexec`
+| **5** : `gedit iamexec`
 
 *It should look like this:*
 
@@ -83,6 +58,14 @@ done
 #!/bin/sh
 echo "I am executable, but I am not in the \$PATH."
 ```
+
+*Try to run it with only the script filename as the STDIN (input)...*
+
+| **6** : `iamexec`
+
+*It won't work because the script file is not located in the $PATH!*
+
+#### Three ways to execute a file outside the `$PATH`
 
 *Same script, same location, three different ways to execute...*
 
@@ -105,7 +88,7 @@ echo "I am executable, but I am not in the \$PATH."
 *...Something like: `/home/USERNAME/School/VIP/shell/401/iamexec` ...enter it as a command*
 
 **The point of all this so far:**
-- *Any file not in a directory listed in $PATH can only be run by including the path to the file, like `./FILE` or `/full/path/to/FILE`*
+- *Any file not in a directory listed in $PATH can only be run by including the path to the file, like: `./FILE` or `/full/path/to/FILE`*
 
 #### Find a command's full path using `which` & `whereis`
 

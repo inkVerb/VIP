@@ -191,6 +191,37 @@ done
 
 | **13** : `./looppipe`
 
+### VI. `$IFS` in the `$PATH`
+
+*Remember learning about our $PATH in Lesson 3?*
+
+| **14** : `echo $PATH`
+
+**This nifty little script sorts the directories in the $PATH with a `do` loop, listing each one on a new line:**
+
+*Edit the script*
+
+| **15** : `gedit listpath`
+
+*It should look like this:*
+
+| **listpath** :
+
+```sh
+#!/bin/sh
+
+# Set the field separator for the `for` loop to the `:` that separates dirs in the "$PATH"
+IFS=:
+# If we don't put "$PATH" in "double-quotes", each dir will appear on one line
+# Try removing the "double-quotes" from "$PATH" on the line below to see what happens
+# Also try changing the "double-quotes" to 'single-quotes' to see what happens
+for pdir in $(echo "$PATH"); do
+  echo $pdir
+done
+```
+
+| **16** : `./listpath`
+
 ___
 
 # The Take
