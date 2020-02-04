@@ -1,5 +1,5 @@
 # Shell 201
-## Lesson 4: ls -1, ls -l, ls -a, chmod
+## Lesson 4: ls -1 -l -a -r, chmod
 
 `cd ~/School/VIP/shell/201`
 
@@ -99,15 +99,26 @@ ___
 
 *In Nautilus (the file explorer) press Ctrl + H to toggle view of hidden files and directories*
 
+#### Reverse order
+
+| **31** : `ls`
+
+| **32** : `ls -r`
+
+| **33** : `ls -1`
+
+| **34** : `ls -1r`
+
 ___
 
 # The Take
 
 - `ls -1` (with the number one `-1`, not `-l`) will list files vertically
 - `chmod` will change file permissions, see usage and examples here: [VIP/Cheat-Sheets: Permissions](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
-- `ls -l` will output a list of files with information that includes the permissions that `chmod` changes
-- `ls -a` shows "All" files and directories, even those hidden
-- `ls -la` and `ls -al` combine the flags `-a` and `-l`
+- `ls -l` will output a list of files with "long" information that includes the permissions that `chmod` changes
+- `ls -a` shows "all" files and directories, even those hidden
+- `ls -r` shows files in "reverse" order
+- `ls -la` and `ls -al` combine the flags `-a` and `-l`, also `-arl`, `-r1la`, etc
 - `.` at the beginning of a file or directory name makes it "hidden"
 - Ctrl + H toggles hidden file and directory view in Nautilus
 ___
