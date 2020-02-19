@@ -105,7 +105,7 @@ ___
  - This includes: `ls`, `df`, `who`, `pwd`, `ps aux`, `top`, and many more
 - *Note that `> outputfile` would overwrite the output file; `>> outputfile` would append the output file*
 - "PWD" stands for "present working directory"
-  - `pdw` displays the PWD
+  - `pwd` displays the PWD
 - `who` displays the current user and most recent login time
 - `w` displays uptime, some load information, and user info from `who`
 - `uname` verifies that you are using Linux by outputting "Linux", just in case you forgot
