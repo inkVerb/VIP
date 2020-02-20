@@ -91,7 +91,7 @@ ___
 # The Take
 
 - `netstat` displays network connections to your machine (including Internet)
-- `tcpdump` also displays network, but at a `root` level and updates live
+- `tcpdump` also displays network connections, but at a `root` level and updates live
   - This is useful for finding hackers, but anti-hacking is beyond the scope of this lesson
 - `tcpdump` can only be run as root, `sudo tcpdump`
 - `man` & `info` are the "help" tools for most terminal apps, packages, and Linux commands
