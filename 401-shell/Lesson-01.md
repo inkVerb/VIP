@@ -99,7 +99,7 @@ ls\
 
 *Press Up to see what your last command was: `ls-l~/School/VIP/shell/401`*
 
-*Even breakup character by character, even SPACES! Enter ONE LINE AT A TIME:*
+*Even breakup character by character, TYPE IN THE ENTIRE COMMAND, INCLUDING SPACES:*
 
 | **13** :
 ```sh
@@ -114,7 +114,7 @@ l\
 1
 ```
 
-*Same thing, but copy and past ALL AT ONCE:*
+*Similar, you may copy and past ALL AT ONCE:*
 
 | **14** :
 ```sh

@@ -91,9 +91,9 @@ F10 (or Q to Quit)
 
 *Note the list of every running process, but it is not realtime, so you can scroll through it*
 
-Select ONE browser you are NOT using:
+Make sure you are NOT using Firefox before finishing this lesson!
 
-| **15** : `firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
+| **15** : `firefox &`
 
 *Note we used `&` to keep it from blocking the terminal*
 
@@ -103,13 +103,13 @@ Select ONE browser you are NOT using:
 
 *This uses pipe and grep to find it*
 
-| **17** : `ps aux | grep firefox` or `ps aux | grep chromium-browser` or `ps aux | grep google-chrome` or `ps aux | grep vivaldi`
+| **17** : `ps aux | grep firefox`
 
 *This does the same thing*
 
 ### `pgrep` & `kill`
 
-| **18** : `pgrep firefox` or `pgrep chromium-browser` or `pgrep google-chrome` or `pgrep vivaldi`
+| **18** : `pgrep firefox`
 
 *Note the PID, it's the number*
 
@@ -117,7 +117,7 @@ Select ONE browser you are NOT using:
 
 *Run it again*
 
-| **20** : `firefox &` or `chromium-browser &` or `google-chrome &` or `vivaldi &`
+| **20** : `firefox &`
 
 *Now kill it by process name using `killall`*
 
