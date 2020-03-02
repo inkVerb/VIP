@@ -133,7 +133,7 @@ l \
 
 | **17** : `ls .*history`
 
-| **18** : `vim .bash_history` (or whatever the file name is)*
+| **18** : `vim .bash_history` *(or whatever the file name is)*
 
 *Vim: `:set number`*
 
@@ -147,7 +147,7 @@ l \
 
 *Again...*
 
-| **20** : `vim .bash_history` (or whatever the file name is)*
+| **20** : `vim .bash_history` *(or whatever the file name is)*
 
 *Vim: `:set number`*
 

@@ -115,6 +115,8 @@ esac
 
 | **26** : `gedit 05-case-options`
 
+*Note `while :` will loop without a test and only stop with a `break` or `exit`*
+
 | **27** : `./05-case-options`
 
 *Input any of the following: a, b, f, g, v, z, and others; finally: quit*
@@ -142,8 +144,6 @@ esac
 ### V. `case` `y/n` & `exit 1`
 
 | **33** : `gedit 05-case-yn-loop`
-
-*Note `while :` will loop without a test and only stop with a `break` or `exit`*
 
 *Note `exit 1` will produce* STDOUT *to `1>` but `exit 0` has no output just as `2>` is from an unwritten `exit 2` event*
 
