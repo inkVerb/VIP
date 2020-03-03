@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 8: $IFS (Internal Field Separator)
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 ___
@@ -75,10 +77,10 @@ IFS=$'\n' # Use the $IFS variable to define a "loopable" field as "each" new lin
 
 for EveryLine in $(cat countfile); do
 
-RANDOM_string="$(pwgen -s -1 8)" # Each $RANDOM_string will be different in each loop
+Random_string="$(pwgen -s -1 8)" # Each $Random_string will be different in each loop
 
-echo "$EveryLine" | sed "s/add2end/IFS_$RANDOM_string/"
-echo "$EveryLine" | sed "s/add2end/IFS_$RANDOM_string/" >> randomlooped
+echo "$EveryLine" | sed "s/add2end/IFS_$Random_string/"
+echo "$EveryLine" | sed "s/add2end/IFS_$Random_string/" >> randomlooped
 
 done
 
@@ -120,9 +122,9 @@ Set `$IFS` to a "tab"
 
 IFS=$'\t' # Use the $IFS variable to define a "loopable" field as "each" new line"
 
-for EveryTAB in $(cat randomlooped); do
+for EveryTab in $(cat randomlooped); do
 
-echo "IFS_tab_ $EveryTAB"
+echo "IFS_tab_ $EveryTab"
 
 done
 
@@ -215,8 +217,8 @@ IFS=:
 # If we don't put "$PATH" in "double-quotes", each dir will appear on one line
 # Try removing the "double-quotes" from "$PATH" on the line below to see what happens
 # Also try changing the "double-quotes" to 'single-quotes' to see what happens
-for pdir in $(echo "$PATH"); do
-  echo $pdir
+for pDir in $(echo "$PATH"); do
+  echo $pDir
 done
 ```
 

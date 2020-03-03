@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 5: More with Variables
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 ___
@@ -287,35 +289,35 @@ myShiftedCount = $myShiftedCount
 ```sh
 #!/bin/sh
 
-myVAR="Pineapple pie"
+myVar="Pineapple pie"
 
 echo "without quotes:"
 echo $9
 echo $10
 echo $11
 echo $12
-echo $myVAR
+echo $myVar
 
 echo "with quotes:"
 echo "$9"
 echo "$10"
 echo "$11"
 echo "$12"
-echo "$myVAR"
+echo "$myVar"
 
 echo "{brackets} without quotes:"
 echo ${9}
 echo ${10}
 echo ${11}
 echo ${12}
-echo ${myVAR}
+echo ${myVar}
 
 echo "{brackets} with quotes:"
 echo "${9}"
 echo "${10}"
 echo "${11}"
 echo "${12}"
-echo "${myVAR}"
+echo "${myVar}"
 ```
 *Run it and watch carefully*
 
@@ -334,35 +336,35 @@ echo "${myVAR}"
 ```bash
 #!/bin/bash
 
-myVAR="Pineapple pie"
+myVar="Pineapple pie"
 
 echo "without quotes:"
 echo $9
 echo $10
 echo $11
 echo $12
-echo $myVAR
+echo $myVar
 
 echo "with quotes:"
 echo "$9"
 echo "$10"
 echo "$11"
 echo "$12"
-echo "$myVAR"
+echo "$myVar"
 
 echo "{brackets} without quotes:"
 echo ${9}
 echo ${10}
 echo ${11}
 echo ${12}
-echo ${myVAR}
+echo ${myVar}
 
 echo "{brackets} with quotes:"
 echo "${9}"
 echo "${10}"
 echo "${11}"
 echo "${12}"
-echo "${myVAR}"
+echo "${myVar}"
 ```
 
 *Run it and watch carefully*
@@ -382,7 +384,7 @@ echo "${myVAR}"
 ```sh
 #!/bin/sh
 
-myVAR="Hello world!"
+myVar="Hello world!"
 
 ~/School/VIP/shell/401/variable-exported
 ```
@@ -393,7 +395,7 @@ myVAR="Hello world!"
 ```sh
 #!/bin/sh
 
-echo "${myVAR}"
+echo "${myVar}"
 ```
 
 *Run the first script and watch carefully*
@@ -411,7 +413,7 @@ echo "${myVAR}"
 ```sh
 #!/bin/sh
 
-export myVAR="Hello world!"
+export myVar="Hello world!"
 
 ~/School/VIP/shell/401/variable-exported
 ```
@@ -422,7 +424,33 @@ export myVAR="Hello world!"
 
 *Note a variable only carries into another script if declared with: `export`*
 
-### VII. `readonly` variables (constants)
+### VII. Removing text in a variable's value: `${var#foo}` vs `${var%foo}`
+
+*Edit this script*
+
+| **26** : `gedit varfoo`
+
+*It should look like this:*
+
+| **varfoo** :
+
+```sh
+#!/bin/sh
+
+var="fooapplefoo"
+var1=${var#foo}
+var2=${var%foo}
+
+echo "var: $var
+var1: $var1
+var2: $var2"
+```
+
+| **27** : `./varfoo`
+
+*Take a good look at that*
+
+### VIII. `readonly` variables (constants)
 
 *"Constants" are, basically, variables that can't change (oxymoron, but you get the idea)*
 
@@ -432,7 +460,7 @@ export myVAR="Hello world!"
 
 *Edit this script*
 
-| **26** : `gedit variable-readonly-1`
+| **28** : `gedit variable-readonly-1`
 
 *It should look like this:*
 
@@ -453,13 +481,13 @@ MYROVAR="I am changed!"
 
 *Run it and watch carefully*
 
-| **27** : `./variable-readonly-1`
+| **29** : `./variable-readonly-1`
 
 #### 2. You can't `unset` a `readonly` variable
 
 *Edit this script*
 
-| **28** : `gedit variable-readonly-2`
+| **30** : `gedit variable-readonly-2`
 
 *It should look like this:*
 
@@ -480,7 +508,7 @@ unset MYROVAR
 
 *Run it and watch carefully*
 
-| **29** : `./variable-readonly-2`
+| **31** : `./variable-readonly-2`
 
 **Usually, "should-be-constant variables" are ALL_UPPERCASE, it's just a good Shell coder's healthy habit**
 
@@ -488,32 +516,117 @@ unset MYROVAR
 
 *ALL_UPPERCASE variables may or may not be "`readonly`"; they just "shouldn't" be changed, according to common practice*
 
-### VIII. Removing text in a variable's value: `${var#foo}` vs `${var%foo}`
+### IX. Terminal & environment variables (`set`, `printenv` & `export`)
 
-*Edit this script*
+Ready the CLI (if needed)
 
-| **30** : `gedit varfoo`
+`cd ~/School/VIP/shell/401`
 
-*It should look like this:*
+#### `set` *without arguments* lists all current variables and functions, everywhere
 
-| **varfoo** :
+| **32** : `set`
 
-```sh
-#!/bin/sh
+*It listed everything, let's do one page at a time...*
 
-var="fooapplefoo"
-var1=${var#foo}
-var2=${var%foo}
+| **33** : `set | more`
 
-echo "var: $var
-var1: $var1
-var2: $var2"
-```
+*We will do more with `set` in [Lesson 9](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)*
 
-| **31** : `./varfoo`
+#### Command line variables
 
-*Take a good look at that, would ya!*
+*You can work with variables directly...*
 
+| **34** : `myvar="Yoohoo!"`
+
+| **35** : `echo $myvar`
+
+| **36** : `unset myvar`
+
+| **37** : `echo $myvar`
+
+*...Now it's gone!*
+
+#### `printenv` lists all variables in the *environment*; you may remember from [101-Lesson 3](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-03.md)
+
+| **38** : `printenv`
+
+| **39** : `printenv USER`
+
+| **40** : `echo $USER`
+
+*We can add a variable to the environment...*
+
+| **41** : `myvar="Yipyip"`
+
+| **42** : `echo $myvar`
+
+| **43** : `printenv myvar`
+
+*I didn't display via `printenv` because it's not in the environment, let's put it there...*
+
+| **44** : `export myvar`
+
+| **45** : `printenv myvar`
+
+*Try looking for it...*
+
+| **46** : `printenv`
+
+*We can change it...*
+
+| **47** : `myvar="Yakyak"`
+
+| **48** : `echo $myvar`
+
+| **49** : `printenv myvar`
+
+*And remove it...*
+
+| **50** : `unset myvar`
+
+| **51** : `echo $myvar`
+
+| **52** : `printenv myvar`
+
+*Make it `readonly`...*
+
+| **53** : `myvar="Coocoo"`
+
+| **54** : `echo $myvar`
+
+| **55** : `readonly myvar`
+
+| **56** : `myvar="Coocoo"`
+
+| **57** : `unset myvar`
+
+*...We can't change a `readonly` variable*
+
+**One problem: `readonly` variables should be $ALL_CAPPS for good coding etiquette**
+
+*Let's do it right, you can also make a variable `readonly` when you first set it...*
+
+| **58** : `readonly MY_NEW_VAR="Cadoo"`
+
+| **59** : `echo $MY_NEW_VAR`
+
+| **60** : `MY_NEW_VAR="Nutty"`
+
+*...good, it's `readonly`*
+
+| **61** : `export MY_NEW_VAR`
+
+| **62** : `printenv MY_NEW_VAR`
+
+*That's how it's done*
+
+*All in one command...*
+
+| **63** : `export readonly ALSO_VAR="VIP Linux"`
+
+| **64** : `printenv ALSO_VAR`
+
+*Note `export readonly` is the order; `readonly export` **will not** work*
 ___
 
 # The Take
@@ -528,20 +641,30 @@ ___
   - Don't let the similarity make you lazy, avoid `$*` unless you need it specifically!
 - `$#` is the number of arguments
 - `unset` unsets (removes) a variable's value
-  - Syntax: `unset VARIABLE_TO_UNSET`
+  - Syntax: `unset Variable_to_unset`
 - Variables may be wrapped in curly brackets `${variable}` when called
   - ***In BASH (not Shell)*** this is necessary for arguments (`$1`, `$2`, etc) larger than 9
     - `$10` would register as *argument one* (`$1`)
     - `${10}` would register as a *argument ten*
   - This also helps variables work in some situations they otherwise wouldn't
-- `export` carries a variable into other scripts
-  - Syntax: `export NEWVARIABLE="Variable's value"`
-- `readonly` makes a variable both unable to change and unable to `unset`
-  - Syntax: `readonly NEWVARIABLE="Variable's value"`
-  - It's common practice in Shell coding to name variables that "shouldn't" change with ALL_UPPERCASE
-- Removal:
+- Removal within variable values:
   - `${var#foo}` removes test at the **beginning** of a variable's value
   - `${var%foo}` removes test at the **end** of a variable's value
+- `export` adds a variable to the *environment*, allowing it to be into other scripts
+  - Syntax: `export NewVariable="Variable's value"`
+  - Syntax for already assigned: `export NewVariable`
+- `readonly` makes a variable both unable to change and unable to `unset`
+  - Syntax: `readonly NewVariable="Variable's value"`
+  - Syntax for already assigned: `readonly NewVariable`
+  - It's common practice in Shell coding to name variables that "shouldn't" change with ALL_UPPERCASE
+- Terminal & environment variables
+  - Variables can be assigned, called, and `unset` directly in the terminal from the CLI
+  - `set` *without arguments* lists all current variables and functions, everywhere
+  - `printenv` lists variables in the *environment*; all without arguments, or individually:
+    - Individual syntax: `printenv Variable_to_Show`
+  - `export` and `readonly` can be used together when assigning a variable; *order matters!*
+    - `export readonly NewVariable="Variable's value"`
+
 - See usage and examples here: [Variables](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Variables.md)
 ___
 

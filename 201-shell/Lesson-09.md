@@ -1,6 +1,8 @@
 # Shell 201
 ## Lesson 9: du, df, top, ps aux, pgrep, kill
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/201`
 
 #### [VIP/Cheat-Sheets: Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)

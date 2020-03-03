@@ -1,6 +1,8 @@
 # Shell 101
 ## Lesson 8: echo, sed, cat, tee & pipe scripts
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/101`
 
 ___

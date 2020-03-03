@@ -1,6 +1,8 @@
 # Shell 201
 ## Lesson 3: su, sudo, apt update, apt upgrade, apt install, lsb_release
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/201`
 
 ___
@@ -18,7 +20,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su USERNAME`
+> | **S1** : `su Username`
 >
 ___
 

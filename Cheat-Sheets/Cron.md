@@ -2,7 +2,7 @@
 
 Learn more about using `cron` tasks in: **[Shell 401 Lesson 3: Cron Daemon](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)**
 
-## I. Proper `cron` Task Line Formatting
+## I. Proper `cron` task line formatting
 
 `[minute] [hour] [date_of_the_month] [month] [day_of_the_week] (user) [Shell_command]`
 
@@ -80,9 +80,9 @@ Examples of a `cron` line:
 - `@hourly` = `0 * * * *`
 - `@reboot` = at every system startup
 
-## II. Ways to Run `cron` Tasks
+## II. Ways to run `cron` tasks
 
-### 1. Normal Schedules
+### 1. Normal schedules
 Put an **executable script** in one of these directories:
 
 - Hourly: `/etc/cron.hourly/`
@@ -92,18 +92,18 @@ Put an **executable script** in one of these directories:
 
 **Instructions:**
 1. Each file here is a simple BASH or Shell script
-2. File Permissions: `rwxr-xr-x` set with: `chmod 755 CRON_SCRIPT_NAME`
+2. File Permissions: `rwxr-xr-x` set with: `chmod 755 Cron_Script_Name`
 
-### 2. Custom Schedules
+### 2. Custom schedules
 Put a **`cron` task file** in this directory:
 
 - Cron directory: `/etc/cron.d/`
 
 **Instructions:**
 1. Each `cron` file has one to-be-run Shell script *per line* with `cron` schedule settings (here: [VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
-2. File Permissions: `rw-r--r--` set with: `chmod 644 CRON_TASK_NAME`
+2. File Permissions: `rw-r--r--` set with: `chmod 644 Cron_Task_Name`
 3. If creating the file by using `echo` use single 'quotes' since double "quotes" will change the meaning of some characters, though you may never see the difference in the text file
-4. The Shell script listed at the end of the line *must be executable*, probably `rwxr-xr-x` set with: `chmod 755 SCRIPT_NAME`
+4. The Shell script listed at the end of the line *must be executable*, probably `rwxr-xr-x` set with: `chmod 755 Script_Name`
 
 ### 3. Per-user `cron` task profiles via `crontab`
 
@@ -111,9 +111,9 @@ Every user gets a `crontab` file
 
 **Before you start:**
 1. The `crontab` profile has one to-be-run Shell script *per line* with `cron` schedule line formatting (here: [VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
-2. The Shell script listed at the end of the line *must be executable*, probably using: `chmod ug+x SCRIPT_FILE`
+2. The Shell script listed at the end of the line *must be executable*, probably using: `chmod ug+x Script_Name`
 3. The first time you run `crontab` you will be asked to choose an editor, that's normal
-4. `crontab` records are usually kept here: `/var/spool/cron/crontabs/USERNAME`, don't touch!
+4. `crontab` records are usually kept here: `/var/spool/cron/crontabs/Username`, don't touch!
 5. This is how most self-important instructors will tell everyone in the known multiverse to run `cron` tasks
   - You don't have to use your `crontab` profile, but if you ask for help with other `cron` methods, expect "ONLY use `crontab` you delinquent!" to be a common answer
 
@@ -129,10 +129,10 @@ Problems with cron tasks are normal when developing, here are some things to che
 
 ### 1. Permissions
 1. Scripts must be executable, usually:
-  - `rwxr-xr-x` set with: `chmod 755 SCRIPT_NAME`
-  - `rwxrwxr-x` set with: `chmod 775 SCRIPT_NAME` (less secure, may be needed for groups)
+  - `rwxr-xr-x` set with: `chmod 755 Script_Name`
+  - `rwxrwxr-x` set with: `chmod 775 Script_Name` (less secure, may be needed for groups)
 2. `cron` task schedules
-  - `rw-r--r--` set with: `chmod 644 CRON_TASK_NAME`
+  - `rw-r--r--` set with: `chmod 644 Cron_Task_Name`
 3. Which files go where - *[II. Ways to Run cron Tasks](#ii-ways-to-run-cron-tasks)*
   - Actual scripts go in directories like: `/etc/cron.hourly/`, `/etc/cron.weekly/`, etc (`755`)
   - `cron` task files go in `cron.d` (`644`)

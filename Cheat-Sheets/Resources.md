@@ -7,10 +7,10 @@
   - `ps` only about itself
   - `ps u` processes run by the current user
     - `u` = list users
-  - `ps -u USER` processes run by a specific user
-  - `ps x -u USER` processes run by a specific user with extra information
+  - `ps -u User` processes run by a specific user
+  - `ps x -u User` processes run by a specific user with extra information
     - `x` = extra details
-  - `ps x -Hu USER` (pr `ps x -H -u USER`) same as above, but organized in a tree
+  - `ps x -Hu User` (pr `ps x -H -u User`) same as above, but organized in a tree
     - `-H` = tree
   - `ps aux` all processes on the system with user and detailed info
     - `a u x` in any order
@@ -27,7 +27,7 @@ ___
 ## II. `pgrep`
 - This lists only PIDs for a process
 - This is useful to get a PID so you can kill it from the terminal with `kill PID`
-- Usage: `pgrep PROCESS`
+- Usage: `pgrep Process`
 - Examples:
   - `pgrep gedit`
   - `pgrep vlc`
@@ -59,7 +59,7 @@ ___
 - Many apps can be set up to run as a service, such as a Node.js app
 ### `service`
 - `service` is widely considered outdated as of 2018
-- Syntax: `service PROCESS ACTION`
+- Syntax: `service Process Action`
 - Examples: (with `apache2`, could be anything, `postfix`, `dovcecot`, etc)
     - `service apache2 start` *start the process*
     - `service apache2 restart` *restart the process (kill, don't wait)*
@@ -70,7 +70,7 @@ ___
 
 ### `systemctl`
 - `systemctl` is widely considered standard as of 2018
-- Syntax: `service ACTION PROCESS`
+- Syntax: `service Action Process`
 - Examples: (with `apache2`, could be anything, `postfix`, `dovcecot`, etc)
     - `systemctl start apache2` *start the process*
     - `systemctl restart apache2` *restart the process (kill, don't wait)*
@@ -166,7 +166,7 @@ ___
 - Common flags & "options":
   - `-t TAG` tag, search a tag
   - `-p PRIORITY` priority, search "priority significance"
-    - **Syntax:** `-p FACILITY.PRIORITY` (see key below)
+    - **Syntax:** `-p Facility.Priority` (see key below)
   - `-r` reverse order, to view most recent log entries first
   - `-f` follow most recent entries *(Ctrl + C to close)*
   - `-o OPTION` option
@@ -188,8 +188,8 @@ ___
 
 ## VII. `date`
 - `date` outputs time information
-- Syntax: `date +ARGUMENTS`
-- Arguments can be combined with other characters
+- Syntax: `date +Options`
+- Options can be combined with other characters
 - Examples:
   - `date +%Y_%m_%d_%T`
   - `date +%Y/%m/%d_%T`
@@ -218,7 +218,7 @@ ___
 
 ## VIII. `pwgen`
 - `pwgen` creates sets of random characters, usually useful as passwords
-- Syntax: `pwgen ARGUMENTS`
+- Syntax: `pwgen Arguments`
 - `pwgen` normal produces a large number of random character sets and needs `-1` not to
 - Flags can be combined
 - Examples:

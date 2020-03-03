@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 7: Functions, source & Combining Tests
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
@@ -11,9 +13,9 @@ ___
 ### Combining tests
 
 ```sh
-if [ TEST IS TRUE ] && [ TEST THIS ]... ;fi
+if [ Test is true ] && [ Test this ]... ;fi
 
-if [ TEST IS FALSE ] || [ TEST THIS ]... ;fi
+if [ Test is false ] || [ Test this ]... ;fi
 ```
 
 **...BUT it does NOT need to be in a test...**
@@ -83,15 +85,15 @@ Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
 #### 4 Rules of a function:
 1. Script inside a script
 2. Arguments work (`$1`, `$2`, etc)
-3. `local VAR="value"` (function-only variables)
+3. `local Var="Value"` (function-only variables)
 4. Define first, call later
 
 ```bash
 # Define (create):
 newFunctionName() {
 # Script here, eg:
-local VARIABLE="apple pie"
-echo "$1 and $VARIABLE"
+local Variable="apple pie"
+echo "$1 and $Variable"
 }
 
 # Call (use):
@@ -169,8 +171,8 @@ ___
   - `global` *(default)*
   - `local`
 - Function variable syntax:
-  - `global variable="value"` *(optional)*
-  - `local variable="value"`
+  - `global Variable="value"` *(optional)*
+  - `local Variable="value"`
 ___
 
 #### [Lesson 8: date & pwgen](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)

@@ -1,6 +1,8 @@
 # Shell 101
 ## Lesson 10: grep
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/101`
 
 ___

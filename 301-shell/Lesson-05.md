@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 5: while, until & case
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
@@ -10,10 +12,10 @@ ___
 
 ### I. `while`
 
-### "If the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
+### "If the `[Test]` is `true`, `while` will `do` through `done`, then take the `[Test]` again."
 
 ```sh
-while [ TEST IS TRUE ]
+while [ Test_is_true ]
 do
   ...doing something
 done
@@ -43,10 +45,10 @@ done
 
 ### II. `until`
 
-### "If the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
+### "If the `[Test]` is `false`, `until` will `do` through `done`, then take the `[Test]` again."
 
 ```sh
-until [ TEST IS FALSE ]
+until [ Test_is_false ]
 do
   ...doing something
 done
@@ -87,12 +89,12 @@ done
 ### "Multiple choice variable `case`"
 
 ```sh
-case $VARIABLE in
+case $Var in
   apples)
-    ...do something because $VARIABLE = apples
+    ...do something because $Var = apples
   ;;
   berries)
-    ...do something because $VARIABLE = berries
+    ...do something because $Var = berries
   ;;
 esac
 ```
@@ -156,8 +158,8 @@ ___
 # The Take
 
 - `while` & `until` loops work the same way, but with opposite tests
-  - "If the `[test]` is `true`, `while` will `do` through `done`, then take the `[test]` again."
-  - "If the `[test]` is `false`, `until` will `do` through `done`, then take the `[test]` again."
+  - "If the `[Test]` is `true`, `while` will `do` through `done`, then take the `[Test]` again."
+  - "If the `[Test]` is `false`, `until` will `do` through `done`, then take the `[Test]` again."
 - `case` is a multiple choice test for variables
   - "Multiple choice, multiple `case`, a variable is anything of many things."
 
@@ -172,7 +174,7 @@ ___
   - `do` opens the mini-script to be looped
   - `done` closes the mini-script
 - Syntax of the `while` line:
-  - `while` `CONDITIONS TO BE TESTED`
+  - `while` `[ Conditions_to_be_tested ]`
   - `while :` will loop without a test until a `break` or `exit`
 - See usage and examples here: [Tests: while](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iv-while-do-done)
 
@@ -187,7 +189,7 @@ ___
   - `do` opens the mini-script to be looped
   - `done` closes the mini-script
 - Syntax of the `until` line:
-  - `until` `CONDITIONS TO BE TESTED`
+  - `until` `[ Conditions_to_be_tested ]`
   - `until :` will loop without a test until a `break` or `exit`
 - See usage and examples here: [Tests: until](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#v-until-do-done)
 
@@ -209,7 +211,7 @@ ___
   - `*)` what to do if the case variable doesn't match any above case
   - `esac` closes the case index
 - Syntax of the `while` line:
-  - `case` `$VARIABLE_BEING_MATCHED`
+  - `case` `$Variable_being_matched`
 - See usage and examples here: [Tests: case](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#vii-case-esac)
 
 ___

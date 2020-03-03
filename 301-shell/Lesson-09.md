@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 9: Arithmetic
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
@@ -8,7 +10,7 @@
 
 ___
 
-### I. `${#VARIABLE}`
+### I. `${#Variable}`
 
 | **1** : `gedit 09-count`
 
@@ -96,7 +98,7 @@ ___
 
 | **35** : `./09-operators -5 -5 ne`
 
-#### B. Substitute the `$VARIABLE`
+#### B. Substitute the `$Variable`
 
 | **36** : `gedit 09-operators-subvar`
 

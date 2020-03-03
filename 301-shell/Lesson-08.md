@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 8: date & pwgen
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301`
 
 - [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
@@ -129,7 +131,7 @@ ___
   - all options begin with `+`
   - each option begins with `%`
   - other characters may be included as a means of formatting the output
-- Syntax: `date +OPTIONS`
+- Syntax: `date +Options`
 - See usage and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#vii-date)
 
 ## `pwgen`

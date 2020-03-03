@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 11: RegEx Character Classes & Heredocs
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 ___
@@ -137,7 +139,7 @@ EOF
 #!/bin/sh
 
 # Declare the variable and start the heredoc on one line
-EOFVAR=$(cat <<EOF
+EOFvar=$(cat <<EOF
 I'm the heredoc variable.
 I have multiple lines.
 I done.
@@ -146,10 +148,10 @@ EOF
 # End the heredoc with the normal $() format, but on multiple lines
 
 echo "No quote echo:"
-echo $EOFVAR
+echo $EOFvar
 
 echo "Quoted echo:"
-echo "$EOFVAR"
+echo "$EOFvar"
 ```
 
 *Run it*

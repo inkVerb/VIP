@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 2: File System Hierarchy (FSH)
 
+Ready the CLI (might not be needed)
+
 `cd ~/School/VIP/shell/401`
 
 ___
@@ -24,7 +26,7 @@ This is the directory of all directories.
 
 | **4** : `ls`
 
-This is where your stuff goes. All your `Documents/` and `Downloads/` and `Desktop/` and other folders are in `/home/YOURUSER/`, which is also the same as `~/` since it changes from user to user.
+This is where your stuff goes. All your `Documents/` and `Downloads/` and `Desktop/` and other folders are in `/home/YourUSER/`, which is also the same as `~/` since it changes from user to user.
 
 #### `/root/` – "Root" user Home Directory (also what `sudo` calls 'home')
 
@@ -100,7 +102,7 @@ These are more basic binaries, but they are used by the system processes, not a 
 
 | **18** : `ls`
 
-This is where installable binaries go from installable packages. When you run `sudo apt install SOMETHING` the installed program will usually put its executable files here.
+This is where installable binaries go from installable packages. When you run `sudo apt install Something` the installed program will usually put its executable files here.
 
 It is called the "user" directory because, for the most part, all desktop users will access binaries (programs) that have been installed to this directory.
 

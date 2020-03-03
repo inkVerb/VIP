@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 6: exit & journalctl
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301`
 
 - [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
@@ -13,7 +15,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su USERNAME` *input the password*
+> | **S1** : `su Username` *input the password*
 ___
 
 ### *Note `exit` & `journalctl` are used for logs*
@@ -160,6 +162,8 @@ ___
 
 ## II. Custom output logs
 
+Ready the CLI (if needed)
+
 `cd ~/School/VIP/shell/301/logs`
 
 ___
@@ -297,6 +301,8 @@ ___
 - *gedit: Reload `2.log`* ...error message—because `ls` failed
 
 ## III. Logging with `exit` codes
+
+Ready the CLI (if needed)
 
 `cd ~/School/VIP/shell/301/logs`
 

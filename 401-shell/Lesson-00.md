@@ -9,7 +9,7 @@ __
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su USERNAME`
+> | **S1** : `su Username`
 >
 > Install the tools:
 >

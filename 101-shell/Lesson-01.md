@@ -1,6 +1,8 @@
 # Shell 101
 ## Lesson 1: gedit, echo & sed
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/101`
 
 ___

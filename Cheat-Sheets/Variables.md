@@ -87,7 +87,7 @@ Using `readonly variable=...` will create a variable that can neither be changed
 For example:
 
 ```sh
-readonly READONLYVAR="I can never be changed in this script."
+readonly READONLYVar="I can never be changed in this script."
 ```
 
 #### `local`: Works only *inside* a function

@@ -1,6 +1,8 @@
 # Shell 101
 ## Lesson 12: grep with Special Characters
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/101`
 
 ___

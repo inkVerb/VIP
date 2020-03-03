@@ -1,6 +1,8 @@
 # Shell 201
 ## Lesson 4: ls -1 -l -a -r, chmod
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/201`
 
 #### [Permissions Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Permissions.md)

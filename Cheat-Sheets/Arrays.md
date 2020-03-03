@@ -8,9 +8,9 @@ An array is a variable with multiple values, as if each value belongs to a diffe
 
 Shell variable:
 ```sh
-VAR=Something
+Var=Something
 
-echo $VAR
+echo $Var
 
 # Output: "Something"
 
@@ -18,16 +18,16 @@ echo $VAR
 
 BASH "multiverse" variable (AKA 'array'):
 ```bash
-ARRAY=(Something Otherthing)
+Array=(Something Otherthing)
 
-echo ${ARRAY[0]}
+echo ${Array[0]}
 # Output: "Something"
 
-echo ${ARRAY[1]}
+echo ${Array[1]}
 # Output: "Otherthing"
 
 # Note: If you don't define an alternate multiverse, it will use the base, 0
-echo $ARRAY
+echo $Array
 # Output: "Something"
 
 ```
@@ -39,21 +39,21 @@ In a normal array, each value has an index "key" number, the first is `0`.
 ```bash
 # Set the values of the array all at once:
 # key: [0] [1] [2]   [3]  [4]  (alternative multiverse numbers, 0 is the base multiverse)
-ARRAY=(one two three four five)
+Array=(one two three four five)
 
 # Above is the same as...
-ARRAY[0]=one
-ARRAY[1]=two
-ARRAY[2]=three
-ARRAY[3]=four
-ARRAY[4]=five
+Array[0]=one
+Array[1]=two
+Array[2]=three
+Array[3]=four
+Array[4]=five
 
 # echo the array values like this...
-echo ${ARRAY[0]}
-echo ${ARRAY[1]}
-echo ${ARRAY[2]}
-echo ${ARRAY[3]}
-echo ${ARRAY[4]}
+echo ${Array[0]}
+echo ${Array[1]}
+echo ${Array[2]}
+echo ${Array[3]}
+echo ${Array[4]}
 ```
 
 ___
@@ -65,26 +65,26 @@ In an associative array, the index key can become an alpha-numeric value, such a
 *(It is easier to find your way around different multiverses if they have names rather than numbers.)*
 
 ```bash
-# First "declare" an empty "associative" array: "ASCRAY"
-declare -A ASCRAY
+# First "declare" an empty "associative" array: "AsocArr"
+declare -A AsocArr
 
 # Set the values of the array all at once:
 # key:      [a]     [b]     [c]       [d]      [e]  (multiverse names)
-ASCRAY=([a]=one [b]=two [c]=three [d]=four [e]=five)
+AsocArr=([a]=one [b]=two [c]=three [d]=four [e]=five)
 
 # Above is the same as...
-ASCRAY[a]=one
-ASCRAY[b]=two
-ASCRAY[c]=three
-ASCRAY[d]=four
-ASCRAY[e]=five
+AsocArr[a]=one
+AsocArr[b]=two
+AsocArr[c]=three
+AsocArr[d]=four
+AsocArr[e]=five
 
 # echo the array values like this...
-echo ${ASCRAY[a]}
-echo ${ASCRAY[b]}
-echo ${ASCRAY[c]}
-echo ${ASCRAY[d]}
-echo ${ASCRAY[e]}
+echo ${AsocArr[a]}
+echo ${AsocArr[b]}
+echo ${AsocArr[c]}
+echo ${AsocArr[d]}
+echo ${AsocArr[e]}
 ```
 
 ### IV. Special Characters: `@` `*` `!` `#`

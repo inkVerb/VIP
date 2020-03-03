@@ -3,6 +3,12 @@
 
 ___
 
+### CLI: Command Line Interface
+
+#### 'CLI' = how to work in the terminal
+
+#### 'Script' = CLI commands put into a file to run automatically
+
 ### Formatting & instructions
 
 This is normal text, which may label or tell something, it is rare in these lessons.
@@ -36,6 +42,23 @@ This is normal text, which may label or tell something, it is rare in these less
 *Let's enter the fourth and final command, which also won't work*
 
 | **4** : `fourth broken command`
+
+### Capital and lowercase and ALLCAPS
+
+*Look at this code:*
+
+`code CODE -code Something CODE $code code $AnotherThing code $CODE mySomeThing`
+
+*Mixing uppercase and lowercase indicates a "placeholder": the word could be changed to anything else*
+
+- `Something`
+- `$AnotherThing`
+- `mySomeThing`
+
+*...are all "placeholders"*
+
+*Everything else (`code` or `CODE`) probably doesn't change in how the Shell language*
+
 
 *That's the end of the Orientation*
 
@@ -113,7 +136,9 @@ ___
 
 # The Take
 
+- CLI stands for "Command Line Interface"
 - Commands can be entered into the terminal
+  - *This is called "using the CLI"*
 - Non-commands entered into the terminal will return an error message
 - `preformatted` text (AKA `code`) is either a terminal command or part of a program
   - *This is normal for most code-related websites*

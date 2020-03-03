@@ -2,6 +2,8 @@
 ## Lesson 6: tee
 ## tee = T
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/101`
 
 ___

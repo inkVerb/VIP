@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 3: for VAR in LST do done
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301/one`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
@@ -14,16 +16,16 @@ ___
 
 | **1** : `ln -sfn ~/School/VIP/shell/301/03-* .` *Make sure you include that period at the end!*
 
-### I. `for VAR in LST; do`
+### I. `for Var in Lst; do`
 
 ```sh
-for VARIABLE in SOME_LIST
+for Var in Some_List
 do
-  ...do something, maybe with $VARIABLE
+  ...do something, maybe with $Var
 done
 ```
 
-...This runs many times, every time `$VARIABLE` is something different
+...This runs many times, every time `$Var` is something different
 
 one*
 
@@ -120,7 +122,8 @@ ___
   - `do` opens the mini-script to be looped
   - `done` closes the mini-script
 - Syntax of the `for` line:
-  - `for` `VARIABLE` `in` `CONDITIONS`
+  - `for` `Variable` `in` `List`
+  - (each item will sequentially be assigned as the value of `$Variable`)
 - See usage and examples here: [Tests: for](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iii-for-variabl-in-lst)
 
 ##  `break` & `continue`

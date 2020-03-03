@@ -1,6 +1,8 @@
 # Shell 101
 ## Lesson 7: cat vs echo
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/101`
 
 ___
@@ -79,7 +81,6 @@ ___
 - `cat` preserves "new lines" (paragraph breaks) when used by itself
 - `cat` can source from multiple files separated by spaces, *before* the output file indicator: `>`
 - `cat` can append to an existing file with the output file indicator: `>>`
-
 
 ___
 

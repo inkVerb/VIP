@@ -1,6 +1,8 @@
 # Shell 101
 ## Lesson 2: Arguments & Variables
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/101`
 
 ___

@@ -1,6 +1,8 @@
 # Shell 201
 ## Lesson 10: COMMAND > FILE, pwd, uname, who, w
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/201`
 
 ___

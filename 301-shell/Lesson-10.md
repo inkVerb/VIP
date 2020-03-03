@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 10: BASH Variable Variables & Arrays
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301`
 
 - [Arrays](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Arrays.md)
@@ -79,11 +81,11 @@ Some things can only be done in BASH
 
 ___
 # Rules of BASH Arrays
-## Rule 1: An array CAN'T go inside an array (no 3-D)
-## Rule 2: Declare associative arrays first `declare -A ARRAYNAME`
+## Rule 1: An array *can't* go inside an array (no 3-D)
+## Rule 2: Declare associative arrays first `declare -A ArrayName`
 ## Rule 3: Choose associative or auto-indexed
 EITHER
-### associative: `MyArray=([key]=frst [ky2]=sec) ... MyArray[key] MyArray[ky2]`
+### associative: `MyArray=([key]=frst [ky2]=sec) ... MyArray[key] MyArray[ky2]` (The key can be what you want)
 OR
 ### auto-indexed: `MyArray=(one two) ... MyArray[0] MyArray[1]`
 
@@ -119,7 +121,7 @@ ___
 - The default array key numbers begin with `0` for the first value
 - An "associative" array has customized keys, which are not numbers
 - An associative array must be declared *before* it's values and keys are declared
-  - The array can be declared while empty using `declare -A ARRAY_NAME` or
+  - The array can be declared while empty using `declare -A Array_Name` or
   - The array can be declared with values, later replacing the values with associated keys
 - Syntax:
   - `arrayName=(value0 value1 value2)` declares the array and its values

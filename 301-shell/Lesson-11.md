@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 11: BASH select & dialog
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
@@ -194,7 +196,7 @@ ___
 - The options may be placed in a variable, then called later, like this:
 ```bash
 options="option1 'option 2' Three"
-select inputVariable in $options
+select inputVariable in $Options
 ```
 
 ## `dialog`

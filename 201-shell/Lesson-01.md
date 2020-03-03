@@ -1,6 +1,8 @@
 # Shell 201
 ## Lesson 1: cp, mv, ln -s, rm, touch
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/201`
 
 ___

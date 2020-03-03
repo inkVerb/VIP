@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 3: Cron Daemon & $PATH Variable
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 - [Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md)

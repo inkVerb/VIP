@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 7: More with while & sed
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 ___
@@ -162,7 +164,7 @@ sed "s\afoo\abar\a" # ...Yes, \a can be a delimiter!
 
 *This may be useful in a script with a variable containing your delimiter*
 
-| **20** : `echo "YOUR_CITY" > sedfile`
+| **20** : `echo "Your_City" > sedfile`
 
 | **21** : `gedit sed-delim-var-1 sedfile`
 

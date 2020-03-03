@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 12: Secure Scripting & Command Hacks
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 ___

@@ -16,13 +16,13 @@ $1
 $2
 
 # Set a variable in a file to second variable after command
-NEW_VARIABLE=$2
+NEW_Variable=$2
 
 # Variables after 9 use {}
 ${10}
 
 # Set a variable to a command output
-NEW_VARIABLE=$(first command | next command | next command)
+NEW_Variable=$(first command | next command | next command)
 
 ## Variables of variables (requires BASH)
 #!/bin/bash

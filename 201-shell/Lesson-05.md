@@ -1,6 +1,8 @@
 # Shell 201
 ## Lesson 5: adduser, deluser, chown
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/201`
 
 #### [Permissions Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Permissions.md)
@@ -14,7 +16,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su USERNAME`
+> | **S1** : `su Username`
 ___
 
 ### I. `adduser`
@@ -37,9 +39,11 @@ ___
 
 *..."Switch User", login as pinkypink, "Log Out", then return to this GUI session*
 
-`cd ~/School/VIP/shell/201` (if needed)
+Ready the CLI (if needed)
 
-`su USERNAME` (if needed)
+`cd ~/School/VIP/shell/201`
+
+`su Username`
 
 | **5** : `ls /home/pinkypink`
 
@@ -192,9 +196,11 @@ ___
 
 ### III. Permissions
 
+Ready the CLI (if needed)
+
 `cd ~/School/VIP/shell/201`
 
-`su USERNAME`
+`su Username`
 
 ___
 
@@ -241,7 +247,7 @@ ___
 ___
 > Optional: Login again as a "sudoer" if needed
 >
-> | **S3** : `su USERNAME`
+> | **S3** : `su Username`
 ___
 
 | **47** : `ls -l`

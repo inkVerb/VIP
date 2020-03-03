@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 9: Interpreters, errors, logic, and empty testing
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 ___
@@ -124,12 +126,12 @@ Shell:
 ```sh
 #!/bin/sh
 
-ARRAY=(one two three)
+Array=(one two three)
 
-echo ${ARRAY[0]}
-echo ${ARRAY[1]}
-echo ${ARRAY[2]}
-echo ${ARRAY[@]}
+echo ${Array[0]}
+echo ${Array[1]}
+echo ${Array[2]}
+echo ${Array[@]}
 
 ```
 
@@ -150,12 +152,12 @@ BASH:
 ```bash
 #!/bin/bash
 
-ARRAY=(one two three)
+Array=(one two three)
 
-echo ${ARRAY[0]}
-echo ${ARRAY[1]}
-echo ${ARRAY[2]}
-echo ${ARRAY[@]}
+echo ${Array[0]}
+echo ${Array[1]}
+echo ${Array[2]}
+echo ${Array[@]}
 
 ```
 
@@ -211,7 +213,7 @@ echo ${ARRAY[@]}
 set -ev
 ```
 
-OR
+Or
 ```sh
 #!/bin/sh -ev
 ```
@@ -376,8 +378,8 @@ echo "Done with verbchacho test"
 
 *Consider these simple patterns:*
 ```sh
-true && EXECUTE_COMMAND_IF_TRUE
-false || EXECUTE_COMMAND_IF_FALSE
+true && EXECUTE_COMMAnd_IF_TRUE
+false || EXECUTE_COMMAnd_IF_FALSE
 ```
 
 *Yes, `true` and `false` can be run in the terminal as commands*
@@ -409,13 +411,13 @@ false || EXECUTE_COMMAND_IF_FALSE
 *Example in a Script:*
 
 ```sh
-true && echo "AND/OR is true." || echo "AND/OR is false."
-true && echo "AND is true."
-true || echo "OR is false."
+true && echo "And/Or is true." || echo "And/Or is false."
+true && echo "And is true."
+true || echo "Or is false."
 
-false && echo "AND/OR is true." || echo "AND/OR is false."
-false && echo "AND is true."
-false || echo "OR is false."
+false && echo "And/Or is true." || echo "And/Or is false."
+false && echo "And is true."
+false || echo "Or is false."
 ```
 
 *Consider four scripts:*
@@ -435,15 +437,15 @@ false || echo "OR is false."
 
 echo "No variable, simply stating \"true\""
 # Simple test: true
-true && echo "AND/OR is true." || echo "AND/OR is false."
-true && echo "AND is true."
-true || echo "OR is false."
+true && echo "And/Or is true." || echo "And/Or is false."
+true && echo "And is true."
+true || echo "Or is false."
 
 echo "No variable, simply stating \"false\""
 # Same simple test: false
-false && echo "AND/OR is true." || echo "AND/OR is false."
-false && echo "AND is true."
-false || echo "OR is false."
+false && echo "And/Or is true." || echo "And/Or is false."
+false && echo "And is true."
+false || echo "Or is false."
 
 ```
 
@@ -466,21 +468,21 @@ false || echo "OR is false."
 ```sh
 #!/bin/sh
 
-VAR=true
-echo "Variable set to: $VAR"
+Var=true
+echo "Variable set to: $Var"
 
 # Simple test:
-$VAR && echo "AND/OR is true." || echo "AND/OR is false."
-$VAR && echo "AND is true."
-$VAR || echo "OR is false."
+$Var && echo "And/Or is true." || echo "And/Or is false."
+$Var && echo "And is true."
+$Var || echo "Or is false."
 
-VAR=false
-echo "Variable set to: $VAR"
+Var=false
+echo "Variable set to: $Var"
 
 # Same simple test:
-$VAR && echo "AND/OR is true." || echo "AND/OR is false."
-$VAR && echo "AND is true."
-$VAR || echo "OR is false."
+$Var && echo "And/Or is true." || echo "And/Or is false."
+$Var && echo "And is true."
+$Var || echo "Or is false."
 
 ```
 
@@ -503,21 +505,21 @@ $VAR || echo "OR is false."
 ```sh
 #!/bin/sh
 
-VAR=apples
-echo "Variable set to: $VAR"
+Var=apples
+echo "Variable set to: $Var"
 
 # Simple test:
-$VAR && echo "AND/OR is true." || echo "AND/OR is false."
-$VAR && echo "AND is true."
-$VAR || echo "OR is false."
+$Var && echo "And/Or is true." || echo "And/Or is false."
+$Var && echo "And is true."
+$Var || echo "Or is false."
 
-VAR=pencils
-echo "Variable set to: $VAR"
+Var=pencils
+echo "Variable set to: $Var"
 
 # Same simple test:
-$VAR && echo "AND/OR is true." || echo "AND/OR is false."
-$VAR && echo "AND is true."
-$VAR || echo "OR is false."
+$Var && echo "And/Or is true." || echo "And/Or is false."
+$Var && echo "And is true."
+$Var || echo "Or is false."
 ```
 
 *Run it and watch carefully*
@@ -559,15 +561,15 @@ $VAR || echo "OR is false."
 
 echo "Listing a real directory: iamhere"
 # ls a real directory
-ls iamhere && echo "AND/OR is true, exit code: $?" || echo "AND/OR is false, exit code: $?"
-ls iamhere && echo "AND is true, exit code: $?"
-ls iamhere || echo "OR is false, exit code: $?"
+ls iamhere && echo "And/Or is true, exit code: $?" || echo "And/Or is false, exit code: $?"
+ls iamhere && echo "And is true, exit code: $?"
+ls iamhere || echo "Or is false, exit code: $?"
 
 echo "Listing a fake directory: nothere"
 # ls a fake directory
-ls nothere && echo "AND/OR is true, exit code: $?" || echo "AND/OR is false, exit code: $?"
-ls nothere && echo "AND is true, exit code: $?"
-ls nothere || echo "OR is false, exit code: $?"
+ls nothere && echo "And/Or is true, exit code: $?" || echo "And/Or is false, exit code: $?"
+ls nothere && echo "And is true, exit code: $?"
+ls nothere || echo "Or is false, exit code: $?"
 ```
 
 *Run it and watch carefully*
@@ -597,33 +599,33 @@ Test with `-z`:
 ```sh
 #!/bin/sh
 
-# The variable $VAR is NOT set
-echo "1. \$VAR is NOT yet set!"
+# The variable $Var is NOT set
+echo "1. \$Var is NOT yet set!"
 
-if [ -z "$VAR" ]; then
-echo "NOT set: $VAR"
+if [ -z "$Var" ]; then
+echo "NOT set: $Var"
 else
-echo "IS set: $VAR"
+echo "IS set: $Var"
 fi
 
-# Now, the variable $VAR IS set:
-VAR=varSet
-echo "2. \$VAR has been set!"
+# Now, the variable $Var IS set:
+Var=varSet
+echo "2. \$Var has been set!"
 
-if [ -z "$VAR" ]; then
-echo "NOT set: $VAR"
+if [ -z "$Var" ]; then
+echo "NOT set: $Var"
 else
-echo "IS set: $VAR"
+echo "IS set: $Var"
 fi
 
-# Now, the variable $VAR is unset:
-unset VAR
-echo "3. \$VAR has been UNset!"
+# Now, the variable $Var is unset:
+unset Var
+echo "3. \$Var has been UNset!"
 
-if [ -z "$VAR" ]; then
-echo "NOT set: $VAR"
+if [ -z "$Var" ]; then
+echo "NOT set: $Var"
 else
-echo "IS set: $VAR"
+echo "IS set: $Var"
 fi
 ```
 
@@ -644,33 +646,33 @@ Test with `-n`:
  ```bash
 #!/bin/sh
 
-# The variable $VAR is NOT set
-echo "1. \$VAR is NOT yet set!"
+# The variable $Var is NOT set
+echo "1. \$Var is NOT yet set!"
 
-if [ -n "$VAR" ]; then
-echo "NOT empty set: $VAR"
+if [ -n "$Var" ]; then
+echo "NOT empty set: $Var"
 else
-echo "IS empty set: $VAR"
+echo "IS empty set: $Var"
 fi
 
-# Now, the variable $VAR IS set:
-VAR=varSet
-echo "2. \$VAR has been set!"
+# Now, the variable $Var IS set:
+Var=varSet
+echo "2. \$Var has been set!"
 
-if [ -n "$VAR" ]; then
-echo "NOT empty set: $VAR"
+if [ -n "$Var" ]; then
+echo "NOT empty set: $Var"
 else
-echo "IS empty set: $VAR"
+echo "IS empty set: $Var"
 fi
 
-# Now, the variable $VAR is unset:
-unset VAR
-echo "3. \$VAR has been UNset!"
+# Now, the variable $Var is unset:
+unset Var
+echo "3. \$Var has been UNset!"
 
-if [ -n "$VAR" ]; then
-echo "NOT empty set: $VAR"
+if [ -n "$Var" ]; then
+echo "NOT empty set: $Var"
 else
-echo "IS empty set: $VAR"
+echo "IS empty set: $Var"
 fi
 ```
 
@@ -718,7 +720,7 @@ ___
 - If a variable has been set:
   - `-z` answers `true`
   - `-n` answers `false`
-- If a variable has not been set OR been `unset`:
+- If a variable has not been set Or been `unset`:
   - `-z` answers `false`
   - `-n` answers `true`
 - Examples:

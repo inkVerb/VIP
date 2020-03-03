@@ -1,6 +1,8 @@
 # Shell 201
 ## Lesson 6: wget, curl, git clone
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/201`
 
 **FOR** | **3 - 11** : `cd verb.ink`
@@ -159,7 +161,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su USERNAME`
+> | **S1** : `su Username`
 ___
 
 | **40** : `sudo rm -r vip`

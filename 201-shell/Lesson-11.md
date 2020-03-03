@@ -1,6 +1,8 @@
 # Shell 201
 ## Lesson 11: netstat -natu, tcpdump, man, info
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/201`
 
 ___
@@ -16,7 +18,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su USERNAME`
+> | **S1** : `su Username`
 ___
 
 | **2** : `sudo tcpdump`

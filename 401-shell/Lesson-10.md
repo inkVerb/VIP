@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 10: Dynamics of Functions
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 ___
@@ -139,36 +141,36 @@ echo "Return code: $?"
 
 # Create the function (nothing happens yet)
 varfunction() {
-local VARa="apricots"
-VARb="berries"
+local VarA="apricots"
+VarB="berries"
 
-echo "function VARa = $VARa"
-echo "function VARb = $VARb"
+echo "function VarA = $VarA"
+echo "function VarB = $VarB"
 }
 
 # Set the global variables
-VARa="apples"
-VARb="bananas"
+VarA="apples"
+VarB="bananas"
 
 # echo the global variables
-echo "script VARa = $VARa"
-echo "script VARb = $VARb"
+echo "script VarA = $VarA"
+echo "script VarB = $VarB"
 
 # Call the function
-# VARa sets "local"
-# VARb sets "global"
+# VarA sets "local"
+# VarB sets "global"
 varfunction
 
 # echo the global variables again to see what changed
-echo "script VARa = $VARa"
-echo "script VARb = $VARb"
+echo "script VarA = $VarA"
+echo "script VarB = $VarB"
 ```
 
 *Run it and watch carefully*
 
 | **15** : `./functionlocal`
 
-*Note that the function changed the value of VARb "globally", but VARa only "locally" inside the function*
+*Note that the function changed the value of VarB "globally", but VarA only "locally" inside the function*
 
 ___
 
@@ -183,8 +185,8 @@ ___
 4. Variables in functions can be `local` or `global`
   - `global` is the default
   - Examples:
-    - `local VARIABLE=value`
-    - `global VARIABLE=value`
+    - `local Variable=value`
+    - `global Variable=value`
 5. `exit` & `return`
   - `$?` is the variable for the last `exit` or `return` code
   - Terminal commands have `exit` codes

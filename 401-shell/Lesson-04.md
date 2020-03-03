@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 4: MySQL & `systemctl`
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 - [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
@@ -21,7 +23,7 @@ This teaches basic SQL control operations in MySQL from Shell, without having to
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su USERNAME`
+> | **S1** : `su Username`
 ___
 
 *MySQL can be installed with: `sudo apt install mysql-server`*
@@ -262,7 +264,7 @@ host = localhost
 ___
 > Optional: Login again as a "sudoer" if needed
 >
-> | **S3** : `su USERNAME`
+> | **S3** : `su Username`
 ___
 
 | **48** : `ls`

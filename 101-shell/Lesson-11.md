@@ -1,6 +1,8 @@
 # Shell 101
 ## Lesson 11: RegEx: Quote/Escape Special Characters
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/101`
 
 ___

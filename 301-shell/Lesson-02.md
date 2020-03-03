@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 2: Docs & Pausing (odt2txt, pandoc, rename, sleep, read & wait)
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301`
 
 ___

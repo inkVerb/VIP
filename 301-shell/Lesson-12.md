@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 12: BASH getopts & getopt
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
@@ -58,10 +60,10 @@ ___
 This nifty code allows for a global argument (use with, not part of, `getopts`):
 
 ```bash
-# Create $GLOBALARG
-eval "GLOBALARG=\${${OPTIND}}"
+# Create $globalArg
+eval "globalArg=\${${OPTIND}}"
 # If no argument input
-if [ -z "${GLOBALARG}" ]; then
+if [ -z "${globalArg}" ]; then
  echo "You didn't set any options!"
  echo " How to use:
  $0 -a|b|c|d <option>
@@ -79,8 +81,8 @@ shift "$((OPTIND-1))" # Get $OPTIND out of the way just in case
 And, put this before the main flag `case` loop to handle help and display false flags:
 
 ```bash
-while getopts ":abcdh" flg; do
- case $flg in
+while getopts ":abcdh" Flg; do
+ case $Flg in
 ## Do nothing for valid flags
   abcd)
    :
@@ -125,7 +127,7 @@ done
 
 | **16** : `./12-flags-4 -a Alpha -bcd Bogma`
 
-*...Note "Bogma" came from our `$GLOBALARG` cluster, not from `getopts`*
+*...Note "Bogma" came from our `$globalArg` cluster, not from `getopts`*
 
 | **17** : `./12-flags-4 -a Alpha -e Emancipation -bcd Bogma`
 

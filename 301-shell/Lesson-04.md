@@ -1,6 +1,8 @@
 # Shell 301
 ## Lesson 4: for Applied
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/301/one`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
@@ -16,7 +18,7 @@ ___
 
 ### I. Replacing within Variables
 
-*Note `${VAR%foo}bar` will delete "foo", then append "bar" (like find-replace), if "foo" appears in the variable*
+*Note `${var%foo}bar` will delete "foo", then append "bar" (like find-replace), if "foo" appears in the variable*
 
 | **2** : `gedit 04-var-form-1`
 
@@ -30,7 +32,7 @@ ___
 
 | **7** : `./04-var-form-3`
 
-*`$variable` is the same as `${variable}`, but `${variable}` can do more...*
+*`$Variable` is the same as `${Variable}`, but `${Variable}` can do more...*
 
 | **8** : `gedit 04-var-form-4`
 
@@ -161,8 +163,8 @@ ___
 - It does many things in a short time and with a single command
 
 ## Replacement within variables
-- `${VAR%foo}` will remove "foo" from the value of variable $VAR
-- `${VAR%foo}bar` will remove "foo", then add "bar" to the end the value of variable $VAR
+- `${Var%foo}` will remove "foo" from the value of variable `$Var`
+- `${Var%foo}bar` will remove "foo", then add "bar" to the end the value of variable `$Var`
   - This can be useful to:
     1. Change a string quickly inside a script
     2. Call a known variable based on arguments or a settings file, etc

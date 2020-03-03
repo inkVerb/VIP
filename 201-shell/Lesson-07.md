@@ -1,6 +1,8 @@
 # Shell 201
 ## Lesson 7: tar, xz, zip, gzip, bzip2
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/201`
 
 `wget -O vip.zip https://github.com/inkVerb/vip/archive/master.zip`
@@ -149,6 +151,8 @@ ___
 
 ## II. `xz -2` `gzip` `bzip2` `tar xf`
 
+Ready the CLI (if needed)
+
 `cd ~/School/VIP/shell/201/compress`
 
 ___
@@ -278,6 +282,8 @@ ___
 ___
 
 ## III. `tar cf` `tar tf` `tar rf`
+
+Ready the CLI (if needed)
 
 `cd ~/School/VIP/shell/201/compress`
 

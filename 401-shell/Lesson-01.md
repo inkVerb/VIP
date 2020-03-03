@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 1: Returns & Terminal
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 ___
@@ -167,7 +169,6 @@ l \
 
 | **23** : `cd ~/School/VIP/shell/401`
 
-
 ### IV. "Reverse Search"
 
 *Press Ctrl + R*
@@ -200,7 +201,7 @@ ___
   1. Don't use Windows in the first place
   2. Copy and paste raw text from the questionable file into a Linux text editor like Atom, gedit, `nano`, or `vim`
     - There's a slim chance it might not work
-  3. Use `dos2unix FILE-TO-FIX`, installed with `sudo apt install dos2unix`
+  3. Use `dos2unix File-to-Fix`, installed with `sudo apt install dos2unix`
     - Most certain conversion
 
 ## Multiple Lines, One Command: `\`

@@ -1,5 +1,7 @@
 ## Lesson 12: more, less, head, tail, sort, tac, diff, nano, vi
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/201`
 
 ___

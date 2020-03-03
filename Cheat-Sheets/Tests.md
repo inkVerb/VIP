@@ -94,16 +94,16 @@ Also see: [VIP/Shell 301 – Lesson 1](https://github.com/inkVerb/vip/blob/maste
 
 ___
 
-### III. `for` VARIABL `in` LST
+### III. `for` Variabl `in` LST
 
 - A `for` test loops and does the same thing for each among many items
 
 ```sh
-for VARIABLE in SOME_LIST
+for Variable in SOME_LIST
 
 do
 
-  # ...do something, maybe with $VARIABLE
+  # ...do something, maybe with $Variable
 
 done
 ```
@@ -116,11 +116,11 @@ The `if` test is similar to the `for` looping test, but...
 - `fi` --> `done`
 
 ```sh
-for VARIABL in *.txt
+for Variabl in *.txt
 
 do
 
-echo $VARIABL
+echo $Variabl
 
 done
 ```
@@ -132,7 +132,7 @@ Both of these can also be used in `until` and `while` loops
 - `continue` will skip a loop cycle, doing nothing else
 
 ```sh
-for VARIABL in *.txt
+for Variabl in *.txt
 
 do
 
@@ -140,7 +140,7 @@ do
     continue
   fi
 
-echo $VARIABL
+echo $Variabl
 
 done
 ```
@@ -148,7 +148,7 @@ done
 - `break` will end the loop
 
 ```sh
-for VARIABL in *.txt
+for Variabl in *.txt
 
 do
 
@@ -156,7 +156,7 @@ do
     break
   fi
 
-echo $VARIABL
+echo $Variabl
 
 done
 ```
@@ -287,14 +287,14 @@ ___
 ### VII. `case`... `esac`
 
 ```sh
-case $VARIABLE in
+case $Variable in
 
   apples)
-    # ...do something because $VARIABLE = apples
+    # ...do something because $Variable = apples
   ;;
 
   berries)
-    # ...do something because $VARIABLE = berries
+    # ...do something because $Variable = berries
   ;;
 
 esac
@@ -306,26 +306,26 @@ esac
 - `*` is the "everything not listed" `case` argument, usually to recognize an error and display "help" instructions
 
 ```sh
-case $VARIABL in
+case $Variabl in
 
-# If $VARIABL=a
+# If $Variabl=a
   a)
-   DO SOMETHING "A", maybe with $VARIABL
+   DO SOMETHING "A", maybe with $Variabl
   ;;
 
-# If $VARIABL=b
+# If $Variabl=b
   b)
-   DO SOMETHING "B", maybe with $VARIABL
+   DO SOMETHING "B", maybe with $Variabl
   ;;
 
-# If $VARIABL=wallawalla
+# If $Variabl=wallawalla
   wallawalla)
-   DO SOMETHING "Walla Walla", maybe with $VARIABL
+   DO SOMETHING "Walla Walla", maybe with $Variabl
   ;;
 
-# If $VARIABL= anything else
+# If $Variabl= anything else
   *)
-   DO SOMETHING ELSE, maybe with $VARIABL
+   DO SOMETHING ELSE, maybe with $Variabl
   ;;
 
 esac
@@ -334,16 +334,16 @@ esac
 - `case` options can be separated with a pipe `|`
 
 ```sh
-case $VARIABL in
+case $Variabl in
 
-# If $VARIABL=a
+# If $Variabl=a
   a)
-   DO SOMETHING "A", maybe with $VARIABL
+   DO SOMETHING "A", maybe with $Variabl
   ;;
 
-# If $VARIABL=b OR $VARIABL=c
+# If $Variabl=b or $Variabl=c
   b|c)
-   DO SOMETHING "B or C", maybe with $VARIABL
+   DO SOMETHING "B or C", maybe with $Variabl
   ;;
 
 esac
@@ -352,26 +352,26 @@ esac
 - `case` options can ignore case using brackets
 
 ```sh
-case $VARIABL in
+case $Variabl in
 
-# If $VARIABL=a
+# If $Variabl=a
   [aA] )
-   DO SOMETHING "A", maybe with $VARIABL
+   DO SOMETHING "A", maybe with $Variabl
   ;;
 
-# If $VARIABL=b OR $VARIABL=c
+# If $Variabl=b or $Variabl=c
   [bB] | [cC] )
-   DO SOMETHING "B or C", maybe with $VARIABL
+   DO SOMETHING "B or C", maybe with $Variabl
   ;;
 
-# If $VARIABL=yes OR $VARIABL=y
+# If $Variabl=yes or $Variabl=y
   [yY] | [yY][eE][sS] )
-   DO SOMETHING "yes", maybe with $VARIABL
+   DO SOMETHING "yes", maybe with $Variabl
   ;;
 
-# If $VARIABL=no OR $VARIABL=n
+# If $Variabl=no or $Variabl=n
   [nN] | [nN][oO] )
-   DO SOMETHING "no", maybe with $VARIABL
+   DO SOMETHING "no", maybe with $Variabl
   ;;
 
 esac
@@ -385,16 +385,16 @@ while :
 
 do
 
-case $VARIABL in
+case $Variabl in
 
-# If $VARIABL=a
+# If $Variabl=a
   a)
-   DO SOMETHING "A", maybe with $VARIABL
+   DO SOMETHING "A", maybe with $Variabl
   ;;
 
-# If $VARIABL=stopit
+# If $Variabl=stopit
   stopit)
-   DO SOMETHING about stopping, maybe with $VARIABL
+   DO SOMETHING about stopping, maybe with $Variabl
    break
   ;;
 
@@ -408,24 +408,24 @@ done
 ```sh
 # First, the case index
 
-case $VARIABL in
+case $Variabl in
 
-# If $VARIABL=a
+# If $Variabl=a
   a)
    caseA=true
   ;;
 
-# If $VARIABL=b
+# If $Variabl=b
   b)
    caseB=true
   ;;
 
-# If $VARIABL=wallawalla
+# If $Variabl=wallawalla
   wallawalla)
    casewallawalla=true
   ;;
 
-# If $VARIABL= anything else
+# If $Variabl= anything else
   *)
    echo "Freak out! I didn't plan for this!"
    break
@@ -466,54 +466,54 @@ ___
 #### Order of Logic: `&&` ... `||` ... `;`
 
 ```sh
-if [ TEST IS TRUE ] && [ TEST THIS ]... ;fi
+if [ Test_is_true ] && [ Test_this ]... ;fi
 
-if [ TEST IS FALSE ] || [ TEST THIS ]... ;fi
+if [ Test_is_false ] || [ Test_this THIS ]... ;fi
 ```
 
-**...BUT it does NOT need to be in a test...**
+**...but it does not need to be in a test...**
 
 ```sh
-command success && run this command also...
+Command Success && Run_this_Command_also...
 
-command failure || run this command also...
+Command Failure || Run_this_Command_also...
 ```
 
-**`&&` AND test**
+**`&&` And test**
 ```sh
-if [ TEST_ONE ] && [ TEST_TWO ]; then
+if [ Test_one ] && [ Test_two ]; then
   # This will happen if both tests return "true".
 fi
 ```
 
-**`||` OR test**
+**`||` Or test**
 ```sh
-if [ TEST_ONE ] || [ TEST_TWO ]; then
+if [ Test_one ] || [ Test_two ]; then
   # This will happen if either or both tests return "true".
 fi
 ```
 
-**`&&` AND with `||` OR test**
+**`&&` And with `||` Or test**
 ```sh
-if [ TEST_ONE_A ] && [ TEST_ONE_B ] || [ TEST_TWO_A ] && [ TEST_TWO_B ]; then
+if [ Test_one_A ] && [ Test_one_B ] || [ Test_two_A ] && [ Test_two_B ]; then
   # This will happen either:
-  # 1. if both TEST_ONE_? tests return "true" or
-  # 2. if both TEST_TWO_? tests return "true".
+  # 1. if both Test_one_? tests return "true" or
+  # 2. if both Test_two_? tests return "true".
 fi
 ```
 
 *This can work with more than two tests.*
 
-**Three `&&` AND tests**
+**Three `&&` And tests**
 ```sh
-if [ TEST_ONE ] && [ TEST_TWO ] && [ TEST_THREE ]; then
+if [ Test_one ] && [ Test_two ] && [ Test_three ]; then
   # This will happen if all three tests return "true".
 fi
 ```
 
-**Three `||` OR tests**
+**Three `||` Or tests**
 ```sh
-if [ TEST_ONE ] || [ TEST_TWO ] || [ TEST_THREE ]; then
+if [ Test_one ] || [ Test_two ] || [ Test_three ]; then
   # This will happen if any one or all tests return "true".
 fi
 ```
@@ -530,7 +530,7 @@ BASH and Shell do some `if`/`for`/`while`/`until` tests differently.
 
 ##### Quoting tested variables
 
-Shell: `$1` – Variables in tests **MAY** use quotes, but **DO NOT** need to.
+Shell: `$1` – Variables in tests **may** use quotes, but **do not** need to.
 ```sh
 #!/bin/sh
 if [ -d $1 ] || [ -f $1 ] || [ -e $1 ] || [ -n $1 ] || [ -z $1 ] || [ $1 = $2 ] || [ $1 = sometext ]
@@ -540,7 +540,7 @@ if [ ! -d $1 ] || [ ! -f $1 ] || [ ! -e $1 ] || [ ! -n $1 ] || [ ! -z $1 ] || [ 
 then; echo yes; fi
 ```
 
-BASH: `"$1"` – Variables in tests **MUST ALWAYS** use quotes.
+BASH: `"$1"` – Variables in tests **must always** use quotes.
 ```bash
 #!/bin/bash
 if [ -d "$1" ] || [ -f "$1" ] || [ -e "$1" ] || [ -n "$1" ] || [ -z "$1" ] || [ "$1" = "$2" ] || [ "$1" = "sometext" ]
@@ -562,35 +562,35 @@ then; echo yes; fi
   -le     <=    # is less than or equal to
 ```
 
-Shell: `if [ $NUM1 -eq $NUM2 ]` – Variables **MAY** use quotes, but do **NOT NEED** to.
+Shell: `if [ $Num1 -eq $Num2 ]` – Variables **may** use quotes, but do **not need** to.
 ```sh
 #!/bin/sh
-if [ $NUM1 -eq $NUM2 ]
-if [ $NUM1 -ne $NUM2 ]
-if [ $NUM1 -gt $NUM2 ]
-if [ $NUM1 -lt $NUM2 ]
-if [ $NUM1 -ge $NUM2 ]
-if [ $NUM1 -le $NUM2 ]
+if [ $Num1 -eq $Num2 ]
+if [ $Num1 -ne $Num2 ]
+if [ $Num1 -gt $Num2 ]
+if [ $Num1 -lt $Num2 ]
+if [ $Num1 -ge $Num2 ]
+if [ $Num1 -le $Num2 ]
 ```
 
-BASH: `if [ "$NUM1" -eq "$NUM2" ]` – Variables **MUST ALWAYS** use quotes.
+BASH: `if [ "$Num1" -eq "$Num2" ]` – Variables **must always** use quotes.
 
-BASH: `if (( "$NUM1" == "$NUM2" ))` – Symbol operators require double `((`parentheses`))`.
+BASH: `if (( "$Num1" == "$Num2" ))` – Symbol operators require double `((`parentheses`))`.
 ```bash
 #!/bin/bash
-if [ "$NUM1" -eq "$NUM2" ]
-if [ "$NUM1" -ne "$NUM2" ]
-if [ "$NUM1" -gt "$NUM2" ]
-if [ "$NUM1" -lt "$NUM2" ]
-if [ "$NUM1" -ge "$NUM2" ]
-if [ "$NUM1" -le "$NUM2" ]
+if [ "$Num1" -eq "$Num2" ]
+if [ "$Num1" -ne "$Num2" ]
+if [ "$Num1" -gt "$Num2" ]
+if [ "$Num1" -lt "$Num2" ]
+if [ "$Num1" -ge "$Num2" ]
+if [ "$Num1" -le "$Num2" ]
 
-if (( "$NUM1" == "$NUM2" ))
-if (( "$NUM1" != "$NUM2" ))
-if (( "$NUM1" > "$NUM2" ))
-if (( "$NUM1" < "$NUM2" ))
-if (( "$NUM1" >= "$NUM2" ))
-if (( "$NUM1" <= "$NUM2" ))
+if (( "$Num1" == "$Num2" ))
+if (( "$Num1" != "$Num2" ))
+if (( "$Num1" > "$Num2" ))
+if (( "$Num1" < "$Num2" ))
+if (( "$Num1" >= "$Num2" ))
+if (( "$Num1" <= "$Num2" ))
 ```
 
 Also see: [VIP/Shell 301 – Lesson 9](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-09.md)
@@ -602,14 +602,14 @@ ___
 - Each `case` can execute the script
 - `getopts` only allows single-letter flags, like: `-a` `-b` `-c` and together `-abc`
 
-#### Format: `getopts OPTIONS-STRING VARIABLE-NAME [ARGUMENTS]`
+#### Format: `getopts Options_String Variable_Name [Arguments]`
 
-#### OPTIONS-STRING (not a variable name): The allowed flags
+#### Options_String (not a variable name): The allowed flags
 - Each letter is a new flag, no separators necessary
 - `:` first means that missing bad arguments won't error messages
 - `a:` means the `-a` flag requires & allows an argument set as `$OPTARG` in the `while getopts` loop
 
-#### VARIABLE-NAME (not a variable name): The flag actually used
+#### Variable_Name (not a variable name): The flag actually used
 - This variable is used in the `case` that follows
 
 ```bash
@@ -617,11 +617,11 @@ while getopts "ab" Flag; do
  case $Flag in
 
   a)
-   DO SOMETHING BECAUSE OF FLAG -a
+   Do_Something_Else_Because_of_flag -a
   ;;
 
   b)
-   DO SOMETHING BECAUSE OF FLAG -b
+   Do_Something_Else_Because_of_flag -b
   ;;
 
  esac
@@ -630,7 +630,7 @@ done
 
 The variable `$Flag` became either "a" or "b"
 
-#### [ARGUMENTS] (not a variable name, optional): Normal humans don't use this!
+#### [Arguments] (not a variable name, optional): Normal humans don't use this!
 - The default value is "`$@`", which is exactly what is entered in the terminal
 - Anything here will override what is entered in the terminal
 - This is a way to make the script automatically run a specific `case` argument
@@ -640,7 +640,7 @@ Running `./myscript`
 with:
 
 ```bash
-while getopts "a:b" FlagVAR -a iLoveGrapes; do
+while getopts "a:b" FlagVar -a iLoveGrapes; do
 ```
 
 ...will have the same effect as
@@ -650,7 +650,7 @@ running `./myscript -a iLoveGrapes`
 with:
 
 ```bash
-while getopts "a:b" FlagVAR; do
+while getopts "a:b" FlagVar; do
 ```
 
 #### `$OPTARG`
@@ -708,7 +708,7 @@ ___
 ### X. `getopt`
 - `getopt` is processed via: `while [[ $# > 0 ]]; do` `case`
 - Each `case` sets a variable to `true`, then the script should run later in an `if` test for those variables
-- `getopt` allows single-letter flags, AND "long" option alternatives like: `--alpha` `--bravo` in place of `-a` `-b` and together `-ab`
+- `getopt` allows single-letter flags, And "long" option alternatives like: `--alpha` `--bravo` in place of `-a` `-b` and together `-ab`
 - `getopt` is not as user-friendly for programmers and requires many things done manually
 - The main lesson in using `getopt` is: Don't, to use `getopts` instead!
 

@@ -1,6 +1,8 @@
 # Shell 401
 ## Lesson 6: Data Types & Quotes
 
+Ready the CLI
+
 `cd ~/School/VIP/shell/401`
 
 ___
@@ -9,16 +11,16 @@ ___
 
 *The value of a variable can be one of many different "types of data".*
 
-VAR=5
+Var=5
 - The value "data type" is a number.
 
-VAR=H
+Var=H
 - The value "data type" is a single letter.
 
-VAR="I'm a cucumber!"
+Var="I'm a cucumber!"
 - The value "data type" is a sentence (what coders call a 'string').
 
-VAR=false
+Var=false
 - The value "data type" is a true/false value (what coders call 'boolean').
 
 #### Common Data Types:
@@ -76,14 +78,14 @@ Example of 'single' & "double" quotes in declaring variable values:
 ```sh
 #!/bin/sh
 
-VAR="Hello world!"
+Var="Hello world!"
 
-VARsq='$VAR' # "$VAR" will become the value.
+VarSQ='$Var' # "$Var" will become the value.
 
-VARdq="$VAR" # The value of $VAR, "Hello world!" will bcome the value.
+VarDQ="$Var" # The value of $Var, "Hello world!" will bcome the value.
 
-echo $VARsq
-echo $VARdq
+echo $VarSQ
+echo $VarDQ
 ```
 
 *Run it and watch carefully*
