@@ -13,8 +13,9 @@ ___
 #### What is `$PATH`?
 
 A script or other program ***not*** in the path needs this:
-  - `/full/path/to/script` or
-  - `./script` (when in the directory of the script)
+  1. `/full/path/to/script` "full" path
+  2. `~/myhome/to/script` "home" path
+  3. `./script` "here" path (when in the directory of the script)
 
 But, scripts and programs with directories listed in the `$PATH` can be run this way:
   - `script`
@@ -31,13 +32,15 @@ But, scripts and programs with directories listed in the `$PATH` can be run this
 
 *Let's make this $PATH more readable,  use `sed` to resort them to go onto each line...*
 
-| **3** : `echo $PATH | sed -i "s/:/\n/g" | tee mypath && gedit mypath`
+| **3** : `echo $PATH | sed "s/:/\n/g" | tee mypath && gedit mypath`
 
-*The $PATH is why commands work as commands, why we can type `echo` istead of `./echo`*
+*The $PATH is why commands work as commands, why we can type `echo` instead of `./echo`*
 
 | **4** : `echo $PATH`
 
 *Note each colon `:` separates a different directory path included in the $PATH*
+
+*Note this contains many directories from the FSH in [Lesson 2](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)*
 
 **The point of all this so far:**
 - *$PATH contains many directories*
@@ -71,21 +74,21 @@ echo "I am executable, but I am not in the \$PATH."
 
 *Same script, same location, three different ways to execute...*
 
-1. Relative `/home/` path: `~/...`
-
-| **7** : `~/School/VIP/shell/401/iamexec`
-
-*...or (since `.` = "current directory") this an easier way to do the same thing...*
-
-2. "here" path: `./`
-
-| **8** : `./iamexec`
-
-3. "full path" (get with `pwd`)
+1. "full" path (get with `pwd`)
 
 *Enter the output of this as a new command in the terminal:*
 
-| **9** : `echo "$(pwd)/iamexec"`
+| **7** : `echo "$(pwd)/iamexec"`
+
+2. "`/home/`" path: `~/...`
+
+| **8** : `~/School/VIP/shell/401/iamexec`
+
+*...or (since `.` = "current directory") this an easier way to do the same thing...*
+
+3. "here" path: `./...`
+
+| **9** : `./iamexec`
 
 *...Something like: `/home/USERNAME/School/VIP/shell/401/iamexec` ...enter it as a command*
 
