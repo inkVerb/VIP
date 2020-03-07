@@ -86,8 +86,20 @@ ___
 ## Rule 3: Choose associative or auto-indexed
 EITHER
 ### associative: `MyArray=([key]=frst [ky2]=sec) ... MyArray[key] MyArray[ky2]` (The key can be what you want)
+
+```sh
+MyArray=([key]=frst [ky2]=sec)
+echo ${MyArray[key]}
+echo ${MyArray[ky2]}
+
+````
 OR
 ### auto-indexed: `MyArray=(one two) ... MyArray[0] MyArray[1]`
+```sh
+MyArray=(one two)
+echo ${MyArray[0]}
+echo ${MyArray[1]}
+```
 
 NOT BOTH
 
@@ -111,6 +123,22 @@ ___
 
 *Note associative arrays can have strings as elements too*
 
+### Array as list in `for` loop
+
+| **28** : `gedit 10-array-for`
+
+*Note `${myArray[*]}` means "all values"*
+
+| **29** : `./10-array-for`
+
+*Let's use an associative array to further illustrate*
+
+| **30** : `gedit 10-array-for-associative`
+
+*Note `${myArray[@]}` also means "all values"*
+
+| **31** : `./10-array-for-associative`
+
 ___
 
 # The Take
@@ -129,11 +157,9 @@ ___
   - `arrayName[3]=value3` sets the fourth value as "value3"
   - `declare -A arrayName` declares an empty array (usually before associative declarations)
   - `arrayName[KeyA]=valueForA` sets the key and its value, if the array has already been declared
-  - `$arrayName[@]` returns all array values *as separate values*
-  - `$arrayName[*]` returns all array values *as a single, long value*
-  - `$arrayName[!]` returns all index keys *as separate values*
-  - `$arrayName[#]` returns the total number of values
-
+  - `${arrayName[@]}` returns all array values
+  - `${arrayName[*]}` returns all array values
+- Arrays can be used as lists in `for` loops
 ___
 
 #### [Lesson 11: BASH select & dialog](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-11.md)

@@ -88,7 +88,5 @@ echo ${AsocArr[e]}
 ```
 
 ### IV. Special Characters: `@` `*` `!` `#`
-- `$array[@]` returns all array values *as separate values*
-- `$array[*]` returns all array values *as a single, long value*
-- `$array[!]` returns all index keys *as separate values*
-- `$array[#]` returns the total number of values
+- `${array[@]}` returns all array values *as separate values*
+- `${array[*]}` returns all array values *as a single, long value*
