@@ -22,35 +22,37 @@ ___
 
 | **2** : `gedit 04-var-form-1`
 
-| **3** : `./04-var-form-1`
+| **3** : `./04-var-form-1 GOOfood`
 
 | **4** : `gedit 04-var-form-2`
 
-| **5** : `./04-var-form-2`
+| **5** : `./04-var-form-2 GOOfood`
 
 | **6** : `gedit 04-var-form-3`
 
-| **7** : `./04-var-form-3`
+| **7** : `./04-var-form-3 GOOfood`
 
 *`$Variable` is the same as `${Variable}`, but `${Variable}` can do more...*
 
 | **8** : `gedit 04-var-form-4`
 
-| **9** : `./04-var-form-4`
+| **9** : `./04-var-form-4 GOOfood`
 
-| **10** : `gedit 04-var-form-5`
+| **10** : `./04-var-form-4 foodGOO`
 
-| **11** : `./04-var-form-5`
+*Note `%` only removes from the end of a value*
+
+| **11** : `gedit 04-var-form-5`
+
+| **12** : `./04-var-form-5 GOOfood`
 
 *.one %one
 
-| **12** : `gedit 04-echo-rename-1`
+| **13** : `gedit 04-echo-rename-1`
 
-| **13** : `ls *.one`
+| **14** : `ls *.one`
 
-| **14** : `./04-echo-rename-1`
-
-| **15** : `ls`
+| **15** : `./04-echo-rename-1`
 
 *t.one %t.one
 
@@ -120,9 +122,9 @@ ___
 
 *Note there are only .odt files*
 
-| **39** : `gedit 04-do-odt2txt-1`
+| **39** : `gedit 04-do-odt2txt`
 
-| **40** : `./04-do-odt2txt-1`
+| **40** : `./04-do-odt2txt`
 
 | **41** : `ls *.txt *.odt`
 
@@ -130,25 +132,11 @@ ___
 
 | **42** : `gedit ODT*.txt`
 
-*Note the files are either empty or on one line because we used `echo`, this method isn't best*
-
-| **43** : `gedit 04-do-odt2txt-2`
-
-| **44** : `./04-do-odt2txt-2`
-
-*gedit: Reload all .txt files*
-
-| **45** : `gedit 04-do-odt2txt-3`
-
-| **46** : `./04-do-odt2txt-3`
-
-*gedit: Reload all .txt files*
-
 *Backup today's work*
 
-| **47** : `mv *.txt 04-FOR/`
+| **43** : `mv *.txt 04-FOR/`
 
-| **48** : `ls *.txt`
+| **44** : `ls *.txt`
 
 *...See all gone*
 
