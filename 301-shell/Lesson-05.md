@@ -210,8 +210,14 @@ ___
   - `value)` what to do if the case variable has this value (as many as needed)
   - `*)` what to do if the case variable doesn't match any above case
   - `esac` closes the case index
-- Syntax of the `while` line:
-  - `case` `$Variable_being_matched`
+- Syntax of the `case` line:
+  - `case` `$Variable_being_matched` `in`
+- Syntax of a single `case` option:
+  ```
+  value)
+    Do Something Here
+  ;;
+  ```
 - See usage and examples here: [Tests: case](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#vii-case-esac)
 
 ___
