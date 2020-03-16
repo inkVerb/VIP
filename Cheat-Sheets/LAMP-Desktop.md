@@ -125,7 +125,7 @@ sudo apt-get install mysql-server
 
   | **17** : `sudo cp config.sample.inc.php config.inc.php`
 
-5. Set the blowfish salt
+5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
     | **18g** : `sudo gedit /var/www/html/phpMyAdmin/config.inc.php`
@@ -136,7 +136,7 @@ sudo apt-get install mysql-server
 
   - Add the salt here:
     - `$cfg['blowfish_secret'] = '';` ...becomes...
-    - `$cfg['blowfish_secret'] = 'SomeRANDOmThing678goeshere';`
+    - `$cfg['blowfish_secret'] = 'SomeRANDOm32characterslongGOhere';`
 
 6. Own everything properly
 
