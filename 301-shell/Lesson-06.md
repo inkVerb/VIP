@@ -194,7 +194,7 @@ ___
 
 *Error output can't go to a file with `>` or `>>`*
 
-*Error output only goes to a file with `2>` or `>>`*
+*Error output only goes to a file with `2>` or `2>>`*
 
 | **23** : `ls bozo 2> log`
 

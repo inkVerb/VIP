@@ -12,7 +12,7 @@ ___
 
 ### If you did Shell 201, but on a different machine
 >
-___
+> ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** : `su Username`
@@ -23,12 +23,15 @@ ___
 >
 > | **M2** : `sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc rename pwgen`
 >
-> | **M3** : `mkdir -p ~/School/VIP/shell`
->
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** : `exit`
-___
+> ___
+>
+> | **0** : `mkdir -p ~/School/VIP/shell` *If you did Shell 201, but on a different machine*
+>
+
+### `git clone` our scripts for this lesson
 
 | **1** : `cd ~/School/VIP/shell`
 
