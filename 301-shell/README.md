@@ -2,7 +2,7 @@
 
 ## Prerequisite: [Shell 201](https://github.com/inkVerb/VIP/tree/master/201-shell)
 
-### [Lesson 0: 301 Cheat Sheets](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-00.md)
+### [Lesson 0: 301 Cheat Sheets & Setup](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-00.md)
 
 ### [Lesson 1: if then fi, else & elif](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-01.md)
 

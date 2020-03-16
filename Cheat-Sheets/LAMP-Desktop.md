@@ -18,13 +18,13 @@
 
     | **2g** : `sudo gedit /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
 
-    - Search with: Ctrl + F, then type `mysqli` to find the line
+    - Search with: Ctrl + F, then type `mysqli` to find the line, Ctrl + S to save
 
   - Or edit with `vim`:
 
     | **2v** : `sudo vim /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
 
-    - Search by typing: `/mysqli`, then Enter to find the line
+    - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
 
 3. Restart Everything
 
@@ -34,7 +34,7 @@
 
 | **4** : `sudo systemctl status apache2`
 
-  - Type "q" to quit. ;-)
+  - Type `q` to quit. ;-)
 
 #### Using your local dev server on desktop
 
@@ -91,7 +91,7 @@ Require all granted
 
 1. Access MySQL as root user with
   | **12** : `sudo mysql`
-  
+
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
 
   | **13** :  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`

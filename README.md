@@ -1,7 +1,7 @@
 # Verb VIP
 ## Learn Command Line Linux and Code
 
-Whether you want to become a computer genuis or if you're a "computer dummy" and want to make computers less scary, start with Linux. Start simple. Start right here.
+Whether you want to become a computer genius or if you're a "computer dummy" and want to make computers less scary, start with Linux. Start simple. Start right here.
 
 ## Shell Crash Course
 
@@ -16,7 +16,7 @@ Whether you want to become a computer genuis or if you're a "computer dummy" and
 ## [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets)
 
 ## Why learn Linux first?
-*...Love for renaissance. Learn the roots first, everything else makes more sense...*
+*Renaissance: Learn the roots first, everything else makes more sense...*
 
 ### 1. Universal: web server, desktop, Android — All open source! All the same language!
 Linux is the most-used webserver operating system in the world, with no near rivals. It's desktop market share grows every year!
@@ -28,7 +28,7 @@ The Linux "Shell/BASH" language is simpler than other languages, but shares many
 Learn computer code concepts the easy, simple way, using a simple, universal platform language.
 By learning one "byte" at a time, you don't have to learn a difficult concept while learning a more complex coding language at the same time.
 
-### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Pearl, Node.js, HTML, CSS... sit atop Linux
+### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Pearl, Node.js, HTML, CSS... all sit atop Linux
 It's one thing to learn a web app or server programming language; it's awesome to know the language under the language so you can *control the machine it runs on.*
 PHP will make more sense if you have seen what this does: `sudo apt install php`
 Once you know how to work with a computer terminal (Linux language), all code will be less scary because you'll know where code lives!
@@ -45,7 +45,7 @@ Once you know how to work with a computer terminal (Linux language), all code wi
 
 ## First day of school
 
-*Many lessons begin with commands or links you may need, but not necessarily, like this:*
+*Many lessons begin with commands or helpful links, like this:*
 
 `cd ~/School/VIP/shell/101`
 
@@ -53,7 +53,7 @@ ___
 
 *There are twelve lessons per level, sometimes they are divided into sections with Roman numerals*
 
-*Lessons are separated by **TOPIC**, NOT **TIME**, so some may be longer than others*
+*Lessons are separated by **TOPIC**, NOT **TIME NEEDED TO COMPLETE**, so some may be longer than others*
 
 *At the end of each lesson is a section called* **The Take** *which lists learning objectives for that lesson; this is useful information for students, teachers, crafting exams, or developing a curriculum core*
 
@@ -61,9 +61,9 @@ ___
 
 *There is a free video series that explains these lessons at the* [inkVerb YouTube channel](https://www.youtube.com/channel/UCILld59lH8VOsT9gfyAb77g)
 
-Udemy! *You can get more teaching tips, take quizzes, work with a community, and earn credits in the Udemy course "VIP Linux"*
+Udemy! *You can get more teaching tips, take quizzes, work with a community, and earn credits in the Udemy course "VIP Linux"* (NOT READY)
 
-*You might learn some things merely by watching the videos, but you learn much more if you have Linux installed on your computer and participate*
+*You might learn some things merely by watching the videos, but you learn much more if you have Linux installed on your computer and follow as you learn*
 
 *It is also very helpful if you know how to type correctly!* [write.pink/88](http://write.pink/88)
 
@@ -77,16 +77,22 @@ That is the end of these instructions. You should feel like a better person.
 2. Install Vrk via the commands at [verb.ink](http://verb.ink)
 3. Type with correct fingers. Learn here: [write.pink/88](http://write.pink/88)
 
+## GitHub dark theme
+### [VIP-DarkHub Code Purple](https://userstyles.org/styles/172338)
+#### 1. Install: Firefox [Stylus](https://addons.mozilla.org/en-US/firefox/addon/styl-us/) / [Stylish](https://addons.mozilla.org/en-US/firefox/addon/stylish/) | Chrome [Stylus](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) / [Stylish](https://chrome.google.com/webstore/detail/stylish-custom-themes-for/fjnbnpbmkenffdnngjfgmeleoegfcffe)
+#### 2. Themify: [VIP-DarkHub Code Purple](https://userstyles.org/styles/172338)
+- View the GitHub repo for VIP-DarkHub Code Purple: **[inkVerb/VIP-DarkHub](https://github.com/inkVerb/VIP-DarkHub)**
+
 ## About Linux
-The Linux command line only requires a bootable Linux USB, such as [Ubuntu via unetbootin](https://www.youtube.com/watch?v=sYfEs0lQA8Y&index=4&list=PLizgE6nGB1Kx8jIY1JE2v9rcL9G9s_UDj). It's the best place to begin to understand computer code—basic commands, if-then tests, variables, arrays, functions, and more. Learn it simple in Linux first.
+[Ubuntu via unetbootin](https://www.youtube.com/watch?v=sYfEs0lQA8Y&index=4&list=PLizgE6nGB1Kx8jIY1JE2v9rcL9G9s_UDj) create your bootable Linux USB
 
-For pretty & colorful diagrams, visit [explainshell.com](https://explainshell.com)
+[explainshell.com](https://explainshell.com) pretty & colorful diagrams
 
-For more beyond this crash course, visit [The Linux Documentation Project at tldp.org](http://tldp.org)
+[The Linux Documentation Project at tldp.org](http://tldp.org) more beyond this crash course
 
-For places to get more help and specific examples, visit [VIP/Links](https://github.com/inkVerb/vip/blob/master/Links.md)
+[VIP/Links](https://github.com/inkVerb/vip/blob/master/Links.md) places to get more help and specific examples
 
-For the official Shell/BASH manual, read the [GNU Bash Reference manual](https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins)
+[GNU Bash Reference manual](https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins) the official Shell/BASH manual
 
 ## Tips
 

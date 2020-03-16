@@ -7,6 +7,8 @@
 
 ### [Arrays](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Arrays.md)
 
+### [Resources](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md)
+
 ___
 ## Prepare
 

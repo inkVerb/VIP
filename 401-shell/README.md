@@ -2,7 +2,7 @@
 
 ## Prerequisite: [Shell 301](https://github.com/inkVerb/VIP/tree/master/301-shell)
 
-### [Lesson 0: Setup](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-00.md)
+### [Lesson 0: 401 Cheat Sheets & Setup](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-00.md)
 
 ### [Lesson 1: Returns & Terminal](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)
 

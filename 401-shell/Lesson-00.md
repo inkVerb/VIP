@@ -12,7 +12,7 @@
 ### [Tests: BASH](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#welcome-to-bash)
 
 ### [Characters](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Characters.md)
-__
+___
 ## Prepare
 
 ### I. If you did Shell 201, but on a different machine
