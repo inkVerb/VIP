@@ -90,6 +90,7 @@ Require all granted
 ## MySQL via command line
 
 1. Access MySQL as root user with
+
   | **12** : `sudo mysql`
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
