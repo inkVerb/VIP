@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 0: 301 Cheat Sheets
+## Lesson 0: 301 Cheat Sheets & Setup
 
 ### [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 
@@ -10,7 +10,7 @@
 ___
 ## Prepare
 
-### If you did Shell 201, but on a different machine
+### I. If you did Shell 201, but on a different machine
 >
 > ___
 > Optional: You may login as a "sudoer" if needed
@@ -31,7 +31,7 @@ ___
 > | **0** : `mkdir -p ~/School/VIP/shell` *If you did Shell 201, but on a different machine*
 >
 
-### `git clone` our scripts for this lesson
+### II. `git clone` our scripts for this lesson
 
 | **1** : `cd ~/School/VIP/shell`
 

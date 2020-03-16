@@ -1,12 +1,23 @@
 # Shell 401
-## Lesson 0: Setup
+## Lesson 0: 401 Cheat Sheets & Setup
 
+### [Cron](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
+
+### [Resources](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md)
+
+### [LAMP-Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
+
+### [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
+
+### [Tests: BASH](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#welcome-to-bash)
+
+### [Characters](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Characters.md)
 __
 ## Prepare
 
-### If you did Shell 201, but on a different machine
+### I. If you did Shell 201, but on a different machine
 >
-___
+> ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** : `su Username`
@@ -17,12 +28,15 @@ ___
 >
 > | **M2** : `sudo apt install -y git dos2unix pwgen`
 >
-> | **M3** : `mkdir -p ~/School/VIP/shell`
->
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** : `exit`
-___
+> ___
+>
+> | **0** : `mkdir -p ~/School/VIP/shell` *If you did Shell 201, but on a different machine*
+>
+
+### II. `git clone` our scripts for this lesson
 
 | **1** : `cd ~/School/VIP/shell`
 
