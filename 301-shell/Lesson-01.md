@@ -131,23 +131,23 @@ fi
 
 ### IV. `;` & Whitespace
 
-| **34** : `gedit 01-lines`
+| **34** : `gedit 01-style`
 
 *Note `;` means "new line of logic" and whitespace at the beginning of lines is ignored*
 
-| **35** : `./01-lines`
+| **35** : `./01-style`
 
-| **36** : `./01-lines yoyo`
+| **36** : `./01-style yoyo`
 
-| **37** : `./01-lines urtheir`
+| **37** : `./01-style urtheir`
 
-| **38** : `gedit 01-line`
+| **38** : `gedit 01-minimum`
 
-| **39** : `./01-line`
+| **39** : `./01-minimum`
 
-| **40** : `./01-line yoyo`
+| **40** : `./01-minimum yoyo`
 
-| **41** : `./01-line greatagain`
+| **41** : `./01-minimum greatagain`
 
 ___
 
