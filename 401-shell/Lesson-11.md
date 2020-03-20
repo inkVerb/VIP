@@ -60,9 +60,10 @@ ___
 
 #### Rules of Heredocs
 1. A "heredoc" is text in a script treated as a separate text document.
-2. A heredoc's "delimeter" (often 'EOF' or 'END') can be anything, as long as both uses are the same.
+2. A heredoc's "delimeter" (often 'EOF' or 'END') can be anything, as long as both start and finish are the same.
 3. A heredoc is a multi-line argument for a command.
 4. A heredoc conveniently handles large amounts of text.
+5. A heredoc doesn't like "whitespace" (empty lines or double spaces/tabs before/after content); it could break your script.
 
 Format:
 ```sh
@@ -201,6 +202,8 @@ ___
   - Putting a long set of instructions on the screen for terminal interaction
   - Placing a blog post into a script
   - Many, many more
+- Heredocs might break your script if they contain "whitespace"
+  - Don't include extra spaces/tabs inside your heredoc, even for code style
 - Know the rules of heredocs
 
 ___
