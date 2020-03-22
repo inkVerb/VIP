@@ -62,7 +62,7 @@ ___
 1. A "heredoc" is text in a script treated as a separate text document; useful for large amounts of text.
 2. A heredoc is a multi-line argument for a command; the first line can pipe like a normal command.
 3. A heredoc's "delimeter" (often `EOF` or `END`) can be anything, as long as both start and finish are the same.
-4. A heredoc can render variables.
+4. A heredoc will render variables; a nowdoc won't.
     - **nowdoc**: Put the "delimeter" in 'single quotes' (`'EOF'`) and variables won't render.
 5. In non-Shell languages, "whitespace" can break a heredoc.
 
