@@ -108,12 +108,12 @@ END
 
 *Copy-paste as one command, then again line-by-line:*
 
-**Write text to a file:**
+**Output to file:**
 
 | **18** :
 
 ```sh
-cat <<EOF | cat > neweof
+cat <<EOF > neweof
 I am a here document.
 This is what I am.
 I'm at my end.
@@ -126,15 +126,37 @@ EOF
 
 | **20** : `gedit neweof`
 
-**Variable in a script:**
+*You can pipe a heredoc this way:*
+
+**Pipe output to another command:**
+
+| **21** :
+
+```sh
+cat <<EOF | sed "s/foo/bar/g"
+I am foo piped in foo.
+foo sed what I am piped for.
+I'm at my pipe's foo end.
+EOF
+```
+
+| **22** : `ls`
+
+*Note the new file created: "neweofpipe"*
+
+| **23** : `gedit neweofpipe`
+
+*Basically the same thing, but you can see how a `|` pipe works*
+
+**Heredoc as variable in a script:**
 
 *Edit this script to see the short version*
 
-| **21** : `gedit eofvar`
+| **24** : `gedit eofcomsub`
 
 *It should look like this:*
 
-| **eofvar** :
+| **eofcomsub** :
 
 ```sh
 #!/bin/sh
@@ -157,7 +179,96 @@ echo "$EOFvar"
 
 *Run it*
 
-| **22** : `./eofvar`
+| **25** : `./eofcomsub`
+
+**Heredoc containing variables in a script:**
+
+*Edit this script to see the short version*
+
+| **26** : `gedit eofvarheredoc`
+
+*It should look like this:*
+
+| **eofvarheredoc** :
+
+```sh
+#!/bin/sh
+
+# Set a variable to include
+myVariable="I AM A VARIABLE VALUE!"
+
+# Declare the variable and start the heredoc on one line
+cat <<EOF
+I'm heredoc text.
+$myVariable
+EOF
+```
+
+*Run it*
+
+| **27** : `./eofvarheredoc`
+
+**Nowdoc cancels variables in a script:**
+
+*Edit this script to see the short version*
+
+| **28** : `gedit eofvarnowdoc`
+
+*It should look like this:*
+
+| **eofvarnowdoc** :
+
+```sh
+#!/bin/sh
+
+# Set a variable, but it won't work
+myVariable="I AM A VARIABLE VALUE!"
+
+# Declare the variable and start the nowdoc on one line
+cat <<'EOF'
+I'm nowdoc text.
+$myVariable
+EOF
+```
+
+*Run it*
+
+| **29** : `./eofvarnowdoc`
+
+**Write to file via heredoc and nowdoc in a script:**
+
+*Edit this script to see the short version*
+
+| **30** : `gedit eofherenow`
+
+*It should look like this:*
+
+| **eofherenow** :
+
+```sh
+#!/bin/sh
+
+# Set a variable, but it won't work
+myVariable="I AM A VARIABLE VALUE!"
+
+# Do a nowdoc to file "eofout"
+cat <<'EOF' >> eofout
+I'm nowdoc text.
+$myVariable
+EOF
+
+# Do a heredoc to append file "eofout"
+cat <<EOF >> eofout
+I'm heredoc text.
+$myVariable
+EOF
+```
+
+*Run it*
+
+| **31** : `./eofherenow`
+
+| **32** : `gedit eofout`
 
 *Note echoing without "quotess" makes everything appears on one line.*
 
@@ -193,18 +304,27 @@ ___
   - `DOC`
   - `LSTeverUwant`
   - *This is called a* ***"delimeter"***
-- The opening `cat <<EOF | cat > file-name` will send the heredoc directly to a file
-  - The lines after this, until `EOF`, will contain the heredoc sent to the file
+  - All lines between the delimeters will be the heredoc contents
+- `cat <<EOF > file-name` will send the heredoc to a file
+- `cat <<EOF >> file-name` will append the heredoc to a file
+- `cat <<EOF | sed...` will pipe the heredoc to `sed`, same as other commands
+- Heredocs can use variables
+
+## Nowdocs (heredoc without variables)
+- `cat <<'EOF'` opens a nowdoc, note the `'single quotes'`
+- Variables will be included as code, not as their values
+- Everything else is the same as a heredoc
+
+## Applied
 - *Heredocs easily have multiple lines and lots of text, this is their advantage.*
 - A Shell script treats a heredoc as a separate document
 - A heredoc can be very useful
   - Embed an email into a Shell script
-  - Putting a long set of instructions on the screen for terminal interaction
-  - Placing a blog post into a script
-  - Many, many more
-- Heredocs might break your script if they contain "whitespace"
+  - Put a long set of instructions on the screen for terminal interaction
+  - Place a blog post into a script
+- *In other languages (ie PHP):* "whitespace" can break a heredoc
   - Don't include extra spaces/tabs inside your heredoc, even for code style
-- Know the rules of heredocs
+  - This does not apply to Shell and BASH
 
 ___
 
