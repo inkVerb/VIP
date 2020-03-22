@@ -58,12 +58,13 @@ ___
 
 ### II. Heredoc: `cat <<EOF`
 
-#### Rules of Heredocs
-1. A "heredoc" is text in a script treated as a separate text document.
-2. A heredoc's "delimeter" (often 'EOF' or 'END') can be anything, as long as both start and finish are the same.
-3. A heredoc is a multi-line argument for a command.
-4. A heredoc conveniently handles large amounts of text.
-5. A heredoc doesn't like "whitespace" (empty lines or double spaces/tabs before/after content); it could break your script.
+#### Rules of a heredoc
+1. A "heredoc" is text in a script treated as a separate text document; useful for large amounts of text.
+2. A heredoc is a multi-line argument for a command; the first line can pipe like a normal command.
+3. A heredoc's "delimeter" (often `EOF` or `END`) can be anything, as long as both start and finish are the same.
+4. A heredoc can render variables.
+  - **nowdoc**: put the "delimeter" in 'single quotes' (`'EOF'`) and variables won't render.
+5. In non-Shell languages, "whitespace" can break a heredoc.
 
 Format:
 ```sh
@@ -345,6 +346,7 @@ ___
   - Don't include extra spaces/tabs inside your heredoc, even for code style
   - This does not apply to Shell and BASH
 
+### Know the [rules of a heredoc](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md#rules-of-a-heredoc)
 ___
 
 #### [Lesson 12: Secure Scripting & Command Hacks](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-12.md)
