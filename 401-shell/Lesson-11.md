@@ -200,6 +200,8 @@ echo "$EOFvar"
 
 | **28** : `./eofcomsub`
 
+*Note echoing without "quotes" makes everything appear on one line.*
+
 **Heredoc containing variables in a script:**
 
 *Edit this script to see the short version*
@@ -289,7 +291,37 @@ EOF
 
 | **35** : `gedit eofout`
 
-*Note echoing without "quotess" makes everything appears on one line.*
+**Cancel `$Variables` via `\$` in a heredoc**
+
+*Edit this script to see the short version*
+
+| **36** : `gedit eofvariables`
+
+*It should look like this:*
+
+| **eofvariables** :
+
+```sh
+#!/bin/sh
+
+# Set a variable, but it won't work
+myVariable="I AM A VARIABLE VALUE!"
+
+# Do a heredoc to append file "eofout"
+EOFvar=$(cat <<EOF
+I have a variable.
+Working: $myVariable
+Cancel: \$myVariable
+EOF
+)
+
+# Let's see
+echo "$EOFvar"
+```
+
+*Run it*
+
+| **37** : `./eofvariables`
 
 *Refer to this Wikipedia article about heredocs in Unix: [Here document](https://en.wikipedia.org/wiki/Here_document#Unix_shells)*
 
@@ -328,7 +360,7 @@ ___
 - `cat <<EOF >> file-name` will append the heredoc to a file
 - `cat <<EOF | sed...` will pipe the heredoc to `sed`, same as other commands
 - `tee file-name <<EOF` will `tee` the heredoc
-- Heredocs can use variables
+- Heredocs can use variables, cancel them with `\$` as in `\$Variable`
 
 ## Nowdocs (heredoc without variables)
 - `cat <<'EOF'` opens a nowdoc, note the `'single quotes'`
