@@ -146,13 +146,31 @@ EOF
 
 | **23** : `gedit neweofpipe`
 
-*Basically the same thing, but you can see how a `|` pipe works*
+*You can start with `tee`:*
+
+**Tee a heredoc:**
+
+| **24** :
+
+```sh
+tee neweoftee <<EOF
+I am teed out.
+Tee is what I am teed for.
+I'm at my tee's end.
+EOF
+```
+
+| **25** : `ls`
+
+*Note the new file created: "neweoftee"*
+
+| **26** : `gedit neweoftee`
 
 **Heredoc as variable in a script:**
 
 *Edit this script to see the short version*
 
-| **24** : `gedit eofcomsub`
+| **27** : `gedit eofcomsub`
 
 *It should look like this:*
 
@@ -179,13 +197,13 @@ echo "$EOFvar"
 
 *Run it*
 
-| **25** : `./eofcomsub`
+| **28** : `./eofcomsub`
 
 **Heredoc containing variables in a script:**
 
 *Edit this script to see the short version*
 
-| **26** : `gedit eofvarheredoc`
+| **29** : `gedit eofvarheredoc`
 
 *It should look like this:*
 
@@ -206,13 +224,13 @@ EOF
 
 *Run it*
 
-| **27** : `./eofvarheredoc`
+| **30** : `./eofvarheredoc`
 
 **Nowdoc cancels variables in a script:**
 
 *Edit this script to see the short version*
 
-| **28** : `gedit eofvarnowdoc`
+| **31** : `gedit eofvarnowdoc`
 
 *It should look like this:*
 
@@ -233,13 +251,13 @@ EOF
 
 *Run it*
 
-| **29** : `./eofvarnowdoc`
+| **32** : `./eofvarnowdoc`
 
 **Write to file via heredoc and nowdoc in a script:**
 
 *Edit this script to see the short version*
 
-| **30** : `gedit eofherenow`
+| **33** : `gedit eofherenow`
 
 *It should look like this:*
 
@@ -266,9 +284,9 @@ EOF
 
 *Run it*
 
-| **31** : `./eofherenow`
+| **34** : `./eofherenow`
 
-| **32** : `gedit eofout`
+| **35** : `gedit eofout`
 
 *Note echoing without "quotess" makes everything appears on one line.*
 
@@ -308,6 +326,7 @@ ___
 - `cat <<EOF > file-name` will send the heredoc to a file
 - `cat <<EOF >> file-name` will append the heredoc to a file
 - `cat <<EOF | sed...` will pipe the heredoc to `sed`, same as other commands
+- `tee file-name <<EOF` will `tee` the heredoc
 - Heredocs can use variables
 
 ## Nowdocs (heredoc without variables)
