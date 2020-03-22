@@ -133,7 +133,7 @@ EOF
 | **21** :
 
 ```sh
-cat <<EOF | sed "s/foo/bar/g"
+cat <<EOF | sed "s/foo/bar/g" | tee neweofpipe
 I am foo piped in foo.
 foo sed what I am piped for.
 I'm at my pipe's foo end.
