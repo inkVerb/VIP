@@ -63,7 +63,7 @@ ___
 2. A heredoc is a multi-line argument for a command; the first line can pipe like a normal command.
 3. A heredoc's "delimeter" (often `EOF` or `END`) can be anything, as long as both start and finish are the same.
 4. A heredoc can render variables.
-- **nowdoc**: "delimeter" in 'single quotes' (`'EOF'`), variables won't render.
+  * **nowdoc**: put the "delimeter" in 'single quotes' (`'EOF'`) and variables won't render.
 5. In non-Shell languages, "whitespace" can break a heredoc.
 
 Format:
