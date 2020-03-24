@@ -61,17 +61,17 @@ ___
 
 *Let's do markdown*
 
-| **15** : `pandoc -s markdown.md -o markdown.odt`
-
-| **16** : `ls`
-
-| **17** : `lowriter markdown.odt &` *(if asked, Discard)*
-
-*...that file came from this...*
-
-| **18** : `gedit markdown.md`
+| **15** : `gedit markdown.md`
 
 *View the rendered markdown file: [markdown.md](https://github.com/inkVerb/301/blob/master/markdown.md)*
+
+*...convert that into LibreOffice Writer document...*
+
+| **16** : `pandoc -s markdown.md -o markdown.odt`
+
+| **17** : `ls`
+
+| **18** : `lowriter markdown.odt &` *(if asked, Discard)*
 
 *You may close LibreOffice Writer from the GUI, or the terminal with: `killall soffice.bin`*
 
@@ -111,11 +111,11 @@ ___
 
 | **25** : `ls`
 
-| **26** : `rename "s/\.t\./\.T\./" *`
+| **26** : `rename "s/.t./.T./" *`
 
 | **27** : `ls`
 
-| **28** : `rename "s/\.T\./\.t\./" *`
+| **28** : `rename "s/.T./.t./" *`
 
 | **29** : `ls`
 
@@ -127,63 +127,67 @@ ___
 
 *Now type something and/or press Enter*
 
-| **32** : `gedit 02-read-1`
+*Nothing happened because it should be used with a variable...*
 
-| **33** : `./02-read-1`
+| **32** : `read Variable && echo $Variable`
+
+| **33** : `gedit 02-read-1`
+
+| **34** : `./02-read-1`
 
 *Now type something, then press Enter*
 
-| **34** : `gedit 02-read-2`
+| **35** : `gedit 02-read-2`
 
 *Note -p is for "Prompt", making things simpler*
 
-| **35** : `./02-read-2`
+| **36** : `./02-read-2`
 
-| **36** : `gedit 02-read-3`
+| **37** : `gedit 02-read-3`
 
-| **37** : `ls`
+| **38** : `ls`
 
-| **38** : `./02-read-3`
+| **39** : `./02-read-3`
 
 *Enter whatever you want, only letters & numbers, no spaces*
 
-| **39** : `ls`
+| **40** : `ls`
 
 *Note it created the file*
 
-| **40** : `gedit 02-read-4`
+| **41** : `gedit 02-read-4`
 
-| **41** : `./02-read-4`
+| **42** : `./02-read-4`
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
-*Note -r is for "Raw", to allow all special characters*
+*Note `-r` is for "Raw", to allow all special characters*
 
-| **42** : `gedit 02-read-5`
+| **43** : `gedit 02-read-5`
 
-| **43** : `./02-read-5`
+| **44** : `./02-read-5`
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 ### IV. `sleep`
 
-| **44** : `sleep 1`
+| **45** : `sleep 1`
 
-| **45** : `sleep 3`
+| **46** : `sleep 3`
 
-| **46** : `gedit 02-sleep-1`
+| **47** : `gedit 02-sleep-1`
 
-| **47** : `./02-sleep-1`
+| **48** : `./02-sleep-1`
 
-| **48** : `gedit 02-sleep-2`
+| **49** : `gedit 02-sleep-2`
 
-| **49** : `./02-sleep-2 "I like apples."`
+| **50** : `./02-sleep-2 "I like apples."`
 
 *Put it together...*
 
-| **50** : `gedit 02-sleep-3`
+| **51** : `gedit 02-sleep-3`
 
-| **51** : `./02-sleep-3`
+| **52** : `./02-sleep-3`
 
 *Now type something, then press Enter*
 
@@ -195,17 +199,17 @@ ___
 
 *Make sure LibreOffice is not running, ignore any error message...*
 
-| **52** : `killall soffice.bin`
+| **53** : `killall soffice.bin`
 
 *Open LibreOffice Writer from the terminal...*
 
-| **53** : `lowriter`
+| **54** : `lowriter`
 
 *Now, close Writer in the GUI (click the X to close the window)...*
 
 *...The terminal returns to the prompt*
 
-| **54** : `lowriter &`
+| **55** : `lowriter &`
 
 *Note the terminal returned directly to the prompt because we used `&`*
 
@@ -213,23 +217,23 @@ ___
 
 *Let's use `wait` in a script...*
 
-| **55** : `gedit 02-waiter-1`
+| **56** : `gedit 02-waiter-1`
 
-| **56** : `./02-waiter-1`
+| **57** : `./02-waiter-1`
 
 *Again, close Writer in the GUI, then watch for the message in the terminal*
 
-| **57** : `gedit 02-waiter-2`
+| **58** : `gedit 02-waiter-2`
 
-| **58** : `./02-waiter-2`
+| **59** : `./02-waiter-2`
 
 *Note that the script finished with it's message and the terminal returned to the prompt without closing Writer*
 
 *Again, close Writer in the GUI*
 
-| **59** : `gedit 02-waiter-3`
+| **60** : `gedit 02-waiter-3`
 
-| **60** : `./02-waiter-3`
+| **61** : `./02-waiter-3`
 
 *Note the script did not finish and the terminal is still busy*
 
@@ -243,19 +247,19 @@ ___
 
 *Start Writer...*
 
-| **61** : `lowriter &`
+| **62** : `lowriter &`
 
 *Now, "wait" for it to close by watching for its PID to close...*
 
-| **62** : `pgrep lowriter`
+| **63** : `pgrep lowriter`
 
 *Note the PID number and replace 55555 with that number below:*
 
-| **63a** : `wait 55555`
+| **64a** : `wait 55555`
 
 **OR**
 
-| **63b** : `wait $(pgrep lowriter)` *(or you can use this instead)*
+| **64b** : `wait $(pgrep lowriter)` *(or you can use this instead)*
 
 *Note `wait` is "waiting" for Writer's PID to end*
 
