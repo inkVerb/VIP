@@ -30,7 +30,7 @@ command failure || run this command also...
 
 | **1** : `gedit 07-while-count-read`
 
-| **2** : `./07-while-count-read` *Enter nothing, then enter letters, then enter nothing*
+| **2** : `./07-while-count-read` *Enter nothing, then letters, then negative numbers, then nothing*
 
 | **3** : `./07-while-count-read` *Enter a high number, such as 9001*
 
