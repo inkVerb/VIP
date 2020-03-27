@@ -146,7 +146,7 @@ cp file destination
 
 | **9** : `ls`
 
-*What? Only the files from command 23!?*
+*What? Only the files from command 7!?*
 
 | **10** : `ls -a`
 
