@@ -100,13 +100,13 @@ echo "$1 and $Variable"
 newFunctionName Lemmons
 ```
 
-| **13** : `gedit 7-function`
+| **13** : `gedit 07-function`
 
 *Note functions work with `#!/bin/sh` on the first line, but also work with `#!/bin/bash`*
 
-| **14** : `./7-function`
+| **14** : `./07-function`
 
-| **15** : `gedit 7-function-breakdown`
+| **15** : `gedit 07-function-breakdown`
 
 *Note a few things before we continue...*
 ___
@@ -135,17 +135,17 @@ ___
 
 *Let's get back to work...*
 
-| **16** : `./7-function-breakdown`
+| **16** : `./07-function-breakdown`
 
 *Let's get a little more involved with variables...*
 
-| **17** : `gedit 7-function-variables`
+| **17** : `gedit 07-function-variables`
 
-*Note the three global variables and the two local-function variables*
+*Note the global variables and the local-function variables and what is set/used inside/outside the function*
 
-| **18** : `./7-function-variables ONe TWo THRee`
+| **18** : `./07-function-variables ONe TWo`
 
-| **19** : `./7-function-variables pine apple pen`
+| **19** : `./07-function-variables pine apple`
 
 ___
 

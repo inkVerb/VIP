@@ -126,7 +126,7 @@ ___
 
 | **40** : `./04-do-odt2txt`
 
-| **41** : `ls *.txt *.odt`
+| **41** : `ls *.txt && ls *.odt`
 
 *Note the new .txt files, have a look inside...*
 
