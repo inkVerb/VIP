@@ -91,23 +91,31 @@ one-1*
 
 #### `break` will "break out" a loop
 
+*Note the error message: bash knows `break` is used by `for`...*
+
+| **23** : `break`
+
 *Note the two `echo` commands and where the `break` applies...*
 
-| **23** : `gedit 03-do-echo-8`
+| **24** : `gedit 03-do-echo-8`
 
-| **24** : `ls one-*`
+| **25** : `ls one-*`
 
-| **25** : `./03-do-echo-8`
+| **26** : `./03-do-echo-8`
 
 #### `continue` will skip whatever is left in a loop cycle and "continue" on to the next cycle
 
+*Note the error message: bash knows `continue` is used by `for`...*
+
+| **27** : `continue`
+
 *Note the two `echo` commands and where the `continue` applies...*
 
-| **26** : `gedit 03-do-echo-9`
+| **28** : `gedit 03-do-echo-9`
 
-| **27** : `ls one-*`
+| **29** : `ls one-*`
 
-| **28** : `./03-do-echo-9`
+| **30** : `./03-do-echo-9`
 
 ___
 
