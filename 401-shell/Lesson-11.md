@@ -12,7 +12,8 @@ ___
 *Refer to this cheat-sheet section for more about working with characters:* [VIP/Cheat-Sheets: Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
 
 1. In `sed` & `grep` use `[[double brackets]]` not `[single brackets]`
-2. Carrot `^` means "only first in the line".
+2. Carrot `^` means "start of the line or string"
+3. Dollar Sign `$` means "end of the line or string"
 
 **Examples:**
 
@@ -24,37 +25,43 @@ ___
 
 | **4** : `grep "^[[:digit:]]" code-of-poetry.txt`
 
+| **5** : `grep "[[:digit:]]$" code-of-poetry.txt`
+
+| **6** : `grep "[[:punct:]]$" code-of-poetry.txt`
+
+| **7** : `grep "[[:lower:]]$" code-of-poetry.txt`
+
 *Note no results because no digits appear first on any line.*
 
 *Try without the carrot `^`...*
 
-| **5** : `grep "[[:digit:]]" code-of-poetry.txt`
+| **8** : `grep "[[:digit:]]" code-of-poetry.txt`
 
-| **6** : `grep "^[[:lower:]]" code-of-poetry.txt`
+| **9** : `grep "^[[:lower:]]" code-of-poetry.txt`
 
 *Try some simple replacements...*
 
-| **7** : `sed "s/[[:digit:]]/#/g" code-of-poetry.txt`
+| **10** : `sed "s/[[:digit:]]/#/g" code-of-poetry.txt`
 
 *Combine that with `grep` to show only what it affects...*
 
-| **8** : `grep "[[:digit:]]" code-of-poetry.txt | sed "s/[[:digit:]]/#/g"`
+| **11** : `grep "[[:digit:]]" code-of-poetry.txt | sed "s/[[:digit:]]/#/g"`
 
 *More...*
 
-| **9** : `sed "s/[[:upper:]]/X/g" code-of-poetry.txt`
+| **12** : `sed "s/[[:upper:]]/X/g" code-of-poetry.txt`
 
-| **10** : `sed "s/[[:punct:]]/@/g" code-of-poetry.txt`
+| **13** : `sed "s/[[:punct:]]/@/g" code-of-poetry.txt`
 
-| **11** : `sed "s/[[:blank:]]/_/g" code-of-poetry.txt`
+| **14** : `sed "s/[[:blank:]]/_/g" code-of-poetry.txt`
 
 *Custom ranges...*
 
-| **12** : `sed "s/[D-H]/X/" code-of-poetry.txt`
+| **15** : `sed "s/[D-H]/X/" code-of-poetry.txt`
 
-| **13** : `sed "s/[2-6]/%/" code-of-poetry.txt`
+| **16** : `sed "s/[2-6]/%/" code-of-poetry.txt`
 
-| **14** : `sed "s/[a-u]/x/g" code-of-poetry.txt`
+| **17** : `sed "s/[a-u]/x/g" code-of-poetry.txt`
 
 ### II. Heredoc: `cat <<EOF`
 
@@ -80,7 +87,7 @@ DELIMETER
 
 **Delimeter: `EOF`**
 
-| **15** :
+| **18** :
 
 ```sh
 cat <<EOF
@@ -93,7 +100,7 @@ EOF
 
 **Delimeter: `END`**
 
-| **16** :
+| **19** :
 
 ```sh
 cat <<END
@@ -105,13 +112,13 @@ END
 
 #### Heredocs Applied
 
-| **17** : `ls`
+| **20** : `ls`
 
 *Copy-paste as one command, then again line-by-line:*
 
 **Output to file:**
 
-| **18** :
+| **21** :
 
 ```sh
 cat <<EOF > neweof
@@ -121,17 +128,17 @@ I'm at my end.
 EOF
 ```
 
-| **19** : `ls`
+| **22** : `ls`
 
 *Note the new file created: "neweof"*
 
-| **20** : `gedit neweof`
+| **23** : `gedit neweof`
 
 *You can pipe a heredoc this way:*
 
 **Pipe output to another command:**
 
-| **21** :
+| **24** :
 
 ```sh
 cat <<EOF | sed "s/foo/bar/g" | tee neweofpipe
@@ -141,17 +148,17 @@ I'm at my pipe's foo end.
 EOF
 ```
 
-| **22** : `ls`
+| **25** : `ls`
 
 *Note the new file created: "neweofpipe"*
 
-| **23** : `gedit neweofpipe`
+| **26** : `gedit neweofpipe`
 
 *You can start with `tee`:*
 
 **Tee a heredoc:**
 
-| **24** :
+| **27** :
 
 ```sh
 tee neweoftee <<EOF
@@ -161,17 +168,17 @@ I'm at my tee's end.
 EOF
 ```
 
-| **25** : `ls`
+| **28** : `ls`
 
 *Note the new file created: "neweoftee"*
 
-| **26** : `gedit neweoftee`
+| **29** : `gedit neweoftee`
 
 **Heredoc as variable in a script:**
 
 *Edit this script to see the short version*
 
-| **27** : `gedit eofcomsub`
+| **30** : `gedit eofcomsub`
 
 *It should look like this:*
 
@@ -198,7 +205,7 @@ echo "$EOFvar"
 
 *Run it*
 
-| **28** : `./eofcomsub`
+| **31** : `./eofcomsub`
 
 *Note echoing without "quotes" makes everything appear on one line.*
 
@@ -206,7 +213,7 @@ echo "$EOFvar"
 
 *Edit this script to see the short version*
 
-| **29** : `gedit eofvarheredoc`
+| **32** : `gedit eofvarheredoc`
 
 *It should look like this:*
 
@@ -227,13 +234,13 @@ EOF
 
 *Run it*
 
-| **30** : `./eofvarheredoc`
+| **33** : `./eofvarheredoc`
 
 **Nowdoc cancels variables in a script:**
 
 *Edit this script to see the short version*
 
-| **31** : `gedit eofvarnowdoc`
+| **34** : `gedit eofvarnowdoc`
 
 *It should look like this:*
 
@@ -254,13 +261,13 @@ EOF
 
 *Run it*
 
-| **32** : `./eofvarnowdoc`
+| **35** : `./eofvarnowdoc`
 
 **Write to file via heredoc and nowdoc in a script:**
 
 *Edit this script to see the short version*
 
-| **33** : `gedit eofherenow`
+| **36** : `gedit eofherenow`
 
 *It should look like this:*
 
@@ -287,15 +294,15 @@ EOF
 
 *Run it*
 
-| **34** : `./eofherenow`
+| **37** : `./eofherenow`
 
-| **35** : `gedit eofout`
+| **38** : `gedit eofout`
 
 **Cancel `$Variables` via `\$` in a heredoc**
 
 *Edit this script to see the short version*
 
-| **36** : `gedit eofvariables`
+| **39** : `gedit eofvariables`
 
 *It should look like this:*
 
@@ -321,7 +328,7 @@ echo "$EOFvar"
 
 *Run it*
 
-| **37** : `./eofvariables`
+| **40** : `./eofvariables`
 
 *Refer to this Wikipedia article about heredocs in Unix: [Here document](https://en.wikipedia.org/wiki/Here_document#Unix_shells)*
 

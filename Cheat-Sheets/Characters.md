@@ -98,6 +98,7 @@ Control characters: In ASCII, these characters have octal codes 000 through 037,
 - `^` Beginning of line/string
 - `$` End of line/string
 - `*` Wildcard
+- `g` Global (all instances on each line, not only the first instance on a line)
 - `\f` Form-feed character
 - `\n` New line
 - `\r` Carriage return character

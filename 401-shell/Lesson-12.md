@@ -216,22 +216,22 @@ cp file destination
 
 | **33** : `tail -f rtfile.md`
 
-*Open a new terminal window: Ctrl + Alt + T (not F12)*
+Open a new terminal window: Ctrl + Alt + T (not F12)
 
 **Run in the new terminal window:** *(...and keep watch in the first terminal)*
-> | **34** : `cd ~/School/VIP/shell/401`
+> | **T1** : `cd ~/School/VIP/shell/401`
 >
-> | **35** : `echo "I am fruit." >> rtfile.md`
+> | **T2** : `echo "I am fruit." >> rtfile.md`
 >
 > *Did you see that?*
 >
-> | **36** : `echo "I am kruit." >> rtfile.md`
+> | **T3** : `echo "I am kruit." >> rtfile.md`
 >
-> | **37** : `echo "I am vruit." >> rtfile.md`
+> | **T4** : `echo "I am vruit." >> rtfile.md`
 >
-> | **38** : `echo "I am gruit." >> rtfile.md`
+> | **T5** : `echo "I am gruit." >> rtfile.md`
 >
-> | **39** : `exit`
+> | **T6** : `exit`
 
 *In the original terminal: Ctrl + C*
 
@@ -239,43 +239,43 @@ It never stops...
 
 *Did you know? `--` terminates flags, like `-l`...*
 
-| **40** : `ls -l`
+| **34** : `ls -l`
 
-| **41** : `mkdir -l`
+| **35** : `mkdir -l`
 
-| **42** : `mkdir "-l"`
+| **36** : `mkdir "-l"`
 
-| **43** : `mkdir -- -l`
+| **37** : `mkdir -- -l`
 
-| **44** : `ls`
+| **38** : `ls`
 
-| **45** : `touch -l/newfile`
+| **39** : `touch -l/newfile`
 
-| **46** : `touch "-l/newfile"`
+| **40** : `touch "-l/newfile"`
 
-| **47** : `touch -- -l/newfile`
+| **41** : `touch -- -l/newfile`
 
-| **48** : `ls -l`
+| **42** : `ls -l`
 
-| **49** : `ls -l "-l"`
+| **43** : `ls -l "-l"`
 
-| **50** : `ls -l -- -l`
+| **44** : `ls -l -- -l`
 
-| **51** : `cd -l`
+| **45** : `cd -l`
 
-| **52** : `cd "-l"`
+| **46** : `cd "-l"`
 
-| **53** : `cd -- -l`
+| **47** : `cd -- -l`
 
-| **54** : `cd ..`
+| **48** : `cd ..`
 
-| **55** : `rm -r -l`
+| **49** : `rm -r -l`
 
-| **56** : `rm -r "-l"`
+| **50** : `rm -r "-l"`
 
-| **57** : `rm -r -- -l`
+| **51** : `rm -r -- -l`
 
-| **58** : `ls`
+| **52** : `ls`
 
 ___
 

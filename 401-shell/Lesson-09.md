@@ -27,6 +27,63 @@ ___
 - `#!/bin/ksh`    Korn Shell
 - `#!/bin/zsh`    Z Shell
 
+#### In the Terminal
+
+Open a new terminal window: Ctrl + Alt + T (not F12)
+
+**Run in the new terminal window:**
+> | **T1** : `exit`
+>
+> Open a new terminal window: Ctrl + Alt + T (not F12)
+>
+> *Open up a Shell (`sh`) interpreter session...*
+>
+> | **T2** : `sh`
+>
+> *You are in a new Shell session*
+>
+> *Try some non-changing commands if you want, like `ls`*
+>
+> *Get your current interpreter...*
+>
+> | **T4** : `ps -p $$`
+>
+> *Now, exit that Shell session...*
+>
+> | **T5** : `exit`
+>
+> *Now, you are back to your original terminal interpreter session*
+>
+> *Watch and exit that terminal to know that you are in no other interpreter session*
+>
+> | **T6** : `exit`
+>
+> Open a new terminal window: Ctrl + Alt + T (not F12)
+>
+> *Now, open up a BASH (`bash`) interpreter session...*
+>
+> | **T7** : `bash`
+>
+> *You are in a new BASH session, but it doesn't look different*
+>
+> *Try some non-changing commands if you want, like `ls`*
+>
+> *Get your current interpreter...*
+>
+> | **T8** : `ps -p $$`
+>
+> *Now, exit that BASH session...*
+>
+> | **T9** : `exit`
+>
+> *Now, you are back to your original terminal interpreter session*
+>
+> *Watch and exit that terminal to know that you are in no other interpreter session*
+>
+> | **T10** : `exit`
+
+#### Different Interpreters Interpret Differently
+
 *Avoid writing code in too many different shells because your code may not work on all machines*
 
 *Generally:*
@@ -492,7 +549,7 @@ $Var || echo "Or is false."
 
 *This next script does* ***NOT*** *work...*
 
-#### 3. Variable as other *"string"*:
+#### 3. Variable as Other *"string"*:
 
 *Edit this script to see the short version*
 
@@ -532,7 +589,7 @@ $Var || echo "Or is false."
 
 *Let's try a real command: `ls /directory`*
 
-#### 4. Test with example command `ls` & `$?` for numeric `true`/`false`:
+#### 4. Test with Example Command `ls` & `$?` for Numeric `true`/`false`:
 
 *Watch this...*
 
