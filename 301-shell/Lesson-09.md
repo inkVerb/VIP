@@ -64,47 +64,47 @@ ___
 
 | **20** : `gedit 09-operators`
 
-| **21** : `./09-operators 4 4 eq`
+| **21** : `./09-operators 4 eq 4`
 
-| **22** : `./09-operators 4 7 eq`
+| **22** : `./09-operators 4 eq 7`
 
-| **23** : `./09-operators 4 4 ne`
+| **23** : `./09-operators 4 ne 4`
 
-| **24** : `./09-operators 4 7 ne`
+| **24** : `./09-operators 4 ne 7`
 
-| **25** : `./09-operators 8 9 gt`
+| **25** : `./09-operators 8 gt 9`
 
-| **26** : `./09-operators 9 8 gt`
+| **26** : `./09-operators 9 gt 8`
 
-| **27** : `./09-operators 8 9 lt`
+| **27** : `./09-operators 8 lt 9`
 
-| **28** : `./09-operators 9 8 lt`
+| **28** : `./09-operators 9 lt 8`
 
-| **29** : `./09-operators 10 23 ge`
+| **29** : `./09-operators 10 ge 23`
 
-| **30** : `./09-operators 10 23 ge`
+| **30** : `./09-operators 23 ge 10`
 
-| **31** : `./09-operators 10 23 le`
+| **31** : `./09-operators 10 le 23`
 
-| **32** : `./09-operators 10 23 le`
+| **32** : `./09-operators 23 le 10`
 
-| **33** : `./09-operators 3.14 15 gt`
+| **33** : `./09-operators 3.14 gt 15`
 
 *Oops, it only works with whole numbers*
 
 *But, it works with negative numbers*
 
-| **34** : `./09-operators 5 -5 ne`
+| **34** : `./09-operators 5 ne -5`
 
-| **35** : `./09-operators -5 -5 ne`
+| **35** : `./09-operators -5 ne -5`
 
 #### B. Substitute the `$Variable`
 
 | **36** : `gedit 09-operators-subvar`
 
-| **37** : `./09-operators-subvar 12 12 lt`
+| **37** : `./09-operators-subvar 12 lt 12`
 
-| **38** : `./09-operators-subvar 12 13 lt`
+| **38** : `./09-operators-subvar 12 lt 13`
 
 #### C. `== != > < >= <=` (BASH)
 
@@ -114,9 +114,9 @@ ___
 
 *These symbols require BASH. Nemo, we're not in Shellfish anymore...*
 
-| **40** : `./09-operators-symbol 12 12 eq`
+| **40** : `./09-operators-symbol 12 eq 12`
 
-| **41** : `./09-operators-symbol 12 13 eq`
+| **41** : `./09-operators-symbol 12 eq 13`
 
 ___
 

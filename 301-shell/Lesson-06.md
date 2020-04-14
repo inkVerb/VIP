@@ -306,6 +306,8 @@ Ready the CLI (if needed)
 
 `cd ~/School/VIP/shell/301/logs`
 
+`gedit error.log`
+
 ___
 
 ### Notes about `exit` codes
@@ -351,45 +353,47 @@ ___
 
 *Note, the file all.log was created*
 
-| **53** : `gedit all.log`
+| **53** : `ls`
+
+| **54** : `gedit all.log`
 
 *Both* STDOUT *and* STDERR *went to the same file because this makes errors behave like normal output: `2>&1`*
 
-| **54** : `gedit ../06-logging-4`
+| **55** : `gedit ../06-logging-4`
 
-| **55** : `../06-logging-4`
+| **56** : `../06-logging-4`
 
-| **56** : `ls`
+| **57** : `ls`
 
 *Note the file exit-3.log was created*
 
-| **57** : `gedit exit-3.log`
+| **58** : `gedit exit-3.log`
 
 *Note setting exit messages only works 3-9*
 
-| **58** : `gedit ../06-logging-5`
+| **59** : `gedit ../06-logging-5`
 
-| **59** : `../06-logging-5`
+| **60** : `../06-logging-5`
 
-| **60** : `ls`
+| **61** : `ls`
 
 *Note the file exit-2.log was created*
 
-| **61** : `gedit exit-2.log`
+| **62** : `gedit exit-2.log`
 
 *Note setting exit 2 messages will appear before STDERR error messages in a 2> error log*
 
 *Note you can set exit 0 also, but that's strange*
 
-| **62** : `gedit ../06-logging-6`
+| **63** : `gedit ../06-logging-6`
 
-| **63** : `../06-logging-6`
+| **64** : `../06-logging-6`
 
-| **64** : `ls`
+| **65** : `ls`
 
 *Note the file exit-0.log was created*
 
-| **65** : `gedit exit-0.log`
+| **66** : `gedit exit-0.log`
 
 *Moral of the story: always use `exit` with a number!*
 - `exit 0` everything is normal, no output *(with `echo "something"` `>&0` ...if you are strange)*
@@ -400,7 +404,7 @@ ___
 
 *FYI, you can create a read-only system log file for your script*
 
-| **66** : `gedit ../06-logging-7`
+| **67** : `gedit ../06-logging-7`
 
 ___
 
