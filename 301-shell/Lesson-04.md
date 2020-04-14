@@ -62,9 +62,9 @@ ___
 
 | **18** : `./04-echo-rename-2`
 
-| **19** : `ls`
-
 ### II. Renaming Multiple Files at Once
+
+| **19** : `ls`
 
 *t.one --> *T-ONE
 
@@ -116,9 +116,9 @@ ___
 
 *Now, use `odt2txt` in a `for` `...` `do` loop*
 
-| **37** : `rm ODT*.txt` *(Start with a clean slate, just to be sure)*
+| **37** : `rm *.txt` *(Start with a clean slate, just to be sure)*
 
-| **38** : `ls *.txt *.odt`
+| **38** : `ls *.odt && ls *.txt`
 
 *Note there are only .odt files*
 
@@ -126,11 +126,11 @@ ___
 
 | **40** : `./04-do-odt2txt`
 
-| **41** : `ls *.txt && ls *.odt`
+| **41** : `ls *.odt && ls *.txt`
 
 *Note the new .txt files, have a look inside...*
 
-| **42** : `gedit ODT*.txt`
+| **42** : `gedit *.txt`
 
 *Backup today's work*
 
@@ -151,8 +151,8 @@ ___
 - It does many things in a short time and with a single command
 
 ## Replacement within variables
-- `${Var%foo}` will remove "foo" from the value of variable `$Var`
-- `${Var%foo}bar` will remove "foo", then add "bar" to the end the value of variable `$Var`
+- `${Var%foo}` will remove "foo" from the end of the value of variable `$Var`
+- `${Var%foo}bar` will remove "foo" the end, then add "bar" to the end the value of variable `$Var`
   - This can be useful to:
     1. Change a string quickly inside a script
     2. Call a known variable based on arguments or a settings file, etc
