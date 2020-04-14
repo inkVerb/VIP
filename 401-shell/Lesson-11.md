@@ -21,23 +21,25 @@ ___
 
 | **2** : `grep "^[[:upper:]]" code-of-poetry.txt`
 
-| **3** : `grep "^[[:punct:]]" code-of-poetry.txt`
+| **3** : `grep "^[[:lower:]]" code-of-poetry.txt`
 
-| **4** : `grep "^[[:digit:]]" code-of-poetry.txt`
+| **4** : `grep "^[[:punct:]]" code-of-poetry.txt`
 
-| **5** : `grep "[[:digit:]]$" code-of-poetry.txt`
+| **5** : `grep "^[[:digit:]]" code-of-poetry.txt`
 
-| **6** : `grep "[[:punct:]]$" code-of-poetry.txt`
+*Note no results because no digits appear first on any line*
 
-| **7** : `grep "[[:lower:]]$" code-of-poetry.txt`
+*Search for digits anywhere in each line without the carrot `^`...*
 
-*Note no results because no digits appear first on any line.*
+| **6** : `grep "[[:digit:]]" code-of-poetry.txt`
 
-*Try without the carrot `^`...*
+*Search the end of each line with the dollar sign `$`...*
 
-| **8** : `grep "[[:digit:]]" code-of-poetry.txt`
+| **7** : `grep "[[:digit:]]$" code-of-poetry.txt`
 
-| **9** : `grep "^[[:lower:]]" code-of-poetry.txt`
+| **8** : `grep "[[:lower:]]$" code-of-poetry.txt`
+
+| **9** : `grep "[[:punct:]]$" code-of-poetry.txt`
 
 *Try some simple replacements...*
 
