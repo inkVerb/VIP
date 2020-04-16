@@ -23,6 +23,7 @@ ___
 ___
 ### [Android: adb & fastboot](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Android-adb-fastboot.md)
 
+___
 ### Style & Documents
 
 [GitHub's Markdown](https://github.com/sindresorhus/github-markdown-css)

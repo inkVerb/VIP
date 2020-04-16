@@ -152,7 +152,7 @@ ___
 
 ## Replacement within variables
 - `${Var%foo}` will remove "foo" from the end of the value of variable `$Var`
-- `${Var%foo}bar` will remove "foo" the end, then add "bar" to the end the value of variable `$Var`
+- `${Var%foo}bar` will remove "foo" from the end, then add "bar" to the end the value of variable `$Var`
   - This can be useful to:
     1. Change a string quickly inside a script
     2. Call a known variable based on arguments or a settings file, etc
