@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/401`
+`cd ~/School/VIP/401`
 
 ___
 
@@ -73,7 +73,7 @@ This is a second line."
 
 *Let's look at "401/"...*
 
-| **9** : `cd ~/School/VIP/shell`
+| **9** : `cd ~/School/VIP`
 
 *Consider the `ls` command:*
 
@@ -99,7 +99,7 @@ ls\
 401
 ```
 
-*Press Up to see what your last command was: `ls-l~/School/VIP/shell/401`*
+*Press Up to see what your last command was: `ls-l~/School/VIP/401`*
 
 *Even breakup character by character, TYPE IN THE ENTIRE COMMAND, INCLUDING SPACES:*
 
@@ -124,7 +124,7 @@ l\
 s \
 -\
 l \
-~/School/VIP/shell/401
+~/School/VIP/401
 ```
 
 ### III. Shell History
@@ -167,7 +167,7 @@ l \
 
 *Note `!echo` calls the first BASH command that began with "echo", as for all `!TEST` usage*
 
-| **23** : `cd ~/School/VIP/shell/401`
+| **23** : `cd ~/School/VIP/401`
 
 ### IV. "Reverse Search"
 

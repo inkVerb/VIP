@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/201`
+`cd ~/School/VIP/201`
 
 #### [VIP/Cheat-Sheets: Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
 
@@ -53,7 +53,7 @@ iii. File sizes (very generic approximation)
 
 *Now go back to where our 201 directory*
 
-| **6** : `cd ~/School/VIP/shell/201`
+| **6** : `cd ~/School/VIP/201`
 
 ### `top` & `uptime`
 

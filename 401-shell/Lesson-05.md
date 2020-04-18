@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/401`
+`cd ~/School/VIP/401`
 
 ___
 
@@ -386,7 +386,7 @@ echo "${myVar}"
 
 myVar="Hello world!"
 
-~/School/VIP/shell/401/variable-exported
+~/School/VIP/401/variable-exported
 ```
 *The above script is in the next file...*
 
@@ -415,7 +415,7 @@ echo "${myVar}"
 
 export myVar="Hello world!"
 
-~/School/VIP/shell/401/variable-exported
+~/School/VIP/401/variable-exported
 ```
 
 *Run it and watch carefully*
@@ -520,7 +520,7 @@ unset MYROVAR
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/shell/401`
+`cd ~/School/VIP/401`
 
 #### `set` *without arguments* lists all current variables and functions, everywhere
 

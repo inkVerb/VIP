@@ -5,7 +5,7 @@ ___
 
 ## Prepare
 
-| **1** : `mkdir -p ~/School/VIP/shell/201`
+| **1** : `mkdir -p ~/School/VIP/201`
 
 ### Create `su` (Super User) password
 
@@ -70,4 +70,5 @@ ___
 - Always use `sudo ./my-shell-script`, if your script needs root permissions
 
 ___
+
 #### [Lesson 1: cp, mv, ln -s, rm, touch](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-01.md)

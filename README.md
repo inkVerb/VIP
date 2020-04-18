@@ -47,7 +47,7 @@ Once you know how to work with a computer terminal (Linux language), all code wi
 
 *Many lessons begin with commands or helpful links, like this:*
 
-`cd ~/School/VIP/shell/101`
+`cd ~/School/VIP/101`
 
 ___
 

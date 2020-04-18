@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/201`
+`cd ~/School/VIP/201`
 
 #### [Permissions Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Permissions.md)
 
@@ -41,7 +41,7 @@ ___
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/shell/201`
+`cd ~/School/VIP/201`
 
 `su Username`
 
@@ -198,7 +198,7 @@ Ready the CLI (if needed)
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/shell/201`
+`cd ~/School/VIP/201`
 
 `su Username`
 

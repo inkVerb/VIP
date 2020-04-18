@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/401`
+`cd ~/School/VIP/401`
 
 - [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
 - [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)
@@ -277,7 +277,7 @@ ___
 
 *For example (this can also go in your Shell script):*
 
-| **50** : `mysql --defaults-extra-file=~/School/VIP/shell/401/mysqlinfofile -e "SHOW DATABASES;"`
+| **50** : `mysql --defaults-extra-file=~/School/VIP/401/mysqlinfofile -e "SHOW DATABASES;"`
 
 *...and that's how to put MySQL commands in a Shell script.*
 
@@ -287,7 +287,7 @@ ___
 
 #### Now remove that tutorial admin user so it doesn't cause the codepocalypse...
 
-| **51** : `mysql --defaults-extra-file=~/School/VIP/shell/401/mysqlinfofile -e "DROP USER newadminuser@localhost;"`
+| **51** : `mysql --defaults-extra-file=~/School/VIP/401/mysqlinfofile -e "DROP USER newadminuser@localhost;"`
 
 ___
 > Optional: IF you logged in as a "sudoer", now exit

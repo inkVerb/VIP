@@ -4,7 +4,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/101`
+`cd ~/School/VIP/101`
 
 ___
 

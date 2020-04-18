@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/301`
+`cd ~/School/VIP/301`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)

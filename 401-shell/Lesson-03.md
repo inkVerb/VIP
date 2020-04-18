@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/401`
+`cd ~/School/VIP/401`
 
 - [Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md)
 ___
@@ -82,7 +82,7 @@ echo "I am executable, but I am not in the \$PATH."
 
 2. "`/home/`" path: `~/...`
 
-| **8** : `~/School/VIP/shell/401/iamexec`
+| **8** : `~/School/VIP/401/iamexec`
 
 *...or (since `.` = "current directory") this an easier way to do the same thing...*
 

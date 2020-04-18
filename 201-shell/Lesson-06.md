@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/201`
+`cd ~/School/VIP/201`
 
 **FOR** | **3 - 11** : `cd verb.ink`
 ___

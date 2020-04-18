@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/301`
+`cd ~/School/VIP/301`
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 ### II. `rename`
 
-`cd ~/School/VIP/shell/301/one` *(make sure we're in the right place)*
+`cd ~/School/VIP/301/one` *(make sure we're in the right place)*
 
 ___
 

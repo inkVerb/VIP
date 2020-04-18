@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/301/one`
+`cd ~/School/VIP/301/one`
 
 - [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
@@ -12,9 +12,9 @@ ___
 
 *Quick prep first: Make symlinks of this lesson's scripts in the directory we will use*
 
-*Note, we aren't in our usual place; we are here: `~/School/VIP/shell/301/one`*
+*Note, we aren't in our usual place; we are here: `~/School/VIP/301/one`*
 
-| **1** : `ln -sfn ~/School/VIP/shell/301/03-* .` *Make sure you include that period at the end!*
+| **1** : `ln -sfn ~/School/VIP/301/03-* .` *Make sure you include that period at the end!*
 
 ### I. `for Var in Lst; do`
 

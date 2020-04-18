@@ -15,7 +15,7 @@
 ___
 ## Prepare
 
-### I. If you did Shell 201, but on a different machine
+### I. OPTIONAL: If you did Shell 201, but on a different machine
 >
 > ___
 > Optional: You may login as a "sudoer" if needed
@@ -33,12 +33,12 @@ ___
 > | **S2** : `exit`
 > ___
 >
-> | **0** : `mkdir -p ~/School/VIP/shell` *If you did Shell 201, but on a different machine*
+> | **0** : `mkdir -p ~/School/VIP` *If you did Shell 201, but on a different machine*
 >
 
 ### II. `git clone` our scripts for this lesson
 
-| **1** : `cd ~/School/VIP/shell`
+| **1** : `cd ~/School/VIP`
 
 | **2** : `git clone https://github.com/inkVerb/401`
 
@@ -55,4 +55,5 @@ ___
 - You have the GitHub "401" files needed for this course
 
 ___
+
 #### [Lesson 1: Returns & Terminal](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-01.md)

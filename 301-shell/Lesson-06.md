@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/301`
+`cd ~/School/VIP/301`
 
 - [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
@@ -164,7 +164,7 @@ ___
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/shell/301/logs`
+`cd ~/School/VIP/301/logs`
 
 ___
 
@@ -304,7 +304,7 @@ ___
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/shell/301/logs`
+`cd ~/School/VIP/301/logs`
 
 `gedit error.log`
 

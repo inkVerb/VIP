@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/201`
+`cd ~/School/VIP/201`
 
 `wget -O vip.zip https://github.com/inkVerb/vip/archive/master.zip`
 
@@ -153,7 +153,7 @@ ___
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/shell/201/compress`
+`cd ~/School/VIP/201/compress`
 
 ___
 
@@ -285,7 +285,7 @@ ___
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/shell/201/compress`
+`cd ~/School/VIP/201/compress`
 
 `ls -l`
 

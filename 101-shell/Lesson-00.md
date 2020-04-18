@@ -7,9 +7,9 @@ ___
 
 *F12 (guake/tilda) OR Ctrl + Alt + T (new terminal)*
 
-| **1** : `mkdir -p ~/School/VIP/shell/101`
+| **1** : `mkdir -p ~/School/VIP/101`
 
-| **2** : `cd ~/School/VIP/shell/101`
+| **2** : `cd ~/School/VIP/101`
 
 ___
 
@@ -98,4 +98,5 @@ ___
   - "Killing" an app from the terminal should be a last resort if it it crashes and won't respond
 
 ___
+
 #### [Lesson 1: gedit, echo & sed](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-01.md)

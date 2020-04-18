@@ -53,9 +53,11 @@ Life is easier with a local "Work" folder symlink
 - ***Note: this location won't work with using `<script ... src="files.js">` to include JavaScript. Both the served page and the `src="files.js"` files MUST be physically in `/var/www/html/...` somewhere, not in a symlinked location like this!***
 
 #### Always own web stuff first!
+
 | **7** : `sudo chown -R www-data:www-data /var/www/html/`
 
 #### Make Apache rewrites work
+
 1. Enable the Rewrite mod for Apache
 
 | **8** : `sudo a2enmod rewrite`

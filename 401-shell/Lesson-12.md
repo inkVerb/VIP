@@ -3,7 +3,7 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/shell/401`
+`cd ~/School/VIP/401`
 
 ___
 
@@ -219,7 +219,7 @@ cp file destination
 Open a new terminal window: Ctrl + Alt + T (not F12)
 
 **Run in the new terminal window:** *(...and keep watch in the first terminal)*
-> | **T1** : `cd ~/School/VIP/shell/401`
+> | **T1** : `cd ~/School/VIP/401`
 >
 > | **T2** : `echo "I am fruit." >> rtfile.md`
 >
