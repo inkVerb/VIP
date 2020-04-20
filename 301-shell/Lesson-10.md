@@ -59,7 +59,7 @@ Some things can only be done in BASH
 
 | **13** : `./10-array-associative v`
 
-*Note*
+*Note:*
   - *There are two ways to define the elements of the associative array*
   - *Array keys are case-sensitive*
 
