@@ -8,7 +8,7 @@
 
 ### [Lesson 2: Docs & Pausing (odt2txt, pandoc, rename, sleep, read & wait)](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md)
 
-### [Lesson 3: for VAR in LST do done](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md)
+### [Lesson 3: for Var in Lst do done](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md)
 
 ### [Lesson 4: for Applied](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-04.md)
 

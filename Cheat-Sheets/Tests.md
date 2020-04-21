@@ -94,12 +94,12 @@ Also see: [VIP/Shell 301 – Lesson 1](https://github.com/inkVerb/vip/blob/maste
 
 ___
 
-### III. `for` Variabl `in` LST
+### III. `for` Variabl `in` Lst
 
 - A `for` test loops and does the same thing for each among many items
 
 ```sh
-for Variable in SOME_LIST
+for Variable in Some_List
 
 do
 
@@ -243,15 +243,15 @@ This is a classic example of a "counting" loop:
 ```sh
 #!/bin/sh
 
-MAX="$1" # Set a maxiumum when run from the command line as argument $1
+Max="$1" # Set a maxiumum when run from the command line as argument $1
 
-COUNT=1
+Count=1
 
-while [ "$COUNT" -le "$MAX" ]; do
-echo "Line #$COUNT"
+while [ "$Count" -le "$Max" ]; do
+echo "Line #$Count"
 # Uncomment the line below to echo each new count into a file
-#echo "Line #$COUNT" >> countfile
-COUNT=$(expr $COUNT + 1)
+#echo "Line #$Count" >> countfile
+Count=$(expr $Count + 1)
 done
 
 ```
@@ -266,16 +266,16 @@ Here is an example of the code re-written for `until`:
 ```sh
 #!/bin/sh
 
-MAX="$1" # Set a maxiumum when run from the command line as argument $1
-MAXPLUSONE=$(expr $MAX + 1) # Set a variable above the maximum so the loop will run the $MAX value
+Max="$1" # Set a maxiumum when run from the command line as argument $1
+MaxPlusOne=$(expr $Max + 1) # Set a variable above the maximum so the loop will run the $Max value
 
-COUNT=1
+Count=1
 
-until [ "$COUNT" = "$MAXPLUSONE" ]; do
-echo "Line #$COUNT"
+until [ "$Count" = "$MaxPlusOne" ]; do
+echo "Line #$Count"
 # Uncomment the line below to echo each new count into a file
-#echo "Line #$COUNT" >> countfile
-COUNT=$(expr $COUNT + 1)
+#echo "Line #$Count" >> countfile
+Count=$(expr $Count + 1)
 done
 
 ```
@@ -797,9 +797,9 @@ This is *not* used in BASH or Shell, but it is used in many other languages, inc
 ```js
 Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';
 
-Eg:
+# example:
 
-Variable = ( $some_variable == 5 ) ? 'it is five' : 'not five';
+Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 
 ```
 
@@ -808,9 +808,9 @@ Variable = ( $some_variable == 5 ) ? 'it is five' : 'not five';
 ```sh
 Variable=$([ THIS IS THE TEST ] && echo 'value_if_true' || echo 'value_if_false')
 
-Eg:
+# example:
 
-Variable=$([ "$some_variable" == "5" ] && echo 'it is five' || echo 'not five')
+Variable=$([ "$Some_Variable" == "5" ] && echo 'it is five' || echo 'not five')
 
 ```
 
@@ -824,9 +824,9 @@ else
   Variable='value_if_false'
 fi
 
-Eg:
+# example:
 
-if [ "$some_variable" == "5" ]; then
+if [ "$Some_Variable" == "5" ]; then
   Variable='it is five'
 else
   Variable='not five'

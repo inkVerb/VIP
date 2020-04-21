@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 3: for VAR in LST do done
+## Lesson 3: for Var in Lst do done
 
 Ready the CLI
 
