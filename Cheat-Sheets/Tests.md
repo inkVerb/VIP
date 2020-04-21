@@ -794,7 +794,7 @@ This is *not* used in BASH or Shell, but it is used in many other languages, inc
 
 **Ternary Statement:**
 
-```
+```js
 Variable = ( Test here ) ? 'value_if_true' : 'value_if_false';
 
 Eg:
