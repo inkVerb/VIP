@@ -137,6 +137,8 @@ ___
 
 | **16** : `./07-function-breakdown`
 
+#### Once set, a variable works inside and outside of a function, unless it is `local` inside a function
+
 *Let's get a little more involved with variables...*
 
 | **17** : `gedit 07-function-variables`
@@ -168,8 +170,9 @@ ___
 - A function does not use parentheses when called, only the name, such as `function`
 - A function uses variables and arguments
 - Function variables can be set as:
-  - `global` *(default)*
-  - `local`
+  - global: `Variable="value"` *(default, normal)*
+  - local: `local Variable=value`
+  - **Once set, a variable works inside and outside of a function, unless it is `local` inside a function**
 - Function variable syntax:
   - `global Variable="value"` *(optional)*
   - `local Variable="value"`
