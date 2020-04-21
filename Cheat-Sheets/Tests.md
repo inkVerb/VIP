@@ -797,7 +797,7 @@ This is *not* used in BASH or Shell, but it is used in many other languages, inc
 ```js
 Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';
 
-# example:
+// example:
 
 Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 
