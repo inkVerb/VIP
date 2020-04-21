@@ -526,11 +526,11 @@ ___
 #### `#!/bin/bash`
 #### BASH vs Shell
 
-BASH and Shell do some `if`/`for`/`while`/`until` tests differently.
+BASH and Shell do some `if`/`for`/`while`/`until` tests differently
 
 ##### Quoting tested variables
 
-Shell: `$1` – Variables in tests **may** use quotes, but **do not** need to.
+Shell: `$1` – Variables in tests **may** use quotes, but **do not** need to
 ```sh
 #!/bin/sh
 if [ -d $1 ] || [ -f $1 ] || [ -e $1 ] || [ -n $1 ] || [ -z $1 ] || [ $1 = $2 ] || [ $1 = sometext ]
@@ -562,7 +562,8 @@ then; echo yes; fi
   -le     <=    # is less than or equal to
 ```
 
-Shell: `if [ $Num1 -eq $Num2 ]` – Variables **may** use quotes, but do **not need** to.
+Shell: `if [ $Num1 -eq $Num2 ]` – Variables **may** use quotes, but do **not need** to
+
 ```sh
 #!/bin/sh
 if [ $Num1 -eq $Num2 ]
@@ -573,9 +574,10 @@ if [ $Num1 -ge $Num2 ]
 if [ $Num1 -le $Num2 ]
 ```
 
-BASH: `if [ "$Num1" -eq "$Num2" ]` – Variables **must always** use quotes.
+BASH: `if [ "$Num1" -eq "$Num2" ]` – Variables **must always** use quotes
 
-BASH: `if (( "$Num1" == "$Num2" ))` – Symbol operators require double `((`parentheses`))`.
+BASH: `if (( "$Num1" == "$Num2" ))` – Symbol operators require double `((`parentheses`))`
+
 ```bash
 #!/bin/bash
 if [ "$Num1" -eq "$Num2" ]
@@ -706,6 +708,7 @@ Also see: [VIP/Shell 301 – Lesson 12](https://github.com/inkVerb/vip/blob/mast
 ___
 
 ### X. `getopt`
+
 - `getopt` is processed via: `while [[ $# > 0 ]]; do` `case`
 - Each `case` sets a variable to `true`, then the script should run later in an `if` test for those variables
 - `getopt` allows single-letter flags, And "long" option alternatives like: `--alpha` `--bravo` in place of `-a` `-b` and together `-ab`
@@ -782,3 +785,51 @@ This can take arguments:
 - `./myscript --bravo`
 
 Also see: [VIP/Shell 301 – Lesson 12](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
+
+___
+
+### XI. Ternary Statements `?:`
+
+This is *not* used in BASH or Shell, but it is used in many other languages, including C, PHP, and JavaScript:
+
+**Ternary Statement:**
+
+```
+Variable = ( Test here ) ? 'value_if_true' : 'value_if_false';
+
+Eg:
+
+Variable = ( $some_variable == 5 ) ? 'it is five' : 'not five';
+
+```
+
+**Shell one-line equivalent:**
+
+```sh
+Variable=$([ Test here ] && echo 'value_if_true' || echo 'value_if_false')
+
+Eg:
+
+Variable=$([ "$some_variable" == "5" ] && echo 'it is five' || echo 'not five')
+
+```
+
+**Shell `if` test equivalent:**
+
+```sh
+
+if [ Test here ]; then
+  Variable='value_if_true'
+else
+  Variable='value_if_false'
+fi
+
+Eg:
+
+if [ "$some_variable" == "5" ]; then
+  Variable='it is five'
+else
+  Variable='not five'
+fi
+
+```
