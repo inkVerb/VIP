@@ -795,7 +795,7 @@ This is *not* used in BASH or Shell, but it is used in many other languages, inc
 **Ternary Statement:**
 
 ```js
-Variable = ( Test here ) ? 'value_if_true' : 'value_if_false';
+Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';
 
 Eg:
 
@@ -806,7 +806,7 @@ Variable = ( $some_variable == 5 ) ? 'it is five' : 'not five';
 **Shell one-line equivalent:**
 
 ```sh
-Variable=$([ Test here ] && echo 'value_if_true' || echo 'value_if_false')
+Variable=$([ THIS IS THE TEST ] && echo 'value_if_true' || echo 'value_if_false')
 
 Eg:
 
@@ -818,7 +818,7 @@ Variable=$([ "$some_variable" == "5" ] && echo 'it is five' || echo 'not five')
 
 ```sh
 
-if [ Test here ]; then
+if [ THIS IS THE TEST ]; then
   Variable='value_if_true'
 else
   Variable='value_if_false'
