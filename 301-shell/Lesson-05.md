@@ -23,7 +23,7 @@ done
 
 | **1** : `gedit 05-while-read`
 
-*Note -z means "Zero" or "Zilch" for a variable that is empty*
+*Note `-z` means "Zero" or "Zilch" for a variable that is empty*
 
 | **2** : `./05-while-read`
 
@@ -31,7 +31,7 @@ done
 
 | **3** : `gedit 05-while-count`
 
-*Note ! means "not"*
+*Note `!` means "not"*
 
 | **4** : `./05-while-count`
 
@@ -39,7 +39,7 @@ done
 
 | **5** : `gedit 05-while-count-read`
 
-*Note ! means "not"*
+*Note `!` means "not"*
 
 | **6** : `./05-while-count-read`
 
