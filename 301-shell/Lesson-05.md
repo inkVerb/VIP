@@ -151,6 +151,8 @@ esac
 
 | **34** : `./05-case-yn-loop`
 
+*Run it multiple times as before*
+
 *Input "wrong" answers to see it loop*
 
 ___
