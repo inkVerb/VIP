@@ -1,5 +1,5 @@
 # PHP 501
-## Lesson 9: TinyMCE
+## Lesson 9: TinyMCE & AJAX
 
 Ready the CLI
 

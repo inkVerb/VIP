@@ -14,4 +14,4 @@ ___
 
 ___
 
-#### [Lesson 9: TinyMCE](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-09.md)
+#### [Lesson 9: TinyMCE & AJAX](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-09.md)

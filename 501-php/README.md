@@ -20,7 +20,7 @@
 
 ### [Lesson 8: CMS Blog: Input-Display](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-08.md)
 
-### [Lesson 9: TinyMCE](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-09.md)
+### [Lesson 9: TinyMCE & AJAX](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-09.md)
 
 ### [Lesson 10: Handling Uploads](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-10.md)
 
