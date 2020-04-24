@@ -125,4 +125,4 @@ ___
 - Ctrl + H toggles hidden file and directory view in Nautilus
 ___
 
-#### [Lesson 5: adduser, deluser, chown](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-05.md)
+#### [Lesson 5: su, adduser, deluser, chown](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-05.md)

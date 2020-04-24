@@ -52,6 +52,8 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
 > ___
 >
 
+### IV. HTML & CSS Crash Course
+
 ___
 
 # The Take
@@ -65,6 +67,25 @@ ___
 - You can use this same setup to develop real PHP-language web applications, just as it is
 - You can use this for other languages (Phython, Node, etc), just install them as you would on a web server
 
+## HTML & CSS Crash Course
+
+### Render 'naked' HTML on a webpage
+- `<h1>`, `<h2>`, etc
+- `<p>`
+- `<ol>` / `<ul>`: `<li>`
+- `<form>`
+- `<textarea>`
+- `<input>` `type=`: `text`, `radio`, `color`, `datetime-local`, `submit`
+- HTML entities
+
+### Style HTML with CSS
+- Embed CSS in the `<head>`
+- `<link>` CSS in the `<head>`
+- Introduce styling for:
+  - elements
+  - `class`
+  - `id`
+
 ___
 
-#### [Lesson 1: HTML & CSS](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-01.md)
+#### [Lesson 1: PHP](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-01.md)

@@ -8,11 +8,11 @@
 
 ### [Lesson 2: cd, ../.., mkdir, rm -r](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-02.md)
 
-### [Lesson 3: su, sudo, apt update, apt upgrade, apt install, lsb_release](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-03.md)
+### [Lesson 3: Software – apt, lsb_release](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-03.md)
 
 ### [Lesson 4: ls -1 -l -a -r, chmod](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-04.md)
 
-### [Lesson 5: adduser, deluser, chown](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-05.md)
+### [Lesson 5: su, adduser, deluser, chown](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-05.md)
 
 ### [Lesson 6: wget, curl, git clone](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-06.md)
 

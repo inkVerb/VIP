@@ -142,4 +142,4 @@ ___
 
 ___
 
-#### [Lesson 3: su, sudo, apt update, apt upgrade, apt install, lsb_release](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-03.md)
+#### [Lesson 3: Software – apt, lsb_release](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-03.md)
