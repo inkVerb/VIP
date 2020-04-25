@@ -12,10 +12,11 @@ ___
 **MySQLi:** *MySQL the "safe way" in PHP*
 
 #### Example of a MySQLi Config:
+
 ```php
+DEFINE ('DB_HOST', 'localhost');
 DEFINE ('DB_USER', 'databaseuser');
 DEFINE ('DB_PASSWORD', 'databasepassword');
-DEFINE ('DB_HOST', 'localhost');
 DEFINE ('DB_NAME', 'databasename');
 
 // Database connection

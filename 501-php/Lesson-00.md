@@ -75,7 +75,7 @@ ___
 - `<ol>` / `<ul>`: `<li>`
 - `<form>`
 - `<textarea>`
-- `<input>` `type=`: `text`, `radio`, `color`, `datetime-local`, `submit`
+- `<input>` `type=`: `text`, `password`, `radio`, `color`, `datetime-local`, `submit`
 - HTML entities
 
 ### Style HTML with CSS
