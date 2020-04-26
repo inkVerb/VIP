@@ -4,13 +4,13 @@
 
 ### [Lesson 0: LAMP Server Setup](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-00.md)
 
-### [Lesson 1: HTML & CSS](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-01.md)
+### [Lesson 1: PHP Core](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-01.md)
 
-### [Lesson 2: HTML via PHP](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-02.md)
+### [Lesson 2: MySQL & phpMyAdmin](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-02.md)
 
-### [Lesson 3: MySQL & phpMyAdmin](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-03.md)
+### [Lesson 3: MySQL & PHP MySQLi](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-03.md)
 
-### [Lesson 4: MySQL & PHP MySQLi](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-04.md)
+### [Lesson 4: HTML via PHP](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-04.md)
 
 ### [Lesson 5: RewriteMod (Pretty Permalinks)](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-05.md)
 

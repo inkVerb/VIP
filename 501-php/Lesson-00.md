@@ -88,4 +88,4 @@ ___
 
 ___
 
-#### [Lesson 1: PHP](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-01.md)
+#### [Lesson 1: PHP Core](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-01.md)

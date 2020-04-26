@@ -7,6 +7,14 @@ Ready the CLI
 
 ___
 
+Bear in mind, we want to make our database calls *before* we render any HTML
+
+1. Make database calls
+2. Set variables accordingly (strings, boolean, etc)
+3. Render HTML based on our database-set variables
+
+*You don't want half of your page waiting to load while you make another database call*
+
 ### MySQL Config
 
 **MySQLi:** *MySQL the "safe way" in PHP*

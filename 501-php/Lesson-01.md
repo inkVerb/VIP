@@ -1,5 +1,5 @@
 # PHP 501
-## Lesson 1: PHP
+## Lesson 1: PHP Core
 
 Ready the CLI
 
@@ -9,6 +9,26 @@ Ready the CLI
 - [Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
 
 ___
+
+### PHP rules:
+
+1. PHP renders and responds to HTML
+2. HTML can exist outside `<?php ?>` tags in a .php file
+3. PHP can be inserted inside an .html file
+4. Variables begin with `$`, *even when declaring the value (unlike Shell)*
+5. Variables can work inside `"double quotes"` *not `'single quotes'`*
+6. Variable names allow the same characters as Shell:
+  - letters, numbers, underscore
+  - case-sensitive
+  - can't start with a number
+7. Concatenate strings and variables with `.`
+
+**Concatenation**
+```php
+echo $variable.' single quote $no_var'." double quote working $variables";
+
+echo 'string '.$variable.' string continues '.$variable." etc...";
+```
 
 ### I. PHP Form & Method Handling
 
@@ -120,9 +140,9 @@ $_GET['key']
 ### II. PHP Logic
 
 #### Basic Syntax
-##### 1. PHP must start with `<?php` and can end with `?>`
+##### 1. PHP must start with `<?php` and *may* end with `?>`
 ##### 2. Every PHP line must end with `;`
-##### 3. *`do` ... `done`* and *`then` ... `fi`* are replaced with *`{` ... `}`*
+##### 3. `do ... done` and `then ... fi` are replaced with `{ ... }`
 ##### 4. Tests are wrapped in `(`parentheses`)`, you can use `(tests (inside tests))`
 
 *Many other things are the same between PHP and Shell*
@@ -138,7 +158,6 @@ PHP has 4 types of loops:
 - `foreach`
 
 **Loop syntax: `foreach` example**
-
 ```php
 
 foreach ($array as $item) {
@@ -225,7 +244,6 @@ if ( TEST HERE ) {
 #### Ternary Statements
 
 **[Ternary Statement](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)**
-
 ```php
 $Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';
 
@@ -280,6 +298,11 @@ date("Y-m-d H:i:s", substr($time_epoch, 0, 10)) // Change PHP epoch time back to
 
 ### III. PHP RegEx & Validation
 
+#### Security rules:
+1. Validate first & always
+2. Sanitize second
+3. Escape before using
+
 #### Know the Datatype!
 *A "string" is a "datatype", which we looked at in [VIP/Shell 401 – Lesson 6](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)*
 
@@ -292,12 +315,6 @@ date("Y-m-d H:i:s", substr($time_epoch, 0, 10)) // Change PHP epoch time back to
 ##### PHP Validation:
 - *Use PHP RegEx `preg_match()` and some `filter_var()` validation checks on **strings***
 - *Use non-RegEx PHP `filter_var()` validation checks on **integers, true/false, arrays, etc***
-
-##### This Prevents Hackers and Serious User Error
-For basic security:
-1. Validate first & always
-2. Sanitize second
-3. Escape before using
 
 #### Basic PHP RegEx & Validation Tests:
 ```php
@@ -390,14 +407,12 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 #### Validation Summary
 
 **Validate:** `01-phpregex1.php`
-
 ```php
 filter_var()
 preg_match()
 ```
 
 **Sanitize:** `01-phpregex3.php`
-
 ```php
 preg_replace()
 strtolower()
@@ -412,7 +427,6 @@ You may define your own custom functions
 #### Custom PHP Functions
 
 **Define the function:**
-
 ```php
 
 function myFunctionName($arg1, $arg2, $arg3) {
@@ -435,7 +449,6 @@ myFunctionName('John', "Jim", 'Sam');
 ```
 
 **Variables with functions:**
-
 ```php
 
 $Variable = "I am outside the function";
@@ -464,12 +477,11 @@ function anotherFunctHere($someArg, $anotherArg) {
 extract(anotherFunctHere("first arg", "second arg"));
 
 // These two variables from inside the function only work after the function because they were compacted, then extracted
-  echo $someArg.' and '.$anotherArg;
+echo $someArg.' and '.$anotherArg;
 
 ```
 
 **Function to `return` a value:**
-
 ```php
 
 function iHaveValue($oneArg) {
@@ -518,8 +530,9 @@ echo $someVariable;
 *Try the form and developer view*
 
 ***We need a little more cleanup:***
-- **"empty" error message if empty POST**
-- **Double-check password**
+
+  - "empty" error message if empty POST
+  - Double-check password
 
 | **20** : `cp core/01-phpfunction6.php web/phppost.php && gedit core/01-phpfunction6.php`
 
@@ -527,13 +540,112 @@ echo $someVariable;
 
 *Try the form and developer view*
 
-### V. Constants & Config Files
+### V. Includes & Constants
 
+Config files usually use **includes** and **constants**
 
+#### Includes
+
+There are two ways to include a file, each way has two options
+
+- `include` inserts the text of a file if it exists
+- `require` is like `include`, but breaks if the file does not exist
+- `..._once` will not include the file more than one time
+- *included .php files should start with a `<?php` tag, but not end with the closing tag `?>`*
+
+```php
+include ('path/to/file');
+
+include_once ('path/to/file');
+
+require ('path/to/file');
+
+require_once ('path/to/file');
+```
+
+*Note the included file uses a Linux path*
+
+**Purpose** of including files:
+
+- Avoid redundant code, especially: headers, footers, functions, and settings
+- Cleaner code, without having to look at all the functions, validations, etc
+
+**Conventions** with included files:
+
+- Use `.inc.php` at the end of included file names
+- Put included files in a subdirectory called `inc`
+
+Then we get this:
+
+```php
+include ('./inc/file.inc.php');
+```
+
+...But it's not core, so we did: `in.filename.php`
+
+Then we get this:
+
+```php
+include ('./in.file.php');
+```
+
+*Review the diagrams above along side the following two steps...*
+
+| **21** : `cp core/01-phpinclude.in.php web/in.phppost.php && cp core/01-phpinclude.php web/phppost.php && gedit web/in.phppost.php && gedit core/01-phpinclude.php`
+
+| **B-21** :// `localhost/web/phppost.php` (Same)
+
+*Try the form and developer view*
+
+#### Constants
+
+**Constant rules:**
+
+1. Constants are variables that do not ever change
+2. Constants work inside and outside functions
+3. While PHP variables being with `$`, constants do not
+4. Constants can't work inside `"double quotes"` nor `'single quotes'`
+
+**Define & call a constant:**
+```php
+// Define
+define ('CONSTANT_NAME', 'Constant value');
+
+// Call
+echo CONSTANT_NAME;
+```
+
+*Review the diagrams above along side the following few steps...*
+
+| **22** : `cp core/01-phpconstant1.php web/phppost.php && gedit core/01-phpconstant1.php`
+
+| **B-22** :// `localhost/web/phppost.php` (Same)
+
+*Try the form and developer view*
+
+*...organize all this in an `include` config file...*
+
+| **23** : `cp core/01-phpconstant2.in.php web/in.config.php && cp core/01-phpconstant2.php web/phppost.php && gedit web/in.config.php && gedit core/01-phpconstant2.php`
+
+| **B-23** :// `localhost/web/phppost.php` (Same)
+
+*Try the form and developer view*
 
 ___
 
 # The Take
+
+## PHP rules:
+1. PHP renders and responds to HTML
+2. HTML can exist outside `<?php ?>` tags in a .php file
+3. PHP can be inserted inside an .html file
+4. Variables begin with `$`, *even when declaring the value (unlike Shell)*
+5. Variables can work inside `"double quotes"` *not `'single quotes'`*
+6. Variable names allow the same characters as Shell:
+  - letters, numbers, underscore
+  - case-sensitive
+  - can't start with a number
+7. Concatenate strings and variables with `.`
 
 ## PHP Form & Method Handling
 - `_GET` takes values from the web URL
@@ -557,13 +669,17 @@ ___
 - 4 types of loops `do` `while` `for` `foreach`
   - `foreach` syntax: `foreach ($array as $item) { DO THIS... ;}`
 - PHP uses `if` tests
-  - syntax: `if ( TEST HERE ) { DO THIS... ;}`
+  - Syntax: `if ( TEST HERE ) { DO THIS... ;}`
 - PHP `if` tests can use `else` and `elseif` *(not `elif`)*
 
-## Ternary syntax
+## Ternary Statements
 - Syntax: `$Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';`
 
 ## PHP RegEx & Validation
+- **Security rules:**
+  1. Validate first & always
+  2. Sanitize second
+  3. Escape before using
 - Use `preg_match()` wtih RegEx to check most strings
 - Use `filter_var()` to check
   - Non-strings like integers
@@ -575,11 +691,22 @@ ___
   - Sanitizing
   - Creating HTML items (`<input>`, etc)
 - HTML `<form>` errors fit nicely in an array
-  - syntax: `$error_array['input_name']`
+  - Syntax: `$error_array['input_name']`
 - Arrays and functions can work together
 
-## Constants, Includes & Configs
-
+## Includes & Constants
+- Includes:
+  - Save redundant code
+  - Are good organizing
+  - Usual syntax & naming: `include ('./inc/file.inc.php');`
+  - Also use: `require`, `require_once`, `include_once`
+- Constants:
+  - **Constant rules:**
+    1. Constants are variables that do not ever change
+    2. Constants work inside and outside functions
+    3. While PHP variables being with `$`, constants do not
+    4. Constants can't work inside `"double quotes"` nor `'single quotes'`
+  - Syntax: `define ('CONSTANT_NAME', 'Constant value');`
 
 
 ___
