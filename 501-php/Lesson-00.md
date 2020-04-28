@@ -1,5 +1,5 @@
 # PHP 501
-## Lesson 0: LAMP Server Setup
+## Lesson 0: LAMP Server Setup & HTML Fast
 
 ### [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
 
@@ -10,6 +10,7 @@ ___
 
 | **P1** : `mkdir -p ~/School/VIP`
 
+### This lesson requires a "sudoer" who can use `sudo`
 >
 > ___
 > Optional: You may login as a "sudoer" if needed

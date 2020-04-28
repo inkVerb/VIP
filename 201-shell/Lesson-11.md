@@ -13,7 +13,7 @@ ___
 
 *This gives a list of all network connections*
 
-### For a "sudoer" who can use `sudo`
+### This lesson requires a "sudoer" who can use `sudo`
 >
 ___
 > Optional: You may login as a "sudoer" if needed

@@ -97,9 +97,13 @@ Require all granted
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
 
-  | **13** :  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
+  | **13** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
 
-  | **14** : `FLUSH PRIVILEGES;`
+  | **14** :> `FLUSH PRIVILEGES;`
+
+3. Exit MySQL
+
+  | **15** :> `QUIT;`
 
 Access any MySQL user you created later with
 - `mysql -u USERNAME -p` (then enter the password)
@@ -120,22 +124,22 @@ sudo apt-get install mysql-server
 2. Extract and rename the folder to: `phpMyAdmin`
 3. In the terminal, move it to `/var/www/html/` (so it is at `/var/www/html/phpMyAdmin`)
 
-  | **15** : `sudo mv phpMyAdmin /var/www/html/`
+  | **16** : `sudo mv phpMyAdmin /var/www/html/`
 
 4. Create the config
 
-  | **16** : `cd /var/www/html/phpMyAdmin`
+  | **17** : `cd /var/www/html/phpMyAdmin`
 
-  | **17** : `sudo cp config.sample.inc.php config.inc.php`
+  | **18** : `sudo cp config.sample.inc.php config.inc.php`
 
 5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
-    | **18g** : `sudo gedit /var/www/html/phpMyAdmin/config.inc.php`
+    | **19g** : `sudo gedit /var/www/html/phpMyAdmin/config.inc.php`
 
   - Or edit with `vim`:
 
-    | **18v** : `sudo vim /var/www/html/phpMyAdmin/config.inc.php`
+    | **19v** : `sudo vim /var/www/html/phpMyAdmin/config.inc.php`
 
   - Add the salt here:
     - `$cfg['blowfish_secret'] = '';` ...becomes...
@@ -143,7 +147,7 @@ sudo apt-get install mysql-server
 
 6. Own everything properly
 
-  | **19** : `sudo chown -R www-data:www-data /var/www/html/phpMyAdmin`
+  | **20** : `sudo chown -R www-data:www-data /var/www/html/phpMyAdmin`
 
 Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`

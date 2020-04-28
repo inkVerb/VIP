@@ -2,7 +2,7 @@
 
 ## Prerequisite: [Shell 401](https://github.com/inkVerb/VIP/tree/master/401-shell)
 
-### [Lesson 0: LAMP Server Setup](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-00.md)
+### [Lesson 0: LAMP Server Setup & HTML Fast](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-00.md)
 
 ### [Lesson 1: PHP Core](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-01.md)
 

@@ -156,7 +156,7 @@ ___
 
 *Removing a git-cloned directory is easier with `sudo`*
 
-### For a "sudoer" who can use `sudo`
+### This lesson requires a "sudoer" who can use `sudo`
 >
 ___
 > Optional: You may login as a "sudoer" if needed

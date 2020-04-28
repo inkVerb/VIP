@@ -29,9 +29,10 @@ ___
 
 #### In the Terminal
 
-Open a new terminal window: Ctrl + Alt + T (not F12)
-
-**Run in the new terminal window:**
+**Run in a new terminal window:**
+>
+> Open a new terminal window: Ctrl + Alt + T (not F12)
+>
 > | **T1** : `exit`
 >
 > Open a new terminal window: Ctrl + Alt + T (not F12)

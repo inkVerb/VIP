@@ -188,13 +188,13 @@ foreach ($array as $item) {
 
 ```php
 if ( TEST HERE ) {
-   DO THIS;
-   DO THIS;
- } elseif ( ANOTHER TEST ) {
-   DO THIS;
- } else {
-   DO THIS;
- }
+  DO THIS;
+  DO THIS;
+} elseif ( ANOTHER TEST ) {
+  DO THIS;
+} else {
+  DO THIS;
+}
 ```
 
 *Review the diagrams above along side the following few steps...*
@@ -458,6 +458,7 @@ function anotherFunctHere($someArg, $anotherArg) {
   // This will not work:
   echo $Variable;
 
+  // ...because we must do this first:
   global $Variable;
 
   // Now, this will work:
@@ -707,7 +708,6 @@ ___
     3. While PHP variables being with `$`, constants do not
     4. Constants can't work inside `"double quotes"` nor `'single quotes'`
   - Syntax: `define ('CONSTANT_NAME', 'Constant value');`
-
 
 ___
 

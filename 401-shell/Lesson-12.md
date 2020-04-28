@@ -218,7 +218,10 @@ cp file destination
 
 Open a new terminal window: Ctrl + Alt + T (not F12)
 
-**Run in the new terminal window:** *(...and keep watch in the first terminal)*
+**Run in a new terminal window:** *(...and keep watch in the first terminal)*
+>
+> Open a new terminal window: Ctrl + Alt + T (not F12)
+>
 > | **T1** : `cd ~/School/VIP/401`
 >
 > | **T2** : `echo "I am fruit." >> rtfile.md`

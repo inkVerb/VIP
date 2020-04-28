@@ -100,11 +100,11 @@ ___
 
 *Enter the following:*
 
-| **10** : `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'newpassword';`
+| **10** :> `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'newpassword';`
 
-| **11** : `FLUSH PRIVILEGES;`
+| **11** :> `FLUSH PRIVILEGES;`
 
-| **12** : `QUIT`
+| **12** :> `QUIT`
 
 *Note you exited MySQL*
 
@@ -123,57 +123,57 @@ ___
 
 *List databases:*
 
-| **14** : `SHOW DATABASES;`
+| **14** :> `SHOW DATABASES;`
 
 *Create a database:*
 
-| **15** : `CREATE DATABASE vipdatabase;`
+| **15** :> `CREATE DATABASE vipdatabase;`
 
-| **16** : `SHOW DATABASES;`
+| **16** :> `SHOW DATABASES;`
 
 *Now we made the database "vipdatabase"! Yeah!*
 
 *List users:*
 
-| **17** : `SELECT User FROM mysql.user;`
+| **17** :> `SELECT user FROM mysql.user;`
 
 *Create user (simply by assigning one to a database):*
 
-| **18** : `GRANT ALL PRIVILEGES ON vipdatabase.* TO 'vipuser'@'localhost' IDENTIFIED BY 'vippassword';`
+| **18** :> `GRANT ALL PRIVILEGES ON vipdatabase.* TO 'vipuser'@'localhost' IDENTIFIED BY 'vippassword';`
 
-| **19** : `SELECT User FROM mysql.user;`
+| **19** :> `SELECT user FROM mysql.user;`
 
 *That user can't use the database until we "flush" privileges...*
 
-| **20** : `FLUSH PRIVILEGES;`
+| **20** :> `FLUSH PRIVILEGES;`
 
 *Now we made the user "vipuser", and it can access "vipdatabase"! Yeah!*
 
 *Let's have another look at the databases...*
 
-| **21** : `SHOW DATABASES;`
+| **21** :> `SHOW DATABASES;`
 
 *Delete the database "vipdatabase"*
 
-| **22** : `DROP DATABASE vipdatabase;`
+| **22** :> `DROP DATABASE vipdatabase;`
 
-| **23** : `SHOW DATABASES;`
+| **23** :> `SHOW DATABASES;`
 
 *...all gone!*
 
-| **24** : `SELECT User FROM mysql.user;`
+| **24** :> `SELECT user FROM mysql.user;`
 
 *...but but the user is still there!*
 
 *Delete the user "vipuser"*
 
-| **25** : `DROP USER vipuser@localhost;`
+| **25** :> `DROP USER vipuser@localhost;`
 
-| **26** : `SELECT User FROM mysql.user;`
+| **26** :> `SELECT user FROM mysql.user;`
 
 *...all gone!*
 
-| **27** : `QUIT`
+| **27** :> `QUIT`
 ___
 
 ### MySQL via Shell
@@ -202,13 +202,13 @@ ___
 
 | **32** : `mysql -u root -pnewpassword -e "SHOW DATABASES;"`
 
-| **33** : `mysql -u root -pnewpassword -e "SELECT User FROM mysql.user;"`
+| **33** : `mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"`
 
 | **34** : `mysql -u root -pnewpassword -e "GRANT ALL PRIVILEGES ON vipdatabase.* TO 'vipuser'@'localhost' IDENTIFIED BY 'vippassword'; FLUSH PRIVILEGES;"`
 
 *Note we put "FLUSH PRIVILEGES;" in the same command because ";" separates commands.*
 
-| **35** : `mysql -u root -pnewpassword -e "SELECT User FROM mysql.user;"`
+| **35** : `mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"`
 
 | **36** : `mysql -u root -pnewpassword -e "SHOW DATABASES;"`
 
@@ -216,11 +216,11 @@ ___
 
 | **38** : `mysql -u root -pnewpassword -e "SHOW DATABASES;"`
 
-| **39** : `mysql -u root -pnewpassword -e "SELECT User FROM mysql.user;"`
+| **39** : `mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"`
 
 | **40** : `mysql -u root -pnewpassword -e "DROP USER vipuser@localhost;"`
 
-| **41** : `mysql -u root -pnewpassword -e "SELECT User FROM mysql.user;"`
+| **41** : `mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"`
 
 *Conclusion: The commands in MySQL can be run from a Shell prompt.*
 
@@ -236,7 +236,7 @@ ___
 
 | **43** : `GRANT ALL PRIVILEGES ON *.* TO 'newadminuser'@'localhost' IDENTIFIED BY 'newpassword' WITH GRANT OPTION;`
 
-| **44** : `SELECT User FROM mysql.user;` *(If you really, badly want to see that the user is there.)*
+| **44** : `SELECT user FROM mysql.user;` *(If you really, badly want to see that the user is there.)*
 
 | **45** : `FLUSH PRIVILEGES;`
 

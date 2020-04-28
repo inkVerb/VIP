@@ -20,7 +20,7 @@ ___
 
 *Not all users can run with `sudo`*
 
-### For a "sudoer" who can use `sudo`
+### This lesson requires a "sudoer" who can use `sudo`
 >
 ___
 > Optional: You may login as a "sudoer" if needed
