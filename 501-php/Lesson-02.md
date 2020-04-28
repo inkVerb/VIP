@@ -7,6 +7,18 @@ Ready the CLI
 
 ___
 
+### SQL Language
+
+SQL is a database language used by many
+
+MySQL is one such database software
+
+Other SQL database software includes:
+
+- SQLite
+- PostgreSQL
+- MariaDB (forked from MySQL by the original developers after MySQL was acquired by Oracle in 2009)
+
 ## Optional Fix: If you have trouble logging in to MySQL
 ### This optional section requires a "sudoer" who can use `sudo`
 >
@@ -33,20 +45,10 @@ ___
 >
 > | **S2** : `exit`
 ___
+___
 
-### SQL Language
 
-SQL is a database language used by many
-
-MySQL is one such database software
-
-Other SQL database software includes:
-
-- SQLite
-- PostgreSQL
-- MariaDB (forked from MySQL by the original developers after MySQL was acquired by Oracle in 2009)
-
-### Basics: User and Database
+### I. Basics: User and Database
 
 *Note this format will prompt you for a password:*
 
@@ -120,7 +122,7 @@ SQL queries often use ALL CAPS for SQL terms to better see the SQL language part
 
 | **B-9** ://phpMyAdmin **> Databases**
 
-### Privileges: User and Database
+### II. Privileges: User and Database
 
 *Create a database and user on one, combined line...*
 
@@ -196,7 +198,7 @@ SQL queries often use ALL CAPS for SQL terms to better see the SQL language part
 
 | **B-19** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
-### Privileges Automatically Create a User
+### III. Privileges Automatically Create a User
 
 #### SQL Privileges Rules:
 1. A user must have "privileges" on a database to use that database
@@ -256,7 +258,7 @@ This is the conventional way, using fewer commands...
 
 | **B-29** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
-### Tables
+### IV. Tables
 
 *Login to MySQL as the user of the database, not as the `admin` user...*
 
@@ -430,7 +432,7 @@ OR
   `date_created` TIMESTAMP NOT NULL,
 ```
 
-### SQL Done Right
+### V. SQL Done Right
 
 #### Create the Right Way: *with details*
 ##### 1. Database:
