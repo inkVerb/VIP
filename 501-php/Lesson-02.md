@@ -490,6 +490,7 @@ FLUSH PRIVILEGES;
 *Specify the database to use...*
 
 | **50** :> `USE food_db;`
+
 | **B-49** ://phpMyAdmin **> food_db**
 
 *Create a table...*
@@ -502,7 +503,7 @@ CREATE TABLE IF NOT EXISTS `fruit` (
   `type` TINYTEXT DEFAULT NULL,
   `have` BOOLEAN NOT NULL DEFAULT false,
   `count` INT DEFAULT 0,
-  `prepared` ENUM('fresh', 'dry', 'NA') NOT NULL,
+  `prepared` ENUM('fresh', 'dry', 'cooked', 'NA') NOT NULL,
   `date_created` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;

@@ -50,7 +50,7 @@ echo 'string '.$variable.' string continues '.$variable." etc...";
 
 #### `_POST`
 
-| **3** : `cp core/01-phppost1.php web/phppost.php`
+| **3** : `cp core/01-phppost1.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -115,7 +115,7 @@ print_r($autoArray);
 
 *Review the diagram above along side the following two steps...*
 
-| **4** : `cp core/01-phparrays.php web/phppost.php && gedit core/01-phparrays.php`
+| **4** : `cp core/01-phparrays.php web/phppost.php && gedit core/01-phparrays.php && ls web`
 
 | **B-4** :// `localhost/web/phppost.php` *(Ctrl + R to reload)*
 
@@ -170,7 +170,7 @@ foreach ($array as $item) {
 
 *Review the diagram above along side the following two steps...*
 
-| **5** : `cp core/01-phpforeach.php web/phppost.php && gedit core/01-phpforeach.php`
+| **5** : `cp core/01-phpforeach.php web/phppost.php && gedit core/01-phpforeach.php && ls web`
 
 | **B-5** :// `localhost/web/phppost.php` (Same)
 
@@ -199,7 +199,7 @@ if ( TEST HERE ) {
 
 *Review the diagrams above along side the following few steps...*
 
-| **6** : `cp core/01-phppost2.php web/phppost.php`
+| **6** : `cp core/01-phppost2.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -209,7 +209,7 @@ if ( TEST HERE ) {
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-| **7** : `cp core/01-phppost3.php web/phppost.php`
+| **7** : `cp core/01-phppost3.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -217,7 +217,7 @@ if ( TEST HERE ) {
 
 *Try the form and developer view*
 
-| **8** : `cp core/01-phppost4.php web/phppost.php`
+| **8** : `cp core/01-phppost4.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -225,7 +225,7 @@ if ( TEST HERE ) {
 
 *Try the form and developer view*
 
-| **9** : `cp core/01-phppost5.php web/phppost.php`
+| **9** : `cp core/01-phppost5.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -233,7 +233,7 @@ if ( TEST HERE ) {
 
 *Try the form and developer view*
 
-| **10** : `cp core/01-phppost6.php web/phppost.php`
+| **10** : `cp core/01-phppost6.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -255,7 +255,7 @@ $Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 
 *Review the diagram above along side the following two steps...*
 
-| **11** : `cp core/01-phppost7.php web/phppost.php`
+| **11** : `cp core/01-phppost7.php web/phppost.php && ls web`
 
 | **B-11** :// `localhost/web/phppost.php` (Same)
 
@@ -342,7 +342,7 @@ preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variabl
 
 *Review the diagram above along side the following two steps...*
 
-| **12** : `cp core/01-phpregex1.php web/phppost.php && gedit core/01-phpregex1.php`
+| **12** : `cp core/01-phpregex1.php web/phppost.php && gedit core/01-phpregex1.php && ls web`
 
 | **B-12** :// `localhost/web/phppost.php` (Same)
 
@@ -358,6 +358,12 @@ $Variable = preg_replace("/[^a-zA-Z0-9]/"," ", $Variable);
 
 // Replace any non-alphanumeric character with a hyphen (-)
 $Variable = preg_replace("/[^a-zA-Z0-9]/","-", $Variable);
+
+// Remove whitespace at start and end
+$Variable = trim($Variable);
+
+// Remove all whitespace: trim(preg_replace())
+$Variable = trim(preg_replace('/\s+/', ' ', $Variable));
 
 // Change any letters to lower case
 $Variable = strtolower($Variable);
@@ -392,13 +398,13 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 
 *Note how `preg_replace()` and `strtolower()` are used to sanitize the values...*
 
-| **13** : `cp core/01-phpregex2.php web/phppost.php && gedit core/01-phpregex2.php`
+| **13** : `cp core/01-phpregex2.php web/phppost.php && gedit core/01-phpregex2.php && ls web`
 
 | **B-13** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **14** : `cp core/01-phpregex3.php web/phppost.php && gedit core/01-phpregex3.php`
+| **14** : `cp core/01-phpregex3.php web/phppost.php && gedit core/01-phpregex3.php && ls web`
 
 | **B-14** :// `localhost/web/phppost.php` (Same)
 
@@ -500,31 +506,31 @@ echo $someVariable;
 ```
 *Review the diagrams above along side the following few steps...*
 
-| **15** : `cp core/01-phpfunction1.php web/phppost.php && gedit core/01-phpfunction1.php`
+| **15** : `cp core/01-phpfunction1.php web/phppost.php && gedit core/01-phpfunction1.php && ls web`
 
 | **B-15** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **16** : `cp core/01-phpfunction2.php web/phppost.php && gedit core/01-phpfunction2.php`
+| **16** : `cp core/01-phpfunction2.php web/phppost.php && gedit core/01-phpfunction2.php && ls web`
 
 | **B-16** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **17** : `cp core/01-phpfunction3.php web/phppost.php && gedit core/01-phpfunction3.php`
+| **17** : `cp core/01-phpfunction3.php web/phppost.php && gedit core/01-phpfunction3.php && ls web`
 
 | **B-17** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **18** : `cp core/01-phpfunction4.php web/phppost.php && gedit core/01-phpfunction4.php`
+| **18** : `cp core/01-phpfunction4.php web/phppost.php && gedit core/01-phpfunction4.php && ls web`
 
 | **B-18** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **19** : `cp core/01-phpfunction5.php web/phppost.php && gedit core/01-phpfunction5.php`
+| **19** : `cp core/01-phpfunction5.php web/phppost.php && gedit core/01-phpfunction5.php && ls web`
 
 | **B-19** :// `localhost/web/phppost.php` (Same)
 
@@ -535,7 +541,7 @@ echo $someVariable;
   - "empty" error message if empty POST
   - Double-check password
 
-| **20** : `cp core/01-phpfunction6.php web/phppost.php && gedit core/01-phpfunction6.php`
+| **20** : `cp core/01-phpfunction6.php web/phppost.php && gedit core/01-phpfunction6.php && ls web`
 
 | **B-20** :// `localhost/web/phppost.php` (Same)
 
@@ -592,7 +598,7 @@ include ('./in.file.php');
 
 *Review the diagrams above along side the following two steps...*
 
-| **21** : `cp core/01-phpinclude.in.php web/in.phppost.php && cp core/01-phpinclude.php web/phppost.php && gedit web/in.phppost.php && gedit core/01-phpinclude.php`
+| **21** : `cp core/01-phpinclude.in.php web/in.phppost.php && cp core/01-phpinclude.php web/phppost.php && gedit web/in.phppost.php && gedit core/01-phpinclude.php && ls web`
 
 | **B-21** :// `localhost/web/phppost.php` (Same)
 
@@ -618,7 +624,7 @@ echo CONSTANT_NAME;
 
 *Review the diagrams above along side the following few steps...*
 
-| **22** : `cp core/01-phpconstant1.php web/phppost.php && gedit core/01-phpconstant1.php`
+| **22** : `cp core/01-phpconstant1.php web/phppost.php && gedit core/01-phpconstant1.php && ls web`
 
 | **B-22** :// `localhost/web/phppost.php` (Same)
 
@@ -626,7 +632,7 @@ echo CONSTANT_NAME;
 
 *...organize all this in an `include` config file...*
 
-| **23** : `cp core/01-phpconstant2.in.php web/in.config.php && cp core/01-phpconstant2.php web/phppost.php && gedit web/in.config.php && gedit core/01-phpconstant2.php`
+| **23** : `cp core/01-phpconstant2.in.php web/in.config.php && cp core/01-phpconstant2.php web/phppost.php && gedit web/in.config.php && gedit core/01-phpconstant2.php && ls web`
 
 | **B-23** :// `localhost/web/phppost.php` (Same)
 
