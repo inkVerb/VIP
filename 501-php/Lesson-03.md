@@ -232,7 +232,7 @@ ls web
 
 | **B-6** :// `localhost/web/website.php` (Same)
 
-In the webform, input:
+*In the webform, input:*
 	- Name: mangos
 	- Type: oversize
 	- Prepared: Fresh
@@ -270,18 +270,42 @@ ls web
 
 | **B-7** :// `localhost/web/website.php` (Same)
 
-In the webform, input:
-	- Name: mangos
-	- Type: oversize
-	- Prepared: Fresh
-
-*Try to input numbers or leave a field empty to see how the form responds*
+*Make changes, input numbers, or empty a field to see how the form responds*
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-*Once finished, see the new entries in the database...*
+*Once finished, see the updated entries in the database...*
 
 | **S7** :> `SELECT name, type, have, count, prepared FROM fruit;`
+
+### SQL `DELETE` Entry < HTML
+- See if the row was deleted, same as an update
+	- Syntax: `if (mysqli_affected_rows($database) == 1)`
+
+| **8** :
+```
+cp core/03-website8.php web/website.php && \
+cp core/03-checks8.in.php web/in.checks.php && \
+ls web
+```
+
+*gedit: Reload*
+ 	- *website.php*
+ 	- *in.checks.php*
+
+*Note we have several new form functions & POST checks*
+
+| **SB-8** ://phpMyAdmin **> fruit** (Same)
+
+| **B-8** :// `localhost/web/website.php` (Same)
+
+*Use a checkbox to delete an entry*
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+*Once finished, note the entries deleted from the database...*
+
+| **S8** :> `SELECT name, type, have, count, prepared FROM fruit;`
 
 ___
 
