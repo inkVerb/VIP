@@ -25,7 +25,7 @@ ___
 
 | **4** : `date +%F`
 
-*HH:mm:SS*
+*HH:mm:SS (Note MM is a two-digit month)*
 
 | **5** : `date +%T`
 

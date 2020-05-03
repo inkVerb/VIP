@@ -362,4 +362,4 @@ $query = "SELECT SCOPE_IDENTITY()";
 ```
 ___
 
-#### [Lesson 4: HTML via PHP](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-04.md)
+#### [Lesson 4: User Login](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-04.md)
