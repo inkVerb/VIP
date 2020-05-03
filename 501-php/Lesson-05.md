@@ -18,4 +18,4 @@ ___
 
 ___
 
-#### [Lesson 6: HTML via PHP](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-06.md)
+#### [Lesson 6: AJAX](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-06.md)

@@ -14,13 +14,13 @@
 
 ### [Lesson 5: RewriteMod (Pretty Permalinks)](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-05.md)
 
-### [Lesson 6: HTML via PHP](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-06.md)
+### [Lesson 6: AJAX](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-06.md)
 
-### [Lesson 7: Account & Settings](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-07.md)
+### [Lesson 7: HTML via PHP](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-07.md)
 
-### [Lesson 8: CMS Blog: Input-Display](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-08.md)
+### [Lesson 8: Account & Settings](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-08.md)
 
-### [Lesson 9: TinyMCE & AJAX](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-09.md)
+### [Lesson 9: CMS Blog: Input, Display & TinyMCE](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-09.md)
 
 ### [Lesson 10: Handling Uploads](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-10.md)
 
