@@ -12,6 +12,17 @@ ___
 
 ### I. `select`
 
+This works like a `while` or `until` loop...
+
+```sh
+select Var in Some_List
+do
+  if [ $Var = "item1" ]; then
+    ...
+  fi
+done
+```
+
 | **1** : `gedit 11-menu-if`
 
 | **2** : `./11-menu-if`
@@ -30,6 +41,17 @@ ___
 
 *Do the same thing with a `case` loop*
 
+```sh
+select Var in Some_List
+do
+  case $Var in
+    item1)
+      ...
+    ;;
+  esac
+done
+```
+
 | **5** : `gedit 11-menu-case`
 
 | **6** : `./11-menu-case`
@@ -47,6 +69,10 @@ ___
 ### II. `dialog`
 
 **`dialog` does not require BASH, but is a separate program that must be installed with `sudo apt install dialog`**
+
+```sh
+dialog --option1 "args" --option2 "args" [size] 2> output.file
+```
 
 *5 = height; 18 = width*
 

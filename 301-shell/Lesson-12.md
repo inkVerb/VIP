@@ -12,6 +12,17 @@ ___
 
 ### I. `getopts`
 
+```bash
+while getopts "f:l:a:g:s" Var
+do
+  case $Var in
+    f)
+      ...
+    ;;
+  esac
+done
+```
+
 #### Note: `$OPTARG` & `$OPTIND` are native variables for `getopts`
 
 #### A. Each flag gets one argument (but not help)
@@ -158,31 +169,50 @@ how_to_use
 
 ### II. `getopt`
 
-*Note `getops` only accepts one-letter options, `getopt` is for `--long` options and requires more variables and checks*
+```bash
+getopt -o f:l:a:g:s -l flag:,lag:,ages:,sag -n "$(basename "$0")" -- "$@"
+...and much much more...
+```
 
-| **21** : `gedit 12-long`
+#### Note:
+##### `getops` only accepts one-letter options
+##### `getopt` is for `--long` options and requires more variables and checks
+
+*First, see what `basename` does...*
+
+| **21** : `basename /path/to/here`
+
+| **22** : `basename /path/to/here.file`
+
+| **23** : `basename /path/to/here.file .file`
+
+| **24** : `basename -a /path/one /path/two`
+
+*Many tools like `basename` help `getopt` to work...*
+
+| **25** : `gedit 12-long`
 
 *Note `--long` alternative options are included*
 
 *Note the global option was removed since `getopt` checks requirements by itself*
 
-| **22** : `./12-long -a Alpha -bce`
+| **26** : `./12-long -a Alpha -bce`
 
-| **23** : `./12-long --alpha Alpha --ecko --delta --beetle --charlie `
+| **27** : `./12-long --alpha Alpha --ecko --delta --beetle --charlie `
 
 *Note the order no longer affects the output since everything is done by `if` statements in order, at the end of the script*
 
-| **24** : `./12-long --alpha Alpha -bcd --ecko`
+| **28** : `./12-long --alpha Alpha -bcd --ecko`
 
-| **25** : `./12-long -a Alpha --beetle --delta -e --charlie`
+| **29** : `./12-long -a Alpha --beetle --delta -e --charlie`
 
 *Note both short and long are accepted*
 
-| **26** : `./12-long -k` (invalid option)
+| **30** : `./12-long -k` (invalid option)
 
-| **27** : `./12-long` (no options)
+| **31** : `./12-long` (no options)
 
-| **28** : `./12-long --help`
+| **32** : `./12-long --help`
 
 ___
 
