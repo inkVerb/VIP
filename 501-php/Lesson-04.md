@@ -54,6 +54,10 @@ gedit web/install.php web/in.config.php web/in.checks.php web/in.functions.php &
 ls web
 ```
 
+*Look, but don't touch...*
+
+| **B-5** :// `localhost/web/install.php`
+
 *Look through `in.functions.php` and `install.php` first and a few things...*
 
 | **in.functions.php** :
@@ -98,11 +102,18 @@ $db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]
 
 | **SB-5** ://phpMyAdmin **> webapp_db**
 
-*Note our database has no tables, let's create them by installing...*
+*Note our database has no tables, let's go back to our webform...*
 
 | **B-5** :// `localhost/web/install.php`
 
-*Enter the database information from above, along with your username, password, and other info, then continue*
+```
+Database name: webapp_db
+Database user: webapp_db_user
+Database password: webappdbpassword
+Database hose: localhost
+```
+
+*Enter the database information above into the webform, along with your username, password, and other info, then continue*
 
 | **S6** :> `SHOW TABLES;`
 

@@ -345,6 +345,9 @@ filter_var($Variable,FILTER_VALIDATE_EMAIL)
 // Test an integer
 filter_var($Variable, FILTER_VALIDATE_INT)
 
+// Test for string length (eg. up to 128)
+( strlen($value) <= 128 )
+
 // Test a number with RegEx (6-32 characters)
 preg_match('/^[0-9]{6,32}$/i', $Variable)
 
@@ -463,6 +466,15 @@ preg_replace()
 strtolower()
 ```
 
+**String length:** `01-phpregex3.php`
+```php
+(strlen($String) <= 128) // Validate
+ substr($String, 0, 128) // Truncate
+
+// Nested functions also work
+substr(preg_replace($String), 0, 128)
+```
+
 ### IV. PHP Functions in Forms
 
 This is a PHP function: `preg_replace()`, which you have already been using
@@ -543,6 +555,7 @@ $someVariable = iHaveValue("John");
 echo $someVariable;
 
 ```
+
 *Review the diagrams above along side the following few steps...*
 
 | **15** :
