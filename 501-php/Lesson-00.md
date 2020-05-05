@@ -38,9 +38,9 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
 
 | **P3** : `git clone https://github.com/inkVerb/501`
 
-| **P4** : `mkdir ~/School/VIP/501/web`
+| **P4** : `sudo mkdir /var/www/html/web`
 
-| **P5** : `sudo ln -sfn ~/School/VIP/501/web /var/www/html/`
+| **P5** : `ln -sfn /var/www/html/web ~/School/VIP/501/`
 
 #### Always own web stuff!
 

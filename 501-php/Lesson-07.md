@@ -5,7 +5,47 @@ Ready the CLI
 
 `cd ~/School/VIP/501`
 
+### This lesson uses two terminals and two browser windows!
+
+Ready the secondary SQL terminal and secondary SQL browser
+
+*(Ctrl + Shift + T for new terminal tab; Ctrl + PageUp/PageDown to switch tabs)*
+
+| **S0** : `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+
+*(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
+
+| **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+
 ___
+
+Nearly all web apps require that you have a database, database username, and database password already set up
+
+*Create our database and its login now...*
+
+| **1** :> `CREATE DATABASE blog_db;`
+
+| **2** :> `GRANT ALL PRIVILEGES ON blog_db.* TO blog_db_user@localhost IDENTIFIED BY 'blogdbpassword';`
+
+| **3** :> `FLUSH PRIVILEGES;`
+
+**Now, we have these database credentials:** (Many web apps ask for this on install)
+```
+Database name: blog_db
+Database user: blog_db_user
+Database password: blogdbpassword
+Database hose: localhost
+```
+
+*Get ready to work in our SQL terminal...*
+
+| **4** :> `USE blog_db`
+
+
+
+
+
+
 
 | **1** : `mkdir web/css && cp core/01-style.css web/css/style.css && gedit web/css/style.css && ls web/css`
 

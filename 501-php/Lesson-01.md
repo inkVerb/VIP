@@ -34,13 +34,19 @@ echo 'string '.$variable.' string continues '.$variable." etc...";
 
 #### `_GET`
 
-| **1** : `cp core/01-phpget1.php web/phpget.php && gedit web/phpget.php && ls web`
+| **1** :
+```
+sudo cp core/01-phpget1.php web/phpget.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/phpget.php && \
+ls web
+```
 
 | **B-1** :// `localhost/web/phpget.php?go=I am an apple pie` *(Ctrl + Shift + C in browser to see the developer HTML view)*
 
 *Try the form a few times to see how it works*
 
-| **2** : `cp core/01-phpget2.php web/phpget.php && ls web`
+| **2** : `sudo cp core/01-phpget2.php web/phpget.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -50,7 +56,7 @@ echo 'string '.$variable.' string continues '.$variable." etc...";
 
 #### `_POST`
 
-| **3** : `cp core/01-phppost1.php web/phppost.php && ls web`
+| **3** : `sudo cp core/01-phppost1.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -115,7 +121,13 @@ print_r($autoArray);
 
 *Review the diagram above along side the following two steps...*
 
-| **4** : `cp core/01-phparrays.php web/phppost.php && gedit core/01-phparrays.php && ls web`
+| **4** :
+```
+sudo cp core/01-phparrays.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phparrays.php && \
+ls web
+```
 
 | **B-4** :// `localhost/web/phppost.php` *(Ctrl + R to reload)*
 
@@ -170,7 +182,13 @@ foreach ($array as $item) {
 
 *Review the diagram above along side the following two steps...*
 
-| **5** : `cp core/01-phpforeach.php web/phppost.php && gedit core/01-phpforeach.php && ls web`
+| **5** :
+```
+sudo cp core/01-phpforeach.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpforeach.php && \
+ls web
+```
 
 | **B-5** :// `localhost/web/phppost.php` (Same)
 
@@ -199,7 +217,7 @@ if ( TEST HERE ) {
 
 *Review the diagrams above along side the following few steps...*
 
-| **6** : `cp core/01-phppost2.php web/phppost.php && ls web`
+| **6** : `sudo cp core/01-phppost2.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -209,7 +227,7 @@ if ( TEST HERE ) {
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-| **7** : `cp core/01-phppost3.php web/phppost.php && ls web`
+| **7** : `sudo cp core/01-phppost3.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -217,7 +235,7 @@ if ( TEST HERE ) {
 
 *Try the form and developer view*
 
-| **8** : `cp core/01-phppost4.php web/phppost.php && ls web`
+| **8** : `sudo cp core/01-phppost4.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -225,7 +243,7 @@ if ( TEST HERE ) {
 
 *Try the form and developer view*
 
-| **9** : `cp core/01-phppost5.php web/phppost.php && ls web`
+| **9** : `sudo cp core/01-phppost5.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -233,7 +251,7 @@ if ( TEST HERE ) {
 
 *Try the form and developer view*
 
-| **10** : `cp core/01-phppost6.php web/phppost.php && ls web`
+| **10** : `sudo cp core/01-phppost6.php web/phppost.php && ls web`
 
 *gedit: Reload phpget.php*
 
@@ -255,7 +273,7 @@ $Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 
 *Review the diagram above along side the following two steps...*
 
-| **11** : `cp core/01-phppost7.php web/phppost.php && ls web`
+| **11** : `sudo cp core/01-phppost7.php web/phppost.php && ls web`
 
 | **B-11** :// `localhost/web/phppost.php` (Same)
 
@@ -273,7 +291,7 @@ isset($testme)
 
 array_key_exists($key, $array_name)
 
-file_exists($file_name) // For file on server (or with http address, use with care)
+file_exists($file_name) // For file on server OR with http address (use with care)
 
 // Note:
 !empty($testme) // flips the true/false return for the if test for any of these
@@ -282,7 +300,7 @@ file_exists($file_name) // For file on server (or with http address, use with ca
 
 unset($remove_me) // Removes (unsets) the value of the variable
 
-file_get_contents($file_name) // For file on server (or with http address, use with care)
+file_get_contents($file_name) // For file on server OR remote file with http address (use with care)
 
 header("Location: $new_http_web_address") // Redirect to this address, often used in easy PHP forward files
 
@@ -342,7 +360,13 @@ preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variabl
 
 *Review the diagram above along side the following two steps...*
 
-| **12** : `cp core/01-phpregex1.php web/phppost.php && gedit core/01-phpregex1.php && ls web`
+| **12** :
+```
+sudo cp core/01-phpregex1.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpregex1.php && \
+ls web
+```
 
 | **B-12** :// `localhost/web/phppost.php` (Same)
 
@@ -364,6 +388,9 @@ $Variable = trim($Variable);
 
 // Remove all whitespace: trim(preg_replace())
 $Variable = trim(preg_replace('/\s+/', ' ', $Variable));
+
+// Truncate before/after certain characters (eg. returns first 10 characters)
+$Variable = substr($Variable,0,10);
 
 // Change any letters to lower case
 $Variable = strtolower($Variable);
@@ -398,13 +425,25 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 
 *Note how `preg_replace()` and `strtolower()` are used to sanitize the values...*
 
-| **13** : `cp core/01-phpregex2.php web/phppost.php && gedit core/01-phpregex2.php && ls web`
+| **13** :
+```
+sudo cp core/01-phpregex2.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpregex2.php && \
+ls web
+```
 
 | **B-13** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **14** : `cp core/01-phpregex3.php web/phppost.php && gedit core/01-phpregex3.php && ls web`
+| **14** :
+```
+sudo cp core/01-phpregex3.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpregex3.php && \
+ls web
+```
 
 | **B-14** :// `localhost/web/phppost.php` (Same)
 
@@ -506,31 +545,61 @@ echo $someVariable;
 ```
 *Review the diagrams above along side the following few steps...*
 
-| **15** : `cp core/01-phpfunction1.php web/phppost.php && gedit core/01-phpfunction1.php && ls web`
+| **15** :
+```
+sudo cp core/01-phpfunction1.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpfunction1.php && \
+ls web
+```
 
 | **B-15** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **16** : `cp core/01-phpfunction2.php web/phppost.php && gedit core/01-phpfunction2.php && ls web`
+| **16** :
+```
+sudo cp core/01-phpfunction2.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpfunction2.php && \
+ls web
+```
 
 | **B-16** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **17** : `cp core/01-phpfunction3.php web/phppost.php && gedit core/01-phpfunction3.php && ls web`
+| **17** :
+```
+sudo cp core/01-phpfunction3.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpfunction3.php && \
+ls web
+```
 
 | **B-17** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **18** : `cp core/01-phpfunction4.php web/phppost.php && gedit core/01-phpfunction4.php && ls web`
+| **18** :
+```
+sudo cp core/01-phpfunction4.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpfunction4.php && \
+ls web
+```
 
 | **B-18** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **19** : `cp core/01-phpfunction5.php web/phppost.php && gedit core/01-phpfunction5.php && ls web`
+| **19** :
+```
+sudo cp core/01-phpfunction5.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpfunction5.php && \
+ls web
+```
 
 | **B-19** :// `localhost/web/phppost.php` (Same)
 
@@ -541,7 +610,13 @@ echo $someVariable;
   - "empty" error message if empty POST
   - Double-check password
 
-| **20** : `cp core/01-phpfunction6.php web/phppost.php && gedit core/01-phpfunction6.php && ls web`
+| **20** :
+```
+sudo cp core/01-phpfunction6.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpfunction6.php && \
+ls web
+```
 
 | **B-20** :// `localhost/web/phppost.php` (Same)
 
@@ -598,7 +673,16 @@ include ('./in.file.php');
 
 *Review the diagrams above along side the following two steps...*
 
-| **21** : `cp core/01-phpinclude.in.php web/in.phppost.php && cp core/01-phpinclude.php web/phppost.php && gedit web/in.phppost.php && gedit core/01-phpinclude.php && ls web`
+| **21** :
+```
+sudo cp core/01-phpinclude.in.php web/in.phppost.php && \
+sudo cp core/01-phpinclude.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/in.phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpinclude.php && \
+ls web
+```
 
 | **B-21** :// `localhost/web/phppost.php` (Same)
 
@@ -624,7 +708,13 @@ echo CONSTANT_NAME;
 
 *Review the diagrams above along side the following few steps...*
 
-| **22** : `cp core/01-phpconstant1.php web/phppost.php && gedit core/01-phpconstant1.php && ls web`
+| **22** :
+```
+sudo cp core/01-phpconstant1.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpconstant1.php && \
+ls web
+```
 
 | **B-22** :// `localhost/web/phppost.php` (Same)
 
@@ -632,11 +722,149 @@ echo CONSTANT_NAME;
 
 *...organize all this in an `include` config file...*
 
-| **23** : `cp core/01-phpconstant2.in.php web/in.config.php && cp core/01-phpconstant2.php web/phppost.php && gedit web/in.config.php && gedit core/01-phpconstant2.php && ls web`
+| **23** :
+```
+sudo cp core/01-phpconstant2.in.php web/in.config.php && \
+sudo cp core/01-phpconstant2.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/in.config.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit core/01-phpconstant2.php && \
+ls web
+```
 
 | **B-23** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
+
+#### Header/Footer Conventions
+
+Use `require_once`, not `include` for important files like these...
+
+```php
+
+require_once ('config.php');
+
+require_once ('header.php');
+
+... Whatever makes this particular page special goes here ...
+
+require_once ('footer.php');
+
+```
+
+Normally, the top and bottom of a webpage are some kind of `include` of `header.php` and `footer.php` respectively
+
+| **24** :
+```
+sudo cp core/01-phpheader.in.php web/in.header.php && \
+sudo cp core/01-phpfooter.in.php web/in.footer.php && \
+sudo cp core/01-phphfconventions.php web/phppost.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/in.header.php web/in.footer.php core/01-phphfconventions.php && \
+ls web
+```
+
+| **B-24** :// `localhost/web/phppost.php` (Same)
+
+*Try the form and developer view*
+
+### VI. Writing a File
+
+We can write a file from a:
+
+- Simple string
+- Variable
+- Heredoc
+
+```php
+file_put_contents('./file/location', 'File content string');
+```
+
+**Simple string:**
+
+| **25** :
+```
+sudo cp core/01-phpfileput1.php web/phpfileput.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/phpfileput.php && \
+ls web
+```
+
+*Look over the PHP file in gedit before using the browser*
+
+| **B-25** :// `localhost/web/phpfileput.php`
+
+*See the file changes...*
+
+| **26** : `ls web && cat web/fileput.1`
+
+**Variables:**
+
+| **27** :
+```
+sudo cp core/01-phpfileput2.php web/phpfileput.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+*gedit: Reload phpfileput.php*
+
+| **B-27** :// `localhost/web/phpfileput.php` (Same)
+
+*See the file changes...*
+
+| **28** : `ls web && cat web/fileput.2`
+
+**Heredoc:**
+
+```php
+$file_text = <<<EOF
+... $Variable
+EOF;
+```
+
+| **29** :
+```
+sudo cp core/01-phpfileput3.php web/phpfileput.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+*gedit: Reload phpfileput.php*
+
+*Note how the heredoc was made for later reference:*
+
+| **B-29** :// `localhost/web/phpfileput.php` (Same)
+
+*See the file changes...*
+
+| **30** : `ls web && cat web/fileput.3`
+
+**Heredoc with `'single quotes'`:**
+
+```php
+$file_text = <<<'EOF'
+... $Variable
+EOF;
+```
+
+| **31** :
+```
+sudo cp core/01-phpfileput4.php web/phpfileput.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+*gedit: Reload phpfileput.php*
+
+*Note the use of `'single quotes'` affect the `$Variable` in the heredoc:*
+
+| **B-31** :// `localhost/web/phpfileput.php` (Same)
+
+*See the file changes...*
+
+| **32** : `ls web && cat web/fileput.4`
 
 ___
 
@@ -714,7 +942,17 @@ ___
     3. While PHP variables being with `$`, constants do not
     4. Constants can't work inside `"double quotes"` nor `'single quotes'`
   - Syntax: `define ('CONSTANT_NAME', 'Constant value');`
+- Header/Footer Conventions:
+  - The top and bottom of most web pages are the same, thus `include` in this order:
+    - `config.php` (or similar name)
+    - `header.php` (or similar name)
+    - `footer.php` (or similar name)
+  - But, we use `require_once`, not `include`, because these are important
 
+## Create Files
+- Create a file with: `file_put_contents('./file/location', 'File content string');`
+- Heredocs with `'single quotes'` around the delimeter will cancel variables
+  - Syntax: `$Variable = <<<'EOF'`
 ___
 
 #### [Lesson 2: MySQL & phpMyAdmin](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-02.md)

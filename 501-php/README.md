@@ -10,7 +10,7 @@
 
 ### [Lesson 3: MySQL & PHP MySQLi](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-03.md)
 
-### [Lesson 4: User Login](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-04.md)
+### [Lesson 4: App Install & User Login](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-04.md)
 
 ### [Lesson 5: RewriteMod (Pretty Permalinks)](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-05.md)
 

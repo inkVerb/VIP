@@ -45,10 +45,11 @@ website.php
 
 | **1** :
 ```
-cp core/03-website1.php web/website.php && \
-cp core/03-style1.css web/style.css && \
-cp core/03-functions1.in.php web/in.functions.php && \
-cp core/03-checks1.in.php web/in.checks.php && \
+sudo cp core/03-website1.php web/website.php && \
+sudo cp core/03-style1.css web/style.css && \
+sudo cp core/03-functions1.in.php web/in.functions.php && \
+sudo cp core/03-checks1.in.php web/in.checks.php && \
+sudo chown -R www-data:www-data /var/www/html && \
 gedit web/website.php web/style.css web/in.functions.php web/in.checks.php && \
 ls web
 ```
@@ -108,8 +109,9 @@ $variable_other_column = "$row[1]";
 
 | **2** :
 ```
-cp core/03-website2.php web/website.php && \
-cp core/03-config1.in.php web/in.config.php && \
+sudo cp core/03-website2.php web/website.php && \
+sudo cp core/03-config.in.php web/in.config.php && \
+sudo chown -R www-data:www-data /var/www/html && \
 gedit web/in.config.php && \
 ls web
 ```
@@ -132,12 +134,16 @@ ls web
 
 | **3** :
 ```
-cp core/03-website3.php web/website.php && \
-cp core/03-style3.css web/style.css && \
+sudo cp core/03-website3.php web/website.php && \
+sudo cp core/03-style3.css web/style.css && \
+sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload website.php & style.css*
+*gedit: Reload*
+
+	- *website.php*
+	- *style.css*
 
 *Note the <table> in HTML and border lines in CSS*
 
@@ -164,7 +170,8 @@ ls web
 
 | **4** :
 ```
-cp core/03-website4.php web/website.php && \
+sudo cp core/03-website4.php web/website.php && \
+sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
@@ -189,7 +196,8 @@ ls web
 
 | **5** :
 ```
-cp core/03-website5.php web/website.php && \
+sudo cp core/03-website5.php web/website.php && \
+sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
@@ -213,14 +221,16 @@ ls web
 
 | **6** :
 ```
-cp core/03-website6.php web/website.php && \
-cp core/03-style6.css web/style.css && \
-cp core/03-functions6.in.php web/in.functions.php && \
-cp core/03-checks6.in.php web/in.checks.php && \
+sudo cp core/03-website6.php web/website.php && \
+sudo cp core/03-style6.css web/style.css && \
+sudo cp core/03-functions6.in.php web/in.functions.php && \
+sudo cp core/03-checks6.in.php web/in.checks.php && \
+sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
 *gedit: Reload*
+
  	- *website.php*
  	- *style.css*
  	- *in.functions.php*
@@ -251,14 +261,16 @@ ls web
 
 | **7** :
 ```
-cp core/03-website7.php web/website.php && \
-cp core/03-style7.css web/style.css && \
-cp core/03-functions7.in.php web/in.functions.php && \
-cp core/03-checks7.in.php web/in.checks.php && \
+sudo cp core/03-website7.php web/website.php && \
+sudo cp core/03-style7.css web/style.css && \
+sudo cp core/03-functions7.in.php web/in.functions.php && \
+sudo cp core/03-checks7.in.php web/in.checks.php && \
+sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
 *gedit: Reload*
+
  	- *website.php*
 	- *style.css*
  	- *in.functions.php*
@@ -284,12 +296,14 @@ ls web
 
 | **8** :
 ```
-cp core/03-website8.php web/website.php && \
-cp core/03-checks8.in.php web/in.checks.php && \
+sudo cp core/03-website8.php web/website.php && \
+sudo cp core/03-checks8.in.php web/in.checks.php && \
+sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
 *gedit: Reload*
+
  	- *website.php*
  	- *in.checks.php*
 
@@ -321,10 +335,10 @@ ___
 - The settings usually go in an included config file
 - Conventional syntax in the config file:
 ```php
-DEFINE ('DB_HOST', 'localhost');
 DEFINE ('DB_USER', 'databaseuser');
 DEFINE ('DB_PASSWORD', 'databasepassword');
 DEFINE ('DB_NAME', 'databasename');
+DEFINE ('DB_HOST', 'localhost');
 $database = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 mysqli_set_charset($database, 'utf8');
 ```
@@ -362,4 +376,4 @@ $query = "SELECT SCOPE_IDENTITY()";
 ```
 ___
 
-#### [Lesson 4: User Login](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-04.md)
+#### [Lesson 4: App Install & User Login](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-04.md)
