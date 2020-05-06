@@ -1,5 +1,5 @@
 # PHP 501
-## Lesson 12: Content Library
+## Lesson 12: Framing for Production
 
 Ready the CLI
 

@@ -12,7 +12,7 @@ ___
 
 ### PHP rules:
 
-1. PHP renders and responds to HTML
+1. PHP renders HTML ***after*** the entire PHP script runs
 2. HTML can exist outside `<?php ?>` tags in a .php file
 3. PHP can be inserted inside an .html file
 4. Variables begin with `$`, *even when declaring the value (unlike Shell)*
@@ -452,6 +452,8 @@ ls web
 
 *Try the form and developer view*
 
+*Try entering a website or email longer than 128 characters*
+
 #### Validation Summary
 
 **Validate:** `01-phpregex1.php`
@@ -884,7 +886,7 @@ ___
 # The Take
 
 ## PHP rules:
-1. PHP renders and responds to HTML
+1. PHP renders HTML ***after*** the entire PHP script runs
 2. HTML can exist outside `<?php ?>` tags in a .php file
 3. PHP can be inserted inside an .html file
 4. Variables begin with `$`, *even when declaring the value (unlike Shell)*

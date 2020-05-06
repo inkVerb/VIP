@@ -14,4 +14,4 @@ ___
 
 ___
 
-#### [Lesson 12: Content Library](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-12.md)
+#### [Lesson 12: Framing for Production](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-12.md)

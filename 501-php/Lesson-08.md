@@ -1,5 +1,5 @@
 # PHP 501
-## Lesson 8: Account & Settings
+## Lesson 8: CMS Blog: Input, Display & TinyMCE
 
 Ready the CLI
 
@@ -14,4 +14,4 @@ ___
 
 ___
 
-#### [Lesson 9: CMS Blog: Input, Display & TinyMCE](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-09.md)
+#### [Lesson 9: Handling Uploads](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-09.md)

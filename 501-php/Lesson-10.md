@@ -1,5 +1,5 @@
 # PHP 501
-## Lesson 10: Handling Uploads
+## Lesson 10: Media Library
 
 Ready the CLI
 
@@ -14,4 +14,4 @@ ___
 
 ___
 
-#### [Lesson 11: Media Library](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-11.md)
+#### [Lesson 11: Content Library](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-11.md)

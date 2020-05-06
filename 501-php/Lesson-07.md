@@ -1,5 +1,5 @@
 # PHP 501
-## Lesson 7: HTML via PHP
+## Lesson 7: Account & Settings
 
 Ready the CLI
 
@@ -18,6 +18,20 @@ Ready the secondary SQL terminal and secondary SQL browser
 | **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
 ___
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Nearly all web apps require that you have a database, database username, and database password already set up
 
@@ -78,4 +92,4 @@ ___
 
 ___
 
-#### [Lesson 8: Account & Settings](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-08.md)
+#### [Lesson 8: CMS Blog: Input, Display & TinyMCE](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-08.md)

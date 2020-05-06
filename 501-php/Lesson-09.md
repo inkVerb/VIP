@@ -1,5 +1,5 @@
 # PHP 501
-## Lesson 9: CMS Blog: Input, Display & TinyMCE
+## Lesson 9: Handling Uploads
 
 Ready the CLI
 
@@ -14,4 +14,4 @@ ___
 
 ___
 
-#### [Lesson 10: Handling Uploads](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-10.md)
+#### [Lesson 10: Media Library](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-10.md)

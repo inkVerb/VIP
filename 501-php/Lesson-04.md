@@ -19,6 +19,8 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 ___
 
+### I. Web App Installer
+
 Nearly all web apps require that you have a database, database username, and database password already set up
 
 *Create our database and its login now...*
@@ -54,30 +56,20 @@ gedit web/install.php web/in.config.php web/in.checks.php web/in.functions.php &
 ls web
 ```
 
-*Look, but don't touch...*
+*In the config, note:*
 
-| **B-5** :// `localhost/web/install.php`
-
-*Look through `in.functions.php` and `install.php` first and a few things...*
-
-| **in.functions.php** :
-
-**Truncate a possibly long value:**
-
-Note preg_replace() is inside substr($Variable,0,10) to truncate after 90 characters
-
-```php
-//
-substr(preg_replace("/[^a-zA-Z0-9-_:\/.]/","", $value),0,90) : '';
-```
+  - *function escape_sql($data)* (we will start using this instead of mysqli_real_escape_string)
 
 | **install.php** :
 
-**Hash password one-way:** (This can't be decrypted and it is different each time)
+**Hash password one-way:**
 
 ```php
 $password_hashed = password_hash($password, PASSWORD_BCRYPT);
 ```
+This is much like we did in [201-08: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-08.md), ***but...***
+
+This can't be decrypted because it is different each time
 
 **SQL escape for each queries value:**
 
@@ -98,6 +90,14 @@ $db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]
 - We created our SQL config file with `file_put_contents()`
 - We made `ALTER` and `CREATE TABLE` SQL queries inside our PHP
 
+*Review the diagrams above along side the following few steps...*
+
+*Look, but don't touch...*
+
+| **B-5** :// `localhost/web/install.php`
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
 | **S5** :> `SHOW TABLES;`
 
 | **SB-5** ://phpMyAdmin **> webapp_db**
@@ -111,9 +111,15 @@ Database name: webapp_db
 Database user: webapp_db_user
 Database password: webappdbpassword
 Database hose: localhost
+
+# Our login we will use:
+Username: jonboy
+Password: My#1Password
+
+# Use whatever you want for all else
 ```
 
-*Enter the database information above into the webform, along with your username, password, and other info, then continue*
+*Enter the information above into the webform, then continue*
 
 | **S6** :> `SHOW TABLES;`
 
@@ -125,34 +131,189 @@ Database hose: localhost
 
 *Note the `pass` column is a long string; that is the one-way hashed password*
 
+*Website ready, now login...*
 
+### II. User Login
 
+**Login requires two things:**
 
+1. Session
 
+```php
+$_SESSION array from session_start(); // in our config file
+```
 
-*Website should be ready, use our login files...*
+2. Reverse-check hash the password
+
+```php
+password_verify($form_password, $hashed_password_from_database);
+```
+
+This is similar to a hash check from [201-08: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-08.md), ***but...***
+
+It only confirms with `true` or `false` because the hash is different each time
+
+*Review the diagrams above along side the following few steps...*
 
 | **8** :
 ```
-sudo cp core/04-webapp1.php web/webapp.php && \
+sudo cp core/04-login1.php web/webapp.php && \
+sudo cp core/04-config2.in.php web/in.config.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 gedit web/webapp.php && \
 ls web
 ```
 
-| **S8** :> `SHOW TABLES;`
+*gedit: Reload*
 
-| **SB-8** ://phpMyAdmin **> webapp_db**
+  - *in.config.php*
 
-*Note our database has no tables, let's create them*
+*In the config, note:*
+
+  - *`session_start();`*
+
+| **S8** :> `SELECT id, fullname, pass FROM users WHERE username='jonboy';`
+
+| **SB-8** ://phpMyAdmin **> users**
 
 | **B-8** :// `localhost/web/webapp.php`
 
+*Login with our credentials from before...*
+
+```
+Username: jonboy
+Password: My#1Password
+```
+
+*Once logged in, refresh the page to see already logged in message...*
+
+| **B-9** :// `localhost/web/webapp.php` (same)
+
+
+### III. Logout
+
+**Logout can be done 3 ways; use them all!**
+
+"Session Destroy Team Three"
+
+```php
+$_SESSION = array(); // Reset the `_SESSION` array
+session_destroy(); // Destroy the session itself
+setcookie (session_name(), '', time()-300); // Set any cookies to expire in the past (no cookies yet, just be safe)
+```
+
+**Redirect in PHP:**
+
+```php
+header("Location: /go/to/this/page"); // Can be file or http URL
+```
+
+**Sleep:**
+
+```php
+sleep($Seconds);
+usleep($MicroSseconds);
+```
+
+This is similar to `sleep` from [301-02](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md#iv-sleep)
+
+**Rule #1: PHP renders HTML after**
+
+The `echo` message will not display, comment the `header()` line to see the message after waiting 5 seconds
+
+*Review the diagrams above along side the following few steps...*
+
+| **11** :
+```
+sudo cp core/04-logout1.php web/logout.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/logout.php && \
+ls web
+```
+
+*After looking through logout.php, continue to be logged out immediately...*
+
+| **B-11** :// `localhost/web/logout.php` (5 second logout and redirect to webapp.php!)
+
+*Let's do that again, but with a logout message instead of waiting...*
+
+| **B-12** :// `localhost/web/webapp.php`
+
+*Login again with our credentials from before...*
+
+```
+Username: jonboy
+Password: My#1Password
+```
+
+**Logout variable:**
+
+```php
+$just_logged_out = true;
+```
+
+*Review the diagram above along side the following two steps...*
+
+| **13** :
+```
+sudo cp core/04-logout2.php web/logout.php && \
+sudo cp core/04-login2.php web/webapp.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/logout.php && \
+ls web
+```
+
+*gedit: Reload*
+
+  - *logout.php*
+ 	- *webapp.php*
+
+*After looking through logout.php and webapp.php, continue to be logged out immediately...*
+
+| **B-13** :// `localhost/web/logout.php` (Instant logout and redirect to webapp.php with message!)
+
 *Let's make a login using cookies...*
 
-| **9** :
+### IV. 'Remember Me' Login Cookies
+
+
+
+
+
+// Move this section IV to lesson 7 and create a new database table
+
+
+| **14** :
 ```
-sudo cp core/04-webapp2.php web/webapp.php && \
+sudo cp core/04-login3.php web/webapp.php && \
+sudo cp core/04-config3.in.php web/in.config.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+*gedit: Reload*
+
+ 	- *webapp.php*
+  - *in.config.php*
+
+
+| **B-10** :// `localhost/web/webapp.php` (Same)
+
+
+
+
+
+
+
+
+
+
+### V. Account Settings
+
+
+| **12** :
+```
+sudo cp core/04-accountsettings.php web/webapp.php && \
 sudo cp core/04-config2.in.php web/in.config.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 gedit web/webapp.php web/style.css web/in.config.php web/in.functions.php web/in.checks.php && \
@@ -161,16 +322,19 @@ ls web
 
 *gedit: Reload*
 
- 	- *website.php*
+ 	- *webapp.php*
   - *in.config.php*
 
-| **S9** :> `SHOW TABLES;`
+| **S12** :> `SHOW TABLES;`
 
-| **SB-9** ://phpMyAdmin **> webapp_db**
+| **SB-12** ://phpMyAdmin **> webapp_db**
 
 *Note our database has no tables, let's create them*
 
-| **B-9** :// `localhost/web/webapp.php` (Same)
+| **B-12** :// `localhost/web/webapp.php` (Same)
+
+### VI. Forgot Password
+
 
 ___
 

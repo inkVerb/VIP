@@ -17,4 +17,4 @@ ___
 
 ___
 
-#### [Lesson 7: HTML via PHP](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-07.md)
+#### [Lesson 7: Account & Settings](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-07.md)
