@@ -97,12 +97,26 @@ function escape_sql($data) {
 
 #### Example of a MySQLi Query:
 
+**Query:**
+
 ```php
 $query = "SELECT column_name, other_column FROM table_name WHERE column_name='some_value'";
 $call = mysqli_query($database, $query);
-$row = mysqli_fetch_array($call, MYSQLI_NUM);
-$variable_column_name = "$row[0]";
-$variable_other_column = "$row[1]";
+if ($call) { //// Test the query //// see more below ////
+	$row = mysqli_fetch_array($call, MYSQLI_NUM);
+		$variable_column_name = "$row[0]";
+		$variable_other_column = "$row[1]";
+	...
+} // End query test //
+```
+
+**Query tests:**
+
+```php
+if ($call) // (all queries) If the query worked, no errors
+if (mysqli_num_rows($call) == 1) // (SELECT) If the query returned exactly 1 row
+if (mysqli_affected_rows($database) == 1) // (UPDATE and DELETE) If the query changed exactly 1 row
+while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple rows (used later)
 ```
 
 *Review the diagrams above along side the following few steps...*
@@ -166,7 +180,19 @@ ls web
 
 ### SQL Multiple Rows > PHP > HTML
 
-*Many SQL entry rows via `while` loop...*
+Process many SQL entry rows via `while` loop...
+
+**Query could return multiple rows:**
+
+```php
+$query = "SELECT column_name, other_column FROM table_name WHERE column_name='some_value'";
+$call = mysqli_query($database, $query);
+while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) { // test and array as one line
+	$variable_column_name = "$row[0]";
+	$variable_other_column = "$row[1]";
+	...
+} // End query test //
+```
 
 | **4** :
 ```

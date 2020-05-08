@@ -12,9 +12,9 @@ ___
 
 # The Take
 
-## Input SQL in the MySQL terminal
+## Format
 
-## Render SQL queries via PHP
+## Handling
 
 ___
 

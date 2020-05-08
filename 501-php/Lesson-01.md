@@ -22,6 +22,7 @@ ___
   - case-sensitive
   - can't start with a number
 7. Concatenate strings and variables with `.`
+8. Always test success and plan for failure, even the impossible
 
 **Concatenation**
 ```php
@@ -29,6 +30,21 @@ echo $variable.' single quote $no_var'." double quote working $variables";
 
 echo 'string '.$variable.' string continues '.$variable." etc...";
 ```
+
+**Failure plan**
+```php
+if ($certain_success == true) {
+  echo "Only now can we do our normal thing.";
+} else { // Yes, we need this
+  echo "Something impossible happened.";
+}
+```
+
+You will see many tests with `} else {` options for reporting errors, this is why
+
+#### `if` ? 'is for PHP' : 'WHEN is for reality';
+
+#### Everything breaks. It's not `if`. It's WHEN!
 
 ### I. PHP Form & Method Handling
 
@@ -896,6 +912,7 @@ ___
   - case-sensitive
   - can't start with a number
 7. Concatenate strings and variables with `.`
+8. Always test success and plan for failure, even the impossible
 
 ## PHP Form & Method Handling
 - `_GET` takes values from the web URL
