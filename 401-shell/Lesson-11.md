@@ -5,11 +5,13 @@ Ready the CLI
 
 `cd ~/School/VIP/401`
 
+- [Characters for Classes & RegEx](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
+
 ___
 
 ### I. RegEx Characters Classes
 
-*Refer to this cheat-sheet section for more about working with characters:* [VIP/Cheat-Sheets: Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
+*For more about working with characters, refer to:* [VIP/Cheat-Sheets: Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
 
 1. In `sed` & `grep` use `[[double brackets]]` not `[single brackets]`
 2. Carrot `^` means "start of the line or string"

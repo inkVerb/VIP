@@ -36,7 +36,7 @@ Nearly all web apps require that you have a database, database username, and dat
 Database name: webapp_db
 Database user: webapp_db_user
 Database password: webappdbpassword
-Database hose: localhost
+Database host: localhost
 ```
 
 *Get ready to work in our SQL terminal...*
@@ -71,7 +71,7 @@ This is much like we did in [201-08: Hash – md5sum, sha1sum, sha256sum, sha512
 
 This can't be decrypted because it is different each time
 
-**SQL escape for each queries value:**
+**SQL escape for each query's value:**
 
 ```php
 $entry_value_sqlesc = mysqli_real_escape_string($database, $entry_value);
@@ -110,7 +110,7 @@ $db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]
 Database name: webapp_db
 Database user: webapp_db_user
 Database password: webappdbpassword
-Database hose: localhost
+Database host: localhost
 
 # Our login we will use:
 Username: jonboy
@@ -131,16 +131,85 @@ Password: My#1Password
 
 *Note the `pass` column is a long string; that is the one-way hashed password*
 
-*Website ready, now login...*
+*Website ready*
 
-### II. User Login
+*Before logging in, let's talk about time...*
+
+### II. PHP Epoch & Time
+
+**The PHP epoch:** *seconds from midnight Jan 1, 1970*
+
+The PHP epoch is an integer, so you can add time with simple arithmetic
+
+Many coders add time with human-readable multiplication:
+
+```php
+60 // 1 minute
+60 * 60 // 1 hour
+24 * 60 * 60 // 1 day
+365 * 24 * 60 * 60 // 1 year
+500 * 365 * 24 * 60 * 60 // 500 years
+```
+
+Nifty tools for PHP epoch, time, and length
+
+```php
+$date_now = date("Y-m-d H:i:s"); // SQL date format
+$epoch_date_now = strtotime($date_now); // SQL date -> PHP epoch
+$epoch_time_now = time(); // PHP epoch
+$thirty_days = (30 * 24 * 60 * 60); // (30 days * hours * minutes * seconds)
+$epoch_later = $epoch_time_now + $thirty_days; // epoch 30 days from now
+$epoch_simple_later = time() + (30 * 24 * 60 * 60); // epoch 30 days from now
+$date_later = date("Y-m-d H:i:s", substr($epoch_later, 0, 10)); // epoch -> SQL date (for whatever date $epoch_later is)
+```
+
+Just the PHP epoch later
+
+```php
+$epoch_simple_later = time() + (30 * 24 * 60 * 60);
+```
+
+**Time demo**
+
+*Review the diagrams above along side the following few steps...*
+
+| **8** :
+```
+sudo cp core/04-time.php web/time.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/time.php && \
+ls web
+```
+
+| **B-8** :// `localhost/web/time.php`
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+### III. User Login
+
+PHP has 4 types of variables:
+
+```php
+// File specific: (stop working after the file finishes)
+$Simple_variables // May be "global" to work with functions
+CONSTANT_VARIABLES // Never change, work everywhere
+
+// Universal: (work even after the file finishes)
+$_SESSION // Until browser closes or too much time passes
+$_COOKIE // Even after browser closes, until certain time passes
+```
+
+Login uses `$_SESSION` and `$_COOKIE` variables
+
+`$_COOKIE` variables use PHP time
 
 **Login requires two things:**
 
 1. Session
 
 ```php
-$_SESSION array from session_start(); // in our config file
+session_start(); // Must start the SESSION in every file (in our config file)
+$_SESSION['some_key'] = "some value";
 ```
 
 2. Reverse-check hash the password
@@ -155,7 +224,7 @@ It only confirms with `true` or `false` because the hash is different each time
 
 *Review the diagrams above along side the following few steps...*
 
-| **8** :
+| **9** :
 ```
 sudo cp core/04-login1.php web/webapp.php && \
 sudo cp core/04-config2.in.php web/in.config.php && \
@@ -172,11 +241,11 @@ ls web
 
   - *`session_start();`*
 
-| **S8** :> `SELECT id, fullname, pass FROM users WHERE username='jonboy';`
+| **S9** :> `SELECT id, fullname, pass FROM users WHERE username='jonboy';`
 
-| **SB-8** ://phpMyAdmin **> users**
+| **SB-9** ://phpMyAdmin **> users**
 
-| **B-8** :// `localhost/web/webapp.php`
+| **B-9** :// `localhost/web/webapp.php`
 
 *Login with our credentials from before...*
 
@@ -187,10 +256,10 @@ Password: My#1Password
 
 *Once logged in, refresh the page to see already logged in message...*
 
-| **B-9** :// `localhost/web/webapp.php` (same)
+| **B-10** :// `localhost/web/webapp.php` (same)
 
 
-### III. Logout
+### IV. Logout
 
 **Logout can be done 3 ways; use them all!**
 
@@ -275,56 +344,6 @@ ls web
 
 *Let's make a login using cookies...*
 
-### IV. PHP Epoch
-
-**The PHP epoch:** *seconds from midnight Jan 1, 1970*
-
-The PHP epoch is an integer, so you can add time with simple arithmetic
-
-Many coders add time with human-readable multiplication:
-
-```php
-60 // 1 minute
-60 * 60 // 1 hour
-24 * 60 * 60 // 1 day
-365 * 24 * 60 * 60 // 1 year
-500 * 365 * 24 * 60 * 60 // 500 years
-```
-
-Nifty tools for PHP epoch, time, and length
-
-```php
-$date_now = date("Y-m-d H:i:s"); // SQL date format
-$epoch_date_now = strtotime($date_now); // SQL date -> PHP epoch
-$epoch_time_now = time(); // PHP epoch
-$thirty_days = (30 * 24 * 60 * 60); // (30 days * hours * minutes * seconds)
-$epoch_later = $epoch_time_now + $thirty_days; // epoch 30 days from now
-$epoch_simple_later = time() + (30 * 24 * 60 * 60); // epoch 30 days from now
-$date_later = date("Y-m-d H:i:s", substr($epoch_later, 0, 10)); // epoch -> SQL date (for whatever date $epoch_later is)
-```
-
-Just the PHP epoch later
-
-```php
-$epoch_simple_later = time() + (30 * 24 * 60 * 60);
-```
-
-**Time demo**
-
-*Review the diagrams above along side the following few steps...*
-
-| **14** :
-```
-sudo cp core/04-time.php web/time.php && \
-sudo chown -R www-data:www-data /var/www/html && \
-gedit web/time.php && \
-ls web
-```
-
-| **B-14** :// `localhost/web/time.php`
-
-*Use Ctrl + Shift + C in browser to see the developer view*
-
 ### V. 'Remember Me' Login Cookies
 
 Cookies are much like the `$_SESSION` array, but
@@ -356,7 +375,7 @@ setcookie('cookie_name', null, time()-1);  // Wrong! (depending on your timezone
 
 For teaching, we will put the **username** as the cookie's value, but this is not secure!
 
-| **15** :
+| **14** :
 ```
 sudo cp core/04-login3.php web/webapp.php && \
 sudo cp core/04-logout3.php web/logout.php && \
@@ -371,7 +390,7 @@ ls web
 
 *Review cookie logic in webapp.php by searching "$_COOKIE"*
 
-| **B-15** :// `localhost/web/webapp.php` (previous)
+| **B-14** :// `localhost/web/webapp.php` (previous)
 
 *Check "Remember me, then login again with our credentials from before...*
 
@@ -382,7 +401,7 @@ Password: My#1Password
 
 *Load the page again to see the cookies remember your login...*
 
-| **B-16** :// `localhost/web/webapp.php` (same)
+| **B-15** :// `localhost/web/webapp.php` (same)
 
 #### Never put username or password in a cookie!
 
@@ -390,9 +409,54 @@ This was only an example of how a cookie behaves
 
 Later we will put a secret key into the cookie for proper security
 
+### Variable Review
+
+4 types of PHP variables:
+
+1. Simple (ends with file)
+```php
+$Variable = "Some value";
+global $variable; // Make it global
+```
+
+2. Constant (ends with file)
+```php
+DEFINE ('CONSTANT_NAME', 'some value');
+```
+... Now you can use this as a variable:
+```php
+CONSTANT_NAME
+```
+
+3. SESSION (continues after file and page reload)
+```php
+ // Start SESSION in each file using it
+session_start();
+
+// Use SESSION array variables
+$_SESSION['some_key'] = "some value";
+
+// End the SESSION with "Destroy Team Three"
+$_SESSION = array(); // Reset
+session_destroy(); // Destroy
+setcookie(session_name(), null, 86401); // 86401 = sometime in Jan 1970
+```
+
+4. COOKIE (continues after browser closes)
+```php
+// Create a cookie
+setcookie("cookie_name", $cookie_value, $cookie_expires);
+// ... Now we have ...
+$_COOKIE['cookie_name'];
+
+// Unset then expire the COOKIE
+unset($_COOKIE['cookie_name']); // Unset
+setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
+```
+
 ### VI. Account Settings
 
-| **17** :
+| **16** :
 ```
 sudo cp core/04-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -402,13 +466,13 @@ ls web
 
 *Try an alternate way for no-login by searching "webapp.php" and uncommenting the line*
 
-| **B-17** :// `localhost/web/account.php`
+| **B-16** :// `localhost/web/account.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-| **S17** :> `SELECT fullname, username, email, favnumber FROM users;`
+| **S16** :> `SELECT fullname, username, email, favnumber FROM users;`
 
-| **SB-17** ://phpMyAdmin **> users**
+| **SB-16** ://phpMyAdmin **> users**
 
 *Also try logging out and logging in with these pages from before:*
 
@@ -429,7 +493,7 @@ Password: My#1Password
 
 *Make sure you remember your favorite number and email before continuing...*
 
-| **18** :
+| **17** :
 ```
 sudo cp core/04-forgot.php web/forgot.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -437,7 +501,7 @@ gedit web/forgot.php && \
 ls web
 ```
 
-| **B-18** :// `localhost/web/forgot.php`
+| **B-17** :// `localhost/web/forgot.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -461,139 +525,67 @@ ___
 
 # The Take
 
-// This needs redacting
-
 ## Web App Installer
+- Web apps use SQL
+  - database name
+  - database user
+  - database password
+  - database host (`localhost` or `https://...`)
 
-**Now, we have these database credentials:** (Many web apps ask for this on install)
-```
-Database name: webapp_db
-Database user: webapp_db_user
-Database password: webappdbpassword
-Database hose: localhost
-```
+## Escape Queries Before Sending to SQL
+- Escape function: `mysqli_real_escape_string()`
+- We did this in our own function: `escape_sql()`
 
-| **install.php** :
+## Hash & Unhash Passwords
+- Hash a password for database `password_hash()`
+- Check passwords with reverse hash: `password_verify()`
 
-**Hash password one-way:**
+## PHP Epoch & Time
+- Time functions
+  - PHP epoch: `time()`
+  - SQL date: `date("Y-m-d H:i:s")`
+  - SQL date -> PHP epoch: `strtotime($sql_date)`
+  - epoch -> SQL date: `date("Y-m-d H:i:s", substr($epoch, 0, 10))`
 
-```php
-$password_hashed = password_hash($password, PASSWORD_BCRYPT);
-```
-This is much like we did in [201-08: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-08.md), ***but...***
+- **Epoch:** *seconds from midnight Jan 1, 1970*
+  - `86401` = sometime in Jan 1970, any timezone
+  - Use human-readable multiplication to add to time:
+    - One day: `24 * 60 * 60`
+    - One week: `7 * 24 * 60 * 60`
 
-This can't be decrypted because it is different each time
+## User Login Variables
+- SESSION
+  ```php
+  session_start();
+  $_SESSION['some_key'] = "some value";
+  ```
+- COOKIE
+  ```php
+  setcookie("cookie_name", $cookie_value, $cookie_expires);
+  $_COOKIE['cookie_name'];
+  ```
 
-**SQL escape for each queries value:**
+### Never put username or password in a cookie!
 
-```php
-$entry_value_sqlesc = mysqli_real_escape_string($database, $entry_value);
-```
-
-**Long ReGex for many special characters:**
-
-Order of these special characters matters in a RegEx!
-
-```php
-$db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]{6,32}$/', $_POST['db_pass']))
-```
-
-**Powerful SQL use:**
-
-- We created our SQL config file with `file_put_contents()`
-- We made `ALTER` and `CREATE TABLE` SQL queries inside our PHP
-
-## User Login
-
-**Login requires two things:**
-
-1. Session
-
-```php
-$_SESSION array from session_start(); // in our config file
-```
-
-2. Reverse-check hash the password
-
-```php
-password_verify($form_password, $hashed_password_from_database);
-```
-
-This is similar to a hash check from [201-08: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-08.md), ***but...***
-
-It only confirms with `true` or `false` because the hash is different each time
-
-## Logout
-
-**Logout can be done 3 ways; use them all!**
-
-"Session Destroy Team Three"
-
-```php
-$_SESSION = array(); // Reset the `_SESSION` array
-session_destroy(); // Destroy the session itself
-setcookie(session_name(), null, 86401); // Set any _SESSION cookies to expire in Jan 1970
-setcookie(session_name(), null, time()-1);  // Wrong! (depending on your timezone, this could be in the future!)
-```
-
-**Redirect in PHP:**
-
-```php
-header("Location: /go/to/this/page"); // Can be file or http URL
-```
-
-**Sleep:**
-
-```php
-sleep($Seconds);
-usleep($MicroSseconds);
-```
-
-This is similar to `sleep` from [301-02](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md#iv-sleep)
-
-**Rule #1: PHP renders HTML after**
-
-The `echo` message will not display, comment the `header()` line to see the message after waiting 5 seconds
-
-## PHP Epoch
-
-**The PHP epoch:** *seconds from midnight Jan 1, 1970*
-
-## Cookies
-
-Cookies are much like the `$_SESSION` array, but
-
-1. They have an expiration (in **PHP epoch**)
-2. They are set with the `setcookir()` function
-
-Create a cookie:
-
-```php
-setcookie("cookie_name", $cookie_value, $cookie_expires);
-```
-
-Now, this will exist at that domain/host:
-
-```php
-$_COOKIE['cookie_name']
-```
-
-Unset the cookie
-
-```php
-unset($_COOKIE['cookie_name']); // Unset the cookie so if tests don't find it later
-setcookie('cookie_name', null, 86401); // Set our cookie value to "null" (nothing) and expire in Jan 1970
-setcookie('cookie_name', null, time()-1);  // Wrong! (depending on your timezone, this could be in the future!)
-```
-
-***This is how cookies work...*** **the wrong way:** username
-
-#### Never put username or password in a cookie!
+## Logout Destroys & Expires *all* Login variables
+- Set expire times to `86401`
+- SESSION destroy: (Team Three)
+  ```php
+  $_SESSION = array(); // Reset
+  session_destroy(); // Destroy
+  setcookie(session_name(), null, 86401); // Expire
+  ```
+- COOKIE destroy:
+  ```php
+  unset($_COOKIE['cookie_name']); // Unset
+  setcookie('cookie_name', null, 86401); // Expire
+  ```
 
 ## Account Settings
-
+- Like a signup form, already filled in from the database
 
 ## Forgot Password
+- Check the database for other information from the database
 
 ___
 

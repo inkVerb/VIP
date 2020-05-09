@@ -82,7 +82,20 @@ Require all granted
 </Directory>
 ```
 
+...or for expanded options...
+
+```
+<Directory "/var/www/html">
+Options Indexes FollowSymLinks MultiViews
+AllowOverride All
+Require all granted
+Order allow,deny
+allow from all
+</Directory>
+```
+
 3. Reload Apache after any changes to files in `/etc/apache2/sites-available/_____.conf`
+
 | **11** : `sudo systemctl reload apache2`
 
 4. Remember with rewrites...
