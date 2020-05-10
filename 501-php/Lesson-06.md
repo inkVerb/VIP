@@ -97,8 +97,8 @@ function doAjax() { // doAjax can be anything
 
 | **1** :
 ```
-sudo cp core/05-ajax1.html web/ajax.html && \
-sudo cp core/05-ajaxsource1.txt web/ajax_source.txt && \
+sudo cp core/06-ajax1.html web/ajax.html && \
+sudo cp core/06-ajaxsource1.txt web/ajax_source.txt && \
 sudo chown -R www-data:www-data /var/www/html && \
 gedit web/ajax.html web/ajax_source.txt && \
 ls web
@@ -121,8 +121,8 @@ ls web
 
 | **2** :
 ```
-sudo cp core/05-ajax2.php web/ajax.php && \
-sudo cp core/05-ajaxsource2.php web/ajax_source.php && \
+sudo cp core/06-ajax2.php web/ajax.php && \
+sudo cp core/06-ajaxsource2.php web/ajax_source.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 gedit web/ajax.php web/ajax_source.php && \
 ls web
@@ -148,8 +148,8 @@ ls web
 
 | **3** :
 ```
-sudo cp core/05-ajax3.php web/ajax.html && \
-sudo cp core/05-ajaxsource3.php web/ajax_source.php && \
+sudo cp core/06-ajax3.php web/ajax.html && \
+sudo cp core/06-ajaxsource3.php web/ajax_source.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 gedit web/ajax.html && \
 ls web
@@ -172,8 +172,8 @@ ls web
 
 | **4** :
 ```
-sudo cp core/05-ajax4.php web/ajax.html && \
-sudo cp core/05-ajaxsource4.php web/ajax_source.php && \
+sudo cp core/06-ajax4.php web/ajax.html && \
+sudo cp core/06-ajaxsource4.php web/ajax_source.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 gedit web/ajax.html && \
 ls web
