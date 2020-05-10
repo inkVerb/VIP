@@ -94,7 +94,7 @@ $db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]
 
 *Look, but don't touch...*
 
-| **B-5** :// `localhost/web/install.php`
+| **B-5a** :// `localhost/web/install.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -104,7 +104,7 @@ $db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]
 
 *Note our database has no tables, let's go back to our webform...*
 
-| **B-5** :// `localhost/web/install.php`
+| **B-5b** :// `localhost/web/install.php` (same, start filling-in)
 
 ```
 Database name: webapp_db
@@ -245,7 +245,7 @@ ls web
 
 | **SB-9** ://phpMyAdmin **> users**
 
-| **B-9** :// `localhost/web/webapp.php`
+| **B-9a** :// `localhost/web/webapp.php`
 
 *Login with our credentials from before...*
 
@@ -256,7 +256,7 @@ Password: My#1Password
 
 *Once logged in, refresh the page to see already logged in message...*
 
-| **B-10** :// `localhost/web/webapp.php` (same)
+| **B-9b** :// `localhost/web/webapp.php` (same)
 
 
 ### IV. Logout
@@ -293,7 +293,7 @@ The `echo` message will not display, comment the `header()` line to see the mess
 
 *Review the diagrams above along side the following few steps...*
 
-| **11** :
+| **10** :
 ```
 sudo cp core/04-logout1.php web/logout.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -303,11 +303,11 @@ ls web
 
 *After looking through logout.php, continue to be logged out immediately...*
 
-| **B-11** :// `localhost/web/logout.php` (5 second logout and redirect to webapp.php!)
+| **B-10a** :// `localhost/web/logout.php` (5 second logout and redirect to webapp.php!)
 
 *Let's do that again, but with a logout message instead of waiting...*
 
-| **B-12** :// `localhost/web/webapp.php`
+| **B-10b** :// `localhost/web/webapp.php`
 
 *Login again with our credentials from before...*
 
@@ -324,7 +324,7 @@ $just_logged_out = true;
 
 *Review the diagram above along side the following two steps...*
 
-| **13** :
+| **11** :
 ```
 sudo cp core/04-logout2.php web/logout.php && \
 sudo cp core/04-login2.php web/webapp.php && \
@@ -340,7 +340,7 @@ ls web
 
 *After looking through logout.php and webapp.php, continue to be logged out immediately...*
 
-| **B-13** :// `localhost/web/logout.php` (Instant logout and redirect to webapp.php with message!)
+| **B-11** :// `localhost/web/logout.php` (Instant logout and redirect to webapp.php with message!)
 
 *Let's make a login using cookies...*
 
@@ -375,7 +375,7 @@ setcookie('cookie_name', null, time()-1);  // Wrong! (depending on your timezone
 
 For teaching, we will put the **username** as the cookie's value, but this is not secure!
 
-| **14** :
+| **12** :
 ```
 sudo cp core/04-login3.php web/webapp.php && \
 sudo cp core/04-logout3.php web/logout.php && \
@@ -390,7 +390,7 @@ ls web
 
 *Review cookie logic in webapp.php by searching "$_COOKIE"*
 
-| **B-14** :// `localhost/web/webapp.php` (previous)
+| **B-12a** :// `localhost/web/webapp.php` (previous)
 
 *Check "Remember me, then login again with our credentials from before...*
 
@@ -401,7 +401,7 @@ Password: My#1Password
 
 *Load the page again to see the cookies remember your login...*
 
-| **B-15** :// `localhost/web/webapp.php` (same)
+| **B-12b** :// `localhost/web/webapp.php` (same)
 
 #### Never put username or password in a cookie!
 
@@ -456,7 +456,7 @@ setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 
 ### VI. Account Settings
 
-| **16** :
+| **13** :
 ```
 sudo cp core/04-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -466,13 +466,13 @@ ls web
 
 *Try an alternate way for no-login by searching "webapp.php" and uncommenting the line*
 
-| **B-16** :// `localhost/web/account.php`
+| **B-13** :// `localhost/web/account.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-| **S16** :> `SELECT fullname, username, email, favnumber FROM users;`
+| **S13** :> `SELECT fullname, username, email, favnumber FROM users;`
 
-| **SB-16** ://phpMyAdmin **> users**
+| **SB-13** ://phpMyAdmin **> users**
 
 *Also try logging out and logging in with these pages from before:*
 
@@ -493,7 +493,7 @@ Password: My#1Password
 
 *Make sure you remember your favorite number and email before continuing...*
 
-| **17** :
+| **14** :
 ```
 sudo cp core/04-forgot.php web/forgot.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -501,7 +501,7 @@ gedit web/forgot.php && \
 ls web
 ```
 
-| **B-17** :// `localhost/web/forgot.php`
+| **B-14** :// `localhost/web/forgot.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -517,9 +517,9 @@ ls web
 
 *Success: You will get an SQL query to try, also review these:*
 
-| **S18** :> `SELECT id, fullname, email, favnumber FROM users;`
+| **S14** :> `SELECT id, fullname, email, favnumber FROM users;`
 
-| **SB-18** ://phpMyAdmin **> users**
+| **SB-14** ://phpMyAdmin **> users**
 
 ___
 
