@@ -137,18 +137,12 @@ ls web
 
 ### AJAX Method: POST
 
-
-https://stackoverflow.com/questions/50776445/vanilla-javascript-version-of-ajax
-
-https://www.w3schools.com/js/js_ajax_http_send.asp
-
-
 | **3** :
 ```
-sudo cp core/06-ajax3.php web/ajax.html && \
+sudo cp core/06-ajax3.php web/ajax.php && \
 sudo cp core/06-ajaxsource3.php web/ajax_source.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/ajax.html && \
+gedit web/ajax.php && \
 ls web
 ```
 
@@ -157,22 +151,46 @@ ls web
   - *ajax.php*
   - *ajax_source.php*
 
+*Note:*
+
+  - *We are using POST, not GET:*
+    - *ajaxHandler.open("POST", "ajax_source.php", true);*
+  - *Added:*
+    - *`ajaxHandler.setRequestHeader("Content-type", "application/x-www-form-urlencoded")`*
+  - *Defined POST content in a GET-URL-like string:*
+    - *`ajaxHandler.send("go=AJAX&time=5")`*
+  - *ajax_source.php processes POST arguments*
 
 | **B-3** :// `localhost/web/ajax.php`
 
+- *Click the button "Do AJAX!"*
+
+- *Note "AJAX" & "5" appear from our line: `go=AJAX&time=5`*
+
+
+
+// Finished?
+
+
+Using a `<form>` to submit an AJAX request involves deeper knowledge of JavaScript, which is beyond the scope of this course
+
+You can use PHP variables to customize the POST arguments of your AJAX request
+
+For now, this should be enough to keep you busy with PHP and AJAX
+
+If you want to AJAX forms, learn more about the JavaScript object called "FormData"
 
 
 
 
-
-
+### AJAX POST from `<form>`
 
 | **4** :
 ```
-sudo cp core/06-ajax4.php web/ajax.html && \
+sudo cp core/06-ajax4.php web/ajax.php && \
 sudo cp core/06-ajaxsource4.php web/ajax_source.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/ajax.html && \
+gedit web/ajax.php && \
 ls web
 ```
 
