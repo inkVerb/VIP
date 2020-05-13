@@ -24,13 +24,7 @@ ___
 
 *Look at some log entries on your machine*
 
-*Space to scroll down*
-
-*Ctrl+C to close*
-
-| **1** : `journalctl`
-
-*Q to quit*
+| **1** : `journalctl` *Space to scroll down, Q to quit*
 
 *Use `-r` to "reverse" the order and view most recent log entries first*
 
