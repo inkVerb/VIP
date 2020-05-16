@@ -103,6 +103,8 @@ ls web
 
 | **B-1** :// `localhost/web/ajax.html`
 
+*Use Ctrl + Shift + C in browser to see the developer view*
+
 - *Click the button "Do AJAX!"*
 
 *Note:*
@@ -127,6 +129,7 @@ ls web
 
 | **B-2** :// `localhost/web/ajax.php`
 
+- *Use Ctrl + Shift + C in browser to see the developer view*
 - *Reload the page several times to watch the SESSION count go up on reload*
 - *Click the button "Do AJAX!"*
 - *Reload the page again a few times*
@@ -163,32 +166,15 @@ ls web
 
 | **B-3** :// `localhost/web/ajax.php`
 
+- *Use Ctrl + Shift + C in browser to see the developer view*
 - *Click the button "Do AJAX!"*
-
 - *Note "AJAX" & "5" appear from our line: `go=AJAX&time=5`*
 
-
-
-// Finished?
-
-
-Using a `<form>` to submit an AJAX request involves deeper knowledge of JavaScript, which is beyond the scope of this course
-
-You can use PHP variables to customize the POST arguments of your AJAX request
-
-For now, this should be enough to keep you busy with PHP and AJAX
-
-If you want to AJAX forms, learn more about the JavaScript object called "FormData"
-
-
-
-
-### AJAX POST from `<form>`
+### AJAX Render JavaScript from PHP
 
 | **4** :
 ```
 sudo cp core/06-ajax4.php web/ajax.php && \
-sudo cp core/06-ajaxsource4.php web/ajax_source.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 gedit web/ajax.php && \
 ls web
@@ -197,15 +183,24 @@ ls web
 *gedit: Reload*
 
   - *ajax.php*
-  - *ajax_source.php*
-
 
 | **B-4** :// `localhost/web/ajax.php`
 
-| **S4** :> `SELECT id, fullname, email, favnumber FROM users;`
+- *Use Ctrl + Shift + C in browser to see the developer view*
+- *Note the entire page is the same except our POST values*
+- *Note we used PHP to echo the page with our variables*
+- *Click the button "Do AJAX!"*
+- *Note `$post_go` and `$post_time` replaced the values in the line: `go=AJAX&time=5`*
 
-| **SB-4** ://phpMyAdmin **> users**
+### Further Study
 
+Using a `<form>` to submit an AJAX request involves deeper knowledge of JavaScript, which is beyond the scope of this course
+
+You can use PHP variables to customize the POST arguments of your AJAX request, which does not require a `<form>`
+
+For now, this should be enough to keep you busy with PHP and AJAX
+
+If you want to AJAX a `<form>`, learn more about the JavaScript object called "FormData"
 
 ___
 
@@ -226,6 +221,19 @@ ___
   - JSON is an alternative to XML
   - JSON may be more common in AJAX
 
+## AJAX Reloads Part of a Page
+- The AJAX part of the page is the only part that reloads
+- We can see that the AJAX part changes, but not the rest of the page
+- We used a PHP counting loop to see the difference between the AJAX and the rest of the page
+  - The difference can be anything, especially a large page that you don't want to reload
+
+## Use PHP to `echo` HTML
+- Using PHP to `echo` the HTML document allows us to put variables everywhere
+  - Variables can also change embedded JavaScript
+
+## AJAX with an HTML `<form>`
+- AJAX can handle an HTML `<form>`, but that involves complext JavaScript
+  - Start by studying the JavaScript object: "FormData"
 
 ___
 

@@ -123,7 +123,7 @@ ___
 
 | **27** : `./10-array-associative-strings`
 
-*Note associative arrays can have strings as elements too*
+*Note associative arrays can have quoted strings as elements too*
 
 ### Array as list in `for` loop
 
