@@ -16,7 +16,7 @@
 
 ### [Lesson 6: AJAX](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-06.md)
 
-### [Lesson 7: Account & Settings](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-07.md)
+### [Lesson 7: Security Keys](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-07.md)
 
 ### [Lesson 8: CMS Blog: Input, Display & TinyMCE](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-08.md)
 
@@ -24,6 +24,6 @@
 
 ### [Lesson 10: Media Library](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-10.md)
 
-### [Lesson 11: Content Library](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-11.md)
+### [Lesson 11: Content Library & Site Settings](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-11.md)
 
 ### [Lesson 12: Framing for Production](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-12.md)

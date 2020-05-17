@@ -335,6 +335,8 @@ header("Location: $new_http_web_address") // Redirect to this address, often use
 
 date("Y-m-d H:i:s") // Returns an SQL-standard date string (2020-01-01 23:59:59 format)
 
+date("Y-m-d H:i:s", time() + 30) // Returns an SQL-standard date string, add 30 seconds
+
 strtotime($time_string) // Changes most common date strings into a PHP epoch time, (seconds from 1970/01/01 midnight)
 
 date("Y-m-d H:i:s", substr($time_epoch, 0, 10)) // Change PHP epoch time back to SQL date string

@@ -14,4 +14,4 @@ ___
 
 ___
 
-#### [Lesson 11: Content Library](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-11.md)
+#### [Lesson 11: Content Library & Site Settings](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-11.md)

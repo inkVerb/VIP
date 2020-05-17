@@ -1,5 +1,5 @@
 # PHP 501
-## Lesson 11: Media Library
+## Lesson 11: Content Library & Site Settings
 
 Ready the CLI
 

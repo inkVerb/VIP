@@ -1,5 +1,5 @@
 # PHP 501
-## Lesson 7: Account & Settings
+## Lesson 7: Security Keys
 
 Ready the CLI
 
@@ -17,78 +17,146 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 | **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
+| **S1** :> `USE webapp_db;`
+
+| **SB-1** ://phpMyAdmin **> webapp_db**
+
 ___
 
+### Random String
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nearly all web apps require that you have a database, database username, and database password already set up
-
-*Create our database and its login now...*
-
-| **1** :> `CREATE DATABASE blog_db;`
-
-| **2** :> `GRANT ALL PRIVILEGES ON blog_db.* TO blog_db_user@localhost IDENTIFIED BY 'blogdbpassword';`
-
-| **3** :> `FLUSH PRIVILEGES;`
-
-**Now, we have these database credentials:** (Many web apps ask for this on install)
+| **1** :
 ```
-Database name: blog_db
-Database user: blog_db_user
-Database password: blogdbpassword
-Database hose: localhost
+sudo cp core/07-recover1.php web/recover.php && \
+sudo cp core/07-string_functions.in.php web/in.string_functions.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/recover.php web/in.string_functions.php && \
+ls web
 ```
 
-*Get ready to work in our SQL terminal...*
+*Note that we are including in.string_functions.php, give it a good look over*
 
-| **4** :> `USE blog_db`
+| **B-1** :// `localhost/web/recover.php`
 
+*Refresh the page a few times to see new strings*
 
+*Let's use our random string in an SQL table...*
 
+### Login Recovery (via Security Key)
 
+| **2** :
+```
+sudo cp core/07-recover2.php web/recover.php && \
+sudo cp core/07-ajaxstring.php web/ajax_string.php && \
+sudo cp core/07-recover_login.php web/recover_login.php && \
+sudo cp core/07-webapp.php web/webapp.php && \
+sudo cp core/07-loginhead.in.php web/in.login_head.php && \
+sudo cp core/07-accountsettings.php web/account.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/ajax_string.php web/recover_login.php web/webapp.php web/in.login_head.php web/in.login_head.php web/account.php && \
+ls web
+```
 
+*gedit: Reload recover.php*
 
+*Note:*
+  - *recover.php uses a recovery form and AJAX script*
+    - The AJAX POST sends the user ID
+  - *ajax_string.php processes the AJAX action*
+    - This creates a string and enters it into the "strings" table with a 20 second expiration date
+    - The AJAXed file also requires the config file for the `session` and database connection
+  - *recover_login.php processes the random string as a GET value*
+    - The string is tested in the database for a match and expiration date
+    - If matched, the page redirects to webapp.php using `header`
+  - *accountsettings.php has links for logout and the main webapp*
+  - *webapp.php replaced the login workflow an `include` for in.login_head.php*
+  - *in.login_head.php:*
+    - contains the login workflow that webapp used to
+    - has links for Account Settings and logout
 
-| **1** : `mkdir web/css && cp core/01-style.css web/css/style.css && gedit web/css/style.css && ls web/css`
+*Look through these files carefully*
 
-| **2** : `cp core/01-back-users.html web/back-users.html && gedit web/back-users.html && ls web`
+| **2** :>
 
-| **B-2** :// `localhost/web/back-users.html`
+```sql
+CREATE TABLE IF NOT EXISTS `strings` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `userid` INT UNSIGNED NOT NULL,
+  `random_string` VARCHAR(255) DEFAULT NULL,
+  `usable` ENUM('live', 'dead') NOT NULL,
+  `date_expires` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';
+FLUSH PRIVILEGES;
+```
 
-| **3** : `cp core/01-front-home.html web/front-home.html && gedit web/front-home.html && ls web`
+| **SB-2** ://phpMyAdmin **> strings**
 
-| **B-2** :// `localhost/web/front-home.html`
+| **B-2** :// `localhost/web/recover.php` (It will require credentials)
 
-| **4** : `cp core/01-front-page.html web/front-page.html && gedit web/front-page.html && ls web`
+```
+Username: jonboy
+Favorite Number: (same as before)
+```
 
-| **B-2** :// `localhost/web/front-page.html`
+*If you forgot your favorite number, get it here:*
 
-| **5** : `cp core/01-front-post.html web/front-post.html && gedit web/front-post.html && ls web`
+| **2-opt** :> `SELECT * FROM users;`
 
-| **B-2** :// `localhost/web/front-post.html`
+*Once you succeeded with your username and favorite number...*
 
-| **6** : `cp core/01-back-pieces.html web/back-pieces.html && gedit web/back-pieces.html && ls web`
+### Cleanup
 
-| **B-2** :// `localhost/web/back-pieces.html`
+| **3** :> `SELECT * FROM strings;`
 
-| **7** : `cp core/01-back-settings.html web/back-settings.html && gedit web/back-settings.html && ls web`
+| **SB-3** ://phpMyAdmin **> strings**
 
-| **B-2** :// `localhost/web/back-settings.html`
+1. Click the button: **Get your recovery string link...**
+  - Each time, check new entries in the database:
+    - :> `SELECT * FROM strings;`
+    - ://phpMyAdmin **> strings**
+2. Try the three SQL queries under **...Teaching tip...**
+3. Click the link to login, but note it should have expired
+4. Click around and explore
+  - Use Ctrl + Shift + C to see the developer view of pages
+  - Compare the pages with the .php files
+
+*When finished, delete all expired strings...*
+
+| **4** :> `SELECT * FROM strings;`
+
+| **SB-4** ://phpMyAdmin **> strings**
+
+| **5** :> `DELETE FROM strings WHERE date_expires < NOW();`
+
+| **6** :> `SELECT * FROM strings;`
+
+| **SB-6** ://phpMyAdmin **> strings**
 ___
 
 # The Take
+
+## Random String
+- A random string of characterscan be created by a PHP function
+- Functions of all sorts can be handy to `include` in a PHP script
+- Long, random strings like this may be called "keys" or "security keys"
+
+## Login Recovery (via Security Key)
+- Logins can be recovered using security keys
+- A "login link" processes a long string via GET, then checks it against the database
+- Links with security keys like these can also be used to:
+  - "Confirm" an email address
+  - "Unsubscribe" from emails
+  - Click in an email to confirm a change or do some action in your account
+  - Many other purposes
+- SQL must use "BINARY" to match letter case
+- When adding any such recovery or security "key", check to see if it is already in the database
+- Expiration dates can be set using SQL or PHP time
+
+## Cleanup
+- SQL can query entries based on arguments like: `WHERE date_column < NOW()`
+  - This can be handy to `DELETE` expired rows in your database
 
 ___
 
