@@ -31,42 +31,54 @@ done
 
 *Note the line with `while getopts`*
 
-- `:` first means that missing bad arguments won't error messages
-- `a:` means the `-a` flag requires & allows an argument set as `$OPTARG` in the `while getopts` loop
+- `:` first means that non-listed flags can won't cause error messages
+  - This allows for `*` and `?` to be used in `case` arguments
+- `a:` means the `-a` flag requires an argument
+  - The argument will be set as `$OPTARG` in the `while getopts` loop
+  - This is a "flag argument" AKA "option argument", as opposed to a `$1` style argument
+- `a` not followed by `:` would mean that the `-a` flag ignores arguments
 
 | **2** : `./12-flags-1 -h` (help)
 
-| **3** : `./12-flags-1 -j` (not a valid flag)
+| **3** : `./12-flags-1 -j` (fail: not a valid flag)
 
-| **4** : `./12-flags-1 -a Alpha -b Beta -c Charlie -d Dogma`
+| **4** : `./12-flags-1 -a` (fail: flags require arguments)
 
-| **5** : `./12-flags-1 -a Alpha -b Beta -c C Charlie -d Dogma`
+| **5** : `./12-flags-1 -a Alpha`
 
-*...Two arguments broke it after `-c C`*
+*Note not all flags are required*
 
-| **6** : `./12-flags-1 -a Alpha -b Beta -c "C Charlie" -d Dogma`
+| **6** : `./12-flags-1 -a Alpha -b Beta -c Charlie -d Dogma`
 
-| **7** : `./12-flags-1 -b Beta -a Alpha -d Dogma -c Charlie `
+*Note all flags may be used*
 
-*...Keeps your order*
+| **7** : `./12-flags-1 -a Alpha -b Beta -c C Charlie -d Dogma`
 
-| **8** : `./12-flags-1 -b`
+*Note two arguments broke it after `-c C`*
+
+| **8** : `./12-flags-1 -a Alpha -b Beta -c "C Charlie" -d Dogma`
+
+| **9** : `./12-flags-1 -b Beta -a Alpha -d Dogma -c Charlie `
+
+*Note it keeps your order*
+
+| **10** : `./12-flags-1 -b`
 
 *...`-b` requires an argument because it is `b:` in the `while getopts` line*
 
 #### B. No arguments allowed
 
-| **9** : `gedit 12-flags-2`
+| **11** : `gedit 12-flags-2`
 
-| **10** : `./12-flags-2 -b`
+| **12** : `./12-flags-2 -b`
 
 *...`-b` does NOT require an argument because `b` is not followed by `:` in the `while getopts` line*
 
-| **11** : `./12-flags-2 -d Dunno`
+| **13** : `./12-flags-2 -d Dunno`
 
 *...The `$OPTARG` variable doesn't recognize the argument because there was no `:` for flag `-d` in the `while getopts` line*
 
-#### C. Global argument
+#### C. Global argument only
 
 This nifty code allows for a global argument (use with, not part of, `getopts`):
 
@@ -120,29 +132,35 @@ while getopts ":abcdh" Flg; do
 done
 ```
 
-| **12** : `./12-flags-3 -ad Dunno`
+| **14** : `gedit 12-flags-3`
+
+*Note `eval` "concatenates" many things to produce a single command*
+
+*We won't explore `eval` any deepre in this course*
+
+| **15** : `./12-flags-3 -ad Dunno`
 
 *...Flags `-a` and `-d` take the same argument*
 
-| **13** : `./12-flags-3 -abcd Dunno Dubbo`
+| **16** : `./12-flags-3 -abcd Dunno Dubbo`
 
 *...Note no "Dubbo", only one argument allowed this way*
 
-| **14** : `./12-flags-3 -a Dunno -bcd Dubbo`
+| **17** : `./12-flags-3 -a Dunno -bcd Dubbo`
 
 *...No flags allowed after the only argument*
 
-#### D. Global argument
+#### D. Both global and flag arguments
 
-| **15** : `gedit 12-flags-4`
+| **18** : `gedit 12-flags-4`
 
-| **16** : `./12-flags-4 -a Alpha -bcd Bogma`
+| **19** : `./12-flags-4 -a Alpha -bcd Bogma`
 
 *...Note "Bogma" came from our `$globalArg` cluster, not from `getopts`*
 
-| **17** : `./12-flags-4 -a Alpha -e Emancipation -bcd Bogma`
+| **20** : `./12-flags-4 -a Alpha -e Emancipation -bcd Bogma`
 
-| **18** : `./12-flags-4 -e "Emancipation" -bcd Bogma -a Alpha`
+| **21** : `./12-flags-4 -e "Emancipation" -bcd Bogma -a Alpha`
 
 *Note anything after the -bcd options is ignored because they accept a global argument, be aware when combining specific options and global options*
 
@@ -163,9 +181,9 @@ function how_to_use()
 how_to_use
 ```
 
-| **19** : `gedit 12-flags-5`
+| **22** : `gedit 12-flags-5`
 
-| **20** : `./12-flags-5 -h`
+| **23** : `./12-flags-5 -h`
 
 ### II. `getopt`
 
@@ -180,39 +198,39 @@ getopt -o f:l:a:g:s -l flag:,lag:,ages:,sag -n "$(basename "$0")" -- "$@"
 
 *First, see what `basename` does...*
 
-| **21** : `basename /path/to/here`
+| **24** : `basename /path/to/here`
 
-| **22** : `basename /path/to/here.file`
+| **25** : `basename /path/to/here.file`
 
-| **23** : `basename /path/to/here.file .file`
+| **26** : `basename /path/to/here.file .file`
 
-| **24** : `basename -a /path/one /path/two`
+| **27** : `basename -a /path/one /path/two`
 
 *Many tools like `basename` help `getopt` to work...*
 
-| **25** : `gedit 12-long`
+| **28** : `gedit 12-long`
 
 *Note `--long` alternative options are included*
 
 *Note the global option was removed since `getopt` checks requirements by itself*
 
-| **26** : `./12-long -a Alpha -bce`
+| **29** : `./12-long -a Alpha -bce`
 
-| **27** : `./12-long --alpha Alpha --ecko --delta --beetle --charlie `
+| **30** : `./12-long --alpha Alpha --ecko --delta --beetle --charlie `
 
 *Note the order no longer affects the output since everything is done by `if` statements in order, at the end of the script*
 
-| **28** : `./12-long --alpha Alpha -bcd --ecko`
+| **31** : `./12-long --alpha Alpha -bcd --ecko`
 
-| **29** : `./12-long -a Alpha --beetle --delta -e --charlie`
+| **32** : `./12-long -a Alpha --beetle --delta -e --charlie`
 
 *Note both short and long are accepted*
 
-| **30** : `./12-long -k` (invalid option)
+| **33** : `./12-long -k` (invalid option)
 
-| **31** : `./12-long` (no options)
+| **34** : `./12-long` (no options)
 
-| **32** : `./12-long --help`
+| **35** : `./12-long --help`
 
 ___
 
@@ -223,6 +241,9 @@ ___
 - Both require `while` and `case` loops
 - `getopts` only allows one-letter flags and is relatively simple
 - `getopt` allows one-letter flags or long-word flags and is much more complicated
+- `eval` "concatenates" many parts to produce and execute a single command
+  - `eval` may be used in more complex `getopts` & `getopt` scripts
+  - We do not explore `eval` deeper in this course
 
 ## `getopts` (for one-letter flags)
 - Procedure of a `getopts` flag set:
