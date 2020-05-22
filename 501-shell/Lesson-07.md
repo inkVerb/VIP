@@ -280,7 +280,7 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 *Copy and paste this as the content, press Enter so there is a new line after:*
 
-```cron
+```shell
 * * * * * root /usr/bin/php /var/www/html/web/cleanup.php
 ```
 

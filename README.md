@@ -13,7 +13,7 @@ Whether you want to become a computer genius or if you're a "computer dummy" and
 
 # [Shell 401: Onward](https://github.com/inkVerb/VIP/blob/master/401-shell/README.md)
 
-# [Shell 501: PHP Stack](https://github.com/inkVerb/VIP/blob/master/501-stack/README.md)
+# [Shell 501: PHP Stack](https://github.com/inkVerb/VIP/blob/master/501-shell/README.md)
 
 ## [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)
 
