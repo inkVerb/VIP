@@ -126,7 +126,7 @@ Every user gets a `crontab` file
 
 Here is an example of a `cron` task running a .php script every 15 minutes in your web folder on a server:
 
-```
+```shell
 15 0 * * * root /usr/bin/php /var/www/html/path/to/file.php
 ```
 
