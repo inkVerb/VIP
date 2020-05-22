@@ -173,7 +173,7 @@ ls web
 
 *This takes you to the settings between the `<Directory>` tags*
 
-**Required dettings:**
+**Required settings:**
 ```
 AllowOverride All               # Apache config
 
@@ -188,6 +188,53 @@ RewriteEngine on                # .htaccess
 *To exit vim, type:*
 
 | **vim-5b** :] Esc `:q!` Enter
+
+### Avoid Bugs
+
+**Remove a trailing slash:**
+```
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
+```
+
+Without this, a trailing slash with nothing after could trigger a false GET argument
+
+| **B-6a** :// `localhost/web/webapp.php/`
+
+*Note RewriteRule used the file name as the GET argument*
+
+*This doesn't happen without the trailing slash `/`*
+
+| **B-6b** :// `localhost/web/webapp.php`
+
+*Try another file...*
+
+| **B-6c** :// `localhost/web/account.php/`
+
+| **B-6d** :// `localhost/web/account.php`
+
+| **7** :
+```
+sudo cp core/05-htaccess5 /var/www/html/web/.htaccess && \
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+*gedit: Reload*
+
+  - *.htaccess*
+
+*...Now, RewriteMod will simply remove the trailing slash `/`, not get fooled by it...*
+
+| **B-7a** :// `localhost/web/webapp.php/`
+
+| **B-7b** :// `localhost/web/account.php/`
+
+*Everything else still works...*
+
+| **B-7c** :// `localhost/web/My_Long_Name`
+
 ___
 
 # The Take

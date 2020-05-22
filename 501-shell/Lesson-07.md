@@ -296,7 +296,7 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
   - *This `cron` task runs at 00 seconds every minute*
   - *Every minute, keys older than 20 seconds should be deleted*
 
-*Repeat these steps as often as you want to watch `cron` delete expired keys...*
+**Repeat 18 to watch `cron` delete expired keys:**
 
 | **B-18** :// `localhost/web/recover.php` (Same)
 
@@ -306,12 +306,19 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 | **SB-18** ://phpMyAdmin **> strings**
 
+*Wait 1 minute and run again*
+
+**When finished:**
+
+*Delete that `cron` task so it isn't constantly running on your machine...*
+
+| **19** : `sudo rm /etc/cron.d/webappcleanup`
 ___
 
 # The Take
 
 ## Random String
-- A random string of characterscan be created by a PHP function
+- A PHP function can create a random string of characters
 - Functions of all sorts can be handy to `include` in a PHP script
 - Long, random strings like this may be called "keys" or "security keys"
 

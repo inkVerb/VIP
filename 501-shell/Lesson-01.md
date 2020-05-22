@@ -341,6 +341,13 @@ strtotime($time_string) // Changes most common date strings into a PHP epoch tim
 
 date("Y-m-d H:i:s", substr($time_epoch, 0, 10)) // Change PHP epoch time back to SQL date string
 
+// Handy code for PHP debugging, place in each script, don't use in production
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Exit and redirect correctly
+exit(header("Location: to_page.php"));
+
 ```
 
 *...In PHP, you will see functions like these and many, many more*
