@@ -102,4 +102,4 @@ ___
 
 ___
 
-#### [Lesson 12: more, less, head, tail, sort, tac, diff, nano, vi](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-12.md)
+#### [Lesson 12: more, less, head, tail, sort, tac, diff, nano, vim](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-12.md)

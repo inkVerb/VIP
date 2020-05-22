@@ -1,4 +1,4 @@
-# PHP 501
+# Shell 501
 ## Lesson 5: RewriteMod (Pretty Permalinks)
 
 Ready the CLI
@@ -268,4 +268,4 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
 
 ___
 
-#### [Lesson 6: AJAX](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-06.md)
+#### [Lesson 6: AJAX](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-06.md)

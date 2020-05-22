@@ -1,4 +1,4 @@
-# PHP 501
+# Shell 501
 ## Lesson 0: Server, LAMP Setup & HTML Fast
 
 - [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
@@ -212,4 +212,4 @@ ___
 
 ___
 
-#### [Lesson 1: PHP Core](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-01.md)
+#### [Lesson 1: PHP Core](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-01.md)

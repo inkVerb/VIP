@@ -1,4 +1,4 @@
-# PHP 501
+# Shell 501
 ## Lesson 3: MySQL & PHP MySQLi
 
 Ready the CLI
@@ -402,4 +402,4 @@ $query = "SELECT SCOPE_IDENTITY()";
 ```
 ___
 
-#### [Lesson 4: App Install & User Login](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-04.md)
+#### [Lesson 4: App Install & User Login](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-04.md)

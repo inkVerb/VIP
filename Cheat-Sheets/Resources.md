@@ -21,7 +21,7 @@
   - `ps aux | grep firefox` limits results to `firefox` processes
     - Can be used with most other apps, it `gedit`, `vlc`, etc
 
-Also see: [VIP/Shell 201 – Lesson 9](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-09.md)
+Also see: [Shell 201 Lesson 9](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-09.md)
 ___
 
 ## II. `pgrep`
@@ -35,7 +35,7 @@ ___
   - `pgrep chromium` (`chromium-browser` won't work for Chromium, FYI)
   - `pgrep chrome`
 
-Also see: [VIP/Shell 201 – Lesson 9](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-09.md)
+Also see: [Shell 201 Lesson 9](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-09.md)
 ___
 
 ## III. `df` & `du`
@@ -51,7 +51,7 @@ ___
 - `-h` lists in "human-readble" numbers
 - `-s` does *not* list subdirectories
 
-Also see: [VIP/Shell 201 – Lesson 9](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-09.md)
+Also see: [Shell 201 Lesson 9](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-09.md)
 ___
 
 ## IV. `systemctl` vs `service`
@@ -79,7 +79,7 @@ ___
     - ~~`systemctl graceful-stop apache2`~~ **no such thing!**
     - `systemctl status apache2` *view status information and possible errors*
 
-Also see: [VIP/Shell 401 – Lesson 4](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-04.md)
+Also see: [Shell 401 Lesson 4](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-04.md)
 
 ___
 
@@ -182,7 +182,7 @@ ___
 
 *Learn more for read-only system logs* [https://ops.tips/gists/redirect-all-outputs-of-a-bash-script-to-a-file/]
 
-Also see: [VIP/Shell 301 – Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
+Also see: [Shell 301 Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
 
 ___
 
@@ -213,7 +213,7 @@ ___
 
 *Read more options here:* [https://www.computerhope.com/unix/udate.htm]
 
-Also see: [VIP/Shell 301 – Lesson 8](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)
+Also see: [Shell 301 Lesson 8](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)
 ___
 
 ## VIII. `pwgen`
@@ -242,4 +242,4 @@ ___
 
 *Read more options here:* [https://linux.die.net/man/1/pwgen]
 
-Also see: [VIP/Shell 301 – Lesson 8](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)
+Also see: [Shell 301 Lesson 8](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)

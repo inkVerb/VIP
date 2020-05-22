@@ -36,8 +36,8 @@ Var=false
   - Shell only recognizes `true` or `false` as boolean, not `1` or `0` because, in Shell, `1` and `0` are `exit` codes, along with `2`, `3`, `128`, and more...
   - Do not confuse boolean `1` and `0` (non-Shell languages) with STDIN (`0`), STDOUT (`1`), and STDERR (`2`), nor with other `exit` codes.
   - ***Boolean only allows TWO values, `exit`/error/`return` codes have many more!***
-    - `return` codes covered in in [VIP/Shell 401 – Lesson 10](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-10.md)
-  - Review `exit` codes (which are different) in [VIP/Shell 301 – Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
+    - `return` codes covered in in [Shell 401 Lesson 10](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-10.md)
+  - Review `exit` codes (which are different) in [Shell 301 Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
 - NULL *- empty data, not set (ie: before declaring a variable's value or after using `unset`)*
 
 *Shell* ***utilizes*** *data types; but Shell does not* ***use*** *(store as) data types other than "string".*
@@ -255,7 +255,7 @@ ___
   - array
   - boolean
     - A "boolean" is only `true` or `false` (`1` and `0` respective ***in other languages, not Shell***)
-    - Review `exit` codes (which are different) in [VIP/Shell 301 – Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
+    - Review `exit` codes (which are different) in [Shell 301 Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
 - Shell stores all variables as a "string" type
 - BASH, of course, also allows the "array" type for arrays (duh)
 - Shell and BASH adapt to whatever specific data type a variable may be used for

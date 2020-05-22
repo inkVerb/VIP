@@ -1,6 +1,6 @@
 # Tests
 
-*Refer to this lesson for more about shells, errors, and debugging:* [VIP/Shell 401 – Lesson 9](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)
+*Refer to this lesson for more about shells, errors, and debugging:* [Shell 401 Lesson 9](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)
 
 *Learn more about error exit codes here:* [http://tldp.org/LDP/abs/html/exitcodes.html]
 ___
@@ -90,7 +90,7 @@ fi
 
 ```
 
-Also see: [VIP/Shell 301 – Lesson 1](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-01.md)
+Also see: [Shell 301 Lesson 1](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-01.md)
 
 ___
 
@@ -161,7 +161,7 @@ echo $Variabl
 done
 ```
 
-Also see: [VIP/Shell 301 – Lesson 3](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md)
+Also see: [Shell 301 Lesson 3](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md)
 
 ___
 
@@ -190,7 +190,7 @@ done
 
 ```
 
-Also see: [VIP/Shell 301 – Lesson 5](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
+Also see: [Shell 301 Lesson 5](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
 
 ___
 
@@ -212,7 +212,7 @@ done
 
 ```
 
-Also see: [VIP/Shell 301 – Lesson 5](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
+Also see: [Shell 301 Lesson 5](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
 
 ___
 
@@ -280,7 +280,7 @@ done
 
 ```
 
-Also see: [VIP/Shell 301 – Lesson 7](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
+Also see: [Shell 301 Lesson 7](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
 
 ___
 
@@ -449,7 +449,7 @@ fi
 
 ```
 
-Also see: [VIP/Shell 301 – Lesson 5](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
+Also see: [Shell 301 Lesson 5](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-05.md)
 
 ___
 
@@ -518,7 +518,7 @@ if [ Test_one ] || [ Test_two ] || [ Test_three ]; then
 fi
 ```
 
-Also see: [VIP/Shell 301 – Lesson 7](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
+Also see: [Shell 301 Lesson 7](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
 
 ___
 
@@ -595,7 +595,7 @@ if (( "$Num1" >= "$Num2" ))
 if (( "$Num1" <= "$Num2" ))
 ```
 
-Also see: [VIP/Shell 301 – Lesson 9](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-09.md)
+Also see: [Shell 301 Lesson 9](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-09.md)
 
 ___
 
@@ -703,7 +703,7 @@ This can take arguments:
 - `./myscript -b`
 ...Anything else will echo "Dude, get right."
 
-Also see: [VIP/Shell 301 – Lesson 12](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
+Also see: [Shell 301 Lesson 12](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
 
 ___
 
@@ -784,7 +784,7 @@ This can take arguments:
 - `./myscript -b`
 - `./myscript --bravo`
 
-Also see: [VIP/Shell 301 – Lesson 12](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
+Also see: [Shell 301 Lesson 12](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-12.md)
 
 ___
 

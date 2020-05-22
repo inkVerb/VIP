@@ -1,4 +1,4 @@
-# PHP 501
+# Shell 501
 ## Lesson 3: MySQL & phpMyAdmin
 
 Ready the CLI
@@ -622,4 +622,4 @@ ___
 
 ___
 
-#### [Lesson 3: MySQL & PHP MySQLi](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-03.md)
+#### [Lesson 3: MySQL & PHP MySQLi](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-03.md)

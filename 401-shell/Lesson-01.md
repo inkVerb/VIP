@@ -11,31 +11,31 @@ ___
 
 | **1** : `vim text-doc.txt`
 
-*Vim: `:e ++ff=unix`*
+| **vim** :] `:e ++ff=unix`
 
 *No difference*
 
-*Vim: `:q`*
+| **vim** :] `:q`
 
 | **2** : `unix2dos text-doc.txt`
 
 | **3** : `vim text-doc.txt`
 
-*Vim: `:e ++ff=unix`*
+| **vim** :] `:e ++ff=unix`
 
 *Now see `^M` at the end of the line, indicating a "carriage return"*
 
-*Vim: `:q!`*
+| **vim** :] `:q!`
 
 | **4** : `dos2unix text-doc.txt`
 
 | **5** : `vim text-doc.txt`
 
-*Vim: `:e ++ff=unix`*
+| **vim** :] `:e ++ff=unix`
 
 *No difference*
 
-*Vim: `:q!`*
+| **vim** :] `:q!`
 
 *Note:*
 - DOS text files have "carriage returns" at the end of every line, not Unix
@@ -137,11 +137,11 @@ l \
 
 | **18** : `vim .bash_history` *(or whatever the file name is)*
 
-*Vim: `:set number`*
+| **vim** :] `:set number`
 
-*Vim: PgDown (until last line)*
+| **vim** :] PgDown (until last line)
 
-*Vim: `:q!`*
+| **vim** :] `:q!`
 
 | **19** : `echo $HISTSIZE`
 
@@ -151,13 +151,13 @@ l \
 
 | **20** : `vim .bash_history` *(or whatever the file name is)*
 
-*Vim: `:set number`*
+| **vim** :] `:set number`
 
-*Vim: PgUp (repeat until first line)*
+| **vim** :] PgUp (repeat until first line)*
 
 *Note the command on line 2*
 
-*Vim: `:q!`*
+| **vim** :] `:q!`
 
 | **21** : `!-2`
 

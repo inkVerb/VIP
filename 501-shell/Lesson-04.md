@@ -1,4 +1,4 @@
-# PHP 501
+# Shell 501
 ## Lesson 4: App Install & User Login
 
 Ready the CLI
@@ -589,4 +589,4 @@ ___
 
 ___
 
-#### [Lesson 5: RewriteMod (Pretty Permalinks)](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-05.md)
+#### [Lesson 5: RewriteMod (Pretty Permalinks)](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-05.md)

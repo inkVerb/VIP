@@ -1,4 +1,4 @@
-# PHP 501
+# Shell 501
 ## Lesson 12: Framing for Production
 
 Ready the CLI

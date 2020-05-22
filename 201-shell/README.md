@@ -26,7 +26,7 @@
 
 ### [Lesson 11: netstat -natu, tcpdump, man, info](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md)
 
-### [Lesson 12: more, less, head, tail, sort, tac, diff, nano, vi](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-12.md)
+### [Lesson 12: more, less, head, tail, sort, tac, diff, nano, vim](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-12.md)
 
 FYI This section will install: `sudo apt install -y git curl net-tools htop odt2txt dos2unix pandoc rename pwgen`
 

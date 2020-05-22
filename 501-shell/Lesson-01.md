@@ -1,4 +1,4 @@
-# PHP 501
+# Shell 501
 ## Lesson 1: PHP Core
 
 Ready the CLI
@@ -353,7 +353,7 @@ date("Y-m-d H:i:s", substr($time_epoch, 0, 10)) // Change PHP epoch time back to
 3. Escape before using
 
 #### Know the Datatype!
-*A "string" is a "datatype", which we looked at in [VIP/Shell 401 – Lesson 6](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)*
+*A "string" is a "datatype", which we looked at in [Shell 401 Lesson 6](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)*
 
 ##### Four Important Datatypes in PHP:
 - string *- any kind of raw text: name, email, web address (URL), blog post, mailing address, passwords, etc*
@@ -1009,4 +1009,4 @@ ___
   - Syntax: `$Variable = <<<'EOF'`
 ___
 
-#### [Lesson 2: MySQL & phpMyAdmin](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-02.md)
+#### [Lesson 2: MySQL & phpMyAdmin](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-02.md)

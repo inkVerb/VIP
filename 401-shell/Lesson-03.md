@@ -172,7 +172,7 @@ Or, maybe with a user, such as "jim":
 
 **Instructions:**
 1. Each `cron` file has one to-be-run Shell script *per line* with `cron` schedule settings (below & here: [VIP/Cheat-Sheets: Cron Schedule Tasks: I. Proper cron Task Line Formatting](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting))
-2. File Permissions: `rw-r--r--` set with: `chmod 644 CRON_TASK_NAME`
+2. File Permissions: `rw-r--r--` set with: `chmod 644 Cron_Task_File`
 3. If creating the file by using `echo` use single 'quotes' since double "quotes" will change the meaning of some characters, though you may never see the difference in the text file
 4. The Shell script listed at the end of the line *must be executable*, probably `rwxr-xr-x` set with: `chmod 755 SCRIPT_NAME`
 

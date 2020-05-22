@@ -1,4 +1,4 @@
-## Lesson 12: more, less, head, tail, sort, tac, diff, nano, vi
+## Lesson 12: more, less, head, tail, sort, tac, diff, nano, vim
 
 Ready the CLI
 

@@ -101,7 +101,7 @@ Put a **`cron` task file** in this directory:
 
 **Instructions:**
 1. Each `cron` file has one to-be-run Shell script *per line* with `cron` schedule settings (here: [VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
-2. File Permissions: `rw-r--r--` set with: `chmod 644 Cron_Task_Name`
+2. File Permissions: `rw-r--r--` set with: `chmod 644 Cron_Task_File`
 3. If creating the file by using `echo` use single 'quotes' since double "quotes" will change the meaning of some characters, though you may never see the difference in the text file
 4. The Shell script listed at the end of the line *must be executable*, probably `rwxr-xr-x` set with: `chmod 755 Script_Name`
 
@@ -121,6 +121,22 @@ Every user gets a `crontab` file
 1. Edit and make entries in your `crontab` profile with:
   - `crontab -e`
 2. Use proper `cron` task line formatting (here: [VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md))
+
+### 4. PHP script as `cron` task
+
+Here is an example of a `cron` task running a .php script every 15 minutes in your web folder on a server:
+
+```
+15 0 * * * root /usr/bin/php /var/www/html/path/to/file.php
+```
+
+**Important note:**
+- We use `/usr/bin/php` so a PHP script can work
+- This presumes the `php` command is in `/usr/bin/php`; use `which php` to confirm
+- Use absolute paths for any `include` or `require` statements in PHP
+- Test your PHP script to make sure it will work from the system
+  - `php /same/path/as/cron/task/to/script.php`
+  - A .php file may work fine in a web browser, but run from the system/terminal/`cron` is different
 
 ## III. Troubleshooting
 

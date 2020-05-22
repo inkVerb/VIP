@@ -1,9 +1,9 @@
 # Characters for Classes & RegEx
 **RegEx** meas "Regular Expression", which is what we call a way to express characters like this
 
-*Refer to this lesson for an introduction to escaping special characters:* [VIP/Shell 101 – Lesson 11](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-11.md)
+*Refer to this lesson for an introduction to escaping special characters:* [Shell 101 Lesson 11](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-11.md)
 
-*Refer to this lesson for an introduction to character classes:* [VIP/Shell 401 – Lesson 11](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
+*Refer to this lesson for an introduction to character classes:* [Shell 401 Lesson 11](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
 
 *Much of this information was taken from the GNU sed manual:* [5.5 Character Classes and Bracket Expressions](https://www.gnu.org/software/sed/manual/html_node/Character-Classes-and-Bracket-Expressions.html)
 ___

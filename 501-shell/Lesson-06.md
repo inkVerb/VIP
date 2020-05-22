@@ -1,4 +1,4 @@
-# PHP 501
+# Shell 501
 ## Lesson 6: AJAX
 
 Ready the CLI
@@ -19,7 +19,7 @@ AJAX loads or reloads only ***part*** of a webpage
   - This lets JavaScript animate and move
 - JavaScript was created in 1995 by Netscape to compete with Microsoft
 - JavaScript animates pieces of HTML and CSS
-- Remember [Lesson 0: HTML Fast](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-00.md#html--css-crash-course):
+- Remember [Lesson 0: HTML Fast](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-00.md#html--css-crash-course):
   - HTML is a manikin
   - CSS is the clothing
   - JavaScript "animates", so the manikin moves like a robot and changes clothes
@@ -237,4 +237,4 @@ ___
 
 ___
 
-#### [Lesson 7: Security Keys](https://github.com/inkVerb/vip/blob/master/501-php/Lesson-07.md)
+#### [Lesson 7: Security Keys](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-07.md)
