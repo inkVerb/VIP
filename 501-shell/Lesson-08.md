@@ -28,7 +28,7 @@ ___
 sudo cp core/08-edit1.php web/edit.php && \
 sudo cp core/08-logincheck.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/edit.php web/in.login_check.php \
+gedit web/edit.php web/in.login_check.php && \
 ls web
 ```
 
@@ -88,10 +88,10 @@ CREATE TABLE IF NOT EXISTS `pieces` (
 | **3** :
 ```
 sudo cp core/08-edit2.php web/edit.php && \
-sudo cp core/08-functions.in.php web/in.functions.php && \
+sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
 sudo cp core/08-editpiece.in.php web/in.editpiece.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/functions.php web/in.editpiece.php \
+gedit web/functions.php web/in.editpiece.php && \
 ls web
 ```
 

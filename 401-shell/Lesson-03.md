@@ -146,7 +146,7 @@ The system will automatically run `cron` scripts on its own scheduled basis in f
 
 **Instructions:**
 1. Each file here is a simple BASH or Shell script
-2. File Permissions: `rwxr-xr-x` set with: `chmod 755 CRON_SCRIPT_NAME`
+2. File Permissions: `rwxr-xr-x` set with: `chmod 755 Cron_Script_Name`
 
 #### Custom Schedules
 To have more control of the time a `cron` task will run, put `cron` files here:

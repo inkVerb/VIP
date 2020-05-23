@@ -50,7 +50,7 @@ sudo cp core/07-recover2.php web/recover.php && \
 sudo cp core/07-ajaxstring.php web/ajax_string.php && \
 sudo cp core/07-recover_login.php web/recover_login.php && \
 sudo cp core/07-webapp.php web/webapp.php && \
-sudo cp core/07-loginhead.in.php web/in.login_head.php && \
+sudo cp core/07-loginhead1.in.php web/in.login_head.php && \
 sudo cp core/07-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 gedit web/ajax_string.php web/recover_login.php web/webapp.php web/in.login_head.php web/in.login_head.php web/account.php && \
@@ -74,7 +74,7 @@ ls web
     - contains the login workflow that webapp used to
     - has links for Account Settings and logout
 
-*Look through these files carefully*
+*Look through those files carefully*
 
 | **2** :>
 
@@ -104,13 +104,24 @@ Favorite Number: (same as before)
 
 | **2-opt** :> `SELECT * FROM users;`
 
-*Once you succeeded with your username and favorite number...*
+**Follow along...**
 
-### Cleanup
+1. *Enter the Username and Favorite number*
+2. *Click "Get your recover string link..."*
+3. *Look at the string in the table:*
 
 | **3** :> `SELECT * FROM strings;`
 
-| **SB-3** ://phpMyAdmin **> strings**
+4. *Click your login link in the browser*
+5. *Check to see that your key is "dead":*
+
+| **4** :> `SELECT * FROM strings;`
+
+### Cleanup
+
+| **5** :> `SELECT * FROM strings;`
+
+| **SB-5** ://phpMyAdmin **> strings**
 
 1. Click the button: **Get your recovery string link...**
   - Each time, check new entries in the database:
@@ -124,15 +135,15 @@ Favorite Number: (same as before)
 
 *When finished, delete all expired strings...*
 
-| **4** :> `SELECT * FROM strings;`
-
-| **SB-4** ://phpMyAdmin **> strings**
-
-| **5** :> `DELETE FROM strings WHERE date_expires < NOW();`
-
 | **6** :> `SELECT * FROM strings;`
 
 | **SB-6** ://phpMyAdmin **> strings**
+
+| **7** :> `DELETE FROM strings WHERE date_expires < NOW();`
+
+| **8** :> `SELECT * FROM strings;`
+
+| **SB-8** ://phpMyAdmin **> strings**
 
 *Create a .php file to do the same thing...*
 
@@ -140,11 +151,11 @@ Favorite Number: (same as before)
 
 *Create our routine .php file...*
 
-| **7** :
+| **9** :
 ```
 sudo cp core/07-cleanup1.php web/cleanup.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/cleanup.php \
+gedit web/cleanup.php && \
 ls web
 ```
 
@@ -152,7 +163,7 @@ ls web
 
 *Prep some keys, so we can delete them...*
 
-| **B-7** :// `localhost/web/recover.php` (It may require credentials)
+| **B-9** :// `localhost/web/recover.php` (It may require credentials)
 
 ```
 Username: jonboy
@@ -161,9 +172,9 @@ Favorite Number: (same as before)
 
 *...Click "Get your recovery string link..." a few times to create some keys*
 
-| **7** :> `SELECT * FROM strings;`
+| **9** :> `SELECT * FROM strings;`
 
-| **SB-7** ://phpMyAdmin **> strings**
+| **SB-9** ://phpMyAdmin **> strings**
 
 ***Remember: Our keys expire after 20 seconds!***
 
@@ -171,7 +182,7 @@ Favorite Number: (same as before)
 
 ***Do these next four steps WITHIN 20 SECONDS...***
 
-| **B-8** :// `localhost/web/recover.php` (Same, use 'Back' if repeating steps)
+| **B-10** :// `localhost/web/recover.php` (Same, use 'Back' if repeating steps)
 
 *(If repeating steps, you may need to confirm, ie: 'Try Again' or 'Resend')*
 
@@ -179,19 +190,19 @@ Favorite Number: (same as before)
 
 *See our new keys...*
 
-| **8** :> `SELECT * FROM strings;`
+| **10** :> `SELECT * FROM strings;`
 
-| **SB-8** ://phpMyAdmin **> strings**
+| **SB-10** ://phpMyAdmin **> strings**
 
 *Run the cleanup...*
 
-| **B-9** :// `localhost/web/cleanup.php`
+| **B-11** :// `localhost/web/cleanup.php`
 
 *Notice only old keys were deleted...*
 
-| **9** :> `SELECT * FROM strings;`
+| **11** :> `SELECT * FROM strings;`
 
-| **SB-9** ://phpMyAdmin **> strings**
+| **SB-11** ://phpMyAdmin **> strings**
 
 *You may repeat all commands 8–9 to see this again*
 
@@ -203,7 +214,7 @@ We can use `cron` to run a php file
 
 *First, create some keys to delete, again...*
 
-| **B-10** :// `localhost/web/recover.php` (Use credentials or 'Back')
+| **B-12** :// `localhost/web/recover.php` (Use credentials or 'Back')
 
 ```
 Username: jonboy
@@ -214,9 +225,9 @@ Favorite Number: (same as before)
 
 *See the keys...*
 
-| **10** :> `SELECT * FROM strings;`
+| **12** :> `SELECT * FROM strings;`
 
-| **SB-10** ://phpMyAdmin **> strings**
+| **SB-12** ://phpMyAdmin **> strings**
 
 #### Anything run from the terminal can be run by `cron`
 
@@ -226,7 +237,7 @@ We use this syntax here: `php /same/path/as/cron/task/to/script.php`
 
 *A .php script run by `cron` needs an absolute path...*
 
-| **11** :
+| **13** :
 ```
 sudo cp core/07-cleanup2.php web/cleanup.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -237,31 +248,31 @@ ls web
 
 *Run it from the terminal...*
 
-| **12** : `php /var/www/html/web/cleanup.php`
+| **14** : `php /var/www/html/web/cleanup.php`
 
 *See that the expired keys were deleted...*
 
-| **12** :> `SELECT * FROM strings;`
+| **14** :> `SELECT * FROM strings;`
 
-| **SB-12** ://phpMyAdmin **> strings**
+| **SB-14** ://phpMyAdmin **> strings**
 
 #### Creating a `cron` Task File
 
 *Create a few more keys to delete after 20 seconds...*
 
-| **B-13** :// `localhost/web/recover.php` (Use credentials or 'Back')
+| **B-15** :// `localhost/web/recover.php` (Use credentials or 'Back')
 
 *See the keys...*
 
-| **13** :> `SELECT * FROM strings;`
+| **15** :> `SELECT * FROM strings;`
 
-| **SB-13** ://phpMyAdmin **> strings**
+| **SB-15** ://phpMyAdmin **> strings**
 
 *Create the `cron` task file...*
 
-| **14** : `cd /etc/cron.d`
+| **16** : `cd /etc/cron.d`
 
-| **15** : `ls`
+| **17** : `ls`
 
 **Handle `cron` task files correctly...**
 
@@ -274,7 +285,7 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 *We will edit with `vim` from [Shell 201 Lesson 12](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-12.md#vim-is-for-awesome-people)*
 
-| **16** : `sudo vim /etc/cron.d/webappcleanup`
+| **18** : `sudo vim /etc/cron.d/webappcleanup`
 
 | **vim-16a** :] `i`
 
@@ -290,7 +301,7 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 *Set file permissions for the `cron` task...*
 
-| **17** : `sudo chmod 644 /etc/cron.d/webappcleanup`
+| **19** : `sudo chmod 644 /etc/cron.d/webappcleanup`
 
 *Note:*
   - *This `cron` task runs at 00 seconds every minute*
@@ -298,13 +309,13 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 **Repeat 18 to watch `cron` delete expired keys:**
 
-| **B-18** :// `localhost/web/recover.php` (Same)
+| **B-20** :// `localhost/web/recover.php` (Same)
 
 *...Click "Get your recovery string link..." a few times to create some keys*
 
-| **18** :> `SELECT * FROM strings;`
+| **20** :> `SELECT * FROM strings;`
 
-| **SB-18** ://phpMyAdmin **> strings**
+| **SB-20** ://phpMyAdmin **> strings**
 
 *Wait 1 minute and run again*
 
@@ -312,7 +323,33 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 *Delete that `cron` task so it isn't constantly running on your machine...*
 
-| **19** : `sudo rm /etc/cron.d/webappcleanup`
+| **21** : `sudo rm /etc/cron.d/webappcleanup`
+
+### Keys for Cookie Login
+
+Remember from [Lesson 4](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-04.md#v-remember-me-login-cookies) that storing user info in a cookie is not secure
+
+Instead, one good option is to store a key, like the keys we just set up
+
+**Workflow:**
+```
+$_COOKIE['user_key'] --> key finds user_id --> user_id logs in
+```
+
+We need to:
+
+1. Create a key at "Remember me" login
+2. Check the key when returning
+3. Delete the key at logout
+
+| **22** :
+```
+sudo cp core/07-loginhead2.in.php web/in.login_head.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/cleanup.php && \
+ls web
+```
+
 ___
 
 # The Take

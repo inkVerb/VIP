@@ -12,7 +12,7 @@ ___
 
 ### I. `select`
 
-This works like a `while` or `until` loop...
+This works much like a `for` loop (from [Lesson 3](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md#i-for-var-in-lst-do))...
 
 ```sh
 select Var in Some_List
@@ -71,10 +71,12 @@ done
 **`dialog` does not require BASH, but is a separate program that must be installed with `sudo apt install dialog`**
 
 ```sh
-dialog --option1 "args" --option2 "args" [size] 2> output.file
+dialog --option1 "args" --option2 "args" [size] 2> Output_File
 ```
 
-*5 = height; 18 = width*
+*We learned about `2> output.file` as STDERR from [Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md#ouput-to-file)*
+
+*5 = height; 18 = width as [size]...*
 
 | **8** : `dialog --title "Read This" --msgbox "Ink is a verb." 5 18`
 
@@ -132,7 +134,7 @@ dialog --option1 "args" --option2 "args" [size] 2> output.file
 
 | **23** : `echo $?` *"no" = `1`*
 
-*Note exit codes matter! We learned about them in [Lesson 6: exit & journalctl](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)*
+*Note this uses `exit` codes, which we learned about in [Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md#iii-logging-with-exit-codes)*
 
 *This belongs in a script to work properly*
 
@@ -182,7 +184,14 @@ dialog --option1 "args" --option2 "args" [size] 2> output.file
 
 | **37** : `gedit 11-dialog-4`
 
-*This needs an exit code redirect on the end: `3>&1 1>&2 2>&3 3>&-`*
+*`dialog` in `$(`[Command Substitution](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-05.md)`)` needs an exit code redirect on the end: `3>&1 1>&2 2>&3 3>&-`*
+
+  - *[Exit Codes](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md#iii-logging-with-exit-codes) usually output:*
+    - *Error output: STDERR via `exit 2`, using `2> Output_File` or*
+    - *Normal output: STDOUT via `exit 1`, using `> Output_File`*
+  - *The useful output from `dialog` is STDERR via `exit 2`*
+  - *So, we must convert the `dialog` output into a kind of output that `$(`Command Substitution`)` can understand*
+  - *Syntax: `$(dialog ... 3>&1 1>&2 2>&3 3>&-)`*
 
 | **38** : `./11-dialog-4` *(select any size)*
 
@@ -220,30 +229,31 @@ ___
   - `esac`/`fi` ...close either appropriately
   - `done` closes the dialog loop
 - The options may be placed in a variable, then called later, like this:
-```bash
+
+```sh
 options="option1 'option 2' Three"
 select inputVariable in $Options
 ```
 
 ## `dialog`
 - `dialog` can work in Shell and BASH, but must be installed via `sudo apt install dialog`
-- Syntax: `dialog OPTIONS`
-- Basic syntax: `dialog --title "Title Here" --msgbox "Longer message here..." HEIGHT WIDTH`
+- Basic syntax: `dialog --title "Title Here" --msgbox "Longer message here..." Height Width`
 - Common flags:
   - `--title` (one argument)
   - `--msgbox` (one argument)
-  - `--yesno` (no arguments)*
-  - `--menu "Heading" HEIGHT WIDTH NUM-OF-OPTIONS 1 OPT1 2 OPT2 TAIL-COMMANDS`
+  - `--yesno` (no arguments)
+  - `--menu "Heading" Height Width Num-Of-Options 1 Opt1 2 Opt2 Tail-Commands`
+- The output we want from `dialog` is STDERR (as if `exit 2`), which we learned in [Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md#iii-logging-with-exit-codes)
+  - In a script, the tail command can directly output to a file via `2> Output_File`
+  - Command Substitution syntax: `$(dialog ... 3>&1 1>&2 2>&3 3>&-)`
+- How to capture a `dialog --yesno` response:
+  - `if [$? = 0]` = yes
+  - `if [$? = 1]` = no
 - `--menu` is a complex flag, but necessary for multiple choice
-  - Basic example:
-    -`dialog --menu "Choose an option:" 11 23 3 1 "Option 1" 2 Two 3 Third 2> output-file`
-  - In a script, the tail command can directly output to a file via `2> output-file`
+  - Basic example of output to file:
+    -`dialog --menu "Choose an option:" 11 23 3 1 "Option 1" 2 Two 3 Third 2> Output_File`
     - This returns no follow-up dialog
-  - For a dialog response, send output to a `case` loop:
-    1. Put the entire `dialog` command inside a `$(command substitution)`
-    2. Output is determined in the cases or after, `dialog ... 2> output-file` won't work!
-    3. The "tail commands" must be: `3>&1 1>&2 2>&3 3>&-`
-- `dialog` uses exit codes, which we learned in [Lesson 6: exit & journalctl](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
+  - For a `dialog` response, send output to a `case` loop with more `dialog` commands
 - Consult the manual for more `dialog man`
 ___
 

@@ -60,6 +60,11 @@ ls web
 
   - *function escape_sql($data)* (we will start using this instead of mysqli_real_escape_string)
 
+  *In the in.functions.php, note:*
+
+    - *Validation and sanitizing set a `$regex_` variable first, which is more neat and tidy*
+    - *This style isolates the RegEx to help any RegEx hunting in the future*
+
 | **install.php** :
 
 **Hash password one-way:**
@@ -371,9 +376,9 @@ setcookie('cookie_name', null, 86401); // Set our cookie value to "null" (nothin
 setcookie('cookie_name', null, time()-1);  // Wrong! (depending on your timezone, this could be in the future!)
 ```
 
-***This is how cookies work...*** **the wrong way:** username
+***This is how cookies work...*** **the wrong way:** user_id
 
-For teaching, we will put the **username** as the cookie's value, but this is not secure!
+For teaching, we will put the **user_id** as the cookie's value, but this is not secure!
 
 | **12** :
 ```
