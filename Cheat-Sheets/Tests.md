@@ -7,7 +7,7 @@ ___
 
 ### I. Test: `true` & `false`
 
-When a test answers `true`, then shell does something via `then` or `do`
+When a test answers `true`, then Shell does something via `then` or `do`
 
 ___
 
@@ -17,7 +17,7 @@ ___
 - Once the `if` test is finished, the script continues
 
 ```sh
-if [ THIS IS THE TEST ]
+if [ This Is The Test ]
 
 then
 
@@ -30,7 +30,7 @@ fi
 - We can also use `else` to do something without any test, if the previous test returns `false`
 
 ```sh
-if [ THIS IS THE TEST ]
+if [ This Is The Test ]
 
 then
 
@@ -47,17 +47,17 @@ fi
 - We can also use `elif` to run a different test, if the previous test returns `false`
 
 ```sh
-if [ THIS IS THE TEST ]
+if [ This Is The Test ]
 
 then
 
 # Something happens here if the test answers true
 
-elif [ THIS IS ANOTHER TEST IF THE PREVIOUS TEST RETURNED FALSE ]
+elif [ This Is Another Test If The Previous Test Returned False ]
 
 # Something happens here if this other test answers true
 
-elif [ THIS IS ANOTHER TEST IF THE PREVIOUS TESTS ALL RETURNED FALSE ]
+elif [ This Is Another Test If The Previous Tests All Returned False ]
 
 # Something happens here if this other other test answers true
 
@@ -68,23 +68,68 @@ fi
 - `else` can also work with `elif`
 
 ```sh
-if [ THIS IS THE TEST ]
+if [ This Is The Test ]
 
 then
 
 # Something happens here if the test answers true
 
-elif [ THIS IS ANOTHER TEST IF THE PREVIOUS TEST RETURNED FALSE ]
+elif [ This Is Another Test If The Previous Test Returned False ]
 
 # Something happens here if this other test answers true
 
-elif [ THIS IS ANOTHER TEST IF THE PREVIOUS TESTS ALL RETURNED FALSE ]
+elif [ This Is Another Test If The Previous Tests All Returned False ]
 
 # Something happens here if this other other test answers true
 
 else
 
 # Something happens here because all previous tests failed
+
+fi
+
+```
+
+- `if` can work with commands
+
+```sh
+if some command here
+
+then
+
+# Something happens here if the command returns true
+
+elif another command runs here should the previous command return false
+
+# Something happens here if this other command returns true
+
+else
+
+# Something happens here because all previous commands returns false
+
+fi
+
+```
+
+- `if !` will reverse the true/false return of a command
+
+```sh
+if ! some command here fails
+
+then
+
+# Something happens here if the command returns false
+
+fi
+
+```
+
+- Standard practice combines first two lines via `;`:
+
+```sh
+if [ Test Here ]; then
+
+  ...
 
 fi
 
@@ -180,7 +225,7 @@ The `if` test is similar to the `while` looping test, but...
 - `fi` --> `done`
 
 ```sh
-while [ THIS IS THE TEST ]
+while [ This Is The Test ]
 
 do
 
@@ -202,7 +247,7 @@ ___
 - `until :` will always return `true` and will thus `break` before it can run `do`
 
 ```sh
-until [ THIS IS THE TEST ]
+until [ This Is The Test ]
 
 do
 
@@ -219,7 +264,7 @@ ___
 ### VI. Count with `while` & `until`
 
 ```sh
-while [ TEST IS TRUE ]
+while [ Test Is True ]
 
 do
 
@@ -229,7 +274,7 @@ done
 ```
 
 ```sh
-until [ TEST IS FALSE ]
+until [ Test Is False ]
 
 do
 
@@ -310,22 +355,22 @@ case $Variabl in
 
 # If $Variabl=a
   a)
-   DO SOMETHING "A", maybe with $Variabl
+   Do Something "A", maybe with $Variabl
   ;;
 
 # If $Variabl=b
   b)
-   DO SOMETHING "B", maybe with $Variabl
+   Do Something "B", maybe with $Variabl
   ;;
 
 # If $Variabl=wallawalla
   wallawalla)
-   DO SOMETHING "Walla Walla", maybe with $Variabl
+   Do Something "Walla Walla", maybe with $Variabl
   ;;
 
 # If $Variabl= anything else
   *)
-   DO SOMETHING ELSE, maybe with $Variabl
+   Do Something ELSE, maybe with $Variabl
   ;;
 
 esac
@@ -338,12 +383,12 @@ case $Variabl in
 
 # If $Variabl=a
   a)
-   DO SOMETHING "A", maybe with $Variabl
+   Do Something "A", maybe with $Variabl
   ;;
 
 # If $Variabl=b or $Variabl=c
   b|c)
-   DO SOMETHING "B or C", maybe with $Variabl
+   Do Something "B or C", maybe with $Variabl
   ;;
 
 esac
@@ -356,22 +401,22 @@ case $Variabl in
 
 # If $Variabl=a
   [aA] )
-   DO SOMETHING "A", maybe with $Variabl
+   Do Something "A", maybe with $Variabl
   ;;
 
 # If $Variabl=b or $Variabl=c
   [bB] | [cC] )
-   DO SOMETHING "B or C", maybe with $Variabl
+   Do Something "B or C", maybe with $Variabl
   ;;
 
 # If $Variabl=yes or $Variabl=y
   [yY] | [yY][eE][sS] )
-   DO SOMETHING "yes", maybe with $Variabl
+   Do Something "yes", maybe with $Variabl
   ;;
 
 # If $Variabl=no or $Variabl=n
   [nN] | [nN][oO] )
-   DO SOMETHING "no", maybe with $Variabl
+   Do Something "no", maybe with $Variabl
   ;;
 
 esac
@@ -389,12 +434,12 @@ case $Variabl in
 
 # If $Variabl=a
   a)
-   DO SOMETHING "A", maybe with $Variabl
+   Do Something "A", maybe with $Variabl
   ;;
 
 # If $Variabl=stopit
   stopit)
-   DO SOMETHING about stopping, maybe with $Variabl
+   Do Something about stopping, maybe with $Variabl
    break
   ;;
 
@@ -436,15 +481,15 @@ esac
 # Now, the series of if tests for each above case
 
 if [ "$caseA" = "true" ]; then
-  DO SOMETHING "A"
+  Do Something "A"
 fi
 
 if [ "$caseB" = "true" ]; then
-  DO SOMETHING "B"
+  Do Something "B"
 fi
 
 if [ "$casewallawalla" = "true" ]; then
-  DO SOMETHING "wallawalla"
+  Do Something "wallawalla"
 fi
 
 ```
@@ -468,7 +513,7 @@ ___
 ```sh
 if [ Test_is_true ] && [ Test_this ]... ;fi
 
-if [ Test_is_false ] || [ Test_this THIS ]... ;fi
+if [ Test_is_false ] || [ Test_this ]... ;fi
 ```
 
 **...but it does not need to be in a test...**
@@ -795,7 +840,7 @@ This is *not* used in BASH or Shell, but it is used in many other languages, inc
 **Ternary Statement:**
 
 ```js
-Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';
+Variable = ( This Is The Test ) ? 'value_if_true' : 'value_if_false';
 
 // example:
 
@@ -806,7 +851,7 @@ Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 **Shell one-line equivalent:**
 
 ```sh
-Variable=$([ THIS IS THE TEST ] && echo 'value_if_true' || echo 'value_if_false')
+Variable=$([ This Is The Test ] && echo 'value_if_true' || echo 'value_if_false')
 
 # example:
 
@@ -818,7 +863,7 @@ Variable=$([ "$Some_Variable" == "5" ] && echo 'it is five' || echo 'not five')
 
 ```sh
 
-if [ THIS IS THE TEST ]; then
+if [ This Is The Test ]; then
   Variable='value_if_true'
 else
   Variable='value_if_false'

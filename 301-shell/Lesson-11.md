@@ -232,7 +232,9 @@ ___
 
 ```sh
 options="option1 'option 2' Three"
-select inputVariable in $Options
+select inputVariable in $Options; do
+  ...
+done
 ```
 
 ## `dialog`

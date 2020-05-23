@@ -13,7 +13,7 @@ ___
 ### I. `if`
 
 ```sh
-if [ TEST ]
+if [ Test ]
 then
   ...do something
 fi
@@ -70,7 +70,7 @@ Test for an existing *directory* by name
 ### II. `else`
 
 ```sh
-if [ TEST ]
+if [ Test ]
 then
   ...do something
 else
@@ -105,10 +105,10 @@ fi
 ### III. `elif`
 
 ```sh
-if [ TEST ]
+if [ Test ]
 then
   ...do something
-elif [ ANOTHER TEST ]
+elif [ Another Test ]
   ...do another thing
 else
   ...do another another thing
@@ -131,6 +131,14 @@ fi
 
 ### IV. `;` & Whitespace
 
+```sh
+if [ Test ]; then
+  ...do something
+fi
+```
+
+This is standard practice for `if` and many other logic statements
+
 | **34** : `gedit 01-style`
 
 *Note `;` means "new line of logic" and whitespace at the beginning of lines is ignored*
@@ -148,6 +156,62 @@ fi
 | **40** : `./01-minimum yoyo`
 
 | **41** : `./01-minimum greatagain`
+
+### V. `if` Commands
+
+```sh
+if some command succeeds; then
+  ...do something
+fi
+
+if ! some command fails; then
+  ...do something
+fi
+```
+
+The command runs; if it succeeds, the test answers true
+
+| **42** : `markdown.md`
+
+*Note the contents of markdown.md*
+
+| **43** : `grep "markdown" markdown.md`
+
+*Show the last exit (0 = `true`; 1 = `false`)*
+
+| **44** : `echo $?` (0 because something was found, `if` = `true`)
+
+| **45** : `grep "Markdown" markdown.md`
+
+| **46** : `echo $?` (1 because nothing was found, `if` = `false`)
+
+*Only "markdown", not "Markdown"*
+
+| **47** : `gedit 01-ifcomm1`
+
+| **48** : `./01-ifcomm1`
+
+*Use `grep -q` for no output, only `true/false` (0 or 1)...*
+
+| **49** : `grep -q "markdown" markdown.md`
+
+| **50** : `echo $?`
+
+| **51** : `grep -q "markdown" markdown.md`
+
+| **52** : `echo $?`
+
+*Use `if !` to reverse the response of a command...*
+
+| **53** : `gedit 01-ifcomm2`
+
+| **54** : `./01-ifcomm2`
+
+*This works with any command...*
+
+| **55** : `gedit 01-ifcomm3`
+
+| **56** : `./01-ifcomm3`
 
 ___
 
@@ -167,10 +231,20 @@ ___
   - `-d` tests whether a directory exists
   - `-e` tests whether a something exists at all, file, directory, or even link
   - `-z` tests whether a variable is empty
-  - *`-n` tests whether a variable is not empty (not used in this lesson)*
-- `;` makes a "logical line break" without putting code on a new line  
-- Syntax of the `if` line:
-  - `if` `CONDITIONS TO BE TESTED`
+  - `-n` tests whether a variable is not empty *(not used in this lesson)*
+- `;` makes a "logical line break" without putting code on a new line
+  - Standard practice uses `;` to combine the first two lines in many logic statements
+- Syntax of a standard `if` line:
+  - `if [ Conditions To Be Tested ]; then`
+## `if` Commands
+- `if` can also work with a command
+  - The command executes as normal
+  - If the command exits with success, the `if` test returns `true`
+  - Syntax: `if some command here; then`
+- `echo $?` shows the `true/false` response of the last command
+  - `0` = `true`
+  - `1` = `false`
+  - This is how `if` performs tests
 - See usage and examples here: [Tests: if](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#ii-if-then-else--elif-fi)
 ___
 
