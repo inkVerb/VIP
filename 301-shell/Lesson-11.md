@@ -190,7 +190,7 @@ dialog --option1 "args" --option2 "args" [size] 2> Output_File
     - *Error output: STDERR via `exit 2`, using `2> Output_File` or*
     - *Normal output: STDOUT via `exit 1`, using `> Output_File`*
   - *The useful output from `dialog` is STDERR via `exit 2`*
-  - *So, we must convert the `dialog` output into a kind of output that `$(`Command Substitution`)` can understand*
+  - *So, we must convert the `dialog` output into a kind of output that `$(Command Substitution)` can understand*
   - *Syntax: `$(dialog ... 3>&1 1>&2 2>&3 3>&-)`*
 
 | **38** : `./11-dialog-4` *(select any size)*
@@ -245,7 +245,7 @@ select inputVariable in $Options
   - `--menu "Heading" Height Width Num-Of-Options 1 Opt1 2 Opt2 Tail-Commands`
 - The output we want from `dialog` is STDERR (as if `exit 2`), which we learned in [Lesson 6](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md#iii-logging-with-exit-codes)
   - In a script, the tail command can directly output to a file via `2> Output_File`
-  - Command Substitution syntax: `$(dialog ... 3>&1 1>&2 2>&3 3>&-)`
+  - `$(Command Substitution)` syntax: `$(dialog ... 3>&1 1>&2 2>&3 3>&-)`
 - How to capture a `dialog --yesno` response:
   - `if [$? = 0]` = yes
   - `if [$? = 1]` = no
