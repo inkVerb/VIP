@@ -225,22 +225,22 @@ ls web
 
 **`if` test:**
 
-`if ( TEST HERE ) { DO THIS... ;}`
+`if ( Test Here ) { Do This... ;}`
 
 **`if` test with `else` and `elseif`:**
 
-`if ( TEST HERE ) { DO THIS... ;} elseif ( ANOTHER TEST ) { DO THIS... ;} else { DO THIS... ;}`
+`if ( Test Here ) { Do This... ;} elseif ( Another Test ) { Do This... ;} else { Do This... ;}`
 
 **multiple lines and normal style:**
 
 ```php
-if ( TEST HERE ) {
-  DO THIS;
-  DO THIS;
-} elseif ( ANOTHER TEST ) {
-  DO THIS;
+if ( Test Here ) {
+  Do This;
+  Do This;
+} elseif ( Another Test ) {
+  Do This;
 } else {
-  DO THIS;
+  Do This;
 }
 ```
 
@@ -963,9 +963,9 @@ ___
 ## PHP Logic
 - Loops use arrays
 - 4 types of loops `do` `while` `for` `foreach`
-  - `foreach` syntax: `foreach ($array as $item) { DO THIS... ;}`
+  - `foreach` syntax: `foreach ($array as $item) { Do This... ;}`
 - PHP uses `if` tests
-  - Syntax: `if ( TEST HERE ) { DO THIS... ;}`
+  - Syntax: `if ( Test Here ) { Do This... ;}`
 - PHP `if` tests can use `else` and `elseif` *(not `elif`)*
 
 ## Ternary Statements

@@ -53,7 +53,7 @@ sudo cp core/07-webapp.php web/webapp.php && \
 sudo cp core/07-loginhead1.in.php web/in.login_head.php && \
 sudo cp core/07-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/ajax_string.php web/recover_login.php web/webapp.php web/in.login_head.php web/in.login_head.php web/account.php && \
+gedit web/ajax_string.php web/recover_login.php web/webapp.php web/in.login_head.php web/account.php && \
 ls web
 ```
 
@@ -319,11 +319,7 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 *Wait 1 minute and run again*
 
-**When finished:**
-
-*Delete that `cron` task so it isn't constantly running on your machine...*
-
-| **21** : `sudo rm /etc/cron.d/webappcleanup`
+*When finished, let's use a key for our login cookie...*
 
 ### Keys for Cookie Login
 
@@ -342,13 +338,44 @@ We need to:
 2. Check the key when returning
 3. Delete the key at logout
 
+*Start by logging out...*
+  - *We used our old cookie method to login*
+  - *So, we should use our old cookie method to logout before making changes*
+
+| **B-21** :// `localhost/web/logout.php`
+
 | **22** :
 ```
 sudo cp core/07-loginhead2.in.php web/in.login_head.php && \
+sudo cp core/07-logout.in.php web/logout.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/cleanup.php && \
+gedit web/logout.php && \
 ls web
 ```
+
+*gedit: Reload in.login_head.php*
+
+
+| **B-22** :// `localhost/web/webapp.php`
+
+*Login again with our credentials from before...*
+
+```
+Username: jonboy
+Password: My#1Password
+```
+
+*Note the string in the message is your cookie, same as the database...*
+
+| **22** :> `SELECT * FROM strings;`
+
+| **SB-22** ://phpMyAdmin **> strings**
+
+**When finished:**
+
+*Delete that `cron` task so it isn't constantly running on your machine...*
+
+| **23** : `sudo rm /etc/cron.d/webappcleanup`
 
 ___
 
