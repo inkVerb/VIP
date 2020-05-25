@@ -26,9 +26,10 @@ ___
 | **1** :
 ```
 sudo cp core/08-edit1.php web/edit.php && \
+sudo cp core/08-loginhead.in.php web/in.login_head.php && \
 sudo cp core/08-logincheck.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/edit.php web/in.login_check.php && \
+gedit web/in.login_head.php web/in.login_check.php web/edit.php && \
 ls web
 ```
 
@@ -38,6 +39,7 @@ ls web
     - *Redirect to webapp.php if no login*
     - *Message and admin links if logged in*
     - *Note we used the `$head_title` variable for the browser `<title>`*
+  - *in.login_head.php near the bottom has a link to edit.php*
   - *edit.php is very simple now, but it contains our three prep files:*
     - *in.config.php*
     - *in.functions.php*
@@ -76,12 +78,14 @@ CREATE TABLE IF NOT EXISTS `pieces` (
   `slug` VARCHAR(90) NOT NULL,
   `content` LONGTEXT DEFAULT NULL,
   `after` TINYTEXT DEFAULT NULL,
-  `date_live` TIMESTAMP DEFAULT NULL,
-  `date_created` TIMESTAMP NOT NULL,
-  `date_updated` TIMESTAMP NOT NULL,
+  `date_live` TIMESTAMP NULL,
+  `date_created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 ```
+
+*Note `TIMESTAMP NULL` works; `TIMESTAMP DEFAULT NULL` does not work*
 
 *...Use that table by adding a "Piece" `<form>` to our "Editor" page...*
 
@@ -91,7 +95,7 @@ sudo cp core/08-edit2.php web/edit.php && \
 sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
 sudo cp core/08-editpiece.in.php web/in.editpiece.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/functions.php web/in.editpiece.php && \
+gedit web/functions.php web/in.editpiece.php web/in.piecefunctions.php && \
 ls web
 ```
 

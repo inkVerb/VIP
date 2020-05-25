@@ -57,7 +57,7 @@ This is normal text, which may label or tell something, it is rare in these less
 
 *...are all "placeholders"*
 
-*Everything else (`code` or `CODE`) probably doesn't change in how the Shell language*
+*Everything else (`code` or `CODE`) probably doesn't change in the Shell language*
 
 
 *That's the end of the Orientation*

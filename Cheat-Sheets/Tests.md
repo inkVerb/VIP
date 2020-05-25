@@ -837,10 +837,21 @@ ___
 
 This is *not* used in BASH or Shell, but it is used in many other languages, including C, PHP, and JavaScript:
 
-**Ternary Statement:**
+**PHP Ternary Statement:**
 
 ```js
-Variable = ( This Is The Test ) ? 'value_if_true' : 'value_if_false';
+$Variable = ( This Is The Test ) ? 'Value_If_True' : 'Value_If_False';
+
+// example:
+
+$Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
+
+```
+
+**JavaScript Ternary Statement:**
+
+```js
+Variable = ( This Is The Test ) ? 'Value_If_True' : 'Value_If_False';
 
 // example:
 

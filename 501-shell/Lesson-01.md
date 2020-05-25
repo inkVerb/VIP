@@ -298,6 +298,15 @@ $Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';
 
 $Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 
+// inline with greater string
+$Variable = 'start ' . (( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false') . ' end'; // this
+$Variable = 'start ' . ( THIS IS THE TEST  ? 'value_if_true' : 'value_if_false') . ' end'; // or this
+
+// example:
+
+$Variable = 'The number is ' . (( $Some_Variable == 5 ) ? 'five' : 'not five') . 'today'; // this
+$Variable = 'The number is ' . ( $Some_Variable == 5 ? 'five' : 'not five') . 'today'; // or this
+
 ```
 
 *Review the diagram above along side the following two steps...*

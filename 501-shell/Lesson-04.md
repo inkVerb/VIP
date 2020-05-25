@@ -376,11 +376,30 @@ setcookie('cookie_name', null, 86401); // Set our cookie value to "null" (nothin
 setcookie('cookie_name', null, time()-1);  // Wrong! (depending on your timezone, this could be in the future!)
 ```
 
+Cookies are stored in files on the "Client" (user's local machine)
+
+- These are encrypted files that you can't open:
+  - Chrome: `~/.config/google-chrome/Default/Cookies`
+  - Chromium: `~/.config/chromium/Default/Cookies`
+  - Firefox: `~/.mozilla/firefox/????????.default/` (It has a random name)
+
+*Have a look at Firefox cache data, where cookies are kept...*
+
+| **12** : `cd ~/.mozilla/firefox/*.default` (You can use a `*` wildcard if there is only one file possible)
+
+| **13** : `ls`
+
+*Chromium, if you have it installed...*
+
+| **14** : `cd ~/.config/chromium/Default`
+
+| **15** : `ls`
+
 ***This is how cookies work...*** **the wrong way:** user_id
 
 For teaching, we will put the **user_id** as the cookie's value, but this is not secure!
 
-| **12** :
+| **16** :
 ```
 sudo cp core/04-login3.php web/webapp.php && \
 sudo cp core/04-logout3.php web/logout.php && \
@@ -395,7 +414,7 @@ ls web
 
 *Review cookie logic in webapp.php by searching "$_COOKIE"*
 
-| **B-12a** :// `localhost/web/webapp.php` (previous)
+| **B-16a** :// `localhost/web/webapp.php` (previous)
 
 *Check "Remember me, then login again with our credentials from before...*
 
@@ -406,7 +425,7 @@ Password: My#1Password
 
 *Load the page again to see the cookies remember your login...*
 
-| **B-12b** :// `localhost/web/webapp.php` (same)
+| **B-16b** :// `localhost/web/webapp.php` (same)
 
 #### Never put username or password in a cookie!
 
@@ -461,7 +480,7 @@ setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 
 ### VI. Account Settings
 
-| **13** :
+| **17** :
 ```
 sudo cp core/04-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -471,13 +490,13 @@ ls web
 
 *Try an alternate way for no-login by searching "webapp.php" and uncommenting the line*
 
-| **B-13** :// `localhost/web/account.php`
+| **B-17** :// `localhost/web/account.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-| **S13** :> `SELECT fullname, username, email, favnumber FROM users;`
+| **S17** :> `SELECT fullname, username, email, favnumber FROM users;`
 
-| **SB-13** ://phpMyAdmin **> users**
+| **SB-17** ://phpMyAdmin **> users**
 
 *Also try logging out and logging in with these pages from before:*
 
@@ -498,7 +517,7 @@ Password: My#1Password
 
 *Make sure you remember your favorite number and email before continuing...*
 
-| **14** :
+| **18** :
 ```
 sudo cp core/04-forgot.php web/forgot.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -506,7 +525,7 @@ gedit web/forgot.php && \
 ls web
 ```
 
-| **B-14** :// `localhost/web/forgot.php`
+| **B-18** :// `localhost/web/forgot.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -522,9 +541,9 @@ ls web
 
 *Success: You will get an SQL query to try, also review these:*
 
-| **S14** :> `SELECT id, fullname, email, favnumber FROM users;`
+| **S18** :> `SELECT id, fullname, email, favnumber FROM users;`
 
-| **SB-14** ://phpMyAdmin **> users**
+| **SB-18** ://phpMyAdmin **> users**
 
 ___
 
@@ -569,6 +588,10 @@ ___
   setcookie("cookie_name", $cookie_value, $cookie_expires);
   $_COOKIE['cookie_name'];
   ```
+  - Cookie location:
+    - Chrome: `~/.config/google-chrome/Default/Cookies`
+    - Chromium: `~/.config/chromium/Default/Cookies`
+    - Firefox: `~/.mozilla/firefox/????????.default`
 
 ### Never put username or password in a cookie!
 

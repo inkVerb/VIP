@@ -57,7 +57,9 @@ gedit web/ajax_string.php web/recover_login.php web/webapp.php web/in.login_head
 ls web
 ```
 
-*gedit: Reload recover.php*
+*gedit: Reload*
+
+  - *recover.php*
 
 *Note:*
   - *recover.php uses a recovery form and AJAX script*
@@ -106,6 +108,8 @@ Favorite Number: (same as before)
 
 **Follow along...**
 
+*From steps 2-4 you have 20 seconds!*
+
 1. *Enter the Username and Favorite number*
 2. *Click "Get your recover string link..."*
 3. *Look at the string in the table:*
@@ -118,6 +122,8 @@ Favorite Number: (same as before)
 | **4** :> `SELECT * FROM strings;`
 
 ### Cleanup
+
+*Review our strings...*
 
 | **5** :> `SELECT * FROM strings;`
 
@@ -244,7 +250,9 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: reload cleanup.php*
+*gedit: Reload*
+
+  - *cleanup.php*
 
 *Run it from the terminal...*
 
@@ -344,21 +352,37 @@ We need to:
 
 | **B-21** :// `localhost/web/logout.php`
 
+*Update the `usable` column in the `strings` table to include a 'cookie_login' option...*
+
+| **21** :>
+```sql
+ALTER TABLE  `strings`
+CHANGE  `usable`  `usable` ENUM('live', 'cookie_login', 'dead') NOT NULL;
+```
+
 | **22** :
 ```
 sudo cp core/07-loginhead2.in.php web/in.login_head.php && \
-sudo cp core/07-logout.in.php web/logout.php && \
+sudo cp core/07-logout.php web/logout.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/logout.php && \
 ls web
 ```
 
-*gedit: Reload in.login_head.php*
+*gedit: Reload*
 
+  - *in.login_head.php*
+  - *logout.php*
+
+*Note:*
+
+  - *Cookie login refers to the key, no longer the user's ID*
+  - *We escape the key from the cookie before searching for the key in the database*
+    - *This makes sure some hacker doesn't hack the cookie to inject some SQL command*
+  - *When we logout, we set any cookie to "dead" in the SQL table*
 
 | **B-22** :// `localhost/web/webapp.php`
 
-*Login again with our credentials from before...*
+*Check "Remember me...", login again with our credentials from before...*
 
 ```
 Username: jonboy
@@ -371,11 +395,33 @@ Password: My#1Password
 
 | **SB-22** ://phpMyAdmin **> strings**
 
+*Refresh the webapp.php page to see it again...*
+
+| **B-23** :// `localhost/web/webapp.php` (Refresh)
+
+*We don't want those cookie keys on our page in the future, so update to new files that don't use them...*
+
+| **24** :
+```
+sudo cp core/07-loginhead3.in.php web/in.login_head.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+| **B-24** :// `localhost/web/webapp.php` (Refresh)
+
+1. Click "Log out"
+2. See that the cookie key was set to "dead" from the `strings` table...
+
+| **24** :> `SELECT * FROM strings;`
+
+| **SB-24** ://phpMyAdmin **> strings**
+
 **When finished:**
 
 *Delete that `cron` task so it isn't constantly running on your machine...*
 
-| **23** : `sudo rm /etc/cron.d/webappcleanup`
+| **25** : `sudo rm /etc/cron.d/webappcleanup`
 
 ___
 
@@ -386,7 +432,7 @@ ___
 - Functions of all sorts can be handy to `include` in a PHP script
 - Long, random strings like this may be called "keys" or "security keys"
 
-## Login Recovery (via Security Key)
+## Login Recovery via Security Key
 - Logins can be recovered using security keys
 - A "login link" processes a long string via GET, then checks it against the database
 - Links with security keys like these can also be used to:
@@ -416,6 +462,13 @@ ___
   - NOT!: `require_once ('./inc/config.php');`
 - Files for `cron` jobs are finicky
   - [VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
+
+## Login Cookies via Security Key
+- Cookies should never contain direct user information, including SQL table ID or username
+- A long, random string (key) works well as a cookie, indicating the user in a table used only for keys
+- Make sure to escape everything from a user before sending it to SQL, even from a cookie
+  - This prevents hacker attacks known as "SQL injection"
+- When we log out, delete the cookie, but also set the key to "dead" in our SQL key table
 
 ## NOT for Production
 - These are examples for:

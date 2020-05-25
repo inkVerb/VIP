@@ -132,6 +132,8 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
   - HTML is a manikin
   - CSS is the clothing
   - JavaScript "animates", so the manikin moves like a robot and changes clothes
+
+- Demo JavaScript click hide/show from 08-edit2.php
 ___
 
 # The Take
