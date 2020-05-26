@@ -308,7 +308,7 @@ Ready the CLI (if needed)
 
 `cd ~/School/VIP/301/logs`
 
-`gedit error.log`
+`gedit error.log normal.log`
 
 ___
 
@@ -331,11 +331,11 @@ ___
 
 | **48** : `gedit ../06-logging-1`
 
-*Note `exec` basically means "whatever the current command is", don't lose sleep over it, just see how it is used*
+*Note `exec` basically means "whatever the current command is", don't lose sleep over it, just see how it works*
 
-| **49** : `../06-logging-1`
+| **49** : `ls`
 
-| **50** : `ls`
+| **50** : `../06-logging-1`
 
 *gedit Reload: error.log*
 
@@ -429,18 +429,26 @@ ___
 - System `exit` codes:
   - STDOUT = `1` (normal output)
   - STDERR = `2` (error output)
-  - `2>&1` redirects `2` into `1` output
-  - `>&1` redirecs *all* output into `1` output
 - Custom `exit` codes:
+  - Syntax: `exit 0`
   - Most numbers above `2` are either reserved by other processes or customized by the developer (you)
+    - Following example uses the custom output channel 3:
+      - `set -o errexit` must come early in the script
+      - `exec 3>> file` defines the custom exit channel 3 to output to a specific log file
+      - `2>&3` will send all STDERR (channel 2 output) into your custom channel 3
+      - `echo "Some message here" >&3` will add a message to your custom channel 3
+      - `exit 3` must be your exit method for the output to appear
+- Output channels
+  - Syntax: `M>&N`
+  - Arguments like `3>&5` & `2>&1` redirect the output channels
+  - `2>&1` redirects `2` output into `1` output
+    - `>&1` redirecs *all* output into `1` output
   - `3>&5` redirects `3` into `5` output
-  - `>&7` redirecs *all* output into `7` output
-  - This may not always be useful to a developer, but it makes everything easier to understand
-  - Custom exit methods require `set -o errexit` early in the script
-  - `exec N>> file` (`N` = exit number) defines the custom exit log file
-- Arguments like `3>&5` & `2>&1` can follow:
-  - Any command, ie: `ls 2>&1` or `ls 3>&5`
-  - `exec` as a global setting BEFORE relevant commands in the script, ie: `exec 2>&1` or `exec 3>&5`
+    - `>&7` redirecs *all* output into `7` output
+  - Output channel redirects can follow any command
+    - ie: `ls 2>&1` or `ls 3>&5`
+  - `exec` as a global setting BEFORE relevant commands in the script
+    - ie: `exec 2>&1` or `exec 3>&5`
 
 ___
 

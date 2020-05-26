@@ -103,6 +103,11 @@ ls web
 
 | **B-3** :// `localhost/web/edit.php` (Same)
 
+*Note our JavaScript in:*
+  - *edit.php: div id "goLiveOptions"*
+  - *in.piecefunctions.php: onClick "showGoLiveOptionsBox"*
+  - *This makes our "Schedule..." Date Live settings show/hide with the checkbox*
+
 ___
 
 # The Take
