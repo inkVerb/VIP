@@ -156,8 +156,8 @@ ls web
 
 *gedit: Reload*
 
-	- *website.php*
-	- *style.css*
+- *website.php*
+- *style.css*
 
 *Note the <table> in HTML and border lines in CSS*
 
@@ -257,10 +257,10 @@ ls web
 
 *gedit: Reload*
 
- 	- *website.php*
- 	- *style.css*
- 	- *in.functions.php*
- 	- *in.checks.php*
+- *website.php*
+- *style.css*
+- *in.functions.php*
+- *in.checks.php*
 
 *Note we have several new form functions & POST checks*
 
@@ -269,9 +269,10 @@ ls web
 | **B-6** :// `localhost/web/website.php` (Same)
 
 *In the webform, input:*
-	- Name: mangos
-	- Type: oversize
-	- Prepared: Fresh
+
+- Name: mangos
+- Type: oversize
+- Prepared: Fresh
 
 *Try to input numbers or leave a field empty to see how the form responds*
 
@@ -297,10 +298,10 @@ ls web
 
 *gedit: Reload*
 
- 	- *website.php*
-	- *style.css*
- 	- *in.functions.php*
- 	- *in.checks.php*
+- *website.php*
+- *style.css*
+- *in.functions.php*
+- *in.checks.php*
 
 *Note we have several new form functions & POST checks*
 
@@ -330,8 +331,8 @@ ls web
 
 *gedit: Reload*
 
- 	- *website.php*
- 	- *in.checks.php*
+- *website.php*
+- *in.checks.php*
 
 *Note we have several new form functions & POST checks*
 

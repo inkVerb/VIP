@@ -35,21 +35,21 @@ ls web
 
 *Note:*
 
-  - *in.login_check.php simply checks for a SESSION or COOKIE login:*
-    - *Redirect to webapp.php if no login*
-    - *Message and admin links if logged in*
-    - *Note we used the `$head_title` variable for the browser `<title>`*
-  - *in.login_head.php near the bottom has a link to edit.php*
-  - *edit.php is very simple now, but it contains our three prep files:*
-    - *in.config.php*
-    - *in.functions.php*
-    - *in.login_check.php*
-  - *edit.php has no `<head>` because it is created by in.login_check.php*
-    - *PHP redirects to a new page via `header()`, which uses `<head>`*
-    - *If the `<head>` was already created in HTML, `header()` might break*
-    - *So, when redirecting, such as in pages requiring login:*
-      1. *Process the `if` tests to redirect via `header("Location: to_page.php")`*
-      2. *Then create the `<head>` tag*
+- *in.login_check.php simply checks for a SESSION or COOKIE login:*
+  - *Redirect to webapp.php if no login*
+  - *Message and admin links if logged in*
+  - *Note we used the `$head_title` variable for the browser `<title>`*
+- *in.login_head.php near the bottom has a link to edit.php*
+- *edit.php is very simple now, but it contains our three prep files:*
+  - *in.config.php*
+  - *in.functions.php*
+  - *in.login_check.php*
+- *edit.php has no `<head>` because it is created by in.login_check.php*
+  - *PHP redirects to a new page via `header()`, which uses `<head>`*
+  - *If the `<head>` was already created in HTML, `header()` might break*
+  - *So, when redirecting, such as in pages requiring login:*
+    1. *Process the `if` tests to redirect via `header("Location: to_page.php")`*
+    2. *Then create the `<head>` tag*
 
 | **B-1** :// `localhost/web/edit.php` (It will redirect to webapp.php)
 
@@ -67,6 +67,8 @@ Password: My#1Password
 *Note the title of the web browser is "Editor" because we set the `<title>` tag*
 
 *Create the SQL table for a "Piece"...*
+
+| **2** ://phpMyAdmin **> webapp_db**
 
 | **3** :>
 ```sql
@@ -87,26 +89,82 @@ CREATE TABLE IF NOT EXISTS `pieces` (
 
 *Note `TIMESTAMP NULL` works; `TIMESTAMP DEFAULT NULL` does not work*
 
+*See what we just added...*
+
+| **3** ://phpMyAdmin **> webapp_db > pieces**
+
 *...Use that table by adding a "Piece" `<form>` to our "Editor" page...*
 
 | **3** :
 ```
 sudo cp core/08-edit2.php web/edit.php && \
+sudo cp core/08-editpiece2.in.php web/in.editpiece.php && \
 sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
-sudo cp core/08-editpiece.in.php web/in.editpiece.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 gedit web/functions.php web/in.editpiece.php web/in.piecefunctions.php && \
 ls web
 ```
 
-*gedit: Reload edit.php*
+*gedit: Reload*
+
+- *edit.php*
 
 | **B-3** :// `localhost/web/edit.php` (Same)
 
 *Note our JavaScript in:*
-  - *edit.php: div id "goLiveOptions"*
-  - *in.piecefunctions.php: onClick "showGoLiveOptionsBox"*
-  - *This makes our "Schedule..." Date Live settings show/hide with the checkbox*
+
+- *edit.php: div id "goLiveOptions"*
+- *in.piecefunctions.php: onClick "showGoLiveOptionsBox"*
+- *This makes our "Schedule..." Date Live settings show/hide with the checkbox*
+
+1. Fill-out the fields, simple with what you want
+2. Click "Save draft"
+3. Note the green message: Saved!
+
+| **4** :> `SELECT * FROM pieces;`
+
+| **4** ://phpMyAdmin **> pieces**
+
+*...There is the piece we just created, in the database*
+
+1. Don't change any fields
+2. Click "Publish"
+3. Note the green message: Saved!
+
+| **5** :> `SELECT * FROM pieces;`
+
+| **5** ://phpMyAdmin **> pieces**
+
+*...There two pieces now in the database*
+
+- *This is because we did not `UPDATE` the old entry*
+- *Our PHP script will only `INSERT` new entries*
+
+*Save one more for practice in the future...*
+
+1. Don't change any fields
+2. Click "Publish"
+3. Note the green message: Saved!
+
+| **6** :> `SELECT * FROM pieces;`
+
+| **6** ://phpMyAdmin **> pieces**
+
+**We must write the PHP script to `UPDATE` existing pieces**
+
+| **7** :
+```
+sudo cp core/08-edit3.php web/edit.php && \
+sudo cp core/08-editpiece3.in.php web/in.editpiece.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/functions.php web/in.editpiece.php web/in.piecefunctions.php && \
+ls web
+```
+
+*gedit: Reload*
+
+- *edit.php*
+- *in.editpiece.php*
 
 ___
 

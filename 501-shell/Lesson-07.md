@@ -59,22 +59,23 @@ ls web
 
 *gedit: Reload*
 
-  - *recover.php*
+- *recover.php*
 
 *Note:*
-  - *recover.php uses a recovery form and AJAX script*
-    - The AJAX POST sends the user ID
-  - *ajax_string.php processes the AJAX action*
-    - This creates a string and enters it into the "strings" table with a 20 second expiration date
-    - The AJAXed file also requires the config file for the `session` and database connection
-  - *recover_login.php processes the random string as a GET value*
-    - The string is tested in the database for a match and expiration date
-    - If matched, the page redirects to webapp.php using `header`
-  - *accountsettings.php has links for logout and the main webapp*
-  - *webapp.php replaced the login workflow an `include` for in.login_head.php*
-  - *in.login_head.php:*
-    - contains the login workflow that webapp used to
-    - has links for Account Settings and logout
+
+- *recover.php uses a recovery form and AJAX script*
+  - The AJAX POST sends the user ID
+- *ajax_string.php processes the AJAX action*
+  - This creates a string and enters it into the "strings" table with a 20 second expiration date
+  - The AJAXed file also requires the config file for the `session` and database connection
+- *recover_login.php processes the random string as a GET value*
+  - The string is tested in the database for a match and expiration date
+  - If matched, the page redirects to webapp.php using `header`
+- *accountsettings.php has links for logout and the main webapp*
+- *webapp.php replaced the login workflow an `include` for in.login_head.php*
+- *in.login_head.php:*
+  - contains the login workflow that webapp used to
+  - has links for Account Settings and logout
 
 *Look through those files carefully*
 
@@ -252,7 +253,7 @@ ls web
 
 *gedit: Reload*
 
-  - *cleanup.php*
+- *cleanup.php*
 
 *Run it from the terminal...*
 
@@ -286,10 +287,10 @@ ls web
 
 Files for `cron` jobs are finicky; follow all instructions carefully:
 
-  - *Being in the `/etc/` directory, we need `sudo`*
-  - *Use `root /usr/bin/php` as the user because we need PHP to run this*
-    - *We got `/usr/bin/php` by running: `which php`*
-  - *[VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)*
+- *Being in the `/etc/` directory, we need `sudo`*
+- *Use `root /usr/bin/php` as the user because we need PHP to run this*
+  - *We got `/usr/bin/php` by running: `which php`*
+- *[VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)*
 
 *We will edit with `vim` from [Shell 201 Lesson 12](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-12.md#vim-is-for-awesome-people)*
 
@@ -312,8 +313,9 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 | **19** : `sudo chmod 644 /etc/cron.d/webappcleanup`
 
 *Note:*
-  - *This `cron` task runs at 00 seconds every minute*
-  - *Every minute, keys older than 20 seconds should be deleted*
+
+- *This `cron` task runs at 00 seconds every minute*
+- *Every minute, keys older than 20 seconds should be deleted*
 
 **Repeat 18 to watch `cron` delete expired keys:**
 
@@ -347,8 +349,9 @@ We need to:
 3. Delete the key at logout
 
 *Start by logging out...*
-  - *We used our old cookie method to login*
-  - *So, we should use our old cookie method to logout before making changes*
+
+- *We used our old cookie method to login*
+- *So, we should use our old cookie method to logout before making changes*
 
 | **B-21** :// `localhost/web/logout.php`
 
@@ -370,15 +373,15 @@ ls web
 
 *gedit: Reload*
 
-  - *in.login_head.php*
-  - *logout.php*
+- *in.login_head.php*
+- *logout.php*
 
 *Note:*
 
-  - *Cookie login refers to the key, no longer the user's ID*
-  - *We escape the key from the cookie before searching for the key in the database*
-    - *This makes sure some hacker doesn't hack the cookie to inject some SQL command*
-  - *When we logout, we set any cookie to "dead" in the SQL table*
+- *Cookie login refers to the key, no longer the user's ID*
+- *We escape the key from the cookie before searching for the key in the database*
+  - *This makes sure some hacker doesn't hack the cookie to inject some SQL command*
+- *When we logout, we set any cookie to "dead" in the SQL table*
 
 | **B-22** :// `localhost/web/webapp.php`
 

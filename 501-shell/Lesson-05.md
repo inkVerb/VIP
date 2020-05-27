@@ -94,7 +94,7 @@ ls web
 
 *gedit: Reload*
 
-  - *.htaccess*
+- *.htaccess*
 
 | **B-2** :// `localhost/web/My_Long_Name`
 
@@ -112,8 +112,8 @@ ls web
 
 *gedit: Reload*
 
-  - *.htaccess*
-  - *pretty_page.php*
+- *.htaccess*
+- *pretty_page.php*
 
 *Notice in the RegEx, this requies a `/` in the middle, otherwise it won't work...*
 
@@ -139,8 +139,8 @@ ls web
 
 *gedit: Reload*
 
-  - *.htaccess*
-  - *pretty_page.php*
+- *.htaccess*
+- *pretty_page.php*
 
 *Notice in the RegEx, this allows a `/` in the middle, but it isn't required...*
 
@@ -223,7 +223,7 @@ ls web
 
 *gedit: Reload*
 
-  - *.htaccess*
+- *.htaccess*
 
 *...Now, RewriteMod will simply remove the trailing slash `/`, not get fooled by it...*
 

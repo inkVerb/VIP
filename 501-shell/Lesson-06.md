@@ -108,9 +108,10 @@ ls web
 - *Click the button "Do AJAX!"*
 
 *Note:*
-  - *the entire page did* ***not*** *reload, only the line "Replace me with AJAX"*
-  - *AJAX worked on an .html page without any PHP*
-  - *AJAX sourced a .txt file without any PHP*
+
+- *the entire page did* ***not*** *reload, only the line "Replace me with AJAX"*
+- *AJAX worked on an .html page without any PHP*
+- *AJAX sourced a .txt file without any PHP*
 
 *Try a PHP counter to see if it actually reloads...*
 
@@ -151,18 +152,18 @@ ls web
 
 *gedit: Reload*
 
-  - *ajax.php*
-  - *ajax_source.php*
+- *ajax.php*
+- *ajax_source.php*
 
 *Note:*
 
-  - *We are using POST, not GET:*
-    - *ajaxHandler.open("POST", "ajax_source.php", true);*
-  - *Added:*
-    - *`ajaxHandler.setRequestHeader("Content-type", "application/x-www-form-urlencoded")`*
-  - *Defined POST content in a GET-URL-like string:*
-    - *`ajaxHandler.send("go=AJAX&time=5")`*
-  - *ajax_source.php processes POST arguments*
+- *We are using POST, not GET:*
+  - *ajaxHandler.open("POST", "ajax_source.php", true);*
+- *Added:*
+  - *`ajaxHandler.setRequestHeader("Content-type", "application/x-www-form-urlencoded")`*
+- *Defined POST content in a GET-URL-like string:*
+  - *`ajaxHandler.send("go=AJAX&time=5")`*
+- *ajax_source.php processes POST arguments*
 
 | **B-3** :// `localhost/web/ajax.php`
 
@@ -182,7 +183,7 @@ ls web
 
 *gedit: Reload*
 
-  - *ajax.php*
+- *ajax.php*
 
 | **B-4** :// `localhost/web/ajax.php`
 

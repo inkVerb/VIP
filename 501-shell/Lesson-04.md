@@ -58,12 +58,12 @@ ls web
 
 *In the config, note:*
 
-  - *function escape_sql($data)* (we will start using this instead of mysqli_real_escape_string)
+- *function escape_sql($data)* (we will start using this instead of mysqli_real_escape_string)
 
-  *In the in.functions.php, note:*
+*In the in.functions.php, note:*
 
-    - *Validation and sanitizing set a `$regex_` variable first, which is more neat and tidy*
-    - *This style isolates the RegEx to help any RegEx hunting in the future*
+- *Validation and sanitizing set a `$regex_` variable first, which is more neat and tidy*
+- *This style isolates the RegEx to help any RegEx hunting in the future*
 
 | **install.php** :
 
@@ -240,11 +240,11 @@ ls web
 
 *gedit: Reload*
 
-  - *in.config.php*
+- *in.config.php*
 
 *In the config, note:*
 
-  - *`session_start();`*
+- *`session_start();`*
 
 | **S9** :> `SELECT id, fullname, pass FROM users WHERE username='jonboy';`
 
@@ -340,8 +340,8 @@ ls web
 
 *gedit: Reload*
 
-  - *logout.php*
- 	- *webapp.php*
+- *logout.php*
+- *webapp.php*
 
 *After looking through logout.php and webapp.php, continue to be logged out immediately...*
 
@@ -409,8 +409,8 @@ ls web
 
 *gedit: Reload*
 
- 	- *webapp.php*
-  - *logout.php*
+- *webapp.php*
+- *logout.php*
 
 *Review cookie logic in webapp.php by searching "$_COOKIE"*
 
