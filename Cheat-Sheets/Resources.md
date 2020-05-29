@@ -124,7 +124,7 @@ ___
 - `7` = `debug` (debug, so much info that only geeks & developers are interested)
 
 #### Facilities:
-- `0` = `kern` (kernel)
+- `0` = `kern` (kernel, automatically converts to `user`)
 - `1` = `user`
 - `2` = `mail`
 - `3` = `daemon`
