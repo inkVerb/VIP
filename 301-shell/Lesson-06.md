@@ -679,8 +679,11 @@ fi
   - `logger -p local0.info`
 - And, filter for only `local0`-facility logs at `info`-priority with:
   - `journalctl SYSLOG_FACILITY=16 -p info`
+- Flags:
+  - `-r` = reverse listing (most recent first)
+  - `-t SomeTag` = filter by tag
 
-| **110** : `journalctl -t RoutineCheck SYSLOG_FACILITY=16 -p info`
+| **110** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info`
 
 *Note no `journalctl` entries*
 
@@ -714,7 +717,15 @@ fi
 - *Facility: `local0` (16)*
 - *Priority: `info`*
 
-| **118** : `journalctl -t RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
+| **118** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
+
+*Let's add a few `ls` commands to process `exit` status 0 and 1*
+
+| **119** : `gedit ../06-routine-montage`
+
+| **120** : `../06-routine-montage`
+
+| **121** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
 
 #### *Moral of the story: always use `exit` with a number!*
 - `exit 0` everything is normal, no output *(with `echo "something"` `>&0` ...if you are strange)*
@@ -725,7 +736,7 @@ fi
 
 *FYI, you can create a read-only system log file for your script*
 
-| **119** : `gedit ../06-logging-strong`
+| **122** : `gedit ../06-logging-strong`
 
 ___
 
