@@ -719,13 +719,23 @@ fi
 
 | **118** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
 
-*Let's add a few `ls` commands to process `exit` status 0 and 1*
+*Review our `exit` status for success and failure...*
 
-| **119** : `gedit ../06-routine-montage`
+| **119** : `ls`
 
-| **120** : `../06-routine-montage`
+| **120** : `echo $?`
 
-| **121** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
+| **121** : `ls bozo`
+
+| **122** : `echo $?`
+
+*Let's add two `ls` commands to process `exit` status 0 and 1...*
+
+| **123** : `gedit ../06-routine-montage`
+
+| **124** : `../06-routine-montage`
+
+| **125** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
 
 #### *Moral of the story: always use `exit` with a number!*
 - `exit 0` everything is normal, no output *(with `echo "something"` `>&0` ...if you are strange)*
@@ -736,7 +746,7 @@ fi
 
 *FYI, you can create a read-only system log file for your script*
 
-| **122** : `gedit ../06-logging-strong`
+| **126** : `gedit ../06-logging-strong`
 
 ___
 
