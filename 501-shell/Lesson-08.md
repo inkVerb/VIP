@@ -101,7 +101,7 @@ sudo cp core/08-edit2.php web/edit.php && \
 sudo cp core/08-editpiece2.in.php web/in.editpiece.php && \
 sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/functions.php web/in.editpiece.php web/in.piecefunctions.php && \
+gedit web/edit.php web/in.editpiece.php web/in.piecefunctions.php && \
 ls web
 ```
 
@@ -171,7 +171,7 @@ $last_id = $database->insert_id;
 sudo cp core/08-edit3.php web/edit.php && \
 sudo cp core/08-editpiece3.in.php web/in.editpiece.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/functions.php web/in.editpiece.php web/in.piecefunctions.php && \
+gedit web/edit.php web/in.editpiece.php web/in.piecefunctions.php && \
 ls web
 ```
 

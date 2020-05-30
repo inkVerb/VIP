@@ -84,15 +84,15 @@ This nifty code allows for a global argument (use with, not part of, `getopts`):
 
 *Note `eval` "concatenates" many things to produce a single command*
 
-*We won't explore `eval` any deeper in this course*
+- *We won't explore `eval` any deeper in this course*
 
-*We use `exit 1` for "proper false" (STDOUT) when the user asks for help*
+*About our `exit` codes:*
 
-- *This can be tested later, such as with `$?` to see if it was a valid command*
-
-*We use `exit 2` for "error" (STDERR) when user inputs wrong flags*
-
-- *This can be tested later, such as with `$?` or with `set -e` to exit with an error *
+- *We use `exit 1` for "proper false" (STDOUT) when the user asks for help*
+  - *This can be tested later, such as with `$?` to see if it was a valid command*
+- *We use `exit 2` for "error" (STDERR) when user inputs wrong flags*
+  - *This can be tested later, such as with `$?` or with `set -e` to exit with any error*
+- *The script will automatically use `exit 0` once our `getopts` loop ends with proper flags*
 
 ```bash
 # Create $globalArg
