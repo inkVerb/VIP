@@ -150,7 +150,21 @@ ls web
 
 | **6** ://phpMyAdmin **> pieces**
 
-**We must write the PHP script to `UPDATE` existing pieces**
+**We must write the PHP script to:**
+- **`UPDATE` existing pieces**
+- **Retrieve the ID of the most recent `INSERT`**
+
+This will get the new ID of the last database `INSERT`:
+
+```sql
+SELECT SCOPE_IDENTITY();
+```
+
+This is how to do it in MySQLi (SQL for PHP):
+
+```php
+$last_id = $database->insert_id;
+```
 
 | **7** :
 ```

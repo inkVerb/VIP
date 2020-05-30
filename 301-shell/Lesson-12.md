@@ -82,6 +82,18 @@ done
 
 This nifty code allows for a global argument (use with, not part of, `getopts`):
 
+*Note `eval` "concatenates" many things to produce a single command*
+
+*We won't explore `eval` any deeper in this course*
+
+*We use `exit 1` for "proper false" (STDOUT) when the user asks for help*
+
+- *This can be tested later, such as with `$?` to see if it was a valid command*
+
+*We use `exit 2` for "error" (STDERR) when user inputs wrong flags*
+
+- *This can be tested later, such as with `$?` or with `set -e` to exit with an error *
+
 ```bash
 # Create $globalArg
 eval "globalArg=\${${OPTIND}}"
@@ -91,7 +103,7 @@ if [ -z "${globalArg}" ]; then
  echo " How to use:
  $0 -a|b|c|d <option>
  $0 -h ...will show this message."
- exit 1
+ exit 2
 fi
 
 OPTIND=1 # Reset $OPTIND
@@ -117,7 +129,7 @@ while getopts ":abcdh" Flg; do
    echo " How to use:
  $0 -a|b|c|d <option>
  $0 -h ...will show this message."
-   exit 1
+   exit 2
   ;;
 
 ## Help
@@ -126,17 +138,13 @@ while getopts ":abcdh" Flg; do
    echo " How to use:
  $0 -a|b|c|d <option>
  $0 -h ...will show this message."
-   exit 0
+   exit 1
   ;;
  esac
 done
 ```
 
 | **14** : `gedit 12-flags-3`
-
-*Note `eval` "concatenates" many things to produce a single command*
-
-*We won't explore `eval` any deepre in this course*
 
 | **15** : `./12-flags-3 -ad Dunno`
 
