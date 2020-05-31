@@ -54,7 +54,9 @@ gedit web/website.php web/style.css web/in.functions.php web/in.checks.php && \
 ls web
 ```
 
-| **B-1** :// `localhost/web/website.php` *(Ctrl + Shift + C in browser to see the developer HTML view)*
+| **B-1** :// `localhost/web/website.php`
+
+*Use Ctrl + Shift + C in browser to see the developer view*
 
 *You should recognize this from before, restructured via `include` files*
 

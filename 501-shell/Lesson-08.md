@@ -64,6 +64,8 @@ Password: My#1Password
 
 | **B-2** :// `localhost/web/edit.php` (Now you are logged in)
 
+*Use Ctrl + Shift + C in browser to see the developer view*
+
 *Note the title of the web browser is "Editor" because we set the `<title>` tag*
 
 *Create the SQL table for a "Piece"...*
@@ -109,7 +111,9 @@ ls web
 
 - *edit.php*
 
-| **B-3** :// `localhost/web/edit.php` (Same)
+| **B-3** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+
+*Use Ctrl + Shift + C in browser to see the developer view*
 
 *Note our JavaScript in:*
 
@@ -121,6 +125,8 @@ ls web
 2. Click "Save draft"
 3. Note the green message: Saved!
 
+| **B-4** :// `localhost/web/edit.php` (Save draft)
+
 | **4** :> `SELECT * FROM pieces;`
 
 | **4** ://phpMyAdmin **> pieces**
@@ -128,14 +134,17 @@ ls web
 *...There is the piece we just created, in the database*
 
 1. Don't change any fields
-2. Click "Publish"
+2. Click "Save draft"
 3. Note the green message: Saved!
+4. Note the changes in the database...
+
+| **B-5** :// `localhost/web/edit.php` (Save draft)
 
 | **5** :> `SELECT * FROM pieces;`
 
 | **5** ://phpMyAdmin **> pieces**
 
-*...There two pieces now in the database*
+*...There are two pieces now in the database*
 
 - *This is because we did not `UPDATE` the old entry*
 - *Our PHP script will only `INSERT` new entries*
@@ -143,8 +152,11 @@ ls web
 *Save one more for practice in the future...*
 
 1. Don't change any fields
-2. Click "Publish"
+2. Click "Save draft"
 3. Note the green message: Saved!
+4. Note the changes in the database...
+
+| **B-6** :// `localhost/web/edit.php` (Save draft)
 
 | **6** :> `SELECT * FROM pieces;`
 
@@ -179,6 +191,36 @@ ls web
 
 - *edit.php*
 - *in.editpiece.php*
+
+| **B-7** :// `localhost/web/edit.php` (Same)
+
+*Note:*
+
+- *edit.php has a "New or update" if statement*
+  - *This adds a `hidden` `<input>` tag with the piece ID if there is one*
+  - *This will be included in the POST array if it is there*
+- *in.editpiece.php adds*
+  - *An "update" SQL query option*
+  - *An entire section dedicated to GET methods so the piece ID is in the URL*
+  - *The page refreshes if a new piece is saved the first time*
+    - *This readies the just-saved piece for edit/UPDATE actions*
+    - *This just-saved new ID comes from `$database->insert_id;`*
+- *With all this, a new piece or an edited piece will use the same .php file*
+  - *An edited piece will have the `?p=ID` GET argument in the URL*
+  - *A new piece will have no GET argument in the URL*
+
+1. Make a few slight changes
+2. Click "Save draft"
+3. Note the green message: Saved!
+4. Note the changes in the database...
+
+| **B-8** :// `localhost/web/edit.php` (Save draft)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+| **8** :> `SELECT * FROM pieces;`
+
+| **8** ://phpMyAdmin **> pieces**
 
 ___
 

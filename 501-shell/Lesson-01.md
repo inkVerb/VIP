@@ -71,7 +71,9 @@ gedit web/phpget.php && \
 ls web
 ```
 
-| **B-1** :// `localhost/web/phpget.php?go=I am an apple pie` *(Ctrl + Shift + C in browser to see the developer HTML view)*
+| **B-1** :// `localhost/web/phpget.php?go=I am an apple pie`
+
+*Use Ctrl + Shift + C in browser to see the developer view*
 
 *Try the form a few times to see how it works*
 

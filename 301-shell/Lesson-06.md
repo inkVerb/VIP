@@ -413,9 +413,12 @@ ___
 
 **`exit` creates different types of output**
 
-- *`exit 0` indicates STDIN input (or zero output) and returns a proper `true` from an `if`/`while` logic test*
-- *`exit 1` indicates STDOUT output and returns a proper `false` from an `if`/`while` logic test*
-- *`exit 2` indicates STDERR output with a fail, a wrongly-executed command, or wrongly-used `if`/`while` logic test*
+- **`exit 0` indicates mere success, possible STDOUT output**
+  - *`if`/`while` logic returns a "proper" `true` (exit-status == 0)*
+- **`exit 1` indicates soft failure, possible STDOUT output**
+  - *`if`/`while` logic returns a "proper" `false` (exit-status == 1)*
+- **`exit 2` indicates hard failure, probably STDERR output**
+  - *`if`/`while` logic returns a "failed" `false` (exit-status != 0)*
 
 **A successful command returns `0`, unsuccessful returns `1`, something wrong returns `2`**
 
@@ -423,85 +426,112 @@ ___
 
 | **62** : `grep "exit" ../0*` *(something found in real files)*
 
-| **63** : `echo $?`
+| **63** : `echo $?` *(0, true)*
 
-| **64** : `grep "wallawalla" ../0*` *(nothing found in real files)*
+*`-q` flag for "quiet", still returns 0 for "found", so it works in `if`/`while` tests...*
 
-| **65** : `echo $?`
+| **64** : `grep -q "exit" ../0*` *('quietly' something found in real files)*
 
-| **66** : `grep "wallawalla" ../iamnothere` *(a non-existent file)*
+| **65** : `echo $?` *(0, true)*
 
-| **67** : `echo $?`
+| **66** : `grep "wallawalla" ../0*` *(nothing found in real files)*
+
+| **67** : `echo $?` *(1, false)*
+
+| **68** : `grep "wallawalla" ../iamnothere` *(a non-existent file)*
+
+| **69** : `echo $?` *(2, error)*
+
+*Example with `ls`...*
+
+| **70** : `ls`
+
+| **71** : `echo $?` *(0, true)*
+
+| **72** : `ls bozo`
+
+| **73** : `echo $?` *(2, error)*
+
+***But, "The `cat` Who Walked by Himself" is different... ([discussion](https://unix.stackexchange.com/questions/590038/why-does-a-failed-cat-return-1-but-other-fails-return-2))***
+
+| **74** : `cat ../06-status0` *(a real file)*
+
+| **75** : `echo $?` *(0, true)*
+
+| **76** : `cat ../iamnothere` *(a non-existent file)*
+
+| **77** : `echo $?` *(1, error... wait, what?)*
+
+*...`cat` returns 1 for error; this is strange, but:*
+
+- *Technically 0 = success and non-0 = not success, nothing more*
+- *Test each command to see what a failure returns if it is important to your script*
+- *It would be nice if the `cat` error returned 2 for "file does not exist" message*
+  - *But, maybe cats think they don't make errors ;-)*
 
 **Back to scripting...**
 
+| **78** : `gedit ../06-status0`
+
 *Note this only runs a simple, successful command: `ls`*
 
-| **68** : `ls`
-
-*Get the last `exit` status (we learned this in [Lesson 1](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-01.md#v-if-commands))...*
-
-| **69** : `echo $?`
-
-*Note `ls` returns an `exit` status of 0*
-
-| **70** : `../06-status0`
-
-*Get the last `exit` status...*
-
-| **71** : `echo $?`
-
-*Note the `exit` status was 0 because the script simply quit at the end*
-
-| **72** : `gedit ../06-status1`
-
-*Note this only runs a simple, successful command: `ls`, then exists with `exit` status 1*
-
-| **73** : `../06-status1`
-
-*Get the last `exit` status...*
-
-| **74** : `echo $?`
-
-*The last `exit` status was 1 because our script exited via `exit 1`*
-
-| **75** : `gedit ../06-status2`
-
-*Note this only runs a simple, successful command: `ls`, then exists with `exit` status 2*
-
-| **76** : `../06-status2`
-
-*Get the last `exit` status...*
-
-| **77** : `echo $?`
-
-*The last `exit` status was 2 because our script exited via `exit 2`*
-
-#### 0, 1 & 2 are not the only way to exit!
-
-| **78** : `gedit ../06-status3`
-
-*Note this only runs a simple, successful command: `ls`, then exists with `exit` status 3*
-
-| **79** : `../06-status3`
+| **79** : `../06-status0`
 
 *Get the last `exit` status...*
 
 | **80** : `echo $?`
 
-*The last `exit` status was 3 because our script exited via `exit 3`*
+*Note the `exit` status was 0 because the script simply quit at the end*
 
-**It can go as high as 87, try something higher...**
+| **81** : `gedit ../06-status1`
 
-| **81** : `gedit ../06-status599`
+*Note this only runs a simple, successful command: `ls`, then exists with `exit` status 1*
 
-*Note this only runs a simple, successful command: `ls`, then exists with `exit` status 599*
-
-| **82** : `../06-status599`
+| **82** : `../06-status1`
 
 *Get the last `exit` status...*
 
 | **83** : `echo $?`
+
+*The last `exit` status was 1 because our script exited via `exit 1`*
+
+| **84** : `gedit ../06-status2`
+
+*Note this only runs a simple, successful command: `ls`, then exists with `exit` status 2*
+
+| **85** : `../06-status2`
+
+*Get the last `exit` status...*
+
+| **86** : `echo $?`
+
+*The last `exit` status was 2 because our script exited via `exit 2`*
+
+#### 0, 1 & 2 are not the only way to exit!
+
+| **87** : `gedit ../06-status3`
+
+*Note this only runs a simple, successful command: `ls`, then exists with `exit` status 3*
+
+| **88** : `../06-status3`
+
+*Get the last `exit` status...*
+
+| **89** : `echo $?`
+
+*The last `exit` status was 3 because our script exited via `exit 3`*
+
+**It can go as high as 87, try something higher...**
+
+| **90** : `gedit ../06-status599`
+
+*Note this only runs a simple, successful command: `ls`, then exists with `exit` status 599*
+
+| **91** : `../06-status599`
+
+*Get the last `exit` status...*
+
+| **92** : `echo $?`
 
 *The last `exit` status was 87 because they can't go higher than 87*
 
@@ -509,26 +539,26 @@ ___
 
 **How long does an `exit` status persist?**
 
-| **84** : `gedit ../06-exit3 ../06-exit-check-1`
+| **93** : `gedit ../06-exit3 ../06-exit-check-1`
 
 *Note:*
 
 - *06-exit3: only exit with a status, nothing more*
 - *06-exit-check-1: this sets `$?` to a variable (`$lastExit`) because `$?` will change to 0 after the `if` test*
 
-| **85** : `../06-exit3`
+| **94** : `../06-exit3`
 
-| **86** : `echo $?`
+| **95** : `echo $?`
 
-| **87** : `../06-exit-check-1`
+| **96** : `../06-exit-check-1`
 
 *What? The last `exit` status was 3!*
 
 **The exiting script and `if` test** ***must be in the same script!***
 
-| **88** : `gedit ../06-exit-check-2`
+| **97** : `gedit ../06-exit-check-2`
 
-| **89** : `../06-exit-check-2`
+| **98** : `../06-exit-check-2`
 
 *Now it recognizes the last `exit` status because it was generated inside the same script*
 
@@ -536,65 +566,65 @@ ___
 
 #### Sent custom messages to output channels 3-87
 
-| **90** : `ls`
+| **99** : `ls`
 
 *Generate an STDOUT channel 1 message...*
 
-| **91** : `gedit ../06-output-1`
+| **100** : `gedit ../06-output-1`
 
-| **92** : `../06-output-1`
+| **101** : `../06-output-1`
 
-| **93** : `ls`
+| **102** : `ls`
 
 *Note the file out-1.log was created*
 
-| **94** : `gedit out-1.log`
+| **103** : `gedit out-1.log`
 
 *Generate an STDERR channel 2 message...*
 
-| **95** : `gedit ../06-output-2`
+| **104** : `gedit ../06-output-2`
 
-| **96** : `../06-output-2`
+| **105** : `../06-output-2`
 
-| **97** : `ls`
+| **106** : `ls`
 
 *Note the file out-2.log was created*
 
-| **98** : `gedit out-2.log`
+| **107** : `gedit out-2.log`
 
 **...But we already knew about channels `1>` and `2>`; let's do channel `3>`**
 
 *Generate a custom channel 3 message...*
 
-| **99** : `gedit ../06-output-3`
+| **108** : `gedit ../06-output-3`
 
-| **100** : `../06-output-3`
+| **109** : `../06-output-3`
 
-| **101** : `ls`
+| **110** : `ls`
 
 *Note the file out-3.log was created*
 
-| **102** : `gedit out-3.log`
+| **111** : `gedit out-3.log`
 
 *Generate a custom channel 0 message...*
 
 *(Normally channel 0 should remain empty, but it technically doesn't have to be...)*
 
-| **103** : `gedit ../06-output-0`
+| **112** : `gedit ../06-output-0`
 
-| **104** : `../06-output-0`
+| **113** : `../06-output-0`
 
-| **105** : `ls`
+| **114** : `ls`
 
 *Note the file out-0.log was created*
 
-| **106** : `gedit out-0.log`
+| **115** : `gedit out-0.log`
 
 *Sent output messages to many channels from one script...*
 
-| **107** : `gedit ../06-output-4`
+| **116** : `gedit ../06-output-4`
 
-| **108** : `../06-output-4`
+| **117** : `../06-output-4`
 
 *gedit: Reload*
 
@@ -641,7 +671,7 @@ Real life example:
 
 *FYI, preview of [Lesson 8](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md: `date`...*
 
-| **109** : `date +%Y-%m-%d_%H:%M:%S`
+| **118** : `date +%Y-%m-%d_%H:%M:%S`
 
 *...We will use that to create a timestamp...*
 
@@ -670,23 +700,23 @@ fi
 
 *Try...*
 
-| **110** : `gedit ../06-routine-check ../06-routine-follow-up`
+| **119** : `gedit ../06-routine-check ../06-routine-follow-up`
 
 *Note these are basically the same scripts as the above example*
 
-| **111** : `ls`
+| **120** : `ls`
 
 *Note "file-3" does not exist*
 
-| **112** : `../06-routine-check`
+| **121** : `../06-routine-check`
 
-| **113** : `echo $?`
+| **122** : `echo $?`
 
 *Note:*
 - *the last `exit` status is 0 because "file-3" does not exist*
 - *06-routine-check did nothing at all because the test failed*
 
-| **114** : `../06-routine-follow-up`
+| **123** : `../06-routine-follow-up`
 
 *Note 06-routine-follow-up basically said that 06-routine-check did nothing*
 
@@ -701,33 +731,33 @@ fi
   - `-r` = reverse listing (most recent first)
   - `-t SomeTag` = filter by tag
 
-| **115** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info`
+| **124** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info`
 
 *Note no `journalctl` entries*
 
 *Create the file and try again...*
 
-| **116** : `touch file-3`
+| **125** : `touch file-3`
 
-| **117** : `ls`
+| **126** : `ls`
 
 *Note "file-3" exists*
 
-| **118** : `../06-routine-check`
+| **127** : `../06-routine-check`
 
-| **119** : `echo $?`
+| **128** : `echo $?`
 
 *Note the last `exit` status is 3 because "file-3" exists*
 
 *So, it will work here...*
 
-| **120** : `../06-routine-follow-up`
+| **129** : `../06-routine-follow-up`
 
-| **121** : `ls`
+| **130** : `ls`
 
 *Note "Check.log" now exists*
 
-| **122** : `gedit Check.log`
+| **131** : `gedit Check.log`
 
 *Check the logs for:*
 
@@ -735,25 +765,25 @@ fi
 - *Facility: `local0` (16)*
 - *Priority: `info`*
 
-| **123** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
+| **132** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
 
 *Review our `exit` status for success and failure...*
 
-| **124** : `ls`
+| **133** : `ls`
 
-| **125** : `echo $?`
+| **134** : `echo $?`
 
-| **126** : `ls bozo`
+| **135** : `ls bozo`
 
-| **127** : `echo $?`
+| **136** : `echo $?`
 
 *Let's add two `ls` commands to process `exit` status 0 and 1...*
 
-| **128** : `gedit ../06-routine-montage`
+| **137** : `gedit ../06-routine-montage`
 
-| **129** : `../06-routine-montage`
+| **138** : `../06-routine-montage`
 
-| **130** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
+| **139** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
 
 #### *Moral of the story: always use `exit` with a number!*
 - `exit 0` everything is normal, no output *(with `echo "something"` `>&0` ...if you are strange)*
@@ -764,7 +794,7 @@ fi
 
 *FYI, you can create a read-only system log file for your script*
 
-| **131** : `gedit ../06-logging-strong`
+| **140** : `gedit ../06-logging-strong`
 
 ___
 
@@ -790,8 +820,9 @@ ___
 - `exit` code numbers are important, always use an exit code with `exit`!
 - This will hide any and all messages: `command > /dev/null 2>&1`
 - System `exit` codes:
-  - STDOUT = `1` (normal output)
-  - STDERR = `2` (error output)
+  - `exit 0` success, possible STDOUT, "proper" `true` (status == 0)
+  - `exit 1` soft fail, possible STDOUT, "proper" `false` (status == 1)
+  - `exit 2` hard fail, probably STDERR, "failed" `false` (status != 0)
 - Custom `exit` codes:
   - Syntax: `exit 0`
   - Most numbers above `2` are either reserved by other processes or customized by the developer (you)
