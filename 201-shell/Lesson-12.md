@@ -185,6 +185,12 @@ ___
 
 :q
 
+**`vim` and `nano` are often the best ways to edit settings files, such as:**
+
+- Many places in the `/etc/` directory
+- In the `/var/www/` web directory (such as on a web server)
+- Other locations we explored in the last lesson on the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md)
+
 *Vim has a tutorial*
 
 | **39** : `vimtutor` *(inside Vim, use* :q *to quit)*

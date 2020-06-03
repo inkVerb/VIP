@@ -40,7 +40,7 @@ But, scripts and programs with directories listed in the `$PATH` can be run this
 
 *Note each colon `:` separates a different directory path included in the $PATH*
 
-*Note this contains many directories from the FSH in [Lesson 2](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)*
+*Note this contains many directories from the [File System Hierarchy (FSH) in 201 Lesson 11](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md)*
 
 **The point of all this so far:**
 - *$PATH contains many directories*
@@ -113,7 +113,7 @@ echo "I am executable, but I am not in the \$PATH."
 
 | **15** : `whereis firefox`
 
-*You should find that these locations generally respect the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md).*
+*You should find that these locations generally respect the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md).*
 
 **Add dirs to $PATH:**
 

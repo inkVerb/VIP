@@ -216,4 +216,4 @@ ___
 
 ___
 
-#### [Lesson 2: File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)
+#### [Lesson 2: netstat -natu, tcpdump, man, info](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)

@@ -1,104 +1,244 @@
 # Shell 201
-## Lesson 11: netstat -natu, tcpdump, man, info
+## Lesson 11: File System Hierarchy (FSH)
 
-Ready the CLI
+Ready the CLI (might not be needed)
 
 `cd ~/School/VIP/201`
 
 ___
 
-### `netstat -natu` & `sudo tcpdump`
+| **1** : `cd /`
 
-| **1** : `netstat -natu`
+| **2** : `ls`
 
-*This gives a list of all network connections*
 
-### This lesson requires a "sudoer" who can use `sudo`
->
-___
-> Optional: You may login as a "sudoer" if needed
->
-> | **S1** : `su Username`
-___
+*This is the root of the Linux file system.*
 
-| **2** : `sudo tcpdump`
+### `/` – Root Directory
 
-*Note the ongoing list of network activity*
+This is the directory of all directories.
 
-*Ctrl + C will close the dump*
+### Settings that change
 
-### IF needed, `exit` from the other "sudoer"
->
-___
-> Optional: IF you logged in as a "sudoer", now exit
->
-> | **S2** : `exit`
-___
+#### `/home/` — Home Directory (for normal users)
 
-### `man` & `info`
+| **3** : `cd home`
 
-*FYI, this is a great tool to change settings from the terminal: `gsettings`*
+| **4** : `ls`
 
-| **3** : `man gsettings`
+This is where your stuff goes. All your `Documents/` and `Downloads/` and `Desktop/` and other folders are in `/home/YourUSER/`, which is also the same as `~/` since it changes from user to user.
 
-*This is a how-to manual for a terminal program that manages settings for the desktop environment*
+#### `/root/` – "Root" user Home Directory (also what `sudo` calls 'home')
 
-*Press Q to quit*
+| **5** : `cd ../root` "Permission denied" ?? Sometimes it doesn't exist, depending on whether root has created it*
 
-*You can use `man` or `info`*
+| **6** : `ls`
 
-| **4** : `info gsettings`
+This is the "home" folder where stuff is kept when the "root" user needs to do something. If you login as "root", the first directory you see in the terminal should be here, written as `~/` in the terminal.
 
-*Press Q to quit*
+It might contain nothing.
 
-*The `man` and `info` tools are useful for many things*
+#### `/etc/` — Et Cetera (settings)
 
-*Consider `lsb_release` which shows detailed information about your current Linux distribution*
+| **7** : `cd ../etc`
 
-| **5** : `man lsb_release`
+| **8** : `ls`
 
-| **6** : `info lsb_release`
+This is where most system-specific settings are stored, for example Apache, PHP, MySQL and others will have there core, most fundamental settings here. As an admin, you will need to adjust settings in this directory often.
 
-| **7** : `man tcpdump`
+Originally, this was the directory with all the stuff that didn't seem to belong anywhere else and was, accordingly called the *"etc" (etc)* directory. It should probably still be  called that.
 
-| **8** : `info tcpdump`
+This has been "[backronymed](https://unix.stackexchange.com/a/56159/315069)" as *"Editable Text Configuration"* (which makes a lot of sense) and also *"Extended Tool Chest"* (which doesn't make sense, but it's more fun).
 
-| **9** : `man netstat`
+This directory has a lot of stuff.
 
-| **10** : `info netstat`
+#### `/lost+found/` Lost & Found (corrupt-but-found files)
 
-| **11** : `man grep`
+If the system crashes, then runs a file system check, then finds damaged files, they will go here.
 
-| **12** : `info grep`
+Don't look here, you have better things to do.
 
-| **13** : `man sed`
+### Read-only
 
-| **14** : `info sed`
+#### `/boot/` – Boot files (for system boot)
 
-| **15** : `man echo`
+| **9** : `cd ../boot`
 
-| **16** : `info echo`
+| **10** : `ls`
 
-| **17** : `man imagemagick`
+This is for stuff that helps the computer to turn on. Don't mess.
 
-*...but not always...*
+#### `/lib/` — Shared Libraries (may be used by many different applications)
 
-| **18** : `info imagemagick`
+| **11** : `cd ../lib`
 
-*Note `imagemagick` changes images from the terminal, learn to use at:*
-- [www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)
+| **12** : `ls`
+
+Files that go here may be occasionally be called "dependencies". Such a "library" is a set of files used by a variety of different software applications. These libraries are used quite often by graphic and media apps since many desktop media apps actually share many of the same backend tools.
+
+#### `/bin/` — Binaries (system-wide applications)
+
+| **13** : `cd ../bin`
+
+| **14** : `ls`
+
+A "binary" is a computer program that has been "compiled" into using core computer language that humans can't read or understand. This is where programs like `sed`, `cat`, `echo`, `cp`, `ls`, `grep`, etc actually live. Most Linux commands are actually small programs that can be found in this directory, `sh` and `bash` from `#!/bin/sh` and `#!/bin/bash` included!
+
+This is for base-system commands, this is *NOT* where installed software goes.
+
+#### `/sbin/` — System Binaries (root only)
+
+| **15** : `cd ../sbin`
+
+| **16** : `ls`
+
+These are more basic binaries, but they are used by the system processes, not a normal part of the Shell language because most users won't use these.
+
+### Installed Packages
+
+#### `/usr/` — User Binaries (mostly desktop programs)
+
+| **17** : `cd ../usr`
+
+| **18** : `ls`
+
+This is where installable binaries go from installable packages. When you run `sudo apt install Something` the installed program will usually put its executable files here.
+
+It is called the "user" directory because, for the most part, all desktop users will access binaries (programs) that have been installed to this directory.
+
+Debian (.deb files) should install here in order to be "properly" installed.
+
+#### `/opt/` – Optional Packages (resident aliens)
+
+| **19** : `cd ../opt`
+
+| **20** : `ls`
+
+This is where applications go when they don't follow the rules of this file system hierarchy. This is a great place to put your own software while you are being inventive.
+
+#### `/snap/`
+
+| **21** : `cd ../snap`
+
+| **22** : `ls`
+
+This is where "snap" applications are installed. Snap is different from the system Debian repository structure. It has its own install and repository structure, but is included in the Ubuntu Software Center as of Ubuntu 18.04.
+
+Snap is a more powerful way of managing apps because it runs every app in its own "container", so if it crashes it does not risk crashing the entire system.
+
+### Connected gadgets
+
+#### `/cdrom/` – CD-ROM mount path location in days of yore and lore
+
+| **23** : `cd ../cdrom`
+
+| **24** : `ls`
+
+This is the classic path to the on-board CD-ROM drive.
+
+#### `/dev/` — Devices
+
+| **25** : `cd ../dev`
+
+| **26** : `ls`
+
+A bluetooth device may be in here somewhere.
+
+#### `/mnt/` — Mount (temporarily mount permanently connected drives)
+
+| **27** : `cd ../mnt`
+
+| **28** : `ls`
+
+This is where that Windows partition may show up if you decide to take a look at it while booted in Linux. It's also where other, non-system storage drives will appear when mounted
+
+#### `/media/` — Removable Media (i.e. USB drives)
+
+| **29** : `cd ../media`
+
+| **30** : `ls`
+
+This is where USB-connected drives usually mount.
+
+### Ever-changing
+
+#### `/var/` — Variable Data
+
+| **31** : `cd ../var`
+
+| **32** : `ls`
+
+This usually contains `www/` (website files on a webserver) and `log/` for log files.
+
+This is also where email may be stored in `email/` or `mail/` or `vmail/` or something like that.
+
+This is usually where the .swp "swap file" (virtual RAM) goes, if it is a file and not a partition.
+
+Things here can and may need to change often.
+
+#### `/srv/` – Service Data (data for services provided by the system)
+
+| **33** : `cd ../srv`
+
+| **34** : `ls`
+
+This is another place the `www/` directory can go, or where a server will keep shared/served files to make them available on a local network.
+
+#### `/run/` – Running processes (a place to keep stuff that won't get deleted)
+
+| **35** : `cd ../run`
+
+| **36** : `ls`
+
+This is where some applications put their own "while-running" files, caches, and other files that may need to be semi-temporary, but that shouldn't be automatically deleted.
+
+#### `/proc/` — Kernel & Process (files used by the kernel)
+
+| **37** : `cd ../proc`
+
+| **38** : `ls`
+
+These are essential for the most basic part of the system to function.
+
+#### `/sys/` – System's virtual file (live kernel information)
+
+| **39** : `cd /sys`
+
+| **40** : `ls`
+
+This is a virtual file system, allowing normal text-file-like access to information about the system. It can contain live (virtual) text files that change as the system changes.
+
+#### `/tmp/` — Temporary files (one-time files)
+
+| **41** : `cd ../tmp`
+
+| **42** : `ls`
+
+These eventually get deleted by the system. Usually, when you choose to "open" a file from the Internet, rather than "save" it, the file is saved here.
 
 ___
 
 # The Take
 
-- `netstat` displays network connections to your machine (including Internet)
-- `tcpdump` also displays network connections, but at a `root` level and updates live
-  - This is useful for finding hackers, but anti-hacking is beyond the scope of this lesson
-- `tcpdump` can only be run as root, `sudo tcpdump`
-- `man` & `info` are the "help" tools for most terminal apps, packages, and Linux commands
-  - **Q** will quit both
-  - Not every package has the information for `man` & `info`, but most do
+- Directories in Linux hold different things
+  - This is called "File System Hierarchy (FSH)"
+- `/` is the beginning of all directories in the FSH
+  - ***Any*** path beginning with `/` will refer to the root of the FSH!
+- All home directories (with personal user stuff) are in `/home/`
+- The "root" (AKA `su`) user's home is `/root/`, ***not** `/home/root/`!
+- `/var/` holds
+  - Logs
+  - The `/var/www/` "web" folder used by Apache and Nginx web servers
+  - The `/var/lib/mysql/` MySQL database folder
+  - Email folders
+- `/usr/` has the core "binary" files for most desktop apps
+- Settings for apps usually reside in either:
+  - `/home/USER/.CONFIG-DIR/` "hidden" directories that begin with a `.` in a user's home (most desktop apps)
+  - `/etc/` (most non-desktop apps)
+- `/etc/` has settings for system apps like MySQL, PHP, Python, Apache, Nginx, etc
+- `/media/` is where USB drives are usually mounted
+- `/sbin/` & `/boot/` are core operating system folders, don't touch!
+- `/opt/` is for software that doesn't always follow these rules
 
 ___
 
