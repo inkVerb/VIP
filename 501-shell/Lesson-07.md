@@ -5,7 +5,7 @@ Ready the CLI
 
 `cd ~/School/VIP/501`
 
-### This lesson uses two terminals and two browser windows!
+### This lesson uses two terminals and two browser tabs!
 
 Ready the secondary SQL terminal and secondary SQL browser
 
@@ -292,7 +292,7 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
   - *We got `/usr/bin/php` by running: `which php`*
 - *[VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)*
 
-*We will edit with `vim` from [Shell 201 Lesson 12](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-12.md#vim-is-for-awesome-people)*
+*We will edit with `vim` from [Shell 201 Lesson 11](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md#vim-is-for-awesome-people)*
 
 | **18** : `sudo vim /etc/cron.d/webappcleanup`
 

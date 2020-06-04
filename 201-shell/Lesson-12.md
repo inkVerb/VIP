@@ -1,251 +1,246 @@
+# Shell 201
 ## Lesson 12: more, less, head, tail, sort, tac, diff, nano, vim
 
-Ready the CLI
+Ready the CLI (might not be needed)
 
 `cd ~/School/VIP/201`
 
 ___
 
-*Let's get another look at verb.ink.html*
+**`vim` and `nano` are often the best ways to edit settings files**
 
-| **1** : `cd verb.ink`
+| **1** : `cd /`
 
-| **2** : `gedit verb.ink.html`
+| **2** : `ls`
 
-### `cat`
 
-| **3** : `cat verb.ink.html`
+*This is the root of the Linux file system.*
 
-### `more`
+### `/` – Root Directory
 
-*One page at a time: Spacebar*
+This is the directory of all directories.
 
-*One line at a time: Enter*
+### Settings that change
 
-| **4** : `more verb.ink.html` *(Space to the end or Q to quit)*
+#### `/home/` — Home Directory (for normal users)
 
-*Eight lines at a time*
+| **3** : `cd home`
 
-| **5** : `more -8 verb.ink.html` *(Q to quit)*
+| **4** : `ls`
 
-### `less`
+This is where your stuff goes. All your `Documents/` and `Downloads/` and `Desktop/` and other folders are in `/home/YourUSER/`, which is also the same as `~/` since it changes from user to user.
 
-*Up and down: Spacebar, PageUp, PageDown, Up, Down*
+#### `/root/` – "Root" user Home Directory (also what `sudo` calls 'home')
 
-| **6** : `less verb.ink.html` *(Q to quit)*
+| **5** : `cd ../root` "Permission denied" ?? Sometimes it doesn't exist, depending on whether root has created it*
 
-### `head`
+| **6** : `ls`
 
-*First ten lines*
+This is the "home" folder where stuff is kept when the "root" user needs to do something. If you login as "root", the first directory you see in the terminal should be here, written as `~/` in the terminal.
 
-| **7** : `head verb.ink.html`
+It might contain nothing.
 
-*First four lines*
+#### `/etc/` — Et Cetera (settings)
 
-| **8** : `head -4 verb.ink.html`
+| **7** : `cd ../etc`
 
-### `tail`
+| **8** : `ls`
 
-*Last ten lines*
+This is where most system-specific settings are stored, for example Apache, PHP, MySQL and others will have there core, most fundamental settings here. As an admin, you will need to adjust settings in this directory often.
 
-| **9** : `tail verb.ink.html`
+Originally, this was the directory with all the stuff that didn't seem to belong anywhere else and was, accordingly called the *"etc" (etc)* directory. It should probably still be  called that.
 
-*Last five lines*
+This has been "[backronymed](https://unix.stackexchange.com/a/56159/315069)" as *"Editable Text Configuration"* (which makes a lot of sense) and also *"Extended Tool Chest"* (which doesn't make sense, but it's more fun).
 
-| **10** : `tail -5 verb.ink.html`
+This directory has a lot of stuff.
 
-## A few other tools
+#### `/lost+found/` Lost & Found (corrupt-but-found files)
 
-### `tac` *(`cat` backwards)*
+If the system crashes, then runs a file system check, then finds damaged files, they will go here.
 
-*Lines in reverse order*
+Don't look here, you have better things to do.
 
-| **11** : `tac verb.ink.html`
+### Read-only
 
-*Next, download some files...*
+#### `/boot/` – Boot files (for system boot)
 
-| **12** : `cd ..`
+| **9** : `cd ../boot`
 
-| **13** : `git clone https://github.com/inkVerb/201-12`
+| **10** : `ls`
 
-| **14** : `cd 201-12`
+This is for stuff that helps the computer to turn on. Don't mess.
 
-### `sort`
+#### `/lib/` — Shared Libraries (may be used by many different applications)
 
-| **15** : `gedit sortme`
+| **11** : `cd ../lib`
 
-*Lines in alphabetical order*
+| **12** : `ls`
 
-| **16** : `sort sortme`
+Files that go here may be occasionally be called "dependencies". Such a "library" is a set of files used by a variety of different software applications. These libraries are used quite often by graphic and media apps since many desktop media apps actually share many of the same backend tools.
 
-*Reverse alphabetical order*
+#### `/bin/` — Binaries (system-wide applications)
 
-| **17** : `sort -r sortme`
+| **13** : `cd ../bin`
 
-### `diff`
+| **14** : `ls`
 
-| **18** : `gedit frc-*`
+A "binary" is a computer program that has been "compiled" into using core computer language that humans can't read or understand. This is where programs like `sed`, `cat`, `echo`, `cp`, `ls`, `grep`, etc actually live. Most Linux commands are actually small programs that can be found in this directory, `sh` and `bash` from `#!/bin/sh` and `#!/bin/bash` included!
 
-*Compare 1 & 2*
+This is for base-system commands, this is *NOT* where installed software goes.
 
-| **19** : `diff frc-1 frc-2`
+#### `/sbin/` — System Binaries (root only)
 
-*Note "a" means that lines are "Added"*
+| **15** : `cd ../sbin`
 
-| **20** : `diff frc-1 frc-3`
+| **16** : `ls`
 
-*Note "d" means that lines are "Deleted"*
+These are more basic binaries, but they are used by the system processes, not a normal part of the Shell language because most users won't use these.
 
-| **21** : `diff frc-1 frc-4`
+### Installed Packages
 
-*Note "c" means that the lines "Change"*
+#### `/usr/` — User Binaries (mostly desktop programs)
 
-*Note "13,17" means "lines 13–17"*
+| **17** : `cd ../usr`
 
-| **22** : `diff frc-1 frc-5`
+| **18** : `ls`
 
-*Note frc-5 line 3 has several spaces at the end of the line; ignore with `-Z`*
+This is where installable binaries go from installable packages. When you run `sudo apt install Something` the installed program will usually put its executable files here.
 
-| **23** : `diff -Z frc-1 frc-5`
+It is called the "user" directory because, for the most part, all desktop users will access binaries (programs) that have been installed to this directory.
 
-*Ignore all white space with `-w`*
+Debian (.deb files) should install here in order to be "properly" installed.
 
-| **24** : `diff -w frc-1 frc-5`
+#### `/opt/` – Optional Packages (resident aliens)
 
-*Ignore case with `-i`*
+| **19** : `cd ../opt`
 
-| **25** : `diff -i frc-1 frc-5`
+| **20** : `ls`
 
-*Ignore case and white space with `-iw`*
+This is where applications go when they don't follow the rules of this file system hierarchy. This is a great place to put your own software while you are being inventive.
 
-| **26** : `diff -iw frc-1 frc-5`
+#### `/snap/`
 
-*Note nothing happens if files are the same*
+| **21** : `cd ../snap`
 
-| **27** : `diff frc-1 frc-6`
+| **22** : `ls`
 
-*Get a message to say so with `-s`*
+This is where "snap" applications are installed. Snap is different from the system Debian repository structure. It has its own install and repository structure, but is included in the Ubuntu Software Center as of Ubuntu 18.04.
 
-| **28** : `diff -s frc-1 frc-6`
+Snap is a more powerful way of managing apps because it runs every app in its own "container", so if it crashes it does not risk crashing the entire system.
 
-*Combine `-s` with other options*
+### Connected gadgets
 
-| **29** : `diff -iws frc-1 frc-5`
+#### `/cdrom/` – CD-ROM mount path location in days of yore and lore
 
-*Get a quiet message if files differ*
+| **23** : `cd ../cdrom`
 
-| **30** : `diff -q frc-1 frc-4`
+| **24** : `ls`
 
-*Compare side-by-side wtih `-y`*
+This is the classic path to the on-board CD-ROM drive.
 
-| **31** : `diff -y frc-1 frc-4`
+#### `/dev/` — Devices
 
-*Remember* frc-2
+| **25** : `cd ../dev`
 
-| **32** : `diff frc-1 frc-2`
+| **26** : `ls`
 
-*Ignore blank lines with `-B`*
+A bluetooth device may be in here somewhere.
 
-| **33** : `diff -B frc-1 frc-2`
+#### `/mnt/` — Mount (temporarily mount permanently connected drives)
 
-*There is always more to learn*
+| **27** : `cd ../mnt`
 
-| **34** : `man diff` *(Q to quit)*
+| **28** : `ls`
 
-| **35** : `cd ..`
+This is where that Windows partition may show up if you decide to take a look at it while booted in Linux. It's also where other, non-system storage drives will appear when mounted
 
-### `nano`
+#### `/media/` — Removable Media (i.e. USB drives)
 
-*The simple text editor in the terminal*
+| **29** : `cd ../media`
 
-| **36** : `cd verb.ink`
+| **30** : `ls`
 
-| **37** : `nano verb.ink.html`
+This is where USB-connected drives usually mount.
 
-*Options listed at the bottom*
+### Ever-changing
 
-*Tip:*  ^ = Ctrl
+#### `/var/` — Variable Data
 
-*Tip:* M- = Alt
+| **31** : `cd ../var`
 
-*Take note of:* ^K ^W ^O ^X M-U
+| **32** : `ls`
 
-*Note* ^Z *will "stop" the nano session, not "undo"*
-- If you ^Z back to the terminal, resume with `fg nano`, see [Shell 101 Lesson 0](https://github.com/inkVerb/VIP/blob/master/101-shell/Lesson-00.md)
+This usually contains `www/` (website files on a webserver) and `log/` for log files.
 
-*(Ctrl + X to eXit)*
+This is also where email may be stored in `email/` or `mail/` or `vmail/` or something like that.
 
-### `vim`
+This is usually where the .swp "swap file" (virtual RAM) goes, if it is a file and not a partition.
 
-*The terminal editor used by cool people*
+Things here can and may need to change often.
 
-| **38** : `vim verb.ink.html`
+#### `/srv/` – Service Data (data for services provided by the system)
 
-*To quit, type these two characters:*
+| **33** : `cd ../srv`
 
-:q
+| **34** : `ls`
 
-**`vim` and `nano` are often the best ways to edit settings files, such as:**
+This is another place the `www/` directory can go, or where a server will keep shared/served files to make them available on a local network.
 
-- Many places in the `/etc/` directory
-- In the `/var/www/` web directory (such as on a web server)
-- Other locations we explored in the last lesson on the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md)
+#### `/run/` – Running processes (a place to keep stuff that won't get deleted)
 
-*Vim has a tutorial*
+| **35** : `cd ../run`
 
-| **39** : `vimtutor` *(inside Vim, use* :q *to quit)*
+| **36** : `ls`
 
-*Have fun!*
+This is where some applications put their own "while-running" files, caches, and other files that may need to be semi-temporary, but that shouldn't be automatically deleted.
+
+#### `/proc/` — Kernel & Process (files used by the kernel)
+
+| **37** : `cd ../proc`
+
+| **38** : `ls`
+
+These are essential for the most basic part of the system to function.
+
+#### `/sys/` – System's virtual file (live kernel information)
+
+| **39** : `cd /sys`
+
+| **40** : `ls`
+
+This is a virtual file system, allowing normal text-file-like access to information about the system. It can contain live (virtual) text files that change as the system changes.
+
+#### `/tmp/` — Temporary files (one-time files)
+
+| **41** : `cd ../tmp`
+
+| **42** : `ls`
+
+These eventually get deleted by the system. Usually, when you choose to "open" a file from the Internet, rather than "save" it, the file is saved here.
 
 ___
 
 # The Take
 
-## **more, less, head & tail** display the contents of a file in small amounts
-- `more`
-  - One page at a time: Spacebar
-  - One line at a time: Enter
-  - `more -8 file` shows 8 lines at a time
-  - **Q** will quit
-- `less`
-  - Up and down: Spacebar, PageUp, PageDown, Up, Down
-  - **Q** will quit
-- `head`
-  - First 10 lines
-  - `head -8 file` shows the first 8 lines
-- `tail`
-  - Last 10 lines
-  - `tail -8 file` shows the last 8 lines
-
-## Other file view tools
-- `tac` reverse line order
-- `sort` re-orders the lines of a file alphabetically
-  - `-r` for reverse alphabetical
-- `diff` compares two files by line
-  - Usage: `diff file1 file2`
-  - a = "added"
-  - d = "deleted"
-  - c = "changed" (different)
-  - 13,17 = lines 13 through 17
-  - `-i` ignore case
-  - `-w` ignore all "white space" (Returns and extra spaces)
-  - `-y` displays files side-by-side
-
-## Terminal text editors
-### `nano` is great for beginners
-- ^ = **Ctrl**
-- M- = **Alt**
-- If you **Ctrl + Z** as "undo" on accident, `fg nano` will take you back
-### `vim` is for awesome people
-- It should be on every kindergarten's entry exam because kindergartners can learn it easily (if kindergartens had entry exams, but they don't)
-- `vim` emulates the terminal text editor `vi` made by Bill Joy, billions of years ago, when computers first walked the earth in 1976
-  - `vim` is "`vi` improved", is built on `vi`, and does everything `vi` does
-  - Ubuntu starts `vim` when you run `vi`
-  - Read all about the official differences; run: `vim`, then type: `:h vi-differences`
-- Learn `vim` by running: `vimtutor`
-- `vim` is easier to operate than `nano` after only 30 minutes of the `vimtutor` tutorial
-- If your teacher, boss, parents, children, spouse, or family dog force you to learn `vim`, it's because they think you're so awesome that only learning `vim` can make you awesomerer
-- Read about the rich history of terminal text editors like `vim` in the dazzling article, *[The Differences Between Vi, Vim, and Emacs](https://danielmiessler.com/blog/differences-vi-vim-emacs/)* by Daniel Miessler
+- Directories in Linux hold different things
+  - This is called "File System Hierarchy (FSH)"
+- `/` is the beginning of all directories in the FSH
+  - ***Any*** path beginning with `/` will refer to the root of the FSH!
+- All home directories (with personal user stuff) are in `/home/`
+- The "root" (AKA `su`) user's home is `/root/`, ***not*** `/home/root/`!
+- `/var/` holds
+  - Logs
+  - The `/var/www/` "web" folder used by Apache and Nginx web servers
+  - The `/var/lib/mysql/` MySQL database folder
+  - Email folders
+- `/usr/` has the core "binary" files for most desktop apps
+- Settings for apps usually reside in either:
+  - `/home/USER/.CONFIG-DIR/` "hidden" directories that begin with a `.` in a user's home (most desktop apps)
+  - `/etc/` (most non-desktop apps)
+- `/etc/` has settings for system apps like MySQL, PHP, Python, Apache, Nginx, etc
+- `/media/` is where USB drives are usually mounted
+- `/sbin/` & `/boot/` are core operating system folders, don't touch!
+- `/opt/` is for software that doesn't always follow these rules
 
 ___
 
@@ -268,5 +263,9 @@ Oh, and then there's this...
 | **D3** : `sudo apt install gnome-nibbles`
 
 ___
+
+*Now is your best time to learn `vim` fast and easy; it think how Shell thinks and it is powerfully useful*
+
+## | Learn : `vimtutor`
 
 ## Next: [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)

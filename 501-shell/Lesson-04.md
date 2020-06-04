@@ -5,7 +5,7 @@ Ready the CLI
 
 `cd ~/School/VIP/501`
 
-### This lesson uses two terminals and two browser windows!
+### This lesson uses two terminals and two browser tabs!
 
 Ready the secondary SQL terminal and secondary SQL browser
 

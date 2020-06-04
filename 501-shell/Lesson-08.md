@@ -5,7 +5,7 @@ Ready the CLI
 
 `cd ~/School/VIP/501`
 
-### This lesson uses two terminals and two browser windows!
+### This lesson uses two terminals and two browser tabs!
 
 Ready the secondary SQL terminal and secondary SQL browser
 
@@ -166,13 +166,13 @@ ls web
 - **`UPDATE` existing pieces**
 - **Retrieve the ID of the most recent `INSERT`**
 
-This will get the new ID of the last database `INSERT`:
+This will get the ID of the last database `INSERT`:
 
 ```sql
 SELECT SCOPE_IDENTITY();
 ```
 
-This is how to do it in MySQLi (SQL for PHP):
+This is how to do the same in MySQLi (SQL for PHP):
 
 ```php
 $last_id = $database->insert_id;

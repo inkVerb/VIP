@@ -114,4 +114,4 @@ ___
 
 ___
 
-#### [Lesson 11: File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md)
+#### [Lesson 11: more, less, head, tail, sort, tac, diff, nano, vim](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md)
