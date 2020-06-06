@@ -23,6 +23,8 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 ___
 
+### Set up our editor framework
+
 | **1** :
 ```
 sudo cp core/08-edit1.php web/edit.php && \
@@ -97,13 +99,15 @@ CREATE TABLE IF NOT EXISTS `pieces` (
 
 *...Use that table by adding a "Piece" `<form>` to our "Editor" page...*
 
+### Add our `<form>` to the editor
+
 | **3** :
 ```
 sudo cp core/08-edit2.php web/edit.php && \
-sudo cp core/08-editpiece2.in.php web/in.editpiece.php && \
+sudo cp core/08-editprocess2.in.php web/in.editprocess.php && \
 sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/edit.php web/in.editpiece.php web/in.piecefunctions.php && \
+gedit web/edit.php web/in.editprocess.php web/in.piecefunctions.php && \
 ls web
 ```
 
@@ -162,6 +166,10 @@ ls web
 
 | **6** ://phpMyAdmin **> pieces**
 
+*We can only create new pieces, not update*
+
+### Add an `UPDATE` ability to our form processor
+
 **We must write the PHP script to:**
 - **`UPDATE` existing pieces**
 - **Retrieve the ID of the most recent `INSERT`**
@@ -181,16 +189,15 @@ $last_id = $database->insert_id;
 | **7** :
 ```
 sudo cp core/08-edit3.php web/edit.php && \
-sudo cp core/08-editpiece3.in.php web/in.editpiece.php && \
+sudo cp core/08-editprocess3.in.php web/in.editprocess.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/edit.php web/in.editpiece.php web/in.piecefunctions.php && \
 ls web
 ```
 
 *gedit: Reload*
 
 - *edit.php*
-- *in.editpiece.php*
+- *in.editprocess.php*
 
 | **B-7** :// `localhost/web/edit.php` (Same)
 
@@ -199,7 +206,7 @@ ls web
 - *edit.php has a "New or update" if statement*
   - *This adds a `hidden` `<input>` tag with the piece ID if there is one*
   - *This will be included in the POST array if it is there*
-- *in.editpiece.php adds*
+- *in.editprocess.php adds*
   - *An "update" SQL query option*
   - *An entire section dedicated to GET methods so the piece ID is in the URL*
   - *The page refreshes if a new piece is saved the first time*
@@ -221,6 +228,61 @@ ls web
 | **8** :> `SELECT * FROM pieces;`
 
 | **8** ://phpMyAdmin **> pieces**
+
+### Add revision history
+
+**Workflow:**
+- Current `live` piece: `pieces` table
+- Current new `draft` piece: `pieces` table
+- Editing/saving `draft` piece with current `live` piece: `history` table
+- Currently `dead` piece: `pieces` table
+  - Waiting final `DELETE` from `pieces` and `history` table
+- Past `live` piece: `history` table
+
+| **9** :
+```
+sudo cp core/08-edit4.php web/edit.php && \
+sudo cp core/08-editprocess4.in.php web/in.editprocess.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+*gedit: Reload*
+
+- *edit.php*
+- *in.editprocess.php*
+
+| **B-9** :// `localhost/web/edit.php` (Same)
+
+*Note:*
+
+- *edit.php has a "New or update" if statement*
+  - *`$editing_pending_draft` variable creates a hidden `<input>`*
+- *in.editprocess.php adds*
+  - *Several calls for a `history` table were added*
+  - *`$editing_pending_draft` variable*
+
+*Create the SQL table for "Piece History"...*
+
+| **9** :>
+```sql
+CREATE TABLE IF NOT EXISTS `history` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `piece_id` INT UNSIGNED NOT NULL,
+  `type` ENUM('page', 'post') NOT NULL,
+  `status` ENUM('live', 'draft') NOT NULL,
+  `title` VARCHAR(90) NOT NULL,
+  `slug` VARCHAR(90) NOT NULL,
+  `content` LONGTEXT DEFAULT NULL,
+  `after` TINYTEXT DEFAULT NULL,
+  `date_updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+```
+
+| **9a** ://phpMyAdmin **> webapp_db** *(Refresh)*
+
+| **9b** ://phpMyAdmin **> webapp_db > history**
 
 ___
 

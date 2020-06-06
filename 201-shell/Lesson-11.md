@@ -231,10 +231,13 @@ ___
 - M- = **Alt**
 - If you **Ctrl + Z** as "undo" on accident, `fg nano` will take you back
 ### `vim` is for awesome people
-- It should be on every kindergarten's entry exam because kindergartners can learn it easily (if kindergartens had entry exams, but they don't)
-- `vim` emulates the terminal text editor `vi` made by Bill Joy, billions of years ago, when computers first walked the earth in 1976
-  - `vim` is "`vi` improved", is built on `vi`, and does everything `vi` does
-  - Ubuntu starts `vim` when you run `vi`
+- Anyone can learn `vim`, especially children; so, learn young
+- `vim` emulates the terminal text editor `vi` made by Bill Joy, when computers first walked the earth in 1976
+  - `vim` is "`vi` improved"
+    - `vim` is built on `vi` and does everything `vi` does
+    - `vi` does not highlight code syntax with colors, `vim` does
+  - Ubuntu starts `vim` when you run `vi`, Red Hat and Arch do not
+  - Most `vim` packages include `vi`
   - Read all about the official differences; run: `vim`, then type: `:h vi-differences`
 - Learn `vim` by running: `vimtutor`
 - `vim` is easier to operate than `nano` after only 30 minutes of the `vimtutor` tutorial

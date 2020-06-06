@@ -1,7 +1,7 @@
 # Shell 201
 ## Lesson 9: du, df, top, ps aux, pgrep, kill
 
-Ready the CLI
+Ready the CLI (might not be needed)
 
 `cd ~/School/VIP/201`
 
@@ -12,9 +12,9 @@ ___
 ### File sizes
 
 i. Watch this video & notice the numbers: [RGB](https://www.youtube.com/watch?v=HX46ILgwTNk)
-- Top row: Binary (0&1)
+- Top row: Binary (0–1)
 - Mid Row: Decimal (0–9)
-- Bottom Row: Hexadecimal (0-F)
+- Bottom Row: Hexadecimal (0–F)
 
 ii. bites, etc
 - **1 bit** = A single binary digit (0 or 1)
@@ -34,6 +34,11 @@ iii. File sizes (very generic approximation)
 | **1** : `cd ~/`
 
 ### `du` & `df`
+
+- **`du`: "Disk Usage"**
+- **`df`: "Disk Filesystem"**
+- **"h": "Human"**
+- **"s": "Summarize"**
 
 | **2** : `du -sh *`
 
@@ -65,7 +70,10 @@ Q (or Ctrl + C) *This will CLOSE the top program*
 
 | **8** : `top -n 1`
 
-*Notice the `top` list is not realtime; `-n 1` shows only one "iteration", `-n 3` would show three*
+*Notice the `top` list is not realtime:*
+
+- *`-n 1` shows only one "iteration"*
+- *`-n 3` shows only three "iterations"*
 
 | **9** : `top -n 1 -b`
 

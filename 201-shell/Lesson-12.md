@@ -1,5 +1,5 @@
 # Shell 201
-## Lesson 12: more, less, head, tail, sort, tac, diff, nano, vim
+## Lesson 12: File System Hierarchy (FSH)
 
 Ready the CLI (might not be needed)
 
@@ -266,6 +266,6 @@ ___
 
 *Now is your best time to learn `vim` fast and easy; it think how Shell thinks and it is powerfully useful*
 
-## | Learn : `vimtutor`
+## Learn : `vimtutor`
 
 ## Next: [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)
