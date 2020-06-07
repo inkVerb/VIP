@@ -237,6 +237,7 @@ ls web
 
 - Pieces are prepared and saved in `pieces` table
 - Once published, they are added to the `publications` table
+- All versions of published pieces are added to the `publication_history` table
 - "Save draft" changes are not published, only saved to the `pieces` table
 
 | **9** :
