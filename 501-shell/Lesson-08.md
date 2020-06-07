@@ -29,7 +29,7 @@ ___
 ```
 sudo cp core/08-edit1.php web/edit.php && \
 sudo cp core/08-loginhead.in.php web/in.login_head.php && \
-sudo cp core/08-logincheck.in.php web/in.login_check.php && \
+sudo cp core/08-logincheck1.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 gedit web/in.login_head.php web/in.login_check.php web/edit.php && \
 ls web
@@ -79,7 +79,7 @@ Password: My#1Password
 CREATE TABLE IF NOT EXISTS `pieces` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `type` ENUM('post', 'page') NOT NULL,
-  `status` ENUM('live', 'draft', 'dead') NOT NULL,
+  `status` ENUM('live', 'dead') NOT NULL,
   `title` VARCHAR(90) NOT NULL,
   `slug` VARCHAR(90) NOT NULL,
   `content` LONGTEXT DEFAULT NULL,
@@ -126,10 +126,10 @@ ls web
 - *This makes our "Schedule..." Date Live settings show/hide with the checkbox*
 
 1. Fill-out the fields, simple with what you want
-2. Click "Save draft"
+2. Click "Save"
 3. Note the green message: Saved!
 
-| **B-4** :// `localhost/web/edit.php` (Save draft)
+| **B-4** :// `localhost/web/edit.php` (Save)
 
 | **4** :> `SELECT * FROM pieces;`
 
@@ -138,11 +138,11 @@ ls web
 *...There is the piece we just created, in the database*
 
 1. Don't change any fields
-2. Click "Save draft"
+2. Click "Save"
 3. Note the green message: Saved!
 4. Note the changes in the database...
 
-| **B-5** :// `localhost/web/edit.php` (Save draft)
+| **B-5** :// `localhost/web/edit.php` (Save)
 
 | **5** :> `SELECT * FROM pieces;`
 
@@ -156,11 +156,11 @@ ls web
 *Save one more for practice in the future...*
 
 1. Don't change any fields
-2. Click "Save draft"
+2. Click "Save"
 3. Note the green message: Saved!
 4. Note the changes in the database...
 
-| **B-6** :// `localhost/web/edit.php` (Save draft)
+| **B-6** :// `localhost/web/edit.php` (Save)
 
 | **6** :> `SELECT * FROM pieces;`
 
@@ -171,8 +171,9 @@ ls web
 ### Add an `UPDATE` ability to our form processor
 
 **We must write the PHP script to:**
-- **`UPDATE` existing pieces**
-- **Retrieve the ID of the most recent `INSERT`**
+
+- `UPDATE` existing pieces
+- Retrieve the ID of the most recent `INSERT`
 
 This will get the ID of the last database `INSERT`:
 
@@ -199,7 +200,9 @@ ls web
 - *edit.php*
 - *in.editprocess.php*
 
-| **B-7** :// `localhost/web/edit.php` (Same)
+| **B-7** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+
+*Use Ctrl + Shift + C in browser to see the developer view*
 
 *Note:*
 
@@ -212,32 +215,29 @@ ls web
   - *The page refreshes if a new piece is saved the first time*
     - *This readies the just-saved piece for edit/UPDATE actions*
     - *This just-saved new ID comes from `$database->insert_id;`*
+  - *Check for "duplicate" to avoid unneeded `UPDATE` queries (search 'duplicate' in the file)*
 - *With all this, a new piece or an edited piece will use the same .php file*
   - *An edited piece will have the `?p=ID` GET argument in the URL*
   - *A new piece will have no GET argument in the URL*
 
 1. Make a few slight changes
-2. Click "Save draft"
-3. Note the green message: Saved!
+2. Click "Save"
+3. Note the various and sundry save messages
 4. Note the changes in the database...
 
-| **B-8** :// `localhost/web/edit.php` (Save draft)
-
-*Use Ctrl + Shift + C in browser to see the developer view*
+| **B-8** :// `localhost/web/edit.php` (Save)
 
 | **8** :> `SELECT * FROM pieces;`
 
 | **8** ://phpMyAdmin **> pieces**
 
-### Add revision history
+### Add `publications` table with revision history
 
 **Workflow:**
-- Current `live` piece: `pieces` table
-- Current new `draft` piece: `pieces` table
-- Editing/saving `draft` piece with current `live` piece: `history` table
-- Currently `dead` piece: `pieces` table
-  - Waiting final `DELETE` from `pieces` and `history` table
-- Past `live` piece: `history` table
+
+- Pieces are prepared and saved in `pieces` table
+- Once published, they are added to the `publications` table
+- "Save draft" changes are not published, only saved to the `pieces` table
 
 | **9** :
 ```
@@ -252,29 +252,48 @@ ls web
 - *edit.php*
 - *in.editprocess.php*
 
-| **B-9** :// `localhost/web/edit.php` (Same)
+| **B-9** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+
+*Use Ctrl + Shift + C in browser to see the developer view*
 
 *Note:*
 
-- *edit.php has a "New or update" if statement*
-  - *`$editing_pending_draft` variable creates a hidden `<input>`*
 - *in.editprocess.php adds*
-  - *Several calls for a `history` table were added*
-  - *`$editing_pending_draft` variable*
+  - *Several calls for a `publications` table were added*
+  - *`$p_status` variable*
+  - *`$editing_published_piece` variable*
+  - *`$editing_existing_piece` variable*
+- *edit.php has a "New or update" if statement*
+  - *"Save draft" and "Publish" `<submit>` inputs for the `<form>`*
+  - *`$editing_published_piece` changes "Publish" to "Update"*
 
-*Create the SQL table for "Piece History"...*
+*Create the SQL tables for publication and history...*
 
 | **9** :>
 ```sql
-CREATE TABLE IF NOT EXISTS `history` (
+CREATE TABLE IF NOT EXISTS `publications` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `piece_id` INT UNSIGNED NOT NULL,
   `type` ENUM('page', 'post') NOT NULL,
-  `status` ENUM('live', 'draft') NOT NULL,
+  `pubstatus` ENUM('published', 'drafting') NOT NULL,
   `title` VARCHAR(90) NOT NULL,
   `slug` VARCHAR(90) NOT NULL,
   `content` LONGTEXT DEFAULT NULL,
   `after` TINYTEXT DEFAULT NULL,
+  `date_live` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `publication_history` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `piece_id` INT UNSIGNED NOT NULL,
+  `type` ENUM('page', 'post') NOT NULL,
+  `title` VARCHAR(90) NOT NULL,
+  `slug` VARCHAR(90) NOT NULL,
+  `content` LONGTEXT DEFAULT NULL,
+  `after` TINYTEXT DEFAULT NULL,
+  `date_live` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `date_updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
@@ -282,7 +301,72 @@ CREATE TABLE IF NOT EXISTS `history` (
 
 | **9a** ://phpMyAdmin **> webapp_db** *(Refresh)*
 
-| **9b** ://phpMyAdmin **> webapp_db > history**
+| **9b** ://phpMyAdmin **> webapp_db > publications**
+
+1. Make a few slight changes, or not
+2. Click "Save draft", "Publish", or "Update"
+3. Note the various and sundry save messages
+4. Note the changes in the database...
+
+| **B-10** :// `localhost/web/edit.php` (Save draft / Publish / Update)
+
+| **10a** :> `SELECT * FROM pieces;`
+
+| **10a** ://phpMyAdmin **> pieces**
+
+| **10b** :> `SELECT * FROM publications;`
+
+| **10b** ://phpMyAdmin **> publications**
+
+*Try the above four steps a few times to watch it work*
+
+**SQL Tip**
+
+*We have many entries on our `publication_history` table...*
+
+| **11** :>
+```sql
+SELECT id, piece_id, title, content, after FROM publication_history;
+```
+
+*This is a handy SQL query to get only the most recent of each published piece:*
+
+| **11** :>
+```sql
+SELECT p1.id, p1.piece_id, p1.title, p1.content, p1.after, p1.date_live, p1.date_updated
+FROM publication_history p1 LEFT JOIN publication_history p2
+ON (p1.piece_id = p2.piece_id AND p1.id < p2.id)
+WHERE p2.id IS NULL;
+```
+
+*That complexity is why we put our publications and history in different tables*
+
+### View our pieces on our site
+
+| **12** :
+```
+sudo cp core/08-blog.php web/blog.php && \
+sudo cp core/08-logincheck2.in.php web/in.login_check.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+gedit web/blog.php \
+ls web
+```
+
+*gedit: Reload*
+
+- *in.login_check.php*
+
+*Note:*
+
+- *in.login_check.php*
+  - *Removed redirect if not logged in*
+  - *Place HTML header at top*
+
+| **B-12** :// `localhost/web/blog.php`
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+*Note how each piece entry is iterated from the loop*
 
 ___
 

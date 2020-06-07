@@ -27,6 +27,7 @@ ii. bites, etc
 iii. File sizes (very generic approximation)
 - 1 minute of audio is about 10MB for normal files (128 bit)
 - 1 picture is about 1MB (1920x1080px, .png; 2560x1600px, .jpg)
+  - Learn more about image [pictypes](https://github.com/inkVerb/pictypes/blob/master/README.md)
 - 1 hour video is about 1GB (1920x1080)
 
 *Go to your home directory*

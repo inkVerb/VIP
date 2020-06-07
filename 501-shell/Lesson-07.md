@@ -79,6 +79,32 @@ ls web
 
 *Look through those files carefully*
 
+*Note the duplicate check in ajax_string.php:*
+
+```php
+// Create our string
+$random_string = alnumString(32);
+
+// Check to see if the string already exists in the database
+$query = "SELECT random_string FROM strings WHERE BINARY random_string='$random_string'";
+$call = mysqli_query($database, $query);
+
+// Dup fix loop
+while (mysqli_num_rows($call) != 0) {
+  $random_string = alnumString(32);
+  // Check again
+  $query = "SELECT random_string FROM strings WHERE BINARY random_string='$random_string'";
+  $call = mysqli_query($database, $query);
+  if (mysqli_num_rows($call) == 0) {
+    break; // end the loop
+  }
+}
+```
+
+*...Note how we run the same query both inside and outside the loop,*
+
+*then `break` when we get what we want*
+
 | **2** :>
 
 ```sql
