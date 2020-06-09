@@ -52,7 +52,7 @@ sudo cp core/04-config1.in.php web/in.config.php && \
 sudo cp core/04-checks.in.php web/in.checks.php && \
 sudo cp core/04-functions.in.php web/in.functions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/install.php web/in.config.php web/in.checks.php web/in.functions.php && \
+atom web/install.php web/in.config.php web/in.checks.php web/in.functions.php && \
 ls web
 ```
 
@@ -182,7 +182,7 @@ $epoch_simple_later = time() + (30 * 24 * 60 * 60);
 ```
 sudo cp core/04-time.php web/time.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/time.php && \
+atom web/time.php && \
 ls web
 ```
 
@@ -234,11 +234,11 @@ It only confirms with `true` or `false` because the hash is different each time
 sudo cp core/04-login1.php web/webapp.php && \
 sudo cp core/04-config2.in.php web/in.config.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/webapp.php && \
+atom web/webapp.php && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *in.config.php*
 
@@ -302,7 +302,7 @@ The `echo` message will not display, comment the `header()` line to see the mess
 ```
 sudo cp core/04-logout1.php web/logout.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/logout.php && \
+atom web/logout.php && \
 ls web
 ```
 
@@ -334,11 +334,11 @@ $just_logged_out = true;
 sudo cp core/04-logout2.php web/logout.php && \
 sudo cp core/04-login2.php web/webapp.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/logout.php && \
+atom web/logout.php && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *logout.php*
 - *webapp.php*
@@ -407,7 +407,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *webapp.php*
 - *logout.php*
@@ -484,7 +484,7 @@ setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 ```
 sudo cp core/04-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/account.php && \
+atom web/account.php && \
 ls web
 ```
 
@@ -521,7 +521,7 @@ Password: My#1Password
 ```
 sudo cp core/04-forgot.php web/forgot.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/forgot.php && \
+atom web/forgot.php && \
 ls web
 ```
 

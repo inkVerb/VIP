@@ -18,12 +18,12 @@
 
 ### [Lesson 7: Security Keys](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-07.md)
 
-### [Lesson 8: CMS Blog: Input, Display & TinyMCE](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-08.md)
+### [Lesson 8: CMS Blog: Edit & Display](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-08.md)
 
-### [Lesson 9: Handling Uploads](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)
+### [Lesson 9: TinyMCE & Content Library](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)
 
-### [Lesson 10: Media Library](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-10.md)
+### [Lesson 10: Media Library & Uploads](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-10.md)
 
-### [Lesson 11: Content Library & Site Settings](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
+### [Lesson 11: Site Settings](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
 
 ### [Lesson 12: Framing for Production](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-12.md)

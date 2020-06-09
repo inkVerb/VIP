@@ -117,21 +117,35 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
 > ___
 >
 
-### IV. HTML & CSS Crash Course
+### IV. Download and install Atom
+- This course uses Atom instead of gedit
+- Download and install from **[atom.io](https://atom.io/)**
+  - Debian/Ubuntu: .deb
+  - Fedora/CentOS/openSUSE: .rpm
+- Archlinux: (packages already available)
+```bash
+sudo pacman -S apm
+apm install atom
+```
+
+### V. HTML-CSS-JS Crash Course
 - Timeline:
   - 1993: HTML
   - 1994: PHP
   - 1995: JavaScript
   - 1996: CSS
-- JavaScript makes these "animated"
 - "Client languages" (browser language)
   - HTML
   - CSS
   - JavaScript
+- JavaScript makes a page "animated"
 - Illustration:
   - HTML is a manikin
   - CSS is the clothing
   - JavaScript "animates", so the manikin moves like a robot and changes clothes
+
+- Take the crash course:
+  - [HTML CSS JS](https://github.com/inkVerb/HTML-CSS-JS/README.md)
 
 - Demo JavaScript click hide/show from 08-edit2.php
 ___
@@ -195,7 +209,7 @@ ___
   - JavaScript
 - JavaScript animates HTML and CSS
 
-### Render 'naked' HTML on a webpage
+### Render 'naked' HTML on a web page
 - `<h1>`, `<h2>`, etc
 - `<p>`
 - `<ol>` / `<ul>`: `<li>`

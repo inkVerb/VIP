@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 11: Content Library & Site Settings
+## Lesson 11: Site Settings
 
 Ready the CLI
 

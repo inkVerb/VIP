@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 8: CMS Blog: Input, Display & TinyMCE
+## Lesson 8: CMS Blog: Edit & Display
 
 Ready the CLI
 
@@ -31,7 +31,7 @@ sudo cp core/08-edit1.php web/edit.php && \
 sudo cp core/08-loginhead.in.php web/in.login_head.php && \
 sudo cp core/08-logincheck1.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/in.login_head.php web/in.login_check.php web/edit.php && \
+atom web/in.login_head.php web/in.login_check.php web/edit.php && \
 ls web
 ```
 
@@ -107,11 +107,11 @@ sudo cp core/08-edit2.php web/edit.php && \
 sudo cp core/08-editprocess2.in.php web/in.editprocess.php && \
 sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/edit.php web/in.editprocess.php web/in.piecefunctions.php && \
+atom web/edit.php web/in.editprocess.php web/in.piecefunctions.php && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *edit.php*
 
@@ -195,7 +195,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *edit.php*
 - *in.editprocess.php*
@@ -248,7 +248,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *edit.php*
 - *in.editprocess.php*
@@ -349,11 +349,11 @@ WHERE p2.id IS NULL;
 sudo cp core/08-blog.php web/blog.php && \
 sudo cp core/08-logincheck2.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/blog.php \
+atom web/blog.php \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *in.login_check.php*
 
@@ -373,6 +373,37 @@ ___
 
 # The Take
 
+## Login Checks
+- Checking for user login can be done with a separate `include` file
+- Login can affect the header and should be checked early
+- Part of the `<head>` can be determined by variables
+
+## Web Page Files
+- The actual file for a website page might contain only a few `include` statements
+- A blog post editor is probably a `<form>`
+- JavaScript can control parts of a page or `<form>`
+  - Disable or hide "sub-options" when the parent option is turned off
+  - JavaScript `onClick` & `getElementById` can connect two HTML elements
+
+## Handling Blog Entries
+- Creating a new piece will use `INSERT` for the SQL database
+- Editing an old piece will use `UPDATE` for the SQL database
+- Your PHP script must know if you are editing an old or new piece
+  - A `$_GET[]` argument is a wonderful way to set which piece you are editing
+  - Syntax: `yourwebsite.tld?g=123`
+    - (`$_GET[g]` will be your piece number `123` inside your script)
+- Drafts, published pieces, and revision history can be complex
+  - Make sure you have some way to keep it sorted out
+  - Using different database tables is only one way, but it works
+- Some blog fields must be unique
+  - Use a `while` loop to check the database
+  - Use `breeak` to end the loop
+
+## Viewing Blog Entries
+- Viewing a blog piece can also use a `$_GET[]` argument
+- Viewing is mostly about what HTML you want to organize and display your blog pieces
+- Use a `while` loop to show each blog entry on the web page
+
 ___
 
-#### [Lesson 9: Handling Uploads](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)
+#### [Lesson 9: TinyMCE & Content Library](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)

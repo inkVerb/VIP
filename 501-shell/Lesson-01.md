@@ -67,7 +67,7 @@ You will see many tests with `} else {` options for reporting errors, this is wh
 ```
 sudo cp core/01-phpget1.php web/phpget.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/phpget.php && \
+atom web/phpget.php && \
 ls web
 ```
 
@@ -79,7 +79,7 @@ ls web
 
 | **2** : `sudo cp core/01-phpget2.php web/phpget.php && ls web`
 
-*gedit: Reload phpget.php*
+*atom: Reload phpget.php*
 
 | **B-2** :// `localhost/web/phpget.php?go=over there&h=6-hour&time=5:22`
 
@@ -89,7 +89,7 @@ ls web
 
 | **3** : `sudo cp core/01-phppost1.php web/phppost.php && ls web`
 
-*gedit: Reload phpget.php*
+*atom: Reload phpget.php*
 
 | **B-3** :// `localhost/web/phppost.php`
 
@@ -156,7 +156,7 @@ print_r($autoArray);
 ```
 sudo cp core/01-phparrays.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phparrays.php && \
+atom core/01-phparrays.php && \
 ls web
 ```
 
@@ -217,7 +217,7 @@ foreach ($array as $item) {
 ```
 sudo cp core/01-phpforeach.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpforeach.php && \
+atom core/01-phpforeach.php && \
 ls web
 ```
 
@@ -250,7 +250,7 @@ if ( Test Here ) {
 
 | **6** : `sudo cp core/01-phppost2.php web/phppost.php && ls web`
 
-*gedit: Reload phpget.php*
+*atom: Reload phpget.php*
 
 | **B-6** :// `localhost/web/phppost.php` (Same)
 
@@ -260,7 +260,7 @@ if ( Test Here ) {
 
 | **7** : `sudo cp core/01-phppost3.php web/phppost.php && ls web`
 
-*gedit: Reload phpget.php*
+*atom: Reload phpget.php*
 
 | **B-7** :// `localhost/web/phppost.php` (Same)
 
@@ -268,7 +268,7 @@ if ( Test Here ) {
 
 | **8** : `sudo cp core/01-phppost4.php web/phppost.php && ls web`
 
-*gedit: Reload phpget.php*
+*atom: Reload phpget.php*
 
 | **B-8** :// `localhost/web/phppost.php` (Same)
 
@@ -276,7 +276,7 @@ if ( Test Here ) {
 
 | **9** : `sudo cp core/01-phppost5.php web/phppost.php && ls web`
 
-*gedit: Reload phpget.php*
+*atom: Reload phpget.php*
 
 | **B-9** :// `localhost/web/phppost.php` (Same)
 
@@ -284,7 +284,7 @@ if ( Test Here ) {
 
 | **10** : `sudo cp core/01-phppost6.php web/phppost.php && ls web`
 
-*gedit: Reload phpget.php*
+*atom: Reload phpget.php*
 
 | **B-10** :// `localhost/web/phppost.php` (Same)
 
@@ -416,7 +416,7 @@ preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variabl
 ```
 sudo cp core/01-phpregex1.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpregex1.php && \
+atom core/01-phpregex1.php && \
 ls web
 ```
 
@@ -481,7 +481,7 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 ```
 sudo cp core/01-phpregex2.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpregex2.php && \
+atom core/01-phpregex2.php && \
 ls web
 ```
 
@@ -493,7 +493,7 @@ ls web
 ```
 sudo cp core/01-phpregex3.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpregex3.php && \
+atom core/01-phpregex3.php && \
 ls web
 ```
 
@@ -613,7 +613,7 @@ echo $someVariable;
 ```
 sudo cp core/01-phpfunction1.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpfunction1.php && \
+atom core/01-phpfunction1.php && \
 ls web
 ```
 
@@ -625,7 +625,7 @@ ls web
 ```
 sudo cp core/01-phpfunction2.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpfunction2.php && \
+atom core/01-phpfunction2.php && \
 ls web
 ```
 
@@ -637,7 +637,7 @@ ls web
 ```
 sudo cp core/01-phpfunction3.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpfunction3.php && \
+atom core/01-phpfunction3.php && \
 ls web
 ```
 
@@ -649,7 +649,7 @@ ls web
 ```
 sudo cp core/01-phpfunction4.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpfunction4.php && \
+atom core/01-phpfunction4.php && \
 ls web
 ```
 
@@ -661,7 +661,7 @@ ls web
 ```
 sudo cp core/01-phpfunction5.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpfunction5.php && \
+atom core/01-phpfunction5.php && \
 ls web
 ```
 
@@ -678,7 +678,7 @@ ls web
 ```
 sudo cp core/01-phpfunction6.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpfunction6.php && \
+atom core/01-phpfunction6.php && \
 ls web
 ```
 
@@ -742,9 +742,9 @@ include ('./in.file.php');
 sudo cp core/01-phpinclude.in.php web/in.phppost.php && \
 sudo cp core/01-phpinclude.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/in.phppost.php && \
+atom web/in.phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpinclude.php && \
+atom core/01-phpinclude.php && \
 ls web
 ```
 
@@ -776,7 +776,7 @@ echo CONSTANT_NAME;
 ```
 sudo cp core/01-phpconstant1.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpconstant1.php && \
+atom core/01-phpconstant1.php && \
 ls web
 ```
 
@@ -791,9 +791,9 @@ ls web
 sudo cp core/01-phpconstant2.in.php web/in.config.php && \
 sudo cp core/01-phpconstant2.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/in.config.php && \
+atom web/in.config.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit core/01-phpconstant2.php && \
+atom core/01-phpconstant2.php && \
 ls web
 ```
 
@@ -825,7 +825,7 @@ sudo cp core/01-phpheader.in.php web/in.header.php && \
 sudo cp core/01-phpfooter.in.php web/in.footer.php && \
 sudo cp core/01-phphfconventions.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/in.header.php web/in.footer.php core/01-phphfconventions.php && \
+atom web/in.header.php web/in.footer.php core/01-phphfconventions.php && \
 ls web
 ```
 
@@ -851,11 +851,11 @@ file_put_contents('./file/location', 'File content string');
 ```
 sudo cp core/01-phpfileput1.php web/phpfileput.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/phpfileput.php && \
+atom web/phpfileput.php && \
 ls web
 ```
 
-*Look over the PHP file in gedit before using the browser*
+*Look over the PHP file in atom before using the browser*
 
 | **B-25** :// `localhost/web/phpfileput.php`
 
@@ -872,7 +872,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload phpfileput.php*
+*atom: Reload phpfileput.php*
 
 | **B-27** :// `localhost/web/phpfileput.php` (Same)
 
@@ -895,7 +895,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload phpfileput.php*
+*atom: Reload phpfileput.php*
 
 *Note how the heredoc was made for later reference:*
 
@@ -920,7 +920,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload phpfileput.php*
+*atom: Reload phpfileput.php*
 
 *Note the use of `'single quotes'` affect the `$Variable` in the heredoc:*
 

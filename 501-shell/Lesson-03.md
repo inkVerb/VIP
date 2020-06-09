@@ -50,7 +50,7 @@ sudo cp core/03-style1.css web/style.css && \
 sudo cp core/03-functions1.in.php web/in.functions.php && \
 sudo cp core/03-checks1.in.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/website.php web/style.css web/in.functions.php web/in.checks.php && \
+atom web/website.php web/style.css web/in.functions.php web/in.checks.php && \
 ls web
 ```
 
@@ -128,13 +128,19 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple
 sudo cp core/03-website2.php web/website.php && \
 sudo cp core/03-config.in.php web/in.config.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/in.config.php && \
+atom web/in.config.php && \
 ls web
 ```
 
-*gedit: Reload website.php*
+*atom: Reload website.php*
 
 *Note the same SQL query for the `$query` variable in our PHP*
+
+*Tip: for troubleshooting, it can help to `echo` your `$query`, then test what renders in the SQL terminal*
+
+```php
+echo "<pre>$query</pre>";
+```
 
 | **S2** :> `SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';`
 
@@ -156,14 +162,14 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *website.php*
 - *style.css*
 
 *Note the <table> in HTML and border lines in CSS*
 
-*gedit: Reload website.php*
+*atom: Reload website.php*
 
 | **B-3** :// `localhost/web/website.php` (Same)
 
@@ -203,7 +209,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload website.php*
+*atom: Reload website.php*
 
 *Note the same SQL query for the `$query` variable in our PHP*
 
@@ -229,7 +235,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload website.php*
+*atom: Reload website.php*
 
 *Note the same SQL query for the `$query` variable in our PHP*
 
@@ -257,7 +263,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *website.php*
 - *style.css*
@@ -298,7 +304,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *website.php*
 - *style.css*
@@ -331,7 +337,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *website.php*
 - *in.checks.php*
@@ -379,6 +385,11 @@ mysqli_set_charset($database, 'utf8');
 $query = "SELECT column_name, other_column FROM table_name WHERE column_name='some_value'";
 $call = mysqli_query($database, $query);
 ```
+- Find trouble with your code: `echo` your SQL `$query`
+```php
+echo "<pre>$query</pre>";
+```
+	- Then, run the rendered query in your SQL terminal to see the response
 
 ## Work with MySQLi Queries
 - Assign columns of a row as variables:

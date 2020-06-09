@@ -1,0 +1,114 @@
+body {
+	background-color: #eee;
+	font-family: Corbel, Calibri, Arial;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+}
+
+code {
+	background-color: #ddd;
+}
+
+h1, h2, h3 {
+	margin: 0;
+}
+
+/* Header title */
+
+header h1 {
+	background-color: #aaa;
+	color: white;
+	text-align: center;
+	padding: 10px;
+}
+
+/* Header nav bar */
+header nav {
+	width: 100%;
+	float: left;
+}
+
+nav.selected {
+	font-weight: bold;
+	padding: 0px;
+}
+
+nav {
+	display: block;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+nav ul li {
+	display: inline;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+/* A few colors */
+.white {
+	background-color: #fff;
+}
+
+.gray, nav.gray ul li a {
+	color: #fff;
+	background-color: #444;
+}
+
+nav.gray ul li a:hover {
+	color: #bbb;
+}
+
+#container {
+	background-color: white;
+	width: 670px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#content {
+	padding: 10px;
+	margin: 10px;
+	height: 258px;
+}
+
+aside.top img {
+	display: block;
+	margin: 10px;
+	padding: 10px;
+}
+
+aside.padmarg {
+	display: block;
+	background-color: #aaffdd;
+	border-radius: 20px;
+	border-color: #88dd66;
+	border-width: 3px;
+	border-style: solid;
+	float: right;
+	margin: 70px;
+	padding: 70px;
+}
+
+article {
+	width: 460px;
+	float: left;
+	text-align: justify;
+}
+
+footer {
+	clear: both;
+	padding: 10px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+}

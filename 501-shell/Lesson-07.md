@@ -30,7 +30,7 @@ ___
 sudo cp core/07-recover1.php web/recover.php && \
 sudo cp core/07-string_functions.in.php web/in.string_functions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/recover.php web/in.string_functions.php && \
+atom web/recover.php web/in.string_functions.php && \
 ls web
 ```
 
@@ -53,11 +53,11 @@ sudo cp core/07-webapp.php web/webapp.php && \
 sudo cp core/07-loginhead1.in.php web/in.login_head.php && \
 sudo cp core/07-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/ajax_string.php web/recover_login.php web/webapp.php web/in.login_head.php web/account.php && \
+atom web/ajax_string.php web/recover_login.php web/webapp.php web/in.login_head.php web/account.php && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *recover.php*
 
@@ -188,7 +188,7 @@ Favorite Number: (same as before)
 ```
 sudo cp core/07-cleanup1.php web/cleanup.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/cleanup.php && \
+atom web/cleanup.php && \
 ls web
 ```
 
@@ -277,7 +277,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *cleanup.php*
 
@@ -397,7 +397,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *in.login_head.php*
 - *logout.php*
@@ -514,4 +514,4 @@ ___
   - If you do more in-depth study of these topics
 ___
 
-#### [Lesson 8: CMS Blog: Input, Display & TinyMCE](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-08.md)
+#### [Lesson 8: CMS Blog: Edit & Display](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-08.md)

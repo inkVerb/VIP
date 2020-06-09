@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 9: Handling Uploads
+## Lesson 9: TinyMCE & Content Library
 
 Ready the CLI
 
@@ -14,4 +14,4 @@ ___
 
 ___
 
-#### [Lesson 10: Media Library](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-10.md)
+#### [Lesson 10: Media Library & Uploads](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-10.md)

@@ -95,7 +95,7 @@ function doAjax() { // doAjax can be anything
 sudo cp core/06-ajax1.html web/ajax.html && \
 sudo cp core/06-ajaxsource1.txt web/ajax_source.txt && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/ajax.html web/ajax_source.txt && \
+atom web/ajax.html web/ajax_source.txt && \
 ls web
 ```
 
@@ -122,7 +122,7 @@ ls web
 sudo cp core/06-ajax2.php web/ajax.php && \
 sudo cp core/06-ajaxsource2.php web/ajax_source.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/ajax.php web/ajax_source.php && \
+atom web/ajax.php web/ajax_source.php && \
 ls web
 ```
 
@@ -146,11 +146,11 @@ ls web
 sudo cp core/06-ajax3.php web/ajax.php && \
 sudo cp core/06-ajaxsource3.php web/ajax_source.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/ajax.php && \
+atom web/ajax.php && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *ajax.php*
 - *ajax_source.php*
@@ -177,11 +177,11 @@ ls web
 ```
 sudo cp core/06-ajax4.php web/ajax.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/ajax.php && \
+atom web/ajax.php && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *ajax.php*
 

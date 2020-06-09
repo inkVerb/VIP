@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 10: Media Library
+## Lesson 10: Media Library & Uploads
 
 Ready the CLI
 
@@ -14,4 +14,4 @@ ___
 
 ___
 
-#### [Lesson 11: Content Library & Site Settings](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
+#### [Lesson 11: Site Settings](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)

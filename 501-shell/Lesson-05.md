@@ -50,7 +50,7 @@ RewriteRule ^/?([a-zA-Z0-9_]+)$ pretty_page.php?n=$1 [L]
 sudo cp core/05-pretty1.php web/pretty_page.php && \
 sudo cp core/05-htaccess1 /var/www/html/web/.htaccess && \
 sudo chown -R www-data:www-data /var/www/html && \
-gedit web/pretty_page.php /var/www/html/web/.htaccess && \
+atom web/pretty_page.php /var/www/html/web/.htaccess && \
 ls web
 ```
 
@@ -92,7 +92,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *.htaccess*
 
@@ -110,7 +110,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *.htaccess*
 - *pretty_page.php*
@@ -137,7 +137,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *.htaccess*
 - *pretty_page.php*
@@ -221,7 +221,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
-*gedit: Reload*
+*atom: Reload*
 
 - *.htaccess*
 
