@@ -66,9 +66,9 @@ ___
 
 | **12** : `cd ..`
 
-| **13** : `git clone https://github.com/inkVerb/201-12`
+| **13** : `git clone https://github.com/inkVerb/201-11`
 
-| **14** : `cd 201-12`
+| **14** : `cd 201-11`
 
 ### `sort`
 

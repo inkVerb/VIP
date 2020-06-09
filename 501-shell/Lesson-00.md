@@ -139,15 +139,14 @@ apm install atom
   - CSS
   - JavaScript
 - JavaScript makes a page "animated"
+- PHP is a "Server language" (works on the web server, browsers never know)
 - Illustration:
   - HTML is a manikin
   - CSS is the clothing
   - JavaScript "animates", so the manikin moves like a robot and changes clothes
 
 - Take the crash course:
-  - [HTML CSS JS](https://github.com/inkVerb/HTML-CSS-JS/README.md)
-
-- Demo JavaScript click hide/show from 08-edit2.php
+  - [HTML CSS JS](https://github.com/inkVerb/HTML-CSS-JS/blob/master/README.md)
 ___
 
 # The Take
@@ -197,7 +196,7 @@ ___
 - You can use this same setup to develop real PHP-language web applications, just as it is
 - You can use this for other languages (Phython, Node, etc), just install them as you would on a web server
 
-## HTML & CSS Crash Course
+## HTML, CSS & JS Crash Course
 - Timeline:
   - 1993: HTML
   - 1994: PHP
@@ -208,6 +207,7 @@ ___
   - CSS
   - JavaScript
 - JavaScript animates HTML and CSS
+- PHP is a "Server language" (works on the web server, browsers never know)
 
 ### Render 'naked' HTML on a web page
 - `<h1>`, `<h2>`, etc
@@ -221,10 +221,23 @@ ___
 ### Style HTML with CSS
 - Embed CSS in the `<head>`
 - `<link>` CSS in the `<head>`
-- Introduce styling for:
+- Style by:
   - elements
   - `class`
   - `id`
+
+### JavaScript
+- Embed JS in `<script>` tags
+- Include from an external file with: `<script src="myfile.js"></script>`
+- Affects an HTML element by a "method"
+  - `getElementById("some_id")`
+  - `getElementsByClassName("some_class")`
+  - `getElementsByName("some_name")`
+- Activates based-on an HTML element with:
+  - `onclick="jsFunction()"`
+  - `onmouseover="jsFunction()"`
+  - `onload="jsFunction()"`
+  - These are called "events"
 
 ___
 
