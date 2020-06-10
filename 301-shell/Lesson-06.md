@@ -845,4 +845,4 @@ ___
     - ie: `exec 2>&1` or `exec 3>&5`
 ___
 
-#### [Lesson 7: Functions, source & Combining Tests](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
+#### [Lesson 7: Multiple Tests, Counters, source & Functions](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)

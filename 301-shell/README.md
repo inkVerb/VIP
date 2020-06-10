@@ -16,7 +16,7 @@
 
 ### [Lesson 6: exit & journalctl](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-06.md)
 
-### [Lesson 7: Functions, source & Combining Tests](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
+### [Lesson 7: Multiple Tests, Counters, source & Functions](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-07.md)
 
 ### [Lesson 8: date & pwgen](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)
 

@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 7: Functions, source & Combining Tests
+## Lesson 7: Multiple Tests, Count-Loops, source & Functions
 
 Ready the CLI
 
@@ -26,7 +26,7 @@ command success && run this command also...
 command failure || run this command also...
 ```
 
-### I. Basic commands
+### I. Combined commands
 
 *Whatch the flow...*
 
@@ -38,7 +38,7 @@ command failure || run this command also...
 
 | **4** : `ls bozo || echo no`
 
-### II. Basic `if` `||` (OR) test
+### II. Combined `&&` (AND) `||` (OR) tests
 
 | **5** : `gedit 07-or-if`
 
@@ -52,7 +52,7 @@ command failure || run this command also...
 
 | **10** : `./07-or-if two one`
 
-### III. Read a max number and count
+### III. Read number and count
 
 | **11** : `gedit 07-while-count-read`
 
@@ -60,53 +60,29 @@ command failure || run this command also...
 
 | **13** : `./07-while-count-read` *Enter a high number, such as 9001*
 
-### IV. Read files & types, then check
-
-| **14** : `gedit 07-create`
-
-| **15** : `./07-create`
-
-| **16** : `ls`
-
-| **17** : `gedit 07-check`
-
-*Note `&&` means "AND" `||` means "OR"*
-
-| **18** : `./07-check`
-
-*Run `07-check` many times, consider these:*
-
-Files: `1.z` `2.z` `3.z` `4.z` `5.z` `6.z` `7.z` `8.z` `9.z` `0.z`
-
-Dirs: `1-Z` `2-Z` `3-Z` `4-Z` `5-Z` `6-Z` `7-Z` `8-Z` `9-Z` `0-Z`
-
-Links: `1.l` `2.l` `3.l` `4.l` `5.l` `6.l` `7.l` `8.l` `9.l` `0.l`
-
-*These will be added*
-
-### V. source `.`
+### IV. source `.`
 
 ```bash
 . file/to/include
 ```
 
-| **19** : `gedit 07-source 07-sourced 07-sourced-also`
+| **14** : `gedit 07-source 07-sourced 07-sourced-also`
 
-| **20** : `ls -l 07-source*`
+| **15** : `ls -l 07-source*`
 
 *Note the file "07-source" is executable, but "07-sourced" is not*
 
 *And "07-sourced" has no `#!/bin/bash` declaration*
 
-| **21** : `./07-source`
+| **16** : `./07-source`
 
 *Uncomment lines 24 & 27 and run it again*
 
-| **22** : `./07-source`
+| **17** : `./07-source`
 
 *It can be good practice to include the shebang-BASH (`#!/bin/bash`) in any "included" files so they are easier to see in text editors*
 
-### VI. `function()`
+### V. `function()`
 
 #### 4 Rules of a function:
 1. Script inside a script
@@ -126,13 +102,13 @@ echo "$1 and $Variable"
 newFunctionName Lemmons
 ```
 
-| **23** : `gedit 07-function`
+| **18** : `gedit 07-function`
 
 *Note functions work with `#!/bin/sh` on the first line, but also work with `#!/bin/bash`*
 
-| **24** : `./07-function`
+| **19** : `./07-function`
 
-| **25** : `gedit 07-function-breakdown`
+| **20** : `gedit 07-function-breakdown`
 
 *Note a few things before we continue...*
 ___
@@ -161,19 +137,19 @@ ___
 
 *Let's get back to work...*
 
-| **26** : `./07-function-breakdown`
+| **21** : `./07-function-breakdown`
 
 #### Once set, a variable works inside and outside of a function, unless it is `local` inside a function
 
 *Let's get a little more involved with variables...*
 
-| **27** : `gedit 07-function-variables`
+| **22** : `gedit 07-function-variables`
 
 *Note the global variables and the local-function variables and what is set/used inside/outside the function*
 
-| **28** : `./07-function-variables ONe TWo`
+| **23** : `./07-function-variables ONe TWo`
 
-| **29** : `./07-function-variables pine apple`
+| **24** : `./07-function-variables pine apple`
 
 ___
 
