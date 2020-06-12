@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 11: Site Settings
+## Lesson 11: Object Oriented Programming
 
 Ready the CLI
 
@@ -14,4 +14,4 @@ ___
 
 ___
 
-#### [Lesson 12: Framing for Production](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-12.md)
+#### [Lesson 12: Site Settings & Production Framework](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-12.md)

@@ -514,4 +514,4 @@ ___
   - If you do more in-depth study of these topics
 ___
 
-#### [Lesson 8: CMS Blog: Edit & Display](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-08.md)
+#### [Lesson 8: CMS Blog: Edit, Display & TinyMCE](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-08.md)

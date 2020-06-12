@@ -14,4 +14,4 @@ ___
 
 ___
 
-#### [Lesson 11: Site Settings](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
+#### [Lesson 11: Object Oriented Programming](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)

@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 9: TinyMCE & Content Library
+## Lesson 9: Content Library
 
 Ready the CLI
 

@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 8: CMS Blog: Edit & Display
+## Lesson 8: CMS Blog: Edit, Display & TinyMCE
 
 Ready the CLI
 
@@ -124,6 +124,11 @@ ls web
 - *edit.php: div id "goLiveOptions"*
 - *in.piecefunctions.php: onClick "showGoLiveOptionsBox"*
 - *This makes our "Schedule..." Date Live settings show/hide with the checkbox*
+
+*Note in.piecefunctions.php:*
+
+- *`filter_var($value, FILTER_SANITIZE_STRING);` removes HTML tags*
+- *`htmlspecialchars($value);` converts all HTML characters to their HTML enity code*
 
 1. Fill-out the fields, simple with what you want
 2. Click "Save"
@@ -349,7 +354,7 @@ WHERE p2.id IS NULL;
 sudo cp core/08-blog.php web/blog.php && \
 sudo cp core/08-logincheck2.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/blog.php \
+atom web/blog.php && \
 ls web
 ```
 
@@ -362,12 +367,116 @@ ls web
 - *in.login_check.php*
   - *Removed redirect if not logged in*
   - *Place HTML header at top*
+- *in.piecefunctions.php (remember)*
+  - *`htmlspecialchars($value);` converts all HTML characters to their HTML enity code*
+- *blog.php*
+  - *We reverse our SQL sanitation with `htmlspecialchars_decode()`*
 
 | **B-12** :// `localhost/web/blog.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
 *Note how each piece entry is iterated from the loop*
+
+### HTML styling
+
+| **B-13** :// `localhost/web/edit.php`
+
+1. Add the following code (with HTML markup):
+
+```html
+<p>This is HTML style: <strong>bold</strong> <em>italics <strong>bold italics</strong></em></p>
+<p style="text-align: center;">Paragraph center</p>
+<p style="text-align: right;">Paragraph right</p>
+<p>Symbols: &deg;&para;&trade;&copy;&reg;&cent;&pound;&euro;&yen;&sect;&spades;&clubs;&hearts;&diams;</p>
+<p>en dash: &ndash; em dash: &mdash;</p>
+```
+2. Click "Update" or "Publish"
+3. See the changes on the blog and in the database...
+
+| **B-14** :// `localhost/web/blog.php`
+
+| **14** :> `SELECT * FROM pieces;`
+
+| **14** ://phpMyAdmin **> pieces**
+
+### WYSIWYG editor
+
+**What You See Is What You Get**
+
+This type of editor gives you buttons to add HTML style
+
+Usually, these use JavaScript to change the `<textarea>` you want as your editor
+
+#### TinyMCE
+- [GitHub repo](https://github.com/tinymce/tinymce-dist)
+- [GitHub fork](https://github.com/inkVerb/tinymce-dist) (in case it doesn't work)
+
+TinyMCE is a basic WISYWIG many people know of
+
+On your own, learn more about implementation at [tiny.cloud](https://www.tiny.cloud/docs/general-configuration-guide/basic-setup/)
+
+Let's just watch it work for now...
+
+##### Core example
+
+| **15** :
+```
+sudo cp core/08-tiny.html web/tiny.html && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom web/tiny.html && \
+ls web
+```
+
+| **B-15** :// `localhost/web/tiny.html`
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+*This form won't do anything, just give it a good look*
+
+*Note:*
+
+- *There are two `<script>` entries in the `<head>`, both make TinyMCE work*
+- *The `selector: '#myTextarea'` JavaScript statement*
+- *The `<textarea id="myTextarea">` to connect it to the JavaScript*
+
+##### In our 501 Blog
+
+| **16** :
+```
+sudo cp core/08-logincheck3.in.php web/in.login_check.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+*atom: Reload*
+
+- *in.login_check.php*
+
+*Note:*
+
+- *in.login_check.php*
+  - *Note the two `<script>` sections between the comments `<!-- TinyMCE -->`*
+  - *These include the JavaScript to TinyMCE works*
+  - *It calls the ID of our "Content" `<textarea>` by `id="p_content"`*
+  - *That's it, just that simple*
+
+| **B-16** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+
+1. Close the message "This domain is not registered with Tiny Cloud"
+2. Apply or note some HTML styling with the WYSYWIG buttons
+3. Click "Update" or "Publish"
+4. See the changes on the blog and in the database...
+
+| **B-17** :// `localhost/web/blog.php`
+
+| **17** :> `SELECT * FROM pieces;`
+
+| **17** ://phpMyAdmin **> pieces**
+
+### Medium Editor
+- [GitHub repo](https://github.com/yabwe/medium-editor/releases)
+- [GitHub fork](https://github.com/inkVerb/medium-editor/releases) (in case it doesn't work)
 
 ___
 
@@ -404,6 +513,12 @@ ___
 - Viewing is mostly about what HTML you want to organize and display your blog pieces
 - Use a `while` loop to show each blog entry on the web page
 
+## WYSIWYG Editors
+- TinyMCE and Medium are two common WYSIWYG editors
+- These use simple JavaScript
+- The ID in the JavaScript should match the ID of the `<textarea>`
+- You can download and source the .js file or use an embedded onlin/cdn link
+
 ___
 
-#### [Lesson 9: TinyMCE & Content Library](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)
+#### [Lesson 9: Content Library](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)

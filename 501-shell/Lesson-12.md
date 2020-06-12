@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 12: Framing for Production
+## Lesson 12: Site Settings & Production Framework
 
 Ready the CLI
 
