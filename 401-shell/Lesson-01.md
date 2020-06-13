@@ -139,7 +139,7 @@ l \
 
 | **vim** :] `:set number`
 
-| **vim** :] PgDown (until last line)
+| **vim** :] PgDown *(until last line)*
 
 | **vim** :] `:q!`
 
@@ -153,7 +153,7 @@ l \
 
 | **vim** :] `:set number`
 
-| **vim** :] PgUp (repeat until first line)*
+| **vim** :] PgUp *(repeat until first line)*
 
 *Note the command on line 2*
 

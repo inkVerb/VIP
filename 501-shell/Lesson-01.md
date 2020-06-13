@@ -469,6 +469,12 @@ $Variable = htmlentities($Variable);
 // Convert HTML-specific characters to HTML entities:
 $Variable = htmlspecialchars($Variable);
 
+// Convert back from htmlentities():
+$Variable = html_entity_decode($Variable);
+
+// Convert back from htmlspecialchars():
+$Variable = htmlspecialchars_decode($Variable);
+
 // Convert to SQL (MySQLi)
 $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
   // From: $Database_Connection = mysqli_connect(...);

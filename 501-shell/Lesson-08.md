@@ -416,13 +416,13 @@ TinyMCE is a basic WISYWIG many people know of
 
 On your own, learn more about implementation at [tiny.cloud](https://www.tiny.cloud/docs/general-configuration-guide/basic-setup/)
 
-Let's just watch it work for now...
+Let's just watch it work...
 
 ##### Core example
 
 | **15** :
 ```
-sudo cp core/08-tiny.html web/tiny.html && \
+sudo cp core/08-tiny-cdn.html web/tiny.html && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom web/tiny.html && \
 ls web
@@ -430,21 +430,66 @@ ls web
 
 | **B-15** :// `localhost/web/tiny.html`
 
+*Note the message about domains that you should close*
+
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-*This form won't do anything, just give it a good look*
+*This form won't do anything, just give it a good look and try*
 
 *Note:*
 
 - *There are two `<script>` entries in the `<head>`, both make TinyMCE work*
 - *The `selector: '#myTextarea'` JavaScript statement*
 - *The `<textarea id="myTextarea">` to connect it to the JavaScript*
+- *The JavaScript tinymce.min.js is included from a "Contend Delivery Network" (CDN), not locally:*
+```html
+src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
+```
 
-##### In our 501 Blog
+We can download TinyMCE JavaScript and host it locally...
+
+*(Note, we will use a `git clone` from the inkVerb fork, not from tinymce, so this Lesson will continue to work after the repo is updated; for a live server, we would `git clone` from the original)*
 
 | **16** :
 ```
-sudo cp core/08-logincheck3.in.php web/in.login_check.php && \
+sudo cp core/08-tiny-man.html web/tiny.html && \
+git clone https://github.com/inkverb/tinymce-dist.git
+sudo mv tinymce-dist web/tinymce
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+*atom: Reload*
+
+- *tiny.html*
+
+*Note:*
+
+- *This includes the JavaScript locally, not from a CDN:*
+```html
+src='tinymce/tinymce.min.js'
+```
+- *TinyMCE requires the entire `tinymce` folder to work*
+  - *located here:*
+```bash
+/var/www/html/web/tinymce
+```
+  - *Downloaded from here:*
+```
+https://github.com/tinymce/tinymce-dist
+```
+
+| **B-16** :// `localhost/web/tiny.html` *(Ctrl + R to reload)*
+
+*Note there is no message about domains*
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+##### TinyMCE in our 501 Blog
+
+| **17** :
+```
+sudo cp core/08-logincheck3-tinymce.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
@@ -457,16 +502,15 @@ ls web
 
 - *in.login_check.php*
   - *Note the two `<script>` sections between the comments `<!-- TinyMCE -->`*
-  - *These include the JavaScript to TinyMCE works*
-  - *It calls the ID of our "Content" `<textarea>` by `id="p_content"`*
+  - *These include the JavaScript* ***in the header*** *so TinyMCE works*
+  - *It calls the* ***ID*** *of our "Content" `<textarea>` HTML element by `id="p_content"`*
   - *That's it, just that simple*
 
-| **B-16** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+| **B-17** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 
-1. Close the message "This domain is not registered with Tiny Cloud"
-2. Apply or note some HTML styling with the WYSYWIG buttons
-3. Click "Update" or "Publish"
-4. See the changes on the blog and in the database...
+1. Apply or note some HTML styling with the WYSYWIG buttons
+2. Click "Update" or "Publish"
+3. See the changes on the blog and in the database...
 
 | **B-17** :// `localhost/web/blog.php`
 
@@ -474,10 +518,146 @@ ls web
 
 | **17** ://phpMyAdmin **> pieces**
 
-### Medium Editor
+#### Medium Editor
 - [GitHub repo](https://github.com/yabwe/medium-editor/releases)
 - [GitHub fork](https://github.com/inkVerb/medium-editor/releases) (in case it doesn't work)
 
+The Medium editor is a simplified WISYWIG alternative to TinyMCE
+
+Let's just watch it work for now...
+
+##### Core example
+
+| **18** :
+```
+sudo cp core/08-medium-cdn.html web/medium.html && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom web/medium.html && \
+ls web
+```
+
+| **B-18** :// `localhost/web/medium.html`
+
+1. Type something, it is a very blank text editor
+2. Highlight some text to see styling options
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+*This form won't do anything, just give it a good look and try*
+
+*Note:*
+
+- *There are two `<script>` entries in the `<head>`, both make Medium work*
+- *The `selector: '#myTextarea'` JavaScript statement*
+- *The `<textarea id="myTextarea">` to connect it to the JavaScript*
+- *The JavaScript tinymce.min.js is included from a "Contend Delivery Network" (CDN), not locally:*
+```html
+src="//cdn.jsdelivr.net/npm/medium-editor@5.23.2/dist/js/medium-editor.min.js"
+```
+
+We can download the Medium editor JavaScript and host it locally...
+
+*(Note, we will use a `git clone` from the inkVerb fork, not from yabwe, so this Lesson will continue to work after the repo is updated; for a live server, we would `git clone` from the original)*
+
+| **19** :
+```
+sudo cp core/08-medium-man.html web/medium.html && \
+git clone https://github.com/inkverb/medium-editor.git && \
+sudo mkdir web/medium && \
+sudo mv medium-editor/dist/css web/medium && \
+sudo mv medium-editor/dist/js web/medium && \
+rm -rf medium-editor && \
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+*atom: Reload*
+
+- *medium.html*
+
+*Note:*
+
+- *This includes the JavaScript locally, not from a CDN:*
+```html
+src="medium/js/medium-editor.js"
+```
+- *The Medium editor requires the entire `medium` folder to work*
+  - *located here:*
+```bash
+/var/www/html/web/medium
+```
+  - *Downloaded from here:*
+```
+https://github.com/inkverb/medium-editor
+```
+
+| **B-19** :// `localhost/web/medium.html` *(Ctrl + R to reload)*
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+##### Medium's editor in our 501 Blog
+
+| **20** :
+```
+sudo cp core/08-logincheck4-medium.in.php web/in.login_check.php && \
+sudo cp core/08-piecefunctions-medium.in.php web/in.piecefunctions.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+ls web
+```
+
+*atom: Reload*
+
+- *in.login_check.php*
+- *in.piecefunctions.php*
+
+*Note:*
+
+- *in.login_check.php*
+  - *Note the two `<script>` sections between the comments `<!-- Medium editor -->`*
+  - *These include the CSS so Medium works*
+- *in.piecefunctions.php*
+  - *This puts the JavaScript* ***after*** *our "Content" `<textarea>` HTML element*
+  - *This implements the* ***class*** *`p_content_medium` for the Medium editor JavaScript to act on*
+
+| **B-20** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+
+**Notice the text in the "Content" field has no border**
+
+- It can still be edited
+- Highlight text to see styling options
+
+*You may be interested in the following optional steps or not...*
+
+___
+> Optional: You may toy with the Medium editor
+>
+> 1. Apply or note some HTML styling with the WYSYWIG buttons
+> 2. Click "Update" or "Publish"
+> 3. See the changes on the blog and in the database...
+>
+> | **B-M1** :// `localhost/web/blog.php`
+>
+> | **M1** :> `SELECT * FROM pieces;`
+>
+> | **M1** ://phpMyAdmin **> pieces**
+>
+___
+
+##### The Medium editor is very plain
+
+*If you prefer TinyMCE as your editor, restore it...*
+
+___
+> Optional: You may restore the TinyMCE editor
+>
+> | **T1** :
+> ```
+> sudo cp core/08-logincheck3-tinymce.in.php web/in.login_check.php && \
+> sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
+> sudo chown -R www-data:www-data /var/www/html && \
+> ls web
+> ```
+>
 ___
 
 # The Take
@@ -518,6 +698,16 @@ ___
 - These use simple JavaScript
 - The ID in the JavaScript should match the ID of the `<textarea>`
 - You can download and source the .js file or use an embedded onlin/cdn link
+
+## JavaScript Tools: CDN vs Local
+- Many JavaScript tools are included off-site with a "Content Delivery Network" (CDN)
+- You can download and install those JavaScript tools, but you must:
+  - Follow instructions closely
+  - Possibly include the entire folder the JavaScript file comes in
+- Via CDN is usually faster and stays up to date
+  - But, this may require registration and could break when updated
+- Via local hosting give you more control and is likely more stable
+  - But, this can be a hassle and can make your website heavier and slower
 
 ___
 
