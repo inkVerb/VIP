@@ -66,10 +66,13 @@ You will see many tests with `} else {` options for reporting errors, this is wh
 | **1** :
 ```
 sudo cp core/01-phpget1.php web/phpget.php && \
+ls -l web
 sudo chown -R www-data:www-data /var/www/html && \
 atom web/phpget.php && \
-ls web
+ls -l web
 ```
+
+*Note the file owner of phpget.php changed from `root` to `www-data` after the `chown` command*
 
 | **B-1** :// `localhost/web/phpget.php?go=I am an apple pie`
 
@@ -77,7 +80,11 @@ ls web
 
 *Try the form a few times to see how it works*
 
-| **2** : `sudo cp core/01-phpget2.php web/phpget.php && ls web`
+*Note we don't need to `chown` file owner when copying over a file...*
+
+| **2** : `sudo cp core/01-phpget2.php web/phpget.php && ls -l web`
+
+*Note phpget.php has the same file owner as before, though we copied over it without `chown`*
 
 *atom: Reload phpget.php*
 
@@ -87,9 +94,13 @@ ls web
 
 #### `_POST`
 
-| **3** : `sudo cp core/01-phppost1.php web/phppost.php && ls web`
-
-*atom: Reload phpget.php*
+| **3** :
+```
+sudo cp core/01-phppost1.php web/phppost.php && ls web
+sudo chown -R www-data:www-data /var/www/html && \
+atom web/phppost.php && \
+ls web
+```
 
 | **B-3** :// `localhost/web/phppost.php`
 
@@ -154,13 +165,13 @@ print_r($autoArray);
 
 | **4** :
 ```
-sudo cp core/01-phparrays.php web/phppost.php && \
+sudo cp core/01-phparrays.php web/phparrays.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/01-phparrays.php && \
+atom web/phparrays.php && \
 ls web
 ```
 
-| **B-4** :// `localhost/web/phppost.php` *(Ctrl + R to reload)*
+| **B-4** :// `localhost/web/phparrays.php`
 
 #### PHP Form Method Summary
 
@@ -216,7 +227,6 @@ foreach ($array as $item) {
 | **5** :
 ```
 sudo cp core/01-phpforeach.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpforeach.php && \
 ls web
 ```
@@ -250,7 +260,7 @@ if ( Test Here ) {
 
 | **6** : `sudo cp core/01-phppost2.php web/phppost.php && ls web`
 
-*atom: Reload phpget.php*
+*atom: Reload phppost.php*
 
 | **B-6** :// `localhost/web/phppost.php` (Same)
 
@@ -260,7 +270,7 @@ if ( Test Here ) {
 
 | **7** : `sudo cp core/01-phppost3.php web/phppost.php && ls web`
 
-*atom: Reload phpget.php*
+*atom: Reload phppost.php*
 
 | **B-7** :// `localhost/web/phppost.php` (Same)
 
@@ -268,7 +278,7 @@ if ( Test Here ) {
 
 | **8** : `sudo cp core/01-phppost4.php web/phppost.php && ls web`
 
-*atom: Reload phpget.php*
+*atom: Reload phppost.php*
 
 | **B-8** :// `localhost/web/phppost.php` (Same)
 
@@ -276,7 +286,7 @@ if ( Test Here ) {
 
 | **9** : `sudo cp core/01-phppost5.php web/phppost.php && ls web`
 
-*atom: Reload phpget.php*
+*atom: Reload phppost.php*
 
 | **B-9** :// `localhost/web/phppost.php` (Same)
 
@@ -284,7 +294,7 @@ if ( Test Here ) {
 
 | **10** : `sudo cp core/01-phppost6.php web/phppost.php && ls web`
 
-*atom: Reload phpget.php*
+*atom: Reload phppost.php*
 
 | **B-10** :// `localhost/web/phppost.php` (Same)
 
@@ -314,6 +324,8 @@ $Variable = 'The number is ' . ( $Some_Variable == 5 ? 'five' : 'not five') . 't
 *Review the diagram above along side the following two steps...*
 
 | **11** : `sudo cp core/01-phppost7.php web/phppost.php && ls web`
+
+*atom: Reload phppost.php*
 
 | **B-11** :// `localhost/web/phppost.php` (Same)
 
@@ -419,6 +431,8 @@ sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpregex1.php && \
 ls web
 ```
+
+*atom: Reload phppost.php*
 
 | **B-12** :// `localhost/web/phppost.php` (Same)
 
@@ -618,7 +632,6 @@ echo $someVariable;
 | **15** :
 ```
 sudo cp core/01-phpfunction1.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpfunction1.php && \
 ls web
 ```
@@ -630,7 +643,6 @@ ls web
 | **16** :
 ```
 sudo cp core/01-phpfunction2.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpfunction2.php && \
 ls web
 ```
@@ -642,7 +654,6 @@ ls web
 | **17** :
 ```
 sudo cp core/01-phpfunction3.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpfunction3.php && \
 ls web
 ```
@@ -654,7 +665,6 @@ ls web
 | **18** :
 ```
 sudo cp core/01-phpfunction4.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpfunction4.php && \
 ls web
 ```
@@ -666,7 +676,6 @@ ls web
 | **19** :
 ```
 sudo cp core/01-phpfunction5.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpfunction5.php && \
 ls web
 ```
@@ -683,7 +692,6 @@ ls web
 | **20** :
 ```
 sudo cp core/01-phpfunction6.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpfunction6.php && \
 ls web
 ```
@@ -748,9 +756,7 @@ include ('./in.file.php');
 sudo cp core/01-phpinclude.in.php web/in.phppost.php && \
 sudo cp core/01-phpinclude.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/in.phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
-atom core/01-phpinclude.php && \
+atom web/in.phppost.php core/01-phpinclude.php && \
 ls web
 ```
 
@@ -781,7 +787,6 @@ echo CONSTANT_NAME;
 | **22** :
 ```
 sudo cp core/01-phpconstant1.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpconstant1.php && \
 ls web
 ```
@@ -797,9 +802,7 @@ ls web
 sudo cp core/01-phpconstant2.in.php web/in.config.php && \
 sudo cp core/01-phpconstant2.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/in.config.php && \
-sudo chown -R www-data:www-data /var/www/html && \
-atom core/01-phpconstant2.php && \
+atom web/in.config.php core/01-phpconstant2.php && \
 ls web
 ```
 
@@ -874,7 +877,6 @@ ls web
 | **27** :
 ```
 sudo cp core/01-phpfileput2.php web/phpfileput.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
@@ -897,7 +899,6 @@ EOF;
 | **29** :
 ```
 sudo cp core/01-phpfileput3.php web/phpfileput.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
@@ -922,7 +923,6 @@ EOF;
 | **31** :
 ```
 sudo cp core/01-phpfileput4.php web/phpfileput.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 ls web
 ```
 
