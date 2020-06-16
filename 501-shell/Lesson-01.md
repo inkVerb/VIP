@@ -68,7 +68,7 @@ You will see many tests with `} else {` options for reporting errors, this is wh
 sudo cp core/01-phpget1.php web/phpget.php && \
 ls -l web
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/phpget.php && \
+atom core/01-phpget1.php && \
 ls -l web
 ```
 
@@ -88,7 +88,7 @@ ls -l web
 
 *atom: Reload phpget.php*
 
-| **B-2** :// `localhost/web/phpget.php?go=over there&h=6-hour&time=5:22`
+| **B-2** :// `localhost/web/phpget.php?go=over there&h=6-hour&time=8:22`
 
 *Try the form a few times to see how it works*
 
@@ -96,9 +96,9 @@ ls -l web
 
 | **3** :
 ```
-sudo cp core/01-phppost1.php web/phppost.php && ls web
+sudo cp core/01-phppost1.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/phppost.php && \
+atom core/01-phppost1.php web/phppost.php && \
 ls web
 ```
 
@@ -167,7 +167,7 @@ print_r($autoArray);
 ```
 sudo cp core/01-phparrays.php web/phparrays.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/phparrays.php && \
+atom core/01-phparrays.php && \
 ls web
 ```
 
@@ -258,9 +258,12 @@ if ( Test Here ) {
 
 *Review the diagrams above along side the following few steps...*
 
-| **6** : `sudo cp core/01-phppost2.php web/phppost.php && ls web`
-
-*atom: Reload phppost.php*
+| **6** :
+```
+sudo cp core/01-phppost2.php web/phppost.php && \
+atom core/01-phppost2.php && \
+ls web
+```
 
 | **B-6** :// `localhost/web/phppost.php` (Same)
 
@@ -268,41 +271,51 @@ if ( Test Here ) {
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-| **7** : `sudo cp core/01-phppost3.php web/phppost.php && ls web`
-
-*atom: Reload phppost.php*
+| **7** :
+```
+sudo cp core/01-phppost3.php web/phppost.php && \
+atom core/01-phppost3.php && \
+ls web
+```
 
 | **B-7** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **8** : `sudo cp core/01-phppost4.php web/phppost.php && ls web`
-
-*atom: Reload phppost.php*
+| **8** :
+```
+sudo cp core/01-phppost4.php web/phppost.php && \
+atom core/01-phppost4.php && \
+ls web
+```
 
 | **B-8** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **9** : `sudo cp core/01-phppost5.php web/phppost.php && ls web`
-
-*atom: Reload phppost.php*
+| **9** :
+```
+sudo cp core/01-phppost5.php web/phppost.php && \
+atom core/01-phppost5.php && \
+ls web
+```
 
 | **B-9** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **10** : `sudo cp core/01-phppost6.php web/phppost.php && ls web`
-
-*atom: Reload phppost.php*
+| **10** :
+```
+sudo cp core/01-phppost6.php web/phppost.php && \
+atom core/01-phppost6.php && \
+ls web
+```
 
 | **B-10** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-#### Ternary Statements
-
-**[Ternary Statement](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)**
+#### [Ternary Statements](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)
 ```php
 $Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';
 
@@ -323,9 +336,12 @@ $Variable = 'The number is ' . ( $Some_Variable == 5 ? 'five' : 'not five') . 't
 
 *Review the diagram above along side the following two steps...*
 
-| **11** : `sudo cp core/01-phppost7.php web/phppost.php && ls web`
-
-*atom: Reload phppost.php*
+| **11** :
+```
+sudo cp core/01-phppost7.php web/phppost.php && \
+atom core/01-phppost7.php && \
+ls web
+```
 
 | **B-11** :// `localhost/web/phppost.php` (Same)
 
@@ -427,12 +443,9 @@ preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variabl
 | **12** :
 ```
 sudo cp core/01-phpregex1.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpregex1.php && \
 ls web
 ```
-
-*atom: Reload phppost.php*
 
 | **B-12** :// `localhost/web/phppost.php` (Same)
 
@@ -500,7 +513,6 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 | **13** :
 ```
 sudo cp core/01-phpregex2.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpregex2.php && \
 ls web
 ```
@@ -512,7 +524,6 @@ ls web
 | **14** :
 ```
 sudo cp core/01-phpregex3.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpregex3.php && \
 ls web
 ```
@@ -860,7 +871,7 @@ file_put_contents('./file/location', 'File content string');
 ```
 sudo cp core/01-phpfileput1.php web/phpfileput.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/phpfileput.php && \
+atom core/01-phpfileput1.php && \
 ls web
 ```
 
@@ -877,10 +888,9 @@ ls web
 | **27** :
 ```
 sudo cp core/01-phpfileput2.php web/phpfileput.php && \
+atom core/01-phpfileput2.php && \
 ls web
 ```
-
-*atom: Reload phpfileput.php*
 
 | **B-27** :// `localhost/web/phpfileput.php` (Same)
 
@@ -899,10 +909,9 @@ EOF;
 | **29** :
 ```
 sudo cp core/01-phpfileput3.php web/phpfileput.php && \
+atom core/01-phpfileput3.php && \
 ls web
 ```
-
-*atom: Reload phpfileput.php*
 
 *Note how the heredoc was made for later reference:*
 
@@ -923,10 +932,9 @@ EOF;
 | **31** :
 ```
 sudo cp core/01-phpfileput4.php web/phpfileput.php && \
+atom core/01-phpfileput4.php && \
 ls web
 ```
-
-*atom: Reload phpfileput.php*
 
 *Note the use of `'single quotes'` affect the `$Variable` in the heredoc:*
 

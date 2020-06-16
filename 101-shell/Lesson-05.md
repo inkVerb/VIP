@@ -128,7 +128,8 @@ ___
 
 myOutput="$(cat $1 | sed "s/$2/$3/g")"
 
-echo "$myOutput"
+echo "This was the CS output:
+$myOutput"
 
 # v01
 ```
