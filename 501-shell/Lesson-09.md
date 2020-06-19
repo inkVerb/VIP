@@ -25,7 +25,7 @@ ___
 
 We want to review a list of our pieces
 
-### Cleanup and prepare our "Pieces" page framework
+### Cleanup header/footer and prepare our "Pieces" page framework
 
 | **1** :
 ```
@@ -68,7 +68,7 @@ ls web
 ***Note our new file:***
 
 - *pieces.php*
-  - *Lists all pieces*
+  - *Lists all pieces in a `while` loop and `<table>`*
   - *We will add more later*
 
 | **B-1** :// `localhost/web/pieces.php` (It will redirect to webapp.php)
@@ -88,7 +88,7 @@ Password: My#1Password
 
 *Note the title of the web browser is "Editor" because we set the `<title>` tag*
 
-*Review "pieces" on our SQL table...*
+*Review pieces on our SQL table...*
 
 | **2** ://phpMyAdmin **> pieces**
 
@@ -96,7 +96,7 @@ Password: My#1Password
 
 That's quite simple, let's expand...
 
-### More useful data and editable fields
+### More useful data, actions, and editable fields
 
 | **3** :
 ```
@@ -140,7 +140,7 @@ ls web
 
 *Note the title of the web browser is "Editor" because we set the `<title>` tag*
 
-*Review "pieces" on our SQL table...*
+*Observe changes to pieces on our SQL table...*
 
 | **3** ://phpMyAdmin **> pieces**
 
@@ -152,10 +152,116 @@ ls web
 
 | **4** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
 
+While this works, we don't want a GET URL to be this powerful, use POST instead...
+
+### Require POST for our actions
+
+| **5** :
+```
+sudo cp core/09-pieces3.php web/pieces.php && \
+sudo cp core/09-postfunctions.in.php web/in.postfunctions.php && \
+sudo cp core/09-style.css web/style.css && \
+sudo cp core/09-delete3.php web/delete.php && \
+sudo cp core/09-undelete3.php web/undelete.php && \
+sudo cp core/09-empty_delete3.php web/empty_delete.php && \
+sudo cp core/09-newpublish3.php web/newpublish.php && \
+sudo cp core/09-unpublish3.php web/unpublish.php && \
+sudo cp core/09-republish3.php web/republish.php && \
+sudo cp core/09-pagify3.php web/pagify.php && \
+sudo cp core/09-postify3.php web/postify.php && \
+atom core/09-pieces3.php web/in.postfunctions.php web/style.css core/09-delete3.php core/09-undelete3.php core/09-empty_delete3.php core/09-newpublish3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
+ls web
+```
+
+*Note pieces.php:*
+
+- *We added an `include` for in.postfunctions.php*
+- *We use a `postform()` function rather than links*
+
+*Note in.postfunctions.php:*
+
+- *We created the `postform()` function*
+- *The `style=` attribute embedded inside the `<form>` tag is necessary for `float:` to work*
+
+*Note style.css:*
+
+- *We added `.postform` classes*
+
+*Note these validate POST instead of GET, no other differences:*
+
+- *delete.php*
+- *undelete.php*
+- *empty_delete.php*
+- *unpublish.php*
+- *republish.php*
+- *pagify.php*
+- *postify.php*
+- *newpublish.php*
 
 
+| **B-5** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+*Note the title of the web browser is "Editor" because we set the `<title>` tag*
+
+*Observe changes to pieces on our SQL table...*
+
+| **5** ://phpMyAdmin **> pieces**
+
+| **5** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
+
+| **6** ://phpMyAdmin **> publications**
+
+| **6** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
+
+### Trash page with restore and bulk empty
+
+| **7** :
+```
+sudo cp core/09-pieces4.php web/pieces.php && \
+sudo cp core/09-trash.php web/trash.php && \
+sudo cp core/09-undelete_trash.php web/undelete_trash.php && \
+sudo cp core/09-empty_delete_trash.php web/empty_delete_trash.php && \
+sudo cp core/09-empty_all_trash.php web/empty_all_trash.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-pieces4.php web/trash.php web/undelete_trash.php web/empty_delete_trash.php web/empty_all_trash.php && \
+ls web
+```
+
+*Note pieces.php:*
+
+- *Now, there is a link to "Trash"*
+
+*Note trash.php:*
+
+- *This is similar to pieces.php, but toned down*
+
+*Note these redirect to trash.php, not pieces.php:*
+
+- *undelete_trash.php*
+- *empty_delete_trash.php*
+
+*Note empty_all_trash.php:*
+
+- *This has a `while` loop to delete each "dead" piece*
 
 
+| **B-7** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+*Note the title of the web browser is "Editor" because we set the `<title>` tag*
+
+*Review "pieces" on our SQL table...*
+
+| **7** ://phpMyAdmin **> pieces**
+
+| **7** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
+
+| **8** ://phpMyAdmin **> publications**
+
+| **8** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
 
 
 
