@@ -86,8 +86,6 @@ Password: My#1Password
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-*Note the title of the web browser is "Editor" because we set the `<title>` tag*
-
 *Review pieces on our SQL table...*
 
 | **2** ://phpMyAdmin **> pieces**
@@ -138,8 +136,6 @@ ls web
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-*Note the title of the web browser is "Editor" because we set the `<title>` tag*
-
 *Observe changes to pieces on our SQL table...*
 
 | **3** ://phpMyAdmin **> pieces**
@@ -160,7 +156,7 @@ While this works, we don't want a GET URL to be this powerful, use POST instead.
 ```
 sudo cp core/09-pieces3.php web/pieces.php && \
 sudo cp core/09-postfunctions.in.php web/in.postfunctions.php && \
-sudo cp core/09-style.css web/style.css && \
+sudo cp core/09-style3.css web/style.css && \
 sudo cp core/09-delete3.php web/delete.php && \
 sudo cp core/09-undelete3.php web/undelete.php && \
 sudo cp core/09-empty_delete3.php web/empty_delete.php && \
@@ -169,7 +165,7 @@ sudo cp core/09-unpublish3.php web/unpublish.php && \
 sudo cp core/09-republish3.php web/republish.php && \
 sudo cp core/09-pagify3.php web/pagify.php && \
 sudo cp core/09-postify3.php web/postify.php && \
-atom core/09-pieces3.php web/in.postfunctions.php web/style.css core/09-delete3.php core/09-undelete3.php core/09-empty_delete3.php core/09-newpublish3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
+atom core/09-pieces3.php web/in.postfunctions.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-empty_delete3.php core/09-newpublish3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
 ls web
 ```
 
@@ -203,8 +199,6 @@ ls web
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-*Note the title of the web browser is "Editor" because we set the `<title>` tag*
-
 *Observe changes to pieces on our SQL table...*
 
 | **5** ://phpMyAdmin **> pieces**
@@ -220,12 +214,12 @@ ls web
 | **7** :
 ```
 sudo cp core/09-pieces4.php web/pieces.php && \
-sudo cp core/09-trash.php web/trash.php && \
+sudo cp core/09-trash4.php web/trash.php && \
 sudo cp core/09-undelete_trash.php web/undelete_trash.php && \
 sudo cp core/09-empty_delete_trash.php web/empty_delete_trash.php && \
 sudo cp core/09-empty_all_trash.php web/empty_all_trash.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces4.php web/trash.php web/undelete_trash.php web/empty_delete_trash.php web/empty_all_trash.php && \
+atom core/09-pieces4.php core/09-trash4.php web/undelete_trash.php web/empty_delete_trash.php web/empty_all_trash.php && \
 ls web
 ```
 
@@ -251,8 +245,6 @@ ls web
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-*Note the title of the web browser is "Editor" because we set the `<title>` tag*
-
 *Review "pieces" on our SQL table...*
 
 | **7** ://phpMyAdmin **> pieces**
@@ -263,14 +255,124 @@ ls web
 
 | **8** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
 
+### Style & JavaScript to hide some of our meta
 
+| **9** :
+```
+sudo cp core/09-pieces5.php web/pieces.php && \
+sudo cp core/09-trash5.php web/trash.php && \
+sudo cp core/09-style5.css web/style.css && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-pieces5.php core/09-trash5.php core/09-style3.css && \
+ls web
+```
 
+*Note pieces.php & trash.php:*
 
+- *Added "contentlib" class to the table, matching the stylesheet to clean up clutter*
+- *Added `$table_row_color` and a ternary statement to toggle between 'blues' and 'shady'*
+- *Added `$show_div_count` counter to create unique ID and JavaScript function names to match*
+- *Added unique JavaScript per row; this hides/shows action links*
+- *trash.php made a double-opt-in via JavaScript to "Empty all trash"*
+  - *Not about convenience, but "nuke buttons" left uncovered*
 
+*Note style.css under "Content library":*
 
+- *Made some parts of our `<table>` absolute so showing/hiding won't change the size of the table*
+  - *Try deleting any `table` elements in style.css to see what happens without it*
+- *Added several statements to control link colors (`<a>` elements)*
+- *Cleaned up clutter via: alignments, colors, and font styles*
+  - *Colors for the alternating `<tr>` row classes of 'blues' and 'shady'*
+  - *Removed borders*
+  - *Font styles to make information unique and/or out of the spotlight*
+- *This isn't about beauty as much as it is about being more readable*
+  - *This is called "UX theory" (User eXperience theory)*
 
-Eventually use [htmldiff.js](https://github.com/tnwinc/htmldiff.js) to compare revision history
-- [https://ourcodeworld.com/articles/read/653/how-to-diff-html-compare-and-highlight-differences-and-generate-output-in-html-with-javascript]
+| **B-9** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+In Atom:
+
+- Put style5.css and pieces5.php in spit view
+- Double click `.classes` in the .css to see where they appear in the .php
+
+### Revision history
+
+| **10** :
+```
+sudo cp core/09-pieces6.php web/pieces.php && \
+sudo cp core/09-hist1.php web/hist.php && \
+sudo cp core/09-htmldiff.js web/htmldiff.js && \
+sudo cp core/09-style6.css web/style.css && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-pieces6.php core/09-hist1.php core/09-style6.css && \
+ls web
+```
+
+*Note pieces.php:*
+
+- *Adds a `<a class="purple"` links in the `'published'` and `'drafting'` `if` options*
+
+*Note style.css:*
+
+- *Added a `.purple` class*
+- *Added a section for "htmldiff.js"*
+
+| **B-10** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+Hover over a "Status" section and click "history", it should take you somewhere like...
+
+| **B-11** :// `localhost/web/hist.php?p=3` (ID `3` is only one example, it could be any number)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+*...This is using our htmldiff.js framework*
+
+*(If you don't see any posts with changes, edit one, then "Update" for the differences)*
+
+*Note: hist.php:*
+
+- *It requires a GET argument*
+- *It creates content using [heredocs](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md#ii-heredoc-cat-eof), which we saw in 401-11*
+  - *Our delimeter is "EOP"*
+  - *There are neither spaces before nor comments after the closing delimeter `EOP;`!!*
+  - *Syntax for variable: `$Variable = <<<EOP`*
+- *It implements htmldiff ([see the repo](https://github.com/JesseSteele/htmldiff))*
+- *We use a "Non-Breaking SPace" in "`<h2>Changes<br>&amp;nbsp;`"*
+  - *This prevents misalignment below since the other `<h2>` headings have two lines*
+- *It fetches the two most recent pieces from the `publication_history` table*
+  - SQL tip:
+  - Most recent: `... ORDER BY id DESC LIMIT 1`
+  - Second-most recent: `... ORDER BY id DESC LIMIT 1,1`
+
+| **11** ://phpMyAdmin **> publication_history** > "Sort by key: PRIMARY (DESC)"
+
+| **12** :> `SELECT id, piece_id, title, slug, date_updated FROM publication_history ORDER BY id DESC LIMIT 1;`
+
+| **13** :> `SELECT id, piece_id, title, slug, date_updated FROM publication_history ORDER BY id DESC LIMIT 1,1;`
+
+This "History" view is nice, but it could be much more functional...
+
+### Revision history with more options
+
+| **14** :
+```
+sudo cp core/09-hist2.php web/hist.php && \
+atom core/09-hist1.php
+```
+
+*Note hist.php:*
+
+- *We changed our header hierarchy since adding an `<h2>` statement*
+  - *This bumped our old htmldiff DOM `<h2>` tags to `<h3>`*
+  - *It is VERY important to preserve header hierarchy, starting with `<h1>` and going down*
+  - *Using header tags merely for size or skipping tag numbers is very bad, don't do that*
+
+| **B-11** :// `localhost/web/hist.php?p=3` (or whatever ID, Ctrl + R to reload)
+
 ___
 
 # The Take
