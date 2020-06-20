@@ -353,9 +353,10 @@ WHERE p2.id IS NULL;
 | **12** :
 ```
 sudo cp core/08-blog.php web/blog.php && \
+sudo cp core/08-piece.php web/piece.php && \
 sudo cp core/08-logincheck2.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/blog.php && \
+atom web/blog.php web/piece.php && \
 ls web
 ```
 
@@ -372,6 +373,10 @@ ls web
   - *`htmlspecialchars($value);` converts all HTML characters to their HTML enity code*
 - *blog.php*
   - *We reverse our SQL sanitation with `htmlspecialchars_decode()`*
+- *piece.php*
+  - *Like a single-piece viewer of blog.php*
+  - *Logic accepts both `s=SLUG` and `p=piece_ID` GET arguments*
+  - *Not restricted to SQL `type='post'`; this can also show pages*
 
 | **B-12** :// `localhost/web/blog.php`
 

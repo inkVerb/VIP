@@ -304,15 +304,26 @@ In Atom:
 sudo cp core/09-pieces6.php web/pieces.php && \
 sudo cp core/09-hist1.php web/hist.php && \
 sudo cp core/09-htmldiff.js web/htmldiff.js && \
+sudo cp core/09-editprocess.in.php web/in.editprocess.php && \
+sudo cp core/09-revert.php web/revert.php && \
 sudo cp core/09-style6.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces6.php core/09-hist1.php core/09-style6.css && \
+atom core/09-pieces6.php core/09-hist1.php web/in.editprocess.php web/revert.php core/09-style6.css && \
 ls web
 ```
 
 *Note pieces.php:*
 
 - *Adds a `<a class="purple"` links in the `'published'` and `'drafting'` `if` options*
+
+*Note in.editprocess.php:*
+
+- *It accepts both GET and `$_SESSION['piece_id']` for opening a piece*
+  - *The SESSION method would open values from the `publication_history` SQL table*
+
+*Note revert.php:*
+
+- *This simply sets `$_SESSION['piece_id']`, then redirects to edit.php*
 
 *Note style.css:*
 
@@ -341,7 +352,7 @@ Hover over a "Status" section and click "history", it should take you somewhere 
   - *There are neither spaces before nor comments after the closing delimeter `EOP;`!!*
   - *Syntax for variable: `$Variable = <<<EOP`*
 - *It implements htmldiff ([see the repo](https://github.com/JesseSteele/htmldiff))*
-- *We use a "Non-Breaking SPace" in "`<h2>Changes<br>&amp;nbsp;`"*
+- *We use a "Non-Breaking SPace" in "`<h2>Changes<br>&amp;nbsp;...`"*
   - *This prevents misalignment below since the other `<h2>` headings have two lines*
 - *It fetches the two most recent pieces from the `publication_history` table*
   - SQL tip:
@@ -350,9 +361,13 @@ Hover over a "Status" section and click "history", it should take you somewhere 
 
 | **11** ://phpMyAdmin **> publication_history** > "Sort by key: PRIMARY (DESC)"
 
-| **12** :> `SELECT id, piece_id, title, slug, date_updated FROM publication_history ORDER BY id DESC LIMIT 1;`
+*Next, `id=3` is just an example, you can change it to another ID, such as what works from `hist.php?p=` if this doesn't...*
 
-| **13** :> `SELECT id, piece_id, title, slug, date_updated FROM publication_history ORDER BY id DESC LIMIT 1,1;`
+| **12** :> `SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1;`
+
+*...Note the `id`...*
+
+| **13** :> `SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1,1;`
 
 This "History" view is nice, but it could be much more functional...
 
@@ -361,15 +376,26 @@ This "History" view is nice, but it could be much more functional...
 | **14** :
 ```
 sudo cp core/09-hist2.php web/hist.php && \
-atom core/09-hist1.php
+atom core/09-hist2.php
 ```
 
 *Note hist.php:*
 
+- *Our logic accepts an argument for:*
+  - *The current draft (`p=ID`)*
+  - *The most recent publication (`r=ID`)*
+  - *Past publications  (`h=ID3&c=ID2`)*
+  - *Each set of logic sets the same values different ways as needed*
+- *A revision history list appears at the bottom*
+  - *Note how the `while` loop preserves the previous value:*
+```php
+$old_id = $new_id;
+$new_id = $row[0];
+```
+  - *Think creatively like this and you can solve many problems simply*
 - *We changed our header hierarchy since adding an `<h2>` statement*
   - *This bumped our old htmldiff DOM `<h2>` tags to `<h3>`*
   - *It is VERY important to preserve header hierarchy, starting with `<h1>` and going down*
-  - *Using header tags merely for size or skipping tag numbers is very bad, don't do that*
 
 | **B-11** :// `localhost/web/hist.php?p=3` (or whatever ID, Ctrl + R to reload)
 
