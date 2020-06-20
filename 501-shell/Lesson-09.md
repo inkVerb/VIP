@@ -314,7 +314,7 @@ ls web
 
 *Note pieces.php:*
 
-- *Adds a `<a class="purple"` links in the `'published'` and `'drafting'` `if` options*
+- *Adds a `<a class="purple"` links in the `'published'` and `'redrafting'` `if` options*
 
 *Note in.editprocess.php:*
 
