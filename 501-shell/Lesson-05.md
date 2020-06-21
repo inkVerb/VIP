@@ -50,7 +50,7 @@ RewriteRule ^/?([a-zA-Z0-9_]+)$ pretty_page.php?n=$1 [L]
 sudo cp core/05-pretty1.php web/pretty_page.php && \
 sudo cp core/05-htaccess1 /var/www/html/web/.htaccess && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/pretty_page.php /var/www/html/web/.htaccess && \
+atom core/05-pretty1.php core/05-htaccess1 && \
 ls web
 ```
 
@@ -89,12 +89,9 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
 ```
 sudo cp core/05-htaccess2 /var/www/html/web/.htaccess && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/05-htaccess2 && \
 ls web
 ```
-
-*atom: Reload*
-
-- *.htaccess*
 
 | **B-2** :// `localhost/web/My_Long_Name`
 
@@ -107,14 +104,9 @@ ls web
 sudo cp core/05-pretty3.php web/pretty_page.php && \
 sudo cp core/05-htaccess3 /var/www/html/web/.htaccess && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/05-pretty3.php core/05-htaccess3 && \
 ls web
 ```
-
-*atom: Reload*
-
-- *.htaccess*
-- *pretty_page.php*
-
 *Notice in the RegEx, this requies a `/` in the middle, otherwise it won't work...*
 
 | **B-3a** :// `localhost/web/My_Long_Name`
@@ -134,13 +126,9 @@ ls web
 sudo cp core/05-pretty4.php web/pretty_page.php && \
 sudo cp core/05-htaccess4 /var/www/html/web/.htaccess && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/05-pretty4.php core/05-htaccess4 && \
 ls web
 ```
-
-*atom: Reload*
-
-- *.htaccess*
-- *pretty_page.php*
 
 *Notice in the RegEx, this allows a `/` in the middle, but it isn't required...*
 
@@ -218,12 +206,9 @@ Without this, a trailing slash with nothing after could trigger a false GET argu
 ```
 sudo cp core/05-htaccess5 /var/www/html/web/.htaccess && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/05-htaccess5 && \
 ls web
 ```
-
-*atom: Reload*
-
-- *.htaccess*
 
 *...Now, RewriteMod will simply remove the trailing slash `/`, not get fooled by it...*
 

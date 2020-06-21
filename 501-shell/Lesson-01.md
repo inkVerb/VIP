@@ -86,8 +86,6 @@ ls -l web
 
 *Note phpget.php has the same file owner as before, though we copied over it without `chown`*
 
-*atom: Reload phpget.php*
-
 | **B-2** :// `localhost/web/phpget.php?go=over there&h=6-hour&time=8:22`
 
 *Try the form a few times to see how it works*
@@ -98,7 +96,7 @@ ls -l web
 ```
 sudo cp core/01-phppost1.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/01-phppost1.php web/phppost.php && \
+atom core/01-phppost1.php && \
 ls web
 ```
 
@@ -316,6 +314,7 @@ ls web
 *Try the form and developer view*
 
 #### [Ternary Statements](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)
+
 ```php
 $Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';
 
@@ -345,7 +344,61 @@ ls web
 
 | **B-11** :// `localhost/web/phppost.php` (Same)
 
-*Try the form and developer view*
+*Try the form and developer view with Ctrl + C*
+
+*Let's try some simple replacements...*
+
+#### RegEx Replacement & Arguments
+
+**RegEx arguments come from `(parentheses)`:**
+```regex
+([something_one])...([something_two]), '$1...$2'
+```
+
+**PHP examples**
+```php
+// Syntax
+$result = str_replace('foo','bar',$string); // 'foo' to 'bar', RegEx not allowed
+$result = preg_replace($RegEx,$RegEx,$string); // Same, but allows RegEx
+
+// Simple RegEx
+$alphbt = preg_replace("/[a-z]/",'z',$alphbt); // lowercase to 'z'
+$alphbt = preg_replace("/[A-Z]/",'Z',$alphbt); // uppercase to 'Z'
+$number = preg_replace('/[0-9]/','#',$number); // numbers to '#'
+
+// 1st alphanumeric set becomes $1; 2nd becomes $2
+// '_dogfish_' to '_GoldFish_', preserving what is before and after
+$argmnt = preg_replace('/([a-zA-Z0-9]$)+_dogfish_+([a-zA-Z0-9])/','$1_GoldFish_$2',$argmnt);
+// The $ in the first part makes sure the whole word is preserved
+```
+
+*Look at this example...*
+
+| **12** :
+```
+sudo cp core/01-phpreplace.php web/phpreplace.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/01-phpreplace.php && \
+ls web
+```
+
+**Note this converts dashes from common misuse to proper:**
+```php
+/*
+** em-dash: (long)
+** en-dash: (mid)
+** hyphen: (short)
+** These can be difficult to type, so we will fix them on the back end
+*/
+$dash = preg_replace('/([0-9]$)+-+([0-9])/','$1–$2',$dash); // to en-dash
+$dash = str_replace(' -- ',' – ',$dash); // to en-dash
+$dash = str_replace('---','—',$dash); // to em-dash, someone made certain
+$dash = str_replace('--','—',$dash); // to em-dash
+```
+
+| **B-12** :// `localhost/web/phpreplace.php`
+
+*Try matching characters and watch them get replaced*
 
 #### FYI Reference: Useful PHP Tests & Functions
 
@@ -398,7 +451,7 @@ exit(header("Location: to_page.php"));
 2. Sanitize second
 3. Escape before using
 
-#### Know the Datatype!
+#### Know the datatype!
 *A "string" is a "datatype", which we looked at in [Shell 401 Lesson 6](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)*
 
 ##### Four Important Datatypes in PHP:
@@ -426,28 +479,28 @@ filter_var($Variable, FILTER_VALIDATE_INT)
 ( strlen($value) <= 128 )
 
 // Test a number with RegEx (6-32 characters)
-preg_match('/^[0-9]{6,32}$/i', $Variable)
+preg_match('/[0-9]{6,32}$/i', $Variable)
 
 // Test for letters wtih RegEx, (any case, 6-32 characters)
-preg_match('/^[a-zA-Z]{6,32}$/i', $Variable)
+preg_match('/[a-zA-Z]{6,32}$/i', $Variable)
 
 // Test for alphanumeric characters or underscore wtih RegEx, (any case, any length)
 preg_match('/[a-zA-Z0-9_]$/i', $Variable)
 
 // Test for password (6-32 characters, 1 uppercase, 1 lowercase, 1 number, and allow special characters: ! @ & # $ %)
-preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variable)
+preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variable)
 ```
 
 *Review the diagram above along side the following two steps...*
 
-| **12** :
+| **13** :
 ```
 sudo cp core/01-phpregex1.php web/phppost.php && \
 atom core/01-phpregex1.php && \
 ls web
 ```
 
-| **B-12** :// `localhost/web/phppost.php` (Same)
+| **B-13** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -510,25 +563,25 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 
 *Note how `preg_replace()` and `strtolower()` are used to sanitize the values...*
 
-| **13** :
+| **14** :
 ```
 sudo cp core/01-phpregex2.php web/phppost.php && \
 atom core/01-phpregex2.php && \
 ls web
 ```
 
-| **B-13** :// `localhost/web/phppost.php` (Same)
+| **B-14** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **14** :
+| **15** :
 ```
 sudo cp core/01-phpregex3.php web/phppost.php && \
 atom core/01-phpregex3.php && \
 ls web
 ```
 
-| **B-14** :// `localhost/web/phppost.php` (Same)
+| **B-15** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -640,21 +693,10 @@ echo $someVariable;
 
 *Review the diagrams above along side the following few steps...*
 
-| **15** :
+| **16** :
 ```
 sudo cp core/01-phpfunction1.php web/phppost.php && \
 atom core/01-phpfunction1.php && \
-ls web
-```
-
-| **B-15** :// `localhost/web/phppost.php` (Same)
-
-*Try the form and developer view*
-
-| **16** :
-```
-sudo cp core/01-phpfunction2.php web/phppost.php && \
-atom core/01-phpfunction2.php && \
 ls web
 ```
 
@@ -664,8 +706,8 @@ ls web
 
 | **17** :
 ```
-sudo cp core/01-phpfunction3.php web/phppost.php && \
-atom core/01-phpfunction3.php && \
+sudo cp core/01-phpfunction2.php web/phppost.php && \
+atom core/01-phpfunction2.php && \
 ls web
 ```
 
@@ -675,8 +717,8 @@ ls web
 
 | **18** :
 ```
-sudo cp core/01-phpfunction4.php web/phppost.php && \
-atom core/01-phpfunction4.php && \
+sudo cp core/01-phpfunction3.php web/phppost.php && \
+atom core/01-phpfunction3.php && \
 ls web
 ```
 
@@ -686,12 +728,23 @@ ls web
 
 | **19** :
 ```
+sudo cp core/01-phpfunction4.php web/phppost.php && \
+atom core/01-phpfunction4.php && \
+ls web
+```
+
+| **B-19** :// `localhost/web/phppost.php` (Same)
+
+*Try the form and developer view*
+
+| **20** :
+```
 sudo cp core/01-phpfunction5.php web/phppost.php && \
 atom core/01-phpfunction5.php && \
 ls web
 ```
 
-| **B-19** :// `localhost/web/phppost.php` (Same)
+| **B-20** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -700,14 +753,14 @@ ls web
   - "empty" error message if empty POST
   - Double-check password
 
-| **20** :
+| **21** :
 ```
 sudo cp core/01-phpfunction6.php web/phppost.php && \
 atom core/01-phpfunction6.php && \
 ls web
 ```
 
-| **B-20** :// `localhost/web/phppost.php` (Same)
+| **B-21** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -762,16 +815,16 @@ include ('./in.file.php');
 
 *Review the diagrams above along side the following two steps...*
 
-| **21** :
+| **22** :
 ```
 sudo cp core/01-phpinclude.in.php web/in.phppost.php && \
 sudo cp core/01-phpinclude.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/in.phppost.php core/01-phpinclude.php && \
+atom core/01-phpinclude.in.php core/01-phpinclude.php && \
 ls web
 ```
 
-| **B-21** :// `localhost/web/phppost.php` (Same)
+| **B-22** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -795,29 +848,29 @@ echo CONSTANT_NAME;
 
 *Review the diagrams above along side the following few steps...*
 
-| **22** :
+| **23** :
 ```
 sudo cp core/01-phpconstant1.php web/phppost.php && \
 atom core/01-phpconstant1.php && \
 ls web
 ```
 
-| **B-22** :// `localhost/web/phppost.php` (Same)
+| **B-23** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
 *...organize all this in an `include` config file...*
 
-| **23** :
+| **24** :
 ```
 sudo cp core/01-phpconstant2.in.php web/in.config.php && \
 sudo cp core/01-phpconstant2.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/in.config.php core/01-phpconstant2.php && \
+atom core/01-phpconstant2.in.php core/01-phpconstant2.php && \
 ls web
 ```
 
-| **B-23** :// `localhost/web/phppost.php` (Same)
+| **B-24** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -839,17 +892,17 @@ require_once ('footer.php');
 
 Normally, the top and bottom of a webpage are some kind of `include` of `header.php` and `footer.php` respectively
 
-| **24** :
+| **25** :
 ```
 sudo cp core/01-phpheader.in.php web/in.header.php && \
 sudo cp core/01-phpfooter.in.php web/in.footer.php && \
 sudo cp core/01-phphfconventions.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/in.header.php web/in.footer.php core/01-phphfconventions.php && \
+atom core/01-phpheader.in.php core/01-phpfooter.in.php core/01-phphfconventions.php && \
 ls web
 ```
 
-| **B-24** :// `localhost/web/phppost.php` (Same)
+| **B-25** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -867,7 +920,7 @@ file_put_contents('./file/location', 'File content string');
 
 **Simple string:**
 
-| **25** :
+| **26** :
 ```
 sudo cp core/01-phpfileput1.php web/phpfileput.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -877,26 +930,26 @@ ls web
 
 *Look over the PHP file in atom before using the browser*
 
-| **B-25** :// `localhost/web/phpfileput.php`
+| **B-26** :// `localhost/web/phpfileput.php`
 
 *See the file changes...*
 
-| **26** : `ls web && cat web/fileput.1`
+| **27** : `ls web && cat web/fileput.1`
 
 **Variables:**
 
-| **27** :
+| **28** :
 ```
 sudo cp core/01-phpfileput2.php web/phpfileput.php && \
 atom core/01-phpfileput2.php && \
 ls web
 ```
 
-| **B-27** :// `localhost/web/phpfileput.php` (Same)
+| **B-28** :// `localhost/web/phpfileput.php` (Same)
 
 *See the file changes...*
 
-| **28** : `ls web && cat web/fileput.2`
+| **29** : `ls web && cat web/fileput.2`
 
 **Heredoc:**
 
@@ -906,7 +959,7 @@ $file_text = <<<EOF
 EOF;
 ```
 
-| **29** :
+| **30** :
 ```
 sudo cp core/01-phpfileput3.php web/phpfileput.php && \
 atom core/01-phpfileput3.php && \
@@ -915,11 +968,11 @@ ls web
 
 *Note how the heredoc was made for later reference:*
 
-| **B-29** :// `localhost/web/phpfileput.php` (Same)
+| **B-30** :// `localhost/web/phpfileput.php` (Same)
 
 *See the file changes...*
 
-| **30** : `ls web && cat web/fileput.3`
+| **31** : `ls web && cat web/fileput.3`
 
 **Heredoc with `'single quotes'`:**
 
@@ -929,7 +982,7 @@ $file_text = <<<'EOF'
 EOF;
 ```
 
-| **31** :
+| **32** :
 ```
 sudo cp core/01-phpfileput4.php web/phpfileput.php && \
 atom core/01-phpfileput4.php && \
@@ -938,11 +991,11 @@ ls web
 
 *Note the use of `'single quotes'` affect the `$Variable` in the heredoc:*
 
-| **B-31** :// `localhost/web/phpfileput.php` (Same)
+| **B-32** :// `localhost/web/phpfileput.php` (Same)
 
 *See the file changes...*
 
-| **32** : `ls web && cat web/fileput.4`
+| **33** : `ls web && cat web/fileput.4`
 
 ___
 

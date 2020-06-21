@@ -23,7 +23,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 ___
 
-### Set up our editor framework
+### Set up Our Editor Framework
 
 | **1** :
 ```
@@ -31,7 +31,7 @@ sudo cp core/08-edit1.php web/edit.php && \
 sudo cp core/08-loginhead.in.php web/in.login_head.php && \
 sudo cp core/08-logincheck1.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/in.login_head.php web/in.login_check.php web/edit.php && \
+atom core/08-loginhead.in.php core/08-logincheck1.in.php core/08-edit1.php && \
 ls web
 ```
 
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `pieces` (
 
 *...Use that table by adding a "Piece" `<form>` to our "Editor" page...*
 
-### Add our `<form>` to the editor
+### Add our `<form>` to the Rditor
 
 | **3** :
 ```
@@ -108,13 +108,9 @@ sudo cp core/08-edit2.php web/edit.php && \
 sudo cp core/08-editprocess2.in.php web/in.editprocess.php && \
 sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/edit.php web/in.editprocess.php web/in.piecefunctions.php && \
+atom core/08-edit2.php core/08-editprocess2.in.php core/08-piecefunctions.in.php && \
 ls web
 ```
-
-*atom: Reload*
-
-- *edit.php*
 
 | **B-3** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 
@@ -174,7 +170,7 @@ ls web
 
 *We can only create new pieces, not update*
 
-### Add an `UPDATE` ability to our form processor
+### Add an `UPDATE` Ability to Our Form Processor
 
 **We must write the PHP script to:**
 
@@ -198,13 +194,9 @@ $last_id = $database->insert_id;
 sudo cp core/08-edit3.php web/edit.php && \
 sudo cp core/08-editprocess3.in.php web/in.editprocess.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/08-edit3.php core/08-editprocess3.in.php && \
 ls web
 ```
-
-*atom: Reload*
-
-- *edit.php*
-- *in.editprocess.php*
 
 | **B-7** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 
@@ -237,7 +229,7 @@ ls web
 
 | **8** ://phpMyAdmin **> pieces**
 
-### Add `publications` table with revision history
+### Add `publications` Table with Revision History
 
 **Workflow:**
 
@@ -251,13 +243,9 @@ ls web
 sudo cp core/08-edit4.php web/edit.php && \
 sudo cp core/08-editprocess4.in.php web/in.editprocess.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/08-edit4.php core/08-editprocess4.in.php && \
 ls web
 ```
-
-*atom: Reload*
-
-- *edit.php*
-- *in.editprocess.php*
 
 | **B-9** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 
@@ -348,7 +336,7 @@ WHERE p2.id IS NULL;
 
 *That complexity is why we put our publications and history in different tables*
 
-### View our pieces on our site
+### View Our Pieces on Our Site
 
 | **12** :
 ```
@@ -356,13 +344,9 @@ sudo cp core/08-blog.php web/blog.php && \
 sudo cp core/08-piece.php web/piece.php && \
 sudo cp core/08-logincheck2.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/blog.php web/piece.php && \
+atom core/08-blog.php core/08-piece.php core/08-logincheck2.in.php && \
 ls web
 ```
-
-*atom: Reload*
-
-- *in.login_check.php*
 
 *Note:*
 
@@ -384,7 +368,7 @@ ls web
 
 *Note how each piece entry is iterated from the loop*
 
-### HTML styling
+### HTML Styling
 
 | **B-13** :// `localhost/web/edit.php`
 
@@ -406,7 +390,7 @@ ls web
 
 | **14** ://phpMyAdmin **> pieces**
 
-### WYSIWYG editor
+### WYSIWYG Editor
 
 **What You See Is What You Get**
 
@@ -424,13 +408,13 @@ On your own, learn more about implementation at [tiny.cloud](https://www.tiny.cl
 
 Let's just watch it work...
 
-##### Core example
+##### Core Example
 
 | **15** :
 ```
 sudo cp core/08-tiny-cdn.html web/tiny.html && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/tiny.html && \
+atom core/08-tiny-cdn.html && \
 ls web
 ```
 
@@ -462,16 +446,13 @@ sudo cp core/08-tiny-man.html web/tiny.html && \
 git clone https://github.com/inkverb/tinymce-dist.git
 sudo mv tinymce-dist web/tinymce
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/08-tiny-man.html && \
 ls web
 ```
 
-*atom: Reload*
-
-- *tiny.html*
-
 *Note:*
 
-- *This includes the JavaScript locally, not from a CDN:*
+- *iny.html includes the JavaScript locally, not from a CDN:*
 ```html
 src='tinymce/tinymce.min.js'
 ```
@@ -491,26 +472,22 @@ https://github.com/tinymce/tinymce-dist
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-##### TinyMCE in our 501 Blog
+##### TinyMCE in Our 501 Blog
 
 | **17** :
 ```
 sudo cp core/08-logincheck3-tinymce.in.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/08-logincheck3-tinymce.in.php && \
 ls web
 ```
 
-*atom: Reload*
+*Note in.login_check.php:*
 
-- *in.login_check.php*
-
-*Note:*
-
-- *in.login_check.php*
-  - *Note the two `<script>` sections between the comments `<!-- TinyMCE -->`*
-  - *These include the JavaScript* ***in the header*** *so TinyMCE works*
-  - *It calls the* ***ID*** *of our "Content" `<textarea>` HTML element by `id="p_content"`*
-  - *That's it, just that simple*
+- *Note the two `<script>` sections between the comments `<!-- TinyMCE -->`*
+- *These include the JavaScript* ***in the header*** *so TinyMCE works*
+- *It calls the* ***ID*** *of our "Content" `<textarea>` HTML element by `id="p_content"`*
+- *That's it, just that simple*
 
 | **B-17** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 
@@ -532,13 +509,13 @@ The Medium editor is a simplified WISYWIG alternative to TinyMCE
 
 Let's just watch it work for now...
 
-##### Core example
+##### Core Example
 
 | **18** :
 ```
 sudo cp core/08-medium-cdn.html web/medium.html && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/medium.html && \
+atom core/08-medium-cdn.html && \
 ls web
 ```
 
@@ -574,25 +551,25 @@ sudo mv medium-editor/dist/css web/medium && \
 sudo mv medium-editor/dist/js web/medium && \
 rm -rf medium-editor && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/08-medium-man.html && \
 ls web
 ```
 
-*atom: Reload*
+*Note medium.html includes the JavaScript locally, not from a CDN:*
 
-- *medium.html*
-
-*Note:*
-
-- *This includes the JavaScript locally, not from a CDN:*
 ```html
 src="medium/js/medium-editor.js"
 ```
+
 - *The Medium editor requires the entire `medium` folder to work*
   - *located here:*
+
 ```bash
 /var/www/html/web/medium
 ```
+
   - *Downloaded from here:*
+
 ```
 https://github.com/inkverb/medium-editor
 ```
@@ -601,20 +578,16 @@ https://github.com/inkverb/medium-editor
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-##### Medium's editor in our 501 Blog
+##### Medium's Dditor in Our 501 Blog
 
 | **20** :
 ```
 sudo cp core/08-logincheck4-medium.in.php web/in.login_check.php && \
 sudo cp core/08-piecefunctions-medium.in.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/08-logincheck4-medium.in.php core/08-piecefunctions-medium.in.php && \
 ls web
 ```
-
-*atom: Reload*
-
-- *in.login_check.php*
-- *in.piecefunctions.php*
 
 *Note:*
 
@@ -649,7 +622,7 @@ ___
 >
 ___
 
-##### The Medium editor is very plain
+##### The Medium Editor Is Very Plain
 
 *If you prefer TinyMCE as your editor, restore it...*
 
@@ -660,8 +633,7 @@ ___
 > ```
 > sudo cp core/08-logincheck3-tinymce.in.php web/in.login_check.php && \
 > sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
-> sudo chown -R www-data:www-data /var/www/html && \
-> ls web
+> sudo chown -R www-data:www-data /var/www/html
 > ```
 >
 ___
@@ -717,4 +689,4 @@ ___
 
 ___
 
-#### [Lesson 9: Content Library](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)
+#### [Lesson 9: Libraries, Loops $ JSON](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)

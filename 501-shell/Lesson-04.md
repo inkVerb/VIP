@@ -52,7 +52,7 @@ sudo cp core/04-config1.in.php web/in.config.php && \
 sudo cp core/04-checks.in.php web/in.checks.php && \
 sudo cp core/04-functions.in.php web/in.functions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/install.php web/in.config.php web/in.checks.php web/in.functions.php && \
+atom core/04-install.php core/04-config1.in.php core/04-checks.in.php core/04-functions.in.php && \
 ls web
 ```
 
@@ -182,7 +182,7 @@ $epoch_simple_later = time() + (30 * 24 * 60 * 60);
 ```
 sudo cp core/04-time.php web/time.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/time.php && \
+atom core/04-time.php && \
 ls web
 ```
 
@@ -234,15 +234,11 @@ It only confirms with `true` or `false` because the hash is different each time
 sudo cp core/04-login1.php web/webapp.php && \
 sudo cp core/04-config2.in.php web/in.config.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/webapp.php && \
+atom core/04-login1.php core/04-config2.in.php && \
 ls web
 ```
 
-*atom: Reload*
-
-- *in.config.php*
-
-*In the config, note:*
+*Note in.config.php:*
 
 - *`session_start();`*
 
@@ -302,7 +298,7 @@ The `echo` message will not display, comment the `header()` line to see the mess
 ```
 sudo cp core/04-logout1.php web/logout.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/logout.php && \
+atom core/04-logout1.php && \
 ls web
 ```
 
@@ -334,11 +330,11 @@ $just_logged_out = true;
 sudo cp core/04-logout2.php web/logout.php && \
 sudo cp core/04-login2.php web/webapp.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/logout.php && \
+atom core/04-logout2.php core/04-login2.php && \
 ls web
 ```
 
-*atom: Reload*
+*Note:*
 
 - *logout.php*
 - *webapp.php*
@@ -404,10 +400,11 @@ For teaching, we will put the **user_id** as the cookie's value, but this is not
 sudo cp core/04-login3.php web/webapp.php && \
 sudo cp core/04-logout3.php web/logout.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/04-login3.php core/04-logout3.php && \
 ls web
 ```
 
-*atom: Reload*
+*Note:*
 
 - *webapp.php*
 - *logout.php*
@@ -484,7 +481,7 @@ setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 ```
 sudo cp core/04-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/account.php && \
+atom core/04-accountsettings.php && \
 ls web
 ```
 
@@ -521,7 +518,7 @@ Password: My#1Password
 ```
 sudo cp core/04-forgot.php web/forgot.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/forgot.php && \
+atom core/04-forgot.php && \
 ls web
 ```
 

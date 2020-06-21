@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 9: Content Library
+## Lesson 9: Libraries, Loops $ JSON
 
 Ready the CLI
 
@@ -25,19 +25,19 @@ ___
 
 We want to review a list of our pieces
 
-### Cleanup header/footer and prepare our "Pieces" page framework
+### Cleanup Header/Hooter and Prepare Our "Pieces" Page Framework
 
 | **1** :
 ```
 sudo cp core/09-pieces1.php web/pieces.php && \
 sudo cp core/09-logincheck.in.php web/in.login_check.php && \
 sudo cp core/09-footer.in.php web/in.footer.php && \
-sudo cp core/09-edit.php web/edit.php && \
-sudo cp core/09-blog.php web/blog.php && \
+sudo cp core/09-edit1.php web/edit.php && \
+sudo cp core/09-blog1.php web/blog.php && \
 sudo cp core/09-webapp.php web/webapp.php && \
 sudo cp core/09-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces1.php web/in.login_check.php web/in.footer.php web/edit.php web/blog.php web/webapp.php web/account.php && \
+atom core/09-pieces1.php core/09-logincheck.in.php core/09-footer.in.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-accountsettings.php && \
 ls web
 ```
 
@@ -94,7 +94,7 @@ Password: My#1Password
 
 That's quite simple, let's expand...
 
-### More useful data, actions, and editable fields
+### More Useful Data, Actions, and Editable Fields
 
 | **3** :
 ```
@@ -150,7 +150,7 @@ ls web
 
 While this works, we don't want a GET URL to be this powerful, use POST instead...
 
-### Require POST for our actions
+### Require POST for Our Actions
 
 | **5** :
 ```
@@ -165,7 +165,7 @@ sudo cp core/09-unpublish3.php web/unpublish.php && \
 sudo cp core/09-republish3.php web/republish.php && \
 sudo cp core/09-pagify3.php web/pagify.php && \
 sudo cp core/09-postify3.php web/postify.php && \
-atom core/09-pieces3.php web/in.postfunctions.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-empty_delete3.php core/09-newpublish3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
+atom core/09-pieces3.php core/09-postfunctions.in.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-empty_delete3.php core/09-newpublish3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
 ls web
 ```
 
@@ -209,7 +209,7 @@ ls web
 
 | **6** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
 
-### Trash page with restore and bulk empty
+### Trash Page with Restore and Bulk Empty
 
 | **7** :
 ```
@@ -219,7 +219,7 @@ sudo cp core/09-undelete_trash.php web/undelete_trash.php && \
 sudo cp core/09-empty_delete_trash.php web/empty_delete_trash.php && \
 sudo cp core/09-empty_all_trash.php web/empty_all_trash.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces4.php core/09-trash4.php web/undelete_trash.php web/empty_delete_trash.php web/empty_all_trash.php && \
+atom core/09-pieces4.php core/09-trash4.php core/09-undelete_trash.php core/09-empty_delete_trash.php core/09-empty_all_trash.php && \
 ls web
 ```
 
@@ -255,7 +255,7 @@ ls web
 
 | **8** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
 
-### Style & JavaScript to hide some of our meta
+### Style & JavaScript to Hide some of Our Meta
 
 | **9** :
 ```
@@ -297,18 +297,18 @@ In Atom:
 - Put style5.css and pieces5.php in spit view
 - Double click `.classes` in the .css to see where they appear in the .php
 
-### Revision history
+### Revision History
 
 | **10** :
 ```
 sudo cp core/09-pieces6.php web/pieces.php && \
 sudo cp core/09-hist1.php web/hist.php && \
 sudo cp core/09-htmldiff.js web/htmldiff.js && \
-sudo cp core/09-editprocess.in.php web/in.editprocess.php && \
+sudo cp core/09-editprocess1.in.php web/in.editprocess.php && \
 sudo cp core/09-revert.php web/revert.php && \
 sudo cp core/09-style6.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces6.php core/09-hist1.php web/in.editprocess.php web/revert.php core/09-style6.css && \
+atom core/09-pieces6.php core/09-hist1.php core/09-editprocess1.in.php core/09-revert.php core/09-style6.css && \
 ls web
 ```
 
@@ -371,7 +371,7 @@ Hover over a "Status" section and click "history", it should take you somewhere 
 
 This "History" view is nice, but it could be much more functional...
 
-### Revision history with more options
+### Revision History with More Options
 
 | **14** :
 ```
@@ -398,6 +398,317 @@ $new_id = $row[0];
   - *It is VERY important to preserve header hierarchy, starting with `<h1>` and going down*
 
 | **B-11** :// `localhost/web/hist.php?p=3` (or whatever ID, Ctrl + R to reload)
+
+### Tags Field via JSON
+
+We are starting to use JSON
+
+- JSON is meant to be parsed by JavaScript, but we won't look at that
+- JSON can also be an SQL datatype
+- JSON can be handled by PHP
+
+**Array *as* JSON "objects":**
+```json
+[ "Apple", "Banana", "Ubuntu" ]
+```
+
+**Arrays *in* JSON "objects":**
+```json
+{
+"count":3,
+"use":"multiple",
+"systems":[ "Apple", "Banana", "Ubuntu" ]
+}
+```
+
+**PHP processes JSON a few ways, including:**
+
+```php
+$list_nojson = 'one, two, three'; // Comma-separated list
+$string_json = json_encode(explode(', ', $list_nojson));
+$list_nojson = implode(', ', json_decode($string_json, true));
+```
+
+**SQL matches JSON differently:**
+
+```sql
+WHERE BINARY after='I am a sentence.' -- Exact, case-sensitive match (TEXT datatype)
+WHERE BINARY tags='[ "Apple", "Banana", "Ubuntu" ]' -- WILL NOT MATCH! (JSON datatype)
+WHERE tags='[ "Apple", "Banana", "Ubuntu" ]' -- WILL NOT MATCH! (JSON datatype)
+WHERE tags=CAST('[ "Apple", "Banana", "Ubuntu" ]' AS JSON) -- Matches (JSON datatype)
+```
+
+...trying to match JSON without `CAST('$json' AS JSON)` will return "Empty" (0 rows)
+
+*Try an example...*
+
+#### JSON in PHP
+
+| **12** :
+```
+sudo cp core/09-jsonarrays.php web/jsonarrays.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-jsonarrays.php && \
+ls web
+```
+
+| **B-12** :// `localhost/web/jsonarrays.php`
+
+*Let's try to hack some JSON into our SQL...*
+
+#### JSON in SQL
+
+*Review our SQL tables...*
+
+| **12** ://phpMyAdmin **> pieces**
+
+| **12** ://phpMyAdmin **> publications**
+
+| **12** ://phpMyAdmin **> publication_history**
+
+*Add our `tags` JSON colums...*
+
+| **12** :>
+
+```sql
+ALTER TABLE `pieces`
+ADD `tags` JSON DEFAULT NULL;
+ALTER TABLE `publications`
+ADD `tags` JSON DEFAULT NULL;
+ALTER TABLE `publication_history`
+ADD `tags` JSON DEFAULT NULL;
+```
+
+*Note the new `tags` column...*
+
+| **12** ://phpMyAdmin **> pieces**
+
+| **12** ://phpMyAdmin **> publications**
+
+| **12** ://phpMyAdmin **> publication_history**
+
+*Watch the SQL in action...*
+
+| **12** :> `SELECT title, slug, tags FROM pieces WHERE id=3;` (ID `3` is only one example, it could be any number)
+
+| **12** ://phpMyAdmin **> pieces** (Note id 3, or whatever ID you are using)
+
+| **12** :> `UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' WHERE id=3;`
+
+| **12** ://phpMyAdmin **> pieces**
+
+| **12** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
+
+*Now, select for a match in `tags`...*
+
+| **12** :> `SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]';`
+
+*...No matches! Try this...*
+
+| **12** :> `SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' AS JSON);`
+
+*...That's how SQL handles JSON*
+
+#### JSON in Our Blog
+
+*Let's implement JSON in our blog...*
+
+| **12** :
+```
+sudo cp core/09-edit2.php web/edit.php && \
+sudo cp core/09-piecefunctions2.in.php web/in.piecefunctions.php && \
+sudo cp core/09-editprocess2.in.php web/in.editprocess.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-edit2.php core/09-piecefunctions2.in.php core/09-editprocess2.in.php && \
+ls web
+```
+
+*Note `p_tags` in:*
+
+- *edit.php*
+- *piecefunctions.php*
+- *in.editprocess.php*
+
+*Note how in.editprocess.php processes `JSON` in SQL queries and `json_decode()` in PHP*
+
+*See the changes in our web browser...*
+
+| **B-12** :// `localhost/web/edit.php?p=3` (ID `3` is only one example, it could be any number)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+*Note the new "Tags" field and the `="p_tags"` values in HTML*
+
+1. Enter some tags (words) separated by comma
+2. Click "Update"
+
+| **12** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
+
+**See the code from in.editprocess.php:**
+
+1. Search for "uncomment" lines in in.editprocess.php
+2. Uncomment those lines
+3. Then run the file `sudo cp` command cluster again
+4. Then retry edit.php the browser
+5. Note the `$Variables` with JSON values
+6. Note the SQL query and try it in the SQL terminal
+
+### Links JSON RegEx Process
+
+| **12** :
+```
+sudo cp core/09-jsonarraylinkparse.php web/jsonarraylinkparse.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-jsonarraylinkparse.php && \
+ls web
+```
+
+| **B-12** :// `localhost/web/jsonarraylinkparse.php`
+
+- This parses a URL, Title, and Credit
+- They must all be on the same line and separated by double semicolon ;;
+- All of these will work:
+  - `https://write.pink;; Noun Case;; PinkWrite` (credit last, URL in any order)
+  - `<a href="http://verb.ink">Get inking. // inkVerb</a>`
+  - `https://write.pink;; Noun Case` (credit last, URL in any order)
+  - `<a href="http://verb.ink">Get inking.</a>`
+- If there are only two arguments, the non-URL host will be presumed as the Credit
+  - But, if the Title has a pipe `|` , what is after the last pipe will be the Credit
+  - In an HTML `<a>` tag, anything after doubleslash `//` will be the Credit
+- If only the URL is argued, that will become the link with "link" as the credit
+- This also rejects the pipe | in titles
+
+
+
+| **12** :
+```
+sudo cp core/09-edit3.php web/edit.php && \
+sudo cp core/09-piecefunctions3.in.php web/in.piecefunctions.php && \
+sudo cp core/09-editprocess3.in.php web/in.editprocess.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-edit3.php core/09-piecefunctions3.in.php core/09-editprocess3.in.php && \
+ls web
+```
+
+*Note in edit.php:*
+
+- *The `="submit"` buttons were moved to just after "Content"; "Tags", "After", and "Links" should come after the buttons*
+
+*We need another JSON column on our tables...*
+
+| **12** :>
+
+```sql
+ALTER TABLE `pieces`
+ADD `links` JSON DEFAULT NULL;
+ALTER TABLE `publications`
+ADD `links` JSON DEFAULT NULL;
+ALTER TABLE `publication_history`
+ADD `links` JSON DEFAULT NULL;
+```
+
+*Note the new `links` column...*
+
+| **12** ://phpMyAdmin **> pieces**
+
+| **12** ://phpMyAdmin **> publications**
+
+| **12** ://phpMyAdmin **> publication_history**
+
+
+### Series Defined by SQL Table
+
+| **12** :
+```
+sudo cp core/09-edit4.php web/edit.php && \
+sudo cp core/09-piecefunctions4.in.php web/in.piecefunctions.php && \
+sudo cp core/09-settings.php web/settings.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-edit4.php core/09-piecefunctions4.in.php core/09-settings.php && \
+ls web
+```
+
+
+### Bulk Actions in Pieces Table `form=` Attribute
+
+| **B-12** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+We already have a `<form>` inside many of these `<table>` cells (the links that appear on hover)
+
+We can put a `<table>` inside a `<form>`, but we can't put a `<form>` inside another `<form>`
+
+Still, we need a `="checkbox"` in each `<table>` row for a bulk process
+
+We can relate a `="checkbox"` outside a `<form>` using the `form=` attribute
+
+Consider `form=` & `="apply2all"` in this code...
+
+```html
+<form method="post" action="apply2all.php" id="apply2all">
+  <input type="submit" value="Blue all">
+  <input type="submit" value="Red all">
+</form>
+<table>
+  <tr>
+    <td>
+      <input type="checkbox" name="item_1" value="1" form="apply2all">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="checkbox" name="item_2" value="2" form="apply2all">
+    </td>
+  </tr>
+</table>
+```
+
+| **12** :
+```
+sudo cp core/09-postformarrays.php web/postformarrays.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/postformarrays.php && \
+ls web
+```
+
+| **B-12** :// `localhost/web/postformarrays.php`
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+*Check different boxes, then submit with different buttons multiple times*
+
+Now, we will apply that system to our Pieces and Trash pages...
+
+| **12** :
+```
+sudo cp core/09-pieces7.php web/pieces.php && \
+sudo cp core/09-trash7.php web/trash.php && \
+sudo cp core/09-delete7.php web/delete.php && \
+sudo cp core/09-undelete7.php web/undelete.php && \
+sudo cp core/09-empty_delete7.php web/empty_delete.php && \
+sudo cp core/09-unpublish7.php web/unpublish.php && \
+sudo cp core/09-republish7.php web/republish.php && \
+sudo cp core/09-pagify7.php web/pagify.php && \
+sudo cp core/09-postify7.php web/postify.php && \
+atom core/09-pieces7.php core/09-trash7.php core/09-delete7.php core/09-undelete7.php core/09-empty_delete7.php core/09-unpublish7.php core/09-republish7.php core/09-pagify7.php core/09-pagify7.php core/09-postify7.php && \
+ls web
+```
+
+
+### Meta Edit in Pieces Table via JS Popup `<form>` & AJAX
+
+
+### Have Our Blog and Piece Pages Process Our New Meta
+
+| **12** :
+```
+sudo cp core/09-blog2.php web/blog.php && \
+sudo cp core/09-piece.php web/piece.php && \
+sudo cp core/09-hist3.php web/hist.php && \
+atom core/09-blog2.php core/09-piece.php core/09-hist3.php && \
+ls web
+```
 
 ___
 

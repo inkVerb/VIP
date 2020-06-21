@@ -50,7 +50,7 @@ sudo cp core/03-style1.css web/style.css && \
 sudo cp core/03-functions1.in.php web/in.functions.php && \
 sudo cp core/03-checks1.in.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/website.php web/style.css web/in.functions.php web/in.checks.php && \
+atom core/03-website1.php core/03-style1.css core/03-functions1.in.php core/03-checks1.in.php && \
 ls web
 ```
 
@@ -128,13 +128,13 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple
 sudo cp core/03-website2.php web/website.php && \
 sudo cp core/03-config.in.php web/in.config.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/in.config.php && \
+atom core/03-website2.php core/03-config.in.php && \
 ls web
 ```
 
-*atom: Reload website.php*
+*Note website.php:*
 
-*Note the same SQL query for the `$query` variable in our PHP*
+- *The same SQL query for the `$query` variable in our PHP*
 
 *Tip: for troubleshooting, it can help to `echo` your `$query`, then test what renders in the SQL terminal*
 
@@ -159,17 +159,14 @@ echo "<pre>$query</pre>";
 sudo cp core/03-website3.php web/website.php && \
 sudo cp core/03-style3.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/03-website3.php core/03-style3.css && \
 ls web
 ```
 
-*atom: Reload*
+*Note the `<table>` in HTML and border lines in CSS:*
 
 - *website.php*
 - *style.css*
-
-*Note the <table> in HTML and border lines in CSS*
-
-*atom: Reload website.php*
 
 | **B-3** :// `localhost/web/website.php` (Same)
 
@@ -206,12 +203,10 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) { // test and array as on
 ```
 sudo cp core/03-website4.php web/website.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/03-website4.php && \
 ls web
 ```
-
-*atom: Reload website.php*
-
-*Note the same SQL query for the `$query` variable in our PHP*
+*Note website.php: the same SQL query for the `$query` variable in our PHP*
 
 | **S4** :> `SELECT name, type, have, count, prepared FROM fruit;` *Removed `WHERE name='bananas'` so we get multiple rows*
 
@@ -232,11 +227,9 @@ ls web
 ```
 sudo cp core/03-website5.php web/website.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/03-website5.php && \
 ls web
 ```
-
-*atom: Reload website.php*
-
 *Note the same SQL query for the `$query` variable in our PHP*
 
 | **S5** :> `SELECT name, type, date_created FROM fruit;`
@@ -260,17 +253,16 @@ sudo cp core/03-style6.css web/style.css && \
 sudo cp core/03-functions6.in.php web/in.functions.php && \
 sudo cp core/03-checks6.in.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/03-website6.php core/03-style6.css core/03-functions6.in.php core/03-checks6.in.php && \
 ls web
 ```
 
-*atom: Reload*
+*Note we have several new form functions & POST checks:*
 
 - *website.php*
 - *style.css*
 - *in.functions.php*
 - *in.checks.php*
-
-*Note we have several new form functions & POST checks*
 
 | **SB-6** ://phpMyAdmin **> fruit** (Same)
 
@@ -301,17 +293,16 @@ sudo cp core/03-style7.css web/style.css && \
 sudo cp core/03-functions7.in.php web/in.functions.php && \
 sudo cp core/03-checks7.in.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/03-website7.php core/03-style7.css core/03-functions7.in.php core/03-checks7.in.php && \
 ls web
 ```
 
-*atom: Reload*
+*Note we have several new form functions & POST checks:*
 
 - *website.php*
 - *style.css*
 - *in.functions.php*
 - *in.checks.php*
-
-*Note we have several new form functions & POST checks*
 
 | **SB-7** ://phpMyAdmin **> fruit** (Same)
 
@@ -334,15 +325,14 @@ ls web
 sudo cp core/03-website8.php web/website.php && \
 sudo cp core/03-checks8.in.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/03-website8.php cp core/03-checks8.in.php && \
 ls web
 ```
 
-*atom: Reload*
+*Note we have several new form functions & POST checks:*
 
 - *website.php*
 - *in.checks.php*
-
-*Note we have several new form functions & POST checks*
 
 | **SB-8** ://phpMyAdmin **> fruit** (Same)
 

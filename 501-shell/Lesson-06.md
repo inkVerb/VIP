@@ -95,7 +95,7 @@ function doAjax() { // doAjax can be anything
 sudo cp core/06-ajax1.html web/ajax.html && \
 sudo cp core/06-ajaxsource1.txt web/ajax_source.txt && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/ajax.html web/ajax_source.txt && \
+atom core/06-ajax1.html core/06-ajaxsource1.txt && \
 ls web
 ```
 
@@ -122,7 +122,7 @@ ls web
 sudo cp core/06-ajax2.php web/ajax.php && \
 sudo cp core/06-ajaxsource2.php web/ajax_source.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/ajax.php web/ajax_source.php && \
+atom core/06-ajax2.php core/06-ajaxsource2.php && \
 ls web
 ```
 
@@ -146,16 +146,14 @@ ls web
 sudo cp core/06-ajax3.php web/ajax.php && \
 sudo cp core/06-ajaxsource3.php web/ajax_source.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/ajax.php && \
+atom wecore/06-ajax3.php core/06-ajaxsource3.php && \
 ls web
 ```
 
-*atom: Reload*
-
-- *ajax.php*
-- *ajax_source.php*
-
 *Note:*
+
+  - *ajax.php*
+  - *ajax_source.php*
 
 - *We are using POST, not GET:*
   - *ajaxHandler.open("POST", "ajax_source.php", true);*
@@ -177,14 +175,9 @@ ls web
 ```
 sudo cp core/06-ajax4.php web/ajax.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/ajax.php && \
+atom core/06-ajax4.php && \
 ls web
 ```
-
-*atom: Reload*
-
-- *ajax.php*
-
 | **B-4** :// `localhost/web/ajax.php`
 
 - *Use Ctrl + Shift + C in browser to see the developer view*

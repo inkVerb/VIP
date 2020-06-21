@@ -30,7 +30,7 @@ ___
 sudo cp core/07-recover1.php web/recover.php && \
 sudo cp core/07-string_functions.in.php web/in.string_functions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/recover.php web/in.string_functions.php && \
+atom core/07-recover1.php core/07-string_functions.in.php && \
 ls web
 ```
 
@@ -53,13 +53,9 @@ sudo cp core/07-webapp.php web/webapp.php && \
 sudo cp core/07-loginhead1.in.php web/in.login_head.php && \
 sudo cp core/07-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/ajax_string.php web/recover_login.php web/webapp.php web/in.login_head.php web/account.php && \
+atom core/07-recover2.php core/07-ajaxstring.php core/07-recover_login.php core/07-webapp.php core/07-loginhead1.in.php core/07-accountsettings.php && \
 ls web
 ```
-
-*atom: Reload*
-
-- *recover.php*
 
 *Note:*
 
@@ -188,7 +184,7 @@ Favorite Number: (same as before)
 ```
 sudo cp core/07-cleanup1.php web/cleanup.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom web/cleanup.php && \
+atom core/07-cleanup1.php && \
 ls web
 ```
 
@@ -262,7 +258,7 @@ Favorite Number: (same as before)
 
 | **SB-12** ://phpMyAdmin **> strings**
 
-#### Anything run from the terminal can be run by `cron`
+#### Anything Run from the Terminal Can Be Run by `cron`
 
 Make sure you test your `cron` tasks by running them from the terminal
 
@@ -274,12 +270,9 @@ We use this syntax here: `php /same/path/as/cron/task/to/script.php`
 ```
 sudo cp core/07-cleanup2.php web/cleanup.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/07-cleanup2.php && \
 ls web
 ```
-
-*atom: Reload*
-
-- *cleanup.php*
 
 *Run it from the terminal...*
 
@@ -385,7 +378,7 @@ We need to:
 
 | **21** :>
 ```sql
-ALTER TABLE  `strings`
+ALTER TABLE `strings`
 CHANGE  `usable`  `usable` ENUM('live', 'cookie_login', 'dead') NOT NULL;
 ```
 
@@ -394,15 +387,14 @@ CHANGE  `usable`  `usable` ENUM('live', 'cookie_login', 'dead') NOT NULL;
 sudo cp core/07-loginhead2.in.php web/in.login_head.php && \
 sudo cp core/07-logout.php web/logout.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/07-loginhead2.in.php core/07-logout.php && \
 ls web
 ```
 
-*atom: Reload*
-
-- *in.login_head.php*
-- *logout.php*
-
 *Note:*
+
+  - *in.login_head.php*
+  - *logout.php*
 
 - *Cookie login refers to the key, no longer the user's ID*
 - *We escape the key from the cookie before searching for the key in the database*
@@ -434,6 +426,7 @@ Password: My#1Password
 ```
 sudo cp core/07-loginhead3.in.php web/in.login_head.php && \
 sudo chown -R www-data:www-data /var/www/html && \
+atom core/07-loginhead3.in.php && \
 ls web
 ```
 
