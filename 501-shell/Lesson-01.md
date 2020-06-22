@@ -346,60 +346,6 @@ ls web
 
 *Try the form and developer view with Ctrl + C*
 
-*Let's try some simple replacements...*
-
-#### RegEx Replacement & Arguments
-
-**RegEx arguments come from `(parentheses)`:**
-```regex
-([something_one])...([something_two]), '$1...$2'
-```
-
-**PHP examples**
-```php
-// Syntax
-$result = str_replace('foo','bar',$string); // 'foo' to 'bar', RegEx not allowed
-$result = preg_replace($RegEx,$RegEx,$string); // Same, but allows RegEx
-
-// Simple RegEx
-$alphbt = preg_replace("/[a-z]/",'z',$alphbt); // lowercase to 'z'
-$alphbt = preg_replace("/[A-Z]/",'Z',$alphbt); // uppercase to 'Z'
-$number = preg_replace('/[0-9]/','#',$number); // numbers to '#'
-
-// 1st alphanumeric set becomes $1; 2nd becomes $2
-// '_dogfish_' to '_GoldFish_', preserving what is before and after
-$argmnt = preg_replace('/([a-zA-Z0-9]$)+_dogfish_+([a-zA-Z0-9])/','$1_GoldFish_$2',$argmnt);
-// The $ in the first part makes sure the whole word is preserved
-```
-
-*Look at this example...*
-
-| **12** :
-```
-sudo cp core/01-phpreplace.php web/phpreplace.php && \
-sudo chown -R www-data:www-data /var/www/html && \
-atom core/01-phpreplace.php && \
-ls web
-```
-
-**Note this converts dashes from common misuse to proper:**
-```php
-/*
-** em-dash: (long)
-** en-dash: (mid)
-** hyphen: (short)
-** These can be difficult to type, so we will fix them on the back end
-*/
-$dash = preg_replace('/([0-9]$)+-+([0-9])/','$1–$2',$dash); // to en-dash
-$dash = str_replace(' -- ',' – ',$dash); // to en-dash
-$dash = str_replace('---','—',$dash); // to em-dash, someone made certain
-$dash = str_replace('--','—',$dash); // to em-dash
-```
-
-| **B-12** :// `localhost/web/phpreplace.php`
-
-*Try matching characters and watch them get replaced*
-
 #### FYI Reference: Useful PHP Tests & Functions
 
 ```php
@@ -493,16 +439,69 @@ preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variable
 
 *Review the diagram above along side the following two steps...*
 
-| **13** :
+| **12** :
 ```
 sudo cp core/01-phpregex1.php web/phppost.php && \
 atom core/01-phpregex1.php && \
 ls web
 ```
 
-| **B-13** :// `localhost/web/phppost.php` (Same)
+| **B-12** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
+
+#### RegEx Replacement & Arguments
+
+**RegEx arguments come from `(parentheses)`:**
+```regex
+([something_one])...([something_two]), '$1...$2'
+```
+
+**PHP examples**
+```php
+// Syntax
+$result = str_replace('foo','bar',$string); // 'foo' to 'bar', RegEx not allowed
+$result = preg_replace($RegEx,$RegEx,$string); // Same, but allows RegEx
+
+// Simple RegEx
+$alphbt = preg_replace("/[a-z]/",'z',$alphbt); // lowercase to 'z'
+$alphbt = preg_replace("/[A-Z]/",'Z',$alphbt); // uppercase to 'Z'
+$number = preg_replace('/[0-9]/','#',$number); // numbers to '#'
+
+// 1st alphanumeric set becomes $1; 2nd becomes $2
+// '_dogfish_' to '_GoldFish_', preserving what is before and after
+$argmnt = preg_replace('/([a-zA-Z0-9]+)_dogfish_([a-zA-Z0-9]+)/','$1_GoldFish_$2',$argmnt);
+// The $ in the first part makes sure the whole word is preserved
+```
+
+*Look at this example...*
+
+| **13** :
+```
+sudo cp core/01-phpreplace.php web/phpreplace.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/01-phpreplace.php && \
+ls web
+```
+
+**Note this converts dashes from common misuse to proper:**
+```php
+/*
+** em-dash: (long)
+** en-dash: (mid)
+** hyphen: (short)
+** These can be difficult to type and choose, so we will fix them for our users on the back end
+*/
+$dash = preg_replace('/([A-Z].[a-z]+)-([A-Z].[a-z]+)/','$1–$2',$dash); // Proper noun range to en-dash (days, months, etc)
+$dash = preg_replace('/([0-9]+)-([0-9]+)/','$1–$2',$dash); // digit range to en-dash
+$dash = str_replace(' -- ',' – ',$dash); // to en-dash
+$dash = str_replace('---','—',$dash); // to em-dash, someone made certain
+$dash = str_replace('--','—',$dash); // to em-dash
+```
+
+| **B-13** :// `localhost/web/phpreplace.php`
+
+*Try matching characters and watch them get replaced*
 
 #### Basic PHP Sanitizing Filters
 ```php
