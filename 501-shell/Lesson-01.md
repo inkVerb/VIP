@@ -398,7 +398,8 @@ exit(header("Location: to_page.php"));
 3. Escape before using
 
 #### Know the datatype!
-*A "string" is a "datatype", which we looked at in [Shell 401 Lesson 6](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)*
+
+A "string" is a "datatype", which we looked at in [Shell 401 Lesson 6](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-06.md)
 
 ##### Four Important Datatypes in PHP:
 - string *- any kind of raw text: name, email, web address (URL), blog post, mailing address, passwords, etc*
@@ -411,6 +412,7 @@ exit(header("Location: to_page.php"));
 - *Use non-RegEx PHP `filter_var()` validation checks on **integers, true/false, arrays, etc***
 
 #### Basic PHP RegEx & Validation Tests:
+
 ```php
 // Test a URL
 filter_var($Variable, FILTER_VALIDATE_URL)
@@ -450,18 +452,64 @@ ls web
 
 *Try the form and developer view*
 
-#### RegEx Replacement & Arguments
+#### Basic PHP Sanitizing Filters
+
+"Sanitizing" is basically doing a search and replace of all characters we don't want
+
+This often uses a RegEx to define those characters
+
+```php
+// Remove any non-alphanumeric character
+$Variable = preg_replace("/[^a-zA-Z0-9]/","", $Variable);
+
+// Replace any non-alphanumeric character with a space
+$Variable = preg_replace("/[^a-zA-Z0-9]/"," ", $Variable);
+
+// Replace any non-alphanumeric character with a hyphen (-)
+$Variable = preg_replace("/[^a-zA-Z0-9]/","-", $Variable);
+
+// Remove whitespace at start and end
+$Variable = trim($Variable);
+
+// Remove all whitespace: trim(preg_replace())
+$Variable = trim(preg_replace('/\s+/', ' ', $Variable));
+
+// Truncate before/after certain characters (eg. returns first 10 characters)
+$Variable = substr($Variable,0,10);
+
+// Change any letters to lower case
+$Variable = strtolower($Variable);
+
+// Change any letters to upper case
+$Variable = strtoupper($Variable);
+
+// Change the first character of entire string to lowercase
+$Variable = lcfirst($Variable);
+
+// Change the first character of entire string to uppercase
+$Variable = ucfirst($Variable);
+
+// Change the first character of each word to uppercase
+$Variable = ucwords($Variable);
+
+```
+
+*Review the diagram above along side the following two steps and elaboration...*
+
+##### RegEx Replacement & Arguments (Useful for Sanitizing and More)
+
+We looked at RegEx briefly in [Shell 401 Lesson 1](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-11.md)
 
 **RegEx arguments come from `(parentheses)`:**
 ```regex
 ([something_one])...([something_two]), '$1...$2'
 ```
 
-**PHP examples**
+**PHP replacement examples**
 ```php
 // Syntax
 $result = str_replace('foo','bar',$string); // 'foo' to 'bar', RegEx not allowed
-$result = preg_replace($RegEx,$RegEx,$string); // Same, but allows RegEx
+$result = preg_replace($RegEx_foo,$RegEx_bar,$string); // Same, but allows RegEx
 
 // Simple RegEx
 $alphbt = preg_replace("/[a-z]/",'z',$alphbt); // lowercase to 'z'
@@ -503,44 +551,12 @@ $dash = str_replace('--','—',$dash); // to em-dash
 
 *Try matching characters and watch them get replaced*
 
-#### Basic PHP Sanitizing Filters
-```php
-// Remove any non-alphanumeric character
-$Variable = preg_replace("/[^a-zA-Z0-9]/","", $Variable);
-
-// Replace any non-alphanumeric character with a space
-$Variable = preg_replace("/[^a-zA-Z0-9]/"," ", $Variable);
-
-// Replace any non-alphanumeric character with a hyphen (-)
-$Variable = preg_replace("/[^a-zA-Z0-9]/","-", $Variable);
-
-// Remove whitespace at start and end
-$Variable = trim($Variable);
-
-// Remove all whitespace: trim(preg_replace())
-$Variable = trim(preg_replace('/\s+/', ' ', $Variable));
-
-// Truncate before/after certain characters (eg. returns first 10 characters)
-$Variable = substr($Variable,0,10);
-
-// Change any letters to lower case
-$Variable = strtolower($Variable);
-
-// Change any letters to upper case
-$Variable = strtoupper($Variable);
-
-// Change the first character of entire string to lowercase
-$Variable = lcfirst($Variable);
-
-// Change the first character of entire string to uppercase
-$Variable = ucfirst($Variable);
-
-// Change the first character of each word to uppercase
-$Variable = ucwords($Variable);
-
-```
-
 #### Basic PHP Escaping
+
+We looked at "escaping" certain characters in [Shell 101 Lesson 1](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-11.md)
+
+In any code language, certain characters "mean something", they must be "escaped" (AKA 'quoted' or 'cancelled') so the characters mean only themselves and are not "working" in the code
+
 ```php
 // Convert every single thing into an HTML entity that you can:
 $Variable = htmlentities($Variable);
