@@ -689,4 +689,4 @@ ___
 
 ___
 
-#### [Lesson 9: Libraries, Loops $ JSON](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)
+#### [Lesson 9: Libraries, Loops & JSON](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)

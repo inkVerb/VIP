@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 9: Libraries, Loops $ JSON
+## Lesson 9: Libraries, Loops & JSON
 
 Ready the CLI
 
@@ -403,16 +403,20 @@ $new_id = $row[0];
 
 We are starting to use JSON
 
+JSON is an array that lives as a string, so you can view it with `echo` (arrays must be looped or dumped to view)
+
 - JSON is meant to be parsed by JavaScript, but we won't look at that
 - JSON can also be an SQL datatype
-- JSON can be handled by PHP
+- JSON can be processed by PHP
 
 **Array *as* JSON "objects":**
+
 ```json
 [ "Apple", "Banana", "Ubuntu" ]
 ```
 
 **Arrays *in* JSON "objects":**
+
 ```json
 {
 "count":3,
@@ -425,7 +429,11 @@ We are starting to use JSON
 
 ```php
 $list_nojson = 'one, two, three'; // Comma-separated list
-$string_json = json_encode(explode(', ', $list_nojson));
+$string_json = json_encode(explode(', ', $list_nojson)); // From comma-separated list
+$string_json = json_encode($some_array); // From 2-D array (simple array, no keys in JSON)
+$string_json = json_encode($some_array, JSON_FORCE_OBJECT); // From 3-D array (JSON will have objects/keys)
+$string_json = json_encode($some_array, JSON_PRETTY_PRINT); // Line breaks
+$string_json = json_encode($some_array, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT); // 3-D objects/keys with line breaks
 $list_nojson = implode(', ', json_decode($string_json, true));
 ```
 
@@ -555,6 +563,39 @@ ls web
 
 ### Links JSON RegEx Process
 
+#### We start by processing PHP arrays
+
+**Process a PHP array:**
+```php
+foreach ($rarray as $item) {
+    echo $item[0];
+    echo $item[1];
+    echo $item[2];
+}
+```
+
+**Display human-readable 3-D PHP array:**
+```php
+foreach ($links_array as $line_item) {
+  echo "<pre><b>$line_item</b></pre>";
+  foreach ($line_item as $key => $avalue) {
+    echo "<pre>[$key] = $avalue</pre>";
+  }
+}
+```
+
+#### We also include RegEx and careful logic
+
+Don't pick apart the PHP in this next file too carefully
+
+Just note:
+
+1. PHP logic uses an order to accept many scenarios
+2. We use RegEx to pull what we want
+3. We uses RegEx to cut what we don't want
+4. Everything goes into a PHP array whenever we process it  
+5. The PHP array goes to and from JSON to save in the SQL database
+
 | **12** :
 ```
 sudo cp core/09-jsonarraylinkparse.php web/jsonarraylinkparse.php && \
@@ -563,20 +604,33 @@ atom core/09-jsonarraylinkparse.php && \
 ls web
 ```
 
+*Look a little at the file, look mostly at what renders in the browser...*
+
 | **B-12** :// `localhost/web/jsonarraylinkparse.php`
 
+*Try the example, reverse item order some, and submit the form*
+
 - This parses a URL, Title, and Credit
-- They must all be on the same line and separated by double semicolon ;;
+- They must all be on the same line and separated by double semicolon `;;`
+- A Credit can be pulled from a Title with anything after `|` Pipe
 - All of these will work:
-  - `https://write.pink;; Noun Case;; PinkWrite` (credit last, URL in any order)
+  - `Noun Case;; PinkWrite;; https://write.pink` (Credit last, URL in any order)
+  - `https://write.pink;; Noun Case | PinkWrite` (Credit pulled after `|` Pipe )
   - `<a href="http://verb.ink">Get inking. // inkVerb</a>`
-  - `https://write.pink;; Noun Case` (credit last, URL in any order)
+  - `<a href="http://verb.ink">Get inking. | inkVerb</a>` (Credit pulled after `|` Pipe )
+  - `https://write.pink;; Noun Case` (Credit pulled from URL host)
   - `<a href="http://verb.ink">Get inking.</a>`
 - If there are only two arguments, the non-URL host will be presumed as the Credit
   - But, if the Title has a pipe `|` , what is after the last pipe will be the Credit
   - In an HTML `<a>` tag, anything after doubleslash `//` will be the Credit
+  - If a doubleslash `//` is absent, Credit can be pulled from after last `|` Pipe
 - If only the URL is argued, that will become the link with "link" as the credit
-- This also rejects the pipe | in titles
+- This truncates everything after `|` Pipe in Titles, but pulls for an absent Credit first
+- Items are then processed:
+  1. Starting in a PHP array
+  2. Into JSON for SQL entry
+  3. From JSON after SQL retrieval back into a PHP array
+  4. Iterated into `<a>` links
 
 
 
@@ -713,6 +767,27 @@ ls web
 ___
 
 # The Take
+
+## PHP Arrays
+- Arrays can be 2-D
+  - A big group
+- Arrays can be 3-D
+  - Many groups, each with a leader
+- We can't actually see PHP arrays
+  - Iterate arrays with a `foreach` loop
+    - Syntax: `foreach( $array as $item )`
+- Arrays are useful when processing many items to organize
+
+## JSON
+- ...can be plain (2-D)
+- ..3-D uses what we call "objects"
+- ...is a string and can be seen, unlike a PHP array
+- ...is an SQL datatype
+- ...can be read by JavaScript, but we didn't do that here
+- ...can change back and forth between a PHP array
+  - Syntax:
+    - `$json = json_encode($array)`
+    - `$array = json_decode($json)`
 
 ___
 

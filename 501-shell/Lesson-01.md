@@ -542,7 +542,9 @@ ls web
 */
 $dash = preg_replace('/([A-Z].[a-z]+)-([A-Z].[a-z]+)/','$1–$2',$dash); // Proper noun range to en-dash (days, months, etc)
 $dash = preg_replace('/([0-9]+)-([0-9]+)/','$1–$2',$dash); // digit range to en-dash
-$dash = str_replace(' -- ',' – ',$dash); // to en-dash
+$dash = str_replace(' -- ',' – ',$dash); // to en-dash if couched in spaces
+$dash = str_replace(' --','—',$dash); // to em-dash, no space before
+$dash = str_replace('-- ','—',$dash); // to em-dash, no space after
 $dash = str_replace('---','—',$dash); // to em-dash, someone made certain
 $dash = str_replace('--','—',$dash); // to em-dash
 ```
