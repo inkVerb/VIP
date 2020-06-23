@@ -408,14 +408,19 @@ JSON is an array that lives as a string, so you can view it with `echo` (arrays 
 - JSON is meant to be parsed by JavaScript, but we won't look at that
 - JSON can also be an SQL datatype
 - JSON can be processed by PHP
+- JSON can have arrays:
+  - *as* JSON objects
+  - *inside* JSON objects
 
-**Array *as* JSON "objects":**
+**Array *as* JSON objects: (as-JSON)**
 
 ```json
 [ "Apple", "Banana", "Ubuntu" ]
+
+[ ["","",""] , ["","",""] ]
 ```
 
-**Arrays *in* JSON "objects":**
+**Arrays *inside* JSON objects: (inside-JSON)**
 
 ```json
 {
@@ -423,18 +428,22 @@ JSON is an array that lives as a string, so you can view it with `echo` (arrays 
 "use":"multiple",
 "systems":[ "Apple", "Banana", "Ubuntu" ]
 }
+
+{ "0":{"0":"","1":"","2":""},"1":{"0":"","1":"","2":""} }
 ```
 
 **PHP processes JSON a few ways, including:**
 
 ```php
 $list_nojson = 'one, two, three'; // Comma-separated list
-$string_json = json_encode(explode(', ', $list_nojson)); // From comma-separated list
-$string_json = json_encode($some_array); // From 2-D array (simple array, no keys in JSON)
-$string_json = json_encode($some_array, JSON_FORCE_OBJECT); // From 3-D array (JSON will have objects/keys)
-$string_json = json_encode($some_array, JSON_PRETTY_PRINT); // Line breaks
-$string_json = json_encode($some_array, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT); // 3-D objects/keys with line breaks
-$list_nojson = implode(', ', json_decode($string_json, true));
+$string_json = json_encode(explode(', ', $list_nojson)); // To array as-JSON from comma-separated list
+$string_json = json_encode(explode(', ', $list_nojson), JSON_FORCE_OBJECT); // To arrays inside-JSON from comma-separated list
+$string_json = json_encode($some_array); // To array as-JSON
+$string_json = json_encode($some_array, JSON_FORCE_OBJECT); // To arrays inside-JSON
+$string_json = json_encode($some_array, JSON_PRETTY_PRINT); // To array as-JSON with line breaks
+$string_json = json_encode($some_array, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT); // To arrays inside-JSON with line breaks
+$list_nojson = implode(', ', json_decode($string_json, true)); // From array as-JSON
+$list_nojson = implode(', ', json_decode($string_json)); // From arrays inside-JSON
 ```
 
 **SQL matches JSON differently:**
@@ -779,8 +788,10 @@ ___
 - Arrays are useful when processing many items to organize
 
 ## JSON
-- ...can be plain (2-D)
-- ..3-D uses what we call "objects"
+- ...can have arrays *as* JSON objects
+  - `[ ["","",""] , ["","",""] ]`
+- ...can have arrays *inside* JSON objects
+  - `{ "0":{"0":"","1":"","2":""},"1":{"0":"","1":"","2":""} }`
 - ...is a string and can be seen, unlike a PHP array
 - ...is an SQL datatype
 - ...can be read by JavaScript, but we didn't do that here
