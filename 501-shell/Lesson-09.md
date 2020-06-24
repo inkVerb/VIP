@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 9: Libraries, Loops & JSON
+## Lesson 9: Libraries, Loops, Arrays & JSON
 
 Ready the CLI
 
@@ -477,15 +477,15 @@ ls web
 
 *Review our SQL tables...*
 
-| **12** ://phpMyAdmin **> pieces**
+| **13a** ://phpMyAdmin **> pieces**
 
-| **12** ://phpMyAdmin **> publications**
+| **13b** ://phpMyAdmin **> publications**
 
-| **12** ://phpMyAdmin **> publication_history**
+| **13c** ://phpMyAdmin **> publication_history**
 
 *Add our `tags` JSON colums...*
 
-| **12** :>
+| **14** :>
 
 ```sql
 ALTER TABLE `pieces`
@@ -498,31 +498,31 @@ ADD `tags` JSON DEFAULT NULL;
 
 *Note the new `tags` column...*
 
-| **12** ://phpMyAdmin **> pieces**
+| **15a** ://phpMyAdmin **> pieces**
 
-| **12** ://phpMyAdmin **> publications**
+| **15b** ://phpMyAdmin **> publications**
 
-| **12** ://phpMyAdmin **> publication_history**
+| **15c** ://phpMyAdmin **> publication_history**
 
 *Watch the SQL in action...*
 
-| **12** :> `SELECT title, slug, tags FROM pieces WHERE id=3;` (ID `3` is only one example, it could be any number)
+| **16** :> `SELECT title, slug, tags FROM pieces WHERE id=3;` (ID `3` is only one example, it could be any number)
 
-| **12** ://phpMyAdmin **> pieces** (Note id 3, or whatever ID you are using)
+| **16** ://phpMyAdmin **> pieces** (Note id 3, or whatever ID you are using)
 
-| **12** :> `UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' WHERE id=3;`
+| **17a** :> `UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' WHERE id=3;`
 
-| **12** ://phpMyAdmin **> pieces**
+| **17** ://phpMyAdmin **> pieces**
 
-| **12** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
+| **17b** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
 
 *Now, select for a match in `tags`...*
 
-| **12** :> `SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]';`
+| **18** :> `SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]';`
 
 *...No matches! Try this...*
 
-| **12** :> `SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' AS JSON);`
+| **19** :> `SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' AS JSON);`
 
 *...That's how SQL handles JSON*
 
@@ -530,7 +530,7 @@ ADD `tags` JSON DEFAULT NULL;
 
 *Let's implement JSON in our blog...*
 
-| **12** :
+| **20** :
 ```
 sudo cp core/09-edit2.php web/edit.php && \
 sudo cp core/09-piecefunctions2.in.php web/in.piecefunctions.php && \
@@ -550,7 +550,7 @@ ls web
 
 *See the changes in our web browser...*
 
-| **B-12** :// `localhost/web/edit.php?p=3` (ID `3` is only one example, it could be any number)
+| **B-21** :// `localhost/web/edit.php?p=3` (ID `3` is only one example, it could be any number)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -559,7 +559,7 @@ ls web
 1. Enter some tags (words) separated by comma
 2. Click "Update"
 
-| **12** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
+| **21** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
 
 **See the code from in.editprocess.php:**
 
@@ -605,17 +605,17 @@ Just note:
 4. Everything goes into a PHP array whenever we process it  
 5. The PHP array goes to and from JSON to save in the SQL database
 
-| **12** :
+| **22** :
 ```
-sudo cp core/09-jsonarraylinkparse.php web/jsonarraylinkparse.php && \
+sudo cp core/09-jsonlinksexplained.php web/jsonlinks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-jsonarraylinkparse.php && \
+atom core/09-jsonlinksexplained.php && \
 ls web
 ```
 
 *Look a little at the file, look mostly at what renders in the browser...*
 
-| **B-12** :// `localhost/web/jsonarraylinkparse.php`
+| **B-22** :// `localhost/web/jsonlinksexplained.php`
 
 *Try the example, reverse item order some, and submit the form*
 
@@ -641,15 +641,34 @@ ls web
   3. From JSON after SQL retrieval back into a PHP array
   4. Iterated into `<a>` links
 
+*Let's look at that code again, without all the explanation...*
 
+| **23** :
+```
+sudo cp core/09-jsonlinks.php web/jsonlinks.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-jsonlinks.php && \
+ls web
+```
 
-| **12** :
+*Look a little at the file, look mostly at what renders in the browser...*
+
+| **B-23** :// `localhost/web/jsonlinks.php`
+
+*Try the example, reverse item order some, and submit the form*
+
+### Add Our Option to the Pieces
+
+| **24** :
 ```
 sudo cp core/09-edit3.php web/edit.php && \
+sudo cp core/09-jsonlinks.in.php web/in.jsonlinks.php && \
 sudo cp core/09-piecefunctions3.in.php web/in.piecefunctions.php && \
 sudo cp core/09-editprocess3.in.php web/in.editprocess.php && \
+sudo cp core/09-piece1.php web/piece.php && \
+sudo cp core/09-style7.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit3.php core/09-piecefunctions3.in.php core/09-editprocess3.in.php && \
+atom core/09-edit3.php core/09-jsonlinks.in.php core/09-piecefunctions3.in.php core/09-editprocess3.in.php && \
 ls web
 ```
 
@@ -657,9 +676,39 @@ ls web
 
 - *The `="submit"` buttons were moved to just after "Content"; "Tags", "After", and "Links" should come after the buttons*
 
+*Note in in.piecefunctions.php:*
+
+- *`p_links` has been added to both functions:*
+  - *`checkPiece()`*
+  - *`pieceInput()`*
+- *RegEx checks for em and en dashes with proper usage*
+  - *`p_content`*
+  - *`p_after`*
+  - *`p_links`*
+
+*Note in in.editprocess.php:*
+
+- *`$p_links` appears*
+  - *`checkPiece()`, alongside `$p_tags`*
+  - *`json_decode()`, alongside `$p_tags`*
+  - *SQL queries (with the `links` column)*
+  - *Uses `CAST('$json' AS JSON)`, as with `tags`
+
+*Note in piece.php:*
+
+  - *Links and tags show*
+  - *There is a "View on blog" link at the top*
+  - *Each iterated link's `<a>` and `<b>` tags have `class="link_item"`, smart to do, we may use later*
+
+*Note in style.css:*
+
+  - *New `section.links` class (for displaying Links)*
+  - *New `section.tags` class (for displaying Tags)*
+  - *New `textarea.meta` class (for editing After and Links)*
+
 *We need another JSON column on our tables...*
 
-| **12** :>
+| **24** :>
 
 ```sql
 ALTER TABLE `pieces`
@@ -672,16 +721,41 @@ ADD `links` JSON DEFAULT NULL;
 
 *Note the new `links` column...*
 
-| **12** ://phpMyAdmin **> pieces**
+| **24a** ://phpMyAdmin **> pieces**
 
-| **12** ://phpMyAdmin **> publications**
+| **24b** ://phpMyAdmin **> publications**
 
-| **12** ://phpMyAdmin **> publication_history**
+| **24c** ://phpMyAdmin **> publication_history**
+
+| **B-24** :// `localhost/web/edit.php?p=3`
+
+1. Paste in these values to the "Links" field...
+
+```
+https://verb.one
+https://verb.red ;;Get inking.
+https://verb.ink;; Ink is a verb.;;inkVerb
+https://verb.blue;; Inky | Blue Ink
+<a href="https://inkisaverb.com">Ink is a verb.</a>
+<a href="https://verb.vip">Get inking. // VIP Linux</a>
+<a href="http://poetryiscode.com">Poetry is code. | piC</a>
+```
+
+2. Click "Update"
+3. Note how all links were re-sorted in the "Links field"
+4. View the piece...
+
+| **B-25** :// `localhost/web/piece.php?p=3` (Click 'View on blog' in Edit, or enter whatever ID you are using if not 3)
+
+*Let's add a "Series" option...*
+
+
+xx
 
 
 ### Series Defined by SQL Table
 
-| **12** :
+| **26** :
 ```
 sudo cp core/09-edit4.php web/edit.php && \
 sudo cp core/09-piecefunctions4.in.php web/in.piecefunctions.php && \
@@ -690,6 +764,7 @@ sudo chown -R www-data:www-data /var/www/html && \
 atom core/09-edit4.php core/09-piecefunctions4.in.php core/09-settings.php && \
 ls web
 ```
+
 
 
 ### Bulk Actions in Pieces Table `form=` Attribute
@@ -767,7 +842,7 @@ ls web
 | **12** :
 ```
 sudo cp core/09-blog2.php web/blog.php && \
-sudo cp core/09-piece.php web/piece.php && \
+sudo cp core/09-piece2.php web/piece.php && \
 sudo cp core/09-hist3.php web/hist.php && \
 atom core/09-blog2.php core/09-piece.php core/09-hist3.php && \
 ls web
