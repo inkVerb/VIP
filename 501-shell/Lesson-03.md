@@ -244,7 +244,9 @@ ls web
 - See if a query succeeded without error
 	- Syntax: `if ($row)`
 - Bonus tip: Get the ID of whatever new row you just inserted:
-	- Code: `$query = "SELECT SCOPE_IDENTITY()";`
+	- Code: `$query = "SELECT SCOPE_IDENTITY()";` (SQL, not MySQL)
+	- MySQLi: `$last_id = $database->insert_id;`
+
 
 | **6** :
 ```
@@ -400,9 +402,14 @@ if ($row) {...}
 ```php
 if (mysqli_affected_rows($database) == 1)
 ```
-- Bonus tip: Get the last ID of the most recent `INSERT` statement
+- SQL tip: Get the last ID of the most recent `INSERT` statement
+	- This does ***not*** work wtih MySQL!
+```sql
+SELECT SCOPE_IDENTITY();
+```
+- MySQLi: Get the last ID of the most recent `INSERT` statement
 ```php
-$query = "SELECT SCOPE_IDENTITY()";
+$last_id = $database->insert_id;
 ```
 ___
 

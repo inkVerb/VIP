@@ -657,7 +657,7 @@ ls web
 
 *Try the example, reverse item order some, and submit the form*
 
-### Add Our Option to the Pieces
+### Add Links to the Pieces
 
 | **24** :
 ```
@@ -665,6 +665,7 @@ sudo cp core/09-edit3.php web/edit.php && \
 sudo cp core/09-jsonlinks.in.php web/in.jsonlinks.php && \
 sudo cp core/09-piecefunctions3.in.php web/in.piecefunctions.php && \
 sudo cp core/09-editprocess3.in.php web/in.editprocess.php && \
+sudo cp core/09-functions.in.php web/in.functions.php && \
 sudo cp core/09-piece1.php web/piece.php && \
 sudo cp core/09-style7.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -674,7 +675,9 @@ ls web
 
 *Note in edit.php:*
 
-- *The `="submit"` buttons were moved to just after "Content"; "Tags", "After", and "Links" should come after the buttons*
+- *Content is closer to the top*
+- *The `="submit"` buttons were moved to just after "Content"*
+- *Links uses the new function `infoPop()` for a usage tip*
 
 *Note in in.piecefunctions.php:*
 
@@ -694,6 +697,10 @@ ls web
   - *SQL queries (with the `links` column)*
   - *Uses `CAST('$json' AS JSON)`, as with `tags`
 
+*Note in.functions.php:*
+
+- *New function for an "info" popup help*
+
 *Note in piece.php:*
 
   - *Links and tags show*
@@ -705,6 +712,8 @@ ls web
   - *New `section.links` class (for displaying Links)*
   - *New `section.tags` class (for displaying Tags)*
   - *New `textarea.meta` class (for editing After and Links)*
+  - *New `input[type=text].piece` class (for editing text input)*
+  - *New `.infopop`, etc classes (for `infoPop()` function)*
 
 *We need another JSON column on our tables...*
 
@@ -749,29 +758,7 @@ https://verb.blue;; Inky | Blue Ink
 
 *Let's add a "Series" option...*
 
-
-xx
-
-
-### Series Defined by SQL Table
-
-| **26** :
-```
-sudo cp core/09-edit4.php web/edit.php && \
-sudo cp core/09-piecefunctions4.in.php web/in.piecefunctions.php && \
-sudo cp core/09-settings.php web/settings.php && \
-sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit4.php core/09-piecefunctions4.in.php core/09-settings.php && \
-ls web
-```
-
-
-
-### Bulk Actions in Pieces Table `form=` Attribute
-
-| **B-12** :// `localhost/web/pieces.php` (Ctrl + R to reload)
-
-*Use Ctrl + Shift + C in browser to see the developer view*
+### Side-by-Side Forms
 
 We already have a `<form>` inside many of these `<table>` cells (the links that appear on hover)
 
@@ -802,7 +789,7 @@ Consider `form=` & `="apply2all"` in this code...
 </table>
 ```
 
-| **12** :
+| **26** :
 ```
 sudo cp core/09-postformarrays.php web/postformarrays.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -810,13 +797,91 @@ atom core/postformarrays.php && \
 ls web
 ```
 
-| **B-12** :// `localhost/web/postformarrays.php`
+| **B-26** :// `localhost/web/postformarrays.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
 *Check different boxes, then submit with different buttons multiple times*
 
-Now, we will apply that system to our Pieces and Trash pages...
+Now, we will apply that system so we can do more...
+
+### Piece Series Defined by SQL Table
+
+| **27** :
+```
+sudo cp core/09-edit4.php web/edit.php && \
+sudo cp core/09-piecefunctions4.in.php web/in.piecefunctions.php && \
+sudo cp core/09-editprocess4.in.php web/in.editprocess.php && \
+sudo cp core/09-series.in.php web/in.series.php && \
+sudo cp core/09-series.ajax.php web/ajax.series.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-edit4.php core/09-piecefunctions4.in.php core/09-settings.php && \
+ls web
+```
+
+*Note edit.php:*
+
+- *`<form>` no longer wraps `<input>` items,*
+- *Every `<input>` uses the `form=` attribute*
+
+*Note in.piecefunctions.php:*
+
+- *`form="edit_piece"` added to every `<input>` and `<textarea>`*
+  - *This allows side-by-side forms, as with edit.php*
+
+*Note in.editprocess.php:*
+
+- *`p_series` validation runs an SQL query to see if the Series actually exists*
+
+*Note in.series.php & ajax.series.php:*
+
+- *These run an AJAX `<form>`, nearly identical to what we did in Lesson 6*
+- *Both the `<select>` input and the new Series `<form>` are wrapped in a `<div>` for AJAX to reload*
+  - *This is how we clear the input field in the new Series `<form>`*
+
+*We need to create the `series` table and make our first entry so this can work...*
+
+| **27** :>
+
+```sql
+CREATE TABLE IF NOT EXISTS `series` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(90) NOT NULL,
+  `slug` VARCHAR(90) NOT NULL,
+  `template` INT UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+INSERT INTO series (name, slug) VALUES ('Blog', 'blog');
+ALTER TABLE `pieces`
+ADD `series` INT UNSIGNED DEFAULT 1;
+ALTER TABLE `publications`
+ADD `series` INT UNSIGNED DEFAULT 1;
+ALTER TABLE `publication_history`
+ADD `series` INT UNSIGNED DEFAULT 1;
+```
+
+### Blog Settings
+
+| **12** :
+```
+sudo cp core/09-settings.php web/settings.php && \
+sudo cp core/09-menues.php web/menues.php && \
+sudo cp core/09-series.php web/series.php && \
+atom core/09-blog2.php core/09-piece.php core/09-hist3.php && \
+ls web
+```
+
+| **B-26** :// `localhost/web/settings.php` (Ctrl + R to reload)
+
+### Bulk Actions in Pieces Table `form=` Attribute
+
+| **B-12** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+
+
+
 
 | **12** :
 ```
@@ -837,6 +902,8 @@ ls web
 ### Meta Edit in Pieces Table via JS Popup `<form>` & AJAX
 
 
+
+
 ### Have Our Blog and Piece Pages Process Our New Meta
 
 | **12** :
@@ -847,6 +914,8 @@ sudo cp core/09-hist3.php web/hist.php && \
 atom core/09-blog2.php core/09-piece.php core/09-hist3.php && \
 ls web
 ```
+
+preview.php
 
 ___
 

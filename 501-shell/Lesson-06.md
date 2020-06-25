@@ -55,7 +55,7 @@ This JavaScript must somehow go in your webpage:
 *Note these can be anything:*
   - `vipAjax`
   - `doAjax`
-  - `ajax_thing`
+  - `ajax_changes`
 
 *Note this JavaScript function has settings:*
   - `ajaxHandler.open(method, file, asynchronous_tf);`
@@ -71,8 +71,8 @@ function doAjax() { // doAjax can be anything
   var ajaxHandler = vipAjax();
   ajaxHandler.onreadystatechange = function() {
     if (ajaxHandler.readyState == 4 && ajaxHandler.status == 200) {
-      // ajax_thing can be anything, it also is the HTML id
-      document.getElementById("ajax_thing").innerHTML = ajaxHandler.responseText;
+      // ajax_changes can be anything, it also is the HTML id
+      document.getElementById("ajax_changes").innerHTML = ajaxHandler.responseText;
     }
   }
   ajaxHandler.open("GET", "ajax_source.php", true); // GET could be POST
@@ -82,7 +82,7 @@ function doAjax() { // doAjax can be anything
 ##### HTML:
 
 ```html
-<div id="ajax_thing">Replace me with AJAX</div>
+<div id="ajax_changes">Replace me with AJAX</div>
 <button onclick="doAjax();">Go AJAX!</button>
 ```
 
@@ -105,7 +105,7 @@ ls web
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-- *Click the button "Do AJAX!"*
+- *Click the button "Go AJAX!"*
 
 *Note:*
 
@@ -132,7 +132,7 @@ ls web
 
 - *Use Ctrl + Shift + C in browser to see the developer view*
 - *Reload the page several times to watch the SESSION count go up on reload*
-- *Click the button "Do AJAX!"*
+- *Click the button "Go AJAX!"*
 - *Reload the page again a few times*
 
 *Note the counter doesn't rise on AJAX, only on reload...*
@@ -166,7 +166,7 @@ ls web
 | **B-3** :// `localhost/web/ajax.php`
 
 - *Use Ctrl + Shift + C in browser to see the developer view*
-- *Click the button "Do AJAX!"*
+- *Click the button "Go AJAX!"*
 - *Note "AJAX" & "5" appear from our line: `go=AJAX&time=5`*
 
 ### AJAX Render JavaScript from PHP
@@ -178,23 +178,88 @@ sudo chown -R www-data:www-data /var/www/html && \
 atom core/06-ajax4.php && \
 ls web
 ```
+
 | **B-4** :// `localhost/web/ajax.php`
 
 - *Use Ctrl + Shift + C in browser to see the developer view*
 - *Note the entire page is the same except our POST values*
 - *Note we used PHP to echo the page with our variables*
-- *Click the button "Do AJAX!"*
+- *Click the button "Go AJAX!"*
 - *Note `$post_go` and `$post_time` replaced the values in the line: `go=AJAX&time=5`*
 
-### Further Study
+### AJAX a `<form>` via JavaScript & PHP
 
-Using a `<form>` to submit an AJAX request involves deeper knowledge of JavaScript, which is beyond the scope of this course
+#### AJAX Components
 
-You can use PHP variables to customize the POST arguments of your AJAX request, which does not require a `<form>`
+##### JavaScript:
 
-For now, this should be enough to keep you busy with PHP and AJAX
+JavaScript adapted from [Mozilla's Developer site, MND](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_FormData_bound_to_a_form_element)
 
-If you want to AJAX a `<form>`, learn more about the JavaScript object called "FormData"
+```js
+window.addEventListener( "load", function () {
+  function sendData() {
+    const AJAX = new XMLHttpRequest(); // AJAX handler
+    const FD = new FormData( form ); // Bind to-send data to form element
+
+    AJAX.addEventListener( "load", function(event) {
+      document.getElementById("ajax_changes").innerHTML = event.target.responseText;
+    } ); // Change HTML on successful response
+
+    AJAX.addEventListener( "error", function( event ) {
+      document.getElementById("ajax_changes").innerHTML =  'Oops! Something went wrong.';
+    } );
+
+    AJAX.open( "POST", "ajax_source.php" ); // Send data, ajax_source.php can be any file or URL
+
+    AJAX.send( FD ); // Data sent is from the form
+  } // sendData() function
+
+  const form = document.getElementById( "ajaxForm" ); // Access form
+  form.addEventListener( "submit", function ( event ) { // Takeover <input type="submit">
+    event.preventDefault();
+    sendData();
+  } );
+
+} );
+```
+
+##### HTML:
+
+```html
+<div id="ajax_changes">Replace me with AJAX</div>
+<form id="ajaxForm">
+```
+
+Our AJAX JavaScript uses these two IDs
+
+| **5** :
+```
+sudo cp core/06-ajax5.php web/ajax.php && \
+sudo cp core/06-ajaxsource5.php web/ajax_source.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/06-ajax4.php && \
+ls web
+```
+
+*Note ajax.php:*
+- *The JavaScript is very different*
+- *The `<form>` has attribute `id="ajaxForm"`*
+  - *This is instead of a `<button>` with `onclick="doAjax();"`*
+  - *The `<button>` way has the button call AJAX*
+- *This way has JavaScript use the `id=` to "take over" the `<form>`*
+  1. *JavaScript gets the form data*
+  2. *Then interrupts the `<input="submit">` button*
+- ***This uses the JavaScript object called "`FormData`"***
+
+| **B-5** :// `localhost/web/ajax.php`
+
+- *Use Ctrl + Shift + C in browser to see the developer view*
+- *Note:*
+  - *SESSION count*
+  - *Here always*
+  - *Replace me with AJAX*
+- *Click the button "Form AJAX!"*
+- *Change the input fields and try many times*
 
 ___
 
@@ -225,9 +290,14 @@ ___
 - Using PHP to `echo` the HTML document allows us to put variables everywhere
   - Variables can also change embedded JavaScript
 
-## AJAX with an HTML `<form>`
-- AJAX can handle an HTML `<form>`, but that involves complext JavaScript
-  - Start by studying the JavaScript object: "FormData"
+## AJAX a `<form>`
+- AJAX can handle an HTML `<form>` via `id=` and "taking over"
+- This:
+  1. Uses `<form id="some_ID">` instead of `<button onclick="doAjax();">`
+  2. "Takes over" the `<input type="submit">` button
+    - The form doesn't actually submit, JavaScript does something else instead
+- **This uses the JavaScript object: "`FormData`"**
+  - You can study this more on your own
 
 ___
 
