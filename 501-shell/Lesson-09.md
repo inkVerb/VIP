@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 9: Libraries, Loops, Arrays & JSON
+## Lesson 9: Lists, Loops, Arrays & JSON
 
 Ready the CLI
 
@@ -272,6 +272,7 @@ ls web
 - *Added "contentlib" class to the table, matching the stylesheet to clean up clutter*
 - *Added `$table_row_color` and a ternary statement to toggle between 'blues' and 'shady'*
 - *Added `$show_div_count` counter to create unique ID and JavaScript function names to match*
+- *Added "view" option for published pieces*
 - *Added unique JavaScript per row; this hides/shows action links*
 - *trash.php made a double-opt-in via JavaScript to "Empty all trash"*
   - *Not about convenience, but "nuke buttons" left uncovered*
@@ -302,19 +303,25 @@ In Atom:
 | **10** :
 ```
 sudo cp core/09-pieces6.php web/pieces.php && \
+sudo cp core/09-piece1.php web/piece.php && \
 sudo cp core/09-hist1.php web/hist.php && \
 sudo cp core/09-htmldiff.js web/htmldiff.js && \
 sudo cp core/09-editprocess1.in.php web/in.editprocess.php && \
 sudo cp core/09-revert.php web/revert.php && \
 sudo cp core/09-style6.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces6.php core/09-hist1.php core/09-editprocess1.in.php core/09-revert.php core/09-style6.css && \
+atom core/09-pieces6.php core/09-piece1.php core/09-hist1.php core/09-editprocess1.in.php core/09-revert.php core/09-style6.css && \
 ls web
 ```
 
 *Note pieces.php:*
 
 - *Adds a `<a class="purple"` links in the `'published'` and `'redrafting'` `if` options*
+- *Adds "preview" option*
+
+*Note piece.php:*
+
+- *Adds a feature that logged-in users can "preview" an unpublished piece*
 
 *Note in.editprocess.php:*
 
@@ -666,15 +673,17 @@ sudo cp core/09-jsonlinks.in.php web/in.jsonlinks.php && \
 sudo cp core/09-piecefunctions3.in.php web/in.piecefunctions.php && \
 sudo cp core/09-editprocess3.in.php web/in.editprocess.php && \
 sudo cp core/09-functions.in.php web/in.functions.php && \
-sudo cp core/09-piece1.php web/piece.php && \
+sudo cp core/09-piece2.php web/piece.php && \
+sudo cp core/09-blog2.php web/blog.php && \
 sudo cp core/09-style7.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit3.php core/09-jsonlinks.in.php core/09-piecefunctions3.in.php core/09-editprocess3.in.php && \
+atom core/09-edit3.php core/09-jsonlinks.in.php core/09-piecefunctions3.in.php core/09-editprocess3.in.php core/09-functions.in.php core/09-piece2.php core/09-style7.css && \
 ls web
 ```
 
 *Note in edit.php:*
 
+- *Links to "View on blog" and "Preview draft"*
 - *Content is closer to the top*
 - *The `="submit"` buttons were moved to just after "Content"*
 - *Links uses the new function `infoPop()` for a usage tip*
@@ -703,9 +712,13 @@ ls web
 
 *Note in piece.php:*
 
-  - *Links and tags show*
+  - *Links and Tags show*
   - *There is a "View on blog" link at the top*
   - *Each iterated link's `<a>` and `<b>` tags have `class="link_item"`, smart to do, we may use later*
+
+*Note in blog.php:*
+  - *Tags show on hovering over a piece via JavaScript*
+  - *Wordlength is truncated as a "preview" via the `preview_text()` function*
 
 *Note in style.css:*
 
@@ -758,56 +771,37 @@ https://verb.blue;; Inky | Blue Ink
 
 *Let's add a "Series" option...*
 
-### Side-by-Side Forms
+### Piece Series Defined by SQL Table
 
-We already have a `<form>` inside many of these `<table>` cells (the links that appear on hover)
+#### AJAX a `<form>` to `INSERT` SQL
 
-We can put a `<table>` inside a `<form>`, but we can't put a `<form>` inside another `<form>`
+*First, a review...*
 
-Still, we need a `="checkbox"` in each `<table>` row for a bulk process
+In Lesson 6 we learned to [AJAX a `<form>`](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-06.md#ajax-a-form)
 
-We can relate a `="checkbox"` outside a `<form>` using the `form=` attribute
-
-Consider `form=` & `="apply2all"` in this code...
-
-```html
-<form method="post" action="apply2all.php" id="apply2all">
-  <input type="submit" value="Blue all">
-  <input type="submit" value="Red all">
-</form>
-<table>
-  <tr>
-    <td>
-      <input type="checkbox" name="item_1" value="1" form="apply2all">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <input type="checkbox" name="item_2" value="2" form="apply2all">
-    </td>
-  </tr>
-</table>
+| **25** :
 ```
-
-| **26** :
-```
-sudo cp core/09-postformarrays.php web/postformarrays.php && \
+sudo cp core/09-select.php web/select.php && \
+sudo cp core/09-select.in.php web/in.select.php && \
+sudo cp core/09-select.ajax.php web/ajax.select.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/postformarrays.php && \
+atom core/09-select.php core/09-select.in.php core/09-select.ajax.php && \
 ls web
 ```
 
-| **B-26** :// `localhost/web/postformarrays.php`
+| **B-25** :// `localhost/web/select.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-*Check different boxes, then submit with different buttons multiple times*
+Try adding a Series with the "+ Series" form
 
-Now, we will apply that system so we can do more...
+*Note the result comes back in the dropdown list and it is selected*
 
-### Piece Series Defined by SQL Table
+*This example does not change the SQL tables, but the next example will*
 
-| **27** :
+*Put this AJAX `<form>` into our "Edit" page...*
+
+| **26** :
 ```
 sudo cp core/09-edit4.php web/edit.php && \
 sudo cp core/09-piecefunctions4.in.php web/in.piecefunctions.php && \
@@ -841,7 +835,7 @@ ls web
 
 *We need to create the `series` table and make our first entry so this can work...*
 
-| **27** :>
+| **26** :>
 
 ```sql
 CREATE TABLE IF NOT EXISTS `series` (
@@ -860,28 +854,80 @@ ALTER TABLE `publication_history`
 ADD `series` INT UNSIGNED DEFAULT 1;
 ```
 
-### Blog Settings
+| **27** :> `SELECT * FROM series;`
 
-| **12** :
-```
-sudo cp core/09-settings.php web/settings.php && \
-sudo cp core/09-menues.php web/menues.php && \
-sudo cp core/09-series.php web/series.php && \
-atom core/09-blog2.php core/09-piece.php core/09-hist3.php && \
-ls web
-```
+| **27** ://phpMyAdmin **> series**
 
-| **B-26** :// `localhost/web/settings.php` (Ctrl + R to reload)
+*Note there is only a "Blog" series*
 
-### Bulk Actions in Pieces Table `form=` Attribute
+| **B-27** :// `localhost/web/edit.php?p=3`
 
-| **B-12** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+Try adding a Series with the "+ Series" form
+
+| **28** :> `SELECT * FROM series;`
+
+| **28** ://phpMyAdmin **> series**
+
+*Note your new Series has been added to the `series` table*
+
+*We just used `form=` to put a `<form>` among other `<form>` items; let's do more...*
+
+### Side-by-Side Forms
+
+*First, a review...*
+
+| **29** : `atom core/09-pieces6.php`
+
+| **B-29** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
+We already have a `<form>` inside many of these `<table>` cells (the links that appear on hover)
 
+We can put a `<table>` inside a `<form>`, but we can't put a `<form>` inside another `<form>`
 
+Still, we need a `="checkbox"` in each `<table>` row for a bulk process
 
+We can relate a `="checkbox"` outside a `<form>` using the `form=` attribute
+
+Consider `form=` & `="apply2all"` in this code...
+
+```html
+<form method="post" action="apply2all.php" id="apply2all">
+  <input type="submit" value="Blue all">
+  <input type="submit" value="Red all">
+</form>
+<table>
+  <tr>
+    <td>
+      <input type="checkbox" name="item_1" value="1" form="apply2all">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="checkbox" name="item_2" value="2" form="apply2all">
+    </td>
+  </tr>
+</table>
+```
+
+| **30** :
+```
+sudo cp core/09-postformarrays.php web/postformarrays.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/postformarrays.php && \
+ls web
+```
+
+| **B-30** :// `localhost/web/postformarrays.php`
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+Check different boxes, then submit with different buttons multiple times
+
+*Now, we will apply that system so we can do more...*
+
+### Bulk Actions in Pieces Table `form=` Attribute
 
 | **12** :
 ```
@@ -898,24 +944,37 @@ atom core/09-pieces7.php core/09-trash7.php core/09-delete7.php core/09-undelete
 ls web
 ```
 
+| **B-12** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+
+
 
 ### Meta Edit in Pieces Table via JS Popup `<form>` & AJAX
 
-
-
-
-### Have Our Blog and Piece Pages Process Our New Meta
-
 | **12** :
 ```
-sudo cp core/09-blog2.php web/blog.php && \
-sudo cp core/09-piece2.php web/piece.php && \
-sudo cp core/09-hist3.php web/hist.php && \
-atom core/09-blog2.php core/09-piece.php core/09-hist3.php && \
+sudo cp core/09-pieces8.php web/pieces.php && \
+atom core/09-pieces8.php && \
 ls web
 ```
 
-preview.php
+| **B-12** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+
+### Published History to Display New Meta
+
+| **12** :
+```
+sudo cp core/09-hist3.php web/hist.php && \
+atom core/09-hist3.php && \
+ls web
+```
+
+
 
 ___
 
@@ -946,4 +1005,4 @@ ___
 
 ___
 
-#### [Lesson 10: Media Library & Uploads](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-10.md)
+#### [Lesson 10: Media Library, Files & Uploads](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-10.md)

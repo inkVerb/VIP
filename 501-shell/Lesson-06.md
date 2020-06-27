@@ -187,7 +187,7 @@ ls web
 - *Click the button "Go AJAX!"*
 - *Note `$post_go` and `$post_time` replaced the values in the line: `go=AJAX&time=5`*
 
-### AJAX a `<form>` via JavaScript & PHP
+### AJAX a `<form>`
 
 #### AJAX Components
 
