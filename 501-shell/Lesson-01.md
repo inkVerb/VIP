@@ -1014,6 +1014,80 @@ ls web
 
 | **33** : `ls web && cat web/fileput.4`
 
+
+### V. `_POST` Array, `print_r()` & `var_dump()`
+
+| **34** :
+```
+sudo cp core/01-phpprintr.php web/phpprintr.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/01-phpprintr.php && \
+ls web
+```
+
+| **B-34** :// `localhost/web/phpprintr.php`
+
+Fill-out the fields and click "Hit me"
+
+*Note this is the entire `$_POST` array, only what was in the `<form>`*
+
+*Note phpprintr.php: both file and browser*
+
+  - *The `$_POST` keys match the `<input>` names*
+  - *The `name=` of the `="submit"` `<input>` matches the `value=` attribute*
+
+*Try the same thing with `var_dump()`...*
+
+| **35** :
+```
+sudo cp core/01-phpvardump.php web/phpvardump.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/01-phpvardump.php && \
+ls web
+```
+
+| **B-35** :// `localhost/web/phpvardump.php`
+
+Fill-out the fields and click "Hit me"
+
+*Same basic information, different format*
+
+**The `$_POST` array will only have what is in the `<form>`!**
+
+### VI. PHP Errors
+
+| **36** :
+```
+sudo cp core/01-phperrors1.php web/phperrors.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/01-phperrors1.php && \
+ls web
+```
+
+| **B-36** :// `localhost/web/phperrors.php`
+
+*Right away, the PHP message complains about the variable `$nothere` because it is not set*
+
+**PHP Error Handler Rules:**
+
+1. We only saw this erro message because we used `echo` to show it in the error handler
+2. Many errors still happen we don't see because the error handler doesn't `echo` them
+3. You don't want any unseen errors in your PHP, it slows down your site and other things
+4. Develop with an error handler, turn it off once you have no errors and you go live
+
+*Let's try the `$live` option...*
+
+| **37** :
+```
+sudo cp core/01-phperrors2.php web/phperrors.php && \
+atom core/01-phperrors2.php && \
+ls web
+```
+
+*Note we added the `$site_live` variable, which easily turned-off our error `echo`...*
+
+| **B-37** :// `localhost/web/phperrors.php`
+
 ___
 
 # The Take
@@ -1109,6 +1183,45 @@ ___
 - Create a file with: `file_put_contents('./file/location', 'File content string');`
 - Heredocs with `'single quotes'` around the delimeter will cancel variables
   - Syntax: `$Variable = <<<'EOF'`
+
+## `$_POST` Array, `print_r()` & `var_dump()`
+- The `$_POST` array only has what is in the `<form>`
+- `print_r()` & `var_dump()` both show everything in an array
+  - Syntax: `print_r($_POST);`
+
+## Error Handler
+- The function that deals with errors is called an "error handler"
+- Customize your own way to see errors
+- Syntax:
+```php
+function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
+  // Function settings here
+  $message = "Error in '$e_file' on line $e_line:\n$e_message\n";
+  $message .= "<pre>" .print_r(debug_backtrace(), 1) . "</pre>\n";
+  echo nl2br($message);
+}
+set_error_handler ('my_error_handler');
+```
+- Use some variable like `$live` to change what the error handler does
+- Syntax:
+```php
+$live = false;
+function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
+
+  global $live;
+
+  $message = "Error in '$e_file' on line $e_line:\n$e_message\n";
+  $message .= "<pre>" .print_r(debug_backtrace(), 1) . "</pre>\n";
+
+  if ($live == true) {
+      echo nl2br($message);
+  } else {
+    // Script to send an email or something else
+  }
+
+}
+set_error_handler ('my_error_handler');
+```
 ___
 
 #### [Lesson 2: MySQL & phpMyAdmin](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-02.md)

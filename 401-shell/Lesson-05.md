@@ -371,7 +371,7 @@ echo "${myVar}"
 
 | **21** : `./varbrackett-bash one two three four five six seven eight nine ten eleven twelve`
 
-### VII. 'export' variables
+### VII. `export` Variables
 
 *Edit these scripts to see the short version*
 
@@ -424,7 +424,7 @@ export myVar="Hello world!"
 
 *Note a variable only carries into another script if declared with: `export`*
 
-### VII. Removing text in a variable's value: `${var#foo}` vs `${var%foo}`
+### VII. Removing Text in a Variable's Value: `${var#foo}` vs `${var%foo}`
 
 *Edit this script*
 
@@ -450,7 +450,7 @@ var2: $var2"
 
 *Take a good look at that*
 
-### VIII. `readonly` variables (constants)
+### VIII. `readonly` Variables (Constants)
 
 *"Constants" are, basically, variables that can't change (oxymoron, but you get the idea)*
 
@@ -516,7 +516,7 @@ unset MYROVAR
 
 *ALL_UPPERCASE variables may or may not be "`readonly`"; they just "shouldn't" be changed, according to common practice*
 
-### IX. Terminal & environment variables (`set`, `printenv` & `export`)
+### IX. Terminal & Environment Variables (`set`, `printenv` & `export`)
 
 Ready the CLI (if needed)
 

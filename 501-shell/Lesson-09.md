@@ -102,13 +102,12 @@ sudo cp core/09-pieces2.php web/pieces.php && \
 sudo cp core/09-delete2.php web/delete.php && \
 sudo cp core/09-undelete2.php web/undelete.php && \
 sudo cp core/09-empty_delete2.php web/empty_delete.php && \
-sudo cp core/09-newpublish2.php web/newpublish.php && \
 sudo cp core/09-unpublish2.php web/unpublish.php && \
 sudo cp core/09-republish2.php web/republish.php && \
 sudo cp core/09-pagify2.php web/pagify.php && \
 sudo cp core/09-postify2.php web/postify.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces2.php core/09-delete2.php core/09-undelete2.php core/09-empty_delete2.php core/09-newpublish2.php core/09-unpublish2.php core/09-republish2.php core/09-pagify2.php core/09-pagify2.php core/09-postify2.php && \
+atom core/09-pieces2.php core/09-delete2.php core/09-undelete2.php core/09-empty_delete2.php core/09-unpublish2.php core/09-republish2.php core/09-pagify2.php core/09-pagify2.php core/09-postify2.php && \
 ls web
 ```
 
@@ -126,11 +125,6 @@ ls web
 - *republish.php*
 - *pagify.php*
 - *postify.php*
-
-*Note newpublish.php:*
-
-- *This prepares, then auto-sends a normal piece `<form>` to POST*
-- *When receiving a piece `<form>` POST, this behaves just like edit.php and processes the same full publishing process*
 
 | **B-3** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
@@ -155,26 +149,25 @@ While this works, we don't want a GET URL to be this powerful, use POST instead.
 | **5** :
 ```
 sudo cp core/09-pieces3.php web/pieces.php && \
-sudo cp core/09-postfunctions.in.php web/in.postfunctions.php && \
+sudo cp core/09-piecesfunctions3.in.php web/in.piecesfunctions.php && \
 sudo cp core/09-style3.css web/style.css && \
 sudo cp core/09-delete3.php web/delete.php && \
 sudo cp core/09-undelete3.php web/undelete.php && \
 sudo cp core/09-empty_delete3.php web/empty_delete.php && \
-sudo cp core/09-newpublish3.php web/newpublish.php && \
 sudo cp core/09-unpublish3.php web/unpublish.php && \
 sudo cp core/09-republish3.php web/republish.php && \
 sudo cp core/09-pagify3.php web/pagify.php && \
 sudo cp core/09-postify3.php web/postify.php && \
-atom core/09-pieces3.php core/09-postfunctions.in.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-empty_delete3.php core/09-newpublish3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
+atom core/09-pieces3.php core/09-piecesfunctions3.in.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-empty_delete3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
 ls web
 ```
 
 *Note pieces.php:*
 
-- *We added an `include` for in.postfunctions.php*
+- *We added an `include` for in.piecesfunctions.php*
 - *We use a `postform()` function rather than links*
 
-*Note in.postfunctions.php:*
+*Note in.piecesfunctions.php:*
 
 - *We created the `postform()` function*
 - *The `style=` attribute embedded inside the `<form>` tag is necessary for `float:` to work*
@@ -192,8 +185,6 @@ ls web
 - *republish.php*
 - *pagify.php*
 - *postify.php*
-- *newpublish.php*
-
 
 | **B-5** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
@@ -215,8 +206,8 @@ ls web
 ```
 sudo cp core/09-pieces4.php web/pieces.php && \
 sudo cp core/09-trash4.php web/trash.php && \
-sudo cp core/09-undelete_trash.php web/undelete_trash.php && \
-sudo cp core/09-empty_delete_trash.php web/empty_delete_trash.php && \
+sudo cp core/09-undelete_trash4.php web/undelete_trash.php && \
+sudo cp core/09-empty_delete_trash4.php web/empty_delete_trash.php && \
 sudo cp core/09-empty_all_trash.php web/empty_all_trash.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/09-pieces4.php core/09-trash4.php core/09-undelete_trash.php core/09-empty_delete_trash.php core/09-empty_all_trash.php && \
@@ -325,12 +316,8 @@ ls web
 
 *Note in.editprocess.php:*
 
-- *It accepts both GET and `$_SESSION['piece_id']` for opening a piece*
-  - *The SESSION method would open values from the `publication_history` SQL table*
-
-*Note revert.php:*
-
-- *This simply sets `$_SESSION['piece_id']`, then redirects to edit.php*
+- *It accepts both `&_GET['p']` and `$_GET['h']` for opening a piece*
+  - *The `$_GET['h']` method would open values from the `publication_history` SQL table*
 
 *Note style.css:*
 
@@ -927,29 +914,116 @@ Check different boxes, then submit with different buttons multiple times
 
 *Now, we will apply that system so we can do more...*
 
-### Bulk Actions in Pieces Table `form=` Attribute
+### Bulk Actions in Pieces Table: `form=` Attribute & AJAX
 
-| **12** :
+| **31** :
 ```
 sudo cp core/09-pieces7.php web/pieces.php && \
+sudo cp core/09-bulkpieces.act.php web/act.bulkpieces.php && \
+sudo cp core/09-piecesfunctions7.in.php web/in.piecesfunctions.php && \
 sudo cp core/09-trash7.php web/trash.php && \
-sudo cp core/09-delete7.php web/delete.php && \
-sudo cp core/09-undelete7.php web/undelete.php && \
-sudo cp core/09-empty_delete7.php web/empty_delete.php && \
-sudo cp core/09-unpublish7.php web/unpublish.php && \
-sudo cp core/09-republish7.php web/republish.php && \
-sudo cp core/09-pagify7.php web/pagify.php && \
-sudo cp core/09-postify7.php web/postify.php && \
-atom core/09-pieces7.php core/09-trash7.php core/09-delete7.php core/09-undelete7.php core/09-empty_delete7.php core/09-unpublish7.php core/09-republish7.php core/09-pagify7.php core/09-pagify7.php core/09-postify7.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-pieces7.php core/09-bulkpieces.act.php core/09-piecesfunctions7.in.php core/09-trash7.php && \
 ls web
 ```
 
-| **B-12** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+*Note pieces.php:*
+
+- *View of deleted pieces is gone, but logic still allows for them*
+  - *We will AJAX changes later and want to still see "just deleted" pieces*
+- *Bulk actions section hides/shows via JavaScript*
+  - *These call act.bulkpieces.php*
+
+*Note act.bulkpieces.php:*
+
+- *This simply accepts a `POST` action, then calls other actions*
+- *The `POST` array only sends:*
+  1. *Which button was pressed*
+  2. *Bulk IDs*
+- *The button array key (`['bluksubmit']`) is tested, then removed*
+- *Only IDs remain in the `POST` array*
+- *Remaining `POST` IDs are iterated through*
+
+*Note in.piecesfunctions.php:*
+
+- *The `piecesaction()` function was added*
+  - *This does the actual that formerly used all those pieces-action files*
+  - *These are used by act.bulkpieces.php without leaving that page*
+
+*Note trash.php:*
+
+- *This is similar to pieces.php*
+- *Deleted pieces can be previewed and edited*
+- *Classes for "live" pieces are allowed*
+  - *We will AJAX changes later and want to still see "just restored" pieces*
+- *Bulk actions section hides/shows via JavaScript*
+  - *These call act.bulkpieces.php*
+
+
+| **B-31** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
+Click and try:
 
+- Checkboxes
+- "Bulk actions" (various buttons)
+- Trash
+- Pieces
 
+*Let's AJAX these small "actions"...*
+
+| **32** :
+```
+sudo cp core/09-piecesfunctions8.in.php web/in.piecesfunctions.php && \
+sudo cp core/09-piecesactions.ajax.php web/ajax.piecesactions.php && \
+sudo cp core/09-piecesactions.act.php web/act.piecesactions.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-piecesfunctions8.in.php core/09-piecesactions.ajax.php && \
+ls web
+```
+
+| **B-32** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+*Notice the AJAX functions with every piece*
+
+In Pieces and Trash:
+
+- Delete
+- Restore
+- Refresh the page
+
+*Note how "just deleted" or "just restored" pieces stay listed on the pages that don't show them after refresh*
+
+*With AJAX, the entire page does not reload*
+
+*This conveniently allows quick delete/undelete of pieces just changed*
+
+*AJAX calls are made to one, single file, not all those action files as before*
+
+*Note in.piecesfunctions.php:*
+
+- *The `piecesform()` function was changed*
+  - *It does not have all those calls to files anymore*
+  - *Now, it generates AJAX calls with the `<forms>`*
+
+*Note AJAX is handled by:*
+
+- *ajax.piecesactions.php*
+  - *The default*
+
+- *act.piecesactions.php*
+  - *Handles the action and redirects if AJAX doesn't get triggered for some reason*
+
+*Since we don't need those pieces action files anymore...*
+
+| **33** :
+```
+sudo rm -f web/delete.php web/undelete.php web/empty_delete.php web/unpublish.php web/republish.php web/pagify.php web/postify.php web/undelete_trash.phpweb/empty_delete_trash.php
+ls web
+```
 
 ### Meta Edit in Pieces Table via JS Popup `<form>` & AJAX
 
