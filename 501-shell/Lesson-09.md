@@ -1021,6 +1021,9 @@ In Pieces and Trash:
   - *It adds a note `<i class="renew" style ="float: right;">changed</i>`*
     - *This class `.renew` was part of CSS file from a few steps back*
       - *View with `atom core/09-style7.css`*
+    - *We need this note because UX theory (User eXperience) demands that appearance changes both:*
+      1. *Be explained to the user*
+      2. *Be axiomatic to the user (self-explanatory)*
 
 - *act.piecesactions.php*
   - *Handles the action and redirects if AJAX doesn't get triggered for some reason*
