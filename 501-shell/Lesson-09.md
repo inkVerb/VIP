@@ -1008,14 +1008,23 @@ In Pieces and Trash:
 - *The `piecesform()` function was changed*
   - *It does not have all those calls to files anymore*
   - *Now, it generates AJAX calls with the `<forms>`*
+  - *The AJAX JavaScript adds the `.renew` CSS class to the `<tr>`*
+    - *`document.getElementById("prow_ID").classList.add("renew");`*
+    - *This class `.renew` was part of CSS file from a few steps back*
+      - *View with `atom core/09-style7.css`*
 
 *Note AJAX is handled by:*
 
 - *ajax.piecesactions.php*
-  - *The default*
+  - *AJAX calls this by default*
+  - *It re-creates the entire `<tr>` and sends it for AJAX to update*
+  - *It adds a note `<i class="renew" style ="float: right;">changed</i>`*
+    - *This class `.renew` was part of CSS file from a few steps back*
+      - *View with `atom core/09-style7.css`*
 
 - *act.piecesactions.php*
   - *Handles the action and redirects if AJAX doesn't get triggered for some reason*
+  - *The entire page will reload*
 
 *Since we don't need those pieces action files anymore...*
 

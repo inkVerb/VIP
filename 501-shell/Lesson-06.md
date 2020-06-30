@@ -10,7 +10,7 @@ ___
 
 ### AJAX: Asynchronous JavaScript and XML
 
-AJAX loads or reloads only ***part*** of a webpage
+AJAX changes only ***part*** of a webpage
 
 #### JavaScript: Asynchronous Animation
 - JavaScript loads as its goes, before finishing the script
@@ -75,7 +75,7 @@ function doAjax() { // doAjax can be anything
       document.getElementById("ajax_changes").innerHTML = ajaxHandler.responseText;
     }
   }
-  ajaxHandler.open("GET", "ajax_source.php", true); // GET could be POST
+  ajaxHandler.open("GET", "ajax_responder.php", true); // GET could be POST
   ajaxHandler.send();
 }
 ```
@@ -93,9 +93,9 @@ function doAjax() { // doAjax can be anything
 | **1** :
 ```
 sudo cp core/06-ajax1.html web/ajax.html && \
-sudo cp core/06-ajaxsource1.txt web/ajax_source.txt && \
+sudo cp core/06-ajaxresponder1.txt web/ajax_responder.txt && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/06-ajax1.html core/06-ajaxsource1.txt && \
+atom core/06-ajax1.html core/06-ajaxresponder1.txt && \
 ls web
 ```
 
@@ -109,20 +109,20 @@ ls web
 
 *Note:*
 
-- *the entire page did* ***not*** *reload, only the line "Replace me with AJAX"*
+- *the entire page did* ***not*** *reload, only the line "Replace me with AJAX" changed*
 - *AJAX worked on an .html page without any PHP*
-- *AJAX sourced a .txt file without any PHP*
+- *AJAX responded with a .txt file without any PHP*
 
-*Try a PHP counter to see if it actually reloads...*
+*Try a PHP counter to see if the page actually reloads...*
 
 ### AJAX with PHP
 
 | **2** :
 ```
 sudo cp core/06-ajax2.php web/ajax.php && \
-sudo cp core/06-ajaxsource2.php web/ajax_source.php && \
+sudo cp core/06-ajaxresponder2.php web/ajax_responder.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/06-ajax2.php core/06-ajaxsource2.php && \
+atom core/06-ajax2.php core/06-ajaxresponder2.php && \
 ls web
 ```
 
@@ -135,7 +135,7 @@ ls web
 - *Click the button "Go AJAX!"*
 - *Reload the page again a few times*
 
-*Note the counter doesn't rise on AJAX, only on reload...*
+*Note the counter doesn't increment on AJAX, only on reload...*
 
 ***...because AJAX does not reload the page!***
 
@@ -144,26 +144,26 @@ ls web
 | **3** :
 ```
 sudo cp core/06-ajax3.php web/ajax.php && \
-sudo cp core/06-ajaxsource3.php web/ajax_source.php && \
+sudo cp core/06-ajaxresponder3.php web/ajax_responder.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom wecore/06-ajax3.php core/06-ajaxsource3.php && \
+atom wecore/06-ajax3.php core/06-ajaxresponder3.php && \
 ls web
 ```
 
 *Note:*
 
   - *ajax.php*
-  - *ajax_source.php*
+  - *ajax_responder.php*
 
 - *We are using POST, not GET:*
-  - *ajaxHandler.open("POST", "ajax_source.php", true);*
+  - *ajaxHandler.open("POST", "ajax_responder.php", true);*
 - *Added:*
   - *`ajaxHandler.setRequestHeader("Content-type", "application/x-www-form-urlencoded")`*
 - *Defined POST content in a GET-URL-like string:*
   - *`ajaxHandler.send("go=AJAX&time=5")`*
-- *ajax_source.php processes POST arguments*
+- *ajax_responder.php processes POST arguments*
 
-| **B-3** :// `localhost/web/ajax.php`
+| **B-3** :// `localhost/web/ajax.php` (Ctrl + R to reload)
 
 - *Use Ctrl + Shift + C in browser to see the developer view*
 - *Click the button "Go AJAX!"*
@@ -179,7 +179,7 @@ atom core/06-ajax4.php && \
 ls web
 ```
 
-| **B-4** :// `localhost/web/ajax.php`
+| **B-4** :// `localhost/web/ajax.php` (Ctrl + R to reload)
 
 - *Use Ctrl + Shift + C in browser to see the developer view*
 - *Note the entire page is the same except our POST values*
@@ -187,11 +187,9 @@ ls web
 - *Click the button "Go AJAX!"*
 - *Note `$post_go` and `$post_time` replaced the values in the line: `go=AJAX&time=5`*
 
-### AJAX a `<form>`
+### AJAX Capture Data from a `<form>`
 
-#### AJAX Components
-
-##### JavaScript:
+#### AJAX JavaScript:
 
 JavaScript adapted from [Mozilla's Developer site, MND](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_FormData_bound_to_a_form_element)
 
@@ -201,20 +199,20 @@ window.addEventListener( "load", function () {
     const AJAX = new XMLHttpRequest(); // AJAX handler
     const FD = new FormData( form ); // Bind to-send data to form element
 
-    AJAX.addEventListener( "load", function(event) {
+    AJAX.addEventListener( "load", function(event) { // This runs when AJAX responds
       document.getElementById("ajax_changes").innerHTML = event.target.responseText;
     } ); // Change HTML on successful response
 
-    AJAX.addEventListener( "error", function( event ) {
+    AJAX.addEventListener( "error", function( event ) { // This runs if AJAX fails
       document.getElementById("ajax_changes").innerHTML =  'Oops! Something went wrong.';
     } );
 
-    AJAX.open( "POST", "ajax_source.php" ); // Send data, ajax_source.php can be any file or URL
+    AJAX.open( "POST", "ajax_responder.php" ); // Send data, ajax_responder.php can be any file or URL
 
     AJAX.send( FD ); // Data sent is from the form
   } // sendData() function
 
-  const form = document.getElementById( "ajaxForm" ); // Access form
+  const form = document.getElementById( "ajaxForm" ); // Access <form id="ajaxForm">, id="ajaxForm" can be anything
   form.addEventListener( "submit", function ( event ) { // Takeover <input type="submit">
     event.preventDefault();
     sendData();
@@ -223,21 +221,35 @@ window.addEventListener( "load", function () {
 } );
 ```
 
-##### HTML:
+#### AJAX Response PHP:
+
+AJAX only sends this in response:
+
+```php
+echo $go;
+
+echo '<br>';
+
+echo $time;
+```
+
+#### AJAX HTML:
 
 ```html
 <div id="ajax_changes">Replace me with AJAX</div>
 <form id="ajaxForm">
 ```
 
-Our AJAX JavaScript uses these two IDs
+Our AJAX JavaScript uses these two IDs (`id=`)
+
+*Review the diagrams above along side the following few steps...*
 
 | **5** :
 ```
 sudo cp core/06-ajax5.php web/ajax.php && \
-sudo cp core/06-ajaxsource5.php web/ajax_source.php && \
+sudo cp core/06-ajaxresponder5.php web/ajax_responder.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/06-ajax4.php && \
+atom core/06-ajax5.php core/06-ajaxresponder5.php && \
 ls web
 ```
 
@@ -251,15 +263,136 @@ ls web
   2. *Then interrupts the `<input="submit">` button*
 - ***This uses the JavaScript object called "`FormData`"***
 
-| **B-5** :// `localhost/web/ajax.php`
+| **B-5** :// `localhost/web/ajax.php` (Ctrl + R to reload)
 
 - *Use Ctrl + Shift + C in browser to see the developer view*
-- *Note:*
-  - *SESSION count*
-  - *Here always*
-  - *Replace me with AJAX*
-- *Click the button "Form AJAX!"*
-- *Change the input fields and try many times*
+
+1. Note:
+  - "SESSION count:"
+  - "Here always"
+  - "Replace me with AJAX"
+2. Click the button "Form AJAX!"
+3. Change the input fields and try many times
+
+### AJAX Capture Data from an *AJAX-Reloaded* `<form>`
+
+In the previous example, this only works the first time the pages loads:
+
+```js
+const form = document.getElementById( "ajaxForm" ); // Access form
+form.addEventListener( "submit", function ( event ) { // Takeover <input type="submit">
+  event.preventDefault();
+  sendData();
+} );
+```
+
+If we AJAX-change the `<form>` itself from the AJAX response, AJAX will not interrupt the AJAX-responded `<form>`
+
+So, we must create an "event listener" that refreshes with each AJAX request
+
+#### AJAX JavaScript:
+
+JavaScript adapted from [Mozilla's Developer site, MND](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_FormData_bound_to_a_form_element)
+
+```js
+window.addEventListener( "load", function () {
+  function sendData() {
+    const AJAX = new XMLHttpRequest(); // AJAX handler
+    const FD = new FormData( form ); // Bind to-send data to form element
+
+    AJAX.addEventListener( "load", function(event) { // This runs when AJAX responds
+      document.getElementById("ajax_changes").innerHTML = event.target.responseText;
+
+      // Bind a new event listener every time the <form> is changed:
+      form = document.getElementById( "ajaxForm" ); // Access <form id="ajaxForm">, id="ajaxForm" can be anything
+      listenToForm(); // Listen to updated <form> after it is changed
+
+    } ); // Change HTML on successful response
+
+    AJAX.addEventListener( "error", function( event ) { // This runs if AJAX fails
+      document.getElementById("ajax_changes").innerHTML =  'Oops! Something went wrong.';
+    } );
+
+    AJAX.open( "POST", "ajax_responder.php" ); // Send data, ajax_responder.php can be any file or URL
+
+    AJAX.send( FD ); // Data sent is from the form
+
+  } // sendData() function
+
+  // Declare the variable the first time it is used, not a constant
+  var form = document.getElementById( "ajaxForm" ); // Access <form id="ajaxForm">, id="ajaxForm" can be anything
+  function listenToForm(){
+    form.addEventListener( "submit", function ( event ) { // Takeover <input type="submit">
+      event.preventDefault();
+      sendData();
+    } );
+  }
+  listenToForm();
+
+} );
+```
+
+#### AJAX Response PHP:
+
+AJAX sends the entire `<form>` again inside the response:
+
+```php
+echo '
+'.$foo.'
+<br>
+'.$bar.'
+<br>
+<form id="ajaxForm">
+  <input type="text" value="'.$foo.'" name="foo">
+  <input type="text" value="'.$bar.'" name="bar">
+  <input type="submit" value="Form AJAX!">
+</form>
+';
+```
+
+#### AJAX HTML:
+
+```html
+<div id="ajax_changes">Replace me with AJAX
+  <form id="ajaxForm">...</form>
+</div>
+```
+
+Our AJAX JavaScript uses these two IDs (`id=`)
+
+This time, the `<form>` is wrapped in the `<div>` AJAX will change
+
+*Review the diagrams above along side the following few steps...*
+
+| **6** :
+```
+sudo cp core/06-ajax6.php web/ajax.php && \
+sudo cp core/06-ajaxresponder6.php web/ajax_responder.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/06-ajax6.php core/06-ajaxresponder6.php && \
+ls web
+```
+
+*Note ajax.php:*
+- *The JavaScript is very different*
+- *The `<form>` has attribute `id="ajaxForm"`*
+  - *This is instead of a `<button>` with `onclick="doAjax();"`*
+  - *The `<button>` way has the button call AJAX*
+- *This way has JavaScript use the `id=` to "take over" the `<form>`*
+  1. *JavaScript gets the form data*
+  2. *Then interrupts the `<input="submit">` button*
+- ***This uses the JavaScript object called "`FormData`"***
+
+| **B-6** :// `localhost/web/ajax.php` (Ctrl + R to reload)
+
+- *Use Ctrl + Shift + C in browser to see the developer view*
+
+1. Note:
+  - "SESSION count:"
+  - "Here always"
+  - "Replace me with AJAX"
+2. Click the button "Form AJAX!"
+3. Change the input fields and try many times
 
 ___
 
@@ -271,7 +404,7 @@ ___
   - "Asynchronous"
   - Allows animation
 - JavaScript animates pieces of HTML and CSS
-- AJAX is JavaScript "animating" part of a page into loading/reloading
+- AJAX is JavaScript "animating" part of a page without the page loading/reloading
 
 ## XML (eXtensible Markup Language)
 - XML looks like HTML, but you can use any tag you want
@@ -280,9 +413,9 @@ ___
   - JSON is an alternative to XML
   - JSON may be more common in AJAX
 
-## AJAX Reloads Part of a Page
-- The AJAX part of the page is the only part that reloads
-- We can see that the AJAX part changes, but not the rest of the page
+## AJAX Updates Part of a Page
+- The AJAX part of the page is the only part that changes
+- The rest of the page does not reload nor change
 - We used a PHP counting loop to see the difference between the AJAX and the rest of the page
   - The difference can be anything, especially a large page that you don't want to reload
 
@@ -298,6 +431,8 @@ ___
     - The form doesn't actually submit, JavaScript does something else instead
 - **This uses the JavaScript object: "`FormData`"**
   - You can study this more on your own
+
+## AJAX
 
 ___
 
