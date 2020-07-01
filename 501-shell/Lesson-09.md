@@ -975,9 +975,11 @@ Click and try:
 
 | **32** :
 ```
+sudo cp core/09-pieces8.php web/pieces.php && \
 sudo cp core/09-piecesfunctions8.in.php web/in.piecesfunctions.php && \
-sudo cp core/09-piecesactions.ajax.php web/ajax.piecesactions.php && \
+sudo cp core/09-piecesactions8.ajax.php web/ajax.piecesactions.php && \
 sudo cp core/09-piecesactions.act.php web/act.piecesactions.php && \
+sudo cp core/09-trash8.php web/trash.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/09-piecesfunctions8.in.php core/09-piecesactions.ajax.php && \
 ls web
@@ -1003,6 +1005,11 @@ In Pieces and Trash:
 
 *AJAX calls are made to one, single file, not all those action files as before*
 
+*Note pieces.php:*
+
+- *Added a JavaScript function `clearChanged[ID]`*
+  - *Used in `<i class="renew" ...>changed</i>` in ajax.piecesactions.php*
+
 *Note in.piecesfunctions.php:*
 
 - *The `piecesform()` function was changed*
@@ -1018,10 +1025,12 @@ In Pieces and Trash:
 - *ajax.piecesactions.php*
   - *AJAX calls this by default*
   - *It re-creates the entire `<tr>` and sends it for AJAX to update*
-  - *It adds a note `<i class="renew" style ="float: right;">changed</i>`*
+  - *It adds a note `<i class="renew" ...>changed</i>`*
     - *This class `.renew` was part of CSS file from a few steps back*
       - *View with `atom core/09-style7.css`*
     - *We need this note because UX theory (User eXperience) demands that appearance changes both:*
+    - *Clicking "changed" will activate JavaScript's `clearChanged[ID]` created in pieces.php*
+      - *This will remove the "changed" text and the "renew" class*
       1. *Be explained to the user*
       2. *Be axiomatic to the user (self-explanatory)*
 
@@ -1041,12 +1050,20 @@ ls web
 
 | **12** :
 ```
-sudo cp core/09-pieces8.php web/pieces.php && \
+sudo cp core/09-pieces9.php web/pieces.php && \
+sudo cp core/09-piecesactions9.ajax.php web/ajax.piecesactions.php && \
 atom core/09-pieces8.php && \
 ls web
 ```
 
 | **B-12** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Note:*
+
+- *HTML entity symbols:*
+  - *The pencil symbol next to each Piece Title*
+  - *The hover "edit" text changed to "Editor ->"*
+
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
