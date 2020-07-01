@@ -47,10 +47,10 @@ website.php
 ```
 sudo cp core/03-website1.php web/website.php && \
 sudo cp core/03-style1.css web/style.css && \
-sudo cp core/03-functions1.in.php web/in.functions.php && \
-sudo cp core/03-checks1.in.php web/in.checks.php && \
+sudo cp core/03-in.functions1.php web/in.functions.php && \
+sudo cp core/03-in.checks1.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/03-website1.php core/03-style1.css core/03-functions1.in.php core/03-checks1.in.php && \
+atom core/03-website1.php core/03-style1.css core/03-in.functions1.php core/03-in.checks1.php && \
 ls web
 ```
 
@@ -126,9 +126,9 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple
 | **2** :
 ```
 sudo cp core/03-website2.php web/website.php && \
-sudo cp core/03-config.in.php web/in.config.php && \
+sudo cp core/03-in.config.php web/in.config.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/03-website2.php core/03-config.in.php && \
+atom core/03-website2.php core/03-in.config.php && \
 ls web
 ```
 
@@ -252,10 +252,10 @@ ls web
 ```
 sudo cp core/03-website6.php web/website.php && \
 sudo cp core/03-style6.css web/style.css && \
-sudo cp core/03-functions6.in.php web/in.functions.php && \
-sudo cp core/03-checks6.in.php web/in.checks.php && \
+sudo cp core/03-in.functions6.php web/in.functions.php && \
+sudo cp core/03-in.checks6.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/03-website6.php core/03-style6.css core/03-functions6.in.php core/03-checks6.in.php && \
+atom core/03-website6.php core/03-style6.css core/03-in.functions6.php core/03-in.checks6.php && \
 ls web
 ```
 
@@ -292,10 +292,10 @@ ls web
 ```
 sudo cp core/03-website7.php web/website.php && \
 sudo cp core/03-style7.css web/style.css && \
-sudo cp core/03-functions7.in.php web/in.functions.php && \
-sudo cp core/03-checks7.in.php web/in.checks.php && \
+sudo cp core/03-in.functions7.php web/in.functions.php && \
+sudo cp core/03-in.checks7.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/03-website7.php core/03-style7.css core/03-functions7.in.php core/03-checks7.in.php && \
+atom core/03-website7.php core/03-style7.css core/03-in.functions7.php core/03-in.checks7.php && \
 ls web
 ```
 
@@ -325,9 +325,9 @@ ls web
 | **8** :
 ```
 sudo cp core/03-website8.php web/website.php && \
-sudo cp core/03-checks8.in.php web/in.checks.php && \
+sudo cp core/03-in.checks8.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/03-website8.php cp core/03-checks8.in.php && \
+atom core/03-website8.php cp core/03-in.checks8.php && \
 ls web
 ```
 

@@ -28,10 +28,10 @@ ___
 | **1** :
 ```
 sudo cp core/08-edit1.php web/edit.php && \
-sudo cp core/08-loginhead.in.php web/in.login_head.php && \
-sudo cp core/08-logincheck1.in.php web/in.login_check.php && \
+sudo cp core/08-in.loginhead.php web/in.login_head.php && \
+sudo cp core/08-in.logincheck1.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-loginhead.in.php core/08-logincheck1.in.php core/08-edit1.php && \
+atom core/08-in.loginhead.php core/08-in.logincheck1.php core/08-edit1.php && \
 ls web
 ```
 
@@ -105,10 +105,10 @@ CREATE TABLE IF NOT EXISTS `pieces` (
 | **3** :
 ```
 sudo cp core/08-edit2.php web/edit.php && \
-sudo cp core/08-editprocess2.in.php web/in.editprocess.php && \
-sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
+sudo cp core/08-in.editprocess2.php web/in.editprocess.php && \
+sudo cp core/08-in.piecefunctions.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-edit2.php core/08-editprocess2.in.php core/08-piecefunctions.in.php && \
+atom core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions.php && \
 ls web
 ```
 
@@ -192,9 +192,9 @@ $last_id = $database->insert_id;
 | **7** :
 ```
 sudo cp core/08-edit3.php web/edit.php && \
-sudo cp core/08-editprocess3.in.php web/in.editprocess.php && \
+sudo cp core/08-in.editprocess3.php web/in.editprocess.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-edit3.php core/08-editprocess3.in.php && \
+atom core/08-edit3.php core/08-in.editprocess3.php && \
 ls web
 ```
 
@@ -241,9 +241,9 @@ ls web
 | **9** :
 ```
 sudo cp core/08-edit4.php web/edit.php && \
-sudo cp core/08-editprocess4.in.php web/in.editprocess.php && \
+sudo cp core/08-in.editprocess4.php web/in.editprocess.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-edit4.php core/08-editprocess4.in.php && \
+atom core/08-edit4.php core/08-in.editprocess4.php && \
 ls web
 ```
 
@@ -342,9 +342,9 @@ WHERE p2.id IS NULL;
 ```
 sudo cp core/08-blog.php web/blog.php && \
 sudo cp core/08-piece.php web/piece.php && \
-sudo cp core/08-logincheck2.in.php web/in.login_check.php && \
+sudo cp core/08-in.logincheck2.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-blog.php core/08-piece.php core/08-logincheck2.in.php && \
+atom core/08-blog.php core/08-piece.php core/08-in.logincheck2.php && \
 ls web
 ```
 
@@ -476,9 +476,9 @@ https://github.com/tinymce/tinymce-dist
 
 | **17** :
 ```
-sudo cp core/08-logincheck3-tinymce.in.php web/in.login_check.php && \
+sudo cp core/08-in.logincheck3-tinymce.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-logincheck3-tinymce.in.php && \
+atom core/08-in.logincheck3-tinymce.php && \
 ls web
 ```
 
@@ -582,10 +582,10 @@ https://github.com/inkverb/medium-editor
 
 | **20** :
 ```
-sudo cp core/08-logincheck4-medium.in.php web/in.login_check.php && \
-sudo cp core/08-piecefunctions-medium.in.php web/in.piecefunctions.php && \
+sudo cp core/08-in.logincheck4-medium.php web/in.login_check.php && \
+sudo cp core/08-in.piecefunctions-medium.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-logincheck4-medium.in.php core/08-piecefunctions-medium.in.php && \
+atom core/08-in.logincheck4-medium.php core/08-in.piecefunctions-medium.php && \
 ls web
 ```
 
@@ -631,8 +631,8 @@ ___
 >
 > | **T1** :
 > ```
-> sudo cp core/08-logincheck3-tinymce.in.php web/in.login_check.php && \
-> sudo cp core/08-piecefunctions.in.php web/in.piecefunctions.php && \
+> sudo cp core/08-in.logincheck3-tinymce.php web/in.login_check.php && \
+> sudo cp core/08-in.piecefunctions.php web/in.piecefunctions.php && \
 > sudo chown -R www-data:www-data /var/www/html
 > ```
 >

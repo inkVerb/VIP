@@ -28,9 +28,9 @@ ___
 | **1** :
 ```
 sudo cp core/07-recover1.php web/recover.php && \
-sudo cp core/07-string_functions.in.php web/in.string_functions.php && \
+sudo cp core/07-in.string_functions.php web/in.string_functions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/07-recover1.php core/07-string_functions.in.php && \
+atom core/07-recover1.php core/07-in.string_functions.php && \
 ls web
 ```
 
@@ -50,10 +50,10 @@ sudo cp core/07-recover2.php web/recover.php && \
 sudo cp core/07-ajaxstring.php web/ajax_string.php && \
 sudo cp core/07-recover_login.php web/recover_login.php && \
 sudo cp core/07-webapp.php web/webapp.php && \
-sudo cp core/07-loginhead1.in.php web/in.login_head.php && \
+sudo cp core/07-in.loginhead1.php web/in.login_head.php && \
 sudo cp core/07-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/07-recover2.php core/07-ajaxstring.php core/07-recover_login.php core/07-webapp.php core/07-loginhead1.in.php core/07-accountsettings.php && \
+atom core/07-recover2.php core/07-ajaxstring.php core/07-recover_login.php core/07-webapp.php core/07-in.loginhead1.php core/07-accountsettings.php && \
 ls web
 ```
 
@@ -384,10 +384,10 @@ CHANGE  `usable`  `usable` ENUM('live', 'cookie_login', 'dead') NOT NULL;
 
 | **22** :
 ```
-sudo cp core/07-loginhead2.in.php web/in.login_head.php && \
+sudo cp core/07-in.loginhead2.php web/in.login_head.php && \
 sudo cp core/07-logout.php web/logout.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/07-loginhead2.in.php core/07-logout.php && \
+atom core/07-in.loginhead2.php core/07-logout.php && \
 ls web
 ```
 
@@ -424,9 +424,9 @@ Password: My#1Password
 
 | **24** :
 ```
-sudo cp core/07-loginhead3.in.php web/in.login_head.php && \
+sudo cp core/07-in.loginhead3.php web/in.login_head.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/07-loginhead3.in.php && \
+atom core/07-in.loginhead3.php && \
 ls web
 ```
 

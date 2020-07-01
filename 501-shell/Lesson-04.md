@@ -48,11 +48,11 @@ Database host: localhost
 | **5** :
 ```
 sudo cp core/04-install.php web/install.php && \
-sudo cp core/04-config1.in.php web/in.config.php && \
-sudo cp core/04-checks.in.php web/in.checks.php && \
-sudo cp core/04-functions.in.php web/in.functions.php && \
+sudo cp core/04-in.config1.php web/in.config.php && \
+sudo cp core/04-in.checks.php web/in.checks.php && \
+sudo cp core/04-in.functions.php web/in.functions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/04-install.php core/04-config1.in.php core/04-checks.in.php core/04-functions.in.php && \
+atom core/04-install.php core/04-in.config1.php core/04-in.checks.php core/04-in.functions.php && \
 ls web
 ```
 
@@ -232,9 +232,9 @@ It only confirms with `true` or `false` because the hash is different each time
 | **9** :
 ```
 sudo cp core/04-login1.php web/webapp.php && \
-sudo cp core/04-config2.in.php web/in.config.php && \
+sudo cp core/04-in.config2.php web/in.config.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/04-login1.php core/04-config2.in.php && \
+atom core/04-login1.php core/04-in.config2.php && \
 ls web
 ```
 

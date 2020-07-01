@@ -834,10 +834,10 @@ include ('./in.file.php');
 
 | **22** :
 ```
-sudo cp core/01-phpinclude.in.php web/in.phppost.php && \
+sudo cp core/01-in.phpinclude.php web/in.phppost.php && \
 sudo cp core/01-phpinclude.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/01-phpinclude.in.php core/01-phpinclude.php && \
+atom core/01-in.phpinclude.php core/01-phpinclude.php && \
 ls web
 ```
 
@@ -880,10 +880,10 @@ ls web
 
 | **24** :
 ```
-sudo cp core/01-phpconstant2.in.php web/in.config.php && \
+sudo cp core/01-in.phpconstant2.php web/in.config.php && \
 sudo cp core/01-phpconstant2.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/01-phpconstant2.in.php core/01-phpconstant2.php && \
+atom core/01-in.phpconstant2.php core/01-phpconstant2.php && \
 ls web
 ```
 
@@ -911,11 +911,11 @@ Normally, the top and bottom of a webpage are some kind of `include` of `header.
 
 | **25** :
 ```
-sudo cp core/01-phpheader.in.php web/in.header.php && \
-sudo cp core/01-phpfooter.in.php web/in.footer.php && \
+sudo cp core/01-in.phpheader.php web/in.header.php && \
+sudo cp core/01-in.phpfooter.php web/in.footer.php && \
 sudo cp core/01-phphfconventions.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/01-phpheader.in.php core/01-phpfooter.in.php core/01-phphfconventions.php && \
+atom core/01-in.phpheader.php core/01-in.phpfooter.php core/01-phphfconventions.php && \
 ls web
 ```
 

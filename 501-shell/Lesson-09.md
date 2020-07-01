@@ -30,14 +30,14 @@ We want to review a list of our pieces
 | **1** :
 ```
 sudo cp core/09-pieces1.php web/pieces.php && \
-sudo cp core/09-logincheck.in.php web/in.login_check.php && \
-sudo cp core/09-footer.in.php web/in.footer.php && \
+sudo cp core/09-in.logincheck.php web/in.login_check.php && \
+sudo cp core/09-in.footer.php web/in.footer.php && \
 sudo cp core/09-edit1.php web/edit.php && \
 sudo cp core/09-blog1.php web/blog.php && \
 sudo cp core/09-webapp.php web/webapp.php && \
 sudo cp core/09-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces1.php core/09-logincheck.in.php core/09-footer.in.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-accountsettings.php && \
+atom core/09-pieces1.php core/09-in.logincheck.php core/09-in.footer.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-accountsettings.php && \
 ls web
 ```
 
@@ -149,7 +149,7 @@ While this works, we don't want a GET URL to be this powerful, use POST instead.
 | **5** :
 ```
 sudo cp core/09-pieces3.php web/pieces.php && \
-sudo cp core/09-piecesfunctions3.in.php web/in.piecesfunctions.php && \
+sudo cp core/09-in.piecesfunctions3.php web/in.piecesfunctions.php && \
 sudo cp core/09-style3.css web/style.css && \
 sudo cp core/09-delete3.php web/delete.php && \
 sudo cp core/09-undelete3.php web/undelete.php && \
@@ -158,7 +158,7 @@ sudo cp core/09-unpublish3.php web/unpublish.php && \
 sudo cp core/09-republish3.php web/republish.php && \
 sudo cp core/09-pagify3.php web/pagify.php && \
 sudo cp core/09-postify3.php web/postify.php && \
-atom core/09-pieces3.php core/09-piecesfunctions3.in.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-empty_delete3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
+atom core/09-pieces3.php core/09-in.piecesfunctions3.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-empty_delete3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
 ls web
 ```
 
@@ -297,11 +297,11 @@ sudo cp core/09-pieces6.php web/pieces.php && \
 sudo cp core/09-piece1.php web/piece.php && \
 sudo cp core/09-hist1.php web/hist.php && \
 sudo cp core/09-htmldiff.js web/htmldiff.js && \
-sudo cp core/09-editprocess1.in.php web/in.editprocess.php && \
+sudo cp core/09-in.editprocess1.php web/in.editprocess.php && \
 sudo cp core/09-revert.php web/revert.php && \
 sudo cp core/09-style6.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces6.php core/09-piece1.php core/09-hist1.php core/09-editprocess1.in.php core/09-revert.php core/09-style6.css && \
+atom core/09-pieces6.php core/09-piece1.php core/09-hist1.php core/09-in.editprocess1.php core/09-revert.php core/09-style6.css && \
 ls web
 ```
 
@@ -527,10 +527,10 @@ ADD `tags` JSON DEFAULT NULL;
 | **20** :
 ```
 sudo cp core/09-edit2.php web/edit.php && \
-sudo cp core/09-piecefunctions2.in.php web/in.piecefunctions.php && \
-sudo cp core/09-editprocess2.in.php web/in.editprocess.php && \
+sudo cp core/09-in.piecefunctions2.php web/in.piecefunctions.php && \
+sudo cp core/09-in.editprocess2.php web/in.editprocess.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit2.php core/09-piecefunctions2.in.php core/09-editprocess2.in.php && \
+atom core/09-edit2.php core/09-in.piecefunctions2.php core/09-in.editprocess2.php && \
 ls web
 ```
 
@@ -656,15 +656,15 @@ ls web
 | **24** :
 ```
 sudo cp core/09-edit3.php web/edit.php && \
-sudo cp core/09-jsonlinks.in.php web/in.jsonlinks.php && \
-sudo cp core/09-piecefunctions3.in.php web/in.piecefunctions.php && \
-sudo cp core/09-editprocess3.in.php web/in.editprocess.php && \
-sudo cp core/09-functions.in.php web/in.functions.php && \
+sudo cp core/09-in.jsonlinks.php web/in.jsonlinks.php && \
+sudo cp core/09-in.piecefunctions3.php web/in.piecefunctions.php && \
+sudo cp core/09-in.editprocess3.php web/in.editprocess.php && \
+sudo cp core/09-in.functions.php web/in.functions.php && \
 sudo cp core/09-piece2.php web/piece.php && \
 sudo cp core/09-blog2.php web/blog.php && \
 sudo cp core/09-style7.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit3.php core/09-jsonlinks.in.php core/09-piecefunctions3.in.php core/09-editprocess3.in.php core/09-functions.in.php core/09-piece2.php core/09-style7.css && \
+atom core/09-edit3.php core/09-in.jsonlinks.php core/09-in.piecefunctions3.php core/09-in.editprocess3.php core/09-in.functions.php core/09-piece2.php core/09-style7.css && \
 ls web
 ```
 
@@ -769,10 +769,10 @@ In Lesson 6 we learned to [AJAX a `<form>`](https://github.com/inkVerb/vip/blob/
 | **25** :
 ```
 sudo cp core/09-select.php web/select.php && \
-sudo cp core/09-select.in.php web/in.select.php && \
-sudo cp core/09-select.ajax.php web/ajax.select.php && \
+sudo cp core/09-in.select.php web/in.select.php && \
+sudo cp core/09-ajax.select.php web/ajax.select.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-select.php core/09-select.in.php core/09-select.ajax.php && \
+atom core/09-select.php core/09-in.select.php core/09-ajax.select.php && \
 ls web
 ```
 
@@ -791,12 +791,12 @@ Try adding a Series with the "+ Series" form
 | **26** :
 ```
 sudo cp core/09-edit4.php web/edit.php && \
-sudo cp core/09-piecefunctions4.in.php web/in.piecefunctions.php && \
-sudo cp core/09-editprocess4.in.php web/in.editprocess.php && \
-sudo cp core/09-series.in.php web/in.series.php && \
-sudo cp core/09-series.ajax.php web/ajax.series.php && \
+sudo cp core/09-in.piecefunctions4.php web/in.piecefunctions.php && \
+sudo cp core/09-in.editprocess4.php web/in.editprocess.php && \
+sudo cp core/09-in.series.php web/in.series.php && \
+sudo cp core/09-ajax.series.php web/ajax.series.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit4.php core/09-piecefunctions4.in.php core/09-settings.php && \
+atom core/09-edit4.php core/09-in.piecefunctions4.php core/09-in.editprocess4.php core/09-in.series.php core/09-ajax.series.php && \
 ls web
 ```
 
@@ -919,11 +919,11 @@ Check different boxes, then submit with different buttons multiple times
 | **31** :
 ```
 sudo cp core/09-pieces7.php web/pieces.php && \
-sudo cp core/09-bulkpieces.act.php web/act.bulkpieces.php && \
-sudo cp core/09-piecesfunctions7.in.php web/in.piecesfunctions.php && \
+sudo cp core/09-act.bulkpieces.php web/act.bulkpieces.php && \
+sudo cp core/09-in.piecesfunctions7.php web/in.piecesfunctions.php && \
 sudo cp core/09-trash7.php web/trash.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces7.php core/09-bulkpieces.act.php core/09-piecesfunctions7.in.php core/09-trash7.php && \
+atom core/09-pieces7.php core/09-act.bulkpieces.php core/09-in.piecesfunctions7.php core/09-trash7.php && \
 ls web
 ```
 
@@ -976,12 +976,12 @@ Click and try:
 | **32** :
 ```
 sudo cp core/09-pieces8.php web/pieces.php && \
-sudo cp core/09-piecesfunctions8.in.php web/in.piecesfunctions.php && \
-sudo cp core/09-piecesactions8.ajax.php web/ajax.piecesactions.php && \
-sudo cp core/09-piecesactions.act.php web/act.piecesactions.php && \
+sudo cp core/09-in.piecesfunctions8.php web/in.piecesfunctions.php && \
+sudo cp core/09-ajax.piecesactions8.php web/ajax.piecesactions.php && \
+sudo cp core/09-act.piecesactions.php web/act.piecesactions.php && \
 sudo cp core/09-trash8.php web/trash.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-piecesfunctions8.in.php core/09-piecesactions.ajax.php && \
+atom core/09-in.piecesfunctions8.php core/09-ajax.piecesactions8.php core/09-act.piecesactions.php && \
 ls web
 ```
 
@@ -1038,6 +1038,20 @@ In Pieces and Trash:
   - *Handles the action and redirects if AJAX doesn't get triggered for some reason*
   - *The entire page will reload*
 
+**This AJAX setup is buggy, but it is a good, simple example**
+
+- This current setup AJAX-updates the entire `<tr>` row with any AJAX call in that row
+- Clicking different AJAX options will cause AJAX to break and reload the page instead
+- It is best for each AJAX call to update as little as possible, not a full `<tr>` row
+- The solution is more complex AJAX, with JavaScript changing many individual elements
+
+**We will not perfect this AJAX setup in this course**
+
+- AJAX is a JavaScript subject; this is a PHP course
+- AJAX has been demonstrated in this lesson
+- AJAX problems are also demonstrated: Only change what you call, not a larger block
+- Perfecting this AJAX setup would be a good classroom assignment
+
 *Since we don't need those pieces action files anymore...*
 
 | **33** :
@@ -1051,8 +1065,8 @@ ls web
 | **12** :
 ```
 sudo cp core/09-pieces9.php web/pieces.php && \
-sudo cp core/09-piecesactions9.ajax.php web/ajax.piecesactions.php && \
-atom core/09-pieces8.php && \
+sudo cp core/09-ajax.piecesactions9.php web/ajax.piecesactions.php && \
+atom core/09-pieces9.php core/09-ajax.piecesactions9.php && \
 ls web
 ```
 
