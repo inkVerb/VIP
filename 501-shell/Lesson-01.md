@@ -27,7 +27,28 @@ ___
 1. PHP renders HTML ***after*** the entire PHP script finishes
 2. HTML and PHP work wherever they are
   - HTML can exist outside `<?php ?>` in a .php file
-  - `<?php ?>` can be used inside an .html file
+  - `<?php ?>` can be used ***inside*** an .html file
+  - `<?php ?>` can be used ***inline*** with HTML
+
+| **.html** or **.php** :
+```html
+<html>
+<head>
+  <title> <?php echo $title; ?> </title>
+</head>
+<body>
+
+<?php
+
+echo "<h1>$title</h1>";
+echo '<p>Poetry is code!</p>';
+
+?>
+
+</body>
+</html>
+```
+
 3. Variables begin with `$`, *even when declaring the value (unlike Shell)*
 4. Variables work inside `"double quotes"` *not `'single quotes'`*
 5. Variable names allow the same characters as Shell:
@@ -880,10 +901,10 @@ ls web
 
 | **24** :
 ```
-sudo cp core/01-in.phpconstant2.php web/in.config.php && \
+sudo cp core/01-in.config.php web/in.config.php && \
 sudo cp core/01-phpconstant2.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/01-in.phpconstant2.php core/01-phpconstant2.php && \
+atom core/01-in.config.php core/01-phpconstant2.php && \
 ls web
 ```
 
@@ -962,7 +983,7 @@ atom core/01-phpfileput2.php && \
 ls web
 ```
 
-| **B-28** :// `localhost/web/phpfileput.php` (Same)
+| **B-28** :// `localhost/web/phpfileput.php` (Ctrl + R to reload)
 
 *See the file changes...*
 
@@ -985,7 +1006,7 @@ ls web
 
 *Note how the heredoc was made for later reference:*
 
-| **B-30** :// `localhost/web/phpfileput.php` (Same)
+| **B-30** :// `localhost/web/phpfileput.php` (Ctrl + R to reload)
 
 *See the file changes...*
 
@@ -1008,7 +1029,7 @@ ls web
 
 *Note the use of `'single quotes'` affect the `$Variable` in the heredoc:*
 
-| **B-32** :// `localhost/web/phpfileput.php` (Same)
+| **B-32** :// `localhost/web/phpfileput.php` (Ctrl + R to reload)
 
 *See the file changes...*
 
@@ -1086,7 +1107,7 @@ ls web
 
 *Note we added the `$site_live` variable, which easily turned-off our error `echo`...*
 
-| **B-37** :// `localhost/web/phperrors.php`
+| **B-37** :// `localhost/web/phperrors.php` (Ctrl + R to reload)
 
 ___
 

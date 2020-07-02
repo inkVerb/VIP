@@ -980,8 +980,9 @@ sudo cp core/09-in.piecesfunctions8.php web/in.piecesfunctions.php && \
 sudo cp core/09-ajax.piecesactions8.php web/ajax.piecesactions.php && \
 sudo cp core/09-act.piecesactions.php web/act.piecesactions.php && \
 sudo cp core/09-trash8.php web/trash.php && \
+sudo cp core/09-style8.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-in.piecesfunctions8.php core/09-ajax.piecesactions8.php core/09-act.piecesactions.php && \
+atom core/09-in.piecesfunctions8.php core/09-ajax.piecesactions8.php core/09-act.piecesactions.php core/09-style8.css && \
 ls web
 ```
 
@@ -1008,7 +1009,11 @@ In Pieces and Trash:
 *Note pieces.php:*
 
 - *Added a JavaScript function `clearChanged[ID]`*
-  - *Used in `<i class="renew" ...>changed</i>` in ajax.piecesactions.php*
+  - *Used in `<code class="renew" ...>changed</code>` in ajax.piecesactions.php*
+
+*Note in style.css:*
+
+- *New class `.renew`*
 
 *Note in.piecesfunctions.php:*
 
@@ -1017,17 +1022,15 @@ In Pieces and Trash:
   - *Now, it generates AJAX calls with the `<forms>`*
   - *The AJAX JavaScript adds the `.renew` CSS class to the `<tr>`*
     - *`document.getElementById("prow_ID").classList.add("renew");`*
-    - *This class `.renew` was part of CSS file from a few steps back*
-      - *View with `atom core/09-style7.css`*
+    - *This class `.renew` is in our new style.css*
 
 *Note AJAX is handled by:*
 
 - *ajax.piecesactions.php*
   - *AJAX calls this by default*
   - *It re-creates the entire `<tr>` and sends it for AJAX to update*
-  - *It adds a note `<i class="renew" ...>changed</i>`*
-    - *This class `.renew` was part of CSS file from a few steps back*
-      - *View with `atom core/09-style7.css`*
+  - *It adds a note `<code class="renew" ...>changed</code>`*
+    - *This class `.renew` is in our new style.css*
     - *We need this note because UX theory (User eXperience) demands that appearance changes both:*
     - *Clicking "changed" will activate JavaScript's `clearChanged[ID]` created in pieces.php*
       - *This will remove the "changed" text and the "renew" class*
@@ -1061,9 +1064,16 @@ sudo cp core/09-pieces9.php web/pieces.php && \
 sudo cp core/09-trash9.php web/trash.php && \
 sudo cp core/09-in.piecesfunctions9.php web/in.piecesfunctions.php && \
 sudo cp core/09-ajax.piecesactions9.php web/ajax.piecesactions.php && \
-atom core/09-pieces9.php core/09-trash9.php core/09-in.piecesfunctions9.php core/09-ajax.piecesactions9.php && \
+sudo cp core/09-style9.css web/style.css && \
+atom core/09-pieces9.php core/09-trash9.php core/09-in.piecesfunctions9.php core/09-ajax.piecesactions9.php core/09-style9.css && \
 ls web
 ```
+
+*Note in style.css:*
+
+- *New class `.deleting`*
+- *Classes `.deleting` & `.renew` so this looks like a button*
+  - *This is part of good US theory, intuitive and axiomatic*
 
 | **B-34** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
