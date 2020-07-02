@@ -20,7 +20,7 @@
 
 ### [Lesson 8: CMS Blog: Edit, Display & TinyMCE](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-08.md)
 
-### [Lesson 9: Lists, Loops, Arrays & JSON](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)
+### [Lesson 9: Content List: Loops, Arrays, JSON & AJAX](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)
 
 ### [Lesson 10: Media Library, Files & Uploads](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-10.md)
 

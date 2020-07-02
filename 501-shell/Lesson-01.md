@@ -229,7 +229,7 @@ atom core/01-phpforeach.php && \
 ls web
 ```
 
-| **B-5** :// `localhost/web/phppost.php` (Same)
+| **B-5** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 #### PHP `if` Syntax
 
@@ -263,7 +263,7 @@ atom core/01-phppost2.php && \
 ls web
 ```
 
-| **B-6** :// `localhost/web/phppost.php` (Same)
+| **B-6** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form a few times to see how it works*
 
@@ -276,7 +276,7 @@ atom core/01-phppost3.php && \
 ls web
 ```
 
-| **B-7** :// `localhost/web/phppost.php` (Same)
+| **B-7** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -287,7 +287,7 @@ atom core/01-phppost4.php && \
 ls web
 ```
 
-| **B-8** :// `localhost/web/phppost.php` (Same)
+| **B-8** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -298,7 +298,7 @@ atom core/01-phppost5.php && \
 ls web
 ```
 
-| **B-9** :// `localhost/web/phppost.php` (Same)
+| **B-9** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -309,7 +309,7 @@ atom core/01-phppost6.php && \
 ls web
 ```
 
-| **B-10** :// `localhost/web/phppost.php` (Same)
+| **B-10** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -342,7 +342,7 @@ atom core/01-phppost7.php && \
 ls web
 ```
 
-| **B-11** :// `localhost/web/phppost.php` (Same)
+| **B-11** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view with Ctrl + C*
 
@@ -448,7 +448,7 @@ atom core/01-phpregex1.php && \
 ls web
 ```
 
-| **B-12** :// `localhost/web/phppost.php` (Same)
+| **B-12** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -587,7 +587,7 @@ atom core/01-phpregex2.php && \
 ls web
 ```
 
-| **B-14** :// `localhost/web/phppost.php` (Same)
+| **B-14** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -598,7 +598,7 @@ atom core/01-phpregex3.php && \
 ls web
 ```
 
-| **B-15** :// `localhost/web/phppost.php` (Same)
+| **B-15** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -717,7 +717,7 @@ atom core/01-phpfunction1.php && \
 ls web
 ```
 
-| **B-16** :// `localhost/web/phppost.php` (Same)
+| **B-16** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -728,7 +728,7 @@ atom core/01-phpfunction2.php && \
 ls web
 ```
 
-| **B-17** :// `localhost/web/phppost.php` (Same)
+| **B-17** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -739,7 +739,7 @@ atom core/01-phpfunction3.php && \
 ls web
 ```
 
-| **B-18** :// `localhost/web/phppost.php` (Same)
+| **B-18** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -750,7 +750,7 @@ atom core/01-phpfunction4.php && \
 ls web
 ```
 
-| **B-19** :// `localhost/web/phppost.php` (Same)
+| **B-19** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -761,7 +761,7 @@ atom core/01-phpfunction5.php && \
 ls web
 ```
 
-| **B-20** :// `localhost/web/phppost.php` (Same)
+| **B-20** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -777,7 +777,7 @@ atom core/01-phpfunction6.php && \
 ls web
 ```
 
-| **B-21** :// `localhost/web/phppost.php` (Same)
+| **B-21** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -841,7 +841,7 @@ atom core/01-in.phpinclude.php core/01-phpinclude.php && \
 ls web
 ```
 
-| **B-22** :// `localhost/web/phppost.php` (Same)
+| **B-22** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -872,7 +872,7 @@ atom core/01-phpconstant1.php && \
 ls web
 ```
 
-| **B-23** :// `localhost/web/phppost.php` (Same)
+| **B-23** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -887,7 +887,7 @@ atom core/01-in.phpconstant2.php core/01-phpconstant2.php && \
 ls web
 ```
 
-| **B-24** :// `localhost/web/phppost.php` (Same)
+| **B-24** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 
@@ -919,7 +919,7 @@ atom core/01-in.phpheader.php core/01-in.phpfooter.php core/01-phphfconventions.
 ls web
 ```
 
-| **B-25** :// `localhost/web/phppost.php` (Same)
+| **B-25** :// `localhost/web/phppost.php` (Ctrl + R to reload)
 
 *Try the form and developer view*
 

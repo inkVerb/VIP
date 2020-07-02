@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 9: Lists, Loops, Arrays & JSON
+## Lesson 9: Content List: Loops, Arrays, JSON & AJAX
 
 Ready the CLI
 
@@ -1038,20 +1038,6 @@ In Pieces and Trash:
   - *Handles the action and redirects if AJAX doesn't get triggered for some reason*
   - *The entire page will reload*
 
-**This AJAX setup is buggy, but it is a good, simple example**
-
-- This current setup AJAX-updates the entire `<tr>` row with any AJAX call in that row
-- Clicking different AJAX options will cause AJAX to break and reload the page instead
-- It is best for each AJAX call to update as little as possible, not a full `<tr>` row
-- The solution is more complex AJAX, with JavaScript changing many individual elements
-
-**We will not perfect this AJAX setup in this course**
-
-- AJAX is a JavaScript subject; this is a PHP course
-- AJAX has been demonstrated in this lesson
-- AJAX problems are also demonstrated: Only change what you call, not a larger block
-- Perfecting this AJAX setup would be a good classroom assignment
-
 *Since we don't need those pieces action files anymore...*
 
 | **33** :
@@ -1060,13 +1046,51 @@ sudo rm -f web/delete.php web/undelete.php web/empty_delete.php web/unpublish.ph
 ls web
 ```
 
+**This AJAX setup is buggy, but it is a good, simple example**
+
+- This current setup AJAX-updates the entire `<tr>` row with any AJAX call in that row
+- Clicking different AJAX options will cause AJAX to break and reload the page instead
+- It is best for each AJAX call to update as little as possible, not a full `<tr>` row
+- The solution is more complex AJAX, with JavaScript changing many individual elements
+
+*Let's cleanup this AJAX...*
+
+| **34** :
+```
+sudo cp core/09-pieces9.php web/pieces.php && \
+sudo cp core/09-trash9.php web/trash.php && \
+sudo cp core/09-in.piecesfunctions9.php web/in.piecesfunctions.php && \
+sudo cp core/09-ajax.piecesactions9.php web/ajax.piecesactions.php && \
+atom core/09-pieces9.php core/09-trash9.php core/09-in.piecesfunctions9.php core/09-ajax.piecesactions9.php && \
+ls web
+```
+
+| **B-34** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Use Ctrl + Shift + C in browser to see the developer view*
+
+Try different Piece actions and see how the page never needs to reload
+
+**This AJAX setup works and demonstrates many uses of JavaScript**
+
+- AJAX is a JavaScript subject; we won't dive too deep into AJAX in this PHP course
+- Part of code philosophy involves "the least load time"
+  - Is it less to download if we use AJAX?
+  - Is it less to download if we just reload the page?
+  - Is it too confusing to reload the page?
+- For your own study, consider AJAX's use of JavaScript, IDs, and classes in:
+  - pieces.php
+  - trash.php
+  - in.piecesfunctions.php
+  - ajax.piecesactions.php
+
 ### Meta Edit in Pieces Table via JS Popup `<form>` & AJAX
 
 | **12** :
 ```
-sudo cp core/09-pieces9.php web/pieces.php && \
-sudo cp core/09-ajax.piecesactions9.php web/ajax.piecesactions.php && \
-atom core/09-pieces9.php core/09-ajax.piecesactions9.php && \
+sudo cp core/09-pieces10.php web/pieces.php && \
+sudo cp core/09-ajax.metaedit.php web/ajax.metaedit.php && \
+atom core/09-pieces10.php core/09-ajax.metaedit.php && \
 ls web
 ```
 
@@ -1076,7 +1100,9 @@ ls web
 
 - *HTML entity symbols:*
   - *The pencil symbol next to each Piece Title*
+    - *This often means "edit", so we should change that text...*
   - *The hover "edit" text changed to "Editor ->"*
+    - *The user can easily distinguish this from the pencil symbol*
 
 
 *Use Ctrl + Shift + C in browser to see the developer view*
