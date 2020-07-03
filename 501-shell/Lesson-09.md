@@ -101,13 +101,13 @@ That's quite simple, let's expand...
 sudo cp core/09-pieces2.php web/pieces.php && \
 sudo cp core/09-delete2.php web/delete.php && \
 sudo cp core/09-undelete2.php web/undelete.php && \
-sudo cp core/09-empty_delete2.php web/empty_delete.php && \
+sudo cp core/09-purge_delete2.php web/empty_delete.php && \
 sudo cp core/09-unpublish2.php web/unpublish.php && \
 sudo cp core/09-republish2.php web/republish.php && \
 sudo cp core/09-pagify2.php web/pagify.php && \
 sudo cp core/09-postify2.php web/postify.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces2.php core/09-delete2.php core/09-undelete2.php core/09-empty_delete2.php core/09-unpublish2.php core/09-republish2.php core/09-pagify2.php core/09-pagify2.php core/09-postify2.php && \
+atom core/09-pieces2.php core/09-delete2.php core/09-undelete2.php core/09-purge_delete2.php core/09-unpublish2.php core/09-republish2.php core/09-pagify2.php core/09-pagify2.php core/09-postify2.php && \
 ls web
 ```
 
@@ -153,12 +153,12 @@ sudo cp core/09-in.piecesfunctions3.php web/in.piecesfunctions.php && \
 sudo cp core/09-style3.css web/style.css && \
 sudo cp core/09-delete3.php web/delete.php && \
 sudo cp core/09-undelete3.php web/undelete.php && \
-sudo cp core/09-empty_delete3.php web/empty_delete.php && \
+sudo cp core/09-purge_delete3.php web/empty_delete.php && \
 sudo cp core/09-unpublish3.php web/unpublish.php && \
 sudo cp core/09-republish3.php web/republish.php && \
 sudo cp core/09-pagify3.php web/pagify.php && \
 sudo cp core/09-postify3.php web/postify.php && \
-atom core/09-pieces3.php core/09-in.piecesfunctions3.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-empty_delete3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
+atom core/09-pieces3.php core/09-in.piecesfunctions3.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-purge_delete3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
 ls web
 ```
 
@@ -207,10 +207,10 @@ ls web
 sudo cp core/09-pieces4.php web/pieces.php && \
 sudo cp core/09-trash4.php web/trash.php && \
 sudo cp core/09-undelete_trash4.php web/undelete_trash.php && \
-sudo cp core/09-empty_delete_trash4.php web/empty_delete_trash.php && \
-sudo cp core/09-empty_all_trash.php web/empty_all_trash.php && \
+sudo cp core/09-purge_delete_trash4.php web/empty_delete_trash.php && \
+sudo cp core/09-purge_all_trash.php web/empty_all_trash.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces4.php core/09-trash4.php core/09-undelete_trash.php core/09-empty_delete_trash.php core/09-empty_all_trash.php && \
+atom core/09-pieces4.php core/09-trash4.php core/09-undelete_trash.php core/09-purge_delete_trash.php core/09-empty_all_trash.php && \
 ls web
 ```
 
@@ -1071,9 +1071,19 @@ ls web
 
 *Note in style.css:*
 
-- *New class `.deleting`*
-- *Classes `.deleting` & `.renew` so this looks like a button*
+- *New classes `.deleting` & `.undeleting`*
+- *Classes `.deleting`, `.undeleting` & `.renew` so the messge looks like a button*
   - *This is part of good US theory, intuitive and axiomatic*
+- *The changes to this class affect "changed" indicator, from:*
+  - *pieces.php*
+  - *trash.php*
+  - *in.piecesfunctions.php*
+
+*Note in in.piecesfunctions.php:*
+
+- *There is* ***much more JavaScript*** *which:*
+  - *Changes the page more directly with AJAX calls*
+  - *Changes the text of the "changed" button, while we're at it*
 
 | **B-34** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
@@ -1083,8 +1093,8 @@ Try different Piece actions and see how the page never needs to reload
 
 **This AJAX setup works and demonstrates many uses of JavaScript**
 
-- AJAX is a JavaScript subject; we won't dive too deep into AJAX in this PHP course
-- Part of code philosophy involves "the least load time"
+- AJAX is a JavaScript subject; we won't dive too deep into JavaScript in this PHP course
+- Part of code philosophy involves "using the least load time"
   - Is it less to download if we use AJAX?
   - Is it less to download if we just reload the page?
   - Is it too confusing to reload the page?
@@ -1113,7 +1123,6 @@ ls web
     - *This often means "edit", so we should change that text...*
   - *The hover "edit" text changed to "Editor ->"*
     - *The user can easily distinguish this from the pencil symbol*
-
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
