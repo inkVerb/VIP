@@ -1109,23 +1109,44 @@ Try different Piece actions and see how the page never needs to reload
 | **12** :
 ```
 sudo cp core/09-pieces10.php web/pieces.php && \
+sudo cp core/09-trash10.php web/trash.php && \
+sudo cp core/09-in.piecesfunctions10.php web/in.piecesfunctions.php && \
 sudo cp core/09-ajax.metaedit.php web/ajax.metaedit.php && \
-atom core/09-pieces10.php core/09-ajax.metaedit.php && \
+sudo cp core/09-style10.css web/style.css && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-pieces10.php core/09-trash10.php core/09-in.piecesfunctions10.php core/09-ajax.metaedit.php core/09-style10.css && \
 ls web
 ```
 
+*Clicking on any Piece Title will bring up our JavaScript "Meta Edit" box*
+
+*Note pieces.php:*
+
+- *Our `metaEdit...` JavaScript function*
+  - *This replaces the Piece Title with a form*
+  - *This was heavily adopted from the first and final AJAX examples in Lesson 6*
+
+*Note ajax.metaedit.php:*
+
+- **
+
 | **B-12** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
-*Note:*
+*Note on HTML entity symbols: pieces.php, trash.php, in.piecesfunctions.php*
 
-- *HTML entity symbols:*
-  - *The pencil symbol next to each Piece Title*
-    - *This often means "edit", so we should change that text...*
-  - *The hover "edit" text changed to "Editor ->"*
-    - *The user can easily distinguish this from the pencil symbol*
+- *The pencil symbol next to each Piece Title*
+  - *This often means "edit", so we should change that text...*
+- *The hover "edit" text changed to "Editor ->"*
+  - *The user can easily distinguish this from the pencil symbol*
+- *Other symbols: deleting, restoring, drafting, pages, and posts*
+  - *These are meant to be distinct, intuitive, and memorable*
+  - *We avoid pictures and clutter*
+  - *We want standard HTML characters quickly recognized*
+  - *Pilcrows (adopted meanings)*
+    - *Curly pilcrow for "Pages": won't be confused, but has some basis in ancient documents*
+    - *Reverse pilcrow for "Posts": no writer's use outside of some software coding*
 
 *Use Ctrl + Shift + C in browser to see the developer view*
-
 
 ### Published History to Display New Meta
 
