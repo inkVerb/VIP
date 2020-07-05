@@ -487,7 +487,9 @@ ls web
 
 - *Note the two `<script>` sections between the comments `<!-- TinyMCE -->`*
 - *These include the JavaScript* ***in the header*** *so TinyMCE works*
-- *It calls the* ***ID*** *of our "Content" `<textarea>` HTML element by `id="p_content"`*
+- *It calls the* ***class*** *of our "Content" `<textarea>` HTML element by `class="tinymce_editor"`*
+  - *This is from the setting: `selector: '.tinymce_editor'`*
+  - *This could be an ID with: `selector: '#tinymce_editor'`*
 - *That's it, just that simple*
 
 | **B-17** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
@@ -597,7 +599,7 @@ ls web
   - *These include the CSS so Medium works*
 - *in.piecefunctions.php*
   - *This puts the JavaScript* ***after*** *our "Content" `<textarea>` HTML element*
-  - *This implements the* ***class*** *`p_content_medium` for the Medium editor JavaScript to act on*
+  - *This implements the* ***class*** *`medium_editor` for the Medium editor JavaScript to act on*
 
 | **B-20** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 

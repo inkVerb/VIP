@@ -56,6 +56,7 @@ ls web
 - *in.login_check.php*
   - *HTML page starts at end of logic*
   - *`<h1>` page name is part*
+  - *TinyMCE uses class `.tinymce_editor` for the selector*
 - *in.footer.php*
   - *Finally here in all page files*
   - *Simple for now: `</body>` & `</html>`*
@@ -601,7 +602,7 @@ Just note:
 
 | **22** :
 ```
-sudo cp core/09-jsonlinksexplained.php web/jsonlinks.php && \
+sudo cp core/09-jsonlinksexplained.php web/jsonlinksexplained.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/09-jsonlinksexplained.php && \
 ls web
@@ -793,10 +794,10 @@ Try adding a Series with the "+ Series" form
 sudo cp core/09-edit4.php web/edit.php && \
 sudo cp core/09-in.piecefunctions4.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess4.php web/in.editprocess.php && \
-sudo cp core/09-in.series.php web/in.series.php && \
+sudo cp core/09-in.series4.php web/in.series.php && \
 sudo cp core/09-ajax.series.php web/ajax.series.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit4.php core/09-in.piecefunctions4.php core/09-in.editprocess4.php core/09-in.series.php core/09-ajax.series.php && \
+atom core/09-edit4.php core/09-in.piecefunctions4.php core/09-in.editprocess4.php core/09-in.series4.php core/09-ajax.series.php && \
 ls web
 ```
 
@@ -1106,31 +1107,98 @@ Try different Piece actions and see how the page never needs to reload
 
 ### Meta Edit in Pieces Table via JS Popup `<form>` & AJAX
 
-| **12** :
+| **35** :
 ```
 sudo cp core/09-pieces10.php web/pieces.php && \
 sudo cp core/09-trash10.php web/trash.php && \
 sudo cp core/09-in.piecesfunctions10.php web/in.piecesfunctions.php && \
 sudo cp core/09-ajax.metaedit.php web/ajax.metaedit.php && \
 sudo cp core/09-style10.css web/style.css && \
+sudo cp core/09-edit10.php web/edit.php && \
+sudo cp core/09-in.series10.php web/in.series.php && \
+sudo cp core/09-in.piecefunctions10.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces10.php core/09-trash10.php core/09-in.piecesfunctions10.php core/09-ajax.metaedit.php core/09-style10.css && \
+atom core/09-edit10.php web/edit.php core/09-in.series10.php core/09-in.piecefunctions10.php && \
 ls web
 ```
 
-*Clicking on any Piece Title will bring up our JavaScript "Meta Edit" box*
+**Upgrade side note:**
+
+1. `id=` uses the Piece ID number almost everywhere
+- *Where used, this declares:*
+  - `$edit_piece_id`
+  - `$form_id`
+- *Every `<form>` element now uses a unique ID with the Piece ID as part of the name*
+- *Peruse this in our `pieceInput()` function (in.piecesfunctions.php)*
+- *See it at work also in edit.php and in.series.php*
+- *...We will need this since we are going to AJAX forms for different pieces on the same page...*
+2. Every Piece `<form>` is side-by-side
+- We learned about this with `postformarrays.php`
+- Piece ID `3` example:
+
+```html
+<form id="my_name_3"></form>
+<!-- Form ended, but you can still add inputs anywhere on the page -->
+<input form="my_name_3" type="hidden" name="something" value="important">
+<input form="my_name_3" type="text" name="something">
+<input form="my_name_3" type="text" name="something">
+<input form="my_name_3" type="submit" name="something">
+```
+
+**Those are the upgrades, let's see the part with our working AJAX:**
+
+| **36** :
+
+```
+atom core/09-pieces10.php core/09-trash10.php core/09-in.piecesfunctions10.php core/09-ajax.metaedit.php core/09-style10.css
+```
 
 *Note pieces.php:*
 
 - *Our `metaEdit...` JavaScript function*
   - *This replaces the Piece Title with a form*
   - *This was heavily adopted from the first and final AJAX examples in Lesson 6*
+  - *It is accompanies by several other JavaScript that you can search by double-clicking*
+- *Nearly all JavaScript loads from pieces.php and in.piecesfunctions.php, not sent from AJAX (ajax.metaedit.php)*
+- *Some JavaScript was migrated from edit.php*
+- *Basic layout:*
+```html
+<tr>
+
+<!-- Per-Piece <table> row stuff we already know here -->
+
+<script>
+// JavaScript to click-show the Meta Edit <form>
+function metaEdit() {}
+
+// JavaScript to AJAX-load and process the Meta Edit <form>
+function sendEditMetaData() {}
+
+// JavaScript to mess other things, maybe from edit.php
+function metaEditClose() {}
+function showGoLiveOptionsLabel() {}
+function showGoLiveOptionsBox() {}
+
+// Other JavaScript we saw before
+function showActions() {}
+function clearChanged() {}
+</script>
+</tr>
+```
 
 *Note ajax.metaedit.php:*
 
-- **
+- *This both renders and processes the `<form>`*
+- *It is a toned-down edit.php, some from in.editprocess.php*
+- *After submitting the `<form>`, the output updates the "changed" indicator in the `<table>` row*
 
-| **B-12** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+*Note style.css*
+
+- *`.metaupdate` class for the `<table>` row after Meta Edit AJAX finishes*
+
+| **B-36** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+*Clicking on any Piece Title will bring up our JavaScript "Meta Edit" box*
 
 *Note on HTML entity symbols: pieces.php, trash.php, in.piecesfunctions.php*
 
@@ -1145,6 +1213,7 @@ ls web
   - *Pilcrows (adopted meanings)*
     - *Curly pilcrow for "Pages": won't be confused, but has some basis in ancient documents*
     - *Reverse pilcrow for "Posts": no writer's use outside of some software coding*
+
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -1185,6 +1254,37 @@ ___
   - Syntax:
     - `$json = json_encode($array)`
     - `$array = json_decode($json)`
+
+## AJAX
+- ...needs complex calls to work intuitively
+- ...needs lots of JavaScript to change other things after it changes the AJAX things
+- ...should not send anymore than needed, JavaScript and HTML should load separately wherever possible
+
+## HTML `<form>` IDs
+- Use an `id=` named after the SQL ID for whatever it is editing, if possible
+  - Use this in the `<form>` and in every `<input>`, etc
+- Side-by-Side forms allow more things to work; it's based on `id=`
+  - Place each `<input>` outside the `<form>` tags
+  - This avoids "forms inside forms", which HTML does not allow
+  - Match `<form id=` with `<input form=`
+  - Format:
+```html
+<form id="my_form_25"></form>
+<!-- Form ended, but you can still add inputs anywhere on the page -->
+<input form="my_form_25" type="text" name="something">
+<input form="my_form_25" type="hidden" name="secret">
+<input form="my_form_25" type="checkbox" name="check">
+<input form="my_form_25" type="submit" name="submit">
+```
+
+## Content Libaries
+- Content libraries show well by combining:
+  - PHP `while` loop
+  - HTML `<table>`
+- Making things usefully clickable needs AJAX
+- The code gets exponentially more complex with each simple ability you add
+  - Editing things while in a list is complex
+  - Editing things one at a time is simple
 
 ___
 
