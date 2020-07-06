@@ -7,15 +7,15 @@ ___
 
 *F12 (guake/tilda) OR Ctrl + Alt + T (new terminal)*
 
-| **1** : `mkdir -p ~/School/VIP/101`
+| **1** :$ `mkdir -p ~/School/VIP/101`
 
-| **2** : `cd ~/School/VIP/101`
+| **2** :$ `cd ~/School/VIP/101`
 
 ___
 
 ### Controlling apps via terminal
 
-| **3** : `gedit`
+| **3** :$ `gedit`
 
 *Note gedit opened*
 
@@ -23,55 +23,55 @@ ___
 
 *Note gedit won't respond*
 
-| **4** : `jobs`
+| **4** :$ `jobs`
 
 *gedit's job number should be 1*
 
-| **5** : `fg 1`
+| **5** :$ `fg 1`
 
 *Note gedit is no longer stopped*
 
 *Terminal: Ctrl + Z*
 
-| **6** : `bg 1`
+| **6** :$ `bg 1`
 
-| **7** : `jobs`
+| **7** :$ `jobs`
 
-| **8** : `killall gedit`
+| **8** :$ `killall gedit`
 
 *Note gedit closed*
 
-| **9** : `jobs`
+| **9** :$ `jobs`
 
 *Note the terminal registeres gedit "Terminated"*
 
-| **10** : `gedit`
+| **10** :$ `gedit`
 
 *Terminal: Ctrl + C*
 
 *Note gedit closed*
 
-| **11** : `jobs`
+| **11** :$ `jobs`
 
 *Note gedit either does not register or registers "Done"*
 
-| **12** : `gedit &`
+| **12** :$ `gedit &`
 
 *Note the terminal is not occupied because we added `&`*
 
 *Run another program, Mines (`gnome-mines`)*
 
-| **13** : `gnome-mines &`
+| **13** :$ `gnome-mines &`
 
-| **14** : `jobs`
+| **14** :$ `jobs`
 
 *This is how to kill job number 2:*
 
-| **15** : `kill %2`
+| **15** :$ `kill %2`
 
 *Note Mines closed*
 
-| **16** : `jobs`
+| **16** :$ `jobs`
 
 *Note the terminal registers Mines "Terminated"*
 

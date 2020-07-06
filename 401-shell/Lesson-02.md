@@ -9,7 +9,7 @@ ___
 
 ### `netstat -natu` & `sudo tcpdump`
 
-| **1** : `netstat -natu`
+| **1** :$ `netstat -natu`
 
 *This gives a list of all network connections*
 
@@ -18,10 +18,10 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su Username`
+> | **S1** :$ `su Username`
 ___
 
-| **2** : `sudo tcpdump`
+| **2** :$ `sudo tcpdump`
 
 *Note the ongoing list of network activity*
 
@@ -32,14 +32,14 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** : `exit`
+> | **S2** :$ `exit`
 ___
 
 ### `man` & `info`
 
 *FYI, this is a great tool to change settings from the terminal: `gsettings`*
 
-| **3** : `man gsettings`
+| **3** :$ `man gsettings`
 
 *This is a how-to manual for a terminal program that manages settings for the desktop environment*
 
@@ -47,7 +47,7 @@ ___
 
 *You can use `man` or `info`*
 
-| **4** : `info gsettings`
+| **4** :$ `info gsettings`
 
 *Press Q to quit*
 
@@ -55,35 +55,35 @@ ___
 
 *Consider `lsb_release` which shows detailed information about your current Linux distribution*
 
-| **5** : `man lsb_release`
+| **5** :$ `man lsb_release`
 
-| **6** : `info lsb_release`
+| **6** :$ `info lsb_release`
 
-| **7** : `man tcpdump`
+| **7** :$ `man tcpdump`
 
-| **8** : `info tcpdump`
+| **8** :$ `info tcpdump`
 
-| **9** : `man netstat`
+| **9** :$ `man netstat`
 
-| **10** : `info netstat`
+| **10** :$ `info netstat`
 
-| **11** : `man grep`
+| **11** :$ `man grep`
 
-| **12** : `info grep`
+| **12** :$ `info grep`
 
-| **13** : `man sed`
+| **13** :$ `man sed`
 
-| **14** : `info sed`
+| **14** :$ `info sed`
 
-| **15** : `man echo`
+| **15** :$ `man echo`
 
-| **16** : `info echo`
+| **16** :$ `info echo`
 
-| **17** : `man imagemagick`
+| **17** :$ `man imagemagick`
 
 *...but not always...*
 
-| **18** : `info imagemagick`
+| **18** :$ `info imagemagick`
 
 *Note `imagemagick` changes images from the terminal, learn to use at:*
 - [www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)

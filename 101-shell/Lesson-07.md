@@ -7,69 +7,69 @@ Ready the CLI
 
 ___
 
-| **1** : `gedit abcd sedoutput.text`
+| **1** :$ `gedit abcd sedoutput.text`
 
 *Remember `cat` outputs contents of a file as raw output (STDOUT)...*
 
-| **2** : `cat abcd`
+| **2** :$ `cat abcd`
 
 *Remember `echo` sends whatever raw input (STDIN) as raw output (STDOUT)...*
 
-| **3** : `echo $(cat abcd)`
+| **3** :$ `echo $(cat abcd)`
 
 *...and `echo` doesn't preserves "new lines" (paragraph breaks) when it does*
 
-| **4** : `sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd`
+| **4** :$ `sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd`
 
-| **5** : `echo $(sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd)`
+| **5** :$ `echo $(sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd)`
 
-| **6** : `cat abcd | tee sedoutput.text`
-
-*gedit: Reload sedoutput.text*
-
-| **7** : `echo $(cat abcd) | tee sedoutput.text`
+| **6** :$ `cat abcd | tee sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
-| **8** : `sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd | tee sedoutput.text`
+| **7** :$ `echo $(cat abcd) | tee sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
-| **9** : `echo $(sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd) | tee sedoutput.text`
+| **8** :$ `sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd | tee sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
-| **10** : `echo OneOneOne > one`
+| **9** :$ `echo $(sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd) | tee sedoutput.text`
 
-| **11** : `echo TwoTwoTwo > two`
+*gedit: Reload sedoutput.text*
 
-| **12** : `cat one`
+| **10** :$ `echo OneOneOne > one`
 
-| **13** : `cat two`
+| **11** :$ `echo TwoTwoTwo > two`
 
-| **14** : `cat one two`
+| **12** :$ `cat one`
 
-| **15** : `cat one two > onetwo`
+| **13** :$ `cat two`
 
-| **16** : `cat onetwo`
+| **14** :$ `cat one two`
+
+| **15** :$ `cat one two > onetwo`
+
+| **16** :$ `cat onetwo`
 
 *Note `cat` combined one and two into onetwo*
 
 *Note note also that `cat` preserved the lines*
 
-| **17** : `echo $(cat one two)`
+| **17** :$ `echo $(cat one two)`
 
 *Note `echo $(COMMAND_SUBSTITUTION)` removed the new lines like it always does*
 
-| **18** : `echo ThreeThreeThree > three`
+| **18** :$ `echo ThreeThreeThree > three`
 
-| **19** : `cat three two one >> onetwo`
+| **19** :$ `cat three two one >> onetwo`
 
-| **20** : `cat onetwo`
+| **20** :$ `cat onetwo`
 
 *Note `cat` also appended onetwo via `>>`*
 
-| **21** : `echo $(cat onetwo)`
+| **21** :$ `echo $(cat onetwo)`
 
 *Note `echo $(COMMAND_SUBSTITUTION)` removed the new lines like it always does*
 

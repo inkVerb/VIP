@@ -11,7 +11,7 @@ ___
 
 *Edit this script to see the short version*
 
-| **1** : `gedit loopcount`
+| **1** :$ `gedit loopcount`
 
 *It should look like this:*
 
@@ -32,13 +32,13 @@ done
 
 *Run it and watch carefully*
 
-| **2** : `./loopcount 15`
+| **2** :$ `./loopcount 15`
 
-| **3** : `ls`
+| **3** :$ `ls`
 
 *Note the file created: `countfile`*
 
-| **4** : `gedit countfile`
+| **4** :$ `gedit countfile`
 
 ### II. `sed` Special Characters
 
@@ -48,13 +48,13 @@ done
 
 *`.` is escaped with `\` in this `sed` command...*
 
-| **5** : `sed -i "s/No\./Number/" countfile`
+| **5** :$ `sed -i "s/No\./Number/" countfile`
 
 *gedit: Reload countfile*
 
 *Change "Number" to "Num"...*
 
-| **6** : `sed -i "s/Nu*/Num/" countfile`
+| **6** :$ `sed -i "s/Nu*/Num/" countfile`
 
 *gedit: Reload countfile*
 
@@ -62,7 +62,7 @@ done
 
 *Let's use `.*.` to replace anything between "Nu" and the space after...*
 
-| **7** : `sed -i "s/Nu.*. /Num /" countfile`
+| **7** :$ `sed -i "s/Nu.*. /Num /" countfile`
 
 *gedit: Reload countfile*
 
@@ -76,7 +76,7 @@ This is the same in `vim`, so get used to it.
 
 *Add something to the end of each line*
 
-| **8** : `sed -i "s/$/_add2end/" countfile`
+| **8** :$ `sed -i "s/$/_add2end/" countfile`
 
 *gedit: Reload countfile*
 
@@ -84,7 +84,7 @@ This is the same in `vim`, so get used to it.
 
 *Add something to the start of each line*
 
-| **9** : `sed -i "s/^/add2start_/" countfile`
+| **9** :$ `sed -i "s/^/add2start_/" countfile`
 
 *gedit: Reload countfile*
 
@@ -92,7 +92,7 @@ This is the same in `vim`, so get used to it.
 
 *Add a new line to the end of each line*
 
-| **10** : `sed -i "s/$/\n/" countfile`
+| **10** :$ `sed -i "s/$/\n/" countfile`
 
 *gedit: Reload countfile*
 
@@ -100,17 +100,17 @@ This is the same in `vim`, so get used to it.
 
 *Replace each tab with the string " TAB "*
 
-| **11** : `sed -i "s/\t/ TAB /" countfile`
+| **11** :$ `sed -i "s/\t/ TAB /" countfile`
 
 *Let's change this "TAB" text into a pipe `|`*
 
-| **12** : `sed -i "s/TAB/|/" countfile`
+| **12** :$ `sed -i "s/TAB/|/" countfile`
 
 *gedit: Reload countfile*
 
 *Let's put a tab after the "start_" string...*
 
-| **13** : `sed -i "s/start_/start_\t/" countfile`
+| **13** :$ `sed -i "s/start_/start_\t/" countfile`
 
 *gedit: Reload countfile*
 
@@ -138,87 +138,87 @@ sed "s\afoo\abar\a" # ...Yes, \a can be a delimiter!
 
 *First, this is the most simple way to use `sed`...*
 
-| **14** : `sed "s/foo/bar/" <<< food`
+| **14** :$ `sed "s/foo/bar/" <<< food`
 
 *What if we want to replace the slash...*
 
-| **15** : `sed "s/foo/daa/bar/pii/" <<< foo/daa`
+| **15** :$ `sed "s/foo/daa/bar/pii/" <<< foo/daa`
 
 *...That didn't work because we must escape the delimeter...*
 
-| **16** : `sed "s/foo\/daa/bar\/pii/" <<< foo/daa`
+| **16** :$ `sed "s/foo\/daa/bar\/pii/" <<< foo/daa`
 
 *...But, not with a different delimiter...*
 
-| **17** : `sed "s:foo/daa:bar/pii:" <<< foo/daa`
+| **17** :$ `sed "s:foo/daa:bar/pii:" <<< foo/daa`
 
 *...Whatever you're content, use a different character for the delimiter...*
 
-| **18** : `sed "s:foo.daa:bar.pii:" <<< foo.daa`
+| **18** :$ `sed "s:foo.daa:bar.pii:" <<< foo.daa`
 
 *Note we just searched `.` without escaping it; `.` doesn't **always** need escaped*
 
 *And escape your delimiter character if you need it literal...*
 
-| **19** : `sed "s:foo\:daa:bar\:pii:" <<< foo:daa`
+| **19** :$ `sed "s:foo\:daa:bar\:pii:" <<< foo:daa`
 
 *This may be useful in a script with a variable containing your delimiter*
 
-| **20** : `echo "Your_City" > sedfile`
+| **20** :$ `echo "Your_City" > sedfile`
 
-| **21** : `gedit sed-delim-var-1 sedfile`
+| **21** :$ `gedit sed-delim-var-1 sedfile`
 
-| **22** : `./sed-delim-var-1 America/Chicago`
+| **22** :$ `./sed-delim-var-1 America/Chicago`
 
 *Why the error? Let's look at what Linux saw...*
 
-| **23** : `./sed-delim-var-2 America/Chicago`
+| **23** :$ `./sed-delim-var-2 America/Chicago`
 
 *Try using a non-conflicting delimiter...*
 
-| **24** : `gedit sed-delim-var-3`
+| **24** :$ `gedit sed-delim-var-3`
 
-| **25** : `./sed-delim-var-3 America/Chicago`
+| **25** :$ `./sed-delim-var-3 America/Chicago`
 
 *Use any delimiter you want...*
 
-| **26** : `./sed-delim-var-4 America/Chicago`
+| **26** :$ `./sed-delim-var-4 America/Chicago`
 
-| **27** : `./sed-delim-var-5 America/Chicago`
+| **27** :$ `./sed-delim-var-5 America/Chicago`
 
 *Almost every character...*
 
-| **28** : `./sed-delim-var-6 America/Chicago`
+| **28** :$ `./sed-delim-var-6 America/Chicago`
 
 *But, special characters can be escaped with `\` and still delimit...*
 
-| **29** : `./sed-delim-var-7 America/Chicago`
+| **29** :$ `./sed-delim-var-7 America/Chicago`
 
 ### IV. `sed` wildcards
 
 *Replace everything after a match*
 
-| **30** : `sed "s/foo.*//" <<< 12345foo6789`
+| **30** :$ `sed "s/foo.*//" <<< 12345foo6789`
 
 *...Keep the `foo`*
 
-| **31** : `sed "s/foo.*/foo/" <<< 12345foo6789`
+| **31** :$ `sed "s/foo.*/foo/" <<< 12345foo6789`
 
 *Replace everything before a match*
 
-| **32** : `sed "s/^.*foo//" <<< 12345foo6789`
+| **32** :$ `sed "s/^.*foo//" <<< 12345foo6789`
 
 *...Keep the `foo`*
 
-| **33** : `sed "s/^.*foo/foo/" <<< 12345foo6789`
+| **33** :$ `sed "s/^.*foo/foo/" <<< 12345foo6789`
 
 *Removing something in the middle*
 
-| **34** : `sed "s/foo.*.bar//" <<< 12345fooSOMETHINGbar6789`
+| **34** :$ `sed "s/foo.*.bar//" <<< 12345fooSOMETHINGbar6789`
 
 *...Keep the `foobar`*
 
-| **35** : `sed "s/foo.*.bar/foobar/" <<< 12345fooSOMETHINGbar6789`
+| **35** :$ `sed "s/foo.*.bar/foobar/" <<< 12345fooSOMETHINGbar6789`
 
 ___
 

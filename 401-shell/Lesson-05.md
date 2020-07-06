@@ -11,19 +11,19 @@ ___
 
 *Prepare*
 
-| **1** : `touch iamhere`
+| **1** :$ `touch iamhere`
 
-| **2** : `ls iamhere`
+| **2** :$ `ls iamhere`
 
 *The file exists: `iamhere`*
 
-| **3** : `echo $?` *`$?` is "the last exit code"*
+| **3** :$ `echo $?` *`$?` is "the last exit code"*
 
 *Exit code `0` means the last command was a success and returned STDOUT "true"*
 
-| **4** : `ls iamNOThere`
+| **4** :$ `ls iamNOThere`
 
-| **5** : `echo $?`
+| **5** :$ `echo $?`
 
 *Exit code `2` means the last command was a failure and returned with STDERR error*
 
@@ -31,7 +31,7 @@ ___
 
 *Edit this script*
 
-| **6** : `gedit varexit`
+| **6** :$ `gedit varexit`
 
 *It should look like this:*
 
@@ -63,13 +63,13 @@ echo "$? notacommand is not a real command, so exit code \"127\""
 
 *Run it and watch carefully*
 
-| **7** : `./varexit`
+| **7** :$ `./varexit`
 
 ### II. `shift` Argument Variable Numbers
 
 *Edit this script*
 
-| **8** : `gedit varshift`
+| **8** :$ `gedit varshift`
 
 *It should look like this:*
 
@@ -112,7 +112,7 @@ echo "After shift 3
 
 *Run it and watch carefully*
 
-| **9** : `./varshift one two three four five six`
+| **9** :$ `./varshift one two three four five six`
 
 *Note the `$0` variable does not shift,* ***only argument variables***
 
@@ -127,7 +127,7 @@ echo "After shift 3
 
 *Edit this script*
 
-| **10** : `gedit varargs`
+| **10** :$ `gedit varargs`
 
 *It should look like this:*
 
@@ -157,13 +157,13 @@ $*
 
 *Run it and watch carefully*
 
-| **11** : `./varargs one two three four five six`
+| **11** :$ `./varargs one two three four five six`
 
 *Now, we will embed this into another script and pass those arguments via `$@` & `$*` ...*
 
 *Edit this script*
 
-| **12** : `gedit varargsvar`
+| **12** :$ `gedit varargsvar`
 
 *It should look like this:*
 
@@ -191,7 +191,7 @@ Arguments entered via \$(echo \$*) ..."
 
 *Run it and watch carefully*
 
-| **13** : `./varargsvar one two three four five six`
+| **13** :$ `./varargsvar one two three four five six`
 
 *...No matter how we run it, `$@` & `$*` basically behave the same.*
 
@@ -199,7 +199,7 @@ Arguments entered via \$(echo \$*) ..."
 
 *Edit this script*
 
-| **14** : `gedit vargcount`
+| **14** :$ `gedit vargcount`
 
 *It should look like this:*
 
@@ -219,13 +219,13 @@ $#"
 
 *Run it and watch carefully*
 
-| **15** : `./vargcount one two three four five six`
+| **15** :$ `./vargcount one two three four five six`
 
 ### V. `unset` Variables
 
 *Edit this script*
 
-| **16** : `gedit varunset`
+| **16** :$ `gedit varunset`
 
 *It should look like this:*
 
@@ -274,13 +274,13 @@ myShiftedCount = $myShiftedCount
 "
 ```
 
-| **17** : `./varunset one two three four five six`
+| **17** :$ `./varunset one two three four five six`
 
 ### VI. Variables in `${bracketts}`
 
 *Edit this script*
 
-| **18** : `gedit varbrackett-sh`
+| **18** :$ `gedit varbrackett-sh`
 
 *It should look like this:*
 
@@ -321,13 +321,13 @@ echo "${myVar}"
 ```
 *Run it and watch carefully*
 
-| **19** : `./varbrackett-sh one two three four five six seven eight nine ten eleven twelve`
+| **19** :$ `./varbrackett-sh one two three four five six seven eight nine ten eleven twelve`
 
 *Again, but with **BASH**...*
 
 *Edit this script*
 
-| **20** : `gedit varbrackett-bash`
+| **20** :$ `gedit varbrackett-bash`
 
 *It should look like this:*
 
@@ -369,13 +369,13 @@ echo "${myVar}"
 
 *Run it and watch carefully*
 
-| **21** : `./varbrackett-bash one two three four five six seven eight nine ten eleven twelve`
+| **21** :$ `./varbrackett-bash one two three four five six seven eight nine ten eleven twelve`
 
 ### VII. `export` Variables
 
 *Edit these scripts to see the short version*
 
-| **22** : `gedit variable-no-export variable-exported`
+| **22** :$ `gedit variable-no-export variable-exported`
 
 *They should look like this:*
 
@@ -400,11 +400,11 @@ echo "${myVar}"
 
 *Run the first script and watch carefully*
 
-| **23** : `./variable-no-export`
+| **23** :$ `./variable-no-export`
 
 *Edit this script*
 
-| **24** : `gedit variable-yes-export`
+| **24** :$ `gedit variable-yes-export`
 
 *It should look like this:*
 
@@ -420,7 +420,7 @@ export myVar="Hello world!"
 
 *Run it and watch carefully*
 
-| **25** : `./variable-yes-export`
+| **25** :$ `./variable-yes-export`
 
 *Note a variable only carries into another script if declared with: `export`*
 
@@ -428,7 +428,7 @@ export myVar="Hello world!"
 
 *Edit this script*
 
-| **26** : `gedit varfoo`
+| **26** :$ `gedit varfoo`
 
 *It should look like this:*
 
@@ -446,7 +446,7 @@ var1: $var1
 var2: $var2"
 ```
 
-| **27** : `./varfoo`
+| **27** :$ `./varfoo`
 
 *Take a good look at that*
 
@@ -460,7 +460,7 @@ var2: $var2"
 
 *Edit this script*
 
-| **28** : `gedit variable-readonly-1`
+| **28** :$ `gedit variable-readonly-1`
 
 *It should look like this:*
 
@@ -481,13 +481,13 @@ MYROVAR="I am changed!"
 
 *Run it and watch carefully*
 
-| **29** : `./variable-readonly-1`
+| **29** :$ `./variable-readonly-1`
 
 #### 2. You can't `unset` a `readonly` variable
 
 *Edit this script*
 
-| **30** : `gedit variable-readonly-2`
+| **30** :$ `gedit variable-readonly-2`
 
 *It should look like this:*
 
@@ -508,7 +508,7 @@ unset MYROVAR
 
 *Run it and watch carefully*
 
-| **31** : `./variable-readonly-2`
+| **31** :$ `./variable-readonly-2`
 
 **Usually, "should-be-constant variables" are ALL_UPPERCASE, it's just a good Shell coder's healthy habit**
 
@@ -524,11 +524,11 @@ Ready the CLI (if needed)
 
 #### `set` *without arguments* lists all current variables and functions, everywhere
 
-| **32** : `set`
+| **32** :$ `set`
 
 *It listed everything, let's do one page at a time...*
 
-| **33** : `set | more`
+| **33** :$ `set | more`
 
 *We will do more with `set` in [Lesson 9](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-09.md)*
 
@@ -536,69 +536,69 @@ Ready the CLI (if needed)
 
 *You can work with variables directly...*
 
-| **34** : `myvar="Yoohoo!"`
+| **34** :$ `myvar="Yoohoo!"`
 
-| **35** : `echo $myvar`
+| **35** :$ `echo $myvar`
 
-| **36** : `unset myvar`
+| **36** :$ `unset myvar`
 
-| **37** : `echo $myvar`
+| **37** :$ `echo $myvar`
 
 *...Now it's gone!*
 
 #### `printenv` lists all variables in the *environment*; you may remember from [101-Lesson 3](https://github.com/inkVerb/vip/blob/master/101-shell/Lesson-03.md)
 
-| **38** : `printenv`
+| **38** :$ `printenv`
 
-| **39** : `printenv USER`
+| **39** :$ `printenv USER`
 
-| **40** : `echo $USER`
+| **40** :$ `echo $USER`
 
 *We can add a variable to the environment...*
 
-| **41** : `myvar="Yipyip"`
+| **41** :$ `myvar="Yipyip"`
 
-| **42** : `echo $myvar`
+| **42** :$ `echo $myvar`
 
-| **43** : `printenv myvar`
+| **43** :$ `printenv myvar`
 
 *I didn't display via `printenv` because it's not in the environment, let's put it there...*
 
-| **44** : `export myvar`
+| **44** :$ `export myvar`
 
-| **45** : `printenv myvar`
+| **45** :$ `printenv myvar`
 
 *Try looking for it...*
 
-| **46** : `printenv`
+| **46** :$ `printenv`
 
 *We can change it...*
 
-| **47** : `myvar="Yakyak"`
+| **47** :$ `myvar="Yakyak"`
 
-| **48** : `echo $myvar`
+| **48** :$ `echo $myvar`
 
-| **49** : `printenv myvar`
+| **49** :$ `printenv myvar`
 
 *And remove it...*
 
-| **50** : `unset myvar`
+| **50** :$ `unset myvar`
 
-| **51** : `echo $myvar`
+| **51** :$ `echo $myvar`
 
-| **52** : `printenv myvar`
+| **52** :$ `printenv myvar`
 
 *Make it `readonly`...*
 
-| **53** : `myvar="Coocoo"`
+| **53** :$ `myvar="Coocoo"`
 
-| **54** : `echo $myvar`
+| **54** :$ `echo $myvar`
 
-| **55** : `readonly myvar`
+| **55** :$ `readonly myvar`
 
-| **56** : `myvar="Coocoo"`
+| **56** :$ `myvar="Coocoo"`
 
-| **57** : `unset myvar`
+| **57** :$ `unset myvar`
 
 *...We can't change a `readonly` variable*
 
@@ -606,25 +606,25 @@ Ready the CLI (if needed)
 
 *Let's do it right, you can also make a variable `readonly` when you first set it...*
 
-| **58** : `readonly MY_NEW_VAR="Cadoo"`
+| **58** :$ `readonly MY_NEW_VAR="Cadoo"`
 
-| **59** : `echo $MY_NEW_VAR`
+| **59** :$ `echo $MY_NEW_VAR`
 
-| **60** : `MY_NEW_VAR="Nutty"`
+| **60** :$ `MY_NEW_VAR="Nutty"`
 
 *...good, it's `readonly`*
 
-| **61** : `export MY_NEW_VAR`
+| **61** :$ `export MY_NEW_VAR`
 
-| **62** : `printenv MY_NEW_VAR`
+| **62** :$ `printenv MY_NEW_VAR`
 
 *That's how it's done*
 
 *All in one command...*
 
-| **63** : `export readonly ALSO_VAR="VIP Linux"`
+| **63** :$ `export readonly ALSO_VAR="VIP Linux"`
 
-| **64** : `printenv ALSO_VAR`
+| **64** :$ `printenv ALSO_VAR`
 
 *Note `export readonly` is the order; `readonly export` **will not** work*
 ___

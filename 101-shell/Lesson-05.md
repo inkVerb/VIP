@@ -7,27 +7,27 @@ Ready the CLI
 
 ___
 
-| **1** : `gedit applefoo`
+| **1** :$ `gedit applefoo`
 
-| **2** : `cat applefoo`
+| **2** :$ `cat applefoo`
 
 *Note what `cat` does...*
 
-| **3** : `cat abcsed`
+| **3** :$ `cat abcsed`
 
-| **4** : `gedit abcsed`
+| **4** :$ `gedit abcsed`
 
-| **5** : `gedit abcsed.setting`
+| **5** :$ `gedit abcsed.setting`
 
-| **6** : `cat abcsed.setting`
+| **6** :$ `cat abcsed.setting`
 
-| **7** : `gedit abcd`
+| **7** :$ `gedit abcd`
 
-| **8** : `cat abcd`
+| **8** :$ `cat abcd`
 
 *Note what `sed` does...*
 
-| **9** : `sed -i "s/bar/foo/" applefoo`
+| **9** :$ `sed -i "s/bar/foo/" applefoo`
 
 *gedit: Reload applefoo*
 
@@ -35,89 +35,89 @@ ___
   - *It won't change the file*
   - *It outputs to the terminal*
 
-| **10** : `sed "s/foo/bar/" applefoo`
+| **10** :$ `sed "s/foo/bar/" applefoo`
 
-| **11** : `ls`
+| **11** :$ `ls`
 
 *Now, use `sed` with `-e` and see what happens...*
 
-| **12** : `sed -e "s/foo/bar/g" applefoo > newapplefoo`
+| **12** :$ `sed -e "s/foo/bar/g" applefoo > newapplefoo`
 
-| **13** : `ls`
+| **13** :$ `ls`
 
-| **14** : `cat newapplefoo`
+| **14** :$ `cat newapplefoo`
 
 *Review what `sed` and `cat` do with the next two commands...*
 
 - *Output `sed` search-replace results: (without `-i` or `-e` flags)*
 
-| **15** : `sed "s/foo/bar/" applefoo`
+| **15** :$ `sed "s/foo/bar/" applefoo`
 
 - *Output file contents:*
 
-| **16** : `cat applefoo`
+| **16** :$ `cat applefoo`
 
 *Next "pipe" `|` the output of `cat` into `sed`...*
 
-| **17** : `cat applefoo | sed "s/foo/bar/"`
+| **17** :$ `cat applefoo | sed "s/foo/bar/"`
 
 *Put those commands into a kind of variable value; this is called "Command Substitution": `$(Command Substitution)`*
 
-| **18** : `echo $(cat applefoo | sed "s/foo/bar/")`
+| **18** :$ `echo $(cat applefoo | sed "s/foo/bar/")`
 
 *Now `echo` it to a file...*
 
-| **19** : `echo $(cat applefoo | sed "s/foo/bar/") > echocatsed_applefoo`
+| **19** :$ `echo $(cat applefoo | sed "s/foo/bar/") > echocatsed_applefoo`
 
-| **20** : `gedit echocatsed_applefoo`
+| **20** :$ `gedit echocatsed_applefoo`
 
-| **21** : `cat echocatsed_applefoo`
+| **21** :$ `cat echocatsed_applefoo`
 
 *"Command Substitution" can also be done with backticks: `` `Command Substitution` `` (considered lazy, though)*
 
-| **22** : `` echo `cat applefoo | sed "s/foo/bar/"` ``
+| **22** :$ `` echo `cat applefoo | sed "s/foo/bar/"` ``
 
 *This is useful to get your CPU type...*
 
-| **23** : `dpkg --print-architecture`
+| **23** :$ `dpkg --print-architecture`
 
 *`echo` it into a file...*
 
-| **24** : `echo $(dpkg --print-architecture) > print-architecture_chodpkg`
+| **24** :$ `echo $(dpkg --print-architecture) > print-architecture_chodpkg`
 
-| **25** : `gedit print-architecture_chodpkg`
+| **25** :$ `gedit print-architecture_chodpkg`
 
 *You can "substitute" any command for its output using: `$(...)` or `` `...` ``*
 
 *Let's `kill` a desktop app using Command Substitution...*
 
-| **26** : `gnome-mines &`
+| **26** :$ `gnome-mines &`
 
 *Get the app's "process ID" (PID)...*
 
-| **27** : `pgrep gnome-mines`
+| **27** :$ `pgrep gnome-mines`
 
 *Note the PID number and replace 55555 with that number below:*
 
-| **28** : `kill 55555`
+| **28** :$ `kill 55555`
 
 *Do it again, note the number changes...*
 
-| **29** : `gnome-mines &`
+| **29** :$ `gnome-mines &`
 
-| **30** : `pgrep gnome-mines`
+| **30** :$ `pgrep gnome-mines`
 
-| **31** : `kill 55555`
+| **31** :$ `kill 55555`
 
 *Now, replace the PID number with `$(what gets the number)`, specifically: `$(pgrep gnome-mines)`...*
 
-| **32** : `gnome-mines &`
+| **32** :$ `gnome-mines &`
 
-| **33** : `kill $(pgrep gnome-mines)`
+| **33** :$ `kill $(pgrep gnome-mines)`
 
 *...Try it a few more times if you want, always the same, no changing numbers!*
 
-| **34** : `gedit comboshell`
+| **34** :$ `gedit comboshell`
 
 *Create comboshell as this:*
 
@@ -134,21 +134,21 @@ $myOutput"
 # v01
 ```
 
-| **35** : `chmod ug+x comboshell`
+| **35** :$ `chmod ug+x comboshell`
 
 *Watch Command Substitution work...*
 
-| **36** : `./comboshell applefoo foo bar`
+| **36** :$ `./comboshell applefoo foo bar`
 
 *Review the contents of abcd...*
 
-| **37** : `cat abcd`
+| **37** :$ `cat abcd`
 
 *Watch Command Substitution work...*
 
-| **38** : `./comboshell abcd jjjjjjjjj "Apple likes to say abcdefghi and "`
+| **38** :$ `./comboshell abcd jjjjjjjjj "Apple likes to say abcdefghi and "`
 
-| **39** : `./comboshell abcd j " zz"`
+| **39** :$ `./comboshell abcd j " zz"`
 
 ___
 

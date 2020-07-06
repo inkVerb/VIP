@@ -7,39 +7,39 @@ Ready the CLI
 
 ___
 
-| **1** : `echo "$$//" > money.file`
+| **1** :$ `echo "$$//" > money.file`
 
-| **2** : `gedit money.file`
+| **2** :$ `gedit money.file`
 
 *Note how special characters don't always work correctly...*
 
-| **3** : `echo "\$\$//" > money.file`
+| **3** :$ `echo "\$\$//" > money.file`
 
 *gedit: Reload money.file*
 
-| **4** : `sed -i "s///!/g" money.file`
+| **4** :$ `sed -i "s///!/g" money.file`
 
 *Notice the error, "escape" (some say "quote") special characters with: `\`*
 
-| **5** : `sed -i "s/\//\!/g" money.file`
+| **5** :$ `sed -i "s/\//\!/g" money.file`
 
 *gedit: Reload money.file*
 
-| **6** : `sed -i "s/$/@/g" money.file`
+| **6** :$ `sed -i "s/$/@/g" money.file`
 
 *gedit: Reload money.file*
 
-| **7** : `sed -i "s/\$/@/g" money.file`
+| **7** :$ `sed -i "s/\$/@/g" money.file`
 
 *gedit: Reload money.file*
 
-| **8** : `sed -i 's/$/@/g' money.file`
+| **8** :$ `sed -i 's/$/@/g' money.file`
 
 *gedit: Reload money.file*
 
 *Note even with 'single quotes' it still doesn't work...*
 
-| **9** : `sed -i 's/\$/@/g' money.file`
+| **9** :$ `sed -i 's/\$/@/g' money.file`
 
 *gedit: Reload money.file*
 
@@ -51,33 +51,33 @@ ___
 
 *Note `\t` = tab, `\n` = new line*
 
-| **10** : `echo "no tab one line" > tab.file`
+| **10** :$ `echo "no tab one line" > tab.file`
 
-| **11** : `gedit tab.file`
+| **11** :$ `gedit tab.file`
 
-| **12** : `sed -i "s/no/\t no/" tab.file`
+| **12** :$ `sed -i "s/no/\t no/" tab.file`
 
 *gedit: Reload tab.file*
 
 *Note the tab*
 
-| **13** : `sed -i "s/\t no/no/" tab.file`
+| **13** :$ `sed -i "s/\t no/no/" tab.file`
 
 *gedit: Reload tab.file*
 
 *Note the tab is gone*
 
-| **14** : `sed -i "s/one/one\n/" tab.file`
+| **14** :$ `sed -i "s/one/one\n/" tab.file`
 
 *gedit: Reload tab.file*
 
-| **15** : `sed -i "s/one\n/one/g" tab.file`
+| **15** :$ `sed -i "s/one\n/one/g" tab.file`
 
 *gedit: Reload tab.file*
 
 *Note the line was not removed, use `-z` so `sed` is not confused*
 
-| **16** : `sed -i -z "s/one\n/one/g" tab.file`
+| **16** :$ `sed -i -z "s/one\n/one/g" tab.file`
 
 *gedit: Reload tab.file*
 

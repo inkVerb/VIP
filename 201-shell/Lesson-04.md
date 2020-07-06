@@ -11,21 +11,21 @@ ___
 
 #### Permissions
 
-| **1** : `touch whoown iown theyown youown`
+| **1** :$ `touch whoown iown theyown youown`
 
-| **2** : `ls`
+| **2** :$ `ls`
 
-| **3** : `ls -1`
+| **3** :$ `ls -1`
 
 *Note the vertical list with `-1` (dash ONE)*
 
-| **4** : `ls -l`
+| **4** :$ `ls -l`
 
 *Note your username in the longer, more detailed list*
 
-| **5** : `chmod +x whoown`
+| **5** :$ `chmod +x whoown`
 
-| **6** : `ls -l`
+| **6** :$ `ls -l`
 
 *Note the "x" now on whoown: `-rwxrwxr-x` ('x' appears 3 times, the last one can be dangerous because it is public)*
 
@@ -33,15 +33,15 @@ ___
 
 *For personal files, use `chmod ug+x whoown` so the last "x" won't be there, so the public can't execute the file*
 
-| **7** : `chmod -x whoown`
+| **7** :$ `chmod -x whoown`
 
-| **8** : `ls -l`
+| **8** :$ `ls -l`
 
 *Note the "x" has been removed from whoown*
 
-| **9** : `chmod ug+x whoown`
+| **9** :$ `chmod ug+x whoown`
 
-| **10** : `ls -l`
+| **10** :$ `ls -l`
 
 *Note it is green, but "x" only appears 2 times: `-rwxrwxr--`, so only the owner can execute the file*
 
@@ -49,67 +49,67 @@ ___
 
 *You can also use numbers to set permissions, which is more normal for programmers*
 
-| **11** : `chmod 777 whoown`
+| **11** :$ `chmod 777 whoown`
 
-| **12** : `ls -l` *Note the new permissions (`-rwxrwxrwx`)*
+| **12** :$ `ls -l` *Note the new permissions (`-rwxrwxrwx`)*
 
-| **13** : `chmod 444 whoown`
+| **13** :$ `chmod 444 whoown`
 
-| **14** : `ls -l` *Note the new permissions (`-r--r--r--`)*
+| **14** :$ `ls -l` *Note the new permissions (`-r--r--r--`)*
 
 *Note `chmod ug+x` is "relative" while using `chmod` with numbers is absolute...*
 
-| **15** : `chmod ug+x whoown`
+| **15** :$ `chmod ug+x whoown`
 
-| **16** : `ls -l` *Note the permissions are now `-r-xr-xr--`, different from last time we used `chmod ug+x`*
+| **16** :$ `ls -l` *Note the permissions are now `-r-xr-xr--`, different from last time we used `chmod ug+x`*
 
-| **17** : `chmod 664 whoown`
+| **17** :$ `chmod 664 whoown`
 
-| **18** : `ls -l` *Note the new permissions (`-rw-rw-r--`) are the original permissions*
+| **18** :$ `ls -l` *Note the new permissions (`-rw-rw-r--`) are the original permissions*
 
-| **19** : `chmod 774 whoown`
+| **19** :$ `chmod 774 whoown`
 
-| **20** : `ls -l` *Note, that was what we had before: `-rwxrwxr--`*
+| **20** :$ `ls -l` *Note, that was what we had before: `-rwxrwxr--`*
 
-| **21** : `chmod 600 whoown`
+| **21** :$ `chmod 600 whoown`
 
-| **22** : `ls -l` *Note the new permissions (`-rw-------`)*
+| **22** :$ `ls -l` *Note the new permissions (`-rw-------`)*
 
 *Refer to this cheat-sheet for more about chmod:* [VIP/Cheat-Sheets: Permissions](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
 
 #### Hidden files
 
-| **23** : `touch .hideme .hidemealso .cantseeme`
+| **23** :$ `touch .hideme .hidemealso .cantseeme`
 
-| **24** : `ls`
+| **24** :$ `ls`
 
 *Note you can't see the files just created, because files that start with a period `.` are "hidden"*
 
-| **25** : `ls -a`
+| **25** :$ `ls -a`
 
-| **26** : `ls -l`
+| **26** :$ `ls -l`
 
-| **27** : `ls -la`
+| **27** :$ `ls -la`
 
-| **28** : `mkdir .hidedir .cantseedir`
+| **28** :$ `mkdir .hidedir .cantseedir`
 
-| **29** : `ls`
+| **29** :$ `ls`
 
 *Directories also can be "hidden"*
 
-| **30** : `ls -a`
+| **30** :$ `ls -a`
 
 *In Nautilus (the file explorer) press Ctrl + H to toggle view of hidden files and directories*
 
 #### Reverse order
 
-| **31** : `ls`
+| **31** :$ `ls`
 
-| **32** : `ls -r`
+| **32** :$ `ls -r`
 
-| **33** : `ls -1`
+| **33** :$ `ls -1`
 
-| **34** : `ls -1r`
+| **34** :$ `ls -1r`
 
 ___
 

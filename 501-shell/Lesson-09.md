@@ -11,7 +11,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(Ctrl + Shift + T for new terminal tab; Ctrl + PageUp/PageDown to switch tabs)*
 
-| **S0** : `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
 *(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
 
@@ -27,7 +27,7 @@ We want to review a list of our pieces
 
 ### Cleanup Header/Hooter and Prepare Our "Pieces" Page Framework
 
-| **1** :
+| **1** :$
 ```
 sudo cp core/09-pieces1.php web/pieces.php && \
 sudo cp core/09-in.logincheck.php web/in.login_check.php && \
@@ -97,7 +97,7 @@ That's quite simple, let's expand...
 
 ### More Useful Data, Actions, and Editable Fields
 
-| **3** :
+| **3** :$
 ```
 sudo cp core/09-pieces2.php web/pieces.php && \
 sudo cp core/09-delete2.php web/delete.php && \
@@ -147,7 +147,7 @@ While this works, we don't want a GET URL to be this powerful, use POST instead.
 
 ### Require POST for Our Actions
 
-| **5** :
+| **5** :$
 ```
 sudo cp core/09-pieces3.php web/pieces.php && \
 sudo cp core/09-in.piecesfunctions3.php web/in.piecesfunctions.php && \
@@ -203,7 +203,7 @@ ls web
 
 ### Trash Page with Restore and Bulk Empty
 
-| **7** :
+| **7** :$
 ```
 sudo cp core/09-pieces4.php web/pieces.php && \
 sudo cp core/09-trash4.php web/trash.php && \
@@ -249,7 +249,7 @@ ls web
 
 ### Style & JavaScript to Hide some of Our Meta
 
-| **9** :
+| **9** :$
 ```
 sudo cp core/09-pieces5.php web/pieces.php && \
 sudo cp core/09-trash5.php web/trash.php && \
@@ -292,7 +292,7 @@ In Atom:
 
 ### Revision History
 
-| **10** :
+| **10** :$
 ```
 sudo cp core/09-pieces6.php web/pieces.php && \
 sudo cp core/09-piece1.php web/piece.php && \
@@ -368,7 +368,7 @@ This "History" view is nice, but it could be much more functional...
 
 ### Revision History with More Options
 
-| **14** :
+| **14** :$
 ```
 sudo cp core/09-hist2.php web/hist.php && \
 atom core/09-hist2.php
@@ -456,7 +456,7 @@ WHERE tags=CAST('[ "Apple", "Banana", "Ubuntu" ]' AS JSON) -- Matches (JSON data
 
 #### JSON in PHP
 
-| **12** :
+| **12** :$
 ```
 sudo cp core/09-jsonarrays.php web/jsonarrays.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -525,7 +525,7 @@ ADD `tags` JSON DEFAULT NULL;
 
 *Let's implement JSON in our blog...*
 
-| **20** :
+| **20** :$
 ```
 sudo cp core/09-edit2.php web/edit.php && \
 sudo cp core/09-in.piecefunctions2.php web/in.piecefunctions.php && \
@@ -600,7 +600,7 @@ Just note:
 4. Everything goes into a PHP array whenever we process it  
 5. The PHP array goes to and from JSON to save in the SQL database
 
-| **22** :
+| **22** :$
 ```
 sudo cp core/09-jsonlinksexplained.php web/jsonlinksexplained.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -638,7 +638,7 @@ ls web
 
 *Let's look at that code again, without all the explanation...*
 
-| **23** :
+| **23** :$
 ```
 sudo cp core/09-jsonlinks.php web/jsonlinks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -654,7 +654,7 @@ ls web
 
 ### Add Links to the Pieces
 
-| **24** :
+| **24** :$
 ```
 sudo cp core/09-edit3.php web/edit.php && \
 sudo cp core/09-in.jsonlinks.php web/in.jsonlinks.php && \
@@ -767,7 +767,7 @@ https://verb.blue;; Inky | Blue Ink
 
 In Lesson 6 we learned to [AJAX a `<form>`](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-06.md#ajax-a-form)
 
-| **25** :
+| **25** :$
 ```
 sudo cp core/09-select.php web/select.php && \
 sudo cp core/09-in.select.php web/in.select.php && \
@@ -789,7 +789,7 @@ Try adding a Series with the "+ Series" form
 
 *Put this AJAX `<form>` into our "Edit" page...*
 
-| **26** :
+| **26** :$
 ```
 sudo cp core/09-edit4.php web/edit.php && \
 sudo cp core/09-in.piecefunctions4.php web/in.piecefunctions.php && \
@@ -864,7 +864,7 @@ Try adding a Series with the "+ Series" form
 
 *First, a review...*
 
-| **29** : `atom core/09-pieces6.php`
+| **29** :$ `atom core/09-pieces6.php`
 
 | **B-29** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
@@ -899,7 +899,7 @@ Consider `form=` & `="apply2all"` in this code...
 </table>
 ```
 
-| **30** :
+| **30** :$
 ```
 sudo cp core/09-postformarrays.php web/postformarrays.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -917,7 +917,7 @@ Check different boxes, then submit with different buttons multiple times
 
 ### Bulk Actions in Pieces Table: `form=` Attribute & AJAX
 
-| **31** :
+| **31** :$
 ```
 sudo cp core/09-pieces7.php web/pieces.php && \
 sudo cp core/09-act.bulkpieces.php web/act.bulkpieces.php && \
@@ -974,7 +974,7 @@ Click and try:
 
 *Let's AJAX these small "actions"...*
 
-| **32** :
+| **32** :$
 ```
 sudo cp core/09-pieces8.php web/pieces.php && \
 sudo cp core/09-in.piecesfunctions8.php web/in.piecesfunctions.php && \
@@ -1044,7 +1044,7 @@ In Pieces and Trash:
 
 *Since we don't need those pieces action files anymore...*
 
-| **33** :
+| **33** :$
 ```
 sudo rm -f web/delete.php web/undelete.php web/empty_delete.php web/unpublish.php web/republish.php web/pagify.php web/postify.php web/undelete_trash.phpweb/empty_delete_trash.php
 ls web
@@ -1059,7 +1059,7 @@ ls web
 
 *Let's cleanup this AJAX...*
 
-| **34** :
+| **34** :$
 ```
 sudo cp core/09-pieces9.php web/pieces.php && \
 sudo cp core/09-trash9.php web/trash.php && \
@@ -1107,7 +1107,7 @@ Try different Piece actions and see how the page never needs to reload
 
 ### Meta Edit in Pieces Table via JS Popup `<form>` & AJAX
 
-| **35** :
+| **35** :$
 ```
 sudo cp core/09-pieces10.php web/pieces.php && \
 sudo cp core/09-trash10.php web/trash.php && \
@@ -1147,7 +1147,7 @@ ls web
 
 **Those are the upgrades, let's see the part with our working AJAX:**
 
-| **36** :
+| **36** :$
 
 ```
 atom core/09-pieces10.php core/09-trash10.php core/09-in.piecesfunctions10.php core/09-ajax.metaedit.php core/09-style10.css
@@ -1186,15 +1186,55 @@ function clearChanged() {}
 </tr>
 ```
 
+*Note pieces.php & ajax.metaedit.php: fancy use of `<table><tr>` rows...*
+
+- *Each Piece `<tr>` row actually has two rows*
+- *One shows the normal information and actions*
+- *One is hidden, but replaced by our AJAX*
+- *When AJAX shows and loads the `<form>` into the hidden `<tr>` row, the normal row hides*
+- *When we submit or cancel the AJAX `<form>`, the normal `<tr>` row shows again*
+- *Hiding most HTML elements uses `x.style.display = "none";` (JavaScript) or `style="display: none;"` (HTML)*
+- *JS-showing most HTML elements uses `x.style.display = "";` or `x.style.display = "";`*
+- *JS-showing a `<tr>` element that was hidden uses `x.style.display = "";`*
+
 *Note ajax.metaedit.php:*
 
 - *This both renders and processes the `<form>`*
 - *It is a toned-down edit.php, some from in.editprocess.php*
 - *After submitting the `<form>`, the output updates the "changed" indicator in the `<table>` row*
+- *Our `pieceInput()` function has the `_me` appendage for some fields*
+  - *These options were added to in.piecefunctions.php so the fields would be shorter in our Meta Edit*
 
 *Note style.css*
 
 - *`.metaupdate` class for the `<table>` row after Meta Edit AJAX finishes*
+- *`.metaedit` class for our new `pieceInput()` function*
+  - *From in.piecefunctions.php*
+  - *Used by ajax.metaedit.php*
+- *The `font-size` is smaller, just to make sure everything fits*
+  - *`tr.pieces`, the normal table `small`*
+  - *`tr.metaedit` and several `<form>` elements `x-small`*
+
+*Note our use of JSON:*
+
+- *ajax.metaedit.php prepares a JSON response:*
+
+```php
+$ajax_response = array();
+$ajax_response['title'] = $p_title;
+$ajax_response['message'] = 'logic dictates';
+$json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
+echo $json_response;
+```
+
+- *pieces.php parses it for JavaScript:*
+  - *Note `+` is "concatenate" in JavaScript, which is `.` in PHP*
+
+```js
+var jsonMetaEditResponse = JSON.parse(event.target.responseText);
+document.getElementById("title_"+p_id).innerHTML = '<b>'+jsonMetaEditResponse["title"]+' &#9998;</b>';
+document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditResponse["message"]+'&nbsp;';
+```
 
 | **B-36** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
@@ -1219,14 +1259,16 @@ function clearChanged() {}
 
 ### Published History to Display New Meta
 
-| **12** :
+| **37** :$
 ```
 sudo cp core/09-hist3.php web/hist.php && \
 atom core/09-hist3.php && \
 ls web
 ```
 
+| **B-37** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
+Click on "history" for any Piece
 
 ___
 
@@ -1259,6 +1301,23 @@ ___
 - ...needs complex calls to work intuitively
 - ...needs lots of JavaScript to change other things after it changes the AJAX things
 - ...should not send anymore than needed, JavaScript and HTML should load separately wherever possible
+
+## JSON & AJAX
+- AJAX responses in JSON can be understood by JavaScript
+- Sending and receiving only JSON with AJAX is efficient, more and more developers do this
+- Syntax:
+  - **PHP sending AJAX response** :$
+```php
+$ajax_array = array();
+$ajax_array['foo'] = $bar.' or something';
+$json_thing = json_encode($ajax_array, JSON_FORCE_OBJECT);
+echo $json_thing;
+```
+  - **JavaScript recieving AJAX response** :$
+```js
+var ourJSONresponse = JSON.parse(event.target.responseText);
+document.getElementById("bar_id").innerHTML = ourJSONresponse["title"]+' and something';
+```
 
 ## HTML `<form>` IDs
 - Use an `id=` named after the SQL ID for whatever it is editing, if possible

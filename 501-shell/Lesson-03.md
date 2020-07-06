@@ -11,7 +11,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(Ctrl + Shift + T for new terminal tab; Ctrl + PageUp/PageDown to switch tabs)*
 
-| **S0** : `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
 *(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
 
@@ -43,7 +43,7 @@ website.php
 	? in.checks.php (if POST)
 ```
 
-| **1** :
+| **1** :$
 ```
 sudo cp core/03-website1.php web/website.php && \
 sudo cp core/03-style1.css web/style.css && \
@@ -123,7 +123,7 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple
 
 *Review the diagrams above along side the following few steps...*
 
-| **2** :
+| **2** :$
 ```
 sudo cp core/03-website2.php web/website.php && \
 sudo cp core/03-in.config.php web/in.config.php && \
@@ -154,7 +154,7 @@ echo "<pre>$query</pre>";
 
 *Let's do the same thing, but put it in an HTML `<table>`...*
 
-| **3** :
+| **3** :$
 ```
 sudo cp core/03-website3.php web/website.php && \
 sudo cp core/03-style3.css web/style.css && \
@@ -199,7 +199,7 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) { // test and array as on
 } // End query test //
 ```
 
-| **4** :
+| **4** :$
 ```
 sudo cp core/03-website4.php web/website.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -223,7 +223,7 @@ ls web
 
 *Another `while` loop, different things...*
 
-| **5** :
+| **5** :$
 ```
 sudo cp core/03-website5.php web/website.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -248,7 +248,7 @@ ls web
 	- MySQLi: `$last_id = $database->insert_id;`
 
 
-| **6** :
+| **6** :$
 ```
 sudo cp core/03-website6.php web/website.php && \
 sudo cp core/03-style6.css web/style.css && \
@@ -288,7 +288,7 @@ ls web
 - See if an update made a change
 	- Syntax: `if (mysqli_affected_rows($database) == 1)`
 
-| **7** :
+| **7** :$
 ```
 sudo cp core/03-website7.php web/website.php && \
 sudo cp core/03-style7.css web/style.css && \
@@ -322,7 +322,7 @@ ls web
 - See if the row was deleted, same as an update
 	- Syntax: `if (mysqli_affected_rows($database) == 1)`
 
-| **8** :
+| **8** :$
 ```
 sudo cp core/03-website8.php web/website.php && \
 sudo cp core/03-in.checks8.php web/in.checks.php && \

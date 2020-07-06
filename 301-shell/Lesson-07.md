@@ -30,35 +30,35 @@ command failure || run this command also...
 
 *Whatch the flow...*
 
-| **1** : `ls && echo yes`
+| **1** :$ `ls && echo yes`
 
-| **2** : `ls bozo && echo yes`
+| **2** :$ `ls bozo && echo yes`
 
-| **3** : `ls || echo no`
+| **3** :$ `ls || echo no`
 
-| **4** : `ls bozo || echo no`
+| **4** :$ `ls bozo || echo no`
 
 ### II. Combined `&&` (AND) `||` (OR) tests
 
-| **5** : `gedit 07-or-if`
+| **5** :$ `gedit 07-or-if`
 
-| **6** : `./07-or-if one`
+| **6** :$ `./07-or-if one`
 
-| **7** : `./07-or-if two`
+| **7** :$ `./07-or-if two`
 
-| **8** : `./07-or-if three`
+| **8** :$ `./07-or-if three`
 
-| **9** : `./07-or-if one two`
+| **9** :$ `./07-or-if one two`
 
-| **10** : `./07-or-if two one`
+| **10** :$ `./07-or-if two one`
 
 ### III. Read number and count
 
-| **11** : `gedit 07-while-count-read`
+| **11** :$ `gedit 07-while-count-read`
 
-| **12** : `./07-while-count-read` *Enter nothing, then letters, then negative numbers, then nothing*
+| **12** :$ `./07-while-count-read` *Enter nothing, then letters, then negative numbers, then nothing*
 
-| **13** : `./07-while-count-read` *Enter a high number, such as 9001*
+| **13** :$ `./07-while-count-read` *Enter a high number, such as 9001*
 
 ### IV. source `.`
 
@@ -66,19 +66,19 @@ command failure || run this command also...
 . file/to/include
 ```
 
-| **14** : `gedit 07-source 07-sourced 07-sourced-also`
+| **14** :$ `gedit 07-source 07-sourced 07-sourced-also`
 
-| **15** : `ls -l 07-source*`
+| **15** :$ `ls -l 07-source*`
 
 *Note the file "07-source" is executable, but "07-sourced" is not*
 
 *And "07-sourced" has no `#!/bin/bash` declaration*
 
-| **16** : `./07-source`
+| **16** :$ `./07-source`
 
 *Uncomment lines 24 & 27 and run it again*
 
-| **17** : `./07-source`
+| **17** :$ `./07-source`
 
 *It can be good practice to include the shebang-BASH (`#!/bin/bash`) in any "included" files so they are easier to see in text editors*
 
@@ -102,13 +102,13 @@ echo "$1 and $Variable"
 newFunctionName Lemmons
 ```
 
-| **18** : `gedit 07-function`
+| **18** :$ `gedit 07-function`
 
 *Note functions work with `#!/bin/sh` on the first line, but also work with `#!/bin/bash`*
 
-| **19** : `./07-function`
+| **19** :$ `./07-function`
 
-| **20** : `gedit 07-function-breakdown`
+| **20** :$ `gedit 07-function-breakdown`
 
 *Note a few things before we continue...*
 ___
@@ -137,19 +137,19 @@ ___
 
 *Let's get back to work...*
 
-| **21** : `./07-function-breakdown`
+| **21** :$ `./07-function-breakdown`
 
 #### Once set, a variable works inside and outside of a function, unless it is `local` inside a function
 
 *Let's get a little more involved with variables...*
 
-| **22** : `gedit 07-function-variables`
+| **22** :$ `gedit 07-function-variables`
 
 *Note the global variables and the local-function variables and what is set/used inside/outside the function*
 
-| **23** : `./07-function-variables ONe TWo`
+| **23** :$ `./07-function-variables ONe TWo`
 
-| **24** : `./07-function-variables pine apple`
+| **24** :$ `./07-function-variables pine apple`
 
 ___
 

@@ -69,7 +69,7 @@ Example of 'single' & "double" quotes in declaring variable values:
 
 *Edit this script to see the short version*
 
-| **1** : `gedit varquote`
+| **1** :$ `gedit varquote`
 
 *It should look like this:*
 
@@ -90,7 +90,7 @@ echo $VarDQ
 
 *Run it and watch carefully*
 
-| **2** : `./varquote`
+| **2** :$ `./varquote`
 
 
 ### III. Boolean Values
@@ -99,7 +99,7 @@ Example of boolean values and quotes:
 
 *Edit this script to see the short version*
 
-| **3** : `gedit varbool`
+| **3** :$ `gedit varbool`
 
 *It should look like this:*
 
@@ -155,7 +155,7 @@ fi
 
 *Run it and watch carefully*
 
-| **4** : `./varbool`
+| **4** :$ `./varbool`
 
 *Case and point: quotes make no difference in how a value is treated, even boolean.*
 
@@ -165,7 +165,7 @@ fi
 
 *Edit this script to see the short version*
 
-| **5** : `gedit varmath`
+| **5** :$ `gedit varmath`
 
 *It should look like this:*
 
@@ -239,7 +239,7 @@ echo "five \* six = $(expr $d5 \* $d6)"
 
 *Run it and watch carefully*
 
-| **6** : `./varmath`
+| **6** :$ `./varmath`
 
 *Case and point: quotes make no difference in how a value is treated, even in arithmetic.*
 

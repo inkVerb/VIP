@@ -25,10 +25,10 @@ Other SQL database software includes:
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su Username`
+> | **S1** :$ `su Username`
 ___
 
-| **X1** : `sudo mysql`
+| **X1** :$ `sudo mysql`
 
 *Below, `admin` and `adminpassword` can be anything, but for these lessons you should not need to change them*
 
@@ -43,7 +43,7 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** : `exit`
+> | **S2** :$ `exit`
 ___
 ___
 
@@ -60,7 +60,7 @@ ___
 
 *Login to MySQL as our `admin`...*
 
-| **1** : `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **1** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
 | **B-1** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -98,75 +98,75 @@ SQL queries often use ALL CAPS for SQL terms to better see the SQL language part
 
 *List databases...*
 
-| **5** :> `SHOW DATABASES;`
-
-| **B-5** ://phpMyAdmin **> Databases**
-
-*Create a database `new_db`...*
-
-| **6** :> `CREATE DATABASE new_db;`
-
-*Note the database was created...*
-
 | **7** :> `SHOW DATABASES;`
 
 | **B-7** ://phpMyAdmin **> Databases**
 
+*Create a database `new_db`...*
+
+| **8** :> `CREATE DATABASE new_db;`
+
+*Note the database was created...*
+
+| **8** :> `SHOW DATABASES;`
+
+| **B-8** ://phpMyAdmin **> Databases**
+
 *Delete that database `new_db`...*
 
-| **8** :> `DROP DATABASE new_db;`
+| **9** :> `DROP DATABASE new_db;`
 
 *Note the database was deleted...*
 
-| **9** :> `SHOW DATABASES;`
+| **10** :> `SHOW DATABASES;`
 
-| **B-9** ://phpMyAdmin **> Databases**
+| **B-10** ://phpMyAdmin **> Databases**
 
 ### II. Privileges: User and Database
 
 *Create a database and user on one, combined line...*
 
-| **10** :> `CREATE USER new_user@localhost; CREATE DATABASE new_db;`
+| **11** :> `CREATE USER new_user@localhost; CREATE DATABASE new_db;`
 
 *Note they were both created...*
 
-| **11** :> `SHOW DATABASES;`
+| **12** :> `SHOW DATABASES;`
 
-| **B-11** ://phpMyAdmin **> Databases**
+| **B-12** ://phpMyAdmin **> Databases**
 
-| **12** :> `SELECT user FROM mysql.user;`
-
-| **B-12** ://phpMyAdmin **> User accounts**
-
-*...Note `new_user` has no password; assign one (`newpassword`)...*
-
-| **13** :> `SET PASSWORD FOR new_user@localhost=PASSWORD("newpassword");`
-
-*Note `new_user` now has a password...*
+| **13** :> `SELECT user FROM mysql.user;`
 
 | **B-13** ://phpMyAdmin **> User accounts**
 
+*...Note `new_user` has no password; assign one (`newpassword`)...*
+
+| **14** :> `SET PASSWORD FOR new_user@localhost=PASSWORD("newpassword");`
+
+*Note `new_user` now has a password...*
+
+| **B-14** ://phpMyAdmin **> User accounts**
+
 *Always flush privileges after altering users!*
 
-| **14** :> `FLUSH PRIVILEGES;`
+| **15** :> `FLUSH PRIVILEGES;`
 
 *Exit MySQL, then login as the new user...*
 
-| **15** :> `QUIT`
+| **16** :> `QUIT`
 
-| **B-15** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
+| **B-16** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
 *Login to MySQL with `new_user`...*
 
-| **16** : `mysql -u new_user -pnewpassword` *(password in the terminal, not safe outside these lessons!)*
+| **17** :$ `mysql -u new_user -pnewpassword` *(password in the terminal, not safe outside these lessons!)*
 
-| **B-16** :// `localhost/phpMyAdmin/` Username: `new_user` Password: `newpassword`
+| **B-17** :// `localhost/phpMyAdmin/` Username: `new_user` Password: `newpassword`
 
 *Have a look at databases again...*
 
-| **17** :> `SHOW DATABASES;`
+| **18** :> `SHOW DATABASES;`
 
-| **B-17** ://phpMyAdmin **> Databases**
+| **B-18** ://phpMyAdmin **> Databases**
 
 *Note `new_db` isn't listed! You don't have any databases! (`information_schema` doesn't count)*
 
@@ -176,7 +176,7 @@ SQL queries often use ALL CAPS for SQL terms to better see the SQL language part
 >
 > Open a new terminal window: Ctrl + Alt + T (not F12)
 >
-> | **T1** : `mysql -u admin -padminpassword`
+> | **T1** :$ `mysql -u admin -padminpassword`
 >
 > | **T2** :> `GRANT ALL PRIVILEGES ON new_db.* TO new_user@localhost IDENTIFIED BY 'newpassword';`
 >
@@ -184,19 +184,19 @@ SQL queries often use ALL CAPS for SQL terms to better see the SQL language part
 >
 > | **T4** :> `QUIT`
 >
-> | **T5** : `exit`
+> | **T5** :$ `exit`
 
 *Now you can see the database `new_db` because you have "privileges" on it...*
 
-| **18** :> `SHOW DATABASES;`
+| **19** :> `SHOW DATABASES;`
 
-| **B-18** ://phpMyAdmin **> Databases**
+| **B-19** ://phpMyAdmin **> Databases**
 
 *Exit MySQL...*
 
-| **19** :> `QUIT`
+| **20** :> `QUIT`
 
-| **B-19** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
+| **B-20** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
 ### III. Privileges Automatically Create a User
 
@@ -206,23 +206,23 @@ SQL queries often use ALL CAPS for SQL terms to better see the SQL language part
 
 *Login to MySQL as our `admin`...*
 
-| **20** : `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **21** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
-| **B-20** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+| **B-21** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
 *Create a database and user on one, combined line...*
 
-| **21** :> `DROP USER new_user@localhost; DROP DATABASE new_db;`
+| **22** :> `DROP USER new_user@localhost; DROP DATABASE new_db;`
 
 *Note they were both deleted...*
 
-| **22** :> `SHOW DATABASES;`
+| **23** :> `SHOW DATABASES;`
 
-| **B-22** ://phpMyAdmin **> Databases**
+| **B-23** ://phpMyAdmin **> Databases**
 
-| **23** :> `SELECT user FROM mysql.user;`
+| **24** :> `SELECT user FROM mysql.user;`
 
-| **B-23** ://phpMyAdmin **> User accounts**
+| **B-24** ://phpMyAdmin **> User accounts**
 
 **Create a database, then auto-create a user**
 
@@ -230,59 +230,59 @@ This is the conventional way, using fewer commands...
 
 1. Create the new database
 
-| **24** :> `CREATE DATABASE new_db;`
+| **25** :> `CREATE DATABASE new_db;`
 
 2. Assign privileges to a non-existent user; then the user is automatically created
 
-| **25** :> `GRANT ALL PRIVILEGES ON new_db.* TO new_user@localhost IDENTIFIED BY 'newpassword';`
+| **26** :> `GRANT ALL PRIVILEGES ON new_db.* TO new_user@localhost IDENTIFIED BY 'newpassword';`
 
 *Always flush privileges after altering users!*
 
-| **26** :> `FLUSH PRIVILEGES;`
+| **27** :> `FLUSH PRIVILEGES;`
 
 *Note both the database were created...*
 
-| **27** :> `SHOW DATABASES;`
+| **28** :> `SHOW DATABASES;`
 
-| **B-27** ://phpMyAdmin **> Databases**
+| **B-28** ://phpMyAdmin **> Databases**
 
-| **28** :> `SELECT user FROM mysql.user;`
+| **29** :> `SELECT user FROM mysql.user;`
 
 *Note `new_user` exists and has a password...*
 
-| **B-28** ://phpMyAdmin **> User accounts**
+| **B-29** ://phpMyAdmin **> User accounts**
 
 *Exit MySQL...*
 
-| **29** :> `QUIT`
+| **30** :> `QUIT`
 
-| **B-29** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
+| **B-30** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
 ### IV. Tables
 
 *Login to MySQL as the user of the database, not as the `admin` user...*
 
-| **30** : `mysql -u new_user -pnewpassword` *(password in the terminal, not safe outside these lessons!)*
+| **31** :$ `mysql -u new_user -pnewpassword` *(password in the terminal, not safe outside these lessons!)*
 
-| **B-30** :// `localhost/phpMyAdmin/` Username: `new_user` Password: `newpassword`
+| **B-31** :// `localhost/phpMyAdmin/` Username: `new_user` Password: `newpassword`
 
 **"Use" the database**
 
-| **31** :> `USE new_db`
+| **32** :> `USE new_db`
 
-| **B-31** ://phpMyAdmin **> new_db**
+| **B-32** ://phpMyAdmin **> new_db**
 
 **...Now we can work with "tables" in that database...**
 
 *Look at our tables...*
 
-| **32** :> `SHOW TABLES;`
+| **33** :> `SHOW TABLES;`
 
-| **B-32** ://phpMyAdmin **> new_db**
+| **B-33** ://phpMyAdmin **> new_db**
 
 *Note no tables, create one...*
 
-| **33** :>
+| **34** :>
 ```sql
 CREATE TABLE `fruit` (
   `name` VARCHAR(90) NOT NULL,
@@ -292,99 +292,99 @@ CREATE TABLE `fruit` (
 ```
 *Look at our tables...*
 
-| **34** :> `SHOW TABLES;`
+| **35** :> `SHOW TABLES;`
 
-| **B-34** ://phpMyAdmin **> new_db**
+| **B-35** ://phpMyAdmin **> new_db**
 
 *See what's in our `fruit` table...*
 
-| **35** :> `SELECT * FROM fruit;`
+| **36** :> `SELECT * FROM fruit;`
 
-| **B-35** ://phpMyAdmin **> fruit**
+| **B-36** ://phpMyAdmin **> fruit**
 
 **Add to a table...**
 
-| **36** :> `INSERT INTO fruit (name) VALUES ('bananas');`
+| **37** :> `INSERT INTO fruit (name) VALUES ('bananas');`
 
 *See our entry...*
 
-| **37** :> `SELECT * FROM fruit;`
+| **38** :> `SELECT * FROM fruit;`
 
-| **B-37a** ://phpMyAdmin **> Browse**
+| **B-38a** ://phpMyAdmin **> Browse**
 
 OR
 
-| **B-37b** ://phpMyAdmin **> Table: fruit** *(top bredcrumb)*
+| **B-38b** ://phpMyAdmin **> Table: fruit** *(top bredcrumb)*
 
 *Note the `type` column is `NULL`*
 
 *Make another entry...*
 
-| **38** :> `INSERT INTO fruit (name, type) VALUES ('apples', 'McIntosh');`
+| **39** :> `INSERT INTO fruit (name, type) VALUES ('apples', 'McIntosh');`
 
 *See our entry...*
 
-| **39** :> `SELECT * FROM fruit;`
+| **40** :> `SELECT * FROM fruit;`
 
-| **B-39** ://phpMyAdmin **> Browse**
+| **B-40** ://phpMyAdmin **> Browse**
 
 *Note the `type` column is not `NULL`*
 
 **Change an entry...**
 
-| **38** :> `UPDATE fruit SET count='5' WHERE name='apples';`
+| **41** :> `UPDATE fruit SET count='5' WHERE name='apples';`
 
 *See our changes...*
 
-| **39** :> `SELECT * FROM fruit;`
+| **42** :> `SELECT * FROM fruit;`
 
-| **B-39** ://phpMyAdmin **> Browse**
+| **B-42** ://phpMyAdmin **> Browse**
 
 *Make more changes...*
 
-| **40** :> `UPDATE fruit SET type='nino', count='7' WHERE name='bananas';`
+| **43** :> `UPDATE fruit SET type='nino', count='7' WHERE name='bananas';`
 
 *See our changes...*
 
-| **41** :> `SELECT * FROM fruit;`
+| **44** :> `SELECT * FROM fruit;`
 
-| **B-41** ://phpMyAdmin **> Browse**
+| **B-44** ://phpMyAdmin **> Browse**
 
 *Delete an entry...*
 
-| **42** :> `DELETE FROM fruit WHERE name='apples';`
+| **45** :> `DELETE FROM fruit WHERE name='apples';`
 
 *See our changes...*
 
-| **41** :> `SELECT * FROM fruit;`
+| **46** :> `SELECT * FROM fruit;`
 
-| **B-41** ://phpMyAdmin **> Browse**
+| **B-46** ://phpMyAdmin **> Browse**
 
 *Delete the entire table...*
 
-| **42** :> `DROP TABLE fruit;`
+| **47** :> `DROP TABLE fruit;`
 
 *Try to look at the table now...*
 
-| **43** :> `SELECT * FROM fruit;`
+| **48** :> `SELECT * FROM fruit;`
 
-| **B-43** ://phpMyAdmin **> Browse**
+| **B-48** ://phpMyAdmin **> Browse**
 
 *Delete the database too...*
 
-| **42** :> `DROP DATABASE new_db;`
+| **49** :> `DROP DATABASE new_db;`
 
 *The database no longer exists...*
 
-| **43** :> `SHOW DATABASES;`
+| **50** :> `SHOW DATABASES;`
 
-| **B-43** ://phpMyAdmin **> Databases**
+| **B-50** ://phpMyAdmin **> Databases**
 
 *Exit MySQL...*
 
-| **44** :> `QUIT`
+| **51** :> `QUIT`
 
-| **B-44** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
+| **B-51** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
 #### SQL Table Rules:
 1. Tables are often created with code in a multi-line array
@@ -456,7 +456,7 @@ CREATE TABLE IF NOT EXISTS `new_table` (
 
 *Login to MySQL as our `admin`...*
 
-| **45** : `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **45** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
 | **B-45** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 

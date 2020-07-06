@@ -9,65 +9,65 @@ ___
 
 *Look at the files we will use*
 
-| **1** : `cd compress`
+| **1** :$ `cd compress`
 
 ### Hash Security
 
-| **2** : `md5sum vip.tar.xz` (1990s, out of date, never use)
+| **2** :$ `md5sum vip.tar.xz` (1990s, out of date, never use)
 
-| **3** : `sha1sum vip.tar.xz` (1990s, better, not good enough)
+| **3** :$ `sha1sum vip.tar.xz` (1990s, better, not good enough)
 
-| **4** : `sha256sum vip.tar.xz` (better yet)
+| **4** :$ `sha256sum vip.tar.xz` (better yet)
 
-| **5** : `sha512sum vip.tar.xz` (great, big)
+| **5** :$ `sha512sum vip.tar.xz` (great, big)
 
 *Generate a sha256sum hash*
 
-| **6** : `sha256sum vip.tar.xz`
+| **6** :$ `sha256sum vip.tar.xz`
 
 *It's always the same, that way you are confident the file is not even 1 bit different since downloaded*
 
-| **7** : `sha256sum vip.tar.xz`
+| **7** :$ `sha256sum vip.tar.xz`
 
 *Note every file's hash is different*
 
-| **8** : `sha256sum vip.tar.gz`
+| **8** :$ `sha256sum vip.tar.gz`
 
-| **9** : `sha256sum vip.tar.bz2`
+| **9** :$ `sha256sum vip.tar.bz2`
 
-| **10** : `sha256sum vip.tar`
+| **10** :$ `sha256sum vip.tar`
 
 *Another way: create a hash file so we can check it all at once*
 
-| **11** : `sha256sum vip.tar.xz > vip.tar.xz.sha256`
+| **11** :$ `sha256sum vip.tar.xz > vip.tar.xz.sha256`
 
-| **12** : `ls`
+| **12** :$ `ls`
 
 *Lookie what's inside*
 
-| **13** : `cat vip.tar.xz.sha256`
+| **13** :$ `cat vip.tar.xz.sha256`
 
-| **14** : `gedit vip.tar.xz.sha256`
+| **14** :$ `gedit vip.tar.xz.sha256`
 
 *Now check it with `-c` and the hash file, in the same directory as the file*
 
-| **15** : `sha256sum -c vip.tar.xz.sha256`
+| **15** :$ `sha256sum -c vip.tar.xz.sha256`
 
 *The sha256sum hash file KNOWS what it's looking for, play hide-and-seek*
 
-| **16** : `mv vip.tar.xz vip.tar.xz.HIDING`
+| **16** :$ `mv vip.tar.xz vip.tar.xz.HIDING`
 
-| **17** : `ls`
+| **17** :$ `ls`
 
-| **18** : `sha256sum -c vip.tar.xz.sha256`
+| **18** :$ `sha256sum -c vip.tar.xz.sha256`
 
 *FAIL*
 
 *Try an imposter*
 
-| **19** : `mv vip.tar.bz2 vip.tar.xz`
+| **19** :$ `mv vip.tar.bz2 vip.tar.xz`
 
-| **20** : `sha256sum -c vip.tar.xz.sha256`
+| **20** :$ `sha256sum -c vip.tar.xz.sha256`
 
 *FAIL*
 
@@ -75,7 +75,7 @@ ___
 
 *We're done, cleanup...*
 
-| **21** : `mv vip.tar.xz vip.tar.bz2 && mv vip.tar.xz.HIDING vip.tar.xz`
+| **21** :$ `mv vip.tar.xz vip.tar.bz2 && mv vip.tar.xz.HIDING vip.tar.xz`
 
 ___
 

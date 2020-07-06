@@ -90,7 +90,7 @@ function doAjax() { // doAjax can be anything
 
 ### AJAX without PHP
 
-| **1** :
+| **1** :$
 ```
 sudo cp core/06-ajax1.html web/ajax.html && \
 sudo cp core/06-ajaxresponder1.txt web/ajax_responder.txt && \
@@ -117,7 +117,7 @@ ls web
 
 ### AJAX with PHP
 
-| **2** :
+| **2** :$
 ```
 sudo cp core/06-ajax2.php web/ajax.php && \
 sudo cp core/06-ajaxresponder2.php web/ajax_responder.php && \
@@ -141,7 +141,7 @@ ls web
 
 ### AJAX Method: POST
 
-| **3** :
+| **3** :$
 ```
 sudo cp core/06-ajax3.php web/ajax.php && \
 sudo cp core/06-ajaxresponder3.php web/ajax_responder.php && \
@@ -171,7 +171,7 @@ ls web
 
 ### AJAX Render JavaScript from PHP
 
-| **4** :
+| **4** :$
 ```
 sudo cp core/06-ajax4.php web/ajax.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -244,7 +244,7 @@ Our AJAX JavaScript uses these two IDs (`id=`)
 
 *Review the diagrams above along side the following few steps...*
 
-| **5** :
+| **5** :$
 ```
 sudo cp core/06-ajax5.php web/ajax.php && \
 sudo cp core/06-ajaxresponder5.php web/ajax_responder.php && \
@@ -364,7 +364,7 @@ This time, the `<form>` is wrapped in the `<div>` AJAX will change
 
 *Review the diagrams above along side the following few steps...*
 
-| **6** :
+| **6** :$
 ```
 sudo cp core/06-ajax6.php web/ajax.php && \
 sudo cp core/06-ajaxresponder6.php web/ajax_responder.php && \

@@ -7,13 +7,13 @@ Ready the CLI
 
 ___
 
-| **1** : `gedit abcd comboshell sedoutput.text`
+| **1** :$ `gedit abcd comboshell sedoutput.text`
 
 *Note `tee` will overwrite any contents in the output file*
 
-| **2** : `cat abcd`
+| **2** :$ `cat abcd`
 
-| **3** : `./comboshell abcd j "z-"`
+| **3** :$ `./comboshell abcd j "z-"`
 
 *Update comboshell to version 2:*
 
@@ -29,7 +29,7 @@ echo "$myOutput" >> sedoutput.text
 # v02
 ```
 
-| **4** : `./comboshell abcd j "z-"`
+| **4** :$ `./comboshell abcd j "z-"`
 
 *gedit: Reload sedoutput.text*
 
@@ -47,11 +47,11 @@ echo "$myOutput" | tee sedoutput.text
 # v03
 ```
 
-| **5** : `./comboshell abcd j "z00 zoo "`
+| **5** :$ `./comboshell abcd j "z00 zoo "`
 
 *gedit: Reload sedoutput.text*
 
-| **6** : `echo "Took out the trash." > sedoutput.text`
+| **6** :$ `echo "Took out the trash." > sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
@@ -67,7 +67,7 @@ sed "s/$2/$3/g" $1 | tee sedoutput.text
 # v04
 ```
 
-| **7** : `./comboshell abcd j "z-"`
+| **7** :$ `./comboshell abcd j "z-"`
 
 *gedit: Reload sedoutput.text*
 
@@ -83,7 +83,7 @@ cat $1 | sed "s/$2/$3/g" | tee sedoutput.text
 # v05
 ```
 
-| **8** : `./comboshell abcd j "vip-"`
+| **8** :$ `./comboshell abcd j "vip-"`
 
 *gedit: Reload sedoutput.text*
 

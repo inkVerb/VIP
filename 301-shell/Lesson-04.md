@@ -14,129 +14,129 @@ ___
 
 *Note, we aren't in our usual place; we are here: `~/School/VIP/301/one`*
 
-| **1** : `ln -sfn ~/School/VIP/301/04-* .` *Make sure you include that period at the end!*
+| **1** :$ `ln -sfn ~/School/VIP/301/04-* .` *Make sure you include that period at the end!*
 
 ### I. Replacing within Variables
 
 *Note `${var%foo}bar` will delete "foo", then append "bar" (like find-replace), if "foo" appears in the variable*
 
-| **2** : `gedit 04-var-form-1`
+| **2** :$ `gedit 04-var-form-1`
 
-| **3** : `./04-var-form-1 GOOfood`
+| **3** :$ `./04-var-form-1 GOOfood`
 
-| **4** : `gedit 04-var-form-2`
+| **4** :$ `gedit 04-var-form-2`
 
-| **5** : `./04-var-form-2 GOOfood`
+| **5** :$ `./04-var-form-2 GOOfood`
 
-| **6** : `gedit 04-var-form-3`
+| **6** :$ `gedit 04-var-form-3`
 
-| **7** : `./04-var-form-3 GOOfood`
+| **7** :$ `./04-var-form-3 GOOfood`
 
 *`$Variable` is the same as `${Variable}`, but `${Variable}` can do more...*
 
-| **8** : `gedit 04-var-form-4`
+| **8** :$ `gedit 04-var-form-4`
 
-| **9** : `./04-var-form-4 GOOfood`
+| **9** :$ `./04-var-form-4 GOOfood`
 
-| **10** : `./04-var-form-4 foodGOO`
+| **10** :$ `./04-var-form-4 foodGOO`
 
 *Note `%` only removes from the end of a value*
 
-| **11** : `gedit 04-var-form-5`
+| **11** :$ `gedit 04-var-form-5`
 
-| **12** : `./04-var-form-5 GOOfood`
+| **12** :$ `./04-var-form-5 GOOfood`
 
 *.one %one
 
-| **13** : `gedit 04-echo-rename-1`
+| **13** :$ `gedit 04-echo-rename-1`
 
-| **14** : `ls *.one`
+| **14** :$ `ls *.one`
 
-| **15** : `./04-echo-rename-1`
+| **15** :$ `./04-echo-rename-1`
 
 *t.one %t.one
 
-| **16** : `gedit 04-echo-rename-2`
+| **16** :$ `gedit 04-echo-rename-2`
 
-| **17** : `ls *t.one`
+| **17** :$ `ls *t.one`
 
-| **18** : `./04-echo-rename-2`
+| **18** :$ `./04-echo-rename-2`
 
 ### II. Renaming Multiple Files at Once
 
-| **19** : `ls`
+| **19** :$ `ls`
 
 *t.one --> *T-ONE
 
-| **20** : `gedit 04-do-mv-1`
+| **20** :$ `gedit 04-do-mv-1`
 
-| **21** : `ls *t.one`
+| **21** :$ `ls *t.one`
 
-| **22** : `./04-do-mv-1`
+| **22** :$ `./04-do-mv-1`
 
-| **23** : `ls`
+| **23** :$ `ls`
 
 *T-ONE --> *t.one
 
-| **24** : `gedit 04-do-mv-2`
+| **24** :$ `gedit 04-do-mv-2`
 
-| **25** : `ls *T-ONE`
+| **25** :$ `ls *T-ONE`
 
-| **26** : `./04-do-mv-2`
+| **26** :$ `./04-do-mv-2`
 
-| **27** : `ls`
+| **27** :$ `ls`
 
 *t.one --> *t.THREE
 
-| **28** : `gedit 04-do-mv-3`
+| **28** :$ `gedit 04-do-mv-3`
 
-| **29** : `ls *t.one`
+| **29** :$ `ls *t.one`
 
-| **30** : `./04-do-mv-3`
+| **30** :$ `./04-do-mv-3`
 
-| **31** : `ls`
+| **31** :$ `ls`
 
 *Make a backup of today's work*
 
-| **32** : `mkdir -p 04-FOR`
+| **32** :$ `mkdir -p 04-FOR`
 
-| **33** : `cp *THREE* 04-FOR/`
+| **33** :$ `cp *THREE* 04-FOR/`
 
 *Delete*
 
-| **34** : `gedit 04-do-rm`
+| **34** :$ `gedit 04-do-rm`
 
-| **35** : `./04-do-rm`
+| **35** :$ `./04-do-rm`
 
 *Don't mind the directory error because we want to keep that directory anyway*
 
-| **36** : `ls`
+| **36** :$ `ls`
 
 ### III. Applied: `odt2txt`
 
 *Now, use `odt2txt` in a `for` `...` `do` loop*
 
-| **37** : `rm *.txt` *(Start with a clean slate, just to be sure)*
+| **37** :$ `rm *.txt` *(Start with a clean slate, just to be sure)*
 
-| **38** : `ls *.odt && ls *.txt`
+| **38** :$ `ls *.odt && ls *.txt`
 
 *Note there are only .odt files*
 
-| **39** : `gedit 04-do-odt2txt`
+| **39** :$ `gedit 04-do-odt2txt`
 
-| **40** : `./04-do-odt2txt`
+| **40** :$ `./04-do-odt2txt`
 
-| **41** : `ls *.odt && ls *.txt`
+| **41** :$ `ls *.odt && ls *.txt`
 
 *Note the new .txt files, have a look inside...*
 
-| **42** : `gedit *.txt`
+| **42** :$ `gedit *.txt`
 
 *Backup today's work*
 
-| **43** : `mv *.txt 04-FOR/`
+| **43** :$ `mv *.txt 04-FOR/`
 
-| **44** : `ls *.txt`
+| **44** :$ `ls *.txt`
 
 *...See all gone*
 

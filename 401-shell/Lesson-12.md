@@ -128,83 +128,83 @@ cp file destination
 
 *Pay close attention to what happens...*
 
-| **1** : `cd ..`
+| **1** :$ `cd ..`
 
-| **2** : `echo $OLDPWD`
+| **2** :$ `echo $OLDPWD`
 
-| **3** : `cd $OLDPWD`
+| **3** :$ `cd $OLDPWD`
 
-| **4** : `mkdir space\ names`
+| **4** :$ `mkdir space\ names`
 
-| **5** : `ls`
+| **5** :$ `ls`
 
-| **6** : `cd "space names"`
+| **6** :$ `cd "space names"`
 
-| **7** : `touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
+| **7** :$ `touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
 
-| **8** : `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
+| **8** :$ `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
 
-| **9** : `ls`
+| **9** :$ `ls`
 
 *What? Only the files from command 7!?*
 
-| **10** : `ls -a`
+| **10** :$ `ls -a`
 
 *Oh, there the hidden (`.startswithdot`) files are*
 
-| **11** : `touch song.mp3 image.png media.ogg jpeg.jpg`
+| **11** :$ `touch song.mp3 image.png media.ogg jpeg.jpg`
 
-| **12** : `ls`
+| **12** :$ `ls`
 
-| **13** : `touch exec comm execomm`
+| **13** :$ `touch exec comm execomm`
 
-| **14** : `ls`
+| **14** :$ `ls`
 
 *Note the colors*
 
-| **15** : `chmod ug+x exec comm execomm`
+| **15** :$ `chmod ug+x exec comm execomm`
 
 *...`chmod` works on more than one file at a time*
 
-| **16** : `ls -a`
+| **16** :$ `ls -a`
 
-| **17** : `ls -f`
+| **17** :$ `ls -f`
 
-| **18** : `ls -b`
+| **18** :$ `ls -b`
 
-| **19** : `touch alpha bravo charlie delta`
+| **19** :$ `touch alpha bravo charlie delta`
 
-| **20** : `ls`
+| **20** :$ `ls`
 
-| **21** : `touch alpha2 bravo2 charlie2 delta2`
+| **21** :$ `touch alpha2 bravo2 charlie2 delta2`
 
-| **22** : `ls`
+| **22** :$ `ls`
 
-| **23** : `touch 1 2 3 4`
+| **23** :$ `touch 1 2 3 4`
 
-| **24** : `ls`
+| **24** :$ `ls`
 
 *Reverse order...*
 
-| **25** : `ls -r`
+| **25** :$ `ls -r`
 
 *Sort by Time...*
 
-| **26** : `ls -t`
+| **26** :$ `ls -t`
 
 *Reverse Time order...*
 
-| **27** : `ls -rt`
+| **27** :$ `ls -rt`
 
-| **28** : `cd ..`
+| **28** :$ `cd ..`
 
-| **29** : `cp -r space\ names "space also"`
+| **29** :$ `cp -r space\ names "space also"`
 
-| **30** : `cp -i space\ also/* space\ names/`
+| **30** :$ `cp -i space\ also/* space\ names/`
 
 *You can overwrite each, or not, or Ctrl + C to close*
 
-| **31** : `view code-of-poetry.txt`
+| **31** :$ `view code-of-poetry.txt`
 
 *Try "i" for insert*
 
@@ -212,9 +212,9 @@ cp file destination
 
 *Exit with: `:q`*
 
-| **32** : `touch rtfile.md`
+| **32** :$ `touch rtfile.md`
 
-| **33** : `tail -f rtfile.md`
+| **33** :$ `tail -f rtfile.md`
 
 Open a new terminal window: Ctrl + Alt + T (not F12)
 
@@ -222,19 +222,19 @@ Open a new terminal window: Ctrl + Alt + T (not F12)
 >
 > Open a new terminal window: Ctrl + Alt + T (not F12)
 >
-> | **T1** : `cd ~/School/VIP/401`
+> | **T1** :$ `cd ~/School/VIP/401`
 >
-> | **T2** : `echo "I am fruit." >> rtfile.md`
+> | **T2** :$ `echo "I am fruit." >> rtfile.md`
 >
 > *Did you see that?*
 >
-> | **T3** : `echo "I am kruit." >> rtfile.md`
+> | **T3** :$ `echo "I am kruit." >> rtfile.md`
 >
-> | **T4** : `echo "I am vruit." >> rtfile.md`
+> | **T4** :$ `echo "I am vruit." >> rtfile.md`
 >
-> | **T5** : `echo "I am gruit." >> rtfile.md`
+> | **T5** :$ `echo "I am gruit." >> rtfile.md`
 >
-> | **T6** : `exit`
+> | **T6** :$ `exit`
 
 *In the original terminal: Ctrl + C*
 
@@ -242,43 +242,43 @@ It never stops...
 
 *Did you know? `--` terminates flags, like `-l`...*
 
-| **34** : `ls -l`
+| **34** :$ `ls -l`
 
-| **35** : `mkdir -l`
+| **35** :$ `mkdir -l`
 
-| **36** : `mkdir "-l"`
+| **36** :$ `mkdir "-l"`
 
-| **37** : `mkdir -- -l`
+| **37** :$ `mkdir -- -l`
 
-| **38** : `ls`
+| **38** :$ `ls`
 
-| **39** : `touch -l/newfile`
+| **39** :$ `touch -l/newfile`
 
-| **40** : `touch "-l/newfile"`
+| **40** :$ `touch "-l/newfile"`
 
-| **41** : `touch -- -l/newfile`
+| **41** :$ `touch -- -l/newfile`
 
-| **42** : `ls -l`
+| **42** :$ `ls -l`
 
-| **43** : `ls -l "-l"`
+| **43** :$ `ls -l "-l"`
 
-| **44** : `ls -l -- -l`
+| **44** :$ `ls -l -- -l`
 
-| **45** : `cd -l`
+| **45** :$ `cd -l`
 
-| **46** : `cd "-l"`
+| **46** :$ `cd "-l"`
 
-| **47** : `cd -- -l`
+| **47** :$ `cd -- -l`
 
-| **48** : `cd ..`
+| **48** :$ `cd ..`
 
-| **49** : `rm -r -l`
+| **49** :$ `rm -r -l`
 
-| **50** : `rm -r "-l"`
+| **50** :$ `rm -r "-l"`
 
-| **51** : `rm -r -- -l`
+| **51** :$ `rm -r -- -l`
 
-| **52** : `ls`
+| **52** :$ `ls`
 
 ___
 
@@ -317,7 +317,7 @@ Wait, what?
 
 Now, for the [BSD games](http://wiki.linuxquestions.org/wiki/BSD_games) (from the package `bsdgames`)...
 
-| **D1** : `sudo apt install bsdgames`
+| **D1** :$ `sudo apt install bsdgames`
 
 (Make sure the terminal is big enough!)
 

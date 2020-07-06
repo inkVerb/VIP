@@ -11,7 +11,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(Ctrl + Shift + T for new terminal tab; Ctrl + PageUp/PageDown to switch tabs)*
 
-| **S0** : `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
 *(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
 
@@ -25,7 +25,7 @@ ___
 
 ### Set up Our Editor Framework
 
-| **1** :
+| **1** :$
 ```
 sudo cp core/08-edit1.php web/edit.php && \
 sudo cp core/08-in.loginhead.php web/in.login_head.php && \
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `pieces` (
 
 ### Add our `<form>` to the Rditor
 
-| **3** :
+| **3** :$
 ```
 sudo cp core/08-edit2.php web/edit.php && \
 sudo cp core/08-in.editprocess2.php web/in.editprocess.php && \
@@ -189,7 +189,7 @@ This is how to do the same in MySQLi (SQL for PHP):
 $last_id = $database->insert_id;
 ```
 
-| **7** :
+| **7** :$
 ```
 sudo cp core/08-edit3.php web/edit.php && \
 sudo cp core/08-in.editprocess3.php web/in.editprocess.php && \
@@ -238,7 +238,7 @@ ls web
 - All versions of published pieces are added to the `publication_history` table
 - "Save draft" changes are not published, only saved to the `pieces` table
 
-| **9** :
+| **9** :$
 ```
 sudo cp core/08-edit4.php web/edit.php && \
 sudo cp core/08-in.editprocess4.php web/in.editprocess.php && \
@@ -339,7 +339,7 @@ WHERE p2.id IS NULL;
 
 ### View Our Pieces on Our Site
 
-| **12** :
+| **12** :$
 ```
 sudo cp core/08-blog.php web/blog.php && \
 sudo cp core/08-piece.php web/piece.php && \
@@ -411,7 +411,7 @@ Let's just watch it work...
 
 ##### Core Example
 
-| **15** :
+| **15** :$
 ```
 sudo cp core/08-tiny-cdn.html web/tiny.html && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -441,7 +441,7 @@ We can download TinyMCE JavaScript and host it locally...
 
 *(Note, we will use a `git clone` from the inkVerb fork, not from tinymce, so this Lesson will continue to work after the repo is updated; for a live server, we would `git clone` from the original)*
 
-| **16** :
+| **16** :$
 ```
 sudo cp core/08-tiny-man.html web/tiny.html && \
 git clone https://github.com/inkverb/tinymce-dist.git
@@ -475,7 +475,7 @@ https://github.com/tinymce/tinymce-dist
 
 ##### TinyMCE in Our 501 Blog
 
-| **17** :
+| **17** :$
 ```
 sudo cp core/08-in.logincheck3-tinymce.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -514,7 +514,7 @@ Let's just watch it work for now...
 
 ##### Core Example
 
-| **18** :
+| **18** :$
 ```
 sudo cp core/08-medium-cdn.html web/medium.html && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -545,7 +545,7 @@ We can download the Medium editor JavaScript and host it locally...
 
 *(Note, we will use a `git clone` from the inkVerb fork, not from yabwe, so this Lesson will continue to work after the repo is updated; for a live server, we would `git clone` from the original)*
 
-| **19** :
+| **19** :$
 ```
 sudo cp core/08-medium-man.html web/medium.html && \
 git clone https://github.com/inkverb/medium-editor.git && \
@@ -583,7 +583,7 @@ https://github.com/inkverb/medium-editor
 
 ##### Medium's Dditor in Our 501 Blog
 
-| **20** :
+| **20** :$
 ```
 sudo cp core/08-in.logincheck4-medium.php web/in.login_check.php && \
 sudo cp core/08-in.piecefunctions-medium.php web/in.piecefunctions.php && \
@@ -632,7 +632,7 @@ ___
 ___
 > Optional: You may restore the TinyMCE editor
 >
-> | **T1** :
+> | **T1** :$
 > ```
 > sudo cp core/08-in.logincheck3-tinymce.php web/in.login_check.php && \
 > sudo cp core/08-in.piecefunctions.php web/in.piecefunctions.php && \

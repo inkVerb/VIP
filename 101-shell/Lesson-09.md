@@ -7,55 +7,55 @@ Ready the CLI
 
 ___
 
-| **1** : `mkdir abc abc-dir`
+| **1** :$ `mkdir abc abc-dir`
 
-| **2** : `ls`
+| **2** :$ `ls`
 
 *Search for files with `find`*
 
-| **3** : `find "abc*"`
+| **3** :$ `find "abc*"`
 
 *Note the error message*
 
 *Specify to search somewhere; we'll search "here" (`.` = here)*
 
-| **4** : `find . "abc"`
+| **4** :$ `find . "abc"`
 
 *Note it found everything, it needs: `-name`*
 
-| **5** : `find . -name "abc"`
+| **5** :$ `find . -name "abc"`
 
-| **6** : `find . -name "abc*"`
+| **6** :$ `find . -name "abc*"`
 
 *...for "Directories": `-type d`*
 
-| **7** : `find . -type d -name "abc*"`
+| **7** :$ `find . -type d -name "abc*"`
 
 *...for "Files": `-type f`*
 
-| **8** : `find . -type f -name "abc*"`
+| **8** :$ `find . -type f -name "abc*"`
 
-| **9** : `touch abcsed.Setting`
+| **9** :$ `touch abcsed.Setting`
 
-| **10** : `touch ink.png ink.PNG ink.jpg ink.JPG`
+| **10** :$ `touch ink.png ink.PNG ink.jpg ink.JPG`
 
-| **11** : `mkdir png PNG jpg JPG`
+| **11** :$ `mkdir png PNG jpg JPG`
 
-| **12** : `find . -name "png"`
+| **12** :$ `find . -name "png"`
 
-| **13** : `find . -name "*.png"`
+| **13** :$ `find . -name "*.png"`
 
-| **14** : `find . -name "*png"`
+| **14** :$ `find . -name "*png"`
 
 *Note `find` is case-sensitive, ignore case with: `-iname`*
 
-| **15** : `find . -iname "*png"`
+| **15** :$ `find . -iname "*png"`
 
-| **16** : `find . -iname "*jpg"`
+| **16** :$ `find . -iname "*jpg"`
 
-| **17** : `find . -type f -iname "*png"`
+| **17** :$ `find . -type f -iname "*png"`
 
-| **18** : `find . -type d -iname "*png"`
+| **18** :$ `find . -type d -iname "*png"`
 
 ___
 

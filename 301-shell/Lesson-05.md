@@ -21,27 +21,27 @@ do
 done
 ```
 
-| **1** : `gedit 05-while-read`
+| **1** :$ `gedit 05-while-read`
 
 *Note `-z` means "Zero" or "Zilch" for a variable that is empty*
 
-| **2** : `./05-while-read`
+| **2** :$ `./05-while-read`
 
 *Only press Enter to see what happens again and again, comply or use Ctrl + C to close*
 
-| **3** : `gedit 05-while-count`
+| **3** :$ `gedit 05-while-count`
 
 *Note `!` means "not"*
 
-| **4** : `./05-while-count`
+| **4** :$ `./05-while-count`
 
 *Let's put it together into something useful*
 
-| **5** : `gedit 05-while-count-read`
+| **5** :$ `gedit 05-while-count-read`
 
 *Note `!` means "not"*
 
-| **6** : `./05-while-count-read`
+| **6** :$ `./05-while-count-read`
 
 ### II. `until`
 
@@ -56,31 +56,31 @@ done
 
 *Do some prep first...*
 
-| **7** : `mkdir 05-COUNT && cp 05-until-count 05-COUNT/ && cd 05-COUNT`
+| **7** :$ `mkdir 05-COUNT && cp 05-until-count 05-COUNT/ && cd 05-COUNT`
 
-| **8** : `gedit 05-until-count`
+| **8** :$ `gedit 05-until-count`
 
-| **9** : `ls *.shell`
+| **9** :$ `ls *.shell`
 
-| **10** : `./05-until-count 5 shell`
+| **10** :$ `./05-until-count 5 shell`
 
-| **11** : `ls *.shell`
+| **11** :$ `ls *.shell`
 
-| **12** : `ls *.sixtn`
+| **12** :$ `ls *.sixtn`
 
-| **13** : `./05-until-count 16 sixtn`
+| **13** :$ `./05-until-count 16 sixtn`
 
-| **14** : `ls *.sixtn`
+| **14** :$ `ls *.sixtn`
 
-| **15** : `cd ..`
+| **15** :$ `cd ..`
 
-| **16** : `gedit 05-until-read`
+| **16** :$ `gedit 05-until-read`
 
-| **17** : `./05-until-read werdup`
+| **17** :$ `./05-until-read werdup`
 
 *Input wrong "passwords" to see what it does, input "werdup" or use Ctrl + C to close*
 
-| **18** : `./05-until-read thepassword`
+| **18** :$ `./05-until-read thepassword`
 
 *Input wrong "passwords" to see what it does, input "thepassword" or use Ctrl + C to close*
 
@@ -99,57 +99,57 @@ case $Var in
 esac
 ```
 
-| **19** : `gedit 05-case-numlett`
+| **19** :$ `gedit 05-case-numlett`
 
-| **20** : `./05-case-numlett 1`
+| **20** :$ `./05-case-numlett 1`
 
-| **21** : `./05-case-numlett 2`
+| **21** :$ `./05-case-numlett 2`
 
-| **22** : `./05-case-numlett 3`
+| **22** :$ `./05-case-numlett 3`
 
-| **23** : `./05-case-numlett a`
+| **23** :$ `./05-case-numlett a`
 
-| **24** : `./05-case-numlett b`
+| **24** :$ `./05-case-numlett b`
 
 *Now try something that isn't among the `case` options...*
 
-| **25** : `./05-case-numlett d`
+| **25** :$ `./05-case-numlett d`
 
-| **26** : `gedit 05-case-options`
+| **26** :$ `gedit 05-case-options`
 
 *Note `while :` will loop without a test and only stop with a `break` or `exit`*
 
-| **27** : `./05-case-options`
+| **27** :$ `./05-case-options`
 
 *Input any of the following: a, b, f, g, v, z, and others; finally: quit*
 
-| **28** : `gedit 05-case-chat`
+| **28** :$ `gedit 05-case-chat`
 
 *Note `:` makes a `while` or `until` loop continue forever, `break` ends a loop*
 
-| **29** : `./05-case-chat one two three`
+| **29** :$ `./05-case-chat one two three`
 
 *Input any of the following: verb, ink, hi, yoyo, one, two, three, and others; finally: byebye, done, or quit*
 
-| **30** : `./05-case-chat apple pineapple pen`
+| **30** :$ `./05-case-chat apple pineapple pen`
 
 *Input any of the same, also the following: apple, pineapple, pen; finally: quit*
 
 ### IV. `case` with `y/n`
 
-| **31** : `gedit 05-case-yn`
+| **31** :$ `gedit 05-case-yn`
 
-| **32** : `./05-case-yn`
+| **32** :$ `./05-case-yn`
 
 *Run it multiple times with: y, n, Y, N, Yes, No, yes, no, YES, NO, yES, nO, yeS, yEs, and other answers*
 
 ### V. `case` `y/n` & `exit 1`
 
-| **33** : `gedit 05-case-yn-loop`
+| **33** :$ `gedit 05-case-yn-loop`
 
 *Note `exit 1` will produce* STDOUT *to `1>` but `exit 0` has no output just as `2>` is from an unwritten `exit 2` event*
 
-| **34** : `./05-case-yn-loop`
+| **34** :$ `./05-case-yn-loop`
 
 *Run it multiple times as before*
 

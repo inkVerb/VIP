@@ -5,7 +5,7 @@ ___
 
 ## Prepare
 
-| **1** : `mkdir -p ~/School/VIP/201`
+| **1** :$ `mkdir -p ~/School/VIP/201`
 
 ### Create `su` (Super User) password
 
@@ -25,14 +25,14 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su Username`
+> | **S1** :$ `su Username`
 ___
 
 *This sets a password for `su` if it has not been done already...*
 
 *You MUST be a "sudoer" for this..."*
 
-| **2** : `sudo passwd` *Input your password, then input the new password for the `su` user*
+| **2** :$ `sudo passwd` *Input your password, then input the new password for the `su` user*
 
 *To become `su` after this, just input in the terminal: `su`*
 
@@ -41,18 +41,18 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** : `exit`
+> | **S2** :$ `exit`
 ___
 
 *Login as `su` to see what it's like*
 
-| **3** : `su` *Input the password you just set*
+| **3** :$ `su` *Input the password you just set*
 
 *Look, you're root!*
 
 *Bye*
 
-| **4** : `exit`
+| **4** :$ `exit`
 
 ___
 

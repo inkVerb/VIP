@@ -9,33 +9,33 @@ ___
 
 *Look inside the "abc" directory in the Nautilus file explorer*
 
-| **1** : `echo "jjj" > abc/yoyo`
+| **1** :$ `echo "jjj" > abc/yoyo`
 
-| **2** : `echo "Apple Jay" > abc/jayapple`
+| **2** :$ `echo "Apple Jay" > abc/jayapple`
 
 *Take a peek at those just-made files*
 
-| **3** : `gedit abc/*`
+| **3** :$ `gedit abc/*`
 
 *Search contents inside files with `grep`*
 
-| **4** : `grep jj *`
+| **4** :$ `grep jj *`
 
 *Note the error about directories*
 
 *Like `cp -r`, `rm -r`, and `chown -R`, `grep` also needs `-R` with directories*
 
-| **5** : `grep -R jj *`
+| **5** :$ `grep -R jj *`
 
 *...no error*
 
-| **6** : `grep -R Apple *`
+| **6** :$ `grep -R Apple *`
 
-| **7** : `grep -R Apples like *`
+| **7** :$ `grep -R Apples like *`
 
 *Notice the errors, you must "quote" multiple words with spaces*
 
-| **8** : `grep -R "Apples like" *`
+| **8** :$ `grep -R "Apples like" *`
 
 ___
 

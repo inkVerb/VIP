@@ -11,115 +11,115 @@ ___
 
 ### I. `date`
 
-| **1** : `date`
+| **1** :$ `date`
 
 *Different format*
 
-| **2** : `date +%c`
+| **2** :$ `date +%c`
 
 *MM/DD/YY*
 
-| **3** : `date +%D`
+| **3** :$ `date +%D`
 
 *YYYY-MM-DD*
 
-| **4** : `date +%F`
+| **4** :$ `date +%F`
 
 *HH:mm:SS (Note MM is a two-digit month)*
 
-| **5** : `date +%T`
+| **5** :$ `date +%T`
 
 *YYYY*
 
-| **6** : `date +%Y`
+| **6** :$ `date +%Y`
 
 *Mon*
 
-| **7** : `date +%b`
+| **7** :$ `date +%b`
 
 *Month*
 
-| **8** : `date +%B`
+| **8** :$ `date +%B`
 
 *MM*
 
-| **9** : `date +%m`
+| **9** :$ `date +%m`
 
 *DD*
 
-| **10** : `date +%d`
+| **10** :$ `date +%d`
 
 *Dy*
 
-| **11** : `date +%a`
+| **11** :$ `date +%a`
 
 *Day*
 
-| **12** : `date +%A`
+| **12** :$ `date +%A`
 
 *HH*
 
-| **13** : `date +%H`
+| **13** :$ `date +%H`
 
 *mm (minute)*
 
-| **14** : `date +%M`
+| **14** :$ `date +%M`
 
 *SS (seconds)*
 
-| **15** : `date +%S`
+| **15** :$ `date +%S`
 
 *Nifty combos*
 
-| **16** : `date +%Y_%m_%d_%T`
+| **16** :$ `date +%Y_%m_%d_%T`
 
-| **17** : `date +%Y/%m/%d_%T`
+| **17** :$ `date +%Y/%m/%d_%T`
 
-| **18** : `date +%Y/%m/%d_%H:%M:%S`
+| **18** :$ `date +%Y/%m/%d_%H:%M:%S`
 
-| **19** : `date +%Y-%m-%d.%H-%M-%S`
+| **19** :$ `date +%Y-%m-%d.%H-%M-%S`
 
 ### II. `pwgen`
 
-| **20** : `pwgen`
+| **20** :$ `pwgen`
 
 *Only 1 character set `-1`*
 
-| **21** : `pwgen -1`
+| **21** :$ `pwgen -1`
 
 *36 characters long `36`*
 
-| **22** : `pwgen -1 36`
+| **22** :$ `pwgen -1 36`
 
 *Include at least 1 special character `-y`*
 
-| **23** : `pwgen -1 10 -y`
+| **23** :$ `pwgen -1 10 -y`
 
 *No numerals `-0`*
 
-| **24** : `pwgen -1 10 -0`
+| **24** :$ `pwgen -1 10 -0`
 
 *No caps `-A`*
 
-| **25** : `pwgen -1 10 -A`
+| **25** :$ `pwgen -1 10 -A`
 
 *Combine options into one*
 
-| **26** : `pwgen -A01y 10`
+| **26** :$ `pwgen -A01y 10`
 
 ### III. `pwgen` + `date` is useful
 
-| **27** : `echo $(date +%Y-%m-%d_%H-%M-%S)_$(pwgen -1 9)`
+| **27** :$ `echo $(date +%Y-%m-%d_%H-%M-%S)_$(pwgen -1 9)`
 
-| **28** : `gedit 08-date-name`
+| **28** :$ `gedit 08-date-name`
 
 *See your new mad skills with `date` and `pwgen` at work in this script...*
 
-| **29** : `./08-date-name yoyo`
+| **29** :$ `./08-date-name yoyo`
 
 *Let's see what we just made...*
 
-| **30** : `ls yoyo*`
+| **30** :$ `ls yoyo*`
 
 ___
 

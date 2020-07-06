@@ -21,41 +21,41 @@ fi
 
 Test for an existing *file* by name
 
-| **1** : `gedit 01-if-file`
+| **1** :$ `gedit 01-if-file`
 
-| **2** : `./01-if-file`
+| **2** :$ `./01-if-file`
 
 *Note it says "Yes." because "nothing" technically exists*
 
-| **3** : `./01-if-file myfile`
+| **3** :$ `./01-if-file myfile`
 
 *Note it says nothing because the file "myfile" does not exist*
 
-| **4** : `ls`
+| **4** :$ `ls`
 
-| **5** : `touch myfile`
+| **5** :$ `touch myfile`
 
-| **6** : `ls`
+| **6** :$ `ls`
 
-| **7** : `./01-if-file myfile`
+| **7** :$ `./01-if-file myfile`
 
 *Note the response because the file "myfile" exists*
 
 Test for an existing *directory* by name
 
-| **8** : `gedit 01-if-dir`
+| **8** :$ `gedit 01-if-dir`
 
-| **9** : `./01-if-dir mydir`
+| **9** :$ `./01-if-dir mydir`
 
-| **10** : `mkdir mydir`
+| **10** :$ `mkdir mydir`
 
-| **11** : `ls`
+| **11** :$ `ls`
 
-| **12** : `./01-if-dir mydir`
+| **12** :$ `./01-if-dir mydir`
 
-| **13** : `./01-if-file otherfile`
+| **13** :$ `./01-if-file otherfile`
 
-| **14** : `./01-if-dir otherdir`
+| **14** :$ `./01-if-dir otherdir`
 
 *Note `-d` will return false for a file of the same name*
 
@@ -63,9 +63,9 @@ Test for an existing *directory* by name
 
 *So, `-d` tests only an existing directory, `-f` tests only an existing file*
 
-| **15** : `./01-if-file mydir`
+| **15** :$ `./01-if-file mydir`
 
-| **16** : `./01-if-dir myfile`
+| **16** :$ `./01-if-dir myfile`
 
 ### II. `else`
 
@@ -78,29 +78,29 @@ else
 fi
 ```
 
-| **17** : `gedit 01-if-else-file`
+| **17** :$ `gedit 01-if-else-file`
 
-| **18** : `./01-if-else-file myfile`
+| **18** :$ `./01-if-else-file myfile`
 
-| **19** : `./01-if-else-file otherfile`
+| **19** :$ `./01-if-else-file otherfile`
 
-| **20** : `gedit 01-if-else-dir`
+| **20** :$ `gedit 01-if-else-dir`
 
-| **21** : `./01-if-else-dir mydir`
+| **21** :$ `./01-if-else-dir mydir`
 
-| **22** : `./01-if-else-dir otherdir`
+| **22** :$ `./01-if-else-dir otherdir`
 
-| **23** : `gedit 01-if-else-e`
+| **23** :$ `gedit 01-if-else-e`
 
 *Note `-e` checks whether something exists, whether as a file, directory, or link*
 
-| **24** : `./01-if-else-e myfile`
+| **24** :$ `./01-if-else-e myfile`
 
-| **25** : `./01-if-else-e otherfile`
+| **25** :$ `./01-if-else-e otherfile`
 
-| **26** : `./01-if-else-e mydir`
+| **26** :$ `./01-if-else-e mydir`
 
-| **27** : `./01-if-else-e otherdir`
+| **27** :$ `./01-if-else-e otherdir`
 
 ### III. `elif`
 
@@ -115,19 +115,19 @@ else
 fi
 ```
 
-| **28** : `gedit 01-if-elif`
+| **28** :$ `gedit 01-if-elif`
 
 *Note `-z` checks whether a variable is empty (not set)*
 
-| **29** : `./01-if-elif`
+| **29** :$ `./01-if-elif`
 
-| **30** : `./01-if-elif yoyo`
+| **30** :$ `./01-if-elif yoyo`
 
-| **31** : `./01-if-elif iamhere`
+| **31** :$ `./01-if-elif iamhere`
 
-| **32** : `./01-if-elif mydir`
+| **32** :$ `./01-if-elif mydir`
 
-| **33** : `./01-if-elif`
+| **33** :$ `./01-if-elif`
 
 ### IV. `;` & Whitespace
 
@@ -139,23 +139,23 @@ fi
 
 This is standard practice for `if` and many other logic statements
 
-| **34** : `gedit 01-style`
+| **34** :$ `gedit 01-style`
 
 *Note `;` means "new line of logic" and whitespace at the beginning of lines is ignored*
 
-| **35** : `./01-style`
+| **35** :$ `./01-style`
 
-| **36** : `./01-style yoyo`
+| **36** :$ `./01-style yoyo`
 
-| **37** : `./01-style urtheir`
+| **37** :$ `./01-style urtheir`
 
-| **38** : `gedit 01-minimum`
+| **38** :$ `gedit 01-minimum`
 
-| **39** : `./01-minimum`
+| **39** :$ `./01-minimum`
 
-| **40** : `./01-minimum yoyo`
+| **40** :$ `./01-minimum yoyo`
 
-| **41** : `./01-minimum greatagain`
+| **41** :$ `./01-minimum greatagain`
 
 ### V. `if` Commands
 
@@ -171,47 +171,47 @@ fi
 
 The command runs; if it succeeds, the test answers true
 
-| **42** : `markdown.md`
+| **42** :$ `markdown.md`
 
 *Note the contents of markdown.md*
 
-| **43** : `grep "markdown" markdown.md`
+| **43** :$ `grep "markdown" markdown.md`
 
 *Show the last exit (0 = `true`; 1 = `false`)*
 
-| **44** : `echo $?` (0 because something was found, `if` = `true`)
+| **44** :$ `echo $?` (0 because something was found, `if` = `true`)
 
-| **45** : `grep "Markdown" markdown.md`
+| **45** :$ `grep "Markdown" markdown.md`
 
-| **46** : `echo $?` (1 because nothing was found, `if` = `false`)
+| **46** :$ `echo $?` (1 because nothing was found, `if` = `false`)
 
 *Only "markdown", not "Markdown"*
 
-| **47** : `gedit 01-ifcomm1`
+| **47** :$ `gedit 01-ifcomm1`
 
-| **48** : `./01-ifcomm1`
+| **48** :$ `./01-ifcomm1`
 
 *Use `grep -q` for no output, only `true/false` (0 or 1)...*
 
-| **49** : `grep -q "markdown" markdown.md`
+| **49** :$ `grep -q "markdown" markdown.md`
 
-| **50** : `echo $?`
+| **50** :$ `echo $?`
 
-| **51** : `grep -q "markdown" markdown.md`
+| **51** :$ `grep -q "markdown" markdown.md`
 
-| **52** : `echo $?`
+| **52** :$ `echo $?`
 
 *Use `if !` to reverse the response of a command...*
 
-| **53** : `gedit 01-ifcomm2`
+| **53** :$ `gedit 01-ifcomm2`
 
-| **54** : `./01-ifcomm2`
+| **54** :$ `./01-ifcomm2`
 
 *This works with any command...*
 
-| **55** : `gedit 01-ifcomm3`
+| **55** :$ `gedit 01-ifcomm3`
 
-| **56** : `./01-ifcomm3`
+| **56** :$ `./01-ifcomm3`
 
 ___
 

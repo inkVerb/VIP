@@ -33,7 +33,7 @@ ___
 
 ### Blog Settings
 
-| **12** :
+| **12** :$
 ```
 sudo cp core/11-settings.php web/settings.php && \
 sudo cp core/11-menus.php web/menus.php && \
@@ -59,7 +59,7 @@ ls web
 
 ### Pages to Process Our New Meta
 
-| **12** :
+| **12** :$
 ```
 sudo cp core/11-blog.php web/blog.php && \
 sudo cp core/11-piece.php web/piece.php && \

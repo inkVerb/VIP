@@ -36,7 +36,7 @@ ___
 
 *Edit this script to see the short version*
 
-| **1** : `gedit looplines`
+| **1** :$ `gedit looplines`
 
 *It should look like this:*
 
@@ -56,7 +56,7 @@ done
 
 *Run it and watch carefully*
 
-| **2** : `./looplines`
+| **2** :$ `./looplines`
 
 ### II. Complex Loop Applied
 
@@ -64,7 +64,7 @@ Integrate `pwgen` with `sed` in a `for` loop...
 
 *Edit this script to see the short version*
 
-| **3** : `gedit looprandom`
+| **3** :$ `gedit looprandom`
 
 *It should look like this:*
 
@@ -89,13 +89,13 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Run it*
 
-| **4** : `./looprandom`
+| **4** :$ `./looprandom`
 
-| **5** : `ls`
+| **5** :$ `ls`
 
 *Note the file created: `randomlooped`*
 
-| **6** : `gedit randomlooped`
+| **6** :$ `gedit randomlooped`
 
 ### III. `$IFS` = tab
 
@@ -111,7 +111,7 @@ Set `$IFS` to a "tab"
 
 *Edit this script to see the short version*
 
-| **7** : `gedit looptab`
+| **7** :$ `gedit looptab`
 
 *It should look like this:*
 
@@ -133,11 +133,11 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Run it and watch carefully*
 
-| **8** : `./looptab`
+| **8** :$ `./looptab`
 
 *Take a look at countfile again*
 
-| **9** : `gedit countfile`
+| **9** :$ `gedit countfile`
 
 *Note that the IFS separated items at the tab after "add2start_" on each line*
 
@@ -145,7 +145,7 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Edit this script to see the short version*
 
-| **10** : `gedit loopcolon`
+| **10** :$ `gedit loopcolon`
 
 *It should look like this:*
 
@@ -165,13 +165,13 @@ done
 
 *Run it and watch carefully*
 
-| **11** : `./loopcolon`
+| **11** :$ `./loopcolon`
 
 ### V. `$IFS` = pipe `|`
 
 *Edit this script to see the short version*
 
-| **12** : `gedit looppipe`
+| **12** :$ `gedit looppipe`
 
 *It should look like this:*
 
@@ -191,19 +191,19 @@ done
 
 *Run it and watch carefully*
 
-| **13** : `./looppipe`
+| **13** :$ `./looppipe`
 
 ### VI. `$IFS` in the `$PATH`
 
 *Remember learning about our $PATH in Lesson 3?*
 
-| **14** : `echo $PATH`
+| **14** :$ `echo $PATH`
 
 **This nifty little script sorts the directories in the $PATH with a `do` loop, listing each one on a new line:**
 
 *Edit the script*
 
-| **15** : `gedit listpath`
+| **15** :$ `gedit listpath`
 
 *It should look like this:*
 
@@ -222,7 +222,7 @@ for pDir in $(echo "$PATH"); do
 done
 ```
 
-| **16** : `./listpath`
+| **16** :$ `./listpath`
 
 ___
 

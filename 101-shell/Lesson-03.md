@@ -7,7 +7,7 @@ Ready the CLI
 
 ___
 
-| **1** : `gedit how2arg`
+| **1** :$ `gedit how2arg`
 
 ### Arguments (`$1`, `$2`, etc)
 
@@ -27,15 +27,15 @@ echo "These were your line arguments:
 # For $10 and above, use: ${10}
 ```
 
-| **2** : `ls`
+| **2** :$ `ls`
 
-| **3** : `chmod ug+x how2arg`
+| **3** :$ `chmod ug+x how2arg`
 
-| **4** : `ls`
+| **4** :$ `ls`
 
-| **5** : `./how2arg a b abcd`
+| **5** :$ `./how2arg a b abcd`
 
-| **6** : `./how2arg one two three`
+| **6** :$ `./how2arg one two three`
 
 *In Terminal: Up*
 
@@ -43,7 +43,7 @@ echo "These were your line arguments:
 
 ### Multiple Lines with `\`
 
-| **7** :
+| **7** :$
 ```sh
 ./how2arg \
 one \
@@ -57,9 +57,9 @@ three
 
 ### Multiple Words `"`with quotes`"`
 
-| **8** : `./how2arg one 2nd "third word"`
+| **8** :$ `./how2arg one 2nd "third word"`
 
-| **9** :
+| **9** :$
 ```sh
 ./how2arg \
 first \
@@ -71,7 +71,7 @@ first \
 
 *Knowing this could save your life and explain life's meaning later on...*
 
-| **10** : `gedit allarg`
+| **10** :$ `gedit allarg`
 
 *Create allarg as this:*
 
@@ -83,17 +83,17 @@ first \
 echo $@
 ```
 
-| **11** : `ls`
+| **11** :$ `ls`
 
-| **12** : `chmod ug+x allarg`
+| **12** :$ `chmod ug+x allarg`
 
-| **13** : `ls`
+| **13** :$ `ls`
 
-| **14** : `./allarg`
+| **14** :$ `./allarg`
 
-| **15** : `./allarg 1 2 3 4 5 6 7 8 9`
+| **15** :$ `./allarg 1 2 3 4 5 6 7 8 9`
 
-| **16** : `./allarg I like to eat bananas in the morning, with eggs, over easy that is.`
+| **16** :$ `./allarg I like to eat bananas in the morning, with eggs, over easy that is.`
 
 *This `@` means "everything" in web DNS, arrays (Shell 301), and many other things*
 
@@ -124,29 +124,29 @@ Constant: Variable that do not change
 
 *These are "environment constants" that can always be called in the terminal or a script...*
 
-| **17** : `printenv`
+| **17** :$ `printenv`
 
-| **18** : `echo $USER`
+| **18** :$ `echo $USER`
 
-| **19** : `printenv USER`
+| **19** :$ `printenv USER`
 
 *...two ways to do the same thing*
 
-| **20** : `echo $DESKTOP_SESSION`
+| **20** :$ `echo $DESKTOP_SESSION`
 
-| **21** : `printenv DESKTOP_SESSION`
+| **21** :$ `printenv DESKTOP_SESSION`
 
-| **22** : `echo $PWD`
+| **22** :$ `echo $PWD`
 
-| **23** : `printenv PWD`
+| **23** :$ `printenv PWD`
 
 *Here is a little trick, just for the PWD (Present Working Directory)... ;-)*
 
-| **24** : `pwd`
+| **24** :$ `pwd`
 
-| **25** : `./how2arg $PWD $DESKTOP_SESSION VIP`
+| **25** :$ `./how2arg $PWD $DESKTOP_SESSION VIP`
 
-| **26** : `./how2arg $USER USER rocks`
+| **26** :$ `./how2arg $USER USER rocks`
 
 ___
 

@@ -5,46 +5,46 @@ Ready the CLI
 
 `cd ~/School/VIP/201`
 
-**FOR** | **3 - 11** : `cd verb.ink`
+**FOR** | **3 - 11** :$ `cd verb.ink`
 ___
 
 *Download the entire verb.ink page using wget*
 
-| **1** : `wget -r http://verb.ink`
+| **1** :$ `wget -r http://verb.ink`
 
-| **2** : `ls`
+| **2** :$ `ls`
 
 *Take a peek inside*
 
-| **3** : `cd verb.ink`
+| **3** :$ `cd verb.ink`
 
-| **4** : `ls`
+| **4** :$ `ls`
 
-| **5** : `gedit index.html`
+| **5** :$ `gedit index.html`
 
 *Download the verb.ink index page using curl*
 
-| **6** : `curl http://verb.ink`
+| **6** :$ `curl http://verb.ink`
 
-| **7** : `ls`
+| **7** :$ `ls`
 
 *Note it only output the code of the web page and saved nothing*
 - `curl` *"opens" files; to save, specify an output file*
 - `wget` *saves files; specify otherwise for a different file name*
 
-| **8** : `curl http://verb.ink > verb.ink.html`
+| **8** :$ `curl http://verb.ink > verb.ink.html`
 
-| **9** : `ls`
+| **9** :$ `ls`
 
 *Take a peek inside*
 
-| **10** : `gedit verb.ink.html`
+| **10** :$ `gedit verb.ink.html`
 
 *Open it with whatever browser you are using:*
 
-| **11** : `firefox verb.ink.html` or `chromium-browser verb.ink.html` or `google-chrome verb.ink.html` or `vivaldi verb.ink.html`
+| **11** :$ `firefox verb.ink.html` or `chromium-browser verb.ink.html` or `google-chrome verb.ink.html` or `vivaldi verb.ink.html`
 
-| **12** : `cd ..`
+| **12** :$ `cd ..`
 
 ## Download the inkVerb/VIP repo from GitHub
 
@@ -52,27 +52,27 @@ ___
 
 *Download VIP using wget*
 
-| **13** : `wget https://github.com/inkVerb/vip/archive/master.zip`
+| **13** :$ `wget https://github.com/inkVerb/vip/archive/master.zip`
 
-| **14** : `ls`
+| **14** :$ `ls`
 
 *Specify a different output filename with: `-O SAVEASNAME` (CAPITAL '-O'!)*
 
-| **15** : `wget -O vip.zip https://github.com/inkVerb/vip/archive/master.zip`
+| **15** :$ `wget -O vip.zip https://github.com/inkVerb/vip/archive/master.zip`
 
-| **16** : `ls`
+| **16** :$ `ls`
 
 *Clean up*
 
-| **17** : `rm master.zip`
+| **17** :$ `rm master.zip`
 
 ### `.zip` file via curl
 
-| **18** : `curl https://github.com/inkVerb/vip/archive/master.zip` *(wrong)*
+| **18** :$ `curl https://github.com/inkVerb/vip/archive/master.zip` *(wrong)*
 
 *Note the redirect message; use `-L` to follow redirects*
 
-| **19** : `curl -L https://github.com/inkVerb/vip/archive/master.zip` *(wrong)*
+| **19** :$ `curl -L https://github.com/inkVerb/vip/archive/master.zip` *(wrong)*
 
 *Note it dumped the raw output to the terminal rather than saving it*
 
@@ -80,77 +80,77 @@ ___
 
 *Solution: Specify an output file*
 
-| **20** : `curl -L https://github.com/inkVerb/vip/archive/master.zip > vip-curl.zip`
+| **20** :$ `curl -L https://github.com/inkVerb/vip/archive/master.zip > vip-curl.zip`
 
-| **21** : `ls`
+| **21** :$ `ls`
 
 *Now that you get the point, we don't need it anymore*
 
-| **22** : `rm vip-curl.zip`
+| **22** :$ `rm vip-curl.zip`
 
 ### `.tar` file (tarball) via curl
 
 *Substitute `github.com` for `api.github.com/repos/` & append with `/tarball` & include output file*
 
-| **23** : `curl -L https://api.github.com/repos/inkVerb/vip/tarball > vip.tar`
+| **23** :$ `curl -L https://api.github.com/repos/inkVerb/vip/tarball > vip.tar`
 
-| **24** : `ls`
+| **24** :$ `ls`
 
 *Now, untar it*
 
-| **25** : `tar xzf vip.tar`
+| **25** :$ `tar xzf vip.tar`
 
-| **26** : `ls`
+| **26** :$ `ls`
 
 *Note the strange new directory `inkVerb-VIP-SOME_CRAZY_NUMBER`*
 
 *...that's it, delete it with:*
 
-| **27** : `rm -r inkVerb-VIP-SOME_CRAZY_NUMBER`
+| **27** :$ `rm -r inkVerb-VIP-SOME_CRAZY_NUMBER`
 
 *We don't need to keep that tarball either...*
 
-| **28** : `rm vip.tar`
+| **28** :$ `rm vip.tar`
 
 ### tarball via curl & untar (single command)
 
 *Substitute `github.com` for `api.github.com/repos/` & append with `/tarball` & untar it right away*
 
-| **29** : `curl -L https://api.github.com/repos/inkVerb/vip/tarball | tar xz`
+| **29** :$ `curl -L https://api.github.com/repos/inkVerb/vip/tarball | tar xz`
 
-| **30** : `ls`
+| **30** :$ `ls`
 
 *Note the same strange directory `inkVerb-VIP-SOME_CRAZY_NUMBER`*
 
 *...that's it, delete it with:*
 
-> | **31** : `rm -r inkVerb-VIP-SOME_CRAZY_NUMBER`
+> | **31** :$ `rm -r inkVerb-VIP-SOME_CRAZY_NUMBER`
 
 ### repo via git clone
 
-| **32** : `git clone https://github.com/inkVerb/vip`
+| **32** :$ `git clone https://github.com/inkVerb/vip`
 
-| **33** : `ls`
+| **33** :$ `ls`
 
 *Take a peek inside*
 
-| **34** : `cd vip`
+| **34** :$ `cd vip`
 
-| **35** : `ls`
+| **35** :$ `ls`
 
 *Note, you can't see the hidden directory ".git" with a normal `ls` command, use `-a`...*
 
-| **36** : `ls -a`
+| **36** :$ `ls -a`
 
 *Note the hidden ".git" directory*
 
-| **37** : `ls -l .git`
+| **37** :$ `ls -l .git`
 
 *Note the ".git" directory contains a few read-only files, making it harder to delete*
 
-| **38** : `cd ..`
+| **38** :$ `cd ..`
 
-| **39** : `rm -r vip`
+| **39** :$ `rm -r vip`
 
 *Note the error message because of the read-only files (Ctrl + C to get out of there!)*
 
@@ -161,12 +161,12 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su Username`
+> | **S1** :$ `su Username`
 ___
 
-| **40** : `sudo rm -r vip`
+| **40** :$ `sudo rm -r vip`
 
-| **41** : `ls`
+| **41** :$ `ls`
 
 *...all gone, no problem*
 
@@ -175,7 +175,7 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** : `exit`
+> | **S2** :$ `exit`
 ___
 
 

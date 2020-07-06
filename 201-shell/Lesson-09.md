@@ -32,7 +32,7 @@ iii. File sizes (very generic approximation)
 
 *Go to your home directory*
 
-| **1** : `cd ~/`
+| **1** :$ `cd ~/`
 
 ### `du` & `df`
 
@@ -41,98 +41,98 @@ iii. File sizes (very generic approximation)
 - **"h": "Human"**
 - **"s": "Summarize"**
 
-| **2** : `du -sh *`
+| **2** :$ `du -sh *`
 
 *Note the list of each directory's size*
 
-| **3** : `df -k`
+| **3** :$ `df -k`
 
 *Note it listed everything in kilobytes*
 
-| **4** : `df -h`
+| **4** :$ `df -h`
 
 *Note it listed everything in megabytes and gigabytes, etc*
 
-| **5** : `du -sh School`
+| **5** :$ `du -sh School`
 
 *Note it can tell you the size of just one directory*
 
 *Now go back to where our 201 directory*
 
-| **6** : `cd ~/School/VIP/201`
+| **6** :$ `cd ~/School/VIP/201`
 
 ### `top` & `uptime`
 
-| **7** : `top`
+| **7** :$ `top`
 
 *Notice the realtime process list*
 
 Q (or Ctrl + C) *This will CLOSE the top program*
 
-| **8** : `top -n 1`
+| **8** :$ `top -n 1`
 
 *Notice the `top` list is not realtime:*
 
 - *`-n 1` shows only one "iteration"*
 - *`-n 3` shows only three "iterations"*
 
-| **9** : `top -n 1 -b`
+| **9** :$ `top -n 1 -b`
 
 *Notice `-b` shows everything all the way to the Bottom (not limited by the size of the terminal window, only limited by the `-n 1` iteration option)*
 
 *It might be useful to put it in a file...*
 
-| **10** : `top -n 1 -b > top.file`
+| **10** :$ `top -n 1 -b > top.file`
 
-| **11** : `gedit top.file`
+| **11** :$ `gedit top.file`
 
 *FYI, this is a little program we installed in Lesson 3, a little more colorful than `top`...*
 
-| **12** : `htop`
+| **12** :$ `htop`
 
 F10 (or Q to Quit)
 
 *For a quick peek:*
 
-| **13** : `uptime`
+| **13** :$ `uptime`
 
 ### `ps aux`
 
-| **14** : `ps aux`
+| **14** :$ `ps aux`
 
 *Note the list of every running process, but it is not realtime, so you can scroll through it*
 
 Make sure you are NOT using Firefox before finishing this lesson!
 
-| **15** : `firefox &`
+| **15** :$ `firefox &`
 
 *Note we used `&` to keep it from blocking the terminal*
 
-| **16** : `ps aux`
+| **16** :$ `ps aux`
 
 *Scroll to look for that browser's process ID (PID)*
 
 *This uses pipe and grep to find it*
 
-| **17** : `ps aux | grep firefox`
+| **17** :$ `ps aux | grep firefox`
 
 *This does the same thing*
 
 ### `pgrep` & `kill`
 
-| **18** : `pgrep firefox`
+| **18** :$ `pgrep firefox`
 
 *Note the PID, it's the number*
 
-| **19** : `kill PID` e.g. `kill 71771`
+| **19** :$ `kill PID` e.g. `kill 71771`
 
 *Run it again*
 
-| **20** : `firefox &`
+| **20** :$ `firefox &`
 
 *Now kill it by process name using `killall`*
 
-| **21** : `killall firefox` or `killall chromium-browser` or `killall google-chrome` or `killall vivaldi`
+| **21** :$ `killall firefox` or `killall chromium-browser` or `killall google-chrome` or `killall vivaldi`
 
 *Some processes can only be killed by PID*
 

@@ -19,53 +19,53 @@ ___
 
 **Examples:**
 
-| **1** : `gedit code-of-poetry.txt`
+| **1** :$ `gedit code-of-poetry.txt`
 
-| **2** : `grep "^[[:upper:]]" code-of-poetry.txt`
+| **2** :$ `grep "^[[:upper:]]" code-of-poetry.txt`
 
-| **3** : `grep "^[[:lower:]]" code-of-poetry.txt`
+| **3** :$ `grep "^[[:lower:]]" code-of-poetry.txt`
 
-| **4** : `grep "^[[:punct:]]" code-of-poetry.txt`
+| **4** :$ `grep "^[[:punct:]]" code-of-poetry.txt`
 
-| **5** : `grep "^[[:digit:]]" code-of-poetry.txt`
+| **5** :$ `grep "^[[:digit:]]" code-of-poetry.txt`
 
 *Note no results because no digits appear first on any line*
 
 *Search for digits anywhere in each line without the carrot `^`...*
 
-| **6** : `grep "[[:digit:]]" code-of-poetry.txt`
+| **6** :$ `grep "[[:digit:]]" code-of-poetry.txt`
 
 *Search the end of each line with the dollar sign `$`...*
 
-| **7** : `grep "[[:digit:]]$" code-of-poetry.txt`
+| **7** :$ `grep "[[:digit:]]$" code-of-poetry.txt`
 
-| **8** : `grep "[[:lower:]]$" code-of-poetry.txt`
+| **8** :$ `grep "[[:lower:]]$" code-of-poetry.txt`
 
-| **9** : `grep "[[:punct:]]$" code-of-poetry.txt`
+| **9** :$ `grep "[[:punct:]]$" code-of-poetry.txt`
 
 *Try some simple replacements...*
 
-| **10** : `sed "s/[[:digit:]]/#/g" code-of-poetry.txt`
+| **10** :$ `sed "s/[[:digit:]]/#/g" code-of-poetry.txt`
 
 *Combine that with `grep` to show only what it affects...*
 
-| **11** : `grep "[[:digit:]]" code-of-poetry.txt | sed "s/[[:digit:]]/#/g"`
+| **11** :$ `grep "[[:digit:]]" code-of-poetry.txt | sed "s/[[:digit:]]/#/g"`
 
 *More...*
 
-| **12** : `sed "s/[[:upper:]]/X/g" code-of-poetry.txt`
+| **12** :$ `sed "s/[[:upper:]]/X/g" code-of-poetry.txt`
 
-| **13** : `sed "s/[[:punct:]]/@/g" code-of-poetry.txt`
+| **13** :$ `sed "s/[[:punct:]]/@/g" code-of-poetry.txt`
 
-| **14** : `sed "s/[[:blank:]]/_/g" code-of-poetry.txt`
+| **14** :$ `sed "s/[[:blank:]]/_/g" code-of-poetry.txt`
 
 *Custom ranges...*
 
-| **15** : `sed "s/[D-H]/X/" code-of-poetry.txt`
+| **15** :$ `sed "s/[D-H]/X/" code-of-poetry.txt`
 
-| **16** : `sed "s/[2-6]/%/" code-of-poetry.txt`
+| **16** :$ `sed "s/[2-6]/%/" code-of-poetry.txt`
 
-| **17** : `sed "s/[a-u]/x/g" code-of-poetry.txt`
+| **17** :$ `sed "s/[a-u]/x/g" code-of-poetry.txt`
 
 ### II. Heredoc: `cat <<EOF`
 
@@ -116,7 +116,7 @@ END
 
 #### Heredocs Applied
 
-| **20** : `ls`
+| **20** :$ `ls`
 
 *Copy-paste as one command, then again line-by-line:*
 
@@ -132,11 +132,11 @@ I'm at my end.
 EOF
 ```
 
-| **22** : `ls`
+| **22** :$ `ls`
 
 *Note the new file created: "neweof"*
 
-| **23** : `gedit neweof`
+| **23** :$ `gedit neweof`
 
 *You can pipe a heredoc this way:*
 
@@ -152,11 +152,11 @@ I'm at my pipe's foo end.
 EOF
 ```
 
-| **25** : `ls`
+| **25** :$ `ls`
 
 *Note the new file created: "neweofpipe"*
 
-| **26** : `gedit neweofpipe`
+| **26** :$ `gedit neweofpipe`
 
 *You can start with `tee`:*
 
@@ -172,17 +172,17 @@ I'm at my tee's end.
 EOF
 ```
 
-| **28** : `ls`
+| **28** :$ `ls`
 
 *Note the new file created: "neweoftee"*
 
-| **29** : `gedit neweoftee`
+| **29** :$ `gedit neweoftee`
 
 **Heredoc as variable in a script:**
 
 *Edit this script to see the short version*
 
-| **30** : `gedit eofcomsub`
+| **30** :$ `gedit eofcomsub`
 
 *It should look like this:*
 
@@ -209,7 +209,7 @@ echo "$EOFvar"
 
 *Run it*
 
-| **31** : `./eofcomsub`
+| **31** :$ `./eofcomsub`
 
 *Note echoing without "quotes" makes everything appear on one line.*
 
@@ -217,7 +217,7 @@ echo "$EOFvar"
 
 *Edit this script to see the short version*
 
-| **32** : `gedit eofvarheredoc`
+| **32** :$ `gedit eofvarheredoc`
 
 *It should look like this:*
 
@@ -238,13 +238,13 @@ EOF
 
 *Run it*
 
-| **33** : `./eofvarheredoc`
+| **33** :$ `./eofvarheredoc`
 
 **Nowdoc cancels variables in a script:**
 
 *Edit this script to see the short version*
 
-| **34** : `gedit eofvarnowdoc`
+| **34** :$ `gedit eofvarnowdoc`
 
 *It should look like this:*
 
@@ -265,13 +265,13 @@ EOF
 
 *Run it*
 
-| **35** : `./eofvarnowdoc`
+| **35** :$ `./eofvarnowdoc`
 
 **Write to file via heredoc and nowdoc in a script:**
 
 *Edit this script to see the short version*
 
-| **36** : `gedit eofherenow`
+| **36** :$ `gedit eofherenow`
 
 *It should look like this:*
 
@@ -298,15 +298,15 @@ EOF
 
 *Run it*
 
-| **37** : `./eofherenow`
+| **37** :$ `./eofherenow`
 
-| **38** : `gedit eofout`
+| **38** :$ `gedit eofout`
 
 **Cancel `$Variables` via `\$` in a heredoc**
 
 *Edit this script to see the short version*
 
-| **39** : `gedit eofvariables`
+| **39** :$ `gedit eofvariables`
 
 *It should look like this:*
 
@@ -332,7 +332,7 @@ echo "$EOFvar"
 
 *Run it*
 
-| **40** : `./eofvariables`
+| **40** :$ `./eofvariables`
 
 *Refer to this Wikipedia article about heredocs in Unix: [Here document](https://en.wikipedia.org/wiki/Here_document#Unix_shells)*
 

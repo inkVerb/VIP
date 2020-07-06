@@ -11,7 +11,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(Ctrl + Shift + T for new terminal tab; Ctrl + PageUp/PageDown to switch tabs)*
 
-| **S0** : `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
 *(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
 
@@ -45,7 +45,7 @@ Database host: localhost
 
 *Use our install page...*
 
-| **5** :
+| **5** :$
 ```
 sudo cp core/04-install.php web/install.php && \
 sudo cp core/04-in.config1.php web/in.config.php && \
@@ -65,7 +65,7 @@ ls web
 - *Validation and sanitizing set a `$regex_` variable first, which is more neat and tidy*
 - *This style isolates the RegEx to help any RegEx hunting in the future*
 
-| **install.php** :
+| **install.php** :$
 
 **Hash password one-way:**
 
@@ -178,7 +178,7 @@ $epoch_simple_later = time() + (30 * 24 * 60 * 60);
 
 *Review the diagrams above along side the following few steps...*
 
-| **8** :
+| **8** :$
 ```
 sudo cp core/04-time.php web/time.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -229,7 +229,7 @@ It only confirms with `true` or `false` because the hash is different each time
 
 *Review the diagrams above along side the following few steps...*
 
-| **9** :
+| **9** :$
 ```
 sudo cp core/04-login1.php web/webapp.php && \
 sudo cp core/04-in.config2.php web/in.config.php && \
@@ -294,7 +294,7 @@ The `echo` message will not display, comment the `header()` line to see the mess
 
 *Review the diagrams above along side the following few steps...*
 
-| **10** :
+| **10** :$
 ```
 sudo cp core/04-logout1.php web/logout.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -325,7 +325,7 @@ $just_logged_out = true;
 
 *Review the diagram above along side the following two steps...*
 
-| **11** :
+| **11** :$
 ```
 sudo cp core/04-logout2.php web/logout.php && \
 sudo cp core/04-login2.php web/webapp.php && \
@@ -381,21 +381,21 @@ Cookies are stored in files on the "Client" (user's local machine)
 
 *Have a look at Firefox cache data, where cookies are kept...*
 
-| **12** : `cd ~/.mozilla/firefox/*.default` (You can use a `*` wildcard if there is only one file possible)
+| **12** :$ `cd ~/.mozilla/firefox/*.default` (You can use a `*` wildcard if there is only one file possible)
 
-| **13** : `ls`
+| **13** :$ `ls`
 
 *Chromium, if you have it installed...*
 
-| **14** : `cd ~/.config/chromium/Default`
+| **14** :$ `cd ~/.config/chromium/Default`
 
-| **15** : `ls`
+| **15** :$ `ls`
 
 ***This is how cookies work...*** **the wrong way:** user_id
 
 For teaching, we will put the **user_id** as the cookie's value, but this is not secure!
 
-| **16** :
+| **16** :$
 ```
 sudo cp core/04-login3.php web/webapp.php && \
 sudo cp core/04-logout3.php web/logout.php && \
@@ -477,7 +477,7 @@ setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 
 ### VI. Account Settings
 
-| **17** :
+| **17** :$
 ```
 sudo cp core/04-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -514,7 +514,7 @@ Password: My#1Password
 
 *Make sure you remember your favorite number and email before continuing...*
 
-| **18** :
+| **18** :$
 ```
 sudo cp core/04-forgot.php web/forgot.php && \
 sudo chown -R www-data:www-data /var/www/html && \

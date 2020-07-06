@@ -11,7 +11,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(Ctrl + Shift + T for new terminal tab; Ctrl + PageUp/PageDown to switch tabs)*
 
-| **S0** : `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
 *(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
 
@@ -25,7 +25,7 @@ ___
 
 ### Random String
 
-| **1** :
+| **1** :$
 ```
 sudo cp core/07-recover1.php web/recover.php && \
 sudo cp core/07-in.string_functions.php web/in.string_functions.php && \
@@ -44,7 +44,7 @@ ls web
 
 ### Login Recovery (via Security Key)
 
-| **2** :
+| **2** :$
 ```
 sudo cp core/07-recover2.php web/recover.php && \
 sudo cp core/07-ajaxstring.php web/ajax_string.php && \
@@ -180,7 +180,7 @@ Favorite Number: (same as before)
 
 *Create our routine .php file...*
 
-| **9** :
+| **9** :$
 ```
 sudo cp core/07-cleanup1.php web/cleanup.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -266,7 +266,7 @@ We use this syntax here: `php /same/path/as/cron/task/to/script.php`
 
 *A .php script run by `cron` needs an absolute path...*
 
-| **13** :
+| **13** :$
 ```
 sudo cp core/07-cleanup2.php web/cleanup.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -276,7 +276,7 @@ ls web
 
 *Run it from the terminal...*
 
-| **14** : `php /var/www/html/web/cleanup.php`
+| **14** :$ `php /var/www/html/web/cleanup.php`
 
 *See that the expired keys were deleted...*
 
@@ -298,9 +298,9 @@ ls web
 
 *Create the `cron` task file...*
 
-| **16** : `cd /etc/cron.d`
+| **16** :$ `cd /etc/cron.d`
 
-| **17** : `ls`
+| **17** :$ `ls`
 
 **Handle `cron` task files correctly...**
 
@@ -313,7 +313,7 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 *We will edit with `vim` from [Shell 201 Lesson 11](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md#vim-is-for-awesome-people)*
 
-| **18** : `sudo vim /etc/cron.d/webappcleanup`
+| **18** :$ `sudo vim /etc/cron.d/webappcleanup`
 
 | **vim-16a** :] `i`
 
@@ -329,7 +329,7 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 *Set file permissions for the `cron` task...*
 
-| **19** : `sudo chmod 644 /etc/cron.d/webappcleanup`
+| **19** :$ `sudo chmod 644 /etc/cron.d/webappcleanup`
 
 *Note:*
 
@@ -382,7 +382,7 @@ ALTER TABLE `strings`
 CHANGE  `usable`  `usable` ENUM('live', 'cookie_login', 'dead') NOT NULL;
 ```
 
-| **22** :
+| **22** :$
 ```
 sudo cp core/07-in.loginhead2.php web/in.login_head.php && \
 sudo cp core/07-logout.php web/logout.php && \
@@ -422,7 +422,7 @@ Password: My#1Password
 
 *We don't want those cookie keys on our page in the future, so update to new files that don't use them...*
 
-| **24** :
+| **24** :$
 ```
 sudo cp core/07-in.loginhead3.php web/in.login_head.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -443,7 +443,7 @@ ls web
 
 *Delete that `cron` task so it isn't constantly running on your machine...*
 
-| **25** : `sudo rm /etc/cron.d/webappcleanup`
+| **25** :$ `sudo rm /etc/cron.d/webappcleanup`
 
 ___
 

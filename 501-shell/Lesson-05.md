@@ -37,7 +37,7 @@ https://verb.vip/pretty_page.php?n=My_Long_Name
 
 ...using the setting...
 
-| **.htaccess** :
+| **.htaccess** :$
 ```
 RewriteEngine on
 RewriteRule ^/?([a-zA-Z0-9_]+)$ pretty_page.php?n=$1 [L]
@@ -45,7 +45,7 @@ RewriteRule ^/?([a-zA-Z0-9_]+)$ pretty_page.php?n=$1 [L]
 
 *Let's try...*
 
-| **1** :
+| **1** :$
 ```
 sudo cp core/05-pretty1.php web/pretty_page.php && \
 sudo cp core/05-htaccess1 /var/www/html/web/.htaccess && \
@@ -85,7 +85,7 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
 
 *We just tried number 2 above, now let's try 1...*
 
-| **2** :
+| **2** :$
 ```
 sudo cp core/05-htaccess2 /var/www/html/web/.htaccess && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -99,7 +99,7 @@ ls web
 
 *We just tried number 2 above, now let's try 3...*
 
-| **3** :
+| **3** :$
 ```
 sudo cp core/05-pretty3.php web/pretty_page.php && \
 sudo cp core/05-htaccess3 /var/www/html/web/.htaccess && \
@@ -121,7 +121,7 @@ ls web
 
 *We just tried number 2 above, now let's try 3...*
 
-| **4** :
+| **4** :$
 ```
 sudo cp core/05-pretty4.php web/pretty_page.php && \
 sudo cp core/05-htaccess4 /var/www/html/web/.htaccess && \
@@ -151,7 +151,7 @@ ls web
 
 *Edit the Apache web server settings file...*
 
-| **5** : `vim /etc/apache2/sites-available/000-default.conf`
+| **5** :$ `vim /etc/apache2/sites-available/000-default.conf`
 
 *vim will open the settings file as "read-only"...*
 
@@ -202,7 +202,7 @@ Without this, a trailing slash with nothing after could trigger a false GET argu
 
 | **B-6d** :// `localhost/web/account.php`
 
-| **7** :
+| **7** :$
 ```
 sudo cp core/05-htaccess5 /var/www/html/web/.htaccess && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -241,14 +241,14 @@ ___
 - Changes the URL shown in a browser from what it actually is on the server
 - Requires certain settings:
   1. The Apache config file in the `<Directory>` tags
-  | **/etc/apache2/sites-available/website-config.conf** :
+  | **/etc/apache2/sites-available/website-config.conf** :$
   ```
   <Directory "/var/www/html"> # (or /var/www/html/...something)
     AllowOverride All
   </Directory>
   ```
   2. .htaccess (a hidden file in the web directory)
-  | **/var/www/html/your/web/dir/.htaccess** :
+  | **/var/www/html/your/web/dir/.htaccess** :$
   ```
   RewriteEngine on
   ```
@@ -261,7 +261,7 @@ ___
   ```
 
 ## Format
-| **.htaccess** :
+| **.htaccess** :$
 ```
 RewriteEngine on
 
@@ -291,7 +291,7 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
   ```
   ...with GET processed as...
 
-  | **.htaccess** :
+  | **.htaccess** :$
   ```php
   $a = $_GET['a'];
   $b = $_GET['b'];

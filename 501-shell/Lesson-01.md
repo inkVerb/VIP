@@ -30,7 +30,7 @@ ___
   - `<?php ?>` can be used ***inside*** an .html file
   - `<?php ?>` can be used ***inline*** with HTML
 
-| **.html** or **.php** :
+| **.html** or **.php** :$
 ```html
 <html>
 <head>
@@ -84,7 +84,7 @@ You will see many tests with `} else {` options for reporting errors, this is wh
 
 #### `_GET`
 
-| **1** :
+| **1** :$
 ```
 sudo cp core/01-phpget1.php web/phpget.php && \
 ls -l web
@@ -103,7 +103,7 @@ ls -l web
 
 *Note we don't need to `chown` file owner when copying over a file...*
 
-| **2** : `sudo cp core/01-phpget2.php web/phpget.php && ls -l web`
+| **2** :$ `sudo cp core/01-phpget2.php web/phpget.php && ls -l web`
 
 *Note phpget.php has the same file owner as before, though we copied over it without `chown`*
 
@@ -113,7 +113,7 @@ ls -l web
 
 #### `_POST`
 
-| **3** :
+| **3** :$
 ```
 sudo cp core/01-phppost1.php web/phppost.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -182,7 +182,7 @@ print_r($autoArray);
 
 *Review the diagram above along side the following two steps...*
 
-| **4** :
+| **4** :$
 ```
 sudo cp core/01-phparrays.php web/phparrays.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -243,7 +243,7 @@ foreach ($array as $item) {
 
 *Review the diagram above along side the following two steps...*
 
-| **5** :
+| **5** :$
 ```
 sudo cp core/01-phpforeach.php web/phppost.php && \
 atom core/01-phpforeach.php && \
@@ -277,7 +277,7 @@ if ( Test Here ) {
 
 *Review the diagrams above along side the following few steps...*
 
-| **6** :
+| **6** :$
 ```
 sudo cp core/01-phppost2.php web/phppost.php && \
 atom core/01-phppost2.php && \
@@ -290,7 +290,7 @@ ls web
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-| **7** :
+| **7** :$
 ```
 sudo cp core/01-phppost3.php web/phppost.php && \
 atom core/01-phppost3.php && \
@@ -301,7 +301,7 @@ ls web
 
 *Try the form and developer view*
 
-| **8** :
+| **8** :$
 ```
 sudo cp core/01-phppost4.php web/phppost.php && \
 atom core/01-phppost4.php && \
@@ -312,7 +312,7 @@ ls web
 
 *Try the form and developer view*
 
-| **9** :
+| **9** :$
 ```
 sudo cp core/01-phppost5.php web/phppost.php && \
 atom core/01-phppost5.php && \
@@ -323,7 +323,7 @@ ls web
 
 *Try the form and developer view*
 
-| **10** :
+| **10** :$
 ```
 sudo cp core/01-phppost6.php web/phppost.php && \
 atom core/01-phppost6.php && \
@@ -356,7 +356,7 @@ $Variable = 'The number is ' . ( $Some_Variable == 5 ? 'five' : 'not five') . 't
 
 *Review the diagram above along side the following two steps...*
 
-| **11** :
+| **11** :$
 ```
 sudo cp core/01-phppost7.php web/phppost.php && \
 atom core/01-phppost7.php && \
@@ -462,7 +462,7 @@ preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variable
 
 *Review the diagram above along side the following two steps...*
 
-| **12** :
+| **12** :$
 ```
 sudo cp core/01-phpregex1.php web/phppost.php && \
 atom core/01-phpregex1.php && \
@@ -545,7 +545,7 @@ $argmnt = preg_replace('/([a-zA-Z0-9]+)_dogfish_([a-zA-Z0-9]+)/','$1_GoldFish_$2
 
 *Look at this example...*
 
-| **13** :
+| **13** :$
 ```
 sudo cp core/01-phpreplace.php web/phpreplace.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -601,7 +601,7 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 
 *Note how `preg_replace()` and `strtolower()` are used to sanitize the values...*
 
-| **14** :
+| **14** :$
 ```
 sudo cp core/01-phpregex2.php web/phppost.php && \
 atom core/01-phpregex2.php && \
@@ -612,7 +612,7 @@ ls web
 
 *Try the form and developer view*
 
-| **15** :
+| **15** :$
 ```
 sudo cp core/01-phpregex3.php web/phppost.php && \
 atom core/01-phpregex3.php && \
@@ -731,7 +731,7 @@ echo $someVariable;
 
 *Review the diagrams above along side the following few steps...*
 
-| **16** :
+| **16** :$
 ```
 sudo cp core/01-phpfunction1.php web/phppost.php && \
 atom core/01-phpfunction1.php && \
@@ -742,7 +742,7 @@ ls web
 
 *Try the form and developer view*
 
-| **17** :
+| **17** :$
 ```
 sudo cp core/01-phpfunction2.php web/phppost.php && \
 atom core/01-phpfunction2.php && \
@@ -753,7 +753,7 @@ ls web
 
 *Try the form and developer view*
 
-| **18** :
+| **18** :$
 ```
 sudo cp core/01-phpfunction3.php web/phppost.php && \
 atom core/01-phpfunction3.php && \
@@ -764,7 +764,7 @@ ls web
 
 *Try the form and developer view*
 
-| **19** :
+| **19** :$
 ```
 sudo cp core/01-phpfunction4.php web/phppost.php && \
 atom core/01-phpfunction4.php && \
@@ -775,7 +775,7 @@ ls web
 
 *Try the form and developer view*
 
-| **20** :
+| **20** :$
 ```
 sudo cp core/01-phpfunction5.php web/phppost.php && \
 atom core/01-phpfunction5.php && \
@@ -791,7 +791,7 @@ ls web
   - "empty" error message if empty POST
   - Double-check password
 
-| **21** :
+| **21** :$
 ```
 sudo cp core/01-phpfunction6.php web/phppost.php && \
 atom core/01-phpfunction6.php && \
@@ -853,7 +853,7 @@ include ('./in.file.php');
 
 *Review the diagrams above along side the following two steps...*
 
-| **22** :
+| **22** :$
 ```
 sudo cp core/01-in.phpinclude.php web/in.phppost.php && \
 sudo cp core/01-phpinclude.php web/phppost.php && \
@@ -886,7 +886,7 @@ echo CONSTANT_NAME;
 
 *Review the diagrams above along side the following few steps...*
 
-| **23** :
+| **23** :$
 ```
 sudo cp core/01-phpconstant1.php web/phppost.php && \
 atom core/01-phpconstant1.php && \
@@ -899,7 +899,7 @@ ls web
 
 *...organize all this in an `include` config file...*
 
-| **24** :
+| **24** :$
 ```
 sudo cp core/01-in.config.php web/in.config.php && \
 sudo cp core/01-phpconstant2.php web/phppost.php && \
@@ -930,7 +930,7 @@ require_once ('footer.php');
 
 Normally, the top and bottom of a webpage are some kind of `include` of `header.php` and `footer.php` respectively
 
-| **25** :
+| **25** :$
 ```
 sudo cp core/01-in.phpheader.php web/in.header.php && \
 sudo cp core/01-in.phpfooter.php web/in.footer.php && \
@@ -958,7 +958,7 @@ file_put_contents('./file/location', 'File content string');
 
 **Simple string:**
 
-| **26** :
+| **26** :$
 ```
 sudo cp core/01-phpfileput1.php web/phpfileput.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -972,11 +972,11 @@ ls web
 
 *See the file changes...*
 
-| **27** : `ls web && cat web/fileput.1`
+| **27** :$ `ls web && cat web/fileput.1`
 
 **Variables:**
 
-| **28** :
+| **28** :$
 ```
 sudo cp core/01-phpfileput2.php web/phpfileput.php && \
 atom core/01-phpfileput2.php && \
@@ -987,7 +987,7 @@ ls web
 
 *See the file changes...*
 
-| **29** : `ls web && cat web/fileput.2`
+| **29** :$ `ls web && cat web/fileput.2`
 
 **Heredoc:**
 
@@ -997,7 +997,7 @@ $file_text = <<<EOF
 EOF;
 ```
 
-| **30** :
+| **30** :$
 ```
 sudo cp core/01-phpfileput3.php web/phpfileput.php && \
 atom core/01-phpfileput3.php && \
@@ -1010,7 +1010,7 @@ ls web
 
 *See the file changes...*
 
-| **31** : `ls web && cat web/fileput.3`
+| **31** :$ `ls web && cat web/fileput.3`
 
 **Heredoc with `'single quotes'`:**
 
@@ -1020,7 +1020,7 @@ $file_text = <<<'EOF'
 EOF;
 ```
 
-| **32** :
+| **32** :$
 ```
 sudo cp core/01-phpfileput4.php web/phpfileput.php && \
 atom core/01-phpfileput4.php && \
@@ -1033,12 +1033,12 @@ ls web
 
 *See the file changes...*
 
-| **33** : `ls web && cat web/fileput.4`
+| **33** :$ `ls web && cat web/fileput.4`
 
 
 ### V. `_POST` Array, `print_r()` & `var_dump()`
 
-| **34** :
+| **34** :$
 ```
 sudo cp core/01-phpprintr.php web/phpprintr.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -1059,7 +1059,7 @@ Fill-out the fields and click "Hit me"
 
 *Try the same thing with `var_dump()`...*
 
-| **35** :
+| **35** :$
 ```
 sudo cp core/01-phpvardump.php web/phpvardump.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -1077,7 +1077,7 @@ Fill-out the fields and click "Hit me"
 
 ### VI. PHP Errors
 
-| **36** :
+| **36** :$
 ```
 sudo cp core/01-phperrors1.php web/phperrors.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -1098,7 +1098,7 @@ ls web
 
 *Let's try the `$live` option...*
 
-| **37** :
+| **37** :$
 ```
 sudo cp core/01-phperrors2.php web/phperrors.php && \
 atom core/01-phperrors2.php && \

@@ -17,33 +17,33 @@ ___
 > ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su Username`
+> | **S1** :$ `su Username`
 >
 > Install the tools:
 >
-> | **M1** : `sudo apt update`
+> | **M1** :$ `sudo apt update`
 >
-> | **M2** : `sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc rename pwgen`
+> | **M2** :$ `sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc rename pwgen`
 >
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** : `exit`
+> | **S2** :$ `exit`
 > ___
 >
-> | **0** : `mkdir -p ~/School/VIP` *If you did Shell 201, but on a different machine*
+> | **0** :$ `mkdir -p ~/School/VIP` *If you did Shell 201, but on a different machine*
 >
 
 ### II. `git clone` our scripts for this lesson
 
-| **1** : `cd ~/School/VIP`
+| **1** :$ `cd ~/School/VIP`
 
-| **2** : `git clone https://github.com/inkVerb/301`
+| **2** :$ `git clone https://github.com/inkVerb/301`
 
-| **3** : `ls`
+| **3** :$ `ls`
 
-| **4** : `cd 301`
+| **4** :$ `cd 301`
 
-| **5** : `ls`
+| **5** :$ `ls`
 
 ___
 

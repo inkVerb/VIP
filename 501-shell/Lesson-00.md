@@ -72,20 +72,20 @@ On a live, online web server, **`localhost`** could be **`inkisaverb.com`** or *
 
 ### I. OPTIONAL: If you did Shell 201, but on a different machine
 
-| **P1** : `mkdir -p ~/School/VIP`
+| **P1** :$ `mkdir -p ~/School/VIP`
 
 ### This lesson requires a "sudoer" who can use `sudo`
 >
 > ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su Username`
+> | **S1** :$ `su Username`
 >
 > Install the tools:
 >
-> | **M1** : `sudo apt update`
+> | **M1** :$ `sudo apt update`
 >
-> | **M2** : `sudo apt install -y git`
+> | **M2** :$ `sudo apt install -y git`
 >
 
 ### II. Install LAMP
@@ -98,22 +98,22 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
 
 ### III. `git clone` our scripts for this lesson
 
-| **P2** : `cd ~/School/VIP`
+| **P2** :$ `cd ~/School/VIP`
 
-| **P3** : `git clone https://github.com/inkVerb/501`
+| **P3** :$ `git clone https://github.com/inkVerb/501`
 
-| **P4** : `sudo mkdir /var/www/html/web`
+| **P4** :$ `sudo mkdir /var/www/html/web`
 
-| **P5** : `ln -sfn /var/www/html/web ~/School/VIP/501/`
+| **P5** :$ `ln -sfn /var/www/html/web ~/School/VIP/501/`
 
 #### Always own web stuff!
 
-| **P6** : `sudo chown -R www-data:www-data /var/www/html/`
+| **P6** :$ `sudo chown -R www-data:www-data /var/www/html/`
 
 >
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** : `exit`
+> | **S2** :$ `exit`
 > ___
 >
 

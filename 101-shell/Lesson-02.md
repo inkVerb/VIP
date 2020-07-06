@@ -7,7 +7,7 @@ Ready the CLI
 
 ___
 
-| **1** : `gedit abcsed abcd`
+| **1** :$ `gedit abcsed abcd`
 
 *Note the two tabs in gedit; abcsed is open, but the file does not exist*
 
@@ -39,31 +39,31 @@ sed -i "s/$1/z/" abcd
 
 *Note line one with the "shebang" `#!/bin/sh` is what makes this file a "Shell script" that we can run or "execute"*
 
-| **2** : `./abcsed`
+| **2** :$ `./abcsed`
 
 *Note the error message*
 
-| **3** : `ls -l`
+| **3** :$ `ls -l`
 
 *Note the colors of the files and letters "-rw-"*
 
-| **4** : `chmod ug+x abcsed`
+| **4** :$ `chmod ug+x abcsed`
 
-| **5** : `ls -l`
+| **5** :$ `ls -l`
 
 *Note the colors of the files and letters "-rwx"*
 
-| **6** : `./abcsed a`
+| **6** :$ `./abcsed a`
 
 *Now, it works, no error*
 
 *gedit: Reload abcd*
 
-| **7** : `./abcsed b`
+| **7** :$ `./abcsed b`
 
 *gedit: Reload abcd*
 
-| **8** : `./abcsed c`
+| **8** :$ `./abcsed c`
 
 *gedit: Reload abcd*
 
@@ -79,23 +79,23 @@ sed -i "s/$1/$2/" abcd
 # v02
 ```
 
-| **9** : `./abcsed d z`
+| **9** :$ `./abcsed d z`
 
 *gedit: Reload abcd*
 
-| **10** : `./abcsed e z`
+| **10** :$ `./abcsed e z`
 
 *gedit: Reload abcd*
 
-| **11** : `./abcsed z j`
+| **11** :$ `./abcsed z j`
 
 *gedit: Reload abcd*
 
-| **12** : `./abcsed z j`
+| **12** :$ `./abcsed z j`
 
 *gedit: Reload abcd*
 
-| **13** : `./abcsed z j`
+| **13** :$ `./abcsed z j`
 
 *gedit: Reload abcd*
 
@@ -113,23 +113,23 @@ sed -i "s/$1/$2/g" abcd
 
 *Note "g" to "globally" replace every occurance per line*
 
-| **14** : `./abcsed z j`
+| **14** :$ `./abcsed z j`
 
 *gedit: Reload abcd*
 
-| **15** : `./abcsed f z`
+| **15** :$ `./abcsed f z`
 
 *gedit: Reload abcd*
 
-| **16** : `./abcsed z j`
+| **16** :$ `./abcsed z j`
 
 *gedit: Reload abcd*
 
-| **17** : `echo "Apples like foo." >> applefoo`
+| **17** :$ `echo "Apples like foo." >> applefoo`
 
 *Note `echo ... >>` will also create a file if it doesn't already exist*
 
-| **18** : `gedit applefoo`
+| **18** :$ `gedit applefoo`
 
 *Update abcsed to version 04:*
 
@@ -143,15 +143,15 @@ sed -i "s/$1/$2/g" $3
 # v04
 ```
 
-| **19** : `./abcsed foo bar applefoo`
+| **19** :$ `./abcsed foo bar applefoo`
 
 *gedit: Reload applefoo*
 
-| **20** : `./abcsed g z abcd`
+| **20** :$ `./abcsed g z abcd`
 
 *gedit: Reload abcd*
 
-| **21** : `./abcsed z j abcd`
+| **21** :$ `./abcsed z j abcd`
 
 *gedit: Reload abcd*
 

@@ -15,7 +15,7 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** : `su Username` *input the password*
+> | **S1** :$ `su Username` *input the password*
 ___
 
 ### *Note `exit` & `journalctl` are used for logs*
@@ -24,15 +24,15 @@ ___
 
 *Look at some log entries on your machine*
 
-| **1** : `journalctl` *Space to scroll down, Q to quit*
+| **1** :$ `journalctl` *Space to scroll down, Q to quit*
 
 *Use `-r` to "reverse" the order and view most recent log entries first*
 
-| **2** : `journalctl -r`
+| **2** :$ `journalctl -r`
 
 *Use `-f` to "follow" the most recent entries in real time*
 
-| **3** : `journalctl -f`
+| **3** :$ `journalctl -f`
 
 *...now click some actions in the desktop GUI and watch entries appear*
 
@@ -40,35 +40,35 @@ ___
 
 *Create a system log entry...*
 
-| **4** : `logger "I logged this just now."`
+| **4** :$ `logger "I logged this just now."`
 
 *Look for your entry...*
 
-| **5** : `journalctl -r` *Q to quit*
+| **5** :$ `journalctl -r` *Q to quit*
 
 *Use `-t SOME_TAG` to add your own "tag"*
 
-| **6** : `logger -t dazzleTag "I logged this dazzling tag."`
+| **6** :$ `logger -t dazzleTag "I logged this dazzling tag."`
 
 *Now search for only that tag...*
 
-| **7** : `journalctl -t dazzleTag` *Q to quit*
+| **7** :$ `journalctl -t dazzleTag` *Q to quit*
 
 *Set a "priority" level at "info"...*
 
-| **8** : `logger -p info "I logged this info mere moments ago."`
+| **8** :$ `logger -p info "I logged this info mere moments ago."`
 
 *Look for the "info" priority (`-p info`) in the most recent (`-r`) logs first...*
 
-| **9** : `journalctl -r -p info` *Q to quit*
+| **9** :$ `journalctl -r -p info` *Q to quit*
 
 *Note your "dazzleTag" log also shows up because "info" is the default priority for `logger`*
 
 *...because `info` = `6`, that is the same as...*
 
-| **10** : `logger -p 6 "I also logged this number mere moments ago."`
+| **10** :$ `logger -p 6 "I also logged this number mere moments ago."`
 
-| **11** : `journalctl -r -p 6` *Q to quit*
+| **11** :$ `journalctl -r -p 6` *Q to quit*
 
 *Also use `-p` with a "facility" before the "priority":*
 
@@ -109,9 +109,9 @@ ___
 
 ***...enter these quickly, before another entry gets made...***
 
-| **12** : `logger -p daemon.debug "I a text debug daemon."`
+| **12** :$ `logger -p daemon.debug "I a text debug daemon."`
 
-| **13** : `journalctl -ro verbose SYSLOG_FACILITY=3 -p debug` *Q to quit*
+| **13** :$ `journalctl -ro verbose SYSLOG_FACILITY=3 -p debug` *Q to quit*
 
 *Look for:*
 
@@ -124,9 +124,9 @@ ___
 
 **WILL NOT WORK:** ~~`logger -p 1.6 "I a text debug user."`~~
 
-| **14** : `logger -p user.6 "I a text debug user."`
+| **14** :$ `logger -p user.6 "I a text debug user."`
 
-| **15** : `journalctl -ro verbose SYSLOG_FACILITY=1 -p 6` *Q to quit*
+| **15** :$ `journalctl -ro verbose SYSLOG_FACILITY=1 -p 6` *Q to quit*
 
 *Look for:*
 
@@ -138,13 +138,13 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** : `exit`
+> | **S2** :$ `exit`
 ___
 
 
 *This is just cool:*
 
-| **16** : `journalctl --since today > journalctl-today.txt`
+| **16** :$ `journalctl --since today > journalctl-today.txt`
 
 *If you dare: `gedit journalctl-today.txt`*
 
@@ -152,7 +152,7 @@ ___
 
 *Prepare for the next section...*
 
-| **17** : `mkdir logs && cd logs && touch one-file`
+| **17** :$ `mkdir logs && cd logs && touch one-file`
 
 ## II. Custom Output Logs
 
@@ -166,21 +166,21 @@ ___
 
 *First `ls` the directory like normal...*
 
-| **18** : `ls`
+| **18** :$ `ls`
 
 *Send the output to a file called "log"...*
 
-| **19** : `ls > log`
+| **19** :$ `ls > log`
 
-| **20** : `gedit log`
+| **20** :$ `gedit log`
 
 *Now `ls` something that doesn't exist, the output is an error...*
 
-| **21** : `ls bozo`
+| **21** :$ `ls bozo`
 
 *Try sending that error output to the file called "log"...*
 
-| **22** : `ls bozo > log`
+| **22** :$ `ls bozo > log`
 
 *gedit: Reload log*
 
@@ -190,17 +190,17 @@ ___
 
 *Error output only goes to a file with `2>` or `2>>`*
 
-| **23** : `ls bozo 2> log`
+| **23** :$ `ls bozo 2> log`
 
 *gedit: Reload log*
 
-| **24** : `ls 2> log`
+| **24** :$ `ls 2> log`
 
 *gedit: Reload log*
 
 *Cleanup...*
 
-| **25** : `rm log`
+| **25** :$ `rm log`
 
 ### Ouput to file
 - *Send* STDOUT *(output) to a file with: `> outputfile`*
@@ -208,45 +208,45 @@ ___
 
 *Send our STDOUT and STDERR to different log files*
 
-| **26** : `ls bozo`
+| **26** :$ `ls bozo`
 
 *Note the error message in the terminal*
 
-| **27** : `ls bozo 2> error.log`
+| **27** :$ `ls bozo 2> error.log`
 
-| **28** : `ls`
+| **28** :$ `ls`
 
 *Not the same error message went into the file*
 
-| **29** : `gedit error.log`
+| **29** :$ `gedit error.log`
 
 *gedit: Reload error.log*
 
-| **30** : `ls bozo 2>> error.log`
+| **30** :$ `ls bozo 2>> error.log`
 
 *gedit: Reload error.log*
 
-| **31** : `ls >> normal.log`
+| **31** :$ `ls >> normal.log`
 
-| **32** : `ls`
+| **32** :$ `ls`
 
-| **33** : `gedit normal.log`
+| **33** :$ `gedit normal.log`
 
 *Combine this into one command with: `> STDOUT-file 2> STDERR-file`*
 
-| **34** : `ls bozo >> normal.log 2>> error.log`
+| **34** :$ `ls bozo >> normal.log 2>> error.log`
 
 *gedit: Reload error.log*
 
 *Send STDERR (error output) into the nothingness with: `> /dev/null 2>&1`...*
 
-| **35** : `ls bozo > /dev/null 2>&1`
+| **35** :$ `ls bozo > /dev/null 2>&1`
 
 *Send STDOUT (normal output) into the nothingness just the same...*
 
-| **36** : `ls > /dev/null 2>&1`
+| **36** :$ `ls > /dev/null 2>&1`
 
-| **37** : `ls`
+| **37** :$ `ls`
 
 *See! Nothing at all!*
 
@@ -258,41 +258,41 @@ ___
 
 *Outputs nothing to file:*
 
-| **38** : `ls 0> 0.log`
+| **38** :$ `ls 0> 0.log`
 
 *Outputs STDOUT to file (present):*
 
-| **39** : `ls 1> 1.log`
+| **39** :$ `ls 1> 1.log`
 
 *Outputs STDERR to file (absent):*
 
-| **40** : `ls 2> 2.log`
+| **40** :$ `ls 2> 2.log`
 
 *Look at the three ".log" files created...*
 
-| **41** : `ls`
+| **41** :$ `ls`
 
 *View each of them in gedit*
 
-| **42** : `gedit 0.log` ...nothing—because "0" (no output) is nothing
+| **42** :$ `gedit 0.log` ...nothing—because "0" (no output) is nothing
 
-| **43** : `gedit 1.log` ...file list—because `ls` succeeded
+| **43** :$ `gedit 1.log` ...file list—because `ls` succeeded
 
-| **44** : `gedit 2.log` ...nothing—because `ls` didn't fail
+| **44** :$ `gedit 2.log` ...nothing—because `ls` didn't fail
 
 #### Generate error output
 
 *Outputs nothing to file:*
 
-| **45** : `ls bozo 0> 0.log`
+| **45** :$ `ls bozo 0> 0.log`
 
 *Outputs STDOUT to file (absent):*
 
-| **46** : `ls bozo 1> 1.log`
+| **46** :$ `ls bozo 1> 1.log`
 
 *Outputs STDERR to file (present):*
 
-| **47** : `ls bozo 2> 2.log`
+| **47** :$ `ls bozo 2> 2.log`
 
 *Review at the three ".log" files just updated...*
 
@@ -318,7 +318,7 @@ ___
 
 ### Creat log files for normal STDOUT and error STDERR in Shell
 
-| **48** : `gedit ../06-logging-1`
+| **48** :$ `gedit ../06-logging-1`
 
 *Note:*
 
@@ -328,17 +328,17 @@ ___
 
 *Whatch the output of our two commands in that script...*
 
-| **49** : `ls`
+| **49** :$ `ls`
 
-| **50** : `ls bozo`
+| **50** :$ `ls bozo`
 
-| **51** : `../06-logging-1`
+| **51** :$ `../06-logging-1`
 
 *gedit Reload:*
 
 - *error.log*
 
-| **52** : `gedit ../06-logging-2`
+| **52** :$ `gedit ../06-logging-2`
 
 *Note:*
 
@@ -346,14 +346,14 @@ ___
 - *`> Output-File` is the same as `1> Output-File` because `>` & `1>` are for STDOUT*
 - *`2> Output-File` is always for STDERR*
 
-| **53** : `../06-logging-2`
+| **53** :$ `../06-logging-2`
 
 *gedit Reload:*
 
 - *error.log*
 - *normal.log*
 
-| **54** : `gedit ../06-logging-3`
+| **54** :$ `gedit ../06-logging-3`
 
 *Note:*
 
@@ -361,17 +361,17 @@ ___
 - *`2>&1` sends all channel 2 output into channel 1*
   - *So, technically, STDERR will become STDOUT*
 
-| **55** : `../06-logging-3`
+| **55** :$ `../06-logging-3`
 
-| **56** : `ls`
+| **56** :$ `ls`
 
 *Note the file all.log was created*
 
-| **57** : `gedit all.log`
+| **57** :$ `gedit all.log`
 
 *Note all the output is in the same file*
 
-| **58** : `gedit ../06-logging-4`
+| **58** :$ `gedit ../06-logging-4`
 
 *Note:*
 
@@ -379,7 +379,7 @@ ___
 - *`ls` will not cause an error, only normal STDOUT output*
 - *`ls bozo` will cause an error, creating STDERR, then exit*
 
-| **59** : `../06-logging-4`
+| **59** :$ `../06-logging-4`
 
 *Note:*
 
@@ -389,14 +389,14 @@ ___
   - *`set -e` makes any errors exit the script*
   - *The error from `ls bozo` caused an exit before `echo "ls bozo was successful"`*
 
-| **60** : `gedit ../06-logging-5`
+| **60** :$ `gedit ../06-logging-5`
 
 *Note:*
 
 - *Same commands as 06-logging-4*
 - *All output to same file, as with 06-logging-3*
 
-| **61** : `../06-logging-5`
+| **61** :$ `../06-logging-5`
 
 *gedit Reload: all.log*
 
@@ -424,43 +424,43 @@ ___
 
 *Example with `grep`...*
 
-| **62** : `grep "exit" ../0*` *(something found in real files)*
+| **62** :$ `grep "exit" ../0*` *(something found in real files)*
 
-| **63** : `echo $?` *(0, true)*
+| **63** :$ `echo $?` *(0, true)*
 
 *`-q` flag for "quiet", still returns 0 for "found", so it works in `if`/`while` tests...*
 
-| **64** : `grep -q "exit" ../0*` *('quietly' something found in real files)*
+| **64** :$ `grep -q "exit" ../0*` *('quietly' something found in real files)*
 
-| **65** : `echo $?` *(0, true)*
+| **65** :$ `echo $?` *(0, true)*
 
-| **66** : `grep "wallawalla" ../0*` *(nothing found in real files)*
+| **66** :$ `grep "wallawalla" ../0*` *(nothing found in real files)*
 
-| **67** : `echo $?` *(1, false)*
+| **67** :$ `echo $?` *(1, false)*
 
-| **68** : `grep "wallawalla" ../iamnothere` *(a non-existent file)*
+| **68** :$ `grep "wallawalla" ../iamnothere` *(a non-existent file)*
 
-| **69** : `echo $?` *(2, error)*
+| **69** :$ `echo $?` *(2, error)*
 
 *Example with `ls`...*
 
-| **70** : `ls`
+| **70** :$ `ls`
 
-| **71** : `echo $?` *(0, true)*
+| **71** :$ `echo $?` *(0, true)*
 
-| **72** : `ls bozo`
+| **72** :$ `ls bozo`
 
-| **73** : `echo $?` *(2, error)*
+| **73** :$ `echo $?` *(2, error)*
 
 ***But, "The `cat` Who Walked by Himself" is different... ([discussion](https://unix.stackexchange.com/questions/590038/why-does-a-failed-cat-return-1-but-other-fails-return-2))***
 
-| **74** : `cat ../06-status0` *(a real file)*
+| **74** :$ `cat ../06-status0` *(a real file)*
 
-| **75** : `echo $?` *(0, true)*
+| **75** :$ `echo $?` *(0, true)*
 
-| **76** : `cat ../iamnothere` *(a non-existent file)*
+| **76** :$ `cat ../iamnothere` *(a non-existent file)*
 
-| **77** : `echo $?` *(1, error... wait, what?)*
+| **77** :$ `echo $?` *(1, error... wait, what?)*
 
 *...`cat` returns 1 for error; this is strange, but:*
 
@@ -471,67 +471,67 @@ ___
 
 **Back to scripting...**
 
-| **78** : `gedit ../06-status0`
+| **78** :$ `gedit ../06-status0`
 
 *Note this only runs a simple, successful command: `ls`*
 
-| **79** : `../06-status0`
+| **79** :$ `../06-status0`
 
 *Get the last `exit` status...*
 
-| **80** : `echo $?`
+| **80** :$ `echo $?`
 
 *Note the `exit` status was 0 because the script simply quit at the end*
 
-| **81** : `gedit ../06-status1`
+| **81** :$ `gedit ../06-status1`
 
 *Note this only runs a simple, successful command: `ls`, then exists with `exit` status 1*
 
-| **82** : `../06-status1`
+| **82** :$ `../06-status1`
 
 *Get the last `exit` status...*
 
-| **83** : `echo $?`
+| **83** :$ `echo $?`
 
 *The last `exit` status was 1 because our script exited via `exit 1`*
 
-| **84** : `gedit ../06-status2`
+| **84** :$ `gedit ../06-status2`
 
 *Note this only runs a simple, successful command: `ls`, then exists with `exit` status 2*
 
-| **85** : `../06-status2`
+| **85** :$ `../06-status2`
 
 *Get the last `exit` status...*
 
-| **86** : `echo $?`
+| **86** :$ `echo $?`
 
 *The last `exit` status was 2 because our script exited via `exit 2`*
 
 #### 0, 1 & 2 are not the only way to exit!
 
-| **87** : `gedit ../06-status3`
+| **87** :$ `gedit ../06-status3`
 
 *Note this only runs a simple, successful command: `ls`, then exists with `exit` status 3*
 
-| **88** : `../06-status3`
+| **88** :$ `../06-status3`
 
 *Get the last `exit` status...*
 
-| **89** : `echo $?`
+| **89** :$ `echo $?`
 
 *The last `exit` status was 3 because our script exited via `exit 3`*
 
 **It can go as high as 87, try something higher...**
 
-| **90** : `gedit ../06-status599`
+| **90** :$ `gedit ../06-status599`
 
 *Note this only runs a simple, successful command: `ls`, then exists with `exit` status 599*
 
-| **91** : `../06-status599`
+| **91** :$ `../06-status599`
 
 *Get the last `exit` status...*
 
-| **92** : `echo $?`
+| **92** :$ `echo $?`
 
 *The last `exit` status was 87 because they can't go higher than 87*
 
@@ -539,26 +539,26 @@ ___
 
 **How long does an `exit` status persist?**
 
-| **93** : `gedit ../06-exit3 ../06-exit-check-1`
+| **93** :$ `gedit ../06-exit3 ../06-exit-check-1`
 
 *Note:*
 
 - *06-exit3: only exit with a status, nothing more*
 - *06-exit-check-1: this sets `$?` to a variable (`$lastExit`) because `$?` will change to 0 after the `if` test*
 
-| **94** : `../06-exit3`
+| **94** :$ `../06-exit3`
 
-| **95** : `echo $?`
+| **95** :$ `echo $?`
 
-| **96** : `../06-exit-check-1`
+| **96** :$ `../06-exit-check-1`
 
 *What? The last `exit` status was 3!*
 
 **The exiting script and `if` test** ***must be in the same script!***
 
-| **97** : `gedit ../06-exit-check-2`
+| **97** :$ `gedit ../06-exit-check-2`
 
-| **98** : `../06-exit-check-2`
+| **98** :$ `../06-exit-check-2`
 
 *Now it recognizes the last `exit` status because it was generated inside the same script*
 
@@ -566,65 +566,65 @@ ___
 
 #### Sent custom messages to output channels 3-87
 
-| **99** : `ls`
+| **99** :$ `ls`
 
 *Generate an STDOUT channel 1 message...*
 
-| **100** : `gedit ../06-output-1`
+| **100** :$ `gedit ../06-output-1`
 
-| **101** : `../06-output-1`
+| **101** :$ `../06-output-1`
 
-| **102** : `ls`
+| **102** :$ `ls`
 
 *Note the file out-1.log was created*
 
-| **103** : `gedit out-1.log`
+| **103** :$ `gedit out-1.log`
 
 *Generate an STDERR channel 2 message...*
 
-| **104** : `gedit ../06-output-2`
+| **104** :$ `gedit ../06-output-2`
 
-| **105** : `../06-output-2`
+| **105** :$ `../06-output-2`
 
-| **106** : `ls`
+| **106** :$ `ls`
 
 *Note the file out-2.log was created*
 
-| **107** : `gedit out-2.log`
+| **107** :$ `gedit out-2.log`
 
 **...But we already knew about channels `1>` and `2>`; let's do channel `3>`**
 
 *Generate a custom channel 3 message...*
 
-| **108** : `gedit ../06-output-3`
+| **108** :$ `gedit ../06-output-3`
 
-| **109** : `../06-output-3`
+| **109** :$ `../06-output-3`
 
-| **110** : `ls`
+| **110** :$ `ls`
 
 *Note the file out-3.log was created*
 
-| **111** : `gedit out-3.log`
+| **111** :$ `gedit out-3.log`
 
 *Generate a custom channel 0 message...*
 
 *(Normally channel 0 should remain empty, but it technically doesn't have to be...)*
 
-| **112** : `gedit ../06-output-0`
+| **112** :$ `gedit ../06-output-0`
 
-| **113** : `../06-output-0`
+| **113** :$ `../06-output-0`
 
-| **114** : `ls`
+| **114** :$ `ls`
 
 *Note the file out-0.log was created*
 
-| **115** : `gedit out-0.log`
+| **115** :$ `gedit out-0.log`
 
 *Sent output messages to many channels from one script...*
 
-| **116** : `gedit ../06-output-4`
+| **116** :$ `gedit ../06-output-4`
 
-| **117** : `../06-output-4`
+| **117** :$ `../06-output-4`
 
 *gedit: Reload*
 
@@ -671,7 +671,7 @@ Real life example:
 
 *FYI, preview of [Lesson 8](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md: `date`...*
 
-| **118** : `date +%Y-%m-%d_%H:%M:%S`
+| **118** :$ `date +%Y-%m-%d_%H:%M:%S`
 
 *...We will use that to create a timestamp...*
 
@@ -700,23 +700,23 @@ fi
 
 *Try...*
 
-| **119** : `gedit ../06-routine-check ../06-routine-follow-up`
+| **119** :$ `gedit ../06-routine-check ../06-routine-follow-up`
 
 *Note these are basically the same scripts as the above example*
 
-| **120** : `ls`
+| **120** :$ `ls`
 
 *Note "file-3" does not exist*
 
-| **121** : `../06-routine-check`
+| **121** :$ `../06-routine-check`
 
-| **122** : `echo $?`
+| **122** :$ `echo $?`
 
 *Note:*
 - *the last `exit` status is 0 because "file-3" does not exist*
 - *06-routine-check did nothing at all because the test failed*
 
-| **123** : `../06-routine-follow-up`
+| **123** :$ `../06-routine-follow-up`
 
 *Note 06-routine-follow-up basically said that 06-routine-check did nothing*
 
@@ -731,33 +731,33 @@ fi
   - `-r` = reverse listing (most recent first)
   - `-t SomeTag` = filter by tag
 
-| **124** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info`
+| **124** :$ `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info`
 
 *Note no `journalctl` entries*
 
 *Create the file and try again...*
 
-| **125** : `touch file-3`
+| **125** :$ `touch file-3`
 
-| **126** : `ls`
+| **126** :$ `ls`
 
 *Note "file-3" exists*
 
-| **127** : `../06-routine-check`
+| **127** :$ `../06-routine-check`
 
-| **128** : `echo $?`
+| **128** :$ `echo $?`
 
 *Note the last `exit` status is 3 because "file-3" exists*
 
 *So, it will work here...*
 
-| **129** : `../06-routine-follow-up`
+| **129** :$ `../06-routine-follow-up`
 
-| **130** : `ls`
+| **130** :$ `ls`
 
 *Note "Check.log" now exists*
 
-| **131** : `gedit Check.log`
+| **131** :$ `gedit Check.log`
 
 *Check the logs for:*
 
@@ -765,25 +765,25 @@ fi
 - *Facility: `local0` (16)*
 - *Priority: `info`*
 
-| **132** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
+| **132** :$ `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
 
 *Review our `exit` status for success and failure...*
 
-| **133** : `ls`
+| **133** :$ `ls`
 
-| **134** : `echo $?`
+| **134** :$ `echo $?`
 
-| **135** : `ls bozo`
+| **135** :$ `ls bozo`
 
-| **136** : `echo $?`
+| **136** :$ `echo $?`
 
 *Let's add two `ls` commands to process `exit` status 0 and 1...*
 
-| **137** : `gedit ../06-routine-montage`
+| **137** :$ `gedit ../06-routine-montage`
 
-| **138** : `../06-routine-montage`
+| **138** :$ `../06-routine-montage`
 
-| **139** : `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
+| **139** :$ `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
 
 #### *Moral of the story: always use `exit` with a number!*
 - `exit 0` everything is normal, no output *(with `echo "something"` `>&0` ...if you are strange)*
@@ -794,7 +794,7 @@ fi
 
 *FYI, you can create a read-only system log file for your script*
 
-| **140** : `gedit ../06-logging-strong`
+| **140** :$ `gedit ../06-logging-strong`
 
 ___
 

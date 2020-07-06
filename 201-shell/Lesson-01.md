@@ -7,113 +7,113 @@ Ready the CLI
 
 ___
 
-| **1** : `echo FILE-1 > file1`
+| **1** :$ `echo FILE-1 > file1`
 
-| **2** : `ls`
+| **2** :$ `ls`
 
-| **3** : `cat file1`
+| **3** :$ `cat file1`
 
-| **4** : `cp file1 file2`
+| **4** :$ `cp file1 file2`
 
-| **5** : `ls`
+| **5** :$ `ls`
 
-| **6** : `cat file2`
+| **6** :$ `cat file2`
 
-| **7** : `gedit file1 file2`
+| **7** :$ `gedit file1 file2`
 
-| **8** : `cp file1 file3`
+| **8** :$ `cp file1 file3`
 
-| **9** : `ls`
+| **9** :$ `ls`
 
-| **10** : `mv file3 file4`
+| **10** :$ `mv file3 file4`
 
-| **11** : `ls`
+| **11** :$ `ls`
 
-| **12** : `ln -s file4 file5`
+| **12** :$ `ln -s file4 file5`
 
-| **13** : `ls`
+| **13** :$ `ls`
 
 *Note file5 is a different color because it is a symlink*
 
-| **14** : `l`
+| **14** :$ `l`
 
 *Note the `l` command works like `ls`; the `@` after a filename also indicates it's a symlink*
 
-| **15** : `ls -l`
+| **15** :$ `ls -l`
 
 *Note file5 points to file4, indicating where the symlink leads*
 
 *You can also use list-long on only the symlink to see where it points*
 
-| **16** : `ls -l file5`
+| **16** :$ `ls -l file5`
 
 *Let's take a peek*
 
-| **17** : `gedit file4 file5`
+| **17** :$ `gedit file4 file5`
 
-| **18** : `echo FILE-5 >> file5`
+| **18** :$ `echo FILE-5 >> file5`
 
 *gedit: Reload file4 & file5*
 
 *Note both file4 and file5 say the same thing*
 
-| **19** : `echo SILLY-FILE5 >> file5`
+| **19** :$ `echo SILLY-FILE5 >> file5`
 
 *gedit: Reload file4 & file5*
 
-| **20** : `echo INTO-FILE4 >> file4`
+| **20** :$ `echo INTO-FILE4 >> file4`
 
 *gedit: Reload file4 & file5*
 
-| **21** : `ln -s file4 file6`
+| **21** :$ `ln -s file4 file6`
 
-| **22** : `l`
+| **22** :$ `l`
 
-| **23** : `ls -l`
+| **23** :$ `ls -l`
 
-| **24** : `cat file6`
+| **24** :$ `cat file6`
 
-| **25** : `gedit file6`
+| **25** :$ `gedit file6`
 
 *Note file6 is the same as file4 & file5*
 
-| **26** : `rm file6`
+| **26** :$ `rm file6`
 
-| **27** : `l`
+| **27** :$ `l`
 
-| **28** : `ls -l`
+| **28** :$ `ls -l`
 
 *Note file4 remains*
 
-| **29** : `rm file4`
+| **29** :$ `rm file4`
 
-| **30** : `l`
+| **30** :$ `l`
 
-| **31** : `ls`
+| **31** :$ `ls`
 
-| **32** : `ls -l`
+| **32** :$ `ls -l`
 
 *Note file5 is "broken"*
 
-| **33** : `touch file4`
+| **33** :$ `touch file4`
 
 *Note file4 is empty now...*
 
-| **34** : `cat file4`
+| **34** :$ `cat file4`
 
 *gedit: Reload file4 & file5*
 
-| **35** : `ls -l`
+| **35** :$ `ls -l`
 
 *Note file5 is no longer a broken symlink, but file4 isn't the same as it used to be*
 
 *gedit: Save file6*
 
-| **36** : `l`
+| **36** :$ `l`
 
 *Note file6 is no longer a symlink*
 
-| **37** : `cat file6`
+| **37** :$ `cat file6`
 
 ___
 
