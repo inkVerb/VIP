@@ -92,7 +92,7 @@ function escape_sql($data) {
 	$trimmed_data = trim(preg_replace('/\s+/', ' ', $data));
 
 	// Apply mysqli_real_escape_string()
-	return mysqli_real_escape_string ($database, $trimmed_data);
+	return mysqli_real_escape_string($database, $trimmed_data);
 
 }
 ```
@@ -126,7 +126,7 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple
 | **2** :$
 ```
 sudo cp core/03-website2.php web/website.php && \
-sudo cp core/03-in.config.php web/in.config.php && \
+sudo cp core/03-in.config2.php web/in.config.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/03-website2.php core/03-in.config.php && \
 ls web
@@ -146,7 +146,7 @@ echo "<pre>$query</pre>";
 
 | **SB-2** ://phpMyAdmin **> fruit**
 
-| **B-2** :// `localhost/web/website.php` (Same)
+| **B-2** :// `localhost/web/website.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -168,7 +168,7 @@ ls web
 - *website.php*
 - *style.css*
 
-| **B-3** :// `localhost/web/website.php` (Same)
+| **B-3** :// `localhost/web/website.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -212,7 +212,7 @@ ls web
 
 | **SB-4** ://phpMyAdmin **> fruit** (Same)
 
-| **B-4** :// `localhost/web/website.php` (Same)
+| **B-4** :// `localhost/web/website.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -236,7 +236,7 @@ ls web
 
 | **SB-5** ://phpMyAdmin **> fruit** (Same)
 
-| **B-5** :// `localhost/web/website.php` (Same)
+| **B-5** :// `localhost/web/website.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -246,7 +246,6 @@ ls web
 - Bonus tip: Get the ID of whatever new row you just inserted:
 	- Code: `$query = "SELECT SCOPE_IDENTITY()";` (SQL, not MySQL)
 	- MySQLi: `$last_id = $database->insert_id;`
-
 
 | **6** :$
 ```
@@ -266,8 +265,6 @@ ls web
 - *in.functions.php*
 - *in.checks.php*
 
-| **SB-6** ://phpMyAdmin **> fruit** (Same)
-
 | **B-6** :// `localhost/web/website.php` (Same)
 
 *In the webform, input:*
@@ -282,20 +279,104 @@ ls web
 
 *Once finished, see the new entries in the database...*
 
+| **SB-6** ://phpMyAdmin **> fruit** (Same)
+
 | **S6** :> `SELECT name, type, have, count, prepared FROM fruit;`
+
+### Always Escape SQL Created by a User Action
+
+MySQLi escape function:
+
+```php
+$something_sql_safe = mysqli_real_escape_string($database, $$something);
+```
+
+| **7** :$
+```
+sudo cp core/03-website7.php web/website.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/03-website7.php && \
+ls web
+```
+
+*Note website.php:*
+
+- *We use `mysqli_real_escape_string()` on every item in an SQL query*
+	- *This only applies to user input*
+
+| **B-7** :// `localhost/web/website.php` (Same)
+
+*In the webform, input: (include spaces before and after)*
+
+- Name: " peaches "
+- Type: " Presidential "
+- Prepared: Fresh
+
+*See it added just the same...*
+
+| **SB-7** ://phpMyAdmin **> fruit** (Same)
+
+*...Note no spaces in phpMyAdmin*
+
+| **S7** :> `SELECT name, type, have, count, prepared FROM fruit;`
+
+*...Note you can see the spaces in the database*
+
+Use a function to do a little more:
+
+- `trim()` & `replace()` to remove extra spaces on user input
+- `mysqli_real_escape_string()` just the same
+
+```php
+function escape_sql($data) {
+	global $database;
+
+  $trimmed_data = trim(preg_replace('/\s+/', ' ', $data));
+	return mysqli_real_escape_string($database, $trimmed_data);
+}
+
+$something_sql_safe = escape_sql($something);
+```
+
+| **8** :$
+```
+sudo cp core/03-website8.php web/website.php && \
+sudo cp core/03-in.config8.php web/in.config.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/03-website8.php core/03-in.config8.php && \
+ls web
+```
+
+*Note website.php:*
+
+- *We use our custom `escape_sql()` function in place of `mysqli_real_escape_string()`*
+
+| **SB-8** ://phpMyAdmin **> fruit** (Same)
+
+| **B-8** :// `localhost/web/website.php` (Same)
+
+*In the webform, input:*
+
+- Name: " kiwi "
+- Type: " Golden "
+- Prepared: Fresh
+
+*See it removed the spaces...*
+
+| **S8** :> `SELECT name, type, have, count, prepared FROM fruit;`
 
 ### SQL `UPDATE` Existing Entry < HTML
 - See if an update made a change
 	- Syntax: `if (mysqli_affected_rows($database) == 1)`
 
-| **7** :$
+| **9** :$
 ```
-sudo cp core/03-website7.php web/website.php && \
-sudo cp core/03-style7.css web/style.css && \
-sudo cp core/03-in.functions7.php web/in.functions.php && \
-sudo cp core/03-in.checks7.php web/in.checks.php && \
+sudo cp core/03-website9.php web/website.php && \
+sudo cp core/03-style9.css web/style.css && \
+sudo cp core/03-in.functions9.php web/in.functions.php && \
+sudo cp core/03-in.checks9.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/03-website7.php core/03-style7.css core/03-in.functions7.php core/03-in.checks7.php && \
+atom core/03-website9.php core/03-style9.css core/03-in.functions9.php core/03-in.checks9.php && \
 ls web
 ```
 
@@ -306,9 +387,7 @@ ls web
 - *in.functions.php*
 - *in.checks.php*
 
-| **SB-7** ://phpMyAdmin **> fruit** (Same)
-
-| **B-7** :// `localhost/web/website.php` (Same)
+| **B-9** :// `localhost/web/website.php` (Same)
 
 *Make changes, input numbers, or empty a field to see how the form responds*
 
@@ -316,18 +395,20 @@ ls web
 
 *Once finished, see the updated entries in the database...*
 
-| **S7** :> `SELECT name, type, have, count, prepared FROM fruit;`
+| **SB-9** ://phpMyAdmin **> fruit** (Same)
+
+| **S9** :> `SELECT name, type, have, count, prepared FROM fruit;`
 
 ### SQL `DELETE` Entry < HTML
 - See if the row was deleted, same as an update
 	- Syntax: `if (mysqli_affected_rows($database) == 1)`
 
-| **8** :$
+| **10** :$
 ```
-sudo cp core/03-website8.php web/website.php && \
-sudo cp core/03-in.checks8.php web/in.checks.php && \
+sudo cp core/03-website10.php web/website.php && \
+sudo cp core/03-in.checks10.php web/in.checks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/03-website8.php cp core/03-in.checks8.php && \
+atom core/03-website10.php core/03-in.checks10.php && \
 ls web
 ```
 
@@ -336,9 +417,7 @@ ls web
 - *website.php*
 - *in.checks.php*
 
-| **SB-8** ://phpMyAdmin **> fruit** (Same)
-
-| **B-8** :// `localhost/web/website.php` (Same)
+| **B-10** :// `localhost/web/website.php` (Same)
 
 *Use a checkbox to delete an entry*
 
@@ -346,7 +425,9 @@ ls web
 
 *Once finished, note the entries deleted from the database...*
 
-| **S8** :> `SELECT name, type, have, count, prepared FROM fruit;`
+| **SB-10** ://phpMyAdmin **> fruit** (Same)
+
+| **S10** :> `SELECT name, type, have, count, prepared FROM fruit;`
 
 ___
 
