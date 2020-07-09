@@ -351,8 +351,6 @@ ls web
 
 - *We use our custom `escape_sql()` function in place of `mysqli_real_escape_string()`*
 
-| **SB-8** ://phpMyAdmin **> fruit** (Same)
-
 | **B-8** :// `localhost/web/website.php` (Same)
 
 *In the webform, input:*
@@ -360,6 +358,10 @@ ls web
 - Name: " kiwi "
 - Type: " Golden "
 - Prepared: Fresh
+
+*See it added just the same...*
+
+| **SB-8** ://phpMyAdmin **> fruit** (Same)
 
 *See it removed the spaces...*
 
