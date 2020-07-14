@@ -23,7 +23,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 ### Make sure `pandoc` is installed from 301
 
-| **S2** :$ `sudo apt install pandoc`
+| **S2** :$ `sudo apt install pandoc texlive-latex-base texlive-fonts-recommended texlive-latex-recommended ffmpeg imagemagick`
 
 ### Webapp Dashboard Login:
 
@@ -42,13 +42,24 @@ ___
 | **1** :$
 ```
 cp -r core/test_uploads .
+mkdir -p test_uploads/fakes
 echo "I am a test upload file" > test_uploads/test1.txt
 pandoc -s test_uploads/test1.txt -o test_uploads/test2.doc
 echo "I am a another test upload file" > test_uploads/test3.txt
-pandoc -s test_uploads/test3.txt -o test_uploads/test3.doc
-echo "I am a fake png file" > test_uploads/fake.png
-echo "I am a fake jpg file" > test_uploads/fake.jpg
-echo "I am a fake mp3 file" > test_uploads/fake.mp3
+pandoc -s test_uploads/test3.txt -o test_uploads/test3.docx
+pandoc -s test_uploads/mime.md -o test_uploads/mime.odt
+pandoc -s test_uploads/mime.md -o test_uploads/mime.pdf
+echo "I am a fake PNG file" > test_uploads/fakes/fake.png
+echo "I am a fake JPEG file" > test_uploads/fakes/fake.jpg
+echo "I am a fake GIF file" > test_uploads/fakes/fake.gif
+echo "I am a fake MPEG file" > test_uploads/fakes/fake.mp3
+echo "I am a fake WAV file" > test_uploads/fakes/fake.wav
+echo "I am a fake ogg file" > test_uploads/fakes/fake.ogg
+echo "I am a fake WebM file" > test_uploads/fakes/fake.webm
+echo "I am a fake MPEG-4 file" > test_uploads/fakes/fake.mp4
+echo "I am a fake DOC file" > test_uploads/fakes/fake.doc
+echo "I am a fake DOCX file" > test_uploads/fakes/fake.docx
+echo "I am a fake PDF file" > test_uploads/fakes/fake.pdf
 ls test_uploads
 ```
 
@@ -113,12 +124,23 @@ ls web
     - *...or as set by your settings in /etc/php/7.x/apache2/php.ini*
     - *PHP automatically assigns the `tmp_name` for this temp file*
     - *`$_FILES['upload_file']['tmp_name']` is the array and key variable for this temporary file name*
-- *Note `basename()` & `move_uploaded_file()` PHP functions*
+- *Get the "mime type" with `mime_content_type()`*
+- *Note `basename()` isolates the file name without the full path*
+- *Note `move_uploaded_file()` moves the uploaded temp file to a new location*
 
 ```php
 $file_name = basename($_FILES['some_post_name']['name']); // Name of the file, 'name' is a PHP key that does not change
 move_uploaded_file($starting_location, $destination_location); // Move an uploaded file
+$file_mime = mime_content_type($temp_file); // Get the mime type, requires full path to file
 ```
+
+**Mime Types**
+
+- The mime type is a file's type based on what is inside the file, not just the extension
+- This can be useful for security, to avoid hacks or opening a file with the wrong application
+- Your operating system knows which application to open a file with based on the mime type
+- Your list of mime types for your desktop environment is probably located at: `~/.config/mimeapps.list`
+- This first uploader (upload1.php) will show the mime type of any file, it could come in handy
 
 **File Upload Workflow**
 
@@ -159,7 +181,7 @@ ls web/uploads
 
 *Note your file was uploaded*
 
-### Only Allow Images
+### Validate Uploaded Files
 
 **Simple image check**
 
@@ -379,7 +401,42 @@ ls web/uploads
 
 **Other file types**
 
+- HTML only supports certain audio and video formats, so will we:
+  - Video: OGG, MP4, WebM
+  - Audio: OGG, MP3, WAV
+- We also want to allow common document uploads:
+  - Documents: TXT, MD, DOC, DOCX, ODT, PDF
+- We will check these against:
+  1. File extension
+  2. Mime type
 
+| **23** :$
+```
+sudo cp core/10-upload6.php web/upload.php && \
+atom core/10-upload6.php && \
+ls web/uploads
+```
+
+*Note the files in the uploads directory*
+
+*Note upload.php:*
+
+- *Several more checks use `$file_extension` & `$file_mime` to identify and allow types of files*
+
+| **B-24** :// `localhost/web/upload.php` (Same)
+
+1. Click "Browse..."
+2. Look in ~/School/VIP/501/test_uploads
+3. Select & "open" ***various files***
+4. Click "Upload"
+5. Check the uploads directory:$ `ls web/uploads`
+6. Repeat these steps with many files, including fake
+
+### Process Uploaded Files
+
+
+
+### JavaScript Drag-in Uploader
 
 
 
