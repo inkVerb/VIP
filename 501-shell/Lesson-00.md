@@ -95,7 +95,6 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
 - Setup MySQL via command line
 - Setup MySQL phpMyAdmin
 
-
 ### III. `git clone` our scripts for this lesson
 
 | **P2** :$ `cd ~/School/VIP`

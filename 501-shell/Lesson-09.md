@@ -72,9 +72,9 @@ ls web
   - *Lists all pieces in a `while` loop and `<table>`*
   - *We will add more later*
 
-| **B-1** :// `localhost/web/pieces.php` (It will redirect to webapp.php)
+| **B-1** :// `localhost/web/pieces.php` (It may redirect to webapp.php)
 
-*Note it redirected because you are not logged in; Login:*
+*Note it may have redirected because you are not logged in; Login:*
 
 ```
 Username: jonboy
@@ -150,7 +150,7 @@ While this works, we don't want a GET URL to be this powerful, use POST instead.
 | **5** :$
 ```
 sudo cp core/09-pieces3.php web/pieces.php && \
-sudo cp core/09-in.piecesfunctions3.php web/in.piecesfunctions.php && \
+sudo cp core/09-in.metaeditfunctions3.php web/in.metaeditfunctions.php && \
 sudo cp core/09-style3.css web/style.css && \
 sudo cp core/09-delete3.php web/delete.php && \
 sudo cp core/09-undelete3.php web/undelete.php && \
@@ -159,16 +159,16 @@ sudo cp core/09-unpublish3.php web/unpublish.php && \
 sudo cp core/09-republish3.php web/republish.php && \
 sudo cp core/09-pagify3.php web/pagify.php && \
 sudo cp core/09-postify3.php web/postify.php && \
-atom core/09-pieces3.php core/09-in.piecesfunctions3.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-purge_delete3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
+atom core/09-pieces3.php core/09-in.metaeditfunctions3.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-purge_delete3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
 ls web
 ```
 
 *Note pieces.php:*
 
-- *We added an `include` for in.piecesfunctions.php*
+- *We added an `include` for in.metaeditfunctions.php*
 - *We use a `postform()` function rather than links*
 
-*Note in.piecesfunctions.php:*
+*Note in.metaeditfunctions.php:*
 
 - *We created the `postform()` function*
 - *The `style=` attribute embedded inside the `<form>` tag is necessary for `float:` to work*
@@ -921,10 +921,10 @@ Check different boxes, then submit with different buttons multiple times
 ```
 sudo cp core/09-pieces7.php web/pieces.php && \
 sudo cp core/09-act.bulkpieces.php web/act.bulkpieces.php && \
-sudo cp core/09-in.piecesfunctions7.php web/in.piecesfunctions.php && \
+sudo cp core/09-in.metaeditfunctions7.php web/in.metaeditfunctions.php && \
 sudo cp core/09-trash7.php web/trash.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces7.php core/09-act.bulkpieces.php core/09-in.piecesfunctions7.php core/09-trash7.php && \
+atom core/09-pieces7.php core/09-act.bulkpieces.php core/09-in.metaeditfunctions7.php core/09-trash7.php && \
 ls web
 ```
 
@@ -945,7 +945,7 @@ ls web
 - *Only IDs remain in the `POST` array*
 - *Remaining `POST` IDs are iterated through*
 
-*Note in.piecesfunctions.php:*
+*Note in.metaeditfunctions.php:*
 
 - *The `piecesaction()` function was added*
   - *This does the actual that formerly used all those pieces-action files*
@@ -977,13 +977,13 @@ Click and try:
 | **32** :$
 ```
 sudo cp core/09-pieces8.php web/pieces.php && \
-sudo cp core/09-in.piecesfunctions8.php web/in.piecesfunctions.php && \
+sudo cp core/09-in.metaeditfunctions8.php web/in.metaeditfunctions.php && \
 sudo cp core/09-ajax.piecesactions8.php web/ajax.piecesactions.php && \
 sudo cp core/09-act.piecesactions.php web/act.piecesactions.php && \
 sudo cp core/09-trash8.php web/trash.php && \
 sudo cp core/09-style8.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-in.piecesfunctions8.php core/09-ajax.piecesactions8.php core/09-act.piecesactions.php core/09-style8.css && \
+atom core/09-in.metaeditfunctions8.php core/09-ajax.piecesactions8.php core/09-act.piecesactions.php core/09-style8.css && \
 ls web
 ```
 
@@ -1016,9 +1016,9 @@ In Pieces and Trash:
 
 - *New class `.renew`*
 
-*Note in.piecesfunctions.php:*
+*Note in.metaeditfunctions.php:*
 
-- *The `piecesform()` function was changed*
+- *The `metaeditform()` function was changed*
   - *It does not have all those calls to files anymore*
   - *Now, it generates AJAX calls with the `<forms>`*
   - *The AJAX JavaScript adds the `.renew` CSS class to the `<tr>`*
@@ -1063,10 +1063,10 @@ ls web
 ```
 sudo cp core/09-pieces9.php web/pieces.php && \
 sudo cp core/09-trash9.php web/trash.php && \
-sudo cp core/09-in.piecesfunctions9.php web/in.piecesfunctions.php && \
+sudo cp core/09-in.metaeditfunctions9.php web/in.metaeditfunctions.php && \
 sudo cp core/09-ajax.piecesactions9.php web/ajax.piecesactions.php && \
 sudo cp core/09-style9.css web/style.css && \
-atom core/09-pieces9.php core/09-trash9.php core/09-in.piecesfunctions9.php core/09-ajax.piecesactions9.php core/09-style9.css && \
+atom core/09-pieces9.php core/09-trash9.php core/09-in.metaeditfunctions9.php core/09-ajax.piecesactions9.php core/09-style9.css && \
 ls web
 ```
 
@@ -1078,9 +1078,9 @@ ls web
 - *The changes to this class affect "changed" indicator, from:*
   - *pieces.php*
   - *trash.php*
-  - *in.piecesfunctions.php*
+  - *in.metaeditfunctions.php*
 
-*Note in in.piecesfunctions.php:*
+*Note in in.metaeditfunctions.php:*
 
 - *There is* ***much more JavaScript*** *which:*
   - *Changes the page more directly with AJAX calls*
@@ -1102,7 +1102,7 @@ Try different Piece actions and see how the page never needs to reload
 - For your own study, consider AJAX's use of JavaScript, IDs, and classes in:
   - pieces.php
   - trash.php
-  - in.piecesfunctions.php
+  - in.metaeditfunctions.php
   - ajax.piecesactions.php
 
 ### Meta Edit in Pieces Table via JS Popup `<form>` & AJAX
@@ -1111,7 +1111,7 @@ Try different Piece actions and see how the page never needs to reload
 ```
 sudo cp core/09-pieces10.php web/pieces.php && \
 sudo cp core/09-trash10.php web/trash.php && \
-sudo cp core/09-in.piecesfunctions10.php web/in.piecesfunctions.php && \
+sudo cp core/09-in.metaeditfunctions10.php web/in.metaeditfunctions.php && \
 sudo cp core/09-ajax.metaedit.php web/ajax.metaedit.php && \
 sudo cp core/09-style10.css web/style.css && \
 sudo cp core/09-edit10.php web/edit.php && \
@@ -1129,7 +1129,7 @@ ls web
   - `$edit_piece_id`
   - `$form_id`
 - *Every `<form>` element now uses a unique ID with the Piece ID as part of the name*
-- *Peruse this in our `pieceInput()` function (in.piecesfunctions.php)*
+- *Peruse this in our `pieceInput()` function (in.metaeditfunctions.php)*
 - *See it at work also in edit.php and in.series.php*
 - *...We will need this since we are going to AJAX forms for different pieces on the same page...*
 2. Every Piece `<form>` is side-by-side
@@ -1150,7 +1150,7 @@ ls web
 | **36** :$
 
 ```
-atom core/09-pieces10.php core/09-trash10.php core/09-in.piecesfunctions10.php core/09-ajax.metaedit.php core/09-style10.css
+atom core/09-pieces10.php core/09-trash10.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css
 ```
 
 *Note pieces.php:*
@@ -1159,7 +1159,7 @@ atom core/09-pieces10.php core/09-trash10.php core/09-in.piecesfunctions10.php c
   - *This replaces the Piece Title with a form*
   - *This was heavily adopted from the first and final AJAX examples in Lesson 6*
   - *It is accompanies by several other JavaScript that you can search by double-clicking*
-- *Nearly all JavaScript loads from pieces.php and in.piecesfunctions.php, not sent from AJAX (ajax.metaedit.php)*
+- *Nearly all JavaScript loads from pieces.php and in.metaeditfunctions.php, not sent from AJAX (ajax.metaedit.php)*
 - *Some JavaScript was migrated from edit.php*
 - *Basic layout:*
 ```html
@@ -1240,7 +1240,7 @@ document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditRespon
 
 *Clicking on any Piece Title will bring up our JavaScript "Meta Edit" box*
 
-*Note on HTML entity symbols: pieces.php, trash.php, in.piecesfunctions.php*
+*Note on HTML entity symbols: pieces.php, trash.php, in.metaeditfunctions.php*
 
 - *The pencil symbol next to each Piece Title*
   - *This often means "edit", so we should change that text...*
