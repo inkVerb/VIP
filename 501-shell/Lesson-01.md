@@ -82,7 +82,7 @@ You will see many tests with `} else {` options for reporting errors, this is wh
 
 ### I. PHP Form & Method Handling
 
-#### `_GET`
+#### `$_GET`
 
 | **1** :$
 ```
@@ -111,7 +111,7 @@ ls -l web
 
 *Try the form a few times to see how it works*
 
-#### `_POST`
+#### `$_POST`
 
 | **3** :$
 ```
@@ -127,7 +127,7 @@ ls web
 
 #### PHP Arrays
 
-`_POST` and `_GET` are arrays
+`$_POST` and `$_GET` are arrays
 
 You may define your own arrays
 
@@ -178,6 +178,13 @@ print_r($assocArray);
 echo "<br>print_r \$autoArray:<br>";
 print_r($autoArray);
 
+// Match an item in an array
+$found = (in_array("find me", $array)) ? true : false;
+if (in_array("find me", $array)) {echo $do_something;}
+// Example
+$fruit = array('apples','bananas','berries');
+if (in_array('apples', $fruit)) {echo 'found';}
+if (in_array('kiwi', $fruit)) {echo 'should not be found';}
 ```
 
 *Review the diagram above along side the following two steps...*
@@ -1036,7 +1043,7 @@ ls web
 | **33** :$ `ls web && cat web/fileput.4`
 
 
-### V. `_POST` Array, `print_r()` & `var_dump()`
+### VII. Handling Arrays: `$_POST` Array, `print_r()` & `var_dump()`
 
 | **34** :$
 ```
@@ -1075,7 +1082,7 @@ Fill-out the fields and click "Hit me"
 
 **The `$_POST` array will only have what is in the `<form>`!**
 
-### VI. PHP Errors
+### VIII. PHP Errors
 
 | **36** :$
 ```
@@ -1113,7 +1120,7 @@ ___
 
 # The Take
 
-### PHP Background
+## PHP Background
 - Made in 1994
 - Written in C language
 - "Personal Home Page"
@@ -1134,15 +1141,14 @@ ___
 7. Always test success and plan for failure, even the impossible
 
 ## PHP Form & Method Handling
-- `_GET` takes values from the web URL
-  - `http://longurl?one=value&two=value` has two `_GET` values useable as...
+- `$_GET` takes values from the web URL
+  - `http://longurl?one=value&two=value` has two `$_GET` values useable as...
   - `$_GET['one']` and `$_GET['two']`
-- `_POST` takes values from a submitted `<form>`
-  - `<form method="post" action="http://address"><input name="one"...><input name="two"...` has two `_POST` values usable as...
+- `$_POST` takes values from a submitted `<form>`
+  - `<form method="post" action="http://address"><input name="one"...><input name="two"...` has two `$_POST` values usable as...
   - `$_POST['one']` and `$_POST['two']`
-- Technically, `$_POST` and `$_GET` are "arrays" with "keys", like so...
-  - `$_POST['key']`
-  - `$_GET['key']`
+- Handy test to match an item in an array:
+  - `in_array("find me", $array)`
 
 ## PHP Basic Syntax
 1. PHP must start with `<?php` and can end with `?>`
@@ -1205,7 +1211,11 @@ ___
 - Heredocs with `'single quotes'` around the delimeter will cancel variables
   - Syntax: `$Variable = <<<'EOF'`
 
-## `$_POST` Array, `print_r()` & `var_dump()`
+## Handling Arrays: `$_POST` Array, `print_r()` & `var_dump()`
+- Arrays can be auto-indexed or associative
+  - `$_POST` & `$_GET` are associative arrays with keys like so...
+    - `$_POST['key']`
+    - `$_GET['key']`
 - The `$_POST` array only has what is in the `<form>`
 - `print_r()` & `var_dump()` both show everything in an array
   - Syntax: `print_r($_POST);`
