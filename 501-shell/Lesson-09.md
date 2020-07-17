@@ -407,7 +407,7 @@ JSON is an array that lives as a string, so you can view it with `echo` (arrays 
   - *as* JSON objects
   - *inside* JSON objects
 
-**Array *as* JSON objects: (as-JSON)**
+**Array *as* JSON objects: (as-JSON, auto-indexed array AI)**
 
 ```json
 [ "Apple", "Banana", "Ubuntu" ]
@@ -415,7 +415,7 @@ JSON is an array that lives as a string, so you can view it with `echo` (arrays 
 [ ["","",""] , ["","",""] ]
 ```
 
-**Arrays *inside* JSON objects: (inside-JSON)**
+**Arrays *inside* JSON objects: (inside-JSON, associative array AS)**
 
 ```json
 {
@@ -431,18 +431,18 @@ JSON is an array that lives as a string, so you can view it with `echo` (arrays 
 
 ```php
 $list_nojson = 'one, two, three'; // Comma-separated list to PHP array
-$php_array2D = explode(', ', $list_nojson); // Comma-separated list to PHP array (2D)
-$list_nojson = implode(', ', $php_array2D); // PHP array (2D) to comma-separated list
+$php_arrayAI = explode(', ', $list_nojson); // Comma-separated list to PHP array (AI)
+$list_nojson = implode(', ', $php_arrayAI); // PHP array (AI) to comma-separated list
 $string_json = json_encode(explode(', ', $list_nojson)); // To array as-JSON from comma-separated list
 $string_json = json_encode(explode(', ', $list_nojson), JSON_FORCE_OBJECT); // To arrays inside-JSON from comma-separated list
-$string_json = json_encode($some_array); // To array as-JSON (2D) from PHP array
-$string_json = json_encode($some_array, JSON_FORCE_OBJECT); // To arrays inside-JSON (3D) from PHP array
-$string_json = json_encode($some_array, JSON_PRETTY_PRINT); // To array as-JSON (2D) with line breaks from PHP array
-$string_json = json_encode($some_array, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT); // To arrays inside-JSON (3D) with line breaks
-$list_nojson = implode(', ', json_decode($string_json, true)); // From array as-JSON (2D) to comma-separated list
-$list_nojson = implode(', ', json_decode($string_json)); // From arrays inside-JSON (3D) to comma-separated list
-$php_array3D = json_decode($string_json, true); // From array as-JSON (2D) to PHP array (2D)
-$php_array2D = json_decode($string_json); // From arrays inside-JSON (3D) to PHP array (3D)
+$string_json = json_encode($some_array); // To array as-JSON (AI) from PHP array
+$string_json = json_encode($some_array, JSON_FORCE_OBJECT); // To arrays inside-JSON (AS) from PHP array
+$string_json = json_encode($some_array, JSON_PRETTY_PRINT); // To array as-JSON (AI) with line breaks from PHP array
+$string_json = json_encode($some_array, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT); // To arrays inside-JSON (AS) with line breaks
+$list_nojson = implode(', ', json_decode($string_json, true)); // From array as-JSON (AI) to comma-separated list
+$list_nojson = implode(', ', json_decode($string_json)); // From arrays inside-JSON (AS) to comma-separated list
+$php_arrayAS = json_decode($string_json, true); // From array as-JSON (AI) to PHP array (AI)
+$php_arrayAI = json_decode($string_json); // From arrays inside-JSON (AS) to PHP array (AS)
 ```
 
 **SQL matches JSON differently:**
