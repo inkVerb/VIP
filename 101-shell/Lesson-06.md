@@ -12,13 +12,11 @@ ___
 
 | **2** :$ `sed "s/foo/bar/" applefoo`
 
-| **3** :$ `echo $(sed "s/foo/bar/" applefoo)`
+| **3** :$ `sed "s/foo/bar/" applefoo > sedoutput.text`
 
-| **4** :$ `echo $(sed "s/foo/bar/" applefoo) > sedoutput.text`
+| **4** :$ `gedit sedoutput.text`
 
-| **5** :$ `gedit sedoutput.text`
-
-| **6** :$ `echo "Add a line" >> sedoutput.text`
+| **5** :$ `echo "Add a line" >> sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
@@ -28,7 +26,19 @@ ___
 
 *But better yet, piping into `tee` will do both!*
 
-| **7** :$ `echo $(sed "s/foo/bar/" applefoo) | tee sedoutput.text`
+| **6** :$ `sed "s/foo/bar/" applefoo | tee sedoutput.text`
+
+*gedit: Reload sedoutput.text*
+
+| **7** :$ `echo "Add a line" >> sedoutput.text`
+
+*gedit: Reload sedoutput.text*
+
+| **8** :$ `sed "s/foo/bar/" applefoo | tee -a sedoutput.text`
+
+*gedit: Reload sedoutput.text*
+
+| **9** :$ `echo "Add a line" | tee -a sedoutput.text`
 
 *gedit: Reload sedoutput.text*
 
@@ -39,6 +49,7 @@ ___
 - Several commands can be combined into one command, including an output file
 - "Piping" output into "tee" (`command | tee output-file`) sends the STDOUT output to both the output file *and* is displayed as raw output in the terminal
 - `| tee` will overwrite the destination file!
+- `| tee -a` will append the destination file instead of overwriting
 - `| tee` can be used with many commands
 
 ___
