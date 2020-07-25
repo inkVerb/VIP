@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 11: Site Settings & Production Framework
+## Lesson 11: OOP & Production
 
 Ready the CLI
 
@@ -7,29 +7,41 @@ Ready the CLI
 
 ___
 
-- Header SEO-ready
-- User levels: Superadmin Admin Editor Contributor Member (member_levels table, pieces_levels table)
+- OOP
 - Pagination
-- Theming via CSS and PHP
-- Night/day/sepia mode cookies
-- Private Pieces option (update table, pieces.php piece.php blog.php history.php)
-- landing-pages
-  - combine sections
-  - section height (auto/full)
-  - top/social menus y/n
-  - drop-in PHP/HTML code
-- sections
-  - forms
-  - button links
-  - buttons show forms
-  - background images w color overlay
-  - background colors
-  - columns
-  - sections appear at top/bottom of both/posts/pages of all/series
-- feed mod
-- join mod (allow Member signup)
-- custom-draft mod (unique draft with optional fields that push to publications)
-- custom-piece mod
+- Namespace list table (occupied slugs, also used by mods)
+- User levels: Admin Editor Contributor Member (pieces_levels table/column-int, member_classes table/column-json)
+- Superadmin Register page
+- Editor/Pieces Upgrades
+  - Title capitalizer
+  - AJAX & hotkey for "Save"
+  - HTML allowed in "After"
+  - JS word counter
+  - (update table, pieces.php piece.php blog.php history.php)
+    - Private Pieces option (Based on Level/Class)
+    - Identity
+- Choose "Menu Pages"
+- Admin Controls
+  - Series in slug option
+  - Title, Slogan
+  - Splash & Logo
+  - Timezone
+  - Editor: Medium or Tiny
+  - Basic Flair Colors (default option)
+  - Choose Theming (files in a dir)
+    - Fonts
+    - Colors
+    - Copy to dir, not a database call
+  - Identities editor
+  - Footer
+    - Message
+    - Copyright message
+  - Custom "Cookie notice" message and option
+  - Home page (Page, All Pieces, or Series)
+- "Blog" series = all pieces
+- Theming structure
+- Night/day/soft mode cookies
+
 
 ### Blog Settings
 
@@ -42,16 +54,6 @@ sudo cp core/11-mods.php web/mods.php && \
 atom core/11-settings.php core/11-menus.php core/11-series.php && \
 ls web
 ```
-
-- Social menu (top/bottom/off)
-- Menus (top/bottom/off)
-- Home page (Page or relative path, masks URL)
-- Blogs page (All or Series, masks URL)
-- Theme default
-- Custom theme (for: night, day, sepia)
-- Custom footer message
-- Custom footer copyright message
-- Custom "Cookie notice" message and option
 
 
 | **B-26** :// `localhost/web/settings.php` (Ctrl + R to reload)
@@ -75,4 +77,4 @@ ___
 
 ___
 
-#### [Lesson 12: Object Oriented Programming](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-12.md)
+#### [Lesson 12: Head & Feed](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-12.md)

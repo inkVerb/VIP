@@ -257,10 +257,11 @@ ls web
 - *The JavaScript is very different*
 - *The `<form>` has attribute `id="ajaxForm"`*
   - *This is instead of a `<button>` with `onclick="doAjax();"`*
-  - *The `<button>` way has the button call AJAX*
+  - *The `<button>` way uses the button called AJAX*
 - *This way has JavaScript use the `id=` to "take over" the `<form>`*
-  1. *JavaScript gets the form data*
+  1. *JavaScript gets the `<form>` data*
   2. *Then interrupts the `<input="submit">` button*
+  3. *JavaScript runs AJAX to send the `<form>` data*
 - ***This uses the JavaScript object called "`FormData`"***
 
 | **B-5** :// `localhost/web/ajax.php` (Ctrl + R to reload)
@@ -276,7 +277,7 @@ ls web
 
 ### AJAX Capture Data from an *AJAX-Reloaded* `<form>`
 
-In the previous example, this only works the first time the pages loads:
+In the previous example, JavaScript listens only to the `<form>` created at the first page load:
 
 ```js
 const form = document.getElementById( "ajaxForm" ); // Access form
@@ -286,9 +287,9 @@ form.addEventListener( "submit", function ( event ) { // Takeover <input type="s
 } );
 ```
 
-If we AJAX-change the `<form>` itself from the AJAX response, AJAX will not interrupt the AJAX-responded `<form>`
+If we AJAX-change the `<form>` itself using the AJAX response, AJAX will not interrupt that AJAX-responded `<form>`
 
-So, we must create an "event listener" that refreshes with each AJAX request
+So, to listen to a `<form>` created by an AJAX response, we must create an "event listener" that refreshes with each AJAX request
 
 #### AJAX JavaScript:
 
@@ -309,20 +310,20 @@ window.addEventListener( "load", function () {
 
     } ); // Change HTML on successful response
 
-    AJAX.addEventListener( "error", function( event ) { // This runs if AJAX fails
+    AJAX.addEventListener( "error", function(event) { // This runs if AJAX fails
       document.getElementById("ajax_changes").innerHTML =  'Oops! Something went wrong.';
     } );
 
-    AJAX.open( "POST", "ajax_responder.php" ); // Send data, ajax_responder.php can be any file or URL
+    AJAX.open("POST", "ajax_responder.php"); // Send data, ajax_responder.php can be any file or URL
 
-    AJAX.send( FD ); // Data sent is from the form
+    AJAX.send(FD); // Data sent is from the form
 
   } // sendData() function
 
   // Declare the variable the first time it is used, not a constant
-  var form = document.getElementById( "ajaxForm" ); // Access <form id="ajaxForm">, id="ajaxForm" can be anything
+  var form = document.getElementById("ajaxForm"); // Access <form id="ajaxForm">, id="ajaxForm" can be anything
   function listenToForm(){
-    form.addEventListener( "submit", function ( event ) { // Takeover <input type="submit">
+    form.addEventListener( "submit", function(event) { // Takeover <input type="submit">
       event.preventDefault();
       sendData();
     } );
@@ -375,13 +376,13 @@ ls web
 
 *Note ajax.php:*
 - *The JavaScript is very different*
-- *The `<form>` has attribute `id="ajaxForm"`*
-  - *This is instead of a `<button>` with `onclick="doAjax();"`*
-  - *The `<button>` way has the button call AJAX*
-- *This way has JavaScript use the `id=` to "take over" the `<form>`*
-  1. *JavaScript gets the form data*
-  2. *Then interrupts the `<input="submit">` button*
-- ***This uses the JavaScript object called "`FormData`"***
+- *The `<form>` uses `<input type="submit">`*
+- *This way has JavaScript use the `id=` to "take over" the `<form>`*\
+  1. *JavaScript listens for `<input="submit">` via `listenToForm();`*
+  2. *JavaScript gets the form data*
+  3. *Then interrupts `<input="submit">` when clicked*
+  4. *AJAX responds with a new `<form>`*
+  5. *JavaScript runs `listenToForm();` again, to listen for `<input="submit">` again*
 
 | **B-6** :// `localhost/web/ajax.php` (Ctrl + R to reload)
 
@@ -392,7 +393,79 @@ ls web
   - "Here always"
   - "Replace me with AJAX"
 2. Click the button "Form AJAX!"
-3. Change the input fields and try many times
+3. Note this is a new `<form>`:
+  - "I am a new form created by AJAX"
+  - "(made by AJAX)"
+4. Change the input fields and try many times
+
+### AJAX Capture Data from a `<form>` by `<button>`
+
+In the previous two examples, we interrupted `<input type="submit">`
+
+Here is a way to use a `<button>` to AJAX-capture the `<form>`
+
+The `<input type="submit">` will not be interrupted and will not use AJAX
+
+This can be useful if you want an optional AJAX button in your `<form>`
+
+#### AJAX HTML:
+
+```html
+<button type="button" onclick="ajaxFormData('ajaxForm', 'ajax_responder.php', 'ajax_changes');">Button Form AJAX!</button>
+```
+
+#### AJAX JavaScript:
+
+```js
+function ajaxFormData(formID, postTo, ajaxUpdate) { // These arguments can be anything, same as used in this function
+  // Bind a new event listener every time the <form> is changed:
+  const FORM = document.getElementById( formID ); // <form> by ID to access, formID is the JS argument in the function
+  const AJAX = new XMLHttpRequest(); // AJAX handler
+  const FD = new FormData( FORM ); // Bind to-send data to form element
+
+  AJAX.addEventListener( "load", function(event) { // This runs when AJAX responds
+    document.getElementById(ajaxUpdate).innerHTML = event.target.responseText; // HTML element by ID to update, ajaxUpdate is the JS argument in the function
+  } );
+
+  AJAX.addEventListener( "error", function(event) { // This runs if AJAX fails
+    document.getElementById(ajaxUpdate).innerHTML =  'Oops! Something went wrong.';
+  } );
+
+  AJAX.open("POST", postTo); // Send data, postTo is the .php destination file, from the JS argument in the function
+
+  AJAX.send(FD); // Data sent is from the form
+
+} // ajaxFormData() function
+```
+
+| **7** :$
+```
+sudo cp core/06-ajax7.php web/ajax.php && \
+sudo cp core/06-ajaxresponder7.php web/ajax_responder.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/06-ajax7.php core/06-ajaxresponder7.php && \
+ls web
+```
+
+*Note ajax.php:*
+- *The JavaScript is simpler*
+- *The `<button>` calls the AJAX JavaScript*
+- *Because the `<button>` calls the AJAX JS function, we don't need to run the function on every AJAX response*
+
+
+| **B-7** :// `localhost/web/ajax.php` (Ctrl + R to reload)
+
+- *Use Ctrl + Shift + C in browser to see the developer view*
+
+1. Note:
+  - "SESSION count:"
+  - "Here always"
+  - "Replace me with AJAX"
+2. Click the button "Form AJAX!"
+3. Note this is a new `<form>`:
+  - "I am a new form created by AJAX"
+  - "(made by AJAX)"
+4. Change the input fields and try many times
 
 ___
 
@@ -426,13 +499,24 @@ ___
 ## AJAX a `<form>`
 - AJAX can handle an HTML `<form>` via `id=` and "taking over"
 - This:
-  1. Uses `<form id="some_ID">` instead of `<button onclick="doAjax();">`
+  1. Obtains POST data via `<form id="some_ID">` instead of `ajaxHandler.send( ... )`
   2. "Takes over" the `<input type="submit">` button
     - The form doesn't actually submit, JavaScript does something else instead
 - **This uses the JavaScript object: "`FormData`"**
   - You can study this more on your own
 
-## AJAX
+## AJAX a `<form>` via `<button>`
+- AJAX can handle an HTML `<form>` via `<button>` rather than `<input type="submit">`
+  - The `<input type="submit">` still works as normal
+- This:
+  1. Uses `<button onclick="doAjax();">`
+  2. Uses the JavaScript object "`FormData`", same as with any `<form>`
+- You can also pass arguments: `<button onclick="doAjax(arg1, arg2, arg3);">`
+  - This is handy in case there is more than one `<form>`, AJAX processor .php file, or HTML to update
+  - These could include:
+    - ID for which `<form>`
+    - Which .php file to AJAX the data to
+    - ID for which HTML element to update with the AJAX response
 
 ___
 
