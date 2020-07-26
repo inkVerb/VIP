@@ -24,6 +24,6 @@
 
 ### [Lesson 10: Media Library, Files & Uploads](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-10.md)
 
-### [Lesson 11: OOP & Production](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
+### [Lesson 11: OOP & PDO ](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
 
-### [Lesson 12: Head & Feed](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-12.md)
+### [Lesson 12: Production & Feed](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-12.md)

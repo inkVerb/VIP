@@ -292,12 +292,24 @@ In Atom:
 
 ### Revision History
 
+#### htmldiff.js
+
+- [GitHub repo](https://github.com/poetryisCODE/htmldiff)
+- [GitHub fork](https://github.com/inkVerb/htmldiff) (in case it doesn't work)
+
+We will use this JavaScript package to find differences in two blocks of text and highlight their differences
+
+This is similar to the Linux tool `diff`, which we learned about in [201-11](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-11.md#diff)
+
+On your own, learn more about implementation at [github.com/poetryisCODE/htmldiff](https://github.com/poetryisCODE/htmldiff/blob/master/README.md)
+
 | **10** :$
 ```
 sudo cp core/09-pieces6.php web/pieces.php && \
 sudo cp core/09-piece1.php web/piece.php && \
 sudo cp core/09-hist1.php web/hist.php && \
-sudo cp core/09-htmldiff.js web/htmldiff.js && \
+git clone https://github.com/poetryisCODE/htmldiff.git && \
+sudo cp htmldiff.js/htmldiff.min.js web/ && \
 sudo cp core/09-in.editprocess1.php web/in.editprocess.php && \
 sudo cp core/09-revert.php web/revert.php && \
 sudo cp core/09-style6.css web/style.css && \

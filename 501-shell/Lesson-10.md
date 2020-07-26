@@ -428,29 +428,104 @@ ls web/uploads
 1. Click "Browse..."
 2. Look in ~/School/VIP/501/test_uploads
 3. Select & "open" ***various files***
+  - Will fail: **.wma, .flv, .bmp**
+    - audio.wma
+    - video.flv
+    - vip-red.bmp
 4. Click "Upload"
 5. Check the uploads directory:$ `ls web/uploads`
 6. Repeat these steps with many files, including fake
 
+| **25** :$
+```
+ls web/uploads
+```
+
+
+
 ### Process Uploaded Files
+
+
+Linux processing
+
+- images - imagemagick
+- audio/video - ffmpeg
+- posts as files .md .pdf .odt - pandoc
+
+SQL processing
+
+- Make database entries
+- Recall images from a library
+
+
+
 
 
 
 ### JavaScript Drag-in Uploader
 
+#### Dropzone.js
+
+- [GitHub repo](https://github.com/enyo/dropzone)
+- [GitHub fork](https://github.com/inkVerb/dropzone) (in case it doesn't work)
+
+User-friendly uploading requires advanced JavaScript, which is beyond the scope of this PHP Stack course
+
+This includes things like:
+
+- Drag and drop
+- Upload progress bars and queues
+- Image cropping and resizing before upload
+
+A great JavaScript tool we will use for this is Dropzone.js
+
+Learning to implement tools inside PHP is part of learning PHP, and we already understand PHP uploading, so this tool will make more sense
+
+On your own, learn more about implementation at [dropzonejs.com](https://www.dropzonejs.com/#installation)
+
+##### Core Example
+
+| **26** :$
+```
+sudo mkdir web/dropzone_uploads && \
+git clone https://github.com/enyo/dropzone.git && \
+sudo cp dropzone/dist/min/dropzone.min.css web/ && \
+sudo cp dropzone/dist/min/dropzone.min.js web/ && \
+sudo cp core/10-dropzone.html web/dropzone.html && \
+sudo cp core/10-dropzone.php web/dropzone.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-dropzone.html core/10-dropzone.php && \
+ls web
+```
+
+| **B-26** :// `localhost/web/dropzone.html`
+
+1. Look in ~/School/VIP/501/test_uploads
+2. Drag files into the area: *"Drop files here to upload"*
+3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
+4. Repeat these steps with many files, including fake
+
+| **27** :$
+```
+ls web/uploads
+```
+
+**We have achieved drag-in file uploading**
+
+Now, it's time to implement that into the rest of our webapp framework
 
 
 
-
-| **27** :> `SELECT * FROM series;`
-
-| **27** ://phpMyAdmin **> series**
+### Implement with TinyMCE & Medium
 
 
-Linux processing
-- images - imagemagick
-- audio/video - ffmpeg
-- posts as files .md .pdf .odt - pandoc
+
+| **29** :> `SELECT * FROM uploads;`
+
+| **29** ://phpMyAdmin **> uploads**
+
+
+
 
 ___
 
@@ -459,4 +534,4 @@ ___
 
 ___
 
-#### [Lesson 11: OOP & Production](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
+#### [Lesson 11: OOP & PDO](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
