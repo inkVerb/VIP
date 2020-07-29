@@ -501,6 +501,34 @@ ls web/dropzone_uploads
 
 Now, it's time to implement that into what we have so far
 
+### Media Library
+
+| **28** :$
+```
+sudo mkdir -p web/media/uploads web/media/docs web/media/audio web/media/video web/media/images && \
+sudo cp core/10-medialibrary7.php web/medialibrary.php && \
+sudo cp core/10-upload7.php web/upload.php && \
+sudo cp core/10-style7.css web/style.css && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-medialibrary7.php core/10-upload7.php core/10-style7.css && \
+ls web web/media
+```
+
+*Note:*
+
+- *style.css*
+  - *`@import` will include another CSS file, in this case the Dropzone CSS*
+  - *`@import` is finicky about a relative path and may require "`./`"*
+  - *`@import url("https://localhost/full/path/style.css")` imports from a full URL*
+- *upload.php*
+- *medialibrary.php*
+
+
+// This currently needs to involve Dropzone settings so medialibrary.php can recognize responses
+
+
+| **B-28** :// `localhost/web/medialibrary.php`
+
 
 
 
@@ -632,8 +660,10 @@ Now, we implement our Media Library into TinyMCE
 ### TinyMCE with Custom Media Library
 
 - Custom TinyMCE button to open a Media Library chooser (uses normal "image" icon)
+  - Probably remove "media" button from the very start in Lesson 8
 - Buttons in ML to insert images, audio, video, and documents with certain sizes and appropriate controls.
-
+  - Option for media/icon embed
+  - Option for simple "URL link" embed
 - Media Library to utilize TinyMCE image editor, remove image editing from normal TinyMCE.
 
 
