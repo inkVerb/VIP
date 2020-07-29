@@ -441,27 +441,6 @@ ls web/uploads
 ls web/uploads
 ```
 
-
-
-### Process Uploaded Files
-
-
-Linux processing
-
-- images - imagemagick
-- audio/video - ffmpeg
-- posts as files .md .pdf .odt - pandoc
-
-SQL processing
-
-- Make database entries
-- Recall images from a library
-
-
-
-
-
-
 ### JavaScript Drag-in Uploader
 
 #### Dropzone.js
@@ -498,6 +477,14 @@ atom core/10-dropzone.html core/10-dropzone.php && \
 ls web
 ```
 
+*Note:*
+
+- *dropzone.html*
+  - *This uses dropzone.js JS and CSS files*
+  - *The `<form>` calls dropzone.php*
+- *dropzone.php*
+  - *This works in the background, like an AJAX call with no response*
+
 | **B-26** :// `localhost/web/dropzone.html`
 
 1. Look in ~/School/VIP/501/test_uploads
@@ -507,22 +494,152 @@ ls web
 
 | **27** :$
 ```
-ls web/uploads
+ls web/dropzone_uploads
 ```
 
-**We have achieved drag-in file uploading**
+*We have achieved drag-in file uploading*
 
-Now, it's time to implement that into the rest of our webapp framework
-
-
-
-### Implement with TinyMCE & Medium
+Now, it's time to implement that into what we have so far
 
 
 
-| **29** :> `SELECT * FROM uploads;`
 
-| **29** ://phpMyAdmin **> uploads**
+
+### Process Uploaded Files
+
+- Dropzone AJAX file uploader to use the same PHP script as our other uploader
+
+Linux processing
+
+- images - imagemagick
+- image sizes & thumbnail for Media Library
+- audio/video - ffmpeg
+- posts as files .md .pdf .odt - pandoc
+
+SQL processing
+
+- Make database entries
+- Recall images from a library
+
+
+| **00** :> `SELECT * FROM uploads;`
+
+| **00** ://phpMyAdmin **> uploads**
+
+Media Library
+
+- Delete images
+- View full image
+- Edit default Title, Alt
+- Change filename
+
+
+
+
+
+
+
+
+### Upload with TinyMCE
+
+From [Lesson 8](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-08.md) we already have TinyMCE from [here](https://github.com/tinymce/tinymce-dist)
+
+The directory "tinymce-dist" is at "web/tinymce"
+
+#### TinyMCE Image Upload
+
+| **00** :$
+```
+sudo mkdir web/tinymce_uploads && \
+sudo cp core/10-tiny-image-upload.html web/tiny.html && \
+sudo cp core/10-tiny-upload.php web/tiny-upload.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-tiny-image-upload.html core/10-tiny-upload.php && \
+ls web
+```
+
+*Note:*
+
+- *Settings "`// Added for uploads & images`"*
+- *`images_upload_url` chooses our upload handler: tiny-upload.php*
+- *`images_upload_handler` basically tells TinyMCE to AJAX-processes the upload (with tiny-upload.php)*
+- *tiny-upload.php AJAX uploads, then sends the file's location in JSON:'filepath'*
+- *The TinyMCE `images_upload_handler` function interprets that JSON*
+
+| **B-00** :// `localhost/web/tiny.html`
+
+**Upload with the image uploader**
+
+1. Look in ~/School/VIP/501/test_uploads
+2. In TinyMCE: Click the "image" button > Upload
+3. Drag in any .png or .jpg file to the upload area
+4. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
+
+| **00** :$
+```
+ls web/tinymce_uploads
+```
+
+**Upload "automatically"**
+
+1. Look in ~/School/VIP/501/test_uploads
+2. Drag any image directly into the TinyMCE editor area
+3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
+4. Note the file name was preserved
+
+| **00** :$
+```
+ls web/tinymce_uploads
+```
+
+*We have an image uploader set, not we need to do other files, including automatic uploads*
+
+#### TinyMCE File & Media Upload
+
+| **00** :$
+```
+sudo cp core/10-tiny-file-upload.html web/tiny.html && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-tiny-file-upload.html && \
+ls web
+```
+
+*Note:*
+
+- *Settings "`// Added for media & files`"*
+- *`file_picker_callback` enables and defines the upload file icon in the image upload dialog*
+
+| **B-00** :// `localhost/web/tiny.html` *(Same)*
+
+**Upload with the "file picker"**
+
+1. In TinyMCE: Click the "image" button > General: "upload" icon
+2. Select an image file from ~/School/VIP/501/test_uploads
+3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
+4. Note the file name was preserved
+
+| **00** :$
+```
+ls web/tinymce_uploads
+```
+
+*We have been uploading files, but we can't choose from other files we've already uploaded*
+
+Now, we implement our Media Library into TinyMCE
+
+
+
+### TinyMCE with Custom Media Library
+
+- Custom TinyMCE button to open a Media Library chooser (uses normal "image" icon)
+- Buttons in ML to insert images, audio, video, and documents with certain sizes and appropriate controls.
+
+- Media Library to utilize TinyMCE image editor, remove image editing from normal TinyMCE.
+
+
+### Medium Editor with Custom Media Libary
+
+
 
 
 

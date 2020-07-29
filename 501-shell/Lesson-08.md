@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `pieces` (
 
 *...Use that table by adding a "Piece" `<form>` to our "Editor" page...*
 
-### Add our `<form>` to the Rditor
+### Add our `<form>` to the Editor
 
 | **3** :$
 ```
@@ -409,7 +409,7 @@ On your own, learn more about implementation at [tiny.cloud](https://www.tiny.cl
 
 Let's just watch it work...
 
-##### Core Example
+##### Core Example: CDN (Online JS)
 
 | **15** :$
 ```
@@ -441,6 +441,8 @@ We can download TinyMCE JavaScript and host it locally...
 
 *(Note, we will use a `git clone` from the inkVerb fork, not from tinymce, so this Lesson will continue to work after the repo is updated; for a live server, we would `git clone` from the original)*
 
+##### Core Example: Local (JS on our server)
+
 | **16** :$
 ```
 sudo cp core/08-tiny-man.html web/tiny.html && \
@@ -453,7 +455,8 @@ ls web
 
 *Note:*
 
-- *iny.html includes the JavaScript locally, not from a CDN:*
+- *This example uses many common settings*
+- *tiny.html includes the JavaScript locally, not from a CDN:*
 ```html
 src='tinymce/tinymce.min.js'
 ```
@@ -473,9 +476,35 @@ https://github.com/tinymce/tinymce-dist
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-##### TinyMCE in Our 501 Blog
+##### Customize TinyMCE
+
+We can customize the TinyMCE toolbar layout
 
 | **17** :$
+```
+sudo cp core/08-tiny-cust.html web/tiny.html && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/08-tiny-cust.html && \
+ls web
+```
+
+*Note settings:*
+
+*- `block_formats`: defines items in the dropdown with "Paragraph, Heading 1, etc" (adds "inline code")*
+*- `toolbar`: lists tool buttons, including buttons defined in `toolbar_groups` (popup button groups)*
+*- `toolbar_groups`: defines our buttons in the toolbar: `formatgroup paragraphgroup toolgroup`*
+*- `toolbar_location`: put the tools at the bottom*
+*- `menubar`: `= false` removed "My Favorites, File, Edit, View, etc"*
+*- `paste_as_text`: "Paste" removes formatting (see it already "on" by clicking the "T" formatting button)*
+*- `content_css`: should be our style.css file so "Preview" uses our styling*
+
+
+| **B-17** :// `localhost/web/tiny.html` *(Ctrl + R to reload)*
+
+
+##### TinyMCE in Our 501 Blog
+
+| **18** :$
 ```
 sudo cp core/08-in.logincheck3-tinymce.php web/in.login_check.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -492,17 +521,17 @@ ls web
   - *This could be an ID with: `selector: '#tinymce_editor'`*
 - *That's it, just that simple*
 
-| **B-17** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+| **B-18** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 
 1. Apply or note some HTML styling with the WYSYWIG buttons
 2. Click "Update" or "Publish"
 3. See the changes on the blog and in the database...
 
-| **B-17** :// `localhost/web/blog.php`
+| **B-18** :// `localhost/web/blog.php`
 
-| **17** :> `SELECT * FROM pieces;`
+| **18** :> `SELECT * FROM pieces;`
 
-| **17** ://phpMyAdmin **> pieces**
+| **18** ://phpMyAdmin **> pieces**
 
 #### Medium Editor
 - [GitHub repo](https://github.com/yabwe/medium-editor/releases)
@@ -514,7 +543,7 @@ Let's just watch it work for now...
 
 ##### Core Example
 
-| **18** :$
+| **19** :$
 ```
 sudo cp core/08-medium-cdn.html web/medium.html && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -522,7 +551,7 @@ atom core/08-medium-cdn.html && \
 ls web
 ```
 
-| **B-18** :// `localhost/web/medium.html`
+| **B-19** :// `localhost/web/medium.html`
 
 1. Type something, it is a very blank text editor
 2. Highlight some text to see styling options
@@ -545,7 +574,7 @@ We can download the Medium editor JavaScript and host it locally...
 
 *(Note, we will use a `git clone` from the inkVerb fork, not from yabwe, so this Lesson will continue to work after the repo is updated; for a live server, we would `git clone` from the original)*
 
-| **19** :$
+| **20** :$
 ```
 sudo cp core/08-medium-man.html web/medium.html && \
 git clone https://github.com/inkverb/medium-editor.git && \
@@ -577,13 +606,13 @@ src="medium/js/medium-editor.js"
 https://github.com/inkverb/medium-editor
 ```
 
-| **B-19** :// `localhost/web/medium.html` *(Ctrl + R to reload)*
+| **B-20** :// `localhost/web/medium.html` *(Ctrl + R to reload)*
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
 ##### Medium's Dditor in Our 501 Blog
 
-| **20** :$
+| **21** :$
 ```
 sudo cp core/08-in.logincheck4-medium.php web/in.login_check.php && \
 sudo cp core/08-in.piecefunctions-medium.php web/in.piecefunctions.php && \
@@ -601,7 +630,7 @@ ls web
   - *This puts the JavaScript* ***after*** *our "Content" `<textarea>` HTML element*
   - *This implements the* ***class*** *`medium_editor` for the Medium editor JavaScript to act on*
 
-| **B-20** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+| **B-21** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 
 **Notice the text in the "Content" field has no border**
 
