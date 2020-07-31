@@ -422,6 +422,21 @@ ls web/uploads
 *Note upload.php:*
 
 - *Several more checks use `$file_extension` & `$file_mime` to identify and allow types of files*
+- *Note our handy `human_file_size()` function to show the file size in human-readable numbers and measures*
+
+| **human_file_size** : (uses a simpler PHP syntax)
+
+```php
+function human_file_size($size, $unit="") {
+  if ( (!$unit && $size >= 1<<30) || ($unit == "GB") )
+    return number_format($size/(1<<30),2)."GB";
+  if ( (!$unit && $size >= 1<<20) || ($unit == "MB") )
+    return number_format($size/(1<<20),2)."MB";
+  if ( (!$unit && $size >= 1<<10) || ($unit == "KB") )
+    return number_format($size/(1<<10),2)."KB";
+  return number_format($size)." bytes";
+}
+```
 
 | **B-24** :// `localhost/web/upload.php` (Same)
 
@@ -434,7 +449,7 @@ ls web/uploads
     - vip-red.bmp
 4. Click "Upload"
 5. Check the uploads directory:$ `ls web/uploads`
-6. Repeat these steps with many files, including fake
+6. Repeat these steps with many files, including fake and disallowed
 
 | **25** :$
 ```
@@ -490,7 +505,7 @@ ls web
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag files into the area: *"Drop files here to upload"*
 3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
-4. Repeat these steps with many files, including fake
+4. Repeat these steps with many files, including fake and disallowed
 
 | **27** :$
 ```
@@ -503,9 +518,11 @@ Now, it's time to implement that into what we have so far
 
 ### Media Library
 
+#### Dropzone to Interact with Our Own AJAX Handler
+
 | **28** :$
 ```
-sudo mkdir -p web/media/uploads web/media/docs web/media/audio web/media/video web/media/images && \
+sudo rm -r web/dropzone_uploads/*
 sudo cp core/10-medialibrary7.php web/medialibrary.php && \
 sudo cp core/10-upload7.php web/upload.php && \
 sudo cp core/10-style7.css web/style.css && \
@@ -521,21 +538,286 @@ ls web web/media
   - *`@import` is finicky about a relative path and may require "`./`"*
   - *`@import url("https://localhost/full/path/style.css")` imports from a full URL*
 - *upload.php*
+  - *Uploaded files go to: `web/dropzone_uploads/`*
+  - *Messages were simplified:*
+    - *`<p>` to `<span>...<br>`*
+    - *`$info_message` holds the message until one `echo` statement at the end*
+  - *This was stripped of HTML page support and only handles PHP-upload via AJAX*
 - *medialibrary.php*
-
-
-// This currently needs to involve Dropzone settings so medialibrary.php can recognize responses
-
+  - *Normal webapp header/footer content*
+  - *Our `<form>` from the Dropzone example*
+  - *`<p id="uploadresponse">` where our AJAX handler response will appear via JavaScript `innerHTML`*
+  - *`<!-- Dropzone settings -->`*
+    - *`acceptedFiles` bans the same files as `upload.php`, redundant and secure*
+    - *`paramName: "upload_file",` uses `$_FILES['upload_file']` in upload.php*
+      - *Dropzone's default is `paramName: "file"` using `$_FILES['file']` in upload.php*
+    - *We have a function to `// Process AJAX response`*
 
 | **B-28** :// `localhost/web/medialibrary.php`
 
+1. Look in ~/School/VIP/501/test_uploads
+2. Drag files into the area: *"Drop files here to upload"*
+3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
+4. Repeat these steps with many files, including fake and disallowed
 
+| **29** :$
+```
+ls web/dropzone_uploads
+```
+
+*Note:*
+
+- *Files are uploaded to `web/media/uploads`*
+  - *We will move them to *
+- *Response messages appear in the webpage, the HTML appears in a browser "alert" box*
+- *Dropzone accepts files not allowed*
+- *`upload.php` rejects files not allowed and sends the error message in response*
+- *If the same file is uploaded more than once, Dropzone displays the original file name, but the AJAX response shows the altered name*
+
+This only handles one file uploaded at a time
+
+Let's handle multiple uploads
+
+#### Dropzone to Restrict Mimetype *Before* AJAX
+
+| **30** :$
+```
+sudo rm -r web/dropzone_uploads/*
+sudo cp core/10-medialibrary8.php web/medialibrary.php && \
+atom core/10-medialibrary8.php  && \
+ls web web/media
+```
+
+*Note:*
+
+- *medialibrary.php: `<!-- Dropzone settings -->`*
+  - *`acceptedFiles` only allows the same types of files as `upload.php`*
+
+| **B-30** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
+
+1. Look in ~/School/VIP/501/test_uploads
+2. Drag files into the area: *"Drop files here to upload"*
+3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
+4. Repeat these steps with many files, including fake and disallowed
+
+| **31** :$
+```
+ls web/dropzone_uploads
+```
+
+*Note disallowed files:*
+
+- *Are indicated by Dropzone*
+- *Are not uploaded, thus have no AJAX response*
+
+#### Dropzone Our AJAX with Multiple Uploads
+
+Multiple files change the `$_FILES` array, so we must change some things
+
+First, see what the `$_FILES` array for a single file upload looks like
+
+| **32** :$
+```
+sudo rm -r web/dropzone_uploads/*
+sudo cp core/10-upload9.php web/upload.php && \
+atom core/10-upload9.php  && \
+ls web web/media
+```
+
+*Note:*
+
+- *upload.php*
+  - *Shows what's in the `$_FILES` array via `var_dump()`*
+  - *We process the upload simply so we can see what happens with:*
+    - *`$_FILES['upload_file']['tmp_name']`*
+    - *`$_FILES['upload_file']['name']`*
+
+| **B-32** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
+
+1. Look in ~/School/VIP/501/test_uploads
+2. Drag single, then multiple files into the area: *"Drop files here to upload"*
+3. Before clicking "OK" to acknowledge the JS alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
+4. Repeat these steps with many files, including fake and disallowed
+
+| **33** :$
+```
+ls web/dropzone_uploads
+```
+
+*Note the array output...*
+
+| **`$_FILES` array for 1 file, single-upload** :
+
+```php
+array(1) {
+  ["upload_file"]=>
+  array(5) {
+    ["name"]=>
+    string(8) "file.xxx"
+    ["type"]=>
+    string(11) "mimetype/xxx"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpa1b2c3"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(1234567)
+  }
+}
+```
+
+Second, allow multiple uploads and see what the `$_FILES` array looks like for many files
+
+| **34** :$
+```
+sudo rm -r web/dropzone_uploads/*
+sudo cp core/10-medialibrary10.php web/medialibrary.php && \
+sudo cp core/10-upload10.php web/upload.php && \
+atom core/10-medialibrary10.php core/10-upload10.php && \
+ls web web/media
+```
+
+*Note when uploading multiple files that all files are uploaded at once, before clicking "OK" to acknowledge the alerts*
+
+*Note:*
+
+- *medialibrary.php: `<!-- Dropzone settings -->`*
+  - *Allows multiple uploads, plus some nice settings:*
+    - *`uploadMultiple: true,`*
+    - *`maxFiles: 50,` limits how many can to into the ulpoad queue*
+    - *`parallelUploads: 1,` means only 1 upload at a time*
+      - *This helps files stay in order, which writers, bloggers, and marketers might like better*
+        - *Many programmers like multiple simultaneous uploads because of how they view code*
+        - *We're not writing this for ourselves, but for the people who will use it*
+- *upload.php*
+  - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
+  - *`$_FILES['upload_file']['tmp_name'][0]`*
+  - *`$_FILES['upload_file']['name'][0]`*
+
+| **B-34** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
+
+1. Look in ~/School/VIP/501/test_uploads
+2. Drag multiple files into the area: *"Drop files here to upload"*
+3. Before clicking "OK" to acknowledge the JS alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
+4. Repeat these steps with many files, including fake and disallowed
+
+| **35** :$
+```
+ls web/dropzone_uploads
+```
+
+*Note about uploads:*
+
+- *Each file is uploaded one at a time, between clicking "OK" to acknowledge the alerts*
+- *The blue information about each file also changes between "OK" clicks, as each file is uploaded*
+
+*Note the array output...*
+
+*Let's look more closely...*
+
+| **`$_FILES` array for 1 file, simultaneous** :
+
+```php
+array(1) {
+  ["upload_file"]=>
+  array(5) {
+    ["name"]=>
+    array(1) {
+      [0]=>
+      string(8) "file.xxx"
+    }
+    ["type"]=>
+    array(1) {
+      [0]=>
+      string(11) "mimetype/xxx"
+    }
+    ["tmp_name"]=>
+    array(1) {
+      [0]=>
+      string(14) "/tmp/phpa1b2c3"
+    }
+    ["error"]=>
+    array(1) {
+      [0]=>
+      int(0)
+    }
+    ["size"]=>
+    array(1) {
+      [0]=>
+      int(1234567)
+    }
+  }
+}
+```
+
+*Review...*
+
+| **`$_FILES` array for 1 file, single-upload** :
+
+```php
+array(1) {
+  ["upload_file"]=>
+  array(5) {
+    ["name"]=>
+    string(8) "file.xxx"
+    ["type"]=>
+    string(11) "mimetype/xxx"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpa1b2c3"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(1234567)
+  }
+}
+```
+
+Uploading multiple files (via `uploadMultiple: true,`) puts files in a queue, processing them in sequence
+
+(We set `parallelUploads:` to `1` so it is one at a time, not eg. `3` for three at a time, **but there would be no other differences in our code**)
+
+This uses a 3-D array, but Dropzone only has one item each
+
+The only change to code is that we must add `[0]` to the end of each `$_FILES` item
+
+So, our entire upload handler must be updated with `[0]`...
+
+| **36** :$
+```
+sudo rm -r web/dropzone_uploads/*
+sudo cp core/10-medialibrary11.php web/medialibrary.php && \
+sudo cp core/10-upload11.php web/upload.php && \
+atom core/10-medialibrary11.php core/10-upload11.php && \
+ls web web/media
+```
+
+*Note:*
+
+- *upload.php*
+  - *Is back to the full processor as before*
+  - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
+- *medialibrary.php*
+  - *Concatenates each response so all are displayed in the HTML page*
+
+| **B-36** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
+
+1. Look in ~/School/VIP/501/test_uploads
+2. Drag multiple files into the area: *"Drop files here to upload"*
+3. Before clicking "OK" to acknowledge the JS alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
+4. Repeat these steps with many files, including fake and disallowed
+
+| **37** :$
+```
+ls web/dropzone_uploads
+```
 
 
 
 ### Process Uploaded Files
 
-- Dropzone AJAX file uploader to use the same PHP script as our other uploader
+// We will need this for our more extensive organization of uploaded files:
+
+sudo mkdir -p web/media/uploads web/media/docs web/media/audio web/media/video web/media/images && \
 
 Linux processing
 
@@ -620,7 +902,9 @@ ls web/tinymce_uploads
 ls web/tinymce_uploads
 ```
 
-*We have an image uploader set, not we need to do other files, including automatic uploads*
+We have an image uploader set
+
+Now, we need to process other files, including automatic uploads
 
 #### TinyMCE File & Media Upload
 
@@ -651,7 +935,7 @@ ls web
 ls web/tinymce_uploads
 ```
 
-*We have been uploading files, but we can't choose from other files we've already uploaded*
+We have been uploading files, but we can't choose from other files we've already uploaded
 
 Now, we implement our Media Library into TinyMCE
 
