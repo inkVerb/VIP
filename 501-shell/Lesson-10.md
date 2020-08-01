@@ -824,6 +824,147 @@ This helped us understand the order of events in multiple uploads, mainly that i
 
 We will stop using JavaScript browser alerts in the future
 
+### Upload with TinyMCE
+
+From [Lesson 8](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-08.md) we already have TinyMCE from [here](https://github.com/tinymce/tinymce-dist)
+
+The directory "tinymce-dist" is at "web/tinymce"
+
+#### TinyMCE Image Upload
+
+| **38** :$
+```
+sudo mkdir web/tinymce_uploads && \
+sudo cp core/10-tiny-image-upload.html web/tiny.html && \
+sudo cp core/10-tiny-upload.php web/tiny-upload.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-tiny-image-upload.html core/10-tiny-upload.php && \
+ls web
+```
+
+*Note:*
+
+- *Settings "`// Added for uploads & images`"*
+- *`images_upload_url` chooses our upload handler: tiny-upload.php*
+- *`images_upload_handler` basically tells TinyMCE to AJAX-processes the upload (with tiny-upload.php)*
+- *tiny-upload.php AJAX uploads, then sends the file's location in JSON:'filepath'*
+- *The TinyMCE `images_upload_handler` function interprets that JSON*
+
+| **B-38** :// `localhost/web/tiny.html`
+
+**Upload with the image uploader**
+
+1. Look in ~/School/VIP/501/test_uploads
+2. In TinyMCE: Click the "image" button > Upload
+3. Drag in any .png or .jpg file to the upload area
+4. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
+
+| **39** :$
+```
+ls web/tinymce_uploads
+```
+
+**Upload "automatically"**
+
+1. Look in ~/School/VIP/501/test_uploads
+2. Drag any image directly into the TinyMCE editor area
+3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
+4. Note the file name was preserved
+
+| **40** :$
+```
+ls web/tinymce_uploads
+```
+
+We have an image uploader set
+
+Now, we need to process other files, including automatic uploads
+
+#### TinyMCE File & Media Upload
+
+| **41** :$
+```
+sudo cp core/10-tiny-file-upload.html web/tiny.html && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-tiny-file-upload.html && \
+ls web
+```
+
+*Note:*
+
+- *Settings "`// Added for media & files`"*
+- *`file_picker_callback` enables and defines the upload file icon in the image upload dialog*
+
+| **B-41** :// `localhost/web/tiny.html` *(Same)*
+
+**Upload with the "file picker"**
+
+1. In TinyMCE: Click the "image" button > General: "upload" icon
+2. Select an image file from ~/School/VIP/501/test_uploads
+3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
+4. Note the file name was preserved
+
+| **42** :$
+```
+ls web/tinymce_uploads
+```
+
+We have been uploading files, but we can't choose from other files we've already uploaded
+
+Now, we implement our Media Library into TinyMCE
+
+**Insert media item into TinyMCE**
+
+We will click something outside the TinyMCE editor to make a media item appear inside the TinyMCE `<textarea>`
+
+```html
+<!-- TinyMCE insert image -->
+<br><button onclick="addImageToTiny('myfile.jpg', 'My file', '128', '128', 'My file title');">add image</button><br>
+<script>
+  function addImageToTiny(thisFile, thisAlt='', h='', w='', thisTitle='') {
+    tinymce.activeEditor.insertContent('<img alt="'+thisAlt+'" title="'+thisTitle+'" height="'+h+'" width="'+w+'" src="uploads/'+thisFile+'">');
+  }
+</script>
+
+<!-- TinyMCE insert audio -->
+<br><button onclick="addAudioToTiny('myfile.mp3', 'audio/mp3');">add audio</button><br>
+<script>
+  function addAudioToTiny(thisFile, mimeType='') {
+    tinymce.activeEditor.insertContent('<audio controls><source src="uploads/'+thisFile+'" type="'+mimeType+'">Not supported.</audio> ');
+  }
+</script>
+
+<!-- TinyMCE insert video -->
+<br><button onclick="addVideoToTiny('myfile.webm', 'video/webm', '512', '910', '');">add video</button><br>
+<script>
+  function addVideoToTiny(thisFile, mimeType='', h='', w='', poster='') {
+    tinymce.activeEditor.insertContent('<video height="'+h+'" width="'+w+'" controls><source src="uploads/'+thisFile+'" type="'+mimeType+'">Not supported.</video> ');
+  }
+</script>
+```
+
+| **43** :$
+```
+sudo cp core/test_uploads/vip-blue.png web/uploads/ && \
+sudo cp core/test_uploads/audio.mp3 web/uploads/ && \
+sudo cp core/test_uploads/video.webm web/uploads/ && \
+sudo cp core/10-tiny-media-insert.html web/tiny.html && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-tiny-media-insert.html && \
+ls web web/uploads
+```
+
+*Note tiny.html*
+
+- *`<!-- TinyMCE insert ...` creates the `<button>` and the JavaScript function to add the media content to the TinyMCE `<textarea>`*
+
+| **B-43** :// `localhost/web/tiny.html` *(Same)*
+
+1. Click each "add ..." button, probably each on a new line
+2. Click the "<>" button in TinyMCE to see the code and the inserted media elements
+4. Click to play the audio and video to see that they work
+  - If you don't see playable buttons, click the "eye" button in TinyMCE to see rendered HTML
+
 
 
 
@@ -860,125 +1001,6 @@ Media Library
 
 
 
-
-
-
-
-### Upload with TinyMCE
-
-From [Lesson 8](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-08.md) we already have TinyMCE from [here](https://github.com/tinymce/tinymce-dist)
-
-The directory "tinymce-dist" is at "web/tinymce"
-
-#### TinyMCE Image Upload
-
-| **00** :$
-```
-sudo mkdir web/tinymce_uploads && \
-sudo cp core/10-tiny-image-upload.html web/tiny.html && \
-sudo cp core/10-tiny-upload.php web/tiny-upload.php && \
-sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-tiny-image-upload.html core/10-tiny-upload.php && \
-ls web
-```
-
-*Note:*
-
-- *Settings "`// Added for uploads & images`"*
-- *`images_upload_url` chooses our upload handler: tiny-upload.php*
-- *`images_upload_handler` basically tells TinyMCE to AJAX-processes the upload (with tiny-upload.php)*
-- *tiny-upload.php AJAX uploads, then sends the file's location in JSON:'filepath'*
-- *The TinyMCE `images_upload_handler` function interprets that JSON*
-
-| **B-00** :// `localhost/web/tiny.html`
-
-**Upload with the image uploader**
-
-1. Look in ~/School/VIP/501/test_uploads
-2. In TinyMCE: Click the "image" button > Upload
-3. Drag in any .png or .jpg file to the upload area
-4. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
-
-| **00** :$
-```
-ls web/tinymce_uploads
-```
-
-**Upload "automatically"**
-
-1. Look in ~/School/VIP/501/test_uploads
-2. Drag any image directly into the TinyMCE editor area
-3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
-4. Note the file name was preserved
-
-| **00** :$
-```
-ls web/tinymce_uploads
-```
-
-We have an image uploader set
-
-Now, we need to process other files, including automatic uploads
-
-#### TinyMCE File & Media Upload
-
-| **00** :$
-```
-sudo cp core/10-tiny-file-upload.html web/tiny.html && \
-sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-tiny-file-upload.html && \
-ls web
-```
-
-*Note:*
-
-- *Settings "`// Added for media & files`"*
-- *`file_picker_callback` enables and defines the upload file icon in the image upload dialog*
-
-| **B-00** :// `localhost/web/tiny.html` *(Same)*
-
-**Upload with the "file picker"**
-
-1. In TinyMCE: Click the "image" button > General: "upload" icon
-2. Select an image file from ~/School/VIP/501/test_uploads
-3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
-4. Note the file name was preserved
-
-| **00** :$
-```
-ls web/tinymce_uploads
-```
-
-We have been uploading files, but we can't choose from other files we've already uploaded
-
-Now, we implement our Media Library into TinyMCE
-
-**Insert media item into TinyMCE**
-
-We will click something outside the TinyMCE editor to make a media item appear inside the TinyMCE `<textarea>`
-
-```html
-<!-- TinyMCE insert image -->
-<button onclick="addImageToTiny();">add image</button>
-<script>
-  function addImageToTiny(thisImage, thisAlt='', h='', w='', thisTitle='') {
-    tinymce.activeEditor.insertContent('<img alt="'+thisAlt+'" title="'+thisTitle+'" height="'+h+'" width="'+w+'" src="uploads/'+thisImage+'"/>');
-  }
-</script>
-```
-
-| **00** :$
-```
-sudo cp core/test_uploads/vip-blue.png web/uploads/ && \
-sudo cp core/10-tiny-media-insert.html web/tiny.html && \
-sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-tiny-media-insert.html && \
-ls web web/uploads
-```
-
-| **B-00** :// `localhost/web/tiny.html` *(Same)*
-
-
 ### TinyMCE with Custom Media Library
 
 - Custom TinyMCE button to open a Media Library chooser (uses normal "image" icon)
@@ -987,7 +1009,6 @@ ls web web/uploads
   - Option for media/icon embed
   - Option for simple "URL link" embed
 - Media Library to utilize TinyMCE image editor, remove image editing from normal TinyMCE.
-
 
 
 
