@@ -522,7 +522,7 @@ Now, it's time to implement that into what we have so far
 
 | **28** :$
 ```
-sudo rm -r web/dropzone_uploads/*
+sudo rm -rf web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary7.php web/medialibrary.php && \
 sudo cp core/10-upload7.php web/upload.php && \
 sudo cp core/10-style7.css web/style.css && \
@@ -582,7 +582,7 @@ Let's handle multiple uploads
 
 | **30** :$
 ```
-sudo rm -r web/dropzone_uploads/*
+sudo rm -rf web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary8.php web/medialibrary.php && \
 atom core/10-medialibrary8.php  && \
 ls web web/media
@@ -618,7 +618,7 @@ First, see what the `$_FILES` array for a single file upload looks like
 
 | **32** :$
 ```
-sudo rm -r web/dropzone_uploads/*
+sudo rm -rf web/dropzone_uploads/* && \
 sudo cp core/10-upload9.php web/upload.php && \
 atom core/10-upload9.php  && \
 ls web web/media
@@ -636,7 +636,7 @@ ls web web/media
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag single, then multiple files into the area: *"Drop files here to upload"*
-3. Before clicking "OK" to acknowledge the JS alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
+3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
 
 | **33** :$
@@ -670,7 +670,7 @@ Second, allow multiple uploads and see what the `$_FILES` array looks like for m
 
 | **34** :$
 ```
-sudo rm -r web/dropzone_uploads/*
+sudo rm -rf web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary10.php web/medialibrary.php && \
 sudo cp core/10-upload10.php web/upload.php && \
 atom core/10-medialibrary10.php core/10-upload10.php && \
@@ -698,7 +698,7 @@ ls web web/media
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag multiple files into the area: *"Drop files here to upload"*
-3. Before clicking "OK" to acknowledge the JS alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
+3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
 
 | **35** :$
@@ -784,7 +784,7 @@ So, our entire upload handler must be updated with `[0]`...
 
 | **36** :$
 ```
-sudo rm -r web/dropzone_uploads/*
+sudo rm -rf web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary11.php web/medialibrary.php && \
 sudo cp core/10-upload11.php web/upload.php && \
 atom core/10-medialibrary11.php core/10-upload11.php && \
@@ -797,19 +797,33 @@ ls web web/media
   - *Is back to the full processor as before*
   - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
 - *medialibrary.php*
-  - *Concatenates each response so all are displayed in the HTML page*
+  - *JavaScript concatenates each AJAX response with the variable: `upResponse`*
+    - *Each response is added to the previous*
+    - *Current response status (including all previous AJAX responses) is updated in the HTML page*
 
 | **B-36** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag multiple files into the area: *"Drop files here to upload"*
-3. Before clicking "OK" to acknowledge the JS alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
+3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
 
 | **37** :$
 ```
 ls web/dropzone_uploads
 ```
+
+*Note about uploads:*
+
+- *Each file is uploaded one at a time, between clicking "OK" to acknowledge the alerts (same as before)*
+- *The blue information about each file updates between "OK" clicks, adding information about each file as it is uploaded*
+
+To this point, we have separated uploads in the queue with the JavaScript browser alert and "OK" button
+
+This helped us understand the order of events in multiple uploads, mainly that it runs as a kind of loop
+
+We will stop using JavaScript browser alerts in the future
+
 
 
 
@@ -939,6 +953,30 @@ We have been uploading files, but we can't choose from other files we've already
 
 Now, we implement our Media Library into TinyMCE
 
+**Insert media item into TinyMCE**
+
+We will click something outside the TinyMCE editor to make a media item appear inside the TinyMCE `<textarea>`
+
+```html
+<!-- TinyMCE insert image -->
+<button onclick="addImageToTiny();">add image</button>
+<script>
+  function addImageToTiny(thisImage, thisAlt='', h='', w='', thisTitle='') {
+    tinymce.activeEditor.insertContent('<img alt="'+thisAlt+'" title="'+thisTitle+'" height="'+h+'" width="'+w+'" src="uploads/'+thisImage+'"/>');
+  }
+</script>
+```
+
+| **00** :$
+```
+sudo cp core/test_uploads/vip-blue.png web/uploads/ && \
+sudo cp core/10-tiny-media-insert.html web/tiny.html && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-tiny-media-insert.html && \
+ls web web/uploads
+```
+
+| **B-00** :// `localhost/web/tiny.html` *(Same)*
 
 
 ### TinyMCE with Custom Media Library
@@ -949,6 +987,8 @@ Now, we implement our Media Library into TinyMCE
   - Option for media/icon embed
   - Option for simple "URL link" embed
 - Media Library to utilize TinyMCE image editor, remove image editing from normal TinyMCE.
+
+
 
 
 ### Medium Editor with Custom Media Libary
