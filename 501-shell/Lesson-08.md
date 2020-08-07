@@ -610,9 +610,32 @@ https://github.com/inkverb/medium-editor
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-##### Medium's Dditor in Our 501 Blog
+##### Medium Editor Plugin Example: Tables
+- [GitHub repo](https://github.com/yabwe/medium-editor-tables)
+- [GitHub fork](https://github.com/inkVerb/medium-editor-tables) (in case it doesn't work)
+
+Medium has an effective way to add plugins
+
+This plugin adds the ability to insert an HTML `<table>`
 
 | **21** :$
+```
+sudo cp core/08-medium-tables.html web/medium.html && \
+git clone https://github.com/yabwe/medium-editor-tables.git && \
+sudo cp medium-editor-tables/dist/css/*.css web/medium/css && \
+sudo cp medium-editor-tables/dist/js/*.js web/medium/js && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/08-medium-tables.html && \
+ls web web/uploads
+```
+
+| **B-21** :// `localhost/web/medium.html` *(Same)*
+
+*Notice the "Table" button in the editor*
+
+##### Medium's Editor in Our 501 Blog
+
+| **22** :$
 ```
 sudo cp core/08-in.logincheck4-medium.php web/in.login_check.php && \
 sudo cp core/08-in.piecefunctions-medium.php web/in.piecefunctions.php && \
@@ -630,7 +653,7 @@ ls web
   - *This puts the JavaScript* ***after*** *our "Content" `<textarea>` HTML element*
   - *This implements the* ***class*** *`medium_editor` for the Medium editor JavaScript to act on*
 
-| **B-21** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+| **B-22** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 
 **Notice the text in the "Content" field has no border**
 

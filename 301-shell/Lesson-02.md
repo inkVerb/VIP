@@ -129,65 +129,67 @@ ___
 
 *Nothing happened because it should be used with a variable...*
 
-| **32** :$ `read Variable && echo $Variable`
+| **32** :$ `read Variable`
 
-| **33** :$ `gedit 02-read-1`
+| **33** :$ `echo $Variable`
 
-| **34** :$ `./02-read-1`
+| **34** :$ `gedit 02-read-1`
+
+| **35** :$ `./02-read-1`
 
 *Now type something, then press Enter*
 
-| **35** :$ `gedit 02-read-2`
+| **36** :$ `gedit 02-read-2`
 
 *Note -p is for "Prompt", making things simpler*
 
-| **36** :$ `./02-read-2`
+| **37** :$ `./02-read-2`
 
-| **37** :$ `gedit 02-read-3`
+| **38** :$ `gedit 02-read-3`
 
-| **38** :$ `ls`
+| **39** :$ `ls`
 
-| **39** :$ `./02-read-3`
+| **40** :$ `./02-read-3`
 
 *Enter whatever you want, only letters & numbers, no spaces*
 
-| **40** :$ `ls`
+| **41** :$ `ls`
 
 *Note it created the file*
 
-| **41** :$ `gedit 02-read-4`
+| **42** :$ `gedit 02-read-4`
 
-| **42** :$ `./02-read-4`
+| **43** :$ `./02-read-4`
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 *Note `-r` is for "Raw", to allow all special characters*
 
-| **43** :$ `gedit 02-read-5`
+| **44** :$ `gedit 02-read-5`
 
-| **44** :$ `./02-read-5`
+| **45** :$ `./02-read-5`
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 ### IV. `sleep`
 
-| **45** :$ `sleep 1`
+| **46** :$ `sleep 1`
 
-| **46** :$ `sleep 3`
+| **47** :$ `sleep 3`
 
-| **47** :$ `gedit 02-sleep-1`
+| **48** :$ `gedit 02-sleep-1`
 
-| **48** :$ `./02-sleep-1`
+| **49** :$ `./02-sleep-1`
 
-| **49** :$ `gedit 02-sleep-2`
+| **50** :$ `gedit 02-sleep-2`
 
-| **50** :$ `./02-sleep-2 "I like apples."`
+| **51** :$ `./02-sleep-2 "I like apples."`
 
 *Put it together...*
 
-| **51** :$ `gedit 02-sleep-3`
+| **52** :$ `gedit 02-sleep-3`
 
-| **52** :$ `./02-sleep-3`
+| **53** :$ `./02-sleep-3`
 
 *Now type something, then press Enter*
 
@@ -199,17 +201,17 @@ ___
 
 *Make sure LibreOffice is not running, ignore any error message...*
 
-| **53** :$ `killall soffice.bin`
+| **54** :$ `killall soffice.bin`
 
 *Open LibreOffice Writer from the terminal...*
 
-| **54** :$ `lowriter`
+| **55** :$ `lowriter`
 
 *Now, close Writer in the GUI (click the X to close the window)...*
 
 *...The terminal returns to the prompt*
 
-| **55** :$ `lowriter &`
+| **56** :$ `lowriter &`
 
 *Note the terminal returned directly to the prompt because we used `&`*
 
@@ -217,23 +219,23 @@ ___
 
 *Let's use `wait` in a script...*
 
-| **56** :$ `gedit 02-waiter-1`
+| **57** :$ `gedit 02-waiter-1`
 
-| **57** :$ `./02-waiter-1`
+| **58** :$ `./02-waiter-1`
 
 *Again, close Writer in the GUI, then watch for the message in the terminal*
 
-| **58** :$ `gedit 02-waiter-2`
+| **59** :$ `gedit 02-waiter-2`
 
-| **59** :$ `./02-waiter-2`
+| **60** :$ `./02-waiter-2`
 
 *Note that the script finished with it's message and the terminal returned to the prompt without closing Writer*
 
 *Again, close Writer in the GUI*
 
-| **60** :$ `gedit 02-waiter-3`
+| **61** :$ `gedit 02-waiter-3`
 
-| **61** :$ `./02-waiter-3`
+| **62** :$ `./02-waiter-3`
 
 *Note the script did not finish and the terminal is still busy*
 
@@ -247,19 +249,19 @@ ___
 
 *Start Writer...*
 
-| **62** :$ `lowriter &`
+| **63** :$ `lowriter &`
 
 *Now, "wait" for it to close by watching for its PID to close...*
 
-| **63** :$ `pgrep lowriter`
+| **64** :$ `pgrep lowriter`
 
 *Note the PID number and replace 55555 with that number below:*
 
-| **64a** :$ `wait 55555`
+| **65a** :$ `wait 55555`
 
 **OR**
 
-| **64b** :$ `wait $(pgrep lowriter)` *(or you can use this instead)*
+| **65b** :$ `wait $(pgrep lowriter)` *(or you can use this instead)*
 
 *Note `wait` is "waiting" for Writer's PID to end*
 

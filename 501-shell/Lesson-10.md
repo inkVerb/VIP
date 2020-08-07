@@ -136,7 +136,7 @@ $file_mime = mime_content_type($temp_file); // Get the mime type, requires full 
 
 **Mime Types**
 
-- The mime type is a file's type based on what is inside the file, not just the extension
+- The mime type is a file's type based on what is inside the file, not just the file name's extension
 - This can be useful for security, to avoid hacks or opening a file with the wrong application
 - Your operating system knows which application to open a file with based on the mime type
 - Your list of mime types for your desktop environment is probably located at: `~/.config/mimeapps.list`
@@ -549,6 +549,10 @@ ls web web/media
   - *`<p id="uploadresponse">` where our AJAX handler response will appear via JavaScript `innerHTML`*
   - *`<!-- Dropzone settings -->`*
     - *`acceptedFiles` bans the same files as `upload.php`, redundant and secure*
+      - *This list includes `.md`*
+        - *Dropzone settings allow both mimetype and file extensions in this list*
+        - *Markdown files will be rejected by Dropzone, even with allowing `text/plain`*
+        - *This would be an insecure test by itselv, but PHP will check the mimetype anyway*
     - *`paramName: "upload_file",` uses `$_FILES['upload_file']` in upload.php*
       - *Dropzone's default is `paramName: "file"` using `$_FILES['file']` in upload.php*
     - *We have a function to `// Process AJAX response`*
@@ -945,10 +949,10 @@ We will click something outside the TinyMCE editor to make a media item appear i
 
 | **43** :$
 ```
+sudo cp core/10-tiny-media-insert.html web/tiny.html && \
 sudo cp core/test_uploads/vip-blue.png web/uploads/ && \
 sudo cp core/test_uploads/audio.mp3 web/uploads/ && \
 sudo cp core/test_uploads/video.webm web/uploads/ && \
-sudo cp core/10-tiny-media-insert.html web/tiny.html && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/10-tiny-media-insert.html && \
 ls web web/uploads
@@ -965,14 +969,125 @@ ls web web/uploads
 4. Click to play the audio and video to see that they work
   - If you don't see playable buttons, click the "eye" button in TinyMCE to see rendered HTML
 
+**Insert media into Medium Editor**
+
+| **44** :$
+```
+sudo cp core/10-medium-media-insert.html web/medium.html && \
+atom core/10-medium-media-insert.html && \
+ls web web/uploads
+```
+
+| **B-44** :// `localhost/web/medium.html`
+
+1. Click each "add ..." button, probably each on a new line
+2. Try to delete media items
+3. Note it is difficult to delete the audio entry
+
+**UX product roadmap dilemma:**
+
+Medium Editor is a "zen-like" text editor:
+
+- showing "only the words"
+- using as few styling buttons as possible, if any at all
+
+Adding media items can be contrary to the UX philosophy of a "zen-like" text editor
+
+To make Medium Editor work well with media (adding image alignment properties etc) would take extensive programming in JavaScript, which is:
+
+- beyond the scope of this course
+- beyond the scope of a "zen-like" editor
+
+Until Medium Editor allows easy delete/properties of inserted media, our product roadmap will:
+
+- allow a simple Medium Editor as an option for our users, with no "insert media" options
+- require users to switch on TinyMCE to manage media and modify image properties
+
+
+### Process Uploaded Files: SQL Database
+
+| **45** :$
+```
+sudo mkdir -p web/media/docs web/media/audio web/media/video web/media/images && \
+sudo cp core/10-medialibrary12.php web/medialibrary.php && \
+sudo cp core/10-upload12.php web/upload.php && \
+atom core/10-medialibrary12.php core/10-upload12.php && \
+ls web web/media
+```
+
+| **45** :>
+```sql
+CREATE TABLE IF NOT EXISTS `media_library` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `size` BIGINT UNSIGNED DEFAULT 1,
+  `mime_type` VARCHAR(128) NOT NULL,
+  `basic_type` VARCHAR(12) NOT NULL,
+  `location` VARCHAR(255) NOT NULL,
+  `file_base` VARCHAR(255) NOT NULL,
+  `file_extension` VARCHAR(52) NOT NULL,
+  `title_text` VARCHAR(255) DEFAULT NULL,
+  `alt_text` VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+```
+
+| **45** ://phpMyAdmin **> webapp_db > media_library**
+
+// In-progress
+// Prepare media library list with alternating row colors
+// Prepare AJAX "just uploaded" response with alternating row colors
+// Style the upload area and newly uploaded files to appear at the side of the page
+  // Make this location responsive
+
+// Later add buttons in the media library
+  // Delete, buttons for each newly-uploaded file
+  // Edit/title/alt (image)
+  // Insert media JavaScript button
+  // Delete button
+  // Rename file
+
+  // Create new file sizes on piece insert (keep track in new table)
+  // "Inserted media" to have piece and delete option
+
+*Note:*
+
+- *upload.php*
+  - **
+- *medialibrary.php*
+  - **
+
+| **B-45** :// `localhost/web/medialibrary.php` (Same)
+
+1. Look in ~/School/VIP/501/test_uploads
+2. Drag multiple files into the area: *"Drop files here to upload"*
+3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
+4. Repeat these steps with many files, including fake and disallowed
+
+| **45** :$
+```
+ls web/dropzone_uploads
+```
+
+*Note about uploads:*
 
 
 
-### Process Uploaded Files
 
-// We will need this for our more extensive organization of uploaded files:
 
-sudo mkdir -p web/media/uploads web/media/docs web/media/audio web/media/video web/media/images && \
+
+
+
+
+
+
+SQL processing
+
+- Make database entries
+- Recall images from a library
+
+
+
+sudo mkdir -p web/media/uploads && \
 
 Linux processing
 
@@ -981,10 +1096,7 @@ Linux processing
 - audio/video - ffmpeg
 - posts as files .md .pdf .odt - pandoc
 
-SQL processing
 
-- Make database entries
-- Recall images from a library
 
 
 | **00** :> `SELECT * FROM uploads;`
