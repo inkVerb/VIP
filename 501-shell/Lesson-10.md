@@ -560,7 +560,7 @@ ls web web/media
 | **B-28** :// `localhost/web/medialibrary.php`
 
 1. Look in ~/School/VIP/501/test_uploads
-2. Drag files into the area: *"Drop files here to upload"*
+2. Drag files into the area: *"Drop to upload!"*
 3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
 
@@ -600,7 +600,7 @@ ls web web/media
 | **B-30** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
 
 1. Look in ~/School/VIP/501/test_uploads
-2. Drag files into the area: *"Drop files here to upload"*
+2. Drag files into the area: *"Drop to upload!"*
 3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
 
@@ -639,7 +639,7 @@ ls web web/media
 | **B-32** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
 
 1. Look in ~/School/VIP/501/test_uploads
-2. Drag single, then multiple files into the area: *"Drop files here to upload"*
+2. Drag single, then multiple files into the area: *"Drop to upload!"*
 3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
 
@@ -701,7 +701,7 @@ ls web web/media
 | **B-34** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
 
 1. Look in ~/School/VIP/501/test_uploads
-2. Drag multiple files into the area: *"Drop files here to upload"*
+2. Drag multiple files into the area: *"Drop to upload!"*
 3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
 
@@ -808,7 +808,7 @@ ls web web/media
 | **B-36** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
 
 1. Look in ~/School/VIP/501/test_uploads
-2. Drag multiple files into the area: *"Drop files here to upload"*
+2. Drag multiple files into the area: *"Drop to upload!"*
 3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
 
@@ -1009,11 +1009,34 @@ Until Medium Editor allows easy delete/properties of inserted media, our product
 | **45** :$
 ```
 sudo mkdir -p web/media/docs web/media/audio web/media/video web/media/images && \
+sudo cp core/10-in.logincheck.php web/in.login_check.php && \
 sudo cp core/10-medialibrary12.php web/medialibrary.php && \
 sudo cp core/10-upload12.php web/upload.php && \
-atom core/10-medialibrary12.php core/10-upload12.php && \
+sudo cp core/10-style12.css web/style.css && \
+atom core/10-medialibrary12.php core/10-upload12.php core/10-style12.css core/10-in.logincheck.php && \
 ls web web/media
 ```
+
+*Note the `web/media` directory has many subdirectories:*
+
+  - *`docs`*
+  - *`audio`*
+  - *`video`*
+  - *`images`*
+
+*Note:*
+
+- *in.login_check.php*
+  - *Added a link to medialibrary.php in the `<header>`*
+- *medialibrary.php*
+  - *The JavaScript `alert` for each upload is commented and will be deleted in the future*
+  - *We create `<table class="contentlib" id="media-table">`*
+    - *This is similar to pieces.php and trash.php, borring much or the CSS*
+- *upload.php*
+  - *Added section for `SQL entry`*
+- *style.css*
+  - *Added section for `Media Library`*
+  - *This keeps the upload area on the right and the iterated library `<table>` on the left*
 
 | **45** :>
 ```sql
@@ -1033,102 +1056,80 @@ CREATE TABLE IF NOT EXISTS `media_library` (
 
 | **45** ://phpMyAdmin **> webapp_db > media_library**
 
-// In-progress
-// Prepare media library list with alternating row colors
-// Prepare AJAX "just uploaded" response with alternating row colors
-// Style the upload area and newly uploaded files to appear at the side of the page
-  // Make this location responsive
 
-// Later add buttons in the media library
-  // Delete, buttons for each newly-uploaded file
-  // Edit/title/alt (image)
-  // Insert media JavaScript button
-  // Delete button
-  // Rename file
-
-  // Create new file sizes on piece insert (keep track in new table)
-  // "Inserted media" to have piece and delete option
-
-*Note:*
-
-- *upload.php*
-  - **
-- *medialibrary.php*
-  - **
-
-| **B-45** :// `localhost/web/medialibrary.php` (Same)
+| **B-45** :// `localhost/web/medialibrary.php` (Same as previously)
 
 1. Look in ~/School/VIP/501/test_uploads
-2. Drag multiple files into the area: *"Drop files here to upload"*
-3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
-4. Repeat these steps with many files, including fake and disallowed
+2. Drag single or multiple files into the area: *"Drop to upload!"*
+3. Check in all subdirectories of the media directory:$ `ls web/media/*`
+4. Check for new SQL entries:> `SELECT * FROM media_library;`
+5. Repeat these steps with many files, including fake and disallowed
 
-| **45** :$
+| **46** :$
 ```
-ls web/dropzone_uploads
+ls web/media/*
 ```
 
-*Note about uploads:*
+| **46** :>
+```sql
+SELECT * FROM media_library;
+```
+
+| **46** ://phpMyAdmin **> webapp_db > media_library**
+
+We have a list of media files uploaded and entered in our SQL database
+
+Now, let's edit and delete those files and entries...
 
 
+### Process Uploaded Files: Linux Processing
 
+// Create new standard file sizes
+// Full link to image with JavaScript "select all" auto action and "copy" action (&#x2398 = copy symbol)
+// Add buttons in the media library and for each newly-uploaded file
+  // Delete button with checkbox & multi-select
+  // Edit button (AJAX popup form)
+    // Title/alt (image)
+    // Rename file
 
+sudo mkdir -p web/media/uploads web/media/original/docs web/media/original/images && \
+sudo rm web/media/docs/* web/media/audio/* web/media/video/* web/media/images/*
 
-
-
-
-
-
-
-SQL processing
-
-- Make database entries
-- Recall images from a library
-
-
-
-sudo mkdir -p web/media/uploads && \
+DELETE FROM media_library;
 
 Linux processing
 
 - images - imagemagick
 - image sizes & thumbnail for Media Library
-- audio/video - ffmpeg
-- posts as files .md .pdf .odt - pandoc
+- audio/video - ffmpeg (optimized for podcasting and in-site viewing)
+  - audio: 96kbps 44kHz mono mp3 (human voice doesn't go over 5kHz, you shouldn't be doing an ultra-high quality musical performance in a blog-based podcast)
+  - video: 960×640 (same framerate as recorded)
+  - Anything bigger or better, use a CDN like YouTube or SoundCloud
+- Doc types: .md .txt .pdf .odt - pandoc
+  - Original kept
+  - All remain available
 
 
+### Process Uploaded Files: TinyMCE
+
+sudo mkdir -p web/media/editing && \
+
+// Add to the AJAX Medial Library edit
+  // Make a "largest-processed" copy (1080p) in the editing dir from the original/images dir
+  // Minimal TinyMCE editor to edit the image in the editing dir
+  // Run the normal Linux processes on save, not replacing the file in original/images
+  // Include a "restore original" button to re-process from original/images
 
 
-| **00** :> `SELECT * FROM uploads;`
-
-| **00** ://phpMyAdmin **> uploads**
-
-Media Library
-
-- Delete images
-- View full image
-- Edit default Title, Alt
-- Change filename
+### Piece Editor
 
 
-
-
-### TinyMCE with Custom Media Library
-
-- Custom TinyMCE button to open a Media Library chooser (uses normal "image" icon)
-  - Probably remove "media" button from the very start in Lesson 8
-- Buttons in ML to insert images, audio, video, and documents with certain sizes and appropriate controls.
-  - Option for media/icon embed
-  - Option for simple "URL link" embed
-- Media Library to utilize TinyMCE image editor, remove image editing from normal TinyMCE.
-
-
-
-### Medium Editor with Custom Media Libary
-
-
-
-
+// Media Library section
+  // Insert media JavaScript button with AJAX dialog first
+    // Library list
+    // Just uploaded list
+  // Upload Dropzone
+// Posts as Doc file types
 
 
 ___

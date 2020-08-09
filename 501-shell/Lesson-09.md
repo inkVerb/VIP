@@ -262,6 +262,8 @@ ls web
 *Note pieces.php & trash.php:*
 
 - *Added "contentlib" class to the table, matching the stylesheet to clean up clutter*
+  - *This is used for cascading hierarchy*
+  - *The `<table>` itself only uses `id="pieces-table"`*
 - *Added `$table_row_color` and a ternary statement to toggle between 'blues' and 'shady'*
 - *Added `$show_div_count` counter to create unique ID and JavaScript function names to match*
 - *Added "view" option for published pieces*
