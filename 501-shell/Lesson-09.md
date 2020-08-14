@@ -687,47 +687,37 @@ atom core/09-edit3.php core/09-in.jsonlinks.php core/09-in.piecefunctions3.php c
 ls web
 ```
 
-*Note in edit.php:*
+*Note:*
 
-- *Links to "View on blog" and "Preview draft"*
-- *Content is closer to the top*
-- *The `="submit"` buttons were moved to just after "Content"*
-- *Links uses the new function `infoPop()` for a usage tip*
-
-*Note in in.piecefunctions.php:*
-
-- *`p_links` has been added to both functions:*
-  - *`checkPiece()`*
-  - *`pieceInput()`*
-- *RegEx checks for em and en dashes with proper usage*
-  - *`p_content`*
-  - *`p_after`*
-  - *`p_links`*
-
-*Note in in.editprocess.php:*
-
-- *`$p_links` appears*
-  - *`checkPiece()`, alongside `$p_tags`*
-  - *`json_decode()`, alongside `$p_tags`*
-  - *SQL queries (with the `links` column)*
-  - *Uses `CAST('$json' AS JSON)`, as with `tags`
-
-*Note in.functions.php:*
-
-- *New function for an "info" popup help*
-
-*Note in piece.php:*
-
+- *edit.php*
+  - *Links to "View on blog" and "Preview draft"*
+  - *Content is closer to the top*
+  - *The `="submit"` buttons were moved to just after "Content"*
+  - *Links uses the new function `infoPop()` for a usage tip*
+- *in.piecefunctions.php*
+  - *`p_links` has been added to both functions:*
+    - *`checkPiece()`*
+    - *`pieceInput()`*
+  - *RegEx checks for em and en dashes with proper usage*
+    - *`p_content`*
+    - *`p_after`*
+    - *`p_links`*
+- *in.editprocess.php*
+  - *`$p_links` appears*
+    - *`checkPiece()`, alongside `$p_tags`*
+    - *`json_decode()`, alongside `$p_tags`*
+    - *SQL queries (with the `links` column)*
+    - *Uses `CAST('$json' AS JSON)`, as with `tags`
+- *in.functions.php*
+  - *New function for an "info" popup help*
+- *in piece.php*
   - *Links and Tags show*
   - *There is a "View on blog" link at the top*
   - *Each iterated link's `<a>` and `<b>` tags have `class="link_item"`, smart to do, we may use later*
-
-*Note in blog.php:*
+- *in blog.php*
   - *Tags show on hovering over a piece via JavaScript*
   - *Wordlength is truncated as a "preview" via the `preview_text()` function*
-
-*Note in style.css:*
-
+- *in style.css*
   - *New `section.links` class (for displaying Links)*
   - *New `section.tags` class (for displaying Tags)*
   - *New `textarea.meta` class (for editing After and Links)*
@@ -819,25 +809,20 @@ atom core/09-edit4.php core/09-in.piecefunctions4.php core/09-in.editprocess4.ph
 ls web
 ```
 
-*Note edit.php:*
+*Note:*
 
-- *`<form>` no longer wraps `<input>` items,*
-- *Every `<input>` uses the `form=` attribute*
-
-*Note in.piecefunctions.php:*
-
-- *`form="edit_piece"` added to every `<input>` and `<textarea>`*
-  - *This allows side-by-side forms, as with edit.php*
-
-*Note in.editprocess.php:*
-
-- *`p_series` validation runs an SQL query to see if the Series actually exists*
-
-*Note in.series.php & ajax.series.php:*
-
-- *These run an AJAX `<form>`, nearly identical to what we did in Lesson 6*
-- *Both the `<select>` input and the new Series `<form>` are wrapped in a `<div>` for AJAX to reload*
-  - *This is how we clear the input field in the new Series `<form>`*
+- *edit.php:*
+  - *`<form>` no longer wraps `<input>` items,*
+  - *Every `<input>` uses the `form=` attribute*
+- *in.piecefunctions.php*
+  - *`form="edit_piece"` added to every `<input>` and `<textarea>`*
+    - *This allows side-by-side forms, as with edit.php*
+- *in.editprocess.php*
+  - *`p_series` validation runs an SQL query to see if the Series actually exists*
+- *in.series.php & ajax.series.php*
+  - *These run an AJAX `<form>`, nearly identical to what we did in Lesson 6*
+  - *Both the `<select>` input and the new Series `<form>` are wrapped in a `<div>` for AJAX to reload*
+    - *This is how we clear the input field in the new Series `<form>`*
 
 *We need to create the `series` table and make our first entry so this can work...*
 

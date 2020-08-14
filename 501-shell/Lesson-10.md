@@ -1081,10 +1081,113 @@ We have a list of media files uploaded and entered in our SQL database
 
 Now, let's edit and delete those files and entries...
 
+### Process Uploaded Files: Media Properties `<form>`
+
+| **47** :$
+```
+sudo cp core/10-ajax.mediainfo13.php web/ajax.mediainfo.php && \
+sudo cp core/10-medialibrary13.php web/medialibrary.php && \
+sudo cp core/10-upload13.php web/upload.php && \
+sudo cp core/10-style13.css web/style.css && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-ajax.mediainfo13.php core/10-medialibrary13.php core/10-upload13.php core/10-style13.css && \
+ls web
+```
+
+*Note:*
+
+- *The media editor is loaded via AJAX*
+  - *This uses a `<button>` to capture a hidden `<form>`*
+  - *This is borrowed from [Lesson 6](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-06.md)*
+- *ajax.mediainfo.php*
+  - *This both:*
+    - *Creates the edit `<form>`*
+    - *Processes the edit `<form>`*
+- *medialibrary.php*
+  - *`AJAX mediaEdit`*
+    - *`<div id="media-editor">` will contain the edit `<form>` after AJAX responds with it*
+    - *The "edit" `<button>` is styled to look like a link, much like the actions in pieces.php*
+    - *The "edit" `<button>` is in a separate `<table>` column so it doesn't interfere with other HTML content*
+    - *JS function `showActions` to only show the "edit" link when hovering over that `<table>` row*
+    - *JS function `mediaEdit`:*
+      - *shows `<div id="media-editor-container">`*
+        - *and `<div id="media-editor">` will appear inside*
+      - *AJAX requests the edit `<form>`*
+      - *is called by `<button>` in the `<table>`*
+    - *JS function `mediaSave` sends the edit `<form>` via AJAX*
+      - *JS function `mediaEditorClose` will hide the edit `<form>`*
+    - *JS function `changeFileName` creates a small `<form>` in the media editor*
+      - *JS function `changeFileNameClose` removes the `<form>`*
+- *upload.php*
+  - *Retrieves the new SQL entry ID with `$database->insert_id;`*
+  - *Includes our "edit" link, calling the JS function loaded by medialibrary.php*
+- *style.css*
+  - *A section `Hide notes` with the `.notehide` class to make some update notices disappear after a few seconds*
+  - *Adds some `button.postform`, `pre.postform`, `span.postform` styling*
+    - *This is so our AJAX `<button>` looks like an `<a>` link instead of a `<button>`*
+    - *Same applies to our file name changer in the `<pre>` tag*
+  - *Styles for our media editor AJAX box: `div#media-editor` & `div#media-editor-container`*
+    - *Works with JS function `mediaEdit`*
+  - *Styles inside our media editor: `div#media-editor-closer` & `h1#media-editor-content`*
+    - *So the "&#xd7;" (`&amp;#xd7;`) and `<h1>` from AJAX can fit on the same line*
+
+| **B-47** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
+
+| **47** :>
+```sql
+SELECT * FROM media_library;
+```
+
+1. Hover over a media item and click "edit"
+2. Change something: Title, Alt, or click the file name to change that
+3. Watch for messages
+  - If changing the file name, it will become orange in the media `<table>`
+4. Watch changes in:
+  - The file system:$ `ls web/media/*`
+  - The SQL table:> `SELECT * FROM media_library;`
+5. Repeat these steps with many files, try uploading files to see the "edit" button in the AJAX responses
+
+| **48** :>
+```sql
+SELECT * FROM media_library;
+```
+
+| **48** :$
+```
+ls web/media/*
+```
 
 ### Process Uploaded Files: Linux Processing
 
-// Create new standard file sizes
+| **49** :$
+```
+sudo mkdir -p web/media/uploads web/media/original/docs web/media/original/images && \
+sudo rm web/media/docs/* web/media/audio/* web/media/video/* web/media/images/*
+sudo cp core/10-ajax.mediainfo14.php web/ajax.mediainfo.php && \
+sudo cp core/10-medialibrary14.php web/medialibrary.php && \
+sudo cp core/10-upload14.php web/upload.php && \
+atom core/10-medialibrary14.php core/10-upload14.php && \
+ls web web/media web/media/*
+```
+
+*We just deleted all our uploads, clear out the SQL database too...*
+
+| **49** :>
+```sql
+DELETE FROM media_library;
+```
+
+*Note:*
+
+- *ajax.mediainfo.php*
+  - **
+- *medialibrary.php*
+  - **
+- *upload.php*
+  - **
+
+
+// Create new standard file sizes (Linux processing)
 // Full link to image with JavaScript "select all" auto action and "copy" action (&#x2398 = copy symbol)
 // Add buttons in the media library and for each newly-uploaded file
   // Delete button with checkbox & multi-select
@@ -1092,10 +1195,9 @@ Now, let's edit and delete those files and entries...
     // Title/alt (image)
     // Rename file
 
-sudo mkdir -p web/media/uploads web/media/original/docs web/media/original/images && \
-sudo rm web/media/docs/* web/media/audio/* web/media/video/* web/media/images/*
 
-DELETE FROM media_library;
+
+
 
 Linux processing
 

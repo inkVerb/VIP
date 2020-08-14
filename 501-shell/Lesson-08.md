@@ -344,8 +344,9 @@ WHERE p2.id IS NULL;
 sudo cp core/08-blog.php web/blog.php && \
 sudo cp core/08-piece.php web/piece.php && \
 sudo cp core/08-in.logincheck2.php web/in.login_check.php && \
+sudo cp core/08-style.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-blog.php core/08-piece.php core/08-in.logincheck2.php && \
+atom core/08-blog.php core/08-piece.php core/08-in.logincheck2.php core/08-style.css && \
 ls web
 ```
 
@@ -362,6 +363,8 @@ ls web
   - *Like a single-piece viewer of blog.php*
   - *Logic accepts both `s=SLUG` and `p=piece_ID` GET arguments*
   - *Not restricted to SQL `type='post'`; this can also show pages*
+- *style.css*
+  - *Added a `.piece-content` class for piece content*
 
 | **B-12** :// `localhost/web/blog.php`
 

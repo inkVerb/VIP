@@ -257,7 +257,7 @@ atom core/01-phpforeach.php && \
 ls web
 ```
 
-| **B-5** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-5** :// `localhost/web/phppost.php` (Same)
 
 #### PHP `if` Syntax
 
@@ -291,7 +291,7 @@ atom core/01-phppost2.php && \
 ls web
 ```
 
-| **B-6** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-6** :// `localhost/web/phppost.php` (Same)
 
 *Try the form a few times to see how it works*
 
@@ -304,7 +304,7 @@ atom core/01-phppost3.php && \
 ls web
 ```
 
-| **B-7** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-7** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -315,7 +315,7 @@ atom core/01-phppost4.php && \
 ls web
 ```
 
-| **B-8** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-8** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -326,7 +326,7 @@ atom core/01-phppost5.php && \
 ls web
 ```
 
-| **B-9** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-9** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -337,7 +337,7 @@ atom core/01-phppost6.php && \
 ls web
 ```
 
-| **B-10** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-10** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -370,9 +370,44 @@ atom core/01-phppost7.php && \
 ls web
 ```
 
-| **B-11** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-11** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view with Ctrl + C*
+
+#### `switch`-`case` Statements
+
+This is comparable to a Shell [case Statement](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#vii-case-esac)
+
+```php
+switch ($variable_to_test) {
+  case "red":
+    echo 'Do something red';
+    break;
+  case "green":
+    echo 'Do something green';
+    break;
+  case "blue":
+    echo 'Do something blue';
+    break;
+  default:
+    echo 'Do something completely other than RGB';
+}
+```
+
+*Review the diagram above along side the following two steps...*
+
+| **12** :$
+```
+sudo cp core/01-phppost8.php web/phppost.php && \
+atom core/01-phppost8.php && \
+ls web
+```
+
+| **B-12** :// `localhost/web/phppost.php` (Same)
+
+*Try the form and developer view with Ctrl + C*
+
+*Try any color, also try selecting no color at all to see the `switch`-`default`*
 
 #### FYI Reference: Useful PHP Tests & Functions
 
@@ -469,14 +504,14 @@ preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variable
 
 *Review the diagram above along side the following two steps...*
 
-| **12** :$
+| **13** :$
 ```
 sudo cp core/01-phpregex1.php web/phppost.php && \
 atom core/01-phpregex1.php && \
 ls web
 ```
 
-| **B-12** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-13** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -552,7 +587,7 @@ $argmnt = preg_replace('/([a-zA-Z0-9]+)_dogfish_([a-zA-Z0-9]+)/','$1_GoldFish_$2
 
 *Look at this example...*
 
-| **13** :$
+| **14** :$
 ```
 sudo cp core/01-phpreplace.php web/phpreplace.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -608,25 +643,25 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 
 *Note how `preg_replace()` and `strtolower()` are used to sanitize the values...*
 
-| **14** :$
+| **15** :$
 ```
 sudo cp core/01-phpregex2.php web/phppost.php && \
 atom core/01-phpregex2.php && \
 ls web
 ```
 
-| **B-14** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-15** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **15** :$
+| **16** :$
 ```
 sudo cp core/01-phpregex3.php web/phppost.php && \
 atom core/01-phpregex3.php && \
 ls web
 ```
 
-| **B-15** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-16** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -738,58 +773,58 @@ echo $someVariable;
 
 *Review the diagrams above along side the following few steps...*
 
-| **16** :$
+| **17** :$
 ```
 sudo cp core/01-phpfunction1.php web/phppost.php && \
 atom core/01-phpfunction1.php && \
 ls web
 ```
 
-| **B-16** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-17** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **17** :$
+| **18** :$
 ```
 sudo cp core/01-phpfunction2.php web/phppost.php && \
 atom core/01-phpfunction2.php && \
 ls web
 ```
 
-| **B-17** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-18** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **18** :$
+| **19** :$
 ```
 sudo cp core/01-phpfunction3.php web/phppost.php && \
 atom core/01-phpfunction3.php && \
 ls web
 ```
 
-| **B-18** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-19** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **19** :$
+| **20** :$
 ```
 sudo cp core/01-phpfunction4.php web/phppost.php && \
 atom core/01-phpfunction4.php && \
 ls web
 ```
 
-| **B-19** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-20** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
-| **20** :$
+| **21** :$
 ```
 sudo cp core/01-phpfunction5.php web/phppost.php && \
 atom core/01-phpfunction5.php && \
 ls web
 ```
 
-| **B-20** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-21** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -798,14 +833,14 @@ ls web
   - "empty" error message if empty POST
   - Double-check password
 
-| **21** :$
+| **22** :$
 ```
 sudo cp core/01-phpfunction6.php web/phppost.php && \
 atom core/01-phpfunction6.php && \
 ls web
 ```
 
-| **B-21** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-22** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -860,7 +895,7 @@ include ('./in.file.php');
 
 *Review the diagrams above along side the following two steps...*
 
-| **22** :$
+| **23** :$
 ```
 sudo cp core/01-in.phpinclude.php web/in.phppost.php && \
 sudo cp core/01-phpinclude.php web/phppost.php && \
@@ -869,7 +904,7 @@ atom core/01-in.phpinclude.php core/01-phpinclude.php && \
 ls web
 ```
 
-| **B-22** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-23** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -893,20 +928,20 @@ echo CONSTANT_NAME;
 
 *Review the diagrams above along side the following few steps...*
 
-| **23** :$
+| **24** :$
 ```
 sudo cp core/01-phpconstant1.php web/phppost.php && \
 atom core/01-phpconstant1.php && \
 ls web
 ```
 
-| **B-23** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-24** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
 *...organize all this in an `include` config file...*
 
-| **24** :$
+| **25** :$
 ```
 sudo cp core/01-in.config.php web/in.config.php && \
 sudo cp core/01-phpconstant2.php web/phppost.php && \
@@ -915,7 +950,7 @@ atom core/01-in.config.php core/01-phpconstant2.php && \
 ls web
 ```
 
-| **B-24** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-25** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -937,7 +972,7 @@ require_once ('footer.php');
 
 Normally, the top and bottom of a webpage are some kind of `include` of `header.php` and `footer.php` respectively
 
-| **25** :$
+| **26** :$
 ```
 sudo cp core/01-in.phpheader.php web/in.header.php && \
 sudo cp core/01-in.phpfooter.php web/in.footer.php && \
@@ -947,7 +982,7 @@ atom core/01-in.phpheader.php core/01-in.phpfooter.php core/01-phphfconventions.
 ls web
 ```
 
-| **B-25** :// `localhost/web/phppost.php` (Ctrl + R to reload)
+| **B-26** :// `localhost/web/phppost.php` (Same)
 
 *Try the form and developer view*
 
@@ -965,7 +1000,7 @@ file_put_contents('./file/location', 'File content string');
 
 **Simple string:**
 
-| **26** :$
+| **27** :$
 ```
 sudo cp core/01-phpfileput1.php web/phpfileput.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -975,26 +1010,26 @@ ls web
 
 *Look over the PHP file in atom before using the browser*
 
-| **B-26** :// `localhost/web/phpfileput.php`
+| **B-27** :// `localhost/web/phpfileput.php`
 
 *See the file changes...*
 
-| **27** :$ `ls web && cat web/fileput.1`
+| **28** :$ `ls web && cat web/fileput.1`
 
 **Variables:**
 
-| **28** :$
+| **29** :$
 ```
 sudo cp core/01-phpfileput2.php web/phpfileput.php && \
 atom core/01-phpfileput2.php && \
 ls web
 ```
 
-| **B-28** :// `localhost/web/phpfileput.php` (Ctrl + R to reload)
+| **B-29** :// `localhost/web/phpfileput.php` (Same)
 
 *See the file changes...*
 
-| **29** :$ `ls web && cat web/fileput.2`
+| **30** :$ `ls web && cat web/fileput.2`
 
 **Heredoc:**
 
@@ -1004,7 +1039,7 @@ $file_text = <<<EOF
 EOF;
 ```
 
-| **30** :$
+| **31** :$
 ```
 sudo cp core/01-phpfileput3.php web/phpfileput.php && \
 atom core/01-phpfileput3.php && \
@@ -1013,11 +1048,11 @@ ls web
 
 *Note how the heredoc was made for later reference:*
 
-| **B-30** :// `localhost/web/phpfileput.php` (Ctrl + R to reload)
+| **B-31** :// `localhost/web/phpfileput.php` (Same)
 
 *See the file changes...*
 
-| **31** :$ `ls web && cat web/fileput.3`
+| **32** :$ `ls web && cat web/fileput.3`
 
 **Heredoc with `'single quotes'`:**
 
@@ -1027,7 +1062,7 @@ $file_text = <<<'EOF'
 EOF;
 ```
 
-| **32** :$
+| **33** :$
 ```
 sudo cp core/01-phpfileput4.php web/phpfileput.php && \
 atom core/01-phpfileput4.php && \
@@ -1036,16 +1071,16 @@ ls web
 
 *Note the use of `'single quotes'` affect the `$Variable` in the heredoc:*
 
-| **B-32** :// `localhost/web/phpfileput.php` (Ctrl + R to reload)
+| **B-33** :// `localhost/web/phpfileput.php` (Same)
 
 *See the file changes...*
 
-| **33** :$ `ls web && cat web/fileput.4`
+| **34** :$ `ls web && cat web/fileput.4`
 
 
 ### VII. Handling Arrays: `$_POST` Array, `print_r()` & `var_dump()`
 
-| **34** :$
+| **35** :$
 ```
 sudo cp core/01-phpprintr.php web/phpprintr.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -1053,7 +1088,7 @@ atom core/01-phpprintr.php && \
 ls web
 ```
 
-| **B-34** :// `localhost/web/phpprintr.php`
+| **B-35** :// `localhost/web/phpprintr.php`
 
 Fill-out the fields and click "Hit me"
 
@@ -1066,7 +1101,7 @@ Fill-out the fields and click "Hit me"
 
 *Try the same thing with `var_dump()`...*
 
-| **35** :$
+| **36** :$
 ```
 sudo cp core/01-phpvardump.php web/phpvardump.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -1074,7 +1109,7 @@ atom core/01-phpvardump.php && \
 ls web
 ```
 
-| **B-35** :// `localhost/web/phpvardump.php`
+| **B-36** :// `localhost/web/phpvardump.php`
 
 Fill-out the fields and click "Hit me"
 
@@ -1084,7 +1119,7 @@ Fill-out the fields and click "Hit me"
 
 ### VIII. PHP Errors
 
-| **36** :$
+| **37** :$
 ```
 sudo cp core/01-phperrors1.php web/phperrors.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -1092,7 +1127,7 @@ atom core/01-phperrors1.php && \
 ls web
 ```
 
-| **B-36** :// `localhost/web/phperrors.php`
+| **B-37** :// `localhost/web/phperrors.php`
 
 *Right away, the PHP message complains about the variable `$nothere` because it is not set*
 
@@ -1105,7 +1140,7 @@ ls web
 
 *Let's try the `$live` option...*
 
-| **37** :$
+| **38** :$
 ```
 sudo cp core/01-phperrors2.php web/phperrors.php && \
 atom core/01-phperrors2.php && \
@@ -1114,7 +1149,7 @@ ls web
 
 *Note we added the `$site_live` variable, which easily turned-off our error `echo`...*
 
-| **B-37** :// `localhost/web/phperrors.php` (Ctrl + R to reload)
+| **B-38** :// `localhost/web/phperrors.php` (Same)
 
 ___
 
@@ -1166,6 +1201,21 @@ ___
 
 ## Ternary Statements
 - Syntax: `$Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';`
+
+## `switch`-`case` Statements
+- Syntax:
+```php
+switch ($variable) {
+  case "one":
+    echo 'Do something for one';
+    break;
+  case "two":
+    echo 'Do something for two';
+    break;
+  default:
+    echo 'Do something else';
+}
+```
 
 ## PHP RegEx & Validation
 - **Security rules:**
