@@ -1141,7 +1141,9 @@ SELECT * FROM media_library;
 1. Hover over a media item and click "edit"
 2. Change something: Title, Alt, or click the file name to change that
 3. Watch for messages
-  - If changing the file name, it will become orange in the media `<table>`
+  - If changing the file name, it will become orange and change to the new name in the media `<table>`
+  - If changing other information, the media type will become orange in the media `<table>`
+  - If changing a just-uploaded item, its upload info color will change to black, filenames will become orange
 4. Watch changes in:
   - The file system:$ `ls web/media/*`
   - The SQL table:> `SELECT * FROM media_library;`
