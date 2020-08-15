@@ -172,6 +172,7 @@ ls web
 
 - *We created the `postform()` function*
 - *The `style=` attribute embedded inside the `<form>` tag is necessary for `float:` to work*
+- *We check using `switch`-`case` because there are so many options for a very simple variable value test*
 
 *Note style.css:*
 
@@ -1012,7 +1013,7 @@ In Pieces and Trash:
 
 *Note pieces.php:*
 
-- *Added a JavaScript function `clearChanged[ID]`*
+- *Added a JavaScript function `clearChanged`*
   - *Used in `<code class="renew" ...>changed</code>` in ajax.piecesactions.php*
 
 *Note in style.css:*
@@ -1036,7 +1037,7 @@ In Pieces and Trash:
   - *It adds a note `<code class="renew" ...>changed</code>`*
     - *This class `.renew` is in our new style.css*
     - *We need this note because UX theory (User eXperience) demands that appearance changes both:*
-    - *Clicking "changed" will activate JavaScript's `clearChanged[ID]` created in pieces.php*
+    - *Clicking "changed" will activate JavaScript's `clearChanged` created in pieces.php*
       - *This will remove the "changed" text and the "renew" class*
       1. *Be explained to the user*
       2. *Be axiomatic to the user (self-explanatory)*
@@ -1302,7 +1303,7 @@ ___
 
 ## AJAX
 - ...needs complex calls to work intuitively
-- ...needs lots of JavaScript to change other things after it changes the AJAX things
+- ...needs lots of JavaScript to change other things after AJAX changes things
 - ...should not send anymore than needed, JavaScript and HTML should load separately wherever possible
 
 ## JSON & AJAX
@@ -1325,7 +1326,7 @@ document.getElementById("bar_id").innerHTML = ourJSONresponse["title"]+' and som
 ## HTML `<form>` IDs
 - Use an `id=` named after the SQL ID for whatever it is editing, if possible
   - Use this in the `<form>` and in every `<input>`, etc
-- Side-by-Side forms allow more things to work; it's based on `id=`
+- Side-by-Side forms allow more things to work; this is based on `id=`
   - Place each `<input>` outside the `<form>` tags
   - This avoids "forms inside forms", which HTML does not allow
   - Match `<form id=` with `<input form=`

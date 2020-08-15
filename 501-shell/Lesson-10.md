@@ -1088,6 +1088,7 @@ Now, let's edit and delete those files and entries...
 sudo cp core/10-ajax.mediainfo13.php web/ajax.mediainfo.php && \
 sudo cp core/10-medialibrary13.php web/medialibrary.php && \
 sudo cp core/10-upload13.php web/upload.php && \
+sudo cp core/10-act.delmedia.php web/act.delmedia.php && \
 sudo cp core/10-style13.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/10-ajax.mediainfo13.php core/10-medialibrary13.php core/10-upload13.php core/10-style13.css && \
@@ -1118,9 +1119,13 @@ ls web
       - *JS function `mediaEditorClose` will hide the edit `<form>`*
     - *JS function `changeFileName` creates a small `<form>` in the media editor*
       - *JS function `changeFileNameClose` removes the `<form>`*
+    - *JS functions for delete actions and delete confirmation ('showDelete', `toggle`, `confirmDelete`)*
 - *upload.php*
   - *Retrieves the new SQL entry ID with `$database->insert_id;`*
   - *Includes our "edit" link, calling the JS function loaded by medialibrary.php*
+- *act.delmedia.php*
+  - *This processes to-be-deleted items, similarly to act.bulkpieces.php from [Lesson 9](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)*
+  - *It receives the `POST` from `<form id="delete_action"` in medialibrary.php*
 - *style.css*
   - *A section `Hide notes` with the `.notehide` class to make some update notices disappear after a few seconds*
   - *Adds some `button.postform`, `pre.postform`, `span.postform` styling*
@@ -1139,7 +1144,7 @@ SELECT * FROM media_library;
 ```
 
 1. Hover over a media item and click "edit"
-2. Change something: Title, Alt, or click the file name to change that
+2. Change something: Title, Alt, Delete, or click the file name to change that
 3. Watch for messages
   - If changing the file name, it will become orange and change to the new name in the media `<table>`
   - If changing other information, the media type will become orange in the media `<table>`
@@ -1176,7 +1181,7 @@ ls web web/media web/media/*
 
 | **49** :>
 ```sql
-DELETE FROM media_library;
+DELETE * FROM media_library;
 ```
 
 *Note:*
