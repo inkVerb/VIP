@@ -15,12 +15,20 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
 
-| **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+| **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
 | **S1** :> `USE webapp_db;`
 
-| **SB-1** ://phpMyAdmin **> webapp_db**
+| **S1** ://phpMyAdmin **> webapp_db**
 
+### Webapp Dashboard Login:
+
+| **SB-1** :// `localhost/web/webapp.php` (Check that you're logged in)
+
+```
+Username: jonboy
+Password: My#1Password
+```
 ___
 
 We want to review a list of our pieces
@@ -72,32 +80,21 @@ ls web
   - *Lists all pieces in a `while` loop and `<table>`*
   - *We will add more later*
 
-| **B-1** :// `localhost/web/pieces.php` (It may redirect to webapp.php)
-
-*Note it may have redirected because you are not logged in; Login:*
-
-```
-Username: jonboy
-Password: My#1Password
-```
-
-*Once logged in, enter the address directly or just click "Pieces"...*
-
-| **B-2** :// `localhost/web/pieces.php` (Now you stay because are logged in)
+| **B-1** :// `localhost/web/pieces.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
 *Review pieces on our SQL table...*
 
-| **2** ://phpMyAdmin **> pieces**
+| **1** ://phpMyAdmin **> pieces**
 
-| **2** :> `SELECT id, type, status, title, date_created FROM pieces;`
+| **1** :> `SELECT id, type, status, title, date_created FROM pieces;`
 
 That's quite simple, let's expand...
 
 ### More Useful Data, Actions, and Editable Fields
 
-| **3** :$
+| **2** :$
 ```
 sudo cp core/09-pieces2.php web/pieces.php && \
 sudo cp core/09-delete2.php web/delete.php && \
@@ -127,27 +124,27 @@ ls web
 - *pagify.php*
 - *postify.php*
 
-| **B-3** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-2** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
 *Observe changes to pieces on our SQL table...*
 
-| **3** ://phpMyAdmin **> pieces**
+| **2** ://phpMyAdmin **> pieces**
 
-| **3** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
+| **2** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
 
 *Note which piece IDs are not listed in publications...*
 
-| **4** ://phpMyAdmin **> publications**
+| **3** ://phpMyAdmin **> publications**
 
-| **4** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
+| **3** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
 
 While this works, we don't want a GET URL to be this powerful, use POST instead...
 
 ### Require POST for Our Actions
 
-| **5** :$
+| **4** :$
 ```
 sudo cp core/09-pieces3.php web/pieces.php && \
 sudo cp core/09-in.metaeditfunctions3.php web/in.metaeditfunctions.php && \
@@ -188,23 +185,23 @@ ls web
 - *pagify.php*
 - *postify.php*
 
-| **B-5** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-4** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
 *Observe changes to pieces on our SQL table...*
 
-| **5** ://phpMyAdmin **> pieces**
+| **4** ://phpMyAdmin **> pieces**
 
-| **5** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
+| **4** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
 
-| **6** ://phpMyAdmin **> publications**
+| **5** ://phpMyAdmin **> publications**
 
-| **6** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
+| **5** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
 
 ### Trash Page with Restore and Bulk Empty
 
-| **7** :$
+| **6** :$
 ```
 sudo cp core/09-pieces4.php web/pieces.php && \
 sudo cp core/09-trash4.php web/trash.php && \
@@ -234,23 +231,23 @@ ls web
 - *This has a `while` loop to delete each "dead" piece*
 
 
-| **B-7** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-6** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
 *Review "pieces" on our SQL table...*
 
-| **7** ://phpMyAdmin **> pieces**
+| **6** ://phpMyAdmin **> pieces**
 
-| **7** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
+| **6** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
 
-| **8** ://phpMyAdmin **> publications**
+| **7** ://phpMyAdmin **> publications**
 
-| **8** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
+| **7** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
 
 ### Style & JavaScript to Hide some of Our Meta
 
-| **9** :$
+| **8** :$
 ```
 sudo cp core/09-pieces5.php web/pieces.php && \
 sudo cp core/09-trash5.php web/trash.php && \
@@ -284,7 +281,7 @@ ls web
 - *This isn't about beauty as much as it is about being more readable*
   - *This is called "UX theory" (User eXperience theory)*
 
-| **B-9** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-8** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -306,7 +303,7 @@ This is similar to the Linux tool `diff`, which we learned about in [201-11](htt
 
 On your own, learn more about implementation at [github.com/poetryisCODE/htmldiff](https://github.com/poetryisCODE/htmldiff/blob/master/README.md)
 
-| **10** :$
+| **9** :$
 ```
 sudo cp core/09-pieces6.php web/pieces.php && \
 sudo cp core/09-piece1.php web/piece.php && \
@@ -340,13 +337,13 @@ ls web
 - *Added a `.purple` class*
 - *Added a section for "htmldiff.js"*
 
-| **B-10** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-9** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
 Hover over a "Status" section and click "history", it should take you somewhere like...
 
-| **B-11** :// `localhost/web/hist.php?p=3` (ID `3` is only one example, it could be any number)
+| **B-10** :// `localhost/web/hist.php?p=3` (ID `3` is only one example, it could be any number)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -369,21 +366,21 @@ Hover over a "Status" section and click "history", it should take you somewhere 
   - Most recent: `... ORDER BY id DESC LIMIT 1`
   - Second-most recent: `... ORDER BY id DESC LIMIT 1,1`
 
-| **11** ://phpMyAdmin **> publication_history** > "Sort by key: PRIMARY (DESC)"
+| **10** ://phpMyAdmin **> publication_history** > "Sort by key: PRIMARY (DESC)"
 
 *Next, `id=3` is just an example, you can change it to another ID, such as what works from `hist.php?p=` if this doesn't...*
 
-| **12** :> `SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1;`
+| **10** :> `SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1;`
 
 *...Note the `id`...*
 
-| **13** :> `SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1,1;`
+| **11** :> `SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1,1;`
 
 This "History" view is nice, but it could be much more functional...
 
 ### Revision History with More Options
 
-| **14** :$
+| **12** :$
 ```
 sudo cp core/09-hist2.php web/hist.php && \
 atom core/09-hist2.php
@@ -407,7 +404,7 @@ $new_id = $row[0];
   - *This bumped our old htmldiff DOM `<h2>` tags to `<h3>`*
   - *It is VERY important to preserve header hierarchy, starting with `<h1>` and going down*
 
-| **B-11** :// `localhost/web/hist.php?p=3` (or whatever ID, Ctrl + R to reload)
+| **B-12** :// `localhost/web/hist.php?p=3` (or whatever ID, Ctrl + R to reload)
 
 ### Tags Field via JSON
 
@@ -475,7 +472,7 @@ WHERE tags=CAST('[ "Apple", "Banana", "Ubuntu" ]' AS JSON) -- Matches (JSON data
 
 #### JSON in PHP
 
-| **12** :$
+| **13** :$
 ```
 sudo cp core/09-jsonarrays.php web/jsonarrays.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -483,7 +480,7 @@ atom core/09-jsonarrays.php && \
 ls web
 ```
 
-| **B-12** :// `localhost/web/jsonarrays.php`
+| **B-13** :// `localhost/web/jsonarrays.php`
 
 *Let's try to hack some JSON into our SQL...*
 
@@ -499,7 +496,7 @@ ls web
 
 *Add our `tags` JSON colums...*
 
-| **14** :>
+| **13** :>
 
 ```sql
 ALTER TABLE `pieces`
@@ -512,31 +509,31 @@ ADD `tags` JSON DEFAULT NULL;
 
 *Note the new `tags` column...*
 
-| **15a** ://phpMyAdmin **> pieces**
+| **14a** ://phpMyAdmin **> pieces**
 
-| **15b** ://phpMyAdmin **> publications**
+| **14b** ://phpMyAdmin **> publications**
 
-| **15c** ://phpMyAdmin **> publication_history**
+| **14c** ://phpMyAdmin **> publication_history**
 
 *Watch the SQL in action...*
 
-| **16** :> `SELECT title, slug, tags FROM pieces WHERE id=3;` (ID `3` is only one example, it could be any number)
+| **15** :> `SELECT title, slug, tags FROM pieces WHERE id=3;` (ID `3` is only one example, it could be any number)
 
-| **16** ://phpMyAdmin **> pieces** (Note id 3, or whatever ID you are using)
+| **15** ://phpMyAdmin **> pieces** (Note id 3, or whatever ID you are using)
 
-| **17a** :> `UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' WHERE id=3;`
+| **16a** :> `UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' WHERE id=3;`
 
-| **17** ://phpMyAdmin **> pieces**
+| **16** ://phpMyAdmin **> pieces**
 
-| **17b** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
+| **16b** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
 
 *Now, select for a match in `tags`...*
 
-| **18** :> `SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]';`
+| **17** :> `SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]';`
 
 *...No matches! Try this...*
 
-| **19** :> `SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' AS JSON);`
+| **18** :> `SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' AS JSON);`
 
 *...That's how SQL handles JSON*
 
@@ -544,7 +541,7 @@ ADD `tags` JSON DEFAULT NULL;
 
 *Let's implement JSON in our blog...*
 
-| **20** :$
+| **19** :$
 ```
 sudo cp core/09-edit2.php web/edit.php && \
 sudo cp core/09-in.piecefunctions2.php web/in.piecefunctions.php && \
@@ -564,7 +561,7 @@ ls web
 
 *See the changes in our web browser...*
 
-| **B-21** :// `localhost/web/edit.php?p=3` (ID `3` is only one example, it could be any number)
+| **B-19** :// `localhost/web/edit.php?p=3` (ID `3` is only one example, it could be any number)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -573,7 +570,7 @@ ls web
 1. Enter some tags (words) separated by comma
 2. Click "Update"
 
-| **21** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
+| **19** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
 
 **See the code from in.editprocess.php:**
 
@@ -619,7 +616,7 @@ Just note:
 4. Everything goes into a PHP array whenever we process it  
 5. The PHP array goes to and from JSON to save in the SQL database
 
-| **22** :$
+| **20** :$
 ```
 sudo cp core/09-jsonlinksexplained.php web/jsonlinksexplained.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -629,7 +626,7 @@ ls web
 
 *Look a little at the file, look mostly at what renders in the browser...*
 
-| **B-22** :// `localhost/web/jsonlinksexplained.php`
+| **B-20** :// `localhost/web/jsonlinksexplained.php`
 
 *Try the example, reverse item order some, and submit the form*
 
@@ -657,7 +654,7 @@ ls web
 
 *Let's look at that code again, without all the explanation...*
 
-| **23** :$
+| **21** :$
 ```
 sudo cp core/09-jsonlinks.php web/jsonlinks.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -667,13 +664,13 @@ ls web
 
 *Look a little at the file, look mostly at what renders in the browser...*
 
-| **B-23** :// `localhost/web/jsonlinks.php`
+| **B-21** :// `localhost/web/jsonlinks.php`
 
 *Try the example, reverse item order some, and submit the form*
 
 ### Add Links to the Pieces
 
-| **24** :$
+| **22** :$
 ```
 sudo cp core/09-edit3.php web/edit.php && \
 sudo cp core/09-in.jsonlinks.php web/in.jsonlinks.php && \
@@ -727,7 +724,7 @@ ls web
 
 *We need another JSON column on our tables...*
 
-| **24** :>
+| **22** :>
 
 ```sql
 ALTER TABLE `pieces`
@@ -740,13 +737,13 @@ ADD `links` JSON DEFAULT NULL;
 
 *Note the new `links` column...*
 
-| **24a** ://phpMyAdmin **> pieces**
+| **22a** ://phpMyAdmin **> pieces**
 
-| **24b** ://phpMyAdmin **> publications**
+| **22b** ://phpMyAdmin **> publications**
 
-| **24c** ://phpMyAdmin **> publication_history**
+| **22c** ://phpMyAdmin **> publication_history**
 
-| **B-24** :// `localhost/web/edit.php?p=3`
+| **B-22** :// `localhost/web/edit.php?p=3`
 
 1. Paste in these values to the "Links" field...
 
@@ -764,7 +761,7 @@ https://verb.blue;; Inky | Blue Ink
 3. Note how all links were re-sorted in the "Links field"
 4. View the piece...
 
-| **B-25** :// `localhost/web/piece.php?p=3` (Click 'View on blog' in Edit, or enter whatever ID you are using if not 3)
+| **B-23** :// `localhost/web/piece.php?p=3` (Click 'View on blog' in Edit, or enter whatever ID you are using if not 3)
 
 *Let's add a "Series" option...*
 
@@ -776,7 +773,7 @@ https://verb.blue;; Inky | Blue Ink
 
 In Lesson 6 we learned to [AJAX a `<form>`](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-06.md#ajax-a-form)
 
-| **25** :$
+| **24** :$
 ```
 sudo cp core/09-select.php web/select.php && \
 sudo cp core/09-in.select.php web/in.select.php && \
@@ -786,7 +783,7 @@ atom core/09-select.php core/09-in.select.php core/09-ajax.select.php && \
 ls web
 ```
 
-| **B-25** :// `localhost/web/select.php`
+| **B-24** :// `localhost/web/select.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -798,7 +795,7 @@ Try adding a Series with the "+ Series" form
 
 *Put this AJAX `<form>` into our "Edit" page...*
 
-| **26** :$
+| **25** :$
 ```
 sudo cp core/09-edit4.php web/edit.php && \
 sudo cp core/09-in.piecefunctions4.php web/in.piecefunctions.php && \
@@ -827,7 +824,7 @@ ls web
 
 *We need to create the `series` table and make our first entry so this can work...*
 
-| **26** :>
+| **25** :>
 
 ```sql
 CREATE TABLE IF NOT EXISTS `series` (
@@ -846,19 +843,19 @@ ALTER TABLE `publication_history`
 ADD `series` INT UNSIGNED DEFAULT 1;
 ```
 
-| **27** :> `SELECT * FROM series;`
+| **26** :> `SELECT * FROM series;`
 
-| **27** ://phpMyAdmin **> series**
+| **26** ://phpMyAdmin **> series**
 
 *Note there is only a "Blog" series*
 
-| **B-27** :// `localhost/web/edit.php?p=3`
+| **B-26** :// `localhost/web/edit.php?p=3`
 
 Try adding a Series with the "+ Series" form
 
-| **28** :> `SELECT * FROM series;`
+| **27** :> `SELECT * FROM series;`
 
-| **28** ://phpMyAdmin **> series**
+| **27** ://phpMyAdmin **> series**
 
 *Note your new Series has been added to the `series` table*
 
@@ -868,9 +865,9 @@ Try adding a Series with the "+ Series" form
 
 *First, a review...*
 
-| **29** :$ `atom core/09-pieces6.php`
+| **28** :$ `atom core/09-pieces6.php`
 
-| **B-29** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-28** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -903,7 +900,7 @@ Consider `form=` & `="apply2all"` in this code...
 </table>
 ```
 
-| **30** :$
+| **29** :$
 ```
 sudo cp core/09-postformarrays.php web/postformarrays.php && \
 sudo chown -R www-data:www-data /var/www/html && \
@@ -911,7 +908,7 @@ atom core/postformarrays.php && \
 ls web
 ```
 
-| **B-30** :// `localhost/web/postformarrays.php`
+| **B-29** :// `localhost/web/postformarrays.php`
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -921,7 +918,7 @@ Check different boxes, then submit with different buttons multiple times
 
 ### Bulk Actions in Pieces Table: `form=` Attribute & AJAX
 
-| **31** :$
+| **30** :$
 ```
 sudo cp core/09-pieces7.php web/pieces.php && \
 sudo cp core/09-act.bulkpieces.php web/act.bulkpieces.php && \
@@ -965,7 +962,7 @@ ls web
   - *These call act.bulkpieces.php*
 
 
-| **B-31** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-30** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -978,7 +975,7 @@ Click and try:
 
 *Let's AJAX these small "actions"...*
 
-| **32** :$
+| **31** :$
 ```
 sudo cp core/09-pieces8.php web/pieces.php && \
 sudo cp core/09-in.metaeditfunctions8.php web/in.metaeditfunctions.php && \
@@ -991,7 +988,7 @@ atom core/09-in.metaeditfunctions8.php core/09-ajax.piecesactions8.php core/09-a
 ls web
 ```
 
-| **B-32** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-31** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -1048,7 +1045,7 @@ In Pieces and Trash:
 
 *Since we don't need those pieces action files anymore...*
 
-| **33** :$
+| **32** :$
 ```
 sudo rm -f web/delete.php web/undelete.php web/empty_delete.php web/unpublish.php web/republish.php web/pagify.php web/postify.php web/undelete_trash.phpweb/empty_delete_trash.php
 ls web
@@ -1063,7 +1060,7 @@ ls web
 
 *Let's cleanup this AJAX...*
 
-| **34** :$
+| **33** :$
 ```
 sudo cp core/09-pieces9.php web/pieces.php && \
 sudo cp core/09-trash9.php web/trash.php && \
@@ -1090,7 +1087,7 @@ ls web
   - *Changes the page more directly with AJAX calls*
   - *Changes the text of the "changed" button, while we're at it*
 
-| **B-34** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-33** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -1111,7 +1108,7 @@ Try different Piece actions and see how the page never needs to reload
 
 ### Meta Edit in Pieces Table via JS Popup `<form>` & AJAX
 
-| **35** :$
+| **34** :$
 ```
 sudo cp core/09-pieces10.php web/pieces.php && \
 sudo cp core/09-trash10.php web/trash.php && \
@@ -1151,7 +1148,7 @@ ls web
 
 **Those are the upgrades, let's see the part with our working AJAX:**
 
-| **36** :$
+| **35** :$
 
 ```
 atom core/09-pieces10.php core/09-trash10.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css
@@ -1240,7 +1237,7 @@ document.getElementById("title_"+p_id).innerHTML = '<b>'+jsonMetaEditResponse["t
 document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditResponse["message"]+'&nbsp;';
 ```
 
-| **B-36** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-35** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 *Clicking on any Piece Title will bring up our JavaScript "Meta Edit" box*
 
@@ -1263,14 +1260,14 @@ document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditRespon
 
 ### Published History to Display New Meta
 
-| **37** :$
+| **36** :$
 ```
 sudo cp core/09-hist3.php web/hist.php && \
 atom core/09-hist3.php && \
 ls web
 ```
 
-| **B-37** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-36** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 Click on "history" for any Piece
 

@@ -15,19 +15,15 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
 
-| **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+| **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
 | **S1** :> `USE webapp_db;`
 
-| **SB-1** ://phpMyAdmin **> webapp_db**
-
-### Make sure `pandoc` is installed from 301
-
-| **S2** :$ `sudo apt install pandoc texlive-latex-base texlive-fonts-recommended texlive-latex-recommended ffmpeg imagemagick`
+| **S1** ://phpMyAdmin **> webapp_db**
 
 ### Webapp Dashboard Login:
 
-| **SB-2** :// `localhost/web/webapp.php` (Check that you're logged in)
+| **B-1** :// `localhost/web/webapp.php` (Check that you're logged in)
 
 ```
 Username: jonboy
@@ -522,7 +518,7 @@ Now, it's time to implement that into what we have so far
 
 | **28** :$
 ```
-sudo rm -rf web/dropzone_uploads/* && \
+sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary7.php web/medialibrary.php && \
 sudo cp core/10-upload7.php web/upload.php && \
 sudo cp core/10-style7.css web/style.css && \
@@ -571,7 +567,7 @@ ls web/dropzone_uploads
 
 *Note:*
 
-- *Files are uploaded to `web/media/uploads`*
+- *Files are uploaded to `web/media/dropzone_uploads`*
   - *We will move them to *
 - *Response messages appear in the webpage, the HTML appears in a browser "alert" box*
 - *Dropzone accepts files not allowed*
@@ -586,7 +582,7 @@ Let's handle multiple uploads
 
 | **30** :$
 ```
-sudo rm -rf web/dropzone_uploads/* && \
+sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary8.php web/medialibrary.php && \
 atom core/10-medialibrary8.php  && \
 ls web web/media
@@ -622,7 +618,7 @@ First, see what the `$_FILES` array for a single file upload looks like
 
 | **32** :$
 ```
-sudo rm -rf web/dropzone_uploads/* && \
+sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-upload9.php web/upload.php && \
 atom core/10-upload9.php  && \
 ls web web/media
@@ -674,7 +670,7 @@ Second, allow multiple uploads and see what the `$_FILES` array looks like for m
 
 | **34** :$
 ```
-sudo rm -rf web/dropzone_uploads/* && \
+sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary10.php web/medialibrary.php && \
 sudo cp core/10-upload10.php web/upload.php && \
 atom core/10-medialibrary10.php core/10-upload10.php && \
@@ -788,7 +784,7 @@ So, our entire upload handler must be updated with `[0]`...
 
 | **36** :$
 ```
-sudo rm -rf web/dropzone_uploads/* && \
+sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary11.php web/medialibrary.php && \
 sudo cp core/10-upload11.php web/upload.php && \
 atom core/10-medialibrary11.php core/10-upload11.php && \
@@ -840,7 +836,7 @@ The directory "tinymce-dist" is at "web/tinymce"
 ```
 sudo mkdir web/tinymce_uploads && \
 sudo cp core/10-tiny-image-upload.html web/tiny.html && \
-sudo cp core/10-tiny-upload.php web/tiny-upload.php && \
+sudo cp core/10-tiny-upload1.php web/tiny-upload.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/10-tiny-image-upload.html core/10-tiny-upload.php && \
 ls web
@@ -1143,6 +1139,8 @@ ls web
 SELECT * FROM media_library;
 ```
 
+| **47** ://phpMyAdmin **> webapp_db > media_library**
+
 1. Hover over a media item and click "edit"
 2. Change something: Title, Alt, Delete, or click the file name to change that
 3. Watch for messages
@@ -1159,6 +1157,8 @@ SELECT * FROM media_library;
 SELECT * FROM media_library;
 ```
 
+| **48** ://phpMyAdmin **> webapp_db > media_library**
+
 | **48** :$
 ```
 ls web/media/*
@@ -1166,29 +1166,56 @@ ls web/media/*
 
 ### Process Uploaded Files: Linux Processing
 
+*Install the Linux tools on our server...*
+
+- `imagemagick` *Images, from [401 Lesson 2](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)*
+  - *Learn at: [https://imagemagick.org/script/command-line-processing.php]*
+- `ffmpeg` *Video & audio*
+- `pandoc` *Documents, from [301 Lesson 2](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md)*
+- `texlive-...` *Dependencies for `pandoc` to create .pdf files*
+
 | **49** :$
 ```
-sudo mkdir -p web/media/uploads web/media/original/docs web/media/original/images && \
-sudo rm web/media/docs/* web/media/audio/* web/media/video/* web/media/images/*
-sudo cp core/10-ajax.mediainfo14.php web/ajax.mediainfo.php && \
-sudo cp core/10-medialibrary14.php web/medialibrary.php && \
+sudo apt install \
+imagemagick \
+ffmpeg \
+pandoc \
+texlive-latex-base \
+texlive-fonts-recommended \
+texlive-latex-recommended
+```
+
+*Copy our web app files...*
+
+| **50** :$
+```
+sudo mkdir -p web/media/uploads web/media/original/images web/media/original/video web/media/original/audio web/media/original/docs && \
+sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/*
+sudo cp core/10-bash.imageprocess.sh web/bash.imageprocess.sh && \
+sudo cp core/10-bash.videoprocess.sh web/bash.videoprocess.sh && \
+sudo cp core/10-bash.audioprocess.sh web/bash.audioprocess.sh && \
+sudo cp core/10-bash.docprocess.sh web/bash.docprocess.sh && \
 sudo cp core/10-upload14.php web/upload.php && \
-atom core/10-medialibrary14.php core/10-upload14.php && \
+atom core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.docprocess.sh core/10-upload14.php && \
 ls web web/media web/media/*
 ```
 
 *We just deleted all our uploads, clear out the SQL database too...*
 
-| **49** :>
+| **50** :>
 ```sql
 DELETE * FROM media_library;
 ```
 
 *Note:*
 
-- *ajax.mediainfo.php*
+- *bash.imageprocess.sh*
   - **
-- *medialibrary.php*
+- *bash.videoprocess.sh*
+  - **
+- *bash.audioprocess.sh*
+  - **
+- *bash.docprocess.sh*
   - **
 - *upload.php*
   - **
@@ -1221,7 +1248,38 @@ Linux processing
 
 ### Process Uploaded Files: TinyMCE
 
+
+
+### Process Uploaded Files: Linux Processing
+
+| **52** :$
+```
 sudo mkdir -p web/media/editing && \
+sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/*
+sudo cp core/10-ajax.mediainfo15.php web/ajax.mediainfo.php && \
+sudo cp core/10-medialibrary15.php web/medialibrary.php && \
+sudo cp core/10-upload15.php web/upload.php && \
+sudo cp core/10-tiny-upload15.php web/tiny-upload.php && \
+atom core/10-ajax.mediainfo15.php core/10-medialibrary15.php core/10-upload14.php && \
+ls web web/media web/media/*
+```
+
+*We just deleted all our uploads, clear out the SQL database too...*
+
+| **52** :>
+```sql
+DELETE * FROM media_library;
+```
+
+*Note:*
+
+- *ajax.mediainfo.php*
+  - **
+- *medialibrary.php*
+  - **
+- *upload.php*
+  - **
+
 
 // Add to the AJAX Medial Library edit
   // Make a "largest-processed" copy (1080p) in the editing dir from the original/images dir
@@ -1229,6 +1287,7 @@ sudo mkdir -p web/media/editing && \
   // Run the normal Linux processes on save, not replacing the file in original/images
   // Include a "restore original" button to re-process from original/images
 
+// tiny-upload15.php is a port from tiny-upload1.php, no mods yet
 
 ### Piece Editor
 

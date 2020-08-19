@@ -15,11 +15,11 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
 
-| **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+| **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
 | **S1** :> `USE webapp_db;`
 
-| **SB-1** ://phpMyAdmin **> webapp_db**
+| **S1** ://phpMyAdmin **> webapp_db**
 
 ___
 
