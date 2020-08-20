@@ -1185,6 +1185,24 @@ texlive-fonts-recommended \
 texlive-latex-recommended
 ```
 
+*Create our SQL table for image info...*
+
+| **49** :>
+```sql
+CREATE TABLE IF NOT EXISTS `media_images` (
+  `m_id` INT UNSIGNED NOT NULL,
+  `orientation` VARCHAR(4) NOT NULL,
+  `width` VARCHAR(4) NOT NULL,
+  `height` VARCHAR(4) NOT NULL,
+  `xs` VARCHAR(9) NOT NULL,
+  `sm` VARCHAR(9) NOT NULL,
+  `md` VARCHAR(9) NOT NULL,
+  `lg` VARCHAR(9) NOT NULL,
+  `xl` VARCHAR(9) NOT NULL,
+  PRIMARY KEY (`m_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+```
+
 *Copy our web app files...*
 
 | **50** :$
@@ -1194,8 +1212,9 @@ sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images
 sudo cp core/10-bash.imageprocess.sh web/bash.imageprocess.sh && \
 sudo cp core/10-bash.videoprocess.sh web/bash.videoprocess.sh && \
 sudo cp core/10-bash.audioprocess.sh web/bash.audioprocess.sh && \
-sudo cp core/10-bash.docprocess.sh web/bash.docprocess.sh && \
+sudo cp core/10-bash.documprocess.sh web/bash.documprocess.sh && \
 sudo cp core/10-upload14.php web/upload.php && \
+sudo chown -R www-data:www-data /var/www/html && \
 atom core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.docprocess.sh core/10-upload14.php && \
 ls web web/media web/media/*
 ```
@@ -1204,21 +1223,72 @@ ls web web/media web/media/*
 
 | **50** :>
 ```sql
-DELETE * FROM media_library;
+DELETE FROM media_library;
 ```
 
 *Note:*
 
-- *bash.imageprocess.sh*
-  - **
-- *bash.videoprocess.sh*
-  - **
-- *bash.audioprocess.sh*
-  - **
-- *bash.docprocess.sh*
-  - **
 - *upload.php*
+  - *`$upload_dir_base` was removed and replaced by `$upload_dir` because Linux BASH scripts will handle the rest*
+    - *Note all uploaded files go to web/media/uploads/ then get processed by a Linux BASH script*
+  - *`Linux process` sections added*
+    - *To each basic type*
+    - *To the end, after `move_uploaded_file()`*
+  - *`Image size ratios` are created by multiplying fractions, not decimals*
+    - *Eg:*
+    ```php
+    '1920x'.(1920*($img_h/$img_w))
+    ```
+  - *BASH scripts run via `shell_exec()` according to `switch`-`case`*
+- *medialibrary.php*
   - **
+  // List full and thumbnail paths
+- *Note our BASH scripts call the full path of the commands*
+  - *This avoids hacking and ghosting Linux commands*
+  - *Find the full path of a command with:$ `which some-command`*
+  - *bash.imageprocess.sh*
+    - *`convert` is the command that came with the `imagemagick` package*
+    - *When finished, we move the file from media/uploads to media/originals/images*
+  - *bash.videoprocess.sh*
+    - **
+  - *bash.audioprocess.sh*
+    - **
+  - *bash.docprocess.sh*
+    - **
+
+*Watch an example of our `imagemagick` converter...*
+
+| **51**:$ `convert "test_uploads/vipLinux-Meshtop.jpg" -resize 484x303 "vipLinux-Meshtop_484x303.jpg"`
+
+| **52**:$ `ls -l`
+
+| **B-53** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
+
+| **53** :>
+```sql
+SELECT * FROM media_library; SELECT * FROM media_images;
+```
+
+| **53** ://phpMyAdmin **> webapp_db > media_library**
+
+1. Look in ~/School/VIP/501/test_uploads
+2. Drag multiple files into the area: *"Drop to upload!"*
+3. Watch changes in:
+  - The file system:$ `ls web/media/*`
+  - The SQL table:> `SELECT * FROM media_library; SELECT * FROM media_images;`
+4. Repeat these steps with many files
+
+| **54** :>
+```sql
+SELECT * FROM media_library; SELECT * FROM media_images;
+```
+
+| **54** ://phpMyAdmin **> webapp_db > media_library**
+
+| **54** :$
+```
+ls web/media/*
+```
 
 
 // Create new standard file sizes (Linux processing)
@@ -1260,6 +1330,7 @@ sudo cp core/10-ajax.mediainfo15.php web/ajax.mediainfo.php && \
 sudo cp core/10-medialibrary15.php web/medialibrary.php && \
 sudo cp core/10-upload15.php web/upload.php && \
 sudo cp core/10-tiny-upload15.php web/tiny-upload.php && \
+sudo chown -R www-data:www-data /var/www/html && \
 atom core/10-ajax.mediainfo15.php core/10-medialibrary15.php core/10-upload14.php && \
 ls web web/media web/media/*
 ```
@@ -1268,7 +1339,7 @@ ls web web/media web/media/*
 
 | **52** :>
 ```sql
-DELETE * FROM media_library;
+DELETE FROM media_library;
 ```
 
 *Note:*
@@ -1304,6 +1375,15 @@ ___
 
 # The Take
 
+## PHP Functions for Files & Images
+```php
+getimagesize();
+pathinfo();
+rename();
+unlink();
+shell_exec();
+round();
+```
 
 ___
 
