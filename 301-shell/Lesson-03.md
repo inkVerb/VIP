@@ -85,11 +85,13 @@ one-1*
 
 | **22** :$ `./03-do-echo-7`
 
+**iteration** - *Each loop "cycle" is often called an "iteration"*
+
 ### II. `break` & `continue`
 
 #### *Usually, `break` & `continue` are wrapped in an `if` test*
 
-#### `break` will "break out" a loop
+#### `break` will "break out" of a loop
 
 *Note the error message: bash knows `break` is used by `for`...*
 
@@ -103,7 +105,7 @@ one-1*
 
 | **26** :$ `./03-do-echo-8`
 
-#### `continue` will skip whatever is left in a loop cycle and "continue" on to the next cycle
+#### `continue` will skip whatever is left in a loop iteration and "continue" on to the next iteration
 
 *Note the error message: bash knows `continue` is used by `for`...*
 
@@ -132,6 +134,7 @@ ___
 - Syntax of the `for` line:
   - `for` `Variable` `in` `List`
   - (each item will sequentially be assigned as the value of `$Variable`)
+- A loop "cycle" is often called an "iteration"
 - See usage and examples here: [Tests: for](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iii-for-variabl-in-lst)
 
 ##  `break` & `continue`

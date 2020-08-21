@@ -171,19 +171,19 @@ fi
 
 The command runs; if it succeeds, the test answers true
 
-| **42** :$ `markdown.md`
+| **42** :$ `gedit markdown.md`
 
 *Note the contents of markdown.md*
 
 | **43** :$ `grep "markdown" markdown.md`
 
-*Show the last exit (0 = `true`; 1 = `false`)*
+*Show the last exit status (`0` = `true`; `1`, `2`, `3`... = `false`)*
 
-| **44** :$ `echo $?` (0 because something was found, `if` = `true`)
+| **44** :$ `echo $?` (`0` because something was found, `if` = `true`)
 
 | **45** :$ `grep "Markdown" markdown.md`
 
-| **46** :$ `echo $?` (1 because nothing was found, `if` = `false`)
+| **46** :$ `echo $?` (`1` because nothing was found, `if` = `false`)
 
 *Only "markdown", not "Markdown"*
 
@@ -191,13 +191,13 @@ The command runs; if it succeeds, the test answers true
 
 | **48** :$ `./01-ifcomm1`
 
-*Use `grep -q` for no output, only `true/false` (0 or 1)...*
+*Use `grep -q` for no output, only `true`/`false` (`0` or `1`, `2`, `3`...)...*
 
 | **49** :$ `grep -q "markdown" markdown.md`
 
 | **50** :$ `echo $?`
 
-| **51** :$ `grep -q "markdown" markdown.md`
+| **51** :$ `grep -q "Markdown" markdown.md`
 
 | **52** :$ `echo $?`
 
@@ -241,9 +241,9 @@ ___
   - The command executes as normal
   - If the command exits with success, the `if` test returns `true`
   - Syntax: `if some command here; then`
-- `echo $?` shows the `true/false` response of the last command
+- `echo $?` shows the `true`/`false` exit status of the last command
   - `0` = `true`
-  - `1` = `false`
+  - `1`, `2`, `3`... = `false`
   - This is how `if` performs tests
 - See usage and examples here: [Tests: if](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#ii-if-then-else--elif-fi)
 ___
