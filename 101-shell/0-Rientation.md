@@ -21,7 +21,9 @@ This is normal text, which may label or tell something, it is rare in these less
 
 *This note explains code later on this line, but don't enter it in the terminal `read me but not for terminal`*
 
-*When a line begins with a number like this number 257:* | **257** : *enter the `preformatted text` after it into the terminal*
+*When a line begins with a number and dollar sign (`$`) like this number 257:* | **257** :$ *enter the `preformatted text` after it into the terminal*
+
+- *This is because a Linux "user" prompt is often indicated by a dollar sign (`$`); a "root" prompt is indicated by a hash (`#`)*
 
 *When using copy-paste to enter a command into the terminal, Ctrl + C will work in a normal window, but use Ctrl + Shift + V to paste into the terminal*
 

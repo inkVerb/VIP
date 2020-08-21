@@ -43,8 +43,9 @@ echo "I am a test upload file" > test_uploads/test1.txt
 pandoc -s test_uploads/test1.txt -o test_uploads/test2.doc
 echo "I am a another test upload file" > test_uploads/test3.txt
 pandoc -s test_uploads/test3.txt -o test_uploads/test3.docx
-pandoc -s test_uploads/mime.md -o test_uploads/mime.odt
-pandoc -s test_uploads/mime.md -o test_uploads/mime.pdf
+pandoc -s test_uploads/markdown_odt.md -o test_uploads/markdown.odt
+pandoc -s test_uploads/markdown_pdf.md -o test_uploads/markdown.pdf
+pandoc -s test_uploads/markdown_htm.md -o test_uploads/markdown.htm
 echo "I am a fake PNG file" > test_uploads/fakes/fake.png
 echo "I am a fake JPEG file" > test_uploads/fakes/fake.jpg
 echo "I am a fake GIF file" > test_uploads/fakes/fake.gif
@@ -439,10 +440,13 @@ function human_file_size($size, $unit="") {
 1. Click "Browse..."
 2. Look in ~/School/VIP/501/test_uploads
 3. Select & "open" ***various files***
-  - Will fail: **.wma, .flv, .bmp**
+  - Will fail: **.bmp, .wma, .flv, .avi, .mkv, .mov**
+    - vip-red.bmp
     - audio.wma
     - video.flv
-    - vip-red.bmp
+    - video.avi
+    - video.mkv
+    - video.mov
 4. Click "Upload"
 5. Check the uploads directory:$ `ls web/uploads`
 6. Repeat these steps with many files, including fake and disallowed
@@ -1171,14 +1175,19 @@ ls web/media/*
 - `imagemagick` *Images, from [401 Lesson 2](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-02.md)*
   - *Learn at: [https://imagemagick.org/script/command-line-processing.php]*
 - `ffmpeg` *Video & audio*
+- `libmp3lame0` *Audio libraries for `ffmpeg`*
+  - *This allows `ffmpeg` to process audio into an .mp3 file with the option: `-acodec libmp3lame`*
+  - *A more up-to-date alternative to `libmp3lame0` is: `libavcodec-extra57`*
+    - *If `libavcodec-extra57` is not available, find the right number with: `sudo apt-cache search libavcodec-extra`*
 - `pandoc` *Documents, from [301 Lesson 2](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md)*
-- `texlive-...` *Dependencies for `pandoc` to create .pdf files*
+  - `texlive-...` *Dependencies for `pandoc` to create .pdf files*
 
 | **49** :$
 ```
 sudo apt install \
 imagemagick \
 ffmpeg \
+libmp3lame0 \
 pandoc \
 texlive-latex-base \
 texlive-fonts-recommended \
@@ -1208,14 +1217,16 @@ CREATE TABLE IF NOT EXISTS `media_images` (
 | **50** :$
 ```
 sudo mkdir -p web/media/uploads web/media/original/images web/media/original/video web/media/original/audio web/media/original/docs && \
-sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/*
+sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/* && \
 sudo cp core/10-bash.imageprocess.sh web/bash.imageprocess.sh && \
 sudo cp core/10-bash.videoprocess.sh web/bash.videoprocess.sh && \
 sudo cp core/10-bash.audioprocess.sh web/bash.audioprocess.sh && \
 sudo cp core/10-bash.documprocess.sh web/bash.documprocess.sh && \
+sudo cp core/10-ajax.mediainfo14.php web/ajax.mediainfo.php && \
+sudo cp core/10-medialibrary14.php web/medialibrary.php && \
 sudo cp core/10-upload14.php web/upload.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.docprocess.sh core/10-upload14.php && \
+atom core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.documprocess.sh core/10-ajax.mediainfo14.php core/10-medialibrary14.php core/10-upload14.php && \
 ls web web/media web/media/*
 ```
 
@@ -1228,6 +1239,17 @@ DELETE FROM media_library;
 
 *Note:*
 
+- *upload.php & medialibrary.php*
+  - *Now allowing flv mime types:*
+    - *`video/x-flv` (.flv)*
+    - *`video/x-msvideo` (.avi)*
+    - *`video/x-matroska` (.mkv)*
+    - *`video/quicktime` (.mov)*
+    - *`image/bmp` (.bmp)*
+    - *`image/x-windows-bmp` (.bmp)*
+    - *`image/x-ms-bmp` (.bmp)*
+  - *These will `Correct non-accepted conversions` in upload.php*
+  - *A converted version will be kept in the "originals" directory*
 - *upload.php*
   - *`$upload_dir_base` was removed and replaced by `$upload_dir` because Linux BASH scripts will handle the rest*
     - *Note all uploaded files go to web/media/uploads/ then get processed by a Linux BASH script*
@@ -1237,39 +1259,169 @@ DELETE FROM media_library;
   - *`Image size ratios` are created by multiplying fractions, not decimals*
     - *Eg:*
     ```php
-    '1920x'.(1920*($img_h/$img_w))
+    '1920x'.(1920*($img_height/$img_width))
     ```
+    - *We use `round()` to make sure we don't end up with a decimal*
+  - *File name check accounts for to-be-converted mime types via: `$final_extension`*
   - *BASH scripts run via `shell_exec()` according to `switch`-`case`*
 - *medialibrary.php*
   - **
   // List full and thumbnail paths
+- *ajax.mediainfo.php*
+  - **
+  // Actions to add/remove alternate document formats
+  // Update file name changing to new framework
+  // media_docs SQL table to keep track of name changes
 - *Note our BASH scripts call the full path of the commands*
   - *This avoids hacking and ghosting Linux commands*
   - *Find the full path of a command with:$ `which some-command`*
   - *bash.imageprocess.sh*
+    - *This has several tests and checks, including converting some mimetypes*
     - *`convert` is the command that came with the `imagemagick` package*
+      - *Syntax: `convert "input_file.jpg" -resize 1920x1080 "output_file.jpg"`*
+    - *Bitmap (.bmp) files are converted to PNG*
+    - *SVG files can also be converted*
+      - *Syntax: `convert -background none -size 1920x1080 "input_file.svg" "output_file.png"`*
     - *When finished, we move the file from media/uploads to media/originals/images*
+      - *Bitmap files are converted in "originals"*
   - *bash.videoprocess.sh*
-    - **
+    - *This has several tests and checks, including converting non-accepted mimetypes*
+    - *`ffmpeg` converts and processes video and audio files*
+      - *Syntax: `ffmpeg -y -i input_file.ogg -filter:v scale=1920:-1 -c:a copy output_file.ogg`*
+        - *`1920:-1` means 1920 wide, keep aspect ration for height*
+        - *`-1:1920` would mean 1920 high, keep aspect ration for width*
+        - *`-y` means to overwrite existing files*
+        - *Other syntax you can learn about in the `ffmpeg` docs and forums*
+      - *Video processing: (ideal for web)*
+        - *Largest size is 960 wide or high*
+        - *Same frame rate as recorded*
+        - *Anything bigger or better, use a CDN*
+    - *When finished, we move the file from media/uploads to media/originals/video*
+      - *.flv, .avi, .mkv & .mov files are converted in "originals"*
   - *bash.audioprocess.sh*
-    - **
+    - *`ffmpeg` can process audio files, not only video*
+      - *Syntax: `ffmpeg -i input_file.wav -acodec libmp3lame -vn -ar 44100 -ac 2 -b:a 96k output_file.mp3`*
+        - *`-acodec libmp3lame` sets the codec to LAME*
+        - *`-vn` disables video, including cover images*
+        - *`-ar 44100` sets audio sample rate (44.1kHz)*
+        - *`-ac 1` sets number of channels, `1` = mono*
+        - *`-b:a 96k` sets a precise audio bitrate (96kbps; `-b:v` sets video bitrate)*
+    - *Audio processing: (ideal for podcasts)*
+      - *96kbps 44kHz mono mp3*
+        - *(human voice doesn't go over 5kHz, you shouldn't be doing an ultra-high quality musical performance in a blog-based podcast)*
   - *bash.docprocess.sh*
-    - **
+    - *`pandoc` converts between different document formats*
+
+#### File Processing in the Linux Terminal
+
+##### `imagemagick` for Images
 
 *Watch an example of our `imagemagick` converter...*
 
 | **51**:$ `convert "test_uploads/vipLinux-Meshtop.jpg" -resize 484x303 "vipLinux-Meshtop_484x303.jpg"`
 
+*...This is the same syntax we use in our BASH script*
+
 | **52**:$ `ls -l`
 
-| **B-53** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
+*Note `convert` will keep the aspect ratio of an image by default, but we don't want to be dependent on that*
 
-| **53** :>
+*Now, convert .svg file to .png...*
+
+| **53**:$ `convert -background none -size 484x303 "test_uploads/star.svg" "star_484x303_svg.png"`
+
+*...This is the same syntax we use in our BASH script*
+
+| **54**:$ `ls -l`
+
+*Note the .svg file is now a .png file*
+
+*Now, convert .bmp file to .png...*
+
+| **55**:$ `convert "test_uploads/vip-red.bmp" "vip-red.png"`
+
+*...This is the same syntax we use in our BASH script*
+
+| **56**:$ `ls -l`
+
+*Note the .bmp file is now a .png file*
+
+##### `ffmpeg` for Video
+
+*Now, resize a video...*
+
+| **57**:$ `ffmpeg -i "test_uploads/video.webm" -filter:v scale=320:-1 -c:a copy "video.webm"`
+
+*...This is the same syntax we use in our BASH script*
+
+| **58**:$ `ls -l`
+
+*See the new resolution with `ffprobe`...*
+
+| **59**:$ `ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "video.webm"`
+
+*See the original resolution...*
+
+| **60**:$ `ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "test_uploads/video.webm"`
+
+*Note the video has been resized*
+
+##### `ffmpeg` for Audio
+
+*Now, process audio...*
+
+| **61**:$ `ffmpeg -i "test_uploads/audio.wav" -acodec libmp3lame -vn -ar 44100 -ac 1 -b:a 96k "audio_wav96.mp3"`
+
+*...This is the same syntax we use in our BASH script*
+
+| **62**:$ `ls -l`
+
+*See the audio info with `ffprobe`...*
+
+| **63**:$ `ffprobe -select_streams a "audio_wav96.mp3"`
+
+*Note: `Stream #0:0: Audio: mp3, 44100 Hz, mono, s16p, 96 kb/s`*
+
+- *MP3*
+- *Mono*
+- *44.1kHz*
+- *96kbps*
+
+##### `pandoc` for Documents
+
+*Now, process documents...*
+
+| **64**:$ `pandoc -s test_uploads/markdown.odt -o out_odt.pdf`
+
+| **65**:$ `pandoc -s test_uploads/test3.docx -o out_docx.pdf`
+
+| **66**:$ `pandoc -s test_uploads/markdown.htm -o out_htm.pdf`
+
+| **67**:$ `pandoc -s test_uploads/markdown_pdf.md -o out_md.pdf`
+
+*...This is the same syntax we use in our BASH script*
+
+| **68**:$ `ls -l`
+
+*Note `pandoc` converted .odt, .docx, .htm, and .md files into .pdf*
+
+| **69**:$ `pandoc -s test_uploads/markdown.pdf -o out_md.pdf`
+
+*Note it failed because it cannot convert .pdf to .pdf*
+
+| **70**:$ `pandoc -s test_uploads/test2.doc -o out_doc.pdf`
+
+*Note it failed because it cannot convert .doc*
+
+| **B-71** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
+
+
+| **71** :>
 ```sql
 SELECT * FROM media_library; SELECT * FROM media_images;
 ```
 
-| **53** ://phpMyAdmin **> webapp_db > media_library**
+| **71** ://phpMyAdmin **> webapp_db > media_library**
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag multiple files into the area: *"Drop to upload!"*
@@ -1278,42 +1430,17 @@ SELECT * FROM media_library; SELECT * FROM media_images;
   - The SQL table:> `SELECT * FROM media_library; SELECT * FROM media_images;`
 4. Repeat these steps with many files
 
-| **54** :>
+| **72** :>
 ```sql
 SELECT * FROM media_library; SELECT * FROM media_images;
 ```
 
-| **54** ://phpMyAdmin **> webapp_db > media_library**
+| **72** ://phpMyAdmin **> webapp_db > media_library**
 
-| **54** :$
+| **72** :$
 ```
 ls web/media/*
 ```
-
-
-// Create new standard file sizes (Linux processing)
-// Full link to image with JavaScript "select all" auto action and "copy" action (&#x2398 = copy symbol)
-// Add buttons in the media library and for each newly-uploaded file
-  // Delete button with checkbox & multi-select
-  // Edit button (AJAX popup form)
-    // Title/alt (image)
-    // Rename file
-
-
-
-
-
-Linux processing
-
-- images - imagemagick
-- image sizes & thumbnail for Media Library
-- audio/video - ffmpeg (optimized for podcasting and in-site viewing)
-  - audio: 96kbps 44kHz mono mp3 (human voice doesn't go over 5kHz, you shouldn't be doing an ultra-high quality musical performance in a blog-based podcast)
-  - video: 960×640 (same framerate as recorded)
-  - Anything bigger or better, use a CDN like YouTube or SoundCloud
-- Doc types: .md .txt .pdf .odt - pandoc
-  - Original kept
-  - All remain available
 
 
 ### Process Uploaded Files: TinyMCE

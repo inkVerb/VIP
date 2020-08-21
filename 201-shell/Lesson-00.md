@@ -50,6 +50,18 @@ ___
 
 *Look, you're root!*
 
+About `sudo` and "root"...
+
+### Prompts show power
+
+*Remember from [0-Rientation](https://github.com/inkVerb/vip/blob/master/101-shell/0-Rientation.md):*
+
+- *`$` indicates a normal "user" prompt*
+  - *This includes a sudoer and non-sudoer*
+- *`#` indicates a "root" user prompt*
+  - *Everything done is owned by "root" and never needs `sudo`*
+  - *This is generally dangerous*
+
 *Bye*
 
 | **4** :$ `exit`
@@ -68,6 +80,8 @@ ___
 - Logging in as root is generally considered dangerous, best use `sudo command`
 - Never use `sudo` inside a shell script
 - Always use `sudo ./my-shell-script`, if your script needs root permissions
+- `$` indicates a normal "user" prompt
+- `#` indicates a "root" user prompt
 
 ___
 
