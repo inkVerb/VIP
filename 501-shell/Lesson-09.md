@@ -38,14 +38,14 @@ We want to review a list of our pieces
 | **1** :$
 ```
 sudo cp core/09-pieces1.php web/pieces.php && \
-sudo cp core/09-in.logincheck.php web/in.login_check.php && \
+sudo cp core/09-in.logincheck1.php web/in.login_check.php && \
 sudo cp core/09-in.footer.php web/in.footer.php && \
 sudo cp core/09-edit1.php web/edit.php && \
 sudo cp core/09-blog1.php web/blog.php && \
 sudo cp core/09-webapp.php web/webapp.php && \
 sudo cp core/09-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces1.php core/09-in.logincheck.php core/09-in.footer.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-accountsettings.php && \
+atom core/09-pieces1.php core/09-in.logincheck1.php core/09-in.footer.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-accountsettings.php && \
 ls web
 ```
 
@@ -64,7 +64,7 @@ ls web
 - *in.login_check.php*
   - *HTML page starts at end of logic*
   - *`<h1>` page name is part*
-  - *TinyMCE uses class `.tinymce_editor` for the selector*
+  - *TinyMCE uses class `#p_content` for the selector*
 - *in.footer.php*
   - *Finally here in all page files*
   - *Simple for now: `</body>` & `</html>`*
@@ -817,6 +817,7 @@ ls web
     - *This allows side-by-side forms, as with edit.php*
 - *in.editprocess.php*
   - *`p_series` validation runs an SQL query to see if the Series actually exists*
+  - *`$p_series` also appears in SQL queries and dup checks*
 - *in.series.php & ajax.series.php*
   - *These run an AJAX `<form>`, nearly identical to what we did in Lesson 6*
   - *Both the `<select>` input and the new Series `<form>` are wrapped in a `<div>` for AJAX to reload*
@@ -984,7 +985,7 @@ sudo cp core/09-act.piecesactions.php web/act.piecesactions.php && \
 sudo cp core/09-trash8.php web/trash.php && \
 sudo cp core/09-style8.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-in.metaeditfunctions8.php core/09-ajax.piecesactions8.php core/09-act.piecesactions.php core/09-style8.css && \
+atom core/09-pieces8.php core/09-in.metaeditfunctions8.php core/09-ajax.piecesactions8.php core/09-act.piecesactions.php core/09-trash8.php core/09-style8.css && \
 ls web
 ```
 
@@ -1115,11 +1116,8 @@ sudo cp core/09-trash10.php web/trash.php && \
 sudo cp core/09-in.metaeditfunctions10.php web/in.metaeditfunctions.php && \
 sudo cp core/09-ajax.metaedit.php web/ajax.metaedit.php && \
 sudo cp core/09-style10.css web/style.css && \
-sudo cp core/09-edit10.php web/edit.php && \
-sudo cp core/09-in.series10.php web/in.series.php && \
-sudo cp core/09-in.piecefunctions10.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit10.php web/edit.php core/09-in.series10.php core/09-in.piecefunctions10.php && \
+atom core/09-pieces10.php web/pieces.php core/09-trash10.php web/trash.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css core/09-edit10.php core/09-in.piecefunctions10.php && \
 ls web
 ```
 
@@ -1131,7 +1129,6 @@ ls web
   - `$form_id`
 - *Every `<form>` element now uses a unique ID with the Piece ID as part of the name*
 - *Peruse this in our `pieceInput()` function (in.metaeditfunctions.php)*
-- *See it at work also in edit.php and in.series.php*
 - *...We will need this since we are going to AJAX forms for different pieces on the same page...*
 2. Every Piece `<form>` is side-by-side
 - We learned about this with `postformarrays.php`
@@ -1245,7 +1242,7 @@ document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditRespon
 
 - *The pencil symbol next to each Piece Title*
   - *This often means "edit", so we should change that text...*
-- *The hover "edit" text changed to "Editor ->"*
+- *The hover "edit" text changed to "Edit ->"*
   - *The user can easily distinguish this from the pencil symbol*
 - *Other symbols: deleting, restoring, drafting, pages, and posts*
   - *These are meant to be distinct, intuitive, and memorable*
@@ -1270,6 +1267,69 @@ ls web
 | **B-36** :// `localhost/web/pieces.php` (Ctrl + R to reload)
 
 Click on "history" for any Piece
+
+### AJAX our Editor
+
+Let's cleanup edit.php
+
+- Better HTML viewing, outside `<?php` tags
+- AJAX for:
+  - Save draft
+  - Update
+  - Slug  
+
+| **37** :$
+```
+sudo cp core/09-edit11.php web/edit.php && \
+sudo cp core/09-ajax.edit11.php web/ajax.edit.php && \
+sudo cp core/09-in.piecefunctions11.php web/in.piecefunctions.php && \
+sudo cp core/09-in.editprocess11.php web/in.editprocess.php && \
+sudo cp core/09-in.logincheck11.php web/in.login_check.php && \
+sudo cp core/09-style11.css web/style.css && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/09-edit11.php core/09-ajax.edit11.php core/09-in.piecefunctions11.php core/09-in.editprocess11.php core/09-in.logincheck11.php core/09-style11.css && \
+ls web
+```
+
+*Note:*
+
+- *edit.php*
+  - *Uses new JavaScript*
+    - *`onNavWarn()` & `offNavWarn()` to warn users navigating away after potential unsave changes*
+    - *`ajaxSaveDraft()` to AJAX our "Save draft" button*
+      - *Clicking "Save draft" will not reload the entire page, but it still saves*
+    - *`addEventListener` to capture "Ctrl + S" for the "Save draft" button*
+      - *When editing an existing Piece, it will send the `ajaxSaveDraft()` AJAX call directly*
+      - *When editing a new Piece with no ID yet, it will use JavaScript to "click" the "Save draft" `<input type="submit"`*
+    - *AJAX response appears inside `<div id="ajax_save_draft_response"`*
+    - *AJAX will update the of the slug `<input value=""`*
+    - *JavaScript for `showSlugEdit()`, `showGoLiveOptionsBox()`, `showGoLiveOptionsLabel()`, etc closes `<?php` tags so as to use HTML syntax highlighting*
+- *ajax.edit.php*
+  - *Only purpose is to include in.editprocess.php for AJAX calls from edit.php*
+- *in.piecefunctions.php*
+  - *Added two warnings JavaScript functions to all `<form>` inputs:*
+    - *`onchange="onNavWarn();"`*
+    - *`onkeyup="onNavWarn();"`*
+  - *Changed `<input id="p_slug"` to `class="slug"` to match our new CSS*
+- *in.editprocess.php*
+  - *Uses AJAX for "Save draft"*
+    - *`$response`*
+    - *`$r_class`*
+    - *`$ajax_response`*
+    - *`$json_response`*
+- *in.login_check.php*
+  - *For TinyMCE to send data via AJAX, we need this in the config:*
+```javascript
+tinymce.init({
+  setup: function (editor) {
+    editor.on('change', function () {
+      tinymce.triggerSave();
+    });
+},
+```
+- *style.css*
+  - *`Notice hides` section, making class `.notehide` disappear after 8 seconds*
+  - *Added `input[type=text].slug` so the slug `<input type="text"` isn't ridiculously long like before*
 
 ___
 

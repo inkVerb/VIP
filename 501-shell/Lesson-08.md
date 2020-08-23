@@ -106,9 +106,9 @@ CREATE TABLE IF NOT EXISTS `pieces` (
 ```
 sudo cp core/08-edit2.php web/edit.php && \
 sudo cp core/08-in.editprocess2.php web/in.editprocess.php && \
-sudo cp core/08-in.piecefunctions.php web/in.piecefunctions.php && \
+sudo cp core/08-in.piecefunctions2.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions.php && \
+atom core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions2.php && \
 ls web
 ```
 
@@ -341,6 +341,7 @@ WHERE p2.id IS NULL;
 
 | **12** :$
 ```
+sudo cp core/08-htaccess web/.htaccess && \
 sudo cp core/08-blog.php web/blog.php && \
 sudo cp core/08-piece.php web/piece.php && \
 sudo cp core/08-in.logincheck2.php web/in.login_check.php && \
@@ -352,17 +353,20 @@ ls web
 
 *Note:*
 
+- *.htaccess*
+  - *Forwards basic slug to: `piece.php?s=$1`*
+- *blog.php*
+  - *We reverse our SQL sanitation with `htmlspecialchars_decode()`*
+  - *Each piece link simply points to its slug*
+- *piece.php*
+  - *Like a single-piece viewer of blog.php*
+  - *Logic accepts both `s=SLUG` and `p=piece_ID` GET arguments*
+  - *Not restricted to SQL `type='post'`; this can also show pages*
 - *in.login_check.php*
   - *Removed redirect if not logged in*
   - *Place HTML header at top*
 - *in.piecefunctions.php (remember)*
   - *`htmlspecialchars($value);` converts all HTML characters to their HTML enity code*
-- *blog.php*
-  - *We reverse our SQL sanitation with `htmlspecialchars_decode()`*
-- *piece.php*
-  - *Like a single-piece viewer of blog.php*
-  - *Logic accepts both `s=SLUG` and `p=piece_ID` GET arguments*
-  - *Not restricted to SQL `type='post'`; this can also show pages*
 - *style.css*
   - *Added a `.piece-content` class for piece content*
 
@@ -510,19 +514,22 @@ ls web
 | **18** :$
 ```
 sudo cp core/08-in.logincheck3-tinymce.php web/in.login_check.php && \
+sudo cp core/08-in.piecefunctions3.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-in.logincheck3-tinymce.php && \
+atom core/08-in.logincheck3-tinymce.php core/08-in.piecefunctions3.php && \
 ls web
 ```
 
-*Note in.login_check.php:*
+*Note:*
 
-- *Note the two `<script>` sections between the comments `<!-- TinyMCE -->`*
-- *These include the JavaScript* ***in the header*** *so TinyMCE works*
-- *It calls the* ***class*** *of our "Content" `<textarea>` HTML element by `class="tinymce_editor"`*
-  - *This is from the setting: `selector: '.tinymce_editor'`*
-  - *This could be an ID with: `selector: '#tinymce_editor'`*
-- *That's it, just that simple*
+- *in.login_check.php*
+  - *Note the two `<script>` sections between the comments `<!-- TinyMCE -->`*
+  - *These include the JavaScript* ***in the header*** *so TinyMCE works*
+  - *It calls the* ***class*** *of our "Content" `<textarea>` HTML element by `class="tinymce_editor"`*
+    - *This is from the setting: `selector: '.tinymce_editor'`*
+    - *This could be an ID with: `selector: '#tinymce_editor'`*
+- *in.piecefunctions.php*
+  - *Adds `class="tinymce_editor"` to `<textarea id="p_content"`*
 
 | **B-18** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 
@@ -680,20 +687,17 @@ ___
 >
 ___
 
-##### The Medium Editor Is Very Plain
+##### Restore the Editor to TinyMCE
 
-*If you prefer TinyMCE as your editor, restore it...*
+The Medium Editor Is Very Plain, we will not use it for most of this project
 
-___
-> Optional: You may restore the TinyMCE editor
->
-> | **T1** :$
-> ```
-> sudo cp core/08-in.logincheck3-tinymce.php web/in.login_check.php && \
-> sudo cp core/08-in.piecefunctions.php web/in.piecefunctions.php && \
-> sudo chown -R www-data:www-data /var/www/html
-> ```
->
+| **23** :$
+```
+sudo cp core/08-in.logincheck3-tinymce.php web/in.login_check.php && \
+sudo cp core/08-in.piecefunctions3.php web/in.piecefunctions.php && \
+sudo chown -R www-data:www-data /var/www/html
+```
+
 ___
 
 # The Take
