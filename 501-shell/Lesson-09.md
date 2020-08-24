@@ -676,12 +676,11 @@ sudo cp core/09-edit3.php web/edit.php && \
 sudo cp core/09-in.jsonlinks.php web/in.jsonlinks.php && \
 sudo cp core/09-in.piecefunctions3.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess3.php web/in.editprocess.php && \
-sudo cp core/09-in.functions.php web/in.functions.php && \
 sudo cp core/09-piece2.php web/piece.php && \
 sudo cp core/09-blog2.php web/blog.php && \
 sudo cp core/09-style7.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit3.php core/09-in.jsonlinks.php core/09-in.piecefunctions3.php core/09-in.editprocess3.php core/09-in.functions.php core/09-piece2.php core/09-style7.css && \
+atom core/09-edit3.php core/09-in.jsonlinks.php core/09-in.piecefunctions3.php core/09-in.editprocess3.php core/09-piece2.php core/09-style7.css && \
 ls web
 ```
 
@@ -700,14 +699,13 @@ ls web
     - *`p_content`*
     - *`p_after`*
     - *`p_links`*
+  - *New function for an "info" popup help*
 - *in.editprocess.php*
   - *`$p_links` appears*
     - *`checkPiece()`, alongside `$p_tags`*
     - *`json_decode()`, alongside `$p_tags`*
     - *SQL queries (with the `links` column)*
     - *Uses `CAST('$json' AS JSON)`, as with `tags`
-- *in.functions.php*
-  - *New function for an "info" popup help*
 - *in piece.php*
   - *Links and Tags show*
   - *There is a "View on blog" link at the top*
@@ -801,9 +799,9 @@ sudo cp core/09-edit4.php web/edit.php && \
 sudo cp core/09-in.piecefunctions4.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess4.php web/in.editprocess.php && \
 sudo cp core/09-in.series4.php web/in.series.php && \
-sudo cp core/09-ajax.series.php web/ajax.series.php && \
+sudo cp core/09-ajax.series4.php web/ajax.series.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit4.php core/09-in.piecefunctions4.php core/09-in.editprocess4.php core/09-in.series4.php core/09-ajax.series.php && \
+atom core/09-edit4.php core/09-in.piecefunctions4.php core/09-in.editprocess4.php core/09-in.series4.php core/09-ajax.series4.php && \
 ls web
 ```
 
@@ -820,8 +818,8 @@ ls web
   - *`$p_series` also appears in SQL queries and dup checks*
 - *in.series.php & ajax.series.php*
   - *These run an AJAX `<form>`, nearly identical to what we did in Lesson 6*
+    - *This uses a `<button>` that activates the AJAX, not an `<input type="submit">` with an AJAX `<form>` capture `window.addEventListener`*
   - *Both the `<select>` input and the new Series `<form>` are wrapped in a `<div>` for AJAX to reload*
-    - *This is how we clear the input field in the new Series `<form>`*
 
 *We need to create the `series` table and make our first entry so this can work...*
 
@@ -852,7 +850,9 @@ ADD `series` INT UNSIGNED DEFAULT 1;
 
 | **B-26** :// `localhost/web/edit.php?p=3`
 
-Try adding a Series with the "+ Series" form
+1. Try adding a Series with the "+ Series" form (click, don't press 'Enter')
+2. Press "Enter" to add a Series, which could make the page reload because of a bug we will fix later
+3. If your page reloads, click "Back" to return to the piece you were editing
 
 | **27** :> `SELECT * FROM series;`
 
@@ -1284,10 +1284,12 @@ sudo cp core/09-edit11.php web/edit.php && \
 sudo cp core/09-ajax.edit11.php web/ajax.edit.php && \
 sudo cp core/09-in.piecefunctions11.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess11.php web/in.editprocess.php && \
+sudo cp core/09-in.series11.php web/in.series.php && \
+sudo cp core/09-ajax.series11.php web/ajax.series.php && \
 sudo cp core/09-in.logincheck11.php web/in.login_check.php && \
 sudo cp core/09-style11.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit11.php core/09-ajax.edit11.php core/09-in.piecefunctions11.php core/09-in.editprocess11.php core/09-in.logincheck11.php core/09-style11.css && \
+atom core/09-edit11.php core/09-ajax.edit11.php core/09-in.piecefunctions11.php core/09-in.editprocess11.php core/09-in.series11.php core/09-ajax.series11.php core/09-in.logincheck11.php core/09-style11.css && \
 ls web
 ```
 
@@ -1296,6 +1298,7 @@ ls web
 - *edit.php*
   - *Uses new JavaScript*
     - *`onNavWarn()` & `offNavWarn()` to warn users navigating away after potential unsave changes*
+    - *`Disable "Enter" key on forms`*
     - *`ajaxSaveDraft()` to AJAX our "Save draft" button*
       - *Clicking "Save draft" will not reload the entire page, but it still saves*
     - *`addEventListener` to capture "Ctrl + S" for the "Save draft" button*
@@ -1307,7 +1310,7 @@ ls web
 - *ajax.edit.php*
   - *Only purpose is to include in.editprocess.php for AJAX calls from edit.php*
 - *in.piecefunctions.php*
-  - *Added two warnings JavaScript functions to all `<form>` inputs:*
+  - *Added two warnings JavaScript functions to every `<form>` `<input>`:*
     - *`onchange="onNavWarn();"`*
     - *`onkeyup="onNavWarn();"`*
   - *Changed `<input id="p_slug"` to `class="slug"` to match our new CSS*
@@ -1317,6 +1320,10 @@ ls web
     - *`$r_class`*
     - *`$ajax_response`*
     - *`$json_response`*
+- *in.series.php & ajax.series.php*
+  - *Added two warnings JavaScript functions to every `<form>` `<input>`:*
+    - *`onchange="onNavWarn();"`*
+    - *`onkeyup="onNavWarn();"`*
 - *in.login_check.php*
   - *For TinyMCE to send data via AJAX, we need this in the config:*
 ```javascript
@@ -1326,6 +1333,8 @@ tinymce.init({
       tinymce.triggerSave();
     });
 },
+...
+})
 ```
 - *style.css*
   - *`Notice hides` section, making class `.notehide` disappear after 8 seconds*

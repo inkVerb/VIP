@@ -53,9 +53,9 @@ ls web
     1. *Process the `if` tests to redirect via `header("Location: to_page.php")`*
     2. *Then create the `<head>` tag*
 
-| **B-1** :// `localhost/web/edit.php` (It will redirect to webapp.php)
+| **B-1** :// `localhost/web/edit.php` (It may redirect to webapp.php)
 
-*Note it redirected because you are not logged in; Login:*
+*Note it redirected if you are not logged in; Login:*
 
 ```
 Username: jonboy
@@ -64,7 +64,7 @@ Password: My#1Password
 
 *Once logged in, enter the address directly because we didn't add a link to click...*
 
-| **B-2** :// `localhost/web/edit.php` (Now you are logged in)
+| **B-2** :// `localhost/web/edit.php` (It will load because you are logged in)
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -127,7 +127,7 @@ ls web
 - *`filter_var($value, FILTER_SANITIZE_STRING);` removes HTML tags*
 - *`htmlspecialchars($value);` converts all HTML characters to their HTML enity code*
 
-1. Fill-out the fields, simple with what you want
+1. Fill-out the fields, being simple with what you want
 2. Click "Save"
 3. Note the green message: Saved!
 
@@ -200,6 +200,8 @@ ls web
 
 | **B-7** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
 
+*Note the Slug was updated because this is technically a new piece*
+
 *Use Ctrl + Shift + C in browser to see the developer view*
 
 *Note:*
@@ -218,10 +220,11 @@ ls web
   - *An edited piece will have the `?p=ID` GET argument in the URL*
   - *A new piece will have no GET argument in the URL*
 
-1. Make a few slight changes
-2. Click "Save"
-3. Note the various and sundry save messages
-4. Note the changes in the database...
+1. Delete the entire Slug field
+2. Make a few other changes, including the Title
+3. Click "Save"
+4. Note the various and sundry save messages
+5. Note the changes in the database...
 
 | **B-8** :// `localhost/web/edit.php` (Save)
 
@@ -247,7 +250,7 @@ atom core/08-edit4.php core/08-in.editprocess4.php && \
 ls web
 ```
 
-| **B-9** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+| **B-9** :// `localhost/web/edit.php?=...` *('Enter' in the browser address bar to properly load)*
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
@@ -531,11 +534,12 @@ ls web
 - *in.piecefunctions.php*
   - *Adds `class="tinymce_editor"` to `<textarea id="p_content"`*
 
-| **B-18** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+| **B-18** :// `localhost/web/edit.php` *(Same as previously, empty form)*
 
-1. Apply or note some HTML styling with the WYSYWIG buttons
-2. Click "Update" or "Publish"
-3. See the changes on the blog and in the database...
+1. Type new content
+2. Apply or note some HTML styling with the WYSYWIG buttons
+3. Click "Update" or "Publish"
+4. See the changes on the blog and in the database...
 
 | **B-18** :// `localhost/web/blog.php`
 
