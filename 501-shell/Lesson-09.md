@@ -1113,11 +1113,12 @@ Try different Piece actions and see how the page never needs to reload
 ```
 sudo cp core/09-pieces10.php web/pieces.php && \
 sudo cp core/09-trash10.php web/trash.php && \
+sudo cp core/09-in.piecefunctions10.php web/in.piecefunctions.php && \
 sudo cp core/09-in.metaeditfunctions10.php web/in.metaeditfunctions.php && \
 sudo cp core/09-ajax.metaedit.php web/ajax.metaedit.php && \
 sudo cp core/09-style10.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces10.php web/pieces.php core/09-trash10.php web/trash.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css core/09-edit10.php core/09-in.piecefunctions10.php && \
+atom core/09-pieces10.php web/pieces.php core/09-trash10.php web/trash.php core/09-in.piecefunctions10.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css && \
 ls web
 ```
 
@@ -1275,7 +1276,6 @@ Let's cleanup edit.php
 - Better HTML viewing, outside `<?php` tags
 - AJAX for:
   - Save draft
-  - Update
   - Slug  
 
 | **37** :$
@@ -1325,21 +1325,51 @@ ls web
     - *`onchange="onNavWarn();"`*
     - *`onkeyup="onNavWarn();"`*
 - *in.login_check.php*
-  - *For TinyMCE to send data via AJAX, we need this in the config:*
+  - *For AJAX and other JavaScript to read TinyMCE content, we need this in the config:*
 ```javascript
-tinymce.init({
-  setup: function (editor) {
-    editor.on('change', function () {
-      tinymce.triggerSave();
-    });
+setup: function (editor) {
+  editor.on('change', function () {
+    tinymce.triggerSave();
+  });
 },
-...
-})
+```
+  - *For TinyMCE to allos the "Ctrl + S" AJAX hotkey, we need this in the config:*
+```javascript
+init_instance_callback: function (editor) {
+  editor.addShortcut("ctrl+s", "Save draft", "custom_ctrl_s");
+  editor.addCommand("custom_ctrl_s", function() {
+      ajaxSaveDraft('ajax.edit.php')
+  });
+},
 ```
 - *style.css*
   - *`Notice hides` section, making class `.notehide` disappear after 8 seconds*
   - *Added `input[type=text].slug` so the slug `<input type="text"` isn't ridiculously long like before*
 
+| **B-37** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+1. Click "Edit" for any piece
+2. Click "Save draft" and watch for the message
+3. Press "Ctrl + S" to watch the same message
+4. Click "Update" or "Publish" and the page will reload instead of AJAX
+
+### JavaScript Backup & Auto- Save
+
+Let's add a JavaScript function for autosaves
+
+| **38** :$
+```
+sudo cp core/09-edit12.php web/edit.php && \
+sudo cp core/09-hist4.php web/hist.php && \
+atom core/09-edit12.php core/09-hist4.php && \
+ls web
+```
+
+*Note:*
+
+- *edit.php*
+  - *In JavaScript, we added our `pieceAutoSave()` function to our AJAX `ajaxSaveDraft()` function*
+    - *This keeps everything up to date*
 ___
 
 # The Take
