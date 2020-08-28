@@ -1313,6 +1313,8 @@ ls web
   - *Added two warnings JavaScript functions to every `<form>` `<input>`:*
     - *`onchange="onNavWarn();"`*
     - *`onkeyup="onNavWarn();"`*
+    - *Not added to `<textarea`...`name="p_content"` because we don't want to run a JS function on every letter typed*
+      - *We will build a solution for the `p_content` with our autosave feature in the next step*
   - *Changed `<input id="p_slug"` to `class="slug"` to match our new CSS*
 - *in.editprocess.php*
   - *Uses AJAX for "Save draft"*
@@ -1353,7 +1355,7 @@ init_instance_callback: function (editor) {
 3. Press "Ctrl + S" to watch the same message
 4. Click "Update" or "Publish" and the page will reload instead of AJAX
 
-### JavaScript Backup & Auto- Save
+### JavaScript Auto-Save
 
 Let's add a JavaScript function for autosaves
 
@@ -1365,11 +1367,44 @@ atom core/09-edit12.php core/09-hist4.php && \
 ls web
 ```
 
+This autosave function serves many purposes, including nav warnings when changes were made in TinyMCE
+
 *Note:*
 
 - *edit.php*
   - *In JavaScript, we added our `pieceAutoSave()` function to our AJAX `ajaxSaveDraft()` function*
     - *This keeps everything up to date*
+  - *`autoSaveTimer()` is created by `function Timer` to loop our autosave every 30 seconds*
+    - *Creates functions to be used as:*
+      - *`autoSaveTimer.stop();`*
+      - *`autoSaveTimer.start();`*
+      - *`autoSaveTimer.reset(30000);` (including `30000` to redeclare our miliseconds)*
+  - *`// Run this when the page loads` section looks for old autosaves on page load and warns about differences*
+    - *If there is an unsaved autosave found, the 30 second autosave loop will not start*
+      - *We run `autoSaveTimer.stop();`right after we create `autoSaveTimer()` to make sure it isn't running, such as in this situation where an unsaved autosave was found*
+    - *`See diff...` `<button>` will send JSON with an unsaved autosave to hist.php*
+  - *30-second autosave differences will trigger the nav warning `onNavWarn();`*
+    - *We don't want to trigger `onNavWarn();` from our TinyMCE/content editor because that runs the function every time the user types, which is too much CPU expense*
+    - *Times it won't work are few and acceptable in most recovery-autosave efforts in current software*
+    - *`ajaxSaveDraft()` will resets autosave*
+      - *`pieceAutoSave();` to update any autosaves before processing*
+      - *`offNavWarn();` to remove any current nav warnings*
+  - *`dismissASdiff()` to dismiss any autosave differences*
+  - *"Update"/"Publish" `<input type="submit"` was replaced by a `<button>`*
+    - *Calls the JavaScript function `buttonFormSubmit`*
+      - *Sets the `<input type="hidden" value=` of the former `<input type="submit"` the `<button>` replaced*
+      - *Stops our `autoSaveTimer()`*
+      - *Turns off our navigation warning with `offNavWarn()`*
+      - *Sends the `<form name="edit_piece"` via JavaScript rather than `<input type="submit"`*
+- *hist.php*
+  - *Added `include ('./in.piecefunctions.php');` because we will use this to process an autosave recovery*
+  - *Added `if (isset($_POST['as_json']))` scenario for processing an autosave recovery*
+  - *Added `// Recovered autosave` scenario loading an autosave review*
+    - *Includes tests for:*
+      - *`$_GET['o']`*
+      - *`$_GET['a']`*
+      - *`$_POST['old_as']`*
+
 ___
 
 # The Take
