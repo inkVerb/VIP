@@ -307,14 +307,14 @@ On your own, learn more about implementation at [github.com/poetryisCODE/htmldif
 ```
 sudo cp core/09-pieces6.php web/pieces.php && \
 sudo cp core/09-piece1.php web/piece.php && \
-sudo cp core/09-hist1.php web/hist.php && \
+sudo cp core/09-hist6.php web/hist.php && \
 git clone https://github.com/poetryisCODE/htmldiff.git && \
 sudo cp htmldiff.js/htmldiff.min.js web/ && \
 sudo cp core/09-in.editprocess1.php web/in.editprocess.php && \
 sudo cp core/09-revert.php web/revert.php && \
 sudo cp core/09-style6.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces6.php core/09-piece1.php core/09-hist1.php core/09-in.editprocess1.php core/09-revert.php core/09-style6.css && \
+atom core/09-pieces6.php core/09-piece1.php core/09-hist6.php core/09-in.editprocess1.php core/09-revert.php core/09-style6.css && \
 ls web
 ```
 
@@ -382,8 +382,8 @@ This "History" view is nice, but it could be much more functional...
 
 | **12** :$
 ```
-sudo cp core/09-hist2.php web/hist.php && \
-atom core/09-hist2.php
+sudo cp core/09-hist9.php web/hist.php && \
+atom core/09-hist9.php
 ```
 
 *Note hist.php:*
@@ -676,11 +676,11 @@ sudo cp core/09-edit3.php web/edit.php && \
 sudo cp core/09-in.jsonlinks.php web/in.jsonlinks.php && \
 sudo cp core/09-in.piecefunctions3.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess3.php web/in.editprocess.php && \
-sudo cp core/09-piece2.php web/piece.php && \
-sudo cp core/09-blog2.php web/blog.php && \
+sudo cp core/09-piece3.php web/piece.php && \
+sudo cp core/09-blog3.php web/blog.php && \
 sudo cp core/09-style7.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit3.php core/09-in.jsonlinks.php core/09-in.piecefunctions3.php core/09-in.editprocess3.php core/09-piece2.php core/09-style7.css && \
+atom core/09-edit3.php core/09-in.jsonlinks.php core/09-in.piecefunctions3.php core/09-in.editprocess3.php core/09-piece3.php core/09-blog3.php core/09-style7.css && \
 ls web
 ```
 
@@ -1260,8 +1260,8 @@ document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditRespon
 
 | **36** :$
 ```
-sudo cp core/09-hist3.php web/hist.php && \
-atom core/09-hist3.php && \
+sudo cp core/09-hist10.php web/hist.php && \
+atom core/09-hist10.php && \
 ls web
 ```
 
@@ -1301,6 +1301,10 @@ ls web
     - *`Disable "Enter" key on forms`*
     - *`ajaxSaveDraft()` to AJAX our "Save draft" button*
       - *Clicking "Save draft" will not reload the entire page, but it still saves*
+    - *For new pieces with no ID*
+      - *The Javascript Ctrl + S listener will trigger the "Save draft" button*
+      - *TinyMCE's Ctrl + S hotkey will trigger a false ajaxSaveDraft() that simply clicks the "Save draft" button just the same*
+      - *Search: `// AJAX false triggers in new piece`*
     - *`addEventListener` to capture "Ctrl + S" for the "Save draft" button*
       - *When editing an existing Piece, it will send the `ajaxSaveDraft()` AJAX call directly*
       - *When editing a new Piece with no ID yet, it will use JavaScript to "click" the "Save draft" `<input type="submit"`*
@@ -1362,8 +1366,8 @@ Let's add a JavaScript function for autosaves
 | **38** :$
 ```
 sudo cp core/09-edit12.php web/edit.php && \
-sudo cp core/09-hist4.php web/hist.php && \
-atom core/09-edit12.php core/09-hist4.php && \
+sudo cp core/09-hist12.php web/hist.php && \
+atom core/09-edit12.php core/09-hist12.php && \
 ls web
 ```
 
@@ -1387,7 +1391,7 @@ This autosave function serves many purposes, including nav warnings when changes
     - *We don't want to trigger `onNavWarn();` from our TinyMCE/content editor because that runs the function every time the user types, which is too much CPU expense*
     - *Times it won't work are few and acceptable in most recovery-autosave efforts in current software*
     - *`ajaxSaveDraft()` will resets autosave*
-      - *`pieceAutoSave();` to update any autosaves before processing*
+      - *`pieceAutoSave();` to update any autosaves before processing AJAX saves*
       - *`offNavWarn();` to remove any current nav warnings*
   - *`dismissASdiff()` to dismiss any autosave differences*
   - *"Update"/"Publish" `<input type="submit"` was replaced by a `<button>`*
@@ -1404,6 +1408,166 @@ This autosave function serves many purposes, including nav warnings when changes
       - *`$_GET['o']`*
       - *`$_GET['a']`*
       - *`$_POST['old_as']`*
+
+| **B-38** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+
+1. Click "Edit" for any piece
+2. Type some changes in the "Content" (TinyMCE) field
+3. Wait 30 seconds and **DO NOT** press "Ctrl + S"
+4. Press "Ctrl + R" to reload the page
+  - Agree to a warning to navigate away and leave the page
+  - If there is no navigate away warning, you didn't wait long enough after changes
+5. When the page reloads, you will see the message about unsaved changes
+  - These changes were saved by JavaScript in your browser and are not in the database
+6. Click "See diff..." or "Dismiss forever", trying this a few different times
+7. "See diff..." will take you to hist.php, where you can choose to "restore this autosave"
+
+We need to do one more thing so we can do things right...
+
+### Unpublished Changes: Simple Diff via SQL
+
+*This is a good and simple example of a product roadmap "new feature" task*
+
+We need a proper way to decide if there are changes to a draft in the `pieces` that have not been published to the `publications` table
+
+Interestingly, SQL has very simple ways to find differences, so we don't need complicated PHP `if` statements for this
+
+Remember our workflow:
+
+  - Our Meta Editor in "Pieces" (pieces.php) will `UPDATE` both the `pieces` and `publications` tables without creating a new revision history in `publications`
+  - "Update" in our Editor (edit.php) will create a new revision in the `publications` table if there are any changes at all
+  - We can view the diff between the latest draft and latest publication in History (hist.php) already
+
+#### a. We need a way in:
+
+1. both pieces.php and edit.php
+2. to identify whether there are publishable changes to our latest draft
+3. We can do this with a simple `LEFT JOIN` MySQL query
+
+```sql
+-- table_a has the "id" column, corresponding to the "a_id" column in table_b
+-- common columns: apple, banana, watermelon
+SELECT A.apple, A.banana
+     FROM table_a AS A
+LEFT JOIN table_b AS B
+ ON A.id=B.a_id
+AND A.watermelon=B.watermelon
+WHERE B.a_id=5 -- The table_b match is more important, which could matter later
+ORDER BY B.id DESC LIMIT 1; -- Only the very last table_b entry, previous entries may match which we don't want
+```
+
+#### b. In identifying differences between two tables:
+
+1. it will be more efficient to more deeply connect our queries between those two tables
+2. we can do this with SQL using `INSERT` & `SELECT` in the same query
+
+```sql
+-- New entry
+INSERT INTO destination_table (clone_id, etc_2) SELECT id, etc_2 FROM origin_table WHERE some_row="some value";
+-- Update existing entry
+UPDATE destination_table AS DEST, origin_table AS ORIG
+SET DEST.etc_2=ORIG.etc_2,
+    DEST.etc_3=ORIG.etc_3
+WHERE DEST.original_id=5
+  AND ORIG.id=5;
+```
+
+#### See it work...
+
+| **39** :$
+```
+sudo cp core/09-edit13.php web/edit.php && \
+sudo cp core/09-pieces13.php web/pieces.php && \
+sudo cp core/09-in.editprocess13.php web/in.editprocess.php && \
+atom core/09-edit13.php core/09-pieces13.php core/09-in.editprocess13.php && \
+ls web
+```
+
+*Note:*
+
+- *edit.php & pieces.php*
+  - *Checks if a Piece draft and publication is different*
+    - *This uses our SQL `LEFT JOIN` query*
+  - *Search: `// Unpublished changes to draft`*
+  - *Search: `$draft_diff`*
+- *in.editprocess.php*
+  - *Will `UPDATE` or `INSERT INTO` the `publications` and `publication_history` tables by cloning `FROM` the `pieces` table*
+    - *This will clone `date_updated` from `pieces` to `publications`, used by our `LEFT JOIN` difference check*
+    - *Search: `INSERT INTO publication_history`*
+    - *Search: `UPDATE publications PUB`*
+  - *Made some changes under `// Prepare the query to update the old piece`*
+    - *Previously, all non-published draft saves were set as unscheduled to identify pending changes in Pieces*
+    - *With our proper check for unpublished changes, we can...*
+      - *change this workflow to allow for "to-be-rescheduled" drafts*
+      - *display more accuracy in Pices*
+
+| **B-39** :// `localhost/web/http://localhost/web/edit.php?p=1` (if it works, we will use `1` for this step)
+
+*...if that does not work...*
+
+___
+> | **B-39-fix** :// `localhost/web/pieces.php`
+>
+> 1. Click "Edit" for any piece
+> 2. Use the number in `edit.php?p=NUM` to replace `1` in `U.piece_id=1` for our SQL queries
+>
+___
+
+1. Click "Update" in the Editor
+2. Run the SQL query and note it finds one match
+
+| **39** :>
+
+```sql
+SELECT P.title, P.date_updated FROM pieces AS P LEFT JOIN publications AS U ON P.id=U.piece_id AND P.date_updated=U.date_updated WHERE U.piece_id=1 ORDER BY U.id DESC LIMIT 1;
+```
+
+| **39a** ://phpMyAdmin **> pieces**
+
+...`date_updated` for that piece is the same on...
+
+| **39b** ://phpMyAdmin **> publications**
+
+3. Make any small change in the Editor
+4. Click "Save draft" or press "Ctrl + S", **NOT** "Update"
+5. Run the above SQL query again
+6. Note it finds no match
+  - This is because the latest "draft" in `pieces` does not have the identical `date_updated` to the most recent entry by that `piece_id` in `publications`
+
+We can do the same thing in SQL directly
+
+| **B-40** :// `localhost/web/http://localhost/web/edit.php?p=1` (Same, no reload)
+
+1. Click "Update" in the Editor
+2. Run the same `SELECT` SQL query as before and note it finds one match
+
+| **40** :>
+
+```sql
+SELECT P.title, P.date_updated FROM pieces AS P LEFT JOIN publications AS U ON P.id=U.piece_id AND P.date_updated=U.date_updated WHERE U.piece_id=1 ORDER BY U.id DESC LIMIT 1;
+```
+
+| **40a** ://phpMyAdmin **> pieces**
+
+...`date_updated` for that piece is the same on...
+
+| **40b** ://phpMyAdmin **> publications**
+
+3. Make any small change in the Editor
+4. Click "Save draft" or press "Ctrl + S", **NOT** "Update"
+5. Run the above `SELECT` SQL query again
+6. Note it finds no match, just like before
+  - Again, `date_updated` in `pieces` and `publications` are different
+7. Run this `UPDATE` SQL query, same used in our PHP to "Update"
+  - It will `UPDATE` the `publications` entry to have the same `date_updated` as the `pieces`
+
+| **41** :>
+
+```sql
+UPDATE pieces AS P, publications AS U SET U.date_updated=P.date_updated WHERE U.piece_id=1 AND P.id=1;
+```
+
+8. Run the same `SELECT` SQL query again to see that it finds a match
 
 ___
 
@@ -1480,6 +1644,58 @@ document.getElementById("bar_id").innerHTML = ourJSONresponse["title"]+' and som
   - Editing things while in a list is complex
   - Editing things one at a time is simple
 
+## JavaScript `localStorage`
+- This is useful for making content available offline, including:
+  - Browser website settings
+  - Backups of unsaved work
+- `localStorage` may contain:
+  - A simple string
+  - JSON turned into a string
+- Turn JSON into a string: (JavaScript)
+  - Syntax: `JSON.stringify(some_json_object)`
+- Turn a JSON-ready string into readable JSON: (JavaScript)
+  - Syntax: `JSON.parse(some_json_string)`
+- To make the JSON string readable by PHP:
+  - PHP Syntax: `$json_array = json_decode($json_string, true);`
+    - Now, use: `$json_array['some_key']`
+  - PHP-OOP Syntax: `$json_array = json_decode($json_string);`
+    - Now, use: `$json_array->'some_key'`
+- Note we will address PHP-OOP syntax in [Lesson 11](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
+
+## SQL Table/Row Cloning & Diffing
+- Create or insert a new SQL row from an existing row
+  - This uses `INSERT` & `SELECT` in the same query
+```sql
+-- New entry
+INSERT INTO new_table (etc_1, etc_2) SELECT etc1, etc2 FROM old_table WHERE some_row='something';
+-- Update existing entry
+UPDATE next_table NEXT, old_table OLD
+SET NEXT.etc_1=OLD.etc1,
+    NEXT.etc_2=OLD.etc2
+WHERE NEXT.old_some_row='something'
+  AND OLD.some_row='something';
+```
+- Clone an entire table, FYI
+```sql
+-- Create the new table with the same rows and datatypes as the old table
+CREATE TABLE new_table LIKE old_table;
+-- Clone the content from the old table into the new table
+INSERT INTO old_table SELECT * FROM new_table;
+
+-- Or do it all in one command
+CREATE TABLE new_table SELECT * FROM old_table;
+```
+- Check for two identical rows from separate tables
+```sql
+SELECT A.col_one, A.col_two
+     FROM table_a A
+LEFT JOIN table_b B
+ ON A.id=B.a_id
+AND A.col_three=B.col_three
+WHERE B.a_id=5; -- The table_b match is more important, which could matter later
+```
+- The main takeaway is:
+  - ***Deeper knowledge of SQL will improve your PHP work***
 ___
 
 #### [Lesson 10: Media Library, Files & Uploads](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-10.md)

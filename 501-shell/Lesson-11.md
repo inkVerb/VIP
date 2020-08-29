@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 11: OOP & PDO
+## Lesson 11: Objects: OOP & PDO
 
 Ready the CLI
 

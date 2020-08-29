@@ -1514,4 +1514,4 @@ round();
 
 ___
 
-#### [Lesson 11: OOP & PDO](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
+#### [Lesson 11: Objects: OOP & PDO](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)

@@ -6,26 +6,12 @@ Ready the CLI
 `cd ~/School/VIP/501`
 
 ___
-
-- Header SEO-ready (no database calls)
-  - Admin Control file-write editor
-  - Image chooser: copies/writes file
 - Pagination
-- Namespace list table (occupied slugs, also used by mods)
-- User levels: Admin Editor Contributor Member (pieces_levels table/column-int, member_classes table/column-json)
-- Superadmin Register page
-- Editor/Pieces Upgrades
-  - Title capitalizer
-  - AJAX & hotkey for "Save"
-    - CSS for disappearing "Saved" message
-  - HTML allowed in "After"
-  - JS word counter
-  - (update table, pieces.php piece.php blog.php history.php)
-    - Private Pieces option (Based on Level/Class)
-    - Identity
-  - Interrupt Navigate away
-    - JS.alert: Unsaved changes, please confirm
-- Choose "Menu Pages"
+  - blog.php
+  - pieces.php
+  - trash.php
+  - medialibrary.php
+  - hist.php (next/previous links)
 - Admin Controls
   - Series in slug option
   - Title, Slogan
@@ -43,6 +29,20 @@ ___
     - Copyright message
   - Custom "Cookie notice" message and option
   - Home page (Page, All Pieces, or Series)
+- Header SEO-ready (no database calls)
+  - Admin Control file-write editor
+  - Image chooser: copies/writes file
+- Namespace list table (occupied slugs, also used by mods)
+- User levels: Admin Editor Contributor Member (pieces_levels table/column-int, member_classes table/column-json)
+- Superadmin Register page
+- Editor/Pieces Upgrades
+  - Title capitalizer
+  - HTML allowed in "After"
+  - JS word counter
+  - (update table, pieces.php piece.php blog.php history.php)
+    - Private Pieces option (Based on Level/Class)
+    - Identity
+- Choose "Menu Pages"
 - "Blog" series = all pieces
 - Theming structure
 - Night/day/soft mode cookies
@@ -54,6 +54,7 @@ ___
 ### Based on roadmap:
 - Feed mod
   - Import/export
+  - Import/export for WordPress
 - Custom-piece mod capability
   - Podcast mod
 - Menu Lists
