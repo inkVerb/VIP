@@ -440,9 +440,11 @@ function human_file_size($size, $unit="") {
 1. Click "Browse..."
 2. Look in ~/School/VIP/501/test_uploads
 3. Select & "open" ***various files***
-  - Will fail: **.bmp, .wma, .flv, .avi, .mkv, .mov**
+  - Will fail: **.bmp, .wma, .flac, .flv, .avi, .mkv, .mov**
     - vip-red.bmp
     - audio.wma
+    - too-marvellous-for-words.flac (too big)
+    - too-marvellous-for-words-short.flac (mimetype)
     - video.flv
     - video.avi
     - video.mkv
@@ -1088,10 +1090,10 @@ Now, let's edit and delete those files and entries...
 sudo cp core/10-ajax.mediainfo13.php web/ajax.mediainfo.php && \
 sudo cp core/10-medialibrary13.php web/medialibrary.php && \
 sudo cp core/10-upload13.php web/upload.php && \
-sudo cp core/10-act.delmedia.php web/act.delmedia.php && \
+sudo cp core/10-act.delmedia13.php web/act.delmedia.php && \
 sudo cp core/10-style13.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-ajax.mediainfo13.php core/10-medialibrary13.php core/10-upload13.php core/10-style13.css && \
+atom core/10-ajax.mediainfo13.php core/10-medialibrary13.php core/10-upload13.php core/10-act.delmedia13.php core/10-style13.css && \
 ls web
 ```
 
@@ -1123,6 +1125,8 @@ ls web
 - *upload.php*
   - *Retrieves the new SQL entry ID with `$database->insert_id;`*
   - *Includes our "edit" link, calling the JS function loaded by medialibrary.php*
+  - *Added the `htm` & `html` file extensions to allowed `text/html` mimetypes*
+    - *Already allowed in Dropzone (medialibrary.php) because our settings there only check mimetypes and `text/html` is already listed*
 - *act.delmedia.php*
   - *This processes to-be-deleted items, similarly to act.bulkpieces.php from [Lesson 9](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-09.md)*
   - *It receives the `POST` from `<form id="delete_action"` in medialibrary.php*
@@ -1225,9 +1229,11 @@ sudo cp core/10-bash.documprocess.sh web/bash.documprocess.sh && \
 sudo cp core/10-ajax.mediainfo14.php web/ajax.mediainfo.php && \
 sudo cp core/10-medialibrary14.php web/medialibrary.php && \
 sudo cp core/10-upload14.php web/upload.php && \
+sudo cp core/10-act.delmedia14.php web/act.delmedia.php && \
+sudo cp core/10-style14.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.documprocess.sh core/10-ajax.mediainfo14.php core/10-medialibrary14.php core/10-upload14.php && \
-ls web web/media web/media/*
+atom core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.documprocess.sh core/10-ajax.mediainfo14.php core/10-medialibrary14.php core/10-upload14.php core/10-act.delmedia14.php core/10-style14.css && \
+ls web web/media web/media/* ls web/media/original/*
 ```
 
 *We just deleted all our uploads, clear out the SQL database too...*
@@ -1240,7 +1246,9 @@ DELETE FROM media_library;
 *Note:*
 
 - *upload.php & medialibrary.php*
-  - *Now allowing flv mime types:*
+  - *Upload size limit increased to `100MB`*
+  - *Now allowing more mime types:*
+    - *`audio/x-flac`, `audio/flac` (.flac)*
     - *`video/x-flv` (.flv)*
     - *`video/x-msvideo` (.avi)*
     - *`video/x-matroska` (.mkv)*
@@ -1248,11 +1256,19 @@ DELETE FROM media_library;
     - *`image/bmp` (.bmp)*
     - *`image/x-windows-bmp` (.bmp)*
     - *`image/x-ms-bmp` (.bmp)*
-  - *These will `Correct non-accepted conversions` in upload.php*
+  - *All except .flac files will `Correct non-accepted conversions` in upload.php*
+  - *FLAC files...*
+    - *Non-web-playable, but no need for name changing since everything gets converted to .mp3 for optimal podcasting anyway*
+    - *Accepting the FLAC mimetype is a "developer-justice" decision; sometimes only a .flac format will be available*
   - *A converted version will be kept in the "originals" directory*
+  - *We are not accepting .wma files for conversion because the mimetype does not clearly distinguish video from audio*
 - *upload.php*
   - *`$upload_dir_base` was removed and replaced by `$upload_dir` because Linux BASH scripts will handle the rest*
     - *Note all uploaded files go to web/media/uploads/ then get processed by a Linux BASH script*
+  - *`// All audio is converted to .mp3`, so file name check looks for .mp3 extensions in the media/audio directory*
+  - *`// Most documents are or are converted to a .pdf`, so file name checks the media/docs directory accordingly*
+  - *Tweaks to the `$info_message` and `$edit_form`*
+    - *Changed `$file_mime` to `$file_extension` for "[File] type:" to be user-friendly, before was just educational*
   - *`Linux process` sections added*
     - *To each basic type*
     - *To the end, after `move_uploaded_file()`*
@@ -1264,14 +1280,31 @@ DELETE FROM media_library;
     - *We use `round()` to make sure we don't end up with a decimal*
   - *File name check accounts for to-be-converted mime types via: `$final_extension`*
   - *BASH scripts run via `shell_exec()` according to `switch`-`case`*
+  - *Final output uses `<div>` style to stagger responses across bottom of "Drop to upload!" area*
 - *medialibrary.php*
-  - **
-  // List full and thumbnail paths
+  - *Section for `// File & conversion links` via `switch`*
+    - *Generates thumbnails and links based on file mimetype, extension, and image size*
+    - *Good workflow:*
+      - *`// Set links` checks for whether the `file_exists` before it is listed in the `// File links`*
+      - *Retrieves the actual `filesize` via PHP, not only from our database, to see what is actually on the server*
+      - *We will still keep the original file size in the database for reference*
+    - *`<table>` structure changed to better fit the new content*
+    // Show thumbnails, create placeholder for non-img mimetypes
 - *ajax.mediainfo.php*
-  - **
-  // Actions to add/remove alternate document formats
-  // Update file name changing to new framework
-  // media_docs SQL table to keep track of name changes
+  - *`// File name change` section updated to handle:*
+    - *images with multiple files*
+    - *video originals and resized conversions*
+    - *audio original and .mp3 podcast conversions*
+    - *documents in multiple formats*
+  // AJAX filename change to update: all file names
+- *act.delmedia.php*
+// Delete to delete all file names
+- *style.css*
+  - *Better organizing for upload AJAX responses*
+  - *Changes to*
+    - *`div#media-upload`*
+    - *`div#media-list`*
+  - *New class `div.media-upload-info`*
 - *Note our BASH scripts call the full path of the commands*
   - *This avoids hacking and ghosting Linux commands*
   - *Find the full path of a command with:$ `which some-command`*
@@ -1301,12 +1334,13 @@ DELETE FROM media_library;
   - *bash.audioprocess.sh*
     - *`ffmpeg` can process audio files, not only video*
       - *Syntax: `ffmpeg -i input_file.wav -acodec libmp3lame -vn -ar 44100 -ac 2 -b:a 96k output_file.mp3`*
+        - *`-map_metadata 0` preserves tags and metadata*
         - *`-acodec libmp3lame` sets the codec to LAME*
         - *`-vn` disables video, including cover images*
         - *`-ar 44100` sets audio sample rate (44.1kHz)*
         - *`-ac 1` sets number of channels, `1` = mono*
         - *`-b:a 96k` sets a precise audio bitrate (96kbps; `-b:v` sets video bitrate)*
-    - *Audio processing: (ideal for podcasts)*
+    - *Audio processing: everything to mp3 (ideal for podcasts)*
       - *96kbps 44kHz mono mp3*
         - *(human voice doesn't go over 5kHz, you shouldn't be doing an ultra-high quality musical performance in a blog-based podcast)*
   - *bash.docprocess.sh*
@@ -1413,8 +1447,9 @@ DELETE FROM media_library;
 
 *Note it failed because it cannot convert .doc*
 
-| **B-71** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
+#### File Processing via Linux in PHP
 
+| **B-71** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
 
 | **71** :>
 ```sql
@@ -1425,6 +1460,8 @@ SELECT * FROM media_library; SELECT * FROM media_images;
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag multiple files into the area: *"Drop to upload!"*
+  - Will fail:
+    - too-marvellous-for-words.flac (PHP can't always recognize FLAC files)
 3. Watch changes in:
   - The file system:$ `ls web/media/*`
   - The SQL table:> `SELECT * FROM media_library; SELECT * FROM media_images;`
@@ -1442,23 +1479,18 @@ SELECT * FROM media_library; SELECT * FROM media_images;
 ls web/media/*
 ```
 
-
 ### Process Uploaded Files: TinyMCE
-
-
-
-### Process Uploaded Files: Linux Processing
 
 | **52** :$
 ```
 sudo mkdir -p web/media/editing && \
-sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/*
+sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/* web/media/original/images/* web/media/original/video/* web/media/original/audio/* web/media/original/docs/* && \
 sudo cp core/10-ajax.mediainfo15.php web/ajax.mediainfo.php && \
 sudo cp core/10-medialibrary15.php web/medialibrary.php && \
 sudo cp core/10-upload15.php web/upload.php && \
 sudo cp core/10-tiny-upload15.php web/tiny-upload.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-ajax.mediainfo15.php core/10-medialibrary15.php core/10-upload14.php && \
+atom core/10-ajax.mediainfo15.php core/10-medialibrary15.php core/10-upload15.php core/10-upload15.php && \
 ls web web/media web/media/*
 ```
 
@@ -1466,7 +1498,7 @@ ls web web/media web/media/*
 
 | **52** :>
 ```sql
-DELETE FROM media_library;
+DELETE FROM media_library; DELETE FROM media_images;
 ```
 
 *Note:*
@@ -1486,6 +1518,11 @@ DELETE FROM media_library;
   // Include a "restore original" button to re-process from original/images
 
 // tiny-upload15.php is a port from tiny-upload1.php, no mods yet
+
+### Process Uploaded Files: TinyMCE
+
+
+
 
 ### Piece Editor
 
