@@ -1291,14 +1291,17 @@ DELETE FROM media_library;
     - *`<table>` structure changed to better fit the new content*
     // Show thumbnails, create placeholder for non-img mimetypes
 - *ajax.mediainfo.php*
-  - *`// File name change` section updated to handle:*
+  - *`// File name change` section updated to handle our various and sundry file names:*
     - *images with multiple files*
     - *video originals and resized conversions*
     - *audio original and .mp3 podcast conversions*
     - *documents in multiple formats*
-  // AJAX filename change to update: all file names
+    - *Borrowed this file name logic from the `switch` statement in medialibrary.php*
+  - *Changed `$m_old_file_base`, `$m_old_file_extension`, `$m_new_file_base` & `$m_file_location` to `$m_file_base`, `$m_file_extension`, `$m_file_base_new` & `$m_location` (respectively) in rest of file for consistency with the borrowed `switch` logic*
 - *act.delmedia.php*
-// Delete to delete all file names
+  - *Section for `// File & conversion links` to handle our various and sundry file names*
+    - *Borrowed this file name logic from the `switch` statement in medialibrary.php*
+  - *Changed `$m_basic_location` to `$m_location` in rest of file for consistency with the borrowed `switch` logic*
 - *style.css*
   - *Better organizing for upload AJAX responses*
   - *Changes to*
