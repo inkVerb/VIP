@@ -26,4 +26,4 @@
 
 ### [Lesson 11: Objects: OOP & PDO](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
 
-### [Lesson 12: Production & Feed](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-12.md)
+### [Lesson 12: Production & XML](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-12.md)

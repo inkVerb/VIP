@@ -1,74 +1,77 @@
 # Shell 501
-## Lesson 12: Production & Feed
+## Lesson 12: Production & XML
 
 Ready the CLI
 
 `cd ~/School/VIP/501`
 
 ___
+### Production-Ready
+- Brute attack login protection
 - Pagination
+  - GET to set items show per page
   - blog.php
   - pieces.php
   - trash.php
   - medialibrary.php
-  - hist.php (next/previous links)
 - Admin Controls
   - Series in slug option
   - Title, Slogan
   - Splash & Logo
   - Timezone
-  - Editor: Medium or Tiny
-  - Basic Flair Colors (default option)
-  - Choose Theming (files in a dir)
-    - Fonts
-    - Colors
-    - Copy to dir, not a database call
-  - Identities editor
   - Footer
     - Message
     - Copyright message
   - Custom "Cookie notice" message and option
   - Home page (Page, All Pieces, or Series)
+- Theming
+  - Choose Theming in admin (files in a dir)
+  - Fonts
+  - Colors
+  - Copy to dir, not a database call
 - Header SEO-ready (no database calls)
   - Admin Control file-write editor
   - Image chooser: copies/writes file
 - Namespace list table (occupied slugs, also used by mods)
-- User levels: Admin Editor Contributor Member (pieces_levels table/column-int, member_classes table/column-json)
-- Superadmin Register page
+- User levels: Member (level in pieces table/column-int, add member to user type)
+  - "Login required" option in edit.php
+  - "Contributor" can't publish, only edit draft
+  - "Editor" can't see Admin Controls nor create users
+- New user page (Admin only, sets 'level')
+- Member signup page (enable in Admin Control)  
+- Install page
+- Mod-capable via PHP objects
+
+### XML
+- RSS feeds by tag & series
+- Import-export mod
+  - Import/export native
+  - Import/export for WordPress
+- Podcast mod
+
+### Feature Roadmap:
 - Editor/Pieces Upgrades
   - Title capitalizer
   - HTML allowed in "After"
   - JS word counter
-  - (update table, pieces.php piece.php blog.php history.php)
-    - Private Pieces option (Based on Level/Class)
-    - Identity
-- Choose "Menu Pages"
-- "Blog" series = all pieces
-- Theming structure
+- Identity connected to users and pieces
+  - Identities editor
+- Choose "Menu Pages" (mod)
+- Editor: Medium or Tiny
+- Basic Flair Colors (default option)
 - Night/day/soft mode cookies
-- RSS
-  - Feed create/import/export
-  - Import/export feed to/from posts
-  - Podcast items, series, feed
-
-### Based on roadmap:
-- Feed mod
-  - Import/export
-  - Import/export for WordPress
-- Custom-piece mod capability
-  - Podcast mod
 - Menu Lists
   - 2 Pages Lists
   - 1 Social List
   - Custom Links
   - Combined Lists (choose from Pieces, Custom Links, Dropdown other list)
     - Dropdown (show another 'List'/'Section' on click)
-- Landing-pages
+- Landing Pages (mod, content type)
   - combine sections
   - section height (auto/full)
   - top/social menus y/n
   - drop-in PHP/HTML code
-- Sections
+- Landing Page Sections
   - list (choose from Menu Lists)
   - forms
   - button links
@@ -77,12 +80,8 @@ ___
   - background colors
   - columns
   - sections appear at top/bottom of both/posts/pages of all/series
-
-
-- Extended:
-  - Join mod (allow Member class signup with payment)
-  - Shop mod
-
+- Join mod (allow Member class signup with payment)
+- Shop mod
 
 
 ### Blog Settings
