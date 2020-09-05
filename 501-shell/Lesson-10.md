@@ -1397,6 +1397,7 @@ ls web web/media web/media/* ls web/media/original/*
 - *Note our BASH scripts call the full path of the commands*
   - *This avoids hacking and ghosting Linux commands*
   - *Find the full path of a command with:$ `which some-command`*
+  - *BASH scripts should also have instructions, even though we already know how they work*
   - *bash.imageprocess.sh*
     - *This has several tests and checks, including converting some mimetypes*
     - *`convert` is the command that came with the `imagemagick` package*
