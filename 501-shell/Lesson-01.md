@@ -141,13 +141,17 @@ $autoArray = array(
 );
 
 echo $autoArray[0];
-echo "<br>"; // Add a break so it is easy to read
 echo $autoArray[1];
-echo "<br>";
 echo $autoArray[2];
-echo "<br>";
 echo $autoArray[3];
 
+// Assign array values directly
+list($a_one, $a_two, $a_three, $a_four) = $autoArray;
+// Same as...
+$a_one = $autoArray[0];
+$a_two = $autoArray[1];
+$a_three = $autoArray[2];
+$a_four = $autoArray[3];
 
 // Associative array
 // Define an empty array so it can take associative keys
@@ -158,11 +162,7 @@ $assocArray['key_one'] = "Donuts";
 $assocArray['twokeys'] = "Coffee";
 $assocArray['badBoys'] = "Whatcha gonna do";
 
-echo "<br>"; // Add a break so it is easy to read
-
 echo $assocArray['key_one'];
-
-echo "<br>"; // Add a break so it is easy to read
 
 // Not allowed in "quotes"!!!!!
 echo "$assocArray['key_one']";
@@ -171,11 +171,8 @@ echo "$assocArray['key_one']";
 $someVariable = $assocArray['key_one'];
 echo "$someVariable";
 
-
 // Get all values of any array
-echo "<br>print_r \$assocArray:<br>";
 print_r($assocArray);
-echo "<br>print_r \$autoArray:<br>";
 print_r($autoArray);
 
 // Match an item in an array

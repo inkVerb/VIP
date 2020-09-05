@@ -1052,6 +1052,8 @@ CREATE TABLE IF NOT EXISTS `media_library` (
   `file_extension` VARCHAR(52) NOT NULL,
   `title_text` VARCHAR(255) DEFAULT NULL,
   `alt_text` VARCHAR(255) DEFAULT NULL,
+  `date_created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 ```
@@ -1198,158 +1200,9 @@ texlive-fonts-recommended \
 texlive-latex-recommended
 ```
 
-*Create our SQL table for image info...*
-
-| **49** :>
-```sql
-CREATE TABLE IF NOT EXISTS `media_images` (
-  `m_id` INT UNSIGNED NOT NULL,
-  `orientation` VARCHAR(4) NOT NULL,
-  `width` VARCHAR(4) NOT NULL,
-  `height` VARCHAR(4) NOT NULL,
-  `xs` VARCHAR(9) NOT NULL,
-  `sm` VARCHAR(9) NOT NULL,
-  `md` VARCHAR(9) NOT NULL,
-  `lg` VARCHAR(9) NOT NULL,
-  `xl` VARCHAR(9) NOT NULL,
-  PRIMARY KEY (`m_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-```
-
-*Copy our web app files...*
-
-| **50** :$
-```
-sudo mkdir -p web/media/uploads web/media/original/images web/media/original/video web/media/original/audio web/media/original/docs && \
-sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/* && \
-sudo cp core/10-bash.imageprocess.sh web/bash.imageprocess.sh && \
-sudo cp core/10-bash.videoprocess.sh web/bash.videoprocess.sh && \
-sudo cp core/10-bash.audioprocess.sh web/bash.audioprocess.sh && \
-sudo cp core/10-bash.documprocess.sh web/bash.documprocess.sh && \
-sudo cp core/10-ajax.mediainfo14.php web/ajax.mediainfo.php && \
-sudo cp core/10-medialibrary14.php web/medialibrary.php && \
-sudo cp core/10-upload14.php web/upload.php && \
-sudo cp core/10-act.delmedia14.php web/act.delmedia.php && \
-sudo cp core/10-style14.css web/style.css && \
-sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.documprocess.sh core/10-ajax.mediainfo14.php core/10-medialibrary14.php core/10-upload14.php core/10-act.delmedia14.php core/10-style14.css && \
-ls web web/media web/media/* ls web/media/original/*
-```
-
-*We just deleted all our uploads, clear out the SQL database too...*
-
-| **50** :>
-```sql
-DELETE FROM media_library;
-```
-
-*Note:*
-
-- *upload.php & medialibrary.php*
-  - *Upload size limit increased to `100MB`*
-  - *Now allowing more mime types:*
-    - *`audio/x-flac`, `audio/flac` (.flac)*
-    - *`video/x-flv` (.flv)*
-    - *`video/x-msvideo` (.avi)*
-    - *`video/x-matroska` (.mkv)*
-    - *`video/quicktime` (.mov)*
-    - *`image/bmp` (.bmp)*
-    - *`image/x-windows-bmp` (.bmp)*
-    - *`image/x-ms-bmp` (.bmp)*
-  - *All except .flac files will `Correct non-accepted conversions` in upload.php*
-  - *FLAC files...*
-    - *Non-web-playable, but no need for name changing since everything gets converted to .mp3 for optimal podcasting anyway*
-    - *Accepting the FLAC mimetype is a "developer-justice" decision; sometimes only a .flac format will be available*
-  - *A converted version will be kept in the "originals" directory*
-  - *We are not accepting .wma files for conversion because the mimetype does not clearly distinguish video from audio*
-- *upload.php*
-  - *`$upload_dir_base` was removed and replaced by `$upload_dir` because Linux BASH scripts will handle the rest*
-    - *Note all uploaded files go to web/media/uploads/ then get processed by a Linux BASH script*
-  - *`// All audio is converted to .mp3`, so file name check looks for .mp3 extensions in the media/audio directory*
-  - *`// Most documents are or are converted to a .pdf`, so file name checks the media/docs directory accordingly*
-  - *Tweaks to the `$info_message` and `$edit_form`*
-    - *Changed `$file_mime` to `$file_extension` for "[File] type:" to be user-friendly, before was just educational*
-  - *`Linux process` sections added*
-    - *To each basic type*
-    - *To the end, after `move_uploaded_file()`*
-  - *`Image size ratios` are created by multiplying fractions, not decimals*
-    - *Eg:*
-    ```php
-    '1920x'.(1920*($img_height/$img_width))
-    ```
-    - *We use `round()` to make sure we don't end up with a decimal*
-  - *File name check accounts for to-be-converted mime types via: `$final_extension`*
-  - *BASH scripts run via `shell_exec()` according to `switch`-`case`*
-  - *Final output uses `<div>` style to stagger responses across bottom of "Drop to upload!" area*
-- *medialibrary.php*
-  - *Section for `// File & conversion links` via `switch`*
-    - *Generates thumbnails and links based on file mimetype, extension, and image size*
-    - *Good workflow:*
-      - *`// Set links` checks for whether the `file_exists` before it is listed in the `// File links`*
-      - *Retrieves the actual `filesize` via PHP, not only from our database, to see what is actually on the server*
-      - *We will still keep the original file size in the database for reference*
-    - *`<table>` structure changed to better fit the new content*
-    // Show thumbnails, create placeholder for non-img mimetypes
-- *ajax.mediainfo.php*
-  - *`// File name change` section updated to handle our various and sundry file names:*
-    - *images with multiple files*
-    - *video originals and resized conversions*
-    - *audio original and .mp3 podcast conversions*
-    - *documents in multiple formats*
-    - *Borrowed this file name logic from the `switch` statement in medialibrary.php*
-  - *Changed `$m_old_file_base`, `$m_old_file_extension`, `$m_new_file_base` & `$m_file_location` to `$m_file_base`, `$m_file_extension`, `$m_file_base_new` & `$m_location` (respectively) in rest of file for consistency with the borrowed `switch` logic*
-- *act.delmedia.php*
-  - *Section for `// File & conversion links` to handle our various and sundry file names*
-    - *Borrowed this file name logic from the `switch` statement in medialibrary.php*
-  - *Changed `$m_basic_location` to `$m_location` in rest of file for consistency with the borrowed `switch` logic*
-- *style.css*
-  - *Better organizing for upload AJAX responses*
-  - *Changes to*
-    - *`div#media-upload`*
-    - *`div#media-list`*
-  - *New class `div.media-upload-info`*
-- *Note our BASH scripts call the full path of the commands*
-  - *This avoids hacking and ghosting Linux commands*
-  - *Find the full path of a command with:$ `which some-command`*
-  - *bash.imageprocess.sh*
-    - *This has several tests and checks, including converting some mimetypes*
-    - *`convert` is the command that came with the `imagemagick` package*
-      - *Syntax: `convert "input_file.jpg" -resize 1920x1080 "output_file.jpg"`*
-    - *Bitmap (.bmp) files are converted to PNG*
-    - *SVG files can also be converted*
-      - *Syntax: `convert -background none -size 1920x1080 "input_file.svg" "output_file.png"`*
-    - *When finished, we move the file from media/uploads to media/originals/images*
-      - *Bitmap files are converted in "originals"*
-  - *bash.videoprocess.sh*
-    - *This has several tests and checks, including converting non-accepted mimetypes*
-    - *`ffmpeg` converts and processes video and audio files*
-      - *Syntax: `ffmpeg -y -i input_file.ogg -filter:v scale=1920:-1 -c:a copy output_file.ogg`*
-        - *`1920:-1` means 1920 wide, keep aspect ration for height*
-        - *`-1:1920` would mean 1920 high, keep aspect ration for width*
-        - *`-y` means to overwrite existing files*
-        - *Other syntax you can learn about in the `ffmpeg` docs and forums*
-      - *Video processing: (ideal for web)*
-        - *Largest size is 960 wide or high*
-        - *Same frame rate as recorded*
-        - *Anything bigger or better, use a CDN*
-    - *When finished, we move the file from media/uploads to media/originals/video*
-      - *.flv, .avi, .mkv & .mov files are converted in "originals"*
-  - *bash.audioprocess.sh*
-    - *`ffmpeg` can process audio files, not only video*
-      - *Syntax: `ffmpeg -i input_file.wav -acodec libmp3lame -vn -ar 44100 -ac 2 -b:a 96k output_file.mp3`*
-        - *`-map_metadata 0` preserves tags and metadata*
-        - *`-acodec libmp3lame` sets the codec to LAME*
-        - *`-vn` disables video, including cover images*
-        - *`-ar 44100` sets audio sample rate (44.1kHz)*
-        - *`-ac 1` sets number of channels, `1` = mono*
-        - *`-b:a 96k` sets a precise audio bitrate (96kbps; `-b:v` sets video bitrate)*
-    - *Audio processing: everything to mp3 (ideal for podcasts)*
-      - *96kbps 44kHz mono mp3*
-        - *(human voice doesn't go over 5kHz, you shouldn't be doing an ultra-high quality musical performance in a blog-based podcast)*
-  - *bash.docprocess.sh*
-    - *`pandoc` converts between different document formats*
-
 #### File Processing in the Linux Terminal
+
+| **50**:$ `ls`
 
 ##### `imagemagick` for Images
 
@@ -1365,7 +1218,7 @@ DELETE FROM media_library;
 
 *Now, convert .svg file to .png...*
 
-| **53**:$ `convert -background none -size 484x303 "test_uploads/star.svg" "star_484x303_svg.png"`
+| **53**:$ `convert -background none -resize 484x303 "test_uploads/star.svg" "star_484x303_svg.png"`
 
 *...This is the same syntax we use in our BASH script*
 
@@ -1452,12 +1305,158 @@ DELETE FROM media_library;
 
 #### File Processing via Linux in PHP
 
-| **B-71** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
+*Copy our web app files...*
+
+| **71** :$
+```
+sudo mkdir -p web/media/uploads web/media/original/images web/media/original/video web/media/original/audio web/media/original/docs && \
+sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/* && \
+sudo cp core/10-bash.imageprocess.sh web/bash.imageprocess.sh && \
+sudo cp core/10-bash.videoprocess.sh web/bash.videoprocess.sh && \
+sudo cp core/10-bash.audioprocess.sh web/bash.audioprocess.sh && \
+sudo cp core/10-bash.documprocess.sh web/bash.documprocess.sh && \
+sudo cp core/10-ajax.mediainfo14.php web/ajax.mediainfo.php && \
+sudo cp core/10-medialibrary14.php web/medialibrary.php && \
+sudo cp core/10-upload14.php web/upload.php && \
+sudo cp core/10-act.delmedia14.php web/act.delmedia.php && \
+sudo cp core/10-style14.css web/style.css && \
+sudo cp core/10-thumb-vid.png web/thumb-vid.png && \
+sudo cp core/10-thumb-aud.png web/thumb-aud.png && \
+sudo cp core/10-thumb-doc.png web/thumb-doc.png && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.documprocess.sh core/10-ajax.mediainfo14.php core/10-medialibrary14.php core/10-upload14.php core/10-act.delmedia14.php core/10-style14.css && \
+ls web web/media web/media/* ls web/media/original/*
+```
+
+*Note:*
+
+- *upload.php & medialibrary.php*
+  - *Upload size limit increased to `100MB`*
+  - *Now allowing more mime types:*
+    - *`audio/x-flac`, `audio/flac` (.flac)*
+    - *`video/x-flv` (.flv)*
+    - *`video/x-msvideo` (.avi)*
+    - *`video/x-matroska` (.mkv)*
+    - *`video/quicktime` (.mov)*
+    - *`image/bmp` (.bmp)*
+    - *`image/x-windows-bmp` (.bmp)*
+    - *`image/x-ms-bmp` (.bmp)*
+  - *All except .flac files will `Correct non-accepted conversions` in upload.php*
+  - *FLAC files...*
+    - *Non-web-playable, but no need for name changing since everything gets converted to .mp3 for optimal podcasting anyway*
+    - *Accepting the FLAC mimetype is a "developer-justice" decision; sometimes only a .flac format will be available*
+  - *A converted version will be kept in the "originals" directory*
+  - *We are not accepting .wma files for conversion because the mimetype does not clearly distinguish video from audio*
+- *upload.php*
+  - *`$upload_dir_base` was removed and replaced by `$upload_dir` because Linux BASH scripts will handle the rest*
+    - *Note all uploaded files go to web/media/uploads/ then get processed by a Linux BASH script*
+  - *`// All audio is converted to .mp3`, so file name check looks for .mp3 extensions in the media/audio directory*
+  - *`// Most documents are or are converted to a .pdf`, so file name checks the media/docs directory accordingly*
+  - *Tweaks to the `$info_message` and `$edit_form`*
+    - *Changed `$file_mime` to `$file_extension` for "[File] type:" to be user-friendly, before was just educational*
+  - *`Linux process` sections added*
+    - *To each basic type*
+    - *To the end, after `move_uploaded_file()`*
+  - *`Image size ratios` are created by multiplying fractions, not decimals*
+    - *Eg:*
+    ```php
+    '1920x'.(1920*($img_height/$img_width))
+    ```
+    - *We use `round()` to make sure we don't end up with a decimal*
+  - *File name check accounts for to-be-converted mime types via: `$final_extension`*
+  - *BASH scripts run via `shell_exec()` according to `switch`-`case`*
+  - *Final output uses `<div>` style to stagger responses across bottom of "Drop to upload!" area*
+- *medialibrary.php*
+  - *Section for `// File & conversion links` via `switch`*
+    - *Generates thumbnails and links based on file mimetype, extension, and image size*
+    - *Good workflow:*
+      - *`// Set links` checks for whether the `file_exists` before it is listed in the `// File links`*
+      - *Retrieves the actual `filesize` via PHP, not only from our database, to see what is actually on the server*
+        - *Use PHP function `list()` to set an array as variables for image sizes*
+        - *Even include `$img_orientation` retrieved from actual file on blog, this way the library is more searchable by the browser*
+      - *We will still keep the original file size in the database for reference*
+    - *`<table>` structure changed to better fit the new content*
+- *ajax.mediainfo.php*
+  - *`// File name change` section updated to handle our various and sundry file names:*
+    - *images with multiple files*
+    - *video originals and resized conversions*
+    - *audio original and .mp3 podcast conversions*
+    - *documents in multiple formats*
+    - *Borrowed this file name logic from the `switch` statement in medialibrary.php*
+  - *Changed `$m_old_file_base`, `$m_old_file_extension`, `$m_new_file_base` & `$m_file_location` to `$m_file_base`, `$m_file_extension`, `$m_file_base_new` & `$m_location` (respectively) in rest of file for consistency with the borrowed `switch` logic*
+- *act.delmedia.php*
+  - *Section for `// File & conversion links` to handle our various and sundry file names*
+    - *Borrowed this file name logic from the `switch` statement in medialibrary.php*
+  - *Changed `$m_basic_location` to `$m_location` in rest of file for consistency with the borrowed `switch` logic*
+- *style.css*
+  - *Better organizing for upload AJAX responses*
+  - *Changes to*
+    - *`div#media-upload`*
+    - *`div#media-list`*
+  - *New class `div.media-upload-info`*
+- *Note our BASH scripts call the full path of the commands*
+  - *This avoids hacking and ghosting Linux commands*
+  - *Find the full path of a command with:$ `which some-command`*
+  - *bash.imageprocess.sh*
+    - *This has several tests and checks, including converting some mimetypes*
+    - *`convert` is the command that came with the `imagemagick` package*
+      - *Syntax: `convert "input_file.jpg" -resize 1920x1080 "output_file.jpg"`*
+    - *Bitmap (.bmp) files are converted to PNG*
+    - *SVG files can also be converted*
+      - *Syntax: `convert -background none -size 1920x1080 "input_file.svg" "output_file.png"`*
+    - *When finished, we move the file from media/uploads to media/originals/images*
+      - *Bitmap files are converted in "originals"*
+  - *bash.videoprocess.sh*
+    - *This has several tests and checks, including converting non-accepted mimetypes*
+    - *`ffmpeg` converts and processes video and audio files*
+      - *Syntax: `ffmpeg -y -i input_file.ogg -filter:v scale=1920:-1 -c:a copy output_file.ogg`*
+        - *`1920:-1` means 1920 wide, keep aspect ration for height*
+        - *`-1:1920` would mean 1920 high, keep aspect ration for width*
+        - *`-y` means to overwrite existing files*
+        - *Other syntax you can learn about in the `ffmpeg` docs and forums*
+      - *Video processing: (ideal for web)*
+        - *Largest size is 960 wide or high*
+        - *Same frame rate as recorded*
+        - *Anything bigger or better, use a CDN*
+    - *When finished, we move the file from media/uploads to media/originals/video*
+      - *.flv, .avi, .mkv & .mov files are converted in "originals"*
+  - *bash.audioprocess.sh*
+    - *`ffmpeg` can process audio files, not only video*
+      - *Syntax: `ffmpeg -i input_file.wav -acodec libmp3lame -vn -ar 44100 -ac 2 -b:a 96k output_file.mp3`*
+        - *`-map_metadata 0` preserves tags and metadata*
+        - *`-acodec libmp3lame` sets the codec to LAME*
+        - *`-vn` disables video, including cover images*
+        - *`-ar 44100` sets audio sample rate (44.1kHz)*
+        - *`-ac 1` sets number of channels, `1` = mono*
+        - *`-b:a 96k` sets a precise audio bitrate (96kbps; `-b:v` sets video bitrate)*
+    - *Audio processing: everything to mp3 (ideal for podcasts)*
+      - *96kbps 44kHz mono mp3*
+        - *(human voice doesn't go over 5kHz, you shouldn't be doing an ultra-high quality musical performance in a blog-based podcast)*
+  - *bash.docprocess.sh*
+    - *`pandoc` converts between different document formats*
+
+*We just deleted all our uploads, clear out the SQL database after we...*
+
+*Create our SQL table for image info...*
 
 | **71** :>
 ```sql
-SELECT * FROM media_library; SELECT * FROM media_images;
+CREATE TABLE IF NOT EXISTS `media_images` (
+  `m_id` INT UNSIGNED NOT NULL,
+  `orientation` VARCHAR(4) NOT NULL,
+  `width` VARCHAR(4) NOT NULL,
+  `height` VARCHAR(4) NOT NULL,
+  `xs` VARCHAR(9) NOT NULL,
+  `sm` VARCHAR(9) NOT NULL,
+  `md` VARCHAR(9) NOT NULL,
+  `lg` VARCHAR(9) NOT NULL,
+  `xl` VARCHAR(9) NOT NULL,
+  PRIMARY KEY (`m_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+DELETE FROM media_library;
 ```
+
+| **B-71** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
 
 | **71** ://phpMyAdmin **> webapp_db > media_library**
 
@@ -1466,7 +1465,7 @@ SELECT * FROM media_library; SELECT * FROM media_images;
   - Will fail:
     - too-marvellous-for-words.flac (PHP can't always recognize FLAC files)
 3. Watch changes in:
-  - The file system:$ `ls web/media/*`
+  - The file system:$ `ls web web/media web/media/* ls web/media/original/*`
   - The SQL table:> `SELECT * FROM media_library; SELECT * FROM media_images;`
 4. Repeat these steps with many files
 
@@ -1479,12 +1478,12 @@ SELECT * FROM media_library; SELECT * FROM media_images;
 
 | **72** :$
 ```
-ls web/media/*
+ls web web/media web/media/* ls web/media/original/*
 ```
 
 ### Process Uploaded Files: TinyMCE
 
-| **52** :$
+| **73** :$
 ```
 sudo mkdir -p web/media/editing && \
 sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/* web/media/original/images/* web/media/original/video/* web/media/original/audio/* web/media/original/docs/* && \
@@ -1494,12 +1493,12 @@ sudo cp core/10-upload15.php web/upload.php && \
 sudo cp core/10-tiny-upload15.php web/tiny-upload.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/10-ajax.mediainfo15.php core/10-medialibrary15.php core/10-upload15.php core/10-upload15.php && \
-ls web web/media web/media/*
+ls web web/media web/media/* ls web/media/original/*
 ```
 
 *We just deleted all our uploads, clear out the SQL database too...*
 
-| **52** :>
+| **73** :>
 ```sql
 DELETE FROM media_library; DELETE FROM media_images;
 ```
@@ -1527,7 +1526,7 @@ DELETE FROM media_library; DELETE FROM media_images;
 
 
 
-### Piece Editor
+### Insert Media in the Piece Editor
 
 
 // Media Library section
