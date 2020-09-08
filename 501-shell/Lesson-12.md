@@ -33,9 +33,9 @@ ___
   - Admin Control file-write editor
   - Image chooser: copies/writes file
 - Namespace list table (occupied slugs, also used by mods)
-- User levels: Member (level in pieces table/column-int, add member to user type)
+- User levels
   - "Login required" option in edit.php
-  - "Contributor" can't publish, only edit draft
+  - "Contributor" can't publish, only edit draft & flag for review
   - "Editor" can't see Admin Controls nor create users
 - New user page (Admin only, sets 'level')
 - Member signup page (enable in Admin Control)  
