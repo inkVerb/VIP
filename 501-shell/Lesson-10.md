@@ -1482,66 +1482,6 @@ SELECT * FROM media_library; SELECT * FROM media_images;
 ls web web/media web/media/* ls web/media/original/*
 ```
 
-### To DELETE ###
-
-This section was intended to use TinyMCE's inbuilt image editing capability to crop, rotate, and otherwise edit ratser images in the Media Library. However, this has been pulled from the product roadmap for this curriculum's software for two reasons:
-
-1. Such technical features would be **complex** and **time consuming**
-  - Both to learn and teach
-  - And to maintain since complex usage of  3rd party software is more likely to break when updated
-2. It is beyond the scope of this teaching course, almost to a point of distraction for the student
-
-We have applied TinyMCE and customized it various ways and will do more with an "image-insert" -like feature in steps that follow. But, this is a course on "PHP stack", meaning JavaScript and libraries such as TinyMCE should only be included inasmuch as they demonstrate how to work with PHP to create a useful web app. Any usage for this feature would have already been demonstrated. While this feature remains in the blog's product roadmap as it continues development after this course, including the feature here would provide no new information on JavaScript and libraries working with PHP, but they would be more of an elaboration on TinyMCE and, at that, only a specific version that could become outdated.
-
-This note is here to retain credit for the concept. It would have been great and hopefully will happen in the future in a better way and time. So, here's to focusing on the task at hand and to not chasing foxes.
-
-Below would have been the preliminary code for this step of the lesson...
-
-### Process Uploaded Files: TinyMCE
-
-| **73** :$
-```
-sudo mkdir -p web/media/editing && \
-sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/* web/media/original/images/* web/media/original/video/* web/media/original/audio/* web/media/original/docs/* && \
-sudo cp core/10-ajax.mediainfo15.php web/ajax.mediainfo.php && \
-sudo cp core/10-medialibrary15.php web/medialibrary.php && \
-sudo cp core/10-upload15.php web/upload.php && \
-sudo cp core/10-tiny-upload15.php web/tiny-upload.php && \
-sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-ajax.mediainfo15.php core/10-medialibrary15.php core/10-upload15.php core/10-upload15.php && \
-ls web web/media web/media/* ls web/media/original/*
-```
-
-*We just deleted all our uploads, clear out the SQL database too...*
-
-| **73** :>
-```sql
-DELETE FROM media_library; DELETE FROM media_images;
-```
-
-*Note:*
-
-- *ajax.mediainfo.php*
-  - **
-- *medialibrary.php*
-  - **
-- *upload.php*
-  - **
-
-
-// Add to the AJAX Medial Library edit
-  // Make a "largest-processed" copy (1080p) in the editing dir from the original/images dir
-  // Minimal TinyMCE editor to edit the image in the editing dir
-  // Run the normal Linux processes on save, not replacing the file in original/images
-  // Include a "restore original" button to re-process from original/images
-
-// tiny-upload15.php is a port from tiny-upload1.php, no mods yet
-
-### Process Uploaded Files: TinyMCE
-
-### DELETE ###
-
-
 ### Insert Media in the Piece Editor
 
 
