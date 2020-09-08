@@ -1482,15 +1482,50 @@ SELECT * FROM media_library; SELECT * FROM media_images;
 ls web web/media web/media/* ls web/media/original/*
 ```
 
+#### Clear Media Libary
+
+If you need to clear out your media library without using the GUI, use this code:
+
+> *Delete all uploads on the server...*
+>
+> | **C1** :$
+```
+sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/* web/media/original/images/* web/media/original/video/* web/media/original/audio/* web/media/original/docs/* && \
+```
+> *Delete all entries in the database...*
+>
+> | **C1** :>
+```sql
+DELETE FROM media_library; DELETE FROM media_images;
+```
+>
+
 ### Insert Media in the Piece Editor
 
+| **73** :$
+```
+sudo cp core/10-edit.php web/edit.php && \
+sudo cp core/10-ajax.mediainsert.php web/edit.php && \
+sudo chown -R www-data:www-data /var/www/html && \
+atom core/10-edit.php && \
+ls web web/media web/media/* ls web/media/original/*
+```
+
+*Note:*
+
+- *edit.php*
+  - **
+- *ajax.mediainsert.php*
+  - **
 
 // Media Library section
-  // Insert media JavaScript button with AJAX dialog first
+  // AJAX an overlay with insert media JavaScript button with AJAX dialog first
     // Library list
-    // Just uploaded list
+    // Includes "edit" links
+    // Insert link with JS onclick action for each image size and media item
   // Upload Dropzone
-// Posts as Doc file types
+
+// Posts as DOC file types
 
 
 ___
@@ -1499,12 +1534,18 @@ ___
 
 ## PHP Functions for Files & Images
 ```php
+// Files & images
 getimagesize();
+file_exists();
 pathinfo();
 rename();
 unlink();
 shell_exec();
-round();
+
+// Other functions introduced here
+round(); // Rounding numbers
+list(); // Set multiple variables to items in an array quickly
+shell_exec(); // Execute a command on the Linux server
 ```
 
 ___
