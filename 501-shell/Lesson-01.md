@@ -356,6 +356,11 @@ $Variable = 'start ' . ( THIS IS THE TEST  ? 'value_if_true' : 'value_if_false')
 $Variable = 'The number is ' . (( $Some_Variable == 5 ) ? 'five' : 'not five') . 'today'; // this
 $Variable = 'The number is ' . ( $Some_Variable == 5 ? 'five' : 'not five') . 'today'; // or this
 
+// Ternary statements don't only work with variables
+
+// echo example:
+echo ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
+echo ( $Some_Variable == 5 ) ? 'it is five' : false; // It will do nothing if the test fails
 ```
 
 *Review the diagram above along side the following two steps...*

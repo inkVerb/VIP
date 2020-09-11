@@ -846,6 +846,10 @@ $Variable = ( This Is The Test ) ? 'Value_If_True' : 'Value_If_False';
 
 $Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 
+// echo example:
+
+echo ( $Some_Variable == 5 ) ? 'it is five' : false;
+
 ```
 
 **JavaScript Ternary Statement:**

@@ -367,6 +367,7 @@ ls web
   - *Not restricted to SQL `type='post'`; this can also show pages*
 - *in.login_check.php*
   - *Removed redirect if not logged in*
+  - *"Should not be here" scenarios not redirect to our new blog.php page*
   - *Place HTML header at top*
 - *in.piecefunctions.php (remember)*
   - *`htmlspecialchars($value);` converts all HTML characters to their HTML enity code*
@@ -413,7 +414,7 @@ Usually, these use JavaScript to change the `<textarea>` you want as your editor
 - [GitHub repo](https://github.com/tinymce/tinymce-dist)
 - [GitHub fork](https://github.com/inkVerb/tinymce-dist) (in case it doesn't work)
 
-TinyMCE is a basic WISYWIG many people know of
+TinyMCE is a basic WISYWIG many people are familiar with
 
 On your own, learn more about implementation at [tiny.cloud](https://www.tiny.cloud/docs/general-configuration-guide/basic-setup/)
 
