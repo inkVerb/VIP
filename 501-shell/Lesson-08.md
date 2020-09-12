@@ -29,15 +29,15 @@ ___
 ```
 sudo cp core/08-edit1.php web/edit.php && \
 sudo cp core/08-in.loginhead.php web/in.login_head.php && \
-sudo cp core/08-in.logincheck1.php web/in.login_check.php && \
+sudo cp core/08-in.logincheck1.php web/in.logincheck.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-in.loginhead.php core/08-in.logincheck1.php core/08-edit1.php && \
+atom core/08-edit1.php core/08-in.loginhead.php core/08-in.logincheck1.php && \
 ls web
 ```
 
 *Note:*
 
-- *in.login_check.php simply checks for a SESSION or COOKIE login:*
+- *in.logincheck.php simply checks for a SESSION or COOKIE login:*
   - *Redirect to webapp.php if no login*
   - *Message and admin links if logged in*
   - *Note we used the `$head_title` variable for the browser `<title>`*
@@ -45,8 +45,8 @@ ls web
 - *edit.php is very simple now, but it contains our three prep files:*
   - *in.config.php*
   - *in.functions.php*
-  - *in.login_check.php*
-- *edit.php has no `<head>` because it is created by in.login_check.php*
+  - *in.logincheck.php*
+- *edit.php has no `<head>` because it is created by in.logincheck.php*
   - *PHP redirects to a new page via `header()`, which uses `<head>`*
   - *If the `<head>` was already created in HTML, `header()` might break*
   - *So, when redirecting, such as in pages requiring login:*
@@ -347,10 +347,12 @@ WHERE p2.id IS NULL;
 sudo cp core/08-htaccess web/.htaccess && \
 sudo cp core/08-blog.php web/blog.php && \
 sudo cp core/08-piece.php web/piece.php && \
-sudo cp core/08-in.logincheck2.php web/in.login_check.php && \
+sudo cp core/08-in.logincheck2.php web/in.logincheck.php && \
+sudo cp core/08-in.head.php web/in.head.php && \
+sudo cp core/08-edit5.php web/edit.php && \
 sudo cp core/08-style.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/08-blog.php core/08-piece.php core/08-in.logincheck2.php core/08-style.css && \
+atom core/08-blog.php core/08-piece.php core/08-in.logincheck2.php core/08-in.head.php core/08-edit5.php core/08-style.css && \
 ls web
 ```
 
@@ -365,12 +367,17 @@ ls web
   - *Like a single-piece viewer of blog.php*
   - *Logic accepts both `s=SLUG` and `p=piece_ID` GET arguments*
   - *Not restricted to SQL `type='post'`; this can also show pages*
-- *in.login_check.php*
+- *in.logincheck.php*
   - *Removed redirect if not logged in*
-  - *"Should not be here" scenarios not redirect to our new blog.php page*
-  - *Place HTML header at top*
+  - *"Should not be here" scenarios now redirect to our new blog.php page*
+  - *Remove HTML headerfor in.head.php*
+- *in.head.php*
+  - *Contains our previous HTML head*
+  - *Includes our user header links only if logged in*
 - *in.piecefunctions.php (remember)*
   - *`htmlspecialchars($value);` converts all HTML characters to their HTML enity code*
+- *edit.php*
+  - *Added `include ('./in.head.php');`*
 - *style.css*
   - *Added a `.piece-content` class for piece content*
 
@@ -517,7 +524,7 @@ ls web
 
 | **18** :$
 ```
-sudo cp core/08-in.logincheck3-tinymce.php web/in.login_check.php && \
+sudo cp core/08-in.head3-tinymce.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions3.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/08-in.logincheck3-tinymce.php core/08-in.piecefunctions3.php && \
@@ -526,7 +533,7 @@ ls web
 
 *Note:*
 
-- *in.login_check.php*
+- *in.head.php*
   - *Note the two `<script>` sections between the comments `<!-- TinyMCE -->`*
   - *These include the JavaScript* ***in the header*** *so TinyMCE works*
   - *It calls the* ***class*** *of our "Content" `<textarea>` HTML element by `class="tinymce_editor"`*
@@ -652,7 +659,7 @@ ls web web/uploads
 
 | **22** :$
 ```
-sudo cp core/08-in.logincheck4-medium.php web/in.login_check.php && \
+sudo cp core/08-in.head4-medium.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions-medium.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/08-in.logincheck4-medium.php core/08-in.piecefunctions-medium.php && \
@@ -661,7 +668,7 @@ ls web
 
 *Note:*
 
-- *in.login_check.php*
+- *in.head.php*
   - *Note the two `<script>` sections between the comments `<!-- Medium editor -->`*
   - *These include the CSS so Medium works*
 - *in.piecefunctions.php*
@@ -698,7 +705,7 @@ The Medium Editor Is Very Plain, we will not use it for most of this project
 
 | **23** :$
 ```
-sudo cp core/08-in.logincheck3-tinymce.php web/in.login_check.php && \
+sudo cp core/08-in.head3-tinymce.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions3.php web/in.piecefunctions.php && \
 sudo chown -R www-data:www-data /var/www/html
 ```

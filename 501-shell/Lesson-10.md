@@ -1011,11 +1011,11 @@ Until Medium Editor allows easy delete/properties of inserted media, our product
 | **45** :$
 ```
 sudo mkdir -p web/media/docs web/media/audio web/media/video web/media/images && \
-sudo cp core/10-in.logincheck12.php web/in.login_check.php && \
+sudo cp core/10-in.head12.php web/in.head.php && \
 sudo cp core/10-medialibrary12.php web/medialibrary.php && \
 sudo cp core/10-upload12.php web/upload.php && \
 sudo cp core/10-style12.css web/style.css && \
-atom core/10-medialibrary12.php core/10-upload12.php core/10-style12.css core/10-in.logincheck12.php && \
+atom core/10-medialibrary12.php core/10-upload12.php core/10-style12.css core/10-in.head12.php && \
 ls web web/media
 ```
 
@@ -1028,8 +1028,8 @@ ls web web/media
 
 *Note:*
 
-- *in.login_check.php*
-  - *Added a link to medialibrary.php in the `<header>`*
+- *in.head.php*
+  - *Added a link to medialibrary.php in the head links*
 - *medialibrary.php*
   - *The JavaScript `alert` for each upload is commented and will be deleted in the future*
   - *We create `<table class="contentlib" id="media-table">`*
@@ -1506,26 +1506,28 @@ DELETE FROM media_library; DELETE FROM media_images;
 ```
 sudo cp core/10-edit.php web/edit.php && \
 sudo cp core/10-in.piecefunctions.php web/in.piecefunctions.php && \
-sudo cp core/10-in.logincheck15.php web/in.login_check.php && \
+sudo cp core/10-in.head15.php web/in.head.php && \
 sudo cp core/10-ajax.mediainsert.php web/ajax.mediainsert.php && \
 sudo cp core/10-icon-doc.png web/icon-doc.png && \
 sudo cp core/10-style15.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-edit.php core/10-in.piecefunctions.php core/10-in.logincheck15.php core/10-ajax.mediainsert.php && \
+atom core/10-edit.php core/10-in.piecefunctions.php core/10-in.head15.php core/10-ajax.mediainsert.php && \
 ls web web/media web/media/* ls web/media/original/*
 ```
 
 *Note:*
 
 - *edit.php*
+  - *`$head_title` & `$heading` statements are now separate with in.head.php*
   - *Our "media insert" panel will appear in the hidden `<div id="media-insert-container"`*
   - *JavaScript will unhide it, then AJAX in a mini Media Library list to choose from*
   - *We can't put the Dropzone `<div>` in that AJAX*
     - *Dropzone runs JavaScript when the its `<div>` renders*
     - *JavaScript must be run at page load; it can't be sent via AJAX*
     - *So, the Dropzone `<div>` is already in the page, just hidden within `<div id="media-insert-container"`, just above where the mini Media Library will arrive via AJAX*
-  - *`$head_title` is set to nothing so it won't show, working with in.login_check.php*
-    - *Our new in.login_check.php `include` will not `echo` anything because this is empty*
+  - *`$head_title` is set to nothing so it won't show, working with in.head.php*
+    - *Our new in.head.php `include` will not `echo` anything because this is empty*
+  - *Added section to `// Refresh Dropzone box after upload`*
   - *Many other JavaScript functions called by the AJAX mini Media Library are already loaded in edit.php, not sent with the AJAX*
   - *Many other parts of the general layout have been tweaked so things fit with less visual noise*
     - *`mediaEdit`*
@@ -1538,7 +1540,9 @@ ls web web/media web/media/* ls web/media/original/*
     - *`editor-main-content`*
 - *in.piecefunctions.php*
   - *`p_title` has a `placeholder=` attribute*
-- *in.login_check.php*
+- *in.head.php*
+  - *Now accepting `$head_title` & `$heading`*
+  - *`$heading` is an optional setting and will be inherited from `$head_title` in a ternary statement if not set*
   - *`$head_title` only shows with a ternary `echo` statement*
   - *TinyMCE settings:*
     - *`width: '100%'`*

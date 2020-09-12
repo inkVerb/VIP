@@ -38,33 +38,36 @@ We want to review a list of our pieces
 | **1** :$
 ```
 sudo cp core/09-pieces1.php web/pieces.php && \
-sudo cp core/09-in.logincheck1.php web/in.login_check.php && \
+sudo cp core/09-in.head1.php web/in.head.php && \
+sudo cp core/09-in.logincheck.php web/in.logincheck.php && \
 sudo cp core/09-in.footer.php web/in.footer.php && \
 sudo cp core/09-edit1.php web/edit.php && \
 sudo cp core/09-blog1.php web/blog.php && \
 sudo cp core/09-webapp.php web/webapp.php && \
 sudo cp core/09-accountsettings.php web/account.php && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-pieces1.php core/09-in.logincheck1.php core/09-in.footer.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-accountsettings.php && \
+atom core/09-pieces1.php core/09-in.head1.php core/09-in.logincheck.php core/09-in.footer.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-accountsettings.php && \
 ls web
 ```
 
 *Note basic changes:*
 
 - *`$edit_page_yn` to see whether to add JS for TinyMCE:*
-  - *in.login_check.php*
+  - *in.head.php*
   - *pieces.php: `false`*
   - *edit.php: `true`*
 - *`$nologin_allowed` to redirect if not logged in:*
   - *pieces.php: `false`*
-  - *in.login_check.php*
+  - *in.head.php*
   - *edit.php: `false`*
   - *blog.php: `true`*
   - *webapp.php: `true`*
-- *in.login_check.php*
+- *in.head.php*
   - *HTML page starts at end of logic*
   - *`<h1>` page name is part*
   - *TinyMCE uses class `#p_content` for the selector*
+- *in.logincheck.php*
+  - *Added some logic near the end to keep things clean*
 - *in.footer.php*
   - *Finally here in all page files*
   - *Simple for now: `</body>` & `</html>`*
@@ -72,7 +75,7 @@ ls web
   - *Only handles login/logout*
   - *Is a little more complicated because it processes the POST for the login `<form>`*
 - *account.php*
-  - *Ready for our new in.login_check and in.footer files*
+  - *Ready for our new in.head and in.footer files*
 
 ***Note our new file:***
 
@@ -820,6 +823,9 @@ ls web
   - *These run an AJAX `<form>`, nearly identical to what we did in Lesson 6*
     - *This uses a `<button>` that activates the AJAX, not an `<input type="submit">` with an AJAX `<form>` capture `window.addEventListener`*
   - *Both the `<select>` input and the new Series `<form>` are wrapped in a `<div>` for AJAX to reload*
+  - *We must `include ('./in.logincheck.php')` in the AJAX source for anything related to logged-in activity*
+    - *It is not enough just to check `$_SESSION`, which usually expires after 15 minutes*
+    - *We want to check for `$_COOKIE` login, which is part of in.logincheck.php*
 
 *We need to create the `series` table and make our first entry so this can work...*
 
@@ -1286,10 +1292,10 @@ sudo cp core/09-in.piecefunctions11.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess11.php web/in.editprocess.php && \
 sudo cp core/09-in.series11.php web/in.series.php && \
 sudo cp core/09-ajax.series11.php web/ajax.series.php && \
-sudo cp core/09-in.logincheck11.php web/in.login_check.php && \
+sudo cp core/09-in.head11.php web/in.head.php && \
 sudo cp core/09-style11.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/09-edit11.php core/09-ajax.edit11.php core/09-in.piecefunctions11.php core/09-in.editprocess11.php core/09-in.series11.php core/09-ajax.series11.php core/09-in.logincheck11.php core/09-style11.css && \
+atom core/09-edit11.php core/09-ajax.edit11.php core/09-in.piecefunctions11.php core/09-in.editprocess11.php core/09-in.series11.php core/09-ajax.series11.php core/09-in.head11.php core/09-style11.css && \
 ls web
 ```
 
@@ -1330,7 +1336,7 @@ ls web
   - *Added two warnings JavaScript functions to every `<form>` `<input>`:*
     - *`onchange="onNavWarn();"`*
     - *`onkeyup="onNavWarn();"`*
-- *in.login_check.php*
+- *in.head.php*
   - *For AJAX and other JavaScript to read TinyMCE content, we need this in the config:*
 ```javascript
 setup: function (editor) {
