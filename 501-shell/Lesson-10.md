@@ -1383,6 +1383,7 @@ ls web web/media web/media/* ls web/media/original/*
     - *audio original and .mp3 podcast conversions*
     - *documents in multiple formats*
     - *Borrowed this file name logic from the `switch` statement in medialibrary.php*
+  - *Allowing `FLAC` `case` for `switch ($m_mime_type)`*
   - *Changed `$m_old_file_base`, `$m_old_file_extension`, `$m_new_file_base` & `$m_file_location` to `$m_file_base`, `$m_file_extension`, `$m_file_base_new` & `$m_location` (respectively) in rest of file for consistency with the borrowed `switch` logic*
 - *act.delmedia.php*
   - *Section for `// File & conversion links` to handle our various and sundry file names*
@@ -1508,10 +1509,11 @@ sudo cp core/10-edit.php web/edit.php && \
 sudo cp core/10-in.piecefunctions.php web/in.piecefunctions.php && \
 sudo cp core/10-in.head15.php web/in.head.php && \
 sudo cp core/10-ajax.mediainsert.php web/ajax.mediainsert.php && \
+sudo cp core/10-ajax.mediainfoinsert.php web/ajax.mediainfoinsert.php && \
 sudo cp core/10-icon-doc.png web/icon-doc.png && \
 sudo cp core/10-style15.css web/style.css && \
 sudo chown -R www-data:www-data /var/www/html && \
-atom core/10-edit.php core/10-in.piecefunctions.php core/10-in.head15.php core/10-ajax.mediainsert.php && \
+atom core/10-edit.php core/10-in.piecefunctions.php core/10-in.head15.php core/10-ajax.mediainsert.php core/10-ajax.mediainfoinsert.php core/10-style15.css && \
 ls web web/media web/media/* ls web/media/original/*
 ```
 
@@ -1541,6 +1543,7 @@ ls web web/media web/media/* ls web/media/original/*
 - *in.piecefunctions.php*
   - *`p_title` has a `placeholder=` attribute*
 - *in.head.php*
+  - *Head links row now in `<div id="page_head"` instead of `<p>`*
   - *Now accepting `$head_title` & `$heading`*
   - *`$heading` is an optional setting and will be inherited from `$head_title` in a ternary statement if not set*
   - *`$head_title` only shows with a ternary `echo` statement*
@@ -1549,10 +1552,15 @@ ls web web/media web/media/* ls web/media/original/*
     - *`height:` replaced with `autoresize` plugin*
       - *`min_height:`*
       - *`max_height:`*
-
 - *ajax.mediainsert.php*
-  - **
+  - *This is our popup mini Media Library*
+  - *Each media item has a hover link to call ajax.mediainfoinsert.php*
+- *ajax.mediainfoinsert.php*
+  - *To both edit media & add media to piece*
+  - *Cloned from ajax.mediainfo.php*
+  - *Added media & image size information from medialibrary.php, but not in ajax.mediainsert.php*
 - *style.css*
+  - *`header div#page_head` & `html, body` sections to keep things tight (with all the things we are putting in our page now)*
   - *`div#media-insert-` sections*
   - *`div#editor-meta-bar` section*
   - *`div#editor-main-content` section*
@@ -1561,17 +1569,6 @@ ls web web/media web/media/* ls web/media/original/*
       - *`resize: vertical;` is handy*
     - *`input[type=text].piece`*
     - *`input[type=text].slug`*
-
-// Media Library section
-  // AJAX an overlay with insert media JavaScript button with AJAX dialog first
-    // Library list
-    // Includes "edit" links
-    // Insert link with JS onclick action for each image size and media item
-  // Upload Dropzone
-
-// Posts as DOC file types
-  // Download / Share links
-
 
 ___
 

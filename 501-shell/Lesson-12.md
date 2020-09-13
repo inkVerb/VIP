@@ -8,12 +8,13 @@ Ready the CLI
 ___
 ### Production-Ready
 - Brute attack login protection
-- Pagination
+- Pagination & Search
   - GET to set items show per page
   - blog.php
   - pieces.php
   - trash.php
   - medialibrary.php
+  - ajax.mediainsert.php
 - Admin Controls
   - Series in slug option
   - Title, Slogan
