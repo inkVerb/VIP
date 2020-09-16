@@ -125,10 +125,15 @@ ls web
 - *Note `basename()` isolates the file name without the full path*
 - *Note `move_uploaded_file()` moves the uploaded temp file to a new location*
 
+```html
+<input type='file' name='some_upload_file'>
+```
+
 ```php
-$file_name = basename($_FILES['some_post_name']['name']); // Name of the file, 'name' is a PHP key that does not change
-move_uploaded_file($starting_location, $destination_location); // Move an uploaded file
-$file_mime = mime_content_type($temp_file); // Get the mime type, requires full path to file
+$file_name = basename($_FILES['some_upload_file']['name']); // Name of the file only, 'name' is a PHP key that does not change
+$temp_file = $_FILES['upload_file']['tmp_name']; // Where the uploaded file actually is, managed by the system
+move_uploaded_file($temp_file, $destination_location); // Move an uploaded file
+$file_mime = mime_content_type($any_file); // Get the mime type, requires full path to file
 ```
 
 **Mime Types**
@@ -231,7 +236,7 @@ ls web/uploads
 **File type check: images only**
 
 ```php
-pathinfo($file,PATHINFO_EXTENSION)
+pathinfo($file, PATHINFO_EXTENSION)
 ```
 
 | **11** :$
@@ -1574,15 +1579,42 @@ ___
 
 # The Take
 
-## PHP Functions for Files & Images
+## Apache Upload Settings
+- Apache (the web server software) has a settings for uploads
+  - File: `/etc/php/7.2/apache2/php.ini` (`7.2` is the version and can change)
+  - Allow uploads: `file_uploads = On`
+  - File size (5MB): `upload_max_filesize = 5M`
+  - Editing this requires `sudo`, such as:$ `sudo vim /etc/php/7.2/apache2/php.ini`
+
+## Basic Upload
+- | **HTML**:
+```html
+<input type='file' name='some_upload_file'>
+```
+- | **PHP**:
+```php
+$file_name = basename($_FILES['upload_file']['name']); // Name of the file only, 'name' is a PHP key that does not change
+$destination_location = 'path/to/uploads/dir/'.$file_name;
+$temp_file = $_FILES['upload_file']['tmp_name']; // Where the uploaded file actually is, managed by the system
+move_uploaded_file($temp_file, $destination_location); // Move an uploaded file
+
+// May be useful functions
+$file_size = $_FILES['some_post_upload_file']['size'];
+```
+- Info on uploaded files: `$_FILES` array
+
+## PHP Functions for Files & Images *After Upload*
 ```php
 // Files & images
 getimagesize();
-file_exists();
+file_exists($full_file_path); // If file exists, boolean
 pathinfo();
+pathinfo($full_file_path, PATHINFO_EXTENSION); // Just the extension
+basename(); // Name of the file only, not the full path
 rename();
 unlink();
 shell_exec();
+mime_content_type($any_file); // Get the mime type, requires full path to file
 
 // Other functions introduced here
 round(); // Rounding numbers
@@ -1590,6 +1622,66 @@ list(); // Set multiple variables to items in an array quickly
 shell_exec(); // Execute a command on the Linux server
 ```
 
+## Dropzone.js on the Web
+- [GitHub repo: enyo/dropzone](https://github.com/enyo/dropzone)
+- [dropzonejs.com](https://www.dropzonejs.com)
+
+## Dropzone Usage
+- Three HTML entities
+```html
+<link href="dropzone.css" type="text/css" rel="stylesheet" />
+<script src="dropzone.js"></script>
+<form action="dropzone.php" class="dropzone"></form>
+```
+- Simple PHP processor
+  - |**dropzone.php**:
+```php
+$temp_file = $_FILES['file']['tmp_name'];
+$file_path_dest =  'some_uploads_dir/'.$_FILES['file']['name'];
+move_uploaded_file($temp_file, $file_path_dest);
+```
+
+## Upload with TinyMCE
+- TinyMCE has upload methods, but...
+  - They may be complicated
+  - They are not necessary
+- (Yes, that's all for this lesson on TinyMCE)
+
+## Insert Media into TinyMCE
+- JavaScript call to insert some HTML (such as `<img>`, etc) into TinyMCE:
+```js
+tinymce.activeEditor.insertContent('some_html_here');
+```
+- Eg: (This makes a button that adds "`some_html_here`" to the TinyMCE editor)
+```html
+<button onclick="addToTiny();">add this</button>
+
+<script>
+  function addToTiny() {
+    tinymce.activeEditor.insertContent('some_html_here');
+  }
+</script>
+```
+
+## Processing Media via Linux:
+- Media processing includes adjusting size and quality after upload
+  - `imagemagick`
+    - Images
+  - `ffmpeg`
+    - Video (including images and audio)
+  - `libmp3lame0`
+    - Audio
+  - `pandoc`
+    - Documents
+- Read about these Linux tools with the $`man` command or online forums
+- You can use these instead of PHP libraries for much of the media processing
+
+## Managing a Media Library
+- This can be as complex or simple as you want
+- Probably use your own recipe of:
+  - PHP `for` loops
+  - JavaScript functions
+  - SQL entries
 ___
 
 #### [Lesson 11: Objects: OOP & PDO](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
