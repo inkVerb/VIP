@@ -563,6 +563,32 @@ ls web web/media
     - *`paramName: "upload_file",` uses `$_FILES['upload_file']` in upload.php*
       - *Dropzone's default is `paramName: "file"` using `$_FILES['file']` in upload.php*
     - *We have a function to `// Process AJAX response`*
+  - *Dropzone settings:*
+    - *`Dropzone.options.dropzoneUploader` uses `dropzoneUploader` to indicate `<form id="dropzone-uploader"`*
+```javascript
+Dropzone.options.dropzoneUploader = { // JS: .dropzoneUploader = HTML: id="dropzone-uploader"
+  dictDefaultMessage: 'Drop to upload!',
+  paramName: "upload_file", // We are still using upload_file; default: file
+  maxFilesize: 5, // MB
+  addRemoveLinks: true, // Default: false
+  dictCancelUpload: "cancel", // Cancel before upload starts text
+  dictRemoveFile: "hide", // We don't have this set to delete the file since we will manage that ourselves, but it can hide the message in the Dropzone area
+
+  // Process AJAX response from upload.php
+  init: function() {
+    this.on('success', function(file, responseText) {
+
+      // Write the response to HTML element id="uploadresponse"
+      document.getElementById("uploadresponse").innerHTML = '<b>'+file.name+' info:</b><br>'+responseText;
+
+      // Show the filename and HTML response in an alert box for learning purposes
+      alert(file.name+' :: UPLOAD MESSAGE :: '+responseText);
+
+    });
+  } // Process AJAX response
+
+};
+```
 
 | **B-28** :// `localhost/web/medialibrary.php`
 
@@ -603,7 +629,11 @@ ls web web/media
 
 - *medialibrary.php: `<!-- Dropzone settings -->`*
   - *`acceptedFiles` only allows the same types of files as `upload.php`*
+  - *Dropzone settings:*
+```javascript
+acceptedFiles: "image/jpeg, image/png, image/gif, image/svg+xml, video/webm, video/x-theora+ogg, video/ogg, video/mp4, audio/mpeg, audio/ogg, audio/x-wav, audio/wav, text/plain, text/html, .md, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/x-pdf, application/pdf",
 
+```
 | **B-30** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
 
 1. Look in ~/School/VIP/501/test_uploads
@@ -700,6 +730,13 @@ ls web web/media
       - *This helps files stay in order, which writers, bloggers, and marketers might like better*
         - *Many programmers like multiple simultaneous uploads because of how they view code*
         - *We're not writing this for ourselves, but for the people who will use it*
+  - *Dropzone settings:*
+```javascript
+uploadMultiple: true, // Default: false
+maxFiles: 50,
+parallelUploads: 1, // Default: 2
+addRemoveLinks: true, // Default: false
+```
 - *upload.php*
   - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
   - *`$_FILES['upload_file']['tmp_name'][0]`*
@@ -804,13 +841,42 @@ ls web web/media
 
 *Note:*
 
-- *upload.php*
-  - *Is back to the full processor as before*
-  - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
 - *medialibrary.php*
   - *JavaScript concatenates each AJAX response with the variable: `upResponse`*
     - *Each response is added to the previous*
     - *Current response status (including all previous AJAX responses) is updated in the HTML page*
+  - *Dropzone settings:*
+    - *We change the `init: function() {` from before*
+      - *This more about JavaScript than Dropzone*
+      - *`upResponse` with `responseText` adds each AJAX response to the previous response, making a "growing list" of uploaded files*
+```javascript
+// Process AJAX response from upload.php
+init: function() {
+  var upResponse = ''; // Variable to concatenate multiple AJAX responses
+  this.on('success', function(file, responseText) {
+
+    // Update our upResponse variable
+    upResponse += '<b>'+file.name+' info:</b><br>'+responseText;
+
+    // Show the filename and HTML response in an alert box for learning purposes
+    alert(file.name+' :: UPLOAD MESSAGE :: '+responseText);
+
+    // Update our webpage with the current contatenated AJAX responses
+    if (upResponse != '') {
+      // Write the response to HTML element id="uploadresponse"
+      document.getElementById("uploadresponse").innerHTML = upResponse;
+    } else {
+      // Write the response to HTML element id="uploadresponse"
+      document.getElementById("uploadresponse").innerHTML = '<span class="error">Nothing uploaded.</span>';
+    }
+
+  });
+
+} // Process AJAX response
+```
+- *upload.php*
+  - *Is back to the full processor as before*
+  - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
 
 | **B-36** :// `localhost/web/medialibrary.php` (Ctrl + R to reload)
 
@@ -1039,6 +1105,9 @@ ls web web/media
   - *The JavaScript `alert` for each upload is commented and will be deleted in the future*
   - *We create `<table class="contentlib" id="media-table">`*
     - *This is similar to pieces.php and trash.php, borring much or the CSS*
+  - *Dropzone settings:*
+    - *We commented our `alert` function*
+      - *Uncomment if you want to see it working*
 - *upload.php*
   - *Added section for `SQL entry`*
 - *style.css*
@@ -1381,6 +1450,51 @@ ls web web/media web/media/* ls web/media/original/*
         - *Even include `$img_orientation` retrieved from actual file on blog, this way the library is more searchable by the browser*
       - *We will still keep the original file size in the database for reference*
     - *`<table>` structure changed to better fit the new content*
+  - *Dropzone settings:*
+    - *We added to `acceptedFiles`, as mentioned*
+```javascript
+acceptedFiles: "image/jpeg, image/png, image/gif, image/svg+xml, image/bmp, image/x-windows-bmp, image/x-ms-bmp, video/webm, video/x-theora+ogg, video/ogg, video/mp4, video/x-flv, video/x-msvideo, video/x-matroska, video/quicktime, audio/mpeg, audio/ogg, audio/x-wav, audio/wav, audio/x-flac, audio/flac, text/plain, text/html, .md, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/x-pdf, application/pdf",
+```
+  - *These are the complete settings we end up with for medialibrary.php:*
+```javascript
+Dropzone.options.dropzoneUploaderMediaLibrary = { // JS: .dropzoneUploader = HTML: id="dropzone-uploader"
+  dictDefaultMessage: 'Drop to upload!',
+  paramName: "upload_file", // We are still using upload_file; default: file
+  maxFilesize: 100, // MB
+  uploadMultiple: true, // Default: false
+  maxFiles: 50,
+  parallelUploads: 1, // Default: 2
+  addRemoveLinks: true, // Default: false
+  dictCancelUpload: "cancel", // Cancel before upload starts text
+  dictRemoveFile: "hide", // We don't have this set to delete the file since we will manage that ourselves, but it can hide the message in the Dropzone area
+
+  // File types ported over from upload.php, redundant but consistent:
+  acceptedFiles: "image/jpeg, image/png, image/gif, image/svg+xml, image/bmp, image/x-windows-bmp, image/x-ms-bmp, video/webm, video/x-theora+ogg, video/ogg, video/mp4, video/x-flv, video/x-msvideo, video/x-matroska, video/quicktime, audio/mpeg, audio/ogg, audio/x-wav, audio/wav, audio/x-flac, audio/flac, text/plain, text/html, .md, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/x-pdf, application/pdf",
+
+  // Process AJAX response from upload.php
+  init: function() {
+    var upResponse = ''; // Variable to concatenate multiple AJAX responses
+    this.on('success', function(file, responseText) {
+
+      // Update our upResponse variable
+      upResponse += '<div class="media-upload-info"><b>'+file.name+' info:</b><br>'+responseText+'</div>';
+
+      // Update our webpage with the current contatenated AJAX responses
+      if (upResponse != '') {
+        // Write the response to HTML element id="uploadresponse"
+        document.getElementById("uploadresponse").innerHTML = upResponse;
+      } else {
+        // Write the response to HTML element id="uploadresponse"
+        document.getElementById("uploadresponse").innerHTML = '<div style="float:left;"><span class="error">Nothing uploaded.</span></div>';
+      }
+
+    });
+
+  } // Process AJAX response
+
+};
+```
+
 - *ajax.mediainfo.php*
   - *`// File name change` section updated to handle our various and sundry file names:*
     - *images with multiple files*
@@ -1557,6 +1671,43 @@ ls web web/media web/media/* ls web/media/original/*
     - *`height:` replaced with `autoresize` plugin*
       - *`min_height:`*
       - *`max_height:`*
+  - *Dropzone settings:*
+    - *These are the complete settings*
+    - *`// Initiation` section is slimmed down for appropriate for needs in edit.php*
+```javascript
+Dropzone.options.dropzoneUploaderMediaInsert = { // JS: .dropzoneUploader = HTML: id="dropzone-uploader"
+  dictDefaultMessage: 'Drop to upload!',
+  paramName: "upload_file", // Becomes $_FILES['upload_file']; default: "file"
+  maxFilesize: 100, // MB
+  uploadMultiple: true, // Default: false
+  maxFiles: 50,
+  parallelUploads: 1, // Default: 2
+  addRemoveLinks: true, // Default: false
+  dictCancelUpload: "cancel", // Cancel before upload starts text
+  dictRemoveFile: "hide", // We don't have this set to delete the file since we will manage that ourselves, but it can hide the message in the Dropzone area
+
+  // File types ported over from upload.php, redundant but consistent:
+  acceptedFiles: "image/jpeg, image/png, image/gif, image/svg+xml, image/bmp, image/x-windows-bmp, image/x-ms-bmp, video/webm, video/x-theora+ogg, video/ogg, video/mp4, video/x-flv, video/x-msvideo, video/x-matroska, video/quicktime, audio/mpeg, audio/ogg, audio/x-wav, audio/wav, audio/x-flac, audio/flac, text/plain, text/html, .md, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/x-pdf, application/pdf",
+
+  // Initiation
+  init: function() {
+    // Refresh Dropzone box after upload
+    this.on("complete", function(file) {
+       this.removeAllFiles(true);
+    });
+
+    // Process AJAX success from upload.php
+    this.on('success', function(file) {
+
+      // Just AJAX-refresh the mini Media Library Insert list, no need to handle responses from upload.php
+      mediaInsert();
+
+    });
+
+  } // End initialization
+
+};
+```
 - *ajax.mediainsert.php*
   - *This is our popup mini Media Library*
   - *Each media item has a hover link to call ajax.mediainfoinsert.php*
@@ -1641,6 +1792,21 @@ $file_path_dest =  'some_uploads_dir/'.$_FILES['file']['name'];
 move_uploaded_file($temp_file, $file_path_dest);
 ```
 
+## Dropzone Settings
+```javascript
+Dropzone.options.dropzoneUploaderMediaInsert = { // JS: .dropzoneUploader = HTML: id="dropzone-uploader-media-insert"
+  dictDefaultMessage: 'Drop to upload!',
+  paramName: "upload_file", // Becomes $_FILES['upload_file']; default: "file"
+  acceptedFiles: "image/jpeg, video/ogg, audio/mpeg, application/pdf", // Accepted file types (mimetype)
+
+  init: function() {
+    this.on('success', function(file) { // Success from upload.php
+      // Do something
+    });
+  }
+};
+```
+
 ## Upload with TinyMCE
 - TinyMCE has upload methods, but...
   - They may be complicated
@@ -1682,6 +1848,7 @@ tinymce.activeEditor.insertContent('some_html_here');
   - PHP `for` loops
   - JavaScript functions
   - SQL entries
+  
 ___
 
 #### [Lesson 11: Objects: OOP & PDO](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)
