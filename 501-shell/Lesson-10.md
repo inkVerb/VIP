@@ -1711,6 +1711,15 @@ Dropzone.options.dropzoneUploaderMediaInsert = { // JS: .dropzoneUploader = HTML
 - *ajax.mediainsert.php*
   - *This is our popup mini Media Library*
   - *Each media item has a hover link to call ajax.mediainfoinsert.php*
+  - *Without starting `<th>` with width, `<!-- Set our column widths without creating a row -->`*
+```html
+<table ...>
+  <colgroup>
+   <col span="1" style="width: 20%;">
+   <col span="1" style="width: 80%;">
+  </colgroup>
+  <tbody>
+```
 - *ajax.mediainfoinsert.php*
   - *To both edit media & add media to piece*
   - *Cloned from ajax.mediainfo.php*
@@ -1848,7 +1857,7 @@ tinymce.activeEditor.insertContent('some_html_here');
   - PHP `for` loops
   - JavaScript functions
   - SQL entries
-  
+
 ___
 
 #### [Lesson 11: Objects: OOP & PDO](https://github.com/inkVerb/vip/blob/master/501-shell/Lesson-11.md)

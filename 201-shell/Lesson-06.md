@@ -10,7 +10,7 @@ ___
 
 *Download the entire verb.ink page using wget*
 
-| **1** :$ `wget -r http://verb.ink`
+| **1** :$ `wget -r https://verb.ink`
 
 | **2** :$ `ls`
 
@@ -24,7 +24,7 @@ ___
 
 *Download the verb.ink index page using curl*
 
-| **6** :$ `curl http://verb.ink`
+| **6** :$ `curl https://verb.ink`
 
 | **7** :$ `ls`
 
@@ -32,7 +32,7 @@ ___
 - `curl` *"opens" files; to save, specify an output file*
 - `wget` *saves files; specify otherwise for a different file name*
 
-| **8** :$ `curl http://verb.ink > verb.ink.html`
+| **8** :$ `curl https://verb.ink > verb.ink.html`
 
 | **9** :$ `ls`
 
@@ -124,7 +124,7 @@ ___
 
 *...that's it, delete it with:*
 
-> | **31** :$ `rm -r inkVerb-VIP-SOME_CRAZY_NUMBER`
+| **31** :$ `rm -r inkVerb-VIP-SOME_CRAZY_NUMBER`
 
 ### repo via git clone
 
@@ -144,9 +144,9 @@ ___
 
 *Note the hidden ".git" directory*
 
-| **37** :$ `ls -l .git`
+| **37** :$ `ls -l .git/objects/pack`
 
-*Note the ".git" directory contains a few read-only files, making it harder to delete*
+*Note the ".git" directory contains a few read-only files in "objects/pack/", making it harder to delete*
 
 | **38** :$ `cd ..`
 
@@ -187,7 +187,7 @@ ___
 - `wget -O filename` specifies a "Save as..." filename for the download
 - `curl` opens a Web address's content as raw output
 - `curl -L` may be needed to follow links, otherwise it won't (`wget` will)
-- `curl http://web-address > save-as-filename` is how `curl` saves the downloaded file
+- `curl https://web-address > save-as-filename` is how `curl` saves the downloaded file
 - `git` is GitHub's app that syncs and downloads a GitHub repo (files) on your local computer with the GitHub repo (on the GitHub website)
 - `git clone GitHub-REPOSITORY-address` is how `git` "downloads" a GitHub repo
 - When downloading a .zip file or .tar file (tarball) from GitHub, the contents will have a strange name
