@@ -127,6 +127,8 @@ ___
 
 | **35** :$ `tar -cf - vip | xz > vip.tar.xz`
 
+| **36** :$ `ls -l`
+
 *Breakdown:*
 - `-c` *"Create" something new*
 - `-f` *"File" output filename will be specified*
@@ -137,15 +139,15 @@ ___
 - `>` *...to an output file...*
 - `vip.tar.xz` *is the actual output file*
 
-| **36** :$ `rm vip.tar.xz`
+| **37** :$ `rm vip.tar.xz`
 
-| **37** :$ `ls -l`
+| **38** :$ `ls -l`
 
 *You can drop the "File" parameters altogether*
 
-| **38** :$ `tar -c vip | xz > vip.tar.xz`
+| **39** :$ `tar -c vip | xz > vip.tar.xz`
 
-| **39** :$ `ls -l`
+| **40** :$ `ls -l`
 
 ___
 
@@ -161,13 +163,13 @@ ___
 
 *Some quick prep...*
 
-| **40** :$ `cp ../vip.tar . && ls -l`
+| **41** :$ `cp ../vip.tar . && ls -l`
 
 *Note `-2` is the compression level...*
 
-| **41** :$ `xz -2 -c vip.tar > vip.2.tar.xz`
+| **42** :$ `xz -2 -c vip.tar > vip.2.tar.xz`
 
-| **42** :$ `ls -l`
+| **43** :$ `ls -l`
 
 *Note the size difference*
 
@@ -177,71 +179,71 @@ ___
 
 #### gzip: `gzip -c file > file.gz`; `gzip -d file.gz`
 
-| **43** :$ `gzip vip.tar`
+| **44** :$ `gzip vip.tar`
 
-| **44** :$ `ls -l`
+| **45** :$ `ls -l`
 
 *Note vip.tar.gz replaced the original file `vip.tar`*
 
-| **45** :$ `cp ../vip.tar .`
+| **46** :$ `cp ../vip.tar .`
 
-| **46** :$ `ls -l`
+| **47** :$ `ls -l`
 
 *There's a slightly better way...*
 
-| **47** :$ `rm vip.tar.gz`
+| **48** :$ `rm vip.tar.gz`
 
-| **48** :$ `ls -l`
+| **49** :$ `ls -l`
 
 *Note `-c` is for "Create, keep original"*
 
-| **49** :$ `gzip -c vip.tar > vip.tar.gz`
+| **50** :$ `gzip -c vip.tar > vip.tar.gz`
 
 *Note there was no question this time; `-c` is a good idea with `gzip`*
 
-| **50** :$ `ls -l`
+| **51** :$ `ls -l`
 
-| **51** :$ `rm vip.tar`
+| **52** :$ `rm vip.tar`
 
-| **52** :$ `ls -l`
+| **53** :$ `ls -l`
 
 *Note `-d` is for "Decompress"*
 
-| **53** :$ `gzip -d vip.tar.gz`
+| **54** :$ `gzip -d vip.tar.gz`
 
-| **54** :$ `ls -l`
+| **55** :$ `ls -l`
 
 *Note `vip.tar.gz` is was replaced, just as with xz*
 
 *We want `vip.tar.gz` for reference, so cleanup...*
 
-| **55** :$ `gzip -c vip.tar > vip.tar.gz`
+| **56** :$ `gzip -c vip.tar > vip.tar.gz`
 
 #### bzip2: `bzip2 -c file > file.bz2`; `bzip2 -d file.bz2`
 
-| **56** :$ `ls -l`
+| **57** :$ `ls -l`
 
-| **57** :$ `bzip2 vip.tar`
+| **58** :$ `bzip2 vip.tar`
 
 *Note `vip.tar.bz2` replaced `vip.tar`, just as with xz and gzip*
 
-| **58** :$ `ls -l`
+| **59** :$ `ls -l`
 
 *Note `-d` is for "Decompress" as with gzip*
 
-| **59** :$ `bzip2 -d vip.tar.bz2`
+| **60** :$ `bzip2 -d vip.tar.bz2`
 
-| **60** :$ `ls -l`
+| **61** :$ `ls -l`
 
 *Note `vip.tar.bz2` is gone, we want it back for reference...*
 
-| **61** :$ `bzip2 -c vip.tar > vip.tar.bz2`
+| **62** :$ `bzip2 -c vip.tar > vip.tar.bz2`
 
 *Note `-c` is for "Create, keep original" just as with `gzip`*
 
 ### Review the file sizes
 
-| **62** :$ `ls -l`
+| **63** :$ `ls -l`
 
 *Case and point: `xz` is smallest, simplest to use, and takes just a little more time*
 
@@ -249,35 +251,35 @@ ___
 
 *Note `tar` can figure out the format, also with decompressing:*
 
-| **63** :$ `rm -r vip`
+| **64** :$ `rm -r vip`
 
-| **64** :$ `ls -l`
+| **65** :$ `ls -l`
 
-| **65** :$ `tar -xf vip.tar.gz`
+| **66** :$ `tar -xf vip.tar.gz`
 
-| **66** :$ `ls -l`
+| **67** :$ `ls -l`
 
 *Done in one step AND the original vip.tar.gz file is still there!*
 
 *"Again!" — Baby Dinosaur*
 
-| **67** :$ `rm -r vip && ls -l`
+| **68** :$ `rm -r vip && ls -l`
 
 *(Oh, and the dash `-` is optional with `tar` options)*
 
-| **68** :$ `tar xf vip.tar.bz2`
+| **69** :$ `tar xf vip.tar.bz2`
 
-| **69** :$ `ls -l`
+| **70** :$ `ls -l`
 
 *Quick cleanup...*
 
-| **70** :$ `rm -r vip && ls -l`
+| **71** :$ `rm -r vip && ls -l`
 
 *Now with `xz`*
 
-| **71** :$ `tar xf vip.tar.xz`
+| **72** :$ `tar xf vip.tar.xz`
 
-| **72** :$ `ls -l`
+| **73** :$ `ls -l`
 
 ___
 
@@ -297,35 +299,35 @@ ___
 
 *Take a peek at what's in the tarballs (notice the speed of each)*
 
-| **73** :$ `tar tf vip.tar`
+| **74** :$ `tar tf vip.tar`
 
 *Note that only shows the contents, no files changed*
 
-| **74** :$ `ls -l`
+| **75** :$ `ls -l`
 
 *Note `tar t...` works with .tar files and with its compressors (gzip, bzip2, and xz)*
 
-| **75** :$ `tar tf vip.tar.gz`
+| **76** :$ `tar tf vip.tar.gz`
 
-| **76** :$ `tar tf vip.tar.bz2`
+| **77** :$ `tar tf vip.tar.bz2`
 
-| **77** :$ `tar tf vip.tar.xz`
+| **78** :$ `tar tf vip.tar.xz`
 
 *The list is quite long, so put it into a file for easy viewing*
 
-| **78** :$ `tar tf vip.tar.xz > vip-tar-tf`
+| **79** :$ `tar tf vip.tar.xz > vip-tar-tf`
 
-| **79** :$ `ls -l`
+| **80** :$ `ls -l`
 
-| **80** :$ `gedit vip-tar-tf`
+| **81** :$ `gedit vip-tar-tf`
 
 *tar up the `cpdir` directory*
 
-| **81** :$ `cd ..`
+| **82** :$ `cd ..`
 
-| **82** :$ `tar cvf cpdir.tar cpdir`
+| **83** :$ `tar cvf cpdir.tar cpdir`
 
-| **83** :$ `tar tf cpdir.tar`
+| **84** :$ `tar tf cpdir.tar`
 
 *Note that `-v` "Verbose" basically does the same as `-t` "contenT" while tarring*
 
@@ -333,49 +335,49 @@ ___
 
 *Make some prep*
 
-| **84** :$ `cp cpdir.tar compress/`
+| **85** :$ `cp cpdir.tar compress/`
 
-| **85** :$ `cp -r cpdir compress/`
+| **86** :$ `cp -r cpdir compress/`
 
-| **86** :$ `cd compress`
+| **87** :$ `cd compress`
 
-| **87** :$ `touch file1 file2 file3`
+| **88** :$ `touch file1 file2 file3`
 
 *Note the following order: `tar cf TARBALL-FILE.tar CONTENTS CONTENTS CONTENTS ETC`*
 
-| **88** :$ `tar cf files.tar file1 file2 cpdir`
+| **89** :$ `tar cf files.tar file1 file2 cpdir`
 
 *Take a peek inside*
 
-| **89** :$ `tar tf files.tar`
+| **90** :$ `tar tf files.tar`
 
 *Add a file with `-r`*
 
-| **90** :$ `tar rf files.tar file3`
+| **91** :$ `tar rf files.tar file3`
 
 *See if `file3` has been added*
 
-| **91** :$ `tar tf files.tar`
+| **92** :$ `tar tf files.tar`
 
 ### Review: `tar` & `xz`
 
-| **92** :$ `rm vip.tar.xz && ls -l`
+| **93** :$ `rm vip.tar.xz && ls -l`
 
 *Tar up and xz-compress in one command:*
 
-| **93** :$ `tar c vip | xz > vip.tar.xz`
+| **94** :$ `tar c vip | xz > vip.tar.xz`
 
 *Cleanup*
 
-| **94** :$ `rm -r vip && ls -l`
+| **95** :$ `rm -r vip && ls -l`
 
 *Untar and decompress in one command:*
 
-| **95** :$ `tar xf vip.tar.xz`
+| **96** :$ `tar xf vip.tar.xz`
 
 *See, it worked...*
 
-| **96** :$ `ls -l`
+| **97** :$ `ls -l`
 
 *Case and point: `xz` is probably best, `gzip` and `bzip2` exist in the Linuxverse, and `tar xf FILE` works on any `.tar*` file*
 

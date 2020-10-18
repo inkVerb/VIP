@@ -30,7 +30,7 @@ ___
   - `<?php ?>` can be used ***inside*** an .html file
   - `<?php ?>` can be used ***inline*** with HTML
 
-| **.html** or **.php** :$
+| **.html** or **.php** :
 ```html
 <html>
 <head>
@@ -87,7 +87,6 @@ You will see many tests with `} else {` options for reporting errors, this is wh
 | **1** :$
 ```
 sudo cp core/01-phpget1.php web/phpget.php && \
-ls -l web
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/01-phpget1.php && \
 ls -l web
@@ -103,7 +102,12 @@ ls -l web
 
 *Note we don't need to `chown` file owner when copying over a file...*
 
-| **2** :$ `sudo cp core/01-phpget2.php web/phpget.php && ls -l web`
+| **2** :$
+```
+sudo cp core/01-phpget2.php web/phpget.php && \
+atom core/01-phpget2.php && \
+ls -l web
+```
 
 *Note phpget.php has the same file owner as before, though we copied over it without `chown`*
 
