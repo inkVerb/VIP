@@ -56,7 +56,8 @@ echo '<p>Poetry is code!</p>';
   - case-sensitive
   - can't start with a number
 6. Concatenate strings and variables with `.`
-7. Always test success and plan for failure, even the impossible
+  - JavaScript uses `+` to concatenate
+  - Shell & BASH don't concatenate
 
 **Concatenation**
 ```php
@@ -64,6 +65,8 @@ echo $variable.' single quote $no_var'." double quote working $variables";
 
 echo 'string '.$variable.' string continues '.$variable." etc...";
 ```
+
+7. Always test success and plan for failure, even the impossible
 
 **Failure plan**
 ```php
