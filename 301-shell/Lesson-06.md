@@ -511,7 +511,9 @@ ___
 
 *The last `exit` status was 2 because our script exited via `exit 2`*
 
-#### 0, 1 & 2 are not the only way to exit!
+## IV. Other `exit` Codes
+
+### 0, 1 & 2 are not the only way to exit!
 
 | **88** :$ `gedit ../06-status3`
 
@@ -568,7 +570,7 @@ ___
 
 *gedit: Ctrl + W to close previous files*
 
-#### Sent custom messages to output channels 3-87
+### Sent custom messages to output channels 3-87
 
 | **100** :$ `ls`
 
@@ -655,13 +657,13 @@ exec 3>> Output-File # Necessary for channels 3 and above
 some command >&3
 ```
 
-## IV. Bring Together: `>&3`, `exit 3`, `logger` & `journalctl`
+## V. Bring Together: `>&3`, `exit 3`, `logger` & `journalctl`
 
 Ready the CLI (if needed)
 
 `cd ~/School/VIP/301/logs`
 
-#### Output channels & `exit` status work together:
+### Output channels & `exit` status work together:
 
 If there is some special situation in your script:
 - For example, use channel 3...
@@ -789,7 +791,7 @@ fi
 
 | **140** :$ `journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info` *Q to quit*
 
-#### *Moral of the story: always use `exit` with a number!*
+### *Moral of the story: always use `exit` with a number!*
 - `exit 0` everything is normal, no output *(with `echo "something"` `>&0` ...if you are strange)*
 - `exit 1` everything is normal, with STDOUT
 - `exit 2` something is wrong, with STDERR error messages
