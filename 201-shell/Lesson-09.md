@@ -9,7 +9,7 @@ Ready the CLI (might not be needed)
 
 ___
 
-### File sizes
+### I. File sizes
 
 i. Watch this video & notice the numbers: [RGB](https://www.youtube.com/watch?v=HX46ILgwTNk)
 - Top row: Binary (0–1)
@@ -30,11 +30,11 @@ iii. File sizes (very generic approximation)
   - Learn more about image [pictypes](https://github.com/inkVerb/pictypes/blob/master/README.md)
 - 1 hour video is about 1GB (1920x1080)
 
+### II. `du` & `df`
+
 *Go to your home directory*
 
 | **1** :$ `cd ~/`
-
-### `du` & `df`
 
 - **`du`: "Disk Usage"**
 - **`df`: "Disk Filesystem"**
@@ -57,11 +57,11 @@ iii. File sizes (very generic approximation)
 
 *Note it can tell you the size of just one directory*
 
+### III. `top` & `uptime`
+
 *Now go back to where our 201 directory*
 
 | **6** :$ `cd ~/School/VIP/201`
-
-### `top` & `uptime`
 
 | **7** :$ `top`
 
@@ -96,7 +96,7 @@ F10 (or Q to Quit)
 
 | **13** :$ `uptime`
 
-### `ps aux`
+### IV. `ps aux`
 
 | **14** :$ `ps aux`
 
@@ -118,7 +118,7 @@ Make sure you are NOT using Firefox before finishing this lesson!
 
 *This does the same thing*
 
-### `pgrep` & `kill`
+### V. `pgrep` & `kill`
 
 | **18** :$ `pgrep firefox`
 

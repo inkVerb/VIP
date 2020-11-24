@@ -428,21 +428,21 @@ ___
 
 *Example with `grep`...*
 
-| **63** :$ `grep "exit" ../0*` *(something found in real files)*
+| **63** :$ `grep -R "exit" ../0*` *(something found in real files)*
 
 | **64** :$ `echo $?` *(0, true)*
 
 *`-q` flag for "quiet", still returns 0 for "found", so it works in `if`/`while` tests...*
 
-| **65** :$ `grep -q "exit" ../0*` *('quietly' something found in real files)*
+| **65** :$ `grep -Rq "exit" ../0*` *('quietly' something found in real files)*
 
 | **66** :$ `echo $?` *(0, true)*
 
-| **67** :$ `grep "wallawalla" ../0*` *(nothing found in real files)*
+| **67** :$ `grep -R "wallawalla" ../0*` *(nothing found in real files)*
 
 | **68** :$ `echo $?` *(1, false)*
 
-| **69** :$ `grep "wallawalla" ../iamnothere` *(a non-existent file)*
+| **69** :$ `grep -R "wallawalla" ../iamnothere` *(a non-existent file)*
 
 | **70** :$ `echo $?` *(2, error)*
 
