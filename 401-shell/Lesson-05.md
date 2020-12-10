@@ -278,6 +278,8 @@ myShiftedCount = $myShiftedCount
 
 ### VI. Variables in `${bracketts}`
 
+#### Shell (`#!/bin/sh`)
+
 *Edit this script*
 
 | **18** :$ `gedit varbrackett-sh`
@@ -324,6 +326,8 @@ echo "${myVar}"
 | **19** :$ `./varbrackett-sh one two three four five six seven eight nine ten eleven twelve`
 
 *Again, but with **BASH**...*
+
+#### BASH (`#!/bin/bash`)
 
 *Edit this script*
 
