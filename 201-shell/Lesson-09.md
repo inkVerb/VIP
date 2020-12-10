@@ -132,7 +132,7 @@ Make sure you are NOT using Firefox before finishing this lesson!
 
 *Now kill it by process name using `killall`*
 
-| **21** :$ `killall firefox` or `killall chromium-browser` or `killall google-chrome` or `killall vivaldi`
+| **21** :$ `killall firefox`
 
 *Some processes can only be killed by PID*
 

@@ -1,5 +1,5 @@
 # Shell 501
-## Lesson 3: MySQL & phpMyAdmin
+## Lesson 2: MySQL & phpMyAdmin
 
 Ready the CLI
 

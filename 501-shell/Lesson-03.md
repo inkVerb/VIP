@@ -33,7 +33,7 @@ We want to make our database calls *before* we render any HTML
 
 *You don't want half of your page waiting to load while you make another database call*
 
-### Website via many `include` files
+### I. Website via many `include` files
 
 **Include file tree:**
 ```
@@ -64,7 +64,7 @@ ls web
 
 *Now, let's put our SQL into this mix...*
 
-### MySQL Config
+### II. MySQL Config
 
 **MySQLi:** *MySQL the "safe way" in PHP*
 
@@ -150,7 +150,7 @@ echo "<pre>$query</pre>";
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-### SQL > PHP > HTML
+### III. SQL > PHP > HTML
 
 *Let's do the same thing, but put it in an HTML `<table>`...*
 
@@ -183,7 +183,7 @@ ls web
 3. The SQL response is an array assigned to `$New_variables`
 	- Syntax: `$Item_variable = "$row[0]";` (for each column in the `SELECT` query)
 
-### SQL Multiple Rows > PHP > HTML
+### IV. SQL Multiple Rows > PHP > HTML
 
 Process many SQL entry rows via `while` loop...
 
@@ -240,7 +240,7 @@ ls web
 
 *Use Ctrl + Shift + C in browser to see the developer view*
 
-### SQL `INSERT` New Entry < HTML
+### V. SQL `INSERT` New Entry < HTML
 - See if a query succeeded without error
 	- Syntax: `if ($row)`
 - Bonus tip: Get the ID of whatever new row you just inserted:
@@ -283,7 +283,7 @@ ls web
 
 | **S6** :> `SELECT name, type, have, count, prepared FROM fruit;`
 
-### Always Escape SQL Created by a User Action
+### VI. Always Escape SQL Created by a User Action
 
 MySQLi escape function:
 
@@ -367,7 +367,7 @@ ls web
 
 | **S8** :> `SELECT name, type, have, count, prepared FROM fruit;`
 
-### SQL `UPDATE` Existing Entry < HTML
+### VII. SQL `UPDATE` Existing Entry < HTML
 - See if an update made a change
 	- Syntax: `if (mysqli_affected_rows($database) == 1)`
 
@@ -401,7 +401,7 @@ ls web
 
 | **S9** :> `SELECT name, type, have, count, prepared FROM fruit;`
 
-### SQL `DELETE` Entry < HTML
+### VIII. SQL `DELETE` Entry < HTML
 - See if the row was deleted, same as an update
 	- Syntax: `if (mysqli_affected_rows($database) == 1)`
 

@@ -193,7 +193,7 @@ Arguments entered via \$(echo \$*) ..."
 
 | **13** :$ `./varargsvar one two three four five six`
 
-*...No matter how we run it, `$@` & `$*` basically behave the same.*
+*...No matter how we run it, `$@` & `$*` behave the same*
 
 ### IV. `$#` Argument Count
 
