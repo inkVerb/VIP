@@ -288,7 +288,7 @@ ls web
 MySQLi escape function:
 
 ```php
-$something_sql_safe = mysqli_real_escape_string($database, $$something);
+$something_sql_safe = mysqli_real_escape_string($database, $something);
 ```
 
 | **7** :$
@@ -480,6 +480,7 @@ while ($row = mysqli_fetch_array($call, MYSQLI_NUM)) {...}
 - See if a query was successful
 ```php
 if ($row) {...}
+if ($call) {...}
 ```
 - See if a query made a change
 ```php
