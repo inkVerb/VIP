@@ -17,6 +17,10 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 | **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
+### Used later in this lesson
+
+| **L4** :> `USE webapp_db`
+
 ___
 
 ### I. Web App Installer
@@ -192,14 +196,18 @@ ls web
 
 ### III. User Login
 
-PHP has 4 types of variables:
+PHP has 3 main groups of variables:
 
 ```php
-// File specific: (stop working after the file finishes)
-$Simple_variables // May be "global" to work with functions
+// Script-specific: (stop working after the PHP script finishes)
+$Simple_variables or $Simple_Array[0] // Must be "global" to work inside and outside functions
 CONSTANT_VARIABLES // Never change, work everywhere
 
-// Universal: (work even after the file finishes)
+// Method arrays: (work only from form submission or page load)
+$_GET // set in URL
+$_POST // not in URL
+
+// Persistent arrays: (keep working in the browser even after the PHP script finishes)
 $_SESSION // Until browser closes or too much time passes
 $_COOKIE // Even after browser closes, until certain time passes
 ```
@@ -255,7 +263,7 @@ Username: jonboy
 Password: My#1Password
 ```
 
-*Once logged in, refresh the page to see already logged in message...*
+*Once logged in, re-enter the page to see already logged in message...  (not reload)*
 
 | **B-9b** :// `localhost/web/webapp.php` (same)
 

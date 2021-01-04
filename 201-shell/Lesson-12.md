@@ -228,19 +228,23 @@ ___
   - ***Any*** path beginning with `/` will refer to the root of the FSH!
 - All home directories (with personal user stuff) are in `/home/`
 - The "root" (AKA `su`) user's home is `/root/`, ***not*** `/home/root/`!
+- `/bin/` holds most of the Linux/Unix commands we use all the time
 - `/var/` holds
   - Logs
   - The `/var/www/` "web" folder used by Apache and Nginx web servers
   - The `/var/lib/mysql/` MySQL database folder
   - Email folders
-- `/usr/` has the core "binary" files for most desktop apps
+- `/lib/` holds common libraries used by multiple apps
+- `/usr/` holds the core "binary" files for most desktop apps
 - Settings for apps usually reside in either:
-  - `/home/USER/.CONFIG-DIR/` "hidden" directories that begin with a `.` in a user's home (most desktop apps)
+  - `/home/$USER/.some-config-dir/` "hidden" directories that begin with a `.` in a user's home (most desktop apps)
   - `/etc/` (most non-desktop apps)
-- `/etc/` has settings for system apps like MySQL, PHP, Python, Apache, Nginx, etc
-- `/media/` is where USB drives are usually mounted
-- `/sbin/` & `/boot/` are core operating system folders, don't touch!
-- `/opt/` is for software that doesn't always follow these rules
+- `/etc/` holds text-controlled settings for system apps like MySQL, PHP, Python, Apache, Nginx, etc
+- `/media/` is where USB drives usually mount
+- `/mount/` is where internal drives (ie SATA) usually mount
+- `/sbin/`, `/boot/`, `/proc/`, `/srv/`, `/sys/` are core operating system folders, don't touch!
+- `/tmo/` is where most temporary files go, including browser downloads in progress
+- `/opt/` is for software that doesn't always follow these "FSH" rules
 
 ___
 
@@ -266,6 +270,6 @@ ___
 
 *Now is your best time to learn `vim` fast and easy; it think how Shell thinks and it is powerfully useful*
 
-## Learn** :$ `vimtutor`
+## **Learn** :$ `vimtutor`
 
 ## Next: [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)
