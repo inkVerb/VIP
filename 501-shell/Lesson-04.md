@@ -325,10 +325,10 @@ Username: jonboy
 Password: My#1Password
 ```
 
-**Logout variable:**
+**Logout `$_SESSION` variable:**
 
 ```php
-$just_logged_out = true;
+$_SESSION['just_logged_out'] = true;
 ```
 
 *Review the diagram above along side the following two steps...*
