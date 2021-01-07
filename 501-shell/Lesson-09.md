@@ -209,8 +209,8 @@ ls web
 sudo cp core/09-pieces4.php web/pieces.php && \
 sudo cp core/09-trash4.php web/trash.php && \
 sudo cp core/09-undelete_trash4.php web/undelete_trash.php && \
-sudo cp core/09-purge_delete_trash4.php web/empty_delete_trash.php && \
-sudo cp core/09-purge_all_trash.php web/empty_all_trash.php && \
+sudo cp core/09-purge_delete_trash4.php web/purge_delete_trash.php && \
+sudo cp core/09-purge_all_trash.php web/purge_all_trash.php && \
 sudo chown -R www-data:www-data /var/www/html && \
 atom core/09-pieces4.php core/09-trash4.php core/09-undelete_trash.php core/09-purge_delete_trash.php core/09-empty_all_trash.php && \
 ls web
@@ -227,7 +227,7 @@ ls web
 *Note these redirect to trash.php, not pieces.php:*
 
 - *undelete_trash.php*
-- *empty_delete_trash.php*
+- *purge_delete_trash.php*
 
 *Note empty_all_trash.php:*
 
