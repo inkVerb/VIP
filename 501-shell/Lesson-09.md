@@ -1575,6 +1575,55 @@ UPDATE pieces AS P, publications AS U SET U.date_updated=P.date_updated WHERE U.
 
 8. Run the same `SELECT` SQL query again to see that it finds a match
 
+### Prevent Multiple `<form>` `<input>` Submissions
+
+*Create a new post...*
+
+| **B-42** :// `localhost/web/edit.php` (No "p" _GET argument, this is new)
+
+1. Enter a boring title you will recognize
+2. Many times as fast as you can: click "Save draft" or press "Ctrl + S"
+
+*Have a look...*
+
+| **B-43** :// `localhost/web/pieces.php`
+
+- *Over the Internet, you may be able to save multiple duplicates before the `<form>` finishes and the page reloads*
+- *Since this sends to your local machine, you may not be able to save multiple duplicates*
+- *Regardless, we do not want the ability to keep saving a new draft, which creates a new database entry each time*
+
+**Disable the `<form>` after the first submission**
+
+*Disable an `<input>` after sending with this handy JavaScript snippet in the `onclick="..."` attribute:*
+
+```JavaScript
+var f=this; setTimeout(function(){f.disabled=true;}, 0); return true;
+```
+
+*Like so:*
+
+```html
+<input type="submit" onclick="var f=this; setTimeout(function(){f.disabled=true;}, 0); return true;">
+```
+
+| **44** :$
+```
+sudo cp core/09-edit14.php web/edit.php && \
+atom core/09-edit14.php && \
+ls web
+```
+
+*Note the JavaScript smippet added to `<input ... onclick=` right under `// First Save for new Piece`*
+
+*Create another new post...*
+
+| **B-44** :// `localhost/web/edit.php` (No "p" _GET argument, this is new)
+
+*Have a look...*
+
+| **B-45** :// `localhost/web/pieces.php`
+
+*...No duplicates*
 ___
 
 # The Take
