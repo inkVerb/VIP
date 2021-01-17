@@ -10,113 +10,105 @@ Ready the CLI
 
 ___
 
-### I. `${#Variable}`
+### I. Basic Math `expr`
 
-| **1** :$ `gedit 09-count`
+| **1** :$ `expr 5 + 6`
 
-| **2** :$ `./09-count five`
+| **2** :$ `expr 12 - 1`
 
-| **3** :$ `./09-count six`
-
-### II. Basic Math `expr`
-
-| **4** :$ `expr 5 + 6`
-
-| **5** :$ `expr 12 - 1`
-
-| **6** :$ `expr 7 / 2`
+| **3** :$ `expr 7 / 2`
 
 *Note it only answers in whole numbers*
 
 *Modulus gives only the remainder*
 
-| **7** :$ `expr 7 % 2`
+| **4** :$ `expr 7 % 2`
 
 *Look, the asterisk must be escaped because all by itself an asterisk "means something"*
 
-| **8** :$ `expr 7 \* 2`
+| **5** :$ `expr 7 \* 2`
 
-| **9** :$ `expr 7 \* 13`
+| **6** :$ `expr 7 \* 13`
 
-| **10** :$ `gedit 09-expr`
+| **7** :$ `gedit 09-expr`
 
-| **11** :$ `./09-expr 2 + 72`
+| **8** :$ `./09-expr 2 + 72`
 
-| **12** :$ `./09-expr 55 - 7`
+| **9** :$ `./09-expr 55 - 7`
 
-| **13** :$ `./09-expr 88 / 11`
+| **10** :$ `./09-expr 88 / 11`
 
-| **14** :$ `./09-expr 14 \* 2`
+| **11** :$ `./09-expr 14 \* 2`
 
-| **15** :$ `./09-expr 7 % 2`
+| **12** :$ `./09-expr 7 % 2`
 
-| **16** :$ `gedit 09-expr-show`
+| **13** :$ `gedit 09-expr-show`
 
-| **17** :$ `./09-expr-show 55 + 1`
+| **14** :$ `./09-expr-show 55 + 1`
 
-| **18** :$ `./09-expr-show 20 \* 3`
+| **15** :$ `./09-expr-show 20 \* 3`
 
-| **19** :$ `./09-expr-show 22 % 3`
+| **16** :$ `./09-expr-show 22 % 3`
 
-### III. Comparison Operators
+### II. Comparison Operators
 
 #### A. `-eq -ne -gt -lt -ge -le`
 
-| **20** :$ `gedit 09-operators`
+| **17** :$ `gedit 09-operators`
 
-| **21** :$ `./09-operators 4 eq 4`
+| **18** :$ `./09-operators 4 eq 4`
 
-| **22** :$ `./09-operators 4 eq 7`
+| **19** :$ `./09-operators 4 eq 7`
 
-| **23** :$ `./09-operators 4 ne 4`
+| **20** :$ `./09-operators 4 ne 4`
 
-| **24** :$ `./09-operators 4 ne 7`
+| **21** :$ `./09-operators 4 ne 7`
 
-| **25** :$ `./09-operators 8 gt 9`
+| **22** :$ `./09-operators 8 gt 9`
 
-| **26** :$ `./09-operators 9 gt 8`
+| **23** :$ `./09-operators 9 gt 8`
 
-| **27** :$ `./09-operators 8 lt 9`
+| **24** :$ `./09-operators 8 lt 9`
 
-| **28** :$ `./09-operators 9 lt 8`
+| **25** :$ `./09-operators 9 lt 8`
 
-| **29** :$ `./09-operators 10 ge 23`
+| **26** :$ `./09-operators 10 ge 23`
 
-| **30** :$ `./09-operators 23 ge 10`
+| **27** :$ `./09-operators 23 ge 10`
 
-| **31** :$ `./09-operators 10 le 23`
+| **28** :$ `./09-operators 10 le 23`
 
-| **32** :$ `./09-operators 23 le 10`
+| **29** :$ `./09-operators 23 le 10`
 
-| **33** :$ `./09-operators 3.14 gt 15`
+| **30** :$ `./09-operators 3.14 gt 15`
 
 *Oops, it only works with whole numbers*
 
 *But, it works with negative numbers*
 
-| **34** :$ `./09-operators 5 ne -5`
+| **31** :$ `./09-operators 5 ne -5`
 
-| **35** :$ `./09-operators -5 ne -5`
+| **32** :$ `./09-operators -5 ne -5`
 
 #### B. Substitute the `$Variable`
 
-| **36** :$ `gedit 09-operators-subvar`
+| **33** :$ `gedit 09-operators-subvar`
 
-| **37** :$ `./09-operators-subvar 12 lt 12`
+| **34** :$ `./09-operators-subvar 12 lt 12`
 
-| **38** :$ `./09-operators-subvar 12 lt 13`
+| **35** :$ `./09-operators-subvar 12 lt 13`
 
-#### C. `== != > < >= <=` (BASH)
+#### C. `== != > < >= <=` (BASH `#!/bin/bash`)
 
-| **39** :$ `gedit 09-operators-symbol`
+| **36** :$ `gedit 09-operators-symbol`
 
 *Note at the top: `#!/bin/bash`*
 
 *These symbols require BASH. Nemo, we're not in Shellfish anymore...*
 
-| **40** :$ `./09-operators-symbol 12 eq 12`
+| **37** :$ `./09-operators-symbol 12 eq 12`
 
-| **41** :$ `./09-operators-symbol 12 eq 13`
+| **38** :$ `./09-operators-symbol 12 eq 13`
 
 ___
 

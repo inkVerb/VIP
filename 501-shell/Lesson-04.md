@@ -221,7 +221,7 @@ Login uses `$_SESSION` and `$_COOKIE` variables
 1. Session
 
 ```php
-session_start(); // Must start the SESSION in every file (in our config file)
+session_start(); // Must start the SESSION in every PHP script (in our config file)
 $_SESSION['some_key'] = "some value";
 ```
 
@@ -389,7 +389,7 @@ Cookies are stored in files on the "Client" (user's local machine)
 
 *Have a look at Firefox cache data, where cookies are kept...*
 
-| **12** :$ `cd ~/.mozilla/firefox/*.default` (You can use a `*` wildcard if there is only one file possible)
+| **12** :$ `cd ~/.mozilla/firefox/*.default` (You can use a `*` wildcard with `cd` if there is only one file possible)
 
 | **13** :$ `ls`
 
@@ -399,7 +399,7 @@ Cookies are stored in files on the "Client" (user's local machine)
 
 | **15** :$ `ls`
 
-***This is how cookies work...*** **the wrong way:** user_id
+***This is how cookies work...*** **the wrong way:** `user_id`
 
 For teaching, we will put the **user_id** as the cookie's value, but this is not secure!
 
@@ -442,13 +442,13 @@ Later we will put a secret key into the cookie for proper security
 
 4 types of PHP variables:
 
-1. Simple (ends with file)
+1. Simple (ends with PHP script)
 ```php
 $Variable = "Some value";
-global $variable; // Make it global
+global $Variable; // Make it global
 ```
 
-2. Constant (ends with file)
+2. Constant (ends with PHP script)
 ```php
 DEFINE ('CONSTANT_NAME', 'some value');
 ```
@@ -457,9 +457,9 @@ DEFINE ('CONSTANT_NAME', 'some value');
 CONSTANT_NAME
 ```
 
-3. SESSION (continues after file and page reload)
+3. SESSION (continues after PHP script and page reload)
 ```php
- // Start SESSION in each file using it
+ // Start SESSION in each PHP file using it
 session_start();
 
 // Use SESSION array variables
