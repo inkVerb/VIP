@@ -27,7 +27,7 @@ Some things can only be done in BASH
 
 | **3** :$ `./10-count six`
 
-### Variable Variables
+### II. Variable Variables
 
 | **4** :$ `gedit 10-varvar`
 
@@ -35,7 +35,7 @@ Some things can only be done in BASH
 
 *Take a good look and try to see how that makes sense; it can be VERY useful!*
 
-### Arrays
+### III. Arrays
 
 | **6** :$ `gedit 10-array`
 
