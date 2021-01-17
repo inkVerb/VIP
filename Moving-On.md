@@ -13,4 +13,4 @@ Now that you have completed this course, other computer languages will be easier
 - You already have a deeper understanding of the machines used as platforms for most software.
 - You know the back-end of one of the most stable, secure, and open source desktop platforms available, so you can lower your costs and help others do the same.
 
-So, don't stop here. There's much, much more you can do. And, it's all much, much easier now to do. Keep moving and keep going!
+So, don't stop here. There's much more you can do. And, it's all much, much easier now to do. Keep moving and keep going!
