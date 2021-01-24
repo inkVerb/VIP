@@ -83,9 +83,19 @@ You will see many tests with `} else {` options for reporting errors, this is wh
 
 #### Everything breaks. It's not `if`. It's WHEN!
 
-### I. PHP Form & Method Handling
+### I. PHP Method Handling
 
-#### `$_GET`
+#### `$_GET` Method
+
+**_GET**
+```
+http://webaddress.com?this_name=something-here
+```
+...becomes...
+
+```php
+$_GET['this_name'] // = "something-here"
+```
 
 | **1** :$
 ```
@@ -118,7 +128,18 @@ ls -l web
 
 *Try the form a few times to see how it works*
 
-#### `$_POST`
+#### `$_POST` Method
+
+**_POST**
+```html
+<input name="this_name">
+```
+
+...after `<submit>` becomes...
+
+```php
+$_POST['this_name'] // = whatever was entered into the <input>
+```
 
 | **3** :$
 ```
@@ -202,18 +223,6 @@ ls web
 ```
 
 | **B-4** :// `localhost/web/phparrays.php`
-
-#### PHP Form Method Summary
-
-**_GET**
-```php
-'http://webaddress.com?this_name=...'  >>>>  $_GET['this_name']
-```
-
-**_POST**
-```php
-<input name="this_name">  >>>>  $_POST['this_name']
-```
 
 **`$_POST` and `$_GET` are arrays that use keys**
 ```php

@@ -509,18 +509,26 @@ ls web
 
 | **Login** :// `localhost/web/webapp.php`
 
-*Try making changes or saving without changes, or enter invalid values*
-
-*When finished, make sure the username and password are the same for future reference*
-
 ```
 Username: jonboy
 Password: My#1Password
 ```
 
+*Try making changes or saving without changes, or enter invalid values*
+
+*When finished, make sure the username and password are the same for future reference*
+
 ### VII. Forgot Password
 
-*Make sure you remember your favorite number and email before continuing...*
+*Make sure you know your favorite number and email before continuing...*
+
+| **S18** :> `SELECT id, fullname, email, favnumber FROM users;`
+
+| **SB-18** ://phpMyAdmin **> users**
+
+*This simple "forgot password" page logs in via email and favorite number, rather than username and password...*
+
+***This is a simple example, but it is not secure; we will use a secure way later in future lessons***
 
 | **18** :$
 ```
@@ -544,11 +552,7 @@ ls web
 
 | **Login** :// `localhost/web/account.php`
 
-*Success: You will get an SQL query to try, also review these:*
-
-| **S18** :> `SELECT id, fullname, email, favnumber FROM users;`
-
-| **SB-18** ://phpMyAdmin **> users**
+*Success: You will get an SQL query to try*
 
 ___
 
