@@ -19,7 +19,18 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 ### Used later in this lesson
 
+*SQL database:*
+
 | **L4** :> `USE webapp_db`
+
+*Webapp login:*
+
+| **LB-5** ://
+
+```
+Username: jonboy
+Password: My#1Password
+```
 
 ___
 

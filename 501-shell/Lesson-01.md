@@ -132,10 +132,11 @@ ls -l web
 
 **_POST**
 ```html
+<form method="post" action="some_page.php">
 <input name="this_name">
 ```
 
-...after `<submit>` becomes...
+...after `<submit>`, becomes in some_page.php...
 
 ```php
 $_POST['this_name'] // = whatever was entered into the <input>
