@@ -10,7 +10,7 @@ ___
 
 ### RewriteMod: Apache Web Server Setting
 
-**RewriteMod:** an apache web server settings that changes what a web address looks like
+**RewriteMod:** a web server settings that changes what a web address looks like
 
 1. Rewrite uses a RegEx, just like PHP `preg_match()` and `preg_replace()`
 2. Rewrite often hides GET method syntax in the URL
