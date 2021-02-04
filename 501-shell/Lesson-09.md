@@ -1660,14 +1660,14 @@ ___
 - AJAX responses in JSON can be understood by JavaScript
 - Sending and receiving only JSON with AJAX is efficient, more and more developers do this
 - Syntax:
-  - **PHP sending AJAX response** :$
+  - **PHP sending AJAX response** :
 ```php
 $ajax_array = array();
 $ajax_array['foo'] = $bar.' or something';
 $json_thing = json_encode($ajax_array, JSON_FORCE_OBJECT);
 echo $json_thing;
 ```
-  - **JavaScript recieving AJAX response** :$
+  - **JavaScript recieving AJAX response** :
 ```js
 var ourJSONresponse = JSON.parse(event.target.responseText);
 document.getElementById("bar_id").innerHTML = ourJSONresponse["title"]+' and something';

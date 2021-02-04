@@ -37,7 +37,7 @@ https://verb.vip/pretty_page.php?n=My_Long_Name
 
 ...using the setting...
 
-| **.htaccess** :$
+| **.htaccess** :
 ```
 RewriteEngine on
 RewriteRule ^/?([a-zA-Z0-9_]+)$ pretty_page.php?n=$1 [L]
@@ -245,14 +245,14 @@ ___
 - Changes the URL shown in a browser from what it actually is on the server
 - Requires certain settings:
   1. The Apache config file in the `<Directory>` tags
-  | **/etc/apache2/sites-available/website-config.conf** :$
+  | **/etc/apache2/sites-available/website-config.conf** :
   ```
   <Directory "/var/www/html"> # (or /var/www/html/...something)
     AllowOverride All
   </Directory>
   ```
   2. .htaccess (a hidden file in the web directory)
-  | **/var/www/html/your/web/dir/.htaccess** :$
+  | **/var/www/html/your/web/dir/.htaccess** :
   ```
   RewriteEngine on
   ```
