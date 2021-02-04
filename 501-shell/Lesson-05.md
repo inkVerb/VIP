@@ -220,6 +220,10 @@ ls web
 
 | **B-7c** :// `localhost/web/My_Long_Name`
 
+*...with and without a `/` in the middle...*
+
+| **B-7d** :// `localhost/web/My_Long_Name/Name-2`
+
 ___
 
 # The Take
@@ -261,12 +265,12 @@ ___
   ```
 
 ## Format
-| **.htaccess** :$
+| **.htaccess** :
 ```
 RewriteEngine on
 
 # Format:
-#RewriteRule RegEx path [options]
+RewriteRule RegEx path [options]
 
 # Arguments:
 RewriteRule (RegEx one)(RegEx two)(RegEx three) path/to/$1/somefile.php?foo=$2&bar=$3
@@ -279,7 +283,14 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
 - Usually, send your RewriteRule to a page with a GET method
 - For example:
 
-  "Pretty URL"...
+  With...
+
+  | **.htaccess** :
+  ```
+  RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?a=$1&b=$3 [L]
+  ```
+
+  ...a "pretty URL"...
   ```
   https://verb.ink/part-one/part-two
 
@@ -291,7 +302,7 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
   ```
   ...with GET processed as...
 
-  | **.htaccess** :$
+  | **mypage.php** :
   ```php
   $a = $_GET['a'];
   $b = $_GET['b'];

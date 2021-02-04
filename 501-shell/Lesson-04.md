@@ -80,7 +80,7 @@ ls web
 - *Validation and sanitizing set a `$regex_` variable first, which is more neat and tidy*
 - *This style isolates the RegEx to help any RegEx hunting in the future*
 
-| **install.php** :$
+| **install.php** :
 
 **Hash password one-way:**
 
