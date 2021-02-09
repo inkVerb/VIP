@@ -170,13 +170,18 @@ This is where USB-connected drives usually mount.
 
 | **32** :$ `ls`
 
-This usually contains `www/` (website files on a webserver) and `log/` for log files.
+This usually contains...
 
-This is also where email may be stored in `email/` or `mail/` or `vmail/` or something like that.
-
-This is usually where the .swp "swap file" (virtual RAM) goes, if it is a file and not a partition.
+- `log/` for log files.
+- `email/` or `mail/` or `vmail/` for email
+- the .swp "swap file" (virtual RAM), if it is a file and not a partition
 
 Things here can and may need to change often.
+
+This usually contains `www/` (webserver directory) for:
+
+- Red Hat (CentOS & Fedora)
+- Debian (Debian & Ubuntu)
 
 #### `/srv/` – Service Data (data for services provided by the system)
 
@@ -184,7 +189,10 @@ Things here can and may need to change often.
 
 | **34** :$ `ls`
 
-This is another place the `www/` directory can go, or where a server will keep shared/served files to make them available on a local network.
+This contains `www/` (webserver directory) for:
+
+- Arch
+- Suse
 
 #### `/run/` – Running processes (a place to keep stuff that won't get deleted)
 
@@ -268,7 +276,7 @@ Oh, and then there's this...
 
 ___
 
-*Now is your best time to learn `vim` fast and easy; it think how Shell thinks and it is powerfully useful*
+*Now is your best time to learn `vim` fast and easy; it thinks how Shell thinks, and it is powerfully useful*
 
 ## **Learn** :$ `vimtutor`
 
