@@ -29,7 +29,7 @@ ___
 ```
 sudo cp core/07-recover1.php web/recover.php && \
 sudo cp core/07-in.string_functions.php web/in.string_functions.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/07-recover1.php core/07-in.string_functions.php && \
 ls web
 ```
@@ -52,7 +52,7 @@ sudo cp core/07-recover_login.php web/recover_login.php && \
 sudo cp core/07-webapp.php web/webapp.php && \
 sudo cp core/07-in.loginhead1.php web/in.login_head.php && \
 sudo cp core/07-accountsettings.php web/account.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/07-recover2.php core/07-ajaxstring.php core/07-recover_login.php core/07-webapp.php core/07-in.loginhead1.php core/07-accountsettings.php && \
 ls web
 ```
@@ -183,7 +183,7 @@ Favorite Number: (same as before)
 | **9** :$
 ```
 sudo cp core/07-cleanup1.php web/cleanup.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/07-cleanup1.php && \
 ls web
 ```
@@ -269,7 +269,7 @@ We use this syntax here: `php /same/path/as/cron/task/to/script.php`
 | **13** :$
 ```
 sudo cp core/07-cleanup2.php web/cleanup.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/07-cleanup2.php && \
 ls web
 ```
@@ -386,7 +386,7 @@ CHANGE  `usable`  `usable` ENUM('live', 'cookie_login', 'dead') NOT NULL;
 ```
 sudo cp core/07-in.loginhead2.php web/in.login_head.php && \
 sudo cp core/07-logout.php web/logout.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/07-in.loginhead2.php core/07-logout.php && \
 ls web
 ```
@@ -425,7 +425,7 @@ Password: My#1Password
 | **24** :$
 ```
 sudo cp core/07-in.loginhead3.php web/in.login_head.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/07-in.loginhead3.php && \
 ls web
 ```

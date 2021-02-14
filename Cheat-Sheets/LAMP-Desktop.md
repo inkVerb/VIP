@@ -4,13 +4,15 @@
 
 ***This is for your local desktop developer environment only, not secure for production!***
 
+***This is for Debian/Ubuntu!*** *For Arch/Manjaro, see [LEMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LEMP-Desktop.md)*
+
 ### Setup LAMP
 
 #### Install
 
 1. Install the LAMP server
 
-| **1** :$ `sudo apt install mysql-server php lamp-server^`
+  | **1** :$ `sudo apt install mysql-server php lamp-server^`
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
   - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
@@ -28,13 +30,13 @@
 
 3. Restart Everything
 
-| **3** :$ `sudo systemctl restart apache2`
+  | **3** :$ `sudo systemctl restart apache2`
 
-4. Look for the green dot for the All-OK
+4. Look for the green dot as the All-OK
 
-| **4** :$ `sudo systemctl status apache2`
+  | **4** :$ `sudo systemctl status apache2`
 
-  - Type `q` to quit. ;-)
+    - Type `q` to quit. ;-)
 
 #### Using your local dev server on desktop
 
@@ -42,9 +44,9 @@
 
 Life is easier with a local "Work" folder symlink
 
-| **5** :$ `mkdir -p ~/Work/vip`
+  | **5** :$ `mkdir -p ~/Work/vip`
 
-| **6** :$ `sudo ln -sfn ~/Work/vip /var/www/html/`
+  | **6** :$ `sudo ln -sfn ~/Work/vip /var/www/html/`
 
 - Now:
   - Your projects go in: `~/Work/vip/SOMETHING`
@@ -60,27 +62,27 @@ Life is easier with a local "Work" folder symlink
 
 1. Enable the Rewrite mod for Apache
 
-| **8** :$ `sudo a2enmod rewrite`
+  | **8** :$ `sudo a2enmod rewrite`
 
-| **9** :$ `sudo systemctl restart apache2`
+  | **9** :$ `sudo systemctl restart apache2`
 
 2. Add some important settings
-- Edit with `gedit`:
+  - Edit with `gedit`:
 
-  | **10g** :$ `sudo gedit /etc/apache2/sites-available/000-default.conf`
+    | **10g** :$ `sudo gedit /etc/apache2/sites-available/000-default.conf`
 
-- Or edit with `vim`:
+  - Or edit with `vim`:
 
-  | **10v** :$ `sudo vim /etc/apache2/sites-available/000-default.conf`
+    | **10v** :$ `sudo vim /etc/apache2/sites-available/000-default.conf`
 
-- After `DocumentRoot /var/www/html` Add these lines:
-```
-<Directory "/var/www/html">
-Options Indexes FollowSymLinks
-AllowOverride All
-Require all granted
-</Directory>
-```
+  - After `DocumentRoot /var/www/html` Add these lines:
+  ```
+  <Directory "/var/www/html">
+  Options Indexes FollowSymLinks
+  AllowOverride All
+  Require all granted
+  </Directory>
+  ```
 
 ...or for expanded options...
 
@@ -96,7 +98,7 @@ allow from all
 
 3. Reload Apache after any changes to files in `/etc/apache2/sites-available/_____.conf`
 
-| **11** :$ `sudo systemctl reload apache2`
+  | **11** :$ `sudo systemctl reload apache2`
 
 4. Remember with rewrites...
 
@@ -167,17 +169,97 @@ Now, you should be able to access this in your browser at the address:
 
 Login the first time with the same user you created in "MySQL via command line" above
 
+### Debian/Ubuntu: Change the web user to `www`
+- The default web user on Debian & Ubuntu systems is `www-data`
+- This is complex to type every time the web directory needs to be owned
+- This makes commands incompatible with Arch/Manjaro servers
+- You may or may not want to change the web user to `www`
+- VIP Linux lessons assume you are using `www:www`, not `www-data:www-data`, even on Apache servers or Debian/Ubuntu systems
+
+The web user is defined in...
+
+| **/etc/apache2/envvars** : (`www-data`)
+
+```
+export APACHE_RUN_USER=www-data
+export APACHE_RUN_GROUP=www-data
+```
+
+1. Change the setting to `www` with `sed`
+
+  | **w1** :$ `sudo sed -i "s/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=www/" /etc/apache2/envvars`
+
+  | **w2** :$ `sudo sed -i "s/export APACHE_RUN_GROUP=.*/export APACHE_RUN_GROUP=www/" /etc/apache2/envvars`
+
+2. Create the group & user
+
+  | **w3** :$ `sudo groupadd www`
+
+  | **w4** :$ `sudo useradd -g www www`
+
+3. Restart the Apache server
+
+  | **w5** :$ `sudo systemctl restart apache2`
+
+4. Always own the web directory (now with `www:www` instead of `www-data:www-data`)
+
+  | **w6** :$ `sudo chown -R www:www /var/www/html/phpMyAdmin`
+
+...This is how you will own the web directory from now on and in VIP Linux lessons
+
+#### Nginx on Debian/Ubuntu (irregular)
+
+VIP Linux not use Nginx on an Ubuntu server, but this will make VIP Linux lessons compatible with your system if you do
+
+If you are using Nginx, the `www:www` settings would go in these files...
+
+| **/etc/nginx/nginx.conf** :
+
+```
+user www www;
+```
+
+- Edit with `gedit`:
+
+  | **n1g** :$ `sudo gedit /etc/nginx/nginx.conf`
+
+- Or edit with `vim`:
+
+  | **n1v** :$ `sudo vim /etc/nginx/nginx.conf`
+
+*...the `user` setting should be on the first line, add it if it isn't*
+
+| **/etc/php/7.2/fpm/pool.d/www.conf** : (maybe '7.2' is a different number)
+
+```
+[www]
+user=www
+group=www
+listen.owner = www
+listen.group = www
+```
+
+- Edit with `gedit`:
+
+  | **n2g** :$ `sudo gedit /etc/php/7.2/fpm/pool.d/www.conf`
+
+- Or edit with `vim`:
+
+  | **n2v** :$ `sudo vim /etc/php/7.2/fpm/pool.d/www.conf`
+
+*...`user=` & `group=` settings may appear elsewhere, but these must be in the lines right after `[www]`, add them if they aren't*
+
 ### Make PHP More Secure
 
-`sudo mkdir -p /var/www/tmp`
+  | **p1** :$ `sudo mkdir -p /var/www/tmp`
 
-`sudo chmod -R 777 /var/www/tmp`
+  | **p2** :$ `sudo chmod -R 777 /var/www/tmp`
 
-`sudo chmod 644 /etc/php/7.2/apache2/php.ini`
+  | **p3** :$ `sudo chmod 644 /etc/php/7.2/apache2/php.ini` (maybe '7.2' is a different number)
 
 Open php.ini and make these settings:
 
-`sudo vim /etc/php/7.2/apache2/php.ini`
+  | **p4** :$ `sudo vim /etc/php/7.2/apache2/php.ini` (maybe '7.2' is a different number)
 
 ```
 open_basedir = /var/www

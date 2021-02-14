@@ -49,7 +49,7 @@ sudo cp core/03-website1.php web/website.php && \
 sudo cp core/03-style1.css web/style.css && \
 sudo cp core/03-in.functions1.php web/in.functions.php && \
 sudo cp core/03-in.checks1.php web/in.checks.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/03-website1.php core/03-style1.css core/03-in.functions1.php core/03-in.checks1.php && \
 ls web
 ```
@@ -127,7 +127,7 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple
 ```
 sudo cp core/03-website2.php web/website.php && \
 sudo cp core/03-in.config2.php web/in.config.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/03-website2.php core/03-in.config.php && \
 ls web
 ```
@@ -158,7 +158,7 @@ echo "<pre>$query</pre>";
 ```
 sudo cp core/03-website3.php web/website.php && \
 sudo cp core/03-style3.css web/style.css && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/03-website3.php core/03-style3.css && \
 ls web
 ```
@@ -202,7 +202,7 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) { // test and array as on
 | **4** :$
 ```
 sudo cp core/03-website4.php web/website.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/03-website4.php && \
 ls web
 ```
@@ -226,7 +226,7 @@ ls web
 | **5** :$
 ```
 sudo cp core/03-website5.php web/website.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/03-website5.php && \
 ls web
 ```
@@ -253,7 +253,7 @@ sudo cp core/03-website6.php web/website.php && \
 sudo cp core/03-style6.css web/style.css && \
 sudo cp core/03-in.functions6.php web/in.functions.php && \
 sudo cp core/03-in.checks6.php web/in.checks.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/03-website6.php core/03-style6.css core/03-in.functions6.php core/03-in.checks6.php && \
 ls web
 ```
@@ -294,7 +294,7 @@ $something_sql_safe = mysqli_real_escape_string($database, $something);
 | **7** :$
 ```
 sudo cp core/03-website7.php web/website.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/03-website7.php && \
 ls web
 ```
@@ -342,7 +342,7 @@ $something_sql_safe = escape_sql($something);
 ```
 sudo cp core/03-website8.php web/website.php && \
 sudo cp core/03-in.config8.php web/in.config.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/03-website8.php core/03-in.config8.php && \
 ls web
 ```
@@ -377,7 +377,7 @@ sudo cp core/03-website9.php web/website.php && \
 sudo cp core/03-style9.css web/style.css && \
 sudo cp core/03-in.functions9.php web/in.functions.php && \
 sudo cp core/03-in.checks9.php web/in.checks.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/03-website9.php core/03-style9.css core/03-in.functions9.php core/03-in.checks9.php && \
 ls web
 ```
@@ -409,7 +409,7 @@ ls web
 ```
 sudo cp core/03-website10.php web/website.php && \
 sudo cp core/03-in.checks10.php web/in.checks.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/03-website10.php core/03-in.checks10.php && \
 ls web
 ```

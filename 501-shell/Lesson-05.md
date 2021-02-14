@@ -49,7 +49,7 @@ RewriteRule ^/?([a-zA-Z0-9_]+)$ pretty_page.php?n=$1 [L]
 ```
 sudo cp core/05-pretty1.php web/pretty_page.php && \
 sudo cp core/05-htaccess1 /var/www/html/web/.htaccess && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/05-pretty1.php core/05-htaccess1 && \
 ls web
 ```
@@ -88,7 +88,7 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
 | **2** :$
 ```
 sudo cp core/05-htaccess2 /var/www/html/web/.htaccess && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/05-htaccess2 && \
 ls web
 ```
@@ -103,7 +103,7 @@ ls web
 ```
 sudo cp core/05-pretty3.php web/pretty_page.php && \
 sudo cp core/05-htaccess3 /var/www/html/web/.htaccess && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/05-pretty3.php core/05-htaccess3 && \
 ls web
 ```
@@ -125,7 +125,7 @@ ls web
 ```
 sudo cp core/05-pretty4.php web/pretty_page.php && \
 sudo cp core/05-htaccess4 /var/www/html/web/.htaccess && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/05-pretty4.php core/05-htaccess4 && \
 ls web
 ```
@@ -205,7 +205,7 @@ Without this, a trailing slash with nothing after could trigger a false GET argu
 | **7** :$
 ```
 sudo cp core/05-htaccess5 /var/www/html/web/.htaccess && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/05-htaccess5 && \
 ls web
 ```

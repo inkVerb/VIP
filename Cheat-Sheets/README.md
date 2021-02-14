@@ -18,6 +18,9 @@ ___
 ### [Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
 
 ___
+### [LEMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LEMP-Desktop.md)
+
+___
 ### [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)
 
 ___

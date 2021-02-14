@@ -1,7 +1,8 @@
 # Shell 501
 ## Lesson 0: Server, LAMP Setup & HTML Fast
 
-- [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
+- Arch/Manjaro: [LEMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LEMP-Desktop.md)
+- Debian/Ubuntu: [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
 
 ___
 ### Web Address Terminology
@@ -107,7 +108,7 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
 
 #### Always own web stuff!
 
-| **P6** :$ `sudo chown -R www-data:www-data /var/www/html/`
+| **P6** :$ `sudo chown -R www:www /var/www/html/`
 
 >
 > Optional: IF you logged in as a "sudoer", now exit

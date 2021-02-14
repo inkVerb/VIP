@@ -100,7 +100,7 @@ $_GET['this_name'] // = "something-here"
 | **1** :$
 ```
 sudo cp core/01-phpget1.php web/phpget.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-phpget1.php && \
 ls -l web
 ```
@@ -145,7 +145,7 @@ $_POST['this_name'] // = whatever was entered into the <input>
 | **3** :$
 ```
 sudo cp core/01-phppost1.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-phppost1.php && \
 ls web
 ```
@@ -218,7 +218,7 @@ if (in_array('kiwi', $fruit)) {echo 'should not be found';}
 | **4** :$
 ```
 sudo cp core/01-phparrays.php web/phparrays.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-phparrays.php && \
 ls web
 ```
@@ -609,7 +609,7 @@ $argmnt = preg_replace('/([a-zA-Z0-9]+)_dogfish_([a-zA-Z0-9]+)/','$1_GoldFish_$2
 | **14** :$
 ```
 sudo cp core/01-phpreplace.php web/phpreplace.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-phpreplace.php && \
 ls web
 ```
@@ -918,7 +918,7 @@ include ('./in.file.php');
 ```
 sudo cp core/01-in.phpinclude.php web/in.phppost.php && \
 sudo cp core/01-phpinclude.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-in.phpinclude.php core/01-phpinclude.php && \
 ls web
 ```
@@ -964,7 +964,7 @@ ls web
 ```
 sudo cp core/01-in.config.php web/in.config.php && \
 sudo cp core/01-phpconstant2.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-in.config.php core/01-phpconstant2.php && \
 ls web
 ```
@@ -996,7 +996,7 @@ Normally, the top and bottom of a webpage are some kind of `include` of `header.
 sudo cp core/01-in.phpheader.php web/in.header.php && \
 sudo cp core/01-in.phpfooter.php web/in.footer.php && \
 sudo cp core/01-phphfconventions.php web/phppost.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-in.phpheader.php core/01-in.phpfooter.php core/01-phphfconventions.php && \
 ls web
 ```
@@ -1022,7 +1022,7 @@ file_put_contents('./file/location', 'File content string');
 | **27** :$
 ```
 sudo cp core/01-phpfileput1.php web/phpfileput.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-phpfileput1.php && \
 ls web
 ```
@@ -1102,7 +1102,7 @@ ls web
 | **35** :$
 ```
 sudo cp core/01-phpprintr.php web/phpprintr.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-phpprintr.php && \
 ls web
 ```
@@ -1123,7 +1123,7 @@ Fill-out the fields and click "Hit me"
 | **36** :$
 ```
 sudo cp core/01-phpvardump.php web/phpvardump.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-phpvardump.php && \
 ls web
 ```
@@ -1141,7 +1141,7 @@ Fill-out the fields and click "Hit me"
 | **37** :$
 ```
 sudo cp core/01-phperrors1.php web/phperrors.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/01-phperrors1.php && \
 ls web
 ```

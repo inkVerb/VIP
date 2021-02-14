@@ -66,7 +66,7 @@ sudo cp core/04-install.php web/install.php && \
 sudo cp core/04-in.config1.php web/in.config.php && \
 sudo cp core/04-in.checks.php web/in.checks.php && \
 sudo cp core/04-in.functions.php web/in.functions.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/04-install.php core/04-in.config1.php core/04-in.checks.php core/04-in.functions.php && \
 ls web
 ```
@@ -196,7 +196,7 @@ $epoch_simple_later = time() + (30 * 24 * 60 * 60);
 | **8** :$
 ```
 sudo cp core/04-time.php web/time.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/04-time.php && \
 ls web
 ```
@@ -252,7 +252,7 @@ It only confirms with `true` or `false` because the hash is different each time
 ```
 sudo cp core/04-login1.php web/webapp.php && \
 sudo cp core/04-in.config2.php web/in.config.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/04-login1.php core/04-in.config2.php && \
 ls web
 ```
@@ -316,7 +316,7 @@ The `echo` message will not display, comment the `header()` line to see the mess
 | **10** :$
 ```
 sudo cp core/04-logout1.php web/logout.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/04-logout1.php && \
 ls web
 ```
@@ -348,7 +348,7 @@ $_SESSION['just_logged_out'] = true;
 ```
 sudo cp core/04-logout2.php web/logout.php && \
 sudo cp core/04-login2.php web/webapp.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/04-logout2.php core/04-login2.php && \
 ls web
 ```
@@ -418,7 +418,7 @@ For teaching, we will put the **user_id** as the cookie's value, but this is not
 ```
 sudo cp core/04-login3.php web/webapp.php && \
 sudo cp core/04-logout3.php web/logout.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/04-login3.php core/04-logout3.php && \
 ls web
 ```
@@ -499,7 +499,7 @@ setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 | **17** :$
 ```
 sudo cp core/04-accountsettings.php web/account.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/04-accountsettings.php && \
 ls web
 ```
@@ -544,7 +544,7 @@ Password: My#1Password
 | **18** :$
 ```
 sudo cp core/04-forgot.php web/forgot.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/04-forgot.php && \
 ls web
 ```

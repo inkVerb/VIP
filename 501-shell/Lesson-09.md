@@ -45,7 +45,7 @@ sudo cp core/09-edit1.php web/edit.php && \
 sudo cp core/09-blog1.php web/blog.php && \
 sudo cp core/09-webapp.php web/webapp.php && \
 sudo cp core/09-accountsettings.php web/account.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-pieces1.php core/09-in.head1.php core/09-in.logincheck.php core/09-in.footer.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-accountsettings.php && \
 ls web
 ```
@@ -107,7 +107,7 @@ sudo cp core/09-unpublish2.php web/unpublish.php && \
 sudo cp core/09-republish2.php web/republish.php && \
 sudo cp core/09-pagify2.php web/pagify.php && \
 sudo cp core/09-postify2.php web/postify.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-pieces2.php core/09-delete2.php core/09-undelete2.php core/09-purge_delete2.php core/09-unpublish2.php core/09-republish2.php core/09-pagify2.php core/09-pagify2.php core/09-postify2.php && \
 ls web
 ```
@@ -211,7 +211,7 @@ sudo cp core/09-trash4.php web/trash.php && \
 sudo cp core/09-undelete_trash4.php web/undelete_trash.php && \
 sudo cp core/09-purge_delete_trash4.php web/purge_delete_trash.php && \
 sudo cp core/09-purge_all_trash.php web/purge_all_trash.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-pieces4.php core/09-trash4.php core/09-undelete_trash.php core/09-purge_delete_trash.php core/09-empty_all_trash.php && \
 ls web
 ```
@@ -255,7 +255,7 @@ ls web
 sudo cp core/09-pieces5.php web/pieces.php && \
 sudo cp core/09-trash5.php web/trash.php && \
 sudo cp core/09-style5.css web/style.css && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-pieces5.php core/09-trash5.php core/09-style3.css && \
 ls web
 ```
@@ -316,7 +316,7 @@ sudo cp htmldiff.js/htmldiff.min.js web/ && \
 sudo cp core/09-in.editprocess1.php web/in.editprocess.php && \
 sudo cp core/09-revert.php web/revert.php && \
 sudo cp core/09-style6.css web/style.css && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-pieces6.php core/09-piece1.php core/09-hist6.php core/09-in.editprocess1.php core/09-revert.php core/09-style6.css && \
 ls web
 ```
@@ -478,7 +478,7 @@ WHERE tags=CAST('[ "Apple", "Banana", "Ubuntu" ]' AS JSON) -- Matches (JSON data
 | **13** :$
 ```
 sudo cp core/09-jsonarrays.php web/jsonarrays.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-jsonarrays.php && \
 ls web
 ```
@@ -549,7 +549,7 @@ ADD `tags` JSON DEFAULT NULL;
 sudo cp core/09-edit2.php web/edit.php && \
 sudo cp core/09-in.piecefunctions2.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess2.php web/in.editprocess.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-edit2.php core/09-in.piecefunctions2.php core/09-in.editprocess2.php && \
 ls web
 ```
@@ -622,7 +622,7 @@ Just note:
 | **20** :$
 ```
 sudo cp core/09-jsonlinksexplained.php web/jsonlinksexplained.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-jsonlinksexplained.php && \
 ls web
 ```
@@ -660,7 +660,7 @@ ls web
 | **21** :$
 ```
 sudo cp core/09-jsonlinks.php web/jsonlinks.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-jsonlinks.php && \
 ls web
 ```
@@ -682,7 +682,7 @@ sudo cp core/09-in.editprocess3.php web/in.editprocess.php && \
 sudo cp core/09-piece3.php web/piece.php && \
 sudo cp core/09-blog3.php web/blog.php && \
 sudo cp core/09-style7.css web/style.css && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-edit3.php core/09-in.jsonlinks.php core/09-in.piecefunctions3.php core/09-in.editprocess3.php core/09-piece3.php core/09-blog3.php core/09-style7.css && \
 ls web
 ```
@@ -779,7 +779,7 @@ In Lesson 6 we learned to [AJAX a `<form>`](https://github.com/inkVerb/vip/blob/
 sudo cp core/09-select.php web/select.php && \
 sudo cp core/09-in.select.php web/in.select.php && \
 sudo cp core/09-ajax.select.php web/ajax.select.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-select.php core/09-in.select.php core/09-ajax.select.php && \
 ls web
 ```
@@ -803,7 +803,7 @@ sudo cp core/09-in.piecefunctions4.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess4.php web/in.editprocess.php && \
 sudo cp core/09-in.series4.php web/in.series.php && \
 sudo cp core/09-ajax.series4.php web/ajax.series.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-edit4.php core/09-in.piecefunctions4.php core/09-in.editprocess4.php core/09-in.series4.php core/09-ajax.series4.php && \
 ls web
 ```
@@ -910,7 +910,7 @@ Consider `form=` & `="apply2all"` in this code...
 | **29** :$
 ```
 sudo cp core/09-postformarrays.php web/postformarrays.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/postformarrays.php && \
 ls web
 ```
@@ -931,7 +931,7 @@ sudo cp core/09-pieces7.php web/pieces.php && \
 sudo cp core/09-act.bulkpieces.php web/act.bulkpieces.php && \
 sudo cp core/09-in.metaeditfunctions7.php web/in.metaeditfunctions.php && \
 sudo cp core/09-trash7.php web/trash.php && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-pieces7.php core/09-act.bulkpieces.php core/09-in.metaeditfunctions7.php core/09-trash7.php && \
 ls web
 ```
@@ -990,7 +990,7 @@ sudo cp core/09-ajax.piecesactions8.php web/ajax.piecesactions.php && \
 sudo cp core/09-act.piecesactions.php web/act.piecesactions.php && \
 sudo cp core/09-trash8.php web/trash.php && \
 sudo cp core/09-style8.css web/style.css && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-pieces8.php core/09-in.metaeditfunctions8.php core/09-ajax.piecesactions8.php core/09-act.piecesactions.php core/09-trash8.php core/09-style8.css && \
 ls web
 ```
@@ -1123,7 +1123,7 @@ sudo cp core/09-in.piecefunctions10.php web/in.piecefunctions.php && \
 sudo cp core/09-in.metaeditfunctions10.php web/in.metaeditfunctions.php && \
 sudo cp core/09-ajax.metaedit.php web/ajax.metaedit.php && \
 sudo cp core/09-style10.css web/style.css && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-pieces10.php web/pieces.php core/09-trash10.php web/trash.php core/09-in.piecefunctions10.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css && \
 ls web
 ```
@@ -1294,7 +1294,7 @@ sudo cp core/09-in.series11.php web/in.series.php && \
 sudo cp core/09-ajax.series11.php web/ajax.series.php && \
 sudo cp core/09-in.head11.php web/in.head.php && \
 sudo cp core/09-style11.css web/style.css && \
-sudo chown -R www-data:www-data /var/www/html && \
+sudo chown -R www:www /var/www/html && \
 atom core/09-edit11.php core/09-ajax.edit11.php core/09-in.piecefunctions11.php core/09-in.editprocess11.php core/09-in.series11.php core/09-ajax.series11.php core/09-in.head11.php core/09-style11.css && \
 ls web
 ```
