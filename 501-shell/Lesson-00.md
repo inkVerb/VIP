@@ -98,17 +98,35 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
 
 ### III. `git clone` our scripts for this lesson
 
-| **P2** :$ `cd ~/School/VIP`
+- Debian/Ubuntu:
 
-| **P3** :$ `git clone https://github.com/inkVerb/501`
+| **DP2** :$ `cd ~/School/VIP`
 
-| **P4** :$ `sudo mkdir /var/www/html/web`
+| **DP3** :$ `git clone https://github.com/inkVerb/501`
 
-| **P5** :$ `ln -sfn /var/www/html/web ~/School/VIP/501/`
+| **DP4** :$ `sudo mkdir /var/www/html/web`
 
-#### Always own web stuff!
+| **DP5** :$ `ln -sfn /var/www/html/web ~/School/VIP/501/`
 
-| **P6** :$ `sudo chown -R www:www /var/www/html/`
+| **DP6** :$ `ln -sfn /var/www/rewrite ~/School/VIP/501/`
+
+| **DP7** :$ `sudo chown -R www:www /var/www/html/`
+
+- Arch/Manjaro:
+
+| **AP2** :$ `cd ~/School/VIP`
+
+| **AP3** :$ `git clone https://github.com/inkVerb/501`
+
+| **AP4** :$ `sudo mkdir /srv/www/html/web`
+
+| **AP5** :$ `ln -sfn /srv/www/html/web ~/School/VIP/501/`
+
+| **AP6** :$ `ln -sfn /srv/www/rewrite ~/School/VIP/501/`
+
+| **AP7** :$ `sudo chown -R www:www /srv/www`
+
+#### Always own the web directory with `chown -R www...`!
 
 >
 > Optional: IF you logged in as a "sudoer", now exit

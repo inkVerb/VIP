@@ -70,7 +70,7 @@ Life is easier with a local "Work" folder symlink
 
 #### Always own web stuff first!
 
-  | **14** :$ `sudo chown -R www:www /srv/www/html/`
+  | **14** :$ `sudo chown -R www:www /srv/www`
 
 #### Settings
 
@@ -106,15 +106,17 @@ Life is easier with a local "Work" folder symlink
 
     | **16** :$ `sudo touch /srv/www/rewrite`
 
+    | **17** :$ `sudo chown -R www:www /srv/www`
+
 
 2. Add some important settings
   - Edit with `gedit`:
 
-    | **17g** :$ `sudo gedit /etc/nginx/php_fastcgi.conf`
+    | **18g** :$ `sudo gedit /etc/nginx/php_fastcgi.conf`
 
   - Or edit with `vim`:
 
-    | **17v** :$ `sudo vim /etc/nginx/php_fastcgi.conf`
+    | **18v** :$ `sudo vim /etc/nginx/php_fastcgi.conf`
 
   - Make it look like this:
   ```
@@ -138,7 +140,7 @@ Life is easier with a local "Work" folder symlink
 
 3. Reload Nginx after any changes
 
-  | **18** :$ `sudo systemctl reload nginx`
+  | **19** :$ `sudo systemctl reload nginx`
 
 4. Remember with rewrites...
 
@@ -148,17 +150,17 @@ Life is easier with a local "Work" folder symlink
 
 1. Access MySQL as root user with
 
-  | **19** :$ `sudo mysql`
+  | **20** :$ `sudo mysql`
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
 
-  | **20** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
+  | **21** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
 
-  | **21** :> `FLUSH PRIVILEGES;`
+  | **22** :> `FLUSH PRIVILEGES;`
 
 3. Exit MySQL
 
-  | **22** :> `QUIT;`
+  | **23** :> `QUIT;`
 
 Access any MySQL user you created later with
 - `mysql -u USERNAME -p` (then enter the password)
@@ -177,11 +179,11 @@ sudo apt-get install mysql-server
 
 1. Install this as an Arch package
 
-  | **23** :$ `sudo pacman -S phpmyadmin --noconfirm`
+  | **24** :$ `sudo pacman -S phpmyadmin --noconfirm`
 
 2. Link it to the web directory
 
-  | **24** :$ `sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/www/html/`
+  | **25** :$ `sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/www/html/`
 
 Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`

@@ -249,6 +249,34 @@ listen.group = www
 
 *...`user=` & `group=` settings may appear elsewhere, but these must be in the lines right after `[www]`, add them if they aren't*
 
+For VIP Linux rewrites...
+
+| **/etc/nginx/nginx.conf** :
+
+```
+location / {
+  ...
+  include /srv/www/rewrite;
+}
+```
+
+- Edit with `gedit`:
+
+  | **n3g** :$ `sudo gedit /etc/nginx/nginx.conf`
+
+- Or edit with `vim`:
+
+  | **n3v** :$ `sudo vim /etc/nginx/nginx.conf`
+
+*...add that one line under `location /`, and make sure the file exists...*
+
+  | **n4** :$ `sudo touch /srv/www/rewrite`
+
+  | **n5** :$ `sudo chown -R www:www /srv/www`
+
+  | **n6** :$ `sudo systemctl reload nginx`
+
+
 ### Make PHP More Secure
 
   | **p1** :$ `sudo mkdir -p /var/www/tmp`
