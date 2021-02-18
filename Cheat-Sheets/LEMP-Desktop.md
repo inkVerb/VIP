@@ -4,7 +4,7 @@
 
 ***This is for your local desktop developer environment only, not secure for production!***
 
-***This is for Arch/Manjaro!*** *For Debian/Ubuntu, see [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)*
+***This is only for Arch/Manjaro!*** *For Debian/Ubuntu, see [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)*
 
 ### Setup LEMP
 
@@ -12,7 +12,7 @@
 
 1. Install Nginx & MariaDB
 
-  | **1** :$ `sudo pacman -S nginx mariadb php php-fpm --noconfirm`
+  | **1** :$ `sudo pacman -S --noconfirm nginx mariadb php php-fpm`
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
   - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
