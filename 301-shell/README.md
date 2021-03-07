@@ -6,7 +6,7 @@
 
 ### [Lesson 1: if then fi, else & elif](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-01.md)
 
-### [Lesson 2: Docs & Pausing (odt2txt, pandoc, rename, sleep, read & wait)](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md)
+### [Lesson 2: Docs & Pausing (odt2txt, pandoc, sleep, read & wait)](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md)
 
 ### [Lesson 3: for Var in Lst do done](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md)
 

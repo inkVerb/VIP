@@ -98,22 +98,10 @@ sed -i "s/foo1.*.foo2/bar/g" /path/to/file
 
 # Cancel dots and slashes with \ finding '/path/foo.md' replacing with '/dir/bar.md'
 sed -i "s/\/path\/foo\.md/\/dir\/bar\.md/g" /path/to/file
-```
-
-# `rename`
-
-## Examples
-```sh
-# Simple
-rename 's/foo.old.name/barnewname/' /path/to/files/*
-
-# Use quotes with variables
-rename "s/foo.old.name/${barnewname}/" /path/to/files/*
-
 
 # sed characters to cancel with \
 
-# unless inside a character set wtih brackets like this: [ ... ]
+# unless inside a character set with brackets like this: [ ... ]
 $ ^ * [ ] / \
 
 # sed characters to never cancel

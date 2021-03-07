@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 2: Docs & Pausing (odt2txt, pandoc, rename, sleep, read & wait)
+## Lesson 2: Docs & Pausing (odt2txt, pandoc, sleep, read & wait)
 
 Ready the CLI
 
@@ -91,109 +91,79 @@ ___
 - `man` page
 - ...and more!
 
-### II. `rename`
+### II. `read`
 
-`cd ~/School/VIP/301/one` *(make sure we're in the right place)*
-
-___
-
-| **19** :$ `ls`
-
-| **20** :$ `touch 1.t.one 2.t.one 3.t.one 4.t.one 1.c.one 2.c.one 3.c.one 4.c.one one one-1 one-2 one-3 one-4 one-5 one-1-c one-2-c one-3-c one-4-c one-5-c one-1-t one-2-t one-3-t one-4-t one-5-t`
-
-| **21** :$ `ls`
-
-| **22** :$ `rename "s/one/TWO/" *`
-
-| **23** :$ `ls`
-
-| **24** :$ `rename "s/TWO/one/" *`
-
-| **25** :$ `ls`
-
-| **26** :$ `rename "s/\.t\./\.T\./" *`
-
-| **27** :$ `ls`
-
-| **28** :$ `rename "s/\.T\./\.t\./" *`
-
-| **29** :$ `ls`
-
-| **30** :$ `cd ..`
-
-### III. `read`
-
-| **31** :$ `read`
+| **19** :$ `read`
 
 *Now type something and/or press Enter*
 
 *Nothing happened because it should be used with a variable...*
 
-| **32** :$ `read Variable`
+| **20** :$ `read Variable`
 
-| **33** :$ `echo $Variable`
+| **21** :$ `echo $Variable`
 
-| **34** :$ `gedit 02-read-1`
+| **22** :$ `gedit 02-read-1`
 
-| **35** :$ `./02-read-1`
+| **23** :$ `./02-read-1`
 
 *Now type something, then press Enter*
 
-| **36** :$ `gedit 02-read-2`
+| **24** :$ `gedit 02-read-2`
 
 *Note -p is for "Prompt", making things simpler*
 
-| **37** :$ `./02-read-2`
+| **25** :$ `./02-read-2`
 
-| **38** :$ `gedit 02-read-3`
+| **26** :$ `gedit 02-read-3`
 
-| **39** :$ `ls`
+| **27** :$ `ls`
 
-| **40** :$ `./02-read-3`
+| **28** :$ `./02-read-3`
 
 *Enter whatever you want, only letters & numbers, no spaces*
 
-| **41** :$ `ls`
+| **29** :$ `ls`
 
 *Note it created the file*
 
-| **42** :$ `gedit 02-read-4`
+| **30** :$ `gedit 02-read-4`
 
-| **43** :$ `./02-read-4`
+| **31** :$ `./02-read-4`
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 *Note `-r` is for "Raw", to allow all special characters*
 
-| **44** :$ `gedit 02-read-5`
+| **32** :$ `gedit 02-read-5`
 
-| **45** :$ `./02-read-5`
+| **33** :$ `./02-read-5`
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
-### IV. `sleep`
+### III. `sleep`
 
-| **46** :$ `sleep 1`
+| **34** :$ `sleep 1`
 
-| **47** :$ `sleep 3`
+| **35** :$ `sleep 3`
 
-| **48** :$ `gedit 02-sleep-1`
+| **36** :$ `gedit 02-sleep-1`
 
-| **49** :$ `./02-sleep-1`
+| **37** :$ `./02-sleep-1`
 
-| **50** :$ `gedit 02-sleep-2`
+| **38** :$ `gedit 02-sleep-2`
 
-| **51** :$ `./02-sleep-2 "I like apples."`
+| **39** :$ `./02-sleep-2 "I like apples."`
 
 *Put it together...*
 
-| **52** :$ `gedit 02-sleep-3`
+| **40** :$ `gedit 02-sleep-3`
 
-| **53** :$ `./02-sleep-3`
+| **41** :$ `./02-sleep-3`
 
 *Now type something, then press Enter*
 
-### V. `wait`
+### IV. `wait`
 
 *`wait` will "wait" until the previous command finishes before moving on. It keeps Shell from stumbling over its own feet. Sometimes, scripts break and the solution is to `wait`.*
 
@@ -201,17 +171,17 @@ ___
 
 *Make sure LibreOffice is not running, ignore any error message...*
 
-| **54** :$ `killall soffice.bin`
+| **42** :$ `killall soffice.bin`
 
 *Open LibreOffice Writer from the terminal...*
 
-| **55** :$ `lowriter`
+| **43** :$ `lowriter`
 
 *Now, close Writer in the GUI (click the X to close the window)...*
 
 *...The terminal returns to the prompt*
 
-| **56** :$ `lowriter &`
+| **44** :$ `lowriter &`
 
 *Note the terminal returned directly to the prompt because we used `&`*
 
@@ -219,23 +189,23 @@ ___
 
 *Let's use `wait` in a script...*
 
-| **57** :$ `gedit 02-waiter-1`
+| **45** :$ `gedit 02-waiter-1`
 
-| **58** :$ `./02-waiter-1`
+| **46** :$ `./02-waiter-1`
 
 *Again, close Writer in the GUI, then watch for the message in the terminal*
 
-| **59** :$ `gedit 02-waiter-2`
+| **47** :$ `gedit 02-waiter-2`
 
-| **60** :$ `./02-waiter-2`
+| **48** :$ `./02-waiter-2`
 
 *Note that the script finished with it's message and the terminal returned to the prompt without closing Writer*
 
 *Again, close Writer in the GUI*
 
-| **61** :$ `gedit 02-waiter-3`
+| **49** :$ `gedit 02-waiter-3`
 
-| **62** :$ `./02-waiter-3`
+| **50** :$ `./02-waiter-3`
 
 *Note the script did not finish and the terminal is still busy*
 
@@ -249,19 +219,19 @@ ___
 
 *Start Writer...*
 
-| **63** :$ `lowriter &`
+| **51** :$ `lowriter &`
 
 *Now, "wait" for it to close by watching for its PID to close...*
 
-| **64** :$ `pgrep lowriter`
+| **52** :$ `pgrep lowriter`
 
 *Note the PID number and replace 55555 with that number below:*
 
-| **65a** :$ `wait 55555`
+| **53a** :$ `wait 55555`
 
 **OR**
 
-| **65b** :$ `wait $(pgrep lowriter)` *(or you can use this instead)*
+| **53b** :$ `wait $(pgrep lowriter)` *(or you can use this instead)*
 
 *Note `wait` is "waiting" for Writer's PID to end*
 
@@ -273,8 +243,6 @@ ___
 
 - `odt2txt` converts an .odt file into a raw text file
 - `pandoc` can do many more conversions than `odt2txt`, including markdown, PDF, EPUB, and even MediaWiki!
-- `rename` runs a find-and-replace for parts of file names
-  - It uses syntax similar to `sed`
 - `read` accepts STDIN input and sets it as a variable
   - It has many options, but it is a simple way to let the human input variables during a script
 - `sleep` will wait a number of seconds, then continue

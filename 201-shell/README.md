@@ -28,6 +28,6 @@
 
 ### [Lesson 12: File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201-shell/Lesson-12.md)
 
-FYI This section will install: `sudo apt install -y git curl net-tools htop odt2txt dos2unix pandoc rename pwgen`
+FYI This section will install: `sudo apt install -y git curl net-tools htop odt2txt dos2unix pandoc pwgen`
 
 You may do this before starting the lesson if you prefer

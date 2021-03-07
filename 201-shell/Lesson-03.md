@@ -98,10 +98,10 @@ ___
 
 *You can install more than one package...*
 
-*Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `rename` and `pwgen` packages*
+*Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` and `pwgen` packages*
 - *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
 
-| **12** :$ `sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc rename pwgen` *Use `-y` so you DO NOT need to press Y, then Enter*
+| **12** :$ `sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc pwgen` *Use `-y` so you DO NOT need to press Y, then Enter*
 
 ### IF needed, `exit` from the other "sudoer"
 >

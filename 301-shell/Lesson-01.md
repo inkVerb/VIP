@@ -248,4 +248,4 @@ ___
 - See usage and examples here: [Tests: if](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#ii-if-then-else--elif-fi)
 ___
 
-#### [Lesson 2: Docs & Pausing (odt2txt, pandoc, rename, sleep, read & wait)](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md)
+#### [Lesson 2: Docs & Pausing (odt2txt, pandoc, sleep, read & wait)](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-02.md)

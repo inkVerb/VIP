@@ -6,6 +6,10 @@
 
 ***This is only for Arch/Manjaro!*** *For Debian/Ubuntu, see [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)*
 
+### Update
+
+  | **0** :$ `sudo pacman -Syy`
+
 ### Setup LEMP
 
 #### Install
@@ -142,6 +146,10 @@ Life is easier with a local "Work" folder symlink
 
   | **19** :$ `sudo systemctl reload nginx`
 
+  - Check for specific errors in Nginx server configs
+
+  | **20** :$ `sudo nginx -t`
+
 4. Remember with rewrites...
 
 *Your code must reflect the names of any URLs as you want them rewritten, not as they actually are.*
@@ -150,17 +158,17 @@ Life is easier with a local "Work" folder symlink
 
 1. Access MySQL as root user with
 
-  | **20** :$ `sudo mysql`
+  | **21** :$ `sudo mysql`
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
 
-  | **21** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
+  | **22** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
 
-  | **22** :> `FLUSH PRIVILEGES;`
+  | **23** :> `FLUSH PRIVILEGES;`
 
 3. Exit MySQL
 
-  | **23** :> `QUIT;`
+  | **24** :> `QUIT;`
 
 Access any MySQL user you created later with
 - `mysql -u USERNAME -p` (then enter the password)
@@ -179,11 +187,11 @@ sudo apt-get install mysql-server
 
 1. Install this as an Arch package
 
-  | **24** :$ `sudo pacman -S phpmyadmin --noconfirm`
+  | **25** :$ `sudo pacman -S phpmyadmin --noconfirm`
 
 2. Link it to the web directory
 
-  | **25** :$ `sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/www/html/`
+  | **26** :$ `sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/www/html/`
 
 Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`
@@ -192,15 +200,15 @@ Login the first time with the same user you created in "MySQL via command line" 
 
 ### Make PHP More Secure
 
-  | **p1** :$ `sudo mkdir -p /srv/www/tmp`
+  | **P1** :$ `sudo mkdir -p /srv/www/tmp`
 
-  | **p2** :$ `sudo chmod -R 777 /srv/www/tmp`
+  | **P2** :$ `sudo chmod -R 777 /srv/www/tmp`
 
-  | **p3** :$ `sudo chmod 644 /etc/php/php.ini`
+  | **P3** :$ `sudo chmod 644 /etc/php/php.ini`
 
 Open php.ini and make these settings:
 
-  | **p4** :$ `sudo vim /etc/php/php.ini`
+  | **P4** :$ `sudo vim /etc/php/php.ini`
 
 ```
 open_basedir = /srv/www

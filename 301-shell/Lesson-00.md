@@ -23,15 +23,13 @@ ___
 >
 > | **D1** :$ `sudo apt update`
 >
-> | **D2** :$ `sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc rename pwgen`
+> | **D2** :$ `sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen`
 >
 > Arch/Manjaro:
 >
 > | **A1** :$ `sudo pacman -Syy`
 >
 > | **A2** :$ `sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen`
->
-> | **A2** :$ `yay -S --noconfirm rename`
 >
 > Optional: IF you logged in as a "sudoer", now exit
 >

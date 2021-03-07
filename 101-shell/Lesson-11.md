@@ -106,7 +106,7 @@ ___
   - These are called "Metacharacters", which you can study more on your own
     - See a short list here: [Characters](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Characters.md#RegEx-Metacharacters)
 - There is much more to working with special characters
-  - You can get a more in-depth information here: [find-grep-sed-rename.md](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/find-grep-sed-rename.md)
+  - You can get a more in-depth information here: [find-grep-sed.md](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/find-grep-sed.md)
 
 ___
 
