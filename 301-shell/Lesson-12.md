@@ -256,6 +256,7 @@ ___
 - `eval` "concatenates" many parts to produce and execute a single command
   - `eval` may be used in more complex `getopts` & `getopt` scripts
   - We do not explore `eval` deeper in this course
+- Flags must appear before corresponding arguments
 
 ## `getopts` (for one-letter flags)
 - Procedure of a `getopts` flag set:
