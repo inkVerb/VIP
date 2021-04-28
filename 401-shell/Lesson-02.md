@@ -35,11 +35,15 @@ ___
 > | **S2** :$ `exit`
 ___
 
+*View current port connections & addresses*
+
+| **3** :$ `ss -tln`
+
 ### `man` & `info`
 
 *FYI, this is a great tool to change settings from the terminal: `gsettings`*
 
-| **3** :$ `man gsettings`
+| **4** :$ `man gsettings`
 
 *This is a how-to manual for a terminal program that manages settings for the desktop environment*
 
@@ -47,7 +51,7 @@ ___
 
 *You can use `man` or `info`*
 
-| **4** :$ `info gsettings`
+| **5** :$ `info gsettings`
 
 *Press Q to quit*
 
@@ -57,33 +61,21 @@ ___
 
 | **5** :$ `man lsb_release`
 
-| **6** :$ `info lsb_release`
+| **6** :$ `man tcpdump`
 
-| **7** :$ `man tcpdump`
+| **7** :$ `man netstat`
 
-| **8** :$ `info tcpdump`
+| **8** :$ `man grep`
 
-| **9** :$ `man netstat`
+| **9** :$ `man sed`
 
-| **10** :$ `info netstat`
+| **10** :$ `man echo`
 
-| **11** :$ `man grep`
-
-| **12** :$ `info grep`
-
-| **13** :$ `man sed`
-
-| **14** :$ `info sed`
-
-| **15** :$ `man echo`
-
-| **16** :$ `info echo`
-
-| **17** :$ `man imagemagick`
+| **11** :$ `man imagemagick`
 
 *...but not always...*
 
-| **18** :$ `info imagemagick`
+| **12** :$ `info imagemagick`
 
 *Note `imagemagick` changes images from the terminal, learn to use at:*
 - [www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)
