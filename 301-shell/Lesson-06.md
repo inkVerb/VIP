@@ -250,13 +250,13 @@ ___
 
 | **37** :$ `ls > /dev/null 2>&1`
 
-| **38** :$ `ls`
-
 *See! Nothing at all!*
 
 *Note `journalctl` is for system logs, but you can create your own log files this way*
 
 ### Review output numbers
+
+| **38** :$ `ls`
 
 #### Generate normal output
 
