@@ -1,5 +1,9 @@
 # Permissions
 
+`chmod 754 some-file`
+
+`chmod ug+x some-file`
+
 | Explanation                    | Numeric  | Readable    |
 | ------------------------------:| -------- |:-----------:|
 | No access                      | 0        | ---         |
@@ -10,7 +14,6 @@
 | Read and execute access        | 5        | r-x         |
 | Read and write access          | 6        | rw-         |
 | Read, write and execute access | 7        | rwx         |
-
 
 | Label | Stands for |
 | -----:| ----------:| 
@@ -24,14 +27,21 @@
 | g    | group (owner's group) |
 | o    | others (public)       |
 
+| Oper | Stands for |
+| ----:| ----------:| 
+| +    | add        |
+| -    | remove     |
+| =    | only       |
+
 Example:
 
 `ls -l` returns:
 
 ```console
--rwxrwxrwx vip vip SIZE MOD-DATE filename
-drwxrwxrwx vip vip SIZE MOD-DATE DIRECTORYname
-lrwxrwxrwx vip vip SIZE MOD-DATE SYMLINKname
+-rwxrwxrwx vip vip SIZE MOD-DATE FileName
+drwxrwxrwx vip vip SIZE MOD-DATE DirectoryName
+lrwxrwxrwx vip vip SIZE MOD-DATE SymlinkName
+srwxrwxrwx vip vip SIZE MOD-DATE SocketName
 ```
 
 Legend:
@@ -40,10 +50,6 @@ Legend:
 rwx
 ugo = 777, 000, etc
 uuugggooo = rwxrwxrwx, ---------, etc
-
-+ add
-- remove
-= only
 ```
 
 
