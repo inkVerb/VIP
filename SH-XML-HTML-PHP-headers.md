@@ -127,9 +127,9 @@ Move everything into place
 To edit any file, html for example, type:
 
 ```console
-u@linux $ cd 
-u@linux $ cd School/VIP/html
-u@linux $ gedit new.html
+u@linux:$ cd 
+u@linux:$ cd School/VIP/html
+u@linux:$ gedit new.html
 ```
 
 ...And get coding!
