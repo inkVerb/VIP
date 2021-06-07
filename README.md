@@ -7,15 +7,15 @@ Whether you want to become a computer genius or if you're a "computer dummy" and
 
 # [Code Headers](https://github.com/inkVerb/VIP/blob/master/SH-XML-HTML-PHP-headers.md)
 
-# [Shell 101: Arguments](https://github.com/inkVerb/VIP/blob/master/101-shell/README.md)
+# [Shell 101: Arguments](https://github.com/inkVerb/VIP/blob/master/101/README.md)
 
-# [Shell 201: Files](https://github.com/inkVerb/VIP/blob/master/201-shell/README.md)
+# [Shell 201: Files](https://github.com/inkVerb/VIP/blob/master/201/README.md)
 
-# [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301-shell/README.md)
+# [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301/README.md)
 
-# [Shell 401: Onward](https://github.com/inkVerb/VIP/blob/master/401-shell/README.md)
+# [Shell 401: Onward](https://github.com/inkVerb/VIP/blob/master/401/README.md)
 
-# [Shell 501: PHP Stack](https://github.com/inkVerb/VIP/blob/master/501-shell/README.md)
+# [Shell 501: PHP Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
 
 ## [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)
 
