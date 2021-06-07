@@ -4,16 +4,16 @@ $ `chmod 754 some-file`
 
 $ `chmod ug+x some-file`
 
-| Numeric  | Readable    | Explanation                    |
-|:--------:|:-----------:| :----------------------------- |
-| 0        | ---         | No access                      |
-| 1        | --x         | Execute access                 |
-| 2        | -w-         | Write access                   |
-| 3        | -wx         | Write and execute access       |
-| 4        | r--         | Read access                    |
-| 5        | r-x         | Read and execute access        |
-| 6        | rw-         | Read and write access          |
-| 7        | rwx         | Read, write and execute access |
+| Numeric | Human | Explanation                    |
+|:-------:|:-----:| :----------------------------- |
+| 0       | ---   | No access                      |
+| 1       | --x   | Execute access                 |
+| 2       | -w-   | Write access                   |
+| 3       | -wx   | Write and execute access       |
+| 4       | r--   | Read access                    |
+| 5       | r-x   | Read and execute access        |
+| 6       | rw-   | Read and write access          |
+| 7       | rwx   | Read, write and execute access |
 
 | Label | Stands for |
 |:-----:|:---------- | 
