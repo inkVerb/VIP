@@ -6,7 +6,7 @@ ___
 
 *Watch in the file explorer if you want, in your School folder*
 
-Open Terminal *F12 (if Vrk or Guake is installed) / Ctrl + Alt + T (normal)*
+Open Terminal <kbd>F12</kbd> (if Vrk or Guake is installed) / <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (normal)*
 
 `cd `
 
@@ -38,13 +38,13 @@ Each of these folders is for different projects.
 
 `gedit head.sh`
 
-Copy and paste. *<kbd>Ctrl</kbd> + C, Ctrl + V*
+Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
 
 `#!/bin/sh`
 
-Save *Ctrl + S*
+Save: <kbd>Ctrl</kbd> + <kbd>S</kbd>
 
-Close *Alt + F4*
+Close: <kbd>Alt</kbd> + <kbd>F4</kbd>
 
 `ls`
 
@@ -52,13 +52,13 @@ Close *Alt + F4*
 
 `gedit head.xml`
 
-Copy and paste. *Ctrl + C, Ctrl + V*
+Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
 
 `<?xml version="1.0" encoding="utf-8"?>`
 
-Save *Ctrl + S*
+Save: <kbd>Ctrl</kbd> + <kbd>S</kbd>
 
-Close *Alt + F4*
+Close: <kbd>Alt</kbd> + <kbd>F4</kbd>
 
 `ls`
 
@@ -66,7 +66,7 @@ Close *Alt + F4*
 
 `gedit head.html`
 
-Copy and paste. *Ctrl + C, Ctrl + V*
+Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
 
 `<!DOCTYPE html>`
 
@@ -86,9 +86,9 @@ Copy and paste. *Ctrl + C, Ctrl + V*
 
 `</html>`
 
-Save *Ctrl + S*
+Save: <kbd>Ctrl</kbd> + <kbd>S</kbd>
 
-Close *Alt + F4*
+Close: <kbd>Alt</kbd> + <kbd>F4</kbd>
 
 `ls`
 
@@ -96,15 +96,15 @@ Close *Alt + F4*
 
 `gedit head.php`
 
-Copy and paste. *Ctrl + C, Ctrl + V*
+Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
 
 `<?php`
 
 `?>`
 
-Save *Ctrl + S*
+Save: <kbd>Ctrl</kbd> + <kbd>S</kbd>
 
-Close *Alt + F4*
+Close: <kbd>Alt</kbd> + <kbd>F4</kbd>
 
 `ls`
 
@@ -126,10 +126,10 @@ Move everything into place
 
 To edit any file, html for example, type:
 
-`cd `
-
-`cd School/VIP/html`
-
-`gedit new.html`
+```console
+u@linux $ cd 
+u@linux $ cd School/VIP/html
+u@linux $ gedit new.html
+```
 
 ...And get coding!

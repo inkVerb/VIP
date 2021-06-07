@@ -106,7 +106,7 @@ That is the end of these instructions. You should feel like a better person.
 
 *Ctrl + Z* Undo
 
-*Ctrl + Shift + Z / Ctrl + Y* Redo
+*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + Z / Ctrl + Y* Redo
 
 *Ctrl + T* Open a new tab
 
@@ -116,12 +116,12 @@ That is the end of these instructions. You should feel like a better person.
 
 ## In Terminal
 
-*Ctrl + Shift + C* Copy
+*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C* Copy
 
-*Ctrl + Shift + V* Paste
+*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + V* Paste
 
-*Ctrl + Shift + T* Open a new tab
+*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T* Open a new tab
 
-*Ctrl + Shift + W* Close current tab
+*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + W* Close current tab
 
-*Ctrl + Shift + W* Close a tab
+*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + W* Close a tab
