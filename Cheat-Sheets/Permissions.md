@@ -1,15 +1,15 @@
 # Permissions
 
-| Numeric  | Readable    | Explanation                    |
-| -------- |:-----------:| ------------------------------:|
-| 0        | ---         | No access                      |
-| 1        | --x         | Execute access                 |
-| 2        | -w-         | Write access                   |
-| 3        | -wx         | Write and execute access       |
-| 4        | r--         | Read access                    |
-| 5        | r-x         | Read and execute access        |
-| 6        | rw-         | Read and write access          |
-| 7        | rwx         | Read, write and execute access |
+| Explanation                    | Numeric  | Readable    |
+| ------------------------------:| -------- |:-----------:|
+| No access                      | 0        | ---         |
+| Execute access                 | 1        | --x         |
+| Write access                   | 2        | -w-         |
+| Write and execute access       | 3        | -wx         |
+| Read access                    | 4        | r--         |
+| Read and execute access        | 5        | r-x         |
+| Read and write access          | 6        | rw-         |
+| Read, write and execute access | 7        | rwx         |
 
 
 ```shell
