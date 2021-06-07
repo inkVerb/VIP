@@ -3,7 +3,9 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/301`
+```console
+cd ~/School/VIP/301
+```
 
 - [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
 - [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
@@ -234,7 +236,9 @@ mkdir logs && cd logs && touch one-file
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/301/logs`
+```console
+cd ~/School/VIP/301/logs
+```
 
 ___
 
@@ -512,9 +516,10 @@ Ready the CLI (if needed)
 
 *gedit: <kbd>Ctrl</kbd> + <kbd>W</kbd> to close previous files*
 
-`cd ~/School/VIP/301/logs`
-
-`gedit error.log normal.log`
+```console
+cd ~/School/VIP/301/logs
+gedit error.log normal.log
+```
 
 ___
 
@@ -1141,7 +1146,9 @@ some command >&3
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/301/logs`
+```console
+cd ~/School/VIP/301/logs
+```
 
 ### Output channels & `exit` status work together:
 

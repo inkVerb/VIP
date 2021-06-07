@@ -3,7 +3,9 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/201`
+```console
+cd ~/School/VIP/201
+```
 
 **FOR** | **3 - 11** :$
 

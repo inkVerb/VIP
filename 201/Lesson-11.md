@@ -2,7 +2,9 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/201`
+```console
+cd ~/School/VIP/201
+```
 
 ___
 

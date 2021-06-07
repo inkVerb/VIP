@@ -3,7 +3,9 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/201`
+```console
+cd ~/School/VIP/201
+```
 
 #### [Permissions Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Permissions.md)
 
@@ -61,7 +63,9 @@ ls /home/pinkypink
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/201`
+```console
+cd ~/School/VIP/201
+```
 
 `su Username`
 
@@ -346,7 +350,9 @@ exit
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/201`
+```console
+cd ~/School/VIP/201
+```
 
 `su Username`
 

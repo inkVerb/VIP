@@ -3,7 +3,9 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/401`
+```console
+cd ~/School/VIP/401
+```
 
 ___
 
@@ -648,7 +650,9 @@ unset MYROVAR
 
 Ready the CLI (if needed)
 
-`cd ~/School/VIP/401`
+```console
+cd ~/School/VIP/401
+```
 
 #### `set` *without arguments* lists all current variables and functions, everywhere
 

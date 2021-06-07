@@ -3,7 +3,9 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/401`
+```console
+cd ~/School/VIP/401
+```
 
 - [Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md)
 ___

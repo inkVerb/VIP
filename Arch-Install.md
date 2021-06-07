@@ -33,3 +33,4 @@
 
 ### [BIOS, EFI & Other Settings for Linux](https://github.com/inkVerb/VIP/blob/master/install-BIOS-UEFI.md)
 ### [IBUS for Taiwan and/or China Mandarin typing input](https://github.com/inkVerb/VIP/blob/master/ibus_zh_TW.md)
+### Setup the [Arch F12 Terminal](https://github.com/inkVerb/vip/blob/master/Arch-F12-Terminal.md)

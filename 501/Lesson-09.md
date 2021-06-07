@@ -3,7 +3,9 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/501`
+```console
+cd ~/School/VIP/501
+```
 
 ### This lesson uses two terminals and two browser tabs!
 

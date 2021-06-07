@@ -44,9 +44,13 @@ Whether you want to become a computer genius or if you're a "computer dummy" and
 
 ## First day of school
 
-*Many lessons begin with commands or helpful links, like this:*
+*Many lessons begin with helpful commands or links, like this:*
 
-`cd ~/School/VIP/101`
+Ready the CLI
+
+```console
+cd ~/School/VIP/101
+```
 
 ___
 

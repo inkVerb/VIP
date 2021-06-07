@@ -3,7 +3,9 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/501`
+```console
+cd ~/School/VIP/501
+```
 
 - [Tests: Ternary Statements](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)
 - [Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)

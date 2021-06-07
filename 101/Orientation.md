@@ -189,7 +189,7 @@ rm first-file
 
 *Close gedit, but note it asks if you want to save the file: No, don't save*
 
-## Install apps used in this course
+## Install apps used in this course (if you haven't already)
 
 This requires `sudo` permissions
 

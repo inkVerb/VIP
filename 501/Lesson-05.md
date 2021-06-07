@@ -3,7 +3,9 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/501`
+```console
+cd ~/School/VIP/501
+```
 
 - [Characters for Classes & RegEx](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
 ___

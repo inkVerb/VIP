@@ -3,7 +3,9 @@
 
 Ready the CLI
 
-`cd ~/School/VIP/401`
+```console
+cd ~/School/VIP/401
+```
 
 - [Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
 - [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)
