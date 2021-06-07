@@ -7,7 +7,11 @@ Ready the CLI
 
 ___
 
-| **1** :$ `gedit how2arg`
+| **1** :$
+
+```console
+gedit how2arg
+```
 
 ### Arguments (`$1`, `$2`, etc)
 
@@ -27,15 +31,35 @@ echo "These were your line arguments:
 # For $10 and above, use: ${10}
 ```
 
-| **2** :$ `ls`
+| **2** :$
 
-| **3** :$ `chmod ug+x how2arg`
+```console
+ls
+```
 
-| **4** :$ `ls`
+| **3** :$
 
-| **5** :$ `./how2arg a b abcd`
+```console
+chmod ug+x how2arg
+```
 
-| **6** :$ `./how2arg one two three`
+| **4** :$
+
+```console
+ls
+```
+
+| **5** :$
+
+```console
+./how2arg a b abcd
+```
+
+| **6** :$
+
+```console
+./how2arg one two three
+```
 
 *In Terminal: Up*
 
@@ -57,7 +81,11 @@ three
 
 ### Multiple Words `"`with quotes`"`
 
-| **8** :$ `./how2arg one 2nd "third word"`
+| **8** :$
+
+```console
+./how2arg one 2nd "third word"
+```
 
 | **9** :$
 ```sh
@@ -71,7 +99,11 @@ first \
 
 *Knowing this could save your life and explain life's meaning later on...*
 
-| **10** :$ `gedit allarg`
+| **10** :$
+
+```console
+gedit allarg
+```
 
 *Create allarg as this:*
 
@@ -83,17 +115,41 @@ first \
 echo $@
 ```
 
-| **11** :$ `ls`
+| **11** :$
 
-| **12** :$ `chmod ug+x allarg`
+```console
+ls
+```
 
-| **13** :$ `ls`
+| **12** :$
 
-| **14** :$ `./allarg`
+```console
+chmod ug+x allarg
+```
 
-| **15** :$ `./allarg 1 2 3 4 5 6 7 8 9`
+| **13** :$
 
-| **16** :$ `./allarg I like to eat bananas in the morning, with eggs, over easy that is.`
+```console
+ls
+```
+
+| **14** :$
+
+```console
+./allarg
+```
+
+| **15** :$
+
+```console
+./allarg 1 2 3 4 5 6 7 8 9
+```
+
+| **16** :$
+
+```console
+./allarg I like to eat bananas in the morning, with eggs, over easy that is.
+```
 
 *This `@` means "everything" in web DNS, arrays (Shell 301), and many other things*
 
@@ -124,29 +180,69 @@ Constant: Variable that do not change
 
 *These are "environment constants" that can always be called in the terminal or a script...*
 
-| **17** :$ `printenv`
+| **17** :$
 
-| **18** :$ `echo $USER`
+```console
+printenv
+```
 
-| **19** :$ `printenv USER`
+| **18** :$
+
+```console
+echo $USER
+```
+
+| **19** :$
+
+```console
+printenv USER
+```
 
 *...two ways to do the same thing*
 
-| **20** :$ `echo $DESKTOP_SESSION`
+| **20** :$
 
-| **21** :$ `printenv DESKTOP_SESSION`
+```console
+echo $DESKTOP_SESSION
+```
 
-| **22** :$ `echo $PWD`
+| **21** :$
 
-| **23** :$ `printenv PWD`
+```console
+printenv DESKTOP_SESSION
+```
+
+| **22** :$
+
+```console
+echo $PWD
+```
+
+| **23** :$
+
+```console
+printenv PWD
+```
 
 *Here is a little trick, just for the PWD (Present Working Directory)... ;-)*
 
-| **24** :$ `pwd`
+| **24** :$
 
-| **25** :$ `./how2arg $PWD $DESKTOP_SESSION VIP`
+```console
+pwd
+```
 
-| **26** :$ `./how2arg $USER USER rocks`
+| **25** :$
+
+```console
+./how2arg $PWD $DESKTOP_SESSION VIP
+```
+
+| **26** :$
+
+```console
+./how2arg $USER USER rocks
+```
 
 ___
 

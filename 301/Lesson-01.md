@@ -21,41 +21,97 @@ fi
 
 Test for an existing *file* by name
 
-| **1** :$ `gedit 01-if-file`
+| **1** :$
 
-| **2** :$ `./01-if-file`
+```console
+gedit 01-if-file
+```
+
+| **2** :$
+
+```console
+./01-if-file
+```
 
 *Note it says "Yes." because "nothing" technically exists*
 
-| **3** :$ `./01-if-file myfile`
+| **3** :$
+
+```console
+./01-if-file myfile
+```
 
 *Note it says nothing because the file "myfile" does not exist*
 
-| **4** :$ `ls`
+| **4** :$
 
-| **5** :$ `touch myfile`
+```console
+ls
+```
 
-| **6** :$ `ls`
+| **5** :$
 
-| **7** :$ `./01-if-file myfile`
+```console
+touch myfile
+```
+
+| **6** :$
+
+```console
+ls
+```
+
+| **7** :$
+
+```console
+./01-if-file myfile
+```
 
 *Note the response because the file "myfile" exists*
 
 Test for an existing *directory* by name
 
-| **8** :$ `gedit 01-if-dir`
+| **8** :$
 
-| **9** :$ `./01-if-dir mydir`
+```console
+gedit 01-if-dir
+```
 
-| **10** :$ `mkdir mydir`
+| **9** :$
 
-| **11** :$ `ls`
+```console
+./01-if-dir mydir
+```
 
-| **12** :$ `./01-if-dir mydir`
+| **10** :$
 
-| **13** :$ `./01-if-file otherfile`
+```console
+mkdir mydir
+```
 
-| **14** :$ `./01-if-dir otherdir`
+| **11** :$
+
+```console
+ls
+```
+
+| **12** :$
+
+```console
+./01-if-dir mydir
+```
+
+| **13** :$
+
+```console
+./01-if-file otherfile
+```
+
+| **14** :$
+
+```console
+./01-if-dir otherdir
+```
 
 *Note `-d` will return false for a file of the same name*
 
@@ -63,9 +119,17 @@ Test for an existing *directory* by name
 
 *So, `-d` tests only an existing directory, `-f` tests only an existing file*
 
-| **15** :$ `./01-if-file mydir`
+| **15** :$
 
-| **16** :$ `./01-if-dir myfile`
+```console
+./01-if-file mydir
+```
+
+| **16** :$
+
+```console
+./01-if-dir myfile
+```
 
 ### II. `else`
 
@@ -78,29 +142,73 @@ else
 fi
 ```
 
-| **17** :$ `gedit 01-if-else-file`
+| **17** :$
 
-| **18** :$ `./01-if-else-file myfile`
+```console
+gedit 01-if-else-file
+```
 
-| **19** :$ `./01-if-else-file otherfile`
+| **18** :$
 
-| **20** :$ `gedit 01-if-else-dir`
+```console
+./01-if-else-file myfile
+```
 
-| **21** :$ `./01-if-else-dir mydir`
+| **19** :$
 
-| **22** :$ `./01-if-else-dir otherdir`
+```console
+./01-if-else-file otherfile
+```
 
-| **23** :$ `gedit 01-if-else-e`
+| **20** :$
+
+```console
+gedit 01-if-else-dir
+```
+
+| **21** :$
+
+```console
+./01-if-else-dir mydir
+```
+
+| **22** :$
+
+```console
+./01-if-else-dir otherdir
+```
+
+| **23** :$
+
+```console
+gedit 01-if-else-e
+```
 
 *Note `-e` checks whether something exists, whether as a file, directory, or link*
 
-| **24** :$ `./01-if-else-e myfile`
+| **24** :$
 
-| **25** :$ `./01-if-else-e otherfile`
+```console
+./01-if-else-e myfile
+```
 
-| **26** :$ `./01-if-else-e mydir`
+| **25** :$
 
-| **27** :$ `./01-if-else-e otherdir`
+```console
+./01-if-else-e otherfile
+```
+
+| **26** :$
+
+```console
+./01-if-else-e mydir
+```
+
+| **27** :$
+
+```console
+./01-if-else-e otherdir
+```
 
 ### III. `elif`
 
@@ -115,19 +223,43 @@ else
 fi
 ```
 
-| **28** :$ `gedit 01-if-elif`
+| **28** :$
+
+```console
+gedit 01-if-elif
+```
 
 *Note `-z` checks whether a variable is empty (not set)*
 
-| **29** :$ `./01-if-elif`
+| **29** :$
 
-| **30** :$ `./01-if-elif yoyo`
+```console
+./01-if-elif
+```
 
-| **31** :$ `./01-if-elif iamhere`
+| **30** :$
 
-| **32** :$ `./01-if-elif mydir`
+```console
+./01-if-elif yoyo
+```
 
-| **33** :$ `./01-if-elif`
+| **31** :$
+
+```console
+./01-if-elif iamhere
+```
+
+| **32** :$
+
+```console
+./01-if-elif mydir
+```
+
+| **33** :$
+
+```console
+./01-if-elif
+```
 
 ### IV. `;` & Whitespace
 
@@ -139,23 +271,55 @@ fi
 
 This is standard practice for `if` and many other logic statements
 
-| **34** :$ `gedit 01-style`
+| **34** :$
+
+```console
+gedit 01-style
+```
 
 *Note `;` means "new line of logic" and whitespace at the beginning of lines is ignored*
 
-| **35** :$ `./01-style`
+| **35** :$
 
-| **36** :$ `./01-style yoyo`
+```console
+./01-style
+```
 
-| **37** :$ `./01-style urtheir`
+| **36** :$
 
-| **38** :$ `gedit 01-minimum`
+```console
+./01-style yoyo
+```
 
-| **39** :$ `./01-minimum`
+| **37** :$
 
-| **40** :$ `./01-minimum yoyo`
+```console
+./01-style urtheir
+```
 
-| **41** :$ `./01-minimum greatagain`
+| **38** :$
+
+```console
+gedit 01-minimum
+```
+
+| **39** :$
+
+```console
+./01-minimum
+```
+
+| **40** :$
+
+```console
+./01-minimum yoyo
+```
+
+| **41** :$
+
+```console
+./01-minimum greatagain
+```
 
 ### V. `if` Commands
 
@@ -171,47 +335,107 @@ fi
 
 The command runs; if it succeeds, the test answers true
 
-| **42** :$ `gedit markdown.md`
+| **42** :$
+
+```console
+gedit markdown.md
+```
 
 *Note the contents of markdown.md*
 
-| **43** :$ `grep "markdown" markdown.md`
+| **43** :$
+
+```console
+grep "markdown" markdown.md
+```
 
 *Show the last exit status (`0` = `true`; `1`, `2`, `3`... = `false`)*
 
-| **44** :$ `echo $?` (`0` because something was found, `if` = `true`)
+| **44** :$ (`0` because something was found, `if` = `true`)
 
-| **45** :$ `grep "Markdown" markdown.md`
+```console
+echo $?
+```
 
-| **46** :$ `echo $?` (`1` because nothing was found, `if` = `false`)
+| **45** :$
+
+```console
+grep "Markdown" markdown.md
+```
+
+| **46** :$ (`1` because nothing was found, `if` = `false`)
+
+```console
+echo $?
+```
 
 *Only "markdown", not "Markdown"*
 
-| **47** :$ `gedit 01-ifcomm1`
+| **47** :$
 
-| **48** :$ `./01-ifcomm1`
+```console
+gedit 01-ifcomm1
+```
+
+| **48** :$
+
+```console
+./01-ifcomm1
+```
 
 *Use `grep -q` for no output, only `true`/`false` (`0` or `1`, `2`, `3`...)...*
 
-| **49** :$ `grep -q "markdown" markdown.md`
+| **49** :$
 
-| **50** :$ `echo $?`
+```console
+grep -q "markdown" markdown.md
+```
 
-| **51** :$ `grep -q "Markdown" markdown.md`
+| **50** :$
 
-| **52** :$ `echo $?`
+```console
+echo $?
+```
+
+| **51** :$
+
+```console
+grep -q "Markdown" markdown.md
+```
+
+| **52** :$
+
+```console
+echo $?
+```
 
 *Use `if !` to reverse the response of a command...*
 
-| **53** :$ `gedit 01-ifcomm2`
+| **53** :$
 
-| **54** :$ `./01-ifcomm2`
+```console
+gedit 01-ifcomm2
+```
+
+| **54** :$
+
+```console
+./01-ifcomm2
+```
 
 *This works with any command...*
 
-| **55** :$ `gedit 01-ifcomm3`
+| **55** :$
 
-| **56** :$ `./01-ifcomm3`
+```console
+gedit 01-ifcomm3
+```
+
+| **56** :$
+
+```console
+./01-ifcomm3
+```
 
 ___
 

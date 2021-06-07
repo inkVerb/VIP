@@ -11,19 +11,31 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
-| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ *(password in the terminal, not safe outside these lessons!)*
+
+```console
+mysql -u admin -padminpassword
+```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
-| **S1** :> `USE webapp_db;`
+| **S1** :>
+
+```console
+USE webapp_db;
+```
 
 | **S1** ://phpMyAdmin **> webapp_db**
 
 ### Webapp Dashboard Login:
 
-| **SB-1** :// `localhost/web/webapp.php` (Check that you're logged in)
+| **SB-1** :// (Check that you're logged in)
+
+```console
+localhost/web/webapp.php
+```
 
 ```
 Username: jonboy
@@ -83,15 +95,23 @@ ls web
   - *Lists all pieces in a `while` loop and `<table>`*
   - *We will add more later*
 
-| **B-1** :// `localhost/web/pieces.php`
+| **B-1** ://
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/pieces.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Review pieces on our SQL table...*
 
 | **1** ://phpMyAdmin **> pieces**
 
-| **1** :> `SELECT id, type, status, title, date_created FROM pieces;`
+| **1** :>
+
+```console
+SELECT id, type, status, title, date_created FROM pieces;
+```
 
 That's quite simple, let's expand...
 
@@ -127,21 +147,33 @@ ls web
 - *pagify.php*
 - *postify.php*
 
-| **B-2** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-2** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/pieces.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Observe changes to pieces on our SQL table...*
 
 | **2** ://phpMyAdmin **> pieces**
 
-| **2** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
+| **2** :>
+
+```console
+SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;
+```
 
 *Note which piece IDs are not listed in publications...*
 
 | **3** ://phpMyAdmin **> publications**
 
-| **3** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
+| **3** :>
+
+```console
+SELECT piece_id, type, pubstatus, title, slug FROM publications;
+```
 
 While this works, we don't want a GET URL to be this powerful, use POST instead...
 
@@ -188,19 +220,31 @@ ls web
 - *pagify.php*
 - *postify.php*
 
-| **B-4** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-4** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/pieces.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Observe changes to pieces on our SQL table...*
 
 | **4** ://phpMyAdmin **> pieces**
 
-| **4** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
+| **4** :>
+
+```console
+SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;
+```
 
 | **5** ://phpMyAdmin **> publications**
 
-| **5** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
+| **5** :>
+
+```console
+SELECT piece_id, type, pubstatus, title, slug FROM publications;
+```
 
 ### Trash Page with Restore and Bulk Empty
 
@@ -234,19 +278,31 @@ ls web
 - *This has a `while` loop to delete each "dead" piece*
 
 
-| **B-6** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-6** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/pieces.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Review "pieces" on our SQL table...*
 
 | **6** ://phpMyAdmin **> pieces**
 
-| **6** :> `SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;`
+| **6** :>
+
+```console
+SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;
+```
 
 | **7** ://phpMyAdmin **> publications**
 
-| **7** :> `SELECT piece_id, type, pubstatus, title, slug FROM publications;`
+| **7** :>
+
+```console
+SELECT piece_id, type, pubstatus, title, slug FROM publications;
+```
 
 ### Style & JavaScript to Hide some of Our Meta
 
@@ -284,9 +340,13 @@ ls web
 - *This isn't about beauty as much as it is about being more readable*
   - *This is called "UX theory" (User eXperience theory)*
 
-| **B-8** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-8** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/pieces.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 In Atom:
 
@@ -340,15 +400,23 @@ ls web
 - *Added a `.purple` class*
 - *Added a section for "htmldiff.js"*
 
-| **B-9** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-9** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/pieces.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 Hover over a "Status" section and click "history", it should take you somewhere like...
 
-| **B-10** :// `localhost/web/hist.php?p=3` (ID `3` is only one example, it could be any number)
+| **B-10** :// (ID `3` is only one example, it could be any number)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/hist.php?p=3
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *...This is using our htmldiff.js framework*
 
@@ -373,11 +441,19 @@ Hover over a "Status" section and click "history", it should take you somewhere 
 
 *Next, `id=3` is just an example, you can change it to another ID, such as what works from `hist.php?p=` if this doesn't...*
 
-| **10** :> `SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1;`
+| **10** :>
+
+```console
+SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1;
+```
 
 *...Note the `id`...*
 
-| **11** :> `SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1,1;`
+| **11** :>
+
+```console
+SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1,1;
+```
 
 This "History" view is nice, but it could be much more functional...
 
@@ -407,7 +483,11 @@ $new_id = $row[0];
   - *This bumped our old htmldiff DOM `<h2>` tags to `<h3>`*
   - *It is VERY important to preserve header hierarchy, starting with `<h1>` and going down*
 
-| **B-12** :// `localhost/web/hist.php?p=3` (or whatever ID, <kbd>Ctrl</kbd> + R to reload)
+| **B-12** :// (or whatever ID, <kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/hist.php?p=3
+```
 
 ### Tags Field via JSON
 
@@ -483,7 +563,11 @@ atom core/09-jsonarrays.php && \
 ls web
 ```
 
-| **B-13** :// `localhost/web/jsonarrays.php`
+| **B-13** ://
+
+```console
+localhost/web/jsonarrays.php
+```
 
 *Let's try to hack some JSON into our SQL...*
 
@@ -520,23 +604,43 @@ ADD `tags` JSON DEFAULT NULL;
 
 *Watch the SQL in action...*
 
-| **15** :> `SELECT title, slug, tags FROM pieces WHERE id=3;` (ID `3` is only one example, it could be any number)
+| **15** :> (ID `3` is only one example, it could be any number)
+
+```console
+SELECT title, slug, tags FROM pieces WHERE id=3;
+```
 
 | **15** ://phpMyAdmin **> pieces** (Note id 3, or whatever ID you are using)
 
-| **16a** :> `UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' WHERE id=3;`
+| **16a** :>
+
+```console
+UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' WHERE id=3;
+```
 
 | **16** ://phpMyAdmin **> pieces**
 
-| **16b** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
+| **16b** :>
+
+```console
+SELECT title, slug, tags FROM pieces WHERE id=3;
+```
 
 *Now, select for a match in `tags`...*
 
-| **17** :> `SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]';`
+| **17** :>
+
+```console
+SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]';
+```
 
 *...No matches! Try this...*
 
-| **18** :> `SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' AS JSON);`
+| **18** :>
+
+```console
+SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' AS JSON);
+```
 
 *...That's how SQL handles JSON*
 
@@ -564,16 +668,24 @@ ls web
 
 *See the changes in our web browser...*
 
-| **B-19** :// `localhost/web/edit.php?p=3` (ID `3` is only one example, it could be any number)
+| **B-19** :// (ID `3` is only one example, it could be any number)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/edit.php?p=3
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note the new "Tags" field and the `="p_tags"` values in HTML*
 
 1. Enter some tags (words) separated by comma
 2. Click "Update"
 
-| **19** :> `SELECT title, slug, tags FROM pieces WHERE id=3;`
+| **19** :>
+
+```console
+SELECT title, slug, tags FROM pieces WHERE id=3;
+```
 
 **See the code from in.editprocess.php:**
 
@@ -629,7 +741,11 @@ ls web
 
 *Look a little at the file, look mostly at what renders in the browser...*
 
-| **B-20** :// `localhost/web/jsonlinksexplained.php`
+| **B-20** ://
+
+```console
+localhost/web/jsonlinksexplained.php
+```
 
 *Try the example, reverse item order some, and submit the form*
 
@@ -667,7 +783,11 @@ ls web
 
 *Look a little at the file, look mostly at what renders in the browser...*
 
-| **B-21** :// `localhost/web/jsonlinks.php`
+| **B-21** ://
+
+```console
+localhost/web/jsonlinks.php
+```
 
 *Try the example, reverse item order some, and submit the form*
 
@@ -744,7 +864,11 @@ ADD `links` JSON DEFAULT NULL;
 
 | **22c** ://phpMyAdmin **> publication_history**
 
-| **B-22** :// `localhost/web/edit.php?p=3`
+| **B-22** ://
+
+```console
+localhost/web/edit.php?p=3
+```
 
 1. Paste in these values to the "Links" field...
 
@@ -762,7 +886,11 @@ https://verb.blue;; Inky | Blue Ink
 3. Note how all links were re-sorted in the "Links field"
 4. View the piece...
 
-| **B-23** :// `localhost/web/piece.php?p=3` (Click 'View on blog' in Edit, or enter whatever ID you are using if not 3)
+| **B-23** :// (Click 'View on blog' in Edit, or enter whatever ID you are using if not 3)
+
+```console
+localhost/web/piece.php?p=3
+```
 
 *Let's add a "Series" option...*
 
@@ -784,9 +912,13 @@ atom core/09-select.php core/09-in.select.php core/09-ajax.select.php && \
 ls web
 ```
 
-| **B-24** :// `localhost/web/select.php`
+| **B-24** ://
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/select.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 Try adding a Series with the "+ Series" form
 
@@ -848,19 +980,31 @@ ALTER TABLE `publication_history`
 ADD `series` INT UNSIGNED DEFAULT 1;
 ```
 
-| **26** :> `SELECT * FROM series;`
+| **26** :>
+
+```console
+SELECT * FROM series;
+```
 
 | **26** ://phpMyAdmin **> series**
 
 *Note there is only a "Blog" series*
 
-| **B-26** :// `localhost/web/edit.php?p=3`
+| **B-26** ://
+
+```console
+localhost/web/edit.php?p=3
+```
 
 1. Try adding a Series with the "+ Series" form (click, don't press 'Enter')
 2. Press "Enter" to add a Series, which could make the page reload because of a bug we will fix later
 3. If your page reloads, click "Back" to return to the piece you were editing
 
-| **27** :> `SELECT * FROM series;`
+| **27** :>
+
+```console
+SELECT * FROM series;
+```
 
 | **27** ://phpMyAdmin **> series**
 
@@ -872,11 +1016,19 @@ ADD `series` INT UNSIGNED DEFAULT 1;
 
 *First, a review...*
 
-| **28** :$ `atom core/09-pieces6.php`
+| **28** :$
 
-| **B-28** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+```console
+atom core/09-pieces6.php
+```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+| **B-28** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/pieces.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 We already have a `<form>` inside many of these `<table>` cells (the links that appear on hover)
 
@@ -915,9 +1067,13 @@ atom core/postformarrays.php && \
 ls web
 ```
 
-| **B-29** :// `localhost/web/postformarrays.php`
+| **B-29** ://
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/postformarrays.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 Check different boxes, then submit with different buttons multiple times
 
@@ -969,9 +1125,13 @@ ls web
   - *These call act.bulkpieces.php*
 
 
-| **B-30** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-30** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/pieces.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 Click and try:
 
@@ -995,9 +1155,13 @@ atom core/09-pieces8.php core/09-in.metaeditfunctions8.php core/09-ajax.piecesac
 ls web
 ```
 
-| **B-31** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-31** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/pieces.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Notice the AJAX functions with every piece*
 
@@ -1094,9 +1258,13 @@ ls web
   - *Changes the page more directly with AJAX calls*
   - *Changes the text of the "changed" button, while we're at it*
 
-| **B-33** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-33** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/pieces.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 Try different Piece actions and see how the page never needs to reload
 
@@ -1241,7 +1409,11 @@ document.getElementById("title_"+p_id).innerHTML = '<b>'+jsonMetaEditResponse["t
 document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditResponse["message"]+'&nbsp;';
 ```
 
-| **B-35** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-35** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/pieces.php
+```
 
 *Clicking on any Piece Title will bring up our JavaScript "Meta Edit" box*
 
@@ -1260,7 +1432,7 @@ document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditRespon
     - *Reverse pilcrow for "Posts": no writer's use outside of some software coding*
 
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ### Published History to Display New Meta
 
@@ -1271,7 +1443,11 @@ atom core/09-hist10.php && \
 ls web
 ```
 
-| **B-36** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-36** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/pieces.php
+```
 
 Click on "history" for any Piece
 
@@ -1358,7 +1534,11 @@ init_instance_callback: function (editor) {
   - *`Notice hides` section, making class `.notehide` disappear after 8 seconds*
   - *Added `input[type=text].slug` so the slug `<input type="text"` isn't ridiculously long like before*
 
-| **B-37** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-37** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/pieces.php
+```
 
 1. Click "Edit" for any piece
 2. Click "Save draft" and watch for the message
@@ -1415,7 +1595,11 @@ This autosave function serves many purposes, including nav warnings when changes
       - *`$_GET['a']`*
       - *`$_POST['old_as']`*
 
-| **B-38** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-38** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/pieces.php
+```
 
 1. Click "Edit" for any piece
 2. Type some changes in the "Content" (TinyMCE) field
@@ -1507,12 +1691,20 @@ ls web
       - *change this workflow to allow for "to-be-rescheduled" drafts*
       - *display more accuracy in Pices*
 
-| **B-39** :// `localhost/web/http://localhost/web/edit.php?p=1` (if it works, we will use `1` for this step)
+| **B-39** :// (if it works, we will use `1` for this step)
+
+```console
+localhost/web/http://localhost/web/edit.php?p=1
+```
 
 *...if that does not work...*
 
 ___
-> | **B-39-fix** :// `localhost/web/pieces.php`
+> | **B-39-fix** ://
+
+```console
+localhost/web/pieces.php
+```
 >
 > 1. Click "Edit" for any piece
 > 2. Use the number in `edit.php?p=NUM` to replace `1` in `U.piece_id=1` for our SQL queries
@@ -1542,7 +1734,11 @@ SELECT P.title, P.date_updated FROM pieces AS P LEFT JOIN publications AS U ON P
 
 We can do the same thing in SQL directly
 
-| **B-40** :// `localhost/web/http://localhost/web/edit.php?p=1` (Same, no reload)
+| **B-40** :// (Same, no reload)
+
+```console
+localhost/web/http://localhost/web/edit.php?p=1
+```
 
 1. Click "Update" in the Editor
 2. Run the same `SELECT` SQL query as before and note it finds one match
@@ -1579,14 +1775,22 @@ UPDATE pieces AS P, publications AS U SET U.date_updated=P.date_updated WHERE U.
 
 *Create a new post...*
 
-| **B-42** :// `localhost/web/edit.php` (No "p" _GET argument, this is new)
+| **B-42** :// (No "p" _GET argument, this is new)
+
+```console
+localhost/web/edit.php
+```
 
 1. Enter a boring title you will recognize
 2. Many times as fast as you can: click "Save draft" or press "<kbd>Ctrl</kbd> + <kbd>S</kbd>"
 
 *Have a look...*
 
-| **B-43** :// `localhost/web/pieces.php`
+| **B-43** ://
+
+```console
+localhost/web/pieces.php
+```
 
 - *Over the Internet, you may be able to save multiple duplicates before the `<form>` finishes and the page reloads*
 - *Since this sends to your local machine, you may not be able to save multiple duplicates*
@@ -1617,11 +1821,19 @@ ls web
 
 *Create another new post...*
 
-| **B-44** :// `localhost/web/edit.php` (No "p" _GET argument, this is new)
+| **B-44** :// (No "p" _GET argument, this is new)
+
+```console
+localhost/web/edit.php
+```
 
 *Have a look...*
 
-| **B-45** :// `localhost/web/pieces.php`
+| **B-45** ://
+
+```console
+localhost/web/pieces.php
+```
 
 *...No duplicates*
 ___

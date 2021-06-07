@@ -1,7 +1,7 @@
 # Verb VIP
 ## Learn Command Line Linux and Code
 
-Whether you want to become a computer genius or if you're a "computer dummy" and want to make computers less scary, start with Linux. Start simple. Start right here.
+Whether you want to become a computer genius or if you're a "computer dummy" and want to make computers less scary, start with Linux. Start simple. Start here.
 
 ## Shell Crash Course
 
@@ -19,33 +19,28 @@ Whether you want to become a computer genius or if you're a "computer dummy" and
 
 ## [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)
 
-## Why learn Linux first?
-*Renaissance: Learn the roots first, everything else makes more sense...*
+## Why learn Linux?
+*Renaissance: Learn your roots first, then everything else makes more sense.*
 
-### 1. Universal: web server, desktop, Android — All open source! All the same language!
-Linux is the most-used webserver operating system in the world, with no near rivals. It's desktop market share grows every year!
-Linux is free and secure, for web servers, desktops, and Android. The Linux language is the same everywhere.
-Learn all devices; learn what is secure; learn what is free; learn only once!
+### 1. Universal: Linux web server, Linux desktop, Android, macOS, iOS — All the same language!
+- Linux is the most-used webserver operating system in the world, with no near rivals. It's desktop market share grows every year!
+- Linux is free and secure, for web servers, desktops, and Android. The Linux language is the same everywhere.
+- macOS and iOS use Unix, the same language Linux was based on.
+- Learn all devices; learn what is secure; learn what is free; learn only once!
 
 ### 2. Ultra Simple — Better preparation to learn other languages!
-The Linux "Shell/BASH" language is simpler than other languages, but shares many universal concepts of code.
-Learn computer code concepts the easy, simple way, using a simple, universal platform language.
-By learning one "byte" at a time, you don't have to learn a difficult concept while learning a more complex coding language at the same time.
+- The Linux "Shell/BASH" language is simpler than other languages, but shares many universal concepts of code.
 
 ### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Pearl, Node.js, HTML, CSS... all sit atop Linux
-It's one thing to learn a web app or server programming language; it's awesome to know the language under the language so you can *control the machine it runs on.*
-PHP will make more sense if you have seen what this does: `sudo apt install php`
-Once you know how to work with a computer terminal (Linux language), all code will be less scary because you'll know where code lives!
+- It's one thing to learn a web app or server programming language; it's awesome to know the language under the language so you can *control the machine it runs on.*
+- PHP will make more sense if you have seen what this does: `sudo apt install php`
+- Once you know how to work with a computer terminal (Linux/Unix language), all code will be less scary because you'll know where code lives!
 
 ## Who should take this course?
 - Everyone ages 7 through high school, as a general education course, home schooled or in the classroom
-- Any college student majoring in computer code, the sooner the better, but anytime will do
+- Any college student or graduate majoring in computer code
 - Anyone ages 13 or older interested in self-teaching to learn computers
-- Any entrepreneur, project manager, copywriter, marketer, graphic designer, teacher, professor, life guard, dog catcher, firefighter, chef, union-card-carrying thespian, secretary, supervisor, executive, board member, politician, bureaucrat, dictator, monarch, Amway IBO, or the like who WILL NOT learn computer code, but wants a peaceful and powerful relationship with a marketing firm, software writer, and/or IT
-
-## Install the apps used in this course
-
-`sudo apt install gedit tilda nautilus chromium-browser firefox`
+- Any entrepreneur, project manager, copywriter, marketer, graphic designer, teacher, professor, life guard, dog catcher, firefighter, chef, union-card-carrying thespian, secretary, supervisor, executive, board member, politician, bureaucrat, dictator, monarch, Amway IBO, or anyone who WILL NOT learn computer code, but wants a peaceful and powerful relationship with a marketing firm, software writer, and/or IT
 
 ## First day of school
 
@@ -61,8 +56,6 @@ ___
 
 *At the end of each lesson is a section called* **The Take** *which lists learning objectives for that lesson; this is useful information for students, teachers, crafting exams, or developing a curriculum core*
 
-*Each lesson has a "homework" comparison folder that can be checked at* [inkVerb/VIP Homework](https://github.com/inkVerb/vip-homework/)
-
 *There is a free video series that explains these lessons at the* [inkVerb YouTube channel](https://www.youtube.com/channel/UCILld59lH8VOsT9gfyAb77g)
 
 Udemy! *You can get more teaching tips, take quizzes, work with a community, and earn credits in the Udemy course "VIP Linux"* (NOT READY)
@@ -73,22 +66,56 @@ Udemy! *You can get more teaching tips, take quizzes, work with a community, and
 
 That is the end of these instructions. You should feel like a better person.
 
+## Install the apps used in this course
+
+Debian:
+
+```console
+sudo apt install gedit tilda nautilus chromium-browser firefox
+```
+
+Arch:
+
+```console
+sudo pacman -S gedit nautilus chromium-browser firefox
+```
+
+Setup the [Arch F12 Terminal](https://github.com/inkVerb/vip/blob/master/Arch-F12-Terminal.md)
+
 # Oh, and have a cookie for finishing: ### #
 
-## Installing Linux & Vrk
-*Optional free tools: If you want your own Linux PC super media workstation...*
-1. Install Ubuntu (alongside Windows, if you want) via [these fast instructions on YouTube](https://www.youtube.com/watch?v=_9NvmAitlwA&list=PLizgE6nGB1Kx8jIY1JE2v9rcL9G9s_UDj)
-2. Install Vrk via the commands at [verb.ink](http://verb.ink)
-3. Type with correct fingers. Learn here: [write.pink/88](http://write.pink/88)
+## Install Linux
+- [BIOS, EFI & Other Settings for Linux](https://github.com/inkVerb/VIP/blob/master/install-BIOS-UEFI.md)
+### [Arch/Manjaro (text)](https://github.com/inkVerb/vip/blob/master/Arch-Install.md)
+- [IBUS for Taiwan and/or China Mandarin typing input](https://github.com/inkVerb/VIP/blob/master/ibus_zh_TW.md)
+- Vrk desktop tools at [verb.ink](http://verb.ink)
+### [Ubuntu (video)](https://www.youtube.com/watch?v=sYfEs0lQA8Y&index=4&list=PLizgE6nGB1Kx8jIY1JE2v9rcL9G9s_UDj) create your bootable Linux USB
+- [Fcitx for Taiwan and/or China Mandarin typing input](https://github.com/inkVerb/VIP/blob/master/Fcitx_zh_TW.md)
 
-## GitHub dark theme
-### [VIP-DarkHub Code Purple](https://userstyles.org/styles/172338)
-#### 1. Install: Firefox [Stylus](https://addons.mozilla.org/en-US/firefox/addon/styl-us/) / [Stylish](https://addons.mozilla.org/en-US/firefox/addon/stylish/) | Chrome [Stylus](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) / [Stylish](https://chrome.google.com/webstore/detail/stylish-custom-themes-for/fjnbnpbmkenffdnngjfgmeleoegfcffe)
-#### 2. Themify: [VIP-DarkHub Code Purple](https://userstyles.org/styles/172338)
-- View the GitHub repo for VIP-DarkHub Code Purple: **[inkVerb/VIP-DarkHub](https://github.com/inkVerb/VIP-DarkHub)**
+## Type with correct fingers
+- Learn here: [write.pink/88](http://write.pink/88)
+
+## Keyboard shortcuts on desktop
+
+|:---------------------------------------------------------------------------------- |:---------------------- |
+| <kbd>F9</kbd>                                                                      | show/hide side panels  |
+| <kbd>Ctrl</kbd> + <kbd>A</kbd>                                                     | select All             |
+| <kbd>Ctrl</kbd> + <kbd>X</kbd>                                                     | Cut                    |
+| <kbd>Ctrl</kbd> + <kbd>Z</kbd>                                                     | Undo                   |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd> / <kbd>Ctrl</kbd> + <kbd>Y</kbd> | Redo                   |
+| <kbd>Ctrl</kbd> + <kbd>T</kbd>                                                     | Open a new tab         |
+| <kbd>Ctrl</kbd> + <kbd>W</kbd>                                                     | Close a tab            |
+| <kbd>Ctrl</kbd> + <kbd>LEFT-CLICK</kbd> / <kbd>MIDDLE-CLICK</kbd>                  | Open link in a new tab |
+
+## Keyboard shortcuts in terminal
+
+|:------------------------------------------------- |:---------------------- |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | copy                   |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> | paste                  |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | open a new tab         |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> | close current tab      |
 
 ## About Linux
-[Ubuntu via unetbootin](https://www.youtube.com/watch?v=sYfEs0lQA8Y&index=4&list=PLizgE6nGB1Kx8jIY1JE2v9rcL9G9s_UDj) create your bootable Linux USB
 
 [explainshell.com](https://explainshell.com) pretty & colorful diagrams
 
@@ -98,32 +125,3 @@ That is the end of these instructions. You should feel like a better person.
 
 [GNU Bash Reference manual](https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins) the official Shell/BASH manual
 
-## Tips
-
-*F9* show/hide side panels in gedit, Nautilus, and other Linux desktop apps
-
-*Ctrl + A* select All
-
-*Ctrl + X* Cut
-
-*Ctrl + Z* Undo
-
-*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + Z / Ctrl + Y* Redo
-
-*Ctrl + T* Open a new tab
-
-*Ctrl + W* Close a tab
-
-*Ctrl + LEFT_CLICK* Open link in a new tab
-
-## In Terminal
-
-*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C* Copy
-
-*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + V* Paste
-
-*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T* Open a new tab
-
-*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + W* Close current tab
-
-*<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + W* Close a tab

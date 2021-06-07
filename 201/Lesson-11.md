@@ -8,13 +8,25 @@ ___
 
 *Let's get another look at verb.ink.html*
 
-| **1** :$ `cd verb.ink`
+| **1** :$
 
-| **2** :$ `gedit verb.ink.html`
+```console
+cd verb.ink
+```
+
+| **2** :$
+
+```console
+gedit verb.ink.html
+```
 
 ### `cat`
 
-| **3** :$ `cat verb.ink.html`
+| **3** :$
+
+```console
+cat verb.ink.html
+```
 
 ### `more`
 
@@ -22,37 +34,65 @@ ___
 
 *One line at a time: Enter*
 
-| **4** :$ `more verb.ink.html` *(Space to the end or Q to quit)*
+| **4** :$ *(Space to the end or Q to quit)*
+
+```console
+more verb.ink.html
+```
 
 *Eight lines at a time*
 
-| **5** :$ `more -8 verb.ink.html` *(Q to quit)*
+| **5** :$ *(Q to quit)*
+
+```console
+more -8 verb.ink.html
+```
 
 ### `less`
 
 *Up and down: Spacebar, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, Up, Down*
 
-| **6** :$ `less verb.ink.html` *(Q to quit)*
+| **6** :$ *(Q to quit)*
+
+```console
+less verb.ink.html
+```
 
 ### `head`
 
 *First ten lines*
 
-| **7** :$ `head verb.ink.html`
+| **7** :$
+
+```console
+head verb.ink.html
+```
 
 *First four lines*
 
-| **8** :$ `head -4 verb.ink.html`
+| **8** :$
+
+```console
+head -4 verb.ink.html
+```
 
 ### `tail`
 
 *Last ten lines*
 
-| **9** :$ `tail verb.ink.html`
+| **9** :$
+
+```console
+tail verb.ink.html
+```
 
 *Last five lines*
 
-| **10** :$ `tail -5 verb.ink.html`
+| **10** :$
+
+```console
+tail -5 verb.ink.html
+```
 
 ## A few other tools
 
@@ -60,107 +100,215 @@ ___
 
 *Lines in reverse order*
 
-| **11** :$ `tac verb.ink.html`
+| **11** :$
+
+```console
+tac verb.ink.html
+```
 
 *Next, download some files...*
 
-| **12** :$ `cd ..`
+| **12** :$
 
-| **13** :$ `git clone https://github.com/inkVerb/201-11`
+```console
+cd ..
+```
 
-| **14** :$ `cd 201-11`
+| **13** :$
+
+```console
+git clone https://github.com/inkVerb/201-11
+```
+
+| **14** :$
+
+```console
+cd 201-11
+```
 
 ### `sort`
 
-| **15** :$ `gedit sortme`
+| **15** :$
+
+```console
+gedit sortme
+```
 
 *Lines in alphabetical order*
 
-| **16** :$ `sort sortme`
+| **16** :$
+
+```console
+sort sortme
+```
 
 *Reverse alphabetical order*
 
-| **17** :$ `sort -r sortme`
+| **17** :$
+
+```console
+sort -r sortme
+```
 
 ### `diff`
 
-| **18** :$ `gedit frc-*`
+| **18** :$
+
+```console
+gedit frc-*
+```
 
 *Compare 1 & 2*
 
-| **19** :$ `diff frc-1 frc-2`
+| **19** :$
+
+```console
+diff frc-1 frc-2
+```
 
 *Note "a" means that lines are "Added"*
 
-| **20** :$ `diff frc-1 frc-3`
+| **20** :$
+
+```console
+diff frc-1 frc-3
+```
 
 *Note "d" means that lines are "Deleted"*
 
-| **21** :$ `diff frc-1 frc-4`
+| **21** :$
+
+```console
+diff frc-1 frc-4
+```
 
 *Note "c" means that the lines "Change"*
 
 *Note "13,17" means "lines 13–17"*
 
-| **22** :$ `diff frc-1 frc-5`
+| **22** :$
+
+```console
+diff frc-1 frc-5
+```
 
 *Note frc-5 line 3 has several spaces at the end of the line; ignore with `-Z`*
 
-| **23** :$ `diff -Z frc-1 frc-5`
+| **23** :$
+
+```console
+diff -Z frc-1 frc-5
+```
 
 *Ignore all white space with `-w`*
 
-| **24** :$ `diff -w frc-1 frc-5`
+| **24** :$
+
+```console
+diff -w frc-1 frc-5
+```
 
 *Ignore case with `-i`*
 
-| **25** :$ `diff -i frc-1 frc-5`
+| **25** :$
+
+```console
+diff -i frc-1 frc-5
+```
 
 *Ignore case and white space with `-iw`*
 
-| **26** :$ `diff -iw frc-1 frc-5`
+| **26** :$
+
+```console
+diff -iw frc-1 frc-5
+```
 
 *Note nothing happens if files are the same*
 
-| **27** :$ `diff frc-1 frc-6`
+| **27** :$
+
+```console
+diff frc-1 frc-6
+```
 
 *Get a message to say so with `-s`*
 
-| **28** :$ `diff -s frc-1 frc-6`
+| **28** :$
+
+```console
+diff -s frc-1 frc-6
+```
 
 *Combine `-s` with other options*
 
-| **29** :$ `diff -iws frc-1 frc-5`
+| **29** :$
+
+```console
+diff -iws frc-1 frc-5
+```
 
 *Get a quiet message if files differ*
 
-| **30** :$ `diff -q frc-1 frc-4`
+| **30** :$
+
+```console
+diff -q frc-1 frc-4
+```
 
 *Compare side-by-side wtih `-y`*
 
-| **31** :$ `diff -y frc-1 frc-4`
+| **31** :$
+
+```console
+diff -y frc-1 frc-4
+```
 
 *Remember* frc-2
 
-| **32** :$ `diff frc-1 frc-2`
+| **32** :$
+
+```console
+diff frc-1 frc-2
+```
 
 *Ignore blank lines with `-B`*
 
-| **33** :$ `diff -B frc-1 frc-2`
+| **33** :$
+
+```console
+diff -B frc-1 frc-2
+```
 
 *There is always more to learn*
 
-| **34** :$ `man diff` *(Q to quit)*
+| **34** :$ *(Q to quit)*
 
-| **35** :$ `cd ..`
+```console
+man diff
+```
+
+| **35** :$
+
+```console
+cd ..
+```
 
 ### `nano`
 
 *The simple text editor in the terminal*
 
-| **36** :$ `cd verb.ink`
+| **36** :$
 
-| **37** :$ `nano verb.ink.html`
+```console
+cd verb.ink
+```
+
+| **37** :$
+
+```console
+nano verb.ink.html
+```
 
 *Options listed at the bottom*
 
@@ -173,13 +321,17 @@ ___
 *Note* ^Z *will "stop" the nano session, not "undo"*
 - If you ^Z back to the terminal, resume with `fg nano`, see [Shell 101 Lesson 0](https://github.com/inkVerb/VIP/blob/master/101/Lesson-00.md)
 
-*(<kbd>Ctrl</kbd> + X to eXit)*
+*(<kbd>Ctrl</kbd> + <kbd>X</kbd> to eXit)*
 
 ### `vim`
 
 *The terminal editor used by cool people*
 
-| **38** :$ `vim verb.ink.html`
+| **38** :$
+
+```console
+vim verb.ink.html
+```
 
 *To quit, type these two characters:*
 
@@ -187,7 +339,11 @@ ___
 
 *Vim has a tutorial*
 
-| **39** :$ `vimtutor` *(inside Vim, use* :q *to quit)*
+| **39** :$ *(inside Vim, use* :q *to quit)*
+
+```console
+vimtutor
+```
 
 *Have fun!*
 

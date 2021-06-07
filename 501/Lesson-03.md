@@ -11,13 +11,25 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
-| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ *(password in the terminal, not safe outside these lessons!)*
+
+```console
+mysql -u admin -padminpassword
+```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
-| **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+| **SB-0** :// Username: `admin` Password: `adminpassword`
 
-| **S1** :> `USE food_db;`
+```console
+localhost/phpMyAdmin/
+```
+
+| **S1** :>
+
+```console
+USE food_db;
+```
 
 | **SB-1** ://phpMyAdmin **> food_db**
 
@@ -54,9 +66,13 @@ atom core/03-website1.php core/03-style1.css core/03-in.functions1.php core/03-i
 ls web
 ```
 
-| **B-1** :// `localhost/web/website.php`
+| **B-1** ://
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/website.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *You should recognize this from before, restructured via `include` files*
 
@@ -142,13 +158,21 @@ ls web
 echo "<pre>$query</pre>";
 ```
 
-| **S2** :> `SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';`
+| **S2** :>
+
+```console
+SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
+```
 
 | **SB-2** ://phpMyAdmin **> fruit**
 
-| **B-2** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-2** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/website.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ### III. SQL > PHP > HTML
 
@@ -168,9 +192,13 @@ ls web
 - *website.php*
 - *style.css*
 
-| **B-3** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-3** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/website.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 #### SQL PHP Summary
 1. An SQL query becomes a PHP `$Variable` (with any variable name)
@@ -208,13 +236,21 @@ ls web
 ```
 *Note website.php: the same SQL query for the `$query` variable in our PHP*
 
-| **S4** :> `SELECT name, type, have, count, prepared FROM fruit;` *Removed `WHERE name='bananas'` so we get multiple rows*
+| **S4** :> *Removed `WHERE name='bananas'` so we get multiple rows*
+
+```console
+SELECT name, type, have, count, prepared FROM fruit;
+```
 
 | **SB-4** ://phpMyAdmin **> fruit** (Same)
 
-| **B-4** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-4** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/website.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 #### SQL Rows Loop Summary
 1. Each SQL row is an item that can be looped through
@@ -232,13 +268,21 @@ ls web
 ```
 *Note the same SQL query for the `$query` variable in our PHP*
 
-| **S5** :> `SELECT name, type, date_created FROM fruit;`
+| **S5** :>
+
+```console
+SELECT name, type, date_created FROM fruit;
+```
 
 | **SB-5** ://phpMyAdmin **> fruit** (Same)
 
-| **B-5** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-5** :// (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/website.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ### V. SQL `INSERT` New Entry < HTML
 - See if a query succeeded without error
@@ -265,7 +309,11 @@ ls web
 - *in.functions.php*
 - *in.checks.php*
 
-| **B-6** :// `localhost/web/website.php` (Same)
+| **B-6** :// (Same)
+
+```console
+localhost/web/website.php
+```
 
 *In the webform, input:*
 
@@ -275,13 +323,17 @@ ls web
 
 *Try to input numbers or leave a field empty to see how the form responds*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Once finished, see the new entries in the database...*
 
 | **SB-6** ://phpMyAdmin **> fruit** (Same)
 
-| **S6** :> `SELECT name, type, have, count, prepared FROM fruit;`
+| **S6** :>
+
+```console
+SELECT name, type, have, count, prepared FROM fruit;
+```
 
 ### VI. Always Escape SQL Created by a User Action
 
@@ -304,7 +356,11 @@ ls web
 - *We use `mysqli_real_escape_string()` on every item in an SQL query*
 	- *This only applies to user input*
 
-| **B-7** :// `localhost/web/website.php` (Same)
+| **B-7** :// (Same)
+
+```console
+localhost/web/website.php
+```
 
 *In the webform, input: (include spaces before and after)*
 
@@ -318,7 +374,11 @@ ls web
 
 *...Note no spaces in phpMyAdmin*
 
-| **S7** :> `SELECT name, type, have, count, prepared FROM fruit;`
+| **S7** :>
+
+```console
+SELECT name, type, have, count, prepared FROM fruit;
+```
 
 *...Note you can see the spaces in the database*
 
@@ -351,7 +411,11 @@ ls web
 
 - *We use our custom `escape_sql()` function in place of `mysqli_real_escape_string()`*
 
-| **B-8** :// `localhost/web/website.php` (Same)
+| **B-8** :// (Same)
+
+```console
+localhost/web/website.php
+```
 
 *In the webform, input:*
 
@@ -365,7 +429,11 @@ ls web
 
 *See it removed the spaces...*
 
-| **S8** :> `SELECT name, type, have, count, prepared FROM fruit;`
+| **S8** :>
+
+```console
+SELECT name, type, have, count, prepared FROM fruit;
+```
 
 ### VII. SQL `UPDATE` Existing Entry < HTML
 - See if an update made a change
@@ -389,17 +457,25 @@ ls web
 - *in.functions.php*
 - *in.checks.php*
 
-| **B-9** :// `localhost/web/website.php` (Same)
+| **B-9** :// (Same)
+
+```console
+localhost/web/website.php
+```
 
 *Make changes, input numbers, or empty a field to see how the form responds*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Once finished, see the updated entries in the database...*
 
 | **SB-9** ://phpMyAdmin **> fruit** (Same)
 
-| **S9** :> `SELECT name, type, have, count, prepared FROM fruit;`
+| **S9** :>
+
+```console
+SELECT name, type, have, count, prepared FROM fruit;
+```
 
 ### VIII. SQL `DELETE` Entry < HTML
 - See if the row was deleted, same as an update
@@ -419,17 +495,25 @@ ls web
 - *website.php*
 - *in.checks.php*
 
-| **B-10** :// `localhost/web/website.php` (Same)
+| **B-10** :// (Same)
+
+```console
+localhost/web/website.php
+```
 
 *Use a checkbox to delete an entry*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Once finished, note the entries deleted from the database...*
 
 | **SB-10** ://phpMyAdmin **> fruit** (Same)
 
-| **S10** :> `SELECT name, type, have, count, prepared FROM fruit;`
+| **S10** :>
+
+```console
+SELECT name, type, have, count, prepared FROM fruit;
+```
 
 ___
 

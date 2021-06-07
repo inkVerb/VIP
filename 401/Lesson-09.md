@@ -33,13 +33,21 @@ ___
 >
 > Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
 >
-> | **T1** :$ `exit`
+> | **T1** :$
+
+```console
+exit
+```
 >
 > Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
 >
 > *Open up a Shell (`sh`) interpreter session...*
 >
-> | **T2** :$ `sh`
+> | **T2** :$
+
+```console
+sh
+```
 >
 > *You are in a new Shell session*
 >
@@ -47,23 +55,39 @@ ___
 >
 > *Get your current interpreter...*
 >
-> | **T4** :$ `ps -p $$`
+> | **T4** :$
+
+```console
+ps -p $$
+```
 >
 > *Now, exit that Shell session...*
 >
-> | **T5** :$ `exit`
+> | **T5** :$
+
+```console
+exit
+```
 >
 > *Now, you are back to your original terminal interpreter session*
 >
 > *Watch and exit that terminal to know that you are in no other interpreter session*
 >
-> | **T6** :$ `exit`
+> | **T6** :$
+
+```console
+exit
+```
 >
 > Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
 >
 > *Now, open up a BASH (`bash`) interpreter session...*
 >
-> | **T7** :$ `bash`
+> | **T7** :$
+
+```console
+bash
+```
 >
 > *You are in a new BASH session, but it doesn't look different*
 >
@@ -71,17 +95,29 @@ ___
 >
 > *Get your current interpreter...*
 >
-> | **T8** :$ `ps -p $$`
+> | **T8** :$
+
+```console
+ps -p $$
+```
 >
 > *Now, exit that BASH session...*
 >
-> | **T9** :$ `exit`
+> | **T9** :$
+
+```console
+exit
+```
 >
 > *Now, you are back to your original terminal interpreter session*
 >
 > *Watch and exit that terminal to know that you are in no other interpreter session*
 >
-> | **T10** :$ `exit`
+> | **T10** :$
+
+```console
+exit
+```
 
 #### Different Interpreters Interpret Differently
 
@@ -105,7 +141,11 @@ Shell:
 
 *Edit this script to see the short version*
 
-| **1** :$ `gedit math-sh`
+| **1** :$
+
+```console
+gedit math-sh
+```
 
 *It should look like this:*
 
@@ -131,7 +171,11 @@ fi
 
 ```
 
-| **2** :$ `./math-sh`
+| **2** :$
+
+```console
+./math-sh
+```
 
 *Note the BASH operators only work with `#!/bin/bash`*
 
@@ -139,7 +183,11 @@ BASH:
 
 *Edit this script to see the short version*
 
-| **3** :$ `gedit math-bash`
+| **3** :$
+
+```console
+gedit math-bash
+```
 
 *It should look like this:*
 
@@ -165,7 +213,11 @@ fi
 
 ```
 
-| **4** :$ `./math-bash`
+| **4** :$
+
+```console
+./math-bash
+```
 
 *Consider another comparison in Bourne Shell vs BASH:*
 
@@ -175,7 +227,11 @@ Shell:
 
 *Edit this script to see the short version*
 
-| **5** :$ `gedit array-sh`
+| **5** :$
+
+```console
+gedit array-sh
+```
 
 *It should look like this:*
 
@@ -193,7 +249,11 @@ echo ${Array[@]}
 
 ```
 
-| **6** :$ `./array-sh`
+| **6** :$
+
+```console
+./array-sh
+```
 
 *Note the array is not recognized in Borune shell (`#!/bin/sh`)*
 
@@ -201,7 +261,11 @@ BASH:
 
 *Edit this script to see the short version*
 
-| **7** :$ `gedit array-bash`
+| **7** :$
+
+```console
+gedit array-bash
+```
 
 *It should look like this:*
 
@@ -219,7 +283,11 @@ echo ${Array[@]}
 
 ```
 
-| **8** :$ `./array-bash`
+| **8** :$
+
+```console
+./array-bash
+```
 
 *...the array works in BASH (`#!/bin/bash`)*
 
@@ -283,7 +351,11 @@ Or
 
 *Edit this script to see the short version*
 
-| **9** :$ `gedit set-normal`
+| **9** :$
+
+```console
+gedit set-normal
+```
 
 *It should look like this:*
 
@@ -305,11 +377,19 @@ echo "Done with verbchacho test"
 
 *Run it and watch carefully*
 
-| **10** :$ `./set-normal`
+| **10** :$
+
+```console
+./set-normal
+```
 
 *Edit this script to see the short version*
 
-| **11** :$ `gedit set-e`
+| **11** :$
+
+```console
+gedit set-e
+```
 
 *It should look like this:*
 
@@ -333,11 +413,19 @@ echo "Done with verbchacho test"
 
 *Run it and watch carefully*
 
-| **12** :$ `./set-e`
+| **12** :$
+
+```console
+./set-e
+```
 
 *Edit this script to see the short version*
 
-| **13** :$ `gedit set-x`
+| **13** :$
+
+```console
+gedit set-x
+```
 
 *It should look like this:*
 
@@ -361,11 +449,19 @@ echo "Done with verbchacho test"
 
 *Run it and watch carefully*
 
-| **14** :$ `./set-x`
+| **14** :$
+
+```console
+./set-x
+```
 
 *Edit this script to see the short version*
 
-| **15** :$ `gedit set-v`
+| **15** :$
+
+```console
+gedit set-v
+```
 
 *It should look like this:*
 
@@ -387,13 +483,21 @@ echo "Done with verbchacho test"
 
 *Run it and watch carefully*
 
-| **16** :$ `./set-v`
+| **16** :$
+
+```console
+./set-v
+```
 
 *So, `-v` and `-x` are basically the same, but `-x` has the pretty `+`*
 
 *Edit this script to see the short version*
 
-| **17** :$ `gedit set-xe`
+| **17** :$
+
+```console
+gedit set-xe
+```
 
 *It should look like this:*
 
@@ -415,7 +519,11 @@ echo "Done with verbchacho test"
 
 *Run it and watch carefully*
 
-| **17** :$ `./set-xe`
+| **17** :$
+
+```console
+./set-xe
+```
 
 
 
@@ -442,17 +550,33 @@ false || EXECUTE_COMMAnd_IF_FALSE
 
 *Yes, `true` and `false` can be run in the terminal as commands*
 
-| **19** :$ `true`
+| **19** :$
 
-| **20** :$ `false`
+```console
+true
+```
+
+| **20** :$
+
+```console
+false
+```
 
 *They don't return any output, only an "exit" code: `0` (true) or `1` (false)*
 
 *Remember `$?` is the last exit code, watch...*
 
-| **21** :$ `true && echo $?`
+| **21** :$
 
-| **22** :$ `false || echo $?`
+```console
+true && echo $?
+```
+
+| **22** :$
+
+```console
+false || echo $?
+```
 
 *These work because:*
 - `true &&` **THIS WILL HAPPEN**
@@ -462,9 +586,17 @@ false || EXECUTE_COMMAnd_IF_FALSE
 - `true ||` **THIS WON'T HAPPEN**
 - `false &&` **THIS WON'T HAPPEN**
 
-| **23** :$ `true || echo $?`
+| **23** :$
 
-| **24** :$ `false && echo $?`
+```console
+true || echo $?
+```
+
+| **24** :$
+
+```console
+false && echo $?
+```
 
 *Example in a Script:*
 
@@ -484,7 +616,11 @@ false || echo "Or is false."
 
 *Edit this script to see the short version*
 
-| **25** :$ `gedit truefalse`
+| **25** :$
+
+```console
+gedit truefalse
+```
 
 *It should look like this:*
 
@@ -509,7 +645,11 @@ false || echo "Or is false."
 
 *Run it and watch carefully*
 
-| **26** :$ `./truefalse`
+| **26** :$
+
+```console
+./truefalse
+```
 
 *It works whether `true`/`false` is stated or a variable:*
 
@@ -517,7 +657,11 @@ false || echo "Or is false."
 
 *Edit this script to see the short version*
 
-| **27** :$ `gedit truefalsevar`
+| **27** :$
+
+```console
+gedit truefalsevar
+```
 
 *It should look like this:*
 
@@ -546,7 +690,11 @@ $Var || echo "Or is false."
 
 *Run it and watch carefully*
 
-| **28** :$ `./truefalsevar`
+| **28** :$
+
+```console
+./truefalsevar
+```
 
 *This next script does* ***NOT*** *work...*
 
@@ -554,7 +702,11 @@ $Var || echo "Or is false."
 
 *Edit this script to see the short version*
 
-| **29** :$ `gedit truefalsevarstring`
+| **29** :$
+
+```console
+gedit truefalsevarstring
+```
 
 *It should look like this:*
 
@@ -582,7 +734,11 @@ $Var || echo "Or is false."
 
 *Run it and watch carefully*
 
-| **30** :$ `./truefalsevarstring`
+| **30** :$
+
+```console
+./truefalsevarstring
+```
 
 *Note the errors...*
 
@@ -594,21 +750,45 @@ $Var || echo "Or is false."
 
 *Watch this...*
 
-| **31** :$ `true`
+| **31** :$
 
-| **32** :$ `echo $?`
+```console
+true
+```
 
-| **33** :$ `false`
+| **32** :$
 
-| **34** :$ `echo $?`
+```console
+echo $?
+```
+
+| **33** :$
+
+```console
+false
+```
+
+| **34** :$
+
+```console
+echo $?
+```
 
 *Now, let's put that to use...*
 
-| **35** :$ `mkdir iamhere && touch iamhere/file1 iamhere/file2`
+| **35** :$
+
+```console
+mkdir iamhere && touch iamhere/file1 iamhere/file2
+```
 
 *Edit this script to see the short version*
 
-| **36** :$ `gedit ls-test`
+| **36** :$
+
+```console
+gedit ls-test
+```
 
 *It should look like this:*
 
@@ -632,7 +812,11 @@ ls nothere || echo "Or is false, exit code: $?"
 
 *Run it and watch carefully*
 
-| **37** :$ `./ls-test`
+| **37** :$
+
+```console
+./ls-test
+```
 
 *So, `&&` and `||` work with any command that returns*
 
@@ -648,7 +832,11 @@ Test with `-z`:
 
 *Edit this script to see the short version*
 
-| **38** :$ `gedit varset-z`
+| **38** :$
+
+```console
+gedit varset-z
+```
 
 *It should look like this:*
 
@@ -689,13 +877,21 @@ fi
 
 *Run it and watch carefully*
 
-| **39** :$ `./varset-z`
+| **39** :$
+
+```console
+./varset-z
+```
 
 Test with `-n`:
 
 *Edit this script to see the short version*
 
-| **40** :$ `gedit varset-n`
+| **40** :$
+
+```console
+gedit varset-n
+```
 
 *It should look like this:*
 
@@ -736,7 +932,11 @@ fi
 
 *Run it and watch carefully*
 
-| **41** :$ `./varset-n`
+| **41** :$
+
+```console
+./varset-n
+```
 
 ___
 

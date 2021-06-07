@@ -7,7 +7,11 @@ Ready the CLI
 
 ___
 
-| **1** :$ `echo "Output to terminal"`
+| **1** :$
+
+```console
+echo "Output to terminal"
+```
 
 *The "input" you enter into the terminal is called: "STDIN"*
 
@@ -15,71 +19,139 @@ ___
 
 *Below, the STDIN is `echo "Hello ink!"` and the STDOUT is `Hello ink!`*
 
-| **2** :$ `echo "Hello ink!"`
+| **2** :$
 
-| **3** :$ `echo "abcdefghijklmnopqrstuvwxyz"`
+```console
+echo "Hello ink!"
+```
 
-| **4** :$ `ls`
+| **3** :$
+
+```console
+echo "abcdefghijklmnopqrstuvwxyz"
+```
+
+| **4** :$
+
+```console
+ls
+```
 
 *See, there are no files here*
 
 *We can send STDOUT to a file with: `> MYFILE`*
 
-| **5** :$ `echo "Output to file" > abcd`
+| **5** :$
 
-| **6** :$ `ls`
+```console
+echo "Output to file" > abcd
+```
+
+| **6** :$
+
+```console
+ls
+```
 
 *See, now there's a new file here*
 
-| **7** :$ `gedit abcd`
+| **7** :$
 
-| **8** :$ `echo "abcdefghijklmnopqrstuvwxyz" > abcd`
+```console
+gedit abcd
+```
+
+| **8** :$
+
+```console
+echo "abcdefghijklmnopqrstuvwxyz" > abcd
+```
 
 *gedit: Reload*
 
-| **9** :$ `echo "abcdefghijklmnopqrstuvwxyz" >> abcd`
+| **9** :$
+
+```console
+echo "abcdefghijklmnopqrstuvwxyz" >> abcd
+```
 
 *gedit: Reload*
 
-| **10** :$ `echo "abcdefghijklmnopqrstuvwxyz" >> abcd`
+| **10** :$
+
+```console
+echo "abcdefghijklmnopqrstuvwxyz" >> abcd
+```
 
 *gedit: Reload*
 
 *Note the number of lines*
 
-| **11** :$ `echo "foo :-)" >> abcd`
+| **11** :$
+
+```console
+echo "foo :-)" >> abcd
+```
 
 *gedit: Reload*
 
-| **12** :$ `sed -i "s/foo/bar/" abcd`
+| **12** :$
+
+```console
+sed -i "s/foo/bar/" abcd
+```
 
 *gedit: Reload*
 
-| **13** :$ `sed -i "s/bar//" abcd`
+| **13** :$
+
+```console
+sed -i "s/bar//" abcd
+```
 
 *gedit: Reload*
 
-| **14** :$ `echo "add foo and then some" >> abcd`
+| **14** :$
+
+```console
+echo "add foo and then some" >> abcd
+```
 
 *gedit: Reload*
 
-| **15** :$ `sed -i "s/foo/bar/" abcd`
+| **15** :$
+
+```console
+sed -i "s/foo/bar/" abcd
+```
 
 *gedit: Reload*
 
 *Note the line number of "add bar and then some"*
 
-| **16** :$ `sed -i "/bar/d" abcd`
+| **16** :$
+
+```console
+sed -i "/bar/d" abcd
+```
 
 *gedit: Reload*
 
 *Note the line with "bar" is gone*
 
-| **17** :$ `echo "Replace this Apple delBar line." >> abcd`
+| **17** :$
+
+```console
+echo "Replace this Apple delBar line." >> abcd
+```
 
 *gedit: Reload*
 
-| **18** :$ `sed -i "/Replace.*/ c\The line with Mr. Apple delBar has been replaced" abcd`
+| **18** :$
+
+```console
+sed -i "/Replace.*/ c\The line with Mr. Apple delBar has been replaced" abcd
+```
 
 *gedit: Reload*
 

@@ -7,97 +7,225 @@ Ready the CLI
 
 ___
 
-| **1** :$ `mkdir comdump`
+| **1** :$
 
-| **2** :$ `cd comdump`
+```console
+mkdir comdump
+```
 
-| **3** :$ `ls`
+| **2** :$
+
+```console
+cd comdump
+```
+
+| **3** :$
+
+```console
+ls
+```
 
 *Remember this...*
 
-| **4** :$ `top -n 1 -b`
+| **4** :$
+
+```console
+top -n 1 -b
+```
 
 *Put it in a file...*
 
-| **5** :$ `top -n 1 -b > top.file`
+| **5** :$
 
-| **6** :$ `ls`
+```console
+top -n 1 -b > top.file
+```
 
-| **7** :$ `gedit top.file`
+| **6** :$
 
-| **8** :$ `top -n 1 -b > top.file`
+```console
+ls
+```
+
+| **7** :$
+
+```console
+gedit top.file
+```
+
+| **8** :$
+
+```console
+top -n 1 -b > top.file
+```
 
 *gedit: Reload top.file*
 
 *Note the file contents changed*
 
-| **9** :$ `ps aux`
+| **9** :$
 
-| **10** :$ `ps aux > psaux.file`
+```console
+ps aux
+```
 
-| **11** :$ `ls`
+| **10** :$
 
-| **12** :$ `gedit psaux.file`
+```console
+ps aux > psaux.file
+```
+
+| **11** :$
+
+```console
+ls
+```
+
+| **12** :$
+
+```console
+gedit psaux.file
+```
 
 *Some other useful commands...*
 
-| **13** :$ `pwd`
+| **13** :$
+
+```console
+pwd
+```
 
 *Whoah, that's where you are!*
 
-| **14** :$ `pwd > pwd.file`
+| **14** :$
 
-| **15** :$ `gedit pwd.file`
+```console
+pwd > pwd.file
+```
 
-| **16** :$ `uname`
+| **15** :$
+
+```console
+gedit pwd.file
+```
+
+| **16** :$
+
+```console
+uname
+```
 
 *eXcellent operationg system, I might add*
 
-| **17** :$ `uname > uname.file`
+| **17** :$
 
-| **18** :$ `who`
+```console
+uname > uname.file
+```
+
+| **18** :$
+
+```console
+who
+```
 
 *That's you*
 
-| **19** :$ `who > who.file`
+| **19** :$
 
-| **20** :$ `w`
+```console
+who > who.file
+```
+
+| **20** :$
+
+```console
+w
+```
 
 *That's you with a lot more info*
 
-| **21** :$ `w > w.file`
+| **21** :$
 
-| **22** :$ `ls`
+```console
+w > w.file
+```
 
-| **23** :$ `ls > ls.file`
+| **22** :$
 
-| **24** :$ `ls`
+```console
+ls
+```
 
-| **25** :$ `gedit ls.file`
+| **23** :$
+
+```console
+ls > ls.file
+```
+
+| **24** :$
+
+```console
+ls
+```
+
+| **25** :$
+
+```console
+gedit ls.file
+```
 
 *You can even output `ls` into a file!*
 
-| **26** :$ `ls ..`
+| **26** :$
+
+```console
+ls ..
+```
 
 *Now output that other directory's contents into a file*
 
-| **27** :$ `ls .. > ls.file`
+| **27** :$
+
+```console
+ls .. > ls.file
+```
 
 *gedit: Reload ls.file*
 
 *...or into another directory*
 
-| **28** :$ `mkdir -p outputs`
+| **28** :$
 
-| **29** :$ `ls outputs`
+```console
+mkdir -p outputs
+```
 
-| **30** :$ `ls .. > outputs/ls.file`
+| **29** :$
 
-| **31** :$ `ls outputs`
+```console
+ls outputs
+```
+
+| **30** :$
+
+```console
+ls .. > outputs/ls.file
+```
+
+| **31** :$
+
+```console
+ls outputs
+```
 
 *That's in the directory you just made*
 
-| **32** :$ `gedit outputs/ls.file`
+| **32** :$
+
+```console
+gedit outputs/ls.file
+```
 
 ___
 

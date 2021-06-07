@@ -9,7 +9,11 @@ ___
 
 ### I. Carriage Returns: DOS v Unix
 
-| **1** :$ `vim text-doc.txt`
+| **1** :$
+
+```console
+vim text-doc.txt
+```
 
 | **vim** :] `:e ++ff=unix`
 
@@ -17,9 +21,17 @@ ___
 
 | **vim** :] `:q`
 
-| **2** :$ `unix2dos text-doc.txt`
+| **2** :$
 
-| **3** :$ `vim text-doc.txt`
+```console
+unix2dos text-doc.txt
+```
+
+| **3** :$
+
+```console
+vim text-doc.txt
+```
 
 | **vim** :] `:e ++ff=unix`
 
@@ -27,9 +39,17 @@ ___
 
 | **vim** :] `:q!`
 
-| **4** :$ `dos2unix text-doc.txt`
+| **4** :$
 
-| **5** :$ `vim text-doc.txt`
+```console
+dos2unix text-doc.txt
+```
+
+| **5** :$
+
+```console
+vim text-doc.txt
+```
 
 | **vim** :] `:e ++ff=unix`
 
@@ -73,11 +93,19 @@ This is a second line."
 
 *Let's look at "401/"...*
 
-| **9** :$ `cd ~/School/VIP`
+| **9** :$
+
+```console
+cd ~/School/VIP
+```
 
 *Consider the `ls` command:*
 
-| **10** :$ `ls -l 401`
+| **10** :$
+
+```console
+ls -l 401
+```
 
 *Enter the same thing, but on multiple lines:*
 
@@ -129,13 +157,29 @@ l \
 
 ### III. Shell History
 
-| **15** :$ `history`
+| **15** :$
 
-| **16** :$ `cd ~/`
+```console
+history
+```
 
-| **17** :$ `ls .*history`
+| **16** :$
 
-| **18** :$ `vim .bash_history` *(or whatever the file name is)*
+```console
+cd ~/
+```
+
+| **17** :$
+
+```console
+ls .*history
+```
+
+| **18** :$ *(or whatever the file name is)*
+
+```console
+vim .bash_history
+```
 
 | **vim** :] `:set number`
 
@@ -143,13 +187,21 @@ l \
 
 | **vim** :] `:q!`
 
-| **19** :$ `echo $HISTSIZE`
+| **19** :$
+
+```console
+echo $HISTSIZE
+```
 
 *History is preserved for the number of lines set in the `$HISTSIZE` environment variable*
 
 *Again...*
 
-| **20** :$ `vim .bash_history` *(or whatever the file name is)*
+| **20** :$ *(or whatever the file name is)*
+
+```console
+vim .bash_history
+```
 
 | **vim** :] `:set number`
 
@@ -159,15 +211,27 @@ l \
 
 | **vim** :] `:q!`
 
-| **21** :$ `!-2`
+| **21** :$
+
+```console
+!-2
+```
 
 *Note `!-2` calles the 2nd to last command, as for all `!-Nth` usage*
 
-| **22** :$ `!echo`
+| **22** :$
+
+```console
+!echo
+```
 
 *Note `!echo` calls the first BASH command that began with "echo", as for all `!TEST` usage*
 
-| **23** :$ `cd ~/School/VIP/401`
+| **23** :$
+
+```console
+cd ~/School/VIP/401
+```
 
 ### IV. "Reverse Search"
 
@@ -179,7 +243,11 @@ l \
 
 *Press Down to get back to the normal prompt*
 
-| **24** :$ `echo Hello world`
+| **24** :$
+
+```console
+echo Hello world
+```
 
 *Go again*
 

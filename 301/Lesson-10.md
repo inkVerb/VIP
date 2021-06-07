@@ -21,73 +21,169 @@ Some things can only be done in BASH
 
 ### I. `${#Variable}`
 
-| **1** :$ `gedit 10-count`
+| **1** :$
 
-| **2** :$ `./10-count five`
+```console
+gedit 10-count
+```
 
-| **3** :$ `./10-count six`
+| **2** :$
+
+```console
+./10-count five
+```
+
+| **3** :$
+
+```console
+./10-count six
+```
 
 ### II. `${!Variable}` Variables
 
-| **4** :$ `gedit 10-varvar`
+| **4** :$
 
-| **5** :$ `./10-varvar abcyoume`
+```console
+gedit 10-varvar
+```
+
+| **5** :$
+
+```console
+./10-varvar abcyoume
+```
 
 *Take a good look and try to see how that makes sense; it can be VERY useful!*
 
 ### III. Arrays
 
-| **6** :$ `gedit 10-array`
+| **6** :$
 
-| **7** :$ `./10-array`
+```console
+gedit 10-array
+```
+
+| **7** :$
+
+```console
+./10-array
+```
 
 *Note @ means all elements (BASH thinks of them as separate values)*
 
 *Note * does the same thing as @ (BASH thinks it is one, long value)*
 
-| **8** :$ `gedit 10-array-index-id`
+| **8** :$
 
-| **9** :$ `./10-array-index-id 1`
+```console
+gedit 10-array-index-id
+```
 
-| **10** :$ `./10-array-index-id 0`
+| **9** :$
+
+```console
+./10-array-index-id 1
+```
+
+| **10** :$
+
+```console
+./10-array-index-id 0
+```
 
 *Note the first element's index key ID is 0*
 
-| **11** :$ `gedit 10-array-associative`
+| **11** :$
+
+```console
+gedit 10-array-associative
+```
 
 *Note `declare -A ARRAYNAME` precedes*
 
-| **12** :$ `./10-array-associative i`
+| **12** :$
 
-| **13** :$ `./10-array-associative ii`
+```console
+./10-array-associative i
+```
 
-| **14** :$ `./10-array-associative iii`
+| **13** :$
 
-| **15** :$ `./10-array-associative iv`
+```console
+./10-array-associative ii
+```
 
-| **16** :$ `./10-array-associative v`
+| **14** :$
+
+```console
+./10-array-associative iii
+```
+
+| **15** :$
+
+```console
+./10-array-associative iv
+```
+
+| **16** :$
+
+```console
+./10-array-associative v
+```
 
 *Note:*
   - *There are two ways to define the elements of the associative array*
   - *Array keys are case-sensitive*
 
-| **17** :$ `./10-array-associative i III`
+| **17** :$
 
-| **18** :$ `./10-array-associative i II`
+```console
+./10-array-associative i III
+```
 
-| **19** :$ `./10-array-associative i I`
+| **18** :$
 
-| **20** :$ `./10-array-associative iv IV`
+```console
+./10-array-associative i II
+```
 
-| **21** :$ `./10-array-associative iii V`
+| **19** :$
 
-| **22** :$ `gedit 10-array-associative-declare`
+```console
+./10-array-associative i I
+```
 
-| **23** :$ `./10-array-associative-declare`
+| **20** :$
+
+```console
+./10-array-associative iv IV
+```
+
+| **21** :$
+
+```console
+./10-array-associative iii V
+```
+
+| **22** :$
+
+```console
+gedit 10-array-associative-declare
+```
+
+| **23** :$
+
+```console
+./10-array-associative-declare
+```
 
 *Tip: Uncomment the `#declare` lines (5 & 13) to `declare` and see that it works...*
 
-| **24** :$ `./10-array-associative-declare`
+| **24** :$
+
+```console
+./10-array-associative-declare
+```
 
 ___
 # Rules of BASH Arrays
@@ -115,39 +211,79 @@ NOT BOTH
 
 ___
 
-| **25** :$ `gedit 10-array-keys`
+| **25** :$
 
-| **26** :$ `./10-array-keys`
+```console
+gedit 10-array-keys
+```
+
+| **26** :$
+
+```console
+./10-array-keys
+```
 
 *Note that associative arrays don't necessarily keep a predictable order*
 
-| **27** :$ `gedit 10-array-strings`
+| **27** :$
 
-| **28** :$ `./10-array-strings`
+```console
+gedit 10-array-strings
+```
+
+| **28** :$
+
+```console
+./10-array-strings
+```
 
 *Note quoted strings are allowed as elements*
 
-| **29** :$ `gedit 10-array-associative-strings`
+| **29** :$
 
-| **30** :$ `./10-array-associative-strings`
+```console
+gedit 10-array-associative-strings
+```
+
+| **30** :$
+
+```console
+./10-array-associative-strings
+```
 
 *Note associative arrays can have quoted strings as elements too*
 
 ### Array as list in `for` loop
 
-| **31** :$ `gedit 10-array-for`
+| **31** :$
+
+```console
+gedit 10-array-for
+```
 
 *Note `${myArray[*]}` means "all values"*
 
-| **32** :$ `./10-array-for`
+| **32** :$
+
+```console
+./10-array-for
+```
 
 *Let's use an associative array to further illustrate*
 
-| **33** :$ `gedit 10-array-for-associative`
+| **33** :$
+
+```console
+gedit 10-array-for-associative
+```
 
 *Note `${myArray[@]}` also means "all values"*
 
-| **34** :$ `./10-array-for-associative`
+| **34** :$
+
+```console
+./10-array-for-associative
+```
 
 ___
 

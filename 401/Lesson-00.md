@@ -20,33 +20,73 @@ ___
 > ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** :$ `su Username`
+> | **S1** :$
+
+```console
+su Username
+```
 >
 > Install the tools:
 >
-> | **M1** :$ `sudo apt update`
+> | **M1** :$
+
+```console
+sudo apt update
+```
 >
-> | **M2** :$ `sudo apt install -y git dos2unix pwgen`
+> | **M2** :$
+
+```console
+sudo apt install -y git dos2unix pwgen
+```
 >
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** :$ `exit`
+> | **S2** :$
+
+```console
+exit
+```
 > ___
 >
-> | **0** :$ `mkdir -p ~/School/VIP` *If you did Shell 201, but on a different machine*
+> | **0** :$ *If you did Shell 201, but on a different machine*
+
+```console
+mkdir -p ~/School/VIP
+```
 >
 
 ### II. `git clone` our scripts for this lesson
 
-| **1** :$ `cd ~/School/VIP`
+| **1** :$
 
-| **2** :$ `git clone https://github.com/inkVerb/401`
+```console
+cd ~/School/VIP
+```
 
-| **3** :$ `ls`
+| **2** :$
 
-| **4** :$ `cd 401`
+```console
+git clone https://github.com/inkVerb/401
+```
 
-| **5** :$ `ls`
+| **3** :$
+
+```console
+ls
+```
+
+| **4** :$
+
+```console
+cd 401
+```
+
+| **5** :$
+
+```console
+ls
+```
 ___
 
 # The Take

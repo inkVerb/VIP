@@ -14,129 +14,305 @@ ___
 
 *Note, we aren't in our usual place; we are here: `~/School/VIP/301/one`*
 
-| **1** :$ `ln -sfn ~/School/VIP/301/04-* .` *Make sure you include that period at the end!*
+| **1** :$ *Make sure you include that period at the end!*
+
+```console
+ln -sfn ~/School/VIP/301/04-* .
+```
 
 ### I. Replacing within Variables
 
 *Note `${var%foo}bar` will delete "foo", then append "bar" (like find-replace), if "foo" appears in the variable*
 
-| **2** :$ `gedit 04-var-form-1`
+| **2** :$
 
-| **3** :$ `./04-var-form-1 GOOfood`
+```console
+gedit 04-var-form-1
+```
 
-| **4** :$ `gedit 04-var-form-2`
+| **3** :$
 
-| **5** :$ `./04-var-form-2 GOOfood`
+```console
+./04-var-form-1 GOOfood
+```
 
-| **6** :$ `gedit 04-var-form-3`
+| **4** :$
 
-| **7** :$ `./04-var-form-3 GOOfood`
+```console
+gedit 04-var-form-2
+```
+
+| **5** :$
+
+```console
+./04-var-form-2 GOOfood
+```
+
+| **6** :$
+
+```console
+gedit 04-var-form-3
+```
+
+| **7** :$
+
+```console
+./04-var-form-3 GOOfood
+```
 
 *`$Variable` is the same as `${Variable}`, but `${Variable}` can do more...*
 
-| **8** :$ `gedit 04-var-form-4`
+| **8** :$
 
-| **9** :$ `./04-var-form-4 GOOfood`
+```console
+gedit 04-var-form-4
+```
 
-| **10** :$ `./04-var-form-4 foodGOO`
+| **9** :$
+
+```console
+./04-var-form-4 GOOfood
+```
+
+| **10** :$
+
+```console
+./04-var-form-4 foodGOO
+```
 
 *Note `%` only removes from the end of a value*
 
-| **11** :$ `gedit 04-var-form-5`
+| **11** :$
 
-| **12** :$ `./04-var-form-5 GOOfood`
+```console
+gedit 04-var-form-5
+```
+
+| **12** :$
+
+```console
+./04-var-form-5 GOOfood
+```
 
 *.one %one
 
-| **13** :$ `gedit 04-echo-rename-1`
+| **13** :$
 
-| **14** :$ `ls *.one`
+```console
+gedit 04-echo-rename-1
+```
 
-| **15** :$ `./04-echo-rename-1`
+| **14** :$
+
+```console
+ls *.one
+```
+
+| **15** :$
+
+```console
+./04-echo-rename-1
+```
 
 *t.one %t.one
 
-| **16** :$ `gedit 04-echo-rename-2`
+| **16** :$
 
-| **17** :$ `ls *t.one`
+```console
+gedit 04-echo-rename-2
+```
 
-| **18** :$ `./04-echo-rename-2`
+| **17** :$
+
+```console
+ls *t.one
+```
+
+| **18** :$
+
+```console
+./04-echo-rename-2
+```
 
 ### II. Renaming Multiple Files at Once
 
-| **19** :$ `ls`
+| **19** :$
+
+```console
+ls
+```
 
 *t.one --> *T-ONE
 
-| **20** :$ `gedit 04-do-mv-1`
+| **20** :$
 
-| **21** :$ `ls *t.one`
+```console
+gedit 04-do-mv-1
+```
 
-| **22** :$ `./04-do-mv-1`
+| **21** :$
 
-| **23** :$ `ls`
+```console
+ls *t.one
+```
+
+| **22** :$
+
+```console
+./04-do-mv-1
+```
+
+| **23** :$
+
+```console
+ls
+```
 
 *T-ONE --> *t.one
 
-| **24** :$ `gedit 04-do-mv-2`
+| **24** :$
 
-| **25** :$ `ls *T-ONE`
+```console
+gedit 04-do-mv-2
+```
 
-| **26** :$ `./04-do-mv-2`
+| **25** :$
 
-| **27** :$ `ls`
+```console
+ls *T-ONE
+```
+
+| **26** :$
+
+```console
+./04-do-mv-2
+```
+
+| **27** :$
+
+```console
+ls
+```
 
 *t.one --> *t.THREE
 
-| **28** :$ `gedit 04-do-mv-3`
+| **28** :$
 
-| **29** :$ `ls *t.one`
+```console
+gedit 04-do-mv-3
+```
 
-| **30** :$ `./04-do-mv-3`
+| **29** :$
 
-| **31** :$ `ls`
+```console
+ls *t.one
+```
+
+| **30** :$
+
+```console
+./04-do-mv-3
+```
+
+| **31** :$
+
+```console
+ls
+```
 
 *Make a backup of today's work*
 
-| **32** :$ `mkdir -p 04-FOR`
+| **32** :$
 
-| **33** :$ `cp *THREE* 04-FOR/`
+```console
+mkdir -p 04-FOR
+```
+
+| **33** :$
+
+```console
+cp *THREE* 04-FOR/
+```
 
 *Delete*
 
-| **34** :$ `gedit 04-do-rm`
+| **34** :$
 
-| **35** :$ `./04-do-rm`
+```console
+gedit 04-do-rm
+```
+
+| **35** :$
+
+```console
+./04-do-rm
+```
 
 *Don't mind the directory error because we want to keep that directory anyway*
 
-| **36** :$ `ls`
+| **36** :$
+
+```console
+ls
+```
 
 ### III. Applied: `odt2txt`
 
 *Now, use `odt2txt` in a `for` `...` `do` loop*
 
-| **37** :$ `rm *.txt` *(Start with a clean slate, just to be sure)*
+| **37** :$ *(Start with a clean slate, just to be sure)*
 
-| **38** :$ `ls *.odt && ls *.txt`
+```console
+rm *.txt
+```
+
+| **38** :$
+
+```console
+ls *.odt && ls *.txt
+```
 
 *Note there are only .odt files*
 
-| **39** :$ `gedit 04-do-odt2txt`
+| **39** :$
 
-| **40** :$ `./04-do-odt2txt`
+```console
+gedit 04-do-odt2txt
+```
 
-| **41** :$ `ls *.odt && ls *.txt`
+| **40** :$
+
+```console
+./04-do-odt2txt
+```
+
+| **41** :$
+
+```console
+ls *.odt && ls *.txt
+```
 
 *Note the new .txt files, have a look inside...*
 
-| **42** :$ `gedit *.txt`
+| **42** :$
+
+```console
+gedit *.txt
+```
 
 *Backup today's work*
 
-| **43** :$ `mv *.txt 04-FOR/`
+| **43** :$
 
-| **44** :$ `ls *.txt`
+```console
+mv *.txt 04-FOR/
+```
+
+| **44** :$
+
+```console
+ls *.txt
+```
 
 *...See all gone*
 

@@ -11,13 +11,21 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
-| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ *(password in the terminal, not safe outside these lessons!)*
+
+```console
+mysql -u admin -padminpassword
+```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
-| **S1** :> `USE webapp_db;`
+| **S1** :>
+
+```console
+USE webapp_db;
+```
 
 | **S1** ://phpMyAdmin **> webapp_db**
 
@@ -53,7 +61,11 @@ ls web
     1. *Process the `if` tests to redirect via `header("Location: to_page.php")`*
     2. *Then create the `<head>` tag*
 
-| **B-1** :// `localhost/web/edit.php` (It may redirect to webapp.php)
+| **B-1** :// (It may redirect to webapp.php)
+
+```console
+localhost/web/edit.php
+```
 
 *Note it redirected if you are not logged in; Login:*
 
@@ -64,9 +76,13 @@ Password: My#1Password
 
 *Once logged in, enter the address directly because we didn't add a link to click...*
 
-| **B-2** :// `localhost/web/edit.php` (It will load because you are logged in)
+| **B-2** :// (It will load because you are logged in)
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/edit.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note the title of the web browser is "Editor" because we set the `<title>` tag*
 
@@ -112,9 +128,13 @@ atom core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions2.ph
 ls web
 ```
 
-| **B-3** :// `localhost/web/edit.php` *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-3** :// *(<kbd>Ctrl</kbd> + R to reload)*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/edit.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note our JavaScript in:*
 
@@ -131,9 +151,17 @@ ls web
 2. Click "Save"
 3. Note the green message: Saved!
 
-| **B-4** :// `localhost/web/edit.php` (Save)
+| **B-4** :// (Save)
 
-| **4** :> `SELECT * FROM pieces;`
+```console
+localhost/web/edit.php
+```
+
+| **4** :>
+
+```console
+SELECT * FROM pieces;
+```
 
 | **4** ://phpMyAdmin **> pieces**
 
@@ -144,9 +172,17 @@ ls web
 3. Note the green message: Saved!
 4. Note the changes in the database...
 
-| **B-5** :// `localhost/web/edit.php` (Save)
+| **B-5** :// (Save)
 
-| **5** :> `SELECT * FROM pieces;`
+```console
+localhost/web/edit.php
+```
+
+| **5** :>
+
+```console
+SELECT * FROM pieces;
+```
 
 | **5** ://phpMyAdmin **> pieces**
 
@@ -162,9 +198,17 @@ ls web
 3. Note the green message: Saved!
 4. Note the changes in the database...
 
-| **B-6** :// `localhost/web/edit.php` (Save)
+| **B-6** :// (Save)
 
-| **6** :> `SELECT * FROM pieces;`
+```console
+localhost/web/edit.php
+```
+
+| **6** :>
+
+```console
+SELECT * FROM pieces;
+```
 
 | **6** ://phpMyAdmin **> pieces**
 
@@ -198,11 +242,15 @@ atom core/08-edit3.php core/08-in.editprocess3.php && \
 ls web
 ```
 
-| **B-7** :// `localhost/web/edit.php` *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-7** :// *(<kbd>Ctrl</kbd> + R to reload)*
+
+```console
+localhost/web/edit.php
+```
 
 *Note the Slug was updated because this is technically a new piece*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note:*
 
@@ -226,9 +274,17 @@ ls web
 4. Note the various and sundry save messages
 5. Note the changes in the database...
 
-| **B-8** :// `localhost/web/edit.php` (Save)
+| **B-8** :// (Save)
 
-| **8** :> `SELECT * FROM pieces;`
+```console
+localhost/web/edit.php
+```
+
+| **8** :>
+
+```console
+SELECT * FROM pieces;
+```
 
 | **8** ://phpMyAdmin **> pieces**
 
@@ -250,9 +306,13 @@ atom core/08-edit4.php core/08-in.editprocess4.php && \
 ls web
 ```
 
-| **B-9** :// `localhost/web/edit.php?=...` *('Enter' in the browser address bar to properly load)*
+| **B-9** :// *('Enter' in the browser address bar to properly load)*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/edit.php?=...
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note:*
 
@@ -307,13 +367,25 @@ CREATE TABLE IF NOT EXISTS `publication_history` (
 3. Note the various and sundry save messages
 4. Note the changes in the database...
 
-| **B-10** :// `localhost/web/edit.php` (Save draft / Publish / Update)
+| **B-10** :// (Save draft / Publish / Update)
 
-| **10a** :> `SELECT * FROM pieces;`
+```console
+localhost/web/edit.php
+```
+
+| **10a** :>
+
+```console
+SELECT * FROM pieces;
+```
 
 | **10a** ://phpMyAdmin **> pieces**
 
-| **10b** :> `SELECT * FROM publications;`
+| **10b** :>
+
+```console
+SELECT * FROM publications;
+```
 
 | **10b** ://phpMyAdmin **> publications**
 
@@ -381,15 +453,23 @@ ls web
 - *style.css*
   - *Added a `.piece-content` class for piece content*
 
-| **B-12** :// `localhost/web/blog.php`
+| **B-12** ://
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/blog.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note how each piece entry is iterated from the loop*
 
 ### HTML Styling
 
-| **B-13** :// `localhost/web/edit.php`
+| **B-13** ://
+
+```console
+localhost/web/edit.php
+```
 
 1. Add the following code (with HTML markup):
 
@@ -403,9 +483,17 @@ ls web
 2. Click "Update" or "Publish"
 3. See the changes on the blog and in the database...
 
-| **B-14** :// `localhost/web/blog.php`
+| **B-14** ://
 
-| **14** :> `SELECT * FROM pieces;`
+```console
+localhost/web/blog.php
+```
+
+| **14** :>
+
+```console
+SELECT * FROM pieces;
+```
 
 | **14** ://phpMyAdmin **> pieces**
 
@@ -437,11 +525,15 @@ atom core/08-tiny-cdn.html && \
 ls web
 ```
 
-| **B-15** :// `localhost/web/tiny.html`
+| **B-15** ://
+
+```console
+localhost/web/tiny.html
+```
 
 *Note the message about domains that you should close*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *This form won't do anything, just give it a good look and try*
 
@@ -488,11 +580,15 @@ src='tinymce/tinymce.min.js'
 https://github.com/tinymce/tinymce-dist
 ```
 
-| **B-16** :// `localhost/web/tiny.html` *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-16** :// *(<kbd>Ctrl</kbd> + R to reload)*
+
+```console
+localhost/web/tiny.html
+```
 
 *Note there is no message about domains*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ##### Customize TinyMCE
 
@@ -517,7 +613,11 @@ ls web
 *- `content_css`: should be our style.css file so "Preview" uses our styling*
 
 
-| **B-17** :// `localhost/web/tiny.html` *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-17** :// *(<kbd>Ctrl</kbd> + R to reload)*
+
+```console
+localhost/web/tiny.html
+```
 
 
 ##### TinyMCE in Our 501 Blog
@@ -542,16 +642,28 @@ ls web
 - *in.piecefunctions.php*
   - *Adds `class="tinymce_editor"` to `<textarea id="p_content"`*
 
-| **B-18** :// `localhost/web/edit.php` *(Same as previously, empty form)*
+| **B-18** :// *(Same as previously, empty form)*
+
+```console
+localhost/web/edit.php
+```
 
 1. Type new content
 2. Apply or note some HTML styling with the WYSYWIG buttons
 3. Click "Update" or "Publish"
 4. See the changes on the blog and in the database...
 
-| **B-18** :// `localhost/web/blog.php`
+| **B-18** ://
 
-| **18** :> `SELECT * FROM pieces;`
+```console
+localhost/web/blog.php
+```
+
+| **18** :>
+
+```console
+SELECT * FROM pieces;
+```
 
 | **18** ://phpMyAdmin **> pieces**
 
@@ -573,12 +685,16 @@ atom core/08-medium-cdn.html && \
 ls web
 ```
 
-| **B-19** :// `localhost/web/medium.html`
+| **B-19** ://
+
+```console
+localhost/web/medium.html
+```
 
 1. Type something, it is a very blank text editor
 2. Highlight some text to see styling options
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *This form won't do anything, just give it a good look and try*
 
@@ -628,9 +744,13 @@ src="medium/js/medium-editor.js"
 https://github.com/inkverb/medium-editor
 ```
 
-| **B-20** :// `localhost/web/medium.html` *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-20** :// *(<kbd>Ctrl</kbd> + R to reload)*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/medium.html
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ##### Medium Editor Plugin Example: Tables
 - [GitHub repo](https://github.com/yabwe/medium-editor-tables)
@@ -651,7 +771,11 @@ atom core/08-medium-tables.html && \
 ls web web/uploads
 ```
 
-| **B-21** :// `localhost/web/medium.html` *(Same)*
+| **B-21** :// *(Same)*
+
+```console
+localhost/web/medium.html
+```
 
 *Notice the "Table" button in the editor*
 
@@ -675,7 +799,11 @@ ls web
   - *This puts the JavaScript* ***after*** *our "Content" `<textarea>` HTML element*
   - *This implements the* ***class*** *`medium_editor` for the Medium editor JavaScript to act on*
 
-| **B-22** :// `localhost/web/edit.php` *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-22** :// *(<kbd>Ctrl</kbd> + R to reload)*
+
+```console
+localhost/web/edit.php
+```
 
 **Notice the text in the "Content" field has no border**
 
@@ -691,9 +819,17 @@ ___
 > 2. Click "Update" or "Publish"
 > 3. See the changes on the blog and in the database...
 >
-> | **B-M1** :// `localhost/web/blog.php`
+> | **B-M1** ://
+
+```console
+localhost/web/blog.php
+```
 >
-> | **M1** :> `SELECT * FROM pieces;`
+> | **M1** :>
+
+```console
+SELECT * FROM pieces;
+```
 >
 > | **M1** ://phpMyAdmin **> pieces**
 >

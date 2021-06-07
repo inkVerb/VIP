@@ -34,26 +34,46 @@ iii. File sizes (very generic approximation)
 
 *Go to your home directory*
 
-| **1** :$ `cd ~/`
+| **1** :$
+
+```console
+cd ~/
+```
 
 - **`du`: "Disk Usage"**
 - **`df`: "Disk Filesystem"**
 - **"h": "Human"**
 - **"s": "Summarize"**
 
-| **2** :$ `du -sh *`
+| **2** :$
+
+```console
+du -sh *
+```
 
 *Note the list of each directory's size*
 
-| **3** :$ `df -k`
+| **3** :$
+
+```console
+df -k
+```
 
 *Note it listed everything in kilobytes*
 
-| **4** :$ `df -h`
+| **4** :$
+
+```console
+df -h
+```
 
 *Note it listed everything in megabytes and gigabytes, etc*
 
-| **5** :$ `du -sh School`
+| **5** :$
+
+```console
+du -sh School
+```
 
 *Note it can tell you the size of just one directory*
 
@@ -61,78 +81,172 @@ iii. File sizes (very generic approximation)
 
 *Now go back to where our 201 directory*
 
-| **6** :$ `cd ~/School/VIP/201`
+| **6** :$
 
-| **7** :$ `top`
+```console
+cd ~/School/VIP/201
+```
+
+| **7** :$
+
+```console
+top
+```
 
 *Notice the realtime process list*
 
 Q (or <kbd>Ctrl</kbd> + <kbd>C</kbd>) *This will CLOSE the top program*
 
-| **8** :$ `top -n 1`
+| **8** :$
+
+```console
+top -n 1
+```
 
 *Notice the `top` list is not realtime:*
 
 - *`-n 1` shows only one "iteration"*
 - *`-n 3` shows only three "iterations"*
 
-| **9** :$ `top -n 1 -b`
+| **9** :$
+
+```console
+top -n 1 -b
+```
 
 *Notice `-b` shows everything all the way to the Bottom (not limited by the size of the terminal window, only limited by the `-n 1` iteration option)*
 
 *It might be useful to put it in a file...*
 
-| **10** :$ `top -n 1 -b > top.file`
+| **10** :$
 
-| **11** :$ `gedit top.file`
+```console
+top -n 1 -b > top.file
+```
+
+| **11** :$
+
+```console
+gedit top.file
+```
 
 *FYI, this is a little program we installed in Lesson 3, a little more colorful than `top`...*
 
-| **12** :$ `htop`
+| **12** :$
+
+```console
+htop
+```
 
 F10 (or Q to Quit)
 
 *For a quick peek:*
 
-| **13** :$ `uptime`
+| **13** :$
+
+```console
+uptime
+```
 
 ### IV. `ps aux`
 
-| **14** :$ `ps aux`
+| **14** :$
+
+```console
+ps aux
+```
 
 *Note the list of every running process, but it is not realtime, so you can scroll through it*
 
-Make sure you are NOT using Firefox before finishing this lesson!
+Make sure you are NOT using the browser in this command before finishing this lesson!
 
-| **15** :$ `firefox &`
+| **15-C** :$
+
+```console
+firefox &
+```
+
+| **15-F** :$ (if using Firefox)
+
+```console
+chromium-browser &
+```
 
 *Note we used `&` to keep it from blocking the terminal*
 
-| **16** :$ `ps aux`
+| **16** :$
+
+```console
+ps aux
+```
 
 *Scroll to look for that browser's process ID (PID)*
 
 *This uses pipe and grep to find it*
 
-| **17** :$ `ps aux | grep firefox`
+| **17-C** :$
+
+```console
+ps aux | grep firefox
+```
+
+| **17-F** :$ (if using Firefox)
+
+```console
+ps aux | grep chromium-browser
+```
 
 *This does the same thing*
 
 ### V. `pgrep` & `kill`
 
-| **18** :$ `pgrep firefox`
+| **18-C** :$
+
+```console
+pgrep firefox
+```
+
+| **18-F** :$ (if using Firefox)
+
+```console
+pgrep chromium-browser
+```
 
 *Note the PID, it's the number*
 
-| **19** :$ `kill PID` e.g. `kill 71771`
+| **19** :$ e.g. `kill 71771`
+
+```console
+kill PID
+```
 
 *Run it again*
 
-| **20** :$ `firefox &`
+| **20-C** :$
+
+```console
+firefox &
+```
+
+| **20-F** :$ (if using Firefox)
+
+```console
+chromium-browser &
+```
 
 *Now kill it by process name using `killall`*
 
-| **21** :$ `killall firefox`
+| **21-C** :$ 
+
+```console
+killall firefox
+```
+
+| **21-F** :$ (if using Firefox)
+
+```console
+killall chromium-browser
+```
 
 *Some processes can only be killed by PID*
 

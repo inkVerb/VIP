@@ -24,43 +24,87 @@ ___
 
 #### First, playtime with `exit` codes & `$?`
 
-| **1** :$ `ls`
+| **1** :$
+
+```console
+ls
+```
 
 *It worked, so the `exit` code should be `0`*
 
-| **2** :$ `echo $?`
+| **2** :$
+
+```console
+echo $?
+```
 
 *List a non-existent directory*
 
-| **3** :$ `ls nothere`
+| **3** :$
+
+```console
+ls nothere
+```
 
 *That doesn't exist, so it would return a fail, usually `2`*
 
-| **4** :$ `echo $?`
+| **4** :$
+
+```console
+echo $?
+```
 
 *Try a command that doesn't exist*
 
-| **5** :$ `nocom`
+| **5** :$
+
+```console
+nocom
+```
 
 *Bigger fail, bigger number*
 
-| **6** :$ `echo $?`
+| **6** :$
+
+```console
+echo $?
+```
 
 *Good old-fashioned `true`/`false` as commands, again...*
 
-| **7** :$ `true`
+| **7** :$
 
-| **8** :$ `echo $?`
+```console
+true
+```
 
-| **9** :$ `false`
+| **8** :$
 
-| **10** :$ `echo $?`
+```console
+echo $?
+```
+
+| **9** :$
+
+```console
+false
+```
+
+| **10** :$
+
+```console
+echo $?
+```
 
 #### Watch `return` codes function in functions
 
 *Edit this script to see the short version*
 
-| **11** :$ `gedit functionreturns`
+| **11** :$
+
+```console
+gedit functionreturns
+```
 
 *It should look like this:*
 
@@ -120,7 +164,11 @@ echo "Return code: $?"
 
 *Run it and watch carefully*
 
-| **13** :$ `./functionreturns`
+| **13** :$
+
+```console
+./functionreturns
+```
 
 *Note:*
 1. *The `return` code takes arguments and is called via `$?`, just like `exit`*
@@ -130,7 +178,11 @@ echo "Return code: $?"
 
 *Edit this script to see the short version*
 
-| **14** :$ `gedit functionlocal`
+| **14** :$
+
+```console
+gedit functionlocal
+```
 
 *It should look like this:*
 
@@ -168,7 +220,11 @@ echo "script VarB = $VarB"
 
 *Run it and watch carefully*
 
-| **15** :$ `./functionlocal`
+| **15** :$
+
+```console
+./functionlocal
+```
 
 *Note that the function changed the value of VarB "globally", but VarA only "locally" inside the function*
 

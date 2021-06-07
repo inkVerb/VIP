@@ -7,7 +7,11 @@ Ready the CLI
 
 ___
 
-| **1** :$ `gedit abcsed abcsed.setting abcd`
+| **1** :$
+
+```console
+gedit abcsed abcsed.setting abcd
+```
 
 *Update abcsed to version 05:*
 
@@ -25,11 +29,19 @@ sed -i "s/$myFOO/$myBAR/g" $myFILE
 # v05
 ```
 
-| **2** :$ `./abcsed h z abcd`
+| **2** :$
+
+```console
+./abcsed h z abcd
+```
 
 *gedit: Reload abcd*
 
-| **3** :$ `./abcsed z j abcd`
+| **3** :$
+
+```console
+./abcsed z j abcd
+```
 
 *gedit: Reload abcd*
 
@@ -58,11 +70,19 @@ sed -i "s/$myFOO/$myBAR/g" $myFILE
 myFILE=abcd
 ```
 
-| **4** :$ `./abcsed i z`
+| **4** :$
+
+```console
+./abcsed i z
+```
 
 *gedit: Reload abcd*
 
-| **5** :$ `./abcsed z j`
+| **5** :$
+
+```console
+./abcsed z j
+```
 
 *gedit: Reload abcd*
 

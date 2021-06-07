@@ -98,7 +98,11 @@ ls web
 ```
 
 
-| **B-26** :// `localhost/web/settings.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-26** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/settings.php
+```
 
 
 ### Pages to Process Our New Meta

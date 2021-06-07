@@ -11,13 +11,21 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
-| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ *(password in the terminal, not safe outside these lessons!)*
+
+```console
+mysql -u admin -padminpassword
+```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
-| **S1** :> `USE webapp_db;`
+| **S1** :>
+
+```console
+USE webapp_db;
+```
 
 | **S1** ://phpMyAdmin **> webapp_db**
 
@@ -36,7 +44,11 @@ ls web
 
 *Note that we are including in.string_functions.php, give it a good look over*
 
-| **B-1** :// `localhost/web/recover.php`
+| **B-1** ://
+
+```console
+localhost/web/recover.php
+```
 
 *Refresh the page a few times to see new strings*
 
@@ -118,7 +130,11 @@ FLUSH PRIVILEGES;
 
 | **SB-2** ://phpMyAdmin **> strings**
 
-| **B-2** :// `localhost/web/recover.php` (It will require credentials)
+| **B-2** :// (It will require credentials)
+
+```console
+localhost/web/recover.php
+```
 
 ```
 Username: jonboy
@@ -127,7 +143,11 @@ Favorite Number: (same as before)
 
 *If you forgot your favorite number, get it here:*
 
-| **2-opt** :> `SELECT * FROM users;`
+| **2-opt** :>
+
+```console
+SELECT * FROM users;
+```
 
 **Follow along...**
 
@@ -137,18 +157,30 @@ Favorite Number: (same as before)
 2. *Click "Get your recover string link..."*
 3. *Look at the string in the table:*
 
-| **3** :> `SELECT * FROM strings;`
+| **3** :>
+
+```console
+SELECT * FROM strings;
+```
 
 4. *Click your login link in the browser*
 5. *Check to see that your key is "dead":*
 
-| **4** :> `SELECT * FROM strings;`
+| **4** :>
+
+```console
+SELECT * FROM strings;
+```
 
 ### Cleanup
 
 *Review our strings...*
 
-| **5** :> `SELECT * FROM strings;`
+| **5** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-5** ://phpMyAdmin **> strings**
 
@@ -159,18 +191,30 @@ Favorite Number: (same as before)
 2. Try the three SQL queries under **...Teaching tip...**
 3. Click the link to login, but note it should have expired
 4. Click around and explore
-  - Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C to see the developer view of pages
+  - Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> to see the developer view of pages
   - Compare the pages with the .php files
 
 *When finished, delete all expired strings...*
 
-| **6** :> `SELECT * FROM strings;`
+| **6** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-6** ://phpMyAdmin **> strings**
 
-| **7** :> `DELETE FROM strings WHERE date_expires < NOW();`
+| **7** :>
 
-| **8** :> `SELECT * FROM strings;`
+```console
+DELETE FROM strings WHERE date_expires < NOW();
+```
+
+| **8** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-8** ://phpMyAdmin **> strings**
 
@@ -192,7 +236,11 @@ ls web
 
 *Prep some keys, so we can delete them...*
 
-| **B-9** :// `localhost/web/recover.php` (It may require credentials)
+| **B-9** :// (It may require credentials)
+
+```console
+localhost/web/recover.php
+```
 
 ```
 Username: jonboy
@@ -201,7 +249,11 @@ Favorite Number: (same as before)
 
 *...Click "Get your recovery string link..." a few times to create some keys*
 
-| **9** :> `SELECT * FROM strings;`
+| **9** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-9** ://phpMyAdmin **> strings**
 
@@ -211,7 +263,11 @@ Favorite Number: (same as before)
 
 ***Do these next four steps WITHIN 20 SECONDS...***
 
-| **B-10** :// `localhost/web/recover.php` (Same, use 'Back' if repeating steps)
+| **B-10** :// (Same, use 'Back' if repeating steps)
+
+```console
+localhost/web/recover.php
+```
 
 *(If repeating steps, you may need to confirm, ie: 'Try Again' or 'Resend')*
 
@@ -219,17 +275,29 @@ Favorite Number: (same as before)
 
 *See our new keys...*
 
-| **10** :> `SELECT * FROM strings;`
+| **10** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-10** ://phpMyAdmin **> strings**
 
 *Run the cleanup...*
 
-| **B-11** :// `localhost/web/cleanup.php`
+| **B-11** ://
+
+```console
+localhost/web/cleanup.php
+```
 
 *Notice only old keys were deleted...*
 
-| **11** :> `SELECT * FROM strings;`
+| **11** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-11** ://phpMyAdmin **> strings**
 
@@ -243,7 +311,11 @@ We can use `cron` to run a php file
 
 *First, create some keys to delete, again...*
 
-| **B-12** :// `localhost/web/recover.php` (Use credentials or 'Back')
+| **B-12** :// (Use credentials or 'Back')
+
+```console
+localhost/web/recover.php
+```
 
 ```
 Username: jonboy
@@ -254,7 +326,11 @@ Favorite Number: (same as before)
 
 *See the keys...*
 
-| **12** :> `SELECT * FROM strings;`
+| **12** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-12** ://phpMyAdmin **> strings**
 
@@ -276,11 +352,19 @@ ls web
 
 *Run it from the terminal...*
 
-| **14** :$ `php /var/www/html/web/cleanup.php`
+| **14** :$
+
+```console
+php /var/www/html/web/cleanup.php
+```
 
 *See that the expired keys were deleted...*
 
-| **14** :> `SELECT * FROM strings;`
+| **14** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-14** ://phpMyAdmin **> strings**
 
@@ -288,19 +372,35 @@ ls web
 
 *Create a few more keys to delete after 20 seconds...*
 
-| **B-15** :// `localhost/web/recover.php` (Use credentials or 'Back')
+| **B-15** :// (Use credentials or 'Back')
+
+```console
+localhost/web/recover.php
+```
 
 *See the keys...*
 
-| **15** :> `SELECT * FROM strings;`
+| **15** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-15** ://phpMyAdmin **> strings**
 
 *Create the `cron` task file...*
 
-| **16** :$ `cd /etc/cron.d`
+| **16** :$
 
-| **17** :$ `ls`
+```console
+cd /etc/cron.d
+```
+
+| **17** :$
+
+```console
+ls
+```
 
 **Handle `cron` task files correctly...**
 
@@ -313,7 +413,11 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 *We will edit with `vim` from [Shell 201 Lesson 11](https://github.com/inkVerb/vip/blob/master/201/Lesson-11.md#vim-is-for-awesome-people)*
 
-| **18** :$ `sudo vim /etc/cron.d/webappcleanup`
+| **18** :$
+
+```console
+sudo vim /etc/cron.d/webappcleanup
+```
 
 | **vim-16a** :] `i`
 
@@ -329,7 +433,11 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 *Set file permissions for the `cron` task...*
 
-| **19** :$ `sudo chmod 644 /etc/cron.d/webappcleanup`
+| **19** :$
+
+```console
+sudo chmod 644 /etc/cron.d/webappcleanup
+```
 
 *Note:*
 
@@ -338,11 +446,19 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
 
 **Repeat 18 to watch `cron` delete expired keys:**
 
-| **B-20** :// `localhost/web/recover.php` (Same)
+| **B-20** :// (Same)
+
+```console
+localhost/web/recover.php
+```
 
 *...Click "Get your recovery string link..." a few times to create some keys*
 
-| **20** :> `SELECT * FROM strings;`
+| **20** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-20** ://phpMyAdmin **> strings**
 
@@ -372,7 +488,11 @@ We need to:
 - *We used our old cookie method to login*
 - *So, we should use our old cookie method to logout before making changes*
 
-| **B-21** :// `localhost/web/logout.php`
+| **B-21** ://
+
+```console
+localhost/web/logout.php
+```
 
 *Update the `usable` column in the `strings` table to include a 'cookie_login' option...*
 
@@ -401,7 +521,11 @@ ls web
   - *This makes sure some hacker doesn't hack the cookie to inject some SQL command*
 - *When we logout, we set any cookie to "dead" in the SQL table*
 
-| **B-22** :// `localhost/web/webapp.php`
+| **B-22** ://
+
+```console
+localhost/web/webapp.php
+```
 
 *Check "Remember me...", login again with our credentials from before...*
 
@@ -412,13 +536,21 @@ Password: My#1Password
 
 *Note the string in the message is your cookie, same as the database...*
 
-| **22** :> `SELECT * FROM strings;`
+| **22** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-22** ://phpMyAdmin **> strings**
 
 *Refresh the webapp.php page to see it again...*
 
-| **B-23** :// `localhost/web/webapp.php` (Refresh)
+| **B-23** :// (Refresh)
+
+```console
+localhost/web/webapp.php
+```
 
 *We don't want those cookie keys on our page in the future, so update to new files that don't use them...*
 
@@ -430,12 +562,20 @@ atom core/07-in.loginhead3.php && \
 ls web
 ```
 
-| **B-24** :// `localhost/web/webapp.php` (Refresh)
+| **B-24** :// (Refresh)
+
+```console
+localhost/web/webapp.php
+```
 
 1. Click "Log out"
 2. See that the cookie key was set to "dead" from the `strings` table...
 
-| **24** :> `SELECT * FROM strings;`
+| **24** :>
+
+```console
+SELECT * FROM strings;
+```
 
 | **SB-24** ://phpMyAdmin **> strings**
 
@@ -443,7 +583,11 @@ ls web
 
 *Delete that `cron` task so it isn't constantly running on your machine...*
 
-| **25** :$ `sudo rm /etc/cron.d/webappcleanup`
+| **25** :$
+
+```console
+sudo rm /etc/cron.d/webappcleanup
+```
 
 ___
 

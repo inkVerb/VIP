@@ -107,9 +107,13 @@ ls -l web
 
 *Note the file owner of phpget.php changed from `root` to `www-data` after the `chown` command*
 
-| **B-1** :// `localhost/web/phpget.php?go=I am an apple pie`
+| **B-1** ://
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/phpget.php?go=I am an apple pie
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Try the form a few times to see how it works*
 
@@ -124,7 +128,11 @@ ls -l web
 
 *Note phpget.php has the same file owner as before, though we copied over it without `chown`*
 
-| **B-2** :// `localhost/web/phpget.php?go=over there&h=6-hour&time=8:22`
+| **B-2** ://
+
+```console
+localhost/web/phpget.php?go=over there&h=6-hour&time=8:22
+```
 
 *Try the form a few times to see how it works*
 
@@ -150,7 +158,11 @@ atom core/01-phppost1.php && \
 ls web
 ```
 
-| **B-3** :// `localhost/web/phppost.php`
+| **B-3** ://
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form a few times to see how it works*
 
@@ -223,7 +235,11 @@ atom core/01-phparrays.php && \
 ls web
 ```
 
-| **B-4** :// `localhost/web/phparrays.php`
+| **B-4** ://
+
+```console
+localhost/web/phparrays.php
+```
 
 **`$_POST` and `$_GET` are arrays that use keys**
 ```php
@@ -271,7 +287,11 @@ atom core/01-phpforeach.php && \
 ls web
 ```
 
-| **B-5** :// `localhost/web/phppost.php` (Same)
+| **B-5** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 #### PHP `if` Syntax
 
@@ -305,11 +325,15 @@ atom core/01-phppost2.php && \
 ls web
 ```
 
-| **B-6** :// `localhost/web/phppost.php` (Same)
+| **B-6** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form a few times to see how it works*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 | **7** :$
 ```
@@ -318,7 +342,11 @@ atom core/01-phppost3.php && \
 ls web
 ```
 
-| **B-7** :// `localhost/web/phppost.php` (Same)
+| **B-7** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -329,7 +357,11 @@ atom core/01-phppost4.php && \
 ls web
 ```
 
-| **B-8** :// `localhost/web/phppost.php` (Same)
+| **B-8** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -340,7 +372,11 @@ atom core/01-phppost5.php && \
 ls web
 ```
 
-| **B-9** :// `localhost/web/phppost.php` (Same)
+| **B-9** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -351,7 +387,11 @@ atom core/01-phppost6.php && \
 ls web
 ```
 
-| **B-10** :// `localhost/web/phppost.php` (Same)
+| **B-10** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -389,7 +429,11 @@ atom core/01-phppost7.php && \
 ls web
 ```
 
-| **B-11** :// `localhost/web/phppost.php` (Same)
+| **B-11** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view with <kbd>Ctrl</kbd> + <kbd>C</kbd>*
 
@@ -422,7 +466,11 @@ atom core/01-phppost8.php && \
 ls web
 ```
 
-| **B-12** :// `localhost/web/phppost.php` (Same)
+| **B-12** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view with <kbd>Ctrl</kbd> + <kbd>C</kbd>*
 
@@ -530,7 +578,11 @@ atom core/01-phpregex1.php && \
 ls web
 ```
 
-| **B-13** :// `localhost/web/phppost.php` (Same)
+| **B-13** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -631,7 +683,11 @@ $dash = str_replace('---','—',$dash); // to em-dash, someone made certain
 $dash = str_replace('--','—',$dash); // to em-dash
 ```
 
-| **B-14** :// `localhost/web/phpreplace.php`
+| **B-14** ://
+
+```console
+localhost/web/phpreplace.php
+```
 
 *Try matching characters and watch them get replaced*
 
@@ -669,7 +725,11 @@ atom core/01-phpregex2.php && \
 ls web
 ```
 
-| **B-15** :// `localhost/web/phppost.php` (Same)
+| **B-15** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -680,7 +740,11 @@ atom core/01-phpregex3.php && \
 ls web
 ```
 
-| **B-16** :// `localhost/web/phppost.php` (Same)
+| **B-16** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -799,7 +863,11 @@ atom core/01-phpfunction1.php && \
 ls web
 ```
 
-| **B-17** :// `localhost/web/phppost.php` (Same)
+| **B-17** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -810,7 +878,11 @@ atom core/01-phpfunction2.php && \
 ls web
 ```
 
-| **B-18** :// `localhost/web/phppost.php` (Same)
+| **B-18** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -821,7 +893,11 @@ atom core/01-phpfunction3.php && \
 ls web
 ```
 
-| **B-19** :// `localhost/web/phppost.php` (Same)
+| **B-19** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -832,7 +908,11 @@ atom core/01-phpfunction4.php && \
 ls web
 ```
 
-| **B-20** :// `localhost/web/phppost.php` (Same)
+| **B-20** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -843,7 +923,11 @@ atom core/01-phpfunction5.php && \
 ls web
 ```
 
-| **B-21** :// `localhost/web/phppost.php` (Same)
+| **B-21** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -859,7 +943,11 @@ atom core/01-phpfunction6.php && \
 ls web
 ```
 
-| **B-22** :// `localhost/web/phppost.php` (Same)
+| **B-22** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -923,7 +1011,11 @@ atom core/01-in.phpinclude.php core/01-phpinclude.php && \
 ls web
 ```
 
-| **B-23** :// `localhost/web/phppost.php` (Same)
+| **B-23** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -954,7 +1046,11 @@ atom core/01-phpconstant1.php && \
 ls web
 ```
 
-| **B-24** :// `localhost/web/phppost.php` (Same)
+| **B-24** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -969,7 +1065,11 @@ atom core/01-in.config.php core/01-phpconstant2.php && \
 ls web
 ```
 
-| **B-25** :// `localhost/web/phppost.php` (Same)
+| **B-25** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -1001,7 +1101,11 @@ atom core/01-in.phpheader.php core/01-in.phpfooter.php core/01-phphfconventions.
 ls web
 ```
 
-| **B-26** :// `localhost/web/phppost.php` (Same)
+| **B-26** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
 
 *Try the form and developer view*
 
@@ -1029,11 +1133,19 @@ ls web
 
 *Look over the PHP file in atom before using the browser*
 
-| **B-27** :// `localhost/web/phpfileput.php`
+| **B-27** ://
+
+```console
+localhost/web/phpfileput.php
+```
 
 *See the file changes...*
 
-| **28** :$ `ls web && cat web/fileput.1`
+| **28** :$
+
+```console
+ls web && cat web/fileput.1
+```
 
 **Variables:**
 
@@ -1044,11 +1156,19 @@ atom core/01-phpfileput2.php && \
 ls web
 ```
 
-| **B-29** :// `localhost/web/phpfileput.php` (Same)
+| **B-29** :// (Same)
+
+```console
+localhost/web/phpfileput.php
+```
 
 *See the file changes...*
 
-| **30** :$ `ls web && cat web/fileput.2`
+| **30** :$
+
+```console
+ls web && cat web/fileput.2
+```
 
 **Heredoc:**
 
@@ -1067,11 +1187,19 @@ ls web
 
 *Note how the heredoc was made for later reference:*
 
-| **B-31** :// `localhost/web/phpfileput.php` (Same)
+| **B-31** :// (Same)
+
+```console
+localhost/web/phpfileput.php
+```
 
 *See the file changes...*
 
-| **32** :$ `ls web && cat web/fileput.3`
+| **32** :$
+
+```console
+ls web && cat web/fileput.3
+```
 
 **Heredoc with `'single quotes'`:**
 
@@ -1090,11 +1218,19 @@ ls web
 
 *Note the use of `'single quotes'` affect the `$Variable` in the heredoc:*
 
-| **B-33** :// `localhost/web/phpfileput.php` (Same)
+| **B-33** :// (Same)
+
+```console
+localhost/web/phpfileput.php
+```
 
 *See the file changes...*
 
-| **34** :$ `ls web && cat web/fileput.4`
+| **34** :$
+
+```console
+ls web && cat web/fileput.4
+```
 
 
 ### VII. Handling Arrays: `$_POST` Array, `print_r()` & `var_dump()`
@@ -1107,7 +1243,11 @@ atom core/01-phpprintr.php && \
 ls web
 ```
 
-| **B-35** :// `localhost/web/phpprintr.php`
+| **B-35** ://
+
+```console
+localhost/web/phpprintr.php
+```
 
 Fill-out the fields and click "Hit me"
 
@@ -1128,7 +1268,11 @@ atom core/01-phpvardump.php && \
 ls web
 ```
 
-| **B-36** :// `localhost/web/phpvardump.php`
+| **B-36** ://
+
+```console
+localhost/web/phpvardump.php
+```
 
 Fill-out the fields and click "Hit me"
 
@@ -1146,7 +1290,11 @@ atom core/01-phperrors1.php && \
 ls web
 ```
 
-| **B-37** :// `localhost/web/phperrors.php`
+| **B-37** ://
+
+```console
+localhost/web/phperrors.php
+```
 
 *Right away, the PHP message complains about the variable `$nothere` because it is not set*
 
@@ -1168,7 +1316,11 @@ ls web
 
 *Note we added the `$site_live` variable, which easily turned-off our error `echo`...*
 
-| **B-38** :// `localhost/web/phperrors.php` (Same)
+| **B-38** :// (Same)
+
+```console
+localhost/web/phperrors.php
+```
 
 ___
 

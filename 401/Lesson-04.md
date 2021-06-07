@@ -23,12 +23,20 @@ This teaches basic SQL control operations in MySQL from Shell, without having to
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** :$ `su Username`
+> | **S1** :$
+
+```console
+su Username
+```
 ___
 
 *MySQL can be installed with:*
 
-> | **Q1** :$ `sudo apt install mysql-server`*
+> | **Q1** :$*
+
+```console
+sudo apt install mysql-server
+```
 
 *If you install MySQL for this lesson, then you **MAY** completely remove*
 
@@ -43,25 +51,45 @@ sudo apt update
 
 *Use `systemctl` to start, stop, restart, and check the status of services, such as MySQL*
 
-| **1** :$ `sudo systemctl status mysql`
+| **1** :$
+
+```console
+sudo systemctl status mysql
+```
 
 *Note MySQL is running*
 
 *Stop MySQL:*
 
-| **2** :$ `sudo systemctl stop mysql`
+| **2** :$
+
+```console
+sudo systemctl stop mysql
+```
 
 *Check the status*
 
-| **3** :$ `sudo systemctl status mysql`
+| **3** :$
+
+```console
+sudo systemctl status mysql
+```
 
 *Start MySQL*
 
-| **4** :$ `sudo systemctl start mysql`
+| **4** :$
+
+```console
+sudo systemctl start mysql
+```
 
 *Check the status*
 
-| **5** :$ `sudo systemctl status mysql`
+| **5** :$
+
+```console
+sudo systemctl status mysql
+```
 
 ### Make MySQL secure
 
@@ -87,11 +115,19 @@ sudo apt update
 
 ##### 1. First time ever
 
-| **6** :$ `sudo mysql` *(If you need, type `exit` to leave)*
+| **6** :$ *(If you need, type `exit` to leave)*
+
+```console
+sudo mysql
+```
 
 ##### 2. Password already set (but we will set it again)
 
-| **7** :$ `mysql -u root -p` *Enter this tutorial's password ( newpassword )*
+| **7** :$ *Enter this tutorial's password ( newpassword )*
+
+```console
+mysql -u root -p
+```
 
 ### The MySQL command prompt: `mysql>_`
 
@@ -102,11 +138,23 @@ ___
 
 *Enter the following:*
 
-| **8** :> `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'newpassword';`
+| **8** :>
 
-| **9** :> `FLUSH PRIVILEGES;`
+```console
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'newpassword';
+```
 
-| **10** :> `QUIT`
+| **9** :>
+
+```console
+FLUSH PRIVILEGES;
+```
+
+| **10** :>
+
+```console
+QUIT
+```
 
 *Note you exited MySQL*
 
@@ -116,7 +164,11 @@ ___
 
 ___
 
-| **11** :$ `mysql -u root -p` *And enter the password: ( newpassword )*
+| **11** :$ *And enter the password: ( newpassword )*
+
+```console
+mysql -u root -p
+```
 
 *You are in MySQL*
 
@@ -125,57 +177,113 @@ ___
 
 *List databases:*
 
-| **12** :> `SHOW DATABASES;`
+| **12** :>
+
+```console
+SHOW DATABASES;
+```
 
 *Create a database:*
 
-| **13** :> `CREATE DATABASE vipdatabase;`
+| **13** :>
 
-| **14** :> `SHOW DATABASES;`
+```console
+CREATE DATABASE vipdatabase;
+```
+
+| **14** :>
+
+```console
+SHOW DATABASES;
+```
 
 *Now we made the database "vipdatabase"! Yeah!*
 
 *List users:*
 
-| **15** :> `SELECT user FROM mysql.user;`
+| **15** :>
+
+```console
+SELECT user FROM mysql.user;
+```
 
 *Create user (simply by assigning one to a database):*
 
-| **16** :> `GRANT ALL PRIVILEGES ON vipdatabase.* TO 'vipuser'@'localhost' IDENTIFIED BY 'vippassword';`
+| **16** :>
 
-| **17** :> `SELECT user FROM mysql.user;`
+```console
+GRANT ALL PRIVILEGES ON vipdatabase.* TO 'vipuser'@'localhost' IDENTIFIED BY 'vippassword';
+```
+
+| **17** :>
+
+```console
+SELECT user FROM mysql.user;
+```
 
 *That user can't use the database until we "flush" privileges...*
 
-| **18** :> `FLUSH PRIVILEGES;`
+| **18** :>
+
+```console
+FLUSH PRIVILEGES;
+```
 
 *Now we made the user "vipuser", and it can access "vipdatabase"! Yeah!*
 
 *Let's have another look at the databases...*
 
-| **19** :> `SHOW DATABASES;`
+| **19** :>
+
+```console
+SHOW DATABASES;
+```
 
 *Delete the database "vipdatabase"*
 
-| **20** :> `DROP DATABASE vipdatabase;`
+| **20** :>
 
-| **21** :> `SHOW DATABASES;`
+```console
+DROP DATABASE vipdatabase;
+```
+
+| **21** :>
+
+```console
+SHOW DATABASES;
+```
 
 *...all gone!*
 
-| **22** :> `SELECT user FROM mysql.user;`
+| **22** :>
+
+```console
+SELECT user FROM mysql.user;
+```
 
 *...but but the user is still there!*
 
 *Delete the user "vipuser"*
 
-| **23** :> `DROP USER vipuser@localhost;`
+| **23** :>
 
-| **24** :> `SELECT user FROM mysql.user;`
+```console
+DROP USER vipuser@localhost;
+```
+
+| **24** :>
+
+```console
+SELECT user FROM mysql.user;
+```
 
 *...all gone!*
 
-| **25** :> `QUIT`
+| **25** :>
+
+```console
+QUIT
+```
 ___
 
 ### MySQL via Shell
@@ -188,41 +296,97 @@ ___
 - `-e` *We need this for it to work in Shell.*
 - `"MYSQL COMMAND GOES HERE;"` *The normal MySQL command can go in the quotes.*
 
-| **26** :$ `mysql -u root -pnewpassword -e "SHOW DATABASES;"`
+| **26** :$
+
+```console
+mysql -u root -pnewpassword -e "SHOW DATABASES;"
+```
 
 *Note putting the password in the command at the terminal prompt is usually bad.*
 
 *This is the normal way:*
 
-| **27** :$ `mysql -u root -p -e "SHOW DATABASES;"` *Enter the password ( newpassword )*
+| **27** :$ *Enter the password ( newpassword )*
+
+```console
+mysql -u root -p -e "SHOW DATABASES;"
+```
 
 *But, we're being lazy and this is a tutorial, so we don't care...*
 
-| **28** :$ `mysql -u root -pnewpassword -e "SHOW DATABASES;"`
+| **28** :$
 
-| **29** :$ `mysql -u root -pnewpassword -e "CREATE DATABASE vipdatabase;"`
+```console
+mysql -u root -pnewpassword -e "SHOW DATABASES;"
+```
 
-| **30** :$ `mysql -u root -pnewpassword -e "SHOW DATABASES;"`
+| **29** :$
 
-| **31** :$ `mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"`
+```console
+mysql -u root -pnewpassword -e "CREATE DATABASE vipdatabase;"
+```
 
-| **32** :$ `mysql -u root -pnewpassword -e "GRANT ALL PRIVILEGES ON vipdatabase.* TO 'vipuser'@'localhost' IDENTIFIED BY 'vippassword'; FLUSH PRIVILEGES;"`
+| **30** :$
+
+```console
+mysql -u root -pnewpassword -e "SHOW DATABASES;"
+```
+
+| **31** :$
+
+```console
+mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"
+```
+
+| **32** :$
+
+```console
+mysql -u root -pnewpassword -e "GRANT ALL PRIVILEGES ON vipdatabase.* TO 'vipuser'@'localhost' IDENTIFIED BY 'vippassword'; FLUSH PRIVILEGES;"
+```
 
 *Note we put "FLUSH PRIVILEGES;" in the same command because ";" separates commands.*
 
-| **33** :$ `mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"`
+| **33** :$
 
-| **34** :$ `mysql -u root -pnewpassword -e "SHOW DATABASES;"`
+```console
+mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"
+```
 
-| **35** :$ `mysql -u root -pnewpassword -e "DROP DATABASE vipdatabase;"`
+| **34** :$
 
-| **36** :$ `mysql -u root -pnewpassword -e "SHOW DATABASES;"`
+```console
+mysql -u root -pnewpassword -e "SHOW DATABASES;"
+```
 
-| **37** :$ `mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"`
+| **35** :$
 
-| **38** :$ `mysql -u root -pnewpassword -e "DROP USER vipuser@localhost;"`
+```console
+mysql -u root -pnewpassword -e "DROP DATABASE vipdatabase;"
+```
 
-| **39** :$ `mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"`
+| **36** :$
+
+```console
+mysql -u root -pnewpassword -e "SHOW DATABASES;"
+```
+
+| **37** :$
+
+```console
+mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"
+```
+
+| **38** :$
+
+```console
+mysql -u root -pnewpassword -e "DROP USER vipuser@localhost;"
+```
+
+| **39** :$
+
+```console
+mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"
+```
 
 *Conclusion: The commands in MySQL can be run from a Shell prompt.*
 
@@ -234,22 +398,46 @@ ___
 
 *Create a new admin user in MySQL* ***only*** *for your Shell scripts...*
 
-| **40** :$ `sudo mysql -u root -p` *Enter your password ( newpassword ); annoying, but this is the "secure" way.*
+| **40** :$ *Enter your password ( newpassword ); annoying, but this is the "secure" way.*
 
-| **41** :$ `GRANT ALL PRIVILEGES ON *.* TO 'newadminuser'@'localhost' IDENTIFIED BY 'newpassword' WITH GRANT OPTION;`
+```console
+sudo mysql -u root -p
+```
 
-| **42** :$ `SELECT user FROM mysql.user;` *(If you really, badly want to see that the user is there.)*
+| **41** :$
 
-| **43** :$ `FLUSH PRIVILEGES;`
+```console
+GRANT ALL PRIVILEGES ON *.* TO 'newadminuser'@'localhost' IDENTIFIED BY 'newpassword' WITH GRANT OPTION;
+```
 
-| **44** :$ `QUIT`
+| **42** :$ *(If you really, badly want to see that the user is there.)*
+
+```console
+SELECT user FROM mysql.user;
+```
+
+| **43** :$
+
+```console
+FLUSH PRIVILEGES;
+```
+
+| **44** :$
+
+```console
+QUIT
+```
 
 ### IF needed, `exit` from the other "sudoer"
 >
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** :$ `exit`
+> | **S2** :$
+
+```console
+exit
+```
 ___
 
 *Put the same username & info into a file:*
@@ -266,12 +454,24 @@ host = localhost
 ___
 > Optional: Login again as a "sudoer" if needed
 >
-> | **S3** :$ `su Username`
+> | **S3** :$
+
+```console
+su Username
+```
 ___
 
-| **46** :$ `ls`
+| **46** :$
 
-| **47** :$ `cat mysqlinfofile`
+```console
+ls
+```
+
+| **47** :$
+
+```console
+cat mysqlinfofile
+```
 
 *There it is, there's your file.*
 
@@ -279,7 +479,11 @@ ___
 
 *For example (this can also go in your Shell script):*
 
-| **48** :$ `mysql --defaults-extra-file=~/School/VIP/401/mysqlinfofile -e "SHOW DATABASES;"`
+| **48** :$
+
+```console
+mysql --defaults-extra-file=~/School/VIP/401/mysqlinfofile -e "SHOW DATABASES;"
+```
 
 *...and that's how to put MySQL commands in a Shell script.*
 
@@ -289,12 +493,20 @@ ___
 
 #### Now remove that tutorial admin user so it doesn't cause the codepocalypse...
 
-| **49** :$ `mysql --defaults-extra-file=~/School/VIP/401/mysqlinfofile -e "DROP USER newadminuser@localhost;"`
+| **49** :$
+
+```console
+mysql --defaults-extra-file=~/School/VIP/401/mysqlinfofile -e "DROP USER newadminuser@localhost;"
+```
 
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S4** :$ `exit`
+> | **S4** :$
+
+```console
+exit
+```
 ___
 
 # The Take

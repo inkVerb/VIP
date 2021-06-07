@@ -73,20 +73,36 @@ On a live, online web server, **`localhost`** could be **`inkisaverb.com`** or *
 
 ### I. OPTIONAL: If you did Shell 201, but on a different machine
 
-| **P1** :$ `mkdir -p ~/School/VIP`
+| **P1** :$
+
+```console
+mkdir -p ~/School/VIP
+```
 
 ### This lesson requires a "sudoer" who can use `sudo`
 >
 > ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** :$ `su Username`
+> | **S1** :$
+
+```console
+su Username
+```
 >
 > Install the tools:
 >
-> | **M1** :$ `sudo apt update`
+> | **M1** :$
+
+```console
+sudo apt update
+```
 >
-> | **M2** :$ `sudo apt install -y git`
+> | **M2** :$
+
+```console
+sudo apt install -y git
+```
 >
 
 ### II. Install LAMP
@@ -100,38 +116,90 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
 
 - Debian/Ubuntu:
 
-| **DP2** :$ `cd ~/School/VIP`
+| **DP2** :$
 
-| **DP3** :$ `git clone https://github.com/inkVerb/501`
+```console
+cd ~/School/VIP
+```
 
-| **DP4** :$ `sudo mkdir /var/www/html/web`
+| **DP3** :$
 
-| **DP5** :$ `ln -sfn /var/www/html/web ~/School/VIP/501/`
+```console
+git clone https://github.com/inkVerb/501
+```
 
-| **DP6** :$ `ln -sfn /var/www/rewrite ~/School/VIP/501/`
+| **DP4** :$
 
-| **DP7** :$ `sudo chown -R www:www /var/www/html/`
+```console
+sudo mkdir /var/www/html/web
+```
+
+| **DP5** :$
+
+```console
+ln -sfn /var/www/html/web ~/School/VIP/501/
+```
+
+| **DP6** :$
+
+```console
+ln -sfn /var/www/rewrite ~/School/VIP/501/
+```
+
+| **DP7** :$
+
+```console
+sudo chown -R www:www /var/www/html/
+```
 
 - Arch/Manjaro:
 
-| **AP2** :$ `cd ~/School/VIP`
+| **AP2** :$
 
-| **AP3** :$ `git clone https://github.com/inkVerb/501`
+```console
+cd ~/School/VIP
+```
 
-| **AP4** :$ `sudo mkdir /srv/www/html/web`
+| **AP3** :$
 
-| **AP5** :$ `ln -sfn /srv/www/html/web ~/School/VIP/501/`
+```console
+git clone https://github.com/inkVerb/501
+```
 
-| **AP6** :$ `ln -sfn /srv/www/rewrite ~/School/VIP/501/`
+| **AP4** :$
 
-| **AP7** :$ `sudo chown -R www:www /srv/www`
+```console
+sudo mkdir /srv/www/html/web
+```
+
+| **AP5** :$
+
+```console
+ln -sfn /srv/www/html/web ~/School/VIP/501/
+```
+
+| **AP6** :$
+
+```console
+ln -sfn /srv/www/rewrite ~/School/VIP/501/
+```
+
+| **AP7** :$
+
+```console
+sudo chown -R www:www /srv/www
+```
 
 #### Always own the web directory with `chown -R www...`!
 
 >
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** :$ `exit`
+> | **S2** :$
+
+```console
+exit
+```
 > ___
 >
 

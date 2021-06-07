@@ -7,55 +7,127 @@ Ready the CLI
 
 ___
 
-| **1** :$ `mkdir abc abc-dir`
+| **1** :$
 
-| **2** :$ `ls`
+```console
+mkdir abc abc-dir
+```
+
+| **2** :$
+
+```console
+ls
+```
 
 *Search for files with `find`*
 
-| **3** :$ `find "abc*"`
+| **3** :$
+
+```console
+find "abc*"
+```
 
 *Note the error message*
 
 *Specify to search somewhere; we'll search "here" (`.` = here)*
 
-| **4** :$ `find . "abc"`
+| **4** :$
+
+```console
+find . "abc"
+```
 
 *Note it found everything, it needs: `-name`*
 
-| **5** :$ `find . -name "abc"`
+| **5** :$
 
-| **6** :$ `find . -name "abc*"`
+```console
+find . -name "abc"
+```
+
+| **6** :$
+
+```console
+find . -name "abc*"
+```
 
 *...for "Directories": `-type d`*
 
-| **7** :$ `find . -type d -name "abc*"`
+| **7** :$
+
+```console
+find . -type d -name "abc*"
+```
 
 *...for "Files": `-type f`*
 
-| **8** :$ `find . -type f -name "abc*"`
+| **8** :$
 
-| **9** :$ `touch abcsed.Setting`
+```console
+find . -type f -name "abc*"
+```
 
-| **10** :$ `touch ink.png ink.PNG ink.jpg ink.JPG`
+| **9** :$
 
-| **11** :$ `mkdir png PNG jpg JPG`
+```console
+touch abcsed.Setting
+```
 
-| **12** :$ `find . -name "png"`
+| **10** :$
 
-| **13** :$ `find . -name "*.png"`
+```console
+touch ink.png ink.PNG ink.jpg ink.JPG
+```
 
-| **14** :$ `find . -name "*png"`
+| **11** :$
+
+```console
+mkdir png PNG jpg JPG
+```
+
+| **12** :$
+
+```console
+find . -name "png"
+```
+
+| **13** :$
+
+```console
+find . -name "*.png"
+```
+
+| **14** :$
+
+```console
+find . -name "*png"
+```
 
 *Note `find` is case-sensitive, ignore case with: `-iname`*
 
-| **15** :$ `find . -iname "*png"`
+| **15** :$
 
-| **16** :$ `find . -iname "*jpg"`
+```console
+find . -iname "*png"
+```
 
-| **17** :$ `find . -type f -iname "*png"`
+| **16** :$
 
-| **18** :$ `find . -type d -iname "*png"`
+```console
+find . -iname "*jpg"
+```
+
+| **17** :$
+
+```console
+find . -type f -iname "*png"
+```
+
+| **18** :$
+
+```console
+find . -type d -iname "*png"
+```
 
 ___
 

@@ -9,7 +9,11 @@ ___
 
 ### `netstat -natu` & `sudo tcpdump`
 
-| **1** :$ `netstat -natu`
+| **1** :$
+
+```console
+netstat -natu
+```
 
 *This gives a list of all network connections*
 
@@ -18,10 +22,18 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** :$ `su Username`
+> | **S1** :$
+
+```console
+su Username
+```
 ___
 
-| **2** :$ `sudo tcpdump`
+| **2** :$
+
+```console
+sudo tcpdump
+```
 
 *Note the ongoing list of network activity*
 
@@ -32,18 +44,30 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** :$ `exit`
+> | **S2** :$
+
+```console
+exit
+```
 ___
 
 *View current port connections & addresses*
 
-| **3** :$ `ss -tln`
+| **3** :$
+
+```console
+ss -tln
+```
 
 ### `man` & `info`
 
 *FYI, this is a great tool to change settings from the terminal: `gsettings`*
 
-| **4** :$ `man gsettings`
+| **4** :$
+
+```console
+man gsettings
+```
 
 *This is a how-to manual for a terminal program that manages settings for the desktop environment*
 
@@ -51,7 +75,11 @@ ___
 
 *You can use `man` or `info`*
 
-| **5** :$ `info gsettings`
+| **5** :$
+
+```console
+info gsettings
+```
 
 *Press Q to quit*
 
@@ -59,23 +87,55 @@ ___
 
 *Consider `lsb_release` which shows detailed information about your current Linux distribution*
 
-| **5** :$ `man lsb_release`
+| **5** :$
 
-| **6** :$ `man tcpdump`
+```console
+man lsb_release
+```
 
-| **7** :$ `man netstat`
+| **6** :$
 
-| **8** :$ `man grep`
+```console
+man tcpdump
+```
 
-| **9** :$ `man sed`
+| **7** :$
 
-| **10** :$ `man echo`
+```console
+man netstat
+```
 
-| **11** :$ `man imagemagick`
+| **8** :$
+
+```console
+man grep
+```
+
+| **9** :$
+
+```console
+man sed
+```
+
+| **10** :$
+
+```console
+man echo
+```
+
+| **11** :$
+
+```console
+man imagemagick
+```
 
 *...but not always...*
 
-| **12** :$ `info imagemagick`
+| **12** :$
+
+```console
+info imagemagick
+```
 
 *Note `imagemagick` changes images from the terminal, learn to use at:*
 - [www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)

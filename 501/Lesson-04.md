@@ -11,17 +11,29 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
-| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ *(password in the terminal, not safe outside these lessons!)*
+
+```console
+mysql -u admin -padminpassword
+```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
-| **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+| **SB-0** :// Username: `admin` Password: `adminpassword`
+
+```console
+localhost/phpMyAdmin/
+```
 
 ### Used later in this lesson
 
 *SQL database:*
 
-| **L4** :> `USE webapp_db`
+| **L4** :>
+
+```console
+USE webapp_db
+```
 
 *Webapp login:*
 
@@ -40,11 +52,23 @@ Nearly all web apps require that you have a database, database username, and dat
 
 *Create our database and its login now...*
 
-| **1** :> `CREATE DATABASE webapp_db;`
+| **1** :>
 
-| **2** :> `GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';`
+```console
+CREATE DATABASE webapp_db;
+```
 
-| **3** :> `FLUSH PRIVILEGES;`
+| **2** :>
+
+```console
+GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';
+```
+
+| **3** :>
+
+```console
+FLUSH PRIVILEGES;
+```
 
 **Now, we have these database credentials:** (Many web apps ask for this on install)
 ```
@@ -56,7 +80,11 @@ Database host: localhost
 
 *Get ready to work in our SQL terminal...*
 
-| **4** :> `USE webapp_db`
+| **4** :>
+
+```console
+USE webapp_db
+```
 
 *Use our install page...*
 
@@ -114,17 +142,29 @@ $db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]
 
 *Look, but don't touch...*
 
-| **B-5a** :// `localhost/web/install.php`
+| **B-5a** ://
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/install.php
+```
 
-| **S5** :> `SHOW TABLES;`
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+
+| **S5** :>
+
+```console
+SHOW TABLES;
+```
 
 | **SB-5** ://phpMyAdmin **> webapp_db**
 
 *Note our database has no tables, let's go back to our webform...*
 
-| **B-5b** :// `localhost/web/install.php` (same, start filling-in)
+| **B-5b** :// (same, start filling-in)
+
+```console
+localhost/web/install.php
+```
 
 ```
 Database name: webapp_db
@@ -141,11 +181,19 @@ Password: My#1Password
 
 *Enter the information above into the webform, then continue*
 
-| **S6** :> `SHOW TABLES;`
+| **S6** :>
+
+```console
+SHOW TABLES;
+```
 
 | **SB-6** ://phpMyAdmin **> webapp_db**
 
-| **S7** :> `SELECT * FROM users;`
+| **S7** :>
+
+```console
+SELECT * FROM users;
+```
 
 | **SB-7** ://phpMyAdmin **> users**
 
@@ -201,9 +249,13 @@ atom core/04-time.php && \
 ls web
 ```
 
-| **B-8** :// `localhost/web/time.php`
+| **B-8** ://
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/time.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ### III. User Login
 
@@ -261,11 +313,19 @@ ls web
 
 - *`session_start();`*
 
-| **S9** :> `SELECT id, fullname, pass FROM users WHERE username='jonboy';`
+| **S9** :>
+
+```console
+SELECT id, fullname, pass FROM users WHERE username='jonboy';
+```
 
 | **SB-9** ://phpMyAdmin **> users**
 
-| **B-9a** :// `localhost/web/webapp.php`
+| **B-9a** ://
+
+```console
+localhost/web/webapp.php
+```
 
 *Login with our credentials from before...*
 
@@ -276,7 +336,11 @@ Password: My#1Password
 
 *Once logged in, re-enter the page to see already logged in message...  (not reload)*
 
-| **B-9b** :// `localhost/web/webapp.php` (same)
+| **B-9b** :// (same)
+
+```console
+localhost/web/webapp.php
+```
 
 
 ### IV. Logout
@@ -323,11 +387,19 @@ ls web
 
 *After looking through logout.php, continue to be logged out immediately...*
 
-| **B-10a** :// `localhost/web/logout.php` (5 second logout and redirect to webapp.php!)
+| **B-10a** :// (5 second logout and redirect to webapp.php!)
+
+```console
+localhost/web/logout.php
+```
 
 *Let's do that again, but with a logout message instead of waiting...*
 
-| **B-10b** :// `localhost/web/webapp.php`
+| **B-10b** ://
+
+```console
+localhost/web/webapp.php
+```
 
 *Login again with our credentials from before...*
 
@@ -360,7 +432,11 @@ ls web
 
 *After looking through logout.php and webapp.php, continue to be logged out immediately...*
 
-| **B-11** :// `localhost/web/logout.php` (Instant logout and redirect to webapp.php with message!)
+| **B-11** :// (Instant logout and redirect to webapp.php with message!)
+
+```console
+localhost/web/logout.php
+```
 
 *Let's make a login using cookies...*
 
@@ -400,15 +476,31 @@ Cookies are stored in files on the "Client" (user's local machine)
 
 *Have a look at Firefox cache data, where cookies are kept...*
 
-| **12** :$ `cd ~/.mozilla/firefox/*.default` (You can use a `*` wildcard with `cd` if there is only one file possible)
+| **12** :$ (You can use a `*` wildcard with `cd` if there is only one file possible)
 
-| **13** :$ `ls`
+```console
+cd ~/.mozilla/firefox/*.default
+```
+
+| **13** :$
+
+```console
+ls
+```
 
 *Chromium, if you have it installed...*
 
-| **14** :$ `cd ~/.config/chromium/Default`
+| **14** :$
 
-| **15** :$ `ls`
+```console
+cd ~/.config/chromium/Default
+```
+
+| **15** :$
+
+```console
+ls
+```
 
 ***This is how cookies work...*** **the wrong way:** `user_id`
 
@@ -430,7 +522,11 @@ ls web
 
 *Review cookie logic in webapp.php by searching "$_COOKIE"*
 
-| **B-16a** :// `localhost/web/webapp.php` (previous)
+| **B-16a** :// (previous)
+
+```console
+localhost/web/webapp.php
+```
 
 *Check "Remember me, then login again with our credentials from before...*
 
@@ -441,7 +537,11 @@ Password: My#1Password
 
 *Load the page again to see the cookies remember your login...*
 
-| **B-16b** :// `localhost/web/webapp.php` (same)
+| **B-16b** :// (same)
+
+```console
+localhost/web/webapp.php
+```
 
 #### Never put username or password in a cookie!
 
@@ -506,19 +606,35 @@ ls web
 
 *Try an alternate way for no-login by searching "webapp.php" and uncommenting the line*
 
-| **B-17** :// `localhost/web/account.php`
+| **B-17** ://
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/account.php
+```
 
-| **S17** :> `SELECT fullname, username, email, favnumber FROM users;`
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+
+| **S17** :>
+
+```console
+SELECT fullname, username, email, favnumber FROM users;
+```
 
 | **SB-17** ://phpMyAdmin **> users**
 
 *Also try logging out and logging in with these pages from before:*
 
-| **Logout** :// `localhost/web/logout.php`
+| **Logout** ://
 
-| **Login** :// `localhost/web/webapp.php`
+```console
+localhost/web/logout.php
+```
+
+| **Login** ://
+
+```console
+localhost/web/webapp.php
+```
 
 ```
 Username: jonboy
@@ -533,7 +649,11 @@ Password: My#1Password
 
 *Make sure you know your favorite number and email before continuing...*
 
-| **S18** :> `SELECT id, fullname, email, favnumber FROM users;`
+| **S18** :>
+
+```console
+SELECT id, fullname, email, favnumber FROM users;
+```
 
 | **SB-18** ://phpMyAdmin **> users**
 
@@ -549,19 +669,35 @@ atom core/04-forgot.php && \
 ls web
 ```
 
-| **B-18** :// `localhost/web/forgot.php`
+| **B-18** ://
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
+```console
+localhost/web/forgot.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *...You must be logged out for it to work*
 
 *These might come in handy...*
 
-| **Logout** :// `localhost/web/logout.php`
+| **Logout** ://
 
-| **Login** :// `localhost/web/webapp.php`
+```console
+localhost/web/logout.php
+```
 
-| **Login** :// `localhost/web/account.php`
+| **Login** ://
+
+```console
+localhost/web/webapp.php
+```
+
+| **Login** ://
+
+```console
+localhost/web/account.php
+```
 
 *Success: You will get an SQL query to try*
 

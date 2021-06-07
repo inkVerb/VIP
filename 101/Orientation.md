@@ -49,15 +49,27 @@ I am not a terminal command because I have no dollar sign nor hash sign.
 I belong in your text editor where some-file.txt is open.
 ```
 
-*When using copy-paste to enter a command into the terminal, <kbd>Ctrl</kbd> + <kbd>C</kbd> will work in a normal window, but use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + V to paste into the terminal*
+*When using copy-paste to enter a command into the terminal, <kbd>Ctrl</kbd> + <kbd>C</kbd> will work in a normal window, but use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> to paste into the terminal*
 
-| **1** :$ `echo i am a command to be entered in the terminal`
+| **1** :$
+
+```console
+echo i am a command to be entered in the terminal
+```
 
 *These "command" numbers help keep track of your place in the lesson and clarify which code you should enter into the terminal*
 
-| **2** :$ `echo i am another terminal command` *This is a very important note specifically about the command just entered*
+| **2** :$ *This is a very important note specifically about the command just entered*
 
-| **3** :$ `third terminal command`
+```console
+echo i am another terminal command
+```
+
+| **3** :$
+
+```console
+third terminal command
+```
 
 *Note those were three terminal commands, but the third one didn't actually work, but you should have entered it anyway just to watch it not work*
 
@@ -65,7 +77,11 @@ I belong in your text editor where some-file.txt is open.
 
 *Let's enter the fourth and final command, which also won't work*
 
-| **4** :$ `fourth broken command`
+| **4** :$
+
+```console
+fourth broken command
+```
 
 ### Capital and lowercase and ALLCAPS
 
@@ -95,21 +111,37 @@ I belong in your text editor where some-file.txt is open.
 
 *First, make the directory "School" (if it doesn't already exist)...*
 
-| **5** :$ `mkdir -p ~/School`
+| **5** :$
+
+```console
+mkdir -p ~/School
+```
 
 *Change the terminal to that directory*
 
-| **6** :$ `cd ~/School`
+| **6** :$
+
+```console
+cd ~/School
+```
 
 *Open Nautilus file explorer in that directory with: `nautilus .`*
 
-| **7** :$ `nautilus .`
+| **7** :$
+
+```console
+nautilus .
+```
 
 ### Creating & editing files
 
 *Before starting a lesson, open gedit from the GUI*
 
-| **8** :$ `gedit first-file`
+| **8** :$
+
+```console
+gedit first-file
+```
 
 *Note that "first-file" is in the title of gedit, the text editor*
 
@@ -133,7 +165,7 @@ This is a new file.
 
 *Update first-file to version 02:*
 
-*After copying the text below via <kbd>Ctrl</kbd> + <kbd>C</kbd>, in gedit, use <kbd>Ctrl</kbd> + A, <kbd>Ctrl</kbd> + <kbd>V</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd>*
+*After copying the text below via <kbd>Ctrl</kbd> + <kbd>C</kbd>, in gedit, use <kbd>Ctrl</kbd> + <kbd>A</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd>*
 
 | **first-file** :
 
@@ -147,11 +179,33 @@ This is the same file, but a new version
 
 *Let's remove that file since we no longer need it*
 
-| **9** :$ `rm first-file`
+| **9** :$
+
+```console
+rm first-file
+```
 
 *Note gedit still has the file open*
 
 *Close gedit, but note it asks if you want to save the file: No, don't save*
+
+## Install apps used in this course
+
+This requires `sudo` permissions
+
+| **D10** :$ Debian
+
+```console
+sudo apt install gedit tilda nautilus chromium-browser firefox
+```
+
+| **A10** :$ Arch
+
+```console
+sudo pacman -S gedit nautilus chromium-browser firefox
+```
+
+*Setup the [Arch F12 Terminal](https://github.com/inkVerb/vip/blob/master/Arch-F12-Terminal.md)*
 
 **Yeah! Orientaion is finished! Let's review what we take away from this...**
 
@@ -167,7 +221,11 @@ ___
 - Non-commands entered into the terminal will return an error message
 - `preformatted` text (AKA `code`) is ***either*** a terminal command or part of code that belongs in a file
   - *This is normal for most code-related websites*
-- | **1** :$ `code for terminal` indicates a command to be entered in the terminal
+- | **1** :$ indicates a command to be entered in the terminal
+
+```console
+code for terminal
+```
   - *This is not a normal convention for code-related websites, but used for this VIP Linux tutorial*
 - Nautilus is the name of the file browser... because we're "under the sea..."
 - Gedit is the text editor we will use, gedit? (See what I did there?)

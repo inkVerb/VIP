@@ -7,15 +7,27 @@ ___
 
 *<kbd>F12</kbd> (guake/tilda) OR <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (new terminal)*
 
-| **1** :$ `mkdir -p ~/School/VIP/101`
+| **1** :$
 
-| **2** :$ `cd ~/School/VIP/101`
+```console
+mkdir -p ~/School/VIP/101
+```
+
+| **2** :$
+
+```console
+cd ~/School/VIP/101
+```
 
 ___
 
 ### Controlling apps via terminal
 
-| **3** :$ `gedit`
+| **3** :$
+
+```console
+gedit
+```
 
 *Note gedit opened*
 
@@ -23,55 +35,107 @@ ___
 
 *Note gedit won't respond*
 
-| **4** :$ `jobs`
+| **4** :$
+
+```console
+jobs
+```
 
 *gedit's job number should be 1*
 
-| **5** :$ `fg 1`
+| **5** :$
+
+```console
+fg 1
+```
 
 *Note gedit is no longer stopped*
 
 *Terminal: <kbd>Ctrl</kbd> + <kbd>Z</kbd>*
 
-| **6** :$ `bg 1`
+| **6** :$
 
-| **7** :$ `jobs`
+```console
+bg 1
+```
 
-| **8** :$ `killall gedit`
+| **7** :$
+
+```console
+jobs
+```
+
+| **8** :$
+
+```console
+killall gedit
+```
 
 *Note gedit closed*
 
-| **9** :$ `jobs`
+| **9** :$
+
+```console
+jobs
+```
 
 *Note the terminal registeres gedit "Terminated"*
 
-| **10** :$ `gedit`
+| **10** :$
+
+```console
+gedit
+```
 
 *Terminal: <kbd>Ctrl</kbd> + <kbd>C</kbd>*
 
 *Note gedit closed*
 
-| **11** :$ `jobs`
+| **11** :$
+
+```console
+jobs
+```
 
 *Note gedit either does not register or registers "Done"*
 
-| **12** :$ `gedit &`
+| **12** :$
+
+```console
+gedit &
+```
 
 *Note the terminal is not occupied because we added `&`*
 
 *Run another program, Mines (`gnome-mines`)*
 
-| **13** :$ `gnome-mines &`
+| **13** :$
 
-| **14** :$ `jobs`
+```console
+gnome-mines &
+```
+
+| **14** :$
+
+```console
+jobs
+```
 
 *This is how to kill job number 2:*
 
-| **15** :$ `kill %2`
+| **15** :$
+
+```console
+kill %2
+```
 
 *Note Mines closed*
 
-| **16** :$ `jobs`
+| **16** :$
+
+```console
+jobs
+```
 
 *Note the terminal registers Mines "Terminated"*
 
@@ -81,7 +145,7 @@ ___
 
 - The terminal can control desktop app sessions, such as gedit and Gnome Mines and others
 - **<kbd>Ctrl</kbd> + <kbd>Z</kbd>** and **<kbd>Ctrl</kbd> + <kbd>C</kbd>** manage apps started from their terminal
-- We use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + V in the terminal for copy-paste
+- We use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> in the terminal for copy-paste
 - Open gedit from the GUI before entering it as a terminal command
 - `jobs`, `fg #`, `bg #`, `kill %#`, and `command &` also manage apps started from their terminal
 - `killall app-name` will end all sessions "app-name", whether started from the same terminal or not

@@ -11,21 +11,45 @@ ___
 
 #### Permissions
 
-| **1** :$ `touch whoown iown theyown youown`
+| **1** :$
 
-| **2** :$ `ls`
+```console
+touch whoown iown theyown youown
+```
 
-| **3** :$ `ls -1`
+| **2** :$
+
+```console
+ls
+```
+
+| **3** :$
+
+```console
+ls -1
+```
 
 *Note the vertical list with `-1` (dash ONE)*
 
-| **4** :$ `ls -l`
+| **4** :$
+
+```console
+ls -l
+```
 
 *Note your username in the longer, more detailed list*
 
-| **5** :$ `chmod +x whoown`
+| **5** :$
 
-| **6** :$ `ls -l`
+```console
+chmod +x whoown
+```
+
+| **6** :$
+
+```console
+ls -l
+```
 
 *Note the "x" now on whoown: `-rwxrwxr-x` ('x' appears 3 times, the last one can be dangerous because it is public)*
 
@@ -33,15 +57,31 @@ ___
 
 *For personal files, use `chmod ug+x whoown` so the last "x" won't be there, so the public can't execute the file*
 
-| **7** :$ `chmod -x whoown`
+| **7** :$
 
-| **8** :$ `ls -l`
+```console
+chmod -x whoown
+```
+
+| **8** :$
+
+```console
+ls -l
+```
 
 *Note the "x" has been removed from whoown*
 
-| **9** :$ `chmod ug+x whoown`
+| **9** :$
 
-| **10** :$ `ls -l`
+```console
+chmod ug+x whoown
+```
+
+| **10** :$
+
+```console
+ls -l
+```
 
 *Note it is green, but "x" only appears 2 times: `-rwxrwxr--`, so only the owner can execute the file*
 
@@ -49,67 +89,163 @@ ___
 
 *You can also use numbers to set permissions, which is more normal for programmers*
 
-| **11** :$ `chmod 777 whoown`
+| **11** :$
 
-| **12** :$ `ls -l` *Note the new permissions (`-rwxrwxrwx`)*
+```console
+chmod 777 whoown
+```
 
-| **13** :$ `chmod 444 whoown`
+| **12** :$ *Note the new permissions (`-rwxrwxrwx`)*
 
-| **14** :$ `ls -l` *Note the new permissions (`-r--r--r--`)*
+```console
+ls -l
+```
+
+| **13** :$
+
+```console
+chmod 444 whoown
+```
+
+| **14** :$ *Note the new permissions (`-r--r--r--`)*
+
+```console
+ls -l
+```
 
 *Note `chmod ug+x` is "relative" while using `chmod` with numbers is absolute...*
 
-| **15** :$ `chmod ug+x whoown`
+| **15** :$
 
-| **16** :$ `ls -l` *Note the permissions are now `-r-xr-xr--`, different from last time we used `chmod ug+x`*
+```console
+chmod ug+x whoown
+```
 
-| **17** :$ `chmod 664 whoown`
+| **16** :$ *Note the permissions are now `-r-xr-xr--`, different from last time we used `chmod ug+x`*
 
-| **18** :$ `ls -l` *Note the new permissions (`-rw-rw-r--`) are the original permissions*
+```console
+ls -l
+```
 
-| **19** :$ `chmod 774 whoown`
+| **17** :$
 
-| **20** :$ `ls -l` *Note, that was what we had before: `-rwxrwxr--`*
+```console
+chmod 664 whoown
+```
 
-| **21** :$ `chmod 600 whoown`
+| **18** :$ *Note the new permissions (`-rw-rw-r--`) are the original permissions*
 
-| **22** :$ `ls -l` *Note the new permissions (`-rw-------`)*
+```console
+ls -l
+```
+
+| **19** :$
+
+```console
+chmod 774 whoown
+```
+
+| **20** :$ *Note, that was what we had before: `-rwxrwxr--`*
+
+```console
+ls -l
+```
+
+| **21** :$
+
+```console
+chmod 600 whoown
+```
+
+| **22** :$ *Note the new permissions (`-rw-------`)*
+
+```console
+ls -l
+```
 
 *Refer to this cheat-sheet for more about chmod:* [VIP/Cheat-Sheets: Permissions](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
 
 #### Hidden files
 
-| **23** :$ `touch .hideme .hidemealso .cantseeme`
+| **23** :$
 
-| **24** :$ `ls`
+```console
+touch .hideme .hidemealso .cantseeme
+```
+
+| **24** :$
+
+```console
+ls
+```
 
 *Note you can't see the files just created, because files that start with a period `.` are "hidden"*
 
-| **25** :$ `ls -a`
+| **25** :$
 
-| **26** :$ `ls -l`
+```console
+ls -a
+```
 
-| **27** :$ `ls -la`
+| **26** :$
 
-| **28** :$ `mkdir .hidedir .cantseedir`
+```console
+ls -l
+```
 
-| **29** :$ `ls`
+| **27** :$
+
+```console
+ls -la
+```
+
+| **28** :$
+
+```console
+mkdir .hidedir .cantseedir
+```
+
+| **29** :$
+
+```console
+ls
+```
 
 *Directories also can be "hidden"*
 
-| **30** :$ `ls -a`
+| **30** :$
+
+```console
+ls -a
+```
 
 *In Nautilus (the file explorer) press <kbd>Ctrl</kbd> + H to toggle view of hidden files and directories*
 
 #### Reverse order
 
-| **31** :$ `ls`
+| **31** :$
 
-| **32** :$ `ls -r`
+```console
+ls
+```
 
-| **33** :$ `ls -1`
+| **32** :$
 
-| **34** :$ `ls -1r`
+```console
+ls -r
+```
+
+| **33** :$
+
+```console
+ls -1
+```
+
+| **34** :$
+
+```console
+ls -1r
+```
 
 ___
 

@@ -11,67 +11,139 @@ ___
 
 *Prep, copy, and cd in one command*
 
-| **1** :$ `mkdir one && cp *.odt one && cp markdown.md one && cd one`
+| **1** :$
+
+```console
+mkdir one && cp *.odt one && cp markdown.md one && cd one
+```
 
 *Convert .odt files to .txt*
 
-| **2** :$ `ls`
+| **2** :$
 
-| **3** :$ `lowriter *.odt &` *(may need a few seconds to load, then press Enter)*
+```console
+ls
+```
+
+| **3** :$ *(may need a few seconds to load, then press Enter)*
+
+```console
+lowriter *.odt &
+```
 
 *Note the contents of the .odt files*
 
 *Close the file, just to make sure we don't have any problems...*
 
-| **4** :$ `killall soffice.bin`
+| **4** :$
+
+```console
+killall soffice.bin
+```
 
 *Try to open one .odt file with gedit...*
 
-| **5** :$ `gedit ODT-FILE.odt`
+| **5** :$
 
-*Close the file in gedit with <kbd>Ctrl</kbd> + W*
+```console
+gedit ODT-FILE.odt
+```
+
+*Close the file in gedit with <kbd>Ctrl</kbd> + <kbd>W</kbd>*
 
 *Note .odt files are very big and can't be opened with text editors, but we can convert them...*
 
-| **6** :$ `odt2txt ODT-FILE.odt`
+| **6** :$
 
-| **7** :$ `ls`
+```console
+odt2txt ODT-FILE.odt
+```
+
+| **7** :$
+
+```console
+ls
+```
 
 *Note it either echoed the STDOUT in the terminal or created "ODT-FILE.txt"*
 
 *This more reliably creates a .txt file:*
 
-| **8** :$ `odt2txt ODT-FILE.odt > ODT-FILE.txt`
+| **8** :$
 
-| **9** :$ `ls`
+```console
+odt2txt ODT-FILE.odt > ODT-FILE.txt
+```
 
-| **10** :$ `gedit ODT-FILE.txt`
+| **9** :$
 
-*Close the file in gedit with <kbd>Ctrl</kbd> + W, then delete the .txt file so we can try another way...*
+```console
+ls
+```
 
-| **11** :$ `rm ODT-FILE.txt`
+| **10** :$
+
+```console
+gedit ODT-FILE.txt
+```
+
+*Close the file in gedit with <kbd>Ctrl</kbd> + <kbd>W</kbd>, then delete the .txt file so we can try another way...*
+
+| **11** :$
+
+```console
+rm ODT-FILE.txt
+```
 
 ### Note `pandoc` does more than `odt2txt`
 
-| **12** :$ `pandoc -s ODT-FILE.odt -o ODT-FILE.txt`
+| **12** :$
 
-| **13** :$ `ls`
+```console
+pandoc -s ODT-FILE.odt -o ODT-FILE.txt
+```
 
-| **14** :$ `gedit ODT-FILE.txt`
+| **13** :$
+
+```console
+ls
+```
+
+| **14** :$
+
+```console
+gedit ODT-FILE.txt
+```
 
 *Let's do markdown*
 
-| **15** :$ `gedit markdown.md`
+| **15** :$
+
+```console
+gedit markdown.md
+```
 
 *View the rendered markdown file: [markdown.md](https://github.com/inkVerb/301/blob/master/markdown.md)*
 
 *...convert that into LibreOffice Writer document...*
 
-| **16** :$ `pandoc -s markdown.md -o markdown.odt`
+| **16** :$
 
-| **17** :$ `ls`
+```console
+pandoc -s markdown.md -o markdown.odt
+```
 
-| **18** :$ `lowriter markdown.odt &` *(if asked, Discard)*
+| **17** :$
+
+```console
+ls
+```
+
+| **18** :$ *(if asked, Discard)*
+
+```console
+lowriter markdown.odt &
+```
 
 *You may close LibreOffice Writer from the GUI, or the terminal with: `killall soffice.bin`*
 
@@ -93,73 +165,165 @@ ___
 
 ### II. `read`
 
-| **19** :$ `read`
+| **19** :$
+
+```console
+read
+```
 
 *Now type something and/or press Enter*
 
 *Nothing happened because it should be used with a variable...*
 
-| **20** :$ `read Variable`
+| **20** :$
 
-| **21** :$ `echo $Variable`
+```console
+read Variable
+```
 
-| **22** :$ `gedit 02-read-1`
+| **21** :$
 
-| **23** :$ `./02-read-1`
+```console
+echo $Variable
+```
+
+| **22** :$
+
+```console
+gedit 02-read-1
+```
+
+| **23** :$
+
+```console
+./02-read-1
+```
 
 *Now type something, then press Enter*
 
-| **24** :$ `gedit 02-read-2`
+| **24** :$
+
+```console
+gedit 02-read-2
+```
 
 *Note -p is for "Prompt", making things simpler*
 
-| **25** :$ `./02-read-2`
+| **25** :$
 
-| **26** :$ `gedit 02-read-3`
+```console
+./02-read-2
+```
 
-| **27** :$ `ls`
+| **26** :$
 
-| **28** :$ `./02-read-3`
+```console
+gedit 02-read-3
+```
+
+| **27** :$
+
+```console
+ls
+```
+
+| **28** :$
+
+```console
+./02-read-3
+```
 
 *Enter whatever you want, only letters & numbers, no spaces*
 
-| **29** :$ `ls`
+| **29** :$
+
+```console
+ls
+```
 
 *Note it created the file*
 
-| **30** :$ `gedit 02-read-4`
+| **30** :$
 
-| **31** :$ `./02-read-4`
+```console
+gedit 02-read-4
+```
+
+| **31** :$
+
+```console
+./02-read-4
+```
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 *Note `-r` is for "Raw", to allow all special characters*
 
-| **32** :$ `gedit 02-read-5`
+| **32** :$
 
-| **33** :$ `./02-read-5`
+```console
+gedit 02-read-5
+```
+
+| **33** :$
+
+```console
+./02-read-5
+```
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 ### III. `sleep`
 
-| **34** :$ `sleep 1`
+| **34** :$
 
-| **35** :$ `sleep 3`
+```console
+sleep 1
+```
 
-| **36** :$ `gedit 02-sleep-1`
+| **35** :$
 
-| **37** :$ `./02-sleep-1`
+```console
+sleep 3
+```
 
-| **38** :$ `gedit 02-sleep-2`
+| **36** :$
 
-| **39** :$ `./02-sleep-2 "I like apples."`
+```console
+gedit 02-sleep-1
+```
+
+| **37** :$
+
+```console
+./02-sleep-1
+```
+
+| **38** :$
+
+```console
+gedit 02-sleep-2
+```
+
+| **39** :$
+
+```console
+./02-sleep-2 "I like apples."
+```
 
 *Put it together...*
 
-| **40** :$ `gedit 02-sleep-3`
+| **40** :$
 
-| **41** :$ `./02-sleep-3`
+```console
+gedit 02-sleep-3
+```
+
+| **41** :$
+
+```console
+./02-sleep-3
+```
 
 *Now type something, then press Enter*
 
@@ -171,17 +335,29 @@ ___
 
 *Make sure LibreOffice is not running, ignore any error message...*
 
-| **42** :$ `killall soffice.bin`
+| **42** :$
+
+```console
+killall soffice.bin
+```
 
 *Open LibreOffice Writer from the terminal...*
 
-| **43** :$ `lowriter`
+| **43** :$
+
+```console
+lowriter
+```
 
 *Now, close Writer in the GUI (click the X to close the window)...*
 
 *...The terminal returns to the prompt*
 
-| **44** :$ `lowriter &`
+| **44** :$
+
+```console
+lowriter &
+```
 
 *Note the terminal returned directly to the prompt because we used `&`*
 
@@ -189,23 +365,47 @@ ___
 
 *Let's use `wait` in a script...*
 
-| **45** :$ `gedit 02-waiter-1`
+| **45** :$
 
-| **46** :$ `./02-waiter-1`
+```console
+gedit 02-waiter-1
+```
+
+| **46** :$
+
+```console
+./02-waiter-1
+```
 
 *Again, close Writer in the GUI, then watch for the message in the terminal*
 
-| **47** :$ `gedit 02-waiter-2`
+| **47** :$
 
-| **48** :$ `./02-waiter-2`
+```console
+gedit 02-waiter-2
+```
+
+| **48** :$
+
+```console
+./02-waiter-2
+```
 
 *Note that the script finished with it's message and the terminal returned to the prompt without closing Writer*
 
 *Again, close Writer in the GUI*
 
-| **49** :$ `gedit 02-waiter-3`
+| **49** :$
 
-| **50** :$ `./02-waiter-3`
+```console
+gedit 02-waiter-3
+```
+
+| **50** :$
+
+```console
+./02-waiter-3
+```
 
 *Note the script did not finish and the terminal is still busy*
 
@@ -219,19 +419,35 @@ ___
 
 *Start Writer...*
 
-| **51** :$ `lowriter &`
+| **51** :$
+
+```console
+lowriter &
+```
 
 *Now, "wait" for it to close by watching for its PID to close...*
 
-| **52** :$ `pgrep lowriter`
+| **52** :$
+
+```console
+pgrep lowriter
+```
 
 *Note the PID number and replace 55555 with that number below:*
 
-| **53a** :$ `wait 55555`
+| **53a** :$
+
+```console
+wait 55555
+```
 
 **OR**
 
-| **53b** :$ `wait $(pgrep lowriter)` *(or you can use this instead)*
+| **53b** :$ *(or you can use this instead)*
+
+```console
+wait $(pgrep lowriter)
+```
 
 *Note `wait` is "waiting" for Writer's PID to end*
 

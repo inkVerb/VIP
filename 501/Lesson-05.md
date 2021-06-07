@@ -56,7 +56,11 @@ ls web
 
 *Anything after `localhost/web/` made of letters and underscore should simply echo in the browser...*
 
-| **B-1** :// `localhost/web/My_Long_Name`
+| **B-1** ://
+
+```console
+localhost/web/My_Long_Name
+```
 
 *...Feel free to try different strings after `localhost/web/`*
 
@@ -93,7 +97,11 @@ atom core/05-htaccess2 && \
 ls web
 ```
 
-| **B-2** :// `localhost/web/My_Long_Name`
+| **B-2** ://
+
+```console
+localhost/web/My_Long_Name
+```
 
 *...Feel free to try different strings after `localhost/web/`*
 
@@ -109,13 +117,21 @@ ls web
 ```
 *Notice in the RegEx, this requies a `/` in the middle, otherwise it won't work...*
 
-| **B-3a** :// `localhost/web/My_Long_Name`
+| **B-3a** ://
+
+```console
+localhost/web/My_Long_Name
+```
 
 *...It doesn't work because the RegEx only recognizes a string with a `/` in the middle*
 
 *So, try one with a `/`...*
 
-| **B-3b** :// `localhost/web/My_Long_Name/Name-2`
+| **B-3b** ://
+
+```console
+localhost/web/My_Long_Name/Name-2
+```
 
 *...Feel free to try different strings after `localhost/web/`, before and after the `/`*
 
@@ -132,13 +148,21 @@ ls web
 
 *Notice in the RegEx, this allows a `/` in the middle, but it isn't required...*
 
-| **B-4a** :// `localhost/web/My_Long_Name`
+| **B-4a** ://
+
+```console
+localhost/web/My_Long_Name
+```
 
 *...It works without a `/` in the middle...*
 
 *So does it work with `/` in the middle...*
 
-| **B-4b** :// `localhost/web/My_Long_Name/Name-2`
+| **B-4b** ://
+
+```console
+localhost/web/My_Long_Name/Name-2
+```
 
 *...Feel free to try different strings after `localhost/web/`, before and after the `/`*
 
@@ -151,7 +175,11 @@ ls web
 
 *Edit the Apache web server settings file...*
 
-| **5** :$ `vim /etc/apache2/sites-available/000-default.conf`
+| **5** :$
+
+```console
+vim /etc/apache2/sites-available/000-default.conf
+```
 
 *vim will open the settings file as "read-only"...*
 
@@ -188,19 +216,35 @@ RewriteRule ^ %1 [R=301,L]
 
 Without this, a trailing slash with nothing after could trigger a false GET argument
 
-| **B-6a** :// `localhost/web/webapp.php/`
+| **B-6a** ://
+
+```console
+localhost/web/webapp.php/
+```
 
 *Note RewriteRule used the file name as the GET argument*
 
 *This doesn't happen without the trailing slash `/`*
 
-| **B-6b** :// `localhost/web/webapp.php`
+| **B-6b** ://
+
+```console
+localhost/web/webapp.php
+```
 
 *Try another file...*
 
-| **B-6c** :// `localhost/web/account.php/`
+| **B-6c** ://
 
-| **B-6d** :// `localhost/web/account.php`
+```console
+localhost/web/account.php/
+```
+
+| **B-6d** ://
+
+```console
+localhost/web/account.php
+```
 
 | **7** :$
 ```
@@ -212,17 +256,33 @@ ls web
 
 *...Now, RewriteMod will simply remove the trailing slash `/`, not get fooled by it...*
 
-| **B-7a** :// `localhost/web/webapp.php/`
+| **B-7a** ://
 
-| **B-7b** :// `localhost/web/account.php/`
+```console
+localhost/web/webapp.php/
+```
+
+| **B-7b** ://
+
+```console
+localhost/web/account.php/
+```
 
 *Everything else still works...*
 
-| **B-7c** :// `localhost/web/My_Long_Name`
+| **B-7c** ://
+
+```console
+localhost/web/My_Long_Name
+```
 
 *...with and without a `/` in the middle...*
 
-| **B-7d** :// `localhost/web/My_Long_Name/Name-2`
+| **B-7d** ://
+
+```console
+localhost/web/My_Long_Name/Name-2
+```
 
 ___
 

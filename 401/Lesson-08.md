@@ -36,7 +36,11 @@ ___
 
 *Edit this script to see the short version*
 
-| **1** :$ `gedit looplines`
+| **1** :$
+
+```console
+gedit looplines
+```
 
 *It should look like this:*
 
@@ -56,7 +60,11 @@ done
 
 *Run it and watch carefully*
 
-| **2** :$ `./looplines`
+| **2** :$
+
+```console
+./looplines
+```
 
 ### II. Complex Loop Applied
 
@@ -64,7 +72,11 @@ Integrate `pwgen` with `sed` in a `for` loop...
 
 *Edit this script to see the short version*
 
-| **3** :$ `gedit looprandom`
+| **3** :$
+
+```console
+gedit looprandom
+```
 
 *It should look like this:*
 
@@ -89,13 +101,25 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Run it*
 
-| **4** :$ `./looprandom`
+| **4** :$
 
-| **5** :$ `ls`
+```console
+./looprandom
+```
+
+| **5** :$
+
+```console
+ls
+```
 
 *Note the file created: `randomlooped`*
 
-| **6** :$ `gedit randomlooped`
+| **6** :$
+
+```console
+gedit randomlooped
+```
 
 ### III. `$IFS` = tab
 
@@ -111,7 +135,11 @@ Set `$IFS` to a "tab"
 
 *Edit this script to see the short version*
 
-| **7** :$ `gedit looptab`
+| **7** :$
+
+```console
+gedit looptab
+```
 
 *It should look like this:*
 
@@ -133,11 +161,19 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Run it and watch carefully*
 
-| **8** :$ `./looptab`
+| **8** :$
+
+```console
+./looptab
+```
 
 *Take a look at countfile again*
 
-| **9** :$ `gedit countfile`
+| **9** :$
+
+```console
+gedit countfile
+```
 
 *Note that the IFS separated items at the tab after "add2start_" on each line*
 
@@ -145,7 +181,11 @@ unset IFS # We don't want our strange settings messing with other things.
 
 *Edit this script to see the short version*
 
-| **10** :$ `gedit loopcolon`
+| **10** :$
+
+```console
+gedit loopcolon
+```
 
 *It should look like this:*
 
@@ -165,13 +205,21 @@ done
 
 *Run it and watch carefully*
 
-| **11** :$ `./loopcolon`
+| **11** :$
+
+```console
+./loopcolon
+```
 
 ### V. `$IFS` = pipe `|`
 
 *Edit this script to see the short version*
 
-| **12** :$ `gedit looppipe`
+| **12** :$
+
+```console
+gedit looppipe
+```
 
 *It should look like this:*
 
@@ -191,19 +239,31 @@ done
 
 *Run it and watch carefully*
 
-| **13** :$ `./looppipe`
+| **13** :$
+
+```console
+./looppipe
+```
 
 ### VI. `$IFS` in the `$PATH`
 
 *Remember learning about our $PATH in Lesson 3?*
 
-| **14** :$ `echo $PATH`
+| **14** :$
+
+```console
+echo $PATH
+```
 
 **This nifty little script sorts the directories in the $PATH with a `do` loop, listing each one on a new line:**
 
 *Edit the script*
 
-| **15** :$ `gedit listpath`
+| **15** :$
+
+```console
+gedit listpath
+```
 
 *It should look like this:*
 
@@ -222,7 +282,11 @@ for pDir in $(echo "$PATH"); do
 done
 ```
 
-| **16** :$ `./listpath`
+| **16** :$
+
+```console
+./listpath
+```
 
 ___
 

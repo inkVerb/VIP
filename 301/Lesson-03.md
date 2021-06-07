@@ -14,7 +14,11 @@ ___
 
 *Note, we aren't in our usual place; we are here: `~/School/VIP/301/one`*
 
-| **1** :$ `ln -sfn ~/School/VIP/301/03-* .` *Make sure you include that period at the end!*
+| **1** :$ *Make sure you include that period at the end!*
+
+```console
+ln -sfn ~/School/VIP/301/03-* .
+```
 
 ### I. `for Var in Lst; do`
 
@@ -29,61 +33,145 @@ done
 
 one*
 
-| **2** :$ `gedit 03-do-echo-1`
+| **2** :$
 
-| **3** :$ `ls one*`
+```console
+gedit 03-do-echo-1
+```
 
-| **4** :$ `./03-do-echo-1`
+| **3** :$
+
+```console
+ls one*
+```
+
+| **4** :$
+
+```console
+./03-do-echo-1
+```
 
 one-1*
 
-| **5** :$ `gedit 03-do-echo-2`
+| **5** :$
 
-| **6** :$ `ls one-1*`
+```console
+gedit 03-do-echo-2
+```
 
-| **7** :$ `./03-do-echo-2`
+| **6** :$
+
+```console
+ls one-1*
+```
+
+| **7** :$
+
+```console
+./03-do-echo-2
+```
 
 *.one
 
-| **8** :$ `gedit 03-do-echo-3`
+| **8** :$
 
-| **9** :$ `ls *.one`
+```console
+gedit 03-do-echo-3
+```
+
+| **9** :$
+
+```console
+ls *.one
+```
 
 *Note `do` is on the same line as `for` via `;`*
 
-| **10** :$ `./03-do-echo-3`
+| **10** :$
+
+```console
+./03-do-echo-3
+```
 
 *t.one
 
-| **11** :$ `gedit 03-do-echo-4`
+| **11** :$
 
-| **12** :$ `ls *t.one`
+```console
+gedit 03-do-echo-4
+```
 
-| **13** :$ `./03-do-echo-4`
+| **12** :$
+
+```console
+ls *t.one
+```
+
+| **13** :$
+
+```console
+./03-do-echo-4
+```
 
 3.*
 
-| **14** :$ `gedit 03-do-echo-5`
+| **14** :$
 
-| **15** :$ `ls 3.*`
+```console
+gedit 03-do-echo-5
+```
 
-| **16** :$ `./03-do-echo-5`
+| **15** :$
+
+```console
+ls 3.*
+```
+
+| **16** :$
+
+```console
+./03-do-echo-5
+```
 
 \*3*
 
-| **17** :$ `gedit 03-do-echo-6`
+| **17** :$
 
-| **18** :$ `ls *3*`
+```console
+gedit 03-do-echo-6
+```
 
-| **19** :$ `./03-do-echo-6`
+| **18** :$
+
+```console
+ls *3*
+```
+
+| **19** :$
+
+```console
+./03-do-echo-6
+```
 
 \*one* "is a file."
 
-| **20** :$ `gedit 03-do-echo-7`
+| **20** :$
 
-| **21** :$ `ls *one*`
+```console
+gedit 03-do-echo-7
+```
 
-| **22** :$ `./03-do-echo-7`
+| **21** :$
+
+```console
+ls *one*
+```
+
+| **22** :$
+
+```console
+./03-do-echo-7
+```
 
 **iteration** - *Each loop "cycle" is often called an "iteration"*
 
@@ -95,29 +183,61 @@ one-1*
 
 *Note the error message: bash knows `break` is used by `for`...*
 
-| **23** :$ `break`
+| **23** :$
+
+```console
+break
+```
 
 *Note the two `echo` commands and where the `break` applies...*
 
-| **24** :$ `gedit 03-do-echo-8`
+| **24** :$
 
-| **25** :$ `ls one-*`
+```console
+gedit 03-do-echo-8
+```
 
-| **26** :$ `./03-do-echo-8`
+| **25** :$
+
+```console
+ls one-*
+```
+
+| **26** :$
+
+```console
+./03-do-echo-8
+```
 
 #### `continue` will skip whatever is left in a loop iteration and "continue" on to the next iteration
 
 *Note the error message: bash knows `continue` is used by `for`...*
 
-| **27** :$ `continue`
+| **27** :$
+
+```console
+continue
+```
 
 *Note the two `echo` commands and where the `continue` applies...*
 
-| **28** :$ `gedit 03-do-echo-9`
+| **28** :$
 
-| **29** :$ `ls one-*`
+```console
+gedit 03-do-echo-9
+```
 
-| **30** :$ `./03-do-echo-9`
+| **29** :$
+
+```console
+ls one-*
+```
+
+| **30** :$
+
+```console
+./03-do-echo-9
+```
 
 ___
 

@@ -7,107 +7,247 @@ Ready the CLI
 
 ___
 
-| **1** :$ `echo FILE-1 > file1`
+| **1** :$
 
-| **2** :$ `ls`
+```console
+echo FILE-1 > file1
+```
 
-| **3** :$ `cat file1`
+| **2** :$
 
-| **4** :$ `cp file1 file2`
+```console
+ls
+```
 
-| **5** :$ `ls`
+| **3** :$
 
-| **6** :$ `cat file2`
+```console
+cat file1
+```
 
-| **7** :$ `gedit file1 file2`
+| **4** :$
 
-| **8** :$ `cp file1 file3`
+```console
+cp file1 file2
+```
 
-| **9** :$ `ls`
+| **5** :$
 
-| **10** :$ `mv file3 file4`
+```console
+ls
+```
 
-| **11** :$ `ls`
+| **6** :$
 
-| **12** :$ `ln -s file4 file5`
+```console
+cat file2
+```
 
-| **13** :$ `ls`
+| **7** :$
+
+```console
+gedit file1 file2
+```
+
+| **8** :$
+
+```console
+cp file1 file3
+```
+
+| **9** :$
+
+```console
+ls
+```
+
+| **10** :$
+
+```console
+mv file3 file4
+```
+
+| **11** :$
+
+```console
+ls
+```
+
+| **12** :$
+
+```console
+ln -s file4 file5
+```
+
+| **13** :$
+
+```console
+ls
+```
 
 *Note file5 is a different color because it is a symlink*
 
-| **14** :$ `ls -l`
+| **14** :$
+
+```console
+ls -l
+```
 
 *Note file5 points to file4, indicating where the symlink leads*
 
 *You can also use list-long on only the symlink to see where it points*
 
-| **15** :$ `ls -l file5`
+| **15** :$
+
+```console
+ls -l file5
+```
 
 *Let's take a peek*
 
-| **16** :$ `gedit file4 file5`
+| **16** :$
 
-| **17** :$ `echo FILE-5 >> file5`
+```console
+gedit file4 file5
+```
+
+| **17** :$
+
+```console
+echo FILE-5 >> file5
+```
 
 *gedit: Reload file4 & file5*
 
 *Note both file4 and file5 say the same thing*
 
-| **18** :$ `echo SILLY-FILE5 >> file5`
+| **18** :$
+
+```console
+echo SILLY-FILE5 >> file5
+```
 
 *gedit: Reload file4 & file5*
 
-| **19** :$ `echo INTO-FILE4 >> file4`
+| **19** :$
+
+```console
+echo INTO-FILE4 >> file4
+```
 
 *gedit: Reload file4 & file5*
 
-| **20** :$ `ln -s file4 file6`
+| **20** :$
 
-| **21** :$ `ls`
+```console
+ln -s file4 file6
+```
 
-| **22** :$ `ls -l`
+| **21** :$
 
-| **23** :$ `cat file6`
+```console
+ls
+```
 
-| **24** :$ `gedit file6`
+| **22** :$
+
+```console
+ls -l
+```
+
+| **23** :$
+
+```console
+cat file6
+```
+
+| **24** :$
+
+```console
+gedit file6
+```
 
 *Note file6 is the same as file4 & file5*
 
-| **25** :$ `rm file6`
+| **25** :$
 
-| **26** :$ `ls`
+```console
+rm file6
+```
 
-| **27** :$ `ls -l`
+| **26** :$
+
+```console
+ls
+```
+
+| **27** :$
+
+```console
+ls -l
+```
 
 *Note file4 remains*
 
-| **28** :$ `rm file4`
+| **28** :$
 
-| **29** :$ `ls`
+```console
+rm file4
+```
 
-| **30** :$ `ls -l`
+| **29** :$
+
+```console
+ls
+```
+
+| **30** :$
+
+```console
+ls -l
+```
 
 *Note file5 is "broken"*
 
-| **31** :$ `touch file4`
+| **31** :$
+
+```console
+touch file4
+```
 
 *Note file4 is empty now...*
 
-| **32** :$ `cat file4`
+| **32** :$
+
+```console
+cat file4
+```
 
 *gedit: Reload file4 & file5*
 
-| **33** :$ `ls -l`
+| **33** :$
+
+```console
+ls -l
+```
 
 *Note file5 is no longer a broken symlink, but file4 isn't the same as it used to be*
 
 *gedit: Save file6*
 
-| **34** :$ `ls`
+| **34** :$
+
+```console
+ls
+```
 
 *Note file6 is no longer a symlink*
 
-| **35** :$ `cat file6`
+| **35** :$
+
+```console
+cat file6
+```
 
 ___
 

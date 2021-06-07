@@ -10,11 +10,19 @@ ___
 
 *Check the Linux version info*
 
-| **1** :$ `lsb_release -a`
+| **1** :$
+
+```console
+lsb_release -a
+```
 
 *Get just the number*
 
-| **2** :$ `lsb_release -r -s`
+| **2** :$
+
+```console
+lsb_release -r -s
+```
 
 *Some commands require `sudo`, AKA "run as administrator"*
 
@@ -25,7 +33,11 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** :$ `su Username`
+> | **S1** :$
+
+```console
+su Username
+```
 >
 ___
 
@@ -33,11 +45,19 @@ ___
 
 *See the list of all available software "packages"*
 
-| **3** :$ `sudo apt list`
+| **3** :$
+
+```console
+sudo apt list
+```
 
 *Those are available from your current "repositories", listed here...*
 
-| **4** :$ `cat /etc/apt/sources.list`
+| **4** :$
+
+```console
+cat /etc/apt/sources.list
+```
 
 *A repository (AKA 'repo') is a web server that has software packages for installs and upgrades*
 
@@ -49,11 +69,19 @@ ___
   - *it has more packages*
   - *it is from Ubuntu's company, Canonical, so it is trusted*
 
-| **5** :$ `sudo add-apt-repository multiverse` *Probably press <kbd>Ctrl</kbd> + <kbd>C</kbd> to cancel if it asks*
+| **5** :$ *Probably press <kbd>Ctrl</kbd> + <kbd>C</kbd> to cancel if it asks*
+
+```console
+sudo add-apt-repository multiverse
+```
 
 *This adds a graphics driver repository and can help if your graphics are slow of glitchy*
 
-| **6** :$ `sudo add-apt-repository ppa:graphics-drivers/ppa` *Probably press <kbd>Ctrl</kbd> + <kbd>C</kbd> to cancel if it asks*
+| **6** :$ *Probably press <kbd>Ctrl</kbd> + <kbd>C</kbd> to cancel if it asks*
+
+```console
+sudo add-apt-repository ppa:graphics-drivers/ppa
+```
 
 *Repositories can be added many ways, this is one common way:*
   - `sudo add-apt-repository ppa:NAME-OF-REPOSITORY/ppa`
@@ -73,42 +101,70 @@ ___
 
 *Update the current software package version lists (no updates are installed)*
 
-| **7** :$ `sudo apt update`
+| **7** :$
+
+```console
+sudo apt update
+```
 
 *If there is a problem, usually fix it with `--fix-missing`*
 - (`sudo apt update --fix-missing`)
 
 *See what can packages on your machine have a new version available*
 
-| **8** :$ `sudo apt list --upgradable`
+| **8** :$
+
+```console
+sudo apt list --upgradable
+```
 
 *Upgrade (install updates)*
 
-| **9** :$ `sudo apt upgrade` *If updates are available, you will need to press Y, then Enter*
+| **9** :$ *If updates are available, you will need to press Y, then Enter*
+
+```console
+sudo apt upgrade
+```
 
 ### Installing
 
 *Install the `git` package*
 
-| **10** :$ `sudo apt install git` *Unless it is installed already, you will need to press Y, then Enter*
+| **10** :$ *Unless it is installed already, you will need to press Y, then Enter*
+
+```console
+sudo apt install git
+```
 
 *Install `cowsay`*
 
-| **11** :$ `sudo apt install cowsay` *Unless it is installed already, you will need to press Y, then Enter*
+| **11** :$ *Unless it is installed already, you will need to press Y, then Enter*
+
+```console
+sudo apt install cowsay
+```
 
 *You can install more than one package...*
 
 *Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` and `pwgen` packages*
 - *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
 
-| **12** :$ `sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc pwgen` *Use `-y` so you DO NOT need to press Y, then Enter*
+| **12** :$ *Use `-y` so you DO NOT need to press Y, then Enter*
+
+```console
+sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc pwgen
+```
 
 ### IF needed, `exit` from the other "sudoer"
 >
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** :$ `exit`
+> | **S2** :$
+
+```console
+exit
+```
 >
 ___
 

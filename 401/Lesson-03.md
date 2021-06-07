@@ -20,23 +20,39 @@ A script or other program ***not*** in the path needs this:
 But, scripts and programs with directories listed in the `$PATH` can be run this way:
   - `script`
 
-| **1** :$ `printenv`
+| **1** :$
+
+```console
+printenv
+```
 
 *Look for "PATH"*
 
 *More specifically...*
 
-| **2** :$ `printenv PATH`
+| **2** :$
+
+```console
+printenv PATH
+```
 
 *This is a colon (`:`) -separated list of directories where executable files may be executed from **without entering the /complete/path/to/the/file***
 
 *Let's make this $PATH more readable,  use `sed` to resort them to go onto each line...*
 
-| **3** :$ `echo $PATH | sed "s/:/\n/g" | tee mypath && gedit mypath`
+| **3** :$
+
+```console
+echo $PATH | sed "s/:/\n/g" | tee mypath && gedit mypath
+```
 
 *The $PATH is why commands work as commands, why we can type `echo` instead of `./echo`*
 
-| **4** :$ `echo $PATH`
+| **4** :$
+
+```console
+echo $PATH
+```
 
 *Note each colon `:` separates a different directory path included in the $PATH*
 
@@ -53,7 +69,11 @@ But, scripts and programs with directories listed in the `$PATH` can be run this
 
 *Edit the script*
 
-| **5** :$ `gedit iamexec`
+| **5** :$
+
+```console
+gedit iamexec
+```
 
 *It should look like this:*
 
@@ -66,7 +86,11 @@ echo "I am executable, but I am not in the \$PATH."
 
 *Try to run it with only the script filename as the STDIN (input)...*
 
-| **6** :$ `iamexec`
+| **6** :$
+
+```console
+iamexec
+```
 
 *It won't work because the script file is not located in the $PATH!*
 
@@ -78,17 +102,29 @@ echo "I am executable, but I am not in the \$PATH."
 
 *Enter the output of this as a new command in the terminal:*
 
-| **7** :$ `echo "$(pwd)/iamexec"`
+| **7** :$
+
+```console
+echo "$(pwd)/iamexec"
+```
 
 2. "`/home/`" path: `~/...`
 
-| **8** :$ `~/School/VIP/401/iamexec`
+| **8** :$
+
+```console
+~/School/VIP/401/iamexec
+```
 
 *...or (since `.` = "current directory") this an easier way to do the same thing...*
 
 3. "here" path: `./...`
 
-| **9** :$ `./iamexec`
+| **9** :$
+
+```console
+./iamexec
+```
 
 *...Something like: `/home/USERNAME/School/VIP/shell/401/iamexec` ...enter it as a command*
 
@@ -99,19 +135,43 @@ echo "I am executable, but I am not in the \$PATH."
 
 *You can check "`which`" directory of the $PATH a command is located in...*
 
-| **10** :$ `which cp`
+| **10** :$
 
-| **11** :$ `which sed`
+```console
+which cp
+```
 
-| **12** :$ `which grep`
+| **11** :$
 
-| **13** :$ `which gedit`
+```console
+which sed
+```
 
-| **14** :$ `which firefox`
+| **12** :$
+
+```console
+which grep
+```
+
+| **13** :$
+
+```console
+which gedit
+```
+
+| **14** :$
+
+```console
+which firefox
+```
 
 *Similar, but returns more information: `whereis`*
 
-| **15** :$ `whereis firefox`
+| **15** :$
+
+```console
+whereis firefox
+```
 
 *You should find that these locations generally respect the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md).*
 
@@ -128,15 +188,31 @@ echo "I am executable, but I am not in the \$PATH."
 
 Cron tasks are processes (usually in a Shell script) that are automatically run by the system on a regular basis
 
-| **16** :$ `cd /etc`
+| **16** :$
 
-| **17** :$ `ls` *(Scroll up to find the `cron` directories)*
+```console
+cd /etc
+```
+
+| **17** :$ *(Scroll up to find the `cron` directories)*
+
+```console
+ls
+```
 
 #### Normal Schedules
 
-| **18** :$ `cd cron.daily/`
+| **18** :$
 
-| **19** :$ `ls -l`
+```console
+cd cron.daily/
+```
+
+| **19** :$
+
+```console
+ls -l
+```
 
 The system will automatically run `cron` scripts on its own scheduled basis in four `cron` directories:
 - Hourly: `/etc/cron.hourly/`
@@ -152,9 +228,17 @@ The system will automatically run `cron` scripts on its own scheduled basis in f
 To have more control of the time a `cron` task will run, put `cron` files here:
 - Cron directory: `/etc/cron.d/`
 
-| **20** :$ `cd ../cron.d/`
+| **20** :$
 
-| **21** :$ `ls -l`
+```console
+cd ../cron.d/
+```
+
+| **21** :$
+
+```console
+ls -l
+```
 
 `cron` files (like these) contain simple lines that look like this:
 

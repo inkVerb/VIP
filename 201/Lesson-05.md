@@ -16,24 +16,44 @@ ___
 ___
 > Optional: You may login as a "sudoer" if needed
 >
-> | **S1** :$ `su Username`
+> | **S1** :$
+
+```console
+su Username
+```
 ___
 
 ### I. `adduser`
 
 *Look at the `/home` directory to see the users on the machine*
 
-| **1** :$ `ls /home`
+| **1** :$
 
-| **2** :$ `sudo adduser pinkypink` *When prompted, Enter any simple password; press `Enter` for remaining questions.*
+```console
+ls /home
+```
+
+| **2** :$ *When prompted, Enter any simple password; press `Enter` for remaining questions.*
+
+```console
+sudo adduser pinkypink
+```
 
 *Look at `/home` again to see `pinkypink` has been added*
 
-| **3** :$ `ls /home`
+| **3** :$
+
+```console
+ls /home
+```
 
 *See what's at "home"*
 
-| **4** :$ `ls /home/pinkypink`
+| **4** :$
+
+```console
+ls /home/pinkypink
+```
 
 *Login as pinkypink in the GUI...*
 
@@ -45,39 +65,71 @@ Ready the CLI (if needed)
 
 `su Username`
 
-| **5** :$ `ls /home/pinkypink`
+| **5** :$
+
+```console
+ls /home/pinkypink
+```
 
 *Note the user directories & settings were created at the first GUI login*
 
 *Login via the terminal*
 
-| **6** :$ `su pinkypink`
+| **6** :$
 
-| **7** :$ `cd /home/pinkypink`
+```console
+su pinkypink
+```
+
+| **7** :$
+
+```console
+cd /home/pinkypink
+```
 
 *Note the path is only `~` because `/home/pinkypink` is home for the user pinkypink*
 
-| **8** :$ `ls`
+| **8** :$
+
+```console
+ls
+```
 
 *Look at all the new directories*
 
-| **9** :$ `ls -a`
+| **9** :$
+
+```console
+ls -a
+```
 
 *Look at all the hidden directories, these are for settings and config files*
 
-| **10** :$ `exit`
+| **10** :$
+
+```console
+exit
+```
 
 *Note you are no longer in `/home/pinkypink`, but are back where you were when you logged in as pinkypink*
 
 ### II. `useradd`
 
-| **11** :$ `sudo useradd pinkypurple`
+| **11** :$
+
+```console
+sudo useradd pinkypurple
+```
 
 *No questions this time!*
 
 *Look at `/home` again, `pinkypurple` doesn't exist!*
 
-| **12** :$ `ls /home`
+| **12** :$
+
+```console
+ls /home
+```
 
 *Note `useradd` is simple and doesn't even create a password*
 
@@ -85,99 +137,191 @@ Ready the CLI (if needed)
 
 *Try to login as pinkypurple in the terminal*
 
-| **13** :$ `su pinkypurple`
+| **13** :$
+
+```console
+su pinkypurple
+```
 
 *You can't login because pinkypurple doesn't have a password!*
 
 *Set a password for pinkypurple*
 
-| **14** :$ `sudo passwd pinkypurple` *Enter a simple password*
+| **14** :$ *Enter a simple password*
+
+```console
+sudo passwd pinkypurple
+```
 
 *Look at `/home` again*
 
-| **15** :$ `ls /home`
+| **15** :$
+
+```console
+ls /home
+```
 
 *Note pinkypurple doesn't even have a home*
 
 *Now assign a "directory" to home (`-d`) and "move" any existing contents to that directory (`-m`)*
 
-| **16** :$ `sudo usermod -d /home/ppurple -m pinkypurple`
+| **16** :$
+
+```console
+sudo usermod -d /home/ppurple -m pinkypurple
+```
 
 *Look at `/home` again*
 
-| **17** :$ `ls /home`
+| **17** :$
+
+```console
+ls /home
+```
 
 *The directory still doesn't exist!*
 
 *Create the home directory for pinkypurple*
 
-| **18** :$ `sudo mkdir /home/ppurple`
+| **18** :$
 
-| **19** :$ `ls /home`
+```console
+sudo mkdir /home/ppurple
+```
+
+| **19** :$
+
+```console
+ls /home
+```
 
 *Login as pinkypurple in the terminal*
 
-| **20** :$ `su pinkypurple`
+| **20** :$
+
+```console
+su pinkypurple
+```
 
 *Now, you are logged in and executing commands as the user "pinkypurple"*
 
 *See where you are*
 
-| **21** :$ `pwd`
+| **21** :$
+
+```console
+pwd
+```
 
 *Same as before you loggeded in*
 
 *Go home*
 
-| **22** :$ `cd` *(This takes you to your home directory, wherever it is)*
+| **22** :$ *(This takes you to your home directory, wherever it is)*
+
+```console
+cd
+```
 
 *See where you are*
 
-| **23** :$ `pwd`
+| **23** :$
+
+```console
+pwd
+```
 
 *Try to create a file*
 
-| **24** :$ `touch newfile`
+| **24** :$
+
+```console
+touch newfile
+```
 
 *Note the error message, you can't create a file in your own home!*
 
-| **25** :$ `exit`
+| **25** :$
+
+```console
+exit
+```
 
 *See why...*
 
-| **26** :$ `ls -l /home`
+| **26** :$
+
+```console
+ls -l /home
+```
 
 *The home directory exists, it was assigned as home, but pinkypurple doesn't even own its own home!*
 
 *Let pinkypurple own its own home (this will be explained more in the next section of this lesson)...*
 
-| **27** :$ `sudo chown -R pinkypurple:pinkypurple /home/ppurple`
+| **27** :$
 
-| **28** :$ `ls -l /home`
+```console
+sudo chown -R pinkypurple:pinkypurple /home/ppurple
+```
+
+| **28** :$
+
+```console
+ls -l /home
+```
 
 *Login as pinkypurple in the terminal*
 
-| **29** :$ `su pinkypurple`
+| **29** :$
+
+```console
+su pinkypurple
+```
 
 *See where you are*
 
-| **30** :$ `pwd`
+| **30** :$
+
+```console
+pwd
+```
 
 *It didn't remember where you were because this user doesn't even have settings!*
 
-| **31** :$ `cd`
+| **31** :$
 
-| **32** :$ `pwd`
+```console
+cd
+```
 
-| **33** :$ `ls`
+| **32** :$
+
+```console
+pwd
+```
+
+| **33** :$
+
+```console
+ls
+```
 
 *Nothing there*
 
 *Create a file*
 
-| **34** :$ `touch newfile`
+| **34** :$
 
-| **35** :$ `ls`
+```console
+touch newfile
+```
+
+| **35** :$
+
+```console
+ls
+```
 
 *Everything works, but the command prompt is unstyled because creating a user requires many steps*
 
@@ -192,7 +336,11 @@ Ready the CLI (if needed)
 
 *Now exit as pinkypurple*
 
-| **36** :$ `exit`
+| **36** :$
+
+```console
+exit
+```
 
 ### III. Permissions
 
@@ -204,29 +352,61 @@ Ready the CLI (if needed)
 
 ___
 
-| **37** :$ `ls -l`
+| **37** :$
+
+```console
+ls -l
+```
 
 *Note the owner of "youown"*
 
-| **38** :$ `sudo chown pinkypink:pinkypink youown` *Enter your password*
+| **38** :$ *Enter your password*
 
-| **39** :$ `ls -l`
+```console
+sudo chown pinkypink:pinkypink youown
+```
+
+| **39** :$
+
+```console
+ls -l
+```
 
 *Note a new owner of "youown" is pinkypink*
 
-| **40** :$ `chown pinkypurple:pinkypurple youown`
+| **40** :$
+
+```console
+chown pinkypurple:pinkypurple youown
+```
 
 *Note the error message because `chown` requires `sudo`, that's what happens if you don't use `sudo`*
 
-| **41** :$ `sudo chown pinkypurple:pinkypurple youown`
+| **41** :$
 
-| **42** :$ `ls -l`
+```console
+sudo chown pinkypurple:pinkypurple youown
+```
+
+| **42** :$
+
+```console
+ls -l
+```
 
 *Note "youown" now belongs to pinkypurple*
 
-| **43** :$ `sudo chown pinkypurple:pinkypink theyown`
+| **43** :$
 
-| **44** :$ `ls -l`
+```console
+sudo chown pinkypurple:pinkypink theyown
+```
+
+| **44** :$
+
+```console
+ls -l
+```
 
 *Note a new owner of "theyown", the user and group are different*
 
@@ -235,50 +415,102 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S2** :$ `exit`
+> | **S2** :$
+
+```console
+exit
+```
 ___
 
-| **45** :$ `mkdir ownrship`
+| **45** :$
 
-| **46** :$ `touch ownrship/file`
+```console
+mkdir ownrship
+```
+
+| **46** :$
+
+```console
+touch ownrship/file
+```
 
 ### If you need to log back in as a "sudoer" who can use `sudo`
 >
 ___
 > Optional: Login again as a "sudoer" if needed
 >
-> | **S3** :$ `su Username`
+> | **S3** :$
+
+```console
+su Username
+```
 ___
 
-| **47** :$ `ls -l`
+| **47** :$
 
-| **48** :$ `sudo chown pinkypink:pinkypink ownrship`
+```console
+ls -l
+```
 
-| **49** :$ `ls -l`
+| **48** :$
+
+```console
+sudo chown pinkypink:pinkypink ownrship
+```
+
+| **49** :$
+
+```console
+ls -l
+```
 
 *Note a new owner of "ownrship"*
 
-| **50** :$ `ls -l ownrship/`
+| **50** :$
+
+```console
+ls -l ownrship/
+```
 
 *Note you own the directory "ownrship", but not the file inside*
 
 *Use `-R` for directories (must be CAPITAL with `chown`!)*
 
-| **51** :$ `sudo chown -R pinkypink:pinkypink ownrship`
+| **51** :$
 
-| **52** :$ `ls -l ownrship/`
+```console
+sudo chown -R pinkypink:pinkypink ownrship
+```
+
+| **52** :$
+
+```console
+ls -l ownrship/
+```
 
 *Now you own "ownrship" and the file inside*
 
 *Remove it...*
 
-| **53** :$ `rm youown` *"y" for Yes, might not work; "n" for No is better for this lesson*
+| **53** :$ *"y" for Yes, might not work; "n" for No is better for this lesson*
+
+```console
+rm youown
+```
 
 *Note the error message because you don't own it anymore! Use `sudo`*
 
-| **54** :$ `sudo rm youown`
+| **54** :$
 
-| **55** :$ `ls -l`
+```console
+sudo rm youown
+```
+
+| **55** :$
+
+```console
+ls -l
+```
 
 *Note `sudo` allows you to delete files and directories you don't own*
 
@@ -286,71 +518,143 @@ ___
 
 *Create a file owned by root*
 
-| **56** :$ `sudo touch iamroot`
+| **56** :$
 
-| **57** :$ `ls -l`
+```console
+sudo touch iamroot
+```
+
+| **57** :$
+
+```console
+ls -l
+```
 
 *Note root owns "iamroot"*
 
-| **58** :$ `rm iamroot` *"y" for Yes, might not work; "n" for No is better for this lesson*
+| **58** :$ *"y" for Yes, might not work; "n" for No is better for this lesson*
+
+```console
+rm iamroot
+```
 
 *Note only root can delete the file "iamroot"*
 
-| **59** :$ `sudo rm iamroot`
+| **59** :$
+
+```console
+sudo rm iamroot
+```
 
 *Let's cleanup these files you don't own so they don't cause problems later ...*
 
-| **60** :$ `sudo rm theyown`
+| **60** :$
 
-| **61** :$ `sudo rm -r ownrship`
+```console
+sudo rm theyown
+```
 
-| **62** :$ `ls -l`
+| **61** :$
+
+```console
+sudo rm -r ownrship
+```
+
+| **62** :$
+
+```console
+ls -l
+```
 
 *...also use `sudo` to delete the puppet users we created for this lesson...*
 
-| **63** :$ `sudo deluser pinkypink`
+| **63** :$
+
+```console
+sudo deluser pinkypink
+```
 
 *Note the message about the "pinkypink" group being empty, that's because `deluser` also deleted the group*
 
 *We don't want to use `userdel` because it is too minimum*
 
-| **64** :$ `sudo deluser pinkypurple`
+| **64** :$
+
+```console
+sudo deluser pinkypurple
+```
 
 *The users still have `/home` directories*
 
-| **65** :$ `ls -l /home`
+| **65** :$
+
+```console
+ls -l /home
+```
 
 *Note the users' old home directories are still there, but owned by some number!*
 
 *...remove them both*
 
-| **66** :$ `sudo rm -r /home/pinkypink /home/ppurple`
+| **66** :$
 
-| **67** :$ `ls /home`
+```console
+sudo rm -r /home/pinkypink /home/ppurple
+```
+
+| **67** :$
+
+```console
+ls /home
+```
 
 *"Own" everything in your home directory, just to make sure all is well (always a good idea)*
 
-| **68** :$ `sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME`
+| **68** :$
+
+```console
+sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME
+```
 
 ### IV. Sudoers
 
 *This is the file with settings for "sudoers" (users that can use `sudo`)*
 
-| **69** :$ `cat /etc/sudoers`
+| **69** :$
+
+```console
+cat /etc/sudoers
+```
 
 *Note the error, viewing the "sudoers" file requires `sudo` permissions*
 
-| **70** :$ `sudo cat /etc/sudoers`
+| **70** :$
+
+```console
+sudo cat /etc/sudoers
+```
 
 *You may not see yourself, this handy little `grep` code shows all sudoers*
 
-| **71** :$ `grep -Po '^sudo.+:\K.*$' /etc/group`
+| **71** :$
+
+```console
+grep -Po '^sudo.+:\K.*$' /etc/group
+```
 
 *You can also `sudo` desktop GUI apps, but it can be dangerous...*
 
-| **72** :$ `sudo gedit` *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
+| **72** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
 
-| **73** :$ `sudo nautilus` *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
+```console
+sudo gedit
+```
+
+| **73** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
+
+```console
+sudo nautilus
+```
 
 
 ### IF needed, `exit` from the other "sudoer"
@@ -358,7 +662,11 @@ ___
 ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
-> | **S4** :$ `exit`
+> | **S4** :$
+
+```console
+exit
+```
 ___
 
 ___

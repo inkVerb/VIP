@@ -128,83 +128,207 @@ cp file destination
 
 *Pay close attention to what happens...*
 
-| **1** :$ `cd ..`
+| **1** :$
 
-| **2** :$ `echo $OLDPWD`
+```console
+cd ..
+```
 
-| **3** :$ `cd $OLDPWD`
+| **2** :$
 
-| **4** :$ `mkdir space\ names`
+```console
+echo $OLDPWD
+```
 
-| **5** :$ `ls`
+| **3** :$
 
-| **6** :$ `cd "space names"`
+```console
+cd $OLDPWD
+```
 
-| **7** :$ `touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename`
+| **4** :$
 
-| **8** :$ `touch .imhiding .hiddenalso .htaccessfake .dotatlantica`
+```console
+mkdir space\ names
+```
 
-| **9** :$ `ls`
+| **5** :$
+
+```console
+ls
+```
+
+| **6** :$
+
+```console
+cd "space names"
+```
+
+| **7** :$
+
+```console
+touch "file one" "file also" "file three" "file also also" "file also wik" "wonder llama" normal-file onename
+```
+
+| **8** :$
+
+```console
+touch .imhiding .hiddenalso .htaccessfake .dotatlantica
+```
+
+| **9** :$
+
+```console
+ls
+```
 
 *What? Only the files from command 7!?*
 
-| **10** :$ `ls -a`
+| **10** :$
+
+```console
+ls -a
+```
 
 *Oh, there the hidden (`.startswithdot`) files are*
 
-| **11** :$ `touch song.mp3 image.png media.ogg jpeg.jpg`
+| **11** :$
 
-| **12** :$ `ls`
+```console
+touch song.mp3 image.png media.ogg jpeg.jpg
+```
 
-| **13** :$ `touch exec comm execomm`
+| **12** :$
 
-| **14** :$ `ls`
+```console
+ls
+```
+
+| **13** :$
+
+```console
+touch exec comm execomm
+```
+
+| **14** :$
+
+```console
+ls
+```
 
 *Note the colors*
 
-| **15** :$ `chmod ug+x exec comm execomm`
+| **15** :$
+
+```console
+chmod ug+x exec comm execomm
+```
 
 *...`chmod` works on more than one file at a time*
 
-| **16** :$ `ls -a`
+| **16** :$
 
-| **17** :$ `ls -f`
+```console
+ls -a
+```
 
-| **18** :$ `ls -b`
+| **17** :$
 
-| **19** :$ `touch alpha bravo charlie delta`
+```console
+ls -f
+```
 
-| **20** :$ `ls`
+| **18** :$
 
-| **21** :$ `touch alpha2 bravo2 charlie2 delta2`
+```console
+ls -b
+```
 
-| **22** :$ `ls`
+| **19** :$
 
-| **23** :$ `touch 1 2 3 4`
+```console
+touch alpha bravo charlie delta
+```
 
-| **24** :$ `ls`
+| **20** :$
+
+```console
+ls
+```
+
+| **21** :$
+
+```console
+touch alpha2 bravo2 charlie2 delta2
+```
+
+| **22** :$
+
+```console
+ls
+```
+
+| **23** :$
+
+```console
+touch 1 2 3 4
+```
+
+| **24** :$
+
+```console
+ls
+```
 
 *Reverse order...*
 
-| **25** :$ `ls -r`
+| **25** :$
+
+```console
+ls -r
+```
 
 *Sort by Time...*
 
-| **26** :$ `ls -t`
+| **26** :$
+
+```console
+ls -t
+```
 
 *Reverse Time order...*
 
-| **27** :$ `ls -rt`
+| **27** :$
 
-| **28** :$ `cd ..`
+```console
+ls -rt
+```
 
-| **29** :$ `cp -r space\ names "space also"`
+| **28** :$
 
-| **30** :$ `cp -i space\ also/* space\ names/`
+```console
+cd ..
+```
+
+| **29** :$
+
+```console
+cp -r space\ names "space also"
+```
+
+| **30** :$
+
+```console
+cp -i space\ also/* space\ names/
+```
 
 *You can overwrite each, or not, or <kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
 
-| **31** :$ `view code-of-poetry.txt`
+| **31** :$
+
+```console
+view code-of-poetry.txt
+```
 
 *Try "i" for insert*
 
@@ -212,9 +336,17 @@ cp file destination
 
 *Exit with: `:q`*
 
-| **32** :$ `touch rtfile.md`
+| **32** :$
 
-| **33** :$ `tail -f rtfile.md`
+```console
+touch rtfile.md
+```
+
+| **33** :$
+
+```console
+tail -f rtfile.md
+```
 
 Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
 
@@ -222,19 +354,43 @@ Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not
 >
 > Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
 >
-> | **T1** :$ `cd ~/School/VIP/401`
+> | **T1** :$
+
+```console
+cd ~/School/VIP/401
+```
 >
-> | **T2** :$ `echo "I am fruit." >> rtfile.md`
+> | **T2** :$
+
+```console
+echo "I am fruit." >> rtfile.md
+```
 >
 > *Did you see that?*
 >
-> | **T3** :$ `echo "I am kruit." >> rtfile.md`
+> | **T3** :$
+
+```console
+echo "I am kruit." >> rtfile.md
+```
 >
-> | **T4** :$ `echo "I am vruit." >> rtfile.md`
+> | **T4** :$
+
+```console
+echo "I am vruit." >> rtfile.md
+```
 >
-> | **T5** :$ `echo "I am gruit." >> rtfile.md`
+> | **T5** :$
+
+```console
+echo "I am gruit." >> rtfile.md
+```
 >
-> | **T6** :$ `exit`
+> | **T6** :$
+
+```console
+exit
+```
 
 *In the original terminal: <kbd>Ctrl</kbd> + <kbd>C</kbd>*
 
@@ -242,43 +398,119 @@ It never stops...
 
 *Did you know? `--` terminates flags, like `-l`...*
 
-| **34** :$ `ls -l`
+| **34** :$
 
-| **35** :$ `mkdir -l`
+```console
+ls -l
+```
 
-| **36** :$ `mkdir "-l"`
+| **35** :$
 
-| **37** :$ `mkdir -- -l`
+```console
+mkdir -l
+```
 
-| **38** :$ `ls`
+| **36** :$
 
-| **39** :$ `touch -l/newfile`
+```console
+mkdir "-l"
+```
 
-| **40** :$ `touch "-l/newfile"`
+| **37** :$
 
-| **41** :$ `touch -- -l/newfile`
+```console
+mkdir -- -l
+```
 
-| **42** :$ `ls -l`
+| **38** :$
 
-| **43** :$ `ls -l "-l"`
+```console
+ls
+```
 
-| **44** :$ `ls -l -- -l`
+| **39** :$
 
-| **45** :$ `cd -l`
+```console
+touch -l/newfile
+```
 
-| **46** :$ `cd "-l"`
+| **40** :$
 
-| **47** :$ `cd -- -l`
+```console
+touch "-l/newfile"
+```
 
-| **48** :$ `cd ..`
+| **41** :$
 
-| **49** :$ `rm -r -l`
+```console
+touch -- -l/newfile
+```
 
-| **50** :$ `rm -r "-l"`
+| **42** :$
 
-| **51** :$ `rm -r -- -l`
+```console
+ls -l
+```
 
-| **52** :$ `ls`
+| **43** :$
+
+```console
+ls -l "-l"
+```
+
+| **44** :$
+
+```console
+ls -l -- -l
+```
+
+| **45** :$
+
+```console
+cd -l
+```
+
+| **46** :$
+
+```console
+cd "-l"
+```
+
+| **47** :$
+
+```console
+cd -- -l
+```
+
+| **48** :$
+
+```console
+cd ..
+```
+
+| **49** :$
+
+```console
+rm -r -l
+```
+
+| **50** :$
+
+```console
+rm -r "-l"
+```
+
+| **51** :$
+
+```console
+rm -r -- -l
+```
+
+| **52** :$
+
+```console
+ls
+```
 
 ___
 
@@ -317,7 +549,11 @@ Wait, what?
 
 Now, for the [BSD games](http://wiki.linuxquestions.org/wiki/BSD_games) (from the package `bsdgames`)...
 
-| **D1** :$ `sudo apt install bsdgames`
+| **D1** :$
+
+```console
+sudo apt install bsdgames
+```
 
 (Make sure the terminal is big enough!)
 

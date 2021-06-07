@@ -7,109 +7,285 @@ Ready the CLI
 
 ___
 
-| **1** :$ `mkdir directory`
+| **1** :$
 
-| **2** :$ `ls`
+```console
+mkdir directory
+```
 
-| **3** :$ `ln -s directory dirlink`
+| **2** :$
 
-| **4** :$ `ls`
+```console
+ls
+```
 
-| **5** :$ `ls -l`
+| **3** :$
 
-| **6** :$ `cd directory`
+```console
+ln -s directory dirlink
+```
 
-| **7** :$ `ls`
+| **4** :$
 
-| **8** :$ `mkdir subdirectory`
+```console
+ls
+```
 
-| **9** :$ `ls`
+| **5** :$
 
-| **10** :$ `touch file`
+```console
+ls -l
+```
 
-| **11** :$ `cd ../dirlink`
+| **6** :$
 
-| **12** :$ `ls`
+```console
+cd directory
+```
 
-| **13** :$ `touch subdirectory/alsofile`
+| **7** :$
 
-| **14** :$ `cd subdirectory`
+```console
+ls
+```
 
-| **15** :$ `ls`
+| **8** :$
 
-| **16** :$ `cd ../../directory/subdirectory`
+```console
+mkdir subdirectory
+```
 
-| **17** :$ `ls`
+| **9** :$
 
-| **18** :$ `cd ../..`
+```console
+ls
+```
 
-| **19** :$ `ls`
+| **10** :$
 
-| **20** :$ `mkdir dirnew`
+```console
+touch file
+```
 
-| **21** :$ `ls`
+| **11** :$
 
-| **22** :$ `cd dirnew`
+```console
+cd ../dirlink
+```
 
-| **23** :$ `touch delfile`
+| **12** :$
 
-| **24** :$ `ls`
+```console
+ls
+```
 
-| **25** :$ `cd ..`
+| **13** :$
+
+```console
+touch subdirectory/alsofile
+```
+
+| **14** :$
+
+```console
+cd subdirectory
+```
+
+| **15** :$
+
+```console
+ls
+```
+
+| **16** :$
+
+```console
+cd ../../directory/subdirectory
+```
+
+| **17** :$
+
+```console
+ls
+```
+
+| **18** :$
+
+```console
+cd ../..
+```
+
+| **19** :$
+
+```console
+ls
+```
+
+| **20** :$
+
+```console
+mkdir dirnew
+```
+
+| **21** :$
+
+```console
+ls
+```
+
+| **22** :$
+
+```console
+cd dirnew
+```
+
+| **23** :$
+
+```console
+touch delfile
+```
+
+| **24** :$
+
+```console
+ls
+```
+
+| **25** :$
+
+```console
+cd ..
+```
 
 *Use `touch` & `ls` with a different directory...*
 
-| **26** :$ `ls dirnew`
+| **26** :$
 
-| **27** :$ `touch dirnew/alsodel dirnew/alsoalso`
+```console
+ls dirnew
+```
 
-| **28** :$ `ls -l dirnew`
+| **27** :$
 
-| **29** :$ `rm dirnew`
+```console
+touch dirnew/alsodel dirnew/alsoalso
+```
+
+| **28** :$
+
+```console
+ls -l dirnew
+```
+
+| **29** :$
+
+```console
+rm dirnew
+```
 
 *Note the error message about directories*
 
 *Use `-r` (Recursive) to remove directories*
 
-| **30** :$ `rm -r dirnew`
+| **30** :$
 
-| **31** :$ `ls`
+```console
+rm -r dirnew
+```
 
-| **32** :$ `cp directory cpdirnew`
+| **31** :$
+
+```console
+ls
+```
+
+| **32** :$
+
+```console
+cp directory cpdirnew
+```
 
 *Note the error message about directories*
 
 *Use `-r` with `cp` as well as `rm` for directories*
 
-| **33** :$ `cp -r directory cpdirnew`
+| **33** :$
 
-| **34** :$ `ls`
+```console
+cp -r directory cpdirnew
+```
 
-| **35** :$ `mv -r cpdirnew cpdir`
+| **34** :$
+
+```console
+ls
+```
+
+| **35** :$
+
+```console
+mv -r cpdirnew cpdir
+```
 
 *Note, `mv` rejects `-r`, just use `mv` even for directories*
 
-| **36** :$ `mv cpdirnew cpdir`
+| **36** :$
 
-| **37** :$ `ls`
+```console
+mv cpdirnew cpdir
+```
 
-| **38** :$ `cd cpdir`
+| **37** :$
+
+```console
+ls
+```
+
+| **38** :$
+
+```console
+cd cpdir
+```
 
 *Note that `.` = "current directory" and `..` = "parent directory"... even with `ls`...*
 
-| **39** :$ `ls .`
+| **39** :$
 
-| **40** :$ `ls ..`
+```console
+ls .
+```
 
-| **41** :$ `cd ..`
+| **40** :$
 
-| **42** :$ `ls .`
+```console
+ls ..
+```
 
-| **43** :$ `ls ..`
+| **41** :$
+
+```console
+cd ..
+```
+
+| **42** :$
+
+```console
+ls .
+```
+
+| **43** :$
+
+```console
+ls ..
+```
 
 *These are even listed with the "all" flag (`-a`)*
 
-| **44** :$ `ls -a`
+| **44** :$
+
+```console
+ls -a
+```
 
 ___
 

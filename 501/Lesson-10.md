@@ -11,19 +11,31 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
-| **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
+| **S0** :$ *(password in the terminal, not safe outside these lessons!)*
+
+```console
+mysql -u admin -padminpassword
+```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd><kbd>PageUp</kbd></kbd>/<kbd><kbd>PageDown</kbd></kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
-| **S1** :> `USE webapp_db;`
+| **S1** :>
+
+```console
+USE webapp_db;
+```
 
 | **S1** ://phpMyAdmin **> webapp_db**
 
 ### Webapp Dashboard Login:
 
-| **B-1** :// `localhost/web/webapp.php` (Check that you're logged in)
+| **B-1** :// (Check that you're logged in)
+
+```console
+localhost/web/webapp.php
+```
 
 ```
 Username: jonboy
@@ -81,19 +93,31 @@ ls web
   - Ensure set & uncommented: `file_uploads = On` (remove any semicolon `;` at the start of the line, make sure it is `On`)
   - Edit with `gedit`:
 
-    | **3g** :$ `sudo gedit /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
+    | **3g** :$ (maybe `7.2` is a different number)
+
+```console
+sudo gedit /etc/php/7.2/apache2/php.ini
+```
 
     - Search with: <kbd>Ctrl</kbd> + F, then type `file_uploads` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
   - Or edit with `vim`:
 
-    | **3v** :$ `sudo vim /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
+    | **3v** :$ (maybe `7.2` is a different number)
+
+```console
+sudo vim /etc/php/7.2/apache2/php.ini
+```
 
     - Search by typing: `/file_uploads`, then Enter to find the line, type `:wq` to save and quit
 
 2. Restart Everything
 
-| **4** :$ `sudo systemctl restart apache2`
+| **4** :$
+
+```console
+sudo systemctl restart apache2
+```
 
 ### Basic File Upload
 
@@ -169,7 +193,11 @@ ls web/uploads
 
 *Note the uploads directory is empty*
 
-| **B-6** :// `localhost/web/upload.php`
+| **B-6** ://
+
+```console
+localhost/web/upload.php
+```
 
 1. Click "Browse..."
 2. Look in ~/School/VIP/501/test_uploads
@@ -208,7 +236,11 @@ ls web/uploads
   - *...to hold error messages*
   - *...to check if there have been any errors*
 
-| **B-9** :// `localhost/web/upload.php` (Same)
+| **B-9** :// (Same)
+
+```console
+localhost/web/upload.php
+```
 
 1. Click "Browse..."
 2. Look in ~/School/VIP/501/test_uploads
@@ -222,7 +254,11 @@ ls web/uploads
 
 *Note it failed*
 
-| **B-10** :// `localhost/web/upload.php` (Same)
+| **B-10** :// (Same)
+
+```console
+localhost/web/upload.php
+```
 
 Repeat steps 1-4, choosing file vip-blue.png
 
@@ -255,7 +291,11 @@ ls web/uploads
 - *We set that file extension to `$uploaded_file_type` for checks against the types we want to allow*
 - *If the file has an allowed extension, we run our fake/non- image check on it*
 
-| **B-12** :// `localhost/web/upload.php` (Same)
+| **B-12** :// (Same)
+
+```console
+localhost/web/upload.php
+```
 
 1. Click "Browse..."
 2. Look in ~/School/VIP/501/test_uploads
@@ -269,7 +309,11 @@ ls web/uploads
 
 *Note it failed*
 
-| **B-13** :// `localhost/web/upload.php` (Same)
+| **B-13** :// (Same)
+
+```console
+localhost/web/upload.php
+```
 
 Repeat steps 1-4, choosing file vip-chartreuse.png
 
@@ -293,7 +337,11 @@ ls -l web/uploads
 
 *Note the* ***timestamps*** *for vip-chartreuse.png in the uploads directory*
 
-| **B-15** :// `localhost/web/upload.php` (Same)
+| **B-15** :// (Same)
+
+```console
+localhost/web/upload.php
+```
 
 1. Click "Browse..."
 2. Look in ~/School/VIP/501/test_uploads
@@ -321,7 +369,11 @@ atom core/10-upload4.php && \
 - *If the file exists, we run a small process to add a number to the end of the new file*
 
 
-| **B-17** :// `localhost/web/upload.php` (Same)
+| **B-17** :// (Same)
+
+```console
+localhost/web/upload.php
+```
 
 Repeat steps 1-4, choosing file vip-chartreuse.png ***again***
 
@@ -354,7 +406,11 @@ ls web/uploads
 - *Our `($file_size > $size_limit)` test sees if the file is too large*
 
 
-| **B-19** :// `localhost/web/upload.php` (Same)
+| **B-19** :// (Same)
+
+```console
+localhost/web/upload.php
+```
 
 1. Click "Browse..."
 2. Look in ~/School/VIP/501/test_uploads
@@ -368,7 +424,11 @@ ls web/uploads
 
 *Note it failed as "too large"*
 
-| **B-20** :// `localhost/web/upload.php` (Same)
+| **B-20** :// (Same)
+
+```console
+localhost/web/upload.php
+```
 
 Repeat steps 1-4, choosing file nib.gif
 
@@ -387,19 +447,31 @@ ls web/uploads
   - Ensure set: `upload_max_filesize = 5M` (make sure it is `5M`)
   - Edit with `gedit`:
 
-    | **21g** :$ `sudo gedit /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
+    | **21g** :$ (maybe `7.2` is a different number)
+
+```console
+sudo gedit /etc/php/7.2/apache2/php.ini
+```
 
     - Search with: <kbd>Ctrl</kbd> + F, then type `upload_max_filesize` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
   - Or edit with `vim`:
 
-    | **21v** :$ `sudo vim /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
+    | **21v** :$ (maybe `7.2` is a different number)
+
+```console
+sudo vim /etc/php/7.2/apache2/php.ini
+```
 
     - Search by typing: `/upload_max_filesize`, then Enter to find the line, type `:wq` to save and quit
 
 2. Restart Everything
 
-| **22** :$ `sudo systemctl restart apache2`
+| **22** :$
+
+```console
+sudo systemctl restart apache2
+```
 
 **Other file types**
 
@@ -440,7 +512,11 @@ function human_file_size($size, $unit="") {
 }
 ```
 
-| **B-24** :// `localhost/web/upload.php` (Same)
+| **B-24** :// (Same)
+
+```console
+localhost/web/upload.php
+```
 
 1. Click "Browse..."
 2. Look in ~/School/VIP/501/test_uploads
@@ -507,7 +583,11 @@ ls web
 - *dropzone.php*
   - *This works in the background, like an AJAX call with no response*
 
-| **B-26** :// `localhost/web/dropzone.html`
+| **B-26** ://
+
+```console
+localhost/web/dropzone.html
+```
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag files into the area: *"Drop files here to upload"*
@@ -590,7 +670,11 @@ Dropzone.options.dropzoneUploader = { // JS: .dropzoneUploader = HTML: id="dropz
 };
 ```
 
-| **B-28** :// `localhost/web/medialibrary.php`
+| **B-28** ://
+
+```console
+localhost/web/medialibrary.php
+```
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag files into the area: *"Drop to upload!"*
@@ -634,7 +718,11 @@ ls web web/media
 acceptedFiles: "image/jpeg, image/png, image/gif, image/svg+xml, video/webm, video/x-theora+ogg, video/ogg, video/mp4, audio/mpeg, audio/ogg, audio/x-wav, audio/wav, text/plain, text/html, .md, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/x-pdf, application/pdf",
 
 ```
-| **B-30** :// `localhost/web/medialibrary.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-30** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/medialibrary.php
+```
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag files into the area: *"Drop to upload!"*
@@ -673,7 +761,11 @@ ls web web/media
     - *`$_FILES['upload_file']['tmp_name']`*
     - *`$_FILES['upload_file']['name']`*
 
-| **B-32** :// `localhost/web/medialibrary.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-32** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/medialibrary.php
+```
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag single, then multiple files into the area: *"Drop to upload!"*
@@ -742,7 +834,11 @@ addRemoveLinks: true, // Default: false
   - *`$_FILES['upload_file']['tmp_name'][0]`*
   - *`$_FILES['upload_file']['name'][0]`*
 
-| **B-34** :// `localhost/web/medialibrary.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-34** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/medialibrary.php
+```
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag multiple files into the area: *"Drop to upload!"*
@@ -878,7 +974,11 @@ init: function() {
   - *Is back to the full processor as before*
   - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
 
-| **B-36** :// `localhost/web/medialibrary.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-36** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/medialibrary.php
+```
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag multiple files into the area: *"Drop to upload!"*
@@ -927,7 +1027,11 @@ ls web
 - *tiny-upload.php AJAX uploads, then sends the file's location in JSON:'filepath'*
 - *The TinyMCE `images_upload_handler` function interprets that JSON*
 
-| **B-38** :// `localhost/web/tiny.html`
+| **B-38** ://
+
+```console
+localhost/web/tiny.html
+```
 
 **Upload with the image uploader**
 
@@ -972,7 +1076,11 @@ ls web
 - *Settings "`// Added for media & files`"*
 - *`file_picker_callback` enables and defines the upload file icon in the image upload dialog*
 
-| **B-41** :// `localhost/web/tiny.html` *(Same)*
+| **B-41** :// *(Same)*
+
+```console
+localhost/web/tiny.html
+```
 
 **Upload with the "file picker"**
 
@@ -1035,7 +1143,11 @@ ls web web/uploads
 
 - *`<!-- TinyMCE insert ...` creates the `<button>` and the JavaScript function to add the media content to the TinyMCE `<textarea>`*
 
-| **B-43** :// `localhost/web/tiny.html` *(Same)*
+| **B-43** :// *(Same)*
+
+```console
+localhost/web/tiny.html
+```
 
 1. Click each "add ..." button, probably each on a new line
 2. Click the "<>" button in TinyMCE to see the code and the inserted media elements
@@ -1051,7 +1163,11 @@ atom core/10-medium-media-insert.html && \
 ls web web/uploads
 ```
 
-| **B-44** :// `localhost/web/medium.html`
+| **B-44** ://
+
+```console
+localhost/web/medium.html
+```
 
 1. Click each "add ..." button, probably each on a new line
 2. Try to delete media items
@@ -1135,7 +1251,11 @@ CREATE TABLE IF NOT EXISTS `media_library` (
 | **45** ://phpMyAdmin **> webapp_db > media_library**
 
 
-| **B-45** :// `localhost/web/medialibrary.php` (Same as previously)
+| **B-45** :// (Same as previously)
+
+```console
+localhost/web/medialibrary.php
+```
 
 1. Look in ~/School/VIP/501/test_uploads
 2. Drag single or multiple files into the area: *"Drop to upload!"*
@@ -1216,7 +1336,11 @@ ls web
   - *Styles inside our media editor: `div#media-editor-closer` & `h1#media-editor-content`*
     - *So the "&#xd7;" (`&amp;#xd7;`) and `<h1>` from AJAX can fit on the same line*
 
-| **B-47** :// `localhost/web/medialibrary.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-47** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/medialibrary.php
+```
 
 | **47** :>
 ```sql
@@ -1577,7 +1701,11 @@ CREATE TABLE IF NOT EXISTS `media_images` (
 DELETE FROM media_library;
 ```
 
-| **B-71** :// `localhost/web/medialibrary.php` (<kbd>Ctrl</kbd> + R to reload)
+| **B-71** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/medialibrary.php
+```
 
 | **71** ://phpMyAdmin **> webapp_db > media_library**
 

@@ -8,15 +8,35 @@ Ready the CLI
 
 ___
 
-| **1** :$ `gedit applefoo`
+| **1** :$
 
-| **2** :$ `sed "s/foo/bar/" applefoo`
+```console
+gedit applefoo
+```
 
-| **3** :$ `sed "s/foo/bar/" applefoo > sedoutput.text`
+| **2** :$
 
-| **4** :$ `gedit sedoutput.text`
+```console
+sed "s/foo/bar/" applefoo
+```
 
-| **5** :$ `echo "Add a line" >> sedoutput.text`
+| **3** :$
+
+```console
+sed "s/foo/bar/" applefoo > sedoutput.text
+```
+
+| **4** :$
+
+```console
+gedit sedoutput.text
+```
+
+| **5** :$
+
+```console
+echo "Add a line" >> sedoutput.text
+```
 
 *gedit: Reload sedoutput.text*
 
@@ -26,19 +46,35 @@ ___
 
 *But better yet, piping into `tee` will do both!*
 
-| **6** :$ `sed "s/foo/bar/" applefoo | tee sedoutput.text`
+| **6** :$
+
+```console
+sed "s/foo/bar/" applefoo | tee sedoutput.text
+```
 
 *gedit: Reload sedoutput.text*
 
-| **7** :$ `echo "Add a line" >> sedoutput.text`
+| **7** :$
+
+```console
+echo "Add a line" >> sedoutput.text
+```
 
 *gedit: Reload sedoutput.text*
 
-| **8** :$ `sed "s/foo/bar/" applefoo | tee -a sedoutput.text`
+| **8** :$
+
+```console
+sed "s/foo/bar/" applefoo | tee -a sedoutput.text
+```
 
 *gedit: Reload sedoutput.text*
 
-| **9** :$ `echo "Add a line" | tee -a sedoutput.text`
+| **9** :$
+
+```console
+echo "Add a line" | tee -a sedoutput.text
+```
 
 *gedit: Reload sedoutput.text*
 

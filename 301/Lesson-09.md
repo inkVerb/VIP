@@ -12,103 +12,255 @@ ___
 
 ### I. Basic Math `expr`
 
-| **1** :$ `expr 5 + 6`
+| **1** :$
 
-| **2** :$ `expr 12 - 1`
+```console
+expr 5 + 6
+```
 
-| **3** :$ `expr 7 / 2`
+| **2** :$
+
+```console
+expr 12 - 1
+```
+
+| **3** :$
+
+```console
+expr 7 / 2
+```
 
 *Note it only answers in whole numbers*
 
 *Modulus gives only the remainder*
 
-| **4** :$ `expr 7 % 2`
+| **4** :$
+
+```console
+expr 7 % 2
+```
 
 *Look, the asterisk must be escaped because all by itself an asterisk "means something"*
 
-| **5** :$ `expr 7 \* 2`
+| **5** :$
 
-| **6** :$ `expr 7 \* 13`
+```console
+expr 7 \* 2
+```
 
-| **7** :$ `gedit 09-expr`
+| **6** :$
 
-| **8** :$ `./09-expr 2 + 72`
+```console
+expr 7 \* 13
+```
 
-| **9** :$ `./09-expr 55 - 7`
+| **7** :$
 
-| **10** :$ `./09-expr 88 / 11`
+```console
+gedit 09-expr
+```
 
-| **11** :$ `./09-expr 14 \* 2`
+| **8** :$
 
-| **12** :$ `./09-expr 7 % 2`
+```console
+./09-expr 2 + 72
+```
 
-| **13** :$ `gedit 09-expr-show`
+| **9** :$
 
-| **14** :$ `./09-expr-show 55 + 1`
+```console
+./09-expr 55 - 7
+```
 
-| **15** :$ `./09-expr-show 20 \* 3`
+| **10** :$
 
-| **16** :$ `./09-expr-show 22 % 3`
+```console
+./09-expr 88 / 11
+```
+
+| **11** :$
+
+```console
+./09-expr 14 \* 2
+```
+
+| **12** :$
+
+```console
+./09-expr 7 % 2
+```
+
+| **13** :$
+
+```console
+gedit 09-expr-show
+```
+
+| **14** :$
+
+```console
+./09-expr-show 55 + 1
+```
+
+| **15** :$
+
+```console
+./09-expr-show 20 \* 3
+```
+
+| **16** :$
+
+```console
+./09-expr-show 22 % 3
+```
 
 ### II. Comparison Operators
 
 #### A. `-eq -ne -gt -lt -ge -le`
 
-| **17** :$ `gedit 09-operators`
+| **17** :$
 
-| **18** :$ `./09-operators 4 eq 4`
+```console
+gedit 09-operators
+```
 
-| **19** :$ `./09-operators 4 eq 7`
+| **18** :$
 
-| **20** :$ `./09-operators 4 ne 4`
+```console
+./09-operators 4 eq 4
+```
 
-| **21** :$ `./09-operators 4 ne 7`
+| **19** :$
 
-| **22** :$ `./09-operators 8 gt 9`
+```console
+./09-operators 4 eq 7
+```
 
-| **23** :$ `./09-operators 9 gt 8`
+| **20** :$
 
-| **24** :$ `./09-operators 8 lt 9`
+```console
+./09-operators 4 ne 4
+```
 
-| **25** :$ `./09-operators 9 lt 8`
+| **21** :$
 
-| **26** :$ `./09-operators 10 ge 23`
+```console
+./09-operators 4 ne 7
+```
 
-| **27** :$ `./09-operators 23 ge 10`
+| **22** :$
 
-| **28** :$ `./09-operators 10 le 23`
+```console
+./09-operators 8 gt 9
+```
 
-| **29** :$ `./09-operators 23 le 10`
+| **23** :$
 
-| **30** :$ `./09-operators 3.14 gt 15`
+```console
+./09-operators 9 gt 8
+```
+
+| **24** :$
+
+```console
+./09-operators 8 lt 9
+```
+
+| **25** :$
+
+```console
+./09-operators 9 lt 8
+```
+
+| **26** :$
+
+```console
+./09-operators 10 ge 23
+```
+
+| **27** :$
+
+```console
+./09-operators 23 ge 10
+```
+
+| **28** :$
+
+```console
+./09-operators 10 le 23
+```
+
+| **29** :$
+
+```console
+./09-operators 23 le 10
+```
+
+| **30** :$
+
+```console
+./09-operators 3.14 gt 15
+```
 
 *Oops, it only works with whole numbers*
 
 *But, it works with negative numbers*
 
-| **31** :$ `./09-operators 5 ne -5`
+| **31** :$
 
-| **32** :$ `./09-operators -5 ne -5`
+```console
+./09-operators 5 ne -5
+```
+
+| **32** :$
+
+```console
+./09-operators -5 ne -5
+```
 
 #### B. Substitute the `$Variable`
 
-| **33** :$ `gedit 09-operators-subvar`
+| **33** :$
 
-| **34** :$ `./09-operators-subvar 12 lt 12`
+```console
+gedit 09-operators-subvar
+```
 
-| **35** :$ `./09-operators-subvar 12 lt 13`
+| **34** :$
+
+```console
+./09-operators-subvar 12 lt 12
+```
+
+| **35** :$
+
+```console
+./09-operators-subvar 12 lt 13
+```
 
 #### C. `== != > < >= <=` (BASH `#!/bin/bash`)
 
-| **36** :$ `gedit 09-operators-symbol`
+| **36** :$
+
+```console
+gedit 09-operators-symbol
+```
 
 *Note at the top: `#!/bin/bash`*
 
 *These symbols require BASH. Nemo, we're not in Shellfish anymore...*
 
-| **37** :$ `./09-operators-symbol 12 eq 12`
+| **37** :$
 
-| **38** :$ `./09-operators-symbol 12 eq 13`
+```console
+./09-operators-symbol 12 eq 12
+```
+
+| **38** :$
+
+```console
+./09-operators-symbol 12 eq 13
+```
 
 ___
 

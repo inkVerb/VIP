@@ -27,7 +27,11 @@ done
 
 #### A. Each flag gets one argument (but not help)
 
-| **1** :$ `gedit 12-flags-1`
+| **1** :$
+
+```console
+gedit 12-flags-1
+```
 
 *Note the line with `while getopts`*
 
@@ -38,45 +42,97 @@ done
   - This is a "flag argument" AKA "option argument", as opposed to a `$1` style argument
 - `a` not followed by `:` would mean that the `-a` flag ignores arguments
 
-| **2** :$ `./12-flags-1 -h` (help)
+| **2** :$ (help)
 
-| **3** :$ `./12-flags-1 -j` (fail: not a valid flag)
+```console
+./12-flags-1 -h
+```
 
-| **4** :$ `./12-flags-1 -a` (fail: flags require arguments)
+| **3** :$ (fail: not a valid flag)
 
-| **5** :$ `./12-flags-1 Alpha -a` (nothing: `getopts` flags must appear ***before*** corresponding arguments)
+```console
+./12-flags-1 -j
+```
 
-| **6** :$ `./12-flags-1 -a Alpha`
+| **4** :$ (fail: flags require arguments)
+
+```console
+./12-flags-1 -a
+```
+
+| **5** :$ (nothing: `getopts` flags must appear ***before*** corresponding arguments)
+
+```console
+./12-flags-1 Alpha -a
+```
+
+| **6** :$
+
+```console
+./12-flags-1 -a Alpha
+```
 
 *Note not all flags are required*
 
-| **7** :$ `./12-flags-1 -a Alpha -b Beta -c Charlie -d Dogma`
+| **7** :$
+
+```console
+./12-flags-1 -a Alpha -b Beta -c Charlie -d Dogma
+```
 
 *Note all flags may be used*
 
-| **8** :$ `./12-flags-1 -a Alpha -b Beta -c C Charlie -d Dogma`
+| **8** :$
+
+```console
+./12-flags-1 -a Alpha -b Beta -c C Charlie -d Dogma
+```
 
 *Note two arguments broke it after `-c C`*
 
-| **9** :$ `./12-flags-1 -a Alpha -b Beta -c "C Charlie" -d Dogma`
+| **9** :$
 
-| **10** :$ `./12-flags-1 -b Beta -a Alpha -d Dogma -c Charlie `
+```console
+./12-flags-1 -a Alpha -b Beta -c "C Charlie" -d Dogma
+```
+
+| **10** :$
+
+```console
+./12-flags-1 -b Beta -a Alpha -d Dogma -c Charlie 
+```
 
 *Note it keeps your order*
 
-| **11** :$ `./12-flags-1 -b`
+| **11** :$
+
+```console
+./12-flags-1 -b
+```
 
 *...`-b` requires an argument because it is `b:` in the `while getopts` line*
 
 #### B. No arguments allowed
 
-| **12** :$ `gedit 12-flags-2`
+| **12** :$
 
-| **13** :$ `./12-flags-2 -b`
+```console
+gedit 12-flags-2
+```
+
+| **13** :$
+
+```console
+./12-flags-2 -b
+```
 
 *...`-b` does NOT require an argument because `b` is not followed by `:` in the `while getopts` line*
 
-| **14** :$ `./12-flags-2 -d Dunno`
+| **14** :$
+
+```console
+./12-flags-2 -d Dunno
+```
 
 *...The `$OPTARG` variable doesn't recognize the argument because there was no `:` for flag `-d` in the `while getopts` line*
 
@@ -146,31 +202,63 @@ while getopts ":abcdh" Flg; do
 done
 ```
 
-| **15** :$ `gedit 12-flags-3`
+| **15** :$
 
-| **16** :$ `./12-flags-3 -ad Dunno`
+```console
+gedit 12-flags-3
+```
+
+| **16** :$
+
+```console
+./12-flags-3 -ad Dunno
+```
 
 *...Flags `-a` and `-d` take the same argument*
 
-| **17** :$ `./12-flags-3 -abcd Dunno Dubbo`
+| **17** :$
+
+```console
+./12-flags-3 -abcd Dunno Dubbo
+```
 
 *...Note no "Dubbo", only one argument allowed this way*
 
-| **18** :$ `./12-flags-3 -a Dunno -bcd Dubbo`
+| **18** :$
+
+```console
+./12-flags-3 -a Dunno -bcd Dubbo
+```
 
 *...No flags allowed after the only argument*
 
 #### D. Both global and flag arguments
 
-| **19** :$ `gedit 12-flags-4`
+| **19** :$
 
-| **20** :$ `./12-flags-4 -a Alpha -bcd Bogma`
+```console
+gedit 12-flags-4
+```
+
+| **20** :$
+
+```console
+./12-flags-4 -a Alpha -bcd Bogma
+```
 
 *...Note "Bogma" came from our `$globalArg` cluster, not from `getopts`*
 
-| **21** :$ `./12-flags-4 -a Alpha -e Emancipation -bcd Bogma`
+| **21** :$
 
-| **22** :$ `./12-flags-4 -e "Emancipation" -bcd Bogma -a Alpha`
+```console
+./12-flags-4 -a Alpha -e Emancipation -bcd Bogma
+```
+
+| **22** :$
+
+```console
+./12-flags-4 -e "Emancipation" -bcd Bogma -a Alpha
+```
 
 *Note anything after the -bcd options is ignored because they accept a global argument, be aware when combining specific options and global options*
 
@@ -191,9 +279,17 @@ function how_to_use()
 how_to_use
 ```
 
-| **23** :$ `gedit 12-flags-5`
+| **23** :$
 
-| **24** :$ `./12-flags-5 -h`
+```console
+gedit 12-flags-5
+```
+
+| **24** :$
+
+```console
+./12-flags-5 -h
+```
 
 ### II. `getopt`
 
@@ -208,41 +304,93 @@ getopt -o f:l:a:g:s -l flag:,lag:,ages:,sag -n "$(basename "$0")" -- "$@"
 
 *First, see what `basename` does...*
 
-| **25** :$ `basename /path/to/here`
+| **25** :$
 
-| **26** :$ `basename /path/to/here.file`
+```console
+basename /path/to/here
+```
 
-| **27** :$ `basename /path/to/here.file .file`
+| **26** :$
 
-| **28** :$ `basename -a /path/one /path/two`
+```console
+basename /path/to/here.file
+```
+
+| **27** :$
+
+```console
+basename /path/to/here.file .file
+```
+
+| **28** :$
+
+```console
+basename -a /path/one /path/two
+```
 
 *Many tools like `basename` help `getopt` to work...*
 
-| **29** :$ `gedit 12-long`
+| **29** :$
+
+```console
+gedit 12-long
+```
 
 *Note `--long` alternative options are included*
 
 *Note the global option was removed since `getopt` checks requirements by itself*
 
-| **30** :$ `./12-long Alpha -a` (error: `getopt` flags must appear ***before*** corresponding arguments)
+| **30** :$ (error: `getopt` flags must appear ***before*** corresponding arguments)
 
-| **31** :$ `./12-long -a Alpha -bce`
+```console
+./12-long Alpha -a
+```
 
-| **32** :$ `./12-long --alpha Alpha --ecko --delta --beetle --charlie `
+| **31** :$
+
+```console
+./12-long -a Alpha -bce
+```
+
+| **32** :$
+
+```console
+./12-long --alpha Alpha --ecko --delta --beetle --charlie 
+```
 
 *Note the order no longer affects the output since everything is done by `if` statements in order, at the end of the script*
 
-| **33** :$ `./12-long --alpha Alpha -bcd --ecko`
+| **33** :$
 
-| **34** :$ `./12-long -a Alpha --beetle --delta -e --charlie`
+```console
+./12-long --alpha Alpha -bcd --ecko
+```
+
+| **34** :$
+
+```console
+./12-long -a Alpha --beetle --delta -e --charlie
+```
 
 *Note both short and long are accepted*
 
-| **35** :$ `./12-long -k` (invalid option)
+| **35** :$ (invalid option)
 
-| **36** :$ `./12-long` (no options)
+```console
+./12-long -k
+```
 
-| **37** :$ `./12-long --help`
+| **36** :$ (no options)
+
+```console
+./12-long
+```
+
+| **37** :$
+
+```console
+./12-long --help
+```
 
 ___
 
@@ -295,19 +443,43 @@ ___
 
 Wait, what are these?
 
-| **D1** :$ `sudo apt install bastet moon-buggy ninvaders nsnake pacman4console`
+| **D1** :$
+
+```console
+sudo apt install bastet moon-buggy ninvaders nsnake pacman4console
+```
 
 (Make sure the terminal is big enough!)
 
-| **D2** :$ `bastet`
+| **D2** :$
 
-| **D3** :$ `moon-buggy`
+```console
+bastet
+```
 
-| **D4** :$ `ninvaders`
+| **D3** :$
 
-| **D5** :$ `nsnake`
+```console
+moon-buggy
+```
 
-| **D6** :$ `pacman4console`
+| **D4** :$
+
+```console
+ninvaders
+```
+
+| **D5** :$
+
+```console
+nsnake
+```
+
+| **D6** :$
+
+```console
+pacman4console
+```
 
 ___
 
