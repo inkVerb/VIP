@@ -38,7 +38,7 @@ Each of these folders is for different projects.
 
 `gedit head.sh`
 
-Copy and paste. *Ctrl + C, Ctrl + V*
+Copy and paste. *<kbd>Ctrl</kbd> + C, Ctrl + V*
 
 `#!/bin/sh`
 
