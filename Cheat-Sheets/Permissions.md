@@ -5,7 +5,7 @@
 `chmod ug+x some-file`
 
 | Numeric  | Readable    | Explanation                    |
-| --------:|:-----------:| :----------------------------- |
+|:--------:|:-----------:| :----------------------------- |
 | 0        | ---         | No access                      |
 | 1        | --x         | Execute access                 |
 | 2        | -w-         | Write access                   |
@@ -16,19 +16,19 @@
 | 7        | rwx         | Read, write and execute access |
 
 | Label | Stands for |
-| -----:|:---------- | 
+|:-----:|:---------- | 
 | r     | read       |
 | w     | write      |
 | x     | execute    |
 
 | Flag | Stands for            |
-| ----:|:--------------------- | 
+|:----:|:--------------------- | 
 | u    | user (owner)          |
 | g    | group (owner's group) |
 | o    | others (public)       |
 
 | Oper | Stands for |
-| ----:|:---------- | 
+|:----:|:---------- | 
 | +    | add        |
 | -    | remove     |
 | =    | only       |
