@@ -41,7 +41,7 @@ ls
 
 ### Create proper headers
 
-##### SH script
+### SH script
 
 | **3** :$
 
@@ -61,7 +61,7 @@ gedit head.sh
 ls
 ```
 
-##### XML
+### XML
 
 | **5** :$
 
@@ -81,7 +81,7 @@ gedit head.xml
 ls
 ```
 
-##### HTML
+### HTML
 
 | **7** :$
 
@@ -109,7 +109,7 @@ gedit head.html
 ls
 ```
 
-##### PHP
+### PHP
 
 | **9** :$
 
@@ -119,6 +119,7 @@ ls
 
 ```php
 <?php
+
 ?>
 ```
 
