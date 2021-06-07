@@ -5,6 +5,8 @@ Whether you want to become a computer genius or if you're a "computer dummy" and
 
 ## Shell Crash Course
 
+# [Code Headers](https://github.com/inkVerb/VIP/blob/master/SH-XML-HTML-PHP-headers.md)
+
 # [Shell 101: Arguments](https://github.com/inkVerb/VIP/blob/master/101-shell/README.md)
 
 # [Shell 201: Files](https://github.com/inkVerb/VIP/blob/master/201-shell/README.md)

@@ -1,135 +1,156 @@
-# In the terminal, create the headers for .sh, .xml, .html & .php files
+# Code Headers
+
+In the terminal, create the headers for .sh, .xml, .html & .php files
 
 ___
+
+## Reference
+
+Open Terminal: <kbd>F12</kbd> (if you have a drop-down terminal) / <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (normal)*
+
+Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
+
+Save: <kbd>Ctrl</kbd> + <kbd>S</kbd>
+
+Close: <kbd>Alt</kbd> + <kbd>F4</kbd>
 
 ## Prep Folders
 
 *Watch in the file explorer if you want, in your School folder*
 
-Open Terminal <kbd>F12</kbd> (if Vrk or Guake is installed) / <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (normal)*
+| **1** :$
 
-`cd `
+```console
+mkdir -p ~/School/VIP
+cd ~/School/VIP
+nautilus .
+```
 
-*IF* you don't have a `School` folder, create it: `mkdir School`
+*Observe the changes in the file explorer*
 
-`cd School`
+| **2** :$
 
-`mkdir VIP`
+```console
+mkdir shell
+ls
+mkdir xml html php
+ls
+```
 
-`ls`
-
-`cd VIP`
-
-`nautilus .`
-
-`mkdir shell`
-
-`ls`
-
-`mkdir xml html php`
-
-`ls`
-
-Each of these folders is for different projects.
+*Each of these folders is for different projects*
 
 ### Create proper headers
 
 ##### SH script
 
-`gedit head.sh`
+| **3** :$
 
-Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
+```console
+gedit head.sh
+```
 
-`#!/bin/sh`
+| **head.sh** :
 
-Save: <kbd>Ctrl</kbd> + <kbd>S</kbd>
+```sh
+#!/bin/sh
+```
 
-Close: <kbd>Alt</kbd> + <kbd>F4</kbd>
+| **4** :$
 
-`ls`
+```console
+ls
+```
 
 ##### XML
 
-`gedit head.xml`
+| **5** :$
 
-Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
+```console
+gedit head.xml
+```
 
-`<?xml version="1.0" encoding="utf-8"?>`
+| **head.xml** :
 
-Save: <kbd>Ctrl</kbd> + <kbd>S</kbd>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+```
 
-Close: <kbd>Alt</kbd> + <kbd>F4</kbd>
+| **6** :$
 
-`ls`
+```console
+ls
+```
 
 ##### HTML
 
-`gedit head.html`
+| **7** :$
 
-Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
+```console
+gedit head.html
+```
 
-`<!DOCTYPE html>`
+| **head.html** :
 
-`<html>`
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
 
-`<head>`
+</body>
+</html>
+```
 
-`<title></title>`
+| **8** :$
 
-`</head>`
-
-`<body>`
-
-` `
-
-`</body>`
-
-`</html>`
-
-Save: <kbd>Ctrl</kbd> + <kbd>S</kbd>
-
-Close: <kbd>Alt</kbd> + <kbd>F4</kbd>
-
-`ls`
+```console
+ls
+```
 
 ##### PHP
 
+| **9** :$
+
 `gedit head.php`
 
-Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
+| **head.php** :
 
-`<?php`
+```php
+<?php
+?>
+```
 
-`?>`
+| **10** :$
 
-Save: <kbd>Ctrl</kbd> + <kbd>S</kbd>
-
-Close: <kbd>Alt</kbd> + <kbd>F4</kbd>
-
-`ls`
+```console
+ls
+```
 
 ### Move files
 
-Move everything into place
+*Move everything into place*
 
-`mv head.sh shell`
+| **11** :$
 
-`mv head.xml xml`
-
-`mv head.html html`
-
-`mv head.php php`
-
-`ls`
+```console
+mv head.sh shell
+mv head.xml xml
+mv head.html html
+mv head.php php
+ls
+```
 
 ### Note
 
-To edit any file, html for example, type:
+*To edit any file, html for example, type*
+
+| **12** :$
 
 ```console
-u@linux:~$ cd 
-u@linux:~$ cd School/VIP/html
-u@linux:~$ gedit new.html
+cd ~/School/VIP/html
+gedit new.html
 ```
 
 ...And get coding!
