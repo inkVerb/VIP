@@ -101,4 +101,4 @@ Without some special reason, never do `chmod -R ...`
 
 If you do and obviously mess up the permissions for all subdirectories, this might help fix it:
 
-`find /path/to/dir -type d -exec chmod 755 {} +`
+$ `find /path/to/dir -type d -exec chmod 755 {} +`
