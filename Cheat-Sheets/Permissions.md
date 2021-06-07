@@ -47,9 +47,8 @@ srwxrwxrwx vip vip SIZE MOD-DATE SocketName
 Legend:
 
 ```console
-rwx
-ugo = 777, 000, etc
-uuugggooo = rwxrwxrwx, ---------, etc
+ugo = 777, 000
+uuugggooo = rwxrwxrwx, ---------
 ```
 
 
