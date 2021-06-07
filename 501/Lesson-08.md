@@ -9,11 +9,11 @@ Ready the CLI
 
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T for new terminal tab; Ctrl + PageUp/PageDown to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
-*(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
+*(<kbd>Ctrl</kbd> + T for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -112,7 +112,7 @@ atom core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions2.ph
 ls web
 ```
 
-| **B-3** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+| **B-3** :// `localhost/web/edit.php` *(<kbd>Ctrl</kbd> + R to reload)*
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -198,7 +198,7 @@ atom core/08-edit3.php core/08-in.editprocess3.php && \
 ls web
 ```
 
-| **B-7** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+| **B-7** :// `localhost/web/edit.php` *(<kbd>Ctrl</kbd> + R to reload)*
 
 *Note the Slug was updated because this is technically a new piece*
 
@@ -488,7 +488,7 @@ src='tinymce/tinymce.min.js'
 https://github.com/tinymce/tinymce-dist
 ```
 
-| **B-16** :// `localhost/web/tiny.html` *(Ctrl + R to reload)*
+| **B-16** :// `localhost/web/tiny.html` *(<kbd>Ctrl</kbd> + R to reload)*
 
 *Note there is no message about domains*
 
@@ -517,7 +517,7 @@ ls web
 *- `content_css`: should be our style.css file so "Preview" uses our styling*
 
 
-| **B-17** :// `localhost/web/tiny.html` *(Ctrl + R to reload)*
+| **B-17** :// `localhost/web/tiny.html` *(<kbd>Ctrl</kbd> + R to reload)*
 
 
 ##### TinyMCE in Our 501 Blog
@@ -628,7 +628,7 @@ src="medium/js/medium-editor.js"
 https://github.com/inkverb/medium-editor
 ```
 
-| **B-20** :// `localhost/web/medium.html` *(Ctrl + R to reload)*
+| **B-20** :// `localhost/web/medium.html` *(<kbd>Ctrl</kbd> + R to reload)*
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -675,7 +675,7 @@ ls web
   - *This puts the JavaScript* ***after*** *our "Content" `<textarea>` HTML element*
   - *This implements the* ***class*** *`medium_editor` for the Medium editor JavaScript to act on*
 
-| **B-22** :// `localhost/web/edit.php` *(Ctrl + R to reload)*
+| **B-22** :// `localhost/web/edit.php` *(<kbd>Ctrl</kbd> + R to reload)*
 
 **Notice the text in the "Content" field has no border**
 

@@ -9,11 +9,11 @@ Ready the CLI
 
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T for new terminal tab; Ctrl + PageUp/PageDown to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
-*(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
+*(<kbd>Ctrl</kbd> + T for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -127,7 +127,7 @@ ls web
 - *pagify.php*
 - *postify.php*
 
-| **B-2** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-2** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -188,7 +188,7 @@ ls web
 - *pagify.php*
 - *postify.php*
 
-| **B-4** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-4** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -234,7 +234,7 @@ ls web
 - *This has a `while` loop to delete each "dead" piece*
 
 
-| **B-6** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-6** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -284,7 +284,7 @@ ls web
 - *This isn't about beauty as much as it is about being more readable*
   - *This is called "UX theory" (User eXperience theory)*
 
-| **B-8** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-8** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -340,7 +340,7 @@ ls web
 - *Added a `.purple` class*
 - *Added a section for "htmldiff.js"*
 
-| **B-9** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-9** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -407,7 +407,7 @@ $new_id = $row[0];
   - *This bumped our old htmldiff DOM `<h2>` tags to `<h3>`*
   - *It is VERY important to preserve header hierarchy, starting with `<h1>` and going down*
 
-| **B-12** :// `localhost/web/hist.php?p=3` (or whatever ID, Ctrl + R to reload)
+| **B-12** :// `localhost/web/hist.php?p=3` (or whatever ID, <kbd>Ctrl</kbd> + R to reload)
 
 ### Tags Field via JSON
 
@@ -874,7 +874,7 @@ ADD `series` INT UNSIGNED DEFAULT 1;
 
 | **28** :$ `atom core/09-pieces6.php`
 
-| **B-28** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-28** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -969,7 +969,7 @@ ls web
   - *These call act.bulkpieces.php*
 
 
-| **B-30** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-30** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -995,7 +995,7 @@ atom core/09-pieces8.php core/09-in.metaeditfunctions8.php core/09-ajax.piecesac
 ls web
 ```
 
-| **B-31** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-31** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -1094,7 +1094,7 @@ ls web
   - *Changes the page more directly with AJAX calls*
   - *Changes the text of the "changed" button, while we're at it*
 
-| **B-33** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-33** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -1241,7 +1241,7 @@ document.getElementById("title_"+p_id).innerHTML = '<b>'+jsonMetaEditResponse["t
 document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditResponse["message"]+'&nbsp;';
 ```
 
-| **B-35** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-35** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Clicking on any Piece Title will bring up our JavaScript "Meta Edit" box*
 
@@ -1271,7 +1271,7 @@ atom core/09-hist10.php && \
 ls web
 ```
 
-| **B-36** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-36** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 Click on "history" for any Piece
 
@@ -1358,7 +1358,7 @@ init_instance_callback: function (editor) {
   - *`Notice hides` section, making class `.notehide` disappear after 8 seconds*
   - *Added `input[type=text].slug` so the slug `<input type="text"` isn't ridiculously long like before*
 
-| **B-37** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-37** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 1. Click "Edit" for any piece
 2. Click "Save draft" and watch for the message
@@ -1415,12 +1415,12 @@ This autosave function serves many purposes, including nav warnings when changes
       - *`$_GET['a']`*
       - *`$_POST['old_as']`*
 
-| **B-38** :// `localhost/web/pieces.php` (Ctrl + R to reload)
+| **B-38** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
 1. Click "Edit" for any piece
 2. Type some changes in the "Content" (TinyMCE) field
 3. Wait 30 seconds and **DO NOT** press "<kbd>Ctrl</kbd> + <kbd>S</kbd>"
-4. Press "Ctrl + R" to reload the page
+4. Press "<kbd>Ctrl</kbd> + R" to reload the page
   - Agree to a warning to navigate away and leave the page
   - If there is no navigate away warning, you didn't wait long enough after changes
 5. When the page reloads, you will see the message about unsaved changes

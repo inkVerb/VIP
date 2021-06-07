@@ -9,11 +9,11 @@ Ready the CLI
 
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T for new terminal tab; Ctrl + PageUp/PageDown to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
-*(Ctrl + T for new browser tab; Ctrl + PageUp/PageDown to switch tabs)*
+*(<kbd>Ctrl</kbd> + T for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -146,7 +146,7 @@ echo "<pre>$query</pre>";
 
 | **SB-2** ://phpMyAdmin **> fruit**
 
-| **B-2** :// `localhost/web/website.php` (Ctrl + R to reload)
+| **B-2** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -168,7 +168,7 @@ ls web
 - *website.php*
 - *style.css*
 
-| **B-3** :// `localhost/web/website.php` (Ctrl + R to reload)
+| **B-3** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -212,7 +212,7 @@ ls web
 
 | **SB-4** ://phpMyAdmin **> fruit** (Same)
 
-| **B-4** :// `localhost/web/website.php` (Ctrl + R to reload)
+| **B-4** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -236,7 +236,7 @@ ls web
 
 | **SB-5** ://phpMyAdmin **> fruit** (Same)
 
-| **B-5** :// `localhost/web/website.php` (Ctrl + R to reload)
+| **B-5** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
 
 *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 

@@ -163,7 +163,7 @@ ls web
   - *`ajaxHandler.send("go=AJAX&time=5")`*
 - *ajax_responder.php processes POST arguments*
 
-| **B-3** :// `localhost/web/ajax.php` (Ctrl + R to reload)
+| **B-3** :// `localhost/web/ajax.php` (<kbd>Ctrl</kbd> + R to reload)
 
 - *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 - *Click the button "Go AJAX!"*
@@ -179,7 +179,7 @@ atom core/06-ajax4.php && \
 ls web
 ```
 
-| **B-4** :// `localhost/web/ajax.php` (Ctrl + R to reload)
+| **B-4** :// `localhost/web/ajax.php` (<kbd>Ctrl</kbd> + R to reload)
 
 - *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 - *Note the entire page is the same except our POST values*
@@ -264,7 +264,7 @@ ls web
   3. *JavaScript runs AJAX to send the `<form>` data*
 - ***This uses the JavaScript object called "`FormData`"***
 
-| **B-5** :// `localhost/web/ajax.php` (Ctrl + R to reload)
+| **B-5** :// `localhost/web/ajax.php` (<kbd>Ctrl</kbd> + R to reload)
 
 - *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -384,7 +384,7 @@ ls web
   4. *AJAX responds with a new `<form>`*
   5. *JavaScript runs `listenToForm();` again, to listen for `<input="submit">` again*
 
-| **B-6** :// `localhost/web/ajax.php` (Ctrl + R to reload)
+| **B-6** :// `localhost/web/ajax.php` (<kbd>Ctrl</kbd> + R to reload)
 
 - *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
@@ -453,7 +453,7 @@ ls web
 - *Because the `<button>` calls the AJAX JS function, we don't need to run the function on every AJAX response*
 
 
-| **B-7** :// `localhost/web/ajax.php` (Ctrl + R to reload)
+| **B-7** :// `localhost/web/ajax.php` (<kbd>Ctrl</kbd> + R to reload)
 
 - *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
 
