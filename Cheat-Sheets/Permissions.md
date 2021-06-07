@@ -12,15 +12,17 @@
 | Read, write and execute access | 7        | rwx         |
 
 
-```shell
-r # read
-w # write
-x # execute
+| Label | Stands for |
+| -----:| ----------:| 
+| r     | read       |
+| w     | write      |
+| x     | execute    |
 
-u # user (owner)
-g # group (owner's group)
-o # others (public)
-```
+| Flag | Stands for            |
+| ----:| ---------------------:| 
+| u    | user (owner)          |
+| g    | group (owner's group) |
+| o    | others (public)       |
 
 Example:
 
