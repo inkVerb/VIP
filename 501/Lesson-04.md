@@ -9,11 +9,11 @@ Ready the CLI
 
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
-*(<kbd>Ctrl</kbd> + T for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -116,7 +116,7 @@ $db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]
 
 | **B-5a** :// `localhost/web/install.php`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 | **S5** :> `SHOW TABLES;`
 
@@ -203,7 +203,7 @@ ls web
 
 | **B-8** :// `localhost/web/time.php`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 ### III. User Login
 
@@ -508,7 +508,7 @@ ls web
 
 | **B-17** :// `localhost/web/account.php`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 | **S17** :> `SELECT fullname, username, email, favnumber FROM users;`
 
@@ -551,7 +551,7 @@ ls web
 
 | **B-18** :// `localhost/web/forgot.php`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *...You must be logged out for it to work*
 

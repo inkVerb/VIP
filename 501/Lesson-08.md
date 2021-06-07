@@ -9,11 +9,11 @@ Ready the CLI
 
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
-*(<kbd>Ctrl</kbd> + T for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -66,7 +66,7 @@ Password: My#1Password
 
 | **B-2** :// `localhost/web/edit.php` (It will load because you are logged in)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Note the title of the web browser is "Editor" because we set the `<title>` tag*
 
@@ -114,7 +114,7 @@ ls web
 
 | **B-3** :// `localhost/web/edit.php` *(<kbd>Ctrl</kbd> + R to reload)*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Note our JavaScript in:*
 
@@ -202,7 +202,7 @@ ls web
 
 *Note the Slug was updated because this is technically a new piece*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Note:*
 
@@ -252,7 +252,7 @@ ls web
 
 | **B-9** :// `localhost/web/edit.php?=...` *('Enter' in the browser address bar to properly load)*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Note:*
 
@@ -383,7 +383,7 @@ ls web
 
 | **B-12** :// `localhost/web/blog.php`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Note how each piece entry is iterated from the loop*
 
@@ -441,7 +441,7 @@ ls web
 
 *Note the message about domains that you should close*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *This form won't do anything, just give it a good look and try*
 
@@ -492,7 +492,7 @@ https://github.com/tinymce/tinymce-dist
 
 *Note there is no message about domains*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 ##### Customize TinyMCE
 
@@ -578,7 +578,7 @@ ls web
 1. Type something, it is a very blank text editor
 2. Highlight some text to see styling options
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *This form won't do anything, just give it a good look and try*
 
@@ -630,7 +630,7 @@ https://github.com/inkverb/medium-editor
 
 | **B-20** :// `localhost/web/medium.html` *(<kbd>Ctrl</kbd> + R to reload)*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 ##### Medium Editor Plugin Example: Tables
 - [GitHub repo](https://github.com/yabwe/medium-editor-tables)

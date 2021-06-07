@@ -9,11 +9,11 @@ Ready the CLI
 
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
-*(<kbd>Ctrl</kbd> + T for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -85,7 +85,7 @@ ls web
 
 | **B-1** :// `localhost/web/pieces.php`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Review pieces on our SQL table...*
 
@@ -129,7 +129,7 @@ ls web
 
 | **B-2** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Observe changes to pieces on our SQL table...*
 
@@ -190,7 +190,7 @@ ls web
 
 | **B-4** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Observe changes to pieces on our SQL table...*
 
@@ -236,7 +236,7 @@ ls web
 
 | **B-6** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Review "pieces" on our SQL table...*
 
@@ -286,7 +286,7 @@ ls web
 
 | **B-8** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 In Atom:
 
@@ -342,13 +342,13 @@ ls web
 
 | **B-9** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 Hover over a "Status" section and click "history", it should take you somewhere like...
 
 | **B-10** :// `localhost/web/hist.php?p=3` (ID `3` is only one example, it could be any number)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *...This is using our htmldiff.js framework*
 
@@ -566,7 +566,7 @@ ls web
 
 | **B-19** :// `localhost/web/edit.php?p=3` (ID `3` is only one example, it could be any number)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Note the new "Tags" field and the `="p_tags"` values in HTML*
 
@@ -786,7 +786,7 @@ ls web
 
 | **B-24** :// `localhost/web/select.php`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 Try adding a Series with the "+ Series" form
 
@@ -876,7 +876,7 @@ ADD `series` INT UNSIGNED DEFAULT 1;
 
 | **B-28** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 We already have a `<form>` inside many of these `<table>` cells (the links that appear on hover)
 
@@ -917,7 +917,7 @@ ls web
 
 | **B-29** :// `localhost/web/postformarrays.php`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 Check different boxes, then submit with different buttons multiple times
 
@@ -971,7 +971,7 @@ ls web
 
 | **B-30** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 Click and try:
 
@@ -997,7 +997,7 @@ ls web
 
 | **B-31** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Notice the AJAX functions with every piece*
 
@@ -1096,7 +1096,7 @@ ls web
 
 | **B-33** :// `localhost/web/pieces.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 Try different Piece actions and see how the page never needs to reload
 
@@ -1260,7 +1260,7 @@ document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditRespon
     - *Reverse pilcrow for "Posts": no writer's use outside of some software coding*
 
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 ### Published History to Display New Meta
 

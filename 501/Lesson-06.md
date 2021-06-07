@@ -103,7 +103,7 @@ ls web
 
 | **B-1** :// `localhost/web/ajax.html`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 - *Click the button "Go AJAX!"*
 
@@ -130,7 +130,7 @@ ls web
 
 | **B-2** :// `localhost/web/ajax.php`
 
-- *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 - *Reload the page several times to watch the SESSION count go up on reload*
 - *Click the button "Go AJAX!"*
 - *Reload the page again a few times*
@@ -165,7 +165,7 @@ ls web
 
 | **B-3** :// `localhost/web/ajax.php` (<kbd>Ctrl</kbd> + R to reload)
 
-- *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 - *Click the button "Go AJAX!"*
 - *Note "AJAX" & "5" appear from our line: `go=AJAX&time=5`*
 
@@ -181,7 +181,7 @@ ls web
 
 | **B-4** :// `localhost/web/ajax.php` (<kbd>Ctrl</kbd> + R to reload)
 
-- *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 - *Note the entire page is the same except our POST values*
 - *Note we used PHP to echo the page with our variables*
 - *Click the button "Go AJAX!"*
@@ -266,7 +266,7 @@ ls web
 
 | **B-5** :// `localhost/web/ajax.php` (<kbd>Ctrl</kbd> + R to reload)
 
-- *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 1. Note:
   - "SESSION count:"
@@ -386,7 +386,7 @@ ls web
 
 | **B-6** :// `localhost/web/ajax.php` (<kbd>Ctrl</kbd> + R to reload)
 
-- *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 1. Note:
   - "SESSION count:"
@@ -455,7 +455,7 @@ ls web
 
 | **B-7** :// `localhost/web/ajax.php` (<kbd>Ctrl</kbd> + R to reload)
 
-- *Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 1. Note:
   - "SESSION count:"

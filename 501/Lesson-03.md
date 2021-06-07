@@ -9,11 +9,11 @@ Ready the CLI
 
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>S</kbd>hift + T for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ `mysql -u admin -padminpassword` *(password in the terminal, not safe outside these lessons!)*
 
-*(<kbd>Ctrl</kbd> + T for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **SB-0** :// `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -56,7 +56,7 @@ ls web
 
 | **B-1** :// `localhost/web/website.php`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *You should recognize this from before, restructured via `include` files*
 
@@ -148,7 +148,7 @@ echo "<pre>$query</pre>";
 
 | **B-2** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 ### III. SQL > PHP > HTML
 
@@ -170,7 +170,7 @@ ls web
 
 | **B-3** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 #### SQL PHP Summary
 1. An SQL query becomes a PHP `$Variable` (with any variable name)
@@ -214,7 +214,7 @@ ls web
 
 | **B-4** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 #### SQL Rows Loop Summary
 1. Each SQL row is an item that can be looped through
@@ -238,7 +238,7 @@ ls web
 
 | **B-5** :// `localhost/web/website.php` (<kbd>Ctrl</kbd> + R to reload)
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 ### V. SQL `INSERT` New Entry < HTML
 - See if a query succeeded without error
@@ -275,7 +275,7 @@ ls web
 
 *Try to input numbers or leave a field empty to see how the form responds*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Once finished, see the new entries in the database...*
 
@@ -393,7 +393,7 @@ ls web
 
 *Make changes, input numbers, or empty a field to see how the form responds*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Once finished, see the updated entries in the database...*
 
@@ -423,7 +423,7 @@ ls web
 
 *Use a checkbox to delete an entry*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Once finished, note the entries deleted from the database...*
 

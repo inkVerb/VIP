@@ -109,7 +109,7 @@ ls -l web
 
 | **B-1** :// `localhost/web/phpget.php?go=I am an apple pie`
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 *Try the form a few times to see how it works*
 
@@ -309,7 +309,7 @@ ls web
 
 *Try the form a few times to see how it works*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C in browser to see the developer view*
 
 | **7** :$
 ```
