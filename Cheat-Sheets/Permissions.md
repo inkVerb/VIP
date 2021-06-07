@@ -1,8 +1,8 @@
 # Permissions
 
-`chmod 754 some-file`
+$ `chmod 754 some-file`
 
-`chmod ug+x some-file`
+$ `chmod ug+x some-file`
 
 | Numeric  | Readable    | Explanation                    |
 |:--------:|:-----------:| :----------------------------- |
