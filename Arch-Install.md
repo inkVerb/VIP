@@ -2,13 +2,17 @@
 
 ## Create a Linux Live USB
 
-1. Find the `/dev/...` name of your USB
+| **1** :$ Find the `/dev/...` name of your USB
 
-| **1** :$ `lsblk`
+```console
+lsblk
+```
 
-2. Write the .iso file to your USB (your USB will be erased!)
+| **2** :$ Write the .iso file to your USB (your USB will be erased!)
 
-| **2** :$ `sudo dd bs=4M if=manjaro-gnome-20.X.X-XXXXXX-linuxXX.iso of=/dev/sdf conv=fdatasync status=progress`
+```console
+sudo dd bs=4M if=manjaro-gnome-20.X.X-XXXXXX-linuxXX.iso of=/dev/sdf conv=fdatasync status=progress
+```
 
 *This example assumes:*
 

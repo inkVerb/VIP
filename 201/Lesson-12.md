@@ -247,7 +247,16 @@ cd ../dev
 | **26** :$
 
 ```console
-ls
+ls -l
+```
+
+*Note permissions starting with `b` for "block devices" or `c` for "character devices"*
+
+Example:
+
+```console
+brw-rw----  1 root disk ... some-block
+crw--w----  1 root tty  ... some-tty
 ```
 
 A bluetooth device may be in here somewhere.
@@ -332,7 +341,9 @@ This contains `www/` (webserver directory) for:
 - Arch
 - Suse
 
-#### `/run/` – Running processes (a place to keep stuff that won't get deleted)
+#### `/run/` – Running pipes & sockets (the socket drawer)
+
+This contains "while-running" files, caches, sockets, pipes, and other files that may need to be semi-temporary, but that shouldn't be automatically deleted.
 
 | **35** :$
 
@@ -340,23 +351,75 @@ This contains `www/` (webserver directory) for:
 cd ../run
 ```
 
+- This is often linked to `/var/run`
+- This uses "socket" files
+
 | **36** :$
+
+```console
+ls -l
+```
+
+*Note permissions starting with `s` for "socket" and `p` for "pipe"*
+
+Example:
+
+```console
+srw-rw-rw- 1 root root ... some.socket
+prw------- 1 root root ... some-pipe
+```
+
+Sockets should usually kept in subdirectories of `/run/`
+
+| **37** :$
 
 ```console
 ls
 ```
 
-This is where some applications put their own "while-running" files, caches, and other files that may need to be semi-temporary, but that shouldn't be automatically deleted.
+##### Sockets & `/run/` subdirectories
+
+If you install a package that uses a socket, you may need to create the directory where the socket file lives, but the app using the socket will create the socet file by itself
+
+So, if you have an app with a setting...
+
+| **/etc/myapp.conf** :
+
+```
+sock=/run/myapp/myapp.socket
+```
+
+...you may need to create the directory...
+
+```
+/run/myapp/
+```
+
+...then the app will work, but...
+
+Extra subdirectories in `/run/` are deleted on system restart
+
+To add a subdirectory in `/run/`, tell the system to make it on boot via a file in `/etc/tmpfiles.d/`
+
+Example:
+
+| **/etc/tmpfiles.d/myapp.conf** :
+
+```
+d /run/myapp 0755 www www
+```
+
+You could also create the `/run/` subdirectory so the app will run without reboot
 
 #### `/proc/` — Kernel & Process (files used by the kernel)
 
-| **37** :$
+| **38** :$
 
 ```console
 cd ../proc
 ```
 
-| **38** :$
+| **39** :$
 
 ```console
 ls
@@ -366,13 +429,13 @@ These are essential for the most basic part of the system to function.
 
 #### `/sys/` – System's virtual file (live kernel information)
 
-| **39** :$
+| **40** :$
 
 ```console
 cd /sys
 ```
 
-| **40** :$
+| **41** :$
 
 ```console
 ls
@@ -382,13 +445,13 @@ This is a virtual file system, allowing normal text-file-like access to informat
 
 #### `/tmp/` — Temporary files (one-time files)
 
-| **41** :$
+| **42** :$
 
 ```console
 cd ../tmp
 ```
 
-| **42** :$
+| **43** :$
 
 ```console
 ls
@@ -423,6 +486,10 @@ ___
 - `/sbin/`, `/boot/`, `/proc/`, `/srv/`, `/sys/` are core operating system folders, don't touch!
 - `/tmo/` is where most temporary files go, including browser downloads in progress
 - `/opt/` is for software that doesn't always follow these "FSH" rules
+- `/run/` is for sockets
+  - `/var/run/` is often a symlink of `/run/`
+  - A socket file needs its directory to be created, the software will create the actual socket file by itself
+  - Socket files often have a location setting in the `/etc/...` settings files
 
 ___
 

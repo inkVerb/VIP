@@ -1,96 +1,71 @@
-# Install Fcitx for Taiwan-style Mandarin typing input in Manjaro/Arch
+# Install Fcitx for Taiwan-style Mandarin typing input in Ubuntu
+This installs fcitx on GNOME
 
-1. Update
+1. You must FIRST add Chinese Taiwan/Traditional in:
 
-```bash
-sudo pacman -Syyu --noconfirm
+- Settings > Region & Language > Manage Installed Languages / Language Support
+
+2. ? Optionally, set the language for your User Account Settings
+
+*If using Vrk, do not change your home folders to Chinese names since it is more difficult to type in the terminal*
+
+- If you don't konw what Vrk is: never mind, but how did you get here you awesome web cralwer you!
+
+3. Ctrl + Alt + T (Open the Terminal)
+
+```console
+sudo apt-get install fcitx fcitx-ui-qimpanel fcitx-chewing fcitx-table-cangjie3 fcitx-config-gtk
 ```
 
-2. Set the locale
+*Some may already be installed, that's okay.*
 
-```bash
-sudo cp /etc/locale.gen /etc/locale.gen.orig
-sudo echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-sudo echo "zh_TW.UTF-8 UTF-8" >> /etc/locale.gen
-sudo locale-gen
+```console
+fcitx-qimpanel-configtool
 ```
 
-3. Reboot
+*Set to "Vertical", then "Apply", then exit*
 
-- Close all browsers first!
+*Below is less preferable, better is: Settings > Region & Language > Manage Installed Languages > Keyboard input method*
 
-```bash
+```console
+im-config
+```
+
+- Choose: OK, yes, fcitx, OK, OK
+
+*Check if installed correctly*
+
+```console
+cat ~/.xinputrc
+```
+
+*It should include: run_im fcitx*
+
+*If not...*
+
+```console
+echo 'run_im fcitx' > ~/.xinputrc
+```
+
+*Then, reboot*
+
+```console
 reboot
 ```
 
-4. Set locale for your user
+*(Yes, you really have to reboot, even for each user)*
 
-- Choose
+***Add the language***
 
-| **English** :
+*Choose Either:*
 
-```bash
-localectl set-locale LANG=en_US.UTF-8
-```
+- In Apps, search and run: fcitx Configuration
+- Click the fcitx icon > Configure
 
-OR
-
-| **Chinese** :
-
-```bash
-localectl set-locale LANG=zh_TW.UTF-8
-```
-
-- Optionally install language packs
-
-```bash
-manjaro-settings-manager
-```
-
-  - Language Packs > Install Packages
-
-5. Install Fcitx & Fonts
-
-- Chinese phonetic input
-  - Sun Yat-sen's bopomofo system: `fcitx-chewing`
-  - Mao Zedong's Romanized pinyin: `fcitx-googlepinyin` or `fcitx-libpinyin`
-
-```bash
-sudo pacman -S --noconfirm fcitx fcitx-im fcitx-gtk2 fcitx-gtk3 fcitx-qt5 fcitx-configtool fcitx-chewing libchewing
-```
-
-```bash
-sudo pacman -S --noconfirm adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
-```
-
-- Optional:
-
-```bash
-yay -S --noconfirm ttf-ms-win10-zh_tw ttf-ms-win8-zh_tw
-```
-
-6. Language Settings:
-
-- Settings > Region & Language Language > Input Sources
-- Add: Chinese > Chinese (Chewing)
-
-7. Run Fcitx at startup
-
-```bash
-cat <<EOF >> .xinitrc
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-EOF
-```
-
-8. Reboot
-
-```bash
-reboot
-```
-
-## Meta + Space = Change language input
+**Then...**
+- + to add a language
+- Deselect "Only Show Current Language"
+- For Taiwan bopomofo select "Chewing", OK
 
 All done! Have a cookie...
 

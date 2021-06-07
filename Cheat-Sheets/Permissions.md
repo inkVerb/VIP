@@ -35,16 +35,35 @@
 
 Example:
 
-`ls -l` returns:
+$ `ls -l` returns:
 
 ```console
--rwxrwxrwx vip vip SIZE MOD-DATE FileName
+-rwxrwxrwx vip vip SIZE MOD-DATE RegularFileName
 drwxrwxrwx vip vip SIZE MOD-DATE DirectoryName
 lrwxrwxrwx vip vip SIZE MOD-DATE SymlinkName
 srwxrwxrwx vip vip SIZE MOD-DATE SocketName
+prwxrwxrwx vip vip SIZE MOD-DATE PipeName
 ```
 
-Legend:
+All prefaces by file-type (from `info ls`):
+
+| Preface | File Type                                 |
+|:-------:|:----------------------------------------- |
+| -       | regular file                              |
+| b       | block special file                        |
+| c       | character special file                    |
+| C       | high performance ("contiguous data") file |
+| d       | directory                                 |
+| D       | door (Solaris 2.5 and up)                 |
+| l       | symbolic link                             |
+| M       | off-line ("migrated") file (Cray DMF)     |
+| n       | network special file (HP-UX)              |
+| p       | FIFO (named pipe)                         |
+| P       | port (Solaris 10 and up)                  |
+| s       | socket                                    |
+| ?       | some other file type                      |
+
+$ `chmod 777 some-file` legend:
 
 ```console
 ugo = 777, 000
