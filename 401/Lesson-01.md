@@ -171,7 +171,7 @@ l \
 
 ### IV. "Reverse Search"
 
-*Press Ctrl + R*
+*Press <kbd>Ctrl</kbd> + R*
 
 *This is reverse search*
 
@@ -183,7 +183,7 @@ l \
 
 *Go again*
 
-*Press Ctrl + R*
+*Press <kbd>Ctrl</kbd> + R*
 
 *Type `echo "` and notice the DIFFERENT results as you type*
 
@@ -212,7 +212,7 @@ ___
 ## Shell History
 - View terminal history with `history`
 - History is usually kept in `~/.bash_history`
-- Search history from the terminal with **Ctrl + R**
+- Search history from the terminal with **<kbd>Ctrl</kbd> + R**
 
 ___
 

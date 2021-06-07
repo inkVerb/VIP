@@ -81,7 +81,7 @@ ___
 
 - The terminal can control desktop app sessions, such as gedit and Gnome Mines and others
 - **<kbd>Ctrl</kbd> + <kbd>Z</kbd>** and **<kbd>Ctrl</kbd> + <kbd>C</kbd>** manage apps started from their terminal
-- We use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + C and <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + V in the terminal for copy-paste
+- We use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + C and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + V in the terminal for copy-paste
 - Open gedit from the GUI before entering it as a terminal command
 - `jobs`, `fg #`, `bg #`, `kill %#`, and `command &` also manage apps started from their terminal
 - `killall app-name` will end all sessions "app-name", whether started from the same terminal or not

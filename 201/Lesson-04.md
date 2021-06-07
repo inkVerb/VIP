@@ -99,7 +99,7 @@ ___
 
 | **30** :$ `ls -a`
 
-*In Nautilus (the file explorer) press Ctrl + H to toggle view of hidden files and directories*
+*In Nautilus (the file explorer) press <kbd>Ctrl</kbd> + H to toggle view of hidden files and directories*
 
 #### Reverse order
 
@@ -122,7 +122,7 @@ ___
 - `ls -r` shows files in "reverse" order
 - `ls -la` and `ls -al` combine the flags `-a` and `-l`, also `-arl`, `-r1la`, etc
 - `.` at the beginning of a file or directory name makes it "hidden"
-- Ctrl + H toggles hidden file and directory view in Nautilus
+- <kbd>Ctrl</kbd> + H toggles hidden file and directory view in Nautilus
 ___
 
 #### [Lesson 5: su, adduser, deluser, chown](https://github.com/inkVerb/vip/blob/master/201/Lesson-05.md)

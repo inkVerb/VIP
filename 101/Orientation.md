@@ -49,7 +49,7 @@ I am not a terminal command because I have no dollar sign nor hash sign.
 I belong in your text editor where some-file.txt is open.
 ```
 
-*When using copy-paste to enter a command into the terminal, <kbd>Ctrl</kbd> + <kbd>C</kbd> will work in a normal window, but use <kbd>Ctrl</kbd> + <kbd>S</kbd>hift + V to paste into the terminal*
+*When using copy-paste to enter a command into the terminal, <kbd>Ctrl</kbd> + <kbd>C</kbd> will work in a normal window, but use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + V to paste into the terminal*
 
 | **1** :$ `echo i am a command to be entered in the terminal`
 
@@ -133,7 +133,7 @@ This is a new file.
 
 *Update first-file to version 02:*
 
-*After copying the text below via <kbd>Ctrl</kbd> + <kbd>C</kbd>, in gedit, use Ctrl + A, <kbd>Ctrl</kbd> + <kbd>V</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd>*
+*After copying the text below via <kbd>Ctrl</kbd> + <kbd>C</kbd>, in gedit, use <kbd>Ctrl</kbd> + A, <kbd>Ctrl</kbd> + <kbd>V</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd>*
 
 | **first-file** :
 

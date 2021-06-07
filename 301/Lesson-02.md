@@ -29,7 +29,7 @@ ___
 
 | **5** :$ `gedit ODT-FILE.odt`
 
-*Close the file in gedit with Ctrl + W*
+*Close the file in gedit with <kbd>Ctrl</kbd> + W*
 
 *Note .odt files are very big and can't be opened with text editors, but we can convert them...*
 
@@ -47,7 +47,7 @@ ___
 
 | **10** :$ `gedit ODT-FILE.txt`
 
-*Close the file in gedit with Ctrl + W, then delete the .txt file so we can try another way...*
+*Close the file in gedit with <kbd>Ctrl</kbd> + W, then delete the .txt file so we can try another way...*
 
 | **11** :$ `rm ODT-FILE.txt`
 

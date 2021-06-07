@@ -83,7 +83,7 @@ ___
 
 *gedit: Reload*
 
-*Ctrl + D deletes a line in gedit*
+*<kbd>Ctrl</kbd> + D deletes a line in gedit*
 - Use it to delete the line about "Mr. Apple delBar"
 - Then <kbd>Ctrl</kbd> + <kbd>S</kbd> to save the file
 
@@ -99,7 +99,7 @@ ___
 - `ls` "lists" what's in the current directory as output (STDOUT)
 - `sed` can replace or delete text in a file
 - `sed` uses "d" to delete a line
-- Gedit usees **Ctrl + D** to delete a line
+- Gedit usees **<kbd>Ctrl</kbd> + D** to delete a line
 
 ___
 

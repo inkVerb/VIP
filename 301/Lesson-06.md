@@ -310,7 +310,7 @@ ___
 
 Ready the CLI (if needed)
 
-*gedit: Ctrl + W to close previous files*
+*gedit: <kbd>Ctrl</kbd> + W to close previous files*
 
 `cd ~/School/VIP/301/logs`
 
@@ -541,7 +541,7 @@ ___
 
 *The last `exit` status was 87 because they can't go higher than 87*
 
-*gedit: Ctrl + W to close previous files*
+*gedit: <kbd>Ctrl</kbd> + W to close previous files*
 
 **How long does an `exit` status persist?**
 
@@ -568,7 +568,7 @@ ___
 
 *Now it recognizes the last `exit` status because it was generated inside the same script*
 
-*gedit: Ctrl + W to close previous files*
+*gedit: <kbd>Ctrl</kbd> + W to close previous files*
 
 ### Sent custom messages to output channels 3-87
 

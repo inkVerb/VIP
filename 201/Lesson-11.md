@@ -30,7 +30,7 @@ ___
 
 ### `less`
 
-*Up and down: Spacebar, PageUp, PageDown, Up, Down*
+*Up and down: Spacebar, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, Up, Down*
 
 | **6** :$ `less verb.ink.html` *(Q to quit)*
 
@@ -173,7 +173,7 @@ ___
 *Note* ^Z *will "stop" the nano session, not "undo"*
 - If you ^Z back to the terminal, resume with `fg nano`, see [Shell 101 Lesson 0](https://github.com/inkVerb/VIP/blob/master/101/Lesson-00.md)
 
-*(Ctrl + X to eXit)*
+*(<kbd>Ctrl</kbd> + X to eXit)*
 
 ### `vim`
 
@@ -202,7 +202,7 @@ ___
   - `more -8 file` shows 8 lines at a time
   - **Q** will quit
 - `less`
-  - Up and down: Spacebar, PageUp, PageDown, Up, Down
+  - Up and down: Spacebar, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, Up, Down
   - **Q** will quit
 - `head`
   - First 10 lines
