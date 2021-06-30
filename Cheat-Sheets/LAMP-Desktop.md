@@ -38,7 +38,7 @@ sudo pacman -S --noconfirm apache php php-apache mariadb
 sudo gedit /etc/php/php.ini
 ```
 
-    - Search with: Ctrl + F, then type `mysqli` to find the line, Ctrl + S to save
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
   - Or edit with `vim`:
 
@@ -48,7 +48,7 @@ sudo gedit /etc/php/php.ini
 sudo vim /etc/php/php.ini
 ```
 
-    - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
+  - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
 
   - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
 
@@ -70,7 +70,7 @@ sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 sudo gedit /etc/httpd/conf/httpd.conf
 ```
 
-  - Search with: Ctrl + F, Ctrl + S to save
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
 - Or edit with `vim`:
 
@@ -111,7 +111,7 @@ sudo vim /etc/httpd/conf/httpd.conf
 sudo gedit /etc/httpd/conf/httpd.conf
 ```
 
-  - Search with: Ctrl + F, Ctrl + S to save
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
 - Or edit with `vim`:
 
@@ -296,7 +296,7 @@ sudo apt install mysql-server php lamp-server^
 sudo gedit /etc/php/7.2/apache2/php.ini
 ```
 
-    - Search with: Ctrl + F, then type `mysqli` to find the line, Ctrl + S to save
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
   - Or edit with `vim`:
 
@@ -306,7 +306,7 @@ sudo gedit /etc/php/7.2/apache2/php.ini
 sudo vim /etc/php/7.2/apache2/php.ini
 ```
 
-    - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
+  - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
 
 3. Restart Everything
 
@@ -324,7 +324,7 @@ sudo systemctl restart apache2
 sudo systemctl status apache2
 ```
 
-    - Press <kbd>Q</kbd> to quit. ;-)
+  - Press <kbd>Q</kbd> to quit. ;-)
 
 #### Using your local dev server on desktop
 

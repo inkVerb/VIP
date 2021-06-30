@@ -36,7 +36,7 @@ sudo pacman -S --noconfirm nginx mariadb php php-fpm
 sudo gedit /etc/php/php.ini
 ```
 
-    - Search with: Ctrl + F, then type `mysqli` to find the line, Ctrl + S to save
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
   - Or edit with `vim`:
 
@@ -46,7 +46,7 @@ sudo gedit /etc/php/php.ini
 sudo vim /etc/php/php.ini
 ```
 
-    - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
+  - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
 
 3. Start Everything
 
@@ -94,7 +94,7 @@ sudo systemctl start php-fpm
 sudo systemctl status nginx
 ```
 
-    - Type `q` to quit. ;-)
+  - Press <kbd>Q</kbd> to quit. ;-)
 
   | **10** :$
 
