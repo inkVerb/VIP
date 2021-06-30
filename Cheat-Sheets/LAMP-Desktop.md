@@ -1,8 +1,8 @@
 # LAMP Desktop
-## PHP/MySQL developer environment directly in Ubuntu
+## PHP/MySQL developer environment directly in Manjaro or Ubuntu
 *(rather than WAMPP or XAMPP in Windows)*
 
-***This is for your local desktop developer environment only, not secure for production!***
+***This is for your local desktop developer environment only, not secure for production servers!***
 
 ***This installs Apache!*** *For Nginx on Arch/Manjaro, see [LEMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LEMP-Desktop.md)*
 

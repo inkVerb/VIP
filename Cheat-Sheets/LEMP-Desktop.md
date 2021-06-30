@@ -2,7 +2,7 @@
 ## PHP/MySQL developer environment directly in Arch/Manjaro
 *(rather than WAMPP or XAMPP in Windows)*
 
-***This is for your local desktop developer environment only, not secure for production!***
+***This is for your local desktop developer environment only, not secure for production servers!***
 
 ***This is only for Arch/Manjaro and installs Nginx!*** *For Apache on Arch/Manjaro or Debian/Ubuntu, see [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)*
 
