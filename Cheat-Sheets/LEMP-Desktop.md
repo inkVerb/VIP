@@ -8,7 +8,7 @@
 
 ### Update
 
-  | **0** :$
+| **0** :$
 
 ```console
 sudo pacman -Syy
@@ -20,7 +20,7 @@ sudo pacman -Syy
 
 1. Install Nginx & MariaDB
 
-  | **1** :$
+| **1** :$
 
 ```console
 sudo pacman -S --noconfirm nginx mariadb php php-fpm
@@ -30,7 +30,7 @@ sudo pacman -S --noconfirm nginx mariadb php php-fpm
   - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
   - Edit with `gedit`:
 
-    | **2g** :$
+  | **2g** :$
 
 ```console
 sudo gedit /etc/php/php.ini
@@ -40,7 +40,7 @@ sudo gedit /etc/php/php.ini
 
   - Or edit with `vim`:
 
-    | **2v** :$
+  | **2v** :$
 
 ```console
 sudo vim /etc/php/php.ini
@@ -50,37 +50,37 @@ sudo vim /etc/php/php.ini
 
 3. Start Everything
 
-  | **3** :$
+| **3** :$
 
 ```console
 sudo systemctl enable nginx
 ```
 
-  | **4** :$
+| **4** :$
 
 ```console
 sudo systemctl start nginx
 ```
 
-  | **5** :$
+| **5** :$
 
 ```console
 sudo systemctl enable mariadb
 ```
 
-  | **6** :$
+| **6** :$
 
 ```console
 sudo systemctl start mariadb
 ```
 
-  | **7** :$
+| **7** :$
 
 ```console
 sudo systemctl enable php-fpm
 ```
 
-  | **8** :$
+| **8** :$
 
 ```console
 sudo systemctl start php-fpm
@@ -88,7 +88,7 @@ sudo systemctl start php-fpm
 
 4. Look for the green dot as the All-OK
 
-  | **9** :$
+| **9** :$
 
 ```console
 sudo systemctl status nginx
@@ -96,13 +96,13 @@ sudo systemctl status nginx
 
   - Press <kbd>Q</kbd> to quit. ;-)
 
-  | **10** :$
+| **10** :$
 
 ```console
 sudo systemctl status mariadb
 ```
 
-  | **11** :$
+| **11** :$
 
 ```console
 sudo systemctl status php-fpm
@@ -114,13 +114,13 @@ sudo systemctl status php-fpm
 
 Life is easier with a local "Work" folder symlink
 
-  | **12** :$
+| **12** :$
 
 ```console
 mkdir -p ~/Work/vip
 ```
 
-  | **13** :$
+| **13** :$
 
 ```console
 sudo ln -sfn ~/Work/vip /srv/www/html/
@@ -134,7 +134,7 @@ sudo ln -sfn ~/Work/vip /srv/www/html/
 
 #### Always own web stuff first!
 
-  | **14** :$
+| **14** :$
 
 ```console
 sudo chown -R www:www /srv/www
@@ -146,7 +146,7 @@ sudo chown -R www:www /srv/www
 
   - Edit with `gedit`:
 
-    | **15g** :$
+  | **15g** :$
 
 ```console
 sudo gedit /etc/nginx/nginx.conf
@@ -154,7 +154,7 @@ sudo gedit /etc/nginx/nginx.conf
 
   - Or edit with `vim`:
 
-    | **15v** :$
+  | **15v** :$
 
 ```console
 sudo vim /etc/nginx/nginx.conf
@@ -180,13 +180,13 @@ sudo vim /etc/nginx/nginx.conf
     - Nginx will break if an `include` file doesn't exist
     - So, create the rewrite file, though it's empty
 
-    | **16** :$
+  | **16** :$
 
 ```console
 sudo touch /srv/www/rewrite
 ```
 
-    | **17** :$
+  | **17** :$
 
 ```console
 sudo chown -R www:www /srv/www
@@ -196,7 +196,7 @@ sudo chown -R www:www /srv/www
 2. Add some important settings
   - Edit with `gedit`:
 
-    | **18g** :$
+  | **18g** :$
 
 ```console
 sudo gedit /etc/nginx/php_fastcgi.conf
@@ -204,7 +204,7 @@ sudo gedit /etc/nginx/php_fastcgi.conf
 
   - Or edit with `vim`:
 
-    | **18v** :$
+  | **18v** :$
 
 ```console
 sudo vim /etc/nginx/php_fastcgi.conf
@@ -232,7 +232,7 @@ sudo vim /etc/nginx/php_fastcgi.conf
 
 3. Reload Nginx after any changes
 
-  | **19** :$
+| **19** :$
 
 ```console
 sudo systemctl reload nginx
@@ -240,7 +240,7 @@ sudo systemctl reload nginx
 
   - Check for specific errors in Nginx server configs
 
-  | **20** :$
+| **20** :$
 
 ```console
 sudo nginx -t
@@ -254,7 +254,7 @@ sudo nginx -t
 
 1. Access MySQL as root user with
 
-  | **21** :$
+| **21** :$
 
 ```console
 sudo mysql
@@ -262,13 +262,13 @@ sudo mysql
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
 
-  | **22** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
+| **22** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
 
-  | **23** :> `FLUSH PRIVILEGES;`
+| **23** :> `FLUSH PRIVILEGES;`
 
 3. Exit MySQL
 
-  | **24** :> `QUIT;`
+| **24** :> `QUIT;`
 
 Access any MySQL user you created later with
 - `mysql -u USERNAME -p` (then enter the password)
@@ -287,7 +287,7 @@ sudo apt-get install mysql-server
 
 1. Install this as an Arch package
 
-  | **25** :$
+| **25** :$
 
 ```console
 sudo pacman -S phpmyadmin --noconfirm
@@ -295,7 +295,7 @@ sudo pacman -S phpmyadmin --noconfirm
 
 2. Link it to the web directory
 
-  | **26** :$
+| **26** :$
 
 ```console
 sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/www/html/
@@ -308,19 +308,19 @@ Login the first time with the same user you created in "MySQL via command line" 
 
 ### Make PHP More Secure
 
-  | **P1** :$
+| **P1** :$
 
 ```console
 sudo mkdir -p /srv/www/tmp
 ```
 
-  | **P2** :$
+| **P2** :$
 
 ```console
 sudo chmod -R 777 /srv/www/tmp
 ```
 
-  | **P3** :$
+| **P3** :$
 
 ```console
 sudo chmod 644 /etc/php/php.ini
@@ -328,7 +328,7 @@ sudo chmod 644 /etc/php/php.ini
 
 Open php.ini and make these settings:
 
-  | **P4** :$
+| **P4** :$
 
 ```console
 sudo vim /etc/php/php.ini

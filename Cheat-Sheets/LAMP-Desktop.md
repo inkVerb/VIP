@@ -10,7 +10,7 @@
 
 ### Update
 
-  | **A0** :$
+| **A0** :$
 
 ```console
 sudo pacman -Syy
@@ -22,7 +22,7 @@ sudo pacman -Syy
 
 1. Install the LAMP server
 
-  | **A1** :$
+| **A1** :$
 
 ```console
 sudo pacman -S --noconfirm apache php php-apache mariadb
@@ -32,7 +32,7 @@ sudo pacman -S --noconfirm apache php php-apache mariadb
 
   - Edit with `gedit`:
 
-    | **A2g** :$
+  | **A2g** :$
 
 ```console
 sudo gedit /etc/php/php.ini
@@ -42,7 +42,7 @@ sudo gedit /etc/php/php.ini
 
   - Or edit with `vim`:
 
-    | **A2v** :$
+  | **A2v** :$
 
 ```console
 sudo vim /etc/php/php.ini
@@ -54,7 +54,7 @@ sudo vim /etc/php/php.ini
 
 3. Get MariaDB working
 
-  | **A3** :$
+| **A3** :$
 
 ```console
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -64,7 +64,7 @@ sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 - Edit with `gedit`:
 
-  | **A4g** :$
+| **A4g** :$
 
 ```console
 sudo gedit /etc/httpd/conf/httpd.conf
@@ -74,7 +74,7 @@ sudo gedit /etc/httpd/conf/httpd.conf
 
 - Or edit with `vim`:
 
-  | **A4v** :$
+| **A4v** :$
 
 ```console
 sudo vim /etc/httpd/conf/httpd.conf
@@ -105,7 +105,7 @@ sudo vim /etc/httpd/conf/httpd.conf
 
 - Edit with `gedit`:
 
-  | **A5g** :$
+| **A5g** :$
 
 ```console
 sudo gedit /etc/httpd/conf/httpd.conf
@@ -115,7 +115,7 @@ sudo gedit /etc/httpd/conf/httpd.conf
 
 - Or edit with `vim`:
 
-  | **A5v** :$
+| **A5v** :$
 
 ```console
 sudo vim /etc/httpd/conf/httpd.conf
@@ -158,25 +158,25 @@ sudo vim /etc/httpd/conf/httpd.conf
 
 6. Web user and folder
 
-  | **A6** :$
+| **A6** :$
 
 ```console
 sudo groupadd www
 ```
 
-  | **A7** :$
+| **A7** :$
 
 ```console
 sudo useradd -g www www
 ```
 
-  | **A8** :$
+| **A8** :$
 
 ```console
 sudo chmod u+w /srv/http
 ```
 
-  | **A9** :$
+| **A9** :$
 
 ```console
 sudo chown -R www:www /srv/http
@@ -185,19 +185,19 @@ sudo chown -R www:www /srv/http
 
 7. Enable & restart
 
-  | **A10** :$
+| **A10** :$
 
 ```console
 sudo systemctl enable mariadb
 ```
 
-  | **A11** :$
+| **A11** :$
 
 ```console
 sudo systemctl start mariadb
 ```
 
-  | **A12** :$
+| **A12** :$
 
 ```console
 sudo systemctl restart httpd
@@ -205,7 +205,7 @@ sudo systemctl restart httpd
 
   - Check for specific errors in Apache server configs
 
-  | **A13** :$
+| **A13** :$
 
 ```console
 sudo apachectl -t
@@ -217,13 +217,13 @@ sudo apachectl -t
 
 Life is easier with a local "Work" folder symlink
 
-  | **A14** :$
+| **A14** :$
 
 ```console
 mkdir -p ~/Work/vip
 ```
 
-  | **A15** :$
+| **A15** :$
 
 ```console
 sudo ln -sfn ~/Work/vip /srv/http/
@@ -237,7 +237,7 @@ sudo ln -sfn ~/Work/vip /srv/http/
 
 #### Always own web stuff first!
 
-  | **A16** :$
+| **A16** :$
 
 ```console
 sudo chown -R www:www /srv/http/
@@ -247,7 +247,7 @@ sudo chown -R www:www /srv/http/
 
 1. Install this as an Arch package
 
-  | **A17** :$
+| **A17** :$
 
 ```console
 sudo pacman -S phpmyadmin --noconfirm
@@ -255,7 +255,7 @@ sudo pacman -S phpmyadmin --noconfirm
 
 2. Link it to the web directory
 
-  | **A18** :$
+| **A18** :$
 
 ```console
 sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/http/
@@ -268,7 +268,7 @@ Now, you should be able to access this in your browser at the address:
 
 ### Update
 
-  | **D0** :$
+| **D0** :$
 
 ```console
 sudo apt update
@@ -280,7 +280,7 @@ sudo apt update
 
 1. Install the LAMP server
 
-  | **D1** :$
+| **D1** :$
 
 ```console
 sudo apt install mysql-server php lamp-server^
@@ -290,7 +290,7 @@ sudo apt install mysql-server php lamp-server^
   - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
   - Edit with `gedit`:
 
-    | **D2g** :$ (maybe `7.2` is a different number)
+  | **D2g** :$ (maybe `7.2` is a different number)
 
 ```console
 sudo gedit /etc/php/7.2/apache2/php.ini
@@ -300,7 +300,7 @@ sudo gedit /etc/php/7.2/apache2/php.ini
 
   - Or edit with `vim`:
 
-    | **D2v** :$ (maybe `7.2` is a different number)
+  | **D2v** :$ (maybe `7.2` is a different number)
 
 ```console
 sudo vim /etc/php/7.2/apache2/php.ini
@@ -310,7 +310,7 @@ sudo vim /etc/php/7.2/apache2/php.ini
 
 3. Restart Everything
 
-  | **D3** :$
+| **D3** :$
 
 ```console
 sudo systemctl restart apache2
@@ -318,7 +318,7 @@ sudo systemctl restart apache2
 
 4. Look for the green dot as the All-OK
 
-  | **D4** :$
+| **D4** :$
 
 ```console
 sudo systemctl status apache2
@@ -332,13 +332,13 @@ sudo systemctl status apache2
 
 Life is easier with a local "Work" folder symlink
 
-  | **D5** :$
+| **D5** :$
 
 ```console
 mkdir -p ~/Work/vip
 ```
 
-  | **D6** :$
+| **D6** :$
 
 ```console
 sudo ln -sfn ~/Work/vip /var/www/html/
@@ -362,13 +362,13 @@ sudo chown -R www-data:www-data /var/www/html/
 
 1. Enable the Rewrite mod for Apache
 
-  | **D8** :$
+| **D8** :$
 
 ```console
 sudo a2enmod rewrite
 ```
 
-  | **D9** :$
+| **D9** :$
 
 ```console
 sudo systemctl restart apache2
@@ -377,7 +377,7 @@ sudo systemctl restart apache2
 2. Add some important settings
   - Edit with `gedit`:
 
-    | **D10g** :$
+  | **D10g** :$
 
 ```console
 sudo gedit /etc/apache2/sites-available/000-default.conf
@@ -385,7 +385,7 @@ sudo gedit /etc/apache2/sites-available/000-default.conf
 
   - Or edit with `vim`:
 
-    | **D10v** :$
+  | **D10v** :$
 
 ```console
 sudo vim /etc/apache2/sites-available/000-default.conf
@@ -414,7 +414,7 @@ allow from all
 
 3. Reload Apache after any changes to files in `/etc/apache2/sites-available/_____.conf`
 
-  | **D11** :$
+| **D11** :$
 
 ```console
 sudo systemctl reload apache2
@@ -422,7 +422,7 @@ sudo systemctl reload apache2
 
   - Check for specific errors in Apache server configs
 
-  | **D12** :$
+| **D12** :$
 
 ```console
 sudo apachectl -t
@@ -438,7 +438,7 @@ sudo apachectl -t
 2. Extract and rename the folder to: `phpMyAdmin`
 3. In the terminal, move it to `/var/www/html/` (so it is at `/var/www/html/phpMyAdmin`)
 
-  | **D13** :$
+| **D13** :$
 
 ```console
 sudo mv phpMyAdmin /var/www/html/
@@ -446,13 +446,13 @@ sudo mv phpMyAdmin /var/www/html/
 
 4. Create the config
 
-  | **D14** :$
+| **D14** :$
 
 ```console
 cd /var/www/html/phpMyAdmin
 ```
 
-  | **D15** :$
+| **D15** :$
 
 ```console
 sudo cp config.sample.inc.php config.inc.php
@@ -461,7 +461,7 @@ sudo cp config.sample.inc.php config.inc.php
 5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
-    | **D16g** :$
+  | **D16g** :$
 
 ```console
 sudo gedit /var/www/html/phpMyAdmin/config.inc.php
@@ -469,7 +469,7 @@ sudo gedit /var/www/html/phpMyAdmin/config.inc.php
 
   - Or edit with `vim`:
 
-    | **D16v** :$
+  | **D16v** :$
 
 ```console
 sudo vim /var/www/html/phpMyAdmin/config.inc.php
@@ -481,7 +481,7 @@ sudo vim /var/www/html/phpMyAdmin/config.inc.php
 
 6. Own everything properly
 
-  | **D17** :$
+| **D17** :$
 
 ```console
 sudo chown -R www-data:www-data /var/www/html/phpMyAdmin
@@ -496,7 +496,7 @@ Login the first time with the same user you created in "MySQL via command line" 
 
 1. Access MySQL as root user with
 
-  | **M1** :$
+| **M1** :$
 
 ```console
 sudo mysql
@@ -504,13 +504,13 @@ sudo mysql
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
 
-  | **M2** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
+| **M2** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
 
-  | **M3** :> `FLUSH PRIVILEGES;`
+| **M3** :> `FLUSH PRIVILEGES;`
 
 3. Exit MySQL
 
-  | **M4** :> `QUIT;`
+| **M4** :> `QUIT;`
 
 Access any MySQL user you created later with
 - `mysql -u USERNAME -p` (then enter the password)
@@ -543,13 +543,13 @@ export APACHE_RUN_GROUP=www-data
 
 1. Change the setting to `www` with `sed`
 
-  | **W1** :$
+| **W1** :$
 
 ```console
 sudo sed -i "s/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=www/" /etc/apache2/envvars
 ```
 
-  | **W2** :$
+| **W2** :$
 
 ```console
 sudo sed -i "s/export APACHE_RUN_GROUP=.*/export APACHE_RUN_GROUP=www/" /etc/apache2/envvars
@@ -557,13 +557,13 @@ sudo sed -i "s/export APACHE_RUN_GROUP=.*/export APACHE_RUN_GROUP=www/" /etc/apa
 
 2. Create the group & user
 
-  | **W3** :$
+| **W3** :$
 
 ```console
 sudo groupadd www
 ```
 
-  | **W4** :$
+| **W4** :$
 
 ```console
 sudo useradd -g www www
@@ -571,7 +571,7 @@ sudo useradd -g www www
 
 3. Restart the Apache server
 
-  | **W5** :$
+| **W5** :$
 
 ```console
 sudo systemctl restart apache2
@@ -579,7 +579,7 @@ sudo systemctl restart apache2
 
 4. Always own the web directory (now with `www:www` instead of `www-data:www-data`)
 
-  | **W6** :$
+| **W6** :$
 
 ```console
 sudo chown -R www:www /var/www/html/phpMyAdmin
@@ -601,7 +601,7 @@ user www www;
 
 - Edit with `gedit`:
 
-  | **N1g** :$
+| **N1g** :$
 
 ```console
 sudo gedit /etc/nginx/nginx.conf
@@ -609,7 +609,7 @@ sudo gedit /etc/nginx/nginx.conf
 
 - Or edit with `vim`:
 
-  | **N1v** :$
+| **N1v** :$
 
 ```console
 sudo vim /etc/nginx/nginx.conf
@@ -629,7 +629,7 @@ listen.group = www
 
 - Edit with `gedit`:
 
-  | **N2g** :$
+| **N2g** :$
 
 ```console
 sudo gedit /etc/php/7.2/fpm/pool.d/www.conf
@@ -637,7 +637,7 @@ sudo gedit /etc/php/7.2/fpm/pool.d/www.conf
 
 - Or edit with `vim`:
 
-  | **N2v** :$
+| **N2v** :$
 
 ```console
 sudo vim /etc/php/7.2/fpm/pool.d/www.conf
@@ -658,7 +658,7 @@ location / {
 
 - Edit with `gedit`:
 
-  | **N3g** :$
+| **N3g** :$
 
 ```console
 sudo gedit /etc/nginx/nginx.conf
@@ -666,7 +666,7 @@ sudo gedit /etc/nginx/nginx.conf
 
 - Or edit with `vim`:
 
-  | **N3v** :$
+| **N3v** :$
 
 ```console
 sudo vim /etc/nginx/nginx.conf
@@ -674,19 +674,19 @@ sudo vim /etc/nginx/nginx.conf
 
 *...add that one line under `location /`, and make sure the file exists...*
 
-  | **N4** :$
+| **N4** :$
 
 ```console
 sudo touch /srv/www/rewrite
 ```
 
-  | **N5** :$
+| **N5** :$
 
 ```console
 sudo chown -R www:www /srv/www
 ```
 
-  | **N6** :$
+| **N6** :$
 
 ```console
 sudo systemctl reload nginx
@@ -694,7 +694,7 @@ sudo systemctl reload nginx
 
   - Check for specific errors in Nginx server configs
 
-  | **N7** :$
+| **N7** :$
 
 ```console
 sudo nginx -t
@@ -702,19 +702,19 @@ sudo nginx -t
 
 ## Make PHP More Secure
 
-  | **P1** :$
+| **P1** :$
 
 ```console
 sudo mkdir -p /var/www/tmp
 ```
 
-  | **P2** :$
+| **P2** :$
 
 ```console
 sudo chmod -R 777 /var/www/tmp
 ```
 
-  | **P3** :$ (maybe '7.2' is a different number)
+| **P3** :$ (maybe '7.2' is a different number)
 
 ```console
 sudo chmod 644 /etc/php/7.2/apache2/php.ini
@@ -722,7 +722,7 @@ sudo chmod 644 /etc/php/7.2/apache2/php.ini
 
 Open php.ini and make these settings:
 
-  | **P4** :$ (maybe '7.2' is a different number)
+| **P4** :$ (maybe '7.2' is a different number)
 
 ```console
 sudo vim /etc/php/7.2/apache2/php.ini
