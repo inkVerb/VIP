@@ -108,8 +108,8 @@ sudo apt install -y git
 
 Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
 - Setup the LAMP server
-- Setup MySQL via command line
 - Setup MySQL phpMyAdmin
+- Setup MySQL via command line
 
 ### III. `git clone` our scripts for this lesson
 
