@@ -168,7 +168,7 @@ git clone https://github.com/inkVerb/501
 | **AP4** :$
 
 ```console
-sudo mkdir /srv/www/html/web
+sudo mkdir -p /srv/www/html/web
 ```
 
 | **AP5** :$

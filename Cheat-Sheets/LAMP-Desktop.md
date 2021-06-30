@@ -6,6 +6,8 @@
 
 ***This installs Apache!*** *For Nginx on Arch/Manjaro, see [LEMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LEMP-Desktop.md)*
 
+___
+
 ## Arch/Manjaro
 
 ### Update
@@ -32,7 +34,7 @@ sudo pacman -S --noconfirm apache php php-apache mariadb
 
   - Edit with `gedit`:
 
-  | **A2g** :$
+| **A2g** :$
 
 ```console
 sudo gedit /etc/php/php.ini
@@ -40,17 +42,21 @@ sudo gedit /etc/php/php.ini
 
   - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
-  - Or edit with `vim`:
+Or edit with `vim`:
 
-  | **A2v** :$
+| **A2v** :$
 
 ```console
 sudo vim /etc/php/php.ini
 ```
 
-  - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
+  - Search by typing: `/something_to_search`, then Enter to find the line, type `:wq` to save and quit
 
-  - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
+In php.ini:
+
+  - Uncomment (remove the semicolon `;` at the start of the line)
+    - `extension=mysqli`
+    - `extension=iconv`
 
 3. Get MariaDB working
 
@@ -220,49 +226,106 @@ Life is easier with a local "Work" folder symlink
 | **A14** :$
 
 ```console
-mkdir -p ~/Work/vip
-```
-
-| **A15** :$
-
-```console
-sudo ln -sfn ~/Work/vip /srv/http/
+mkdir -p ~/Work/dev
+sudo mkdir -p /srv/http/vip
+sudo ln -sfn /srv/http/vip ~/Work/
 ```
 
 - Now:
-  - Your projects go in: `~/Work/vip/SOMETHING`
+  - Your projects go in: `~/Work/vip/SOMETHING` (owned by www, not you)
   - Use the web address: `localhost/vip/SOMETHING`
-
-- ***Bug: Currently files in this home directory are not working, will fix in future***
+- During development:
+  - Edit files in: `~/Work/dev`
+  - Copy dev files to view in browser on each save with:
+  
+```console
+sudo cp ~/Work/dev/* ~/Work/vip/
+sudo chown -R www:www ~/Work/vip
+```
 
 #### Always own web stuff first!
 
-| **A16** :$
+| **A15** :$
 
 ```console
 sudo chown -R www:www /srv/http/
 ```
 
-### MySQL phpMyAdmin
+- Choose:
 
-1. Install this as an Arch package
+1. Start Apache everytime
 
-| **A17** :$
+| **A16e** :$
 
 ```console
-sudo pacman -S phpmyadmin --noconfirm
+sudo systemctl start httpd
 ```
 
-2. Link it to the web directory
+2. Make Apache a service to always run
 
-| **A18** :$
+| **A16s** :$
 
 ```console
-sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/http/
+sudo systemctl enable httpd
+sudo systemctl start httpd
+```
+
+### MySQL phpMyAdmin
+
+1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
+2. Extract and rename the folder to: `phpMyAdmin`
+3. In the terminal, move it to `/srv/http/` (so it is at `/srv/http/phpMyAdmin`)
+
+| **D17** :$
+
+```console
+sudo mv phpMyAdmin /srv/http/
+```
+
+4. Create the config
+
+| **D18** :$
+
+```console
+cd /srv/http/phpMyAdmin
+sudo cp config.sample.inc.php config.inc.php
+```
+
+5. Set the blowfish salt (32 characters long, random)
+  - Edit with `gedit`:
+
+| **D19g** :$
+
+```console
+sudo gedit /srv/http/phpMyAdmin/config.inc.php
+```
+
+Or edit with `vim`:
+
+| **D19v** :$
+
+```console
+sudo vim /srv/http/phpMyAdmin/config.inc.php
+```
+
+  - Add the salt here:
+    - `$cfg['blowfish_secret'] = '';` ...becomes...
+    - `$cfg['blowfish_secret'] = 'SomeRANDOm32characterslongGOhere';`
+
+6. Own everything properly
+
+| **D20** :$
+
+```console
+sudo chown -R www-data:www-data /srv/http/phpMyAdmin
 ```
 
 Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`
+
+Login the first time with the same user you created in "MySQL via command line" above
+
+---
 
 ## Debian/Ubuntu
 
@@ -287,10 +350,8 @@ sudo apt install mysql-server php lamp-server^
 ```
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
-  - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
-  - Edit with `gedit`:
 
-  | **D2g** :$ (maybe `7.2` is a different number)
+| **D2g** :$ (maybe `7.2` is a different number)
 
 ```console
 sudo gedit /etc/php/7.2/apache2/php.ini
@@ -298,15 +359,22 @@ sudo gedit /etc/php/7.2/apache2/php.ini
 
   - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
-  - Or edit with `vim`:
+Or edit with `vim`:
 
-  | **D2v** :$ (maybe `7.2` is a different number)
+| **D2v** :$ (maybe `7.2` is a different number)
 
 ```console
 sudo vim /etc/php/7.2/apache2/php.ini
 ```
 
-  - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
+  - Search by typing: `/something_to_search`, then Enter to find the line, type `:wq` to save and quit
+
+In php.ini:
+
+  - Uncomment (remove the semicolon `;` at the start of the line)
+    - `extension=mysqli`
+    - `extension=iconv`
+  - Edit with `gedit`:
 
 3. Restart Everything
 
@@ -377,15 +445,15 @@ sudo systemctl restart apache2
 2. Add some important settings
   - Edit with `gedit`:
 
-  | **D10g** :$
+| **D10g** :$
 
 ```console
 sudo gedit /etc/apache2/sites-available/000-default.conf
 ```
 
-  - Or edit with `vim`:
+Or edit with `vim`:
 
-  | **D10v** :$
+| **D10v** :$
 
 ```console
 sudo vim /etc/apache2/sites-available/000-default.conf
@@ -461,15 +529,15 @@ sudo cp config.sample.inc.php config.inc.php
 5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
-  | **D16g** :$
+| **D16g** :$
 
 ```console
 sudo gedit /var/www/html/phpMyAdmin/config.inc.php
 ```
 
-  - Or edit with `vim`:
+Or edit with `vim`:
 
-  | **D16v** :$
+| **D16v** :$
 
 ```console
 sudo vim /var/www/html/phpMyAdmin/config.inc.php
@@ -490,9 +558,13 @@ sudo chown -R www-data:www-data /var/www/html/phpMyAdmin
 Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`
 
-Login the first time with the same user you created in "MySQL via command line" above
+Login the first time with the same user you created in "MySQL via command line" below
 
-## MySQL via Command Line
+___
+
+## Arch/Debian
+
+### MySQL via Command Line
 
 1. Access MySQL as root user with
 
@@ -525,7 +597,7 @@ sudo apt-get install -f
 sudo apt-get install mysql-server
 ```
 
-## Debian/Ubuntu: Change the web user to `www`
+### Debian/Ubuntu: Change the web user to `www`
 - The default web user on Debian & Ubuntu systems is `www-data`
 - This is complex to type every time the web directory needs to be owned
 - This makes commands incompatible with Arch/Manjaro servers
@@ -587,120 +659,7 @@ sudo chown -R www:www /var/www/html/phpMyAdmin
 
 ...This is how you will own the web directory from now on and in VIP Linux lessons
 
-## Nginx on Debian/Ubuntu (irregular)
-
-VIP Linux not use Nginx on an Ubuntu server, but this will make VIP Linux lessons compatible with your system if you do
-
-If you are using Nginx, the `www:www` settings would go in these files...
-
-| **/etc/nginx/nginx.conf** :
-
-```
-user www www;
-```
-
-- Edit with `gedit`:
-
-| **N1g** :$
-
-```console
-sudo gedit /etc/nginx/nginx.conf
-```
-
-- Or edit with `vim`:
-
-| **N1v** :$
-
-```console
-sudo vim /etc/nginx/nginx.conf
-```
-
-*...the `user` setting should be on the first line, add it if it isn't*
-
-| **/etc/php/7.2/fpm/pool.d/www.conf** : (maybe '7.2' is a different number)
-
-```
-[www]
-user=www
-group=www
-listen.owner = www
-listen.group = www
-```
-
-- Edit with `gedit`:
-
-| **N2g** :$
-
-```console
-sudo gedit /etc/php/7.2/fpm/pool.d/www.conf
-```
-
-- Or edit with `vim`:
-
-| **N2v** :$
-
-```console
-sudo vim /etc/php/7.2/fpm/pool.d/www.conf
-```
-
-*...`user=` & `group=` settings may appear elsewhere, but these must be in the lines right after `[www]`, add them if they aren't*
-
-For VIP Linux rewrites...
-
-| **/etc/nginx/nginx.conf** :
-
-```
-location / {
-  ...
-  include /srv/www/rewrite;
-}
-```
-
-- Edit with `gedit`:
-
-| **N3g** :$
-
-```console
-sudo gedit /etc/nginx/nginx.conf
-```
-
-- Or edit with `vim`:
-
-| **N3v** :$
-
-```console
-sudo vim /etc/nginx/nginx.conf
-```
-
-*...add that one line under `location /`, and make sure the file exists...*
-
-| **N4** :$
-
-```console
-sudo touch /srv/www/rewrite
-```
-
-| **N5** :$
-
-```console
-sudo chown -R www:www /srv/www
-```
-
-| **N6** :$
-
-```console
-sudo systemctl reload nginx
-```
-
-  - Check for specific errors in Nginx server configs
-
-| **N7** :$
-
-```console
-sudo nginx -t
-```
-
-## Make PHP More Secure
+### Make PHP More Secure
 
 | **P1** :$
 
