@@ -132,12 +132,11 @@ sudo ln -sfn /srv/www/html/vip ~/Work/
   - Your projects go in: `~/Work/vip/SOMETHING` (owned by www, not you)
   - Use the web address: `localhost/vip/SOMETHING`
 - During development:
-Edit files in: `~/Work/dev`
+  - Edit files in: `~/Work/dev`
   - Copy dev files to view in browser on each save with:
-  
+
 ```console
-sudo cp ~/Work/dev/* ~/Work/vip/
-sudo chown -R www:www ~/Work/vip
+sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 ```
 
 #### Always own web stuff first!

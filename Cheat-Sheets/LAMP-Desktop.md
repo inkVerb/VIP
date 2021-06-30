@@ -239,8 +239,7 @@ sudo ln -sfn /srv/http/vip ~/Work/
   - Copy dev files to view in browser on each save with:
   
 ```console
-sudo cp ~/Work/dev/* ~/Work/vip/
-sudo chown -R www:www ~/Work/vip
+sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 ```
 
 #### Always own web stuff first!
