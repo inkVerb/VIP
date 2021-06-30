@@ -4,11 +4,15 @@
 
 ***This is for your local desktop developer environment only, not secure for production!***
 
-***This is only for Arch/Manjaro!*** *For Debian/Ubuntu, see [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)*
+***This is only for Arch/Manjaro and installs Nginx!*** *For Apache on Arch/Manjaro or Debian/Ubuntu, see [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)*
 
 ### Update
 
-  | **0** :$ `sudo pacman -Syy`
+  | **0** :$
+
+```console
+sudo pacman -Syy
+```
 
 ### Setup LEMP
 
@@ -16,45 +20,93 @@
 
 1. Install Nginx & MariaDB
 
-  | **1** :$ `sudo pacman -S --noconfirm nginx mariadb php php-fpm`
+  | **1** :$
+
+```console
+sudo pacman -S --noconfirm nginx mariadb php php-fpm
+```
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
   - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
   - Edit with `gedit`:
 
-    | **2g** :$ `sudo gedit /etc/php/php.ini`
+    | **2g** :$
+
+```console
+sudo gedit /etc/php/php.ini
+```
 
     - Search with: Ctrl + F, then type `mysqli` to find the line, Ctrl + S to save
 
   - Or edit with `vim`:
 
-    | **2v** :$ `sudo vim /etc/php/php.ini`
+    | **2v** :$
+
+```console
+sudo vim /etc/php/php.ini
+```
 
     - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
 
 3. Start Everything
 
-  | **3** :$ `sudo systemctl enable nginx`
+  | **3** :$
 
-  | **4** :$ `sudo systemctl start nginx`
+```console
+sudo systemctl enable nginx
+```
 
-  | **5** :$ `sudo systemctl enable mariadb`
+  | **4** :$
 
-  | **6** :$ `sudo systemctl start mariadb`
+```console
+sudo systemctl start nginx
+```
 
-  | **7** :$ `sudo systemctl enable php-fpm`
+  | **5** :$
 
-  | **8** :$ `sudo systemctl start php-fpm`
+```console
+sudo systemctl enable mariadb
+```
+
+  | **6** :$
+
+```console
+sudo systemctl start mariadb
+```
+
+  | **7** :$
+
+```console
+sudo systemctl enable php-fpm
+```
+
+  | **8** :$
+
+```console
+sudo systemctl start php-fpm
+```
 
 4. Look for the green dot as the All-OK
 
-  | **9** :$ `sudo systemctl status nginx`
+  | **9** :$
+
+```console
+sudo systemctl status nginx
+```
 
     - Type `q` to quit. ;-)
 
-  | **10** :$ `sudo systemctl status mariadb`
+  | **10** :$
 
-  | **11** :$ `sudo systemctl status php-fpm`
+```console
+sudo systemctl status mariadb
+```
+
+  | **11** :$
+
+```console
+sudo systemctl status php-fpm
+```
 
 #### Using your local dev server on desktop
 
@@ -62,9 +114,17 @@
 
 Life is easier with a local "Work" folder symlink
 
-  | **12** :$ `mkdir -p ~/Work/vip`
+  | **12** :$
 
-  | **13** :$ `sudo ln -sfn ~/Work/vip /srv/www/html/`
+```console
+mkdir -p ~/Work/vip
+```
+
+  | **13** :$
+
+```console
+sudo ln -sfn ~/Work/vip /srv/www/html/
+```
 
 - Now:
   - Your projects go in: `~/Work/vip/SOMETHING`
@@ -74,7 +134,11 @@ Life is easier with a local "Work" folder symlink
 
 #### Always own web stuff first!
 
-  | **14** :$ `sudo chown -R www:www /srv/www`
+  | **14** :$
+
+```console
+sudo chown -R www:www /srv/www
+```
 
 #### Settings
 
@@ -82,11 +146,19 @@ Life is easier with a local "Work" folder symlink
 
   - Edit with `gedit`:
 
-    | **15g** :$ `sudo gedit /etc/nginx/nginx.conf`
+    | **15g** :$
+
+```console
+sudo gedit /etc/nginx/nginx.conf
+```
 
   - Or edit with `vim`:
 
-    | **15v** :$ `sudo vim /etc/nginx/nginx.conf`
+    | **15v** :$
+
+```console
+sudo vim /etc/nginx/nginx.conf
+```
 
   - Look make sure the two `location` entries look like this, respectively:
 
@@ -108,19 +180,35 @@ Life is easier with a local "Work" folder symlink
     - Nginx will break if an `include` file doesn't exist
     - So, create the rewrite file, though it's empty
 
-    | **16** :$ `sudo touch /srv/www/rewrite`
+    | **16** :$
 
-    | **17** :$ `sudo chown -R www:www /srv/www`
+```console
+sudo touch /srv/www/rewrite
+```
+
+    | **17** :$
+
+```console
+sudo chown -R www:www /srv/www
+```
 
 
 2. Add some important settings
   - Edit with `gedit`:
 
-    | **18g** :$ `sudo gedit /etc/nginx/php_fastcgi.conf`
+    | **18g** :$
+
+```console
+sudo gedit /etc/nginx/php_fastcgi.conf
+```
 
   - Or edit with `vim`:
 
-    | **18v** :$ `sudo vim /etc/nginx/php_fastcgi.conf`
+    | **18v** :$
+
+```console
+sudo vim /etc/nginx/php_fastcgi.conf
+```
 
   - Make it look like this:
   ```
@@ -144,11 +232,19 @@ Life is easier with a local "Work" folder symlink
 
 3. Reload Nginx after any changes
 
-  | **19** :$ `sudo systemctl reload nginx`
+  | **19** :$
+
+```console
+sudo systemctl reload nginx
+```
 
   - Check for specific errors in Nginx server configs
 
-  | **20** :$ `sudo nginx -t`
+  | **20** :$
+
+```console
+sudo nginx -t
+```
 
 4. Remember with rewrites...
 
@@ -158,7 +254,11 @@ Life is easier with a local "Work" folder symlink
 
 1. Access MySQL as root user with
 
-  | **21** :$ `sudo mysql`
+  | **21** :$
+
+```console
+sudo mysql
+```
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
 
@@ -187,11 +287,19 @@ sudo apt-get install mysql-server
 
 1. Install this as an Arch package
 
-  | **25** :$ `sudo pacman -S phpmyadmin --noconfirm`
+  | **25** :$
+
+```console
+sudo pacman -S phpmyadmin --noconfirm
+```
 
 2. Link it to the web directory
 
-  | **26** :$ `sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/www/html/`
+  | **26** :$
+
+```console
+sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/www/html/
+```
 
 Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`
@@ -200,15 +308,31 @@ Login the first time with the same user you created in "MySQL via command line" 
 
 ### Make PHP More Secure
 
-  | **P1** :$ `sudo mkdir -p /srv/www/tmp`
+  | **P1** :$
 
-  | **P2** :$ `sudo chmod -R 777 /srv/www/tmp`
+```console
+sudo mkdir -p /srv/www/tmp
+```
 
-  | **P3** :$ `sudo chmod 644 /etc/php/php.ini`
+  | **P2** :$
+
+```console
+sudo chmod -R 777 /srv/www/tmp
+```
+
+  | **P3** :$
+
+```console
+sudo chmod 644 /etc/php/php.ini
+```
 
 Open php.ini and make these settings:
 
-  | **P4** :$ `sudo vim /etc/php/php.ini`
+  | **P4** :$
+
+```console
+sudo vim /etc/php/php.ini
+```
 
 ```
 open_basedir = /srv/www

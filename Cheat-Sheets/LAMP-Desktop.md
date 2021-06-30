@@ -4,13 +4,17 @@
 
 ***This is for your local desktop developer environment only, not secure for production!***
 
-***This installs Apache!*** *For Nginx, see [LEMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LEMP-Desktop.md)*
+***This installs Apache!*** *For Nginx on Arch/Manjaro, see [LEMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LEMP-Desktop.md)*
 
 ## Arch/Manjaro
 
 ### Update
 
-  | **A0** :$ `sudo pacman -Syy`
+  | **A0** :$
+
+```console
+sudo pacman -Syy
+```
 
 ### Setup LAMP
 
@@ -18,19 +22,31 @@
 
 1. Install the LAMP server
 
-  | **A1** :$ `sudo pacman -S --noconfirm apache php php-apache mariadb`
+  | **A1** :$
+
+```console
+sudo pacman -S --noconfirm apache php php-apache mariadb
+```
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
 
   - Edit with `gedit`:
 
-    | **A2g** :$ `sudo gedit /etc/php/php.ini`
+    | **A2g** :$
+
+```console
+sudo gedit /etc/php/php.ini
+```
 
     - Search with: Ctrl + F, then type `mysqli` to find the line, Ctrl + S to save
 
   - Or edit with `vim`:
 
-    | **A2v** :$ `sudo vim /etc/php/php.ini`
+    | **A2v** :$
+
+```console
+sudo vim /etc/php/php.ini
+```
 
     - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
 
@@ -38,19 +54,31 @@
 
 3. Get MariaDB working
 
-  | **A3** :$ `sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql`
+  | **A3** :$
+
+```console
+sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+```
 
 4. Get Apache working
 
 - Edit with `gedit`:
 
-  | **A4g** :$ `sudo gedit /etc/httpd/conf/httpd.conf`
+  | **A4g** :$
+
+```console
+sudo gedit /etc/httpd/conf/httpd.conf
+```
 
   - Search with: Ctrl + F, Ctrl + S to save
 
 - Or edit with `vim`:
 
-  | **A4v** :$ `sudo vim /etc/httpd/conf/httpd.conf`
+  | **A4v** :$
+
+```console
+sudo vim /etc/httpd/conf/httpd.conf
+```
 
   - Search by typing: `/`..., type `:wq` to save and quit
 
@@ -77,13 +105,21 @@
 
 - Edit with `gedit`:
 
-  | **A5g** :$ `sudo gedit /etc/httpd/conf/httpd.conf`
+  | **A5g** :$
+
+```console
+sudo gedit /etc/httpd/conf/httpd.conf
+```
 
   - Search with: Ctrl + F, Ctrl + S to save
 
 - Or edit with `vim`:
 
-  | **A5v** :$ `sudo vim /etc/httpd/conf/httpd.conf`
+  | **A5v** :$
+
+```console
+sudo vim /etc/httpd/conf/httpd.conf
+```
 
   - Search by typing: `/`..., type `:wq` to save and quit
 
@@ -122,26 +158,58 @@
 
 6. Web user and folder
 
-  | **A6** :$ `sudo groupadd www`
+  | **A6** :$
 
-  | **A7** :$ `sudo useradd -g www www`
+```console
+sudo groupadd www
+```
 
-  | **A8** :$ `sudo chmod u+w /srv/http`
+  | **A7** :$
 
-  | **A9** :$ `sudo chown -R www:www /srv/http`
+```console
+sudo useradd -g www www
+```
+
+  | **A8** :$
+
+```console
+sudo chmod u+w /srv/http
+```
+
+  | **A9** :$
+
+```console
+sudo chown -R www:www /srv/http
+```
 
 
 7. Enable & restart
 
-  | **A10** :$ `sudo systemctl enable mariadb`
+  | **A10** :$
 
-  | **A11** :$ `sudo systemctl start mariadb`
+```console
+sudo systemctl enable mariadb
+```
 
-  | **A12** :$ `sudo systemctl restart httpd`
+  | **A11** :$
+
+```console
+sudo systemctl start mariadb
+```
+
+  | **A12** :$
+
+```console
+sudo systemctl restart httpd
+```
 
   - Check for specific errors in Apache server configs
 
-  | **A13** :$ `sudo apachectl -t`
+  | **A13** :$
+
+```console
+sudo apachectl -t
+```
 
 #### Using your local dev server on desktop
 
@@ -149,9 +217,17 @@
 
 Life is easier with a local "Work" folder symlink
 
-  | **A14** :$ `mkdir -p ~/Work/vip`
+  | **A14** :$
 
-  | **A15** :$ `sudo ln -sfn ~/Work/vip /srv/http/`
+```console
+mkdir -p ~/Work/vip
+```
+
+  | **A15** :$
+
+```console
+sudo ln -sfn ~/Work/vip /srv/http/
+```
 
 - Now:
   - Your projects go in: `~/Work/vip/SOMETHING`
@@ -161,17 +237,29 @@ Life is easier with a local "Work" folder symlink
 
 #### Always own web stuff first!
 
-  | **A16** :$ `sudo chown -R www:www /srv/http/`
+  | **A16** :$
+
+```console
+sudo chown -R www:www /srv/http/
+```
 
 ### MySQL phpMyAdmin
 
 1. Install this as an Arch package
 
-  | **A17** :$ `sudo pacman -S phpmyadmin --noconfirm`
+  | **A17** :$
+
+```console
+sudo pacman -S phpmyadmin --noconfirm
+```
 
 2. Link it to the web directory
 
-  | **A18** :$ `sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/http/`
+  | **A18** :$
+
+```console
+sudo ln -sfn /usr/share/webapps/phpMyAdmin /srv/http/
+```
 
 Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`
@@ -180,7 +268,11 @@ Now, you should be able to access this in your browser at the address:
 
 ### Update
 
-  | **D0** :$ `sudo apt update`
+  | **D0** :$
+
+```console
+sudo apt update
+```
 
 ### Setup LAMP
 
@@ -188,31 +280,51 @@ Now, you should be able to access this in your browser at the address:
 
 1. Install the LAMP server
 
-  | **D1** :$ `sudo apt install mysql-server php lamp-server^`
+  | **D1** :$
+
+```console
+sudo apt install mysql-server php lamp-server^
+```
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
   - Uncomment `extension=mysqli` (remove the semicolon `;` at the start of the line)
   - Edit with `gedit`:
 
-    | **D2g** :$ `sudo gedit /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
+    | **D2g** :$ (maybe `7.2` is a different number)
+
+```console
+sudo gedit /etc/php/7.2/apache2/php.ini
+```
 
     - Search with: Ctrl + F, then type `mysqli` to find the line, Ctrl + S to save
 
   - Or edit with `vim`:
 
-    | **D2v** :$ `sudo vim /etc/php/7.2/apache2/php.ini` (maybe `7.2` is a different number)
+    | **D2v** :$ (maybe `7.2` is a different number)
+
+```console
+sudo vim /etc/php/7.2/apache2/php.ini
+```
 
     - Search by typing: `/mysqli`, then Enter to find the line, type `:wq` to save and quit
 
 3. Restart Everything
 
-  | **D3** :$ `sudo systemctl restart apache2`
+  | **D3** :$
+
+```console
+sudo systemctl restart apache2
+```
 
 4. Look for the green dot as the All-OK
 
-  | **D4** :$ `sudo systemctl status apache2`
+  | **D4** :$
 
-    - Type `q` to quit. ;-)
+```console
+sudo systemctl status apache2
+```
+
+    - Press <kbd>Q</kbd> to quit. ;-)
 
 #### Using your local dev server on desktop
 
@@ -220,9 +332,17 @@ Now, you should be able to access this in your browser at the address:
 
 Life is easier with a local "Work" folder symlink
 
-  | **D5** :$ `mkdir -p ~/Work/vip`
+  | **D5** :$
 
-  | **D6** :$ `sudo ln -sfn ~/Work/vip /var/www/html/`
+```console
+mkdir -p ~/Work/vip
+```
+
+  | **D6** :$
+
+```console
+sudo ln -sfn ~/Work/vip /var/www/html/
+```
 
 - Now:
   - Your projects go in: `~/Work/vip/SOMETHING`
@@ -232,24 +352,44 @@ Life is easier with a local "Work" folder symlink
 
 #### Always own web stuff first!
 
-| **D7** :$ `sudo chown -R www-data:www-data /var/www/html/`
+| **D7** :$
+
+```console
+sudo chown -R www-data:www-data /var/www/html/
+```
 
 #### Make Apache rewrites work
 
 1. Enable the Rewrite mod for Apache
 
-  | **D8** :$ `sudo a2enmod rewrite`
+  | **D8** :$
 
-  | **D9** :$ `sudo systemctl restart apache2`
+```console
+sudo a2enmod rewrite
+```
+
+  | **D9** :$
+
+```console
+sudo systemctl restart apache2
+```
 
 2. Add some important settings
   - Edit with `gedit`:
 
-    | **D10g** :$ `sudo gedit /etc/apache2/sites-available/000-default.conf`
+    | **D10g** :$
+
+```console
+sudo gedit /etc/apache2/sites-available/000-default.conf
+```
 
   - Or edit with `vim`:
 
-    | **D10v** :$ `sudo vim /etc/apache2/sites-available/000-default.conf`
+    | **D10v** :$
+
+```console
+sudo vim /etc/apache2/sites-available/000-default.conf
+```
 
   - After `DocumentRoot /var/www/html` Add these lines:
   ```
@@ -274,11 +414,19 @@ allow from all
 
 3. Reload Apache after any changes to files in `/etc/apache2/sites-available/_____.conf`
 
-  | **D11** :$ `sudo systemctl reload apache2`
+  | **D11** :$
+
+```console
+sudo systemctl reload apache2
+```
 
   - Check for specific errors in Apache server configs
 
-  | **D12** :$ `sudo apachectl -t`
+  | **D12** :$
+
+```console
+sudo apachectl -t
+```
 
 4. Remember with rewrites...
 
@@ -290,22 +438,42 @@ allow from all
 2. Extract and rename the folder to: `phpMyAdmin`
 3. In the terminal, move it to `/var/www/html/` (so it is at `/var/www/html/phpMyAdmin`)
 
-  | **D13** :$ `sudo mv phpMyAdmin /var/www/html/`
+  | **D13** :$
+
+```console
+sudo mv phpMyAdmin /var/www/html/
+```
 
 4. Create the config
 
-  | **D14** :$ `cd /var/www/html/phpMyAdmin`
+  | **D14** :$
 
-  | **D15** :$ `sudo cp config.sample.inc.php config.inc.php`
+```console
+cd /var/www/html/phpMyAdmin
+```
+
+  | **D15** :$
+
+```console
+sudo cp config.sample.inc.php config.inc.php
+```
 
 5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
-    | **D16g** :$ `sudo gedit /var/www/html/phpMyAdmin/config.inc.php`
+    | **D16g** :$
+
+```console
+sudo gedit /var/www/html/phpMyAdmin/config.inc.php
+```
 
   - Or edit with `vim`:
 
-    | **D16v** :$ `sudo vim /var/www/html/phpMyAdmin/config.inc.php`
+    | **D16v** :$
+
+```console
+sudo vim /var/www/html/phpMyAdmin/config.inc.php
+```
 
   - Add the salt here:
     - `$cfg['blowfish_secret'] = '';` ...becomes...
@@ -313,7 +481,11 @@ allow from all
 
 6. Own everything properly
 
-  | **D17** :$ `sudo chown -R www-data:www-data /var/www/html/phpMyAdmin`
+  | **D17** :$
+
+```console
+sudo chown -R www-data:www-data /var/www/html/phpMyAdmin
+```
 
 Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`
@@ -324,7 +496,11 @@ Login the first time with the same user you created in "MySQL via command line" 
 
 1. Access MySQL as root user with
 
-  | **M1** :$ `sudo mysql`
+  | **M1** :$
+
+```console
+sudo mysql
+```
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
 
@@ -367,23 +543,47 @@ export APACHE_RUN_GROUP=www-data
 
 1. Change the setting to `www` with `sed`
 
-  | **W1** :$ `sudo sed -i "s/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=www/" /etc/apache2/envvars`
+  | **W1** :$
 
-  | **W2** :$ `sudo sed -i "s/export APACHE_RUN_GROUP=.*/export APACHE_RUN_GROUP=www/" /etc/apache2/envvars`
+```console
+sudo sed -i "s/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=www/" /etc/apache2/envvars
+```
+
+  | **W2** :$
+
+```console
+sudo sed -i "s/export APACHE_RUN_GROUP=.*/export APACHE_RUN_GROUP=www/" /etc/apache2/envvars
+```
 
 2. Create the group & user
 
-  | **W3** :$ `sudo groupadd www`
+  | **W3** :$
 
-  | **W4** :$ `sudo useradd -g www www`
+```console
+sudo groupadd www
+```
+
+  | **W4** :$
+
+```console
+sudo useradd -g www www
+```
 
 3. Restart the Apache server
 
-  | **W5** :$ `sudo systemctl restart apache2`
+  | **W5** :$
+
+```console
+sudo systemctl restart apache2
+```
 
 4. Always own the web directory (now with `www:www` instead of `www-data:www-data`)
 
-  | **W6** :$ `sudo chown -R www:www /var/www/html/phpMyAdmin`
+  | **W6** :$
+
+```console
+sudo chown -R www:www /var/www/html/phpMyAdmin
+```
 
 ...This is how you will own the web directory from now on and in VIP Linux lessons
 
@@ -401,11 +601,19 @@ user www www;
 
 - Edit with `gedit`:
 
-  | **N1g** :$ `sudo gedit /etc/nginx/nginx.conf`
+  | **N1g** :$
+
+```console
+sudo gedit /etc/nginx/nginx.conf
+```
 
 - Or edit with `vim`:
 
-  | **N1v** :$ `sudo vim /etc/nginx/nginx.conf`
+  | **N1v** :$
+
+```console
+sudo vim /etc/nginx/nginx.conf
+```
 
 *...the `user` setting should be on the first line, add it if it isn't*
 
@@ -421,11 +629,19 @@ listen.group = www
 
 - Edit with `gedit`:
 
-  | **N2g** :$ `sudo gedit /etc/php/7.2/fpm/pool.d/www.conf`
+  | **N2g** :$
+
+```console
+sudo gedit /etc/php/7.2/fpm/pool.d/www.conf
+```
 
 - Or edit with `vim`:
 
-  | **N2v** :$ `sudo vim /etc/php/7.2/fpm/pool.d/www.conf`
+  | **N2v** :$
+
+```console
+sudo vim /etc/php/7.2/fpm/pool.d/www.conf
+```
 
 *...`user=` & `group=` settings may appear elsewhere, but these must be in the lines right after `[www]`, add them if they aren't*
 
@@ -442,35 +658,75 @@ location / {
 
 - Edit with `gedit`:
 
-  | **N3g** :$ `sudo gedit /etc/nginx/nginx.conf`
+  | **N3g** :$
+
+```console
+sudo gedit /etc/nginx/nginx.conf
+```
 
 - Or edit with `vim`:
 
-  | **N3v** :$ `sudo vim /etc/nginx/nginx.conf`
+  | **N3v** :$
+
+```console
+sudo vim /etc/nginx/nginx.conf
+```
 
 *...add that one line under `location /`, and make sure the file exists...*
 
-  | **N4** :$ `sudo touch /srv/www/rewrite`
+  | **N4** :$
 
-  | **N5** :$ `sudo chown -R www:www /srv/www`
+```console
+sudo touch /srv/www/rewrite
+```
 
-  | **N6** :$ `sudo systemctl reload nginx`
+  | **N5** :$
+
+```console
+sudo chown -R www:www /srv/www
+```
+
+  | **N6** :$
+
+```console
+sudo systemctl reload nginx
+```
 
   - Check for specific errors in Nginx server configs
 
-  | **N7** :$ `sudo nginx -t`
+  | **N7** :$
+
+```console
+sudo nginx -t
+```
 
 ## Make PHP More Secure
 
-  | **P1** :$ `sudo mkdir -p /var/www/tmp`
+  | **P1** :$
 
-  | **P2** :$ `sudo chmod -R 777 /var/www/tmp`
+```console
+sudo mkdir -p /var/www/tmp
+```
 
-  | **P3** :$ `sudo chmod 644 /etc/php/7.2/apache2/php.ini` (maybe '7.2' is a different number)
+  | **P2** :$
+
+```console
+sudo chmod -R 777 /var/www/tmp
+```
+
+  | **P3** :$ (maybe '7.2' is a different number)
+
+```console
+sudo chmod 644 /etc/php/7.2/apache2/php.ini
+```
 
 Open php.ini and make these settings:
 
-  | **P4** :$ `sudo vim /etc/php/7.2/apache2/php.ini` (maybe '7.2' is a different number)
+  | **P4** :$ (maybe '7.2' is a different number)
+
+```console
+sudo vim /etc/php/7.2/apache2/php.ini
+```
 
 ```
 open_basedir = /var/www
