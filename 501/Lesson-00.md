@@ -28,6 +28,8 @@ A "protocol" explains how a "host" is reached
 - `ftp://` insecure Internet file server (File Transfer Protocol)
 - `ftps://` secure Internet file server (File Transfer Protocol Secure)
 - `file://` file location on your local computer (just for viewing files, can't run PHP)
+- `tel:`
+- `mailto:`
 
 #### C. 'path'
 A "path" is a file location, the word comes from talk about the Linux terminal
@@ -40,11 +42,11 @@ Here, "/this/path" is the "path"...
 
 ...and, in theory, is located on the computer at...
 
-- `/var/www/html/verb.ink/this/path`
+- `/srv/http/html/verb.ink/this/path`
 
 ...and, in theory, you could go see it with the terminal command:
 
-- `cd /var/www/html/verb.ink/this/path`
+- `cd /srv/http/html/verb.ink/this/path`
 
 #### D. 'URL'
 "URL" stands for: Universal Resource Locator
@@ -60,7 +62,19 @@ A "URL" could be...
 - `https://inkisaverb.com/some/path/here`
 - `https://subdom.inkisaverb.com/website`
 - `https://verb.ink`
+- `ftps://inkisaverb.com/something.tgz`
+- `file:///home/user/somefile.md`
+- `tel:1-555-555-5555`
+- `mailto:someone@inkisaverb.com`
 - `localhost/some/page` ...'localhost' doesn't use `https://` because it isn't "served" over the Internet
+
+Don't be confused by "URI" and "URL"
+- A "URI" is a higher category of a URL
+- A "URI" may include the full URL or only part of it
+- A "URL" must identify specific information, such as the host and protocol
+- URL: `https://inkisaverb.com/some/path/here`
+- URI: `/some/path/here`
+- URI: `https://inkisaverb.com/some/path/here`
 
 #### E. 'localhost'
 
@@ -256,7 +270,7 @@ ___
 ##### C. 'path'
 - File location, just like the Linux terminal
 - Starts with `/` after the domain (`/this/is/a/path`)
-- `https://verb.ink/this/path` = `/var/www/html/verb.ink/this/path`
+- `https://verb.ink/this/path` = `/srv/http/html/verb.ink/this/path`
 
 ##### D. 'URL'
 - "Universal Resource Locator"

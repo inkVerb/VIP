@@ -269,13 +269,13 @@ sudo systemctl enable httpd
 sudo systemctl start httpd
 ```
 
-### MySQL phpMyAdmin
+### MySQL phpMyAdmin (Arch/Manjaro)
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
 2. Extract and rename the folder to: `phpMyAdmin`
 3. In the terminal, move it to `/srv/http/` (so it is at `/srv/http/phpMyAdmin`)
 
-| **D17** :$
+| **A17** :$
 
 ```console
 sudo mv phpMyAdmin /srv/http/
@@ -283,7 +283,7 @@ sudo mv phpMyAdmin /srv/http/
 
 4. Create the config
 
-| **D18** :$
+| **A18** :$
 
 ```console
 cd /srv/http/phpMyAdmin
@@ -293,7 +293,7 @@ sudo cp config.sample.inc.php config.inc.php
 5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
-| **D19g** :$
+| **A19g** :$
 
 ```console
 sudo gedit /srv/http/phpMyAdmin/config.inc.php
@@ -301,7 +301,7 @@ sudo gedit /srv/http/phpMyAdmin/config.inc.php
 
 Or edit with `vim`:
 
-| **D19v** :$
+| **A19v** :$
 
 ```console
 sudo vim /srv/http/phpMyAdmin/config.inc.php
@@ -313,10 +313,10 @@ sudo vim /srv/http/phpMyAdmin/config.inc.php
 
 6. Own everything properly
 
-| **D20** :$
+| **A20** :$
 
 ```console
-sudo chown -R www-data:www-data /srv/http/phpMyAdmin
+sudo chown -R www:www /srv/http/phpMyAdmin
 ```
 
 Now, you should be able to access this in your browser at the address:
@@ -499,7 +499,7 @@ sudo apachectl -t
 
 *Your code must reflect the names of any URLs as you want them rewritten, not as they actually are.*
 
-### MySQL phpMyAdmin
+### MySQL phpMyAdmin (Debian/Ubuntu)
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
 2. Extract and rename the folder to: `phpMyAdmin`
@@ -575,18 +575,28 @@ sudo mysql
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
 
-| **M2** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
+| **M2** :>
 
-| **M3** :> `FLUSH PRIVILEGES;`
+```console
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;
+```
+
+| **M3** :>
+
+```consoleFLUSH PRIVILEGES;`
+```
 
 3. Exit MySQL
 
-| **M4** :> `QUIT;`
+| **M4** :>
+
+```consoleQUIT;`
+```
 
 Access any MySQL user you created later with
 - `mysql -u USERNAME -p` (then enter the password)
 
-***If*** you ever need to wipe MySQL clean and completely start over:
+***If*** in Debian/Ubuntu and you ever need to wipe MySQL clean and completely start over:
 
 ```sh
 sudo apt-get clean
