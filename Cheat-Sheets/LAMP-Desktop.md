@@ -141,9 +141,10 @@ sudo vim /etc/httpd/conf/httpd.conf
   Group www
   ```
 
-  - After `DocumentRoot "/srv/http"` replace `<Directory...` contents with these lines:
+  - Find `DocumentRoot "/srv/http"` replace it and `<Directory...` contents to look like this:
     ```
-    <Directory "/srv/http">
+    DocumentRoot "/srv/www/html"
+    <Directory "/srv/www/html">
     Options Indexes FollowSymLinks
     AllowOverride All
     Require all granted
@@ -153,7 +154,8 @@ sudo vim /etc/httpd/conf/httpd.conf
   ...or for expanded options...
 
   ```
-  <Directory "/srv/http">
+  DocumentRoot "/srv/www/html"
+  <Directory "/srv/www/html">
   Options Indexes FollowSymLinks MultiViews
   AllowOverride All
   Require all granted
@@ -179,13 +181,13 @@ sudo useradd -g www www
 | **A8** :$
 
 ```console
-sudo chmod u+w /srv/http
+sudo chmod u+w /srv/www
 ```
 
 | **A9** :$
 
 ```console
-sudo chown -R www:www /srv/http
+sudo chown -R www:www /srv/www
 ```
 
 
@@ -227,8 +229,8 @@ Life is easier with a local "Work" folder symlink
 
 ```console
 mkdir -p ~/Work/dev
-sudo mkdir -p /srv/http/vip
-sudo ln -sfn /srv/http/vip ~/Work/
+sudo mkdir -p /srv/www/html/vip
+sudo ln -sfn /srv/www/html/vip ~/Work/
 ```
 
 - Now:
@@ -247,7 +249,7 @@ sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 | **A15** :$
 
 ```console
-sudo chown -R www:www /srv/http/
+sudo chown -R www:www /srv/www
 ```
 
 - Choose:
@@ -273,12 +275,12 @@ sudo systemctl start httpd
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
 2. Extract and rename the folder to: `phpMyAdmin`
-3. In the terminal, move it to `/srv/http/` (so it is at `/srv/http/phpMyAdmin`)
+3. In the terminal, move it to `/srv/www/html/` (so it is at `/srv/www/html/phpMyAdmin`)
 
 | **A17** :$
 
 ```console
-sudo mv phpMyAdmin /srv/http/
+sudo mv phpMyAdmin /srv/www/html/
 ```
 
 4. Create the config
@@ -286,7 +288,7 @@ sudo mv phpMyAdmin /srv/http/
 | **A18** :$
 
 ```console
-cd /srv/http/phpMyAdmin
+cd /srv/www/html/phpMyAdmin
 sudo cp config.sample.inc.php config.inc.php
 ```
 
@@ -296,7 +298,7 @@ sudo cp config.sample.inc.php config.inc.php
 | **A19g** :$
 
 ```console
-sudo gedit /srv/http/phpMyAdmin/config.inc.php
+sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
 ```
 
 Or edit with `vim`:
@@ -304,7 +306,7 @@ Or edit with `vim`:
 | **A19v** :$
 
 ```console
-sudo vim /srv/http/phpMyAdmin/config.inc.php
+sudo vim /srv/www/html/phpMyAdmin/config.inc.php
 ```
 
   - Add the salt here:
@@ -316,7 +318,7 @@ sudo vim /srv/http/phpMyAdmin/config.inc.php
 | **A20** :$
 
 ```console
-sudo chown -R www:www /srv/http/phpMyAdmin
+sudo chown -R www:www /srv/www/html/phpMyAdmin
 ```
 
 Now, you should be able to access this in your browser at the address:
