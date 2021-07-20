@@ -188,9 +188,9 @@ echo $autoArray[1];
 echo $autoArray[2];
 echo $autoArray[3];
 
-// Assign array values directly
+// Assign array values to variables via one list
 list($a_one, $a_two, $a_three, $a_four) = $autoArray;
-// Same as...
+// Or assign them individually
 $a_one = $autoArray[0];
 $a_two = $autoArray[1];
 $a_three = $autoArray[2];
@@ -284,15 +284,15 @@ foreach ($array as $item) {
 
 | **5** :$
 ```
-sudo cp core/01-phpforeach.php web/phppost.php && \
+sudo cp core/01-phpforeach.php web/phpforeach.php && \
 atom core/01-phpforeach.php && \
 ls web
 ```
 
-| **B-5** :// (Same)
+| **B-5** ://
 
 ```console
-localhost/web/phppost.php
+localhost/web/phpforeach.php
 ```
 
 #### PHP `if` Syntax
@@ -327,7 +327,7 @@ atom core/01-phppost2.php && \
 ls web
 ```
 
-| **B-6** :// (Same)
+| **B-6** ://
 
 ```console
 localhost/web/phppost.php

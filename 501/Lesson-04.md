@@ -29,17 +29,23 @@ localhost/phpMyAdmin/
 
 ### Used later in this lesson
 
-*SQL database:*
+*SQL database: (after command 6)*
 
-| **L4** :>
+| **L0** :>
 
 ```console
 USE webapp_db
 ```
 
-*Webapp login:*
+*Webapp login: (after command 11)*
 
-| **LB-5** ://
+| **LB-0** ://
+
+```console
+localhost/web/webapp.php
+```
+
+*Login with our credentials...*
 
 ```
 Username: jonboy
@@ -48,164 +54,7 @@ Password: My#1Password
 
 ___
 
-### I. Web App Installer
-
-Nearly all web apps require that you have a database, database username, and database password already set up
-
-*Create our database and its login now...*
-
-| **1** :>
-
-```console
-CREATE DATABASE webapp_db;
-```
-
-| **2** :>
-
-```console
-GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';
-```
-
-| **3** :>
-
-```console
-FLUSH PRIVILEGES;
-```
-
-**Now, we have these database credentials:** (Many web apps ask for this on install)
-```
-Database name: webapp_db
-Database user: webapp_db_user
-Database password: webappdbpassword
-Database host: localhost
-```
-
-*Get ready to work in our SQL terminal...*
-
-| **4** :>
-
-```console
-USE webapp_db
-```
-
-*Use our install page...*
-
-| **5** :$
-```
-sudo cp core/04-install.php web/install.php && \
-sudo cp core/04-in.config1.php web/in.config.php && \
-sudo cp core/04-in.checks.php web/in.checks.php && \
-sudo cp core/04-in.functions.php web/in.functions.php && \
-sudo chown -R www:www /var/www/html && \
-atom core/04-install.php core/04-in.config1.php core/04-in.checks.php core/04-in.functions.php && \
-ls web
-```
-
-*In the config, note:*
-
-- *function escape_sql($data)* (we will start using this instead of mysqli_real_escape_string)
-
-*In the in.functions.php, note:*
-
-- *Validation and sanitizing set a `$regex_` variable first, which is more neat and tidy*
-- *This style isolates the RegEx to help any RegEx hunting in the future*
-
-| **install.php** :
-
-**Hash password one-way:**
-
-```php
-$password_hashed = password_hash($password, PASSWORD_BCRYPT);
-```
-This is much like we did in [201-08: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201/Lesson-08.md), ***but...***
-
-This can't be decrypted because it is different each time
-
-**SQL escape for each query's value:**
-
-```php
-$entry_value_sqlesc = mysqli_real_escape_string($database, $entry_value);
-```
-
-**Long ReGex for many special characters:**
-
-Order of these special characters matters in a RegEx!
-
-```php
-$db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]{6,32}$/', $_POST['db_pass']))
-```
-
-**Powerful SQL use:**
-
-- We created our SQL config file with `file_put_contents()`
-- We made `ALTER` and `CREATE TABLE` SQL queries inside our PHP
-
-*Review the diagrams above along side the following few steps...*
-
-*Look, but don't touch...*
-
-| **B-5a** ://
-
-```console
-localhost/web/install.php
-```
-
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
-
-| **S5** :>
-
-```console
-SHOW TABLES;
-```
-
-| **SB-5** ://phpMyAdmin **> webapp_db**
-
-*Note our database has no tables, let's go back to our webform...*
-
-| **B-5b** :// (same, start filling-in)
-
-```console
-localhost/web/install.php
-```
-
-```
-Database name: webapp_db
-Database user: webapp_db_user
-Database password: webappdbpassword
-Database host: localhost
-
-# Our login we will use:
-Username: jonboy
-Password: My#1Password
-
-# Use whatever you want for all else
-```
-
-*Enter the information above into the webform, then continue*
-
-| **S6** :>
-
-```console
-SHOW TABLES;
-```
-
-| **SB-6** ://phpMyAdmin **> webapp_db**
-
-| **S7** :>
-
-```console
-SELECT * FROM users;
-```
-
-| **SB-7** ://phpMyAdmin **> users**
-
-*Note the `pass` column is a long string; that is the one-way hashed password*
-
-*Website ready*
-
-*Before logging in, let's talk about time...*
-
-### II. PHP Epoch & Time
+### I. PHP Epoch & Time
 
 **The PHP epoch:** *seconds from midnight Jan 1, 1970*
 
@@ -243,7 +92,7 @@ $epoch_simple_later = time() + (30 * 24 * 60 * 60);
 
 *Review the diagrams above along side the following few steps...*
 
-| **8** :$
+| **1** :$
 ```
 sudo cp core/04-time.php web/time.php && \
 sudo chown -R www:www /var/www/html && \
@@ -251,7 +100,7 @@ atom core/04-time.php && \
 ls web
 ```
 
-| **B-8** ://
+| **B-1** ://
 
 ```console
 localhost/web/time.php
@@ -259,7 +108,214 @@ localhost/web/time.php
 
 *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
-### III. User Login
+### II. Password Hash Checks
+
+**Hash password one-way:**
+
+```php
+$password_hashed = password_hash($password, PASSWORD_BCRYPT);
+```
+
+This is much like a hash made in [201-08: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201/Lesson-08.md), ***but...***
+
+This hash can't be decrypted because it creates a different hash each time
+
+**Check password hash:**
+
+```php
+password_verify($password, $password_hashed);
+```
+
+This is much like a hash check in [201-08: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201/Lesson-08.md), ***but...***
+
+This only returns `true` or NULL because the hash is different each time
+
+| **2** :$
+
+```console
+sudo cp core/04-passhash.php web/passhash.php && \
+sudo chown -R www:www /var/www/html && \
+atom core/04-passhash.php && \
+ls web
+```
+
+| **B-2** ://
+
+```console
+localhost/web/passhash.php
+```
+
+*Enter any password you want*
+
+*Note:*
+- *The same password is hashed 5 times*
+- *Each hash is different, but from the same password*
+- *Each different hash checks out because they came from the same password*
+- *Check number 6 is an example of a `password_verify()` hash check fail*
+
+Conclusion:
+
+- You cannot use the password or hash to find a match for a use in the SQL table
+- You must get the password hash from the SQL table first, then check it against the password submitted in the `<form>` using `password_verify()`
+- Using the password or hash to find an SQL match for a user is an out-dated method of validating a user
+
+### III. Web App Installer
+
+Nearly all web apps require that you have a database, database username, and database password already set up
+
+*Create our database and its login now...*
+
+| **3** :>
+
+```console
+CREATE DATABASE webapp_db;
+```
+
+| **4** :>
+
+```console
+GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';
+```
+
+| **5** :>
+
+```console
+FLUSH PRIVILEGES;
+```
+
+**Now, we have these database credentials:** (Many web apps ask for this on install)
+```
+Database name: webapp_db
+Database user: webapp_db_user
+Database password: webappdbpassword
+Database host: localhost
+```
+
+*Get ready to work in our SQL terminal...*
+
+| **6** :>
+
+```console
+USE webapp_db
+```
+
+*Use our install page...*
+
+| **7** :$
+```
+sudo cp core/04-install.php web/install.php && \
+sudo cp core/04-in.config1.php web/in.config.php && \
+sudo cp core/04-in.checks.php web/in.checks.php && \
+sudo cp core/04-in.functions.php web/in.functions.php && \
+sudo chown -R www:www /var/www/html && \
+atom core/04-install.php core/04-in.config1.php core/04-in.checks.php core/04-in.functions.php && \
+ls web
+```
+
+*In the config, note:*
+
+- *function escape_sql($data)* (we will start using this instead of mysqli_real_escape_string)
+
+*In the in.functions.php, note:*
+
+- *Validation and sanitizing set a `$regex_` variable first, which is more neat and tidy*
+- *This style isolates the RegEx to help any RegEx hunting in the future*
+
+| **install.php** :
+
+**Hash the password:**
+
+```php
+$password_hashed = password_hash($password, PASSWORD_BCRYPT);
+```
+
+This can't be decrypted because it is different each time
+
+**SQL escape for each query's value:**
+
+```php
+$entry_value_sqlesc = mysqli_real_escape_string($database, $entry_value);
+```
+
+**Long ReGex for many special characters:**
+
+Order of these special characters matters in a RegEx!
+
+```php
+$db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]{6,32}$/', $_POST['db_pass']))
+```
+
+**Powerful SQL use:**
+
+- We created our SQL config file with `file_put_contents()`
+- We made `ALTER` and `CREATE TABLE` SQL queries inside our PHP
+
+*Review the diagrams above along side the following few steps...*
+
+*Look, but don't touch...*
+
+| **B-8a** ://
+
+```console
+localhost/web/install.php
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+
+| **S8** :>
+
+```console
+SHOW TABLES;
+```
+
+| **SB-8** ://phpMyAdmin **> webapp_db**
+
+*Note our database has no tables, let's go back to our webform...*
+
+| **B-8b** :// (same, start filling-in)
+
+```console
+localhost/web/install.php
+```
+
+```
+Database name: webapp_db
+Database user: webapp_db_user
+Database password: webappdbpassword
+Database host: localhost
+
+# Our login we will use:
+Username: jonboy
+Password: My#1Password
+
+# Use whatever you want for all else
+```
+
+*Enter the information above into the webform, then continue*
+
+| **S9** :>
+
+```console
+SHOW TABLES;
+```
+
+| **SB-9** ://phpMyAdmin **> webapp_db**
+
+| **S10** :>
+
+```console
+SELECT * FROM users;
+```
+
+| **SB-10** ://phpMyAdmin **> users**
+
+*Note the `pass` column is a long string; that is the one-way hashed password*
+
+*Website ready*
+
+*Before logging in, let's talk about time...*
+
+### IV. User Login
 
 PHP has 3 main groups of variables:
 
@@ -296,13 +352,9 @@ $_SESSION['some_key'] = "some value";
 password_verify($form_password, $hashed_password_from_database);
 ```
 
-This is similar to a hash check from [201-08: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201/Lesson-08.md), ***but...***
-
-It only confirms with `true` or `false` because the hash is different each time
-
 *Review the diagrams above along side the following few steps...*
 
-| **9** :$
+| **11** :$
 ```
 sudo cp core/04-login1.php web/webapp.php && \
 sudo cp core/04-in.config2.php web/in.config.php && \
@@ -315,15 +367,15 @@ ls web
 
 - *`session_start();`*
 
-| **S9** :>
+| **S11** :>
 
 ```console
 SELECT id, fullname, pass FROM users WHERE username='jonboy';
 ```
 
-| **SB-9** ://phpMyAdmin **> users**
+| **SB-11** ://phpMyAdmin **> users**
 
-| **B-9a** ://
+| **B-11a** ://
 
 ```console
 localhost/web/webapp.php
@@ -338,14 +390,13 @@ Password: My#1Password
 
 *Once logged in, re-enter the page to see already logged in message...  (not reload)*
 
-| **B-9b** :// (same)
+| **B-11b** :// (same)
 
 ```console
 localhost/web/webapp.php
 ```
 
-
-### IV. Logout
+### V. Logout
 
 **Logout can be done 3 ways; use them all!**
 
@@ -379,7 +430,7 @@ The `echo` message will not display, comment the `header()` line to see the mess
 
 *Review the diagrams above along side the following few steps...*
 
-| **10** :$
+| **12** :$
 ```
 sudo cp core/04-logout1.php web/logout.php && \
 sudo chown -R www:www /var/www/html && \
@@ -389,7 +440,7 @@ ls web
 
 *After looking through logout.php, continue to be logged out immediately...*
 
-| **B-10a** :// (5 second logout and redirect to webapp.php!)
+| **B-12a** :// (5 second logout and redirect to webapp.php!)
 
 ```console
 localhost/web/logout.php
@@ -397,7 +448,7 @@ localhost/web/logout.php
 
 *Let's do that again, but with a logout message instead of waiting...*
 
-| **B-10b** ://
+| **B-12b** ://
 
 ```console
 localhost/web/webapp.php
@@ -418,7 +469,7 @@ $_SESSION['just_logged_out'] = true;
 
 *Review the diagram above along side the following two steps...*
 
-| **11** :$
+| **13** :$
 ```
 sudo cp core/04-logout2.php web/logout.php && \
 sudo cp core/04-login2.php web/webapp.php && \
@@ -429,12 +480,12 @@ ls web
 
 *Note:*
 
-- *logout.php*
-- *webapp.php*
+- *logout.php (04-logout2.php)*
+- *webapp.php (04-login2.php)*
 
 *After looking through logout.php and webapp.php, continue to be logged out immediately...*
 
-| **B-11** :// (Instant logout and redirect to webapp.php with message!)
+| **B-13** :// (Instant logout and redirect to webapp.php with message!)
 
 ```console
 localhost/web/logout.php
@@ -442,7 +493,7 @@ localhost/web/logout.php
 
 *Let's make a login using cookies...*
 
-### V. 'Remember Me' Login Cookies
+### VI. 'Remember Me' Login Cookies
 
 Cookies are much like the `$_SESSION` array, but
 
@@ -478,13 +529,13 @@ Cookies are stored in files on the "Client" (user's local machine)
 
 *Have a look at Firefox cache data, where cookies are kept...*
 
-| **12** :$ (You can use a `*` wildcard with `cd` if there is only one file possible)
+| **14** :$ (You can use a `*` wildcard with `cd` if there is only one file possible)
 
 ```console
 cd ~/.mozilla/firefox/*.default
 ```
 
-| **13** :$
+| **15** :$
 
 ```console
 ls
@@ -492,13 +543,13 @@ ls
 
 *Chromium, if you have it installed...*
 
-| **14** :$
+| **16** :$
 
 ```console
 cd ~/.config/chromium/Default
 ```
 
-| **15** :$
+| **17** :$
 
 ```console
 ls
@@ -508,23 +559,23 @@ ls
 
 For teaching, we will put the **user_id** as the cookie's value, but this is not secure!
 
-| **16** :$
+| **18** :$
 ```
-sudo cp core/04-login3.php web/webapp.php && \
 sudo cp core/04-logout3.php web/logout.php && \
+sudo cp core/04-login3.php web/webapp.php && \
 sudo chown -R www:www /var/www/html && \
-atom core/04-login3.php core/04-logout3.php && \
+atom core/04-logout3.php core/04-login3.php && \
 ls web
 ```
 
 *Note:*
 
-- *webapp.php*
-- *logout.php*
+- *webapp.php (04-login3.php)*
+- *logout.php (04-logout3.php)*
 
 *Review cookie logic in webapp.php by searching "$_COOKIE"*
 
-| **B-16a** :// (previous)
+| **B-18a** :// (previous)
 
 ```console
 localhost/web/webapp.php
@@ -539,19 +590,25 @@ Password: My#1Password
 
 *Load the page again to see the cookies remember your login...*
 
-| **B-16b** :// (same)
+| **B-18b** :// (same)
 
 ```console
 localhost/web/webapp.php
 ```
 
-#### Never put username or password in a cookie!
+#### Never put username, password, email, name, or other user info in a cookie!
+
+This is a matter or proper security habits
+
+Cookies should only store information that only your app can interpret
+
+Cookies store otherwise useless information which you then use to look up the user's specific information in your SQL database
 
 This was only an example of how a cookie behaves
 
 Later we will put a secret key into the cookie for proper security
 
-### Variable Review
+#### Variable Review
 
 4 types of PHP variables:
 
@@ -596,9 +653,9 @@ unset($_COOKIE['cookie_name']); // Unset
 setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 ```
 
-### VI. Account Settings
+### VII. Account Settings
 
-| **17** :$
+| **19** :$
 ```
 sudo cp core/04-accountsettings.php web/account.php && \
 sudo chown -R www:www /var/www/html && \
@@ -608,7 +665,7 @@ ls web
 
 *Try an alternate way for no-login by searching "webapp.php" and uncommenting the line*
 
-| **B-17** ://
+| **B-19** ://
 
 ```console
 localhost/web/account.php
@@ -616,13 +673,13 @@ localhost/web/account.php
 
 *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
-| **S17** :>
+| **S19** :>
 
 ```console
 SELECT fullname, username, email, favnumber FROM users;
 ```
 
-| **SB-17** ://phpMyAdmin **> users**
+| **SB-19** ://phpMyAdmin **> users**
 
 *Also try logging out and logging in with these pages from before:*
 
@@ -647,23 +704,23 @@ Password: My#1Password
 
 *When finished, make sure the username and password are the same for future reference*
 
-### VII. Forgot Password
+### VIII. Forgot Password
 
 *Make sure you know your favorite number and email before continuing...*
 
-| **S18** :>
+| **S20** :>
 
 ```console
 SELECT id, fullname, email, favnumber FROM users;
 ```
 
-| **SB-18** ://phpMyAdmin **> users**
+| **SB-20** ://phpMyAdmin **> users**
 
 *This simple "forgot password" page logs in via email and favorite number, rather than username and password...*
 
 ***This is a simple example, but it is not secure; we will use a secure way later in future lessons***
 
-| **18** :$
+| **20** :$
 ```
 sudo cp core/04-forgot.php web/forgot.php && \
 sudo chown -R www:www /var/www/html && \
@@ -671,7 +728,7 @@ atom core/04-forgot.php && \
 ls web
 ```
 
-| **B-18** ://
+| **B-20** ://
 
 ```console
 localhost/web/forgot.php
