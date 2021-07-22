@@ -12,6 +12,35 @@ ___
 ### OOP (Object Oriented Programming)
 
 
+| **1** :$
+```
+sudo cp core/11-oop1.php web/oop.php && \
+sudo chown -R www:www /var/www/html && \
+atom core/11-oop1.php && \
+ls web
+```
+
+| **B-1** ://
+
+```console
+localhost/web/oop.php
+```
+
+| **2** :$
+```
+sudo cp core/11-oop2.php web/oop.php && \
+sudo chown -R www:www /var/www/html && \
+atom core/11-oop2.php && \
+ls web
+```
+
+| **B-2** ://
+
+```console
+localhost/web/oop.php
+```
+
+
 ### PDO (PHP Data Objects)
 
 

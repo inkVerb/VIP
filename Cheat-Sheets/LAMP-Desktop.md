@@ -58,7 +58,7 @@ In php.ini:
     - `extension=mysqli`
     - `extension=iconv`
 
-3. Get MariaDB working
+3. MariaDB setup
 
 | **A3** :$
 
@@ -66,9 +66,9 @@ In php.ini:
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 ```
 
-4. Get Apache working
+4. Apache settings
 
-- Edit with `gedit`:
+Edit with `gedit`:
 
 | **A4g** :$
 
@@ -78,7 +78,7 @@ sudo gedit /etc/httpd/conf/httpd.conf
 
   - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
-- Or edit with `vim`:
+Or edit with `vim`:
 
 | **A4v** :$
 
@@ -88,17 +88,19 @@ sudo vim /etc/httpd/conf/httpd.conf
 
   - Search by typing: `/`..., type `:wq` to save and quit
 
+a. Enable modules:
 
   - Reverse the commenting so these lines to look like this:
 
   ```
   #LoadModule mpm_event_module modules/mod_mpm_event.so
-  LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
   ...
+  LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
   LoadModule http2_module modules/mod_http2.so
+  LoadModule rewrite_module modules/mod_rewrite.so
   ```
 
-  - Add these lines:
+  - Add these lines at the end:
 
   ```
   LoadModule php_module modules/libphp.so
@@ -107,27 +109,8 @@ sudo vim /etc/httpd/conf/httpd.conf
   Protocols h2 http/1.1
   ```
 
-5. Web user to `www`
+b. Web user to `www`
 
-- Edit with `gedit`:
-
-| **A5g** :$
-
-```console
-sudo gedit /etc/httpd/conf/httpd.conf
-```
-
-  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
-
-- Or edit with `vim`:
-
-| **A5v** :$
-
-```console
-sudo vim /etc/httpd/conf/httpd.conf
-```
-
-  - Search by typing: `/`..., type `:wq` to save and quit
 
   - Change these lines:
   ```
@@ -140,6 +123,8 @@ sudo vim /etc/httpd/conf/httpd.conf
   User www
   Group www
   ```
+
+c. Web directory settings
 
   - Find `DocumentRoot "/srv/http"` replace it and `<Directory...` contents to look like this:
     ```
@@ -164,48 +149,48 @@ sudo vim /etc/httpd/conf/httpd.conf
   </Directory>
   ```
 
-6. Web user and folder
+5. Web user and folder
 
-| **A6** :$
+| **A5** :$
 
 ```console
 sudo groupadd www
 ```
 
-| **A7** :$
+| **A6** :$
 
 ```console
 sudo useradd -g www www
 ```
 
-| **A8** :$
+| **A7** :$
 
 ```console
 sudo chmod u+w /srv/www
 ```
 
-| **A9** :$
+| **A8** :$
 
 ```console
 sudo chown -R www:www /srv/www
 ```
 
 
-7. Enable & restart
+6. Enable & restart
 
-| **A10** :$
+| **A9** :$
 
 ```console
 sudo systemctl enable mariadb
 ```
 
-| **A11** :$
+| **A10** :$
 
 ```console
 sudo systemctl start mariadb
 ```
 
-| **A12** :$
+| **A11** :$
 
 ```console
 sudo systemctl restart httpd
@@ -213,19 +198,19 @@ sudo systemctl restart httpd
 
   - Check for specific errors in Apache server configs
 
-| **A13** :$
+| **A12** :$
 
 ```console
 sudo apachectl -t
 ```
 
-#### Using your local dev server on desktop
+**Using your local dev server on desktop**
 
 - `/var/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
 
 Life is easier with a local "Work" folder symlink
 
-| **A14** :$
+| **A13** :$
 
 ```console
 mkdir -p ~/Work/dev
@@ -244,19 +229,21 @@ sudo ln -sfn /srv/www/html/vip ~/Work/
 sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 ```
 
-#### Always own web stuff first!
+**Always own web stuff first!**
 
-| **A15** :$
+| **A14** :$
 
 ```console
 sudo chown -R www:www /srv/www
 ```
 
-- Choose:
+**Apache service: always or only when using?**
+
+- Choose 1 or 2:
 
 1. Start Apache everytime
 
-| **A16e** :$
+| **A15e** :$
 
 ```console
 sudo systemctl start httpd
@@ -264,7 +251,7 @@ sudo systemctl start httpd
 
 2. Make Apache a service to always run
 
-| **A16s** :$
+| **A15s** :$
 
 ```console
 sudo systemctl enable httpd
@@ -277,7 +264,7 @@ sudo systemctl start httpd
 2. Extract and rename the folder to: `phpMyAdmin`
 3. In the terminal, move it to `/srv/www/html/` (so it is at `/srv/www/html/phpMyAdmin`)
 
-| **A17** :$
+| **A16** :$
 
 ```console
 sudo mv phpMyAdmin /srv/www/html/
@@ -285,7 +272,7 @@ sudo mv phpMyAdmin /srv/www/html/
 
 4. Create the config
 
-| **A18** :$
+| **A17** :$
 
 ```console
 cd /srv/www/html/phpMyAdmin
@@ -295,7 +282,7 @@ sudo cp config.sample.inc.php config.inc.php
 5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
-| **A19g** :$
+| **A18g** :$
 
 ```console
 sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
@@ -303,7 +290,7 @@ sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
 
 Or edit with `vim`:
 
-| **A19v** :$
+| **A18v** :$
 
 ```console
 sudo vim /srv/www/html/phpMyAdmin/config.inc.php
@@ -315,7 +302,7 @@ sudo vim /srv/www/html/phpMyAdmin/config.inc.php
 
 6. Own everything properly
 
-| **A20** :$
+| **A19** :$
 
 ```console
 sudo chown -R www:www /srv/www/html/phpMyAdmin
