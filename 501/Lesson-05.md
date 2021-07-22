@@ -172,12 +172,12 @@ localhost/web/My_Long_Name/Name-2
 
 ### The Settings
 
-**RewriteMod** requires three settings to work:
-
-Apache .conf is probably:
+Note, Apache .conf is probably:
 - `/etc/httpd/conf/httpd.conf` (Arch)
 - `/etc/httpd/sites-available/website-config.conf` (Arch)
 - `/etc/apache2/sites-available/website-config.conf` (Ubuntu)
+
+**RewriteMod** requires three settings to work:
 
 1. Module enabled, in .conf: `LoadModule rewrite_module modules/mod_rewrite.so`
 - Ubuntu can also use in the terminal: `sudo a2enmod rewrite`
