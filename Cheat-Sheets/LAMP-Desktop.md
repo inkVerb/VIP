@@ -224,7 +224,7 @@ sudo ln -sfn /srv/www/html/vip ~/Work/
 - During development:
   - Edit files in: `~/Work/dev`
   - Copy dev files to view in browser on each save with:
-  
+
 ```console
 sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 ```

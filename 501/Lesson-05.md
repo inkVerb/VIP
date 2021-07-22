@@ -66,6 +66,8 @@ localhost/web/My_Long_Name
 
 *...Feel free to try different strings after `localhost/web/`*
 
+*We just tried number 1 below...*
+
 ### RewriteMod Other Settings
 
 ```
@@ -170,10 +172,17 @@ localhost/web/My_Long_Name/Name-2
 
 ### The Settings
 
-**RewriteMod** requires two settings to work:
+**RewriteMod** requires three settings to work:
 
-1. Apache config: `/etc/apache2/sites-available/website-config.conf` in the `<Directory>` tags
-2. .htaccess: `/var/www/html/your/web/dir/.htaccess`
+Apache .conf is probably:
+- `/etc/httpd/conf/httpd.conf` (Arch)
+- `/etc/httpd/sites-available/website-config.conf` (Arch)
+- `/etc/apache2/sites-available/website-config.conf` (Ubuntu)
+
+1. Module enabled, in .conf: `LoadModule rewrite_module modules/mod_rewrite.so`
+- Ubuntu can also use in the terminal: `sudo a2enmod rewrite`
+2. Directory tags, in .conf:  Between the `<Directory>` tags: `AllowOverride All`
+3. .htaccess file in web directory: `/var/www/html/your/web/dir/.htaccess`
 
 *Edit the Apache web server settings file...*
 
