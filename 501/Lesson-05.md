@@ -173,20 +173,29 @@ localhost/web/My_Long_Name/Name-2
 ### The Settings
 
 Note, Apache .conf is probably:
-- `/etc/httpd/conf/httpd.conf` (Arch)
-- `/etc/httpd/sites-available/website-config.conf` (Arch)
-- `/etc/apache2/sites-available/website-config.conf` (Ubuntu)
+- `/etc/httpd/conf/httpd.conf` (master - Arch)
+- `/etc/httpd/sites-available/inkisaverb.com.conf` (per-site - Arch)
+- `/etc/apache2/sites-available/000-default.conf` (default - Ubuntu)
+- `/etc/apache2/sites-available/inkisaverb.com.conf` (per-site - Ubuntu)
 
 **RewriteMod** requires three settings to work:
 
 1. Module enabled, in .conf: `LoadModule rewrite_module modules/mod_rewrite.so`
 - Ubuntu can also use in the terminal: `sudo a2enmod rewrite`
 2. Directory tags, in .conf:  Between the `<Directory>` tags: `AllowOverride All`
-3. .htaccess file in web directory: `/var/www/html/your/web/dir/.htaccess`
+3. .htaccess file in web directory: `/srv/www/html/your/web/dir/.htaccess`
 
 *Edit the Apache web server settings file...*
 
-| **5** :$
+Choose either Arch/Manjaro (5a) or Ubuntu (5u):
+
+| **5a** :$ (Arch/Manjaro)
+
+```console
+vim /etc/httpd/conf/httpd.conf
+```
+
+| **5u** :$ (Ubuntu)
 
 ```console
 vim /etc/apache2/sites-available/000-default.conf
@@ -316,14 +325,14 @@ ___
 - Changes the URL shown in a browser from what it actually is on the server
 - Requires certain settings:
   1. The Apache config file in the `<Directory>` tags
-  | **/etc/apache2/sites-available/website-config.conf** :
+  | **/etc/httpd/sites-available/inkisaverb.com.conf** :
   ```
-  <Directory "/var/www/html"> # (or /var/www/html/...something)
+  <Directory "/srv/www/html"> # (or /srv/www/html/...something)
     AllowOverride All
   </Directory>
   ```
   2. .htaccess (a hidden file in the web directory)
-  | **/var/www/html/your/web/dir/.htaccess** :
+  | **/srv/www/html/your/web/dir/.htaccess** :
   ```
   RewriteEngine on
   ```
