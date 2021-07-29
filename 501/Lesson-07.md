@@ -39,7 +39,7 @@ ___
 ```
 sudo cp core/07-recover1.php web/recover.php && \
 sudo cp core/07-in.string_functions.php web/in.string_functions.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/07-recover1.php core/07-in.string_functions.php && \
 ls web
 ```
@@ -66,7 +66,7 @@ sudo cp core/07-recover_login.php web/recover_login.php && \
 sudo cp core/07-webapp.php web/webapp.php && \
 sudo cp core/07-in.loginhead1.php web/in.login_head.php && \
 sudo cp core/07-accountsettings.php web/account.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/07-recover2.php core/07-ajaxstring.php core/07-recover_login.php core/07-webapp.php core/07-in.loginhead1.php core/07-accountsettings.php && \
 ls web
 ```
@@ -229,7 +229,7 @@ SELECT * FROM strings;
 | **9** :$
 ```
 sudo cp core/07-cleanup1.php web/cleanup.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/07-cleanup1.php && \
 ls web
 ```
@@ -347,7 +347,7 @@ We use this syntax here: `php /same/path/as/cron/task/to/script.php`
 | **13** :$
 ```
 sudo cp core/07-cleanup2.php web/cleanup.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/07-cleanup2.php && \
 ls web
 ```
@@ -357,7 +357,7 @@ ls web
 | **14** :$
 
 ```console
-php /var/www/html/web/cleanup.php
+php /srv/www/html/web/cleanup.php
 ```
 
 *See that the expired keys were deleted...*
@@ -426,7 +426,7 @@ sudo vim /etc/cron.d/webappcleanup
 *Copy and paste this as the content, press Enter so there is a new line after:*
 
 ```shell
-* * * * * root /usr/bin/php /var/www/html/web/cleanup.php
+* * * * * root /usr/bin/php /srv/www/html/web/cleanup.php
 ```
 
 | **vim-16b** :] Esc
@@ -508,7 +508,7 @@ CHANGE  `usable`  `usable` ENUM('live', 'cookie_login', 'dead') NOT NULL;
 ```
 sudo cp core/07-in.loginhead2.php web/in.login_head.php && \
 sudo cp core/07-logout.php web/logout.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/07-in.loginhead2.php core/07-logout.php && \
 ls web
 ```
@@ -559,7 +559,7 @@ localhost/web/webapp.php
 | **24** :$
 ```
 sudo cp core/07-in.loginhead3.php web/in.login_head.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/07-in.loginhead3.php && \
 ls web
 ```
@@ -623,10 +623,10 @@ ___
 - Find out where the `php` command is on your machine:
   - `which php` (could be: `/usr/bin/php`)
 - Use `/usr/bin/php` in your `cron` statement (or other path from `which`)
-  - Syntax: `* * * * * root /usr/bin/php /var/www/html/script.php`
+  - Syntax: `* * * * * root /usr/bin/php /srv/www/html/script.php`
     - This is a task that runs every minute
 - Use absolute paths for any `include` or `require` statements in PHP
-  - This: `require_once ('/var/www/html/inc/config.php');`
+  - This: `require_once ('/srv/www/html/inc/config.php');`
   - NOT!: `require_once ('./inc/config.php');`
 - Files for `cron` jobs are finicky
   - [VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)

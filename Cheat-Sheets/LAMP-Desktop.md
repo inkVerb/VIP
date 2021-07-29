@@ -56,6 +56,7 @@ In php.ini:
 
   - Uncomment (remove the semicolon `;` at the start of the line)
     - `extension=mysqli`
+    - `extension=pdo_mysql`
     - `extension=iconv`
 
 3. MariaDB setup
@@ -206,7 +207,7 @@ sudo apachectl -t
 
 **Using your local dev server on desktop**
 
-- `/var/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
+- `/srv/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
 
 Life is easier with a local "Work" folder symlink
 
@@ -361,8 +362,8 @@ In php.ini:
 
   - Uncomment (remove the semicolon `;` at the start of the line)
     - `extension=mysqli`
+    - `extension=pdo_mysql`
     - `extension=iconv`
-  - Edit with `gedit`:
 
 3. Restart Everything
 

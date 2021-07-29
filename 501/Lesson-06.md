@@ -96,7 +96,7 @@ function doAjax() { // doAjax can be anything
 ```
 sudo cp core/06-ajax1.html web/ajax.html && \
 sudo cp core/06-ajaxresponder1.txt web/ajax_responder.txt && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/06-ajax1.html core/06-ajaxresponder1.txt && \
 ls web
 ```
@@ -127,7 +127,7 @@ localhost/web/ajax.html
 ```
 sudo cp core/06-ajax2.php web/ajax.php && \
 sudo cp core/06-ajaxresponder2.php web/ajax_responder.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/06-ajax2.php core/06-ajaxresponder2.php && \
 ls web
 ```
@@ -155,7 +155,7 @@ localhost/web/ajax.php
 ```
 sudo cp core/06-ajax3.php web/ajax.php && \
 sudo cp core/06-ajaxresponder3.php web/ajax_responder.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom wecore/06-ajax3.php core/06-ajaxresponder3.php && \
 ls web
 ```
@@ -188,7 +188,7 @@ localhost/web/ajax.php
 | **4** :$
 ```
 sudo cp core/06-ajax4.php web/ajax.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/06-ajax4.php && \
 ls web
 ```
@@ -266,7 +266,7 @@ Our AJAX JavaScript uses these two IDs (`id=`)
 ```
 sudo cp core/06-ajax5.php web/ajax.php && \
 sudo cp core/06-ajaxresponder5.php web/ajax_responder.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/06-ajax5.php core/06-ajaxresponder5.php && \
 ls web
 ```
@@ -391,7 +391,7 @@ This time, the `<form>` is wrapped in the `<div>` AJAX will change
 ```
 sudo cp core/06-ajax6.php web/ajax.php && \
 sudo cp core/06-ajaxresponder6.php web/ajax_responder.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/06-ajax6.php core/06-ajaxresponder6.php && \
 ls web
 ```
@@ -468,7 +468,7 @@ function ajaxFormData(formID, postTo, ajaxUpdate) { // These arguments can be an
 ```
 sudo cp core/06-ajax7.php web/ajax.php && \
 sudo cp core/06-ajaxresponder7.php web/ajax_responder.php && \
-sudo chown -R www:www /var/www/html && \
+sudo chown -R www:www /srv/www/html && \
 atom core/06-ajax7.php core/06-ajaxresponder7.php && \
 ls web
 ```

@@ -165,6 +165,13 @@ ln -sfn /var/www/rewrite ~/School/VIP/501/
 sudo chown -R www:www /var/www/html/
 ```
 
+| **DP8** :$ (Make Debian work with these lessons)
+
+```console
+sudo ln -sfn /var/www /srv/
+sudo chown -R www:www /srv/www
+```
+
 - Arch/Manjaro:
 
 | **AP2** :$

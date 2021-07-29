@@ -50,8 +50,8 @@ RewriteRule ^/?([a-zA-Z0-9_]+)$ pretty_page.php?n=$1 [L]
 | **1** :$
 ```
 sudo cp core/05-pretty1.php web/pretty_page.php && \
-sudo cp core/05-htaccess1 /var/www/html/web/.htaccess && \
-sudo chown -R www:www /var/www/html && \
+sudo cp core/05-htaccess1 /srv/www/html/web/.htaccess && \
+sudo chown -R www:www /srv/www/html && \
 atom core/05-pretty1.php core/05-htaccess1 && \
 ls web
 ```
@@ -95,8 +95,8 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
 
 | **2** :$
 ```
-sudo cp core/05-htaccess2 /var/www/html/web/.htaccess && \
-sudo chown -R www:www /var/www/html && \
+sudo cp core/05-htaccess2 /srv/www/html/web/.htaccess && \
+sudo chown -R www:www /srv/www/html && \
 atom core/05-htaccess2 && \
 ls web
 ```
@@ -114,8 +114,8 @@ localhost/web/My_Long_Name
 | **3** :$
 ```
 sudo cp core/05-pretty3.php web/pretty_page.php && \
-sudo cp core/05-htaccess3 /var/www/html/web/.htaccess && \
-sudo chown -R www:www /var/www/html && \
+sudo cp core/05-htaccess3 /srv/www/html/web/.htaccess && \
+sudo chown -R www:www /srv/www/html && \
 atom core/05-pretty3.php core/05-htaccess3 && \
 ls web
 ```
@@ -144,8 +144,8 @@ localhost/web/My_Long_Name/Name-2
 | **4** :$
 ```
 sudo cp core/05-pretty4.php web/pretty_page.php && \
-sudo cp core/05-htaccess4 /var/www/html/web/.htaccess && \
-sudo chown -R www:www /var/www/html && \
+sudo cp core/05-htaccess4 /srv/www/html/web/.htaccess && \
+sudo chown -R www:www /srv/www/html && \
 atom core/05-pretty4.php core/05-htaccess4 && \
 ls web
 ```
@@ -268,8 +268,8 @@ localhost/web/account.php
 
 | **7** :$
 ```
-sudo cp core/05-htaccess5 /var/www/html/web/.htaccess && \
-sudo chown -R www:www /var/www/html && \
+sudo cp core/05-htaccess5 /srv/www/html/web/.htaccess && \
+sudo chown -R www:www /srv/www/html && \
 atom core/05-htaccess5 && \
 ls web
 ```
