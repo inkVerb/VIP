@@ -129,6 +129,7 @@ $anObject->bMethod();
 **Examples...**
 
 | **1** :$
+
 ```console
 sudo cp core/11-oop1.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -151,6 +152,7 @@ localhost/web/oop.php
 *Another example...*
 
 | **2** :$
+
 ```console
 sudo cp core/11-oop2.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -175,7 +177,7 @@ ls web
 | **B-2** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 #### B. Polymorphism
@@ -183,6 +185,7 @@ localhost/web/oop.php
 A complex method
 
 | **3** :$
+
 ```console
 sudo cp core/11-oop3.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -207,7 +210,7 @@ ls web
 | **B-3** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 #### D. Instantiation: Constructor & Destructor
@@ -269,6 +272,7 @@ $topicObject = new Topic;
 *Basic `__construct()` example...*
 
 | **4** :$
+
 ```console
 sudo cp core/11-oop4.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -281,12 +285,13 @@ ls web
 | **B-4** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 *Let's expand...*
 
 | **5** :$
+
 ```console
 sudo cp core/11-oop5.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -299,12 +304,13 @@ ls web
 | **B-5** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 ##### 2. `__destruct()` end of instantiation
 
 | **6** :$
+
 ```console
 sudo cp core/11-oop6.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -315,12 +321,13 @@ ls web
 | **B-6** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 Order doesn't matter...
 
 | **7** :$
+
 ```console
 sudo cp core/11-oop7.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -333,12 +340,13 @@ ls web
 | **B-7** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 You can destroy an object by using `unset($object)`
 
 | **8** :$
+
 ```console
 sudo cp core/11-oop8.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -351,7 +359,7 @@ ls web
 | **B-8** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 **Do not confuse** `__destruct()` with `unset()`
@@ -397,6 +405,7 @@ echo $ObjectParent->childProperty;
 ```
 
 | **9** :$
+
 ```console
 sudo cp core/11-oop9.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -409,7 +418,7 @@ ls web
 | **B-9** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 *Let's expand...*
@@ -467,6 +476,7 @@ $ObjectParent->childMethodRet();
 ```
 
 | **10** :$
+
 ```console
 sudo cp core/11-oop10.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -479,7 +489,7 @@ ls web
 | **B-10** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 *For fun, uncomment line 44 and/or 52 and watch the page fail*
@@ -532,6 +542,7 @@ echo someClass::staticMethod();
 ##### 1. Property Visibility
 
 | **11** :$
+
 ```console
 sudo cp core/11-oop11.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -554,12 +565,13 @@ private $privateProp;
 | **B-11** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 ##### 2. `static` Properties
 
 | **12** :$
+
 ```console
 sudo cp core/11-oop12.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -599,12 +611,13 @@ $this->staticA;
 | **B-12** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 ##### 3. `static` Methods
 
 | **13** :$
+
 ```console
 sudo cp core/11-oop13.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -641,12 +654,13 @@ echo classB::publicB();
 | **B-13** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 ##### 4. Method Visibility
 
 | **14** :$
+
 ```console
 sudo cp core/11-oop14.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -669,12 +683,13 @@ private function privateMethod() { echo "foo"; };
 | **B-14** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 ##### 5. Constants
 
 | **15** :$
+
 ```console
 sudo cp core/11-oop15.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -725,7 +740,7 @@ var $PUBLIC_CONST = "something" ;
 | **B-15** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 #### F. Reflection
@@ -741,6 +756,7 @@ $loop_object = new LoopClass;
 ```
 
 | **16** :$
+
 ```console
 sudo cp core/11-oop16.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -753,7 +769,7 @@ ls web
 | **B-16** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 We can use `foreach` to loop through non-`public` properties, if we set up the object through ***reflection***
@@ -770,6 +786,7 @@ $loop_obj_props = $loop_object->getDefaultProperties();
 ```
 
 | **17** :$
+
 ```console
 sudo cp core/11-oop17.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -782,7 +799,7 @@ ls web
 | **B-17** ://
 
 ```console
-localhost/web/oop.php
+localhost/web/oop.php (Same)
 ```
 
 
@@ -815,6 +832,7 @@ Ensure that the `pdo_mysql` extension is enabled in your php.ini file
 We did this when we set up our [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md), but if you have trouble:
 
 | **P0** :$ (Only if you have trouble)
+
 ```console
 sudo vim /etc/php/php.ini
 ```
@@ -1062,6 +1080,7 @@ mysql -u admin -padminpassword
 ```console
 CREATE DATABASE test_pdo;
 GRANT ALL PRIVILEGES ON test_pdo.* TO pdo_user@localhost IDENTIFIED BY 'pdopassword';
+FLUSH PRIVILEGES;
 ```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
@@ -1072,9 +1091,12 @@ GRANT ALL PRIVILEGES ON test_pdo.* TO pdo_user@localhost IDENTIFIED BY 'pdopassw
 
 *From now on, you may optionally follow along at the SQL prompt and/or phpMyAdmin, but no instructions will be given*
 
-#### Examples
+#### Demonstrate
+
+Create a table
 
 | **18** :$
+
 ```console
 sudo cp core/11-pdo18.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -1086,6 +1108,33 @@ ls web
 - User: `pdo_user`
 - Password: `pdopassword`
 
+*Note this is one statement:*
+
+| **`$query`** = (Line 26)
+
+```sql
+CREATE TABLE IF NOT EXISTS `fruit` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(90) NOT NULL,
+  `color` VARCHAR(90) DEFAULT NULL,
+  `locale` VARCHAR(128) DEFAULT NULL,
+  `market` VARCHAR(128) DEFAULT NULL,
+  `date_updated` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+```
+
+| **Run Query** : (Line 37)
+
+```php
+$statement = $database->query($query);
+```
+
+| **Test Query** : (Line 46)
+
+```php
+if ($statement) // Value above returns boolean
+```
 
 | **B-18** ://
 
@@ -1093,12 +1142,545 @@ ls web
 localhost/web/pdo.php
 ```
 
-### III. Rebuild Webapp for PDO
+*The webpage should display `$statement` & a "Created..." message including the query above*
+
+*Note:*
+
+- *`$statement` returned `true`, but if we `echo` it, PHP would break*
+
+Run multiple queries
+
+| **19** :$
+
+```console
+sudo cp core/11-pdo19.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo19.php && \
+ls web
+```
+
+*Note we run a query for **multiple SQL statements** differently:*
+
+| **Run Multiple Statements** : (Line 32)
+
+```php
+$statement = $database->exec($query);
+```
+
+*This will behave differently...*
+
+```php
+// $statement success returns true
+$statement = $database->query($query);
+
+// $statement returns affected rows, unpredictable in multiple statements
+$statement = $database->exec($query);
+```
+
+*Remember `$database->exec($query)` is for executing multiple SQL statements, such as on a database update or app installation*
+
+- *From [PHP docs](https://www.php.net/manual/en/pdo.exec.php) we learn `exec()` returns the number of affected rows*
+- *The last statement is SQL query is `COMMIT;`, affecting 0 rows*
+- *So, `exec()` can't be used to test success of multiple SQL statements*
+- *If we only want one SQL statement, use `query()` instead of `exec()`*
+- *To test the database success of multiple rows, test the actual database*
 
 
+| **Query Check** : (Check database for what you want)
+
+```php
+$query  = "SELECT * FROM fruit WHERE  name = 'kiwi'";
+$statement = $database->query($query);
+if ($statement->rowCount() > 0)
+```
+
+*Note lin 49 combines `if` with `try`*
+
+```php
+if ($success) try {}
+```
+
+| **B-19** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+*Note:*
+
+- *`$statement` returns `0`*
+- *`$success` was built on ternary statements, any fail would return `false`*
+
+Retrieve from the database
+
+| **20** :$
+
+```console
+sudo cp core/11-pdo20.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo20.php && \
+ls web
+```
+
+| **B-20** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+*Note only "name" returns, "color", "locale", and "marker" are empty*
+
+Update tables
+
+| **21** :$
+
+```console
+sudo cp core/11-pdo21.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo21.php && \
+ls web
+```
+
+| **B-21** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+Fun with `SELECT`
+
+*Previously (pdo20.php line 34), we defined the `fetch()` mode*
+
+```php
+fetch(PDO::FETCH_NUM)
+```
+
+*We could also define the mode:*
+
+```php
+fetch(PDO::FETCH_ASSOC)
+```
+
+*Note the `fetch()` mode is already defined `FETCH_BOTH` on line 14*
+
+```php
+PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_BOTH,
+```
+
+*So, simple `fetch()` returns both associative and numbered (auto-indexed) arrays*
+
+```php
+fetch()
+```
+
+| **`fetch()` modes** :
+
+```php
+// (Default) Both associative and numbered
+PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_BOTH, // Option
+$statement->fetch(PDO::FETCH_BOTH); // Per use
+
+// Associative array from column names
+PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Option
+$statement->fetch(PDO::FETCH_ASSOC); // Per use
+
+// Numbered (auto-indexed) array
+PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_NUM, // Option
+$statement->fetch(PDO::FETCH_NUM); // Per use
+
+// Object built on column names
+PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, // Option
+$statement->fetch(PDO::FETCH_OBJ); // Per use
+```
+
+*Note you can read all about more `fetch()` modes at [PHP.net PDOStatement:fetch](https://www.php.net/manual/en/pdostatement.fetch.php)*
+
+| **22** :$
+
+```console
+sudo cp core/11-pdo22.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo22.php && \
+ls web
+```
+
+*Note we `SELECT` rows many times, many ways*
+
+- **1:** default is `FETCH_BOTH`, we use numbered
+- **2:** default is `FETCH_BOTH`, we use associative
+- **3:** default is `FETCH_BOTH`, we use both
+- **4:** set mode is `FETCH_OBJ`, we use an object
+
+| **B-22** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+*Compare the usage: Which is easier?*
+
+|**Numbered Array** :
+
+```php
+  $f_name = "$row[1]";
+  $f_color = "$row[2]";
+  $f_locale = "$row[3]";
+  $f_market = "$row[4]";
+  echo "Name: $f_name Color: $f_color Farm: $f_locale Sold in: $f_market<br>";
+```
+
+|**Associative Array** :
+
+```php
+$f_name = "$row[name]";
+$f_color = "$row[color]";
+$f_locale = "$row[locale]";
+$f_market = "$row[market]";
+echo "Name: $f_name Color: $f_color Farm: $f_locale Sold in: $f_market<br>";
+```
+
+|**Object** :
+
+```php
+echo "Name: $row->name Color: $row->color Farm: $row->locale Sold in: $row->market<br>";
+```
+
+#### *PHP objects work well with PDO database queries*
+
+From now on, we will use this:
+
+```php
+PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, // Option
+$statement->fetch(); // Per use
+```
+
+### III. PDO wtih OOP
+
+We will build classes and methods to handle database queries for clean code
+
+| **Database Connection (Procedural)** : (pdt23.php)
+
+```php
+$db_name = 'test_pdo';
+$db_user = 'pdo_user';
+$db_pass = 'pdopassword';
+$db_host = 'localhost';
+
+$nameHostChar = "mysql:host=$db_host; dbname=$db_name; charset=utf8";
+$opt = [
+  PDO::ATTR_EMULATE_PREPARES => false,
+  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+];
+$database = new PDO($nameHostChar, $db_user, $db_pass, $opt);
+
+// Usage
+$statement = $database->query($query);
+```
+
+| **Database Connection (OOP)** : (pdt24.php)
+
+```php
+class DB {
+  private $db_name = 'test_pdo';
+  private $db_user = 'pdo_user';
+  private $db_pass = 'pdopassword';
+  private $db_host = 'localhost';
+
+  public function conn() {
+    $nameHostChar = "mysql:host=$this->db_host; dbname=$this->db_name; charset=utf8";
+    $opt = [
+      PDO::ATTR_EMULATE_PREPARES => false,
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+    ];
+    $database = new PDO($nameHostChar, $this->db_user, $this->db_pass, $opt);
+    return $database;
+  }
+}
+// Instantiate
+$pdo = new DB;
+// Usage
+$statement = $pdo->conn()->query($query);
+```
+
+*Note the differences in the next two files, how procedural and OOP achieve the same thing...*
+
+*Note the actual query building in our webpage will come before the `// Use //` line*
+
+Procedural
+
+| **23** :$
+
+```console
+sudo cp core/11-pdo23.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo23.php && \
+ls web
+```
+
+*Note 4 lines to handle the query below `// Use //`*
+
+| **B-23** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+OOP
+
+| **24** :$
+
+```console
+sudo cp core/11-pdo24.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo24.php && \
+ls web
+```
+
+*Note 4 lines to handle the query below `// Use //`*
+
+| **B-24** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+*Note the OOP looks more complex for now, but we can build on the object so query work becomes easier*
+
+Query method: `SELECT`
+
+| **`select()` method** :
+
+```php
+public function select($table, $cols = '*', $wcol = '*', $vcol = '*') {
+
+  $query = "SELECT $cols FROM $table";
+  $query .= (($wcol == '*') || ($vcol == '*')) ?
+  "" :
+  " WHERE $wcol='$vcol'";
+
+  $statement = $this->conn()->query($query);
+  return $statement->fetch();
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$val = $pdo->select($table, $columns, $where_col, $where_value);
+```
+
+| **25** :$
+
+```console
+sudo cp core/11-pdo25.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo25.php && \
+ls web
+```
+
+*Note 2 lines to handle the query below `// Use //`*
+
+| **B-25** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+Query method: `UPDATE`
+
+*Note `preg_split()` can put a comma-delimited list into an array while also removing whitespace*
+
+```php
+$cols_array = preg_split('~,\s*~', $cols);
+// ...same as...
+$cols = preg_replace("/,([\s])+/",",",$cols); // Remove whitespace
+$cols_array = explode(",", $cols); // $string to array()
+```
+
+| **`update()` method** :
+
+```php
+public $worked; // Global success property (for alterations)
+
+public function update($table, $cols, $vals, $wcol, $vcol) {
+
+  // Handle $cols & $vals to match SQL syntax by mix-matching arrays
+  $cols_arr = preg_split('~,\s*~', $cols);
+  $vals_arr = preg_split('~,\s*~', $vals);
+  $set_array = array_combine($cols_arr, $vals_arr);
+  $set_statement = "";
+  foreach ( $set_array as $k => $v ) {
+    $set_statement .= "$k='$v',";
+  }
+  $set_statement = rtrim($set_statement, ',');
+
+  $query = "UPDATE $table SET $set_statement WHERE $wcol='$vcol';";
+  $statement = $this->conn()->query($query);
+
+  $this->worked = ($statement) ? true : false; // Global success property
+  return $statement->fetch();
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$val = $pdo->update($table, $columns, $values, $where_col, $where_value);
+echo ($pdo->worked) ? "Query worked<br>" : "Query failed<br>";
+```
+
+*Note moving `'one, two', 'a, b'` to `one='a', two='b'` requires some mixing and matching through arrays*
+
+- *We do this through:*
+  - `preg_split()` string to array beautifully
+  - `array_combine()` combine two arrays to one array with [$key]=$value
+    - `'one, two'` & `'a, b'` --> `[one]=a, [two]=b`
+  - `foreach($array as $key => $value)` handle matching keys & values for easy mixing in our new string
+  - `rtrim()` remove the last `,` we got from the `foreach` loop
+
+*This is a teachable moment for how arrays can be remarkably useful*
+
+*Note the `$worked` global property to test query success*
+
+| **26** :$
+
+```console
+sudo cp core/11-pdo26.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo26.php && \
+ls web
+```
+
+*Note we run a `SELECT` query, then `UPDATE`, then `SELECT` again to show the changes, then yet again, changing two columns*
+
+| **B-26** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+Query methods: `INSERT` & `DELETE`
+
+| **Global properties** :
+
+```php
+public $worked;
+public $change;
+public $lastid;
+```
+
+| **`insert()` method** :
+
+```php
+public function insert($table, $cols, $vals) {
+  $query = "INSERT INTO $table ($cols) VALUES ($vals);";
+  $statement = $this->conn()->query($query);
+  $this->worked = ($statement) ? true : false;
+  $this->change = ($statement->rowCount() == 1) ? true : false;
+
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$val = $pdo->insert($table, $columns, $values);
+echo ($pdo->worked) ? "Query worked<br>" : "Query failed<br>";
+echo ($pdo->changed) ? "Stuff changed<br>" : "No change<br>";
+```
+
+| **`delete()` method** :
+
+```php
+public function delete($table, $col, $val) {
+  $query = "DELETE FROM $table WHERE $col='$val';";
+  $statement = $this->conn()->query($query);
+  $this->worked = ($statement) ? true : false;
+  $this->change = ($statement->rowCount() > 0) ? true : false;
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$val = $pdo->delete($table, $column, $value);
+echo ($pdo->worked) ? "Query worked<br>" : "Query failed<br>";
+echo ($pdo->changed) ? "Stuff changed<br>" : "No change<br>";
+```
+
+| **27** :$
+
+```console
+sudo cp core/11-pdo27.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo27.php && \
+ls web
+```
+
+*DEV Note: We need to get these working: `$change` & `$lastid`*
+
+*Note the `$change` & `$lastid` global properties also to test query success*
+
+| **B-27** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+Full Checks
+
+| **`esc()` & `pdo_error()` methods** :
+
+```php
+// Escape method
+static function esc($data) {
+  $trimmed_data = trim(preg_replace('/\s+/', ' ', $data));
+  return PDO::quote($trimmed_data);
+} // esc()
+
+// PDO error handler
+protected function pdo_error($query, $error_message) {
+  echo "SQL error from <pre>$query</pre><br>$error_message";
+  exit();
+} // pdo_error()
+```
+
+| **`try` statements** : (all queries)
+
+```php
+try {
+  $statement = $this->conn()->query($query);
+} catch (PDOException $error) {
+  pdo_error($query, $error->getMessage());
+}
+```
+
+| **`selectmulti()` method** : (to return multiple rows)
+
+```php
+DEV::finish->me;
+```
+
+| **28** :$
+
+```console
+sudo cp core/11-pdo28.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo28.php && \
+ls web
+```
+
+*DEV Note: add `selectmulti()` method to return multiple rows*
+
+| **B-28** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
 
 ### IV. Rebuild Webapp for OOP
-
 
 
 ___
