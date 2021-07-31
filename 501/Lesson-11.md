@@ -170,7 +170,10 @@ ls web
   - Three methods `return` the properties values
 - Property `$this` refers to the current object of the class
   - `$this` works like a wildcard for whatever object may have been created from that class
-  - Use `$this` inside a class when working with with properties that are part of that class
+  - Use `$this->` inside a class when working with with properties that are part of that class
+- You can access both a method and property of an object
+  - `$Object->method()`
+  - `$Object->property`
 
 *Note the methods don't take many arguments*
 
@@ -423,7 +426,7 @@ localhost/web/oop.php (Same)
 
 *Let's expand...*
 
-| **Inherited Class** : (Properties & Methods)
+| **Inherited Class** : (Properties & methods)
 
 ```php
 // Create the parent
@@ -825,7 +828,7 @@ PDO has drivers for many database platforms:
 - ODBC & DB2
 - 4D
 
-#### PDO MySQL Extension Required
+#### PDO MySQL Extension
 
 Ensure that the `pdo_mysql` extension is enabled in your php.ini file
 
@@ -1408,7 +1411,7 @@ $statement = $pdo->conn()->query($query);
 
 *Note the actual query building in our webpage will come before the `// Use //` line*
 
-Procedural
+#### Procedural
 
 | **23** :$
 
@@ -1427,7 +1430,7 @@ ls web
 localhost/web/pdo.php (Same)
 ```
 
-OOP
+#### OOP
 
 | **24** :$
 
@@ -1448,18 +1451,13 @@ localhost/web/pdo.php (Same)
 
 *Note the OOP looks more complex for now, but we can build on the object so query work becomes easier*
 
-Query method: `SELECT`
+#### Query Method: `SELECT`
 
 | **`select()` method** :
 
 ```php
-public function select($table, $cols = '*', $wcol = '*', $vcol = '*') {
-
-  $query = "SELECT $cols FROM $table";
-  $query .= (($wcol == '*') || ($vcol == '*')) ?
-  "" :
-  " WHERE $wcol='$vcol'";
-
+public function select($table, $wcol, $vcol, $cols='*') {
+  $query = "SELECT $cols FROM $table WHERE $wcol='$vcol'";
   $statement = $this->conn()->query($query);
   return $statement->fetch();
 }
@@ -1468,7 +1466,7 @@ public function select($table, $cols = '*', $wcol = '*', $vcol = '*') {
 $pdo = new DB;
 
 // Usage
-$val = $pdo->select($table, $columns, $where_col, $where_value);
+$val = $pdo->select($table, $where_col, $where_value, $columns);
 ```
 
 | **25** :$
@@ -1488,7 +1486,7 @@ ls web
 localhost/web/pdo.php (Same)
 ```
 
-Query method: `UPDATE`
+#### Query Method: `UPDATE`
 
 *Note `preg_split()` can put a comma-delimited list into an array while also removing whitespace*
 
@@ -1502,8 +1500,6 @@ $cols_array = explode(",", $cols); // $string to array()
 | **`update()` method** :
 
 ```php
-public $worked; // Global success property (for alterations)
-
 public function update($table, $cols, $vals, $wcol, $vcol) {
 
   // Handle $cols & $vals to match SQL syntax by mix-matching arrays
@@ -1519,7 +1515,6 @@ public function update($table, $cols, $vals, $wcol, $vcol) {
   $query = "UPDATE $table SET $set_statement WHERE $wcol='$vcol';";
   $statement = $this->conn()->query($query);
 
-  $this->worked = ($statement) ? true : false; // Global success property
   return $statement->fetch();
 }
 
@@ -1528,7 +1523,6 @@ $pdo = new DB;
 
 // Usage
 $val = $pdo->update($table, $columns, $values, $where_col, $where_value);
-echo ($pdo->worked) ? "Query worked<br>" : "Query failed<br>";
 ```
 
 *Note moving `'one, two', 'a, b'` to `one='a', two='b'` requires some mixing and matching through arrays*
@@ -1541,8 +1535,6 @@ echo ($pdo->worked) ? "Query worked<br>" : "Query failed<br>";
   - `rtrim()` remove the last `,` we got from the `foreach` loop
 
 *This is a teachable moment for how arrays can be remarkably useful*
-
-*Note the `$worked` global property to test query success*
 
 | **26** :$
 
@@ -1561,12 +1553,11 @@ ls web
 localhost/web/pdo.php (Same)
 ```
 
-Query methods: `INSERT` & `DELETE`
+#### Query Methods: `INSERT` & `DELETE`
 
 | **Global properties** :
 
 ```php
-public $worked;
 public $change;
 public $lastid;
 ```
@@ -1577,9 +1568,7 @@ public $lastid;
 public function insert($table, $cols, $vals) {
   $query = "INSERT INTO $table ($cols) VALUES ($vals);";
   $statement = $this->conn()->query($query);
-  $this->worked = ($statement) ? true : false;
   $this->change = ($statement->rowCount() == 1) ? true : false;
-
 }
 
 // Instantiate
@@ -1587,7 +1576,6 @@ $pdo = new DB;
 
 // Usage
 $val = $pdo->insert($table, $columns, $values);
-echo ($pdo->worked) ? "Query worked<br>" : "Query failed<br>";
 echo ($pdo->changed) ? "Stuff changed<br>" : "No change<br>";
 ```
 
@@ -1597,7 +1585,6 @@ echo ($pdo->changed) ? "Stuff changed<br>" : "No change<br>";
 public function delete($table, $col, $val) {
   $query = "DELETE FROM $table WHERE $col='$val';";
   $statement = $this->conn()->query($query);
-  $this->worked = ($statement) ? true : false;
   $this->change = ($statement->rowCount() > 0) ? true : false;
 }
 
@@ -1606,8 +1593,7 @@ $pdo = new DB;
 
 // Usage
 $val = $pdo->delete($table, $column, $value);
-echo ($pdo->worked) ? "Query worked<br>" : "Query failed<br>";
-echo ($pdo->changed) ? "Stuff changed<br>" : "No change<br>";
+echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
 ```
 
 | **27** :$
@@ -1619,9 +1605,9 @@ atom core/11-pdo27.php && \
 ls web
 ```
 
-*DEV Note: We need to get these working: `$change` & `$lastid`*
+*Note the `$change` & `$lastid` global properties to test query success*
 
-*Note the `$change` & `$lastid` global properties also to test query success*
+- *(These will fail, will explain later)*
 
 | **B-27** ://
 
@@ -1629,7 +1615,60 @@ ls web
 localhost/web/pdo.php (Same)
 ```
 
-Full Checks
+*Note `$change` works, but `$lastid` fails to show the last new ID*
+
+  - *This is because the database is within a method within an object*
+
+*The database connection is an object...*
+
+| **Database instantiation** :
+
+```php
+$database = new PDO($nameHostChar, $db_user, $db_pass, $opt);
+```
+
+| **Fails** :
+
+```php
+// Database object within a method inside the object:
+function conn() {
+  ...
+  $database = new PDO($nameHostChar, $this->db_user, $this->db_pass, $opt);
+  return $database;
+}
+$this->conn()->query($query); // Object from inside conn() is limited
+
+// Failed test:
+$this->lastid = $this->conn()->lastInsertId();
+```
+
+*Using an object within an object puts a limit on what can be accessed*
+
+```php
+// Access object within method within object:
+$this->conn()->query($query); // What we did
+
+// Access object directly:
+$database->query($query); // What we need
+```
+
+*To access deeper information from the database object, we must remove the database statement from the class and make it an object unto itself*
+
+| **Works** :
+
+```php
+// Database as object:
+$database = new PDO($nameHostChar, $this->db_user, $this->db_pass, $opt);
+$database->query($query); // Stand alone object can be fully accessed
+
+// Successful test:
+$this->lastid = $database->lastInsertId();
+
+// Put this inside every method that calls DBO:
+global $database;
+```
+
+#### Full Checks
 
 | **`esc()` & `pdo_error()` methods** :
 
@@ -1638,13 +1677,13 @@ Full Checks
 static function esc($data) {
   $trimmed_data = trim(preg_replace('/\s+/', ' ', $data));
   return PDO::quote($trimmed_data);
-} // esc()
+}
 
 // PDO error handler
 protected function pdo_error($query, $error_message) {
   echo "SQL error from <pre>$query</pre><br>$error_message";
   exit();
-} // pdo_error()
+}
 ```
 
 | **`try` statements** : (all queries)
@@ -1653,15 +1692,15 @@ protected function pdo_error($query, $error_message) {
 try {
   $statement = $this->conn()->query($query);
 } catch (PDOException $error) {
-  pdo_error($query, $error->getMessage());
+  $this->pdo_error($query, $error->getMessage());
 }
 ```
 
-| **`selectmulti()` method** : (to return multiple rows)
+*With `try`-`catch` statements, our PHP won't need a test for whether an SQL query merely worked*
 
-```php
-DEV::finish->me;
-```
+  - *We only need to test if rows has a `$change` and/or retrieve the `$lastid`*
+  - *If something didn't work, `pdo_error()` will throw an error message anyway*
+  - *So, we won't do this: `if ($statement) {...}` as we did in procedural PHP*
 
 | **28** :$
 
@@ -1672,9 +1711,187 @@ atom core/11-pdo28.php && \
 ls web
 ```
 
-*DEV Note: add `selectmulti()` method to return multiple rows*
+*Note every method now has `global $database;` because `conn()` is no longer in the class, which is what we were using before*
+
+*For fun, change the arguments for `select()`, `insert()`, and `delete()` methods where HTML renders at the end of the file*
+
+  - *Both in pdo28.php & pdo27.php*
+  - *Observe how errors are handled differently with `pdo_error()`*
 
 | **B-28** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+#### `SELECT` Multiple Rows
+
+To retrieve multiple rows, we need `fetchAll()`, which doesn't work with `query()`
+
+| **`query()` & `fetch()`** :
+```php
+$statement = $database->query($query);
+return $statement->fetch();
+```
+
+We need `prepare()` & `execute()`
+
+| **`prepare()`, `execute()` & `fetchAll()`** :
+```php
+$statement = $database->prepare($query);
+$statement->execute();
+return $statement->fetchAll();
+```
+
+| **`selectmulti()` method** : (to return multiple rows)
+
+```php
+public function selectmulti($table, $cols = '*', $wcol = '*', $vcol = '*') {
+  global $database;
+
+  $query = "SELECT $cols FROM $table";
+  $query .= (($wcol == '*') || ($vcol == '*')) ?
+  "" :
+  " WHERE $wcol='$vcol'";
+
+  try {
+    $statement = $database->prepare($query);
+    $statement->execute();
+  } catch (PDOException $error) {
+    $this->pdo_error($query, $error->getMessage());
+  }
+
+  return $statement->fetchAll();
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$val = $pdo->selectmulti($table, $columns, $where_col, $where_value);
+foreach ($val as $one) { echo "Some Col: $one->some_col<br>"; }
+```
+
+| **29** :$
+
+```console
+sudo cp core/11-pdo29.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo29.php && \
+ls web
+```
+
+| **B-29** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+#### Multiple `AND` with `SELECT` Multiple Rows
+
+*Note we mix and match arrays for multiple `AND` arguments, much how we did with `update()` in pdo26.php*
+
+| **`selectcomplex()` method** :
+
+```php
+public function selectcomplex($table, $wcols, $vcols, $cols = '*') {
+  global $database;
+
+  $wcols_arr = preg_split('~,\s*~', $wcols);
+  $vcols_arr = preg_split('~,\s*~', $vcols);
+  $where_array = array_combine($wcols_arr, $vcols_arr);
+  $where_statement = "";
+  foreach ( $where_array as $k => $v ) {
+    $where_statement .= "$k='$v' AND ";
+  }
+  $where_statement = rtrim($where_statement, ' AND '); // remove last AND
+
+  $query = "SELECT $cols FROM $table WHERE $where_statement";
+  try {
+    $statement = $database->prepare($query);
+    $statement->execute();
+  } catch (PDOException $error) {
+    $this->pdo_error($query, $error->getMessage());
+  }
+
+  return $statement->fetchAll();
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$val = $pdo->selectmulti($table, $where_col_list, $where_value_list, $columns);
+foreach ($val as $one) { echo "Some Col: $one->some_col<br>"; }
+```
+
+| **30** :$
+
+```console
+sudo cp core/11-pdo30.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo30.php && \
+ls web
+```
+
+| **B-30** ://
+
+```console
+localhost/web/pdo.php (Same)
+```
+
+#### `execute()` Arguments
+
+The `execute()` method can take arguments, making SQL less hackable
+
+| **`execute()` Argument** :
+
+```php
+$query = "SELECT * FROM fruit WHERE name = ?"; // ? becomes $arg in execute([$arg])
+$statement = $database->prepare($query);
+$statement->execute([$arg]); // $arg replaces ? in $query
+```
+
+| **Multiple `execute()` Arguments** :
+
+```php
+$query = "SELECT * FROM fruit WHERE name = ? AND color = ?"; // 2 arguments
+$statement = $database->prepare($query);
+$statement->execute([$arg1, $arg2]); // $arg1, $arg2 (respectively)
+```
+
+Security:
+
+- These arguments are used for user-input
+- PDO will not allow these arguments to contain SQL language
+- This is yet another measure making SQL injections nearly impossible
+
+If there is no `?` argument placeholder, `execute()` must be empty
+
+| **`selectmulti()`** : (Excerpt example)
+
+```php
+// When building a complex query
+$query = "SELECT * FROM table";
+$query .= ($arg == '*') ? "" : " WHERE some_column = ?";
+
+// Fails if $arg = '*'
+$statement->execute([$arg]);
+
+// Ternary statement to decide which to execute
+($arg == '*') ? $statement->execute() : $statement->execute([$arg]);
+```
+
+| **31** :$
+
+```console
+sudo cp core/11-pdo31.php web/pdo.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-pdo31.php && \
+ls web
+```
+
+| **B-31** ://
 
 ```console
 localhost/web/pdo.php (Same)
@@ -1870,6 +2087,15 @@ foreach($loop_obj_props as $key=>$value) {echo "$key = $value<br>";}
 ```
 
 ## II. PDO (PHP Data Objects)
+
+- PDO is an alternative to MySQLi
+- PDO connects PHP to MySQL, along with many other SQL database platforms
+- With PDO, you can change database platforms without changing your PHP
+- A PDO database connection is an object, not a variable or array
+- Putting the PDO database connection inside a class can limit what can be accessed, such as retrieving the `lastInsertId()`
+  - You may want to keep your PDO connection outside of a class
+- PDO has many other features we did not explore here
+
 ___
 
 #### [Lesson 12: Production & XML](https://github.com/inkVerb/vip/blob/master/501/Lesson-12.md)
