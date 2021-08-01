@@ -1576,8 +1576,8 @@ public function insert($table, $cols, $vals) {
 $pdo = new DB;
 
 // Usage
-$val = $pdo->insert($table, $columns, $values);
-echo ($pdo->changed) ? "Stuff changed<br>" : "No change<br>";
+$pdo->insert($table, $columns, $values);
+echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
 ```
 
 | **`delete()` method** :
@@ -1593,7 +1593,7 @@ public function delete($table, $col, $val) {
 $pdo = new DB;
 
 // Usage
-$val = $pdo->delete($table, $column, $value);
+$pdo->delete($table, $column, $value);
 echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
 ```
 
@@ -2110,13 +2110,16 @@ foreach($loop_obj_props as $key=>$value) {echo "$key = $value<br>";}
 
 ## II. PDO (PHP Data Objects)
 
+### PDO Basics
+
 - PDO is an alternative to MySQLi
 - PDO connects PHP to MySQL, along with many other SQL database platforms
 - With PDO, you can change database platforms without changing your PHP
 - A PDO database connection is an object, not a variable or array
 - Putting the PDO database connection inside a class can limit what can be accessed, such as retrieving the `lastInsertId()`
   - You may want to keep your PDO connection outside of a class
-- PDO connection
+
+### PDO Connection
 
 | **PDO Config** :
 
@@ -2138,19 +2141,22 @@ $opt = [
 $database = new PDO("mysql:host=$db_host; dbname=$db_name; charset=utf8mb4", $db_user, $db_pass, $opt);
 ```
 
+### PDO Queries
+
 - There are three main ways to run queries
-  - `query()` (single, simple SQL statement)
+  1. `query()` (single, simple SQL statement)
     - Return output with `fetch()`
     - Check with `$statement->rowCount()` & `$database->lastInsertId()`
-  - `prepare()` & `execute()` (SQL statement can take arguments for user input, improved security against SQL injection)
+  2. `prepare()` & `execute()` (SQL statement can take arguments for user input, improved security against SQL injection)
     - Return output with `fetch()` or `fetchAll()` for multiple lines
     - Check with `$statement->rowCount()` & `$database->lastInsertId()`
-  - `exec()` (multiple SQL statement)
+  3. `exec()` (multiple SQL statement)
     - No output, no checks
     - For output or testing success, run a separate query using `query()` or `execute()`
-  - Examples & syntax:
 
-| **`query()` & `fetch()`** :
+- Examples & syntax:
+
+| **1. `query()` & `fetch()`** :
 
 ```php
 $statement = $database->query($query);
@@ -2161,7 +2167,7 @@ return $statement->fetch(PDO::FETCH_OBJ);
 return $statement->fetch(PDO::FETCH_BOTH);
 ```
 
-| **`prepare()`, `execute()` & `fetchAll()`** :
+| **2. a. `prepare()`, `execute()` & `fetchAll()`** :
 
 ```php
 $statement = $database->prepare($query);
@@ -2170,15 +2176,13 @@ return $statement->fetchAll();
 
 // Set fetch mode different from your $database options
 return $statement->fetchAll(PDO::FETCH_OBJ);
-return $statement->fetchAll(PDO::FETCH_BOTH);
 
 // These also work
 return $statement->fetch();
-return $statement->fetch(PDO::FETCH_OBJ);
 return $statement->fetch(PDO::FETCH_BOTH);
 ```
 
-| **`execute()` Arguments** :
+| **2. b. `execute()` Arguments** :
 
 ```php
 // One argument
@@ -2194,7 +2198,7 @@ $statement->execute([$arg1, $arg2]); // $arg1, $arg2 (respectively)
 
 - `prepare()` & `execute()` do more using `bindParam()`, not covered in these lessons
 
-| **`exec()`** : To execute multiple SQL statements at once
+| **3. `exec()`** : To execute multiple SQL statements at once
 
 ```php
 $query  = "
@@ -2210,11 +2214,226 @@ COMMIT; <!-- End with this always -->
 $database->exec($query);
 ```
 
-- To test whether it worked, query the actual table for the results you want
-  - Don't rely on a boolean response from PDO
-  - PHP tests for SQL responses work per line, this has many lines
+- To test whether `exec()` worked, query the actual table for the results you want
+  - Don't rely on a boolean response from PDO for `exec()`
+  - PHP tests for SQL responses per line, `exec()` has many lines
   - The last line was `COMMIT`, which returns very little information for PHP to test
+- This can be more reliable practice for `query()` and `execute()`, not only `exec()`
 - Like all code, PDO has many other features we did not explore here
+  - Eg: `prepare()` & `execute()` have more control with `bindParam()`
+
+## III. PDO with OOP PHP
+
+### Creating PDO Methods in OOP PHP
+- Use methods to execute PDO statements to clean up your code
+- Some methods can allow multiple arguments and defaults
+  - This allows one method to run many types of queries
+- Some methods should use few or no arguments, being fully prepared statements
+  - This is for complex SQL queries and/or to improve security
+
+### Examples of PDO Methods in OOP PHP
+
+| **1. `class` with `INSERT` Method** :
+
+```php
+class DB {
+  // We need these to be callable
+  public $change;
+  public $lastid;
+
+  // Error handler
+  function pdo_error($query, $error_message) {
+      echo "SQL error from <pre>$query</pre><br>$error_message";
+  }
+
+  // INSERT method
+  public function insert($table, $cols, $vals) {
+    global $databse; // We need our $database
+
+    $query = "INSERT INTO $table ($cols) VALUES ($vals)";
+    try {
+      $statement = $databse->query($query);
+    } catch (PDOException $error) {
+      $this->pdo_error($query, $error->getMessage());
+    }
+
+    // Set the response properties
+    $this->change = ($statement->rowCount() == 1) ? true : false;
+    $this->lastid = $database->lastInsertId();
+  }
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$table = 'fruit';
+$columns = 'name, color';
+$values = 'apple, red';
+$pdo->insert($table, $columns, $values);
+echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
+echo "ID of last database INSERT: $pdo->lastid";
+```
+
+| **2. `class` with `SELECT` Method** :
+
+```php
+class DB {
+
+  // Error handler
+  public function pdo_error($query, $error_message) {
+      echo "SQL error from <pre>$query</pre><br>$error_message";
+  }
+
+  // INSERT method
+  public function insert($table, $cols, $vals) {
+    global $databse; // We need our $database
+
+    $query = "INSERT INTO $table ($cols) VALUES ($vals)";
+    try {
+      $statement = $databse->query($query);
+    } catch (PDOException $error) {
+      $this->pdo_error($query, $error->getMessage());
+    }
+
+    // Set the response properties
+    $this->change = ($statement->rowCount() == 1) ? true : false;
+    $this->lastid = $database->lastInsertId();
+  }
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$table = 'fruit';
+$columns = 'name, color';
+$values = 'apple, red';
+$pdo->insert($table, $columns, $values);
+echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
+```
+
+| **3. `class` with `SELECT` Method** : (Return single row)
+
+```php
+class DB {
+
+  // Error handler
+  public function pdo_error($query, $error_message) {
+      echo "SQL error from <pre>$query</pre><br>$error_message";
+  }
+
+  // SELECT method
+  public function select($table, $wcol, $vcol, $cols='*') {
+    global $databse; // We need our $database
+
+    $query = "SELECT $cols FROM $table WHERE $wcol='$vcol'";
+    try {
+      $statement = $databse->query($query);
+    } catch (PDOException $error) {
+      $this->pdo_error($query, $error->getMessage());
+    }
+
+    return $statement->fetch(PDO::FETCH_OBJ);
+  }
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$table = 'fruit';
+$column = 'name';
+$value = 'apple';
+$val = $pdo->select($table, $column, $value);
+echo "Name: $val->name Color: $val->color Locale: $val->locale";
+```
+
+| **4. `class` with `SELECT` Method** : (Return multiple rows)
+
+```php
+class DB {
+
+  // Error handler
+  public function pdo_error($query, $error_message) {
+      echo "SQL error from <pre>$query</pre><br>$error_message";
+  }
+
+  // SELECT multiple rows method
+  public function selectmulti($table, $cols = '*', $wcol = '*', $vcol = '*') {
+    global $database;
+
+    $query = "SELECT $cols FROM $table";
+    $query .= (($wcol == '*') || ($vcol == '*')) ?
+    "" :
+    " WHERE $wcol='$vcol'";
+
+    try {
+      $statement = $database->prepare($query);
+      $statement->execute();
+    } catch (PDOException $error) {
+      $this->pdo_error($query, $error->getMessage());
+    }
+
+    return $statement->fetchAll(PDO::FETCH_OBJ);
+  }
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$val = $pdo->selectmulti($table);
+foreach ($val as $one) {
+  echo "Name: $one->name Color: $one->color Locale: $one->locale<br>";
+}
+```
+
+| **5. `class` with `DELETE` Method using `execute()` Arguments** :
+
+```php
+class DB {
+  // We need these to be callable
+  public $change;
+
+  // Error handler
+  function pdo_error($query, $error_message) {
+      echo "SQL error from <pre>$query</pre><br>$error_message";
+  }
+
+  // DELETE method
+  public function delete($table, $col1, $val1, $col2, $val2) {
+    global $databse; // We need our $database
+
+    $query = "DELETE FROM fruit WHERE $col1 = ? AND $col2 = ?"; // 2 arguments
+    try {
+      $statement = $database->prepare($query);
+      // Way 1:
+        //$statement->execute([$val1, $val2]); // Place arguments directly as array
+      // Way 2:
+        $arg_array = [$val1, $val2]; // Short syntax to create and populate array
+        $statement->execute($arg_array); // Array we use
+    } catch (PDOException $error) {
+      $this->pdo_error($query, $error->getMessage());
+    }
+
+    // Set the response properties
+    $this->change = ($statement->rowCount() > 0) ? true : false;
+  }
+}
+
+// Instantiate
+$pdo = new DB;
+
+// Usage
+$table = 'fruit';
+$column1 = 'name';
+$value1 = 'apple';
+$column2 = 'market';
+$value2 = 'global';
+$pdo->delete($table, $column1, $value1, $column2, $value2);
+echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
+```
 
 ___
 
