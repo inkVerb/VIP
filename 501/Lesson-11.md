@@ -857,25 +857,26 @@ $db_host = 'localhost';
 
 ```php
 $database = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-mysqli_set_charset($database, 'utf8');
+mysqli_set_charset($database, 'utf8mb4');
 ```
 
 | **PDO Config** : (Simple)
 
 ```php
-$database = new PDO("mysql:host=$db_host; dbname=$db_name; charset=utf8", $db_user, $db_pass);
+$database = new PDO("mysql:host=$db_host; dbname=$db_name; charset=utf8mb4", $db_user, $db_pass);
 ```
 
 | **PDO Config** : (Readable with Options)
 
 ```php
-$nameHostChar = "mysql:host=$db_host; dbname=$db_name; charset=utf8";
+$nameHostChar = "mysql:host=$db_host; dbname=$db_name; charset=utf8mb4";
 $opt = [
   PDO::ATTR_EMULATE_PREPARES => false,
   PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
   PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_BOTH, // Row array is auto-indexed and associated by column name (default)
   //PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Row array is associated by column name only
   //PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_NUM, // Row array is auto-indexed only
+  //PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, // Object built on column names
 ];
 $database = new PDO($nameHostChar, $db_user, $db_pass, $opt);
 ```
@@ -969,7 +970,7 @@ while ($row) {
 }
 ```
 
-#### Multiple Queries
+#### Multiple Queries at Once
 
 | **MySQLi Config** : `multi_query()`
 
@@ -1369,7 +1370,7 @@ $db_user = 'pdo_user';
 $db_pass = 'pdopassword';
 $db_host = 'localhost';
 
-$nameHostChar = "mysql:host=$db_host; dbname=$db_name; charset=utf8";
+$nameHostChar = "mysql:host=$db_host; dbname=$db_name; charset=utf8mb4";
 $opt = [
   PDO::ATTR_EMULATE_PREPARES => false,
   PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -1391,7 +1392,7 @@ class DB {
   private $db_host = 'localhost';
 
   public function conn() {
-    $nameHostChar = "mysql:host=$this->db_host; dbname=$this->db_name; charset=utf8";
+    $nameHostChar = "mysql:host=$this->db_host; dbname=$this->db_name; charset=utf8mb4";
     $opt = [
       PDO::ATTR_EMULATE_PREPARES => false,
       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -1512,7 +1513,7 @@ public function update($table, $cols, $vals, $wcol, $vcol) {
   }
   $set_statement = rtrim($set_statement, ',');
 
-  $query = "UPDATE $table SET $set_statement WHERE $wcol='$vcol';";
+  $query = "UPDATE $table SET $set_statement WHERE $wcol='$vcol'";
   $statement = $this->conn()->query($query);
 
   return $statement->fetch();
@@ -1566,7 +1567,7 @@ public $lastid;
 
 ```php
 public function insert($table, $cols, $vals) {
-  $query = "INSERT INTO $table ($cols) VALUES ($vals);";
+  $query = "INSERT INTO $table ($cols) VALUES ($vals)";
   $statement = $this->conn()->query($query);
   $this->change = ($statement->rowCount() == 1) ? true : false;
 }
@@ -1583,7 +1584,7 @@ echo ($pdo->changed) ? "Stuff changed<br>" : "No change<br>";
 
 ```php
 public function delete($table, $col, $val) {
-  $query = "DELETE FROM $table WHERE $col='$val';";
+  $query = "DELETE FROM $table WHERE $col='$val'";
   $statement = $this->conn()->query($query);
   $this->change = ($statement->rowCount() > 0) ? true : false;
 }
@@ -1729,6 +1730,7 @@ localhost/web/pdo.php (Same)
 To retrieve multiple rows, we need `fetchAll()`, which doesn't work with `query()`
 
 | **`query()` & `fetch()`** :
+
 ```php
 $statement = $database->query($query);
 return $statement->fetch();
@@ -1737,6 +1739,7 @@ return $statement->fetch();
 We need `prepare()` & `execute()`
 
 | **`prepare()`, `execute()` & `fetchAll()`** :
+
 ```php
 $statement = $database->prepare($query);
 $statement->execute();
@@ -1896,6 +1899,25 @@ ls web
 ```console
 localhost/web/pdo.php (Same)
 ```
+
+#### Beyond
+
+As a general rule, our current methods should be sufficient for any one-size-fits-all needs
+
+If we need anything more complex, we should build methods that take fewer arguments with prepared SQL statements, specific for each job
+
+In our webapp, we should probably have special methods specifically for
+
+- saving blog posts
+- updating user account information
+
+and use our more generic `SELECT` methods for routine work around the website
+
+You now have a basic understanding of OOP and PDO when working with PHP and SQL
+
+There is much more you will be able to learn on your own
+
+For extra research, `prepare()` & `execute()` have more control with `bindParam()`, but that is beyond the scope of these lessons
 
 ### IV. Rebuild Webapp for OOP
 
@@ -2094,7 +2116,105 @@ foreach($loop_obj_props as $key=>$value) {echo "$key = $value<br>";}
 - A PDO database connection is an object, not a variable or array
 - Putting the PDO database connection inside a class can limit what can be accessed, such as retrieving the `lastInsertId()`
   - You may want to keep your PDO connection outside of a class
-- PDO has many other features we did not explore here
+- PDO connection
+
+| **PDO Config** :
+
+```php
+// Connection with default options
+$database = new PDO("mysql:host=$db_host; dbname=$db_name; charset=utf8mb4", $db_user, $db_pass);
+
+// Useful options
+$opt = [
+  PDO::ATTR_EMULATE_PREPARES => false,
+  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, // Object built on column names
+  //PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_BOTH, // Row array is auto-indexed and associated by column name (default)
+  //PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Row array is associated by column name only
+  //PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_NUM, // Row array is auto-indexed only
+];
+
+// Connection with set options
+$database = new PDO("mysql:host=$db_host; dbname=$db_name; charset=utf8mb4", $db_user, $db_pass, $opt);
+```
+
+- There are three main ways to run queries
+  - `query()` (single, simple SQL statement)
+    - Return output with `fetch()`
+    - Check with `$statement->rowCount()` & `$database->lastInsertId()`
+  - `prepare()` & `execute()` (SQL statement can take arguments for user input, improved security against SQL injection)
+    - Return output with `fetch()` or `fetchAll()` for multiple lines
+    - Check with `$statement->rowCount()` & `$database->lastInsertId()`
+  - `exec()` (multiple SQL statement)
+    - No output, no checks
+    - For output or testing success, run a separate query using `query()` or `execute()`
+  - Examples & syntax:
+
+| **`query()` & `fetch()`** :
+
+```php
+$statement = $database->query($query);
+return $statement->fetch();
+
+// Set fetch mode different from your $database options
+return $statement->fetch(PDO::FETCH_OBJ);
+return $statement->fetch(PDO::FETCH_BOTH);
+```
+
+| **`prepare()`, `execute()` & `fetchAll()`** :
+
+```php
+$statement = $database->prepare($query);
+$statement->execute();
+return $statement->fetchAll();
+
+// Set fetch mode different from your $database options
+return $statement->fetchAll(PDO::FETCH_OBJ);
+return $statement->fetchAll(PDO::FETCH_BOTH);
+
+// These also work
+return $statement->fetch();
+return $statement->fetch(PDO::FETCH_OBJ);
+return $statement->fetch(PDO::FETCH_BOTH);
+```
+
+| **`execute()` Arguments** :
+
+```php
+// One argument
+$query = "SELECT * FROM fruit WHERE name = ?"; // ? becomes $arg in execute([$arg])
+$statement = $database->prepare($query);
+$statement->execute([$arg]); // $arg replaces ? in $query
+
+// Multiple arguments
+$query = "SELECT * FROM fruit WHERE name = ? AND color = ?"; // 2 arguments
+$statement = $database->prepare($query);
+$statement->execute([$arg1, $arg2]); // $arg1, $arg2 (respectively)
+```
+
+- `prepare()` & `execute()` do more using `bindParam()`, not covered in these lessons
+
+| **`exec()`** : To execute multiple SQL statements at once
+
+```php
+$query  = "
+START TRANSACTION; <!-- Start with this always -->
+...
+CREATE TABLE IF NOT EXISTS `fruit` ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+DELETE FROM fruit WHERE some_col='val';
+INSERT INTO fruit (some_col) VALUES ('val');
+INSERT INTO fruit (some_col, other_col) VALUES ('val1', 'val1');
+...
+COMMIT; <!-- End with this always -->
+";
+$database->exec($query);
+```
+
+- To test whether it worked, query the actual table for the results you want
+  - Don't rely on a boolean response from PDO
+  - PHP tests for SQL responses work per line, this has many lines
+  - The last line was `COMMIT`, which returns very little information for PHP to test
+- Like all code, PDO has many other features we did not explore here
 
 ___
 
