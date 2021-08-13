@@ -35,9 +35,23 @@ ___
 ls /home
 ```
 
-| **2** :$ *When prompted, Enter any simple password; press `Enter` for remaining questions.*
+| **U2** :$ (Ubuntu)
+
+- *When prompted Enter any simple password*
+- *Press `Enter` for remaining questions*
 
 ```console
+sudo adduser pinkypink
+```
+
+| **A2** :$ (Arch/Manjaro)
+
+- *Enter `pinkypink` for user group*
+- *Press `Enter` for other questions*
+- *When prompted Enter any simple password*
+
+```console
+sudo groupadd pinkypink
 sudo adduser pinkypink
 ```
 
@@ -574,20 +588,33 @@ ls -l
 
 *...also use `sudo` to delete the puppet users we created for this lesson...*
 
-| **63** :$
+| **U63** :$ (Ubuntu)
 
 ```console
 sudo deluser pinkypink
 ```
 
+| **A63** :$ (Arch/Manjaro)
+
+```console
+sudo groupdel pinkypink
+sudo userdel pinkypink
+```
+
 *Note the message about the "pinkypink" group being empty, that's because `deluser` also deleted the group*
 
-*We don't want to use `userdel` because it is too minimum*
+*`userdel` does not delete the group*
 
-| **64** :$
+| **U64** :$ (Ubuntu)
 
 ```console
 sudo deluser pinkypurple
+```
+
+| **A64** :$ (Arch/Manjaro)
+
+```console
+sudo userdel pinkypurple
 ```
 
 *The users still have `/home` directories*
