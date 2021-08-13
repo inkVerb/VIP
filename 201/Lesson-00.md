@@ -90,6 +90,14 @@ About `sudo` and "root"...
 exit
 ```
 
+*If you are using Arch or Manjaro, we need to install a package for these lessons to work*
+
+| **5** :$
+
+```console
+yay -S --noconfirm adduser
+```
+
 ___
 
 # The Take
@@ -106,6 +114,7 @@ ___
 - Always use `sudo ./my-shell-script`, if your script needs root permissions
 - `$` indicates a normal "user" prompt
 - `#` indicates a "root" user prompt
+- `adduser` package has been installed for these lessons (Arch/Manjaro)
 
 ___
 
