@@ -1,49 +1,63 @@
 # Shell 501
-## Lesson 12: Production & XML
+## Lesson 12: XML
 
 Ready the CLI
 
 ```console
 cd ~/School/VIP/501
 ```
-
 ___
-### Production-Ready
-- Brute attack login protection
-- Pagination & Search
-  - GET to set items show per page
-  - blog.php
-  - pieces.php
-  - trash.php
-  - medialibrary.php
-  - ajax.mediainsert.php
-- Admin Controls
-  - Series in slug option
-  - Title, Slogan
-  - Splash & Logo
-  - Timezone
-  - Footer
-    - Message
-    - Copyright message
-  - Custom "Cookie notice" message and option
-  - Home page (Page, All Pieces, or Series)
-- Theming
-  - Choose Theming in admin (files in a dir)
-  - Fonts
-  - Colors
-  - Copy to dir, not a database call
-- Header SEO-ready (no database calls)
-  - Admin Control file-write editor
-  - Image chooser: copies/writes file
-- Namespace list table (occupied slugs, also used by mods)
-- User levels
-  - "Login required" option in edit.php
-  - "Contributor" can't publish, only edit draft & flag for review
-  - "Editor" can't see Admin Controls nor create users
-- New user page (Admin only, sets 'level')
-- Member signup page (enable in Admin Control)  
-- Install page
-- Mod-capable via PHP objects
+
+### XML
+
+**eXtensible Markup Language**
+
+1. Is static text
+  - Text file or rendered text (ie `<?php echo $some_xml; ?>`)
+  - NOT a logic-executed script like BASH, JavaScript, PHP, et cetera
+  - Looks like HTML, came after HTML to maximize HTML concepts, can't replace HTML
+    - 1993: HTML (keeps updating, version 5 in 2021)
+    - 1996: XML (still using version 1.0)
+2. Used in:
+  - Documents (.doc, .docx, .odt, et cetera)
+  - Desktop settings (wallpaper, mouse speed, display brightness, audio volume, et cetera)
+  - RSS feeds
+  - Podcasts
+  - Blogs (ie WordPress export/import file)
+  - API communication
+3. Is a data "Object" language
+  - Only for data content
+    - Variables (called "entity reference")
+    - NOT functions
+  - Database alternative to SQL, but needs other tools for query/parsing
+4. Comparable to JSON
+  - Portable to/from JSON
+  - Machine version of what JSON is for JavaScript
+  - JSON is used in the browser, XML is used everywhere else
+5. Can be read by many languages
+  - BASH/Linux terminal (`linuxlint`)
+  - PHP (`xml_parser_create` & `SimpleXML`)
+  - JavaScript (`xml2json` & `json2xml`)
+  - SQL (`FOR XML AUTO`, `FOR XML PATH`, `FROM OPENXML`)
+  - And many more
+    - Node.js
+    - Python
+    - Java
+    - Perl
+    - Swift
+    - C
+6. Is styleable using CSS and XSLT
+7. For machines, not browsers
+  - Desktop app
+  - Mobile app
+  - Server app
+  - "Machine side" (server & local device, not browser)
+  - In theory, an RSS/XML feed comes ***raw*** from the server and is then either:
+    - Shown unaltered within a browser OR
+    - Interpreted by another app on a desktop, mobile, or server
+  - Because XML isn't SQL
+    - Query/parsing is optional, but not necessary
+    - It is NOT secure; all information is public
 
 ### XML
 - RSS feeds by tag & series
