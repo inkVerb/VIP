@@ -59,6 +59,159 @@ ___
     - Query/parsing is optional, but not necessary
     - It is NOT secure; all information is public
 
+#### Examples
+
+*Basic syntax*
+
+| **1** :$
+```
+sudo cp core/12-syntax1.php web/syntax.php && \
+atom core/12-syntax1.php \
+ls web
+```
+
+| **Header** : *On the first line*
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+```
+
+| **Open-closing tags, comments** : *Can be any text, case-sensitive, each unique*
+
+```xml
+<!-- <sometag> comment -->
+<sometag>
+  <innertag>
+
+  </innertag>
+</sometag>
+
+<!-- <sometag> is not <SomeTag> -->
+<SomeTag>
+  <InnerTag>
+
+  </InnerTag>
+</SomeTag>
+```
+
+| **Tag attribute** : *Inside opening tag*
+
+```xml
+<tag attribute="one">
+  something here
+</tag>
+```
+
+| **Self closing tag** : *`/` at end, no closing tag needed*
+
+```xml
+<selfclosing/> <!-- No content -->
+
+<selfclosewattrib attrbt="something here"/> <!-- Content in attribute -->
+```
+
+| **B-1** ://
+
+```console
+localhost/web/syntax.php
+```
+
+*Reused namespace*
+
+| **2** :$
+```
+sudo cp core/12-syntax2.php web/syntax.php && \
+atom core/12-syntax2.php \
+ls web
+```
+
+*Using the same tag multipe times will break the script*
+
+```xml
+<table>
+  <type>Folding</type>
+  <color>Black</color>
+</table>
+<table>
+  <type>Fixed</type>
+  <color>Gray</color>
+</table>
+```
+
+| **B-2** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/syntax.php
+```
+
+*...The page is broken*
+
+*Use a namespace prefix*
+
+| **3** :$
+```
+sudo cp core/12-syntax3.php web/syntax.php && \
+atom core/12-syntax3.php \
+ls web
+```
+
+*The prefix is defined by a URI in the first set of each hierarchy it is used*
+
+```xml
+<wrap_tag>
+
+  <s:table xmlns:s="https://verb.ink/stock">
+    <s:type>Folding</s:type>
+    <s:color>Black</s:color>
+  </s:table>
+
+  <s:table xmlns:s="https://verb.ink/stock"> <!-- Defined again for the next set, same value -->
+    <s:type>Fixed</s:type>
+    <s:color>Gray</s:color>
+  </s:table>
+
+</wrap_tag>
+```
+
+| **B-3** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/syntax.php
+```
+
+*...It works*
+
+*Wrapper tags are important*
+
+| **4** :$
+```
+sudo cp core/12-syntax2.php web/syntax.php && \
+atom core/12-syntax2.php \
+ls web
+```
+
+*Using the same tag multipe times will break the script*
+
+```xml
+<!-- We removed these tags: -->
+
+<something>
+  ...
+</something>
+```
+
+| **B-4** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/syntax.php
+```
+
+*...The page is broken*
+
+
+
+
+
 ### XML
 - RSS feeds by tag & series
 - Import-export mod
