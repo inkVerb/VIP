@@ -8,7 +8,7 @@ cd ~/School/VIP/501
 ```
 ___
 
-### XML
+### I. XML Structure
 
 **eXtensible Markup Language**
 
@@ -16,10 +16,22 @@ ___
   - Text file or rendered text (ie `<?php echo $some_xml; ?>`)
   - NOT a logic-executed script like BASH, JavaScript, PHP, et cetera
   - Looks like HTML, came after HTML to maximize HTML concepts, can't replace HTML
+    - 1986: SGML (Standard Generalized Markup Language)
     - 1993: HTML (keeps updating, version 5 in 2021)
     - 1996: XML (still using version 1.0)
+  - Using SGML:
+    - HTML
+    - XML
+    - LaTeX (print publishing language)
+    - Word processor documents before 2007
+      - .doc used SGML, not XML
+    - US Department of Defense
+    - Airline industry
+    - Oxford English Dictionary (digital version)
+    - European Commission
+    - International Standards Organization
 2. Used in:
-  - Documents (.doc, .docx, .odt, et cetera)
+  - Word processor documents (.docx, .odt, et cetera)
   - Desktop settings (wallpaper, mouse speed, display brightness, audio volume, et cetera)
   - RSS feeds
   - Podcasts
@@ -59,14 +71,14 @@ ___
     - Query/parsing is optional, but not necessary
     - It is NOT secure; all information is public
 
-#### Examples
-
-*Basic syntax*
+#### A. Basic Structure
 
 | **1** :$
+
 ```
-sudo cp core/12-syntax1.php web/syntax.php && \
-atom core/12-syntax1.php \
+sudo cp core/12-syntax1.xml web/syntax.xml && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-syntax1.xml \
 ls web
 ```
 
@@ -76,7 +88,23 @@ ls web
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 ```
 
-| **Open-closing tags, comments** : *Can be any text, case-sensitive, each unique*
+| **Comments** : *Inside `<!-- -->`*
+
+```xml
+<!-- Some comment -->
+```
+
+| **Root Element** : *Wraps all tags, can be anything*
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<iamrootelement>
+  <!-- All other content -->
+</iamrootelement>
+```
+
+| **Open-closing tags** : *Can be any text, case-sensitive, each unique*
 
 ```xml
 <!-- <sometag> comment -->
@@ -113,19 +141,48 @@ ls web
 | **B-1** ://
 
 ```console
-localhost/web/syntax.php
+localhost/web/syntax.xml
 ```
 
-*Reused namespace*
+*Root tags are important*
 
 | **2** :$
+
 ```
-sudo cp core/12-syntax2.php web/syntax.php && \
-atom core/12-syntax2.php \
+sudo cp core/12-syntax2.xml web/syntax.xml && \
+atom core/12-syntax2.xml \
 ls web
 ```
 
-*Using the same tag multipe times will break the script*
+```xml
+<!-- We removed these tags: -->
+
+<root>
+  ...
+</root>
+```
+
+| **B-2** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/syntax.xml
+```
+
+*...The page is broken..*
+
+*XML thinks `<sometag>` is the root tag, so it thinks everything after `</sometag>` is "Extra content at the end of the document"*
+
+#### B. Reused Namespace
+
+| **3** :$
+
+```
+sudo cp core/12-syntax3.xml web/syntax.xml && \
+atom core/12-syntax3.xml \
+ls web
+```
+
+*Namespace can be used multiple times...*
 
 ```xml
 <table>
@@ -138,78 +195,694 @@ ls web
 </table>
 ```
 
-| **B-2** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-3** :// (<kbd>Ctrl</kbd> + R to reload)
 
 ```console
-localhost/web/syntax.php
+localhost/web/syntax.xml
 ```
 
-*...The page is broken*
+#### C. Namespace Prefix
 
-*Use a namespace prefix*
+*Same words with a different purpose*
 
-| **3** :$
+| **4** :$
+
 ```
-sudo cp core/12-syntax3.php web/syntax.php && \
-atom core/12-syntax3.php \
+sudo cp core/12-syntax4.xml web/syntax.xml && \
+atom core/12-syntax4.xml \
 ls web
 ```
 
 *The prefix is defined by a URI in the first set of each hierarchy it is used*
 
 ```xml
-<wrap_tag>
+<s:table xmlns:s="https://verb.ink/stock">
+  <s:type>Folding</s:type>
+  <s:color>Black</s:color>
+</s:table>
 
-  <s:table xmlns:s="https://verb.ink/stock">
-    <s:type>Folding</s:type>
-    <s:color>Black</s:color>
-  </s:table>
-
-  <s:table xmlns:s="https://verb.ink/stock"> <!-- Defined again for the next set, same value -->
-    <s:type>Fixed</s:type>
-    <s:color>Gray</s:color>
-  </s:table>
-
-</wrap_tag>
-```
-
-| **B-3** :// (<kbd>Ctrl</kbd> + R to reload)
-
-```console
-localhost/web/syntax.php
-```
-
-*...It works*
-
-*Wrapper tags are important*
-
-| **4** :$
-```
-sudo cp core/12-syntax2.php web/syntax.php && \
-atom core/12-syntax2.php \
-ls web
-```
-
-*Using the same tag multipe times will break the script*
-
-```xml
-<!-- We removed these tags: -->
-
-<something>
-  ...
-</something>
+<s:table xmlns:s="https://verb.ink/stock"> <!-- Defined again for the next set, same value -->
+  <s:type>Fixed</s:type>
+  <s:color>Gray</s:color>
+</s:table>
 ```
 
 | **B-4** :// (<kbd>Ctrl</kbd> + R to reload)
 
 ```console
-localhost/web/syntax.php
+localhost/web/syntax.xml
 ```
 
-*...The page is broken*
+#### D. Special Characters
 
+| **5** :$
 
+```
+sudo cp core/12-syntax5.xml web/syntax.xml && \
+atom core/12-syntax5.xml \
+ls web
+```
 
+*For example, we will put these into the XML document*
+
+```
+" ' < > &
+```
+
+*We can use either HTML entities or CDATA...*
+
+| **HTML Entities** :
+
+```xml
+<something attrib="&quot; &apos; &lt; &gt; &amp;">
+  <spchar>
+    &quot; &apos; &lt; &gt; &amp;
+  </spchar>
+</something>
+```
+
+| **CDATA** : `<![CDATA[ ... ]]>`
+
+```xml
+<![CDATA[ " ' < > & ]]>
+```
+
+| **B-5** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/syntax.xml
+```
+
+*Note, `[` and `]` characters can work raw inside `<![CDATA[ ... ]]>`*
+
+#### E. XML from PHP
+
+*We can use PHP to render XML*
+
+- *This needs:*
+  1. *PHP file to `echo` the XML document*
+  2. *A `header()` statement to set the MIME type:*
+    - `header('Content-type: text/xml');`
+  3. *`RewriteRule` in .htaccess to create a .xml file in browser address*
+
+| **6** :$
+
+```
+sudo cp core/12-xmlrender6.php web/xmlrender.php && \
+sudo cp core/12-htaccess6 web/.htaccess && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-xmlrender6.php 12-htaccess7 \
+ls web
+```
+
+| **Header MIME Type** :
+
+```php
+header('Content-type: text/xml');
+```
+
+| **HTML entities** :
+
+```php
+htmlentities($special_characters);
+```
+
+| **.htaccess** :
+
+```
+RewriteEngine on
+
+RewriteRule ^somefile.xml$ somefile.php [L]
+```
+
+| **B-6** ://
+
+```console
+localhost/web/xmlrender.xml
+```
+
+### II. XML Validation (DTD & XSD)
+
+*The XML document will define its own schema to validate itself*
+
+*There are two systems for this:*
+
+- *DTD (Document Type Definition; predates XML)*
+- *XSD (XML Schema; DTD in XML format)*
+
+#### A. DTD (Document Type Definition)
+
+| **7** :$
+
+```
+sudo cp core/12-validate7.xml web/validate.xml && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-syntax7.xml \
+ls web
+```
+
+| **DTD** :
+
+```xml
+<!DOCTYPE root[
+  <!ELEMENT person (one,two,also,there)>
+  <!ELEMENT one (#PCDATA)>
+  <!ELEMENT two (#PCDATA)>
+  <!ELEMENT also (#PCDATA)>
+  <!ELEMENT there (#PCDATA)>
+  <!ELEMENT self_close EMPTY>
+  <!ELEMENT attribs (#PCDATA)>
+  <!ATTLIST attribs
+    attr (val1 | val2 | val3)
+  >
+]>
+```
+
+| **Content** :
+
+```xml
+<root>
+  <person>
+    <one>...</one>
+    <two>...</two>
+    <also>...</also>
+    <there>...</there>
+    <self_close/>
+    <attribs attr="val1">...</attribs>
+  </person>
+</root>
+```
+
+| **B-7** ://
+
+```console
+localhost/web/validate.xml
+```
+
+*You can embed the DTD in a separate file*
+
+```xml
+<!DOCTYPE rootel SYSTEM "something.dtd">
+```
+
+| **8** :$
+
+```
+sudo cp core/12-validate8.xml web/validate.xml && \
+sudo cp core/12-validate8.dtd web/validate.dtd && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-validate8.xml core/12-validate8.dtd \
+ls web
+```
+
+| **validate.dtd** :
+
+```xml
+<!ELEMENT person (one,two,also,there)>
+<!ELEMENT one (#PCDATA)>
+<!ELEMENT two (#PCDATA)>
+<!ELEMENT also (#PCDATA)>
+<!ELEMENT there (#PCDATA)>
+
+<!ELEMENT self_close EMPTY>
+
+<!ELEMENT attribs (#PCDATA)>
+
+<!ATTLIST attribs
+  attr (val1 | val2 | val3)
+>
+```
+
+| **mainfile.xml** :
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<!DOCTYPE root SYSTEM "validate.dtd">
+
+<root>
+  <person>
+    <one>...</one>
+    <two>...</two>
+    <also>...</also>
+    <there>...</there>
+    <self_close/>
+    <attribs attr="val1">...</attribs>
+  </person>
+</root>
+```
+
+| **B-8** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/validate.xml
+```
+
+*Note everything works just the same*
+
+#### B. XSD (XML Schema)
+
+##### XSD Basics
+
+*XSD uses validation terms in XML language, not Doctype language*
+
+| **9** :$
+
+```
+sudo cp core/12-validate9.xml web/validate.xml && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-syntax9.xml \
+ls web
+```
+
+*Note the `<root>` element also wraps the XSD schema*
+
+| **XSD** :
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<root>
+
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="attrvallist">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="val1"/>
+        <xs:enumeration value="val2"/>
+        <xs:enumeration value="val3"/>
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="person">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="one" type="xs:string"/>
+          <xs:element name="two" type="xs:string"/>
+          <xs:element name="also" type="xs:string"/>
+          <xs:element name="there" type="xs:string"/>
+
+          <xs:element name="self_close" type="xs:string"/>
+
+          <xs:element name="attribs" type="xs:string">
+            <xs:attribute name="attr" type="attrvallist" default="val1"/>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+
+  </xs:schema>
+```
+
+| **Content** :
+
+```xml
+  <person>
+    <one>...</one>
+    <two>...</two>
+    <also>...</also>
+    <there>...</there>
+    <self_close/>
+    <attribs attr="val1">...</attribs>
+  </person>
+
+</root>
+```
+
+| **B-9** ://
+
+```console
+localhost/web/validate.xml (<kbd>Ctrl</kbd> + R to reload)
+```
+
+##### Include XSD
+
+*You can include the XSD schema from a separate file*
+
+| **10** :$
+
+```
+sudo cp core/12-validate10.xml web/validate.xml && \
+sudo cp core/12-validate10.xsd web/validate.xsd && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-validate10.xml core/12-validate10.xsd \
+ls web
+```
+
+| **schema.xsd** :
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<xs:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://inkisaverb.com/something"
+            xmlns="http://inkisaverb.com/something schema.xsd"
+            >
+
+  <xs:simpleType name="attrvallist">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="val1"/>
+      <xs:enumeration value="val2"/>
+      <xs:enumeration value="val3"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="person">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="one" type="xs:string"/>
+        <xs:element name="two" type="xs:string"/>
+        <xs:element name="also" type="xs:string"/>
+        <xs:element name="there" type="xs:string"/>
+
+        <xs:element name="self_close" type="xs:string"/>
+
+        <xs:element name="attribs" type="xs:string">
+          <xs:attribute name="attr" type="attrvallist" default="val1"/>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+```
+
+| **content.xml** :
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://inkisaverb.com/something schema.xsd">
+  <person>
+    <one>...</one>
+    <two>...</two>
+    <also>...</also>
+    <there>...</there>
+    <self_close/>
+    <attribs attr="val1">...</attribs>
+  </person>
+</root>
+```
+
+| **B-10** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/validate.xml
+```
+
+*Note everything works just the same*
+
+##### Different XSD Include Declarations
+
+*There are different ways to publish XML and XSD headers*
+
+1. Namespace
+
+| **schema.xsd** :
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<xs:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://inkisaverb.com/something.xsd"
+            >
+```
+
+| **content.xml** :
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<root xmlns:ns="http://inkisaverb.com/something"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://inkisaverb.com/something.xsd schema.xsd"
+      >
+```
+
+*Note `http://inkisaverb.com/something.xsd` could be any web file with XSD*
+
+*Note `xsi:schemaLocation` contains a space-separated list of XSD locations, "schema.xsd" is local*
+
+2. No Namespace
+
+| **schema.xsd** :
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<xs:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+```
+
+| **content.xml** :
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="schema.xsd"
+      >
+```
+
+*Note `xsi:noNamespaceSchemaLocation` has one XSD locations, "schema.xsd" is local*
+
+*We just used XSD with namespace*
+
+*Now, let's try without namespace...*
+
+| **11** :$
+
+```
+sudo cp core/12-validate11.xml web/validate.xml && \
+sudo cp core/12-validate11.xsd web/validate.xsd && \
+atom core/12-validate11.xml core/12-validate11.xsd \
+ls web
+```
+
+*Note only the XSD declarations changed*
+
+| **B-11** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/validate.xml
+```
+
+##### XSD Elements & Attributes
+
+**`<xs:complexType>` vs `<xs:simpleType>`**
+
+- `<xs:simpleType>` can't contain either
+
+| **`<elem>` `simpleType` self-closing** : (XDS considers same as empty)
+
+```xml
+<elem/>
+```
+
+| **`<elem>` `simpleType` empty** :
+
+```xml
+<elem></elem>
+```
+
+- `<xs:complexType>` means the parent (`<xs:element name="elem">`) has any of:
+  - Attributes
+  - Elements
+- `<xs:sequence>` is the list of elements
+
+| **`<elem>` `complexType` with attributes** :
+
+```xml
+<elem attr="here"/>
+```
+
+| **`<elem>` `complexType` with other elements** :
+
+```xml
+<elem>
+  <one>some string</one>
+  <two>other string</two>
+</elem>
+```
+- `<xs:complexType>` & `<xs:simpleType>` can apply to:
+  - `<xs:element>`
+  - `<xs:attribute>`
+
+**Basic XSD Structure**
+
+| **XML** :
+
+```xml
+<elem attr="here">
+  <one>some string</one>
+  <two>true</two>
+  <tre>11/05/1955</tre>
+</elem>
+```
+
+| **XSD** : (Single definition)
+
+```xml
+<xs:element name="elem"> <!-- element Attributes -->
+  <xs:complexType>
+
+    <xs:attribute name="attr" type="xs:string"/> <!-- attribute Attributes -->
+
+    <xs:sequence>
+      <xs:element name="one" type="xs:string"/>
+      <xs:element name="two" type="xs:boolean"/>
+      <xs:element name="tre" type="xs:date"/>
+    </xs:sequence>
+
+  </xs:complexType>
+</xs:element>
+```
+
+*This sets the same thing by inheriting...*
+
+| **XSD** : (Inherited definition)
+
+```xml
+<!-- First, just declare the element -->
+<xs:element name="elem" type="alpha"/> <!-- Self-closing -->
+
+  <xs:complexType name="bravo">
+
+    <xs:attribute name="attr" type="xs:string"/>
+
+    <xs:sequence>
+      <xs:element name="one" type="xs:string"/>
+    </xs:sequence>
+
+  </xs:complexType>
+
+  <xs:complexType name="alpha"> <!-- Defines the type="alpha" for <xs:element name="elem" type="alpha"> -->
+    <xs:complexContent>
+      <xs:extension base="bravo">
+
+        <xs:sequence>
+          <xs:element name="two" type="xs:boolean"/>
+          <xs:element name="tre" type="xs:date"/>
+        </xs:sequence>
+
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:element>
+```
+
+- `NCName` = "no-colon-name" (namespace without prefix)
+
+1. `element` Attributes
+- `default`/`fixed`: default or unchangable (fixed) value
+  - Can only be used of content is `<simpleType>` or text-only
+- `form`:
+  - `qualified`: must match the prefix and NCName
+  - `unqualified`: must match only NCName
+  - Defaults to `elementFormDefault` of `schema`
+  - Can't be used if parent is `schema`
+- `id`
+- `name`/`ref`: element name
+  - `name` must be used if parent is `schema`
+  - `ref` can't be used if parent is `schema`
+- `type`: datatype, see list below
+- `nillable`: if "null" value can be `true`
+  - `true`: "null" value can be `true`
+  - `false`: "null" value CANNOT be `true` (default)
+- `substitutionGroup`: element name that may be used instead
+- `maxOccurs`: maximum occurrences within parent element
+- `minOccurs`: minimum occurrences within parent element
+- `abstract`: if usable in instance document
+  - `true`: element CANNOT appear in instance document (`substitutionGroup` must appear instead)
+  - `false`: (default)
+- `block`: AKA "prevent" elements derived by...
+  - `extension`
+  - `restriction`
+  - `substitution`
+  - `#all`: all of the above
+- `final`: default of final element attribute
+  - Can ONLY use if parent is `schema`
+  - Prevent elements derived by...
+    - `extension`
+    - `restriction`
+    - `#all`: all of the above
+- Other non-namespace attributes are allowed
+
+2. `attribute` Attributes
+- `default`/`fixed`: default or unchangable (fixed) value
+- `form`:
+  - `qualified`: must match the prefix and NCName
+  - `unqualified`: must match only NCName
+  - Defaults to parent element
+- `id`
+- `name`/`ref`: element name
+  - If `ref`, can't use `form` and `type`
+- `type`: datatype, see list below
+- `use`: permissions
+  - `optional`: (default)
+  - `prohibited`: can't use
+  - `required`: must use
+- Other non-namespace attributes are allowed
+
+3. Datatypes
+- `xs:boolean`
+- `xs:string`
+- `xs:integer`
+- `xs:nonNegativeInteger`
+- `xs:decimal`
+- `xs:date`
+- `xs:time`
+
+##### DTD vs XSD Summary:
+
+- *DTD is older and simpler*
+  - *Less control*
+  - *Uses SGML syntax*
+  - *Can't control datatype nor namespace*
+  - *Not extensible*
+  - *Brief syntax*
+  - *Used for backward compatibility with other SGML documents*
+    - *Eg you want to automatically convert between LaTeX and XML and don't want any non-portable information*
+- *XSD allows more options and is more complex*
+  - *More control*
+  - *Written in XML*
+  - *Can control datatype and namespace*
+  - *Is extensible*
+  - *Elaborate syntax*
+  - *Used for security*
+
+You can learn much more about XSD, this is enough for you to follow more advanced XSD elsewhere and later in these lessons
+
+### III. XSLT (CSS for XML)
+
+| **7** :$
+
+```
+sudo cp core/12-style7.xml web/style.xml && \
+atom core/12-style7.xml \
+ls web
+```
+
+| **Style** :
+
+```xml
+
+```
+
+| **Content** :
+
+```xml
+
+```
+
+| **B-7** :// (<kbd>Ctrl</kbd> + R to reload)
+
+```console
+localhost/web/syntax.xml
+```
 
 
 ### XML

@@ -242,7 +242,9 @@ sudo chown -R www:www /srv/www
 
 - Choose 1 or 2:
 
-1. Start Apache everytime
+1. Start Apache only once
+
+*(You will need to run this command each time you start lessons after reboot)*
 
 | **A15e** :$
 
@@ -257,6 +259,15 @@ sudo systemctl start httpd
 ```console
 sudo systemctl enable httpd
 sudo systemctl start httpd
+```
+
+*(Later, you can turn this off with:)*
+
+| **Disable Apache** :$
+
+```console
+sudo systemctl disable httpd
+sudo systemctl stop httpd
 ```
 
 ### MySQL phpMyAdmin (Arch/Manjaro)
@@ -548,6 +559,23 @@ Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`
 
 Login the first time with the same user you created in "MySQL via command line" below
+
+7. (Optional) If you DO NOT want Apache to start automatically
+
+| **Disable Apache** :$
+
+```console
+sudo systemctl disable apache2
+sudo systemctl stop apache2
+```
+
+*(You will need to run this command each time you start lessons after reboot)*
+
+| **Start Apache** :$
+
+```console
+sudo systemctl start apache2
+```
 
 ___
 
