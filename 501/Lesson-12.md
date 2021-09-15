@@ -753,7 +753,7 @@ localhost/web/validate.xml
 <!-- First, just declare the element -->
 <xs:element name="elem" type="alpha"/> <!-- Self-closing -->
 
-  <!-- Define a structure to inherit -->
+  <!-- Second, define a structure to inherit -->
   <xs:complexType name="bravo">
 
     <xs:attribute name="attr" type="xs:string"/>
@@ -764,7 +764,7 @@ localhost/web/validate.xml
 
   </xs:complexType>
 
-  <!-- Define a structure that inherits -->
+  <!-- Third, define a structure that inherits -->
   <xs:complexType name="alpha"> <!-- Defines the type="alpha" for <xs:element name="elem" type="alpha"> -->
     <xs:complexContent>
       <xs:extension base="bravo"> <!-- We inherit here -->
