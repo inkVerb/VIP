@@ -715,7 +715,7 @@ localhost/web/validate.xml
   - `<xs:element>`
   - `<xs:attribute>`
 
-**Basic XSD Structure**
+**Basic XSD Terminology**
 
 | **XML** :
 
@@ -784,33 +784,33 @@ localhost/web/validate.xml
 - `NCName` = "no-colon-name" (namespace without prefix)
 
 1. `element` Attributes (`<xs:element name="elem">`)
-- `default`/`fixed`: default or unchangable (fixed) value
+- `default=`/`fixed=`: default or unchangable (fixed) value
   - Can only be used of content is `<simpleType>` or text-only
-- `form`:
+- `form=`:
   - `qualified`: must match the prefix and NCName
   - `unqualified`: must match only NCName
   - Defaults to `elementFormDefault` of `schema`
   - Can't be used if parent is `schema`
-- `id`
-- `name`/`ref`: element name
-  - `name` must be used if parent is `schema`
-  - `ref` can't be used if parent is `schema`
-- `type`: datatype, see list below
-- `nillable`: if "null" value can be `true`
+- `id=`
+- `name=`/`ref=`: element name
+  - `name=` must be used if parent is `schema`
+  - `ref=` can't be used if parent is `schema`
+- `type=`: datatype, see list below
+- `nillable=`: if "null" value can be `true`
   - `true`: "null" value can be `true`
   - `false`: "null" value CANNOT be `true` (default)
-- `substitutionGroup`: element name that may be used instead
-- `maxOccurs`: maximum occurrences within parent element
-- `minOccurs`: minimum occurrences within parent element
-- `abstract`: if usable in instance document
+- `substitutionGroup=`: element name that may be used instead
+- `maxOccurs=`: maximum occurrences within parent element
+- `minOccurs=`: minimum occurrences within parent element
+- `abstract=`: if usable in instance document
   - `true`: element CANNOT appear in instance document (`substitutionGroup` must appear instead)
   - `false`: (default)
-- `block`: AKA "prevent" elements derived by...
+- `block=`: AKA "prevent" elements derived by...
   - `extension`
   - `restriction`
   - `substitution`
   - `#all`: all of the above
-- `final`: default of final element attribute
+- `final=`: default of final element attribute
   - Can ONLY use if parent is `schema`
   - Prevent elements derived by...
     - `extension`
@@ -819,22 +819,22 @@ localhost/web/validate.xml
 - Other non-namespace attributes are allowed
 
 2. `attribute` Attributes (`<xs:attribute name="attr"/>`)
-- `default`/`fixed`: default or unchangable (fixed) value
-- `form`:
+- `default=`/`fixed`: default or unchangable (fixed) value
+- `form=`:
   - `qualified`: must match the prefix and NCName
   - `unqualified`: must match only NCName
   - Defaults to parent element
-- `id`
-- `name`/`ref`: element name
-  - If `ref`, can't use `form` and `type`
-- `type`: datatype, see list below
-- `use`: permissions
+- `id=`
+- `name=`/`ref=`: element name
+  - If `ref=`, can't use `form=` and `type=`
+- `type=`: datatype, see list below
+- `use=`: permissions
   - `optional`: (default)
   - `prohibited`: can't use
   - `required`: must use
 - Other non-namespace attributes are allowed
 
-3. Datatypes (`type=""`)
+3. Datatypes (`type=`)
 - `xs:boolean`
 - `xs:string`
 - `xs:integer`
@@ -842,7 +842,7 @@ localhost/web/validate.xml
 - `xs:decimal`
 - `xs:date`
 - `xs:time`
-- Custom, defined by `name=""`
+- Custom, defined by `<xs:simpleType name="custom_type_name_here">...</xs:simpleType>`
 
 ##### DTD vs XSD Summary:
 
