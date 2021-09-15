@@ -446,6 +446,8 @@ localhost/web/validate.xml
 
 *XSD uses validation terms in XML language, not Doctype language*
 
+*Note this example defines the acceptable values for an attribute*
+
 | **9** :$
 
 ```
@@ -466,6 +468,7 @@ ls web
 
   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+    <!-- Options for <attribs attr=""  -->
     <xs:simpleType name="attrvallist">
       <xs:restriction base="xs:string">
         <xs:enumeration value="val1"/>
@@ -485,7 +488,7 @@ ls web
           <xs:element name="self_close" type="xs:string"/>
 
           <xs:element name="attribs" type="xs:string">
-            <xs:attribute name="attr" type="attrvallist" default="val1"/>
+            <xs:attribute name="attr" type="attrvallist" default="val1"/> <!-- Include the options previously listed -->
           </xs:element>
         </xs:sequence>
       </xs:complexType>
@@ -673,7 +676,9 @@ localhost/web/validate.xml
 
 **`<xs:complexType>` vs `<xs:simpleType>`**
 
-- `<xs:simpleType>` can't contain either
+- `<xs:simpleType>` CANNOT contain:
+  - Attributes
+  - Elements
 
 | **`<elem>` `simpleType` self-closing** : (XDS considers same as empty)
 
@@ -681,7 +686,7 @@ localhost/web/validate.xml
 <elem/>
 ```
 
-| **`<elem>` `simpleType` empty** :
+| **`<elem>` `simpleType` empty** : (XDS considers same as self-closing)
 
 ```xml
 <elem></elem>
@@ -725,10 +730,10 @@ localhost/web/validate.xml
 | **XSD** : (Single definition)
 
 ```xml
-<xs:element name="elem"> <!-- element Attributes -->
+<xs:element name="elem"> <!-- See element Attributes -->
   <xs:complexType>
 
-    <xs:attribute name="attr" type="xs:string"/> <!-- attribute Attributes -->
+    <xs:attribute name="attr" type="xs:string"/> <!-- See attribute Attributes -->
 
     <xs:sequence>
       <xs:element name="one" type="xs:string"/>
@@ -748,6 +753,7 @@ localhost/web/validate.xml
 <!-- First, just declare the element -->
 <xs:element name="elem" type="alpha"/> <!-- Self-closing -->
 
+  <!-- Define a structure to inherit -->
   <xs:complexType name="bravo">
 
     <xs:attribute name="attr" type="xs:string"/>
@@ -758,9 +764,10 @@ localhost/web/validate.xml
 
   </xs:complexType>
 
+  <!-- Define a structure that inherits -->
   <xs:complexType name="alpha"> <!-- Defines the type="alpha" for <xs:element name="elem" type="alpha"> -->
     <xs:complexContent>
-      <xs:extension base="bravo">
+      <xs:extension base="bravo"> <!-- We inherit here -->
 
         <xs:sequence>
           <xs:element name="two" type="xs:boolean"/>
@@ -776,7 +783,7 @@ localhost/web/validate.xml
 
 - `NCName` = "no-colon-name" (namespace without prefix)
 
-1. `element` Attributes
+1. `element` Attributes (`<xs:element name="elem">`)
 - `default`/`fixed`: default or unchangable (fixed) value
   - Can only be used of content is `<simpleType>` or text-only
 - `form`:
@@ -811,7 +818,7 @@ localhost/web/validate.xml
     - `#all`: all of the above
 - Other non-namespace attributes are allowed
 
-2. `attribute` Attributes
+2. `attribute` Attributes (`<xs:attribute name="attr"/>`)
 - `default`/`fixed`: default or unchangable (fixed) value
 - `form`:
   - `qualified`: must match the prefix and NCName
@@ -827,7 +834,7 @@ localhost/web/validate.xml
   - `required`: must use
 - Other non-namespace attributes are allowed
 
-3. Datatypes
+3. Datatypes (`type=""`)
 - `xs:boolean`
 - `xs:string`
 - `xs:integer`
@@ -835,6 +842,7 @@ localhost/web/validate.xml
 - `xs:decimal`
 - `xs:date`
 - `xs:time`
+- Custom, defined by `name=""`
 
 ##### DTD vs XSD Summary:
 
