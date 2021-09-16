@@ -328,7 +328,9 @@ localhost/web/xmlrender.xml
 *There are two systems for this:*
 
 - *DTD (Document Type Definition; predates XML)*
-- *XSD (XML Schema; DTD in XML format)*
+- *XSD (XML Schema Definition; DTD in XML format)*
+
+*This lesson will not teach a complete series on XML validation, but you will understand enough for our purposes and to learn more easily in the future*
 
 #### A. DTD (Document Type Definition)
 
@@ -440,13 +442,13 @@ localhost/web/validate.xml
 
 *Note everything works just the same*
 
-#### B. XSD (XML Schema)
+#### B. XSD (XML Schema Definition)
 
 ##### XSD Basics
 
-*XSD uses validation terms in XML language, not Doctype language*
+*XSD uses validation terms in XML language, not DTD (SGML) language*
 
-*Note this example defines the acceptable values for an attribute*
+*Note this example defines validation for the same XML in the previous two examples...*
 
 | **9** :$
 
@@ -477,19 +479,22 @@ ls web
       </xs:restriction>
     </xs:simpleType>
 
-    <xs:element name="person">
-      <xs:complexType>
-        <xs:sequence>
+    <xs:element name="person"> <!-- Declare the <person> element -->
+      <xs:complexType> <!-- The <person> element contains either attributes or child elements -->
+        <xs:sequence> <!-- The order of child elements matters, optional -->
+          <!-- Below we declare our various elements, self-closing tags because they contain no further definitions -->
           <xs:element name="one" type="xs:string"/>
           <xs:element name="two" type="xs:string"/>
           <xs:element name="also" type="xs:string"/>
           <xs:element name="there" type="xs:string"/>
-
+          <!-- Self-closing tags are treated the same way as empty tags in XML and XSD -->
           <xs:element name="self_close" type="xs:string"/>
-
+          <!-- This element definition is not self-closing because it contains an attribute definition -->
           <xs:element name="attribs" type="xs:string">
-            <xs:attribute name="attr" type="attrvallist" default="val1"/> <!-- Include the options previously listed -->
+            <!-- Below we define options for the "attr" attribute in the <attribs> element -->
+            <xs:attribute name="attr" type="attrvallist" default="val1"/> <!-- Include the "attrvallist" options previously defined -->
           </xs:element>
+
         </xs:sequence>
       </xs:complexType>
     </xs:element>
@@ -521,6 +526,8 @@ localhost/web/validate.xml (<kbd>Ctrl</kbd> + R to reload)
 ##### Include XSD
 
 *You can include the XSD schema from a separate file*
+
+*These have the same XML and XSD...*
 
 | **10** :$
 
@@ -649,7 +656,7 @@ localhost/web/validate.xml
       >
 ```
 
-*Note `xsi:noNamespaceSchemaLocation` has one XSD locations, "schema.xsd" is local*
+*Note `xsi:noNamespaceSchemaLocation` has one XSD location, "schema.xsd" is local*
 
 *We just used XSD with namespace*
 
@@ -664,7 +671,7 @@ atom core/12-validate11.xml core/12-validate11.xsd \
 ls web
 ```
 
-*Note only the XSD declarations changed*
+*Note only the XSD declarations changed, everything else is the same*
 
 | **B-11** :// (<kbd>Ctrl</kbd> + R to reload)
 
@@ -674,9 +681,13 @@ localhost/web/validate.xml
 
 ##### XSD Elements & Attributes
 
-**`<xs:complexType>` vs `<xs:simpleType>`**
+###### `<xs:complexType>` vs `<xs:simpleType>`
 
-- `<xs:simpleType>` CANNOT contain:
+- `<xs:complexType>` & `<xs:simpleType>` can apply to:
+  - `<xs:element>`
+  - `<xs:attribute>`
+
+1. `<xs:simpleType>` CANNOT contain:
   - Attributes
   - Elements
 
@@ -692,10 +703,43 @@ localhost/web/validate.xml
 <elem></elem>
 ```
 
-- `<xs:complexType>` means the parent (`<xs:element name="elem">`) has any of:
+| **<xs:simpleType> usage** :
+
+```xml
+<!-- Allow only three possible values: val1, val2, val3 -->
+<xs:element name="somelist" default="val1">
+  <xs:simpleType>
+
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="val1"/>
+      <xs:enumeration value="val2"/>
+      <xs:enumeration value="val3"/>
+    </xs:restriction>
+
+  </xs:simpleType>
+</xs:element>
+
+<!-- Allow only a range of integers 20-270 -->
+<xs:element name="height">
+  <xs:simpleType>
+
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="20"/>
+      <xs:maxInclusive value="270"/>
+    </xs:restriction>
+
+  </xs:simpleType>
+</xs:element>
+```
+
+*Note in XML and XSD, self-closing and empty tags are considered the same:*
+
+  - `<elem/>` = `<elem></elem>`
+  - `<elem attr="here"/>` = `<elem attr="here"></elem>`
+
+2. `<xs:complexType>` means the parent (`<xs:element name="elem">`) has any of:
   - Attributes
   - Elements
-- `<xs:sequence>` is the list of elements
 
 | **`<elem>` `complexType` with attributes** :
 
@@ -711,11 +755,97 @@ localhost/web/validate.xml
   <two>other string</two>
 </elem>
 ```
-- `<xs:complexType>` & `<xs:simpleType>` can apply to:
-  - `<xs:element>`
-  - `<xs:attribute>`
 
-**Basic XSD Terminology**
+| **<xs:simpleType> usage** :
+
+```xml
+<!-- With attributes -->
+<xs:element name="something">
+  <xs:complexType>
+
+    <xs:attribute name="else" type="xs:string"/>
+
+  </xs:complexType>
+</xs:element>
+
+<!-- With child elements, order DOES matter -->
+<xs:element name="something">
+  <xs:complexType>
+
+    <xs:sequence>
+      <xs:element name="alpha" type="xs:string"/>
+      <xs:element name="bravo" type="xs:string"/>
+      <xs:element name="delta" type="xs:string"/>
+    </xs:sequence>
+
+  </xs:complexType>
+</xs:element>
+
+<!-- With child elements, order does NOT matter -->
+<xs:element name="something">
+  <xs:complexType>
+
+    <xs:element name="alpha" type="xs:string"/>
+    <xs:element name="bravo" type="xs:string"/>
+    <xs:element name="delta" type="xs:string"/>
+
+  </xs:complexType>
+</xs:element>
+```
+
+- `<xs:sequence>` defines defines that the order of elements matters
+
+##### Restrict Value Options
+
+*There are two ways to restrict options for a value*
+
+**Allow only three possible values for element `<somelist>`: val1, val2, val3**
+
+| **XML** :
+
+```xml
+<!-- Chose -->
+<somelist>val1</somelist>
+<!-- or -->
+<somelist>val2</somelist>
+<!-- or -->
+<somelist>val3</somelist>
+```
+
+| **XSD Values** :
+
+```xml
+<!-- 1. Single definition -->
+<xs:element name="somelist" default="val1">
+  <xs:simpleType>
+
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="val1"/>
+      <xs:enumeration value="val2"/>
+      <xs:enumeration value="val3"/>
+    </xs:restriction>
+
+  </xs:simpleType>
+</xs:element>
+
+<!-- 2. Two definitions -->
+<!-- Define the options first -->
+<xs:element name="somelist" default="val1">
+  <xs:simpleType>
+
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="val1"/>
+      <xs:enumeration value="val2"/>
+      <xs:enumeration value="val3"/>
+    </xs:restriction>
+
+  </xs:simpleType>
+</xs:element>
+<!-- Then define the element as the type="somelist" we already defined -->
+<xs:element name="here" type="somelist" default="val1"/>
+```
+
+###### Single vs Inherited Definitions
 
 | **XML** :
 
@@ -727,32 +857,25 @@ localhost/web/validate.xml
 </elem>
 ```
 
-| **XSD** : (Single definition)
+| **XSD Inheritance** :
 
 ```xml
-<xs:element name="elem"> <!-- See element Attributes -->
+<!-- 1. Single definition (no inheritance) -->
+<xs:element name="elem">
   <xs:complexType>
 
-    <xs:attribute name="attr" type="xs:string"/> <!-- See attribute Attributes -->
+    <xs:attribute name="attr" type="xs:string"/>
 
-    <xs:sequence>
-      <xs:element name="one" type="xs:string"/>
-      <xs:element name="two" type="xs:boolean"/>
-      <xs:element name="tre" type="xs:date"/>
-    </xs:sequence>
+    <xs:element name="one" type="xs:string"/>
+    <xs:element name="two" type="xs:boolean"/>
+    <xs:element name="tre" type="xs:date"/>
 
   </xs:complexType>
 </xs:element>
-```
 
-*This sets the same thing by inheriting...*
-
-| **XSD** : (Inherited definition)
-
-```xml
-<!-- First, just declare the element -->
+<!-- 2. Inherited definition -->
+<!-- First, simply declare the element -->
 <xs:element name="elem" type="alpha"/> <!-- Self-closing -->
-
   <!-- Second, define a structure to inherit -->
   <xs:complexType name="bravo">
 
@@ -763,7 +886,6 @@ localhost/web/validate.xml
     </xs:sequence>
 
   </xs:complexType>
-
   <!-- Third, define a structure that inherits -->
   <xs:complexType name="alpha"> <!-- Defines the type="alpha" for <xs:element name="elem" type="alpha"> -->
     <xs:complexContent>
@@ -781,7 +903,23 @@ localhost/web/validate.xml
 </xs:element>
 ```
 
-- `NCName` = "no-colon-name" (namespace without prefix)
+###### Basic XSD Terminology
+
+| **XSD `element`, `attribute` & type** :
+
+```xml
+<xs:element name="here">
+  <xs:complexType> <!-- Because we have child elements -->
+
+    <!-- See Datatypes for type= -->
+    <xs:attribute name="there" type="xs:string"/> <!-- See attribute Attributes -->
+    <xs:element name="another" type="xs:integer"/> <!-- See element Attributes -->
+
+  </xs:complexType>
+</xs:element>
+```
+
+- `NCName` = "no-colon-name" (namespace without prefix, it matters)
 
 1. `element` Attributes (`<xs:element name="elem">`)
 - `default=`/`fixed=`: default or unchangable (fixed) value
