@@ -172,7 +172,7 @@ SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
 
 | **SB-2** ://phpMyAdmin **> fruit**
 
-| **B-2** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/website.php
@@ -198,7 +198,7 @@ ls web
 - *website.php*
 - *style.css*
 
-| **B-3** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-3** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/website.php
@@ -250,7 +250,7 @@ SELECT name, type, have, count, prepared FROM fruit;
 
 | **SB-4** ://phpMyAdmin **> fruit** (Same)
 
-| **B-4** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/website.php
@@ -282,7 +282,7 @@ SELECT name, type, date_created FROM fruit;
 
 | **SB-5** ://phpMyAdmin **> fruit** (Same)
 
-| **B-5** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-5** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/website.php

@@ -85,7 +85,7 @@ ls web
 | **Header** : *On the first line*
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 ```
 
 | **Comments** : *Inside `<!-- -->`*
@@ -97,7 +97,7 @@ ls web
 | **Root Element** : *Wraps all tags, can be anything*
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 
 <iamrootelement>
   <!-- All other content -->
@@ -162,7 +162,7 @@ ls web
 </root>
 ```
 
-| **B-2** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -195,7 +195,7 @@ ls web
 </table>
 ```
 
-| **B-3** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-3** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -227,7 +227,7 @@ ls web
 </s:table>
 ```
 
-| **B-4** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -267,7 +267,7 @@ ls web
 <![CDATA[ " ' < > & ]]>
 ```
 
-| **B-5** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-5** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -348,15 +348,14 @@ ls web
 ```xml
 <!DOCTYPE root[
   <!ELEMENT person (one,two,also,there)>
+  <!ATTLIST person att (val1 | val2 | val3) "val1" >
   <!ELEMENT one (#PCDATA)>
   <!ELEMENT two (#PCDATA)>
   <!ELEMENT also (#PCDATA)>
   <!ELEMENT there (#PCDATA)>
   <!ELEMENT self_close EMPTY>
   <!ELEMENT attribs (#PCDATA)>
-  <!ATTLIST attribs
-    attr (val1 | val2 | val3)
-  >
+  <!ATTLIST attribs attr (val1 | val2 | val3) "val1" >
 ]>
 ```
 
@@ -364,7 +363,7 @@ ls web
 
 ```xml
 <root>
-  <person>
+  <person att="val1">
     <one>...</one>
     <two>...</two>
     <also>...</also>
@@ -401,6 +400,9 @@ ls web
 
 ```xml
 <!ELEMENT person (one,two,also,there)>
+<!ATTLIST person
+  attr (val1 | val2 | val3)
+>
 <!ELEMENT one (#PCDATA)>
 <!ELEMENT two (#PCDATA)>
 <!ELEMENT also (#PCDATA)>
@@ -418,12 +420,12 @@ ls web
 | **mainfile.xml** :
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 
 <!DOCTYPE root SYSTEM "validate.dtd">
 
 <root>
-  <person>
+  <person attr="val1">
     <one>...</one>
     <two>...</two>
     <also>...</also>
@@ -434,13 +436,28 @@ ls web
 </root>
 ```
 
-| **B-8** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-8** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/validate.xml
 ```
 
 *Note everything works just the same*
+
+**About `standalone="yes"`:**
+
+| **Validate-Only DTD** : (This XML document will only validate from DTD, not make corrections)
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+```
+
+- DTD will ***validate only, but not make corrections,*** if your `<?xml ?>` statement includes `standalone="yes"`
+- `standalone="yes"` does absolutely nothing else
+- `standalone="no"` is the default
+- When validating with `standalone="no"`, DTD will add missing requirements and adjust self-closing tags, et cetera
+- Only use `standalone="yes"` if you want DTD to validate, but not adjust XML; `standalone="no"` is redundant
+- `standalone=` has NO effect on XSD, which we prefer over DTD anyway
 
 #### B. XSD (XML Schema Definition)
 
@@ -464,7 +481,7 @@ ls web
 | **XSD** :
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 
 <root>
 
@@ -481,6 +498,8 @@ ls web
 
     <xs:element name="person"> <!-- Declare the <person> element -->
       <xs:complexType> <!-- The <person> element contains either attributes or child elements -->
+        <xs:attribute name="att" type="attrvallist" default="val1"/> <!-- Include the "attrvallist" options previously defined -->
+
         <xs:sequence> <!-- The order of child elements matters, optional -->
           <!-- Below we declare our various elements, self-closing tags because they contain no further definitions -->
           <xs:element name="one" type="xs:string"/>
@@ -505,7 +524,7 @@ ls web
 | **Content** :
 
 ```xml
-  <person>
+  <person attr="val1">
     <one>...</one>
     <two>...</two>
     <also>...</also>
@@ -520,7 +539,7 @@ ls web
 | **B-9** ://
 
 ```console
-localhost/web/validate.xml (<kbd>Ctrl</kbd> + R to reload)
+localhost/web/validate.xml (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 ```
 
 ##### Include XSD
@@ -542,7 +561,7 @@ ls web
 | **schema.xsd** :
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 
 <xs:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://inkisaverb.com/something"
@@ -559,6 +578,8 @@ ls web
 
   <xs:element name="person">
     <xs:complexType>
+      <xs:attribute name="att" type="attrvallist" default="val1"/>
+
       <xs:sequence>
 
         <xs:element name="one" type="xs:string"/>
@@ -582,11 +603,11 @@ ls web
 | **content.xml** :
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 
 <root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://inkisaverb.com/something schema.xsd">
-  <person>
+  <person attr="val1">
     <one>...</one>
     <two>...</two>
     <also>...</also>
@@ -597,7 +618,7 @@ ls web
 </root>
 ```
 
-| **B-10** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-10** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/validate.xml
@@ -614,7 +635,7 @@ localhost/web/validate.xml
 | **schema.xsd** :
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 
 <xs:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://inkisaverb.com/something.xsd"
@@ -624,7 +645,7 @@ localhost/web/validate.xml
 | **content.xml** :
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 
 <root xmlns:ns="http://inkisaverb.com/something"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -641,7 +662,7 @@ localhost/web/validate.xml
 | **schema.xsd** :
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 
 <xs:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 ```
@@ -649,7 +670,7 @@ localhost/web/validate.xml
 | **content.xml** :
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 
 <root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="schema.xsd"
@@ -673,7 +694,7 @@ ls web
 
 *Note only the XSD declarations changed, everything else is the same*
 
-| **B-11** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-11** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/validate.xml
@@ -1002,33 +1023,223 @@ localhost/web/validate.xml
 
 You can learn much more about XSD, this is enough for you to follow more advanced XSD elsewhere and later in these lessons
 
-### III. XSLT (CSS for XML)
+### III. XSLT (Extensible Stylesheet Language Transformations)
 
-| **7** :$
+**CSS for XML**
+
+An .xsl document is essentially HTML with embedded CSS, plus some logic (like `for-each` loops used in a `<table>`)
+
+Add style with this after the header:
+
+| **XSLT Declaration** :
+
+```xml
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl" ?>
+```
+
+#### A. Basic Demonstration
+
+*Take normal XML...*
+
+| **12** :$
 
 ```
-sudo cp core/12-style7.xml web/style.xml && \
-atom core/12-style7.xml \
+sudo cp core/12-style12.xml web/style.xml && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-style12.xml core/12-style12.xsl \
 ls web
 ```
 
-| **Style** :
+| **style.xml** :
 
 ```xml
+<?xml version="1.0" encoding="utf-8" ?>
 
+<root>
+
+  <visitor level="admin">
+    <name>John Doe</name>
+    <login>jdoe</login>
+    <phone>555-1212</phone>
+    <email>jdoe@verb.ink</email>
+    <sport type="skateboard"/>
+  </visitor>
+
+  <visitor level="user">
+    <name>Smithy Mars</name>
+    <login>smithymars</login>
+    <phone>555-1515</phone>
+    <email>smithy@inkisaverb.com</email>
+    <sport type="soccer"/>
+  </visitor>
+
+  <visitor level="user">
+    <name>Marshan Wills</name>
+    <login>mwills</login>
+    <phone>555-2727</phone>
+    <email>marwills@verb.vip</email>
+    <sport type="golf"/>
+  </visitor>
+
+  <visitor level="user">
+    <name>Jupiter Song</name>
+    <login>jupitersong</login>
+    <phone>555-3535</phone>
+    <email>jupiters@verb.red</email>
+    <sport type="skateboard"/>
+  </visitor>
+
+  <visitor level="user">
+    <name>Neptune Lo</name>
+    <login>nlo</login>
+    <phone>555-0101</phone>
+    <email>nlo@verb.blue</email>
+    <sport type="skateboard"/>
+  </visitor>
+
+</root>
 ```
 
-| **Content** :
-
-```xml
-
-```
-
-| **B-7** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-12** ://
 
 ```console
-localhost/web/syntax.xml
+localhost/web/style.xml
 ```
+
+*You see the XML, let's add style with XSLT...*
+
+| **13** :$
+
+```
+sudo cp core/12-style13.xml web/style.xml && \
+sudo cp core/12-style13.xsl web/style.xsl && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-style13.xml core/12-style13.xsl \
+ls web
+```
+
+| **style.xml** : (Header only)
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="style.xsl" ?> <!-- Add style.xsl -->
+...
+```
+
+| **style.xsl** :
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:template match="/">
+
+    <html>
+      <body>
+        <h1>Visitors</h1>
+        <table border = "1">
+          <tr bgcolor = "#ddd">
+            <th>Name</th>
+            <th>Login</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Sport</th>
+            <th>Level</th>
+          </tr>
+
+          <xsl:for-each select="root/visitor"> <!-- Logic: for each <visitor> element -->
+            <xsl:sort select="name"/> <!-- Self-closing, a simple setting -->
+
+            <tr> <!-- Multiple table rows via <xsl:for-each> -->
+              <td><xsl:value-of select="name"/></td> <!-- Content of <name> -->
+              <td><xsl:value-of select="login"/></td> <!-- Content of <login> -->
+              <td><xsl:value-of select="phone"/></td> <!-- et cetera -->
+              <td><xsl:value-of select="email"/></td>
+              <td><xsl:value-of select="sport/@type"/></td>
+              <td><xsl:value-of select="@level"/></td> <!-- Select type= in <sport> -->
+            </tr>
+
+          </xsl:for-each>
+        </table>
+      </body>
+    </html>
+
+  </xsl:template>
+
+</xsl:stylesheet>
+```
+
+| **B-13** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/style.xml
+```
+
+*Now, you see a hideously styled table in HTML*
+
+#### B. `<xsl:template>`
+
+Usually, this is sufficient:
+
+```xml
+<xsl:template match="/"> <!-- Applies to entire XML document -->
+```
+
+Applies only to `<visitor>` element:
+
+```xml
+<xsl:template match="visitor"> <!-- Applies to entire XML document -->
+```
+
+But, `match=` is not the only attribute for `<xsl:template>`
+
+- At least `match=` or `name=` is required
+
+- `template` Attributes (`<xs:template name="someth">`)
+  - `match=`: XML path structure
+    - `"/"` = root element
+    - `"visitor"` = `<visitor>` element
+    - `"*"` = all elements
+  - `name=`: qualified name of template
+    - invoked through `<xsl:call-template>`
+  - `mode=`: to process same XML data multiple ways
+    - matches `mode=` value of `<xsl:apply-templates>`
+  - `priority=`: any number other than infinity
+
+- Eg `mode=` & `<xsl:apply-templates>`
+  - Note use of `mode="color-red"`
+  - The same information would be applied two different ways, two different times
+
+```xml
+<xsl:apply-templates select="visitor"/>
+<xsl:template match="visitor">
+  <td>
+    <xsl:value-of select="name"/>
+  </td>
+</xsl:template>
+
+<xsl:apply-templates select="visitor" mode="color-red"/>
+<xsl:template match="visitor" mode="color-red">
+  <td bgcolor = "red">
+    <xsl:value-of select="name"/>
+  </td>
+</xsl:template>
+```
+
+- Eg `name=` & `<xsl:call-template>`
+  - Note use of `name="color-blue"`
+  - The same information would be applied two different ways, two different times
+
+```xml
+<xsl:template match="visitor" name="color-blue">
+  <td bgcolor = "blue">
+    <xsl:value-of select="name"/>
+  </td>
+</xsl:template>
+
+<xsl:call-template select="visitor" name="color-blue"/>
+```
+
 
 
 ### XML
@@ -1086,7 +1297,7 @@ ls web
 ```
 
 
-| **B-26** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-26** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/settings.php

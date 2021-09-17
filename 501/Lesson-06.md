@@ -173,7 +173,7 @@ ls web
   - *`ajaxHandler.send("go=AJAX&time=5")`*
 - *ajax_responder.php processes POST arguments*
 
-| **B-3** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-3** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
@@ -193,7 +193,7 @@ atom core/06-ajax4.php && \
 ls web
 ```
 
-| **B-4** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
@@ -282,7 +282,7 @@ ls web
   3. *JavaScript runs AJAX to send the `<form>` data*
 - ***This uses the JavaScript object called "`FormData`"***
 
-| **B-5** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-5** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
@@ -406,7 +406,7 @@ ls web
   4. *AJAX responds with a new `<form>`*
   5. *JavaScript runs `listenToForm();` again, to listen for `<input="submit">` again*
 
-| **B-6** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-6** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
@@ -479,7 +479,7 @@ ls web
 - *Because the `<button>` calls the AJAX JS function, we don't need to run the function on every AJAX response*
 
 
-| **B-7** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-7** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php

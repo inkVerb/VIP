@@ -130,7 +130,7 @@ atom core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions2.ph
 ls web
 ```
 
-| **B-3** :// *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-3** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/edit.php
@@ -244,7 +244,7 @@ atom core/08-edit3.php core/08-in.editprocess3.php && \
 ls web
 ```
 
-| **B-7** :// *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-7** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/edit.php
@@ -582,7 +582,7 @@ src='tinymce/tinymce.min.js'
 https://github.com/tinymce/tinymce-dist
 ```
 
-| **B-16** :// *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-16** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/tiny.html
@@ -615,7 +615,7 @@ ls web
 *- `content_css`: should be our style.css file so "Preview" uses our styling*
 
 
-| **B-17** :// *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-17** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/tiny.html
@@ -746,7 +746,7 @@ src="medium/js/medium-editor.js"
 https://github.com/inkverb/medium-editor
 ```
 
-| **B-20** :// *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-20** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/medium.html
@@ -801,7 +801,7 @@ ls web
   - *This puts the JavaScript* ***after*** *our "Content" `<textarea>` HTML element*
   - *This implements the* ***class*** *`medium_editor` for the Medium editor JavaScript to act on*
 
-| **B-22** :// *(<kbd>Ctrl</kbd> + R to reload)*
+| **B-22** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/edit.php

@@ -149,7 +149,7 @@ ls web
 - *pagify.php*
 - *postify.php*
 
-| **B-2** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -222,7 +222,7 @@ ls web
 - *pagify.php*
 - *postify.php*
 
-| **B-4** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -280,7 +280,7 @@ ls web
 - *This has a `while` loop to delete each "dead" piece*
 
 
-| **B-6** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-6** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -342,7 +342,7 @@ ls web
 - *This isn't about beauty as much as it is about being more readable*
   - *This is called "UX theory" (User eXperience theory)*
 
-| **B-8** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-8** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -402,7 +402,7 @@ ls web
 - *Added a `.purple` class*
 - *Added a section for "htmldiff.js"*
 
-| **B-9** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-9** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -485,7 +485,7 @@ $new_id = $row[0];
   - *This bumped our old htmldiff DOM `<h2>` tags to `<h3>`*
   - *It is VERY important to preserve header hierarchy, starting with `<h1>` and going down*
 
-| **B-12** :// (or whatever ID, <kbd>Ctrl</kbd> + R to reload)
+| **B-12** :// (or whatever ID, <kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/hist.php?p=3
@@ -1024,7 +1024,7 @@ SELECT * FROM series;
 atom core/09-pieces6.php
 ```
 
-| **B-28** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-28** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1127,7 +1127,7 @@ ls web
   - *These call act.bulkpieces.php*
 
 
-| **B-30** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-30** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1157,7 +1157,7 @@ atom core/09-pieces8.php core/09-in.metaeditfunctions8.php core/09-ajax.piecesac
 ls web
 ```
 
-| **B-31** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-31** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1260,7 +1260,7 @@ ls web
   - *Changes the page more directly with AJAX calls*
   - *Changes the text of the "changed" button, while we're at it*
 
-| **B-33** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-33** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1411,7 +1411,7 @@ document.getElementById("title_"+p_id).innerHTML = '<b>'+jsonMetaEditResponse["t
 document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditResponse["message"]+'&nbsp;';
 ```
 
-| **B-35** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-35** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1445,7 +1445,7 @@ atom core/09-hist10.php && \
 ls web
 ```
 
-| **B-36** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-36** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1536,7 +1536,7 @@ init_instance_callback: function (editor) {
   - *`Notice hides` section, making class `.notehide` disappear after 8 seconds*
   - *Added `input[type=text].slug` so the slug `<input type="text"` isn't ridiculously long like before*
 
-| **B-37** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-37** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1597,7 +1597,7 @@ This autosave function serves many purposes, including nav warnings when changes
       - *`$_GET['a']`*
       - *`$_POST['old_as']`*
 
-| **B-38** :// (<kbd>Ctrl</kbd> + R to reload)
+| **B-38** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1606,7 +1606,7 @@ localhost/web/pieces.php
 1. Click "Edit" for any piece
 2. Type some changes in the "Content" (TinyMCE) field
 3. Wait 30 seconds and **DO NOT** press "<kbd>Ctrl</kbd> + <kbd>S</kbd>"
-4. Press "<kbd>Ctrl</kbd> + R" to reload the page
+4. Press "<kbd>Ctrl</kbd> + <kbd>R</kbd>" to reload the page
   - Agree to a warning to navigate away and leave the page
   - If there is no navigate away warning, you didn't wait long enough after changes
 5. When the page reloads, you will see the message about unsaved changes
