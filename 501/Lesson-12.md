@@ -1063,6 +1063,7 @@ ls web
     <phone>555-1212</phone>
     <email>jdoe@verb.ink</email>
     <sport type="skateboard"/>
+    <year>1995</year>
   </visitor>
 
   <visitor level="user">
@@ -1071,6 +1072,7 @@ ls web
     <phone>555-1515</phone>
     <email>smithy@inkisaverb.com</email>
     <sport type="soccer"/>
+    <year>1989</year>
   </visitor>
 
   <visitor level="user">
@@ -1079,6 +1081,7 @@ ls web
     <phone>555-2727</phone>
     <email>marwills@verb.vip</email>
     <sport type="golf"/>
+    <year>1990</year>
   </visitor>
 
   <visitor level="user">
@@ -1087,6 +1090,7 @@ ls web
     <phone>555-3535</phone>
     <email>jupiters@verb.red</email>
     <sport type="skateboard"/>
+    <year>2001</year>
   </visitor>
 
   <visitor level="user">
@@ -1095,6 +1099,7 @@ ls web
     <phone>555-0101</phone>
     <email>nlo@verb.blue</email>
     <sport type="skateboard"/>
+    <year>2010</year>
   </visitor>
 
 </root>
@@ -1144,6 +1149,7 @@ ls web
             <th>Phone</th>
             <th>Email</th>
             <th>Sport</th>
+            <th>Year</th>
             <th>Level</th>
           </tr>
 
@@ -1156,6 +1162,7 @@ ls web
               <td><xsl:value-of select="phone"/></td> <!-- et cetera -->
               <td><xsl:value-of select="email"/></td>
               <td><xsl:value-of select="sport/@type"/></td>
+              <td><xsl:value-of select="year"/></td>
               <td><xsl:value-of select="@level"/></td> <!-- Select type= in <sport> -->
             </tr>
 
@@ -1177,9 +1184,104 @@ localhost/web/style.xml
 
 *Now, you see a hideously styled table in HTML*
 
-#### B. `<xsl:template>`
+#### B. Logic
 
-Usually, this is sufficient:
+1. `<xsl:for-each select="">`
+- HTML to render for each content of multiple elements
+  - `select="some/path"` = `<some><path>This content here</path></some>`
+
+2. `<xsl:value-of select=""/>`
+- Content itself of an element
+  - `select="someth"` = `<someth>This content here</someth>`
+  - `select="someth/@attrib"` = `<someth attrib="This content here" />`
+
+3. `<xsl:sort select=""/>`
+- Sort `<xsl:for-each>` items by this value
+  - `<xsl:sort select="some/name"/>` = `<some><name>Sort by me</name></some>`
+- Attributes:
+  - `select=`: string
+  - `lang=`: language (`en`, `zh`)
+  - `data-type=`: "text" | "number" | [Some QName]
+  - `order=`: "ascending" | "descending"
+  - `case-order=`: "upper-first" | "lower-first"
+
+4. `<xsl:if test="">`
+- `test=`: expression with namespace and common operators
+  - `<xsl:if test="year > 1991">` = `<year>1992</year>` returns `true`
+
+5. `<xsl:choose><xsl:when test=""><xsl:otherwise test="">`
+- Usage:
+```xml
+<xsl:choose>
+  <xsl:when test="returns true">Do this</xsl:when>
+  <xsl:when test="else is true">Do this</xsl:when>
+  <xsl:otherwise>Do this</xsl:when>
+</xsl:choose>
+```
+- This is comparable to `if`; `elif`; `else`; `fi` in Shell/BASH
+
+| Shell               | PHP                 | XSLT                                             |
+| ------------------- |:-------------------:| ------------------------------------------------:|
+| `if [TEST]; then`   | `if (TEST) {…}`     | `<xsl:choose><xsl:when test="TEST">…</xsl:when>` |
+| `elif [TEST]; then` | `elseif (TEST) {…}` | `<xsl:when test="TEST">…</xsl:when>`             |
+| `else; …; fi`       | `else {…}`          | `<xsl:otherwise>…</xsl:otherwise></xsl:choose>`  |
+
+6. Operators (`<xsl:if test="">` & `<xsl:choose><xsl:when test="">`)
+- `<` is not allowed, use `&lt;`
+
+| `>`     | Greater than             |
+| `&lt;`  | Less than                |
+| `>=`    | Greater than or equal to |
+| `&lt;=` | Less than or equal to    |
+| `=`     | Equal to                 |
+| `!=`    | Not equal to             |
+
+
+
+- *We have seen:*
+  1. *`<xsl:for-each select="">`*
+  2. *`<xsl:value-of select=""/>`*
+  3. *`<xsl:sort select=""/>`*
+- *Now, let's see:*
+  4. *`<xsl:if test="">`*
+  5. *`<xsl:choose><xsl:when test="">`*
+  6. Operators
+
+| **14** :$
+
+```
+sudo cp core/12-style14.xsl web/style.xsl && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-style13.xml core/12-style14.xsl \
+ls web
+```
+
+| **style.xsl** :
+
+```xml
+<!-- <year> -->
+<td>
+  <xsl:choose> <!-- Open the test -->
+    <xsl:when test="year&lt;2000">Antique</xsl:when> <!-- if before 2000, HTML is "Antique" -->
+    <xsl:otherwise><xsl:value-of select="year"/></xsl:otherwise> <!-- else, HTML is <year> -->
+  </xsl:choose> <!-- Close the test -->
+</td>
+<td>
+  <xsl:if test="@level='admin'"> <!-- if level="admin" -->
+    <b><xsl:value-of select="@level"/></b> <!-- then HTML is level= with <b> tags -->
+  </xsl:if>
+</td>
+```
+
+| **B-14** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/style.xml
+```
+
+#### C. `<xsl:template>`
+
+Usually, this is sufficient for a single-template XML page:
 
 ```xml
 <xsl:template match="/"> <!-- Applies to entire XML document -->
@@ -1188,12 +1290,18 @@ Usually, this is sufficient:
 Applies only to `<visitor>` element:
 
 ```xml
-<xsl:template match="visitor"> <!-- Applies to entire XML document -->
+<xsl:template match="visitor"> <!-- Each/only <visitor> element -->
 ```
 
-But, `match=` is not the only attribute for `<xsl:template>`
+Applies all elements:
 
-- At least `match=` or `name=` is required
+```xml
+<xsl:template match="*"> <!-- All elements -->
+```
+
+`match=` is not the only attribute for `<xsl:template>`
+
+Either `match=` or `name=` is required
 
 - `template` Attributes (`<xs:template name="someth">`)
   - `match=`: XML path structure
@@ -1209,6 +1317,8 @@ But, `match=` is not the only attribute for `<xsl:template>`
 - Eg `mode=` & `<xsl:apply-templates>`
   - Note use of `mode="color-red"`
   - The same information would be applied two different ways, two different times
+
+| **`<xsl:template mode="">` viz `<xsl:apply-templates mode="">`** :
 
 ```xml
 <xsl:apply-templates select="visitor"/>
@@ -1230,6 +1340,8 @@ But, `match=` is not the only attribute for `<xsl:template>`
   - Note use of `name="color-blue"`
   - The same information would be applied two different ways, two different times
 
+| **`<xsl:template name="">` viz `<xsl:call-template name="">`** :
+
 ```xml
 <xsl:template match="visitor" name="color-blue">
   <td bgcolor = "blue">
@@ -1239,6 +1351,22 @@ But, `match=` is not the only attribute for `<xsl:template>`
 
 <xsl:call-template select="visitor" name="color-blue"/>
 ```
+
+Summary:
+
+- From [this article](https://stackoverflow.com/questions/4478045/), we read `<xsl:apply-templates>` may be more useful than `<xsl:call-template>`
+- We will not elaborate on use of `mode=` in `<xsl:template mode="">`, except to know:
+  - `<xsl:template name="">` may invoke with `<xsl:call-template name="">` (less useful)
+  - `<xsl:template mode="">` only invokes with `<xsl:apply-templates mode="">` (more useful)
+- Normally
+  - `<xsl:template match="/">` is sufficient in one template per XML page
+  - `<xsl:template match="some-element">` for a new template per `<some-element>`
+  - `<xsl:template match="*">` all elements
+
+
+
+
+
 
 
 
