@@ -1363,7 +1363,69 @@ Summary:
   - `<xsl:template match="some-element">` for a new template per `<some-element>`
   - `<xsl:template match="*">` all elements
 
+#### D. `<xsl:key>`
 
+| **XSL** :
+
+```xml
+<!-- Define the <xsl:key> -->
+<xsl:key name="call-something" match="element/path" use="container">
+
+<!-- Use the <xsl:key> -->
+<xsl:for-each select="key('call-something', 'Find me')">
+  <td>
+    <xsl:value-of select="title"/>
+    <xsl:value-of select="container"/>
+    <xsl:value-of select="other"/>
+  </td>
+</xsl:for-each>
+```
+
+- `<xsl:key>` Attributes:
+  - `name=`: QName, used when calling such as `some-name` in:
+    - `<xsl:for-each select="key('some-name', 'search-this')">`
+  - `match=`: XML path structure to parent element
+  - `use=`: actual element or attribute with contents to search when called
+- This is like a kind of pre-defined location with a nickname that can be used to search
+
+| **XML** :
+
+```xml
+<element>
+  <!-- Only this will return in the <xsl:for-each> statement -->
+  <path>
+    <title>My Title</title>
+    <container>Find me</container>
+    <other>Some tag</other>
+  </path>
+
+  <!-- These will NOT return in the <xsl:for-each> statement -->
+  <path>
+    <title>That Title</title>
+    <container>Find other</container>
+    <other>More</other>
+  </path>
+  <path>
+    <title>No Title</title>
+    <container>Contained</container>
+    <other>Other thing</other>
+  </path>
+</element>
+```
+
+#### E. `<xsl:message>`
+
+```xml
+<!-- If 'true', this will display a message in the debug -->
+<xsl:if test="test-something='true'">
+  <xsl:message terminate="yes">Some message in debug</xsl:message>
+</xsl:if>
+```
+
+- `<xsl:message>` Attributes:
+  - `terminate="no"`: Display message, but do NOT terminate XML processing (default)
+  - `terminate="yes"`: Display message, then terminate XML processing
+- The message may not be visible in the browser, but may require "developer mode" or be seen prominently in validation output
 
 
 
