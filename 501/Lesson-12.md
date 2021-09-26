@@ -1251,8 +1251,9 @@ localhost/web/style.xml
 
 ```
 sudo cp core/12-style14.xsl web/style.xsl && \
+sudo cp core/12-style14.xml web/style.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style13.xml core/12-style14.xsl \
+atom core/12-style14.xml core/12-style14.xsl \
 ls web
 ```
 
@@ -1279,7 +1280,9 @@ ls web
 localhost/web/style.xml
 ```
 
-#### C. `<xsl:template>`
+#### C. Other Elements
+
+##### 1. `<xsl:template>`
 
 Usually, this is sufficient for a single-template XML page:
 
@@ -1308,6 +1311,7 @@ Either `match=` or `name=` is required
     - `"/"` = root element
     - `"visitor"` = `<visitor>` element
     - `"*"` = all elements
+    - `"."` = current element
   - `name=`: qualified name of template
     - invoked through `<xsl:call-template>`
   - `mode=`: to process same XML data multiple ways
@@ -1321,18 +1325,26 @@ Either `match=` or `name=` is required
 | **`<xsl:template mode="">` viz `<xsl:apply-templates mode="">`** :
 
 ```xml
-<xsl:apply-templates select="visitor"/>
+<!-- Our HTML applies the templates for easy reading -->
+<html>
+  <body>
+    <xsl:apply-templates select="visitor"/>
+    <xsl:apply-templates select="login" mode="color-red"/>
+  </body>
+</html>
+
+<!-- After our HTML, define the templates where they are more complex -->
 <xsl:template match="visitor">
-  <td>
+  <p>
     <xsl:value-of select="name"/>
-  </td>
+  </p>
 </xsl:template>
 
-<xsl:apply-templates select="visitor" mode="color-red"/>
-<xsl:template match="visitor" mode="color-red">
-  <td bgcolor = "red">
-    <xsl:value-of select="name"/>
-  </td>
+
+<xsl:template match="login" mode="color-red">
+  <p color = "red">
+    <xsl:value-of select="login"/>
+  </p>
 </xsl:template>
 ```
 
@@ -1349,21 +1361,77 @@ Either `match=` or `name=` is required
   </td>
 </xsl:template>
 
-<xsl:call-template select="visitor" name="color-blue"/>
+<xsl:template match="visitor" name="color-green">
+  <td bgcolor = "green">
+    <xsl:value-of select="login"/>
+  </td>
+</xsl:template>
+
+<html>
+  <body>
+    <table>
+      <tr>
+        <xsl:call-template select="visitor" name="color-blue"/>
+        <xsl:call-template select="visitor" name="color-green"/>
+      </tr>
+    </table>
+  </body>
+</html>
+```
+
+- A template can use another template
+
+```xml
+<!-- HTML used <xsl:apply-templates> only once -->
+<html>
+  <body>
+    <h1>Visitors</h1>
+    <table>
+      <xsl:apply-templates select="root/visitor"/>
+    </table>
+  </body>
+</html>
+
+<!-- Define the main template -->
+<xsl:template match="root/visitor">
+  <tr>
+    <xsl:apply-templates select="name"/>
+    <xsl:apply-templates select="login"/>
+  </tr>
+</xsl:template>
+
+<!-- Define the templates the main template applies -->
+<xsl:template match="name">
+  <td bgcolor = "blue">
+    <xsl:value-of select="name"/>
+  </td>
+</xsl:template>
+
+<xsl:template match="login">
+  <td bgcolor = "green">
+    <xsl:value-of select="login"/>
+  </td>
+</xsl:template>
 ```
 
 Summary:
 
 - From [this article](https://stackoverflow.com/questions/4478045/), we read `<xsl:apply-templates>` may be more useful than `<xsl:call-template>`
 - We will not elaborate on use of `mode=` in `<xsl:template mode="">`, except to know:
-  - `<xsl:template name="">` may invoke with `<xsl:call-template name="">` (less useful)
-  - `<xsl:template mode="">` only invokes with `<xsl:apply-templates mode="">` (more useful)
+  - `<xsl:template name="">` invokes with `<xsl:call-template name="">`
+  - `<xsl:template mode="">` invokes with `<xsl:apply-templates mode="">`
+  - `<xsl:template match="">` invokes with `<xsl:call-template select="">`
+  - `<xsl:template match="">` invokes with `<xsl:apply-templates select="">`
+  - `<xsl:apply-templates>` can include another `<xsl:template>` definition
+  - `<xsl:apply-templates>` is more useful than `<xsl:call-template>` in many ways
+  - These tools are useful to keep the `<html>` structure of your code easier to read, without containing the elaborate `<xsl:template>` definitions
 - Normally
   - `<xsl:template match="/">` is sufficient in one template per XML page
   - `<xsl:template match="some-element">` for a new template per `<some-element>`
   - `<xsl:template match="*">` all elements
+  - `<xsl:template match=".">` current element
 
-#### D. `<xsl:key>`
+##### 2. `<xsl:key>`
 
 | **XSL** :
 
@@ -1413,7 +1481,9 @@ Summary:
 </element>
 ```
 
-#### E. `<xsl:message>`
+##### 3. `<xsl:message>`
+
+Mainly used for developers and debugging
 
 ```xml
 <!-- If 'true', this will display a message in the debug -->
@@ -1427,8 +1497,42 @@ Summary:
   - `terminate="yes"`: Display message, then terminate XML processing
 - The message may not be visible in the browser, but may require "developer mode" or be seen prominently in validation output
 
+##### 4. `<xsl:import>`
 
+Similar to `include`
 
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:import href="importme.xsl"/>
+
+  <xsl:template match="/">
+    <xsl:apply-imports/>
+  </xsl:template>
+
+</xsl:stylesheet>
+```
+
+##### 5. Rough Example
+
+| **15** :$
+
+```
+sudo cp core/12-style15.xsl web/style.xsl && \
+sudo cp core/12-style15.xml web/style.xml && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-style15.xml core/12-style15.xsl \
+ls web
+```
+
+| **B-15** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/style.xml
+```
+
+### IV. XML XPath
 
 
 
