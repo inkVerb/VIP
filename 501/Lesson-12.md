@@ -1244,7 +1244,7 @@ localhost/web/style.xml
   3. *`<xsl:sort select=""/>`*
 - *Now, let's see:*
   4. *`<xsl:if test="">`*
-  5. *`<xsl:choose><xsl:when test="">`*
+  5. *`<xsl:choose><xsl:when test=""><xsl:otherwise test="">`*
   6. Operators
 
 | **14** :$
@@ -1436,8 +1436,8 @@ Summary:
 | **XSL** :
 
 ```xml
-<!-- Define the <xsl:key> -->
-<xsl:key name="call-something" match="element/path" use="container">
+<!-- Define the <xsl:key> outside any <xsl:template> -->
+<xsl:key name="call-something" match="element/path" use="container"/>
 
 <!-- Use the <xsl:key> -->
 <xsl:for-each select="key('call-something', 'Find me')">
@@ -1481,23 +1481,7 @@ Summary:
 </element>
 ```
 
-##### 3. `<xsl:message>`
-
-Mainly used for developers and debugging
-
-```xml
-<!-- If 'true', this will display a message in the debug -->
-<xsl:if test="test-something='true'">
-  <xsl:message terminate="yes">Some message in debug</xsl:message>
-</xsl:if>
-```
-
-- `<xsl:message>` Attributes:
-  - `terminate="no"`: Display message, but do NOT terminate XML processing (default)
-  - `terminate="yes"`: Display message, then terminate XML processing
-- The message may not be visible in the browser, but may require "developer mode" or be seen prominently in validation output
-
-##### 4. `<xsl:import>`
+##### 3. `<xsl:import>`
 
 Similar to `include`
 
@@ -1514,19 +1498,68 @@ Similar to `include`
 </xsl:stylesheet>
 ```
 
-##### 5. Rough Example
+##### 4. `<xsl:message>`
+
+Mainly used for developers and debugging
+
+```xml
+<!-- If 'true', this will display a message in the debug -->
+<xsl:if test="test-something='true'">
+  <xsl:message terminate="yes">Some message in debug</xsl:message>
+</xsl:if>
+```
+
+- `<xsl:message>` Attributes:
+  - `terminate="no"`: Display message, but do NOT terminate XML processing (default)
+  - `terminate="yes"`: Display message, then terminate XML processing
+- The message may not be visible in the browser, but may require "developer mode" or be seen prominently in validation output
+
+
+##### 5. Rough Examples
 
 | **15** :$
 
 ```
-sudo cp core/12-style15.xsl web/style.xsl && \
 sudo cp core/12-style15.xml web/style.xml && \
+sudo cp core/12-style15.xsl web/style.xsl && \
 sudo chown -R www:www /srv/www/html && \
 atom core/12-style15.xml core/12-style15.xsl \
 ls web
 ```
 
 | **B-15** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/style.xml
+```
+
+*Note if you choose to trigger the `<message>` by setting `<meta><status>` empty, you'll never see the actual message! This is an old problem many XSL developers face; you'll need to write an entire new program just to see it; welcome to the group!*
+
+*Split up the same XSL sheet into multiple files with `<xsl:import>`*
+
+```xml
+<xsl:import href="somefile.xsl"/>
+
+<xsl:template match="/">
+  <xsl:apply-imports/>
+</xsl:template>
+```
+
+| **16** :$ *Copy 12-style15.xml again in case you make changes*
+
+```
+sudo cp core/12-style15.xml web/style.xml && \
+sudo cp core/12-style16.xsl web/style.xsl && \
+sudo cp core/12-structure16.xsl web/structure.xsl && \
+sudo cp core/12-meta16.xsl web/meta.xsl && \
+sudo cp core/12-heading16.xsl web/heading.xsl && \
+sudo cp core/12-visitors16.xsl web/visitors.xsl && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-style16.xsl core/12-structure16.xsl core/12-meta16.xsl core/12-heading16.xsl core/12-visitors16.xsl \
+ls web
+```
+
+| **B-16** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/style.xml
