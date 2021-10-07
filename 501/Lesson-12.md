@@ -1228,6 +1228,7 @@ localhost/web/style.xml
 
 6. Operators (`<xsl:if test="">` & `<xsl:choose><xsl:when test="">`)
 - `<` is not allowed, use `&lt;`
+- Common operators (not complete list)
 
 | `>`     | Greater than             |
 | `&lt;`  | Less than                |
@@ -1235,8 +1236,6 @@ localhost/web/style.xml
 | `&lt;=` | Less than or equal to    |
 | `=`     | Equal to                 |
 | `!=`    | Not equal to             |
-
-
 
 - *We have seen:*
   1. *`<xsl:for-each select="">`*
@@ -1566,6 +1565,57 @@ localhost/web/style.xml
 ```
 
 ### IV. XML XPath
+
+#### A. Path Syntax
+
+1. `some-element`: all nodes
+2. `//some-element`: all lower nodes from current node
+3. `/`: root
+4. `.`: current node
+5. `..`: parent node
+6. `*`: all elements
+7. `@*`: all attributes
+8. `@attrib`: prefix for attribute & value
+9. `/root/element/final`: absolute path from root
+10. `some-element/@attrib`: any `<some-element attrib="something">` returns `something`
+11. `some-element[1]`: index `[1]`, returns first occurrence of `<some-element>`
+12. `some-element[last()]`: returns last index item
+13. `some-element[@attrib="something"]`: matches contents of `<some-element attrib="something">`
+14. `some-element[child="something"]`: matches contents of `<some-element><child>something</child></some-element>`
+
+#### B. Operators
+
+| `>`     | Greater than             |
+| `&lt;`  | Less than                |
+| `>=`    | Greater than or equal to |
+| `&lt;=` | Less than or equal to    |
+| `+`     | Plus                     |
+| `-`     | Minus                    |
+| `*`     | Multiplied by            |
+| `div`   | Divided by               |
+| `mod`   | Modulus                  |
+| `=`     | Equal to                 |
+| `!=`    | Not equal to             |
+| `and`   | AND / `&&`               |
+| `or`    | OR / `||`                |
+| `not()` | not `(`condition `)`     |
+| `|`     | Two node sets            |
+
+##### C. Axes
+
+| `ancestor`           | All ancestors of current node                                                                   |
+| `ancestor-or-self`   | Current node and all ancestors of current node                                                  |
+| `attribute`          | All attributes of current node                                                                  |
+| `child`              | All children of current node                                                                    |
+| `descendant`         | All descendants of current node                                                                 |
+| `descendant-or-self` | Current node and all descendants of current node                                                |
+| `following`          | All nodes after closing tag of current node                                        |
+| `following-sibling`  | All siblings after current node                                                                 |
+| `namespace`          | All namespace nodes of current node                                                             |
+| `parent`             | Parent of current node                                                                          |
+| `preceding`          | All nodes that appear before current node, including attributes and namespace, except ancestors |
+| `preceding-sibling`  | All siblings before current node                                                                |
+| `self`               | Current node                                                                                    |
 
 
 
