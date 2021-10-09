@@ -228,13 +228,31 @@ exit
 - Download and install from **[atom.io](https://atom.io/)**
   - Debian/Ubuntu: .deb
   - Fedora/CentOS/openSUSE: .rpm
-- Archlinux: (packages already available)
+- Arch/Manjaro: (packages already available)
 ```bash
 sudo pacman -S apm
 apm install atom
 ```
 
-### V. HTML-CSS-JS Crash Course
+### V. XML CLI Tools (Lesson 12)
+
+- Arch/Majaro:
+
+| **AL1** :$
+
+```console
+sudo pacman -S --noconfirm libxml2
+```
+
+- Debian/Ubuntu:
+
+| **DL1** :$
+
+```console
+sudo apt install -y libxml2-utils
+```
+
+### VI. HTML-CSS-JS Crash Course
 - Timeline:
   - 1993: HTML
   - 1994: PHP

@@ -1,6 +1,8 @@
 # Shell 501
 ## Lesson 12: XML
 
+This lesson uses XML CLI tools install in [Lesson 0: Server, LAMP Setup & HTML Fast](https://github.com/inkVerb/vip/blob/master/501/Lesson-00.md)
+
 Ready the CLI
 
 ```console
@@ -1564,7 +1566,7 @@ ls web
 localhost/web/style.xml
 ```
 
-### IV. XML XPath
+### IV. XML XPath (Reference)
 
 #### A. Path Syntax
 
@@ -1616,6 +1618,10 @@ localhost/web/style.xml
 | `preceding`          | All nodes that appear before current node, including attributes and namespace, except ancestors |
 | `preceding-sibling`  | All siblings before current node                                                                |
 | `self`               | Current node                                                                                    |
+
+### V. XML via CLI
+
+
 
 
 
