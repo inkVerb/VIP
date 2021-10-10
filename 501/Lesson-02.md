@@ -11,6 +11,8 @@ ___
 
 ### SQL Language
 
+Created in 1979
+
 SQL is a database language used by many
 
 MySQL is one such database software
@@ -20,6 +22,8 @@ Other SQL database software includes:
 - SQLite
 - PostgreSQL
 - MariaDB (forked from MySQL by the original developers after MySQL was acquired by Oracle in 2009)
+
+SQL is a more secure, interactive alternative to XML, another way to store information data
 
 ## Optional Fix: If you have trouble logging in to MySQL
 ### This optional section requires a "sudoer" who can use `sudo`

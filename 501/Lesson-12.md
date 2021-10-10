@@ -20,7 +20,7 @@ ___
   - Looks like HTML, came after HTML to maximize HTML concepts, can't replace HTML
     - 1986: SGML (Standard Generalized Markup Language)
     - 1993: HTML (keeps updating, version 5 in 2021)
-    - 1996: XML (still using version 1.0)
+    - 1998: XML (still using version 1.0)
   - Using SGML:
     - HTML
     - XML
@@ -72,6 +72,7 @@ ___
   - Because XML isn't SQL
     - Query/parsing is optional, but not necessary
     - It is NOT secure; all information is public
+    - Illustration: XML is a grocery list on the wall, SQL is your credit card spending history
 
 #### A. Basic Structure
 

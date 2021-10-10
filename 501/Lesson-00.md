@@ -258,6 +258,7 @@ sudo apt install -y libxml2-utils
   - 1994: PHP
   - 1995: JavaScript
   - 1996: CSS
+  - 1998: XML
 - "Client languages" (browser language)
   - HTML
   - CSS
@@ -268,6 +269,8 @@ sudo apt install -y libxml2-utils
   - HTML is a manikin
   - CSS is the clothing
   - JavaScript "animates", so the manikin moves like a robot and changes clothes
+- XML borrows HTML framework, using it to organize information the way HTML organizes a webpage
+  - XML can be displayed like a webpage or used silently for software to access information data
 
 - Take the crash course:
   - [HTML CSS JS](https://github.com/inkVerb/HTML-CSS-JS/blob/master/README.md)
@@ -320,12 +323,17 @@ ___
 - You can use this same setup to develop real PHP-language web applications, just as it is
 - You can use this for other languages (Phython, Node, etc), just install them as you would on a web server
 
+## XML CLI Tools
+- You have some tools to manage XML from the command line
+  - XML is not only a language
+
 ## HTML, CSS & JS Crash Course
 - Timeline:
   - 1993: HTML
   - 1994: PHP
   - 1995: JavaScript
   - 1996: CSS
+  - 1998: XML
 - "Client languages" (browser language)
   - HTML
   - CSS
