@@ -26,18 +26,32 @@ ___
 su Username
 ```
 >
-> Install the tools:
+> Arch/Manjaro:
 >
-> | **M1** :$
+> | **A1** :$
+
+```console
+sudo pacman -Syy
+```
+>
+> | **A2** :$
+
+```console
+sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
+```
+>
+> Debian/Ubuntu:
+>
+> | **D1** :$
 
 ```console
 sudo apt update
 ```
 >
-> | **M2** :$
+> | **D2** :$
 
 ```console
-sudo apt install -y git dos2unix pwgen
+sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
 >
 > Optional: IF you logged in as a "sudoer", now exit
@@ -49,7 +63,7 @@ exit
 ```
 > ___
 >
-> | **0** :$ *If you did Shell 201, but on a different machine*
+> | **M3** :$
 
 ```console
 mkdir -p ~/School/VIP

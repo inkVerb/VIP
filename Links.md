@@ -3,6 +3,10 @@
 
 ## [The Linux Documentation Project: tldp.org](http://tldp.org)
 
+## Install Packages (Per Linux Distro)
+
+[command-not-found.com](http://command-not-found.com)
+
 ## Q&A
 
 [askubuntu.com](http://askubuntu.com)

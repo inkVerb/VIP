@@ -1517,7 +1517,7 @@ Mainly used for developers and debugging
 - The message may not be visible in the browser, but may require "developer mode" or be seen prominently in validation output
 
 
-##### 5. Rough Examples
+##### 5. Examples
 
 | **15** :$
 
@@ -1612,7 +1612,7 @@ localhost/web/style.xml
 | `child`              | All children of current node                                                                    |
 | `descendant`         | All descendants of current node                                                                 |
 | `descendant-or-self` | Current node and all descendants of current node                                                |
-| `following`          | All nodes after closing tag of current node                                        |
+| `following`          | All nodes after closing tag of current node                                                     |
 | `following-sibling`  | All siblings after current node                                                                 |
 | `namespace`          | All namespace nodes of current node                                                             |
 | `parent`             | Parent of current node                                                                          |
@@ -1622,9 +1622,233 @@ localhost/web/style.xml
 
 ### V. XML via CLI
 
+We use XML Path syntax with many other XML tools, including CLI tools
+
+| **17** :$
+
+```
+sudo cp core/12-example-17.xml web/example.xml && \
+sudo cp core/12-example-17.xml xml/example.xml && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-example-17.xml xml/example.xml \
+ls web
+```
+
+| **B-17** ://
+
+```console
+localhost/web/example.xml
+```
+
+
+```console
+
+xmlstarlet sel -t -v "count(//visitor)" xml/example.xml
+
+xmlstarlet sel -t -m "//visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v "@level" -o ")" -n xml/example.xml
+
+
+```
 
 
 
+
+### VI. Real Examples
+
+#### Use XMLStarlet to open an Open Document `.odt` file
+
+*Copy the `.odt` we want to use*
+
+| **XX** :$
+
+```
+cp test_uploads/markdown.odt xml/markdown.odt && \
+ls xml && \
+lowriter xml/markdown.odt &
+```
+
+*Create a directory (`odt`) and unzip the `.odt` file to that directory*
+
+| **XX** :$
+
+```
+mkdir odt && \
+unzip xml/markdown.odt -d odt/ && \
+ls odt
+```
+
+*Create a directory (`odt`) and unzip the `.odt` file to that directory*
+
+| **XX** :$
+
+```
+mkdir odt && \
+unzip xml/markdown.odt -d odt/ && \
+ls odt
+```
+
+*Note all the files and directories that came from the `.odt` file*
+
+*Especially note `content.xml`*
+
+*We don't need all this, so let's scrap it...*
+
+| **XX** :$
+
+```
+rm -r odt/* && \
+ls odt
+```
+
+*`unzip` allows you to dump the content of only one file as STDOUT output*
+
+| **XX** :$
+
+```
+unzip -p xml/markdown.odt content.xml
+```
+
+***That file, always called `content.xml`, is the only file we need for text inside any `.odt` file***
+
+*We can send the output to a file we want to use*
+
+| **XX** :$
+
+```
+unzip -p xml/markdown.odt content.xml > odt/markdown.xml && \
+atom odt/markdown.xml
+ls odt
+```
+
+*Let's use `xmlstarlet` to pull specific info from the `.odt` XML content...*
+
+*Output all headers*
+
+| **XX** :$
+
+```
+xmlstarlet sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "//text:*[text]" -v "@text:style-name='*'" -o " " -v . -n odt/markdown.xml
+```
+
+*Output all content:*
+
+| **XX** :$
+
+```
+xmlstarlet sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "//text:*[@text:outline-level]" -v "@text:outline-level" -o " " -v . -n odt/markdown.xml
+```
+
+#### RSS Feed from WordPress
+
+##### Simple CSS
+
+| **XX** :$
+
+```
+sudo cp xml/wordpress-css.rss web/wordpress.rss && \
+sudo cp xml/rss.css web/rss.css && \
+sudo chown -R www:www /srv/www/html && \
+atom xml/wordpress-css.rss xml/rss.css \
+ls web
+```
+
+| **B-XX** :// **`.rss`**
+
+```console
+localhost/web/wordpress.rss
+```
+
+*To apply XSL style, we must use a `.xml` extension...*
+
+| **XX** :$
+
+```
+sudo cp xml/wordpress-css.rss web/wordpress.xml && \
+sudo chown -R www:www /srv/www/html && \
+ls web
+```
+
+| **B-XX** :// **`.xml`**
+
+```console
+localhost/web/wordpress.xml
+```
+
+*Note the rendering does not have good formatting because it is only CSS, but nothing places HTML inside any `<html>` framework, so HTML never renders*
+
+*We see only styled text, not rendered HTML*
+
+*Rendering RSS via simple CSS is useful if the RSS feed only contains text with no HTML tags, such as news wires used for ages*
+
+*To render HTML, we need an XSL stylesheet...*
+
+##### XSL Stylesheet
+
+| **XX** :$
+
+```
+sudo cp xml/wordpress.rss web/wordpress.rss && \
+sudo cp xml/rss.xsl web/rss.xsl && \
+sudo chown -R www:www /srv/www/html && \
+atom xml/wordpress.rss xml/rss.xsl \
+ls web
+```
+
+| **B-XX** :// **`.rss`**
+
+```console
+localhost/web/wordpress.rss
+```
+
+*To apply XSL style, we must use a `.xml` extension...*
+
+| **XX** :$
+
+```
+sudo cp xml/wordpress.rss web/wordpress.xml && \
+sudo chown -R www:www /srv/www/html && \
+ls web
+```
+
+| **B-XX** :// **`.xml`**
+
+```console
+localhost/web/wordpress.xml
+```
+
+#### iTunes Podcast Feed
+
+| **XX** :$
+
+```
+sudo cp xml/podcast.rss web/podcast.rss && \
+sudo cp xml/rss.xsl web/rss.xsl && \
+sudo chown -R www:www /srv/www/html && \
+atom xml/wordpress.rss xml/rss.xsl \
+ls web
+```
+
+| **B-XX** :// **`.rss`**
+
+```console
+localhost/web/podcast.rss
+```
+
+*To apply XSL style, we must use a `.xml` extension...*
+
+| **XX** :$
+
+```
+sudo cp xml/podcast.rss web/podcast.xml && \
+sudo chown -R www:www /srv/www/html && \
+ls web
+```
+
+| **B-XX** :// **`.xml`**
+
+```console
+localhost/web/podcast.xml
+```
 
 ### XML
 - RSS feeds by tag & series

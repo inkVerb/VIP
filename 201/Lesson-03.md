@@ -10,6 +10,145 @@ cd ~/School/VIP/201
 
 ___
 
+## Arch/Manjaro
+
+*Check the Linux version info*
+
+| **1** :$
+
+```console
+lsb_release -a
+```
+
+*Get just the number*
+
+| **2** :$
+
+```console
+lsb_release -r -s
+```
+
+*Some commands require `sudo`, AKA "run as administrator"*
+
+*Not all users can run with `sudo`*
+
+### This lesson requires a "sudoer" who can use `sudo`
+>
+___
+> Optional: You may login as a "sudoer" if needed
+>
+> | **S1** :$
+
+```console
+su Username
+```
+>
+___
+
+### Packages & Repositories
+
+*See the list of all available software "packages"*
+
+| **3** :$
+
+```console
+pacman -Qm
+```
+
+*Those are installed from different "mirrors", listed here...*
+
+| **4** :$
+
+```console
+cat /etc/pacman.d/mirrorlist
+```
+
+*On Arch/Manjaro, all packages are installed from either:*
+
+- Arch Repository (AR, installed wtih `sudo pacman -S some-package`)
+- Arch User Repository (AUR, installed wtih `yay -S some-package`)
+  - While Debian/Ubuntu will add many repositories for non-native packages, all such "other" packages can often be found in the AUR
+  - The AUR also has packages that Debian/Ubuntu may not have, such as for Google Chrome
+  - It is important to know whether a package should be installed from:
+  	- AR via `sudo pacman -s`
+  	- AUR via `yay -S` (never `sudo`)
+  - Terminal AUR: `yay`
+    - `yay` stands for "Yet Another Yogurt" and must be installed on its own, which should have been done before starting these lessons
+  	- Installing `yay` requires `git` and compiling, many tutorials are available online for it
+  - Desktop AUR: Enable in Software settings
+  	- The AUR can also be accessed from the settings GUI:
+  	  - Add/Remove Software > "..." > Preferences > Third Party (or AUR): Then "Enable AUR Support"
+  	  - Then, you can install AUR packages from the GUI Software manager, but that does not affect AUR installation from the terminal
+
+### Maintenance & Upgrades
+
+*Update the current software package version lists (no updates are installed)*
+
+| **5** :$
+
+```console
+sudo pacman -Syy
+```
+
+*See what can packages on your machine have a new version available*
+
+| **6** :$
+
+```console
+sudo apt list --upgradable
+```
+
+*Upgrade (install updates)*
+
+| **7** :$ *If updates are available, you will need to press Y, then Enter*
+
+```console
+sudo pacman -Syyu
+```
+
+### Installing
+
+*Install the `git` package*
+
+| **8** :$ *Unless it is installed already, you will need to press Y, then Enter*
+
+```console
+sudo pacman -S git
+```
+
+*Install `cowsay`*
+
+| **9** :$ *Unless it is installed already, you will need to press Y, then Enter*
+
+```console
+sudo pacman -S cowsay
+```
+
+*You can install more than one package...*
+
+*Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `pwgen` and `unzip` packages*
+- *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
+
+| **10** :$ *Use `--noconfirm` so you DO NOT need to press Y, then Enter*
+
+```console
+sudo pacman -S --noconfirm curl net-tools htop odt2txt dos2unix pandoc pwgen unzip
+```
+
+### IF needed, `exit` from the other "sudoer"
+>
+___
+> Optional: IF you logged in as a "sudoer", now exit
+>
+> | **S2** :$
+
+```console
+exit
+```
+>
+
+## Debian/Ubuntu
+
 *Check the Linux version info*
 
 | **1** :$
@@ -97,7 +236,7 @@ sudo add-apt-repository ppa:graphics-drivers/ppa
 
 *Another way requires a "key" to be downloaded, usually from the terminal*
 
-*You may see any of these add-repo methods on websites under "install for Linux" instructions*
+*You may see any of these add-repo methods on websites under "install for Linux" instructions, this is for Debian/Ubuntu*
 
 ### Maintenance & Upgrades
 
@@ -148,13 +287,13 @@ sudo apt install cowsay
 
 *You can install more than one package...*
 
-*Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` and `pwgen` packages*
+*Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `pwgen` and `unzip` packages*
 - *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
 
 | **12** :$ *Use `-y` so you DO NOT need to press Y, then Enter*
 
 ```console
-sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc pwgen
+sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
 
 ### IF needed, `exit` from the other "sudoer"

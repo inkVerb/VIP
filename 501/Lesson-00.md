@@ -85,12 +85,59 @@ On a live, online web server, **`localhost`** could be **`inkisaverb.com`** or *
 ## Prepare
 
 ### I. OPTIONAL: If you did Shell 201, but on a different machine
+>
+> ___
+> Optional: You may login as a "sudoer" if needed
+>
+> | **S1** :$
 
-| **P1** :$
+```console
+su Username
+```
+>
+> Arch/Manjaro:
+>
+> | **A1** :$
+
+```console
+sudo pacman -Syy
+```
+>
+> | **A2** :$
+
+```console
+sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
+```
+>
+> Debian/Ubuntu:
+>
+> | **D1** :$
+
+```console
+sudo apt update
+```
+>
+> | **D2** :$
+
+```console
+sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
+```
+>
+> Optional: IF you logged in as a "sudoer", now exit
+>
+> | **S2** :$
+
+```console
+exit
+```
+> ___
+>
+> | **M3** :$
 
 ```console
 mkdir -p ~/School/VIP
 ```
+>
 
 ### This lesson requires a "sudoer" who can use `sudo`
 >
@@ -236,12 +283,17 @@ apm install atom
 
 ### V. XML CLI Tools (Lesson 12)
 
+```shell
+libxml2 # XML Lint
+xmlstarlet # XMLStarlet
+```
+
 - Arch/Majaro:
 
 | **AL1** :$
 
 ```console
-sudo pacman -S --noconfirm libxml2
+sudo pacman -S --noconfirm libxml2 xmlstarlet
 ```
 
 - Debian/Ubuntu:
@@ -249,7 +301,7 @@ sudo pacman -S --noconfirm libxml2
 | **DL1** :$
 
 ```console
-sudo apt install -y libxml2-utils
+sudo apt install -y libxml2-utils xmlstarlet
 ```
 
 ### VI. HTML-CSS-JS Crash Course

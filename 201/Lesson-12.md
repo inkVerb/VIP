@@ -497,6 +497,34 @@ ___
 
 Oh, what's this?
 
+## Arch/Manjaro
+
+| **A1** :$
+
+```console
+alsamixer
+```
+
+Don't have it yet?
+
+| **A2** :$
+
+```console
+sudo pacman -S --noconfirm alsa-utils
+```
+
+Learn more at the [alsamixer manual page](https://linux.die.net/man/1/alsamixer)
+
+Oh, and then there's this...
+
+| **A3** :$
+
+```console
+sudo pacman -S --noconfirm gnome-nibbles
+```
+
+## Debian/Ubuntu
+
 | **D1** :$
 
 ```console
@@ -510,8 +538,6 @@ Don't have it yet?
 ```console
 sudo apt install alsamixer
 ```
-
-*Some older Linux distros not supported*
 
 Learn more at the [alsamixer manual page](https://linux.die.net/man/1/alsamixer)
 
