@@ -8,7 +8,7 @@
 
 ### [Lesson 2: cd, ../.., mkdir, rm -r](https://github.com/inkVerb/vip/blob/master/201/Lesson-02.md)
 
-### [Lesson 3: Software – apt, lsb_release](https://github.com/inkVerb/vip/blob/master/201/Lesson-03.md)
+### [Lesson 3: Software, apt, pacman, lsb_release](https://github.com/inkVerb/vip/blob/master/201/Lesson-03.md)
 
 ### [Lesson 4: ls -1 -l -a -r, chmod](https://github.com/inkVerb/vip/blob/master/201/Lesson-04.md)
 
@@ -28,6 +28,8 @@
 
 ### [Lesson 12: File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md)
 
-FYI This section will install: `sudo apt install -y git curl net-tools htop odt2txt dos2unix pandoc pwgen`
+FYI This section will install:
+- Arch/Manjaro: `sudo pacman -S --noconfirm git curl net-tools htop odt2txt dos2unix pandoc pwgen unzip`
+- Debian/Ubuntu: `sudo apt install -y git curl net-tools htop odt2txt dos2unix pandoc pwgen unzip`
 
 You may do this before starting the lesson if you prefer

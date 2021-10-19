@@ -1,6 +1,5 @@
 # Shell 201
-## Lesson 3: Software – apt, lsb_release
-*`sudo`, `apt`, `update`, `upgrade`, `install`, `add-apt-repository`, `lsb_release`*
+## Lesson 3: Software, apt, pacman, lsb_release
 
 Ready the CLI
 
@@ -9,6 +8,12 @@ cd ~/School/VIP/201
 ```
 
 ___
+
+Arch & Manjaro use `pacman` to install and update software packages
+
+Debian & Ubuntu use `apt` or `apt-get` to install and update software packages
+
+These tools are called "package managers"
 
 ## Arch/Manjaro
 
@@ -55,9 +60,17 @@ ___
 pacman -Qm
 ```
 
-*Those are installed from different "mirrors", listed here...*
+*Those are available software packages, listed in these directories...*
 
 | **4** :$
+
+```console
+ls /var/lib/pacman/
+```
+
+*Those are installed from different "mirrors", listed here...*
+
+| **5** :$
 
 ```console
 cat /etc/pacman.d/mirrorlist
@@ -84,7 +97,7 @@ cat /etc/pacman.d/mirrorlist
 
 *Update the current software package version lists (no updates are installed)*
 
-| **5** :$
+| **6** :$
 
 ```console
 sudo pacman -Syy
@@ -92,15 +105,15 @@ sudo pacman -Syy
 
 *See what can packages on your machine have a new version available*
 
-| **6** :$
+| **7** :$
 
 ```console
-sudo apt list --upgradable
+sudo pacman -Qu
 ```
 
 *Upgrade (install updates)*
 
-| **7** :$ *If updates are available, you will need to press Y, then Enter*
+| **8** :$ *If updates are available, you will need to press Y, then Enter*
 
 ```console
 sudo pacman -Syyu
@@ -110,7 +123,7 @@ sudo pacman -Syyu
 
 *Install the `git` package*
 
-| **8** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **9** :$ *Unless it is installed already, you will need to press Y, then Enter*
 
 ```console
 sudo pacman -S git
@@ -118,7 +131,7 @@ sudo pacman -S git
 
 *Install `cowsay`*
 
-| **9** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **10** :$ *Unless it is installed already, you will need to press Y, then Enter*
 
 ```console
 sudo pacman -S cowsay
@@ -192,7 +205,7 @@ ___
 sudo apt list
 ```
 
-*Those are available from your current "repositories", listed here...*
+*Those are available software packages from your current "repositories", listed here...*
 
 | **4** :$
 
@@ -318,8 +331,13 @@ ___
 
 # The Take
 
+## Linux Version
 - `lsb_release -a` outputs information about the current version of Linux
 - `lsb_release -r -s` will only output the basic version number
+## Package Managers
+- Arch/Manjaro: `pacman`
+
+- Debian/Ubuntu: `apt`
 - `sudo apt list` outputs a list of *all* software packages that can be installed with `apt`
 - `sudo add-apt-repository ppa:NAME-OF-REPOSITORY/ppa` adds a repository as you can install more software packages
 - `sudo apt list --upgradable` outputs installed packages that have new versions available
@@ -330,6 +348,7 @@ ___
 - `-y` will tell `apt` to automatically answer "yes" rather than prompting
   - eg:`sudo apt install -y cowsay`
 - *Note `sudo apt remove package-to-remove` will remove (uninstall) a package*
+
 ## Ways to fix some problems
 - `sudo apt update --fix-missing` can fix some problems
 - With the **"some packages were held back"** error message , these might fix the problem:
