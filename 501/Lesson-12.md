@@ -1620,9 +1620,11 @@ localhost/web/style.xml
 | `preceding-sibling`  | All siblings before current node                                                                |
 | `self`               | Current node                                                                                    |
 
-### V. XML via CLI
+### V. XML via CLI with XMLStarlet
 
-We use XML Path syntax with many other XML tools, including CLI tools
+XMLStarlet uses the terminal command `xml` or `xmlstarlet` if you prefer
+
+We use XML Path syntax with many other XML tools, including CLI tools like XMLStarlet
 
 | **17** :$
 
@@ -1640,38 +1642,39 @@ ls web
 localhost/web/example.xml
 ```
 
-
-```console
-
-xmlstarlet sel -t -v "count(//visitor)" xml/example.xml
-
-xmlstarlet sel -t -m "//visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v "@level" -o ")" -n xml/example.xml
-
-
-```
-
-
-
-
-### VI. Real Examples with XMLStarlet
-
-XmlStarlet uses the terminal command `xml` or `xmlstarlet` if you prefer
-
-#### Read & change content of a simple XML file
-
 | **XX** :$
 
 ```console
 atom xml/example.xml
 ```
 
-*Let's fetch some information...*
+*Let's fetch some information*
+
+*How many entries...*
 
 | **XX** :$
 
 ```console
-xml sel -t -v "//visitor[@login='mwills']/email" xml/example.xml
+xmlstarlet sel -t -v "count(//visitor)" xml/example.xml
 ```
+
+*Show entries nicely in the terminal*
+
+| **XX** :$
+
+```console
+xmlstarlet sel -t -m "//visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v "level" -o ")" -n xml/example.xml
+```
+
+*Get the email for Marshan Wills...*
+
+| **XX** :$
+
+```console
+xml sel -t -v "//visitor[name='Marshan Wills']/email" xml/example.xml
+```
+
+*Get the name for `<visitor login="jupitersong">`...*
 
 | **XX** :$
 
@@ -1687,6 +1690,14 @@ xml sel -t -v "//visitor[@login='jupitersong']/name" xml/example.xml
 
 ```console
 xml ed --inplace -u "//visitor[@login='jdoe']/@login" -v "johndoe" xml/example.xml
+
+sudo cp xml/example.xml web/example.xml
+```
+
+| **B-XX** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/example.xml
 ```
 
 *Change Joh Doe to a `user`...*
@@ -1705,6 +1716,14 @@ xml ed --inplace -u "//visitor[@login='jdoe']/level" -v "user" xml/example.xml
 
 ```console
 xml ed --inplace -u "//visitor[@login='johndoe']/level" -v "user" xml/example.xml
+
+sudo cp xml/example.xml web/example.xml
+```
+
+| **B-XX** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/example.xml
 ```
 
 *Make Smithy Mars an `admin`...*
@@ -1713,8 +1732,18 @@ xml ed --inplace -u "//visitor[@login='johndoe']/level" -v "user" xml/example.xm
 
 ```console
 xml ed --inplace -u "//visitor[@login='smithymars']/level" -v "admin" xml/example.xml
+
+sudo cp xml/example.xml web/example.xml
 ```
 
+| **B-XX** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/example.xml
+```
+
+
+### VI. Real Examples
 #### Hack an Open Document `.odt` file
 
 *Copy the `.odt` we want to use*
