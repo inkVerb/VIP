@@ -431,6 +431,7 @@ The `echo` message will not display, comment the `header()` line to see the mess
 *Review the diagrams above along side the following few steps...*
 
 | **12** :$
+
 ```
 sudo cp core/04-logout1.php web/logout.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -470,7 +471,8 @@ $_SESSION['just_logged_out'] = true;
 *Review the diagram above along side the following two steps...*
 
 | **13** :$
-```
+
+```console
 sudo cp core/04-logout2.php web/logout.php && \
 sudo cp core/04-login2.php web/webapp.php && \
 sudo chown -R www:www /srv/www/html && \

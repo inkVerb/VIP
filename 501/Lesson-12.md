@@ -78,7 +78,7 @@ ___
 
 | **1** :$
 
-```
+```console
 sudo cp core/12-syntax1.xml web/syntax.xml && \
 sudo chown -R www:www /srv/www/html && \
 atom core/12-syntax1.xml \
@@ -151,7 +151,7 @@ localhost/web/syntax.xml
 
 | **2** :$
 
-```
+```console
 sudo cp core/12-syntax2.xml web/syntax.xml && \
 atom core/12-syntax2.xml \
 ls web
@@ -179,7 +179,7 @@ localhost/web/syntax.xml
 
 | **3** :$
 
-```
+```console
 sudo cp core/12-syntax3.xml web/syntax.xml && \
 atom core/12-syntax3.xml \
 ls web
@@ -210,7 +210,7 @@ localhost/web/syntax.xml
 
 | **4** :$
 
-```
+```console
 sudo cp core/12-syntax4.xml web/syntax.xml && \
 atom core/12-syntax4.xml \
 ls web
@@ -240,7 +240,7 @@ localhost/web/syntax.xml
 
 | **5** :$
 
-```
+```console
 sudo cp core/12-syntax5.xml web/syntax.xml && \
 atom core/12-syntax5.xml \
 ls web
@@ -290,7 +290,7 @@ localhost/web/syntax.xml
 
 | **6** :$
 
-```
+```console
 sudo cp core/12-xmlrender6.php web/xmlrender.php && \
 sudo cp core/12-htaccess6 web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
@@ -339,7 +339,7 @@ localhost/web/xmlrender.xml
 
 | **7** :$
 
-```
+```console
 sudo cp core/12-validate7.xml web/validate.xml && \
 sudo chown -R www:www /srv/www/html && \
 atom core/12-syntax7.xml \
@@ -391,7 +391,7 @@ localhost/web/validate.xml
 
 | **8** :$
 
-```
+```console
 sudo cp core/12-validate8.xml web/validate.xml && \
 sudo cp core/12-validate8.dtd web/validate.dtd && \
 sudo chown -R www:www /srv/www/html && \
@@ -472,7 +472,7 @@ localhost/web/validate.xml
 
 | **9** :$
 
-```
+```console
 sudo cp core/12-validate9.xml web/validate.xml && \
 sudo chown -R www:www /srv/www/html && \
 atom core/12-syntax9.xml \
@@ -553,7 +553,7 @@ localhost/web/validate.xml (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 | **10** :$
 
-```
+```console
 sudo cp core/12-validate10.xml web/validate.xml && \
 sudo cp core/12-validate10.xsd web/validate.xsd && \
 sudo chown -R www:www /srv/www/html && \
@@ -688,7 +688,7 @@ localhost/web/validate.xml
 
 | **11** :$
 
-```
+```console
 sudo cp core/12-validate11.xml web/validate.xml && \
 sudo cp core/12-validate11.xsd web/validate.xsd && \
 atom core/12-validate11.xml core/12-validate11.xsd \
@@ -1046,7 +1046,7 @@ Add style with this after the header:
 
 | **12** :$
 
-```
+```console
 sudo cp core/12-style12.xml web/style.xml && \
 sudo chown -R www:www /srv/www/html && \
 atom core/12-style12.xml core/12-style12.xsl \
@@ -1118,7 +1118,7 @@ localhost/web/style.xml
 
 | **13** :$
 
-```
+```console
 sudo cp core/12-style13.xml web/style.xml && \
 sudo cp core/12-style13.xsl web/style.xsl && \
 sudo chown -R www:www /srv/www/html && \
@@ -1251,7 +1251,7 @@ localhost/web/style.xml
 
 | **14** :$
 
-```
+```console
 sudo cp core/12-style14.xsl web/style.xsl && \
 sudo cp core/12-style14.xml web/style.xml && \
 sudo chown -R www:www /srv/www/html && \
@@ -1521,7 +1521,7 @@ Mainly used for developers and debugging
 
 | **15** :$
 
-```
+```console
 sudo cp core/12-style15.xml web/style.xml && \
 sudo cp core/12-style15.xsl web/style.xsl && \
 sudo chown -R www:www /srv/www/html && \
@@ -1549,7 +1549,7 @@ localhost/web/style.xml
 
 | **16** :$ *Copy 12-style15.xml again in case you make changes*
 
-```
+```console
 sudo cp core/12-style15.xml web/style.xml && \
 sudo cp core/12-style16.xsl web/style.xsl && \
 sudo cp core/12-structure16.xsl web/structure.xsl && \
@@ -1626,7 +1626,7 @@ We use XML Path syntax with many other XML tools, including CLI tools
 
 | **17** :$
 
-```
+```console
 sudo cp core/12-example-17.xml web/example.xml && \
 sudo cp core/12-example-17.xml xml/example.xml && \
 sudo chown -R www:www /srv/www/html && \
@@ -1653,25 +1653,85 @@ xmlstarlet sel -t -m "//visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v 
 
 
 
-### VI. Real Examples
+### VI. Real Examples with XMLStarlet
 
-#### Use XMLStarlet to open an Open Document `.odt` file
+XmlStarlet uses the terminal command `xml` or `xmlstarlet` if you prefer
+
+#### Read & change content of a simple XML file
+
+| **XX** :$
+
+```console
+atom xml/example.xml
+```
+
+*Let's fetch some information...*
+
+| **XX** :$
+
+```console
+xml sel -t -v "//visitor[@login='mwills']/email" xml/example.xml
+```
+
+| **XX** :$
+
+```console
+xml sel -t -v "//visitor[@login='jupitersong']/name" xml/example.xml
+```
+
+*Let's start changing content*
+
+*Watch in Atom for this to change: `<visitor login="jdoe">`...*
+
+| **XX** :$
+
+```console
+xml ed --inplace -u "//visitor[@login='jdoe']/@login" -v "johndoe" xml/example.xml
+```
+
+*Change Joh Doe to a `user`...*
+
+| **XX** :$
+
+```console
+xml ed --inplace -u "//visitor[@login='jdoe']/level" -v "user" xml/example.xml
+```
+
+*Note nothing changed because we accessed `<visitor login="jdoe">`, but the `login=` was just changed to `johndoe`*
+
+*Try correctly...*
+
+| **XX** :$
+
+```console
+xml ed --inplace -u "//visitor[@login='johndoe']/level" -v "user" xml/example.xml
+```
+
+*Make Smithy Mars an `admin`...*
+
+| **XX** :$
+
+```console
+xml ed --inplace -u "//visitor[@login='smithymars']/level" -v "admin" xml/example.xml
+```
+
+#### Hack an Open Document `.odt` file
 
 *Copy the `.odt` we want to use*
 
 | **XX** :$
 
-```
+```console
 cp test_uploads/markdown.odt xml/markdown.odt && \
 ls xml && \
-lowriter xml/markdown.odt &
+lowriter xml/markdown.odt
 ```
 
 *Create a directory (`odt`) and unzip the `.odt` file to that directory*
 
 | **XX** :$
 
-```
+```console
 mkdir odt && \
 unzip xml/markdown.odt -d odt/ && \
 ls odt
@@ -1681,7 +1741,7 @@ ls odt
 
 | **XX** :$
 
-```
+```console
 mkdir odt && \
 unzip xml/markdown.odt -d odt/ && \
 ls odt
@@ -1689,22 +1749,13 @@ ls odt
 
 *Note all the files and directories that came from the `.odt` file*
 
-*Especially note `content.xml`*
-
-*We don't need all this, so let's scrap it...*
-
-| **XX** :$
-
-```
-rm -r odt/* && \
-ls odt
-```
+  - *Especially note `content.xml`*
 
 *`unzip` allows you to dump the content of only one file as STDOUT output*
 
 | **XX** :$
 
-```
+```console
 unzip -p xml/markdown.odt content.xml
 ```
 
@@ -1714,9 +1765,9 @@ unzip -p xml/markdown.odt content.xml
 
 | **XX** :$
 
-```
-unzip -p xml/markdown.odt content.xml > odt/markdown.xml && \
-atom odt/markdown.xml
+```console
+unzip -p xml/markdown.odt content.xml > xml/markdown.xml && \
+atom xml/markdown.xml
 ls odt
 ```
 
@@ -1726,16 +1777,47 @@ ls odt
 
 | **XX** :$
 
-```
-xmlstarlet sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "//text:*[text]" -v "@text:style-name='*'" -o " " -v . -n odt/markdown.xml
+```console
+xml sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "//text:*[@text:outline-level]" -v "@text:outline-level" -o " " -v . -n xml/markdown.xml
 ```
 
 *Output all content:*
 
 | **XX** :$
 
+```console
+xml sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "//text:*" -o " " -v . -n xml/markdown.xml
 ```
-xmlstarlet sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "//text:*[@text:outline-level]" -v "@text:outline-level" -o " " -v . -n odt/markdown.xml
+
+*Update content:*
+
+This will change every `<text:p>` node to contain "I was a paragraph, inserted by XMLStarlet."
+
+| **XX** :$
+
+```console
+xml ed --inplace -u "//text:p" -v "I was a paragraph, inserted by XMLStarlet." xml/markdown.xml
+```
+
+*Note the changes to markdown.xml in Atom*
+
+*Let's hack that `.odt` file and change it from the command line...*
+
+| **XX** :$
+
+```console
+xml ed --inplace -u "//text:p" -v "I was a paragraph, inserted by XMLStarlet." odt/content.xml
+cd odt
+zip -r ../xml/hacked.odt odt
+cd ..
+```
+
+*Look inside our hacked `.odt` file...*
+
+| **XX** :$
+
+```console
+lowriter xml/hacked.odt
 ```
 
 #### RSS Feed from WordPress
@@ -1744,7 +1826,7 @@ xmlstarlet sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "/
 
 | **XX** :$
 
-```
+```console
 sudo cp xml/wordpress-css.rss web/wordpress.rss && \
 sudo cp xml/rss.css web/rss.css && \
 sudo chown -R www:www /srv/www/html && \
@@ -1762,7 +1844,7 @@ localhost/web/wordpress.rss
 
 | **XX** :$
 
-```
+```console
 sudo cp xml/wordpress-css.rss web/wordpress.xml && \
 sudo chown -R www:www /srv/www/html && \
 ls web
@@ -1786,7 +1868,7 @@ localhost/web/wordpress.xml
 
 | **XX** :$
 
-```
+```console
 sudo cp xml/wordpress.rss web/wordpress.rss && \
 sudo cp xml/rss.xsl web/rss.xsl && \
 sudo chown -R www:www /srv/www/html && \
@@ -1804,7 +1886,7 @@ localhost/web/wordpress.rss
 
 | **XX** :$
 
-```
+```console
 sudo cp xml/wordpress.rss web/wordpress.xml && \
 sudo chown -R www:www /srv/www/html && \
 ls web
@@ -1820,7 +1902,7 @@ localhost/web/wordpress.xml
 
 | **XX** :$
 
-```
+```console
 sudo cp xml/podcast.rss web/podcast.rss && \
 sudo cp xml/rss.xsl web/rss.xsl && \
 sudo chown -R www:www /srv/www/html && \
@@ -1838,7 +1920,7 @@ localhost/web/podcast.rss
 
 | **XX** :$
 
-```
+```console
 sudo cp xml/podcast.rss web/podcast.xml && \
 sudo chown -R www:www /srv/www/html && \
 ls web
@@ -1895,7 +1977,7 @@ localhost/web/podcast.xml
 ### Blog Settings
 
 | **12** :$
-```
+```console
 sudo cp core/11-settings.php web/settings.php && \
 sudo cp core/11-menus.php web/menus.php && \
 sudo cp core/11-series.php web/series.php && \
@@ -1915,7 +1997,7 @@ localhost/web/settings.php
 ### Pages to Process Our New Meta
 
 | **12** :$
-```
+```console
 sudo cp core/11-blog.php web/blog.php && \
 sudo cp core/11-piece.php web/piece.php && \
 sudo cp core/11-hist.php web/hist.php && \
