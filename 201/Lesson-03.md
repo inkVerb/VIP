@@ -119,11 +119,31 @@ sudo pacman -Qu
 sudo pacman -Syyu
 ```
 
+*Remove downloaded packages after they are installed*
+
+| **9** :$
+
+```console
+sudo pacman -Scc
+```
+
+*Remove unneeded packages, likely made obsolete after an upgrade*
+
+| **11** :$
+
+```console
+# AU
+sudo pacman -Rs $(pacman -Qdtq)
+
+# AUR
+sudo yay -Yc
+```
+
 ### Installing
 
 *Install the `git` package*
 
-| **9** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **11** :$ *Unless it is installed already, you will need to press Y, then Enter*
 
 ```console
 sudo pacman -S git
@@ -131,7 +151,7 @@ sudo pacman -S git
 
 *Install `cowsay`*
 
-| **10** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **12** :$ *Unless it is installed already, you will need to press Y, then Enter*
 
 ```console
 sudo pacman -S cowsay
@@ -142,10 +162,26 @@ sudo pacman -S cowsay
 *Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `pwgen` and `unzip` packages*
 - *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
 
-| **10** :$ *Use `--noconfirm` so you DO NOT need to press Y, then Enter*
+| **13** :$ *Use `--noconfirm` so you DO NOT need to press Y, then Enter*
 
 ```console
 sudo pacman -S --noconfirm curl net-tools htop odt2txt dos2unix pandoc pwgen unzip
+```
+
+### Uninstalling (for reference)
+
+*Uninstall a package*
+
+```console
+# AU
+sudo pacman -R some-package-name
+sudo pacman -Rs some-package-name # And remove dependencies
+sudo pacman -Rns some-package-name # And remove dependencies & configs
+
+# AUR
+sudo yay -R some-package-name
+sudo yay -Rs some-package-name # And remove dependencies
+sudo yay -Rns some-package-name # And remove dependencies & configs
 ```
 
 ### IF needed, `exit` from the other "sudoer"
@@ -280,11 +316,27 @@ sudo apt list --upgradable
 sudo apt upgrade
 ```
 
+*Remove downloaded packages after they are installed*
+
+| **10** :$
+
+```console
+sudo apt-get clean
+```
+
+*Remove unneeded packages, likely made obsolete after an upgrade*
+
+| **11** :$
+
+```console
+sudo apt-get autoremove
+```
+
 ### Installing
 
 *Install the `git` package*
 
-| **10** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **12** :$ *Unless it is installed already, you will need to press Y, then Enter*
 
 ```console
 sudo apt install git
@@ -292,7 +344,7 @@ sudo apt install git
 
 *Install `cowsay`*
 
-| **11** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **13** :$ *Unless it is installed already, you will need to press Y, then Enter*
 
 ```console
 sudo apt install cowsay
@@ -303,10 +355,24 @@ sudo apt install cowsay
 *Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `pwgen` and `unzip` packages*
 - *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
 
-| **12** :$ *Use `-y` so you DO NOT need to press Y, then Enter*
+| **14** :$ *Use `-y` so you DO NOT need to press Y, then Enter*
 
 ```console
 sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc pwgen unzip
+```
+
+### Uninstalling (for reference)
+
+*Uninstall a package*
+
+```console
+sudo apt-get remove some-package-name
+```
+
+*Uninstall a package and remove its settings*
+
+```console
+sudo apt-get remove --purge some-package-name
 ```
 
 ### IF needed, `exit` from the other "sudoer"
