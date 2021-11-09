@@ -603,7 +603,7 @@ ls web
 </xs:schema>
 ```
 
-| **content.xml** :
+| **contents.xml** :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -645,7 +645,7 @@ localhost/web/validate.xml
             >
 ```
 
-| **content.xml** :
+| **contents.xml** :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -670,7 +670,7 @@ localhost/web/validate.xml
 <xs:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 ```
 
-| **content.xml** :
+| **contents.xml** :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -1626,129 +1626,264 @@ XMLStarlet uses the terminal command `xml` or `xmlstarlet` if you prefer
 
 We use XML Path syntax with many other XML tools, including CLI tools like XMLStarlet
 
+*Note some arguments & flags*
+  - `sel`: select
+  - `ed`: edit
+  - `-L`: edit file inplace
+  - `-t`: template
+  - `-i`: insert
+  - `-s`: subnode
+  - `-v`: value
+  - `-r`: rename
+  - `-u`: update
+  - `-d`: delete
+
+#### Local address book
+
 | **17** :$
 
 ```console
-sudo cp core/12-example-17.xml web/example.xml && \
-sudo cp core/12-example-17.xml xml/example.xml && \
+mkdir -p xml && \
+sudo cp core/12-contacts.xml web/contacts.xml && \
+sudo cp core/12-style17.xsl web/style.xsl && \
+cp core/12-contacts.xml xml/contacts.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-example-17.xml xml/example.xml \
+atom core/12-contacts.xml core/12-style17.xsl xml/contacts.xml && \
 ls web
 ```
 
 | **B-17** ://
 
 ```console
-localhost/web/example.xml
-```
-
-| **XX** :$
-
-```console
-atom xml/example.xml
+localhost/web/contacts.xml
 ```
 
 *Let's fetch some information*
 
 *How many entries...*
 
-| **XX** :$
+| **18** :$
 
 ```console
-xmlstarlet sel -t -v "count(//visitor)" xml/example.xml
+xmlstarlet sel -t -v "count(//visitor)" xml/contacts.xml
 ```
 
 *Show entries nicely in the terminal*
 
-| **XX** :$
+| **19** :$
 
 ```console
-xmlstarlet sel -t -m "//visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v "level" -o ")" -n xml/example.xml
+xmlstarlet sel -t -m "//visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v "level" -o ")" -n xml/contacts.xml
 ```
+
+*The command `xml` points to `xmlstarlet`*
 
 *Get the email for Marshan Wills...*
 
-| **XX** :$
+| **20** :$
 
 ```console
-xml sel -t -v "//visitor[name='Marshan Wills']/email" xml/example.xml
+xml sel -t -v "//visitor[name='Marshan Wills']/email" xml/contacts.xml
 ```
 
 *Get the name for `<visitor login="jupitersong">`...*
 
-| **XX** :$
+| **21** :$
 
 ```console
-xml sel -t -v "//visitor[@login='jupitersong']/name" xml/example.xml
+xml sel -t -v "//visitor[@login='jupitersong']/name" xml/contacts.xml
 ```
 
-*Let's start changing content*
+*We can also change content*
 
 *Watch in Atom for this to change: `<visitor login="jdoe">`...*
 
-| **XX** :$
+| **22** :$
 
 ```console
-xml ed --inplace -u "//visitor[@login='jdoe']/@login" -v "johndoe" xml/example.xml
-
-sudo cp xml/example.xml web/example.xml
+xml ed --inplace -u "//visitor[@login='jdoe']/@login" -v "johndoe" xml/contacts.xml
+sudo cp xml/contacts.xml web/contacts.xml
 ```
 
-| **B-XX** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+*Watch John Doe's Login change to "johndoe"...*
+
+| **B-22** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
-localhost/web/example.xml
+localhost/web/contacts.xml
 ```
 
 *Change Joh Doe to a `user`...*
 
-| **XX** :$
+| **23** :$
 
 ```console
-xml ed --inplace -u "//visitor[@login='jdoe']/level" -v "user" xml/example.xml
+xml ed --inplace -u "//visitor[@login='jdoe']/level" -v "user" xml/contacts.xml
+```
+
+| **B-23** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/contacts.xml
 ```
 
 *Note nothing changed because we accessed `<visitor login="jdoe">`, but the `login=` was just changed to `johndoe`*
 
 *Try correctly...*
 
-| **XX** :$
+| **24** :$
 
 ```console
-xml ed --inplace -u "//visitor[@login='johndoe']/level" -v "user" xml/example.xml
-
-sudo cp xml/example.xml web/example.xml
+xml ed --inplace -u "//visitor[@login='johndoe']/level" -v "user" xml/contacts.xml
+sudo cp xml/contacts.xml web/contacts.xml
 ```
 
-| **B-XX** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-24** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
-localhost/web/example.xml
+localhost/web/contacts.xml
 ```
 
 *Make Smithy Mars an `admin`...*
 
-| **XX** :$
+| **25** :$
 
 ```console
-xml ed --inplace -u "//visitor[@login='smithymars']/level" -v "admin" xml/example.xml
-
-sudo cp xml/example.xml web/example.xml
+xml ed --inplace -u "//visitor[@login='smithymars']/level" -v "admin" xml/contacts.xml
+sudo cp xml/contacts.xml web/contacts.xml
 ```
 
-| **B-XX** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-25** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
-localhost/web/example.xml
+localhost/web/contacts.xml
 ```
 
+#### Settings file
 
-### VI. Real Examples
+XML can be used to store settings, such as on your desktop
+
+This is not a real settings file, but the settings for your desktop machine could look very similar to this
+
+| **26** :$
+
+```console
+cp core/12-settings.xml xml/settings.xml && \
+atom core/12-settings.xml xml/settings.xml && \
+ls xml
+```
+
+*Insert a `<display>` (wrong way)*
+
+| **27** :$
+
+```console
+xml ed -L -s /conf/displays -t elem -n display \
+    -i //display -t attr -n "id" -v "3" \
+    -s //display -t elem -n "order" -v "2" \
+    -s //display -t elem -n "brightness" -v "47" \
+    -s //display -t elem -n "mode" -v "join" \
+    -i //display/mode -t attr -n "mirror" -v "3" \
+    -s //display -t elem -n "wallpaper" -v "~/Pictures/james.jpg" \
+    -s //display -t elem -n "meta" -v "~/.config/device/sony-27" \
+    xml/settings.xml
+```
+
+*Note in Atom:*
+  - *We just made a mess: settings.xml `<display>` elements now have the new information, plus the new `<display>` entry with the same information*
+  - *All the empty lines were removed, which is good*
+    - *`xmlstarlet` will format the XML document to remove unneeded white space*
+
+*Start over...*
+
+| **28** :$ *Overwrite? Answer `y` for yes*
+
+```console
+cp core/12-settings.xml xml/settings.xml
+```
+
+*Tip: add strange whitespace in settings.xml, then watch it all disappear to perfect formatting*
+
+*Insert a display (right way: rename a stand-in called `displayINS`)*
+
+| **28** :$
+
+```console
+xml ed -L -s /conf/displays -t elem -n displayINS \
+    -i //displayINS -t attr -n "id" -v "3" \
+    -s //displayINS -t elem -n "order" -v "2" \
+    -s //displayINS -t elem -n "brightness" -v "47" \
+    -s //displayINS -t elem -n "mode" -v "join" \
+    -i //displayINS/mode -t attr -n "mirror" -v "3" \
+    -s //displayINS -t elem -n "wallpaper" -v "~/Pictures/james.jpg" \
+    -s //displayINS -t elem -n "meta" -v "~/.config/device/sony-27" \
+    -r //displayINS -v display \
+    xml/settings.xml
+```
+
+*Note:*
+  - *We start with the name `<displayINS>` as the new element inserted into `<displays>`*
+  - *Then we change the name from `<displayINS>` to `<display>`*
+    - *`-r //displayINS -v display`*
+  - *This way we only get our single, new `<display>` entry*
+  - *Whitespace was removed again, which is good*
+
+*Fetch the largest `<display id=`...*
+
+| **29** :$
+
+```console
+xml sel -t -v "/conf/displays/display[not(@id < /conf/displays/display/@id)]/@id[last()]" xml/settings.xml
+```
+
+*Let's delete that `<display>` entry...*
+
+| **30** :$
+
+```console
+xml ed -L -d "/conf/displays/display[@id='3']" xml/settings.xml
+```
+
+*Fetch the largest `<display id=` again...*
+
+| **31** :$
+
+```console
+xml sel -t -v "/conf/displays/display[not(@id < /conf/displays/display/@id)]/@id[last()]" xml/settings.xml
+```
+
+*Let's change the second display `<mode>` element so the second monitor will mirror the first...*
+
+| **32** :$
+
+```console
+xml ed -L -u "/conf/displays/display[@id='2']/mode" -v "mirror" \
+          -u "/conf/displays/display[@id='2']/mode/@mirror" -v "1" xml/settings.xml
+```
+
+*Change the `<mouse><type>pad ...<tracking>` to `relative`...*
+
+| **33** :$
+
+```console
+xml ed -L -u "/conf/mice/mouse[@id='2']/tracking" -v "relative" xml/settings.xml
+```
+
+*Change the speaker volume to 50%...*
+
+  - *You should guess that `<audio><adevice><type>out` is a probably a speaker, not a microphone*
+
+| **34** :$
+
+```console
+xml ed -L -u "/conf/audio/adevice[@id='1']/level" -v "50" xml/settings.xml
+```
+
 #### Hack an Open Document `.odt` file
 
 *Copy the `.odt` we want to use*
 
-| **XX** :$
+| **35** :$
 
 ```console
 cp test_uploads/markdown.odt xml/markdown.odt && \
@@ -1756,9 +1891,11 @@ ls xml && \
 lowriter xml/markdown.odt
 ```
 
+*Close LibreOffice Writer*
+
 *Create a directory (`odt`) and unzip the `.odt` file to that directory*
 
-| **XX** :$
+| **36** :$
 
 ```console
 mkdir odt && \
@@ -1766,23 +1903,15 @@ unzip xml/markdown.odt -d odt/ && \
 ls odt
 ```
 
-*Create a directory (`odt`) and unzip the `.odt` file to that directory*
-
-| **XX** :$
-
-```console
-mkdir odt && \
-unzip xml/markdown.odt -d odt/ && \
-ls odt
-```
-
-*Note all the files and directories that came from the `.odt` file*
+*Note all those files and directories that came from the `.odt` file*
 
   - *Especially note `content.xml`*
 
 *`unzip` allows you to dump the content of only one file as STDOUT output*
 
-| **XX** :$
+*We will use the xml directory to work with only the content file...*
+
+| **37** :$
 
 ```console
 unzip -p xml/markdown.odt content.xml
@@ -1792,19 +1921,19 @@ unzip -p xml/markdown.odt content.xml
 
 *We can send the output to a file we want to use*
 
-| **XX** :$
+| **38** :$
 
 ```console
 unzip -p xml/markdown.odt content.xml > xml/markdown.xml && \
-atom xml/markdown.xml
-ls odt
+atom xml/markdown.xml && \
+ls xml
 ```
 
 *Let's use `xmlstarlet` to pull specific info from the `.odt` XML content...*
 
 *Output all headers*
 
-| **XX** :$
+| **39** :$
 
 ```console
 xml sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "//text:*[@text:outline-level]" -v "@text:outline-level" -o " " -v . -n xml/markdown.xml
@@ -1812,7 +1941,7 @@ xml sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "//text:*
 
 *Output all content:*
 
-| **XX** :$
+| **40** :$
 
 ```console
 xml sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "//text:*" -o " " -v . -n xml/markdown.xml
@@ -1822,7 +1951,7 @@ xml sel -N text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" -t -m "//text:*
 
 This will change every `<text:p>` node to contain "I was a paragraph, inserted by XMLStarlet."
 
-| **XX** :$
+| **41** :$
 
 ```console
 xml ed --inplace -u "//text:p" -v "I was a paragraph, inserted by XMLStarlet." xml/markdown.xml
@@ -1830,34 +1959,38 @@ xml ed --inplace -u "//text:p" -v "I was a paragraph, inserted by XMLStarlet." x
 
 *Note the changes to markdown.xml in Atom*
 
-*Let's hack that `.odt` file and change it from the command line...*
+*Let's hack that `.odt` file in the odt directory and change it from the command line...*
 
-| **XX** :$
+| **42** :$
 
 ```console
 xml ed --inplace -u "//text:p" -v "I was a paragraph, inserted by XMLStarlet." odt/content.xml
 cd odt
-zip -r ../xml/hacked.odt odt
+zip -r ../xml/hacked.odt *
 cd ..
 ```
 
 *Look inside our hacked `.odt` file...*
 
-| **XX** :$
+| **43** :$
 
 ```console
 lowriter xml/hacked.odt
 ```
 
+### VI. PHP Integration
+
 #### RSS Feed from WordPress
 
-##### Simple CSS
+##### WP-RSS via Simple CSS
 
 | **XX** :$
 
 ```console
-sudo cp xml/wordpress-css.rss web/wordpress.rss && \
-sudo cp xml/rss.css web/rss.css && \
+sudo cp core/12-wordpress-css.rss web/wordpress.rss && \
+sudo cp core/12-wordpress-css.rss xml/wordpress-css.rss && \
+sudo cp core/12-rss.css web/rss.css && \
+sudo cp core/12-rss.css xml/rss.css && \
 sudo chown -R www:www /srv/www/html && \
 atom xml/wordpress-css.rss xml/rss.css \
 ls web
@@ -1869,7 +2002,7 @@ ls web
 localhost/web/wordpress.rss
 ```
 
-*To apply XSL style, we must use a `.xml` extension...*
+*To apply XSL style, we must use the `.xml` extension...*
 
 | **XX** :$
 
@@ -1893,13 +2026,15 @@ localhost/web/wordpress.xml
 
 *To render HTML, we need an XSL stylesheet...*
 
-##### XSL Stylesheet
+##### WP-RSS via XSL Stylesheet
 
 | **XX** :$
 
 ```console
-sudo cp xml/wordpress.rss web/wordpress.rss && \
-sudo cp xml/rss.xsl web/rss.xsl && \
+sudo cp core/12-wordpress-xsl.rss web/wordpress.rss && \
+sudo cp core/12-wordpress-xsl.rss xml/wordpress-xsl.rss && \
+sudo cp core/12-rss.xsl web/rss.xsl && \
+sudo cp core/12-rss.xsl xml/rss.xsl && \
 sudo chown -R www:www /srv/www/html && \
 atom xml/wordpress.rss xml/rss.xsl \
 ls web
@@ -1911,7 +2046,7 @@ ls web
 localhost/web/wordpress.rss
 ```
 
-*To apply XSL style, we must use a `.xml` extension...*
+*To apply XSL style, we must use the `.xml` extension...*
 
 | **XX** :$
 
@@ -1933,11 +2068,12 @@ localhost/web/wordpress.xml
 
 ```console
 sudo cp xml/podcast.rss web/podcast.rss && \
-sudo cp xml/rss.xsl web/rss.xsl && \
 sudo chown -R www:www /srv/www/html && \
 atom xml/wordpress.rss xml/rss.xsl \
 ls web
 ```
+
+*Note we are using the same rss.xsl file as in our WordPress example*
 
 | **B-XX** :// **`.rss`**
 
@@ -1945,7 +2081,7 @@ ls web
 localhost/web/podcast.rss
 ```
 
-*To apply XSL style, we must use a `.xml` extension...*
+*To apply XSL style, we must use the `.xml` extension...*
 
 | **XX** :$
 
