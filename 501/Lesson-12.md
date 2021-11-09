@@ -1978,8 +1978,6 @@ cd ..
 lowriter xml/hacked.odt
 ```
 
-### VI. PHP Integration
-
 #### RSS Feed from WordPress
 
 ##### WP-RSS via Simple CSS
@@ -2096,6 +2094,8 @@ ls web
 ```console
 localhost/web/podcast.xml
 ```
+
+### VI. PHP Integration
 
 ### XML
 - RSS feeds by tag & series
