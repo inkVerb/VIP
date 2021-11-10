@@ -1982,10 +1982,10 @@ lowriter xml/hacked.odt
 
 ##### WP-RSS via Simple CSS
 
-| **XX** :$
+| **44** :$
 
 ```console
-sudo cp core/12-wordpress-css.rss web/wordpress.rss && \
+sudo cp core/12-wordpress-css.rss web/wordpress-css.rss && \
 sudo cp core/12-wordpress-css.rss xml/wordpress-css.rss && \
 sudo cp core/12-rss.css web/rss.css && \
 sudo cp core/12-rss.css xml/rss.css && \
@@ -1994,26 +1994,25 @@ atom xml/wordpress-css.rss xml/rss.css \
 ls web
 ```
 
-| **B-XX** :// **`.rss`**
+| **B-44** :// **`.rss`**
 
 ```console
-localhost/web/wordpress.rss
+localhost/web/wordpress-css.rss
 ```
 
 *To apply XSL style, we must use the `.xml` extension...*
 
-| **XX** :$
+| **45** :$
 
 ```console
-sudo cp xml/wordpress-css.rss web/wordpress.xml && \
-sudo chown -R www:www /srv/www/html && \
-ls web
+sudo cp xml/wordpress-css.rss web/wordpress-css.xml && \
+sudo chown -R www:www /srv/www/html
 ```
 
-| **B-XX** :// **`.xml`**
+| **B-45** :// **`.xml`**
 
 ```console
-localhost/web/wordpress.xml
+localhost/web/wordpress-css.xml
 ```
 
 *Note the rendering does not have good formatting because it is only CSS, but nothing places HTML inside any `<html>` framework, so HTML never renders*
@@ -2026,54 +2025,54 @@ localhost/web/wordpress.xml
 
 ##### WP-RSS via XSL Stylesheet
 
-| **XX** :$
+| **46** :$
 
 ```console
-sudo cp core/12-wordpress-xsl.rss web/wordpress.rss && \
+sudo cp core/12-wordpress-xsl.rss web/wordpress-xsl.rss && \
 sudo cp core/12-wordpress-xsl.rss xml/wordpress-xsl.rss && \
 sudo cp core/12-rss.xsl web/rss.xsl && \
 sudo cp core/12-rss.xsl xml/rss.xsl && \
 sudo chown -R www:www /srv/www/html && \
-atom xml/wordpress.rss xml/rss.xsl \
+atom xml/wordpress-xsl.rss xml/rss.xsl && \
 ls web
 ```
 
-| **B-XX** :// **`.rss`**
+| **B-46** :// **`.rss`**
 
 ```console
-localhost/web/wordpress.rss
+localhost/web/wordpress-xsl.rss
 ```
 
 *To apply XSL style, we must use the `.xml` extension...*
 
-| **XX** :$
+| **47** :$
 
 ```console
-sudo cp xml/wordpress.rss web/wordpress.xml && \
-sudo chown -R www:www /srv/www/html && \
-ls web
+sudo cp xml/wordpress-xsl.rss web/wordpress-xsl.xml && \
+sudo chown -R www:www /srv/www/html
 ```
 
-| **B-XX** :// **`.xml`**
+| **B-47** :// **`.xml`**
 
 ```console
-localhost/web/wordpress.xml
+localhost/web/wordpress-xsl.xml
 ```
 
 #### iTunes Podcast Feed
 
-| **XX** :$
+| **48** :$
 
 ```console
-sudo cp xml/podcast.rss web/podcast.rss && \
+sudo cp core/12-podcast.rss web/podcast.rss && \
+sudo cp core/12-podcast.rss xml/podcast.rss && \
 sudo chown -R www:www /srv/www/html && \
-atom xml/wordpress.rss xml/rss.xsl \
+atom xml/podcast.rss && \
 ls web
 ```
 
 *Note we are using the same rss.xsl file as in our WordPress example*
 
-| **B-XX** :// **`.rss`**
+| **B-48** :// **`.rss`**
 
 ```console
 localhost/web/podcast.rss
@@ -2081,15 +2080,14 @@ localhost/web/podcast.rss
 
 *To apply XSL style, we must use the `.xml` extension...*
 
-| **XX** :$
+| **49** :$
 
 ```console
 sudo cp xml/podcast.rss web/podcast.xml && \
-sudo chown -R www:www /srv/www/html && \
-ls web
+sudo chown -R www:www /srv/www/html
 ```
 
-| **B-XX** :// **`.xml`**
+| **B-49** :// **`.xml`**
 
 ```console
 localhost/web/podcast.xml
