@@ -7,6 +7,20 @@ Ready the CLI
 cd ~/School/VIP/501
 ```
 
+Ready services
+
+Arch/Manjaro
+```console
+sudo systemctl start httpd
+sudo systemctl start mariadb
+```
+
+Debian/Ubuntu
+```console
+sudo systemctl start apache2
+sudo systemctl start mysql
+```
+
 - [Tests: Ternary Statements](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)
 - [Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
 

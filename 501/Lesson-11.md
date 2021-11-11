@@ -7,6 +7,20 @@ Ready the CLI
 cd ~/School/VIP/501
 ```
 
+Ready services
+
+Arch/Manjaro
+```console
+sudo systemctl start httpd
+sudo systemctl start mariadb
+```
+
+Debian/Ubuntu
+```console
+sudo systemctl start apache2
+sudo systemctl start mysql
+```
+
 ___
 
 Up until now, we have been using "procedural" PHP
@@ -1919,8 +1933,46 @@ There is much more you will be able to learn on your own
 
 For extra research, `prepare()` & `execute()` have more control with `bindParam()`, but that is beyond the scope of these lessons
 
-### IV. Rebuild Webapp for OOP
+### IV. Rebuild Webapp for PDO
 
+| **32** :$
+
+```console
+mysql -u admin -padminpassword
+```
+
+| **32** :>
+
+```console
+CREATE DATABASE blog_db;
+GRANT ALL PRIVILEGES ON blog_db.* TO blog_db_user@localhost IDENTIFIED BY 'blogdbpassword';
+FLUSH PRIVILEGES;
+QUIT;
+```
+
+**Now, we have these database credentials:** (The web app will ask for this on install)
+```
+Database name: blog_db
+Database user: blog_db_user
+Database password: blogdbpassword
+Database host: localhost
+```
+
+| **B-32** :// (fill-in from above)
+
+```console
+localhost/web/install.php
+```
+
+| **33** :$
+
+```console
+sudo rm -rf web/* && \
+sudo cp -r pdo/* web/ && \
+sudo chown -R www:www /srv/www/html && \
+atom pdo/*.php && \
+ls web
+```
 
 ___
 

@@ -7,6 +7,20 @@ Ready the CLI
 cd ~/School/VIP/501
 ```
 
+Ready services
+
+Arch/Manjaro
+```console
+sudo systemctl start httpd
+sudo systemctl start mariadb
+```
+
+Debian/Ubuntu
+```console
+sudo systemctl start apache2
+sudo systemctl start mysql
+```
+
 ### This lesson uses two terminals and two browser tabs!
 
 Ready the secondary SQL terminal and secondary SQL browser
@@ -115,6 +129,8 @@ while (mysqli_num_rows($call) != 0) {
 
 *then `break` when we get what we want*
 
+<!-- DEV NOTE: Why is this SQL statement here? It seems redundant from Lesson 4 install.php if using webapp_db -->
+
 | **2** :>
 
 ```sql
@@ -129,6 +145,8 @@ CREATE TABLE IF NOT EXISTS `strings` (
 GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';
 FLUSH PRIVILEGES;
 ```
+
+<!-- DEV NOTE end -->
 
 | **SB-2** ://phpMyAdmin **> strings**
 

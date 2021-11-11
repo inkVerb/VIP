@@ -7,6 +7,20 @@ Ready the CLI
 cd ~/School/VIP/501
 ```
 
+Ready services
+
+Arch/Manjaro
+```console
+sudo systemctl start httpd
+sudo systemctl start mariadb
+```
+
+Debian/Ubuntu
+```console
+sudo systemctl start apache2
+sudo systemctl start mysql
+```
+
 ### This lesson uses two terminals and two browser tabs!
 
 Ready the secondary SQL terminal and secondary SQL browser
@@ -34,7 +48,7 @@ localhost/phpMyAdmin/
 | **L0** :>
 
 ```console
-USE webapp_db
+USE webapp_db;
 ```
 
 *Webapp login: (after command 11)*
