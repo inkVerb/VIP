@@ -12,7 +12,7 @@ Ready services
 Arch/Manjaro
 ```console
 sudo systemctl start httpd
-sudo systemctl start mariadb
+sudo systemctl start mysql
 ```
 
 Debian/Ubuntu
@@ -1912,7 +1912,61 @@ ls web
 localhost/web/pdo.php (Same)
 ```
 
-#### Beyond
+### IV. Rebuild Webapp for PDO
+
+| **32** :$
+
+```console
+mysql -u admin -padminpassword
+```
+
+| **32** :>
+
+```console
+CREATE DATABASE blog_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL PRIVILEGES ON blog_db.* TO blog_db_user@localhost IDENTIFIED BY 'blogdbpassword';
+FLUSH PRIVILEGES;
+QUIT;
+```
+
+| **33** :$
+
+```console
+sudo rm -rf web/* && \
+sudo cp -r pdo/* web/ && \
+sudo chown -R www:www /srv/www/html && \
+atom pdo/*.php && \
+ls web
+```
+
+| **B-33** :// (fill-in from below)
+
+```console
+localhost/web/install.php
+```
+
+*Fill in the form with...*
+
+**Database info:** (We created in step 32)
+```
+Database name: blog_db
+Database username: blog_db_user
+Database password: blogdbpassword
+Database host: localhost
+```
+
+**Admin user:** (So we can remember)
+```
+Name: Jon Boy
+Username: jonboy
+Email: jon@verb.vip
+Favorite number: 12
+Password: My#1Password
+...Or, fill-out with anything you will remember
+```
+
+
+#### V. Beyond
 
 As a general rule, our current methods should be sufficient for any one-size-fits-all needs
 
@@ -1930,48 +1984,6 @@ You now have a basic understanding of OOP and PDO when working with PHP and SQL
 There is much more you will be able to learn on your own
 
 For extra research, `prepare()` & `execute()` have more control with `bindParam()`, but that is beyond the scope of these lessons
-
-### IV. Rebuild Webapp for PDO
-
-| **32** :$
-
-```console
-mysql -u admin -padminpassword
-```
-
-| **32** :>
-
-```console
-CREATE DATABASE blog_db;
-GRANT ALL PRIVILEGES ON blog_db.* TO blog_db_user@localhost IDENTIFIED BY 'blogdbpassword';
-FLUSH PRIVILEGES;
-QUIT;
-```
-
-**Now, we have these database credentials:** (The web app will ask for this on install)
-```
-Database name: blog_db
-Database user: blog_db_user
-Database password: blogdbpassword
-Database host: localhost
-```
-
-| **B-32** :// (fill-in from above)
-
-```console
-localhost/web/install.php
-```
-
-| **33** :$
-
-```console
-sudo rm -rf web/* && \
-sudo cp -r pdo/* web/ && \
-sudo chown -R www:www /srv/www/html && \
-atom pdo/*.php && \
-ls web
-```
-
 ___
 
 # The Take

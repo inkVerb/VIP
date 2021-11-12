@@ -13,7 +13,7 @@ Ready services
 Arch/Manjaro
 ```console
 sudo systemctl start httpd
-sudo systemctl start mariadb
+sudo systemctl start mysql
 ```
 
 Debian/Ubuntu
