@@ -197,7 +197,33 @@ sudo systemctl start mariadb
 sudo systemctl restart httpd
 ```
 
-  - Check for specific errors in Apache server configs
+*(Optionally, you can turn MySQL off with:)*
+
+| **Disable MySQL** :$
+
+```console
+sudo systemctl disable mariadb
+sudo systemctl stop mariadb
+```
+
+  - *(But, you will need to run this command each time you start lessons after reboot)*
+
+| **Start MySQL** :$
+
+```console
+sudo systemctl start mariadb
+```
+
+  - *(And, you can re-enable MySQL as a service with:)*
+
+| **Start MySQL** :$
+
+```console
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+```
+
+- Check for specific errors in Apache server configs
 
 | **A12** :$
 
@@ -323,7 +349,7 @@ sudo chown -R www:www /srv/www/html/phpMyAdmin
 Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`
 
-Login the first time with the same user you created in "MySQL via command line" above
+Login the first time with the same user you create in "MySQL via command line" (below)
 
 ---
 
@@ -348,6 +374,33 @@ sudo apt update
 ```console
 sudo apt install mysql-server php lamp-server^
 ```
+
+*(Optionally, you can turn MySQL off with:)*
+
+| **Disable MySQL** :$
+
+```console
+sudo systemctl disable mysql
+sudo systemctl stop mysql
+```
+
+  - *(But, you will need to run this command each time you start lessons after reboot)*
+
+| **Start MySQL** :$
+
+```console
+sudo systemctl start mysql
+```
+
+  - *(And, you can re-enable MySQL as a service with:)*
+
+| **Start MySQL** :$
+
+```console
+sudo systemctl enable mysql
+sudo systemctl start mysql
+```
+
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
 
@@ -558,7 +611,7 @@ sudo chown -R www-data:www-data /var/www/html/phpMyAdmin
 Now, you should be able to access this in your browser at the address:
 - `localhost/phpMyAdmin`
 
-Login the first time with the same user you created in "MySQL via command line" below
+Login the first time with the same user you create in "MySQL via command line" (below)
 
 7. (Optional) If you DO NOT want Apache to start automatically
 
@@ -577,54 +630,7 @@ sudo systemctl stop apache2
 sudo systemctl start apache2
 ```
 
-___
-
-## Arch/Debian
-
-### MySQL via Command Line
-
-1. Access MySQL as root user with
-
-| **M1** :$
-
-```console
-sudo mysql
-```
-
-2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
-
-| **M2** :>
-
-```console
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;
-```
-
-| **M3** :>
-
-```consoleFLUSH PRIVILEGES;`
-```
-
-3. Exit MySQL
-
-| **M4** :>
-
-```consoleQUIT;`
-```
-
-Access any MySQL user you created later with
-- `mysql -u USERNAME -p` (then enter the password)
-
-***If*** in Debian/Ubuntu and you ever need to wipe MySQL clean and completely start over:
-
-```sh
-sudo apt-get clean
-sudo apt-get purge mysql*
-sudo apt-get update
-sudo apt-get install -f
-sudo apt-get install mysql-server
-```
-
-### Debian/Ubuntu: Change the web user to `www`
+### Change the web user to `www` (for VIP Linux lessons)
 - The default web user on Debian & Ubuntu systems is `www-data`
 - This is complex to type every time the web directory needs to be owned
 - This makes commands incompatible with Arch/Manjaro servers
@@ -686,6 +692,55 @@ sudo chown -R www:www /var/www/html/phpMyAdmin
 
 ...This is how you will own the web directory from now on and in VIP Linux lessons
 
+___
+
+## Arch & Debian
+
+### MySQL via Command Line
+
+1. Access MySQL as root user with
+
+| **M1** :$
+
+```console
+sudo mysql
+```
+
+2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
+
+| **M2** :>
+
+```console
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;
+```
+
+| **M3** :>
+
+```console
+FLUSH PRIVILEGES;
+```
+
+3. Exit MySQL
+
+| **M4** :>
+
+```console
+QUIT;
+```
+
+Access any MySQL user you created later with
+- `mysql -u USERNAME -p` (then enter the password)
+
+***If*** in Debian/Ubuntu and you ever need to wipe MySQL clean and completely start over:
+
+```sh
+sudo apt-get clean
+sudo apt-get purge mysql*
+sudo apt-get update
+sudo apt-get install -f
+sudo apt-get install mysql-server
+```
+
 ### Make PHP More Secure
 
 | **P1** :$
@@ -712,6 +767,10 @@ Open php.ini and make these settings:
 
 ```console
 sudo vim /etc/php/7.2/apache2/php.ini
+```
+
+```console
+
 ```
 
 ```

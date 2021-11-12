@@ -98,7 +98,7 @@ return $someObject->someProperty;
 
 *See how it works...*
 
-| **Create a Class** :
+| **Define a Class** :
 
 ```php
 class aClass {
@@ -156,6 +156,7 @@ ls web
   - `website`
   - `slogan`
 - Use the `Topic` class as the framework to instantiate the object `$topicObject`
+- Nothing happens until after line 22; uncomment line 23 to make the script stop
 
 | **B-1** ://
 
@@ -393,14 +394,14 @@ Also, for security:
 | **Inherited Class** : (Properties)
 
 ```php
-// Create the parent
+// Define the parent
 class ParentClass {
 
   var $parentProperty;
 
 }
 
-// Create the child
+// Define the child
 class ChildClass extends ParentClass {
 
   var $childProperty;
@@ -443,7 +444,7 @@ localhost/web/oop.php (Same)
 | **Inherited Class** : (Properties & methods)
 
 ```php
-// Create the parent
+// Define the parent
 class ParentClass {
 
   var $parentProperty;
@@ -458,7 +459,7 @@ class ParentClass {
 
 }
 
-// Create the child
+// Define the child
 class ChildClass extends ParentClass {
 
   var $childProperty;
@@ -621,9 +622,8 @@ $this->staticA;
 
 *Note lines 9, 10, 37 & 38 show correct and incorrect usage of `static` properties*
 
-*Note lines 69, 71, 81, 83, 92 & 94 break the script because they call non-`static` property as if they were static*
-
-*Tip: comment lines 60-61 to see how calling static properties by class doesn't require any instantiated objects*
+  - *Lines 77, 79, 89, 91, 101 & 103 break the script because their methods call those non-`static` properties as if they were static*
+  - *Reverse-comment lines 9, 10, 37 & 38, then lines 77, 79, 89, 91, 101 & 103 will work*
 
 | **B-12** ://
 
@@ -664,9 +664,7 @@ echo classB::publicB();
 
 *Note calling a method through its class works only if it is `static`*
 
-*Note lines 37 & 39 break the script because they call non-`static` methods as if they were static*
-
-*Tip: comment lines 28-29 to see how calling static methods by class doesn't require any instantiated objects*
+*Note lines 45 & 47 break the script because they call non-`static` methods as if they were static*
 
 | **B-13** ://
 
@@ -695,7 +693,7 @@ private function privateMethod() { echo "foo"; };
 
 *Note non-`public` methods can only be used within visibility by other methods of the class, not outside the class statement*
 
-*Note lines 59, 61, 69, 71 & 77 break the script because they call functions outside of visibility scope*
+*Note lines 59, 61, 69, 71 & 77 break the script because they call methods outside of visibility scope*
 
 | **B-14** ://
 
@@ -781,7 +779,7 @@ atom core/11-oop16.php && \
 ls web
 ```
 
-*Note a `foreach` loop iterates `$properties`, but not `methods()` nor non-`public` `$properties`*
+*Note on `$object`, a `foreach` loop iterates `public` `$properties`, but not `methods()` nor non-`public` `$properties`*
 
 | **B-16** ://
 
@@ -811,7 +809,7 @@ atom core/11-oop17.php && \
 ls web
 ```
 
-*Note a `foreach` loop iterates all `$properties`, even non-`public` `$properties`, but still not `methods()`*
+*Note on `$object->getDefaultProperties()`, a `foreach` loop iterates all `$properties`, even non-`public` `$properties`, but still not `methods()`*
 
 | **B-17** ://
 
@@ -1999,7 +1997,7 @@ ___
       - Property usage: `SomeClass::$staticProperty`
       - Method usage: `SomeClass::staticMethod()`
 
-- Create a class:
+- Define a class:
 
 ```php
 class SomeClass {
@@ -2058,7 +2056,7 @@ echo $SomeObject->someMethod();
 echo $SomeObject->SOME_CONSTANT; // Fail empty
 ```
 
-- Create parent & child classes:
+- Define parent & child classes:
 
 ```php
 class ParentClass {
