@@ -11,14 +11,12 @@ Ready services
 
 Arch/Manjaro
 ```console
-sudo systemctl start httpd
-sudo systemctl start mysql
+sudo systemctl start httpd mysql
 ```
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2
-sudo systemctl start mysql
+sudo systemctl start apache2 mysql
 ```
 
 ### This lesson uses two terminals and two browser tabs!
@@ -673,9 +671,9 @@ setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 
 | **19** :$
 ```
-sudo cp core/04-accountsettings.php web/account.php && \
+sudo cp core/04-account.php web/account.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/04-accountsettings.php && \
+atom core/04-account.php && \
 ls web
 ```
 

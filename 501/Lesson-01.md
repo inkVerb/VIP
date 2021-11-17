@@ -11,14 +11,12 @@ Ready services
 
 Arch/Manjaro
 ```console
-sudo systemctl start httpd
-sudo systemctl start mariadb
+sudo systemctl start httpd mysql
 ```
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2
-sudo systemctl start mysql
+sudo systemctl start apache2 mysql
 ```
 
 - [Tests: Ternary Statements](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)

@@ -11,14 +11,12 @@ Ready services
 
 Arch/Manjaro
 ```console
-sudo systemctl start httpd
-sudo systemctl start mysql
+sudo systemctl start httpd mysql
 ```
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2
-sudo systemctl start mysql
+sudo systemctl start apache2 mysql
 ```
 
 ### This lesson uses two terminals and two browser tabs!
@@ -72,9 +70,9 @@ sudo cp core/09-in.footer.php web/in.footer.php && \
 sudo cp core/09-edit1.php web/edit.php && \
 sudo cp core/09-blog1.php web/blog.php && \
 sudo cp core/09-webapp.php web/webapp.php && \
-sudo cp core/09-accountsettings.php web/account.php && \
+sudo cp core/09-account.php web/account.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-pieces1.php core/09-in.head1.php core/09-in.logincheck.php core/09-in.footer.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-accountsettings.php && \
+atom core/09-pieces1.php core/09-in.head1.php core/09-in.logincheck.php core/09-in.footer.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-account.php && \
 ls web
 ```
 
@@ -388,7 +386,7 @@ sudo cp core/09-pieces6.php web/pieces.php && \
 sudo cp core/09-piece1.php web/piece.php && \
 sudo cp core/09-hist6.php web/hist.php && \
 git clone https://github.com/poetryisCODE/htmldiff.git && \
-sudo cp htmldiff.js/htmldiff.min.js web/ && \
+sudo cp htmldiff/htmldiff.min.js web/ && \
 sudo cp core/09-in.editprocess1.php web/in.editprocess.php && \
 sudo cp core/09-revert.php web/revert.php && \
 sudo cp core/09-style6.css web/style.css && \
@@ -602,12 +600,9 @@ localhost/web/jsonarrays.php
 | **13** :>
 
 ```sql
-ALTER TABLE `pieces`
-ADD `tags` JSON DEFAULT NULL;
-ALTER TABLE `publications`
-ADD `tags` JSON DEFAULT NULL;
-ALTER TABLE `publication_history`
-ADD `tags` JSON DEFAULT NULL;
+ALTER TABLE `pieces` ADD `tags` JSON DEFAULT NULL;
+ALTER TABLE `publications` ADD `tags` JSON DEFAULT NULL;
+ALTER TABLE `publication_history` ADD `tags` JSON DEFAULT NULL;
 ```
 
 *Note the new `tags` column...*
@@ -864,12 +859,9 @@ ls web
 | **22** :>
 
 ```sql
-ALTER TABLE `pieces`
-ADD `links` JSON DEFAULT NULL;
-ALTER TABLE `publications`
-ADD `links` JSON DEFAULT NULL;
-ALTER TABLE `publication_history`
-ADD `links` JSON DEFAULT NULL;
+ALTER TABLE `pieces` ADD `links` JSON DEFAULT NULL;
+ALTER TABLE `publications` ADD `links` JSON DEFAULT NULL;
+ALTER TABLE `publication_history` ADD `links` JSON DEFAULT NULL;
 ```
 
 *Note the new `links` column...*

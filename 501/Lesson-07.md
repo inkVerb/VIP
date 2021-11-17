@@ -11,14 +11,12 @@ Ready services
 
 Arch/Manjaro
 ```console
-sudo systemctl start httpd
-sudo systemctl start mysql
+sudo systemctl start httpd mysql
 ```
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2
-sudo systemctl start mysql
+sudo systemctl start apache2 mysql
 ```
 
 ### This lesson uses two terminals and two browser tabs!
@@ -79,9 +77,9 @@ sudo cp core/07-ajaxstring.php web/ajax_string.php && \
 sudo cp core/07-recover_login.php web/recover_login.php && \
 sudo cp core/07-webapp.php web/webapp.php && \
 sudo cp core/07-in.loginhead1.php web/in.login_head.php && \
-sudo cp core/07-accountsettings.php web/account.php && \
+sudo cp core/07-account.php web/account.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/07-recover2.php core/07-ajaxstring.php core/07-recover_login.php core/07-webapp.php core/07-in.loginhead1.php core/07-accountsettings.php && \
+atom core/07-recover2.php core/07-ajaxstring.php core/07-recover_login.php core/07-webapp.php core/07-in.loginhead1.php core/07-account.php && \
 ls web
 ```
 
@@ -95,7 +93,7 @@ ls web
 - *recover_login.php processes the random string as a GET value*
   - The string is tested in the database for a match and expiration date
   - If matched, the page redirects to webapp.php using `header`
-- *accountsettings.php has links for logout and the main webapp*
+- *account.php has links for logout and the main webapp*
 - *webapp.php replaced the login workflow an `include` for in.login_head.php*
 - *in.login_head.php:*
   - contains the login workflow that webapp used to

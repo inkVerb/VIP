@@ -11,14 +11,12 @@ Ready services
 
 Arch/Manjaro
 ```console
-sudo systemctl start httpd
-sudo systemctl start mysql
+sudo systemctl start httpd mysql
 ```
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2
-sudo systemctl start mysql
+sudo systemctl start apache2 mysql
 ```
 
 ### This lesson uses two terminals and two browser tabs!
@@ -559,10 +557,10 @@ ls web/uploads
 
 #### Dropzone.js
 
-- [GitHub repo](https://github.com/enyo/dropzone)
-- [GitHub fork](https://github.com/inkVerb/dropzone) (in case it doesn't work)
+- [GitHub repo](https://github.com/enyo/dropzone) (original, maintained)
+- [GitHub fork](https://github.com/inkVerb/dropzone) (legacy version used in this lesson)
 
-User-friendly uploading requires advanced JavaScript, which is beyond the scope of this PHP Stack course
+User-friendly uploading requires advanced JavaScript, which is beyond the scope of this Web Stack course
 
 This includes things like:
 
@@ -581,7 +579,7 @@ On your own, learn more about implementation at [dropzonejs.com](https://www.dro
 | **26** :$
 ```
 sudo mkdir web/dropzone_uploads && \
-git clone https://github.com/enyo/dropzone.git && \
+git clone https://github.com/inkVerb/dropzone.git && \
 sudo cp dropzone/dist/min/dropzone.min.css web/ && \
 sudo cp dropzone/dist/min/dropzone.min.js web/ && \
 sudo cp core/10-dropzone.html web/dropzone.html && \

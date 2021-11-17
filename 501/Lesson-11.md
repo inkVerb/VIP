@@ -11,14 +11,12 @@ Ready services
 
 Arch/Manjaro
 ```console
-sudo systemctl start httpd
-sudo systemctl start mysql
+sudo systemctl start httpd mysql
 ```
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2
-sudo systemctl start mysql
+sudo systemctl start apache2 mysql
 ```
 
 ___
@@ -1335,7 +1333,7 @@ localhost/web/pdo.php (Same)
 
 *Compare the usage: Which is easier?*
 
-|**Numbered Array** :
+| **Numbered Array** :
 
 ```php
   $f_name = "$row[1]";
@@ -1345,7 +1343,7 @@ localhost/web/pdo.php (Same)
   echo "Name: $f_name Color: $f_color Farm: $f_locale Sold in: $f_market<br>";
 ```
 
-|**Associative Array** :
+| **Associative Array** :
 
 ```php
 $f_name = "$row[name]";
@@ -1355,7 +1353,7 @@ $f_market = "$row[market]";
 echo "Name: $f_name Color: $f_color Farm: $f_locale Sold in: $f_market<br>";
 ```
 
-|**Object** :
+| **Object** :
 
 ```php
 echo "Name: $row->name Color: $row->color Farm: $row->locale Sold in: $row->market<br>";
@@ -1914,6 +1912,56 @@ localhost/web/pdo.php (Same)
 
 ### IV. Rebuild Webapp for PDO
 
+We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
+
+*Assuming we initiate with:* `$pdo = new DB;`...
+
+- *in.config.php:*
+  - $ `atom pdo/in.config.php procedural/in.config.php`
+  - *Methods:*
+    - `$pdo->insert()`
+    - `$pdo->delete()`
+    - `$pdo->update()`
+    - `$pdo->select()`
+    - *New method prefixes for some SQL calls:*
+      - `$pdo->key_` *for `BINARY` calls*
+      - `$pdo->try_` *for complex queries*
+  - *Properties we will use often:*
+    - `$pdo->change` *boolean check for SQL changes*
+    - `$pdo->lastid` *integer for newest SQL id*
+    - `$pdo->rows` *integer for number of rows*
+    - `$pdo->ok` *boolean check for success*
+  - *`static` method*
+    - `DB::esc()` *escapes for SQL `INSERT`/`UPDATE` calls*
+  - *`protected` method we can't use*
+    - `$this->pdo_error()`
+
+- *Good examples to note changes in:*
+  - *webapp.php*
+    - $ `atom pdo/webapp.php procedural/webapp.php`
+    - $ `diff pdo/webapp.php procedural/webapp.php`
+  - *blog.php*
+    - $ `atom pdo/blog.php procedural/blog.php`
+    - $ `diff pdo/blog.php procedural/blog.php`
+  - *in.editprocess.php (elaborate)*
+    - $ `atom pdo/in.editprocess.php procedural/in.editprocess.php`
+    - $ `diff pdo/in.editprocess.php procedural/in.editprocess.php`
+  - *Any file, in both pdo/ and procedural/*
+  - *`grep` for PDO in use*
+    - $ `grep -R 'DB::esc(' pdo/*`
+    - $ `grep -R 'pdo->insert(' pdo/*`
+    - $ `grep -R '$pdo->delete(' pdo/*`
+    - $ `grep -R '$pdo->update(' pdo/*`
+    - $ `grep -R '$pdo->select(' pdo/*`
+    - $ `grep -R '$pdo->key_' pdo/*`
+    - $ `grep -R '$pdo->try_' pdo/*`
+    - $ `grep -R '$pdo->change' pdo/*`
+    - $ `grep -R '$pdo->lastid' pdo/*`
+    - $ `grep -R '$pdo->rows' pdo/*`
+    - $ `grep -R '$pdo->ok' pdo/*`
+
+*Let's see the changes in action...*
+
 | **32** :$
 
 ```console
@@ -1934,8 +1982,16 @@ QUIT;
 ```console
 sudo rm -rf web/* && \
 sudo cp -r pdo/* web/ && \
+git clone https://github.com/inkverb/tinymce-dist.git && \
+sudo mv tinymce-dist web/tinymce && \
+git clone https://github.com/inkverb/dropzone.git && \
+sudo cp dropzone/dist/min/dropzone.min.css web/ && \
+sudo cp dropzone/dist/min/dropzone.min.js web/ && \
+rm -rf dropzone && \
+git clone https://github.com/poetryisCODE/htmldiff.git && \
+sudo cp htmldiff/htmldiff.min.js web/ && \
+rm -rf htmldiff && \
 sudo chown -R www:www /srv/www/html && \
-atom pdo/*.php && \
 ls web
 ```
 

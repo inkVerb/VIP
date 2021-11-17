@@ -1,4 +1,4 @@
-# Shell 501: PHP Stack
+# Shell 501: Web Stack
 
 ## Prerequisite: [Shell 401](https://github.com/inkVerb/VIP/tree/master/401)
 

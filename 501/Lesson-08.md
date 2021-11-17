@@ -11,14 +11,12 @@ Ready services
 
 Arch/Manjaro
 ```console
-sudo systemctl start httpd
-sudo systemctl start mysql
+sudo systemctl start httpd mysql
 ```
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2
-sudo systemctl start mysql
+sudo systemctl start apache2 mysql
 ```
 
 ### This lesson uses two terminals and two browser tabs!
@@ -522,8 +520,8 @@ This type of editor gives you buttons to add HTML style
 Usually, these use JavaScript to change the `<textarea>` you want as your editor
 
 #### TinyMCE
-- [GitHub repo](https://github.com/tinymce/tinymce-dist)
-- [GitHub fork](https://github.com/inkVerb/tinymce-dist) (in case it doesn't work)
+- [GitHub repo](https://github.com/tinymce/tinymce-dist) (original, maintained)
+- [GitHub fork](https://github.com/inkVerb/tinymce-dist) (legacy version used in this lesson)
 
 TinyMCE is a basic WISYWIG many people are familiar with
 
@@ -643,7 +641,7 @@ localhost/web/tiny.html
 sudo cp core/08-in.head3-tinymce.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions3.php web/in.piecefunctions.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-in.logincheck3-tinymce.php core/08-in.piecefunctions3.php && \
+atom core/08-in.head3-tinymce.php core/08-in.piecefunctions3.php && \
 ls web
 ```
 
