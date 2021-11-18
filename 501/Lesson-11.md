@@ -1922,7 +1922,8 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
     - `$pdo->insert()`
     - `$pdo->delete()`
     - `$pdo->update()`
-    - `$pdo->select()`
+    - `$pdo->select()` *(single row)*
+    - `$pdo->select_multi()` *(multiple rows)*
     - *New method prefixes for some SQL calls:*
       - `$pdo->key_` *for `BINARY` calls*
       - `$pdo->try_` *for complex queries*
