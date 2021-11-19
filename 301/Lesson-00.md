@@ -34,7 +34,7 @@ sudo pacman -Syy
 > | **A2** :$
 
 ```console
-sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
+sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc texlive-core pwgen unzip
 ```
 >
 > Debian/Ubuntu:

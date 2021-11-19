@@ -159,13 +159,14 @@ sudo pacman -S cowsay
 
 *You can install more than one package...*
 
-*Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `pwgen` and `unzip` packages*
+*Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `texlive-core` `pwgen` and `unzip` packages*
 - *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
+- *(the command `pandoc` requires the package `texlive-core` for .pdf files)*
 
 | **13** :$ *Use `--noconfirm` so you DO NOT need to press Y, then Enter*
 
 ```console
-sudo pacman -S --noconfirm curl net-tools htop odt2txt dos2unix pandoc pwgen unzip
+sudo pacman -S --noconfirm curl net-tools htop odt2txt dos2unix pandoc texlive-core pwgen unzip
 ```
 
 ### Uninstalling (for reference)
