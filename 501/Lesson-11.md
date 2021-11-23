@@ -67,7 +67,7 @@ This also explains the basic thinking inside Javascript
 #### A. Classes, Objects, Properties & Methods
 
 - **Class** - a framework or blueprint
-- **Object** - a class that we start using
+- **Object** - a class that we start using, including its properties and methods
 - **Property** - a variable in a class
 - **Method** - a function in a class
 
@@ -85,6 +85,8 @@ return $someVariable;
 ```php
 return $this->someMethod();
 return $this->someProperty;
+return self::staticMethod();
+return self::staticProperty;
 ```
 
 | **OOP PHP** : (Object syntax, outside the class statement)
@@ -92,6 +94,8 @@ return $this->someProperty;
 ```php
 return $someObject->someMethod();
 return $someObject->someProperty;
+return Class::staticMethod();
+return Class::staticProperty;
 ```
 
 *See how it works...*
@@ -629,7 +633,7 @@ $this->staticA;
 localhost/web/oop.php (Same)
 ```
 
-##### 3. `static` Methods
+##### 3. `static` Methods & Objects
 
 | **13** :$
 
@@ -662,7 +666,73 @@ echo classB::publicB();
 
 *Note calling a method through its class works only if it is `static`*
 
-*Note lines 45 & 47 break the script because they call non-`static` methods as if they were static*
+*Note lines 72 & 74 break the script because they call non-`static` methods as if they were static*
+
+| **Define `static` Object** :
+
+```php
+class staticDemo {
+
+  // Returns
+  static function say_something($string) {
+    return $string;
+  }
+
+  // Sets the $answer property
+  static $answer;
+  static function set_answer($string) {
+    self::$answer = $string; // Set $answer
+  }
+
+}
+```
+
+| **Use `static` Object** :
+
+```php
+// Returns
+staticDemo::say_something("Hello there, some world!");
+
+// Sets the $answer property
+staticDemo::set_answer("Hello there, valued world!");
+echo staticDemo::$answer;
+```
+
+| **Define `public` Object** :
+
+```php
+class nonStaticDemo {
+
+  // Returns
+  public function say_something($string) {
+    return $string;
+  }
+
+  // Sets the $answer property
+  public $answer;
+  public function set_answer($string) {
+    $this->$answer = $string; // Set $answer
+  }
+
+}
+```
+
+| **Use non-`static` Object** :
+
+```php
+// Instantiate
+$NonStaticDemo = new nonStaticDemo;
+
+// Returns
+$NonStaticDemo->say_something("Hello there, some world!");
+
+// Sets the $answer property
+$NonStaticDemo->set_answer("Hello there, valued world!");
+echo $NonStaticDemo->$answer;
+```
+
+
+*Note `class staticDemo` is never instantiated...*
 
 | **B-13** ://
 
@@ -1910,6 +1980,12 @@ ls web
 localhost/web/pdo.php (Same)
 ```
 
+*In out live webapp, we will use `PDO::prepare()` & `PDO::execute()` methods*
+
+- *This is the alternative to `mysqli_real_escape_string()`, with two benefits:*
+  - *It is more secure*
+  - *It is compatible across SQL drivers (not only MySQL, SQLite, etc)*
+
 ### IV. Rebuild Webapp for PDO
 
 We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
@@ -2096,15 +2172,17 @@ class SomeClass {
 }
 ```
 
-- Call inside a class statement:
+- Call objects inside a class statement:
 
 ```php
 return $this->someProperty;
 return $this->someMethod();
 return self::SOME_CONSTANT;
+return self::$someProperty;
+return self::someMethod();
 ```
 
-- Call from an uninstantiated class:
+- Call static objects from an uninstantiated class:
 
 ```php
 echo SomeClass::$staticProperty;

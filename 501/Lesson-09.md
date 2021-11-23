@@ -554,16 +554,21 @@ $php_arrayAS = json_decode($string_json, true); // From array as-JSON (AI) to PH
 $php_arrayAI = json_decode($string_json); // From arrays inside-JSON (AS) to PHP array (AS)
 ```
 
-**SQL matches JSON differently:**
+**MySQL vs MariaDB & standard SQL:**
+
+According to [this article](https://stackoverflow.com/a/51775308/10343144) and [MariaDB docs](https://mariadb.com/kb/en/library/json-data-type/), SQL standards do not allow JSON datatypes
+
+- MySQL allows a `JSON` datatype, accessed with `CAST('$json' AS JSON)`
+- MariaDB and standard SQL engines use `LONGTEXT`, accessed as normal text
 
 ```sql
-WHERE BINARY after='I am a sentence.' -- Exact, case-sensitive match (TEXT datatype)
-WHERE BINARY tags='[ "Apple", "Banana", "Ubuntu" ]' -- WILL NOT MATCH! (JSON datatype)
-WHERE tags='[ "Apple", "Banana", "Ubuntu" ]' -- WILL NOT MATCH! (JSON datatype)
-WHERE tags=CAST('[ "Apple", "Banana", "Ubuntu" ]' AS JSON) -- Matches (JSON datatype)
+-- Standard SQL & MariaDB
+WHERE tags='[ "Apple", "Banana", "Ubuntu" ]'
+-- MySQL for JSON datatype
+WHERE tags=CAST('[ "Apple", "Banana", "Ubuntu" ]' AS JSON)
 ```
 
-...trying to match JSON without `CAST('$json' AS JSON)` will return "Empty" (0 rows)
+We will ***not*** use the `JSON` datatype, but `LONGTEXT` for standard SQL cross-platform compatability
 
 *Try an example...*
 
@@ -595,14 +600,14 @@ localhost/web/jsonarrays.php
 
 | **13c** ://phpMyAdmin **> publication_history**
 
-*Add our `tags` JSON colums...*
+*Add our `tags` JSON columns as the `LONGTEXT` datatype...*
 
 | **13** :>
 
 ```sql
-ALTER TABLE `pieces` ADD `tags` JSON DEFAULT NULL;
-ALTER TABLE `publications` ADD `tags` JSON DEFAULT NULL;
-ALTER TABLE `publication_history` ADD `tags` JSON DEFAULT NULL;
+ALTER TABLE `pieces` ADD `tags` LONGTEXT DEFAULT NULL;
+ALTER TABLE `publications` ADD `tags` LONGTEXT DEFAULT NULL;
+ALTER TABLE `publication_history` ADD `tags` LONGTEXT DEFAULT NULL;
 ```
 
 *Note the new `tags` column...*
@@ -675,7 +680,7 @@ ls web
 - *piecefunctions.php*
 - *in.editprocess.php*
 
-*Note how in.editprocess.php processes `JSON` in SQL queries and `json_decode()` in PHP*
+*Note how in.editprocess.php processes JSON in SQL queries and `json_decode()` in PHP*
 
 *See the changes in our web browser...*
 
@@ -859,9 +864,9 @@ ls web
 | **22** :>
 
 ```sql
-ALTER TABLE `pieces` ADD `links` JSON DEFAULT NULL;
-ALTER TABLE `publications` ADD `links` JSON DEFAULT NULL;
-ALTER TABLE `publication_history` ADD `links` JSON DEFAULT NULL;
+ALTER TABLE `pieces` ADD `links` LONGTEXT DEFAULT NULL;
+ALTER TABLE `publications` ADD `links` LONGTEXT DEFAULT NULL;
+ALTER TABLE `publication_history` ADD `links` LONGTEXT DEFAULT NULL;
 ```
 
 *Note the new `links` column...*
