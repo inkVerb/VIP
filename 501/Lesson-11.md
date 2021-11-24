@@ -194,10 +194,10 @@ ls web
 
 *Note the methods don't take many arguments*
 
-| **B-2** ://
+| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 #### B. Polymorphism
@@ -227,10 +227,10 @@ ls web
   - It is a polymorphism
   - A polymorphism can become much more complicated if you want
 
-| **B-3** ://
+| **B-3** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 #### D. Instantiation: Constructor & Destructor
@@ -302,10 +302,10 @@ ls web
 
 *Note lines 16-19 (same as the example) would break the script, try uncommenting any of them to watch*
 
-| **B-4** ://
+| **B-4** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 *Let's expand...*
@@ -321,10 +321,10 @@ ls web
 
 *Note lines 16-19 (same as the example) would break the script, try uncommenting any of them to watch*
 
-| **B-5** ://
+| **B-5** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 ##### 2. `__destruct()` end of instantiation
@@ -338,10 +338,10 @@ atom core/11-oop6.php && \
 ls web
 ```
 
-| **B-6** ://
+| **B-6** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 Order doesn't matter...
@@ -357,10 +357,10 @@ ls web
 
 *Note this has the same contents, but in a random order, but it still executes in order*
 
-| **B-7** ://
+| **B-7** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 You can destroy an object by using `unset($object)`
@@ -376,10 +376,10 @@ ls web
 
 *Note the object can't be used after it is `unset()`*
 
-| **B-8** ://
+| **B-8** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 **Do not confuse** `__destruct()` with `unset()`
@@ -435,10 +435,10 @@ ls web
 
 *Note line 25 would break the script because the parent object tries to call a child property*
 
-| **B-9** ://
+| **B-9** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 *Let's expand...*
@@ -506,10 +506,10 @@ ls web
 
 *Note lines 44 & 52 would break the script because the parent object tries to call child methods*
 
-| **B-10** ://
+| **B-10** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 *For fun, uncomment line 44 and/or 52 and watch the page fail*
@@ -582,10 +582,10 @@ private $privateProp;
 
 *Note lines 52, 54, 59, 61, 70, 75 & 77 would either fail or break because they act outside of visibility scope*
 
-| **B-11** ://
+| **B-11** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 ##### 2. `static` Properties
@@ -627,13 +627,13 @@ $this->staticA;
   - *Lines 77, 79, 89, 91, 101 & 103 break the script because their methods call those non-`static` properties as if they were static*
   - *Reverse-comment lines 9, 10, 37 & 38, then lines 77, 79, 89, 91, 101 & 103 will work*
 
-| **B-12** ://
+| **B-12** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
-##### 3. `static` Methods & Objects
+##### 3. `static` Methods
 
 | **13** :$
 
@@ -666,7 +666,110 @@ echo classB::publicB();
 
 *Note calling a method through its class works only if it is `static`*
 
-*Note lines 72 & 74 break the script because they call non-`static` methods as if they were static*
+*Note lines 45 & 47 break the script because they call non-`static` methods as if they were static*
+
+| **B-13** :// (Same)
+
+```console
+localhost/web/oop.php
+```
+
+##### 4. Method Visibility
+
+| **14** :$
+
+```console
+sudo cp core/11-oop14.php web/oop.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-oop14.php && \
+ls web
+```
+
+| **Set Method Visibility** :
+
+```php
+public function publicMethod() { echo "foo"; };
+protected function protectedMethod() { echo "foo"; };
+private function privateMethod() { echo "foo"; };
+```
+
+*Note non-`public` methods can only be used within visibility by other methods of the class, not outside the class statement*
+
+*Note lines 59, 61, 69, 71 & 77 break the script because they call methods outside of visibility scope*
+
+| **B-14** :// (Same)
+
+```console
+localhost/web/oop.php
+```
+
+##### 5. Constants
+
+| **15** :$
+
+```console
+sudo cp core/11-oop15.php web/oop.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-oop15.php && \
+ls web
+```
+
+| **Set Constants with Visibility** :
+
+```php
+public const PUBLIC_CONST;
+protected const PROTECTED_CONST;
+private const PRIVATE_CONST;
+```
+
+| **Call Constants from within Class** :
+
+```php
+echo self::PUBLIC_CONST;
+echo self::PROTECTED_CONST;
+echo self::PRIVATE_CONST;
+```
+
+| **Call Constants from Uninstantiated Class** :
+
+```php
+echo classA::PUBLIC_CONST; // Success
+echo classA::PROTECTED_CONST; // Fail
+echo classA::PRIVATE_CONST; // Fail
+```
+
+Constants don't change, so call them from the class (above), not from an object (below)
+
+| **Empty** : (Calling a constant from an object won't work)
+
+```php
+echo $object->PUBLIC_CONST;
+// PHP will think you are looking for a property, not a constant:
+var $PUBLIC_CONST = "something" ;
+```
+
+*Note lines 52, 54, 62, 64, 73, 80 & 82 break the script because they call functions outside of visibility scope*
+
+*Note lines 58 & 76 return empty because they try to call a constant in the manner of calling a property*
+
+- *Lines 58 & 76 are corrected in lines 60 & 78 respectively*
+
+| **B-15** :// (Same)
+
+```console
+localhost/web/oop.php
+```
+
+##### 6. Set `static` & non-`static` Object Properties
+
+| **16** :$
+
+```console
+sudo cp core/11-oop16.php web/oop.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/11-oop16.php && \
+ls web
+```
 
 | **Define `static` Object** :
 
@@ -731,99 +834,12 @@ $NonStaticDemo->set_answer("Hello there, valued world!");
 echo $NonStaticDemo->$answer;
 ```
 
-
 *Note `class staticDemo` is never instantiated...*
 
-| **B-13** ://
+| **B-16** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
-```
-
-##### 4. Method Visibility
-
-| **14** :$
-
-```console
-sudo cp core/11-oop14.php web/oop.php && \
-sudo chown -R www:www /srv/www/html && \
-atom core/11-oop14.php && \
-ls web
-```
-
-| **Set Method Visibility** :
-
-```php
-public function publicMethod() { echo "foo"; };
-protected function protectedMethod() { echo "foo"; };
-private function privateMethod() { echo "foo"; };
-```
-
-*Note non-`public` methods can only be used within visibility by other methods of the class, not outside the class statement*
-
-*Note lines 59, 61, 69, 71 & 77 break the script because they call methods outside of visibility scope*
-
-| **B-14** ://
-
-```console
-localhost/web/oop.php (Same)
-```
-
-##### 5. Constants
-
-| **15** :$
-
-```console
-sudo cp core/11-oop15.php web/oop.php && \
-sudo chown -R www:www /srv/www/html && \
-atom core/11-oop15.php && \
-ls web
-```
-
-| **Set Constants with Visibility** :
-
-```php
-public const PUBLIC_CONST;
-protected const PROTECTED_CONST;
-private const PRIVATE_CONST;
-```
-
-| **Call Constants from within Class** :
-
-```php
-echo self::PUBLIC_CONST;
-echo self::PROTECTED_CONST;
-echo self::PRIVATE_CONST;
-```
-
-| **Call Constants from Uninstantiated Class** :
-
-```php
-echo classA::PUBLIC_CONST; // Success
-echo classA::PROTECTED_CONST; // Fail
-echo classA::PRIVATE_CONST; // Fail
-```
-
-Constants don't change, so call them from the class (above), not from an object (below)
-
-| **Empty** : (Calling a constant from an object won't work)
-
-```php
-echo $object->PUBLIC_CONST;
-// PHP will think you are looking for a property, not a constant:
-var $PUBLIC_CONST = "something" ;
-```
-
-*Note lines 52, 54, 62, 64, 73, 80 & 82 break the script because they call functions outside of visibility scope*
-
-*Note lines 58 & 76 return empty because they try to call a constant in the manner of calling a property*
-
-- *Lines 58 & 76 are corrected in lines 60 & 78 respectively*
-
-| **B-15** ://
-
-```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 #### F. Reflection
@@ -838,21 +854,21 @@ localhost/web/oop.php (Same)
 $loop_object = new LoopClass;
 ```
 
-| **16** :$
+| **17** :$
 
 ```console
-sudo cp core/11-oop16.php web/oop.php && \
+sudo cp core/11-oop17.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/11-oop16.php && \
+atom core/11-oop17.php && \
 ls web
 ```
 
 *Note on `$object`, a `foreach` loop iterates `public` `$properties`, but not `methods()` nor non-`public` `$properties`*
 
-| **B-16** ://
+| **B-17** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 We can use `foreach` to loop through non-`public` properties, if we set up the object through ***reflection***
@@ -868,21 +884,21 @@ $loop_object = new ReflectionClass('LoopClass');
 $loop_obj_props = $loop_object->getDefaultProperties();
 ```
 
-| **17** :$
+| **18** :$
 
 ```console
-sudo cp core/11-oop17.php web/oop.php && \
+sudo cp core/11-oop18.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/11-oop17.php && \
+atom core/11-oop18.php && \
 ls web
 ```
 
 *Note on `$object->getDefaultProperties()`, a `foreach` loop iterates all `$properties`, even non-`public` `$properties`, but still not `methods()`*
 
-| **B-17** ://
+| **B-18** :// (Same)
 
 ```console
-localhost/web/oop.php (Same)
+localhost/web/oop.php
 ```
 
 
@@ -1179,7 +1195,7 @@ FLUSH PRIVILEGES;
 
 Create a table
 
-| **18** :$
+| **19** :$
 
 ```console
 sudo cp core/11-pdo18.php web/pdo.php && \
@@ -1220,7 +1236,7 @@ $statement = $database->query($query);
 if ($statement) // Value above returns boolean
 ```
 
-| **B-18** ://
+| **B-19** ://
 
 ```console
 localhost/web/pdo.php
@@ -1234,7 +1250,7 @@ localhost/web/pdo.php
 
 Run multiple queries
 
-| **19** :$
+| **20** :$
 
 ```console
 sudo cp core/11-pdo19.php web/pdo.php && \
@@ -1284,10 +1300,10 @@ if ($statement->rowCount() > 0)
 if ($success) try {}
 ```
 
-| **B-19** ://
+| **B-20** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 *Note:*
@@ -1297,7 +1313,7 @@ localhost/web/pdo.php (Same)
 
 Retrieve from the database
 
-| **20** :$
+| **21** :$
 
 ```console
 sudo cp core/11-pdo20.php web/pdo.php && \
@@ -1306,17 +1322,17 @@ atom core/11-pdo20.php && \
 ls web
 ```
 
-| **B-20** ://
+| **B-21** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 *Note only "name" returns, "color", "locale", and "marker" are empty*
 
 Update tables
 
-| **21** :$
+| **22** :$
 
 ```console
 sudo cp core/11-pdo21.php web/pdo.php && \
@@ -1325,10 +1341,10 @@ atom core/11-pdo21.php && \
 ls web
 ```
 
-| **B-21** ://
+| **B-22** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 Fun with `SELECT`
@@ -1379,7 +1395,7 @@ $statement->fetch(PDO::FETCH_OBJ); // Per use
 
 *Note you can read all about more `fetch()` modes at [PHP.net PDOStatement:fetch](https://www.php.net/manual/en/pdostatement.fetch.php)*
 
-| **22** :$
+| **23** :$
 
 ```console
 sudo cp core/11-pdo22.php web/pdo.php && \
@@ -1395,10 +1411,10 @@ ls web
 - **3:** default is `FETCH_BOTH`, we use both
 - **4:** set mode is `FETCH_OBJ`, we use an object
 
-| **B-22** ://
+| **B-23** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 *Compare the usage: Which is easier?*
@@ -1494,7 +1510,7 @@ $statement = $pdo->conn()->query($query);
 
 #### Procedural
 
-| **23** :$
+| **24** :$
 
 ```console
 sudo cp core/11-pdo23.php web/pdo.php && \
@@ -1505,15 +1521,15 @@ ls web
 
 *Note 4 lines to handle the query below `// Use //`*
 
-| **B-23** ://
+| **B-24** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 #### OOP
 
-| **24** :$
+| **25** :$
 
 ```console
 sudo cp core/11-pdo24.php web/pdo.php && \
@@ -1524,10 +1540,10 @@ ls web
 
 *Note 4 lines to handle the query below `// Use //`*
 
-| **B-24** ://
+| **B-25** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 *Note the OOP looks more complex for now, but we can build on the object so query work becomes easier*
@@ -1550,7 +1566,7 @@ $pdo = new DB;
 $val = $pdo->select($table, $where_col, $where_value, $columns);
 ```
 
-| **25** :$
+| **26** :$
 
 ```console
 sudo cp core/11-pdo25.php web/pdo.php && \
@@ -1561,10 +1577,10 @@ ls web
 
 *Note 2 lines to handle the query below `// Use //`*
 
-| **B-25** ://
+| **B-26** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 #### Query Method: `UPDATE`
@@ -1617,7 +1633,7 @@ $val = $pdo->update($table, $columns, $values, $where_col, $where_value);
 
 *This is a teachable moment for how arrays can be remarkably useful*
 
-| **26** :$
+| **27** :$
 
 ```console
 sudo cp core/11-pdo26.php web/pdo.php && \
@@ -1628,10 +1644,10 @@ ls web
 
 *Note we run a `SELECT` query, then `UPDATE`, then `SELECT` again to show the changes, then yet again, changing two columns*
 
-| **B-26** ://
+| **B-27** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 #### Query Methods: `INSERT` & `DELETE`
@@ -1677,7 +1693,7 @@ $pdo->delete($table, $column, $value);
 echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
 ```
 
-| **27** :$
+| **28** :$
 
 ```console
 sudo cp core/11-pdo27.php web/pdo.php && \
@@ -1690,10 +1706,10 @@ ls web
 
 - *(These will fail, will explain later)*
 
-| **B-27** ://
+| **B-28** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 *Note `$change` works, but `$lastid` fails to show the last new ID*
@@ -1783,7 +1799,7 @@ try {
   - *If something didn't work, `pdo_error()` will throw an error message anyway*
   - *So, we won't do this: `if ($statement) {...}` as we did in procedural PHP*
 
-| **28** :$
+| **29** :$
 
 ```console
 sudo cp core/11-pdo28.php web/pdo.php && \
@@ -1799,10 +1815,10 @@ ls web
   - *Both in pdo28.php & pdo27.php*
   - *Observe how errors are handled differently with `pdo_error()`*
 
-| **B-28** ://
+| **B-29** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 #### `SELECT` Multiple Rows
@@ -1855,7 +1871,7 @@ $val = $pdo->selectmulti($table, $columns, $where_col, $where_value);
 foreach ($val as $one) { echo "Some Col: $one->some_col<br>"; }
 ```
 
-| **29** :$
+| **30** :$
 
 ```console
 sudo cp core/11-pdo29.php web/pdo.php && \
@@ -1864,10 +1880,10 @@ atom core/11-pdo29.php && \
 ls web
 ```
 
-| **B-29** ://
+| **B-30** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 #### Multiple `AND` with `SELECT` Multiple Rows
@@ -1908,7 +1924,7 @@ $val = $pdo->selectmulti($table, $where_col_list, $where_value_list, $columns);
 foreach ($val as $one) { echo "Some Col: $one->some_col<br>"; }
 ```
 
-| **30** :$
+| **31** :$
 
 ```console
 sudo cp core/11-pdo30.php web/pdo.php && \
@@ -1917,10 +1933,10 @@ atom core/11-pdo30.php && \
 ls web
 ```
 
-| **B-30** ://
+| **B-31** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 #### `execute()` Arguments
@@ -1965,7 +1981,7 @@ $statement->execute([$arg]);
 ($arg == '*') ? $statement->execute() : $statement->execute([$arg]);
 ```
 
-| **31** :$
+| **32** :$
 
 ```console
 sudo cp core/11-pdo31.php web/pdo.php && \
@@ -1974,10 +1990,10 @@ atom core/11-pdo31.php && \
 ls web
 ```
 
-| **B-31** ://
+| **B-32** :// (Same)
 
 ```console
-localhost/web/pdo.php (Same)
+localhost/web/pdo.php
 ```
 
 *In out live webapp, we will use `PDO::prepare()` & `PDO::execute()` methods*
@@ -2037,15 +2053,104 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
     - $ `grep -R '$pdo->rows' pdo/*`
     - $ `grep -R '$pdo->ok' pdo/*`
 
+#### Prepared statements for security `prepare()`, `bind()`, `execute()`
+
+##### Basic PDO Call
+
+| **Single PDO Script** :
+
+```php
+// Prepare the query
+$query = $database->prepare("SELECT * FROM table WHERE id=:id");
+$query->bindParam(':id', $id_val);
+
+try {
+  $query->execute();
+} catch (PDOException $error) {
+  $query->pdo_error($query, $error->getMessage());
+}
+
+// Assign values
+foreach ($query as $row) {
+  $type = "$row->type";
+  $status = "$row->status";
+}
+
+// Other properties
+$query->rowCount(); // Number of rows returned or changed
+$query->fetchAll(); // All rows in 3D array
+($query) ? true : false; // Test of success
+$database->lastInsertId(); // Last inserted ID
+```
+
+##### Method Implementation
+
+| **PDO Class & Method**
+
+```php
+class DB {
+  public $rowcount;
+  public $change;
+  public $lastid;
+  public $ok;
+
+  public function exec_($query) {
+
+    try {
+      $query->execute();
+    } catch (PDOException $error) {
+      $query->pdo_error($query, $error->getMessage());
+    }
+
+    // Useful properties
+    $this->rowcount = $query->rowCount();
+    $this->change = ($query->rowCount() > 0) ? true : false;
+    $this->ok = ($query) ? true : false;
+    $this->database; // We need this for the next statement to work
+    $this->lastid = $database->lastInsertId();
+
+    // Return
+    return $query->fetchAll();
+
+  } // exec_()
+} // class DB
+```
+
+| **PDO Method Implementation**
+
+```php
+// Prepare
+$query = $database->prepare("SELECT * FROM table WHERE id=:id");
+$query->bindParam(':id', $id_val);
+
+// Execute via static method
+$rows = $pdo->exec_($query);
+
+// Retrieve
+if ($pdo->rowcount > 0) {
+  foreach ($rows as $row) {
+    $type = "$row->type";
+    $status = "$row->status";
+  } // foreach
+} // if
+
+// Useful under various circumstances
+$piece_id = $pdo->lastid;
+$num_rows = $pdo->rowcount;
+$success = ($pdo->ok) ? true : false;
+$updated = ($pdo->change) ? true : false;
+
+```
+
 *Let's see the changes in action...*
 
-| **32** :$
+| **33** :$
 
 ```console
 mysql -u admin -padminpassword
 ```
 
-| **32** :>
+| **33** :>
 
 ```console
 CREATE DATABASE blog_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -2054,7 +2159,7 @@ FLUSH PRIVILEGES;
 QUIT;
 ```
 
-| **33** :$
+| **34** :$
 
 ```console
 sudo rm -rf web/* && \
@@ -2073,7 +2178,7 @@ sudo chown -R www:www /srv/www/html && \
 ls web
 ```
 
-| **B-33** :// (fill-in from below)
+| **B-34** :// (fill-in from below)
 
 ```console
 localhost/web/install.php
@@ -2099,25 +2204,14 @@ Password: My#1Password
 ...Or, fill-out with anything you will remember
 ```
 
-
 #### V. Beyond
-
-As a general rule, our current methods should be sufficient for any one-size-fits-all needs
-
-If we need anything more complex, we should build methods that take fewer arguments with prepared SQL statements, specific for each job
-
-In our webapp, we should probably have special methods specifically for
-
-- saving blog posts
-- updating user account information
-
-and use our more generic `SELECT` methods for routine work around the website
 
 You now have a basic understanding of OOP and PDO when working with PHP and SQL
 
+Our database calls use `prepare()`, `bind()` & `execute()`, made simple by putting `execute()` with `try` ... `catch` in a static method
+
 There is much more you will be able to learn on your own
 
-For extra research, `prepare()` & `execute()` have more control with `bindParam()`, but that is beyond the scope of these lessons
 ___
 
 # The Take
