@@ -2008,17 +2008,16 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
 
 *Assuming we initiate with:* `$pdo = new DB;`...
 
-- *in.config.php:*
-  - $ `atom pdo/in.config.php procedural/in.config.php`
+- *in.db.php:*
+  - $ `atom pdo/in.db.php procedural/in.db.php`
   - *Methods:*
     - `$pdo->insert()`
     - `$pdo->delete()`
     - `$pdo->update()`
-    - `$pdo->select()` *(single row)*
-    - `$pdo->select_multi()` *(multiple rows)*
-    - *New method prefixes for some SQL calls:*
-      - `$pdo->key_` *for `BINARY` calls*
-      - `$pdo->try_` *for complex queries*
+    - `$pdo->select()`
+    - `$pdo->key_` *prefix for `BINARY` calls*
+    - `$pdo->exec_()` *complex queries that need `bindParm()`*
+
   - *Properties we will use often:*
     - `$pdo->change` *boolean check for SQL changes*
     - `$pdo->lastid` *integer for newest SQL id*
@@ -2030,6 +2029,10 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
     - `$this->pdo_error()`
 
 - *Good examples to note changes in:*
+  - *in.metaeditfunctions.php*
+  - $ `atom pdo/webapp.php procedural/in.metaeditfunctions.php`
+  - $ `diff pdo/webapp.php procedural/in.metaeditfunctions.php`
+  - *Note we added `global $pdo;` because the piecesaction() function will need to use the `DB` class's `$pdo` object for `$pdo->exec_()` calls*
   - *webapp.php*
     - $ `atom pdo/webapp.php procedural/webapp.php`
     - $ `diff pdo/webapp.php procedural/webapp.php`

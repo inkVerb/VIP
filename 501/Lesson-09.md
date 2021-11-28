@@ -846,6 +846,7 @@ ls web
     - *SQL queries (with the `links` column)*
     - *Uses `CAST('$json' AS JSON)`, as with `tags`
 - *in piece.php*
+  - *`$nologin_allowed` variable set by ternary statement, requireing login for previews*
   - *Links and Tags show*
   - *There is a "View on blog" link at the top*
   - *Each iterated link's `<a>` and `<b>` tags have `class="link_item"`, smart to do, we may use later*
