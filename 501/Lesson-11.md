@@ -2167,6 +2167,7 @@ QUIT;
 ```console
 sudo rm -rf web/* && \
 sudo cp -r pdo/* web/ && \
+sudo mv web/htaccess web/.htaccess && \
 git clone https://github.com/inkverb/tinymce-dist.git && \
 sudo mv tinymce-dist web/tinymce && \
 git clone https://github.com/inkverb/dropzone.git && \
@@ -2181,7 +2182,7 @@ sudo chown -R www:www /srv/www/html && \
 ls web
 ```
 
-| **B-34** :// (fill-in from below)
+| **B-34a** :// (fill-in from below)
 
 ```console
 localhost/web/install.php
@@ -2207,11 +2208,223 @@ Password: My#1Password
 ...Or, fill-out with anything you will remember
 ```
 
-#### V. Beyond
+*You should be re-directed to login...*
+
+*Log in and doodle around to see that everything works just as before*
+
+| **B-34b** :// (redirected here, login with above credentials)
+
+```console
+localhost/web/webapp.php
+```
+
+### V. Upgrades
+
+*Now that we have a PDO-based CMS, let's add a few enhancements...*
+
+| **35** :$
+
+```console
+sudo cp -r pdo-upgrade/* web/ && \
+sudo mv web/htaccess web/.htaccess && \
+sudo chown -R www:www /srv/www/html && \
+ls web
+```
+
+| **B-35** ://
+
+```console
+localhost/web/blog.php
+```
+
+#### Slugs in URL
+
+*Links to series and individual pieces use "pretty" URL slugs, reflected throughout the code*
+
+- *Main Blog page is simply `/`*
+- *Pieces are simply `/slug-of-piece`*
+- *Series are `/series/slug-of-series`*
+
+| **.htaccess** :
+
+```
+# Blog main page
+RewriteRule ^/$ blog.php [L]
+RewriteRule ^/\?r=?([0-9]+)$ blog.php?r=$1 [L]
+
+# Series
+RewriteRule ^series/?([a-zA-Z0-9-]+)$ blog.php?s=$1 [L]
+RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
+```
+
+
+#### Blog Settings
+
+*See changes in:*
+
+  - *settings.php*
+  - *in.functions.php*
+  - *in.checks.php*
+
+*See our new database table and global variables*
+
+| **in.db.php** :
+
+```php
+// Retrieve Blog Settings
+$query = $database->prepare("SELECT public, title, tagline, description, keywords, summary_words, piece_items, feed_items, crawler_index FROM blog_settings");
+$rows = $pdo->exec_($query);
+foreach ($rows as $row) {
+  $blog_public = "$row->public";
+  $blog_title = "$row->title";
+  $blog_tagline = "$row->tagline";
+  $blog_description = "$row->description";
+  $blog_keywords = "$row->keywords";
+  $blog_summary_words = "$row->summary_words";
+  $blog_piece_items = "$row->piece_items";
+  $blog_feed_items = "$row->feed_items";
+  $blog_crawler_index = "$row->crawler_index";
+}
+```
+
+#### Pagination
+
+| **blog.php** :
+
+```php
+// Pagination
+// Valid the Pagination
+if ((isset($_GET['r'])) && (filter_var($_GET['r'], FILTER_VALIDATE_INT, array('min_range' => 1)))) {
+ $paged = preg_replace("/[^0-9]/","", $_GET['r']);
+} else {
+ $paged = 1;
+}
+// Set pagination variables:
+$pageitems = $blog_piece_items; // Global variable from blog_settings
+$itemskip = $pageitems * ($paged - 1);
+// We add this to the end of the $query, after DESC
+// LIMIT $itemskip,$pageitems
+
+// Pagination navigation: ow many items total?
+$query = $database->prepare("SELECT id FROM publications WHERE type='post' AND status='live' AND pubstatus='published'");
+$rows = $pdo->exec_($query);
+$totalrows = $pdo->numrows;
+
+$totalpages = floor($totalrows / $pageitems);
+$remainder = $totalrows % $pageitems;
+if ($remainder > 0) {
+$totalpages = $totalpages + 1;
+}
+if ($paged > $totalpages) {
+$totalpages = 1;
+}
+$nextpaged = $paged + 1;
+$prevpaged = $paged - 1;
+```
+
+*...then the SQL query for pieces on this page will use this at the end...*
+
+```sql
+LIMIT $itemskip,$pageitems
+```
+
+*...then this is wherever you want the pagination links to go...*
+
+```php
+// Pagination nav row
+if ($totalpages > 1) {
+	echo "
+	<div class=\"paginate_nav_container\">
+		<div class=\"paginate_nav\">
+			<table>
+				<tr>
+					<td>
+						<a class=\"paginate";
+						if ($paged == 1) {echo " disabled";}
+						echo "\" title=\"Page 1\" href=\"$blog_web_base/blog.php?r=1\">&laquo;</a>
+					</td>
+					<td>
+						<a class=\"paginate";
+            if ($paged == 1) {echo " disabled";}
+           echo "\" title=\"Previous\" href=\"$blog_web_base/blog.php?r=$prevpaged\">&lsaquo;&nbsp;</a>
+					</td>
+					<td>
+						<a class=\"paginate current\" title=\"Next\" href=\"$blog_web_base/blog.php?r=$paged\">Page $paged ($totalpages)</a>
+					</td>
+					<td>
+						<a class=\"paginate";
+            if ($paged == $totalpages) {echo " disabled";}
+           echo "\" title=\"Next\" href=\"$blog_web_base/blog.php?r=$nextpaged\">&nbsp;&rsaquo;</a>
+					</td>
+					 <td>
+						 <a class=\"paginate";
+						 if ($paged == $totalpages) {echo " disabled";}
+	 					echo "\" title=\"Last Page\" href=\"$blog_web_base/blog.php?r=$totalpages\">&raquo;</a>
+					 </td>
+		 		</tr>
+			</table>
+		</div>
+	</div>";
+}
+```
+
+| **style.css** :
+
+```css
+/* Pagination */
+div.paginate_nav_container {
+	text-align: center;
+}
+
+div.paginate_nav {
+	display: inline-block;
+}
+
+a.paginate {
+  text-decoration: none;
+  display: inline-block;
+  padding: 4px 8px;
+	font-size: 0.9em;
+	background-color: #ccc;
+	color: #fff;
+}
+
+a.paginate:hover {
+  background-color: #222;
+  color: #fff;
+}
+
+a.paginate.disabled {
+  pointer-events: none;
+  background-color: #eee;
+}
+a.paginate.current {
+	pointer-events: none;
+}
+```
+
+#### Series
+
+| **.htaccess** :
+
+```
+
+```
+
+| **series.php** :
+
+```php
+
+```
+
+*...in pagination, we add `$series_get` to the navigation links*
+
+
+### VI. Beyond
 
 You now have a basic understanding of OOP and PDO when working with PHP and SQL
 
-Our database calls use `prepare()`, `bind()` & `execute()`, made simple by putting `execute()` with `try` ... `catch` in a static method
+Our database calls use `prepare()`, `bindParam()` & `execute()`, made simple by putting `execute()` with `try` ... `catch` in a static method
 
 There is much more you will be able to learn on your own
 

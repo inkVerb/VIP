@@ -2107,6 +2107,8 @@ localhost/web/podcast.xml
 
 ### VI. PHP Integration
 
+
+
 ### XML
 - RSS feeds by tag & series
 - Import-export mod
@@ -2149,43 +2151,50 @@ localhost/web/podcast.xml
 - Shop mod
 
 
-### Blog Settings
-
-| **12** :$
-```console
-sudo cp core/11-settings.php web/settings.php && \
-sudo cp core/11-menus.php web/menus.php && \
-sudo cp core/11-series.php web/series.php && \
-sudo cp core/11-mods.php web/mods.php && \
-atom core/11-settings.php core/11-menus.php core/11-series.php && \
-ls web
-```
-
-
-| **B-26** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
-
-```console
-localhost/web/settings.php
-```
-
-
-### Pages to Process Our New Meta
-
-| **12** :$
-```console
-sudo cp core/11-blog.php web/blog.php && \
-sudo cp core/11-piece.php web/piece.php && \
-sudo cp core/11-hist.php web/hist.php && \
-atom core/11-blog.php core/11-piece.php core/11-hist.php && \
-ls web
-```
 
 
 ___
 
 # The Take
 
+## Final CMS
+
+- In directory: `501/cms`
+- With install instructions at `501/cms/README`
 
 ___
+
+# Assignments
+
+You can work on various projects to hone your skills
+
+1. Add Pagination:
+  - Media Library
+  - Pieces & Trash
+  - Series
+2. Podcast Creator:
+  - Field in edit.php
+    - Can be special upload or from Media Library chooser
+  - Database field in
+    - `pieces`
+    - `publications`
+    - `publication_history`
+  - Podcast RSS iTunes-ready fields
+    - Use the Podcast XML feed example as a template
+    - Add iTunes podcast image & categories to Settings & `blog_settings` table
+  - Create podcast.php
+    - Create the RSS feed
+    - Update .htaccess with `RewriteRule` recognition
+3. Style website with CSS
+  - Blog & Pieces
+  - Logged-in pages
+  - Website logo in Settings
+4. Create multi-user functionality
+  - Registration `<form>`
+  - Multiple authors
+  - Login only to read (if 'Private' blog in Settings)
+5. Aggregation
+  - Regularly check an RSS feed and republish to Series
+  - Add options to the `series` table for feed elements per Series
 
 # Done! Have a cookie: ### #

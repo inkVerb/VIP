@@ -1600,6 +1600,7 @@ This autosave function serves many purposes, including nav warnings when changes
       - *Stops our `autoSaveTimer()`*
       - *Turns off our navigation warning with `offNavWarn()`*
       - *Sends the `<form name="edit_piece"` via JavaScript rather than `<input type="submit"`*
+  - *`htmlchars(string)` function because we will pass JS variable `recover_as` through an HTML form*
 - *hist.php*
   - *Added `include ('./in.piecefunctions.php');` because we will use this to process an autosave recovery*
   - *Added `if (isset($_POST['as_json']))` scenario for processing an autosave recovery*
@@ -1608,6 +1609,7 @@ This autosave function serves many purposes, including nav warnings when changes
       - *`$_GET['o']`*
       - *`$_GET['a']`*
       - *`$_POST['old_as']`*
+  - *`htmlspecialchars($_POST['old_as'])` to decode our `recover_as = htmlchars(old_as)` from edit.php*
 
 | **B-38** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
