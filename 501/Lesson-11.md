@@ -2257,7 +2257,6 @@ RewriteRule ^series/?([a-zA-Z0-9-]+)$ blog.php?s=$1 [L]
 RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
 ```
 
-
 #### Blog Settings
 
 *See changes in:*
@@ -2285,6 +2284,24 @@ foreach ($rows as $row) {
   $blog_feed_items = "$row->feed_items";
   $blog_crawler_index = "$row->crawler_index";
 }
+```
+
+| **in.conf.php** :
+
+```php
+$blog_web_base = 'http://localhost/web'; // from install.php:$web_base
+```
+
+*...which was created by install.php*
+
+| **install.php** :
+
+```php
+// Web base URL
+$page = '/install.php';
+$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
+$web_base = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$web_base = preg_replace('/'. preg_quote($page, '/') . '$/', '', $web_base);
 ```
 
 #### Pagination
@@ -2419,6 +2436,25 @@ a.paginate.current {
 
 *...in pagination, we add `$series_get` to the navigation links*
 
+#### Featured Media
+
+| **edit.php** :
+
+```php
+
+```
+
+| **in.editprocess.php** :
+
+```php
+
+```
+
+| **in.featuredmedia.php** : (new file)
+
+```php
+
+```
 
 ### VI. Beyond
 

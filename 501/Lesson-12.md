@@ -2160,7 +2160,7 @@ ___
 ## Final CMS
 
 - In directory: `501/cms`
-- With install instructions at `501/cms/README`
+- With install instructions at `501/cms/README.md`
 
 ___
 

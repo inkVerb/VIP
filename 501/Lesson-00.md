@@ -293,7 +293,7 @@ xmlstarlet # XMLStarlet
 | **AL1** :$
 
 ```console
-sudo pacman -S --noconfirm libxml2 xmlstarlet
+sudo pacman -S --noconfirm libxml2 xmlstarlet imagemagick
 ```
 
 - Debian/Ubuntu:
@@ -301,7 +301,7 @@ sudo pacman -S --noconfirm libxml2 xmlstarlet
 | **DL1** :$
 
 ```console
-sudo apt install -y libxml2-utils xmlstarlet
+sudo apt install -y libxml2-utils xmlstarlet imagemagick
 ```
 
 ### VI. HTML-CSS-JS Crash Course
