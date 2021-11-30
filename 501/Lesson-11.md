@@ -2177,7 +2177,7 @@ rm -rf dropzone && \
 git clone https://github.com/poetryisCODE/htmldiff.git && \
 sudo cp htmldiff/htmldiff.min.js web/ && \
 rm -rf htmldiff && \
-sudo mkdir -p web/media/docs web/media/audio web/media/video web/media/images web/media/uploads web/media/original/images web/media/original/video web/media/original/audio web/media/original/docs && \
+sudo mkdir -p web/media/docs web/media/audio web/media/video web/media/images web/media/uploads web/media/original/images web/media/original/video web/media/original/audio web/media/original/docs web/media/pro && \
 sudo chown -R www:www /srv/www/html && \
 ls web
 ```
