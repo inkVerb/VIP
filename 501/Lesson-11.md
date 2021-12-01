@@ -2228,13 +2228,15 @@ localhost/web/webapp.php
 sudo cp -r pdo-upgrade/* web/ && \
 sudo mv web/htaccess web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-ls web
+ls pdo-upgrade
 ```
 
-| **B-35** ://
+*Note the new files referred to below...*
+
+| **B-35** :// (Note no .php file in the URL)
 
 ```console
-localhost/web/blog.php
+localhost/web/
 ```
 
 #### Slugs in URL
@@ -2437,6 +2439,11 @@ a.paginate.current {
 *...in pagination, we add `$series_get` to the navigation links*
 
 #### Featured Media
+
+*This can:*
+- *add options for blog readers*
+- *separate important media from content embedded in content*
+- *be useful for RSS feeds and podcasts*
 
 *Featured media includes:*
 
