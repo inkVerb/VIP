@@ -2446,7 +2446,6 @@ a.paginate.current {
 - *be useful for RSS feeds and podcasts*
 
 *Featured media includes:*
-
 - *Image*
 - *Audio*
 - *Video*
@@ -2454,7 +2453,11 @@ a.paginate.current {
 
 *...but is not included in `publication_history` nor auto-saves*
 
-*We basically create a second `mediaInsert()` calling *
+*In the edit workflow, we basically create a modified `mediaInsert()` JavaScript function, calling an AJAX file modified from ajax.mediainsert.php*
+
+*The main mods are:*
+- `mediaFeatureInsert(thisMedia)` *mod from* `mediaInsert()`
+- ajax.mediafeature.php *mod from* ajax.mediainsert.php
 
 | **edit.php** : (inputs & JavaScript functions)
 
