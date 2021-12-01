@@ -2438,22 +2438,337 @@ a.paginate.current {
 
 #### Featured Media
 
-| **edit.php** :
+*Featured media includes:*
+
+- *Image*
+- *Audio*
+- *Video*
+- *Document*
+
+*...but is not included in `publication_history` nor auto-saves*
+
+*We basically create a second `mediaInsert()` calling *
+
+| **edit.php** : (inputs & JavaScript functions)
+
+*The orange `insert from media library` button adds `mediaFeatureHide();` to avoid any conflict*
 
 ```php
+// Featured media
+echo '<p><b>Featured media</b></p>';
+
+// Featured image
+echo '<form id="image-insert-form"><input type="hidden" name="u_id" value="'.$user_id.'"><input type="hidden" name="feature_type" value="IMAGE"></form>';
+echo '<p id="featured_image">'.pieceInput('p_feat_img', $feat_img_id);
+echo 'Image: <code id="feat_img_file">'.$feat_img_file_link.'</code><br><small class="gray" style="cursor:pointer;" onclick="mediaFeatureInsert(\'IMAGE\'); mediaInsertHide(); mediaFeatureShow();"><i>(change)</i></small>&nbsp;<small class="red" id="feat_img_remove" style="display:'.$feat_img_showhide.'; cursor:pointer;" onclick="clearFeature(\'IMAGE\')">remove</small>';
+echo '<img id="feat_img_thumb" style="display:'.$feat_img_thumb_showhide.';" max-width="'.$img_thum_max.'" max-height="'.$img_thum_max.'" title="'.$feat_img_file_title.'" alt="'.$feat_img_file_alt.'" src="'.$feat_file_basepath.$feat_img_file_location.'/'.$feat_img_thumb.'">';
+echo '</p>';
+```
+
+```js
+// JavaScript functions
+// Open the featured media insert, populate via AJAX
+function mediaFeatureInsert(thisMedia) { // These arguments can be anything, same as used in this function
+
+  if (thisMedia == 'IMAGE') {
+    var inputFormID = 'image-insert-form';
+  } else if (thisMedia == 'AUDIO') {
+    var inputFormID = 'audio-insert-form';
+  } else if (thisMedia == 'VIDEO') {
+    var inputFormID = 'video-insert-form';
+  } else if (thisMedia == 'DOCUMENT') {
+    var inputFormID = 'document-insert-form';
+  }
+
+  // Bind a new event listener every time the <form> is changed:
+  const FORM = document.getElementById(inputFormID);
+  const AJAX = new XMLHttpRequest(); // AJAX handler
+  const FD = new FormData(FORM); // Bind to-send data to form element
+
+  AJAX.addEventListener( "load", function(event) { // This runs when AJAX responds
+    document.getElementById("feature-insert").innerHTML = event.target.responseText;
+  } );
+
+  AJAX.addEventListener( "error", function(event) { // This runs if AJAX fails
+    document.getElementById("feature-insert").innerHTML =  'Oops! Something went wrong.';
+  } );
+
+  AJAX.open("POST", "ajax.mediafeature.php");
+
+  AJAX.send(FD); // Data sent is from the form
+
+} // mediaFeatureInsert() function
+// Hide mediaFeatureInsert()
+function mediaFeatureHide() {
+  document.getElementById("feature-insert-container").style.display = "none";
+  document.getElementById("featureuploadresponse").innerHTML = '';
+}
+// Show mediaFeatureInsert()
+function mediaFeatureShow() {
+  document.getElementById("feature-insert-container").style.display = "block";
+}
+
+// When adding from the mediaFeatureInsert() chooser
+function setToFeature(thisID, thisFilePath, thisFile, thisMedia, thisImageThumb) {
+  if (thisMedia == 'IMAGE') {
+    var inputID = 'feat_img_id';
+    var showFile = 'feat_img_file';
+    var removeAct = 'feat_img_remove';
+    document.getElementById('feat_img_thumb').src = thisImageThumb;
+    document.getElementById('feat_img_thumb').style.display = "block";
+  } else if (thisMedia == 'AUDIO') {
+    var inputID = 'feat_aud_id';
+    var showFile = 'feat_aud_file';
+    var removeAct = 'feat_aud_remove';
+  } else if (thisMedia == 'VIDEO') {
+    var inputID = 'feat_vid_id';
+    var showFile = 'feat_vid_file';
+    var removeAct = 'feat_vid_remove';
+  } else if (thisMedia == 'DOCUMENT') {
+    var inputID = 'feat_doc_id';
+    var showFile = 'feat_doc_file';
+    var removeAct = 'feat_doc_remove';
+  }
+  var fileLink = '<a href="'+thisFilePath+'" target="_blank" style="text-decoration:none;">'+'<b>'+thisFile+'</b>'+'</a>';
+  document.getElementById(inputID).value = thisID;
+  document.getElementById(showFile).innerHTML = fileLink;
+  document.getElementById(removeAct).style.display = "inline";
+}
+
+// When clicking "remove"
+function clearFeature(thisMedia) {
+  if (thisMedia == 'IMAGE') {
+    var inputID = 'feat_img_id';
+    var showFile = 'feat_img_file';
+    var removeAct = 'feat_img_remove';
+    document.getElementById('feat_img_thumb').src = '';
+    document.getElementById('feat_img_thumb').style.display = "none";
+  } else if (thisMedia == 'AUDIO') {
+    var inputID = 'feat_aud_id';
+    var showFile = 'feat_aud_file';
+    var removeAct = 'feat_aud_remove';
+  } else if (thisMedia == 'VIDEO') {
+    var inputID = 'feat_vid_id';
+    var showFile = 'feat_vid_file';
+    var removeAct = 'feat_vid_remove';
+  } else if (thisMedia == 'DOCUMENT') {
+    var inputID = 'feat_doc_id';
+    var showFile = 'feat_doc_file';
+    var removeAct = 'feat_doc_remove';
+  }
+  document.getElementById(inputID).value = 0;
+  document.getElementById(showFile).innerHTML = '<i class="gray">none</i>';
+  document.getElementById(removeAct).style.display = "none";
+}
+```
+
+| **ajax.mediafeature.php** : (new, media chooser)
+
+*This was built from ajax.mediainsert.php*
+
+```php
+// Extra test in the opening statement
+&& (!empty($_POST['feature_type']))
+&& (($_POST['feature_type'] == 'IMAGE')
+   || ($_POST['feature_type'] == 'AUDIO')
+   || ($_POST['feature_type'] == 'VIDEO')
+   || ($_POST['feature_type'] == 'DOCUMENT'))
+```
+
+```html
+<!-- Still using the same media insert <div>, just populating it differently -->
+<div id="media-insert-editor-container" style="display:none;">
+  <!-- AJAX mediaEdit HTML entity -->
+  <div id="media-insert-editor"></div>
+</div>
+```
+
+```php
+// Get the featured media type
+// from the <form> sent by mediaFeatureInsert() calling this AJAX
+// edit.php: <form><input type="hidden" name="feature_type" value="IMAGE">
+$m_basic_type = $_POST['feature_type'];
+```
+
+```sql
+-- Add WHERE statement to SELECT
+WHERE basic_type=:basic_type
+```
+
+```php
+// Bind the SQL value to $m_basic_type = $_POST['feature_type'];
+$query->bindParam(':basic_type', $m_basic_type);
+
+...
+
+// Added some changes to our original
+
+// Paths, also used in setToFeature()
+$media_library_folder = '/media/';
+$basepath = $blog_web_base.$media_library_folder;
+$m_filename_full_path = $basepath.$m_location.'/'.$m_filename;
+
+// $file_thumb variable
+if ($m_basic_type == 'IMAGE') {
+  $file_thumb = ($m_file_extension == 'svg') ? $basepath.$m_location.'/'.$m_file_base.'_thumb_svg.png' : $basepath.$m_location.'/'.$m_file_base.'_thumb'.'.'."$m_file_extension";
+} else {
+  $file_thumb = 0;
+}
+
+// Clickable text to set featured media
+$set_button = '<button class="postform orange" onclick="setToFeature(\''.$m_id.'\', \''.$m_filename_full_path.'\', \''.$m_filename.'\', \''.$m_basic_type.'\', \''.$file_thumb.'\'); onNavWarn();">&larr; '.$m_filename.'</button>&nbsp;('.human_file_size(filesize($m_filename_full_path)).')<br>';
 
 ```
 
-| **in.editprocess.php** :
+| **in.piecefunctions.php** : (processes & functions)
+
+*These are the main updates*
 
 ```php
+function checkPiece($name, $value) {
+  ...
+  } elseif ($name == 'p_feat_img') {
+    $result = (filter_var($value, FILTER_VALIDATE_INT)) ? $value : 0;
 
+  } elseif ($name == 'p_feat_aud') {
+    $result = (filter_var($value, FILTER_VALIDATE_INT)) ? $value : 0;
+
+  } elseif ($name == 'p_feat_vid') {
+    $result = (filter_var($value, FILTER_VALIDATE_INT)) ? $value : 0;
+
+  } elseif ($name == 'p_feat_doc') {
+    $result = (filter_var($value, FILTER_VALIDATE_INT)) ? $value : 0;
+  }
+  ...
+}
+
+function pieceInput($name, $value) {
+  ...
+  } elseif ($name == 'p_feat_img') {
+    echo '<input id="feat_img_id" form="edit_piece" type="hidden" name="p_feat_img" onchange="onNavWarn();" onkeyup="onNavWarn();" value="'.$value.'">';
+
+  } elseif ($name == 'p_feat_aud') {
+    echo '<input id="feat_aud_id" form="edit_piece" type="hidden" name="p_feat_aud" onchange="onNavWarn();" onkeyup="onNavWarn();" value="'.$value.'">';
+
+  } elseif ($name == 'p_feat_vid') {
+    echo '<input id="feat_vid_id" form="edit_piece" type="hidden" name="p_feat_vid" onchange="onNavWarn();" onkeyup="onNavWarn();" value="'.$value.'">';
+
+  } elseif ($name == 'p_feat_doc') {
+    echo '<input id="feat_doc_id" form="edit_piece" type="hidden" name="p_feat_doc" onchange="onNavWarn();" onkeyup="onNavWarn();" value="'.$value.'">';
+  }
+  ...
+}
 ```
 
-| **in.featuredmedia.php** : (new file)
+| **in.editprocess.php** : (new database columns)
+
+```sql
+-- SELECT cols
+feat_img, feat_aud, feat_vid, feat_doc,
+
+PUB.feat_img=PCE.feat_img,
+PUB.feat_aud=PCE.feat_aud,
+PUB.feat_vid=PCE.feat_vid,
+PUB.feat_doc=PCE.feat_doc,
+```
 
 ```php
+// POST values
+$p_feat_img = checkPiece('p_feat_img',$_POST['p_feat_img']);
+$p_feat_aud = checkPiece('p_feat_aud',$_POST['p_feat_aud']);
+$p_feat_vid = checkPiece('p_feat_vid',$_POST['p_feat_vid']);
+$p_feat_doc = checkPiece('p_feat_doc',$_POST['p_feat_doc']);
 
+// Bind parameters
+$query->bindParam(':feat_img', $p_feat_img);
+$query->bindParam(':feat_aud', $p_feat_aud);
+$query->bindParam(':feat_vid', $p_feat_vid);
+$query->bindParam(':feat_doc', $p_feat_doc);
+
+// Select row output
+$p_feat_img = "$row->feat_img";
+$p_feat_aud = "$row->feat_aud";
+$p_feat_vid = "$row->feat_vid";
+$p_feat_doc = "$row->feat_doc";
+```
+
+| **in.featuredmedia.php** : (new, variables)
+
+*This shows only variables for the image; audio, video, and document are in the full file*
+
+```php
+// Featured media
+$media_library_folder = '/media/';
+$img_thum_max = '50px';
+$img_blog_max = '100px';
+$vid_blog_max = '250px';
+$feat_file_basepath = $blog_web_base.$media_library_folder;
+// Featured image filename
+$query = $database->prepare("SELECT file_base, file_extension, mime_type, title_text, alt_text, location FROM media_library WHERE id=:id AND basic_type='IMAGE'");
+$query->bindParam(':id', $p_feat_img);
+$rows = $pdo->exec_($query);
+// Shoule be 1 row
+if ($pdo->numrows == 1) {
+  foreach ($rows as $row) {
+    // Assign the values
+    $feat_img_id = $p_feat_img;
+    $feat_img_ext = "$row->file_extension";
+    $feat_img_mime = "$row->mime_type";
+    $feat_img_file = "$row->file_base".".".$feat_img_ext;
+    $feat_img_thumb = ($row->file_extension == 'svg') ? "$row->file_base".'_thumb_svg.png' : "$row->file_base".'_thumb.'."$row->file_extension";
+    $feat_img_file_title = "$row->title_text";
+    $feat_img_file_alt = "$row->alt_text";
+    $feat_img_file_location = "$row->location";
+    $feat_img_url = $feat_file_basepath.$feat_img_file_location.'/'.$feat_img_file;
+    $feat_img_url_blog = ($feat_img_ext == 'svg') ? $feat_file_basepath.$feat_img_file_location.'/'.$feat_img_thumb : $feat_img_url; // SVG files don't scale with <img> size attributes
+    $feat_img_file_link = '<a href="'.$feat_img_url.'" target="_blank" style="text-decoration:none;">'."<b>$feat_img_file</b>".'</a>';
+    $feat_img_showhide = 'inline';
+    $feat_img_thumb_showhide = 'block';
+  }
+} else {
+  $feat_img_id = 0;
+  $feat_img_file = 'none';
+  $feat_img_file_link = '<i class="gray">'.$feat_img_file.'</i>';
+  $feat_img_showhide = 'none';
+  $feat_img_thumb_showhide = 'none';
+}
+```
+
+| **in.featuredmediadisplay.php** : (new `include()` for blog.php & piece.php)
+
+```php
+include ('./in.featuredmedia.php');
+
+echo '<div id="featured-media" style="display:block">';
+
+  // Video
+  if (($feat_vid_showhide != 'none') && (($feat_vid_ext == 'mp4') || ($feat_vid_ext == 'ogg'))) {
+    echo '<div id="featured-video" style="display:block"><video controls height="'.$vid_blog_max.'"><source src="'.$feat_vid_url.'" type="'.$feat_vid_mime.'"></video></div>';
+  }
+
+  // Audio/Document line
+  if (($feat_aud_showhide != 'none') || ($feat_doc_showhide != 'none')) {
+
+    echo '<div id="featured-audio-document" style="display:block">';
+
+    // Audio
+    if (($feat_aud_showhide != 'none') && (($feat_aud_ext == 'mp3') || ($feat_aud_ext == 'ogg'))) {
+      echo '<div id="featured-audio" style="display:inline"><audio controls><source src="'.$feat_aud_url.'" type="'.$feat_vid_mime.'"></audio></div>';
+    }
+
+    // Document
+    if ($feat_doc_showhide != 'none') {
+      echo '<div id="featured-document" style="display:inline"><big style="font-size:16pt;">&nbsp;&#x1F5CF;&nbsp;<code>'.$feat_doc_file_link.'</code></big></div>';
+    }
+    echo '</div>';
+  }
+
+  // Image
+  if ($feat_img_showhide != 'none') {
+    echo '<div id="featured-image"><img max-width="'.$img_blog_max.'" max-height="'.$img_blog_max.'" title="'.$feat_img_file_title.'" alt="'.$feat_img_file_alt.'" src="'.$feat_img_url_blog.'"></div>';
+  }
+
+echo '</div>';
 ```
 
 ### VI. Beyond
