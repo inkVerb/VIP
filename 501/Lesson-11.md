@@ -2442,7 +2442,7 @@ a.paginate.current {
 
 *This can:*
 - *add options for blog readers*
-- *separate important media from content embedded in content*
+- *separate important media from media embedded in content*
 - *be useful for RSS feeds and podcasts*
 
 *Featured media includes:*
