@@ -2440,12 +2440,14 @@ a.paginate.current {
 
 #### Featured Media
 
-*This was complex to work out and affected many files with the new information*
+***The code:*** *This was complex to work out and affected many files with the new information*
 
-*This can:*
-- *add options for blog readers*
-- *separate important media from embedded media in main content*
-- *be useful for RSS feeds and podcasts*
+***The style:*** *In this blog CMS, featured media is not styled, but a little work with CSS can make the featured media come to life*
+
+***The use:***
+- *Add options for blog readers*
+- *Separate important media from embedded media in main content*
+- *Enhance for RSS feeds and podcasts*
 
 *Featured media includes:*
 - *Image*
@@ -2455,7 +2457,7 @@ a.paginate.current {
 
 *...but is not included in `publication_history` nor auto-saves*
 
-*In the edit workflow, we basically create a modified `mediaInsert()` JavaScript function, calling an AJAX file modified from ajax.mediainsert.php*
+***The process:*** *In the edit workflow, we basically create a modified `mediaInsert()` JavaScript function, calling an AJAX file modified from ajax.mediainsert.php*
 
 *The main mods are:*
 - `mediaFeatureInsert(thisMedia)` *mod from* `mediaInsert()`
