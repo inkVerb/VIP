@@ -2440,9 +2440,11 @@ a.paginate.current {
 
 #### Featured Media
 
+*This was complex to work out and affected many files with the new information*
+
 *This can:*
 - *add options for blog readers*
-- *separate important media from media embedded in content*
+- *separate important media from embedded media in main content*
 - *be useful for RSS feeds and podcasts*
 
 *Featured media includes:*
@@ -2458,6 +2460,27 @@ a.paginate.current {
 *The main mods are:*
 - `mediaFeatureInsert(thisMedia)` *mod from* `mediaInsert()`
 - ajax.mediafeature.php *mod from* ajax.mediainsert.php
+
+*New files to handle the new information:*
+- ajax.mediafeature.php
+- in.featuredmedia.php
+- in.featuredmediadisplay.php
+
+*Changes in:*
+- edit.php
+- in.piecefunctions.php
+- in.editprocess.php
+- blog.php
+- piece.php
+
+*New database columns on `pieces` & `publications`:*
+
+```sql
+`feat_img` INT UNSIGNED NOT NULL DEFAULT 0
+`feat_aud` INT UNSIGNED NOT NULL DEFAULT 0
+`feat_vid` INT UNSIGNED NOT NULL DEFAULT 0
+`feat_doc` INT UNSIGNED NOT NULL DEFAULT 0
+```
 
 | **edit.php** : (inputs & JavaScript functions)
 
