@@ -62,7 +62,8 @@ ___
 *Prepare our uploadable test files...*
 
 | **1** :$
-```
+
+```console
 cp -r core/test_uploads .
 mkdir -p test_uploads/fakes
 echo "I am a test upload file" > test_uploads/test1.txt
@@ -93,7 +94,8 @@ ls test_uploads
 **Web Directory for Uploads**
 
 | **2** :$
-```
+
+```console
 sudo mkdir web/uploads && \
 sudo chown -R www:www /srv/www/html && \
 ls web
@@ -107,7 +109,17 @@ ls web
   - Ensure set & uncommented: `file_uploads = On` (remove any semicolon `;` at the start of the line, make sure it is `On`)
   - Edit with `gedit`:
 
-    | **3g** :$ (maybe `7.2` is a different number)
+    - Arch/Manjaro?
+
+    | **3Ag** :$
+
+```console
+sudo gedit /etc/php/php.ini
+```
+
+    - Debian/Ubuntu?
+
+    | **3Dg** :$ (maybe `7.2` is a different number)
 
 ```console
 sudo gedit /etc/php/7.2/apache2/php.ini
@@ -117,7 +129,17 @@ sudo gedit /etc/php/7.2/apache2/php.ini
 
   - Or edit with `vim`:
 
-    | **3v** :$ (maybe `7.2` is a different number)
+    - Arch/Manjaro?
+
+    | **3Av** :$
+
+```console
+sudo vim /etc/php/php.ini
+```
+
+    - Debian/Ubuntu?
+
+    | **3Dv** :$ (maybe `7.2` is a different number)
 
 ```console
 sudo vim /etc/php/7.2/apache2/php.ini
@@ -136,7 +158,8 @@ sudo systemctl restart apache2
 ### Basic File Upload
 
 | **5** :$
-```
+
+```console
 sudo cp core/10-upload1.php web/upload.php && \
 sudo chown -R www:www /srv/www/html && \
 atom core/10-upload1.php && \
@@ -201,7 +224,8 @@ $file_mime = mime_content_type($any_file); // Get the mime type, requires full p
 *Get ready for our first upload...*
 
 | **6** :$
-```
+
+```console
 ls web/uploads
 ```
 
@@ -219,7 +243,8 @@ localhost/web/upload.php
 4. Click "Upload"
 
 | **7** :$
-```
+
+```console
 ls web/uploads
 ```
 
@@ -234,7 +259,8 @@ getimagesize($file)
 ```
 
 | **8** :$
-```
+
+```console
 sudo cp core/10-upload2.php web/upload.php && \
 atom core/10-upload2.php && \
 ls web/uploads
@@ -262,7 +288,8 @@ localhost/web/upload.php
 4. Click "Upload"
 
 | **9** :$
-```
+
+```console
 ls web/uploads
 ```
 
@@ -277,7 +304,8 @@ localhost/web/upload.php
 Repeat steps 1-4, choosing file vip-blue.png
 
 | **10** :$
-```
+
+```console
 ls web/uploads
 ```
 
@@ -290,7 +318,8 @@ pathinfo($file, PATHINFO_EXTENSION)
 ```
 
 | **11** :$
-```
+
+```console
 sudo cp core/10-upload3.php web/upload.php && \
 atom core/10-upload3.php && \
 ls web/uploads
@@ -317,7 +346,8 @@ localhost/web/upload.php
 4. Click "Upload"
 
 | **12** :$
-```
+
+```console
 ls web/uploads
 ```
 
@@ -332,7 +362,8 @@ localhost/web/upload.php
 Repeat steps 1-4, choosing file vip-chartreuse.png
 
 | **13** :$
-```
+
+```console
 ls web/uploads
 ```
 
@@ -345,7 +376,8 @@ file_exists($full_file_path) // If file exists, boolean
 ```
 
 | **14** :$
-```
+
+```console
 ls -l web/uploads
 ```
 
@@ -363,7 +395,8 @@ localhost/web/upload.php
 4. Click "Upload"
 
 | **15** :$
-```
+
+```console
 ls -l web/uploads
 ```
 
@@ -372,7 +405,8 @@ ls -l web/uploads
 - *PHP overwrote the file because it already existed*
 
 | **16** :$
-```
+
+```console
 sudo cp core/10-upload4.php web/upload.php && \
 atom core/10-upload4.php && \
 ```
@@ -392,7 +426,8 @@ localhost/web/upload.php
 Repeat steps 1-4, choosing file vip-chartreuse.png ***again***
 
 | **17** :$
-```
+
+```console
 ls -l web/uploads
 ```
 
@@ -407,7 +442,8 @@ $file_size = $_FILES['some_post_name']['size'];
 ```
 
 | **18** :$
-```
+
+```console
 sudo cp core/10-upload5.php web/upload.php && \
 atom core/10-upload5.php && \
 ls web/uploads
@@ -432,7 +468,8 @@ localhost/web/upload.php
 4. Click "Upload"
 
 | **19** :$
-```
+
+```console
 ls web/uploads
 ```
 
@@ -447,7 +484,8 @@ localhost/web/upload.php
 Repeat steps 1-4, choosing file nib.gif
 
 | **20** :$
-```
+
+```console
 ls web/uploads
 ```
 
@@ -461,7 +499,17 @@ ls web/uploads
   - Ensure set: `upload_max_filesize = 5M` (make sure it is `5M`)
   - Edit with `gedit`:
 
-    | **21g** :$ (maybe `7.2` is a different number)
+    - Arch/Manjaro
+
+    | **21Ag** :$
+
+```console
+sudo gedit /etc/php/php.ini
+```
+
+    - Debian/Ubuntu
+
+    | **21Dg** :$ (maybe `7.2` is a different number)
 
 ```console
 sudo gedit /etc/php/7.2/apache2/php.ini
@@ -471,7 +519,17 @@ sudo gedit /etc/php/7.2/apache2/php.ini
 
   - Or edit with `vim`:
 
-    | **21v** :$ (maybe `7.2` is a different number)
+    - Arch/Manjaro
+
+    | **21Av** :$
+
+```console
+sudo vim /etc/php/php.ini
+```
+
+    - Debian/Ubuntu
+
+    | **21Dv** :$ (maybe `7.2` is a different number)
 
 ```console
 sudo vim /etc/php/7.2/apache2/php.ini
@@ -499,7 +557,8 @@ sudo systemctl restart apache2
   2. Mime type
 
 | **23** :$
-```
+
+```console
 sudo cp core/10-upload6.php web/upload.php && \
 atom core/10-upload6.php && \
 ls web/uploads
@@ -549,7 +608,8 @@ localhost/web/upload.php
 6. Repeat these steps with many files, including fake and disallowed
 
 | **25** :$
-```
+
+```console
 ls web/uploads
 ```
 
@@ -577,7 +637,8 @@ On your own, learn more about implementation at [dropzonejs.com](https://www.dro
 ##### Core Example
 
 | **26** :$
-```
+
+```console
 sudo mkdir web/dropzone_uploads && \
 git clone https://github.com/inkVerb/dropzone.git && \
 sudo cp dropzone/dist/min/dropzone.min.css web/ && \
@@ -609,7 +670,8 @@ localhost/web/dropzone.html
 4. Repeat these steps with many files, including fake and disallowed
 
 | **27** :$
-```
+
+```console
 ls web/dropzone_uploads
 ```
 
@@ -622,7 +684,8 @@ Now, it's time to implement that into what we have so far
 #### Dropzone to Interact with Our Own AJAX Handler
 
 | **28** :$
-```
+
+```console
 sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary7.php web/medialibrary.php && \
 sudo cp core/10-upload7.php web/upload.php && \
@@ -696,7 +759,8 @@ localhost/web/medialibrary.php
 4. Repeat these steps with many files, including fake and disallowed
 
 | **29** :$
-```
+
+```console
 ls web/dropzone_uploads
 ```
 
@@ -716,7 +780,8 @@ Let's handle multiple uploads
 #### Dropzone to Restrict Mimetype *Before* AJAX
 
 | **30** :$
-```
+
+```console
 sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary8.php web/medialibrary.php && \
 atom core/10-medialibrary8.php  && \
@@ -744,7 +809,8 @@ localhost/web/medialibrary.php
 4. Repeat these steps with many files, including fake and disallowed
 
 | **31** :$
-```
+
+```console
 ls web/dropzone_uploads
 ```
 
@@ -760,7 +826,8 @@ Multiple files change the `$_FILES` array, so we must change some things
 First, see what the `$_FILES` array for a single file upload looks like
 
 | **32** :$
-```
+
+```console
 sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-upload9.php web/upload.php && \
 atom core/10-upload9.php  && \
@@ -787,7 +854,8 @@ localhost/web/medialibrary.php
 4. Repeat these steps with many files, including fake and disallowed
 
 | **33** :$
-```
+
+```console
 ls web/dropzone_uploads
 ```
 
@@ -816,7 +884,8 @@ array(1) {
 Second, allow multiple uploads and see what the `$_FILES` array looks like for many files
 
 | **34** :$
-```
+
+```console
 sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary10.php web/medialibrary.php && \
 sudo cp core/10-upload10.php web/upload.php && \
@@ -860,7 +929,8 @@ localhost/web/medialibrary.php
 4. Repeat these steps with many files, including fake and disallowed
 
 | **35** :$
-```
+
+```console
 ls web/dropzone_uploads
 ```
 
@@ -941,7 +1011,8 @@ The only change to code is that we must add `[0]` to the end of each `$_FILES` i
 So, our entire upload handler must be updated with `[0]`...
 
 | **36** :$
-```
+
+```console
 sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary11.php web/medialibrary.php && \
 sudo cp core/10-upload11.php web/upload.php && \
@@ -1000,7 +1071,8 @@ localhost/web/medialibrary.php
 4. Repeat these steps with many files, including fake and disallowed
 
 | **37** :$
-```
+
+```console
 ls web/dropzone_uploads
 ```
 
@@ -1024,7 +1096,8 @@ The directory "tinymce-dist" is at "web/tinymce"
 #### TinyMCE Image Upload
 
 | **38** :$
-```
+
+```console
 sudo mkdir web/tinymce_uploads && \
 sudo cp core/10-tiny-image-upload.html web/tiny.html && \
 sudo cp core/10-tiny-upload1.php web/tiny-upload.php && \
@@ -1055,7 +1128,8 @@ localhost/web/tiny.html
 4. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
 
 | **39** :$
-```
+
+```console
 ls web/tinymce_uploads
 ```
 
@@ -1067,7 +1141,8 @@ ls web/tinymce_uploads
 4. Note the file name was preserved
 
 | **40** :$
-```
+
+```console
 ls web/tinymce_uploads
 ```
 
@@ -1078,7 +1153,8 @@ Now, we need to process other files, including automatic uploads
 #### TinyMCE File & Media Upload
 
 | **41** :$
-```
+
+```console
 sudo cp core/10-tiny-file-upload.html web/tiny.html && \
 sudo chown -R www:www /srv/www/html && \
 atom core/10-tiny-file-upload.html && \
@@ -1104,7 +1180,8 @@ localhost/web/tiny.html
 4. Note the file name was preserved
 
 | **42** :$
-```
+
+```console
 ls web/tinymce_uploads
 ```
 
@@ -1143,7 +1220,8 @@ We will click something outside the TinyMCE editor to make a media item appear i
 ```
 
 | **43** :$
-```
+
+```console
 sudo cp core/10-tiny-media-insert.html web/tiny.html && \
 sudo cp core/test_uploads/vip-blue.png web/uploads/ && \
 sudo cp core/test_uploads/audio.mp3 web/uploads/ && \
@@ -1171,7 +1249,8 @@ localhost/web/tiny.html
 **Insert media into Medium Editor**
 
 | **44** :$
-```
+
+```console
 sudo cp core/10-medium-media-insert.html web/medium.html && \
 atom core/10-medium-media-insert.html && \
 ls web web/uploads
@@ -1210,7 +1289,8 @@ Until Medium Editor allows easy delete/properties of inserted media, our product
 ### Process Uploaded Files: SQL Database
 
 | **45** :$
-```
+
+```console
 sudo mkdir -p web/media/docs web/media/audio web/media/video web/media/images && \
 sudo cp core/10-in.head12.php web/in.head.php && \
 sudo cp core/10-medialibrary12.php web/medialibrary.php && \
@@ -1278,7 +1358,8 @@ localhost/web/medialibrary.php
 5. Repeat these steps with many files, including fake and disallowed
 
 | **46** :$
-```
+
+```console
 ls web/media/*
 ```
 
@@ -1296,7 +1377,8 @@ Now, let's edit and delete those files and entries...
 ### Process Uploaded Files: Media Properties `<form>`
 
 | **47** :$
-```
+
+```console
 sudo cp core/10-ajax.mediainfo13.php web/ajax.mediainfo.php && \
 sudo cp core/10-medialibrary13.php web/medialibrary.php && \
 sudo cp core/10-upload13.php web/upload.php && \
@@ -1382,7 +1464,8 @@ SELECT * FROM media_library;
 | **48** ://phpMyAdmin **> webapp_db > media_library**
 
 | **48** :$
-```
+
+```console
 ls web/media/*
 ```
 
@@ -1401,7 +1484,8 @@ ls web/media/*
   - `texlive-...` *Dependencies for `pandoc` to create .pdf files*
 
 | **49** :$
-```
+
+```console
 sudo apt install \
 imagemagick \
 ffmpeg \
@@ -1414,37 +1498,65 @@ texlive-latex-recommended
 
 #### File Processing in the Linux Terminal
 
-| **50**:$ `ls`
+| **50**:$
+
+```console
+ls
+```
 
 ##### `imagemagick` for Images
 
 *Watch an example of our `imagemagick` converter...*
 
-| **51**:$ `convert "test_uploads/vipLinux-Meshtop.jpg" -resize 484x303 "vipLinux-Meshtop_484x303.jpg"`
+| **51**:$
+
+```console
+convert "test_uploads/vipLinux-Meshtop.jpg" -resize 484x303 "vipLinux-Meshtop_484x303.jpg"
+```
 
 *...This is the same syntax we use in our BASH script*
 
-| **52**:$ `ls -l`
+| **52**:$
+
+```console
+ls -l
+```
 
 *Note `convert` will keep the aspect ratio of an image by default, but we don't want to be dependent on that*
 
 *Now, convert .svg file to .png...*
 
-| **53**:$ `convert -background none -resize 484x303 "test_uploads/star.svg" "star_484x303_svg.png"`
+| **53**:$
+
+```console
+convert -background none -resize 484x303 "test_uploads/star.svg" "star_484x303_svg.png"
+```
 
 *...This is the same syntax we use in our BASH script*
 
-| **54**:$ `ls -l`
+| **54**:$
+
+```console
+ls -l
+```
 
 *Note the .svg file is now a .png file*
 
 *Now, convert .bmp file to .png...*
 
-| **55**:$ `convert "test_uploads/vip-red.bmp" "vip-red.png"`
+| **55**:$
+
+```console
+convert "test_uploads/vip-red.bmp" "vip-red.png"
+```
 
 *...This is the same syntax we use in our BASH script*
 
-| **56**:$ `ls -l`
+| **56**:$
+
+```console
+ls -l
+```
 
 *Note the .bmp file is now a .png file*
 
@@ -1452,19 +1564,35 @@ texlive-latex-recommended
 
 *Now, resize a video...*
 
-| **57**:$ `ffmpeg -i "test_uploads/video.webm" -filter:v scale=320:-1 -c:a copy "video.webm"`
+| **57**:$
+
+```console
+ffmpeg -i "test_uploads/video.webm" -filter:v scale=320:-1 -c:a copy "video.webm"
+```
 
 *...This is the same syntax we use in our BASH script*
 
-| **58**:$ `ls -l`
+| **58**:$
+
+```console
+ls -l
+```
 
 *See the new resolution with `ffprobe`...*
 
-| **59**:$ `ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "video.webm"`
+| **59**:$
+
+```console
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "video.webm"
+```
 
 *See the original resolution...*
 
-| **60**:$ `ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "test_uploads/video.webm"`
+| **60**:$
+
+```console
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "test_uploads/video.webm"
+```
 
 *Note the video has been resized*
 
@@ -1472,15 +1600,27 @@ texlive-latex-recommended
 
 *Now, process audio...*
 
-| **61**:$ `ffmpeg -i "test_uploads/audio.wav" -acodec libmp3lame -vn -ar 44100 -ac 1 -b:a 96k "audio_wav96.mp3"`
+| **61**:$
+
+```console
+ffmpeg -i "test_uploads/audio.wav" -acodec libmp3lame -vn -ar 44100 -ac 1 -b:a 96k "audio_wav96.mp3"
+```
 
 *...This is the same syntax we use in our BASH script*
 
-| **62**:$ `ls -l`
+| **62**:$
+
+```console
+ls -l
+```
 
 *See the audio info with `ffprobe`...*
 
-| **63**:$ `ffprobe -select_streams a "audio_wav96.mp3"`
+| **63**:$
+
+```console
+ffprobe -select_streams a "audio_wav96.mp3"
+```
 
 *Note: `Stream #0:0: Audio: mp3, 44100 Hz, mono, s16p, 96 kb/s`*
 
@@ -1493,25 +1633,53 @@ texlive-latex-recommended
 
 *Now, process documents...*
 
-| **64**:$ `pandoc -s test_uploads/markdown.odt -o out_odt.pdf`
+| **64**:$
 
-| **65**:$ `pandoc -s test_uploads/test3.docx -o out_docx.pdf`
+```console
+pandoc -s test_uploads/markdown.odt -o out_odt.pdf
+```
 
-| **66**:$ `pandoc -s test_uploads/markdown.htm -o out_htm.pdf`
+| **65**:$
 
-| **67**:$ `pandoc -s test_uploads/markdown_pdf.md -o out_md.pdf`
+```console
+pandoc -s test_uploads/test3.docx -o out_docx.pdf
+```
+
+| **66**:$
+
+```console
+pandoc -s test_uploads/markdown.htm -o out_htm.pdf
+```
+
+| **67**:$
+
+```console
+pandoc -s test_uploads/markdown_pdf.md -o out_md.pdf
+```
 
 *...This is the same syntax we use in our BASH script*
 
-| **68**:$ `ls -l`
+| **68**:$
+
+```console
+ls -l
+```
 
 *Note `pandoc` converted .odt, .docx, .htm, and .md files into .pdf*
 
-| **69**:$ `pandoc -s test_uploads/markdown.pdf -o out_md.pdf`
+| **69**:$
+
+```console
+pandoc -s test_uploads/markdown.pdf -o out_md.pdf
+```
 
 *Note it failed because it cannot convert .pdf to .pdf*
 
-| **70**:$ `pandoc -s test_uploads/test2.doc -o out_doc.pdf`
+| **70**:$
+
+```console
+pandoc -s test_uploads/test2.doc -o out_doc.pdf
+```
 
 *Note it failed because it cannot convert .doc*
 
@@ -1520,7 +1688,8 @@ texlive-latex-recommended
 *Copy our web app files...*
 
 | **71** :$
-```
+
+```console
 sudo mkdir -p web/media/uploads web/media/original/images web/media/original/video web/media/original/audio web/media/original/docs && \
 sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/* && \
 sudo cp core/10-bash.imageprocess.sh web/bash.imageprocess.sh && \
@@ -1733,6 +1902,7 @@ localhost/web/medialibrary.php
 4. Repeat these steps with many files
 
 | **72** :>
+
 ```sql
 SELECT * FROM media_library; SELECT * FROM media_images;
 ```
@@ -1740,7 +1910,8 @@ SELECT * FROM media_library; SELECT * FROM media_images;
 | **72** ://phpMyAdmin **> webapp_db > media_library**
 
 | **72** :$
-```
+
+```console
 ls web web/media web/media/* ls web/media/original/*
 ```
 
@@ -1751,21 +1922,24 @@ If you need to clear out your media library without using the GUI, use this code
 > *Delete all uploads on the server...*
 >
 > | **C1** :$
-```
-sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/* web/media/original/images/* web/media/original/video/* web/media/original/audio/* web/media/original/docs/* && \
-```
+>
+> ```console
+> sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/> > media/images/* web/media/original/images/* web/media/original/video/* web/media/original/audio/* web/media/original/docs/* && \
+> ```
 > *Delete all entries in the database...*
 >
 > | **C1** :>
-```sql
-DELETE FROM media_library; DELETE FROM media_images;
-```
+>
+> ```sql
+> DELETE FROM media_library; DELETE FROM media_images;
+> ```
 >
 
 ### Insert Media in the Piece Editor
 
 | **73** :$
-```
+
+```console
 sudo cp core/10-edit.php web/edit.php && \
 sudo cp core/10-in.piecefunctions.php web/in.piecefunctions.php && \
 sudo cp core/10-in.head15.php web/in.head.php && \

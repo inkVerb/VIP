@@ -2164,27 +2164,18 @@ ___
 
 ___
 
-# Assignments
+# Roadmap Assignments
 
-You can work on various projects to hone your skills
+Features to be added
 
 1. Add Pagination:
   - Media Library
   - Pieces & Trash
-  - Series
-2. Podcast Creator:
-  - Field in edit.php
-    - Can be special upload or from Media Library chooser
-  - Database field in
-    - `pieces`
-    - `publications`
-    - `publication_history`
-  - Podcast RSS iTunes-ready fields
-    - Use the Podcast XML feed example as a template
-    - Add iTunes podcast image & categories to Settings & `blog_settings` table
-  - Create podcast.php
-    - Create the RSS feed
-    - Update .htaccess with `RewriteRule` recognition
+  - Series AJAX
+2. SEO per piece
+  - Add code to the `<!-- SEO -->` section of in.head.php
+  - Retrieve any featured image or shortened content from a piece
+  - Use this to change `$blog_description` & `$seo_image` per piece
 3. Style website with CSS
   - Blog & Pieces
   - Logged-in pages
@@ -2196,5 +2187,33 @@ You can work on various projects to hone your skills
 5. Aggregation
   - Regularly check an RSS feed and republish to Series
   - Add options to the `series` table for feed elements per Series
+6. Make themeable
+  - Create a 'themes' folder
+  - Rewrite edit.php & blog.php to:
+    - Use HTML DOM from theme files in 'themes' folder
+    - Use CSS from 'themes' folder
+  - Add `theme` column to `blog_settings` in SQL
+    - Selection should be based on subfolder name in 'themes' folder
+    - Settings should check for the folder
+    - Include Theme selection in settings.php
+  - Rewrite in.head.php to use the theme or a default
+  - Create a default theme
+7. Series & Landing Page
+  - Add `landing` column in `blog_settings` in SQL
+    - Options are any piece or series
+  - Create an `<input>` to set a piece as the `template` for a series on the `series` table
+  - The root web URL will point to either the selected pieces series or the selected "page" piece
+8. Menus
+  - Add a `menus` table to the database
+    - Organize the table however you want
+    - Infinite entries or only limited entries in a menu
+    - Have a single menu or a main and smaller menu or more
+  - Add a `menu` column to the `blog_settings` table
+    - Add a menu chooser in Blog Settings
+    - If multiple menus, select which "page" piece a menu will appear with
+  - Create an interface to select pages and series for the menu
+  - Only "page" pieces would appear on the menu
+  - A series as a menu item would not be clickable, but would make a dropdown showing other "page" pieces in that series
+    - This will require some knowledge of CSS and JavaScript
 
 # Done! Have a cookie: ### #

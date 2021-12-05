@@ -54,10 +54,12 @@ sudo vim /etc/php/php.ini
 
 In php.ini:
 
-  - Uncomment (remove the semicolon `;` at the start of the line)
+  - Uncomment & set values (remove the semicolon `;` at the start of the line)
     - `extension=mysqli`
     - `extension=pdo_mysql`
     - `extension=iconv`
+    - `upload_max_filesize = 10M`
+	- `file_uploads = On`
 
 3. MariaDB setup
 
@@ -424,10 +426,12 @@ sudo vim /etc/php/7.2/apache2/php.ini
 
 In php.ini:
 
-  - Uncomment (remove the semicolon `;` at the start of the line)
+    - Uncomment & set values (remove the semicolon `;` at the start of the line)
     - `extension=mysqli`
     - `extension=pdo_mysql`
     - `extension=iconv`
+    - `upload_max_filesize = 10M`
+	- `file_uploads = On`
 
 3. Restart Everything
 
@@ -743,19 +747,23 @@ sudo apt-get install mysql-server
 
 ### Make PHP More Secure
 
-| **P1** :$
+This is not necessary for VIP Linux lessons, but may be helpful in some situations
+
+#### Debian/Ubuntu
+
+| **PD1** :$
 
 ```console
 sudo mkdir -p /var/www/tmp
 ```
 
-| **P2** :$
+| **PD2** :$
 
 ```console
 sudo chmod -R 777 /var/www/tmp
 ```
 
-| **P3** :$ (maybe '7.2' is a different number)
+| **PD3** :$ (maybe '7.2' is a different number)
 
 ```console
 sudo chmod 644 /etc/php/7.2/apache2/php.ini
@@ -763,14 +771,10 @@ sudo chmod 644 /etc/php/7.2/apache2/php.ini
 
 Open php.ini and make these settings:
 
-| **P4** :$ (maybe '7.2' is a different number)
+| **PD4** :$ (maybe '7.2' is a different number)
 
 ```console
 sudo vim /etc/php/7.2/apache2/php.ini
-```
-
-```console
-
 ```
 
 ```
@@ -778,11 +782,42 @@ open_basedir = /var/www
 
 sys_temp_dir = /var/www/tmp
 
-upload_tmp_dir = /var/www/tmp
+```
 
-upload_max_filesize = 2M
+#### Arch/Manjaro
 
-file_uploads = On
+| **PA1** :$
+
+```console
+sudo mkdir -p /srv/www/tmp
+```
+
+| **PA2** :$
+
+```console
+sudo chmod -R 777 /srv/www/tmp
+```
+
+| **PA3** :$
+
+```console
+sudo chmod 644 /etc/php/php.ini
+```
+
+Open php.ini and make these settings:
+
+| **PA4** :$
+
+```console
+sudo vim /etc/php/php.ini
+```
+
+```
+open_basedir = /srv/www
+
+sys_temp_dir = /srv/www/tmp
+
+upload_tmp_dir = /srv/www/tmp
 ```
 
 Now you can use PHP to upload, but php is limited to the www directory and 2MB per file

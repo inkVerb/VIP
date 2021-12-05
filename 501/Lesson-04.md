@@ -105,6 +105,7 @@ $epoch_simple_later = time() + (30 * 24 * 60 * 60);
 *Review the diagrams above along side the following few steps...*
 
 | **1** :$
+
 ```
 sudo cp core/04-time.php web/time.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -214,6 +215,7 @@ USE webapp_db
 *Use our install page...*
 
 | **7** :$
+
 ```
 sudo cp core/04-install.php web/install.php && \
 sudo cp core/04-in.config1.php web/in.config.php && \
@@ -367,6 +369,7 @@ password_verify($form_password, $hashed_password_from_database);
 *Review the diagrams above along side the following few steps...*
 
 | **11** :$
+
 ```
 sudo cp core/04-login1.php web/webapp.php && \
 sudo cp core/04-in.config2.php web/in.config.php && \
@@ -574,6 +577,7 @@ ls
 For teaching, we will put the **user_id** as the cookie's value, but this is not secure!
 
 | **18** :$
+
 ```
 sudo cp core/04-logout3.php web/logout.php && \
 sudo cp core/04-login3.php web/webapp.php && \
@@ -670,6 +674,7 @@ setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 ### VII. Account Settings
 
 | **19** :$
+
 ```
 sudo cp core/04-account.php web/account.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -735,6 +740,7 @@ SELECT id, fullname, email, favnumber FROM users;
 ***This is a simple example, but it is not secure; we will use a secure way later in future lessons***
 
 | **20** :$
+
 ```
 sudo cp core/04-forgot.php web/forgot.php && \
 sudo chown -R www:www /srv/www/html && \

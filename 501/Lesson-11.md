@@ -2269,6 +2269,22 @@ RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
 
 *See our new database table and global variables*
 
+```sql
+CREATE TABLE IF NOT EXISTS `blog_settings` (
+  `web_base` VARCHAR(2048) NOT NULL,
+  `public` BOOLEAN NOT NULL DEFAULT true,
+  `title` VARCHAR(90) DEFAULT '501 Blog',
+  `tagline` VARCHAR(120) DEFAULT 'Where code stacks',
+  `description` LONGTEXT DEFAULT 'Long, poetic explanations of blog contents are useful in search engines, podcasts, and other places on the interwebs.',
+  `keywords` LONGTEXT DEFAULT NULL,
+  `summary_words` INT UNSIGNED DEFAULT 50,
+  `piece_items` INT UNSIGNED DEFAULT 10,
+  `feed_items` INT UNSIGNED DEFAULT 20,
+  `default_series` INT UNSIGNED DEFAULT 1,
+  `crawler_index` ENUM('index', 'noindex') DEFAULT 'index'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+```
+
 | **in.db.php** :
 
 ```php
@@ -2304,6 +2320,35 @@ $page = '/install.php';
 $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
 $web_base = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $web_base = preg_replace('/'. preg_quote($page, '/') . '$/', '', $web_base);
+```
+
+#### SEO
+
+*These `<meta>` tags are common for search engines to understand your web page*
+
+*These could be customized per each piece, but this is a start*
+
+| **in.head.php** :
+
+```php
+if ($seo_inf == true) {
+  $media_base = "$blog_web_base/media/pro/";
+  $blog_seo = (file_exists("$media_base/pro-seo.jpg")) ? "pro-seo.jpg" : "" ;
+  $favicon = (file_exists("$media_base/pro-favicon.png")) ? "pro-favicon.png" : "" ;
+  echo <<<EOF
+  <link href="$blog_web_base/" rel="canonical" />
+  <link rel="shortcut icon" type="image/png" href="$media_base/$favicon" />
+  <meta name="robots" content="$blog_crawler_index, nofollow" />
+  <meta name="description" content="$blog_description" />
+  <meta property="og:url" content="$blog_web_base/" />
+  <meta property="og:title" content="$blog_title" />
+  <meta property="og:image" content="$media_base/$blog_seo" />
+  <meta property="og:type" content="website" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+EOF;
+}
 ```
 
 #### Pagination
@@ -2424,16 +2469,190 @@ a.paginate.current {
 
 #### Series
 
+| **in.db.php** :
+
+```php
+// Set a default Series from the blog_settings table
+$query = $database->prepare("SELECT default_series FROM blog_settings");
+$rows = $pdo->exec_($query);
+if ($query->numrows == 1) {
+  foreach ($rows as $row) {
+    $de_series = $row->default_series;
+  }
+}
+```
+
 | **.htaccess** :
 
 ```
-
+RewriteRule ^series/?([a-zA-Z0-9-]+)$ blog.php?s=$1 [L]
+RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
 ```
 
-| **series.php** :
+| **ajax.editseries.php** :
+
+*Note the main section where we handle an RSS image upload*
 
 ```php
+// RSS feed
+$rss_info = ($_FILES["pro-rss"]["tmp_name"]) ? getimagesize($_FILES["pro-rss"]["tmp_name"]) : false;
+if ($rss_info) {
+  $tmp_file = $_FILES["pro-rss"]['tmp_name'];
+  $image_width = $rss_info[0];
+  $image_height = $rss_info[1];
+  $pro_rss_path = $pro_path.$s_id.'-'.$pro_rss_name;
+  $upload_ext = strtolower(pathinfo(basename($_FILES["pro-rss"]["name"]),PATHINFO_EXTENSION));
+  if ($_FILES['pro-rss']['size'] <= $file_size_limit) {
+    if ($rss_info["mime"] == "image/jpeg") {
+      if (($image_width == $image_height)
+      &&  ($image_width == 144)
+      &&  ($image_height == 144)) {
 
+        if (move_uploaded_file($tmp_file, $pro_rss_path)) {
+          $upload_img_success = true;
+          $upload_rss_success = true;
+        } else {
+          $ajax_response['message'] = '<p class="red">path:'.$pro_rss_path.' RSS image upload unknown failure.</p>';
+          // We're done here
+          $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
+          echo $json_response;
+          exit ();
+        }
+
+      } else {
+        $ajax_response['message'] = '<p class="red">Logo is wrong size. Must be square and 144 pixels wide and high.</p>';
+        // We're done here
+        $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
+        echo $json_response;
+        exit ();
+      }
+
+    } else {
+      $ajax_response['message'] = '<p class="red">RSS image is wrong formatt. Allowed: JPEG, PNG, GIF</p>';
+      // We're done here
+      $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
+      echo $json_response;
+      exit ();
+    }
+
+  } else {
+    $ajax_response['message'] = '<p class="red">RSS image file size is too big. Limit is 1MB.</p>';
+    // We're done here
+    $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
+    echo $json_response;
+    exit ();
+  }
+}
+```
+
+*Note the two main AJAX responses, depending on image upload*
+
+```php
+if ($upload_img_success == true) {
+  $ajax_response['message'] = '<span class="green notehide">Image uploaded. Changes may not take effect until cache reloads.</span>';
+  $ajax_response['name'] = $series_name_trim;
+  $ajax_response['slug'] = $clean_slug_trim;
+  $ajax_response['change'] = 'change';
+  $ajax_response['upload'] = 'uploaded';
+  $ajax_response['new_podcast'] = ($upload_podcast_success) ? 'newpodcast' : 'notnew';
+  $ajax_response['new_rss'] = ($upload_rss_success) ? 'newrss' : 'notnew';
+} else {
+  $ajax_response['message'] = '<span class="orange notehide">No changes</span>';
+  $ajax_response['name'] = $series_name_trim;
+  $ajax_response['slug'] = $clean_slug_trim;
+  $ajax_response['change'] = 'nochange';
+  $ajax_response['upload'] = 'failed';
+  $ajax_response['new_podcast'] = 'notnew';
+  $ajax_response['new_rss'] = 'notnew';
+}
+```
+
+| **in.editseriesdiv.php** : (settings.php, pieces.php & edit.php)
+
+`include` just after in.head.php
+
+```html
+<!-- Div for series editor -->
+<div id="edit-series-container" style="display:none;">
+  <!-- Close button -->
+  <div id="edit-series-closer" onclick="seriesEditorHide();" title="close"><b>&#xd7;</b></div>
+  <!-- AJAX mediaInsert HTML entity -->
+  <div id="edit-series"></div>
+</div>
+```
+
+| **in.editseriesbutton.php** : (settings.php, pieces.php & edit.php)
+
+`include` wherever you want the "Edit all series" clickable text
+
+```html
+...
+<form id="edit-series-form">
+  <input type="hidden" name="u_id" value="<?php echo $user_id; ?>">
+  <button
+  type="button"
+  class="postform link-button inline blue"
+  onclick="seriesEditor(); seriesEditorShowHide();">
+</form>
+
+  <small>Edit all series</small>
+
+</button>
+```
+
+| **in.editseries.php** : (settings.php, pieces.php & edit.php)
+
+*We introduce some new functions*
+
+```javascript
+// Show/hide the edit-series div
+seriesEditorShowHide();
+
+// Hide edit-series
+seriesEditorHide();
+
+// The editor content
+seriesEditor();
+
+  // show/hide action link
+showChangeButton(s_id);
+
+  // show/hide action link
+showHideEdit(s_id);
+
+  // The editor content
+seriesSave(sID);
+```
+
+| **style.css** :
+
+```css
+/* Series editor */
+div#edit-series-container {
+	background-color: #fff;
+	border-style: solid;
+	border-width: medium;
+	border-color: #ddd;
+  position: sticky;
+	padding: 0.5em;
+  top: 5em;
+	margin: 0 1em 0.5em 1em;
+	width: 95vw;
+	height: 80vh;
+	z-index: 99 !important; /* So it appears above everything */
+}
+```
+
+*And, we made changes so that in.series.php & ajax.series.php take arguments, used in:*
+
+- *edit.php*
+- *settings.php*
+
+```php
+// Set the values
+$p_series = (isset($p_series)) ? $p_series : $blog_default_series;
+$series_form = 'edit_piece'; // 'edit_piece' or 'blog_settings'
+include ('./in.series.php');
 ```
 
 *...in pagination, we add `$series_get` to the navigation links*
