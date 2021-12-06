@@ -2261,6 +2261,10 @@ RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
 
 #### Blog Settings
 
+Access Blog Settings via "Settings" from the header navigation row
+
+*Try uploading to "Site Images" from the "501/blog_uploads" folder*
+
 *See changes in:*
 
   - *settings.php*
@@ -2477,6 +2481,14 @@ a.paginate.current {
 ```
 
 #### Series
+
+To open the Series Editor, click on "Edit all series" in:
+
+- Blog Settings
+- Pieces
+- Editing any piece
+
+*Try uploading RSS & Podcast images from the "501/blog_uploads" folder*
 
 | **in.db.php** :
 
