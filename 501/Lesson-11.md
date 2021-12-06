@@ -2353,10 +2353,19 @@ EOF;
 
 #### Pagination
 
+*We added pagination to:*
+- *blog.php, pieces.php & trash.php*
+
+*Our example code shows blog.php, but code for pieces.php & trash.php is identical except SQL calls and navigation links*
+
+*Note, pagination only shows:*
+- *blog.php: items = "Pieces per page" in Settings*
+- *pieces.php & trash.php: `$pageitems = 100;`*
+  - *Set to a low number like `2` to see pagination work here*
+
 | **blog.php** :
 
 ```php
-// Pagination
 // Valid the Pagination
 if ((isset($_GET['r'])) && (filter_var($_GET['r'], FILTER_VALIDATE_INT, array('min_range' => 1)))) {
  $paged = preg_replace("/[^0-9]/","", $_GET['r']);
@@ -2369,7 +2378,7 @@ $itemskip = $pageitems * ($paged - 1);
 // We add this to the end of the $query, after DESC
 // LIMIT $itemskip,$pageitems
 
-// Pagination navigation: ow many items total?
+// Pagination navigation: How many items total?
 $query = $database->prepare("SELECT id FROM publications WHERE type='post' AND status='live' AND pubstatus='published'");
 $rows = $pdo->exec_($query);
 $totalrows = $pdo->numrows;
@@ -2751,12 +2760,14 @@ function mediaFeatureInsert(thisMedia) { // These arguments can be anything, sam
 
   AJAX.send(FD); // Data sent is from the form
 
-} // mediaFeatureInsert() function
+}
+
 // Hide mediaFeatureInsert()
 function mediaFeatureHide() {
   document.getElementById("feature-insert-container").style.display = "none";
   document.getElementById("featureuploadresponse").innerHTML = '';
 }
+
 // Show mediaFeatureInsert()
 function mediaFeatureShow() {
   document.getElementById("feature-insert-container").style.display = "block";
@@ -3023,6 +3034,38 @@ echo '<div id="featured-media" style="display:block">';
   }
 
 echo '</div>';
+```
+
+#### Pre-Drafts first
+
+*We restructured pieces.php so that pre-draft pieces are listed at the top*
+
+- *SQL looks for unpublished pieces first, then orders by `date_live`*
+
+| **pieces.php** :
+
+```sql
+SELECT id, type, status, pub_yn, title, date_live, date_created
+FROM pieces WHERE status='live'
+ORDER BY date_live DESC;
+```
+
+*...adds...*
+
+```sql
+-- CASE WHEN ... THEN ... ELSE ... END (like an "if" statement)
+-- 0 THEN 1 is an index order:
+CASE WHEN pub_yn=false THEN 0 ELSE 1 END,
+```
+
+*...and becomes...*
+
+```sql
+SELECT id, type, status, pub_yn, title, date_live, date_created
+FROM pieces WHERE status='live'
+ORDER BY
+CASE WHEN pub_yn=false THEN 0 ELSE 1 END, -- We added this
+date_live DESC;
 ```
 
 ### VI. Beyond

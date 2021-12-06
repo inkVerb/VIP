@@ -2168,10 +2168,15 @@ ___
 
 Features to be added
 
-1. Add Pagination:
-  - Media Library
-  - Pieces & Trash
-  - Series AJAX
+1. Add filters to pieces.php:
+  - Order by (date published, title, id/started)
+  - Search (by ____, default title & content)
+  - Only:
+    - Published
+    - Pre-draft
+    - Redrafting
+    - Scheduled
+    - Title
 2. SEO per piece
   - Add code to the `<!-- SEO -->` section of in.head.php
   - Retrieve any featured image or shortened content from a piece
