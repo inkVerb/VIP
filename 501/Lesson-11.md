@@ -2355,10 +2355,236 @@ EOF;
 }
 ```
 
+#### Series
+
+To open the Series Editor, click on "Edit all series" in:
+
+- Blog Settings
+- Pieces
+- Editing any piece
+
+*Try uploading RSS & Podcast images from the "501/blog_uploads" folder*
+
+| **in.db.php** :
+
+```php
+// Set a default Series from the blog_settings table
+$query = $database->prepare("SELECT default_series FROM blog_settings");
+$rows = $pdo->exec_($query);
+if ($query->numrows == 1) {
+  foreach ($rows as $row) {
+    $de_series = $row->default_series;
+  }
+}
+```
+
+| **.htaccess** :
+
+```
+RewriteRule ^series/?([a-zA-Z0-9-]+)$ blog.php?s=$1 [L]
+RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
+```
+
+| **ajax.editseries.php** :
+
+*Note the main section where we handle an RSS image upload*
+
+```php
+// RSS feed
+$rss_info = ($_FILES["pro-rss"]["tmp_name"]) ? getimagesize($_FILES["pro-rss"]["tmp_name"]) : false;
+if ($rss_info) {
+  $tmp_file = $_FILES["pro-rss"]['tmp_name'];
+  $image_width = $rss_info[0];
+  $image_height = $rss_info[1];
+  $pro_rss_path = $pro_path.$s_id.'-'.$pro_rss_name;
+  $upload_ext = strtolower(pathinfo(basename($_FILES["pro-rss"]["name"]),PATHINFO_EXTENSION));
+  if ($_FILES['pro-rss']['size'] <= $file_size_limit) {
+    if ($rss_info["mime"] == "image/jpeg") {
+      if (($image_width == $image_height)
+      &&  ($image_width == 144)
+      &&  ($image_height == 144)) {
+
+        if (move_uploaded_file($tmp_file, $pro_rss_path)) {
+          $upload_img_success = true;
+          $upload_rss_success = true;
+        } else {
+          $ajax_response['message'] = '<p class="red">path:'.$pro_rss_path.' RSS image upload unknown failure.</p>';
+          // We're done here
+          $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
+          echo $json_response;
+          exit ();
+        }
+
+      } else {
+        $ajax_response['message'] = '<p class="red">Logo is wrong size. Must be square and 144 pixels wide and high.</p>';
+        // We're done here
+        $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
+        echo $json_response;
+        exit ();
+      }
+
+    } else {
+      $ajax_response['message'] = '<p class="red">RSS image is wrong formatt. Allowed: JPEG, PNG, GIF</p>';
+      // We're done here
+      $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
+      echo $json_response;
+      exit ();
+    }
+
+  } else {
+    $ajax_response['message'] = '<p class="red">RSS image file size is too big. Limit is 1MB.</p>';
+    // We're done here
+    $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
+    echo $json_response;
+    exit ();
+  }
+}
+```
+
+*Note the two main AJAX responses, depending on image upload*
+
+```php
+if ($upload_img_success == true) {
+  $ajax_response['message'] = '<span class="green notehide">Image uploaded. Changes may not take effect until cache reloads.</span>';
+  $ajax_response['name'] = $series_name_trim;
+  $ajax_response['slug'] = $clean_slug_trim;
+  $ajax_response['change'] = 'change';
+  $ajax_response['upload'] = 'uploaded';
+  $ajax_response['new_podcast'] = ($upload_podcast_success) ? 'newpodcast' : 'notnew';
+  $ajax_response['new_rss'] = ($upload_rss_success) ? 'newrss' : 'notnew';
+} else {
+  $ajax_response['message'] = '<span class="orange notehide">No changes</span>';
+  $ajax_response['name'] = $series_name_trim;
+  $ajax_response['slug'] = $clean_slug_trim;
+  $ajax_response['change'] = 'nochange';
+  $ajax_response['upload'] = 'failed';
+  $ajax_response['new_podcast'] = 'notnew';
+  $ajax_response['new_rss'] = 'notnew';
+}
+```
+
+| **in.editseriesdiv.php** : (in.head.php; called by: settings.php, pieces.php & edit.php)
+
+Uses `$series_editor_yn = true;` for in.head.php to `include`
+
+```html
+<!-- Div for series editor -->
+<div id="edit-series-container" style="display:none;">
+  <!-- Close button -->
+  <div id="edit-series-closer" onclick="seriesEditorHide();" title="close"><b>&#xd7;</b></div>
+  <!-- AJAX mediaInsert HTML entity -->
+  <div id="edit-series"></div>
+</div>
+```
+
+| **in.editseriesbutton.php** : (settings.php, pieces.php & edit.php)
+
+`include` wherever you want the "Edit all series" clickable text
+
+```html
+...
+<form id="edit-series-form">
+  <input type="hidden" name="u_id" value="<?php echo $user_id; ?>">
+  <button
+  type="button"
+  class="postform link-button inline blue"
+  onclick="seriesEditor(); seriesEditorShowHide();">
+</form>
+
+  <small>Edit all series</small>
+
+</button>
+```
+
+| **in.editseries.php** : (settings.php, pieces.php & edit.php)
+
+*We introduce some new functions*
+
+*Note `showHideEdit()`...*
+
+```javascript
+// Show/hide the edit-series div
+seriesEditorShowHide();
+
+// Hide edit-series
+seriesEditorHide();
+
+// The editor content
+seriesEditor();
+
+  // show/hide action link
+showChangeButton(s_id);
+
+  // show/hide action link
+  function showHideEdit(s_id) {
+    var y = document.getElementById("e_buttons_"+s_id);
+    if (y.style.display === "inline") {
+      document.getElementById("change-cancel-"+s_id).innerHTML = 'Change';
+      y.style.display = "none";
+    } else {
+      document.getElementById("change-cancel-"+s_id).innerHTML = 'Cancel';
+      y.style.display = "inline";
+    }
+    // For the Default series, the "Permanently delete series" checkbox and <div> do not exist, so running a JavaScript action for it would break the above line also
+    // So, we must check to see if the checkbox <div> even exists, only then we run the script action to change it
+    if (elementExists = document.getElementById("delete-checkbox-"+s_id)) {
+      var x = document.getElementById("delete-checkbox-"+s_id);
+      if (x.style.display === "inline") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "inline";
+      }
+    }
+  }
+
+  // The editor content
+seriesSave(sID);
+```
+
+| **style.css** :
+
+```css
+/* Series editor */
+div#edit-series-container {
+	background-color: #fff;
+	border-style: solid;
+	border-width: medium;
+	border-color: #ddd;
+  position: sticky;
+	padding: 0.5em;
+	margin: 0 1em 0.5em 1em;
+	width: 95vw;
+	height: 88vh;
+	z-index: 99 !important; /* So it appears above everything */
+}
+```
+
+*And, we made changes so that in.series.php & ajax.series.php take arguments, used in:*
+
+- *edit.php*
+- *settings.php*
+
+```php
+// Set the values
+$p_series = (isset($p_series)) ? $p_series : $blog_default_series;
+$series_form = 'edit_piece'; // 'edit_piece' or 'blog_settings'
+include ('./in.series.php');
+```
+
+*...in pagination, we add `$series_get` to the navigation links*
+
 #### Pagination
 
 *We added pagination to:*
-- *blog.php, pieces.php & trash.php*
+- *blog.php*
+- *pieces.php*
+- *trash.php*
+- *medialibrary.php*
+
+*We added pagination in AJAX a different way to:*
+- *ajax.editseries.php*
+- *ajax.mediainsert.php*
+- *ajax.mediafeature.php*
 
 *Our example code shows blog.php, but code for pieces.php & trash.php is identical except SQL calls and navigation links*
 
@@ -2480,203 +2706,78 @@ a.paginate.current {
 }
 ```
 
-#### Series
+##### Pagination with AJAX
 
-To open the Series Editor, click on "Edit all series" in:
+*This is an example of the Series Editor*
 
-- Blog Settings
-- Pieces
-- Editing any piece
+| **in.editseries.php** :
 
-*Try uploading RSS & Podcast images from the "501/blog_uploads" folder*
+```JavaScript
+function seriesEditor(uID, pageNum = 0) { // These arguments can be anything, same as used in this function
 
-| **in.db.php** :
+  // Bind a new event listener every time the <form> is changed:
+  const AJAX = new XMLHttpRequest(); // AJAX handler
 
-```php
-// Set a default Series from the blog_settings table
-$query = $database->prepare("SELECT default_series FROM blog_settings");
-$rows = $pdo->exec_($query);
-if ($query->numrows == 1) {
-  foreach ($rows as $row) {
-    $de_series = $row->default_series;
-  }
-}
-```
+  AJAX.addEventListener( "load", function(event) { // This runs when AJAX responds
+    document.getElementById("edit-series").innerHTML = event.target.responseText;
+  } );
 
-| **.htaccess** :
+  AJAX.addEventListener( "error", function(event) { // This runs if AJAX fails
+    document.getElementById("edit-series").innerHTML =  'Oops! Something went wrong.';
+  } );
 
-```
-RewriteRule ^series/?([a-zA-Z0-9-]+)$ blog.php?s=$1 [L]
-RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
+  AJAX.open("POST", "ajax.editseries.php");
+  AJAX.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  AJAX.send("u_id="+uID+"&r="+pageNum); // Data as could be sent in a <form>
+
+} // seriesEditor() function
 ```
 
 | **ajax.editseries.php** :
 
-*Note the main section where we handle an RSS image upload*
-
-```php
-// RSS feed
-$rss_info = ($_FILES["pro-rss"]["tmp_name"]) ? getimagesize($_FILES["pro-rss"]["tmp_name"]) : false;
-if ($rss_info) {
-  $tmp_file = $_FILES["pro-rss"]['tmp_name'];
-  $image_width = $rss_info[0];
-  $image_height = $rss_info[1];
-  $pro_rss_path = $pro_path.$s_id.'-'.$pro_rss_name;
-  $upload_ext = strtolower(pathinfo(basename($_FILES["pro-rss"]["name"]),PATHINFO_EXTENSION));
-  if ($_FILES['pro-rss']['size'] <= $file_size_limit) {
-    if ($rss_info["mime"] == "image/jpeg") {
-      if (($image_width == $image_height)
-      &&  ($image_width == 144)
-      &&  ($image_height == 144)) {
-
-        if (move_uploaded_file($tmp_file, $pro_rss_path)) {
-          $upload_img_success = true;
-          $upload_rss_success = true;
-        } else {
-          $ajax_response['message'] = '<p class="red">path:'.$pro_rss_path.' RSS image upload unknown failure.</p>';
-          // We're done here
-          $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
-          echo $json_response;
-          exit ();
-        }
-
-      } else {
-        $ajax_response['message'] = '<p class="red">Logo is wrong size. Must be square and 144 pixels wide and high.</p>';
-        // We're done here
-        $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
-        echo $json_response;
-        exit ();
-      }
-
-    } else {
-      $ajax_response['message'] = '<p class="red">RSS image is wrong formatt. Allowed: JPEG, PNG, GIF</p>';
-      // We're done here
-      $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
-      echo $json_response;
-      exit ();
-    }
-
-  } else {
-    $ajax_response['message'] = '<p class="red">RSS image file size is too big. Limit is 1MB.</p>';
-    // We're done here
-    $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
-    echo $json_response;
-    exit ();
-  }
-}
-```
-
-*Note the two main AJAX responses, depending on image upload*
-
-```php
-if ($upload_img_success == true) {
-  $ajax_response['message'] = '<span class="green notehide">Image uploaded. Changes may not take effect until cache reloads.</span>';
-  $ajax_response['name'] = $series_name_trim;
-  $ajax_response['slug'] = $clean_slug_trim;
-  $ajax_response['change'] = 'change';
-  $ajax_response['upload'] = 'uploaded';
-  $ajax_response['new_podcast'] = ($upload_podcast_success) ? 'newpodcast' : 'notnew';
-  $ajax_response['new_rss'] = ($upload_rss_success) ? 'newrss' : 'notnew';
-} else {
-  $ajax_response['message'] = '<span class="orange notehide">No changes</span>';
-  $ajax_response['name'] = $series_name_trim;
-  $ajax_response['slug'] = $clean_slug_trim;
-  $ajax_response['change'] = 'nochange';
-  $ajax_response['upload'] = 'failed';
-  $ajax_response['new_podcast'] = 'notnew';
-  $ajax_response['new_rss'] = 'notnew';
-}
-```
-
-| **in.editseriesdiv.php** : (settings.php, pieces.php & edit.php)
-
-`include` just after in.head.php
+*Note navigation links use:*
 
 ```html
-<!-- Div for series editor -->
-<div id="edit-series-container" style="display:none;">
-  <!-- Close button -->
-  <div id="edit-series-closer" onclick="seriesEditorHide();" title="close"><b>&#xd7;</b></div>
-  <!-- AJAX mediaInsert HTML entity -->
-  <div id="edit-series"></div>
-</div>
+<a href="#" onclick="seriesEditor(USERID, IMAGE);">
 ```
-
-| **in.editseriesbutton.php** : (settings.php, pieces.php & edit.php)
-
-`include` wherever you want the "Edit all series" clickable text
-
-```html
-...
-<form id="edit-series-form">
-  <input type="hidden" name="u_id" value="<?php echo $user_id; ?>">
-  <button
-  type="button"
-  class="postform link-button inline blue"
-  onclick="seriesEditor(); seriesEditorShowHide();">
-</form>
-
-  <small>Edit all series</small>
-
-</button>
-```
-
-| **in.editseries.php** : (settings.php, pieces.php & edit.php)
-
-*We introduce some new functions*
-
-```javascript
-// Show/hide the edit-series div
-seriesEditorShowHide();
-
-// Hide edit-series
-seriesEditorHide();
-
-// The editor content
-seriesEditor();
-
-  // show/hide action link
-showChangeButton(s_id);
-
-  // show/hide action link
-showHideEdit(s_id);
-
-  // The editor content
-seriesSave(sID);
-```
-
-| **style.css** :
-
-```css
-/* Series editor */
-div#edit-series-container {
-	background-color: #fff;
-	border-style: solid;
-	border-width: medium;
-	border-color: #ddd;
-  position: sticky;
-	padding: 0.5em;
-  top: 5em;
-	margin: 0 1em 0.5em 1em;
-	width: 95vw;
-	height: 80vh;
-	z-index: 99 !important; /* So it appears above everything */
-}
-```
-
-*And, we made changes so that in.series.php & ajax.series.php take arguments, used in:*
-
-- *edit.php*
-- *settings.php*
 
 ```php
-// Set the values
-$p_series = (isset($p_series)) ? $p_series : $blog_default_series;
-$series_form = 'edit_piece'; // 'edit_piece' or 'blog_settings'
-include ('./in.series.php');
+// Pagination nav row
+if ($totalpages > 1) {
+  echo "
+  <div class=\"paginate_nav_container\">
+    <div class=\"paginate_nav\">
+      <table>
+        <tr>
+          <td>
+            <a class=\"paginate";
+            if ($paged == 1) {echo " disabled";}
+            echo "\" title=\"Page 1\" href=\"#\" onclick=\"seriesEditor($user_id, $);\">&laquo;</a>
+          </td>
+          <td>
+            <a class=\"paginate";
+            if ($paged == 1) {echo " disabled";}
+           echo "\" title=\"Previous\" href=\"#\" onclick=\"seriesEditor($user_id, $prevpaged);\">&lsaquo;&nbsp;</a>
+          </td>
+          <td>
+            <a class=\"paginate current\" title=\"Next\" href=\"#\" onclick=\"seriesEditor($user_id, $paged);\">Page $paged ($totalpages)</a>
+          </td>
+          <td>
+            <a class=\"paginate";
+            if ($paged == $totalpages) {echo " disabled";}
+           echo "\" title=\"Next\" href=\"#\" onclick=\"seriesEditor($user_id, $nextpaged);\">&nbsp;&rsaquo;</a>
+          </td>
+           <td>
+             <a class=\"paginate";
+             if ($paged == $totalpages) {echo " disabled";}
+            echo "\" title=\"Last Page\" href=\"#\" onclick=\"seriesEditor($user_id, $totalpages);\">&raquo;</a>
+           </td>
+        </tr>
+      </table>
+    </div>
+  </div>";
+}
 ```
-
-*...in pagination, we add `$series_get` to the navigation links*
 
 #### Featured Media
 

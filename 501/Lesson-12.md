@@ -2107,49 +2107,10 @@ localhost/web/podcast.xml
 
 ### VI. PHP Integration
 
+#### Create an iTunes podcast-ready RSS feed
 
 
-### XML
-- RSS feeds by tag & series
-- Import-export mod
-  - Import/export native
-  - Import/export for WordPress
-- Podcast mod
-
-### Feature Roadmap:
-- Editor/Pieces Upgrades
-  - Title capitalizer
-  - HTML allowed in "After"
-  - JS word counter
-- Identity connected to users and pieces
-  - Identities editor
-- Choose "Menu Pages" (mod)
-- Editor: Medium or Tiny
-- Basic Flair Colors (default option)
-- Night/day/soft mode cookies
-- Menu Lists
-  - 2 Pages Lists
-  - 1 Social List
-  - Custom Links
-  - Combined Lists (choose from Pieces, Custom Links, Dropdown other list)
-    - Dropdown (show another 'List'/'Section' on click)
-- Landing Pages (mod, content type)
-  - combine sections
-  - section height (auto/full)
-  - top/social menus y/n
-  - drop-in PHP/HTML code
-- Landing Page Sections
-  - list (choose from Menu Lists)
-  - forms
-  - button links
-  - buttons show forms
-  - background images w color overlay
-  - background colors
-  - columns
-  - sections appear at top/bottom of both/posts/pages of all/series
-- Join mod (allow Member class signup with payment)
-- Shop mod
-
+#### Aggregate another RSS feed
 
 
 
@@ -2220,5 +2181,23 @@ Features to be added
   - Only "page" pieces would appear on the menu
   - A series as a menu item would not be clickable, but would make a dropdown showing other "page" pieces in that series
     - This will require some knowledge of CSS and JavaScript
+9. Add filters to the media library
+  - Add a to:
+    - medialibrary.php
+    - ajax.mediainsert.php
+    - ajax.mediafeature.php
+  - Search
+  - Filter media by type
+  - Filter by date added
+    - Ascending
+    - Descending
+10. Add simple search to blog.php
+  - Search through:
+    - Tags
+    - Series
+    - Title
+    - Content
+    - After
+    - Links
 
 # Done! Have a cookie: ### #
