@@ -2595,6 +2595,8 @@ include ('./in.series.php');
 
 | **blog.php** :
 
+*The `$query` is the same after `FROM` as in the `$query` to populate the page*
+
 ```php
 // Valid the Pagination
 if ((isset($_GET['r'])) && (filter_var($_GET['r'], FILTER_VALIDATE_INT, array('min_range' => 1)))) {
@@ -2625,7 +2627,7 @@ $nextpaged = $paged + 1;
 $prevpaged = $paged - 1;
 ```
 
-*...then the SQL query for pieces on this page will use this at the end...*
+*...add this to the end of the main `$query` of the page...*
 
 ```sql
 LIMIT $itemskip,$pageitems
@@ -2715,7 +2717,7 @@ a.paginate.current {
 ```JavaScript
 function seriesEditor(uID, pageNum = 0) { // These arguments can be anything, same as used in this function
 
-  // Bind a new event listener every time the <form> is changed:
+  // Bind a new event listener:
   const AJAX = new XMLHttpRequest(); // AJAX handler
 
   AJAX.addEventListener( "load", function(event) { // This runs when AJAX responds
