@@ -2109,6 +2109,9 @@ localhost/web/podcast.xml
 
 #### Create an iTunes podcast-ready RSS feed
 
+*You can learn more about iTunes podcast RSS feed tags [here](https://help.apple.com/itc/podcasts_connect/#/itcb54353390), along with other [requirements](https://podcasters.apple.com/support/823-podcast-requirements)*
+
+
 
 #### Aggregate another RSS feed
 
