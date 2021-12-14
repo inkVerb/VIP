@@ -2573,7 +2573,11 @@ include ('./in.series.php');
 
 *...in pagination, we add `$series_get` to the navigation links*
 
-*We also added some extra series options to:*
+##### Series Podcast Details
+
+To open the Series Details Editor, click on "Edit podcast details" for a series in the Series Editor
+
+*We also added some extra series details to:*
 
 - *ajax.editseriesdetails.php*
 
