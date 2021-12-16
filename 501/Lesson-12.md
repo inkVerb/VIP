@@ -2213,6 +2213,7 @@ Features to be added
   - Add `landing` column in `blog_settings` in SQL
     - Options are any piece or series
   - Create an `<input>` to set a piece as the `template` for a series on the `series` table
+  - Indicate a piece is a template in pieces.php and edit.php
   - The root web URL will point to either the selected pieces series or the selected "page" piece
 8. Menus
   - Add a `menus` table to the database
