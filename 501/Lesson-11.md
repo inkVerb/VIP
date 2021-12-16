@@ -2488,7 +2488,7 @@ Uses `$series_editor_yn = true;` for in.head.php to `include`
   <button
   type="button"
   class="postform link-button inline blue"
-  onclick="seriesEditor(); seriesEditorShowHide();">
+  onclick="seriesEditor(USERID); seriesEditorShowHide();">
 </form>
 
   <small>Edit all series</small>
@@ -2510,7 +2510,7 @@ seriesEditorShowHide();
 seriesEditorHide();
 
 // The editor content
-seriesEditor();
+seriesEditor(u_id, PAGE, MESSAGE);
 
   // show/hide action link
 showChangeButton(s_id);
@@ -2577,15 +2577,23 @@ include ('./in.series.php');
 
 To open the Series Details Editor, click on "Edit podcast details" for a series in the Series Editor
 
-*We also added some extra series details to:*
+*We also added some extra series details via:*
 
 - *ajax.editseriesdetails.php*
 
-*Using:*
+*Using from in.editseries.php:*
 
 - `detailsEditorHide()`
 - `detailsEditor()`
 - `detailsSave()`
+- `seriesEditor()`
+
+*Note this uses:*
+
+- *Pagination*
+- *Same for loading and saving the `<form>`*
+- *`$ajax_response['message']` passes through `seriesEditor()` as `detailMessage` to become `$_POST['m']` in ajax.editseries.php*
+  - *Then it is displayed at the top row of the `<table>` in the Series Editor in in.editseries.php `<div id="series-details-message">`*
 
 *Note, the language for iTunes podcasts only has 50 languages available; more could be added from the two-character list from [ISO 639](http://www.loc.gov/standards/iso639-2/php/code_list.php)*
 
@@ -2842,10 +2850,12 @@ a.paginate.current {
 
 *This is an example of the Series Editor*
 
+*Note the `seriesEditor()` function allows a message to be passed on load, which will be used to display response messages when saving changes*
+
 | **in.editseries.php** :
 
 ```JavaScript
-function seriesEditor(uID, pageNum = 0) { // These arguments can be anything, same as used in this function
+function seriesEditor(uID, pageNum = 0, detailMessage = '') { // These arguments can be anything, same as used in this function
 
   // Bind a new event listener:
   const AJAX = new XMLHttpRequest(); // AJAX handler
@@ -2860,7 +2870,7 @@ function seriesEditor(uID, pageNum = 0) { // These arguments can be anything, sa
 
   AJAX.open("POST", "ajax.editseries.php");
   AJAX.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  AJAX.send("u_id="+uID+"&r="+pageNum); // Data as could be sent in a <form>
+  AJAX.send("u_id="+uID+"&r="+pageNum+"&m="+detailMessage); // Data as could be sent in a <form>
 
 } // seriesEditor() function
 ```
@@ -2870,7 +2880,7 @@ function seriesEditor(uID, pageNum = 0) { // These arguments can be anything, sa
 *Note navigation links use:*
 
 ```html
-<a href="#" onclick="seriesEditor(USERID, IMAGE);">
+<a href="#" onclick="seriesEditor(USERID, PAGE);">
 ```
 
 ```php
@@ -2884,7 +2894,7 @@ if ($totalpages > 1) {
           <td>
             <a class=\"paginate";
             if ($paged == 1) {echo " disabled";}
-            echo "\" title=\"Page 1\" href=\"#\" onclick=\"seriesEditor($user_id, $);\">&laquo;</a>
+            echo "\" title=\"Page 1\" href=\"#\" onclick=\"seriesEditor($user_id, 1);\">&laquo;</a>
           </td>
           <td>
             <a class=\"paginate";

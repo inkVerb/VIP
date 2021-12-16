@@ -1128,6 +1128,7 @@ ls web
 - *The `piecesaction()` function was added*
   - *This does the actual that formerly used all those pieces-action files*
   - *These are used by act.bulkpieces.php without leaving that page*
+  - *This only changes `status`, `pubstatus`, and `type` of a piece, not `date_updated` because that is about deeper content of a piece and should trigger a history difference*
 
 *Note trash.php:*
 
