@@ -101,6 +101,9 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$2 [L]
 
 ## 4. localhost/whatever/Valye_One/Value_Maybe (maybe a middle slash, if so it becomes $2)
 RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$3 [L]
+
+## 5. localhost/pretty (no ReGex, plain text)
+RewriteRule ^pretty$ pretty_page.php [L]
 ```
 
 *We just tried number 2 above, now let's try 1...*
@@ -182,6 +185,23 @@ localhost/web/My_Long_Name/Name-2
 
 *...Feel free to try different strings after `localhost/web/`, before and after the `/`*
 
+*And, we don't need any RegEx...*
+
+| **5** :$
+```
+sudo cp core/05-pretty5.php web/pretty_page.php && \
+sudo cp core/05-htaccess5 /srv/www/html/web/.htaccess && \
+sudo chown -R www:www /srv/www/html && \
+atom core/05-pretty5.php core/05-htaccess5 && \
+ls web
+```
+
+| **B-5** ://
+
+```console
+localhost/web/pretty
+```
+
 ### The Settings
 
 Note, Apache .conf is probably:
@@ -201,13 +221,13 @@ Note, Apache .conf is probably:
 
 Choose either Arch/Manjaro (5a) or Ubuntu (5u):
 
-| **5a** :$ (Arch/Manjaro)
+| **6a** :$ (Arch/Manjaro)
 
 ```console
 vim /etc/httpd/conf/httpd.conf
 ```
 
-| **5u** :$ (Ubuntu)
+| **6u** :$ (Ubuntu)
 
 ```console
 vim /etc/apache2/sites-available/000-default.conf
@@ -217,7 +237,7 @@ vim /etc/apache2/sites-available/000-default.conf
 
 *In vim, type:*
 
-| **vim-5a** :] `/<Directory` Enter
+| **vim-6a** :] `/<Directory` Enter
 
 *This takes you to the settings between the `<Directory>` tags*
 
@@ -235,7 +255,7 @@ RewriteEngine on                # .htaccess
 
 *To exit vim, type:*
 
-| **vim-5b** :] Esc `:q!` Enter
+| **vim-6b** :] Esc `:q!` Enter
 
 ### Avoid Bugs
 
@@ -248,7 +268,7 @@ RewriteRule ^ %1 [R=301,L]
 
 Without this, a trailing slash with nothing after could trigger a false GET argument
 
-| **B-6a** ://
+| **B-7a** ://
 
 ```console
 localhost/web/webapp.php/
@@ -258,7 +278,7 @@ localhost/web/webapp.php/
 
 *This doesn't happen without the trailing slash `/`*
 
-| **B-6b** ://
+| **B-7b** ://
 
 ```console
 localhost/web/webapp.php
@@ -266,35 +286,35 @@ localhost/web/webapp.php
 
 *Try another file...*
 
-| **B-6c** ://
+| **B-7c** ://
 
 ```console
 localhost/web/account.php/
 ```
 
-| **B-6d** ://
+| **B-7d** ://
 
 ```console
 localhost/web/account.php
 ```
 
-| **7** :$
+| **8** :$
 ```
-sudo cp core/05-htaccess5 /srv/www/html/web/.htaccess && \
+sudo cp core/05-htaccess6 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-atom core/05-htaccess5 && \
+atom core/05-htaccess6 && \
 ls web
 ```
 
 *...Now, RewriteMod will simply remove the trailing slash `/`, not get fooled by it...*
 
-| **B-7a** ://
+| **B-8a** ://
 
 ```console
 localhost/web/webapp.php/
 ```
 
-| **B-7b** ://
+| **B-8b** ://
 
 ```console
 localhost/web/account.php/
@@ -302,7 +322,7 @@ localhost/web/account.php/
 
 *Everything else still works...*
 
-| **B-7c** ://
+| **B-8c** ://
 
 ```console
 localhost/web/My_Long_Name
@@ -310,7 +330,7 @@ localhost/web/My_Long_Name
 
 *...with and without a `/` in the middle...*
 
-| **B-7d** ://
+| **B-8d** ://
 
 ```console
 localhost/web/My_Long_Name/Name-2

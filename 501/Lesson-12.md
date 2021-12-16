@@ -2111,7 +2111,49 @@ localhost/web/podcast.xml
 
 *You can learn more about iTunes podcast RSS feed tags [here](https://help.apple.com/itc/podcasts_connect/#/itcb54353390), along with other [requirements](https://podcasters.apple.com/support/823-podcast-requirements)*
 
+| **50** :$
 
+```console
+sudo cp pdo-feed/* web/ && \
+sudo mv web/htaccess web/.htaccess && \
+sudo chown -R www:www /srv/www/html
+```
+
+| **B-50** ://
+
+```console
+localhost/web/feed
+```
+
+*Note, we added a test for "feed":*
+
+| **in.editprocess.php** :
+
+```php
+if (($pdo->numrows > 0) || ($p_slug_test_trim == 'feed')) {...}
+```
+
+- *This makes sure that no piece slug is set as "feed", because we will use that namespace to generate feeds*
+
+| **.htaccess** :
+
+```
+# Feeds
+RewriteRule ^feed$ feed.php?s=0 [L]
+RewriteRule ^series/?([a-zA-Z0-9-]+)/feed$ feed.php?s=$1 [L]
+```
+
+*Note the "Feeds" rule must appear before "Slugs" & "Blog" because of the logical hierarchy*
+
+- *Rewrite must catch `feed` before trying it as a slug, otherwise it will be interpreted as a slug and sent to piece.php*
+
+- *Try placing the "Feeds" rule after "Blog" to see it break*
+
+| **feed.php** :
+
+```php
+
+```
 
 #### Aggregate another RSS feed
 

@@ -2573,6 +2573,16 @@ include ('./in.series.php');
 
 *...in pagination, we add `$series_get` to the navigation links*
 
+##### View Series
+
+*Links to view a series can be seen in:*
+
+- *ajax.editseries.php*
+- *pieces.php*
+  - *`$p_series_slug`, `$p_series_name`& `$p_series_id`*
+- *piece.php & blog.php*
+  - *Follows "::" after date published*
+
 ##### Series Podcast Details
 
 To open the Series Details Editor, click on "Edit podcast details" for a series in the Series Editor
@@ -3239,11 +3249,13 @@ if ($pdo->numrows == 1) {
     $feat_img_file_title = "$row->title_text";
     $feat_img_file_alt = "$row->alt_text";
     $feat_img_file_location = "$row->location";
+    $feat_img_file_relpath = $media_library_folder.$feat_img_file_location.'/'.$feat_img_file;
     $feat_img_url = $feat_file_basepath.$feat_img_file_location.'/'.$feat_img_file;
     $feat_img_url_blog = ($feat_img_ext == 'svg') ? $feat_file_basepath.$feat_img_file_location.'/'.$feat_img_thumb : $feat_img_url; // SVG files don't scale with <img> size attributes
     $feat_img_file_link = '<a href="'.$feat_img_url.'" target="_blank" style="text-decoration:none;">'."<b>$feat_img_file</b>".'</a>';
     $feat_img_showhide = 'inline';
     $feat_img_thumb_showhide = 'block';
+    $feat_img_file_size = filesize($feat_img_file_relpath);
   }
 } else {
   $feat_img_id = 0;
