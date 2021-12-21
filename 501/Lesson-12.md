@@ -2147,7 +2147,43 @@ RewriteRule ^series/?([a-zA-Z0-9-]+)/feed$ feed.php?s=$1 [L]
 
 - *Rewrite must catch `feed` before trying it as a slug, otherwise it will be interpreted as a slug and sent to piece.php*
 
-- *Try placing the "Feeds" rule after "Blog" to see it break*
+- *In .htaccess, try placing the "Feeds" rule after "Blog" to see it break*
+
+**Blog-Wide Podcast Details**
+
+| **settings.php** :
+
+```php
+// Function for iTunes categories
+...
+// Podcast Details
+...
+// Blog Podcast Details
+...
+// Empty fields?
+echo (isset($podcast_empty_field_warning)) ? $podcast_empty_field_warning : false;
+```
+
+*Note these sections came from ajax.editseriesdetails.php*
+
+**Link to RSS/Podcast feeds**
+
+| **blog.php** :
+
+```php
+// We add another variable $feed_path
+$feed_path = (isset($series_slug)) ? "/series/$series_slug/feed" : "/feed";
+include ('./in.head.php');
+```
+
+| **in.head.php** :
+
+```php
+// We add the RSS link after this <h1> line
+echo ( (isset($heading)) && ($heading != '') ) ? '<h1>'.$heading.'</h1><p><small><a target="_blank" href="'.$blog_web_base.$feed_path.'">RSS</a></small></p>' : false;
+```
+
+**Create this new RSS/Podcast feed**
 
 | **feed.php** :
 

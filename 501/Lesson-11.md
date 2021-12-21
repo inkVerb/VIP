@@ -2385,6 +2385,26 @@ RewriteRule ^series/?([a-zA-Z0-9-]+)$ blog.php?s=$1 [L]
 RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
 ```
 
+*Note these rules will break relative paths, such as style.css*
+
+- *If we use <link href="style.css"/>*
+- *And we load "localhost/web/series/something"*
+- *Then HTML will look for the file "localhost/web/series/something/style.css"*
+
+*So, we must use an absolute path to style.css in the header...*
+
+| **in.head.php** :
+
+```php
+<link href="<?php echo $blog_web_base;?>/style.css" rel="stylesheet" type="text/css" />
+```
+
+```
+content_css: <?php echo $blog_web_base;?>'/style.css',
+```
+
+*We edit series information here...*
+
 | **ajax.editseries.php** :
 
 *Note the main section where we handle an RSS image upload*
@@ -2465,7 +2485,7 @@ if ($upload_img_success == true) {
 
 | **in.editseriesdiv.php** : (in.head.php; called by: settings.php, pieces.php & edit.php)
 
-Uses `$series_editor_yn = true;` for in.head.php to `include`
+*This uses `$series_editor_yn = true;` for in.head.php to `include`*
 
 ```html
 <!-- Div for series editor -->
