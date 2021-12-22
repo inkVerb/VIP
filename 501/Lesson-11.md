@@ -2737,6 +2737,43 @@ To open the Series Details Editor, click on "Edit podcast details" for a series 
   - Film Reviews
   - TV Reviews
 
+#### Piece fields
+
+*New fields `subtitle` & `excerpt`:*
+- *SQL tables:*
+  - `pieces`
+  - `publications`
+  - `publication_history`
+- *Editing files:*
+  - *in.editprocess.php*
+  - *in.functions.php*
+  - *edit.php*
+- *Rendering in blog.php*
+  - *If there is an excerpt, it will replace the content in blog series pages*
+
+| **blog.php** :
+
+```php
+// Is there an excerpt?
+if (($p_excerpt != '') && ($p_excerpt != NULL)) {
+  // Change the content to the excerpt for our remaining purposes
+  $p_content = $p_excerpt;
+}
+```
+
+#### Audio/Video Duration
+
+- *New file:*
+  - *bash.duration.sh*
+- *Gets time information from an uploaded audio or video file*
+- *Output is sent to database table `media_library`, column `duration` in:*
+  - *upload.php*
+- *Displayed in:*
+  - *medialibrary.php*
+  - *ajax.mediainfoinsert.php*
+- *Retrieved by:*
+  - *in.featuredmedia.php*
+
 #### Pagination
 
 *We added pagination to:*
