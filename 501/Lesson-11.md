@@ -2399,10 +2399,6 @@ RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
 <link href="<?php echo $blog_web_base;?>/style.css" rel="stylesheet" type="text/css" />
 ```
 
-```
-content_css: <?php echo $blog_web_base;?>'/style.css',
-```
-
 *We edit series information here...*
 
 | **ajax.editseries.php** :

@@ -2189,6 +2189,19 @@ echo ($feed_link == true) ? '<p><small><a target="_blank" href="'.$blog_web_base
 | **feed.php** :
 
 ```php
+// Without this, browsers will think it is HTML and the feed won't work!
+// This is an XML document, say so first!
+header('Content-type: text/xml');
+...
+// Parse GET & assign feed-wide values
+...
+// Series Info
+||
+// Blog Info
+...
+// Header of feed
+...
+// Categories
 
 ```
 
