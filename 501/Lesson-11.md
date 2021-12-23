@@ -3001,8 +3001,6 @@ if ($totalpages > 1) {
 - *Video*
 - *Document*
 
-*...but is not included in `publication_history` nor auto-saves*
-
 ***The process:*** *In the edit workflow, we basically create a modified `mediaInsert()` JavaScript function, calling an AJAX file modified from ajax.mediainsert.php*
 
 *The main mods are:*
