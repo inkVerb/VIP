@@ -3908,7 +3908,6 @@ $value2 = 'global';
 $pdo->delete($table, $column1, $value1, $column2, $value2);
 echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
 ```
-
 ___
 
 #### [Lesson 12: Production & XML](https://github.com/inkVerb/vip/blob/master/501/Lesson-12.md)

@@ -2117,6 +2117,8 @@ localhost/web/podcast.xml
 sudo cp pdo-feed/* web/ && \
 sudo mv web/htaccess web/.htaccess && \
 sudo chown -R www:www /srv/www/html
+atom pdo-feed/feed.php rss.xsl blog.php in.head.php settings.php && \
+ls pdo-feed
 ```
 
 | **B-50** ://
@@ -2205,9 +2207,42 @@ header('Content-type: text/xml');
 
 ```
 
+**Style**
+
+| **feed.php** :
+
+This allows us to add XSL style without the .xml file extension:
+
+```php
+header('Content-type: text/xml');
+```
+
+...Thus we can include this XSL...
+
+```xml
+<?xml-stylesheet type="text/xsl" href="rss.xsl" ?>
+```
+
+...to see only the raw, unstyled feed, comment to this:
+
+```xml
+<!-- <?xml-stylesheet type="text/xsl" href="rss.xsl" ?> -->
+```
+
 #### Aggregate another RSS feed
 
+| **51** :$
 
+```console
+sudo cp pdo-aggregate/* web/ && \
+sudo chown -R www:www /srv/www/html
+```
+
+| **B-51** ://
+
+```console
+localhost/web/
+```
 
 ___
 
