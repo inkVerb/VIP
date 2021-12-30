@@ -2235,6 +2235,7 @@ header('Content-type: text/xml');
 
 ```console
 sudo cp pdo-aggregate/* web/ && \
+web/media/import && \
 sudo chown -R www:www /srv/www/html
 ```
 
