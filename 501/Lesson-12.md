@@ -2260,6 +2260,8 @@ ___
 
 Features to be added
 
+*These may appear as future lessons for 601, and you can do your own as projects or homework assignments*
+
 1. Add filters to pieces.php:
   - Order by (date published, title, id/started)
   - Search (by ____, default title & content)
@@ -2331,5 +2333,16 @@ Features to be added
     - Content
     - After
     - Links
+11. Build an API
+  - Create public and private keys for users
+  - API will render any post by ID or slug
+    - Settings inside the app
+    - Settings can be sent though the API
+    - Settings for rotating post of the day/week/month
+12. WordPress plugin
+  - Out Of Box rendering of the API
+    - Shortcodes
+    - Widgets
+    - Modeled after the badAd WordPress plugin
 
 # Done! Have a cookie: ### #
