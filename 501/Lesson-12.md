@@ -2345,4 +2345,33 @@ Features to be added
     - Widgets
     - Modeled after the badAd WordPress plugin
 
+
+
+
+
+```sql
+CREATE TABLE `rap` (
+
+`my_new_years` eve WHERE all about 'code',
+`gotta` ride this year ON 'getdown_road',
+`no_time` to waste WITH 'a_la_mode',
+`end` what started FROM 'poetic_bode',
+
+`remember` my peeps INTO the 'new_year',
+`how_i_wish` that 'yall' could GO 'here',
+`but_here` 'aint' done, tho do NOT 'fear',
+`c_u` all WHEN well IN 'the_clear',
+
+`dont_quit` your work for something 'above',
+`we_all` have dreams we live for AND 'love',
+`your_time` 'wont' never look LIKE 'the_drove',
+`just_bring` good tidings AND GO out LIKE a 'dove'
+
+);
+```
+
+
+
+
+
 # Done! Have a cookie: ### #
