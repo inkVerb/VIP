@@ -93,7 +93,7 @@ ___
 ```console
 sudo cp core/12-syntax1.xml web/syntax.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-syntax1.xml \
+atom core/12-syntax1.xml && \
 ls web
 ```
 
@@ -165,7 +165,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax2.xml web/syntax.xml && \
-atom core/12-syntax2.xml \
+atom core/12-syntax2.xml && \
 ls web
 ```
 
@@ -193,7 +193,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax3.xml web/syntax.xml && \
-atom core/12-syntax3.xml \
+atom core/12-syntax3.xml && \
 ls web
 ```
 
@@ -224,7 +224,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax4.xml web/syntax.xml && \
-atom core/12-syntax4.xml \
+atom core/12-syntax4.xml && \
 ls web
 ```
 
@@ -254,7 +254,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax5.xml web/syntax.xml && \
-atom core/12-syntax5.xml \
+atom core/12-syntax5.xml && \
 ls web
 ```
 
@@ -306,7 +306,7 @@ localhost/web/syntax.xml
 sudo cp core/12-xmlrender6.php web/xmlrender.php && \
 sudo cp core/12-htaccess6 web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-xmlrender6.php 12-htaccess7 \
+atom core/12-xmlrender6.php 12-htaccess7 && \
 ls web
 ```
 
@@ -354,7 +354,7 @@ localhost/web/xmlrender.xml
 ```console
 sudo cp core/12-validate7.xml web/validate.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-syntax7.xml \
+atom core/12-syntax7.xml && \
 ls web
 ```
 
@@ -407,7 +407,7 @@ localhost/web/validate.xml
 sudo cp core/12-validate8.xml web/validate.xml && \
 sudo cp core/12-validate8.dtd web/validate.dtd && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-validate8.xml core/12-validate8.dtd \
+atom core/12-validate8.xml core/12-validate8.dtd && \
 ls web
 ```
 
@@ -487,7 +487,7 @@ localhost/web/validate.xml
 ```console
 sudo cp core/12-validate9.xml web/validate.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-syntax9.xml \
+atom core/12-syntax9.xml && \
 ls web
 ```
 
@@ -569,7 +569,7 @@ localhost/web/validate.xml (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 sudo cp core/12-validate10.xml web/validate.xml && \
 sudo cp core/12-validate10.xsd web/validate.xsd && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-validate10.xml core/12-validate10.xsd \
+atom core/12-validate10.xml core/12-validate10.xsd && \
 ls web
 ```
 
@@ -703,7 +703,7 @@ localhost/web/validate.xml
 ```console
 sudo cp core/12-validate11.xml web/validate.xml && \
 sudo cp core/12-validate11.xsd web/validate.xsd && \
-atom core/12-validate11.xml core/12-validate11.xsd \
+atom core/12-validate11.xml core/12-validate11.xsd && \
 ls web
 ```
 
@@ -1061,7 +1061,7 @@ Add style with this after the header:
 ```console
 sudo cp core/12-style12.xml web/style.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style12.xml core/12-style12.xsl \
+atom core/12-style12.xml core/12-style12.xsl && \
 ls web
 ```
 
@@ -1134,7 +1134,7 @@ localhost/web/style.xml
 sudo cp core/12-style13.xml web/style.xml && \
 sudo cp core/12-style13.xsl web/style.xsl && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style13.xml core/12-style13.xsl \
+atom core/12-style13.xml core/12-style13.xsl && \
 ls web
 ```
 
@@ -1267,7 +1267,7 @@ localhost/web/style.xml
 sudo cp core/12-style14.xsl web/style.xsl && \
 sudo cp core/12-style14.xml web/style.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style14.xml core/12-style14.xsl \
+atom core/12-style14.xml core/12-style14.xsl && \
 ls web
 ```
 
@@ -1537,7 +1537,7 @@ Mainly used for developers and debugging
 sudo cp core/12-style15.xml web/style.xml && \
 sudo cp core/12-style15.xsl web/style.xsl && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style15.xml core/12-style15.xsl \
+atom core/12-style15.xml core/12-style15.xsl && \
 ls web
 ```
 
@@ -1569,7 +1569,7 @@ sudo cp core/12-meta16.xsl web/meta.xsl && \
 sudo cp core/12-heading16.xsl web/heading.xsl && \
 sudo cp core/12-visitors16.xsl web/visitors.xsl && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style16.xsl core/12-structure16.xsl core/12-meta16.xsl core/12-heading16.xsl core/12-visitors16.xsl \
+atom core/12-style16.xsl core/12-structure16.xsl core/12-meta16.xsl core/12-heading16.xsl core/12-visitors16.xsl && \
 ls web
 ```
 
@@ -2002,7 +2002,7 @@ sudo cp core/12-wordpress-css.rss xml/wordpress-css.rss && \
 sudo cp core/12-rss.css web/rss.css && \
 sudo cp core/12-rss.css xml/rss.css && \
 sudo chown -R www:www /srv/www/html && \
-atom xml/wordpress-css.rss xml/rss.css \
+atom xml/wordpress-css.rss xml/rss.css && \
 ls web
 ```
 
@@ -2231,7 +2231,129 @@ header('Content-type: text/xml');
 
 #### Aggregate another RSS feed
 
+*Take this example of an iTunes-ready feed*
+
+| **feed.rss** :
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss.xsl" ?>
+<rss version="2.0"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+  >
+<channel>
+	<title>501 Blog</title>
+	<link>http://localhost/web</link>
+	<image>
+		<url>media/pro/pro-rss.jpg</url>
+		<title>501 Blog</title>
+		<link>http://localhost/web</link>
+	</image>
+	<description>Blog Subtitle &amp; description</description>
+	<language>en</language>
+  <itunes:author>Jon Boy</itunes:author>
+	<itunes:summary>I am a summary</itunes:summary>
+	<itunes:subtitle>Blog Subtitle &amp; description</itunes:subtitle>
+  <itunes:owner>
+    <itunes:name>Johnny Boy</itunes:name>
+    <itunes:email>johnboy@verb.ink</itunes:email>
+  </itunes:owner>
+	<itunes:keywords>ice, ice, baby</itunes:keywords>
+	<itunes:image href="media/pro/pro-podcast.jpg"/>
+	<itunes:explicit>true</itunes:explicit><itunes:category text="Business"/><itunes:category text="Business"/><itunes:category text="Investing"/><itunes:category text="Arts"/><itunes:category text="Performing Arts"/><itunes:category text="Sports"/><itunes:category text="Golf"/><itunes:category text="Sports"/><pubDate>Tue, Nov 23 12:43:19 2021 UTC</pubDate>
+<lastBuildDate>Tue, Nov 30 15:45:12 2021 UTC</lastBuildDate>
+
+<item>
+  <title>Media Features</title>
+  <link>http://localhost/web/media-features</link>
+  <guid isPermaLink="false">4-media-features</guid>
+  <pubDate>Tue, Nov 30 15:45:12 2021 UTC</pubDate>
+  <author><![CDATA[Jon Boy]]></author>
+  <dc:creator><![CDATA[Jon Boy]]></dc:creator>
+  <category><![CDATA[Second]]></category>
+  <description></description>
+  <content:encoded><![CDATA[Lorem featurings here]]></content:encoded>
+  <itunes:subtitle></itunes:subtitle>
+  <itunes:summary></itunes:summary>
+  <itunes:author>Jon Boy</itunes:author>
+  <itunes:keywords></itunes:keywords>
+  <itunes:explicit>true</itunes:explicit>
+  <enclosure url="http://localhost/web/media/audio/audio-7.mp3" length="" type="audio/mpeg" />
+  <itunes:duration>0:00:03</itunes:duration>
+  <enclosure url="http://localhost/web/media/video/video.mp4" length="" type="video/mp4" />
+  <itunes:duration>0:00:05</itunes:duration>
+</item>
+
+<item>
+  <title>Second new piece</title>
+  <link>http://localhost/web/second-new-piece</link>
+  <guid isPermaLink="false">2-second-new-piece</guid>
+  <pubDate>Mon, Nov 29 9:27:30 2021 UTC</pubDate>
+  <author><![CDATA[Jon Boy]]></author>
+  <dc:creator><![CDATA[Jon Boy]]></dc:creator>
+  <category><![CDATA[Blog]]></category>
+  <description></description>
+  <content:encoded><![CDATA[Lorem Ipsum Deux]]></content:encoded>
+  <itunes:subtitle></itunes:subtitle>
+  <itunes:summary></itunes:summary>
+  <itunes:author>Jon Boy</itunes:author>
+  <itunes:keywords></itunes:keywords>
+  <itunes:explicit>true</itunes:explicit>
+</item>
+
+</channel>
+</rss>
+```
+
+*We can fetch and process items in that feed as objects with `SimpleXML`*
+
+| **processfeed.php** :
+
+```php
+$rss = simplexml_load_file('http://localhost/web/feed.rss');
+
+echo '<h1>'.$rss->channel->title.'</h1>';
+echo '<h2>'.$rss->channel->description.'</h2>';
+
+foreach ($rss->channel->item as $item) {
+
+  $itunes = $item->children('http://www.itunes.com/dtds/podcast-1.0.dtd');
+  $content = $item->children('http://purl.org/rss/1.0/modules/content/');
+  $atom = $item->children('http://www.w3.org/2005/Atom'); // For future use
+  $dc = $item->children('http://purl.org/dc/elements/1.1/');
+
+  echo '<p><b><a href="'.$item->link.'">'.$item->title."</a></b></p>";
+  echo "<p>$item->pubDate</p>";
+  echo "<p>$item->description</p>";
+  echo "<p>$itunes->author</p>";
+  echo "<p>$content->encoded</p>";
+  echo "<p>$dc->creator</p>";
+  echo (isset($item->enclosure['url'])) ? '<p>'.$item->enclosure['url'].'</p>' : false;
+
+}
+```
+
 | **51** :$
+
+```console
+sudo cp core/12-feed.rss web/feed.rss && \
+sudo cp core/12-processfeed.php web/feed.rss && \
+sudo chown -R www:www /srv/www/html && \
+atom core/12-feed.rss core/12-processfeed.php
+```
+
+| **B-51** ://
+
+```console
+localhost/web/processfeed.php
+```
+
+*Now, let's implement `SimpleXML` so our blog can aggregate RSS feeds*
+
+| **52** :$
 
 ```console
 sudo cp pdo-aggregate/* web/ && \
@@ -2247,7 +2369,7 @@ ls pdo-aggregate/*
 
 *All other files make simple changes to implement the new "Aggregated Feeds" page (aggregator.php)*
 
-| **B-51** ://
+| **B-52** ://
 
 ```console
 localhost/web/
