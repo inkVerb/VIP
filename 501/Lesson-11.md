@@ -2011,12 +2011,11 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
 - *in.db.php:*
   - $ `atom pdo/in.db.php procedural/in.db.php`
   - *Methods:*
-    - `$pdo->insert()`
-    - `$pdo->delete()`
-    - `$pdo->update()`
-    - `$pdo->select()`
+    - `$pdo->delete()` *for simple conditions*
+    - `$pdo->select()` *for simple conditions*
+    - `$pdo->update()` *loops through lists with `bindParam()`*
     - `$pdo->key_` *prefix for `BINARY` calls*
-    - `$pdo->exec_()` *complex queries that need `bindParm()`*
+    - `$pdo->exec_()` *complex queries that need `bindParam()`*
 
   - *Properties we will use often:*
     - `$pdo->change` *boolean check for SQL changes*
@@ -2024,7 +2023,7 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
     - `$pdo->rows` *integer for number of rows*
     - `$pdo->ok` *boolean check for success*
   - *`static` method*
-    - `DB::esc()` *escapes for SQL `INSERT`/`UPDATE` calls*
+    - `DB::trimspace()` *removes white space, intended for `INSERT`/`UPDATE` calls*
   - *`protected` method we can't use*
     - `$this->pdo_error()`
 
@@ -2044,13 +2043,11 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
     - $ `diff pdo/in.editprocess.php procedural/in.editprocess.php`
   - *Any file, in both pdo/ and procedural/*
   - *`grep` for PDO in use*
-    - $ `grep -R 'DB::esc(' pdo/*`
-    - $ `grep -R 'pdo->insert(' pdo/*`
+    - $ `grep -R 'DB::trimspace(' pdo/*`
     - $ `grep -R '$pdo->delete(' pdo/*`
-    - $ `grep -R '$pdo->update(' pdo/*`
     - $ `grep -R '$pdo->select(' pdo/*`
+    - $ `grep -R '$pdo->update(' pdo/*`
     - $ `grep -R '$pdo->key_' pdo/*`
-    - $ `grep -R '$pdo->try_' pdo/*`
     - $ `grep -R '$pdo->change' pdo/*`
     - $ `grep -R '$pdo->lastid' pdo/*`
     - $ `grep -R '$pdo->rows' pdo/*`
@@ -3621,11 +3618,13 @@ $database = new PDO("mysql:host=$db_host; dbname=$db_name; charset=utf8mb4", $db
   1. `query()` (single, simple SQL statement)
     - Return output with `fetch()`
     - Check with `$statement->rowCount()` & `$database->lastInsertId()`
-  2. `prepare()` & `execute()` (SQL statement can take arguments for user input, improved security against SQL injection)
+  2. `prepare()`, `bindParam()` & `execute()` (SQL statement can take arguments for user input, improved security against SQL injection)
     - Return output with `fetch()` or `fetchAll()` for multiple lines
-    - Check with `$statement->rowCount()` & `$database->lastInsertId()`
+    - Check with:
+      - `$statement->rowCount()`
+      - `$database->lastInsertId()`
   3. `exec()` (multiple SQL statement)
-    - No output, no checks
+    - No output, no checks, no secure `bindParam()` statements
     - For output or testing success, run a separate query using `query()` or `execute()`
 
 - Examples & syntax:
@@ -3641,17 +3640,20 @@ return $statement->fetch(PDO::FETCH_OBJ);
 return $statement->fetch(PDO::FETCH_BOTH);
 ```
 
-| **2. a. `prepare()`, `execute()` & `fetchAll()`** :
+| **2. a. `prepare()`, `bindParam()`, `execute()` & `fetchAll()`** :
 
 ```php
+$query = "SELECT col1, col2, FROM some_table WHERE col3=:somevalue AND col4=:othervalue"
 $statement = $database->prepare($query);
+$query_uc->bindParam(':somevalue', $somevalue);
+$query_uc->bindParam(':othervalue', $othervalue);
 $statement->execute();
-return $statement->fetchAll();
+return $statement->fetchAll(); // Will give most results
 
 // Set fetch mode different from your $database options
 return $statement->fetchAll(PDO::FETCH_OBJ);
 
-// These also work
+// These also work, but fetch() can't handle bindParam() arguments
 return $statement->fetch();
 return $statement->fetch(PDO::FETCH_BOTH);
 ```
@@ -3670,8 +3672,6 @@ $statement = $database->prepare($query);
 $statement->execute([$arg1, $arg2]); // $arg1, $arg2 (respectively)
 ```
 
-- `prepare()` & `execute()` do more using `bindParam()`, not covered in these lessons
-
 | **3. `exec()`** : To execute multiple SQL statements at once
 
 ```php
@@ -3688,14 +3688,6 @@ COMMIT; <!-- End with this always -->
 $database->exec($query);
 ```
 
-- To test whether `exec()` worked, query the actual table for the results you want
-  - Don't rely on a boolean response from PDO for `exec()`
-  - PHP tests for SQL responses per line, `exec()` has many lines
-  - The last line was `COMMIT`, which returns very little information for PHP to test
-- This can be more reliable practice for `query()` and `execute()`, not only `exec()`
-- Like all code, PDO has many other features we did not explore here
-  - Eg: `prepare()` & `execute()` have more control with `bindParam()`
-
 ## III. PDO with OOP PHP
 
 ### Creating PDO Methods in OOP PHP
@@ -3707,7 +3699,10 @@ $database->exec($query);
 
 ### Examples of PDO Methods in OOP PHP
 
-| **1. `class` with `INSERT` Method** :
+| **1. `class` with `->execute()` Method** :
+
+This is for any SQL query, but ***it must use a prepared statement with binding arguments*** such as `$query->bindParam(':var', $value);`
+
 
 ```php
 class DB {
@@ -3720,36 +3715,52 @@ class DB {
       echo "SQL error from <pre>$query</pre><br>$error_message";
   }
 
-  // INSERT method
-  public function insert($table, $cols, $vals) {
-    global $databse; // We need our $database
+  // exec_ static method to pass properties through a try test
+  public function exec_($query) {
+    global $database;
 
-    $query = "INSERT INTO $table ($cols) VALUES ($vals)";
+    // Try the query
     try {
-      $statement = $databse->query($query);
+      $query->execute();
     } catch (PDOException $error) {
       $this->pdo_error($query, $error->getMessage());
     }
 
-    // Set the response properties
-    $this->change = ($statement->rowCount() == 1) ? true : false;
+    // Response info
+    $this->numrows = $query->rowCount();
+    $this->change = ($query->rowCount() > 0) ? true : false;
     $this->lastid = $database->lastInsertId();
-  }
+    $this->ok = ($query) ? true : false;
+
+    // Return fetched SQL response object
+    return $query->fetchAll();
+
+  } // exec_()
 }
 
 // Instantiate
 $pdo = new DB;
 
 // Usage
-$table = 'fruit';
-$columns = 'name, color';
-$values = 'apple, red';
-$pdo->insert($table, $columns, $values);
+// UPDATE
+$query = $database->prepare("UPDATE theaters SET status='open' WHERE id=:id");
+$query->bindParam(':id', $id);
+$rows = $pdo->exec_($query);
 echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
+// INSERT
+$query = $database->prepare("INSERT INTO theaters (name, locale) VALUES (:name, :locale)");
+$query->bindParam(':name', $name);
+$query->bindParam(':locale', 'Chicago');
+$rows = $pdo->exec_($query);
 echo "ID of last database INSERT: $pdo->lastid";
 ```
 
-| **2. `class` with `SELECT` Method** :
+| **2. `class` with `UPDATE`...`WHERE BINARY` Method** :
+
+This is useful because:
+
+1. `BINARY` matches characters exactly, such as for keys
+2. It uses a loop to set a list of columns with a separate list of corresponding values
 
 ```php
 class DB {
@@ -3759,21 +3770,50 @@ class DB {
       echo "SQL error from <pre>$query</pre><br>$error_message";
   }
 
-  // INSERT method
-  public function insert($table, $cols, $vals) {
-    global $databse; // We need our $database
+  // UPDATE  WHERE BINARY method for keys
+  public function key_update($table, $cols, $vals, $wcol, $vcol) {
+    global $database;
 
-    $query = "INSERT INTO $table ($cols) VALUES ($vals)";
+    // Sanitize
+    $cols = preg_replace("/[^0-9a-zA-Z_, ]/", "", $cols);
+    $table = preg_replace("/[^0-9a-zA-Z_]/", "", $table);
+
+    // Prepare array of $cols=key & $vals=value
+    $cols_arr = preg_split('~,\s*~', $cols);
+    $vals_arr = preg_split('~,\s*~', $vals);
+    $set_array = array_combine($cols_arr, $vals_arr);
+    $bind_array = array();
+
+    // Prepare SQL SET statement
+    $set_statement = "";
+    foreach ( $set_array as $k => $v ) {
+      $set_statement .= "$k=:$k,";
+    }
+    $set_statement = rtrim($set_statement, ','); // remove last comma
+
+    // Prepare SQL query
+    $query = $database->prepare("UPDATE $table SET $set_statement WHERE BINARY $wcol='$vcol'");
+
+    // Bind values
+    foreach ( $set_array as $k => $v ) {
+      $query->bindParam(":$k", $v);
+    }
+
+    // Try the query
     try {
-      $statement = $databse->query($query);
+      $query->execute();
     } catch (PDOException $error) {
       $this->pdo_error($query, $error->getMessage());
     }
 
-    // Set the response properties
-    $this->change = ($statement->rowCount() == 1) ? true : false;
-    $this->lastid = $database->lastInsertId();
-  }
+    // Success statement
+    $this->change = ($query->rowCount() > 0) ? true : false;
+    $this->ok = ($query) ? true : false;
+
+    // Return fetched SQL response object
+    return $query->fetchAll(PDO::FETCH_OBJ);
+
+  } // key_update()
 }
 
 // Instantiate
@@ -3783,7 +3823,9 @@ $pdo = new DB;
 $table = 'fruit';
 $columns = 'name, color';
 $values = 'apple, red';
-$pdo->insert($table, $columns, $values);
+$where_col = 'locale';
+$where_value = 'Chicago';
+$pdo->key_update($table, $columns, $values, $where_col, $where_value);
 echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
 ```
 
@@ -3799,16 +3841,25 @@ class DB {
 
   // SELECT method
   public function select($table, $wcol, $vcol, $cols='*') {
-    global $databse; // We need our $database
+    global $databse;
 
-    $query = "SELECT $cols FROM $table WHERE $wcol='$vcol'";
+    // Sanitize
+    $cols = preg_replace("/[^0-9a-zA-Z_, ]/", "", $cols);
+    $table = preg_replace("/[^0-9a-zA-Z_]/", "", $table);
+    $wcol = preg_replace("/[^0-9a-zA-Z_]/", "", $wcol);
+
+    // Prepare SQL query
+    $query = $database->prepare("SELECT $cols FROM $table WHERE $wcol=:vcol");
+    $query->bindParam(':vcol', $vcol);
     try {
-      $statement = $databse->query($query);
+      $query->execute();
     } catch (PDOException $error) {
       $this->pdo_error($query, $error->getMessage());
     }
 
-    return $statement->fetch(PDO::FETCH_OBJ);
+    $this->numrows = $query->rowCount();
+    $this->ok = ($query) ? true : false;
+    return $query->fetchAll(PDO::FETCH_OBJ);
   }
 }
 
@@ -3837,17 +3888,27 @@ class DB {
   public function selectmulti($table, $cols = '*', $wcol = '*', $vcol = '*') {
     global $database;
 
+    // Sanitize
+    $cols = preg_replace("/[^0-9a-zA-Z_, ]/", "", $cols);
+    $wcol = preg_replace("/[^0-9a-zA-Z_]/", "", $wcol);
+    $table = preg_replace("/[^0-9a-zA-Z_]/", "", $table);
+
     $query = "SELECT $cols FROM $table";
     $query .= (($wcol == '*') || ($vcol == '*')) ?
     "" :
-    " WHERE $wcol='$vcol'";
+    " WHERE $wcol=:vcol";
+
+    $statement = $database->prepare($query);
+    $statement->bindParam(':vcol', $vcol);
 
     try {
-      $statement = $database->prepare($query);
       $statement->execute();
     } catch (PDOException $error) {
       $this->pdo_error($query, $error->getMessage());
     }
+
+    $this->numrows = $query->rowCount();
+    $this->ok = ($query) ? true : false;
 
     return $statement->fetchAll(PDO::FETCH_OBJ);
   }
@@ -3857,9 +3918,20 @@ class DB {
 $pdo = new DB;
 
 // Usage
+// Returns all columns, all rows
 $val = $pdo->selectmulti($table);
 foreach ($val as $one) {
   echo "Name: $one->name Color: $one->color Locale: $one->locale<br>";
+}
+// Returns many rows, but only two columns
+$val = $pdo->selectmulti($table, 'name, color');
+foreach ($val as $one) {
+  echo "Name: $one->name Color: $one->color<br>";
+}
+// Returns one row
+$val = $pdo->selectmulti($table, 'name, color', 'locale', 'Chicago');
+foreach ($val as $one) {
+  echo "Name: $one->name Color: $one->color<br>";
 }
 ```
 
@@ -3878,6 +3950,11 @@ class DB {
   // DELETE method
   public function delete($table, $col1, $val1, $col2, $val2) {
     global $databse; // We need our $database
+
+    // Sanitize
+    $col1 = preg_replace("/[^0-9a-zA-Z_]/", "", $col1);
+    $col2 = preg_replace("/[^0-9a-zA-Z_]/", "", $col2);
+    $table = preg_replace("/[^0-9a-zA-Z_]/", "", $table);
 
     $query = "DELETE FROM fruit WHERE $col1 = ? AND $col2 = ?"; // 2 arguments
     try {

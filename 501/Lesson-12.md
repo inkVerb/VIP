@@ -2235,14 +2235,106 @@ header('Content-type: text/xml');
 
 ```console
 sudo cp pdo-aggregate/* web/ && \
-web/media/import && \
-sudo chown -R www:www /srv/www/html
+sudo chown -R www:www /srv/www/html && \
+ls pdo-aggregate/*
 ```
+
+*Our new files are:*
+
+- *aggregator.php*
+  - *Calls: ajax.editfeed.php*
+- *task.aggregatefetch.php*
+
+*All other files make simple changes to implement the new "Aggregated Feeds" page (aggregator.php)*
 
 | **B-51** ://
 
 ```console
 localhost/web/
+```
+
+***Aggregated Feeds*** *in: Pieces > Aggregated Feeds, also via Settings >*
+
+| **aggregator.php** :
+
+Most of this content is ported from pieces.php & the Series Editor (in.editseries.php & ajax.editseries.php)
+
+```javascript
+// Check/uncheck the box = hide/show the options
+function showDeleteFeedOptionsBox(fID) {
+  var x = document.getElementById("deleteOptions-"+fID);
+  if (x.style.display === "inline") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "inline";
+  }
+}
+// Show options for deleting feed
+// JavaScript does not allow onClick action for both the label and the checkbox
+// So, we make the label open the delete options div AND check the box...
+function showDeleteFeedOptions(fID) {
+  // Show the Date Live schedule div
+  var x = document.getElementById("deleteOptions-"+fID);
+  if (x.style.display === "inline") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "inline";
+  }
+  // Use JavaScript to check the box
+  var y = document.getElementById("feed-delete-"+fID);
+  if (y.checked === false) {
+    y.checked = true;
+  } else {
+    y.checked = false;
+  }
+}
+// Always-only hide delete options on "cancel"
+function hideDeleteFeedOptions(fID) {
+  // Hide the options
+  document.getElementById("deleteOptions-"+fID).style.display = "none";
+  // Uncheck the Delete box
+  document.getElementById("feed-delete-"+fID).checked = false;
+  // Unset delete options radios
+  document.getElementById("erase-posts-"+fID).checked = false;
+  document.getElementById("convert-posts-"+fID).checked = false;
+}
+```
+
+*Note the above JavaScript functions get called from `onclick=`...*
+
+```php
+// Delete checkbox
+echo '<div id="delete-checkbox-'.$agg_id.'" style="display:none;">
+<br><br><input type="checkbox"
+
+onclick="showDeleteFeedOptionsBox('.$agg_id.');"
+
+form="feed-edit-'.$agg_id.'" id="feed-delete-'.$agg_id.'" name="feed-delete" value="'.$agg_id.'"><label
+
+onclick="showDeleteFeedOptions('.$agg_id.');"
+
+> <i><small class="red">Permanently delete feed</small></i></label>
+</div>';
+
+// Delete options
+echo '<div id="deleteOptions-'.$agg_id.'" style="display:none;">
+<br>Aggregated posts:<br>
+<label for="convert-posts-'.$agg_id.'"><input type="radio" id="convert-posts-'.$agg_id.'" name="agg_del_feed_posts" value="convert"> <i><small class="green">Convert to editable pieces</small></i></label>
+&nbsp;
+<label for="erase-posts-'.$agg_id.'"><input type="radio" id="erase-posts-'.$agg_id.'" name="agg_del_feed_posts" value="erase"> <i><small class="red">Delete & erase forever</small></i></label>
+</div>';
+...
+echo '<button id="change-cancel-'.$agg_id.'" type="button" class="postform link-button inline blue"
+onclick="
+  showHideEdit('.$agg_id.');
+  hideDeleteFeedOptions('.$agg_id.');
+">change</button>';
+...
+echo '<button type="button"
+onclick="
+  showHideEdit('.$agg_id.');
+  hideDeleteFeedOptions('.$agg_id.');
+">Cancel</button>';
 ```
 
 ___
