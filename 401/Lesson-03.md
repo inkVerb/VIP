@@ -8,6 +8,7 @@ cd ~/School/VIP/401
 ```
 
 - [Cron Schedule Tasks](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md)
+- [Cnronitor](https://crontab.guru)
 ___
 
 ### I. The `$PATH` Environment Variable

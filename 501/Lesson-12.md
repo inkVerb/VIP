@@ -1038,7 +1038,7 @@ localhost/web/validate.xml
 
 You can learn much more about XSD, this is enough for you to follow more advanced XSD elsewhere and later in these lessons
 
-### III. XSLT (Extensible Stylesheet Language Transformations)
+### III. XSLT (eXtensible Stylesheet Language Transformations)
 
 **CSS for XML**
 
@@ -1393,6 +1393,44 @@ Either `match=` or `name=` is required
 </html>
 ```
 
+- Place raw CSS in the `<head>`
+
+| **`<head><style>`** :
+```xml
+<head>
+  <style type="text/css">
+    body {
+      font-family: sans-serif;
+      background-color: #eee;
+    }
+  </style>
+</head>
+```
+
+- Example of CSS in full template:
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:key name="open-closed" match="root/meta" use="status"/>
+  <xsl:template match="/">
+    <html>
+      <head>
+        <style type="text/css">
+          body {
+            font-family: sans-serif;
+            background-color: #eee;
+          }
+        </style>
+      </head>
+      <body>
+        ...
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>
+```
+
 - A template can use another template
 
 ```xml
@@ -1581,6 +1619,8 @@ localhost/web/style.xml
 
 ### IV. XML XPath (Reference)
 
+- `/root/element/final` = `<root><element><final>`
+
 #### A. Path Syntax
 
 1. `some-element`: all nodes
@@ -1677,7 +1717,7 @@ localhost/web/contacts.xml
 | **18** :$
 
 ```console
-xmlstarlet sel -t -v "count(//visitor)" xml/contacts.xml
+xmlstarlet sel -t -v "count(//visitors/visitor)" xml/contacts.xml
 ```
 
 *Show entries nicely in the terminal*
@@ -1685,7 +1725,7 @@ xmlstarlet sel -t -v "count(//visitor)" xml/contacts.xml
 | **19** :$
 
 ```console
-xmlstarlet sel -t -m "//visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v "level" -o ")" -n xml/contacts.xml
+xmlstarlet sel -t -m "//visitors/visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v "level" -o ")" -n xml/contacts.xml
 ```
 
 *The command `xml` points to `xmlstarlet`*
@@ -1695,7 +1735,7 @@ xmlstarlet sel -t -m "//visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v 
 | **20** :$
 
 ```console
-xml sel -t -v "//visitor[name='Marshan Wills']/email" xml/contacts.xml
+xml sel -t -v "//visitors/visitor[name='Marshan Wills']/email" xml/contacts.xml
 ```
 
 *Get the name for `<visitor login="jupitersong">`...*
@@ -1703,7 +1743,7 @@ xml sel -t -v "//visitor[name='Marshan Wills']/email" xml/contacts.xml
 | **21** :$
 
 ```console
-xml sel -t -v "//visitor[@login='jupitersong']/name" xml/contacts.xml
+xml sel -t -v "//visitors/visitor[@login='jupitersong']/name" xml/contacts.xml
 ```
 
 *We can also change content*
@@ -1713,7 +1753,7 @@ xml sel -t -v "//visitor[@login='jupitersong']/name" xml/contacts.xml
 | **22** :$
 
 ```console
-xml ed --inplace -u "//visitor[@login='jdoe']/@login" -v "johndoe" xml/contacts.xml
+xml ed --inplace -u "//visitors/visitor[@login='jdoe']/@login" -v "johndoe" xml/contacts.xml
 sudo cp xml/contacts.xml web/contacts.xml
 ```
 
@@ -1730,7 +1770,7 @@ localhost/web/contacts.xml
 | **23** :$
 
 ```console
-xml ed --inplace -u "//visitor[@login='jdoe']/level" -v "user" xml/contacts.xml
+xml ed --inplace -u "//visitors/visitor[@login='jdoe']/level" -v "user" xml/contacts.xml
 ```
 
 | **B-23** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
@@ -1746,7 +1786,7 @@ localhost/web/contacts.xml
 | **24** :$
 
 ```console
-xml ed --inplace -u "//visitor[@login='johndoe']/level" -v "user" xml/contacts.xml
+xml ed --inplace -u "//visitors/visitor[@login='johndoe']/level" -v "user" xml/contacts.xml
 sudo cp xml/contacts.xml web/contacts.xml
 ```
 
@@ -1761,7 +1801,7 @@ localhost/web/contacts.xml
 | **25** :$
 
 ```console
-xml ed --inplace -u "//visitor[@login='smithymars']/level" -v "admin" xml/contacts.xml
+xml ed --inplace -u "//visitors/visitor[@login='smithymars']/level" -v "admin" xml/contacts.xml
 sudo cp xml/contacts.xml web/contacts.xml
 ```
 
@@ -2459,16 +2499,734 @@ onclick="
 ">Cancel</button>';
 ```
 
+*The actual feed processing is done by task.aggregatefetch.php*
+
+- *Peruse this file, but note that it runs `UPDATE` rather than `INSERT` based on a matching `guid`*
+- *`guid` is based created for each feed `<item>`, based on a `title`-generated `slug`*
+  - *So, if a feed has no `<guid>`* ***and*** *the `<title>` changes in a feed, it will `INSERT` a new entry*
+  - *Otherwise, it will `UPDATE` the existing entry*
+- *Each `<item>` is entered in `publications` with*
+  - *A `piece_id` of `0`*
+  - *An `aggregated` value greather than `0`*
+  - *A `guid`*
+- *Because no entry is made on the `pieces` table, these cannot be edited through the web app and will not appear in the Pieces page*
+  - *This makes the aggregation trustworthy and incapable of manipulation*
+- *If deleting a feed:*
+  - *The feed is set to `status` = `deleting` on the table*
+  - *Next time the processor runs, if `on_delete` is set to `convert`:*
+    - *Each entry in `publications` with that `aggregated` `id` will be converted into a `piece` entry, then the `piece_id` added*
+- *The processor only takes RSS information that the feed generator will use*
+  - *`<itunes:summary>` becomes `excerpt`*
+  - *`<itunes:keywords>` becomes `tags`*
+  - *`<description>` becomes `subtitle`*
+    - *If this is empty, `<itunes:subtitle>` will be checked instead*
+
+*Note that in PDO, we can pass a `NULL` value using `bindParam()`*
+
+- *We do this in some ternary statements to ensure any optionally empty feed elements doesn't break the SQL query*
+
+```php
+$col = NULL;
+...
+$query->bindParam(':column', $col);
+```
+
+##### Testing for learning purposes
+
+*You can test and see how changes to a feed will affect what the feed processes*
+
+*We will create a small place to play and learn, called a "sandbox"*
+
+1. Copy our feed.rss sample to a file to test, then view edit our files in Atom:
+
+| **Sandbox prep** :$
+
+```console
+cp core/12-feed.rss play.rss && \
+sudo cp -f core/12-feed.rss web/play.rss && \
+cp pdo-aggregate/task.aggregatefetch.php play.aggregatefetch.php && \
+sudo cp pdo-aggregate/task.aggregatefetch.php web/play.aggregatefetch.php && \
+sudo chown -R www:www /srv/www/html && \
+atom play.rss play.aggregatefetch.php
+```
+
+*If you want to see any PHP errors in the processor, add this to the top:*
+
+| **play.aggregatefetch.php** : *(Optional, on the line after `<?php` at the top)*
+
+```php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+```
+
+2. Add a new feed that will use the URL for where this file is:
+
+| **Aggregated Feeds** :// *(same as Blog > Pieces > Aggregated Feeds)*
+
+```console
+localhost/web/aggregator.php
+```
+
+- Input whatever you want, and:
+  - URL: `http://localhost/web/play.rss`
+  - Ensure "Active" is checked as it appears in the Feed table
+
+3. Check for status changes in two places:
+
+- Click on "list" in Aggregated Feeds, next to your test feed
+- Look in phpMyAdmin:
+
+| **Publications** ://phpMyAdmin **> webapp_db > publications**
+
+4. Make and save any changes you want to play.rss in Atom
+
+5. Copy your edited play.rss file to the web folder
+
+*This also copies play.aggregatefetch.php, in case you made changes there*
+
+| **Copy feed** :$
+
+```console
+sudo cp play.rss web/ && \
+sudo cp play.aggregatefetch.php web/
+```
+
+6. Run the processor, in a separate browser tab
+
+| **Feed Processor** :// *(It should show a blank page)*
+
+```console
+localhost/web/play.aggregatefetch.php
+```
+
+7. Repeat steps 3-6 to see more changes
+
+8. Try deleting play.rss from the web folder to see how the processor responds
+
+| **Delete the feed** :$
+
+```console
+sudo rm web/play.rss
+```
+
+9. You can put the feed back to watch it test with a cron task in the next step...
+
+```console
+sudo cp play.rss web/ && \
+sudo chown -R www:www /srv/www/html
+```
+
+##### Create a `cron` task to process feeds
+
+*For the feed processor to work (task.aggregatefetch.php), we need a `cron` task to call the file*
+
+- *PHP is a "dead" system; it only works when a file is accessed*
+  - *From the web*
+  - *From the command line*
+  - *From a `cron` task*
+- *Many web apps make routine processors run by using an `include()` in a frequently used file, such as our in.head.php file*
+  - *This is not guaranteed to work because it depends on visitors accessing the site*
+- *Creating a `cron` task is more reliable and consistent*
+
+| **cron.d/webapp** :
+
+```code
+*/15 * * * * root /usr/bin/php /srv/www/html/web/task.aggregatefetch.php.php
+```
+
+| **53** :$ *`touch` the file first so we can set permissions before editing*
+
+```console
+sudo touch /etc/cron.d/webapp
+sudo chmod 644 /etc/cron.d/webapp
+sudo vim /etc/cron.d/webapp
+```
+
+*Linux is finicky about using `sudo` to mess with `cron` files*
+
+*We can't add contents to a `cron` file using `sudo` to dump output to the file, so we must do that manually with an editor like `vim`...*
+
+1. Copy this with <kyb>Ctrl</kybd> + <kyb>C</kybd>:
+
+```console
+*/15 * * * * root /usr/bin/php /srv/www/html/web/task.aggregatefetch.php.php
+```
+
+2. Press:
+
+- <kbd>i</kbd>
+- <kyb>Ctrl</kybd> + <kyb>V</kybd>
+- <kbd>Esc</kbd>
+
+3. Type:
+
+`w:` <kbd>Enter</kbd>
+
+*Note when you are finished with these lessons, you will want to delete that `cron` task...*
+
+| **Delete our `cron` task** :$
+
+```console
+sudo rm /etc/cron.d/webapp
+```
 ___
 
 # The Take
 
-## Final CMS
+## XML Structure
+- **eXtensible Markup Language**
+- Uses tags similar to HTML
+- First line:
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+```
+- Static text, such as a text file
+- Data "Object" language
+  - Like OOP in PHP
+  - But, not a logic language like PHP
+- History
+  - 1986: SGML (Standard Generalized Markup Language)
+  - 1993: HTML (keeps updating, version 5 in 2021)
+  - 1998: XML (still using version 1.0)
+- Often used in:
+  - Word processor documents (.docx, .odt, et cetera)
+  - Desktop settings (wallpaper, mouse speed, display brightness, audio volume, et cetera)
+  - RSS feeds
+  - Podcasts
+  - Blogs (ie WordPress export/import file)
+  - API communication
+- Comparable to JSON
+  - Portable to/from JSON
+  - Machine version of what JSON is for JavaScript
+  - JSON is used in the browser, XML is used everywhere else
+- Can be read by many languages
+  - BASH/Linux terminal (`linuxlint`)
+  - PHP (`xml_parser_create` & `SimpleXML`)
+  - JavaScript (`xml2json` & `json2xml`)
+  - SQL (`FOR XML AUTO`, `FOR XML PATH`, `FROM OPENXML`)
+  - And many more
+    - Node.js
+    - Python
+    - Java
+    - Perl
+    - Swift
+    - C
+- Not for browsers, but almost everything else
 
+## XML Validation
+- "Well formed" XML is different from "valid" XML
+  - "Valid" XML meets definitions included in the XML file
+- There are two ways to validate XML
+  - DTD: Short, simple, sometimes not accepted
+  - XSL: Long, more useful and accepted
+    - XSL also uses XML language itself
+- Example XML:
+```xml
+<root>
+  <person att="val1">
+    <one>...</one>
+    <two>...</two>
+    <also>...</also>
+    <there>...</there>
+    <self_close/>
+    <attribs attr="val1">...</attribs>
+  </person>
+</root>
+```
+
+### DTD
+```xml
+<!DOCTYPE root[
+  <!ELEMENT person (one,two,also,there)>
+  <!ATTLIST person att (val1 | val2 | val3) "val1" >
+  <!ELEMENT one (#PCDATA)>
+  <!ELEMENT two (#PCDATA)>
+  <!ELEMENT also (#PCDATA)>
+  <!ELEMENT there (#PCDATA)>
+  <!ELEMENT self_close EMPTY>
+  <!ELEMENT attribs (#PCDATA)>
+  <!ATTLIST attribs attr (val1 | val2 | val3) "val1" >
+]>
+```
+### XSD
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+
+<root>
+
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Options for <attribs attr=""  -->
+    <xs:simpleType name="attrvallist">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="val1"/>
+        <xs:enumeration value="val2"/>
+        <xs:enumeration value="val3"/>
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="person"> <!-- Declare the <person> element -->
+      <xs:complexType> <!-- The <person> element contains either attributes or child elements -->
+        <xs:attribute name="att" type="attrvallist" default="val1"/> <!-- Include the "attrvallist" options previously defined -->
+
+        <xs:sequence> <!-- The order of child elements matters, optional -->
+          <!-- Below we declare our various elements, self-closing tags because they contain no further definitions -->
+          <xs:element name="one" type="xs:string"/>
+          <xs:element name="two" type="xs:string"/>
+          <xs:element name="also" type="xs:string"/>
+          <xs:element name="there" type="xs:string"/>
+          <!-- Self-closing tags are treated the same way as empty tags in XML and XSD -->
+          <xs:element name="self_close" type="xs:string"/>
+          <!-- This element definition is not self-closing because it contains an attribute definition -->
+          <xs:element name="attribs" type="xs:string">
+            <!-- Below we define options for the "attr" attribute in the <attribs> element -->
+            <xs:attribute name="attr" type="attrvallist" default="val1"/> <!-- Include the "attrvallist" options previously defined -->
+          </xs:element>
+
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+
+  </xs:schema>
+```
+
+## XSLT (Style)
+- **eXtensible Stylesheet Language Transformations**
+- Basically creates CSS for XML sheets
+- Include a CSS stylesheet:
+```xml
+<?xml-stylesheet type="text/css" href="rss.css" ?>
+```
+- Include an XSL stylesheet:
+```xml
+<?xml-stylesheet type="text/xsl" href="style.xsl" ?>
+```
+- Place raw CSS inside the XSL template `<head>`:
+```xml
+<xsl:template match="/">
+  <html>
+    <head>
+      <!-- CSS goes here, just like in HTML -->
+      <style type="text/css">
+        body {
+          font-family: sans-serif;
+          background-color: #eee;
+        }
+      </style>
+
+    </head>
+    <body>
+      ...
+    </body>
+  </html>
+</xsl:template>
+```
+- A logical language
+| Shell               | PHP                 | XSLT                                             |
+| ------------------- |:-------------------:| ------------------------------------------------:|
+| `if [TEST]; then`   | `if (TEST) {…}`     | `<xsl:choose><xsl:when test="TEST">…</xsl:when>` |
+| `elif [TEST]; then` | `elseif (TEST) {…}` | `<xsl:when test="TEST">…</xsl:when>`             |
+| `else; …; fi`       | `else {…}`          | `<xsl:otherwise>…</xsl:otherwise></xsl:choose>`  |
+- A template can use another template
+```xml
+<!-- HTML used <xsl:apply-templates> only once -->
+<html>
+  <body>
+    <h1>Visitors</h1>
+    <table>
+      <xsl:apply-templates select="root/visitor"/>
+    </table>
+  </body>
+</html>
+
+<!-- Define the main template -->
+<xsl:template match="root/visitor">
+  <tr>
+    <xsl:apply-templates select="name"/>
+    <xsl:apply-templates select="login"/>
+  </tr>
+</xsl:template>
+
+<!-- Define the templates the main template applies -->
+<xsl:template match="name">
+  <td bgcolor = "blue">
+    <xsl:value-of select="name"/>
+  </td>
+</xsl:template>
+
+<xsl:template match="login">
+  <td bgcolor = "green">
+    <xsl:value-of select="login"/>
+  </td>
+</xsl:template>
+```
+
+- Two ways to use templates:
+  - `<xsl:apply-templates>`
+  - `<xsl:call-template>`
+  - `<xsl:apply-templates>` [may be more useful than](https://stackoverflow.com/questions/4478045/) `<xsl:call-template>`
+  - In `<xsl:template mode="">`:
+    - `<xsl:template mode="">` invokes with `<xsl:apply-templates mode="">`
+    - `<xsl:template match="">` invokes with `<xsl:apply-templates select="">`
+    - `<xsl:apply-templates>` can include another `<xsl:template>` definition
+    - This keeps HTML structure simple
+  - Normally `<xsl:template match="/">` is sufficient in one template per XML page
+    - Then applying templates is not necessary
+
+- Template example for an iTunes podcast-ready RSS feed:
+  - [rss.xml](https://github.com/inkVerb/vip/blob/master/Design/rss.xsl)
+
+## XML XPath
+- A file/path/type method for defining XML hierarchy
+- `/root/element/final` = `<root><element><final>`
+  1. `some-element`: all nodes
+  2. `//some-element`: all lower nodes from current node
+  3. `/`: root
+  4. `.`: current node
+  5. `..`: parent node
+  6. `*`: all elements
+  7. `@*`: all attributes
+  8. `@attrib`: prefix for attribute & value
+  9. `/root/element/final`: absolute path from root
+  10. `some-element/@attrib`: any `<some-element attrib="something">` returns `something`
+  11. `some-element[1]`: index `[1]`, returns first occurrence of `<some-element>`
+  12. `some-element[last()]`: returns last index item
+  13. `some-element[@attrib="something"]`: matches contents of `<some-element attrib="something">`
+  14. `some-element[child="something"]`: matches contents of `<some-element><child>something</child></some-element>`
+- This also uses common operators
+  - `+` plus
+  - `*` multiply by
+  - `-` minus
+  - `div` divided by
+  - `mod` modulus
+  - `>` greater than
+  - `>=` greater than or equal to
+  - `&lt;` less than (`<` is not allowed)
+  - `&lt;=` less than or equal to
+
+## XML via CLI with XMLStarlet
+- A command installed on Linux with the `xmlstarlet` package
+- Use `xml` or `xmlstarlet` as the command, either works the same
+- Uses standard XPath terms to determine hierarchy
+- Important argument flags to know:
+  - `sel`: select
+  - `ed`: edit
+  - `-L`: edit file inplace
+  - `-t`: template
+  - `-i`: insert
+  - `-s`: subnode
+  - `-v`: value
+  - `-r`: rename
+  - `-u`: update
+  - `-d`: delete
+- Example of settings file:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl" ?>
+<root>
+  <header>
+    <title>Visitors</title>
+    <subheading>Interplanetary Prominence</subheading>
+    <credit-url>https://inkisaverb.com/vip</credit-url>
+    <description><![CDATA[Here, you can learn all about our visitors.]]></description>
+  </header>
+  <meta>
+    <status>open</status>
+  </meta>
+  <visitor login="johndoe">
+    <name>John Doe</name>
+    <level>user</level>
+    <phone>555-1212</phone>
+    <email>jdoe@verb.ink</email>
+    <sport type="skateboard"/>
+    <year>1995</year>
+  </visitor>
+  <visitor login="smithymars">
+    <name>Smithy Mars</name>
+    <level>admin</level>
+    <phone>555-1515</phone>
+    <email>smithy@inkisaverb.com</email>
+    <sport type="soccer"/>
+    <year>1989</year>
+  </visitor>
+  <visitor login="mwills">
+    <name>Marshan Wills</name>
+    <level>user</level>
+    <phone>555-2727</phone>
+    <email>marwills@verb.vip</email>
+    <sport type="golf"/>
+    <year>1990</year>
+  </visitor>
+  <visitor login="jupitersong">
+    <name>Jupiter Song</name>
+    <level>user</level>
+    <phone>555-3535</phone>
+    <email>jupiters@verb.red</email>
+    <sport type="skateboard"/>
+    <year>2001</year>
+  </visitor>
+  <visitor login="nlo">
+    <name>Neptune Lo</name>
+    <level>user</level>
+    <phone>555-0101</phone>
+    <email>nlo@verb.blue</email>
+    <sport type="skateboard"/>
+    <year>2010</year>
+  </visitor>
+</root>
+```
+
+| **Count `<visitor>`** :
+
+```console
+xmlstarlet sel -t -v "count(//visitors/visitor)" xml/contacts.xml
+```
+
+| **Return entries of `<visitor>` nicely** :
+
+```console
+xmlstarlet sel -t -m "//visitors/visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v "level" -o ")" -n xml/contacts.xml
+```
+
+| **Select `<email>` for `<visitor><name>Marshan Wills`** :
+
+```console
+xml sel -t -v "//visitors/visitor[name='Marshan Wills']/email" xml/contacts.xml
+```
+
+| **Select `<name>` for `<visitor login="jupitersong">`** :
+
+```console
+xml sel -t -v "//visitors/visitor[@login='jupitersong']/name" xml/contacts.xml
+```
+
+| **Change `<visitor login="jdoe">` to `logn="johndoe"`** :
+
+```console
+xml ed --inplace -u "//visitors/visitor[@login='jdoe']/@login" -v "johndoe" xml/contacts.xml
+```
+
+| **Change `<visitor login="jdoe"><level>` to `user`** :
+
+```console
+xml ed --inplace -u "//visitors/visitor[@login='jdoe']/level" -v "user" xml/contacts.xml
+```
+
+  - Insert new elements using a placeholder, then change it
+    - If you don't give it a unique name first, your calls may likely change other elements
+
+```xml
+<root>
+  <visitors>
+    <!-- New entry -->
+    <visitor login="jimjon">
+       <name>Jimmy Jon</name>
+       <level>user</level>
+       <phone>555-5209</phone>
+       <email>jimj@verb.ink</email>
+       <sport type="surfing"/>
+       <year>1981</year>
+     </visitor>
+
+  </visitors>
+</root>
+```
+
+| **Insert above entry with placeholder ** :
+
+- Placeholder `<visitorINS>` will become `<visitor>` when finished
+
+```console
+xml ed -L -s /root/visitors -t elem -n visitorINS \
+    -i //visitorINS -t attr -n "login" -v "jimjon" \
+    -s //visitorINS -t elem -n "name" -v "Jimmy Jon" \
+    -s //visitorINS -t elem -n "level" -v "user" \
+    -s //visitorINS -t elem -n "phone" -v "555-5209" \
+    -s //visitorINS -t elem -n "email" -v "jimj@verb.ink" \
+    -s //visitorINS -t elem -n "sport" \
+    -i //visitorINS/sport -t attr -n "type" -v "surfing" \
+    -s //visitorINS -t elem -n "year" -v "1981" \
+    -r //visitorINS -v visitor \
+    xml/contacts.xml
+```
+
+## Feeds
+- RSS feeds have standard elements
+- RSS feeds can also be ready for:
+  - iTunes podcasts
+  - Atom feeds (more sophisticated than normal RSS, but not universal)
+  - Others
+- ***Always*** use HTML entities in feeds or any XML
+  - Not `&`, but `&amp;`
+  - *Many times XML/RSS breaks is from HTML characters not existing as HTML entities!*
+- Special characters won't matter if placed in CDATA tags: `<![CDATA[]]>`
+  - `<![CDATA[ I can be anything ]]>`
+### RSS
+- RSS feeds should start with:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+```
+- RSS feeds should have styling as good practice:
+  - Add `<?xml-stylesheet type="text/xsl" href="rss.xsl" ?>`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss.xsl" ?>
+<rss version="2.0">
+```
+- It is good for the `<rss>` element to accept common prefixes, such as:
+  - iTunes `xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"`
+  - Content `xmlns:content="http://purl.org/rss/1.0/modules/content/"`
+  - Atom `xmlns:atom="http://www.w3.org/2005/Atom"`
+  - DC `xmlns:dc="http://purl.org/dc/elements/1.1/"`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss.xsl" ?>
+<rss version="2.0"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+  >
+```
+
+| **Simple RSS** :
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+
+<channel>
+
+  <!-- Feed info -->
+  <title>501 Blog</title>
+	<link>http://localhost/web</link>
+	<image>
+		<url>path/to/image.jpg</url>
+		<title>501 Blog</title>
+		<link>http://localhost/web</link>
+	</image>
+  <language>en</language>
+  <description>Blog description</description>
+  <lastBuildDate>Tue, Nov 30 15:45:12 2021 UTC</lastBuildDate>
+
+  <!-- Items -->
+  <item>
+    <title>Media Features</title>
+    <link>http://localhost/web/media-features</link>
+    <pubDate>Tue, Nov 30 15:45:12 2021 UTC</pubDate>
+    <author><![CDATA[Jon Boy]]></author>
+    <category>Some-Category</category>
+    <description>Media has features in the description</description>
+    <enclosure url="http://url.tld/to/audio.mp3" length="" type="audio/mpeg" />
+  </item>
+  <item>
+    <title>More Lessons</title>
+    <link>http://localhost/web/media-features</link>
+    <pubDate>Wed, Dec 1 16:43:52 2021 UTC</pubDate>
+    <author></author>
+    <category><![CDATA[Other Category]]></category>
+    <description>More available lessons</description>
+    <enclosure url="http://url.tld/to/audio.mp3" length="" type="audio/mpeg" />
+    <enclosure url="http://url.tld/to/video.mp4" length="" type="video/mp4" />
+  </item>
+</channel>
+
+</rss>
+```
+
+### iTunes
+- iTunes has more tags
+  - These ***must*** be in: `<chanel>`
+```xml
+<itunes:author></itunes:author>
+<itunes:summary></itunes:summary>
+<itunes:subtitle></itunes:subtitle>
+<itunes:owner>
+  <itunes:name></itunes:name>
+  <itunes:email></itunes:email>
+</itunes:owner>
+<itunes:keywords></itunes:keywords>
+<itunes:category text=""/>
+```
+
+  - These ***must*** be in: `<item>`
+```xml
+<enclosure url="" length="" type="audio/mpeg" />
+<itunes:duration></itunes:duration>
+```
+
+## PHP Integration via `SimpleXML`
+- `SimpleXML` converts XML into a PHP Object
+
+```php
+$rss = simplexml_load_file('http://localhost/web/feed.rss');
+echo $rss->channel->title;
+```
+
+- Loop through multiple elements, such as `<item>`
+```php
+$rss = simplexml_load_file('http://localhost/web/feed.rss');
+
+foreach ($rss->channel->item as $item) {
+  echo "<p>$item->pubDate</p>";
+  echo "<p>$item->description</p>";
+}
+```
+
+- This may be useful for iTunes and other prefixes
+```php
+foreach ($rss->channel->item as $item) {
+
+  $itunes = $item->children('http://www.itunes.com/dtds/podcast-1.0.dtd');
+
+  echo "<p>$itunes->author</p>";
+
+}
+
+```
+  - Note `http://www.itunes.com/dtds/podcast-1.0.dtd` came from the `<rss>` declaration for iTunes
+```xml
+<rss version="2.0"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  >
+```
+
+- Here is a fuller implementation:
+```php
+$rss = simplexml_load_file('http://localhost/web/feed.rss');
+
+echo '<h1>'.$rss->channel->title.'</h1>';
+echo '<h2>'.$rss->channel->description.'</h2>';
+
+foreach ($rss->channel->item as $item) {
+
+  $itunes = $item->children('http://www.itunes.com/dtds/podcast-1.0.dtd');
+  $content = $item->children('http://purl.org/rss/1.0/modules/content/');
+  $atom = $item->children('http://www.w3.org/2005/Atom'); // For Atom
+  $dc = $item->children('http://purl.org/dc/elements/1.1/');
+
+  echo '<p><b><a href="'.$item->link.'">'.$item->title."</a></b></p>";
+  echo "<p>$item->pubDate</p>";
+  echo "<p>$item->description</p>";
+  echo "<p>$itunes->author</p>";
+  echo "<p>$content->encoded</p>";
+  echo "<p>$dc->creator</p>";
+  echo (isset($item->enclosure['url'])) ? '<p>'.$item->enclosure['url'].'</p>' : false;
+
+}
+```
+
+## Final CMS
+- The CMS we built in 501 is available if you want to play with it or build on it
 - In directory: `501/cms`
 - With install instructions at `501/cms/README.md`
 
 ___
+
+# Done! Have a cookie: ### #
 
 # Roadmap Assignments
 
@@ -2558,5 +3316,3 @@ Features to be added
     - Shortcodes
     - Widgets
     - Modeled after the badAd WordPress plugin
-
-# Done! Have a cookie: ### #
