@@ -158,7 +158,7 @@ localhost/web/edit.php
 
 *Note in.piecefunctions.php:*
 
-- *`filter_var($value, FILTER_SANITIZE_STRING);` removes HTML tags*
+- *`strip_tags($value);` removes HTML tags*
 - *`htmlspecialchars($value);` converts all HTML characters to their HTML enity code*
 
 1. Fill-out the fields, being simple with what you want
