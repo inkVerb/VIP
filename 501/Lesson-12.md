@@ -2410,9 +2410,9 @@ ls pdo-aggregate/*
   - *Aggregated entries on `publications` will NOT have a `piece_id`*
   - *Aggregated entries on `publications` will contain:*
     - *`aggregated` matching the `id` of the feed entry on `aggregation`*
-    - *Enclosure URL for: `feat_img`, `feat_aud`, `feat_vid` & `feat_doc`, rather than an `id` on `media_library`*
-    - *from `<itunes:duration>`: `duration` for audio/video enclosures*
-    - *from `<enclosure length=` & `<enclosure type=`: `feat_img_mime`, `feat_aud_mime`, `feat_vid_mime`, `feat_doc_mime`, `feat_img_length`, `feat_aud_length`, `feat_vid_length` & `feat_doc_length`*
+    - *From `<enclosure url=`: `feat_img`, `feat_aud`, `feat_vid` & `feat_doc`, rather than an `id` on `media_library`*
+    - *From `<itunes:duration>`: `duration` for audio/video enclosures*
+    - *From `<enclosure length=` & `<enclosure type=`: `feat_img_mime`, `feat_aud_mime`, `feat_vid_mime`, `feat_doc_mime`, `feat_img_length`, `feat_aud_length`, `feat_vid_length` & `feat_doc_length`*
 
 *All other files make simple changes to implement the new "Aggregated Feeds" page (aggregator.php)*
 
