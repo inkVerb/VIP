@@ -2303,7 +2303,17 @@ header('Content-type: text/xml');
   </itunes:owner>
 	<itunes:keywords>ice, ice, baby</itunes:keywords>
 	<itunes:image href="media/pro/pro-podcast.jpg"/>
-	<itunes:explicit>true</itunes:explicit><itunes:category text="Business"/><itunes:category text="Business"/><itunes:category text="Investing"/><itunes:category text="Arts"/><itunes:category text="Performing Arts"/><itunes:category text="Sports"/><itunes:category text="Golf"/><itunes:category text="Sports"/>
+	<itunes:explicit>true</itunes:explicit>
+  <itunes:category text="Business"/>
+    <itunes:category text="Investing"/>
+  </itunes:category text="Business">
+  <itunes:category text="Marketing"/>
+  <itunes:category text="Arts">
+    <itunes:category text="Performing Arts"/>
+  </itunes:category text="Arts">
+  <itunes:category text="Sports">
+    <itunes:category text="Golf"/>
+  </itunes:category text="Sports">
 <lastBuildDate>Tue, Nov 30 15:45:12 2021 UTC</lastBuildDate>
 
 <item>
@@ -3161,6 +3171,7 @@ xml ed -L -s /root/visitors -t elem -n visitorINS \
 ### iTunes
 - iTunes has more tags
   - These ***must*** be in: `<chanel>`
+  - You can [learn more here from Apple](https://podcasters.apple.com/support/823-podcast-requirements)
 ```xml
 <itunes:author></itunes:author>
 <itunes:summary></itunes:summary>
