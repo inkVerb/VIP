@@ -992,10 +992,25 @@ ___
 ### MySQL phpMyAdmin (Arch/Manjaro)
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
-2. Extract and rename the folder to: `phpMyAdmin`
+
+| **PA1** (Change file name)
+```console
+sha256sum phpMyAdmin-x.x.x-all-languages.zip
+```
+
+3. Extract and rename the folder to: `phpMyAdmin`
+
+| **PA2** :$ (Change file name)
+
+```console
+cd ~/Downloads
+unzip phpMyAdmin-x.x.x-all-languages.zip
+mv phpMyAdmin-x.x.x-all-languages phpMyAdmin
+```
+
 3. In the terminal, move it to `/srv/www/html/` (so it is at `/srv/www/html/phpMyAdmin`)
 
-| **PA1** :$
+| **PA3** :$
 
 ```console
 sudo mv phpMyAdmin /var/www/html/
@@ -1003,7 +1018,7 @@ sudo mv phpMyAdmin /var/www/html/
 
 4. Create the config
 
-| **PA2** :$
+| **PA4** :$
 
 ```console
 cd /var/www/html/phpMyAdmin
@@ -1013,7 +1028,7 @@ sudo cp config.sample.inc.php config.inc.php
 5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
-| **PA3g** :$
+| **PA5g** :$
 
 ```console
 sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
@@ -1021,7 +1036,7 @@ sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
 
 Or edit with `vim`:
 
-| **PA3v** :$
+| **PA5v** :$
 
 ```console
 sudo vim /var/www/html/phpMyAdmin/config.inc.php
@@ -1033,7 +1048,7 @@ sudo vim /var/www/html/phpMyAdmin/config.inc.php
 
 6. Own everything properly
 
-| **PA4** :$
+| **PA6** :$
 
 ```console
 sudo chown -R www:www /var/www/html/phpMyAdmin
@@ -1047,10 +1062,27 @@ Login the first time with the same user you create in "MySQL via command line" (
 ### MySQL phpMyAdmin (Debian/Ubuntu & CentOS/Fedora)
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
-2. Extract and rename the folder to: `phpMyAdmin`
-3. In the terminal, move it to `/var/www/html/` (so it is at `/var/www/html/phpMyAdmin`)
 
-| **PD1** :$
+| **PD1** (Change file name)
+```console
+sha256sum phpMyAdmin-x.x.x-all-languages.zip
+```
+
+*The hash should match that of the download website*
+
+3. Extract and rename the folder to: `phpMyAdmin`
+
+| **PD2** :$ (Change file name)
+
+```console
+cd ~/Downloads
+unzip phpMyAdmin-x.x.x-all-languages.zip
+mv phpMyAdmin-x.x.x-all-languages phpMyAdmin
+```
+
+5. In the terminal, move it to `/var/www/html/` (so it is at `/var/www/html/phpMyAdmin`)
+
+| **PD3** :$
 
 ```console
 sudo mv phpMyAdmin /var/www/html/
@@ -1058,13 +1090,13 @@ sudo mv phpMyAdmin /var/www/html/
 
 4. Create the config
 
-| **PD2** :$
+| **PD4** :$
 
 ```console
 cd /var/www/html/phpMyAdmin
 ```
 
-| **PD3** :$
+| **PD5** :$
 
 ```console
 sudo cp config.sample.inc.php config.inc.php
@@ -1073,7 +1105,7 @@ sudo cp config.sample.inc.php config.inc.php
 5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
-| **PD4g** :$
+| **PD6g** :$
 
 ```console
 sudo gedit /var/www/html/phpMyAdmin/config.inc.php
@@ -1081,7 +1113,7 @@ sudo gedit /var/www/html/phpMyAdmin/config.inc.php
 
 Or edit with `vim`:
 
-| **PD4v** :$
+| **PD6v** :$
 
 ```console
 sudo vim /var/www/html/phpMyAdmin/config.inc.php
@@ -1093,7 +1125,7 @@ sudo vim /var/www/html/phpMyAdmin/config.inc.php
 
 6. Own everything properly
 
-| **PD5** :$
+| **PD7** :$
 
 ```console
 sudo chown -R www:www /var/www/html/phpMyAdmin
@@ -1160,19 +1192,19 @@ This is not necessary for VIP Linux lessons, but may be helpful in some situatio
 
 ### Arch/Manjaro
 
-| **PA1** :$
+| **SA1** :$
 
 ```console
 sudo mkdir -p /srv/www/tmp
 ```
 
-| **PA2** :$
+| **SA2** :$
 
 ```console
 sudo chmod -R 777 /srv/www/tmp
 ```
 
-| **PA3** :$
+| **SA3** :$
 
 ```console
 sudo chmod 644 /etc/php/php.ini
@@ -1180,7 +1212,7 @@ sudo chmod 644 /etc/php/php.ini
 
 Open php.ini and make these settings:
 
-| **PA4** :$
+| **SA4** :$
 
 ```console
 sudo vim /etc/php/php.ini
@@ -1194,23 +1226,23 @@ sys_temp_dir = /srv/www/tmp
 upload_tmp_dir = /srv/www/tmp
 ```
 
-Now you can use PHP to upload, but php is limited to the www directory and 2MB per file
+Now you can use PHP to upload, but php is limited to the www directory
 
 ### Debian/Ubuntu
 
-| **PD1** :$
+| **SD1** :$
 
 ```console
 sudo mkdir -p /var/www/tmp
 ```
 
-| **PD2** :$
+| **SD2** :$
 
 ```console
 sudo chmod -R 777 /var/www/tmp
 ```
 
-| **PD3** :$ (maybe '7.2' is a different number)
+| **SD3** :$ (maybe '7.2' is a different number)
 
 ```console
 sudo chmod 644 /etc/php/7.2/apache2/php.ini
@@ -1218,7 +1250,7 @@ sudo chmod 644 /etc/php/7.2/apache2/php.ini
 
 Open php.ini and make these settings:
 
-| **PD4** :$ (maybe '7.2' is a different number)
+| **SD4** :$ (maybe '7.2' is a different number)
 
 ```console
 sudo vim /etc/php/7.2/apache2/php.ini
@@ -1230,42 +1262,42 @@ open_basedir = /var/www
 sys_temp_dir = /var/www/tmp
 
 ```
-Now you can use PHP to upload, but php is limited to the www directory and 2MB per file
+Now you can use PHP to upload, but php is limited to the www directory
 
 ### CentOS/Fedora
 
-| **PC1** :$
+| **SC1** :$
 
 ```console
-sudo mkdir -p /srv/www/tmp
+sudo mkdir -p /var/www/tmp
 ```
 
-| **PC2** :$
+| **SC2** :$
 
 ```console
-sudo chmod -R 777 /srv/www/tmp
+sudo chmod -R 777 /var/www/tmp
 ```
 
-| **PC3** :$
+| **SC3** :$
 
 ```console
-sudo chmod 644 /etc/php/php.ini
+sudo chmod 644 /etc/php.ini
 ```
 
 Open php.ini and make these settings:
 
-| **PC4** :$
+| **SC4** :$
 
 ```console
-sudo vim /etc/php/php.ini
+sudo vim /etc/php.ini
 ```
 
 ```
-open_basedir = /srv/www
+open_basedir = /var/www
 
-sys_temp_dir = /srv/www/tmp
+sys_temp_dir = /var/www/tmp
 
-upload_tmp_dir = /srv/www/tmp
+upload_tmp_dir = /var/www/tmp
 ```
 
-Now you can use PHP to upload, but php is limited to the www directory and 2MB per file
+Now you can use PHP to upload, but php is limited to the www directory
