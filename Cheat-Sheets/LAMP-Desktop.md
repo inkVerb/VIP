@@ -554,67 +554,7 @@ sudo apachectl -t
 
 *Your code must reflect the names of any URLs as you want them rewritten, not as they actually are.*
 
-### MySQL phpMyAdmin (Debian/Ubuntu)
-
-1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
-2. Extract and rename the folder to: `phpMyAdmin`
-3. In the terminal, move it to `/var/www/html/` (so it is at `/var/www/html/phpMyAdmin`)
-
-| **D13** :$
-
-```console
-sudo mv phpMyAdmin /var/www/html/
-```
-
-4. Create the config
-
-| **D14** :$
-
-```console
-cd /var/www/html/phpMyAdmin
-```
-
-| **D15** :$
-
-```console
-sudo cp config.sample.inc.php config.inc.php
-```
-
-5. Set the blowfish salt (32 characters long, random)
-  - Edit with `gedit`:
-
-| **D16g** :$
-
-```console
-sudo gedit /var/www/html/phpMyAdmin/config.inc.php
-```
-
-Or edit with `vim`:
-
-| **D16v** :$
-
-```console
-sudo vim /var/www/html/phpMyAdmin/config.inc.php
-```
-
-  - Add the salt here:
-    - `$cfg['blowfish_secret'] = '';` ...becomes...
-    - `$cfg['blowfish_secret'] = 'SomeRANDOm32characterslongGOhere';`
-
-6. Own everything properly
-
-| **D17** :$
-
-```console
-sudo chown -R www-data:www-data /var/www/html/phpMyAdmin
-```
-
-Now, you should be able to access this in your browser at the address:
-- `localhost/phpMyAdmin`
-
-Login the first time with the same user you create in "MySQL via command line" (below)
-
-7. (Optional) If you DO NOT want Apache to start automatically
+5. (Optional) If you DO NOT want Apache to start automatically
 
 | **Disable Apache** :$
 
@@ -647,48 +587,49 @@ export APACHE_RUN_USER=www-data
 export APACHE_RUN_GROUP=www-data
 ```
 
-1. Change the setting to `www` with `sed`
+1. Change the settings to `www` with `sed`
 
-| **W1** :$
+| **DW1** :$
 
 ```console
 sudo sed -i "s/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=www/" /etc/apache2/envvars
-```
-
-| **W2** :$
-
-```console
 sudo sed -i "s/export APACHE_RUN_GROUP=.*/export APACHE_RUN_GROUP=www/" /etc/apache2/envvars
 ```
 
 2. Create the group & user
 
-| **W3** :$
+| **DW2** :$
 
 ```console
 sudo groupadd www
 ```
 
-| **W4** :$
+| **DW3** :$
 
 ```console
 sudo useradd -g www www
 ```
 
-3. Restart the Apache server
+3. Own the web directory
 
-| **W5** :$
+| **DW4** :$
+
+```console
+sudo chown -R www:www /var/www/html
+```
+
+4. Restart the Apache server
+
+| **DW5** :$
 
 ```console
 sudo systemctl restart apache2
 ```
 
-4. Always own the web directory (now with `www:www` instead of `www-data:www-data`)
-
-| **W6** :$
+Always own the web directory (now with `www:www` instead of `www-data:www-data`)
 
 ```console
-sudo chown -R www:www /var/www/html/phpMyAdmin
+sudo chown -R www:www /var/www/html
 ```
 
 ...This is how you will own the web directory from now on and in VIP Linux lessons
@@ -835,30 +776,14 @@ a. Enable modules:
   Protocols h2 http/1.1
   ```
 
-b. Web user to `www`
+b. Web directory settings
 
-
-  - Change these lines:
-  ```
-  User apache
-  Group apache
-  ```
-
-  - To:
-  ```
-  User www
-  Group www
-  ```
-
-c. Web directory settings
-
-  - Ignore any existing `<Directory /var/www...` entries and do not change them
-    - Unless they contain `/srv` as in `<Directory "/srv/www/html">`, in which case comment them with `#`
+  - Comment both `<Directory /var/www...` entries
 
   - Find `DocumentRoot "/var/www/html"` replace it to look like this:
     ```
-    DocumentRoot "/srv/www/html"
-    <Directory "/srv/www/html">
+    DocumentRoot "/var/www/html"
+    <Directory "/var/www/html">
     Options Indexes FollowSymLinks
     AllowOverride All
     Require all granted
@@ -867,8 +792,8 @@ c. Web directory settings
 
   ...or for expanded options...
     ```
-    DocumentRoot "/srv/www/html"
-    <Directory "/srv/www/html">
+    DocumentRoot "/var/www/html"
+    <Directory "/var/www/html">
     Options Indexes FollowSymLinks MultiViews
     AllowOverride All
     Require all granted
@@ -885,53 +810,21 @@ Disable the MPM event module, which conflicts with the MPM prefork module instal
 sudo sed -i "s/LoadModule mpm_event_module/#LoadModule mpm_event_module/" /etc/httpd/conf.modules.d/00-mpm.conf
 ```
 
-6. Web user and folder
-
-| **C10** :$
-
-```console
-sudo groupadd www
-```
-
-| **C11** :$
-
-```console
-sudo useradd -g www www
-```
-
-| **C12** :$
-
-```console
-sudo mkdir -p /srv/www/html
-```
-
-| **C13** :$
-
-```console
-sudo chmod u+w /srv/www
-```
-
-| **C14** :$
-
-```console
-sudo chown -R www:www /srv/www
-```
-
 7. Enable & restart
 
-| **C15** :$
+| **C10** :$
 
 ```console
 sudo systemctl enable mariadb
 ```
 
-| **C16** :$
+| **C11** :$
 
 ```console
 sudo systemctl start mariadb
 ```
 
-| **C17** :$
+| **C12** :$
 
 ```console
 sudo systemctl restart httpd
@@ -965,43 +858,10 @@ sudo systemctl start mariadb
 
 - Check for specific errors in Apache server configs
 
-| **C12** :$
-
-```console
-sudo apachectl -t
-```
-
-**Using your local dev server on desktop**
-
-- `/srv/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
-
-Life is easier with a local "Work" folder symlink
-
 | **C13** :$
 
 ```console
-mkdir -p ~/Work/dev
-sudo mkdir -p /srv/www/html/vip
-sudo ln -sfn /srv/www/html/vip ~/Work/
-```
-
-- Now:
-  - Your projects go in: `~/Work/vip/SOMETHING` (owned by www, not you)
-  - Use the web address: `localhost/vip/SOMETHING`
-- During development:
-  - Edit files in: `~/Work/dev`
-  - Copy dev files to view in browser on each save with:
-
-```console
-sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
-```
-
-**Always own web stuff first!**
-
-| **C14** :$
-
-```console
-sudo chown -R www:www /srv/www
+sudo apachectl -t
 ```
 
 **Apache service: always or only when using?**
@@ -1012,7 +872,7 @@ sudo chown -R www:www /srv/www
 
 *(You will need to run this command each time you start lessons after reboot)*
 
-| **C15e** :$
+| **C14e** :$
 
 ```console
 sudo systemctl start httpd
@@ -1020,7 +880,7 @@ sudo systemctl start httpd
 
 2. Make Apache a service to always run
 
-| **C15s** :$
+| **C14s** :$
 
 ```console
 sudo systemctl enable httpd
@@ -1036,31 +896,124 @@ sudo systemctl disable httpd
 sudo systemctl stop httpd
 ```
 
-### MySQL phpMyAdmin (Arch/Manjaro & CentOS/Fedora)
+### Change the web user to `www` (for VIP Linux lessons)
+- The default web user on CentOS & Fedora systems is `apache`
+- This is longer text to type every time the web directory needs to be owned
+- This makes commands incompatible with Arch/Manjaro servers
+- You may or may not want to change the web user to `www`
+- VIP Linux lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or CentOS/Fedora systems
+
+The web user is defined in `/etc/httpd/conf/httpd.conf`, which we previously edited
+
+Change the web user & group to `www`
+
+1. Change the settings to `www` with `sed`
+
+| **CW1** :$
+
+```console
+sudo sed -i "s/^User.*/User www/" /etc/httpd/conf/httpd.conf
+sudo sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
+```
+
+2. Create the group & user
+
+| **CW2** :$
+
+```console
+sudo groupadd www
+```
+
+| **CW3** :$
+
+```console
+sudo useradd -g www www
+```
+
+3. Set ownership and permissions
+
+| **CW4** :$
+
+```console
+sudo chmod u+w /var/www
+```
+
+| **CW5** :$
+
+```console
+sudo chown -R www:www /var/www/html
+```
+
+4. Restart the Apache server
+
+| **CW6** :$
+
+```console
+sudo systemctl restart apache2
+```
+
+Always own the web directory (now with `www:www` instead of `www-data:www-data`)
+
+```console
+sudo chown -R www:www /var/www/html
+```
+
+...This is how you will own the web directory from now on and in VIP Linux lessons
+
+**Using your local dev server on desktop**
+
+- `/var/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
+
+Life is easier with a local "Work" folder symlink
+
+| **CW7** :$
+
+```console
+mkdir -p ~/Work/dev
+sudo mkdir -p /var/www/html/vip
+sudo ln -sfn /var/www/html/vip ~/Work/
+```
+
+- Now:
+  - Your projects go in: `~/Work/vip/SOMETHING` (owned by www, not you)
+  - Use the web address: `localhost/vip/SOMETHING`
+- During development:
+  - Edit files in: `~/Work/dev`
+  - Copy dev files to view in browser on each save with:
+
+```console
+sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
+```
+
+___
+
+## MySQL phpMyAdmin
+
+### MySQL phpMyAdmin (Arch/Manjaro)
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
 2. Extract and rename the folder to: `phpMyAdmin`
 3. In the terminal, move it to `/srv/www/html/` (so it is at `/srv/www/html/phpMyAdmin`)
 
-| **C16** :$
+| **PA1** :$
 
 ```console
-sudo mv phpMyAdmin /srv/www/html/
+sudo mv phpMyAdmin /var/www/html/
 ```
 
 4. Create the config
 
-| **C17** :$
+| **PA2** :$
 
 ```console
-cd /srv/www/html/phpMyAdmin
+cd /var/www/html/phpMyAdmin
 sudo cp config.sample.inc.php config.inc.php
 ```
 
 5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
-| **C18g** :$
+| **PA3g** :$
 
 ```console
 sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
@@ -1068,10 +1021,10 @@ sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
 
 Or edit with `vim`:
 
-| **C18v** :$
+| **PA3v** :$
 
 ```console
-sudo vim /srv/www/html/phpMyAdmin/config.inc.php
+sudo vim /var/www/html/phpMyAdmin/config.inc.php
 ```
 
   - Add the salt here:
@@ -1080,10 +1033,70 @@ sudo vim /srv/www/html/phpMyAdmin/config.inc.php
 
 6. Own everything properly
 
-| **C19** :$
+| **PA4** :$
 
 ```console
-sudo chown -R www:www /srv/www/html/phpMyAdmin
+sudo chown -R www:www /var/www/html/phpMyAdmin
+```
+
+Now, you should be able to access this in your browser at the address:
+- `localhost/phpMyAdmin`
+
+Login the first time with the same user you create in "MySQL via command line" (below)
+
+### MySQL phpMyAdmin (Debian/Ubuntu & CentOS/Fedora)
+
+1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
+2. Extract and rename the folder to: `phpMyAdmin`
+3. In the terminal, move it to `/var/www/html/` (so it is at `/var/www/html/phpMyAdmin`)
+
+| **PD1** :$
+
+```console
+sudo mv phpMyAdmin /var/www/html/
+```
+
+4. Create the config
+
+| **PD2** :$
+
+```console
+cd /var/www/html/phpMyAdmin
+```
+
+| **PD3** :$
+
+```console
+sudo cp config.sample.inc.php config.inc.php
+```
+
+5. Set the blowfish salt (32 characters long, random)
+  - Edit with `gedit`:
+
+| **PD4g** :$
+
+```console
+sudo gedit /var/www/html/phpMyAdmin/config.inc.php
+```
+
+Or edit with `vim`:
+
+| **PD4v** :$
+
+```console
+sudo vim /var/www/html/phpMyAdmin/config.inc.php
+```
+
+  - Add the salt here:
+    - `$cfg['blowfish_secret'] = '';` ...becomes...
+    - `$cfg['blowfish_secret'] = 'SomeRANDOm32characterslongGOhere';`
+
+6. Own everything properly
+
+| **PD5** :$
+
+```console
+sudo chown -R www:www /var/www/html/phpMyAdmin
 ```
 
 Now, you should be able to access this in your browser at the address:
@@ -1092,9 +1105,6 @@ Now, you should be able to access this in your browser at the address:
 Login the first time with the same user you create in "MySQL via command line" (below)
 
 ___
-
-
-
 
 ## Arch, Debian & CentOS
 
