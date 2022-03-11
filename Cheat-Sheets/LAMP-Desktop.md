@@ -178,7 +178,6 @@ sudo chmod u+w /srv/www
 sudo chown -R www:www /srv/www
 ```
 
-
 6. Enable & restart
 
 | **A9** :$
@@ -353,7 +352,7 @@ Now, you should be able to access this in your browser at the address:
 
 Login the first time with the same user you create in "MySQL via command line" (below)
 
----
+___
 
 ## Debian/Ubuntu
 
@@ -698,7 +697,356 @@ sudo chown -R www:www /var/www/html/phpMyAdmin
 
 ___
 
-## Arch & Debian
+## CentOS/Fedora
+
+### Update
+
+| **C0** :$
+
+```console
+sudo pacman -Syy
+```
+
+### Setup LAMP
+
+#### Install
+
+1. Install the LAMP server
+
+| **C1** :$
+
+```console
+sudo pacman -S --noconfirm apache php php-apache mariadb
+```
+
+2. Turn on the PHP-MySQL functionality in your `php.ini` file
+
+  - Edit with `gedit`:
+
+| **C2g** :$
+
+```console
+sudo gedit /etc/php/php.ini
+```
+
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
+
+Or edit with `vim`:
+
+| **C2v** :$
+
+```console
+sudo vim /etc/php/php.ini
+```
+
+  - Search by typing: `/something_to_search`, then Enter to find the line, type `:wq` to save and quit
+
+In php.ini:
+
+  - Uncomment & set values (remove the semicolon `;` at the start of the line)
+    - `extension=mysqli`
+    - `extension=pdo_mysql`
+    - `extension=iconv`
+    - `upload_max_filesize = 10M`
+	- `file_uploads = On`
+
+3. MariaDB setup
+
+| **C3** :$
+
+```console
+sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+```
+
+4. Apache settings
+
+Edit with `gedit`:
+
+| **C4g** :$
+
+```console
+sudo gedit /etc/httpd/conf/httpd.conf
+```
+
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
+
+Or edit with `vim`:
+
+| **C4v** :$
+
+```console
+sudo vim /etc/httpd/conf/httpd.conf
+```
+
+  - Search by typing: `/`..., type `:wq` to save and quit
+
+a. Enable modules:
+
+  - Reverse the commenting so these lines to look like this:
+
+  ```
+  #LoadModule mpm_event_module modules/mod_mpm_event.so
+  ...
+  LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+  LoadModule http2_module modules/mod_http2.so
+  LoadModule rewrite_module modules/mod_rewrite.so
+  ```
+
+  - Add these lines at the end:
+
+  ```
+  LoadModule php_module modules/libphp.so
+  AddHandler php-script .php
+  Include conf/extra/php_module.conf
+  Protocols h2 http/1.1
+  ```
+
+b. Web user to `www`
+
+
+  - Change these lines:
+  ```
+  User http
+  Group http
+  ```
+
+  - To:
+  ```
+  User www
+  Group www
+  ```
+
+c. Web directory settings
+
+  - Find `DocumentRoot "/srv/http"` replace it and `<Directory...` contents to look like this:
+    ```
+    DocumentRoot "/srv/www/html"
+    <Directory "/srv/www/html">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+    </Directory>
+    ```
+
+  ...or for expanded options...
+
+  ```
+  DocumentRoot "/srv/www/html"
+  <Directory "/srv/www/html">
+  Options Indexes FollowSymLinks MultiViews
+  AllowOverride All
+  Require all granted
+  Order allow,deny
+  allow from all
+  </Directory>
+  ```
+
+5. Web user and folder
+
+| **C5** :$
+
+```console
+sudo groupadd www
+```
+
+| **C6** :$
+
+```console
+sudo useradd -g www www
+```
+
+| **C7** :$
+
+```console
+sudo chmod u+w /srv/www
+```
+
+| **C8** :$
+
+```console
+sudo chown -R www:www /srv/www
+```
+
+6. Enable & restart
+
+| **C9** :$
+
+```console
+sudo systemctl enable mariadb
+```
+
+| **C10** :$
+
+```console
+sudo systemctl start mariadb
+```
+
+| **C11** :$
+
+```console
+sudo systemctl restart httpd
+```
+
+*(Optionally, you can turn MySQL off with:)*
+
+| **Disable MySQL** :$
+
+```console
+sudo systemctl disable mariadb
+sudo systemctl stop mariadb
+```
+
+  - *(But, you will need to run this command each time you start lessons after reboot)*
+
+| **Start MySQL** :$
+
+```console
+sudo systemctl start mariadb
+```
+
+  - *(And, you can re-enable MySQL as a service with:)*
+
+| **Start MySQL** :$
+
+```console
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+```
+
+- Check for specific errors in Apache server configs
+
+| **C12** :$
+
+```console
+sudo apachectl -t
+```
+
+**Using your local dev server on desktop**
+
+- `/srv/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
+
+Life is easier with a local "Work" folder symlink
+
+| **C13** :$
+
+```console
+mkdir -p ~/Work/dev
+sudo mkdir -p /srv/www/html/vip
+sudo ln -sfn /srv/www/html/vip ~/Work/
+```
+
+- Now:
+  - Your projects go in: `~/Work/vip/SOMETHING` (owned by www, not you)
+  - Use the web address: `localhost/vip/SOMETHING`
+- During development:
+  - Edit files in: `~/Work/dev`
+  - Copy dev files to view in browser on each save with:
+
+```console
+sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
+```
+
+**Always own web stuff first!**
+
+| **C14** :$
+
+```console
+sudo chown -R www:www /srv/www
+```
+
+**Apache service: always or only when using?**
+
+- Choose 1 or 2:
+
+1. Start Apache only once
+
+*(You will need to run this command each time you start lessons after reboot)*
+
+| **C15e** :$
+
+```console
+sudo systemctl start httpd
+```
+
+2. Make Apache a service to always run
+
+| **C15s** :$
+
+```console
+sudo systemctl enable httpd
+sudo systemctl start httpd
+```
+
+*(Later, you can turn this off with:)*
+
+| **Disable Apache** :$
+
+```console
+sudo systemctl disable httpd
+sudo systemctl stop httpd
+```
+
+### MySQL phpMyAdmin (Arch/Manjaro)
+
+1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
+2. Extract and rename the folder to: `phpMyAdmin`
+3. In the terminal, move it to `/srv/www/html/` (so it is at `/srv/www/html/phpMyAdmin`)
+
+| **C16** :$
+
+```console
+sudo mv phpMyAdmin /srv/www/html/
+```
+
+4. Create the config
+
+| **C17** :$
+
+```console
+cd /srv/www/html/phpMyAdmin
+sudo cp config.sample.inc.php config.inc.php
+```
+
+5. Set the blowfish salt (32 characters long, random)
+  - Edit with `gedit`:
+
+| **C18g** :$
+
+```console
+sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
+```
+
+Or edit with `vim`:
+
+| **C18v** :$
+
+```console
+sudo vim /srv/www/html/phpMyAdmin/config.inc.php
+```
+
+  - Add the salt here:
+    - `$cfg['blowfish_secret'] = '';` ...becomes...
+    - `$cfg['blowfish_secret'] = 'SomeRANDOm32characterslongGOhere';`
+
+6. Own everything properly
+
+| **C19** :$
+
+```console
+sudo chown -R www:www /srv/www/html/phpMyAdmin
+```
+
+Now, you should be able to access this in your browser at the address:
+- `localhost/phpMyAdmin`
+
+Login the first time with the same user you create in "MySQL via command line" (below)
+
+___
+
+
+
+
+## Arch, Debian & CentOS
 
 ### MySQL via Command Line
 
@@ -744,12 +1092,51 @@ sudo apt-get update
 sudo apt-get install -f
 sudo apt-get install mysql-server
 ```
+___
 
-### Make PHP More Secure
+## Make PHP More Secure
 
 This is not necessary for VIP Linux lessons, but may be helpful in some situations
 
-#### Debian/Ubuntu
+### Arch/Manjaro
+
+| **PA1** :$
+
+```console
+sudo mkdir -p /srv/www/tmp
+```
+
+| **PA2** :$
+
+```console
+sudo chmod -R 777 /srv/www/tmp
+```
+
+| **PA3** :$
+
+```console
+sudo chmod 644 /etc/php/php.ini
+```
+
+Open php.ini and make these settings:
+
+| **PA4** :$
+
+```console
+sudo vim /etc/php/php.ini
+```
+
+```
+open_basedir = /srv/www
+
+sys_temp_dir = /srv/www/tmp
+
+upload_tmp_dir = /srv/www/tmp
+```
+
+Now you can use PHP to upload, but php is limited to the www directory and 2MB per file
+
+### Debian/Ubuntu
 
 | **PD1** :$
 
@@ -783,22 +1170,23 @@ open_basedir = /var/www
 sys_temp_dir = /var/www/tmp
 
 ```
+Now you can use PHP to upload, but php is limited to the www directory and 2MB per file
 
-#### Arch/Manjaro
+### CentOS/Fedora
 
-| **PA1** :$
+| **PC1** :$
 
 ```console
 sudo mkdir -p /srv/www/tmp
 ```
 
-| **PA2** :$
+| **PC2** :$
 
 ```console
 sudo chmod -R 777 /srv/www/tmp
 ```
 
-| **PA3** :$
+| **PC3** :$
 
 ```console
 sudo chmod 644 /etc/php/php.ini
@@ -806,7 +1194,7 @@ sudo chmod 644 /etc/php/php.ini
 
 Open php.ini and make these settings:
 
-| **PA4** :$
+| **PC4** :$
 
 ```console
 sudo vim /etc/php/php.ini
