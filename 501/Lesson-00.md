@@ -134,7 +134,7 @@ sudo dnf update
 > | **C2** :$
 
 ```console
-sudo dnf install -y curl cowsay dialog git net-tools htop dos2unix pwgen unzip
+sudo dnf install -y curl cowsay dialog git net-tools htop dos2unix pwgen unzip redhat-lsb-core
 ```
 > Currently thest are broken and will not work on CentOS: `odt2txt pandoc`
 >
