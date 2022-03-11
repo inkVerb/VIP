@@ -1,7 +1,7 @@
 # Shell 501
 ## Lesson 0: Server, LAMP Setup & HTML Fast
 
-- Manjaro/Ubuntu: [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
+- Manjaro/Ubuntu/CentOS: [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
 
 ___
 ### Web Address Terminology
