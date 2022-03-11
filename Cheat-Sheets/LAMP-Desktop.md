@@ -140,17 +140,16 @@ c. Web directory settings
     ```
 
   ...or for expanded options...
-
-  ```
-  DocumentRoot "/srv/www/html"
-  <Directory "/srv/www/html">
-  Options Indexes FollowSymLinks MultiViews
-  AllowOverride All
-  Require all granted
-  Order allow,deny
-  allow from all
-  </Directory>
-  ```
+    ```
+    DocumentRoot "/srv/www/html"
+    <Directory "/srv/www/html">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Require all granted
+    Order allow,deny
+    allow from all
+    </Directory>
+    ```
 
 5. Web user and folder
 
@@ -516,25 +515,24 @@ sudo vim /etc/apache2/sites-available/000-default.conf
 ```
 
   - After `DocumentRoot /var/www/html` Add these lines:
-  ```
-  <Directory "/var/www/html">
-  Options Indexes FollowSymLinks
-  AllowOverride All
-  Require all granted
-  </Directory>
-  ```
+    ```
+    <Directory "/var/www/html">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+    </Directory>
+    ```
 
-...or for expanded options...
-
-```
-<Directory "/var/www/html">
-Options Indexes FollowSymLinks MultiViews
-AllowOverride All
-Require all granted
-Order allow,deny
-allow from all
-</Directory>
-```
+  ...or for expanded options...
+    ```
+    <Directory "/var/www/html">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Require all granted
+    Order allow,deny
+    allow from all
+    </Directory>
+    ```
 
 3. Reload Apache after any changes to files in `/etc/apache2/sites-available/_____.conf`
 
@@ -704,7 +702,21 @@ ___
 | **C0** :$
 
 ```console
-sudo pacman -Syy
+sudo dnf update -y
+```
+
+### Repos for PHP
+
+| **CR1**: EPEL
+
+```console
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+```
+
+| **CR2**: yum
+
+```consol
+sudo dnf install -y dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
 ```
 
 ### Setup LAMP
@@ -716,27 +728,55 @@ sudo pacman -Syy
 | **C1** :$
 
 ```console
-sudo pacman -S --noconfirm apache php php-apache mariadb
+sudo dnf install -y httpd httpd-tools mariadb-server mariadb
 ```
 
-2. Turn on the PHP-MySQL functionality in your `php.ini` file
+2. Enable the Remi module for PHP
+
+| **C2** :$ List modules
+
+```console
+sudo dnf module list php
+```
+
+Note the biggest `remi-x.x` number in one of the columns
+
+| **C3** :$ Reset modules
+
+```console
+sudo dnf -y module reset php
+```
+
+| **C4** :$ Enable Remi (for example `remi-8.1`)
+
+```console
+sudo dnf -y module enable php:remi-8.1
+```
+
+| **C5** :$
+
+```console
+sudo dnf install -y php php-opcache php-gd php-curl php-mysqlnd php-pdo
+```
+
+4. Turn on the PHP-MySQL functionality in your `php.ini` file
 
   - Edit with `gedit`:
 
-| **C2g** :$
+| **C6g** :$
 
 ```console
-sudo gedit /etc/php/php.ini
+sudo gedit /etc/php.ini
 ```
 
   - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
 Or edit with `vim`:
 
-| **C2v** :$
+| **C6v** :$
 
 ```console
-sudo vim /etc/php/php.ini
+sudo vim /etc/php.ini
 ```
 
   - Search by typing: `/something_to_search`, then Enter to find the line, type `:wq` to save and quit
@@ -744,25 +784,27 @@ sudo vim /etc/php/php.ini
 In php.ini:
 
   - Uncomment & set values (remove the semicolon `;` at the start of the line)
-    - `extension=mysqli`
-    - `extension=pdo_mysql`
-    - `extension=iconv`
     - `upload_max_filesize = 10M`
-	- `file_uploads = On`
+    - `file_uploads = On`
+  - Near the top, add the lines:
+  ```
+  extension=mysqli
+  extension=pdo.so
+  ```
 
-3. MariaDB setup
+4. MariaDB setup
 
-| **C3** :$
+| **C7** :$
 
 ```console
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 ```
 
-4. Apache settings
+5. Apache settings
 
 Edit with `gedit`:
 
-| **C4g** :$
+| **C8g** :$
 
 ```console
 sudo gedit /etc/httpd/conf/httpd.conf
@@ -772,7 +814,7 @@ sudo gedit /etc/httpd/conf/httpd.conf
 
 Or edit with `vim`:
 
-| **C4v** :$
+| **C8v** :$
 
 ```console
 sudo vim /etc/httpd/conf/httpd.conf
@@ -782,22 +824,14 @@ sudo vim /etc/httpd/conf/httpd.conf
 
 a. Enable modules:
 
-  - Reverse the commenting so these lines to look like this:
+  - Add the following lines below `Include conf.modules.d/*.conf`:
 
   ```
-  #LoadModule mpm_event_module modules/mod_mpm_event.so
-  ...
   LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
   LoadModule http2_module modules/mod_http2.so
   LoadModule rewrite_module modules/mod_rewrite.so
-  ```
-
-  - Add these lines at the end:
-
-  ```
   LoadModule php_module modules/libphp.so
-  AddHandler php-script .php
-  Include conf/extra/php_module.conf
+  AddHandler php-script .ph
   Protocols h2 http/1.1
   ```
 
@@ -806,8 +840,8 @@ b. Web user to `www`
 
   - Change these lines:
   ```
-  User http
-  Group http
+  User apache
+  Group apache
   ```
 
   - To:
@@ -818,7 +852,10 @@ b. Web user to `www`
 
 c. Web directory settings
 
-  - Find `DocumentRoot "/srv/http"` replace it and `<Directory...` contents to look like this:
+  - Ignore any existing `<Directory /var/www...` entries and do not change them
+    - Unless they contain `/srv` as in `<Directory "/srv/www/html">`, in which case comment them with `#`
+
+  - Find `DocumentRoot "/var/www/html"` replace it to look like this:
     ```
     DocumentRoot "/srv/www/html"
     <Directory "/srv/www/html">
@@ -829,59 +866,72 @@ c. Web directory settings
     ```
 
   ...or for expanded options...
+    ```
+    DocumentRoot "/srv/www/html"
+    <Directory "/srv/www/html">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Require all granted
+    Order allow,deny
+    allow from all
+    </Directory>
+    ```
 
-  ```
-  DocumentRoot "/srv/www/html"
-  <Directory "/srv/www/html">
-  Options Indexes FollowSymLinks MultiViews
-  AllowOverride All
-  Require all granted
-  Order allow,deny
-  allow from all
-  </Directory>
-  ```
+Disable the MPM event module, which conflicts with the MPM prefork module installed with the package *(don't ask why it was installed with a configuration that doesn't conflicts with itself)*
 
-5. Web user and folder
+| **C9** :$
 
-| **C5** :$
+```consol
+sudo sed -i "s/LoadModule mpm_event_module/#LoadModule mpm_event_module/" /etc/httpd/conf.modules.d/00-mpm.conf
+```
+
+6. Web user and folder
+
+| **C10** :$
 
 ```console
 sudo groupadd www
 ```
 
-| **C6** :$
+| **C11** :$
 
 ```console
 sudo useradd -g www www
 ```
 
-| **C7** :$
+| **C12** :$
+
+```console
+sudo mkdir -p /srv/www/html
+```
+
+| **C13** :$
 
 ```console
 sudo chmod u+w /srv/www
 ```
 
-| **C8** :$
+| **C14** :$
 
 ```console
 sudo chown -R www:www /srv/www
 ```
 
-6. Enable & restart
+7. Enable & restart
 
-| **C9** :$
+| **C15** :$
 
 ```console
 sudo systemctl enable mariadb
 ```
 
-| **C10** :$
+| **C16** :$
 
 ```console
 sudo systemctl start mariadb
 ```
 
-| **C11** :$
+| **C17** :$
 
 ```console
 sudo systemctl restart httpd
@@ -986,7 +1036,7 @@ sudo systemctl disable httpd
 sudo systemctl stop httpd
 ```
 
-### MySQL phpMyAdmin (Arch/Manjaro)
+### MySQL phpMyAdmin (Arch/Manjaro & CentOS/Fedora)
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
 2. Extract and rename the folder to: `phpMyAdmin`
