@@ -9,9 +9,9 @@ cd ~/School/VIP/501
 
 Ready services
 
-Arch/Manjaro
+Arch/Manjaro & CentOS/Fedora
 ```console
-sudo systemctl start httpd mysql
+sudo systemctl start httpd mariadb
 ```
 
 Debian/Ubuntu
