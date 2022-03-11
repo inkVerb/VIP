@@ -727,10 +727,10 @@ In php.ini:
   - Uncomment & set values (remove the semicolon `;` at the start of the line)
     - `upload_max_filesize = 10M`
     - `file_uploads = On`
-  - Near the top, add the lines:
+  - Near the top, add the lines: (#don't seem to be necessary)
   ```
-  extension=mysqli
-  extension=pdo.so
+  #extension=mysqli
+  #extension=pdo.so
   ```
 
 4. MariaDB setup
@@ -763,20 +763,7 @@ sudo vim /etc/httpd/conf/httpd.conf
 
   - Search by typing: `/`..., type `:wq` to save and quit
 
-a. Enable modules:
-
-  - Add the following lines below `Include conf.modules.d/*.conf`:
-
-  ```
-  LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
-  LoadModule http2_module modules/mod_http2.so
-  LoadModule rewrite_module modules/mod_rewrite.so
-  LoadModule php_module modules/libphp.so
-  AddHandler php-script .ph
-  Protocols h2 http/1.1
-  ```
-
-b. Web directory settings
+Update web directory settings
 
   - Comment both `<Directory /var/www...` entries
 
