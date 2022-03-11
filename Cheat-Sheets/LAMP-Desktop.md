@@ -727,11 +727,6 @@ In php.ini:
   - Uncomment & set values (remove the semicolon `;` at the start of the line)
     - `upload_max_filesize = 10M`
     - `file_uploads = On`
-  - Near the top, add the lines: (#don't seem to be necessary)
-  ```
-  #extension=mysqli
-  #extension=pdo.so
-  ```
 
 4. MariaDB setup
 
@@ -768,16 +763,6 @@ Update web directory settings
   - Comment both `<Directory /var/www...` entries
 
   - Find `DocumentRoot "/var/www/html"` replace it to look like this:
-    ```
-    DocumentRoot "/var/www/html"
-    <Directory "/var/www/html">
-    Options Indexes FollowSymLinks
-    AllowOverride All
-    Require all granted
-    </Directory>
-    ```
-
-  ...or for expanded options...
     ```
     DocumentRoot "/var/www/html"
     <Directory "/var/www/html">
@@ -936,7 +921,15 @@ sudo chown -R www:www /var/www/html
 | **CW6** :$
 
 ```console
-sudo systemctl restart apache2
+sudo systemctl restart httpd
+```
+
+5. Make sure the web user owns its own socket
+
+| **CW7** :$
+
+```console
+sudo chown www:www /run/php-fpm/www.sock
 ```
 
 Always own the web directory (now with `www:www` instead of `www-data:www-data`)
@@ -953,7 +946,7 @@ sudo chown -R www:www /var/www/html
 
 Life is easier with a local "Work" folder symlink
 
-| **CW7** :$
+| **CW8** :$
 
 ```console
 mkdir -p ~/Work/dev
