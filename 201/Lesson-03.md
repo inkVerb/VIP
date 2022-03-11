@@ -1,5 +1,5 @@
 # Shell 201
-## Lesson 3: Software, apt, pacman, lsb_release
+## Lesson 3: Software, apt, pacman, dnf, lsb_release
 
 Ready the CLI
 
@@ -376,6 +376,11 @@ sudo apt-get remove some-package-name
 sudo apt-get remove --purge some-package-name
 ```
 
+**Tip:** If you ever get an `apt upgrade` message with something like "some packages were held back", here are two easy fixes that often work:
+
+1. `sudo apt install PACKAGE` Yes, just install the listed package again*
+2. `sudo apt full-upgrade`
+
 ### IF needed, `exit` from the other "sudoer"
 >
 ___
@@ -389,10 +394,144 @@ exit
 >
 ___
 
-**Tip:** If you ever get an `apt upgrade` message with something like "some packages were held back", here are two easy fixes that often work:
+## CentOS/Fedora
 
-1. `sudo apt install PACKAGE` Yes, just install the listed package again*
-2. `sudo apt full-upgrade`
+
+*Some commands require `sudo`, AKA "run as administrator"*
+
+*Not all users can run with `sudo`*
+
+### This lesson requires a "sudoer" who can use `sudo`
+>
+___
+> Optional: You may login as a "sudoer" if needed
+>
+> | **S1** :$
+
+```console
+su Username
+```
+>
+___
+
+### Packages & Repositories
+
+*See the list of all available software "packages"*
+
+| **1** :$
+
+```console
+sudo dnf list
+```
+
+### Maintenance & Upgrades
+
+*Update the current software package version lists (no updates are installed)*
+
+| **2** :$
+
+```console
+sudo dnf check-update
+```
+
+*See what can packages on your machine have a new version available*
+
+| **3** :$
+
+```console
+sudo dnf list updates
+```
+
+*Upgrade (install updates)*
+
+| **4** :$ *If updates are available, you will need to press Y, then Enter*
+
+```console
+sudo dnf update
+```
+
+*Remove downloaded packages after they are installed, multiple times you may need to press Y, then Enter*
+
+| **5** :$
+
+```console
+package-cleanup --leaves
+```
+
+*Remove unneeded packages, likely made obsolete after an upgrade*
+
+| **6** :$
+
+```console
+sudo dnf autoremove
+```
+
+### Installing
+
+*Install the `git` package*
+
+| **7** :$ *Unless it is installed already, you will need to press Y, then Enter*
+
+```console
+sudo dnf install git
+```
+
+*Install `cowsay`*
+
+| **8** :$ *Unless it is installed already, you will need to press Y, then Enter*
+
+```console
+sudo dnf install cowsay
+```
+
+*You can install more than one package...*
+
+*Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `pwgen` and `unzip` packages*
+- *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
+- *Currently thest are broken and will not work on CentOS: `odt2txt pandoc`*
+
+| **9** :$ *Use `-y` so you DO NOT need to press Y, then Enter*
+
+```console
+sudo dnf install -y curl net-tools htop dos2unix pwgen unzip redhat-lsb-core
+```
+
+*Check the Linux version info*
+
+| **10** :$
+
+```console
+lsb_release -a
+```
+
+*Get just the number*
+
+| **11** :$
+
+```console
+lsb_release -r -s
+```
+
+### Uninstalling (for reference)
+
+*Uninstall a package*
+
+```console
+sudo dnf remove some-package-name
+```
+
+### IF needed, `exit` from the other "sudoer"
+>
+___
+> Optional: IF you logged in as a "sudoer", now exit
+>
+> | **S2** :$
+
+```console
+exit
+```
+>
+___
 
 ___
 
