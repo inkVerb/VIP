@@ -123,6 +123,22 @@ sudo apt update
 sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
 >
+> CentOS/Fedora:
+>
+> | **C1** :$
+
+```console
+sudo dnf update
+```
+>
+> | **C2** :$
+
+```console
+sudo dnf install -y curl cowsay dialog git net-tools htop dos2unix pwgen unzip
+```
+> Currently thest are broken and will not work on CentOS: `odt2txt pandoc`
+>
+>
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** :$
