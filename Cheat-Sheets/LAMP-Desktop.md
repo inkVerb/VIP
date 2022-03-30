@@ -868,6 +868,32 @@ sudo systemctl disable httpd
 sudo systemctl stop httpd
 ```
 
+*CentOS uses SE Linux, which is annoyingly, overly secure*
+
+These could make a difference if you have trouble
+
+| **Set `enforce` on** :$
+
+```console
+getenforce
+sudo setenforce 1
+getenforce
+```
+
+| **Check & tweak `enforce` settings** :$
+
+```console
+getenforce
+sudo setenforce 0
+getenforce
+```
+
+| **Check the web user running php-fpm** :$
+
+```console
+ps aux | grep php-fpm | awk '{print $1}'
+```
+
 ### Change the web user to `www` (for VIP Linux lessons)
 - The default web user on CentOS & Fedora systems is `apache`
 - This is longer text to type every time the web directory needs to be owned
