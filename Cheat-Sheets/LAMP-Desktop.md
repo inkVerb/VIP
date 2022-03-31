@@ -8,6 +8,30 @@
 
 ___
 
+Web server settings differ on different distros (Arch, CentOS & Ubuntu)
+
+These instructions have an option standardize the web user to `www`
+
+Below are the standard web ownership commands for the three main Linux distros:
+
+- Arch/Manjaro
+
+```console
+sudo chown -R http:http /srv/www
+```
+
+- Debian/Ubuntu
+
+```console
+sudo chown -R www-data:www-data /var/www
+```
+
+- Fedora/CentOS
+
+```console
+sudo chown -R apache:apache /var/www
+```
+
 ## Arch/Manjaro
 
 ### Update
@@ -69,11 +93,27 @@ In php.ini:
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 ```
 
-4. Apache settings
+4. Enable MySQL (MariaDB)
+
+| **A4** :$
+
+```console
+sudo systemctl enable mariadb
+```
+
+5. Restart MySQL (MariaDB)
+
+| **A5** :$
+
+```console
+sudo systemctl start mariadb
+```
+
+6. Apache settings
 
 Edit with `gedit`:
 
-| **A4g** :$
+| **A6g** :$
 
 ```console
 sudo gedit /etc/httpd/conf/httpd.conf
@@ -83,7 +123,7 @@ sudo gedit /etc/httpd/conf/httpd.conf
 
 Or edit with `vim`:
 
-| **A4v** :$
+| **A6v** :$
 
 ```console
 sudo vim /etc/httpd/conf/httpd.conf
@@ -112,22 +152,7 @@ a. Enable modules:
   Protocols h2 http/1.1
   ```
 
-b. Web user to `www`
-
-
-  - Change these lines:
-  ```
-  User http
-  Group http
-  ```
-
-  - To:
-  ```
-  User www
-  Group www
-  ```
-
-c. Web directory settings
+b. Web directory settings
 
   - Find `DocumentRoot "/srv/http"` replace it and `<Directory...` contents to look like this:
     ```
@@ -151,51 +176,106 @@ c. Web directory settings
     </Directory>
     ```
 
-5. Web user and folder
+7. Restart the Apache server
 
-| **A5** :$
+| **A7** :$
+
+```console
+sudo systemctl restart httpd
+```
+
+#### Change the web user & group to `www`
+
+1. Create the `www` user
+
+| **AW1** :$
 
 ```console
 sudo groupadd www
 ```
 
-| **A6** :$
+2. Create the `www` group
+
+| **AW2** :$
 
 ```console
 sudo useradd -g www www
 ```
 
-| **A7** :$
+3. Set web directory permissions
+
+| **AW3** :$
 
 ```console
 sudo chmod u+w /srv/www
 ```
 
-| **A8** :$
+4. Set web folder ownership to `www`
+
+| **AW4** :$
 
 ```console
 sudo chown -R www:www /srv/www
 ```
 
-6. Enable & restart
+5. Change the Apache user to `www` with `sed`
 
-| **A9** :$
-
-```console
-sudo systemctl enable mariadb
-```
-
-| **A10** :$
+| **AW5** :$
 
 ```console
-sudo systemctl start mariadb
+sudo sed -i "s/^User.*/User www/" /etc/httpd/conf/httpd.conf
+sudo sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
 ```
 
-| **A11** :$
+6. Change the php-fpm user to `www` with `sed`
+
+| **AW6** :$
+
+```console
+sudo sed -i "s/^user =.*/user = www/" /etc/php-fpm.d/www.conf
+sudo sed -i "s/^group =.*/group = www/" /etc/php-fpm.d/www.conf
+```
+
+7. Restart the Apache server
+
+| **AW7** :$
 
 ```console
 sudo systemctl restart httpd
 ```
+
+8. Life is easier with a local "Work" folder symlink
+
+| **AW8** :$
+
+```console
+mkdir -p ~/Work/dev
+sudo mkdir -p /srv/www/html/vip
+sudo ln -sfn /srv/www/html/vip ~/Work/
+```
+
+- Now:
+  - Your projects go in: `~/Work/vip/SOMETHING` (owned by `www`, not you)
+  - Use the web address: `localhost/vip/SOMETHING`
+- During development:
+  - Edit files in: `~/Work/dev`
+  - Copy dev files to view in browser on each save with:
+
+```console
+sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
+```
+
+#### Final notes on web folders
+
+Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
+
+...This is how you will own the web directory from now on and in VIP Linux lessons
+
+**Using your local dev server on desktop**
+
+- `/srv/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
+
+#### Using your desktop LAMP server
 
 *(Optionally, you can turn MySQL off with:)*
 
@@ -208,7 +288,7 @@ sudo systemctl stop mariadb
 
   - *(But, you will need to run this command each time you start lessons after reboot)*
 
-| **Start MySQL** :$
+| **Start MySQL once** :$
 
 ```console
 sudo systemctl start mariadb
@@ -216,52 +296,18 @@ sudo systemctl start mariadb
 
   - *(And, you can re-enable MySQL as a service with:)*
 
-| **Start MySQL** :$
+| **MySQL as service** :$
 
 ```console
 sudo systemctl enable mariadb
 sudo systemctl start mariadb
 ```
 
-- Check for specific errors in Apache server configs
-
-| **A12** :$
+| **Disable MySQL service** :$
 
 ```console
-sudo apachectl -t
-```
-
-**Using your local dev server on desktop**
-
-- `/srv/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
-
-Life is easier with a local "Work" folder symlink
-
-| **A13** :$
-
-```console
-mkdir -p ~/Work/dev
-sudo mkdir -p /srv/www/html/vip
-sudo ln -sfn /srv/www/html/vip ~/Work/
-```
-
-- Now:
-  - Your projects go in: `~/Work/vip/SOMETHING` (owned by www, not you)
-  - Use the web address: `localhost/vip/SOMETHING`
-- During development:
-  - Edit files in: `~/Work/dev`
-  - Copy dev files to view in browser on each save with:
-
-```console
-sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
-```
-
-**Always own web stuff first!**
-
-| **A14** :$
-
-```console
-sudo chown -R www:www /srv/www
+sudo systemctl disable mariadb
+sudo systemctl stop mariadb
 ```
 
 **Apache service: always or only when using?**
@@ -272,7 +318,7 @@ sudo chown -R www:www /srv/www
 
 *(You will need to run this command each time you start lessons after reboot)*
 
-| **A15e** :$
+| **Start Apache once** :$
 
 ```console
 sudo systemctl start httpd
@@ -280,7 +326,7 @@ sudo systemctl start httpd
 
 2. Make Apache a service to always run
 
-| **A15s** :$
+| **Apache as service** :$
 
 ```console
 sudo systemctl enable httpd
@@ -289,67 +335,20 @@ sudo systemctl start httpd
 
 *(Later, you can turn this off with:)*
 
-| **Disable Apache** :$
+| **Disable Apache service** :$
 
 ```console
 sudo systemctl disable httpd
 sudo systemctl stop httpd
 ```
 
-### MySQL phpMyAdmin (Arch/Manjaro)
+- Check for specific errors in Apache server configs
 
-1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
-2. Extract and rename the folder to: `phpMyAdmin`
-3. In the terminal, move it to `/srv/www/html/` (so it is at `/srv/www/html/phpMyAdmin`)
-
-| **A16** :$
+| **Check Apache errors** :$
 
 ```console
-sudo mv phpMyAdmin /srv/www/html/
+sudo apachectl -t
 ```
-
-4. Create the config
-
-| **A17** :$
-
-```console
-cd /srv/www/html/phpMyAdmin
-sudo cp config.sample.inc.php config.inc.php
-```
-
-5. Set the blowfish salt (32 characters long, random)
-  - Edit with `gedit`:
-
-| **A18g** :$
-
-```console
-sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
-```
-
-Or edit with `vim`:
-
-| **A18v** :$
-
-```console
-sudo vim /srv/www/html/phpMyAdmin/config.inc.php
-```
-
-  - Add the salt here:
-    - `$cfg['blowfish_secret'] = '';` ...becomes...
-    - `$cfg['blowfish_secret'] = 'SomeRANDOm32characterslongGOhere';`
-
-6. Own everything properly
-
-| **A19** :$
-
-```console
-sudo chown -R www:www /srv/www/html/phpMyAdmin
-```
-
-Now, you should be able to access this in your browser at the address:
-- `localhost/phpMyAdmin`
-
-Login the first time with the same user you create in "MySQL via command line" (below)
 
 ___
 
@@ -374,33 +373,6 @@ sudo apt update
 ```console
 sudo apt install mysql-server php lamp-server^
 ```
-
-*(Optionally, you can turn MySQL off with:)*
-
-| **Disable MySQL** :$
-
-```console
-sudo systemctl disable mysql
-sudo systemctl stop mysql
-```
-
-  - *(But, you will need to run this command each time you start lessons after reboot)*
-
-| **Start MySQL** :$
-
-```console
-sudo systemctl start mysql
-```
-
-  - *(And, you can re-enable MySQL as a service with:)*
-
-| **Start MySQL** :$
-
-```console
-sudo systemctl enable mysql
-sudo systemctl start mysql
-```
-
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
 
@@ -542,35 +514,6 @@ sudo vim /etc/apache2/sites-available/000-default.conf
 sudo systemctl reload apache2
 ```
 
-  - Check for specific errors in Apache server configs
-
-| **D12** :$
-
-```console
-sudo apachectl -t
-```
-
-4. Remember with rewrites...
-
-*Your code must reflect the names of any URLs as you want them rewritten, not as they actually are.*
-
-5. (Optional) If you DO NOT want Apache to start automatically
-
-| **Disable Apache** :$
-
-```console
-sudo systemctl disable apache2
-sudo systemctl stop apache2
-```
-
-*(You will need to run this command each time you start lessons after reboot)*
-
-| **Start Apache** :$
-
-```console
-sudo systemctl start apache2
-```
-
 ### Change the web user to `www` (for VIP Linux lessons)
 - The default web user on Debian & Ubuntu systems is `www-data`
 - This is complex to type every time the web directory needs to be owned
@@ -626,7 +569,9 @@ sudo chown -R www:www /var/www/html
 sudo systemctl restart apache2
 ```
 
-Always own the web directory (now with `www:www` instead of `www-data:www-data`)
+#### Final notes on web folders
+
+Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
 
 ```console
 sudo chown -R www:www /var/www/html
@@ -634,6 +579,80 @@ sudo chown -R www:www /var/www/html
 
 ...This is how you will own the web directory from now on and in VIP Linux lessons
 
+#### Using your desktop LAMP server
+
+*(Optionally, you can turn MySQL off with:)*
+
+| **Disable MySQL** :$
+
+```console
+sudo systemctl disable mysql
+sudo systemctl stop mysql
+```
+
+  - *(But, you will need to run this command each time you start lessons after reboot)*
+
+| **Start MySQL once** :$
+
+```console
+sudo systemctl start mysql
+```
+
+  - *(And, you can re-enable MySQL as a service with:)*
+
+| **MySQL as service** :$
+
+```console
+sudo systemctl enable mysql
+sudo systemctl start mysql
+```
+
+| **Disable MySQL service** :$
+
+```console
+sudo systemctl disable mysql
+sudo systemctl stop mysql
+```
+
+**Apache service: always or only when using?**
+
+- Choose 1 or 2:
+
+1. Start Apache only once
+
+*(You will need to run this command each time you start lessons after reboot)*
+
+| **Start Apache once** :$
+
+```console
+sudo systemctl start apache2
+```
+
+2. Make Apache a service to always run
+
+| **Apache as service** :$
+
+```console
+sudo systemctl enable apache2
+sudo systemctl start apache2
+```
+
+*(Later, you can turn this off with:)*
+
+| **Disable Apache service** :$
+
+```console
+sudo systemctl disable apache2
+sudo systemctl stop apache2
+```
+
+- Check for specific errors in Apache server configs
+
+| **Check Apache errors** :$
+
+```console
+sudo apachectl -t
+```
 ___
 
 ## CentOS/Fedora
@@ -870,7 +889,7 @@ sudo systemctl stop httpd
 
 *CentOS uses SE Linux, which is annoyingly, overly secure*
 
-These could make a difference if you have trouble
+These are only for reference, but they could prove useful one day:
 
 | **Set `enforce` on** :$
 
@@ -880,20 +899,13 @@ sudo setenforce 1
 getenforce
 ```
 
-| **Check & tweak `enforce` settings** :$
+| **Set `enforce` off (default)** :$
 
 ```console
 getenforce
 sudo setenforce 0
 getenforce
 ```
-
-| **Check the web user running php-fpm** :$
-
-```console
-ps aux | grep php-fpm | awk '{print $1}'
-```
-
 ### Change the web user to `www` (for VIP Linux lessons)
 - The default web user on CentOS & Fedora systems is `apache`
 - This is longer text to type every time the web directory needs to be owned
@@ -901,76 +913,79 @@ ps aux | grep php-fpm | awk '{print $1}'
 - You may or may not want to change the web user to `www`
 - VIP Linux lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or CentOS/Fedora systems
 
-The web user is defined in `/etc/httpd/conf/httpd.conf`, which we previously edited
+If you're curious...
 
-Change the web user & group to `www`
+| **Check the web user running php-fpm** :$
 
-1. Change the settings to `www` with `sed`
+```console
+ps aux | grep php-fpm | awk '{print $1}'
+```
+
+The Apache web user is defined in `/etc/httpd/conf/httpd.conf`, which we previously edited
+
+The php-fpm user, from the PHP Apache extension, is defined in `/etc/php-fpm.d/www.conf`
+
+#### Change the web user & group to `www`
+
+1. Create the `www` user
 
 | **CW1** :$
+
+```console
+sudo groupadd www
+```
+
+2. Create the `www` group
+
+| **CW2** :$
+
+```console
+sudo useradd -g www www
+```
+
+3. Set web directory permissions
+
+| **CW3** :$
+
+```console
+sudo chmod u+w /var/www
+```
+
+4. Set web folder ownership to `www`
+
+| **CW4** :$
+
+```console
+sudo chown -R www:www /var/www
+```
+
+5. Change the Apache user to `www` with `sed`
+
+| **CW5** :$
 
 ```console
 sudo sed -i "s/^User.*/User www/" /etc/httpd/conf/httpd.conf
 sudo sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
 ```
 
-2. Create the group & user
-
-| **CW2** :$
-
-```console
-sudo groupadd www
-```
-
-| **CW3** :$
-
-```console
-sudo useradd -g www www
-```
-
-3. Set ownership and permissions
-
-| **CW4** :$
-
-```console
-sudo chmod u+w /var/www
-```
-
-| **CW5** :$
-
-```console
-sudo chown -R www:www /var/www/html
-```
-
-4. Restart the Apache server
+6. Change the php-fpm user to `www` with `sed`
 
 | **CW6** :$
+
+```console
+sudo sed -i "s/^user =.*/user = www/" /etc/php-fpm.d/www.conf
+sudo sed -i "s/^group =.*/group = www/" /etc/php-fpm.d/www.conf
+```
+
+7. Restart the Apache server
+
+| **CW7** :$
 
 ```console
 sudo systemctl restart httpd
 ```
 
-5. Make sure the web user owns its own socket
-
-| **CW7** :$
-
-```console
-sudo chown www:www /run/php-fpm/www.sock
-```
-
-Always own the web directory (now with `www:www` instead of `www-data:www-data`)
-
-```console
-sudo chown -R www:www /var/www/html
-```
-
-...This is how you will own the web directory from now on and in VIP Linux lessons
-
-**Using your local dev server on desktop**
-
-- `/var/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
-
-Life is easier with a local "Work" folder symlink
+8. Life is easier with a local "Work" folder symlink
 
 | **CW8** :$
 
@@ -981,7 +996,7 @@ sudo ln -sfn /var/www/html/vip ~/Work/
 ```
 
 - Now:
-  - Your projects go in: `~/Work/vip/SOMETHING` (owned by www, not you)
+  - Your projects go in: `~/Work/vip/SOMETHING` (owned by `www`, not you)
   - Use the web address: `localhost/vip/SOMETHING`
 - During development:
   - Edit files in: `~/Work/dev`
@@ -990,6 +1005,16 @@ sudo ln -sfn /var/www/html/vip ~/Work/
 ```console
 sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 ```
+
+#### Final notes on web folders
+
+Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
+
+...This is how you will own the web directory from now on and in VIP Linux lessons
+
+**Using your local dev server on desktop**
+
+- `/var/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
 
 ___
 
@@ -1004,7 +1029,7 @@ ___
 sha256sum phpMyAdmin-x.x.x-all-languages.zip
 ```
 
-3. Extract and rename the folder to: `phpMyAdmin`
+2. Extract and rename the folder to: `phpMyAdmin`
 
 | **PA2** :$ (Change file name)
 
@@ -1144,7 +1169,7 @@ Login the first time with the same user you create in "MySQL via command line" (
 
 ___
 
-## Arch, Debian & CentOS
+## Arch, CentOS & Debian
 
 ### MySQL via Command Line
 
