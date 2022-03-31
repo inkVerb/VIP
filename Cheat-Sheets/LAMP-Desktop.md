@@ -975,6 +975,7 @@ sudo sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
 ```console
 sudo sed -i "s/^user =.*/user = www/" /etc/php-fpm.d/www.conf
 sudo sed -i "s/^group =.*/group = www/" /etc/php-fpm.d/www.conf
+sudo sed -i "s/listen.acl_users = apache,nginx/listen.acl_users = www,nginx/" /etc/php-fpm.d/www.conf
 ```
 
 7. Restart the Apache server
