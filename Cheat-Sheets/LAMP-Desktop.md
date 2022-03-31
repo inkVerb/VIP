@@ -978,6 +978,10 @@ sudo sed -i "s/^group =.*/group = www/" /etc/php-fpm.d/www.conf
 sudo sed -i "s/listen.acl_users = apache,nginx/listen.acl_users = www,nginx/" /etc/php-fpm.d/www.conf
 ```
 
+- Or alternate instructions to remove php-fpm here:
+- `sudo dnf erase php-fpm`
+- `https://serverfault.com/questions/962533/how-to-remove-php-fpm-for-mod-php`
+
 7. Restart the Apache server
 
 | **CW7** :$
