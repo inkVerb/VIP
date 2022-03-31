@@ -123,7 +123,7 @@ sudo apt update
 sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
 >
-> CentOS/Fedora:
+> Fedora/CentOS:
 >
 > | **C1** :$
 
@@ -190,6 +190,44 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
 
 ### III. `git clone` our scripts for this lesson
 
+- Arch/Manjaro:
+
+| **AP2** :$
+
+```console
+cd ~/School/VIP
+```
+
+| **AP3** :$
+
+```console
+git clone https://github.com/inkVerb/501
+```
+
+| **AP4** :$
+
+```console
+sudo mkdir -p /srv/www/html/web
+```
+
+| **AP5** :$
+
+```console
+ln -sfn /srv/www/html/web ~/School/VIP/501/
+```
+
+| **AP6** :$
+
+```console
+ln -sfn /srv/www/rewrite ~/School/VIP/501/
+```
+
+| **AP7** :$
+
+```console
+sudo chown -R www:www /srv/www
+```
+
 - Debian/Ubuntu:
 
 | **DP2** :$
@@ -235,43 +273,51 @@ sudo ln -sfn /var/www /srv/
 sudo chown -R www:www /srv/www
 ```
 
-- Arch/Manjaro:
+- Fedora/CentOS:
 
-| **AP2** :$
+| **CP2** :$
 
 ```console
 cd ~/School/VIP
 ```
 
-| **AP3** :$
+| **CP3** :$
 
 ```console
 git clone https://github.com/inkVerb/501
 ```
 
-| **AP4** :$
+| **CP4** :$
 
 ```console
-sudo mkdir -p /srv/www/html/web
+sudo mkdir /var/www/html/web
 ```
 
-| **AP5** :$
+| **CP5** :$
 
 ```console
-ln -sfn /srv/www/html/web ~/School/VIP/501/
+ln -sfn /var/www/html/web ~/School/VIP/501/
 ```
 
-| **AP6** :$
+| **CP6** :$
 
 ```console
-ln -sfn /srv/www/rewrite ~/School/VIP/501/
+ln -sfn /var/www/rewrite ~/School/VIP/501/
 ```
 
-| **AP7** :$
+| **CP7** :$
 
 ```console
+sudo chown -R www:www /var/www/html/
+```
+
+| **CP8** :$ (Make CentOS work with these lessons)
+
+```console
+sudo ln -sfn /var/www /srv/
 sudo chown -R www:www /srv/www
 ```
+
 
 #### Always own the web directory with `chown -R www...`!
 
