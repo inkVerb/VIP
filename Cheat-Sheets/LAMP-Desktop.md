@@ -951,12 +951,15 @@ sudo useradd -g www www
 sudo chmod u+w /var/www
 ```
 
-4. Set web folder ownership to `www`
+4. Set web folder ownership to `www` (and a few other folders)
 
 | **CW4** :$
 
 ```console
 sudo chown -R www:www /var/www
+sudo chown -R root:www /var/lib/php/opcache
+sudo chown -R root:www /var/lib/php/session
+sudo chown -R root:www /var/lib/php/wsdlcache
 ```
 
 5. Change the Apache user to `www` with `sed`
@@ -968,19 +971,25 @@ sudo sed -i "s/^User.*/User www/" /etc/httpd/conf/httpd.conf
 sudo sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
 ```
 
-6. Change the php-fpm user to `www` with `sed`
+6. Remove php-fpm and load prefork modules instead
 
 | **CW6** :$
 
 ```console
-sudo sed -i "s/^user =.*/user = www/" /etc/php-fpm.d/www.conf
-sudo sed -i "s/^group =.*/group = www/" /etc/php-fpm.d/www.conf
-sudo sed -i "s/listen.acl_users = apache,nginx/listen.acl_users = www,nginx/" /etc/php-fpm.d/www.conf
+sudo dnf erase php-fpm
+sudo sed -i "s:^LoadModule mpm_event_module modules/mod_mpm_event.so:#LoadModule mpm_event_module modules/mod_mpm_event.so:" /etc/httpd/conf.modules.d/00-mpm.conf
+sudo sed -i "s:^#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so:LoadModule mpm_prefork_module modules/mod_mpm_prefork.so:" /etc/httpd/conf.modules.d/00-mpm.conf
+sudo sed -i "s:^LoadModule http2_module modules/mod_http2.so:#LoadModule http2_module modules/mod_http2.so:" /etc/httpd/conf.modules.d/10-h2.conf
 ```
 
-- Or alternate instructions to remove php-fpm here:
-- `sudo dnf erase php-fpm`
-- `https://serverfault.com/questions/962533/how-to-remove-php-fpm-for-mod-php`
+```console
+# 6. Change the php-fpm user to `www` with `sed`
+# Old, not using this because we remove php-fpm (above)
+#sudo sed -i "s/^user =.*/user = www/" /etc/php-fpm.d/www.conf
+#sudo sed -i "s/^group =.*/group = www/" /etc/php-fpm.d/www.conf
+#sudo sed -i "s/listen.acl_users = apache,nginx/listen.acl_users = www,nginx/" /etc/php-fpm.d/www.conf
+# `https://serverfault.com/questions/962533/how-to-remove-php-fpm-for-mod-php`
+```
 
 7. Restart the Apache server
 
