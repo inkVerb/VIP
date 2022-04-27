@@ -155,32 +155,6 @@ mkdir -p ~/School/VIP
 ```
 >
 
-### This lesson requires a "sudoer" who can use `sudo`
->
-> ___
-> Optional: You may login as a "sudoer" if needed
->
-> | **S1** :$
-
-```console
-su Username
-```
->
-> Install the tools:
->
-> | **M1** :$
-
-```console
-sudo apt update
-```
->
-> | **M2** :$
-
-```console
-sudo apt install -y git
-```
->
-
 ### II. Install LAMP
 
 Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
