@@ -982,14 +982,17 @@ sudo sed -i "s:^#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so:LoadMo
 sudo sed -i "s:^LoadModule http2_module modules/mod_http2.so:#LoadModule http2_module modules/mod_http2.so:" /etc/httpd/conf.modules.d/10-h2.conf
 ```
 
+<!-- `https://serverfault.com/questions/962533/how-to-remove-php-fpm-for-mod-php` -->
+<!-- Not using this because we removed it
+6. Change the php-fpm user to `www` with `sed`
+
+| **CW6** :$
 ```console
-# 6. Change the php-fpm user to `www` with `sed`
-# Old, not using this because we remove php-fpm (above)
-#sudo sed -i "s/^user =.*/user = www/" /etc/php-fpm.d/www.conf
-#sudo sed -i "s/^group =.*/group = www/" /etc/php-fpm.d/www.conf
-#sudo sed -i "s/listen.acl_users = apache,nginx/listen.acl_users = www,nginx/" /etc/php-fpm.d/www.conf
-# `https://serverfault.com/questions/962533/how-to-remove-php-fpm-for-mod-php`
+sudo sed -i "s/^user =.*/user = www/" /etc/php-fpm.d/www.conf
+sudo sed -i "s/^group =.*/group = www/" /etc/php-fpm.d/www.conf
+sudo sed -i "s/listen.acl_users = apache,nginx/listen.acl_users = www,nginx/" /etc/php-fpm.d/www.conf
 ```
+-->
 
 7. Restart the Apache server
 
