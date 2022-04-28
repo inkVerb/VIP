@@ -884,19 +884,20 @@ sudo systemctl stop httpd
 ... PHP Fatal error:  Failed opening required '/var/www/...
 ```
 
-- Make sure SELinux is *not* running
+- Make sure SELinux is *not* enforcing
 
 | **CS14** :$
 
 ```console
 sudo setenforce 0
+sudo sed -i "s/SELINUX=.*/SELINUX=disabled/" /etc/selinux/config
 ```
 
 *CentOS uses SE Linux, which is annoyingly, overly secure*
 
 These are only for reference, but they could prove useful one day:
 
-| **Set `enforce` on** :$
+| **Temporarily set `enforce` on** :$
 
 ```console
 getenforce
@@ -904,7 +905,7 @@ sudo setenforce 1
 getenforce
 ```
 
-| **Set `enforce` off (default)** :$
+| **Temporarily set `enforce` to "permissive"** :$
 
 ```console
 getenforce
