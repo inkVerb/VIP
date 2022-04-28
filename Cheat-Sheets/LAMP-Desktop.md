@@ -1,5 +1,5 @@
 # LAMP Desktop
-## PHP/MySQL developer environment directly in Manjaro or Ubuntu
+## PHP/MySQL developer environment directly in Manjaro, Ubuntu, or CentOS
 *(rather than WAMPP or XAMPP in Windows)*
 
 ***This is for your local desktop developer environment only, not secure for production servers!***
@@ -56,7 +56,7 @@ sudo pacman -S --noconfirm apache php php-apache mariadb
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
 
-  - Edit with `gedit`:
+Edit with `gedit`:
 
 | **A2g** :$
 
@@ -184,6 +184,52 @@ b. Web directory settings
 sudo systemctl restart httpd
 ```
 
+8. Apache service: always or only when using?
+
+- Choose A or B:
+
+A. Start Apache only once
+
+*(You will need to run this command each time you start lessons after reboot)*
+
+| **A8e** :$
+
+```console
+sudo systemctl start httpd
+```
+
+B. Make Apache a service to always run
+
+| **A8s** :$
+
+```console
+sudo systemctl enable httpd
+sudo systemctl start httpd
+```
+
+*(Later, you can turn this off with:)*
+
+| **Disable Apache service** :$
+
+```console
+sudo systemctl disable httpd
+sudo systemctl stop httpd
+```
+
+*FYI...*
+
+| **Check for specific errors in Apache server configs** :$
+
+```console
+sudo apachectl -t
+```
+
+| **Check for Apache users and Settings** :$
+
+```console
+sudo apachectl -S
+```
+
 #### Change the web user & group to `www`
 
 1. Create the `www` user
@@ -309,47 +355,6 @@ sudo systemctl start mariadb
 sudo systemctl disable mariadb
 sudo systemctl stop mariadb
 ```
-
-**Apache service: always or only when using?**
-
-- Choose 1 or 2:
-
-1. Start Apache only once
-
-*(You will need to run this command each time you start lessons after reboot)*
-
-| **Start Apache once** :$
-
-```console
-sudo systemctl start httpd
-```
-
-2. Make Apache a service to always run
-
-| **Apache as service** :$
-
-```console
-sudo systemctl enable httpd
-sudo systemctl start httpd
-```
-
-*(Later, you can turn this off with:)*
-
-| **Disable Apache service** :$
-
-```console
-sudo systemctl disable httpd
-sudo systemctl stop httpd
-```
-
-- Check for specific errors in Apache server configs
-
-| **Check Apache errors** :$
-
-```console
-sudo apachectl -t
-```
-
 ___
 
 ## Debian/Ubuntu
@@ -421,58 +426,27 @@ sudo systemctl status apache2
 
   - Press <kbd>Q</kbd> to quit. ;-)
 
-#### Using your local dev server on desktop
+5. Apache settings
 
-- `/var/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
-
-Life is easier with a local "Work" folder symlink
+- Enable the Apache rewrite mod
 
 | **D5** :$
-
-```console
-mkdir -p ~/Work/vip
-```
-
-| **D6** :$
-
-```console
-sudo ln -sfn ~/Work/vip /var/www/html/
-```
-
-- Now:
-  - Your projects go in: `~/Work/vip/SOMETHING`
-  - Use the web address: `localhost/vip/SOMETHING`
-  - No permissions problems while you do your dev work! You're welcome.
-- ***Note: this location won't work with using `<script ... src="files.js">` to include JavaScript nor is the directory writable. Both the served page and the `src="files.js"` files MUST be physically in `/var/www/html/...` somewhere, not in a symlinked location like this!***
-
-#### Always own web stuff first!
-
-| **D7** :$
-
-```console
-sudo chown -R www-data:www-data /var/www/html/
-```
-
-#### Make Apache rewrites work
-
-1. Enable the Rewrite mod for Apache
-
-| **D8** :$
 
 ```console
 sudo a2enmod rewrite
 ```
 
-| **D9** :$
+| **D6** :$
 
 ```console
 sudo systemctl restart apache2
 ```
 
-2. Add some important settings
-  - Edit with `gedit`:
+- Add some web folder settings to the config file
 
-| **D10g** :$
+Edit with `gedit`:
+
+| **D7g** :$
 
 ```console
 sudo gedit /etc/apache2/sites-available/000-default.conf
@@ -480,7 +454,7 @@ sudo gedit /etc/apache2/sites-available/000-default.conf
 
 Or edit with `vim`:
 
-| **D10v** :$
+| **D7v** :$
 
 ```console
 sudo vim /etc/apache2/sites-available/000-default.conf
@@ -506,12 +480,58 @@ sudo vim /etc/apache2/sites-available/000-default.conf
     </Directory>
     ```
 
-3. Reload Apache after any changes to files in `/etc/apache2/sites-available/_____.conf`
+6. Reload Apache after any changes to files in `/etc/apache2/sites-available/_____.conf`
 
-| **D11** :$
+| **D8** :$
 
 ```console
 sudo systemctl reload apache2
+```
+
+7. Apache service: always or only when using?
+
+- Choose A or B:
+
+A. Start Apache only once
+
+*(You will need to run this command each time you start lessons after reboot)*
+
+| **D9e** :$
+
+```console
+sudo systemctl start apache2
+```
+
+B. Make Apache a service to always run
+
+| **D9s** :$
+
+```console
+sudo systemctl enable apache2
+sudo systemctl start apache2
+```
+
+*(Later, you can turn this off with:)*
+
+| **Disable Apache service** :$
+
+```console
+sudo systemctl disable apache2
+sudo systemctl stop apache2
+```
+
+*FYI...*
+
+| **Check for specific errors in Apache server configs** :$
+
+```console
+sudo apachectl -t
+```
+
+| **Check for Apache users and Settings** :$
+
+```console
+sudo apachectl -S
 ```
 
 ### Change the web user to `www` (for VIP Linux lessons)
@@ -569,15 +589,47 @@ sudo chown -R www:www /var/www/html
 sudo systemctl restart apache2
 ```
 
+5. Life is easier with a local "Work" folder symlink
+
+| **DW5** :$
+
+```console
+mkdir -p ~/Work/vip
+```
+
+| **DW6** :$
+
+```console
+sudo ln -sfn ~/Work/vip /var/www/html/
+```
+
+#### Always own web stuff first!
+
+| **DW7** :$
+
+```console
+sudo chown -R www-data:www-data /var/www/html/
+```
+
+- Now:
+  - Your projects go in: `~/Work/vip/SOMETHING`
+  - Use the web address: `localhost/vip/SOMETHING`
+  - No permissions problems while you do your dev work! You're welcome.
+- ***Note: this location won't work with using `<script ... src="files.js">` to include JavaScript nor is the directory writable. Both the served page and the `src="files.js"` files MUST be physically in `/var/www/html/...` somewhere, not in a symlinked location like this!***
+
+```console
+sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
+```
+
 #### Final notes on web folders
 
 Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
 
-```console
-sudo chown -R www:www /var/www/html
-```
-
 ...This is how you will own the web directory from now on and in VIP Linux lessons
+
+**Using your local dev server on desktop**
+
+- `/var/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
 
 #### Using your desktop LAMP server
 
@@ -614,45 +666,6 @@ sudo systemctl disable mysql
 sudo systemctl stop mysql
 ```
 
-**Apache service: always or only when using?**
-
-- Choose 1 or 2:
-
-1. Start Apache only once
-
-*(You will need to run this command each time you start lessons after reboot)*
-
-| **Start Apache once** :$
-
-```console
-sudo systemctl start apache2
-```
-
-2. Make Apache a service to always run
-
-| **Apache as service** :$
-
-```console
-sudo systemctl enable apache2
-sudo systemctl start apache2
-```
-
-*(Later, you can turn this off with:)*
-
-| **Disable Apache service** :$
-
-```console
-sudo systemctl disable apache2
-sudo systemctl stop apache2
-```
-
-- Check for specific errors in Apache server configs
-
-| **Check Apache errors** :$
-
-```console
-sudo apachectl -t
-```
 ___
 
 ## CentOS/Fedora
@@ -721,7 +734,7 @@ sudo dnf install -y php php-opcache php-gd php-curl php-mysqlnd php-pdo
 
 4. Turn on the PHP-MySQL functionality in your `php.ini` file
 
-  - Edit with `gedit`:
+Edit with `gedit`:
 
 | **C6g** :$
 
@@ -821,57 +834,23 @@ sudo systemctl start mariadb
 sudo systemctl restart httpd
 ```
 
-*(Optionally, you can turn MySQL off with:)*
+8. Apache service: always or only when using?
 
-| **Disable MySQL** :$
+- Choose A or B:
 
-```console
-sudo systemctl disable mariadb
-sudo systemctl stop mariadb
-```
-
-  - *(But, you will need to run this command each time you start lessons after reboot)*
-
-| **Start MySQL** :$
-
-```console
-sudo systemctl start mariadb
-```
-
-  - *(And, you can re-enable MySQL as a service with:)*
-
-| **Start MySQL** :$
-
-```console
-sudo systemctl enable mariadb
-sudo systemctl start mariadb
-```
-
-- Check for specific errors in Apache server configs
-
-| **C13** :$
-
-```console
-sudo apachectl -t
-```
-
-**Apache service: always or only when using?**
-
-- Choose 1 or 2:
-
-1. Start Apache only once
+A. Start Apache only once
 
 *(You will need to run this command each time you start lessons after reboot)*
 
-| **C14e** :$
+| **CS13e** :$
 
 ```console
 sudo systemctl start httpd
 ```
 
-2. Make Apache a service to always run
+B. Make Apache a service to always run
 
-| **C14s** :$
+| **CS13s** :$
 
 ```console
 sudo systemctl enable httpd
@@ -885,6 +864,32 @@ sudo systemctl start httpd
 ```console
 sudo systemctl disable httpd
 sudo systemctl stop httpd
+```
+
+9. SELinux cautions
+
+- SELinux will think your LAMP Desktop work is from a hacker and many things just won't work
+- SELinux errors might look like these:
+
+| **`journalctl -r`** :
+
+```
+... SELinux is preventing httpd from read access on the file ...
+```
+
+| **/var/log/httpd-error_log** :
+
+```
+... PHP Warning:  Unknown: Failed to open stream: Permission denied in Unknown on line 0 ...
+... PHP Fatal error:  Failed opening required '/var/www/...
+```
+
+- Make sure SELinux is *not* running
+
+| **CS14** :$
+
+```console
+sudo setenforce 0
 ```
 
 *CentOS uses SE Linux, which is annoyingly, overly secure*
@@ -906,14 +911,8 @@ getenforce
 sudo setenforce 0
 getenforce
 ```
-### Change the web user to `www` (for VIP Linux lessons)
-- The default web user on CentOS & Fedora systems is `apache`
-- This is longer text to type every time the web directory needs to be owned
-- This makes commands incompatible with Arch/Manjaro servers
-- You may or may not want to change the web user to `www`
-- VIP Linux lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or CentOS/Fedora systems
 
-If you're curious...
+About Apache and PHP users...
 
 | **Check the web user running php-fpm** :$
 
@@ -921,9 +920,27 @@ If you're curious...
 ps aux | grep php-fpm | awk '{print $1}'
 ```
 
-The Apache web user is defined in `/etc/httpd/conf/httpd.conf`, which we previously edited
+- The Apache web user is defined in `/etc/httpd/conf/httpd.conf`, which we previously edited
+- The php-fpm user, from the PHP Apache extension, is defined in `/etc/php-fpm.d/www.conf`, but we removed php-fpm, so this doesn't matter
 
-The php-fpm user, from the PHP Apache extension, is defined in `/etc/php-fpm.d/www.conf`
+| **Check for specific errors in Apache server configs** :$
+
+```console
+sudo apachectl -t
+```
+
+| **Check for Apache users and Settings** :$
+
+```console
+sudo apachectl -S
+```
+
+### Change the web user to `www` (for VIP Linux lessons)
+- The default web user on CentOS & Fedora systems is `apache`
+- This is longer text to type every time the web directory needs to be owned
+- This makes commands incompatible with Arch/Manjaro servers
+- You may or may not want to change the web user to `www`
+- VIP Linux lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or CentOS/Fedora systems
 
 #### Change the web user & group to `www`
 
@@ -1033,6 +1050,35 @@ Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ub
 
 - `/var/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
 
+#### Using your desktop LAMP server
+
+*(Optionally, you can turn MySQL off with:)*
+
+| **Disable MySQL** :$
+
+```console
+sudo systemctl disable mariadb
+sudo systemctl stop mariadb
+```
+
+  - *(But, you will need to run this command each time you start lessons after reboot)*
+
+| **Start MySQL** :$
+
+```console
+sudo systemctl start mariadb
+```
+
+  - *(And, you can re-enable MySQL as a service with:)*
+
+| **Start MySQL** :$
+
+```console
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+```
+
+
 ___
 
 ## MySQL phpMyAdmin
@@ -1074,7 +1120,8 @@ sudo cp config.sample.inc.php config.inc.php
 ```
 
 5. Set the blowfish salt (32 characters long, random)
-  - Edit with `gedit`:
+
+Edit with `gedit`:
 
 | **PA5g** :$
 
@@ -1118,7 +1165,7 @@ sha256sum phpMyAdmin-x.x.x-all-languages.zip
 
 *The hash should match that of the download website*
 
-3. Extract and rename the folder to: `phpMyAdmin`
+2. Extract and rename the folder to: `phpMyAdmin`
 
 | **PD2** :$ (Change file name)
 
@@ -1128,7 +1175,7 @@ unzip phpMyAdmin-x.x.x-all-languages.zip
 mv phpMyAdmin-x.x.x-all-languages phpMyAdmin
 ```
 
-5. In the terminal, move it to `/var/www/html/` (so it is at `/var/www/html/phpMyAdmin`)
+3. In the terminal, move it to `/var/www/html/` (so it is at `/var/www/html/phpMyAdmin`)
 
 | **PD3** :$
 
@@ -1151,7 +1198,8 @@ sudo cp config.sample.inc.php config.inc.php
 ```
 
 5. Set the blowfish salt (32 characters long, random)
-  - Edit with `gedit`:
+
+Edit with `gedit`:
 
 | **PD6g** :$
 
