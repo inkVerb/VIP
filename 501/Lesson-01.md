@@ -129,7 +129,7 @@ localhost/web/phpget.php?go=I am an apple pie
 
 *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
-*Try the form a few times to see how it works*
+*Try the URL a few different ways to see how it works*
 
 *Note we don't need to `chown` file owner when copying over a file...*
 
@@ -148,7 +148,7 @@ ls -l web
 localhost/web/phpget.php?go=over there&h=6-hour&time=8:22
 ```
 
-*Try the form a few times to see how it works*
+*Try the URL a few different ways to see how it works*
 
 #### `$_POST` Method
 

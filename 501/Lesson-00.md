@@ -166,37 +166,37 @@ Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/bl
 
 - Arch/Manjaro:
 
-| **AP2** :$
+| **AP1** :$
 
 ```console
 cd ~/School/VIP
 ```
 
-| **AP3** :$
+| **AP2** :$
 
 ```console
 git clone https://github.com/inkVerb/501
 ```
 
-| **AP4** :$
+| **AP3** :$
 
 ```console
 sudo mkdir -p /srv/www/html/web
 ```
 
-| **AP5** :$
+| **AP4** :$
 
 ```console
 ln -sfn /srv/www/html/web ~/School/VIP/501/
 ```
 
-| **AP6** :$
+| **AP5** :$
 
 ```console
 ln -sfn /srv/www/rewrite ~/School/VIP/501/
 ```
 
-| **AP7** :$
+| **AP6** :$
 
 ```console
 sudo chown -R www:www /srv/www
@@ -204,43 +204,43 @@ sudo chown -R www:www /srv/www
 
 - Debian/Ubuntu:
 
-| **DP2** :$
+| **DP1** :$
 
 ```console
 cd ~/School/VIP
 ```
 
-| **DP3** :$
+| **DP2** :$
 
 ```console
 git clone https://github.com/inkVerb/501
 ```
 
-| **DP4** :$
+| **DP3** :$
 
 ```console
 sudo mkdir /var/www/html/web
 ```
 
-| **DP5** :$
+| **DP4** :$
 
 ```console
 ln -sfn /var/www/html/web ~/School/VIP/501/
 ```
 
-| **DP6** :$
+| **DP5** :$
 
 ```console
 ln -sfn /var/www/rewrite ~/School/VIP/501/
 ```
 
-| **DP7** :$
+| **DP6** :$
 
 ```console
 sudo chown -R www:www /var/www/html/
 ```
 
-| **DP8** :$ (Make Debian work with these lessons)
+| **DP7** :$ (Make Debian work with these lessons)
 
 ```console
 sudo ln -sfn /var/www /srv/
@@ -249,43 +249,43 @@ sudo chown -R www:www /srv/www
 
 - Fedora/CentOS:
 
-| **CP2** :$
+| **CP1** :$
 
 ```console
 cd ~/School/VIP
 ```
 
-| **CP3** :$
+| **CP2** :$
 
 ```console
 git clone https://github.com/inkVerb/501
 ```
 
-| **CP4** :$
+| **CP3** :$
 
 ```console
 sudo mkdir /var/www/html/web
 ```
 
-| **CP5** :$
+| **CP4** :$
 
 ```console
 ln -sfn /var/www/html/web ~/School/VIP/501/
 ```
 
-| **CP6** :$
+| **CP5** :$
 
 ```console
 ln -sfn /var/www/rewrite ~/School/VIP/501/
 ```
 
-| **CP7** :$
+| **CP6** :$
 
 ```console
 sudo chown -R www:www /var/www/html/
 ```
 
-| **CP8** :$ (Make CentOS work with these lessons)
+| **CP7** :$ (Make CentOS work with these lessons)
 
 ```console
 sudo ln -sfn /var/www /srv/
