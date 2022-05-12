@@ -75,16 +75,16 @@ That is the end of these instructions. You should feel like a better person.
 Debian:
 
 ```console
-sudo apt install gedit tilda nautilus chromium-browser firefox
+sudo apt install chromium-browser firefox
 ```
 
 Arch:
 
 ```console
-sudo pacman -S gedit nautilus chromium-browser firefox
+sudo pacman -S chromium-browser firefox
 ```
 
-Setup the [Arch F12 Terminal](https://github.com/inkVerb/vip/blob/master/Arch-F12-Terminal.md)
+Setup the [Arch Drop Terminal](https://github.com/inkVerb/vip/blob/master/Arch-Drop-Terminal.md) and other settings
 
 # Oh, and have a cookie for finishing: ### #
 
@@ -94,6 +94,7 @@ Setup the [Arch F12 Terminal](https://github.com/inkVerb/vip/blob/master/Arch-F1
 - [IBUS for Taiwan and/or China Mandarin typing input](https://github.com/inkVerb/VIP/blob/master/ibus_zh_TW.md)
 - Vrk desktop tools at [verb.ink](http://verb.ink)
 ### [Ubuntu (video)](https://www.youtube.com/watch?v=sYfEs0lQA8Y&index=4&list=PLizgE6nGB1Kx8jIY1JE2v9rcL9G9s_UDj) create your bootable Linux USB
+- Partitioning and Linux install instructions apply to Arch/Manjaro and others
 - [Fcitx for Taiwan and/or China Mandarin typing input](https://github.com/inkVerb/VIP/blob/master/Fcitx_zh_TW.md)
 
 ## Type with correct fingers
@@ -102,22 +103,26 @@ Setup the [Arch F12 Terminal](https://github.com/inkVerb/vip/blob/master/Arch-F1
 ## Keyboard shortcuts on desktop
 
 |:---------------------------------------------------------------------------------- |:---------------------- |
-| <kbd>F9</kbd>                                                                      | show/hide side panels  |
-| <kbd>Ctrl</kbd> + <kbd>A</kbd>                                                     | select All             |
+| <kbd>F9</kbd>                                                                      | Show/hide side panels  |
+| <kbd>Ctrl</kbd> + <kbd>A</kbd>                                                     | Select All             |
 | <kbd>Ctrl</kbd> + <kbd>X</kbd>                                                     | Cut                    |
 | <kbd>Ctrl</kbd> + <kbd>Z</kbd>                                                     | Undo                   |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd> / <kbd>Ctrl</kbd> + <kbd>Y</kbd> | Redo                   |
 | <kbd>Ctrl</kbd> + <kbd>T</kbd>                                                     | Open a new tab         |
 | <kbd>Ctrl</kbd> + <kbd>W</kbd>                                                     | Close a tab            |
 | <kbd>Ctrl</kbd> + <kbd>LEFT-CLICK</kbd> / <kbd>MIDDLE-CLICK</kbd>                  | Open link in a new tab |
+| <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>                            | Change tab             |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>         | Move tab               |
+| <kbd>Ctrl</kbd> + <kbd>T</kbd>                                                     | New tab                |
+| <kbd>Ctrl</kbd> + <kbd>W</kbd>                                                     | Close tab              |
 
 ## Keyboard shortcuts in terminal
 
 |:------------------------------------------------- |:---------------------- |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | copy                   |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> | paste                  |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | open a new tab         |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> | close current tab      |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | Copy                   |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> | Paste                  |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | Open a new tab         |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> | Close current tab      |
 
 ## About Linux
 
