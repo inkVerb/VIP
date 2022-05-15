@@ -5,7 +5,7 @@ ___
 
 ## Prepare
 
-*<kbd>F12</kbd> (guake/tilda) OR <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (new terminal)*
+*<kbd>Scroll Lock</kbd> OR <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> OR <kbd>F12</kbd>(new terminal)*
 
 | **1** :$
 

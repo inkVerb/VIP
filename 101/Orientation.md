@@ -196,7 +196,7 @@ This requires `sudo` permissions
 | **D10** :$ Debian
 
 ```console
-sudo apt install gedit tilda nautilus chromium-browser firefox
+sudo apt install gedit nautilus chromium-browser firefox
 ```
 
 | **A10** :$ Arch
