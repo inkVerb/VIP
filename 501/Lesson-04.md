@@ -421,7 +421,7 @@ localhost/web/webapp.php
 $_SESSION = array(); // Reset the `_SESSION` array
 session_destroy(); // Destroy the session itself
 setcookie(session_name(), null, 86401); // Set any _SESSION cookies to expire in Jan 1970
-setcookie(session_name(), null, time()-1);  // Wrong! (depending on your timezone, this could be in the future!)
+setcookie(session_name(), null, time()-300);  // Wrong! (depending on your timezone, this could be in the future!)
 ```
 
 **Redirect in PHP:**
