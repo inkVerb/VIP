@@ -187,13 +187,20 @@ localhost/web/phppost.php
 You may define your own arrays
 
 ```php
-// Auto-indexed array
+// Old way, safer
 $autoArray = array(
   'value_1',
   "second value",
   "triplets",
   'fourthly'
 );
+// New way, simple
+$autoArray = [
+  'value_1',
+  "second value",
+  "triplets",
+  'fourthly'
+];
 
 echo $autoArray[0];
 echo $autoArray[1];

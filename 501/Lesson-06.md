@@ -509,6 +509,13 @@ localhost/web/ajax.php
   - "(made by AJAX)"
 4. Change the input fields and try many times
 
+## AJAX Security
+
+We will not address AJAX security too deeply in these lessions
+
+But, hackers can send their own AJAX requests to your ajax_handler.php file
+
+Read more about AJAX security in the VIP cheat sheets: [AJAX Security](AJAX-security.md)
 ___
 
 # The Take
