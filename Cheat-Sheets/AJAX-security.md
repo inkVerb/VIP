@@ -31,7 +31,7 @@ You can see what this should be, instead of `https://example.tld` with a simple 
 echo $_SERVER['HTTP_REFERER'];
 ```
 
-## Verify XMLHTTP/AJAX style request via `$_SERVER` array
+## Verify XMLHTTP/AJAX type of request via `$_SERVER` array
 
 ```php
 if ( (!empty($_SERVER['HTTP_X_REQUESTED_WITH']))
