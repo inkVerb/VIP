@@ -1,9 +1,14 @@
-# Conventional hotkeys for Arch & Manjaro
+# Arch Drop Terminal
+
+With this, you can either use <kbd>Scroll Lock</kbd> or <kbd>F12</kbd> for the dropdown terminal
+
+## Conventional hotkeys for Arch & Manjaro
 
 |:-------------------------------------------------------------------------- |:---------------------- |
 | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>                            | Open floating terminal |
-| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>X</kbd>                            | Open text editor gedit |
 | <kbd>Scroll Lock</kbd>                                                     | Dropdown terminal      |
+| <kbd>F12</kbd>                                                             | Dropdown terminal      |
+| <kbd>F11</kbd>                                                             | Full screen            |
 | <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>                    | Change tab             |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> | Move tab               |
 | <kbd>Ctrl</kbd> + <kbd>T</kbd>                                             | New tab                |
@@ -11,7 +16,7 @@
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd>                          | New tab in terminal    |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd>                          | Close tab in terminal  |
 | <kbd>Shift</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>                   | Change volume          |
-| <kbd>Break</kbd>                                                           | Mute volume            |
+| <kbd>Shift</kbd> + <kbd>Break</kbd>                                        | Mute volume            |
 
 ## 1. Install the Xfce4 terminal
 
@@ -25,19 +30,15 @@ mkdir -p ~/.config/xfce4/terminal
 
 ```console
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'Dropdown Terminal'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'Dropdown Terminal: ScrLk'"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'Scroll_Lock'"
-#gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'f12'"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "'xfce4-terminal  --drop-down'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ name "'Xfce Terminal'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding "'<Ctrl><Alt>t'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command "'xfce4-terminal'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ name "'Gedit Text Editor'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ binding "'<Ctrl><Alt>w'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ command "'gedit'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ name "'Calculator'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ binding "'<Ctrl><Alt>q'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ command "'gnome-calculator'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ name "'Dropdown Terminal: F12'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding "'f12'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command "'xfce4-terminal  --drop-down'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ name "'Xfce Terminal'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ binding "'<Ctrl><Alt>t'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ command "'xfce4-terminal'"
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up "['<Shift>Page_Up']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down "['<Shift>Page_Down']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute "['<Shift>Break']"

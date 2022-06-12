@@ -26,7 +26,7 @@ sudo chown -R http:http /srv/www
 sudo chown -R www-data:www-data /var/www
 ```
 
-- Fedora/CentOS
+- CentOS/Fedora
 
 ```console
 sudo chown -R apache:apache /var/www

@@ -1,36 +1,51 @@
-
-## [Pretty diagrams: explainshell.com](https://explainshell.com)
-
-## [The Linux Documentation Project: tldp.org](http://tldp.org)
+# [The Linux Documentation Project: tldp.org](http://tldp.org)
 
 ## Install Packages (Per Linux Distro)
 
 [command-not-found.com](http://command-not-found.com)
 
+## Commands
+
+[explainshell.com](https://explainshell.com) - pretty & colorful diagrams
+
+## GNU/Linux Official Manual
+
+[GNU Bash Reference manual](https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins)
+
 ## Q&A
 
-[askubuntu.com](http://askubuntu.com)
+[stackoverflow.com](https://stackoverflow.com)
 
-[stackexchange.com](http://stackexchange.com)
+[serverfault.com](https://serverfault.com)
 
-[stackoverflow.com](http://stackoverflow.com)
+[superuser.com](https://superuser.com)
 
-[howtoforge.com](http://howtoforge.com)
+[unix.stackexchange.com](https://unix.stackexchange.com)
 
-[computerhope.com](http://computerhope.com)
+[bbs.archlinux.org](https://https://bbs.archlinux.org)
 
-[nixcraft.com](http://nixcraft.com)
+[askubuntu.com](https://askubuntu.com)
 
-[howtogeek.com](http://howtogeek.com)
+[howtoforge.com](https://howtoforge.com)
 
-[linuxhelp.com](http://linuxhelp.com)
+[computerhope.com](https://computerhope.com)
 
-[linux.com](http://linux.com)
+[nixcraft.com](https://nixcraft.com)
 
-[linuxquestions.org](http://linuxquestions.org)
+[howtogeek.com](https://howtogeek.com)
 
-[linuxcommand.org](http://linuxcommand.org)
+[linuxhelp.com](https://linuxhelp.com)
+
+[linux.com](https://linux.com)
+
+[linuxquestions.org](https://linuxquestions.org)
+
+[linuxcommand.org](https://linuxcommand.org)
 
 ## Cool blog
 
 [linuxfrombeginning.wordpress.com](http://linuxfrombeginning.wordpress.com)
+
+## Manjaro
+
+[manjaro.org](https://manjaro.org) - The Linux distro used by VIP Linux

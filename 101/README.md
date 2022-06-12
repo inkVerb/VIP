@@ -1,6 +1,10 @@
 # Shell 101: Arguments
 
-### [Orientation: How these lessons work](https://github.com/inkVerb/vip/blob/master/101/Orientation.md)
+## [Prepare: Apps used in these lessons](https://github.com/inkVerb/VIP/blob/master/Prepare.md)
+
+## [Dropdown Terminal: Setup the "F12" Dropdown terminal on Arch/Manjaro](https://github.com/inkVerb/VIP/blob/master/Arch-Drop-Terminal.md)
+
+## [Orientation: How these lessons work](https://github.com/inkVerb/VIP/blob/master/Orientation.md)
 
 ___
 

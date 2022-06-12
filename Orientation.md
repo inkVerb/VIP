@@ -15,7 +15,7 @@ ___
 
 ### Formatting & instructions
 
-This is normal text, which may label or tell something, it is rare in these lessons.
+This is normal text, which may label or tell something, it is rare in these lessons
 
 *This italics text is a note that helps teach and explain something in a lesson*
 
@@ -24,7 +24,7 @@ This is normal text, which may label or tell something, it is rare in these less
 | **255** :$
 
 ```console
-i am command number two hunderd fifty-five to be entered into the terminal
+i am command number two hundred fifty-five to be entered into the terminal
 ```
 
 | **256** :$
@@ -39,6 +39,8 @@ i am a normal user command because i use the dollar sign
 i am a root command because i use the hash sign
 i am dangerous and powerful
 ```
+
+*Below is a file named "some-file.txt" and it's contents...*
 
 | **some-file.txt** :
 
@@ -189,23 +191,6 @@ rm first-file
 
 *Close gedit, but note it asks if you want to save the file: No, don't save*
 
-## Install apps used in this course (if you haven't already)
-
-This requires `sudo` permissions
-
-| **D10** :$ Debian
-
-```console
-sudo apt install gedit nautilus chromium-browser firefox
-```
-
-| **A10** :$ Arch
-
-```console
-sudo pacman -S gedit nautilus chromium-browser firefox
-```
-
-*Setup the [Arch F12 Terminal](https://github.com/inkVerb/vip/blob/master/Arch-F12-Terminal.md)*
 
 **Yeah! Orientaion is finished! Let's review what we take away from this...**
 
@@ -226,7 +211,6 @@ ___
 ```console
 code for terminal
 ```
-  - *This is not a normal convention for code-related websites, but used for this VIP Linux tutorial*
 - Nautilus is the name of the file browser... because we're "under the sea..."
 - Gedit is the text editor we will use, gedit? (See what I did there?)
 - An asterisk * in the gedit title indicates that the file has been changed, but not saved

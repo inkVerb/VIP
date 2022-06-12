@@ -6,7 +6,7 @@ ___
 
 ## Reference
 
-Open Terminal: <kbd>F12</kbd> (if you have a drop-down terminal) / <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (normal)*
+Open Terminal: <kbd>F12</kbd> (dropdown terminal) / <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (normal)*
 
 Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
 

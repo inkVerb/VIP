@@ -12,10 +12,22 @@ ___
 ### [Arrays](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Arrays.md)
 
 ___
+### [Code Headers](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/SH-XML-HTML-PHP-headers.md)
+
+___
 ### [Resources & Things That Run](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md)
 
 ___
 ### [Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
+
+___
+### [AJAX security](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/AJAX-security.md)
+
+___
+### [GitHub cheat sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/GitCheat.md)
+
+___
+### [Jupyter Notebook](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Jupyter-Notebook.md)
 
 ___
 ### [LEMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LEMP-Desktop.md)

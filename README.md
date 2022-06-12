@@ -3,10 +3,6 @@
 
 Whether you want to become a computer genius or if you're a "computer dummy" and want to make computers less scary, start with Linux. Start simple. Start here.
 
-## Shell Crash Course
-
-# [Code Headers](https://github.com/inkVerb/VIP/blob/master/SH-XML-HTML-PHP-headers.md)
-
 # [Shell 101: Arguments](https://github.com/inkVerb/VIP/blob/master/101/README.md)
 
 # [Shell 201: Files](https://github.com/inkVerb/VIP/blob/master/201/README.md)
@@ -17,7 +13,7 @@ Whether you want to become a computer genius or if you're a "computer dummy" and
 
 # [Shell 501: Web Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
 
-## [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)
+# [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)
 
 ## Why learn Linux?
 *Renaissance: Learn your roots first, then everything else makes more sense.*
@@ -42,60 +38,26 @@ Whether you want to become a computer genius or if you're a "computer dummy" and
 - Anyone ages 13 or older interested in self-teaching to learn computers
 - Any entrepreneur, project manager, copywriter, marketer, graphic designer, teacher, professor, life guard, dog catcher, firefighter, chef, union-card-carrying thespian, secretary, supervisor, executive, board member, politician, bureaucrat, dictator, monarch, Amway IBO, or anyone who WILL NOT learn computer code, but wants a peaceful and powerful relationship with a marketing firm, software writer, and/or IT
 
-## First day of school
-
-*Many lessons begin with helpful commands or links, like this:*
-
-Ready the CLI
-
-```console
-cd ~/School/VIP/101
-```
-
 ___
 
-*There are twelve lessons per level, sometimes they are divided into sections with Roman numerals*
-
-*Lessons are separated by **TOPIC**, NOT **TIME NEEDED TO COMPLETE**, so some may be longer than others*
-
-*At the end of each lesson is a section called* **The Take** *which lists learning objectives for that lesson; this is useful information for students, teachers, crafting exams, or developing a curriculum core*
-
-*There is a free video series that explains these lessons at the* [inkVerb YouTube channel](https://www.youtube.com/channel/UCILld59lH8VOsT9gfyAb77g)
-
-Udemy! *You can get more teaching tips, take quizzes, work with a community, and earn credits in the Udemy course "VIP Linux"* (NOT READY)
-
-*You might learn some things merely by watching the videos, but you learn much more if you have Linux installed on your computer and follow as you learn*
-
-*It is also very helpful if you know how to type correctly!* [write.pink/88](http://write.pink/88)
-
-That is the end of these instructions. You should feel like a better person.
-
-## Install the apps used in this course
-
-Debian:
-
-```console
-sudo apt install chromium-browser firefox
-```
-
-Arch:
-
-```console
-sudo pacman -S chromium-browser firefox
-```
-
-Setup the [Arch Drop Terminal](https://github.com/inkVerb/vip/blob/master/Arch-Drop-Terminal.md) and other settings
-
-# Oh, and have a cookie for finishing: ### #
 
 ## Install Linux
 - [BIOS, EFI & Other Settings for Linux](https://github.com/inkVerb/VIP/blob/master/install-BIOS-UEFI.md)
-### [Arch/Manjaro (text)](https://github.com/inkVerb/vip/blob/master/Arch-Install.md)
+### [Arch/Manjaro (text)](https://github.com/inkVerb/VIP/blob/master/Arch-Install.md)
 - [IBUS for Taiwan and/or China Mandarin typing input](https://github.com/inkVerb/VIP/blob/master/ibus_zh_TW.md)
 - Vrk desktop tools at [verb.ink](http://verb.ink)
 ### [Ubuntu (video)](https://www.youtube.com/watch?v=sYfEs0lQA8Y&index=4&list=PLizgE6nGB1Kx8jIY1JE2v9rcL9G9s_UDj) create your bootable Linux USB
 - Partitioning and Linux install instructions apply to Arch/Manjaro and others
 - [Fcitx for Taiwan and/or China Mandarin typing input](https://github.com/inkVerb/VIP/blob/master/Fcitx_zh_TW.md)
+
+## [Prepare: Apps used in these lessons](https://github.com/inkVerb/VIP/blob/master/Prepare.md)
+- Install and set up specific apps in these lessons
+
+## [Dropdown Terminal: Setup the "F12" Dropdown terminal on Arch/Manjaro](https://github.com/inkVerb/VIP/blob/master/Arch-Drop-Terminal.md)
+- Install the common, convenient dropdown terminal used in many Linux distros
+
+## [Code Headers: Learn about the first line of code files](https://github.com/inkVerb/VIP/blob/master/SH-XML-HTML-PHP-headers.md)
+- Simple (and quite useful) example lesson
 
 ## Type with correct fingers
 - Learn here: [write.pink/88](http://write.pink/88)
@@ -133,4 +95,3 @@ Setup the [Arch Drop Terminal](https://github.com/inkVerb/vip/blob/master/Arch-D
 [VIP/Links](https://github.com/inkVerb/vip/blob/master/Links.md) places to get more help and specific examples
 
 [GNU Bash Reference manual](https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins) the official Shell/BASH manual
-
