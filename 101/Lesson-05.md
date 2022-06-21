@@ -161,7 +161,11 @@ cat echocatsed_applefoo
 
 *"Command Substitution" can also be done with backticks: `` `Command Substitution` `` (considered lazy, though)*
 
-| **22** :$ `` echo `cat applefoo | sed "s/foo/bar/"` ``
+| **22** :$
+
+```console
+echo `cat applefoo | sed "s/foo/bar/"`
+```
 
 *This is useful to get your CPU type...*
 

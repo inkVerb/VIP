@@ -9,7 +9,7 @@ This requires `sudo` permissions
 | **A1** :$ Arch/Manjaro
 
 ```console
-sudo pacman -S gedit gnome-text-editor nautilus chromium-browser firefox
+sudo pacman -S which gedit gnome-text-editor nautilus chromium-browser firefox
 ```
 
 | **C1** :$ CentOS/Fedora
@@ -24,43 +24,29 @@ sudo dnf install gedit gnome-text-editor nautilus chromium-browser firefox
 sudo apt install gedit gnome-text-editor nautilus chromium-browser firefox
 ```
 
-### Setup the GNOME Text Editor
+### Alias for the GNOME Text Editor
+
+*This makes the `vedit` command point to `gnome-text-editor` if it is installed, otherwise to `gedit`*
 
 | **2** :$
 
 ```console
-su
+if which gnome-text-editor; then echo 'alias vedit=gnome-text-editor' >> ~/.bashrc; else echo 'alias vedit=gedit' >> ~/.bashrc; fi
 ```
 
-| **3** :#
-```console
-cat <<EOF > /usr/bin/xedit
-#!/bin/bash
-$(which gnome-text-editor) \$@
-EOF
-```
+### Settings for GNOME Text Editor
 
-| **4** :#
-```console
-chmod 755 /usr/bin/xedit
-```
-
-| **5** :#
-```console
-exit
-```
-
-### GNOME Text Editor Settings
-
-| **6** :$
+| **3** :$
 
 ```console
 gsettings set org.gnome.TextEditor style-variant 'dark'
+gsettings set org.gnome.TextEditor style-scheme 'kate-dark'
 gsettings set org.gnome.TextEditor highlight-current-line true
 gsettings set org.gnome.TextEditor show-map true
 gsettings set org.gnome.TextEditor show-line-numbers true
 gsettings set org.gnome.TextEditor wrap-text false
 gsettings set org.gnome.TextEditor restore-session false
+gsettings set org.gnome.TextEditor spellcheck false
 ```
 
 *Setup the [Arch F12 Terminal](https://github.com/inkVerb/vip/blob/master/Arch-Drop-Terminal.md)*
