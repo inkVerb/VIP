@@ -22,7 +22,7 @@
 
 ### [Lesson 9: Arithmetic](https://github.com/inkVerb/vip/blob/master/301/Lesson-09.md)
 
-### [Lesson 10: BASH Variable Variables & Arrays](https://github.com/inkVerb/vip/blob/master/301/Lesson-10.md)
+### [Lesson 10: BASH Ternary, Variable Variables & Arrays](https://github.com/inkVerb/vip/blob/master/301/Lesson-10.md)
 
 ### [Lesson 11: BASH select & dialog](https://github.com/inkVerb/vip/blob/master/301/Lesson-11.md)
 

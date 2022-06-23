@@ -418,6 +418,8 @@ localhost/web/phppost.php
 
 #### [Ternary Statements](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)
 
+| **PHP Ternary** :
+
 ```php
 $Variable = ( THIS IS THE TEST ) ? 'value_if_true' : 'value_if_false';
 
@@ -439,6 +441,41 @@ $Variable = 'The number is ' . ( $Some_Variable == 5 ? 'five' : 'not five') . 't
 // echo example:
 echo ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 echo ( $Some_Variable == 5 ) ? 'it is five' : false; // It will do nothing if the test fails
+```
+
+In Shell and BASH, they could look like this:
+
+| **`#!/bin/sh` Ternary** :
+
+```sh
+if [ This Is The Test ]; then
+  Variable='value_if_true'
+else
+  Variable='value_if_false'
+fi
+
+# example:
+if [ "$Some_Variable" == "5" ]; then
+  Variable='it is five'
+else
+  Variable='not five'
+fi
+
+# on one line:
+if [ This Is The Test ]; then Variable='value_if_true'; else Variable='value_if_false'; fi
+
+# one line example:
+if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not five'; fi
+```
+
+| **`#!/bin/bash` Ternary** :
+
+```bash
+#!/bin/bash
+[[ This Is The Test ]] && Variable="value_if_true" || Variable="value_if_false"
+
+# example:
+[[ "$Some_Variable" == "5" ]] && Variable='it is five' || Variable='not five'
 ```
 
 *Review the diagram above along side the following two steps...*

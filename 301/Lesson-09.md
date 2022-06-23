@@ -291,4 +291,4 @@ ___
 
 ___
 
-#### [Lesson 10: BASH Variable Variables & Arrays](https://github.com/inkVerb/vip/blob/master/301/Lesson-10.md)
+#### [Lesson 10: BASH Trnary, Variable Variables & Arrays](https://github.com/inkVerb/vip/blob/master/301/Lesson-10.md)

@@ -843,11 +843,9 @@ This is *not* used in BASH or Shell, but it is used in many other languages, inc
 $Variable = ( This Is The Test ) ? 'Value_If_True' : 'Value_If_False';
 
 // example:
-
 $Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 
 // echo example:
-
 echo ( $Some_Variable == 5 ) ? 'it is five' : false;
 
 ```
@@ -858,7 +856,6 @@ echo ( $Some_Variable == 5 ) ? 'it is five' : false;
 Variable = ( This Is The Test ) ? 'Value_If_True' : 'Value_If_False';
 
 // example:
-
 Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 
 ```
@@ -869,7 +866,6 @@ Variable = ( $Some_Variable == 5 ) ? 'it is five' : 'not five';
 Variable=$([ This Is The Test ] && echo 'value_if_true' || echo 'value_if_false')
 
 # example:
-
 Variable=$([ "$Some_Variable" == "5" ] && echo 'it is five' || echo 'not five')
 
 ```
@@ -877,7 +873,6 @@ Variable=$([ "$Some_Variable" == "5" ] && echo 'it is five' || echo 'not five')
 **Shell `if` test equivalent:**
 
 ```sh
-
 if [ This Is The Test ]; then
   Variable='value_if_true'
 else
@@ -885,11 +880,27 @@ else
 fi
 
 # example:
-
 if [ "$Some_Variable" == "5" ]; then
   Variable='it is five'
 else
   Variable='not five'
 fi
 
+# on one line:
+if [ This Is The Test ]; then Variable='value_if_true'; else Variable='value_if_false'; fi
+
+# one line example:
+if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not five'; fi
+```
+
+**BASH one-line equivalent:**
+
+*(This will NOT work in `#!/bin/sh`, only `#!/bin/bash`!)*
+
+```bash
+#!/bin/bash
+[[ This Is The Test ]] && Variable="value_if_true" || Variable="value_if_false"
+
+# example:
+[[ "$Some_Variable" == "5" ]] && Variable='it is five' || Variable='not five'
 ```

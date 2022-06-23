@@ -1,5 +1,5 @@
 # Shell 301
-## Lesson 10: BASH Variable Variables & Arrays
+## Lesson 10: BASH Ternary, Variable Variables & Arrays
 
 Ready the CLI
 
@@ -21,35 +21,95 @@ Nemo, we're not in Shellfish anymore...
 
 Some things can only be done in BASH
 
-### I. `${#Variable}`
+### I. Ternary Statements
+
+Read the Cheat-Sheet: **[Ternary Statements](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)**
+
+**Ternary** statements work in three parts:
+
+```bash
+[[ Test ]] && if_true || if_false
+```
+
+This is based on the logical flow of `&&` and `||`
+
+- `[ if_true ] && this_happens`
+- `[ if_false ] || this_happens`
+- These can run in the terminal:
+  - `true && echo "success"`
+  - `false || echo "fail"`
+
+*Note the `[[ double brackets ]]` are only allowed in BASH, not Shell, which is why we can do this*
+
+*Many coders might argue that this BASH statement is not a genuine, true "ternary" statement, but it is very close and logically it is near-identical*
+
+We address these more in [501-PHP: Ternary Statements](https://github.com/inkVerb/vip/blob/master/501/Lesson-01.md#ternary-statements)
 
 | **1** :$
 
 ```console
-gedit 10-count
+gedit 10-terenary-echo
 ```
 
 | **2** :$
 
 ```console
-./10-count five
+./10-terenary-echo five
 ```
 
 | **3** :$
 
 ```console
+./10-terenary-echo four
+```
+
+| **4** :$
+
+```console
+gedit 10-terenary-var
+```
+
+| **5** :$
+
+```console
+./10-terenary-var five
+```
+
+| **6** :$
+
+```console
+./10-terenary-var four
+```
+
+### II. `${#Variable}`
+
+| **7** :$
+
+```console
+gedit 10-count
+```
+
+| **8** :$
+
+```console
+./10-count five
+```
+
+| **9** :$
+
+```console
 ./10-count six
 ```
 
-### II. `${!Variable}` Variables
+### III. `${!Variable}` Variables
 
-| **4** :$
+| **10** :$
 
 ```console
 gedit 10-varvar
 ```
 
-| **5** :$
+| **11** :$
 
 ```console
 ./10-varvar abcyoume
@@ -57,15 +117,15 @@ gedit 10-varvar
 
 *Take a good look and try to see how that makes sense; it can be VERY useful!*
 
-### III. Arrays
+### IV. Arrays
 
-| **6** :$
+| **12** :$
 
 ```console
 gedit 10-array
 ```
 
-| **7** :$
+| **13** :$
 
 ```console
 ./10-array
@@ -75,19 +135,19 @@ gedit 10-array
 
 *Note * does the same thing as @ (BASH thinks it is one, long value)*
 
-| **8** :$
+| **14** :$
 
 ```console
 gedit 10-array-index-id
 ```
 
-| **9** :$
+| **15** :$
 
 ```console
 ./10-array-index-id 1
 ```
 
-| **10** :$
+| **16** :$
 
 ```console
 ./10-array-index-id 0
@@ -95,7 +155,7 @@ gedit 10-array-index-id
 
 *Note the first element's index key ID is 0*
 
-| **11** :$
+| **17** :$
 
 ```console
 gedit 10-array-associative
@@ -103,31 +163,31 @@ gedit 10-array-associative
 
 *Note `declare -A ARRAYNAME` precedes*
 
-| **12** :$
+| **18** :$
 
 ```console
 ./10-array-associative i
 ```
 
-| **13** :$
+| **19** :$
 
 ```console
 ./10-array-associative ii
 ```
 
-| **14** :$
+| **20** :$
 
 ```console
 ./10-array-associative iii
 ```
 
-| **15** :$
+| **21** :$
 
 ```console
 ./10-array-associative iv
 ```
 
-| **16** :$
+| **22** :$
 
 ```console
 ./10-array-associative v
@@ -137,43 +197,43 @@ gedit 10-array-associative
   - *There are two ways to define the elements of the associative array*
   - *Array keys are case-sensitive*
 
-| **17** :$
+| **23** :$
 
 ```console
 ./10-array-associative i III
 ```
 
-| **18** :$
+| **24** :$
 
 ```console
 ./10-array-associative i II
 ```
 
-| **19** :$
+| **25** :$
 
 ```console
 ./10-array-associative i I
 ```
 
-| **20** :$
+| **26** :$
 
 ```console
 ./10-array-associative iv IV
 ```
 
-| **21** :$
+| **27** :$
 
 ```console
 ./10-array-associative iii V
 ```
 
-| **22** :$
+| **28** :$
 
 ```console
 gedit 10-array-associative-declare
 ```
 
-| **23** :$
+| **29** :$
 
 ```console
 ./10-array-associative-declare
@@ -181,7 +241,7 @@ gedit 10-array-associative-declare
 
 *Tip: Uncomment the `#declare` lines (5 & 13) to `declare` and see that it works...*
 
-| **24** :$
+| **30** :$
 
 ```console
 ./10-array-associative-declare
@@ -213,13 +273,13 @@ NOT BOTH
 
 ___
 
-| **25** :$
+| **31** :$
 
 ```console
 gedit 10-array-keys
 ```
 
-| **26** :$
+| **32** :$
 
 ```console
 ./10-array-keys
@@ -227,13 +287,13 @@ gedit 10-array-keys
 
 *Note that associative arrays don't necessarily keep a predictable order*
 
-| **27** :$
+| **33** :$
 
 ```console
 gedit 10-array-strings
 ```
 
-| **28** :$
+| **34** :$
 
 ```console
 ./10-array-strings
@@ -241,13 +301,13 @@ gedit 10-array-strings
 
 *Note quoted strings are allowed as elements*
 
-| **29** :$
+| **35** :$
 
 ```console
 gedit 10-array-associative-strings
 ```
 
-| **30** :$
+| **36** :$
 
 ```console
 ./10-array-associative-strings
@@ -257,7 +317,7 @@ gedit 10-array-associative-strings
 
 ### Array as list in `for` loop
 
-| **31** :$
+| **37** :$
 
 ```console
 gedit 10-array-for
@@ -265,7 +325,7 @@ gedit 10-array-for
 
 *Note `${myArray[*]}` means "all values"*
 
-| **32** :$
+| **38** :$
 
 ```console
 ./10-array-for
@@ -273,7 +333,7 @@ gedit 10-array-for
 
 *Let's use an associative array to further illustrate*
 
-| **33** :$
+| **39** :$
 
 ```console
 gedit 10-array-for-associative
@@ -281,7 +341,7 @@ gedit 10-array-for-associative
 
 *Note `${myArray[@]}` also means "all values"*
 
-| **34** :$
+| **40** :$
 
 ```console
 ./10-array-for-associative
@@ -290,7 +350,15 @@ gedit 10-array-for-associative
 ___
 
 # The Take
-
+- A "ternary statement" works in three parts:
+  - Test
+  - Do if true
+  - Do if false
+- Shell and BASH do not have true ternary statements, but BASH allows a near-identical version
+- BASH ternary syntax:
+  - `[[ Test ]] && if_true || if_false`
+  - `[[ $var = "one" ]] && echo "yes" || echo "no"`
+  - `[[ $var = "one" ]] && new_var="yes" || new_var="no"`
 - An "array" is a variable with multiple values
 - Arrays only work in "BASH" (`#!/bin/bash`), not the "Bourne shell" (`#!/bin/sh`)
 - Each value is called with an index "key", which is a sequential number unless declared otherwise
