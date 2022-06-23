@@ -48,37 +48,37 @@ We address these more in [501-PHP: Ternary Statements](https://github.com/inkVer
 | **1** :$
 
 ```console
-gedit 10-terenary-echo
+gedit 10-ternary-echo
 ```
 
 | **2** :$
 
 ```console
-./10-terenary-echo five
+./10-ternary-echo five
 ```
 
 | **3** :$
 
 ```console
-./10-terenary-echo four
+./10-ternary-echo four
 ```
 
 | **4** :$
 
 ```console
-gedit 10-terenary-var
+gedit 10-ternary-var
 ```
 
 | **5** :$
 
 ```console
-./10-terenary-var five
+./10-ternary-var five
 ```
 
 | **6** :$
 
 ```console
-./10-terenary-var four
+./10-ternary-var four
 ```
 
 ### II. `${#Variable}`
