@@ -172,7 +172,7 @@ echo `cat applefoo | sed "s/foo/bar/"`
 | **23** :$
 
 ```console
-dpkg --print-architecture
+hostnamectl
 ```
 
 *`echo` it into a file...*
@@ -180,7 +180,7 @@ dpkg --print-architecture
 | **24** :$
 
 ```console
-echo $(dpkg --print-architecture) > print-architecture_chodpkg
+echo $(hostnamectl) > print-architecture_chodpkg
 ```
 
 | **25** :$

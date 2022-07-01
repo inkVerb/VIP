@@ -891,6 +891,7 @@ if [ This Is The Test ]; then Variable='value_if_true'; else Variable='value_if_
 
 # one line example:
 if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not five'; fi
+
 ```
 
 **BASH one-line equivalent:**
@@ -903,4 +904,5 @@ if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not f
 
 # example:
 [[ "$Some_Variable" == "5" ]] && Variable='it is five' || Variable='not five'
+
 ```
