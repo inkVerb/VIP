@@ -123,9 +123,59 @@ sed "s/foo/bar/" applefoo
 cat applefoo
 ```
 
-*Next "pipe" `|` the output of `cat` into `sed`...*
+*Let's visit an old friend...*
 
 | **17** :$
+
+```console
+gedit how2arg
+```
+
+| **18** :$
+
+```console
+./how2arg one two 3
+```
+
+| **19** :$
+
+```console
+echo $USER
+```
+
+| **20** :$
+
+```console
+./how2arg one two $USER
+```
+
+| **21** :$
+
+```console
+./how2arg one two $(cat applefoo)
+```
+
+| **22** :$
+
+```console
+./how2arg one two Apples like foo.
+```
+
+| **23** :$
+
+```console
+./how2arg one two "Apples like foo."
+```
+
+| **24** :$
+
+```console
+./how2arg one two "$(cat applefoo)"
+```
+
+*Next "pipe" `|` the output of `cat` into `sed`...*
+
+| **25** :$
 
 ```console
 cat applefoo | sed "s/foo/bar/"
@@ -133,7 +183,7 @@ cat applefoo | sed "s/foo/bar/"
 
 *Put those commands into a kind of variable value; this is called "Command Substitution": `$(Command Substitution)`*
 
-| **18** :$
+| **26** :$
 
 ```console
 echo $(cat applefoo | sed "s/foo/bar/")
@@ -141,19 +191,19 @@ echo $(cat applefoo | sed "s/foo/bar/")
 
 *Now `echo` it to a file...*
 
-| **19** :$
+| **27** :$
 
 ```console
 echo $(cat applefoo | sed "s/foo/bar/") > echocatsed_applefoo
 ```
 
-| **20** :$
+| **28** :$
 
 ```console
 gedit echocatsed_applefoo
 ```
 
-| **21** :$
+| **29** :$
 
 ```console
 cat echocatsed_applefoo
@@ -161,7 +211,7 @@ cat echocatsed_applefoo
 
 *"Command Substitution" can also be done with backticks: `` `Command Substitution` `` (considered lazy, though)*
 
-| **22** :$
+| **30** :$
 
 ```console
 echo `cat applefoo | sed "s/foo/bar/"`
@@ -169,7 +219,7 @@ echo `cat applefoo | sed "s/foo/bar/"`
 
 *This is useful to get your CPU type...*
 
-| **23** :$
+| **31** :$
 
 ```console
 hostnamectl
@@ -177,23 +227,25 @@ hostnamectl
 
 *`echo` it into a file...*
 
-| **24** :$
+| **32** :$
 
 ```console
-echo $(hostnamectl) > print-architecture_chodpkg
+echo $(hostnamectl) > hostnamectl_echo
 ```
 
-| **25** :$
+| **33** :$
 
 ```console
-gedit print-architecture_chodpkg
+gedit hostnamectl_echo
 ```
+
+*Note the content is all on one line, this is the result of `echo`*
 
 *You can "substitute" any command for its output using: `$(...)` or `` `...` ``*
 
 *Let's `kill` a desktop app using Command Substitution...*
 
-| **26** :$
+| **34** :$
 
 ```console
 gnome-mines &
@@ -201,7 +253,7 @@ gnome-mines &
 
 *Get the app's "process ID" (PID)...*
 
-| **27** :$
+| **35** :$
 
 ```console
 pgrep gnome-mines
@@ -209,7 +261,7 @@ pgrep gnome-mines
 
 *Note the PID number and replace 55555 with that number below:*
 
-| **28** :$
+| **36** :$
 
 ```console
 kill 55555
@@ -217,19 +269,19 @@ kill 55555
 
 *Do it again, note the number changes...*
 
-| **29** :$
+| **37** :$
 
 ```console
 gnome-mines &
 ```
 
-| **30** :$
+| **38** :$
 
 ```console
 pgrep gnome-mines
 ```
 
-| **31** :$
+| **39** :$
 
 ```console
 kill 55555
@@ -237,13 +289,13 @@ kill 55555
 
 *Now, replace the PID number with `$(what gets the number)`, specifically: `$(pgrep gnome-mines)`...*
 
-| **32** :$
+| **40** :$
 
 ```console
 gnome-mines &
 ```
 
-| **33** :$
+| **41** :$
 
 ```console
 kill $(pgrep gnome-mines)
@@ -251,7 +303,7 @@ kill $(pgrep gnome-mines)
 
 *...Try it a few more times if you want, always the same, no changing numbers!*
 
-| **34** :$
+| **42** :$
 
 ```console
 gedit comboshell
@@ -272,7 +324,7 @@ $myOutput"
 # v01
 ```
 
-| **35** :$
+| **43** :$
 
 ```console
 chmod ug+x comboshell
@@ -280,7 +332,7 @@ chmod ug+x comboshell
 
 *Watch Command Substitution work...*
 
-| **36** :$
+| **44** :$
 
 ```console
 ./comboshell applefoo foo bar
@@ -288,7 +340,7 @@ chmod ug+x comboshell
 
 *Review the contents of abcd...*
 
-| **37** :$
+| **45** :$
 
 ```console
 cat abcd
@@ -296,13 +348,13 @@ cat abcd
 
 *Watch Command Substitution work...*
 
-| **38** :$
+| **46** :$
 
 ```console
 ./comboshell abcd jjjjjjjjj "Apple likes to say abcdefghi and "
 ```
 
-| **39** :$
+| **47** :$
 
 ```console
 ./comboshell abcd j " zz"
