@@ -160,7 +160,7 @@ ___
 - `echo` can pipe variables to a tee output with `echo $variable | tee output/file/here`
 - a pipe chain can link more than two commands: `comm 1 | comm 2 | comm 3 | output-to > file`
 - `tee` will overwrite the contents of its output file
-
+  - But `tee -a` will append the contents to its output file
 ___
 
 #### [Lesson 9: find](https://github.com/inkVerb/vip/blob/master/101/Lesson-09.md)
