@@ -121,6 +121,34 @@ cat $1 | sed "s/$2/$3/g" | tee sedoutput.text
 
 *gedit: Reload sedoutput.text*
 
+*Update comboshell to version 6:*
+
+| **comboshell** :
+
+```sh
+#!/bin/sh
+
+cat $1 | sed "s/$2/$3/g" | tee -a sedoutput.text
+
+# v06
+```
+
+| **9** :$
+
+```console
+./comboshell abcd j "ink-"
+```
+
+*gedit: Reload sedoutput.text*
+
+| **10** :$
+
+```console
+./comboshell abcd j "codeTheo-"
+```
+
+*gedit: Reload sedoutput.text*
+
 ___
 
 # The Take
