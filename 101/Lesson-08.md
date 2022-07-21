@@ -141,6 +141,8 @@ cat $1 | sed "s/$2/$3/g" | tee -a sedoutput.text
 
 *gedit: Reload sedoutput.text*
 
+*When we use the `-a` flag with `tee`, it will append to the output file, not overwrite, similar to using `echo >>`*
+
 | **10** :$
 
 ```console
