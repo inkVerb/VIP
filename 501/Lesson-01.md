@@ -1110,20 +1110,35 @@ ls web
 localhost/web/phppost.php
 ```
 
-*Try the form and developer view*
+*Try the developer view*
 
-*...organize all this in an `include` config file...*
+*See how `CONSTANTS` differ from `$variables`...*
 
 | **25** :$
 ```
-sudo cp core/01-in.config.php web/in.config.php && \
 sudo cp core/01-phpconstant2.php web/phppost.php && \
-sudo chown -R www:www /srv/www/html && \
-atom core/01-in.config.php core/01-phpconstant2.php && \
+atom core/01-phpconstant2.php && \
 ls web
 ```
 
 | **B-25** :// (Same)
+
+```console
+localhost/web/phppost.php
+```
+
+*...organize all this in an `include` config file...*
+
+| **26** :$
+```
+sudo cp core/01-in.config.php web/in.config.php && \
+sudo cp core/01-phpconstant3.php web/phppost.php && \
+sudo chown -R www:www /srv/www/html && \
+atom core/01-in.config.php core/01-phpconstant3.php && \
+ls web
+```
+
+| **B-26** :// (Same)
 
 ```console
 localhost/web/phppost.php
@@ -1149,7 +1164,7 @@ require_once ('footer.php');
 
 Normally, the top and bottom of a webpage are some kind of `include` of `header.php` and `footer.php` respectively
 
-| **26** :$
+| **27** :$
 ```
 sudo cp core/01-in.phpheader.php web/in.header.php && \
 sudo cp core/01-in.phpfooter.php web/in.footer.php && \
@@ -1159,7 +1174,7 @@ atom core/01-in.phpheader.php core/01-in.phpfooter.php core/01-phphfconventions.
 ls web
 ```
 
-| **B-26** :// (Same)
+| **B-27** :// (Same)
 
 ```console
 localhost/web/phppost.php
@@ -1181,7 +1196,7 @@ file_put_contents('./file/location', 'File content string');
 
 **Simple string:**
 
-| **27** :$
+| **28** :$
 ```
 sudo cp core/01-phpfileput1.php web/phpfileput.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -1191,7 +1206,7 @@ ls web
 
 *Look over the PHP file in atom before using the browser*
 
-| **B-27** ://
+| **B-28** ://
 
 ```console
 localhost/web/phpfileput.php
@@ -1199,7 +1214,7 @@ localhost/web/phpfileput.php
 
 *See the file changes...*
 
-| **28** :$
+| **29** :$
 
 ```console
 ls web && cat web/fileput.1
@@ -1207,14 +1222,14 @@ ls web && cat web/fileput.1
 
 **Variables:**
 
-| **29** :$
+| **30** :$
 ```
 sudo cp core/01-phpfileput2.php web/phpfileput.php && \
 atom core/01-phpfileput2.php && \
 ls web
 ```
 
-| **B-29** :// (Same)
+| **B-30** :// (Same)
 
 ```console
 localhost/web/phpfileput.php
@@ -1222,7 +1237,7 @@ localhost/web/phpfileput.php
 
 *See the file changes...*
 
-| **30** :$
+| **31** :$
 
 ```console
 ls web && cat web/fileput.2
@@ -1236,7 +1251,7 @@ $file_text = <<<EOF
 EOF;
 ```
 
-| **31** :$
+| **32** :$
 ```
 sudo cp core/01-phpfileput3.php web/phpfileput.php && \
 atom core/01-phpfileput3.php && \
@@ -1245,7 +1260,7 @@ ls web
 
 *Note how the heredoc was made for later reference:*
 
-| **B-31** :// (Same)
+| **B-32** :// (Same)
 
 ```console
 localhost/web/phpfileput.php
@@ -1253,7 +1268,7 @@ localhost/web/phpfileput.php
 
 *See the file changes...*
 
-| **32** :$
+| **33** :$
 
 ```console
 ls web && cat web/fileput.3
@@ -1267,7 +1282,7 @@ $file_text = <<<'EOF'
 EOF;
 ```
 
-| **33** :$
+| **34** :$
 ```
 sudo cp core/01-phpfileput4.php web/phpfileput.php && \
 atom core/01-phpfileput4.php && \
@@ -1276,7 +1291,7 @@ ls web
 
 *Note the use of `'single quotes'` affect the `$Variable` in the heredoc:*
 
-| **B-33** :// (Same)
+| **B-34** :// (Same)
 
 ```console
 localhost/web/phpfileput.php
@@ -1284,7 +1299,7 @@ localhost/web/phpfileput.php
 
 *See the file changes...*
 
-| **34** :$
+| **35** :$
 
 ```console
 ls web && cat web/fileput.4
@@ -1293,7 +1308,7 @@ ls web && cat web/fileput.4
 
 ### VII. Handling Arrays: `$_POST` Array, `print_r()` & `var_dump()`
 
-| **35** :$
+| **36** :$
 ```
 sudo cp core/01-phpprintr.php web/phpprintr.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -1301,7 +1316,7 @@ atom core/01-phpprintr.php && \
 ls web
 ```
 
-| **B-35** ://
+| **B-36** ://
 
 ```console
 localhost/web/phpprintr.php
@@ -1318,7 +1333,7 @@ Fill-out the fields and click "Hit me"
 
 *Try the same thing with `var_dump()`...*
 
-| **36** :$
+| **37** :$
 ```
 sudo cp core/01-phpvardump.php web/phpvardump.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -1326,7 +1341,7 @@ atom core/01-phpvardump.php && \
 ls web
 ```
 
-| **B-36** ://
+| **B-37** ://
 
 ```console
 localhost/web/phpvardump.php
@@ -1340,7 +1355,7 @@ Fill-out the fields and click "Hit me"
 
 ### VIII. PHP Errors
 
-| **37** :$
+| **38** :$
 ```
 sudo cp core/01-phperrors1.php web/phperrors.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -1348,7 +1363,7 @@ atom core/01-phperrors1.php && \
 ls web
 ```
 
-| **B-37** ://
+| **B-38** ://
 
 ```console
 localhost/web/phperrors.php
@@ -1365,7 +1380,7 @@ localhost/web/phperrors.php
 
 *Let's try the `$live` option...*
 
-| **38** :$
+| **39** :$
 ```
 sudo cp core/01-phperrors2.php web/phperrors.php && \
 atom core/01-phperrors2.php && \
@@ -1374,7 +1389,7 @@ ls web
 
 *Note we added the `$site_live` variable, which easily turned-off our error `echo`...*
 
-| **B-38** :// (Same)
+| **B-39** :// (Same)
 
 ```console
 localhost/web/phperrors.php
