@@ -82,7 +82,7 @@ ___
   - Order: `grep what-to-search-for /files/to/search`
   it can search them also
 - `grep` can search within and for wildcards `*`, much like `find`
-- If there are directories in the search location, `grep` wants the `-R` option so
+- If there are directories in the search location, `grep` wants the `-R` option
 - Use `"quotes to contain spaces"` in the search text
 
 ___
