@@ -1538,7 +1538,7 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
   $message = "Error in '$e_file' on line $e_line:\n$e_message\n";
   $message .= "<pre>" .print_r(debug_backtrace(), 1) . "</pre>\n";
 
-  if ($live == true) {
+  if ($live != true) {
       echo nl2br($message);
   } else {
     // Script to send an email or something else

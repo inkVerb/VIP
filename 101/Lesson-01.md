@@ -158,7 +158,7 @@ sed -i "/Replace.*/ c\The line with Mr. Apple delBar has been replaced" abcd
 *gedit: Reload*
 
 *<kbd>Ctrl</kbd> + <kbd>D</kbd> deletes a line in gedit*
-- Use it to delete the line about "Mr. Apple delBar"
+- Use <kbd>Ctrl</kbd> + <kbd>D</kbd> to delete the line about "Mr. Apple delBar"
 - Then <kbd>Ctrl</kbd> + <kbd>S</kbd> to save the file
 
 ___
