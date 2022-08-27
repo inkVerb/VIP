@@ -1170,7 +1170,7 @@ echo "Parent is finished."
 ./parent-exit nine; echo $?
 ```
 
-| **61** :$
+| **62** :$
 
 ```console
 ./parent-exit flowers; echo $?
@@ -1197,7 +1197,7 @@ e="$?"; [[ "$e" = "0" ]] || exit "$e"
 echo "Parent is finished."
 ```
 
-| **58** :$
+| **63** :$
 
 ```console
 ./parent-exit three; echo $?
