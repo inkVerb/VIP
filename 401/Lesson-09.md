@@ -940,6 +940,275 @@ fi
 ./varset-n
 ```
 
+### V. Pass child `exit` to parent
+
+We looked at different `exit` codes in [301 Lesson 6](https://github.com/inkVerb/vip/blob/master/301/Lesson-06.md)
+
+Now, we will pass a child script's exit code to make the parent script exit with the same code using this magical pass-exit line:
+
+| **magical pass-exit line** :
+
+```bash
+e="$?"; [[ "$e" = "0" ]] || exit "$e"
+```
+
+*Note, this only works in BASH (`#!/bin/bash`)*
+
+*This would be the Shell version, which we are not using!*
+
+```sh
+e="$?"; if [ "$e" != "0" ]; then exit "$e"; fi
+```
+
+| **42** :$
+
+```console
+gedit child-exit parent-exit
+```
+
+| **parent-exit** :
+
+ ```bash
+#!/bin/bash
+
+# We pass the first argument to the child script
+./child-exit "$1"
+
+# Uncomment to use the magical pass-exit line:
+#e="$?"; [[ "$e" = "0" ]] || exit "$e"
+
+# Without this, the magical pass-exit line isn't needed because the script ends
+if [ "$noargument" = "true" ]; then
+  exit
+fi
+
+echo "Parent is finished."
+```
+
+| **child-exit** :
+
+ ```bash
+#!/bin/bash
+
+willexit="$1"
+
+if [ -n "$willexit" ]; then
+  if [ "$willexit" = "three" ]; then
+    exit 3
+  elif [ "$willexit" = "fortyfive" ]; then
+    exit 45
+  else
+    exit 1
+  fi
+else
+  noargument="true"
+fi
+```
+
+*Note the parent script passes arguments directly to the child script, so the only difference is the exit code*
+
+*Run the script...*
+
+| **43** :$
+
+```console
+./parent-exit
+```
+
+*Display the exit code...*
+
+| **44** :$
+
+```console
+echo $?
+```
+
+*Now do the same with the child script to see what happened inside...*
+
+| **45** :$
+
+```console
+./child-exit
+```
+
+| **46** :$
+
+```console
+echo $?
+```
+
+*Note they use "success" `exit` if we don't use an argument; that's how the logic is intended*
+
+| **47** :$
+
+```console
+./parent-exit three
+```
+
+| **48** :$
+
+```console
+echo $?
+```
+
+| **45** :$
+
+```console
+./child-exit three
+```
+
+| **49** :$
+
+```console
+echo $?
+```
+
+*The exit code is different because the parent does not exit with the same exit code as the child*
+
+*This could be a problem; the child script exited with an error, but the parent script continued anyway*
+
+| **50** :$
+
+```console
+./parent-exit fortyfive
+```
+
+| **51** :$
+
+```console
+echo $?
+```
+
+| **52** :$
+
+```console
+./child-exit fortyfive
+```
+
+| **53** :$
+
+```console
+echo $?
+```
+
+*Entering `echo $?` in the terminal as a separate command is getting annoying, let's combine the commands from now on...*
+
+| **54** :$
+
+```console
+./parent-exit nine; echo $?
+```
+
+| **55** :$
+
+```console
+./child-exit nine; echo $?
+```
+
+*...Anything other than "three" or "fortyfive" will `exit 1`...*
+
+| **56** :$
+
+```console
+./parent-exit chocolate; echo $?
+```
+
+| **57** :$
+
+```console
+./child-exit chocolate; echo $?
+```
+
+*Uncomment the magical pass-exit line in parent-exit...*
+
+| **parent-exit** : (uncommented)
+
+ ```bash
+#!/bin/bash
+
+# We pass the first argument to the child script
+./child-exit "$1"
+
+# Uncomment to use the magical pass-exit line:
+e="$?"; [[ "$e" = "0" ]] || exit "$e"
+
+# Without this, the magical pass-exit line isn't needed because the script ends
+if [ "$noargument" = "true" ]; then
+  exit
+fi
+
+echo "Parent is finished."
+```
+
+*Run everything again to see that child exit code passes*
+
+| **58** :$
+
+```console
+./parent-exit three; echo $?
+```
+
+| **59** :$
+
+```console
+./child-exit three; echo $?
+```
+
+*Now they are the same because we are using the magical pass-exit line*
+
+| **60** :$
+
+```console
+./parent-exit fortyfive; echo $?
+```
+
+*The parent script didn't finish when the child script exited with an error; that's better if we need the child script to succeed*
+
+| **61** :$
+
+```console
+./parent-exit nine; echo $?
+```
+
+| **61** :$
+
+```console
+./parent-exit flowers; echo $?
+```
+
+*Try putting the magical pass-exit line* ***after*** *the `if` test, the test changes `$?` value!*
+
+| **parent-exit** : (MPEL is after the test)
+
+ ```bash
+#!/bin/bash
+
+# We pass the first argument to the child script
+./child-exit "$1"
+
+# Without this, the magical pass-exit line isn't needed because the script ends
+if [ "$noargument" = "true" ]; then
+  exit
+fi
+
+# Uncomment to use the magical pass-exit line:
+e="$?"; [[ "$e" = "0" ]] || exit "$e"
+
+echo "Parent is finished."
+```
+
+| **58** :$
+
+```console
+./parent-exit three; echo $?
+```
+
+*Note other commands and even a test in the script will change the `$?` value*
+
+*This is why we need the magical pass-exit line immediately after a vital child script*
+
+*There are other ways to exit when a vital child script fails, such as putting the entire child script in an `if` test or trailing the child script with an `|| exit`, but that makes the script difficult to read and may not properly pass the `exit` status*
+
 ___
 
 # The Take
@@ -988,6 +1257,12 @@ ___
   - `if [ -z "$IFS" ]` will return `true` if the Internal Field Separator (IPS) is still set to something
   - `if [ -n "$(cat SOME-FILE)" ]` will return `false` if "SOME-FILE" as no contents
     - This is because the contents of SOME-FILE would be the value of the Command Substitute; no contents = nothing to set as the value, so it would be "empty"
+
+## Magical pass-exit line (MPEL)
+- `e="$?"; [[ "$e" = "0" ]] || exit "$e"`
+  - This line should be added right after every essential child script, if the success of the child script matters
+  - MPEL will exit if the child script fails, passing the exit status to the final exit of the parent script
+- We need the MPEL because other scripts and even an `if` test will change the last exit code `$?` value
 
 ___
 
