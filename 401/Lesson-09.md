@@ -1262,7 +1262,7 @@ ___
 - `e="$?"; [[ "$e" = "0" ]] || exit "$e"`
   - This line should be added right after every essential child script, if the success of the child script matters
   - MPEL will exit if the child script fails, passing the exit status to the final exit of the parent script
-- We need the MPEL because other scripts and even an `if` test will change the last exit code `$?` value
+- We need the MPEL because other scripts and even an `if` test or `wait` will change the last exit code `$?` value
 
 ___
 
