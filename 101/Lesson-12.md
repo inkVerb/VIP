@@ -147,14 +147,11 @@ ___
 
 Oh, what's this?
 
-**Debian/Ubuntu**
-
 | **E1** :$
 
 ```console
 cowsay Moo! or something
 ```
-
 
 Don't have it yet?
 
