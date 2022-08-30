@@ -155,13 +155,13 @@ cowsay Moo! or something
 
 Don't have it yet?
 
-| **D2** :$ Debian/Ubuntu
+| **A2** :$ Arch/Manjaro
 
 ```console
-sudo apt install cowsay
+sudo pacman -S cowsay
 ```
 
-| **A2** :$ Arch/Manjaro
+| **D2** :$ Debian/Ubuntu
 
 ```console
 sudo apt install cowsay
