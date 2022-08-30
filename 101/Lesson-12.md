@@ -147,18 +147,33 @@ ___
 
 Oh, what's this?
 
-| **D1** :$
+**Debian/Ubuntu**
+
+| **E1** :$
 
 ```console
 cowsay Moo! or something
 ```
 
+
 Don't have it yet?
 
-| **D2** :$
+| **D2** :$ Debian/Ubuntu
 
 ```console
 sudo apt install cowsay
+```
+
+| **A2** :$ Arch/Manjaro
+
+```console
+sudo apt install cowsay
+```
+
+| **C2** :$ CentOS/Fedora
+
+```console
+sudo dnf install cowsay
 ```
 
 ___
