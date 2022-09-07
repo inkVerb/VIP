@@ -976,7 +976,7 @@ sudo chmod u+w /var/www
 ```console
 sudo chown -R www:www /var/www
 sudo chown -R root:www /var/lib/php/opcache
-sudo chown -R root:www /var/lib/php/session
+sudo chown -R www:www /var/lib/php/session
 sudo chown -R root:www /var/lib/php/wsdlcache
 ```
 
