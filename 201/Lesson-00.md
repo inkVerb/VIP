@@ -100,7 +100,7 @@ exit
 
 *If you are using Arch or Manjaro, we need to install a package for these lessons to work*
 
-| **6** :$
+| **A6** :$
 
 ```console
 yay -S --noconfirm adduser
