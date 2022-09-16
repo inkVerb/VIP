@@ -32,7 +32,7 @@ ___
 > | **S1** :$
 
 ```console
-su Username
+su username
 ```
 ___
 
@@ -82,9 +82,17 @@ About `sudo` and "root"...
   - *Everything done is owned by "root" and never needs `sudo`*
   - *This is generally dangerous*
 
-*Bye*
+***With great power comes great responsibility!***
 
 | **4** :$
+
+```console
+cowsay With great power comes great responsibility.
+```
+
+*Bye*
+
+| **5** :$
 
 ```console
 exit
@@ -92,7 +100,7 @@ exit
 
 *If you are using Arch or Manjaro, we need to install a package for these lessons to work*
 
-| **5** :$
+| **6** :$
 
 ```console
 yay -S --noconfirm adduser
