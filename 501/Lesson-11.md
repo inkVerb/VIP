@@ -1177,7 +1177,7 @@ mysql -u admin -padminpassword
 
 | **S1** :>
 
-```console
+```sql
 CREATE DATABASE test_pdo;
 GRANT ALL PRIVILEGES ON test_pdo.* TO pdo_user@localhost IDENTIFIED BY 'pdopassword';
 FLUSH PRIVILEGES;
@@ -2152,7 +2152,7 @@ mysql -u admin -padminpassword
 
 | **33** :>
 
-```console
+```sql
 CREATE DATABASE blog_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 GRANT ALL PRIVILEGES ON blog_db.* TO blog_db_user@localhost IDENTIFIED BY 'blogdbpassword';
 FLUSH PRIVILEGES;

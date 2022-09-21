@@ -37,7 +37,7 @@ mysql -u admin -padminpassword
 
 | **S1** :>
 
-```console
+```sql
 USE webapp_db;
 ```
 
@@ -163,7 +163,7 @@ Favorite Number: (same as before)
 
 | **2-opt** :>
 
-```console
+```sql
 SELECT * FROM users;
 ```
 
@@ -177,7 +177,7 @@ SELECT * FROM users;
 
 | **3** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -186,7 +186,7 @@ SELECT * FROM strings;
 
 | **4** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -196,7 +196,7 @@ SELECT * FROM strings;
 
 | **5** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -216,7 +216,7 @@ SELECT * FROM strings;
 
 | **6** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -224,13 +224,13 @@ SELECT * FROM strings;
 
 | **7** :>
 
-```console
+```sql
 DELETE FROM strings WHERE date_expires < NOW();
 ```
 
 | **8** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -269,7 +269,7 @@ Favorite Number: (same as before)
 
 | **9** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -295,7 +295,7 @@ localhost/web/recover.php
 
 | **10** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -313,7 +313,7 @@ localhost/web/cleanup.php
 
 | **11** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -346,7 +346,7 @@ Favorite Number: (same as before)
 
 | **12** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -380,7 +380,7 @@ php /srv/www/html/web/cleanup.php
 
 | **14** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -400,7 +400,7 @@ localhost/web/recover.php
 
 | **15** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -474,7 +474,7 @@ localhost/web/recover.php
 
 | **20** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -556,7 +556,7 @@ Password: My#1Password
 
 | **22** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 
@@ -591,7 +591,7 @@ localhost/web/webapp.php
 
 | **24** :>
 
-```console
+```sql
 SELECT * FROM strings;
 ```
 

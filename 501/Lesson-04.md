@@ -45,7 +45,7 @@ localhost/phpMyAdmin/
 
 | **L0** :>
 
-```console
+```sql
 USE webapp_db;
 ```
 
@@ -180,19 +180,19 @@ Nearly all web apps require that you have a database, database username, and dat
 
 | **3** :>
 
-```console
+```sql
 CREATE DATABASE webapp_db;
 ```
 
 | **4** :>
 
-```console
+```sql
 GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';
 ```
 
 | **5** :>
 
-```console
+```sql
 FLUSH PRIVILEGES;
 ```
 
@@ -208,7 +208,7 @@ Database host: localhost
 
 | **6** :>
 
-```console
+```sql
 USE webapp_db
 ```
 
@@ -278,7 +278,7 @@ localhost/web/install.php
 
 | **S8** :>
 
-```console
+```sql
 SHOW TABLES;
 ```
 
@@ -309,7 +309,7 @@ Password: My#1Password
 
 | **S9** :>
 
-```console
+```sql
 SHOW TABLES;
 ```
 
@@ -317,7 +317,7 @@ SHOW TABLES;
 
 | **S10** :>
 
-```console
+```sql
 SELECT * FROM users;
 ```
 
@@ -384,7 +384,7 @@ ls web
 
 | **S11** :>
 
-```console
+```sql
 SELECT id, fullname, pass FROM users WHERE username='jonboy';
 ```
 
@@ -694,7 +694,7 @@ localhost/web/account.php
 
 | **S19** :>
 
-```console
+```sql
 SELECT fullname, username, email, favnumber FROM users;
 ```
 
@@ -729,7 +729,7 @@ Password: My#1Password
 
 | **S20** :>
 
-```console
+```sql
 SELECT id, fullname, email, favnumber FROM users;
 ```
 

@@ -37,7 +37,7 @@ mysql -u admin -padminpassword
 
 | **S1** :>
 
-```console
+```sql
 USE webapp_db;
 ```
 

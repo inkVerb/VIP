@@ -37,7 +37,7 @@ mysql -u admin -padminpassword
 
 | **S1** :>
 
-```console
+```sql
 USE webapp_db;
 ```
 
@@ -173,7 +173,7 @@ localhost/web/edit.php
 
 | **4** :>
 
-```console
+```sql
 SELECT * FROM pieces;
 ```
 
@@ -194,7 +194,7 @@ localhost/web/edit.php
 
 | **5** :>
 
-```console
+```sql
 SELECT * FROM pieces;
 ```
 
@@ -220,7 +220,7 @@ localhost/web/edit.php
 
 | **6** :>
 
-```console
+```sql
 SELECT * FROM pieces;
 ```
 
@@ -296,7 +296,7 @@ localhost/web/edit.php
 
 | **8** :>
 
-```console
+```sql
 SELECT * FROM pieces;
 ```
 
@@ -389,7 +389,7 @@ localhost/web/edit.php
 
 | **10a** :>
 
-```console
+```sql
 SELECT * FROM pieces;
 ```
 
@@ -397,7 +397,7 @@ SELECT * FROM pieces;
 
 | **10b** :>
 
-```console
+```sql
 SELECT * FROM publications;
 ```
 
@@ -505,7 +505,7 @@ localhost/web/blog.php
 
 | **14** :>
 
-```console
+```sql
 SELECT * FROM pieces;
 ```
 
@@ -675,7 +675,7 @@ localhost/web/blog.php
 
 | **18** :>
 
-```console
+```sql
 SELECT * FROM pieces;
 ```
 
@@ -841,7 +841,7 @@ localhost/web/blog.php
 >
 > | **M1** :>
 
-```console
+```sql
 SELECT * FROM pieces;
 ```
 >

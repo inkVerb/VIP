@@ -19,6 +19,18 @@ Debian/Ubuntu
 sudo systemctl start apache2 mysql
 ```
 
+Ready SQL *if continuing after not finishing this lesson last time*
+
+```console
+mysql -u admin -padminpassword
+```
+
+Browser: // Username: `admin` Password: `adminpassword`
+
+```console
+localhost/phpMyAdmin/
+```
+
 ___
 
 ### SQL Language
@@ -60,19 +72,19 @@ sudo mysql
 
 | **X2** :>
 
-```console
+```sql
 GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;
 ```
 
 | **X3** :>
 
-```console
+```sql
 FLUSH PRIVILEGES;
 ```
 
 | **X4** :>
 
-```console
+```sql
 QUIT
 ```
 
@@ -124,7 +136,7 @@ SQL queries often use ALL CAPS for SQL terms to better see the SQL language part
 
 | **2** :>
 
-```console
+```sql
 SELECT user FROM mysql.user;
 ```
 
@@ -134,7 +146,7 @@ SELECT user FROM mysql.user;
 
 | **3** :>
 
-```console
+```sql
 CREATE USER new_user@localhost;
 ```
 
@@ -142,7 +154,7 @@ CREATE USER new_user@localhost;
 
 | **4** :>
 
-```console
+```sql
 SELECT user FROM mysql.user;
 ```
 
@@ -152,7 +164,7 @@ SELECT user FROM mysql.user;
 
 | **5** :>
 
-```console
+```sql
 DROP USER new_user@localhost;
 ```
 
@@ -160,7 +172,7 @@ DROP USER new_user@localhost;
 
 | **6** :>
 
-```console
+```sql
 SELECT user FROM mysql.user;
 ```
 
@@ -170,7 +182,7 @@ SELECT user FROM mysql.user;
 
 | **7** :>
 
-```console
+```sql
 SHOW DATABASES;
 ```
 
@@ -180,7 +192,7 @@ SHOW DATABASES;
 
 | **8** :>
 
-```console
+```sql
 CREATE DATABASE new_db;
 ```
 
@@ -188,7 +200,7 @@ CREATE DATABASE new_db;
 
 | **9** :>
 
-```console
+```sql
 SHOW DATABASES;
 ```
 
@@ -198,7 +210,7 @@ SHOW DATABASES;
 
 | **10** :>
 
-```console
+```sql
 DROP DATABASE new_db;
 ```
 
@@ -206,7 +218,7 @@ DROP DATABASE new_db;
 
 | **11** :>
 
-```console
+```sql
 SHOW DATABASES;
 ```
 
@@ -218,7 +230,7 @@ SHOW DATABASES;
 
 | **12** :>
 
-```console
+```sql
 CREATE USER new_user@localhost; CREATE DATABASE new_db;
 ```
 
@@ -226,7 +238,7 @@ CREATE USER new_user@localhost; CREATE DATABASE new_db;
 
 | **13** :>
 
-```console
+```sql
 SHOW DATABASES;
 ```
 
@@ -234,7 +246,7 @@ SHOW DATABASES;
 
 | **14** :>
 
-```console
+```sql
 SELECT user FROM mysql.user;
 ```
 
@@ -244,7 +256,7 @@ SELECT user FROM mysql.user;
 
 | **15** :>
 
-```console
+```sql
 SET PASSWORD FOR new_user@localhost=PASSWORD("newpassword");
 ```
 
@@ -256,7 +268,7 @@ SET PASSWORD FOR new_user@localhost=PASSWORD("newpassword");
 
 | **16** :>
 
-```console
+```sql
 FLUSH PRIVILEGES;
 ```
 
@@ -264,7 +276,7 @@ FLUSH PRIVILEGES;
 
 | **17** :>
 
-```console
+```sql
 QUIT
 ```
 
@@ -288,7 +300,7 @@ localhost/phpMyAdmin/
 
 | **19** :>
 
-```console
+```sql
 SHOW DATABASES;
 ```
 
@@ -310,19 +322,19 @@ mysql -u admin -padminpassword
 >
 > | **T2** :>
 
-```console
+```sql
 GRANT ALL PRIVILEGES ON new_db.* TO new_user@localhost IDENTIFIED BY 'newpassword';
 ```
 >
 > | **T3** :>
 
-```console
+```sql
 FLUSH PRIVILEGES;
 ```
 >
 > | **T4** :>
 
-```console
+```sql
 QUIT
 ```
 >
@@ -336,7 +348,7 @@ exit
 
 | **20** :>
 
-```console
+```sql
 SHOW DATABASES;
 ```
 
@@ -346,7 +358,7 @@ SHOW DATABASES;
 
 | **21** :>
 
-```console
+```sql
 QUIT
 ```
 
@@ -376,7 +388,7 @@ localhost/phpMyAdmin/
 
 | **23** :>
 
-```console
+```sql
 DROP USER new_user@localhost; DROP DATABASE new_db;
 ```
 
@@ -384,7 +396,7 @@ DROP USER new_user@localhost; DROP DATABASE new_db;
 
 | **24** :>
 
-```console
+```sql
 SHOW DATABASES;
 ```
 
@@ -392,7 +404,7 @@ SHOW DATABASES;
 
 | **25** :>
 
-```console
+```sql
 SELECT user FROM mysql.user;
 ```
 
@@ -406,7 +418,7 @@ This is the conventional way, using fewer commands...
 
 | **26** :>
 
-```console
+```sql
 CREATE DATABASE new_db;
 ```
 
@@ -414,7 +426,7 @@ CREATE DATABASE new_db;
 
 | **27** :>
 
-```console
+```sql
 GRANT ALL PRIVILEGES ON new_db.* TO new_user@localhost IDENTIFIED BY 'newpassword';
 ```
 
@@ -422,7 +434,7 @@ GRANT ALL PRIVILEGES ON new_db.* TO new_user@localhost IDENTIFIED BY 'newpasswor
 
 | **28** :>
 
-```console
+```sql
 FLUSH PRIVILEGES;
 ```
 
@@ -430,7 +442,7 @@ FLUSH PRIVILEGES;
 
 | **29** :>
 
-```console
+```sql
 SHOW DATABASES;
 ```
 
@@ -438,7 +450,7 @@ SHOW DATABASES;
 
 | **30** :>
 
-```console
+```sql
 SELECT user FROM mysql.user;
 ```
 
@@ -450,7 +462,7 @@ SELECT user FROM mysql.user;
 
 | **31** :>
 
-```console
+```sql
 QUIT
 ```
 
@@ -476,7 +488,7 @@ localhost/phpMyAdmin/
 
 | **33** :>
 
-```console
+```sql
 USE new_db
 ```
 
@@ -488,7 +500,7 @@ USE new_db
 
 | **34** :>
 
-```console
+```sql
 SHOW TABLES;
 ```
 
@@ -508,7 +520,7 @@ CREATE TABLE `fruit` (
 
 | **36** :>
 
-```console
+```sql
 SHOW TABLES;
 ```
 
@@ -518,7 +530,7 @@ SHOW TABLES;
 
 | **37** :>
 
-```console
+```sql
 SELECT * FROM fruit;
 ```
 
@@ -528,7 +540,7 @@ SELECT * FROM fruit;
 
 | **38** :>
 
-```console
+```sql
 INSERT INTO fruit (name) VALUES ('bananas');
 ```
 
@@ -536,7 +548,7 @@ INSERT INTO fruit (name) VALUES ('bananas');
 
 | **39** :>
 
-```console
+```sql
 SELECT * FROM fruit;
 ```
 
@@ -552,7 +564,7 @@ OR
 
 | **40** :>
 
-```console
+```sql
 INSERT INTO fruit (name, type) VALUES ('apples', 'McIntosh');
 ```
 
@@ -560,7 +572,7 @@ INSERT INTO fruit (name, type) VALUES ('apples', 'McIntosh');
 
 | **41** :>
 
-```console
+```sql
 SELECT * FROM fruit;
 ```
 
@@ -572,7 +584,7 @@ SELECT * FROM fruit;
 
 | **42** :>
 
-```console
+```sql
 UPDATE fruit SET count='5' WHERE name='apples';
 ```
 
@@ -580,7 +592,7 @@ UPDATE fruit SET count='5' WHERE name='apples';
 
 | **43** :>
 
-```console
+```sql
 SELECT * FROM fruit;
 ```
 
@@ -590,7 +602,7 @@ SELECT * FROM fruit;
 
 | **44** :>
 
-```console
+```sql
 UPDATE fruit SET type='nino', count='7' WHERE name='bananas';
 ```
 
@@ -598,7 +610,7 @@ UPDATE fruit SET type='nino', count='7' WHERE name='bananas';
 
 | **45** :>
 
-```console
+```sql
 SELECT * FROM fruit;
 ```
 
@@ -608,7 +620,7 @@ SELECT * FROM fruit;
 
 | **46** :>
 
-```console
+```sql
 DELETE FROM fruit WHERE name='apples';
 ```
 
@@ -616,7 +628,7 @@ DELETE FROM fruit WHERE name='apples';
 
 | **47** :>
 
-```console
+```sql
 SELECT * FROM fruit;
 ```
 
@@ -626,7 +638,7 @@ SELECT * FROM fruit;
 
 | **48** :>
 
-```console
+```sql
 DROP TABLE fruit;
 ```
 
@@ -634,7 +646,7 @@ DROP TABLE fruit;
 
 | **49** :>
 
-```console
+```sql
 SELECT * FROM fruit;
 ```
 
@@ -644,7 +656,7 @@ SELECT * FROM fruit;
 
 | **50** :>
 
-```console
+```sql
 DROP DATABASE new_db;
 ```
 
@@ -652,7 +664,7 @@ DROP DATABASE new_db;
 
 | **51** :>
 
-```console
+```sql
 SHOW DATABASES;
 ```
 
@@ -662,7 +674,7 @@ SHOW DATABASES;
 
 | **52** :>
 
-```console
+```sql
 QUIT
 ```
 
@@ -754,7 +766,7 @@ localhost/phpMyAdmin/
 
 | **54** :>
 
-```console
+```sql
 DROP USER new_user@localhost;
 ```
 
@@ -773,7 +785,7 @@ FLUSH PRIVILEGES;
 
 | **56** :>
 
-```console
+```sql
 SHOW DATABASES;
 ```
 
@@ -781,7 +793,7 @@ SHOW DATABASES;
 
 | **57** :>
 
-```console
+```sql
 SELECT user FROM mysql.user;
 ```
 
@@ -793,15 +805,16 @@ SELECT user FROM mysql.user;
 
 | **58** :>
 
-```console
+```sql
 USE food_db;
 ```
 
-| **B-58** ://phpMyAdmin **> food_db**
+| **B-58** ://phpMyAdmin **> Databases > food_db**
 
 *Create a table...*
 
 | **59** :>
+
 ```sql
 CREATE TABLE IF NOT EXISTS `fruit` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -817,7 +830,7 @@ CREATE TABLE IF NOT EXISTS `fruit` (
 
 | **60** :>
 
-```console
+```sql
 SHOW TABLES;
 ```
 
@@ -827,13 +840,13 @@ SHOW TABLES;
 
 | **61** :>
 
-```console
+```sql
 INSERT INTO fruit (name, type) VALUES ('apples', 'McIntosh');
 ```
 
 | **62** :>
 
-```console
+```sql
 SELECT * FROM fruit;
 ```
 
@@ -843,13 +856,13 @@ SELECT * FROM fruit;
 
 | **63** :>
 
-```console
+```sql
 INSERT INTO fruit (name, type) VALUES ('apples', 'Golden Delicious');
 ```
 
 | **64** :>
 
-```console
+```sql
 SELECT * FROM fruit;
 ```
 
@@ -859,13 +872,13 @@ SELECT * FROM fruit;
 
 | **65** :>
 
-```console
+```sql
 UPDATE fruit SET have=true, count='37', prepared='dry' WHERE id=1;
 ```
 
 | **66** :>
 
-```console
+```sql
 SELECT * FROM fruit;
 ```
 
@@ -875,7 +888,7 @@ SELECT * FROM fruit;
 
 | **67** :>
 
-```console
+```sql
 INSERT INTO fruit (name, type, have, count, prepared) VALUES ('bananas', 'nino', true, 58, 'fresh');
 ```
 
@@ -883,7 +896,7 @@ INSERT INTO fruit (name, type, have, count, prepared) VALUES ('bananas', 'nino',
 
 | **68** :>
 
-```console
+```sql
 SELECT id, name FROM fruit;
 ```
 
@@ -893,7 +906,7 @@ SELECT id, name FROM fruit;
 
 | **69** :>
 
-```console
+```sql
 UPDATE fruit SET have=false, count='0' WHERE id=3;
 ```
 
@@ -901,7 +914,7 @@ UPDATE fruit SET have=false, count='0' WHERE id=3;
 
 | **70** :>
 
-```console
+```sql
 SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
 ```
 

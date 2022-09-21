@@ -41,7 +41,7 @@ localhost/phpMyAdmin/
 
 | **S1** :>
 
-```console
+```sql
 USE food_db;
 ```
 
@@ -178,7 +178,7 @@ echo "<pre>$query</pre>";
 
 | **S2** :>
 
-```console
+```sql
 SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
 ```
 
@@ -288,7 +288,7 @@ ls web
 
 | **S5** :>
 
-```console
+```sql
 SELECT name, type, date_created FROM fruit;
 ```
 
@@ -349,7 +349,7 @@ localhost/web/website.php
 
 | **S6** :>
 
-```console
+```sql
 SELECT name, type, have, count, prepared FROM fruit;
 ```
 
@@ -394,7 +394,7 @@ localhost/web/website.php
 
 | **S7** :>
 
-```console
+```sql
 SELECT name, type, have, count, prepared FROM fruit;
 ```
 
@@ -449,7 +449,7 @@ localhost/web/website.php
 
 | **S8** :>
 
-```console
+```sql
 SELECT name, type, have, count, prepared FROM fruit;
 ```
 
@@ -491,7 +491,7 @@ localhost/web/website.php
 
 | **S9** :>
 
-```console
+```sql
 SELECT name, type, have, count, prepared FROM fruit;
 ```
 
@@ -529,7 +529,7 @@ localhost/web/website.php
 
 | **S10** :>
 
-```console
+```sql
 SELECT name, type, have, count, prepared FROM fruit;
 ```
 

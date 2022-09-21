@@ -37,7 +37,7 @@ mysql -u admin -padminpassword
 
 | **S1** :>
 
-```console
+```sql
 USE webapp_db;
 ```
 
@@ -123,7 +123,7 @@ localhost/web/pieces.php
 
 | **1** :>
 
-```console
+```sql
 SELECT id, type, status, title, date_created FROM pieces;
 ```
 
@@ -175,7 +175,7 @@ localhost/web/pieces.php
 
 | **2** :>
 
-```console
+```sql
 SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;
 ```
 
@@ -185,7 +185,7 @@ SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;
 
 | **3** :>
 
-```console
+```sql
 SELECT piece_id, type, pubstatus, title, slug FROM publications;
 ```
 
@@ -248,7 +248,7 @@ localhost/web/pieces.php
 
 | **4** :>
 
-```console
+```sql
 SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;
 ```
 
@@ -256,7 +256,7 @@ SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;
 
 | **5** :>
 
-```console
+```sql
 SELECT piece_id, type, pubstatus, title, slug FROM publications;
 ```
 
@@ -306,7 +306,7 @@ localhost/web/pieces.php
 
 | **6** :>
 
-```console
+```sql
 SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;
 ```
 
@@ -314,7 +314,7 @@ SELECT id, type, status, pub_yn, title, date_live, date_created FROM pieces;
 
 | **7** :>
 
-```console
+```sql
 SELECT piece_id, type, pubstatus, title, slug FROM publications;
 ```
 
@@ -457,7 +457,7 @@ localhost/web/hist.php?p=3
 
 | **10** :>
 
-```console
+```sql
 SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1;
 ```
 
@@ -465,7 +465,7 @@ SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 O
 
 | **11** :>
 
-```console
+```sql
 SELECT id, title, slug, date_updated FROM publication_history WHERE piece_id=3 ORDER BY id DESC LIMIT 1,1;
 ```
 
@@ -630,7 +630,7 @@ SELECT title, slug, tags FROM pieces WHERE id=3;
 
 | **16a** :>
 
-```console
+```sql
 UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' WHERE id=3;
 ```
 
@@ -638,7 +638,7 @@ UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternar
 
 | **16b** :>
 
-```console
+```sql
 SELECT title, slug, tags FROM pieces WHERE id=3;
 ```
 
@@ -646,7 +646,7 @@ SELECT title, slug, tags FROM pieces WHERE id=3;
 
 | **17** :>
 
-```console
+```sql
 SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]';
 ```
 
@@ -654,7 +654,7 @@ SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary
 
 | **18** :>
 
-```console
+```sql
 SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' AS JSON);
 ```
 
@@ -699,7 +699,7 @@ localhost/web/edit.php?p=3
 
 | **19** :>
 
-```console
+```sql
 SELECT title, slug, tags FROM pieces WHERE id=3;
 ```
 
@@ -996,7 +996,7 @@ ADD `series` INT UNSIGNED DEFAULT 1;
 
 | **26** :>
 
-```console
+```sql
 SELECT * FROM series;
 ```
 
@@ -1016,7 +1016,7 @@ localhost/web/edit.php?p=3
 
 | **27** :>
 
-```console
+```sql
 SELECT * FROM series;
 ```
 
