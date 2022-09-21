@@ -834,59 +834,65 @@ CREATE TABLE IF NOT EXISTS `fruit` (
 SHOW TABLES;
 ```
 
-| **B-60** ://phpMyAdmin **> fruit**
+| **61** :>
+
+```sql
+SELECT * FROM fruit;
+```
+
+| **B-61** ://phpMyAdmin **> food_db > fruit**
 
 *Make an entry...*
 
-| **61** :>
+| **62** :>
 
 ```sql
 INSERT INTO fruit (name, type) VALUES ('apples', 'McIntosh');
 ```
 
-| **62** :>
+| **63** :>
 
 ```sql
 SELECT * FROM fruit;
 ```
 
-| **B-62** ://phpMyAdmin **> fruit**
+| **B-63** ://phpMyAdmin **> fruit**
 
 *And another...*
 
-| **63** :>
+| **64** :>
 
 ```sql
 INSERT INTO fruit (name, type) VALUES ('apples', 'Golden Delicious');
 ```
 
-| **64** :>
+| **65** :>
 
 ```sql
 SELECT * FROM fruit;
 ```
 
-| **B-64** ://phpMyAdmin **> fruit**
+| **B-65** ://phpMyAdmin **> fruit**
 
 *Add more details to entry 1...*
 
-| **65** :>
+| **66** :>
 
 ```sql
 UPDATE fruit SET have=true, count='37', prepared='dry' WHERE id=1;
 ```
 
-| **66** :>
+| **67** :>
 
 ```sql
 SELECT * FROM fruit;
 ```
 
-| **B-66** ://phpMyAdmin **> Browse**
+| **B-67** ://phpMyAdmin **> Browse**
 
 *Make a "complete" entry...*
 
-| **67** :>
+| **68** :>
 
 ```sql
 INSERT INTO fruit (name, type, have, count, prepared) VALUES ('bananas', 'nino', true, 58, 'fresh');
@@ -894,17 +900,23 @@ INSERT INTO fruit (name, type, have, count, prepared) VALUES ('bananas', 'nino',
 
 *Look at only `id` and `name`...*
 
-| **68** :>
+| **69** :>
 
 ```sql
 SELECT id, name FROM fruit;
 ```
 
-| **B-68** ://phpMyAdmin **> Browse**
+| **70** :>
+
+```sql
+SELECT * FROM fruit;
+```
+
+| **B-70** ://phpMyAdmin **> Browse**
 
 *Let's say our nino bananas go out of stock...*
 
-| **69** :>
+| **71** :>
 
 ```sql
 UPDATE fruit SET have=false, count='0' WHERE id=3;
@@ -912,13 +924,19 @@ UPDATE fruit SET have=false, count='0' WHERE id=3;
 
 *Look at only important columns from our "bananas" entry..*
 
-| **70** :>
+| **72** :>
 
 ```sql
 SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
 ```
 
-| **B-70** ://phpMyAdmin **> Browse**
+| **73** :>
+
+```sql
+SELECT * FROM fruit;
+```
+
+| **B-73** ://phpMyAdmin **> Browse**
 
 ___
 
@@ -965,22 +983,25 @@ ___
 - SQL belongs inside a "logic code" like PHP (or Node, Python, etc)
   - In the next lesson, we will put SQL inside PHP to make a website come to life
   - This is how most software applications are made
-  - SQL has alternatives (MongoDB, ScalaQL) just how PHP has alternatives (Node, Python)
+  - SQL has alternatives (MongoDB, ScalaQL, PostgreSQL) just how PHP has alternatives (Node.js, Python, Go)
 - In app development:
   1. Learn the SQL you need to do what you need done *correctly*
     - *(don't be a 'sript kiddy', who just copies from others without understanding)*
   2. Maintain a "cheat sheet of SQL recipes to hack" for building your PHP code
   3. Prepare your SQL queries in a text editor *to each specific need*
   4. Copy-paste your SQL queries into the terminal *to test them*
-  5. Finally, put your tested SQL queries into your PHP code (or Node, Python, etc)
+  5. Finally, put your tested SQL queries into your PHP code (or Node, Python, Go, etc)
 
 ## How Much SQL Should I Learn?
 - In any work, most of your SQL queries are the same, again and again, with few differences
 - Many people who work with data all day as a job know SQL language very well and use the terminal
 - Working with SQL directly (phpMyAdmin or terminal) is another type of work to itself
 - If you make a serious app: remember it goes two ways: *understand*, then *copy*
+- Don't learn all SQL, you will never learn all
+- Learn a little beyond what you will use, but make sure you understand it
   - Study SQL in more depth than you will use, just to make sure you aren't doing things wrong
   - Copy-paste SQL queries from a "**cheat sheet you understand**" so you aren't making mistakes
+  - Don't waste all your time studying SQL forever when you won't use it
 - Start as a beginner in SQL with [SoloLearn: SQL Fundamentals](https://www.sololearn.com/Course/SQL/)
 
 ___
