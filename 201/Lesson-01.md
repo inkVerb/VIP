@@ -262,8 +262,8 @@ ___
   - *Note: `mv` is also the way to change the name of a file*
 - `ln -s` makes a "symlink" of a file this way:
   - `ln -s source-file new-symlink`
-- `ls -l` will show the destination (original file) of a symlink
-- `l` works like `ls` but adds characters to indicate file types; this helps with monochrome displays
+- `ls` will list file names, but not the details
+- `ls -l` will show the destination (original file) of a symlink, along with other details
 - `rm` removes a file this way:
   - `rm file-to-remove`
 - `touch` creates an empty file, if the file doesn't already exist this way:
