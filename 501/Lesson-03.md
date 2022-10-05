@@ -152,7 +152,7 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple
 sudo cp core/03-website2.php web/website.php && \
 sudo cp core/03-in.config2.php web/in.config.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website2.php core/03-in.config.php && \
+atom core/03-website2.php core/03-in.config2.php && \
 ls web
 ```
 
