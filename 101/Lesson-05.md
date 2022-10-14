@@ -379,7 +379,7 @@ ___
 ## `$(`Command Substitution`)`
 - The output of a command can be treated as an argument or value if wrapped one of two ways:
   - $ and parentheses: `$(Command Substitution)`
-  - backticks: `` `Command Substitution` ``
+  - backticks: `` `Command Substitution` `` (this can be done, but is not standard practice)
   - Both of these are called "**Command Substitution**"
 - Command Substitution can set the value of a variable in a Shell script
   - Example: `thisVariable=$(cat somefile)`
