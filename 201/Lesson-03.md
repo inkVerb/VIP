@@ -564,3 +564,35 @@ ___
 ___
 
 #### [Lesson 4: ls -1 -l -a -r, chmod](https://github.com/inkVerb/vip/blob/master/201/Lesson-04.md)
+
+___
+
+***For Ubuntu***
+
+*Check the Linux version info*
+
+`lsb_release -a`
+
+*Get just the number*
+
+`lsb_release -r -s`
+
+### For a "sudoer" who can use `sudo`
+
+*Update the current lists (no updates are installed)*
+
+`sudo apt update`
+
+*Upgrade (install updates)*
+
+`sudo apt upgrade` *If updates are available, you will need to press Y, then Enter*
+
+*Install the* `git` *package*
+
+`sudo apt install git` *Unless it is installed already, you will need to press Y, then Enter*
+
+*You can install more than one package...*
+
+*Install the* `curl` `net-tools` `htop` `odt2txt` `rename` and `pwgen` *packages* (the command `netstat` comes from the package `net-tools`)
+
+`sudo apt install -y curl net-tools htop odt2txt rename pwgen` *Use* `-y` *so you DO NOT need to press Y, then Enter*

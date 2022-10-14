@@ -209,20 +209,20 @@ gedit echocatsed_applefoo
 cat echocatsed_applefoo
 ```
 
-*"Command Substitution" can also be done with backticks: `` `Command Substitution` `` (considered lazy, though)*
+*This is useful to get your CPU type...*
 
 | **30** :$
 
 ```console
-echo `cat applefoo | sed "s/foo/bar/"`
+hostnamectl
 ```
 
-*This is useful to get your CPU type...*
+*`echo` the command substitution put to put it on one line...*
 
 | **31** :$
 
 ```console
-hostnamectl
+echo $(hostnamectl)
 ```
 
 *`echo` it into a file...*
