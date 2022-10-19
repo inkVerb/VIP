@@ -195,6 +195,12 @@ atom core/03-website3.php core/03-style3.css && \
 ls web
 ```
 
+| **S3** :>
+
+```console
+SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
+```
+
 *Note the `<table>` in HTML and border lines in CSS:*
 
 - *website.php*
@@ -372,8 +378,8 @@ localhost/web/website.php
 
 *In the webform, input: (include spaces before and after)*
 
-- Name: " peaches "
-- Type: " Presidential "
+- Name: peaches
+- Type: Presidential
 - Prepared: Fresh
 
 *See it added just the same...*
@@ -427,8 +433,8 @@ localhost/web/website.php
 
 *In the webform, input:*
 
-- Name: " kiwi "
-- Type: " Golden "
+- Name: kiwi
+- Type: Golden
 - Prepared: Fresh
 
 *See it added just the same...*
