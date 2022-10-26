@@ -392,10 +392,8 @@ ___
 exit
 ```
 >
-___
 
 ## CentOS/Fedora
-
 
 *Some commands require `sudo`, AKA "run as administrator"*
 
@@ -522,7 +520,6 @@ sudo dnf remove some-package-name
 
 ### IF needed, `exit` from the other "sudoer"
 >
-___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** :$
@@ -531,7 +528,6 @@ ___
 exit
 ```
 >
-___
 
 ___
 
@@ -541,20 +537,34 @@ ___
 - `lsb_release -a` outputs information about the current version of Linux
 - `lsb_release -r -s` will only output the basic version number
 ## Package Managers
-- Arch/Manjaro: `pacman`
-
+- Arch/Manjaro: `pacman` & `yay`
+  - `sudo pacman -Qm` outputs a list of *all* software packages that can be installed with `apt`
+  - `sudo pacman -Syyu` will update and install the lastest installed software packages
+  - `sudo pacman -S package-to-install` will install a package
+    - `--nocnofirm` will tell `apt` to automatically answer "yes" rather than prompting
+  - `sudo pacman -R package-to-remove` will remove (uninstall) a package
+  - Arch User Repository (AUR) is extra software maintained by volunteers from the Arch community, where all "other" packages come from
+  - `yay -Syyu` will update and install the lastest installed software packages from the AUR
+  - `yay -S package-to-install` will install a package from the AUR
+  - `yay -R package-to-remove` will remove (uninstall) a package from the AUR
+      - `yay -Rns package-to-remove` will also remove unneeded dependencies
+      - `--nocnofirm` will tell `apt` to automatically answer "yes" rather than prompting
 - Debian/Ubuntu: `apt`
-- `sudo apt list` outputs a list of *all* software packages that can be installed with `apt`
-- `sudo add-apt-repository ppa:NAME-OF-REPOSITORY/ppa` adds a repository as you can install more software packages
-- `sudo apt list --upgradable` outputs installed packages that have new versions available
-- `sudo apt update` will update the package `list`, including new versions available
-- `sudo apt upgrade` will "upgrade" (install updates) for packages with new versions available
-- `sudo apt install ...` will install a new package this way:
-  - `sudo apt install package-to-install`
-- `-y` will tell `apt` to automatically answer "yes" rather than prompting
-  - eg:`sudo apt install -y cowsay`
-- *Note `sudo apt remove package-to-remove` will remove (uninstall) a package*
-
+  - `sudo apt list` outputs a list of *all* software packages that can be installed with `apt`
+  - `sudo add-apt-repository ppa:NAME-OF-REPOSITORY/ppa` adds a repository as you can install more software packages
+  - `sudo apt list --upgradable` outputs installed packages that have new versions available
+  - `sudo apt update` will update the package `list`, including new versions available
+  - `sudo apt upgrade` will "upgrade" (install updates) for packages with new versions available
+  - `sudo apt install package-to-install` will install a package
+    - `-y` will tell `apt` to automatically answer "yes" rather than prompting
+  - `sudo apt remove package-to-remove` will remove (uninstall) a package
+- CentOS/Fedora: `dnf`
+  - `sudo dnf list | head` outputs a list of *all* software packages that can be installed with `apt`
+  - `sudo dnf list installed | grep -i httpd` outputs all installed packages
+  - `sudo dnf upgrade` will install packages with new versions available
+  - `sudo dnf install package-to-install` will install a package
+    - `-y` will tell `apt` to automatically answer "yes" rather than prompting
+  - `sudo dnf remove package-to-remove` will remove (uninstall) a package
 ## Ways to fix some problems
 - `sudo apt update --fix-missing` can fix some problems
 - With the **"some packages were held back"** error message , these might fix the problem:
