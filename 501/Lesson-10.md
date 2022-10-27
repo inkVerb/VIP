@@ -162,7 +162,7 @@ sudo systemctl restart apache2
 ```console
 sudo cp core/10-upload1.php web/upload.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/10-upload1.php && \
+codium core/10-upload1.php && \
 ls web
 ```
 
@@ -262,7 +262,7 @@ getimagesize($file)
 
 ```console
 sudo cp core/10-upload2.php web/upload.php && \
-atom core/10-upload2.php && \
+codium core/10-upload2.php && \
 ls web/uploads
 ```
 
@@ -321,7 +321,7 @@ pathinfo($file, PATHINFO_EXTENSION)
 
 ```console
 sudo cp core/10-upload3.php web/upload.php && \
-atom core/10-upload3.php && \
+codium core/10-upload3.php && \
 ls web/uploads
 ```
 
@@ -408,7 +408,7 @@ ls -l web/uploads
 
 ```console
 sudo cp core/10-upload4.php web/upload.php && \
-atom core/10-upload4.php && \
+codium core/10-upload4.php && \
 ```
 
 *Note upload.php:*
@@ -445,7 +445,7 @@ $file_size = $_FILES['some_post_name']['size'];
 
 ```console
 sudo cp core/10-upload5.php web/upload.php && \
-atom core/10-upload5.php && \
+codium core/10-upload5.php && \
 ls web/uploads
 ```
 
@@ -560,7 +560,7 @@ sudo systemctl restart apache2
 
 ```console
 sudo cp core/10-upload6.php web/upload.php && \
-atom core/10-upload6.php && \
+codium core/10-upload6.php && \
 ls web/uploads
 ```
 
@@ -646,7 +646,7 @@ sudo cp dropzone/dist/min/dropzone.min.js web/ && \
 sudo cp core/10-dropzone.html web/dropzone.html && \
 sudo cp core/10-dropzone.php web/dropzone.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/10-dropzone.html core/10-dropzone.php && \
+codium core/10-dropzone.html core/10-dropzone.php && \
 ls web
 ```
 
@@ -691,7 +691,7 @@ sudo cp core/10-medialibrary7.php web/medialibrary.php && \
 sudo cp core/10-upload7.php web/upload.php && \
 sudo cp core/10-style7.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/10-medialibrary7.php core/10-upload7.php core/10-style7.css && \
+codium core/10-medialibrary7.php core/10-upload7.php core/10-style7.css && \
 ls web web/media
 ```
 
@@ -784,7 +784,7 @@ Let's handle multiple uploads
 ```console
 sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary8.php web/medialibrary.php && \
-atom core/10-medialibrary8.php  && \
+codium core/10-medialibrary8.php  && \
 ls web web/media
 ```
 
@@ -830,7 +830,7 @@ First, see what the `$_FILES` array for a single file upload looks like
 ```console
 sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-upload9.php web/upload.php && \
-atom core/10-upload9.php  && \
+codium core/10-upload9.php  && \
 ls web web/media
 ```
 
@@ -889,7 +889,7 @@ Second, allow multiple uploads and see what the `$_FILES` array looks like for m
 sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary10.php web/medialibrary.php && \
 sudo cp core/10-upload10.php web/upload.php && \
-atom core/10-medialibrary10.php core/10-upload10.php && \
+codium core/10-medialibrary10.php core/10-upload10.php && \
 ls web web/media
 ```
 
@@ -1016,7 +1016,7 @@ So, our entire upload handler must be updated with `[0]`...
 sudo rm -f web/dropzone_uploads/* && \
 sudo cp core/10-medialibrary11.php web/medialibrary.php && \
 sudo cp core/10-upload11.php web/upload.php && \
-atom core/10-medialibrary11.php core/10-upload11.php && \
+codium core/10-medialibrary11.php core/10-upload11.php && \
 ls web web/media
 ```
 
@@ -1102,7 +1102,7 @@ sudo mkdir web/tinymce_uploads && \
 sudo cp core/10-tiny-image-upload.html web/tiny.html && \
 sudo cp core/10-tiny-upload1.php web/tiny-upload.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/10-tiny-image-upload.html core/10-tiny-upload.php && \
+codium core/10-tiny-image-upload.html core/10-tiny-upload.php && \
 ls web
 ```
 
@@ -1157,7 +1157,7 @@ Now, we need to process other files, including automatic uploads
 ```console
 sudo cp core/10-tiny-file-upload.html web/tiny.html && \
 sudo chown -R www:www /srv/www/html && \
-atom core/10-tiny-file-upload.html && \
+codium core/10-tiny-file-upload.html && \
 ls web
 ```
 
@@ -1227,7 +1227,7 @@ sudo cp core/test_uploads/vip-blue.png web/uploads/ && \
 sudo cp core/test_uploads/audio.mp3 web/uploads/ && \
 sudo cp core/test_uploads/video.webm web/uploads/ && \
 sudo chown -R www:www /srv/www/html && \
-atom core/10-tiny-media-insert.html && \
+codium core/10-tiny-media-insert.html && \
 ls web web/uploads
 ```
 
@@ -1252,7 +1252,7 @@ localhost/web/tiny.html
 
 ```console
 sudo cp core/10-medium-media-insert.html web/medium.html && \
-atom core/10-medium-media-insert.html && \
+codium core/10-medium-media-insert.html && \
 ls web web/uploads
 ```
 
@@ -1296,7 +1296,7 @@ sudo cp core/10-in.head12.php web/in.head.php && \
 sudo cp core/10-medialibrary12.php web/medialibrary.php && \
 sudo cp core/10-upload12.php web/upload.php && \
 sudo cp core/10-style12.css web/style.css && \
-atom core/10-medialibrary12.php core/10-upload12.php core/10-style12.css core/10-in.head12.php && \
+codium core/10-medialibrary12.php core/10-upload12.php core/10-style12.css core/10-in.head12.php && \
 ls web web/media
 ```
 
@@ -1385,7 +1385,7 @@ sudo cp core/10-upload13.php web/upload.php && \
 sudo cp core/10-act.delmedia13.php web/act.delmedia.php && \
 sudo cp core/10-style13.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/10-ajax.mediainfo13.php core/10-medialibrary13.php core/10-upload13.php core/10-act.delmedia13.php core/10-style13.css && \
+codium core/10-ajax.mediainfo13.php core/10-medialibrary13.php core/10-upload13.php core/10-act.delmedia13.php core/10-style13.css && \
 ls web
 ```
 
@@ -1705,7 +1705,7 @@ sudo cp core/10-thumb-vid.png web/thumb-vid.png && \
 sudo cp core/10-thumb-aud.png web/thumb-aud.png && \
 sudo cp core/10-thumb-doc.png web/thumb-doc.png && \
 sudo chown -R www:www /srv/www/html && \
-atom core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.documprocess.sh core/10-ajax.mediainfo14.php core/10-medialibrary14.php core/10-upload14.php core/10-act.delmedia14.php core/10-style14.css && \
+codium core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.documprocess.sh core/10-ajax.mediainfo14.php core/10-medialibrary14.php core/10-upload14.php core/10-act.delmedia14.php core/10-style14.css && \
 ls web web/media web/media/* ls web/media/original/*
 ```
 
@@ -1948,7 +1948,7 @@ sudo cp core/10-ajax.mediainfoinsert.php web/ajax.mediainfoinsert.php && \
 #sudo cp core/10-icon-doc.png web/icon-doc.png && \ # Delete if all works
 sudo cp core/10-style15.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/10-edit.php core/10-in.piecefunctions.php core/10-in.head15.php core/10-ajax.mediainsert.php core/10-ajax.mediainfoinsert.php core/10-style15.css && \
+codium core/10-edit.php core/10-in.piecefunctions.php core/10-in.head15.php core/10-ajax.mediainsert.php core/10-ajax.mediainfoinsert.php core/10-style15.css && \
 ls web web/media web/media/* ls web/media/original/*
 ```
 

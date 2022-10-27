@@ -115,7 +115,7 @@ $_GET['this_name'] // = "something-here"
 ```
 sudo cp core/01-phpget1.php web/phpget.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-phpget1.php && \
+codium core/01-phpget1.php && \
 ls -l web
 ```
 
@@ -136,7 +136,7 @@ localhost/web/phpget.php?go=I am an apple pie
 | **2** :$
 ```
 sudo cp core/01-phpget2.php web/phpget.php && \
-atom core/01-phpget2.php && \
+codium core/01-phpget2.php && \
 ls -l web
 ```
 
@@ -168,7 +168,7 @@ $_POST['this_name'] // = whatever was entered into the <input>
 ```
 sudo cp core/01-phppost1.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-phppost1.php && \
+codium core/01-phppost1.php && \
 ls web
 ```
 
@@ -252,7 +252,7 @@ if (in_array('kiwi', $fruit)) {echo 'should not be found';}
 ```
 sudo cp core/01-phparrays.php web/phparrays.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-phparrays.php && \
+codium core/01-phparrays.php && \
 ls web
 ```
 
@@ -304,7 +304,7 @@ foreach ($array as $item) {
 | **5** :$
 ```
 sudo cp core/01-phpforeach.php web/phpforeach.php && \
-atom core/01-phpforeach.php && \
+codium core/01-phpforeach.php && \
 ls web
 ```
 
@@ -342,7 +342,7 @@ if ( Test Here ) {
 | **6** :$
 ```
 sudo cp core/01-phppost2.php web/phppost.php && \
-atom core/01-phppost2.php && \
+codium core/01-phppost2.php && \
 ls web
 ```
 
@@ -359,7 +359,7 @@ localhost/web/phppost.php
 | **7** :$
 ```
 sudo cp core/01-phppost3.php web/phppost.php && \
-atom core/01-phppost3.php && \
+codium core/01-phppost3.php && \
 ls web
 ```
 
@@ -374,7 +374,7 @@ localhost/web/phppost.php
 | **8** :$
 ```
 sudo cp core/01-phppost4.php web/phppost.php && \
-atom core/01-phppost4.php && \
+codium core/01-phppost4.php && \
 ls web
 ```
 
@@ -389,7 +389,7 @@ localhost/web/phppost.php
 | **9** :$
 ```
 sudo cp core/01-phppost5.php web/phppost.php && \
-atom core/01-phppost5.php && \
+codium core/01-phppost5.php && \
 ls web
 ```
 
@@ -404,7 +404,7 @@ localhost/web/phppost.php
 | **10** :$
 ```
 sudo cp core/01-phppost6.php web/phppost.php && \
-atom core/01-phppost6.php && \
+codium core/01-phppost6.php && \
 ls web
 ```
 
@@ -483,7 +483,7 @@ if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not f
 | **11** :$
 ```
 sudo cp core/01-phppost7.php web/phppost.php && \
-atom core/01-phppost7.php && \
+codium core/01-phppost7.php && \
 ls web
 ```
 
@@ -520,7 +520,7 @@ switch ($variable_to_test) {
 | **12** :$
 ```
 sudo cp core/01-phppost8.php web/phppost.php && \
-atom core/01-phppost8.php && \
+codium core/01-phppost8.php && \
 ls web
 ```
 
@@ -632,7 +632,7 @@ preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variable
 | **13** :$
 ```
 sudo cp core/01-phpregex1.php web/phppost.php && \
-atom core/01-phpregex1.php && \
+codium core/01-phpregex1.php && \
 ls web
 ```
 
@@ -720,7 +720,7 @@ $argmnt = preg_replace('/([a-zA-Z0-9]+)_dogfish_([a-zA-Z0-9]+)/','$1_GoldFish_$2
 ```
 sudo cp core/01-phpreplace.php web/phpreplace.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-phpreplace.php && \
+codium core/01-phpreplace.php && \
 ls web
 ```
 
@@ -779,7 +779,7 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 | **15** :$
 ```
 sudo cp core/01-phpregex2.php web/phppost.php && \
-atom core/01-phpregex2.php && \
+codium core/01-phpregex2.php && \
 ls web
 ```
 
@@ -794,7 +794,7 @@ localhost/web/phppost.php
 | **16** :$
 ```
 sudo cp core/01-phpregex3.php web/phppost.php && \
-atom core/01-phpregex3.php && \
+codium core/01-phpregex3.php && \
 ls web
 ```
 
@@ -917,7 +917,7 @@ echo $someVariable;
 | **17** :$
 ```
 sudo cp core/01-phpfunction1.php web/phppost.php && \
-atom core/01-phpfunction1.php && \
+codium core/01-phpfunction1.php && \
 ls web
 ```
 
@@ -932,7 +932,7 @@ localhost/web/phppost.php
 | **18** :$
 ```
 sudo cp core/01-phpfunction2.php web/phppost.php && \
-atom core/01-phpfunction2.php && \
+codium core/01-phpfunction2.php && \
 ls web
 ```
 
@@ -947,7 +947,7 @@ localhost/web/phppost.php
 | **19** :$
 ```
 sudo cp core/01-phpfunction3.php web/phppost.php && \
-atom core/01-phpfunction3.php && \
+codium core/01-phpfunction3.php && \
 ls web
 ```
 
@@ -962,7 +962,7 @@ localhost/web/phppost.php
 | **20** :$
 ```
 sudo cp core/01-phpfunction4.php web/phppost.php && \
-atom core/01-phpfunction4.php && \
+codium core/01-phpfunction4.php && \
 ls web
 ```
 
@@ -977,7 +977,7 @@ localhost/web/phppost.php
 | **21** :$
 ```
 sudo cp core/01-phpfunction5.php web/phppost.php && \
-atom core/01-phpfunction5.php && \
+codium core/01-phpfunction5.php && \
 ls web
 ```
 
@@ -997,7 +997,7 @@ localhost/web/phppost.php
 | **22** :$
 ```
 sudo cp core/01-phpfunction6.php web/phppost.php && \
-atom core/01-phpfunction6.php && \
+codium core/01-phpfunction6.php && \
 ls web
 ```
 
@@ -1065,7 +1065,7 @@ include ('./in.file.php');
 sudo cp core/01-in.phpinclude.php web/in.phppost.php && \
 sudo cp core/01-phpinclude.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-in.phpinclude.php core/01-phpinclude.php && \
+codium core/01-in.phpinclude.php core/01-phpinclude.php && \
 ls web
 ```
 
@@ -1100,7 +1100,7 @@ echo CONSTANT_NAME;
 | **24** :$
 ```
 sudo cp core/01-phpconstant1.php web/phppost.php && \
-atom core/01-phpconstant1.php && \
+codium core/01-phpconstant1.php && \
 ls web
 ```
 
@@ -1117,7 +1117,7 @@ localhost/web/phppost.php
 | **25** :$
 ```
 sudo cp core/01-phpconstant2.php web/phppost.php && \
-atom core/01-phpconstant2.php && \
+codium core/01-phpconstant2.php && \
 ls web
 ```
 
@@ -1134,7 +1134,7 @@ localhost/web/phppost.php
 sudo cp core/01-in.config.php web/in.config.php && \
 sudo cp core/01-phpconstant3.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-in.config.php core/01-phpconstant3.php && \
+codium core/01-in.config.php core/01-phpconstant3.php && \
 ls web
 ```
 
@@ -1170,7 +1170,7 @@ sudo cp core/01-in.phpheader.php web/in.header.php && \
 sudo cp core/01-in.phpfooter.php web/in.footer.php && \
 sudo cp core/01-phphfconventions.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-in.phpheader.php core/01-in.phpfooter.php core/01-phphfconventions.php && \
+codium core/01-in.phpheader.php core/01-in.phpfooter.php core/01-phphfconventions.php && \
 ls web
 ```
 
@@ -1200,11 +1200,11 @@ file_put_contents('./file/location', 'File content string');
 ```
 sudo cp core/01-phpfileput1.php web/phpfileput.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-phpfileput1.php && \
+codium core/01-phpfileput1.php && \
 ls web
 ```
 
-*Look over the PHP file in atom before using the browser*
+*Look over the PHP file in Codium before using the browser*
 
 | **B-28** ://
 
@@ -1225,7 +1225,7 @@ ls web && cat web/fileput.1
 | **30** :$
 ```
 sudo cp core/01-phpfileput2.php web/phpfileput.php && \
-atom core/01-phpfileput2.php && \
+codium core/01-phpfileput2.php && \
 ls web
 ```
 
@@ -1254,7 +1254,7 @@ EOF;
 | **32** :$
 ```
 sudo cp core/01-phpfileput3.php web/phpfileput.php && \
-atom core/01-phpfileput3.php && \
+codium core/01-phpfileput3.php && \
 ls web
 ```
 
@@ -1285,7 +1285,7 @@ EOF;
 | **34** :$
 ```
 sudo cp core/01-phpfileput4.php web/phpfileput.php && \
-atom core/01-phpfileput4.php && \
+codium core/01-phpfileput4.php && \
 ls web
 ```
 
@@ -1312,7 +1312,7 @@ ls web && cat web/fileput.4
 ```
 sudo cp core/01-phpprintr.php web/phpprintr.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-phpprintr.php && \
+codium core/01-phpprintr.php && \
 ls web
 ```
 
@@ -1337,7 +1337,7 @@ Fill-out the fields and click "Hit me"
 ```
 sudo cp core/01-phpvardump.php web/phpvardump.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-phpvardump.php && \
+codium core/01-phpvardump.php && \
 ls web
 ```
 
@@ -1359,7 +1359,7 @@ Fill-out the fields and click "Hit me"
 ```
 sudo cp core/01-phperrors1.php web/phperrors.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/01-phperrors1.php && \
+codium core/01-phperrors1.php && \
 ls web
 ```
 
@@ -1383,7 +1383,7 @@ localhost/web/phperrors.php
 | **39** :$
 ```
 sudo cp core/01-phperrors2.php web/phperrors.php && \
-atom core/01-phperrors2.php && \
+codium core/01-phperrors2.php && \
 ls web
 ```
 

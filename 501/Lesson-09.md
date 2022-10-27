@@ -72,7 +72,7 @@ sudo cp core/09-blog1.php web/blog.php && \
 sudo cp core/09-webapp.php web/webapp.php && \
 sudo cp core/09-account.php web/account.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-pieces1.php core/09-in.head1.php core/09-in.logincheck.php core/09-in.footer.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-account.php && \
+codium core/09-pieces1.php core/09-in.head1.php core/09-in.logincheck.php core/09-in.footer.php core/09-edit1.php core/09-blog1.php core/09-webapp.php core/09-account.php && \
 ls web
 ```
 
@@ -142,7 +142,7 @@ sudo cp core/09-republish2.php web/republish.php && \
 sudo cp core/09-pagify2.php web/pagify.php && \
 sudo cp core/09-postify2.php web/postify.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-pieces2.php core/09-delete2.php core/09-undelete2.php core/09-purge_delete2.php core/09-unpublish2.php core/09-republish2.php core/09-pagify2.php core/09-pagify2.php core/09-postify2.php && \
+codium core/09-pieces2.php core/09-delete2.php core/09-undelete2.php core/09-purge_delete2.php core/09-unpublish2.php core/09-republish2.php core/09-pagify2.php core/09-pagify2.php core/09-postify2.php && \
 ls web
 ```
 
@@ -205,7 +205,7 @@ sudo cp core/09-unpublish3.php web/unpublish.php && \
 sudo cp core/09-republish3.php web/republish.php && \
 sudo cp core/09-pagify3.php web/pagify.php && \
 sudo cp core/09-postify3.php web/postify.php && \
-atom core/09-pieces3.php core/09-in.metaeditfunctions3.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-purge_delete3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
+codium core/09-pieces3.php core/09-in.metaeditfunctions3.php core/09-style3.css core/09-delete3.php core/09-undelete3.php core/09-purge_delete3.php core/09-unpublish3.php core/09-republish3.php core/09-pagify3.php core/09-pagify3.php core/09-postify3.php && \
 ls web
 ```
 
@@ -270,7 +270,7 @@ sudo cp core/09-undelete_trash4.php web/undelete_trash.php && \
 sudo cp core/09-purge_delete_trash4.php web/purge_delete_trash.php && \
 sudo cp core/09-purge_all_trash.php web/purge_all_trash.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-pieces4.php core/09-trash4.php core/09-undelete_trash.php core/09-purge_delete_trash.php core/09-empty_all_trash.php && \
+codium core/09-pieces4.php core/09-trash4.php core/09-undelete_trash.php core/09-purge_delete_trash.php core/09-empty_all_trash.php && \
 ls web
 ```
 
@@ -326,7 +326,7 @@ sudo cp core/09-pieces5.php web/pieces.php && \
 sudo cp core/09-trash5.php web/trash.php && \
 sudo cp core/09-style5.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-pieces5.php core/09-trash5.php core/09-style3.css && \
+codium core/09-pieces5.php core/09-trash5.php core/09-style3.css && \
 ls web
 ```
 
@@ -391,7 +391,7 @@ sudo cp core/09-in.editprocess1.php web/in.editprocess.php && \
 sudo cp core/09-revert.php web/revert.php && \
 sudo cp core/09-style6.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-pieces6.php core/09-piece1.php core/09-hist6.php core/09-in.editprocess1.php core/09-revert.php core/09-style6.css && \
+codium core/09-pieces6.php core/09-piece1.php core/09-hist6.php core/09-in.editprocess1.php core/09-revert.php core/09-style6.css && \
 ls web
 ```
 
@@ -476,7 +476,7 @@ This "History" view is nice, but it could be much more functional...
 | **12** :$
 ```
 sudo cp core/09-hist9.php web/hist.php && \
-atom core/09-hist9.php
+codium core/09-hist9.php
 ```
 
 *Note hist.php:*
@@ -578,7 +578,7 @@ We will ***not*** use the `JSON` datatype, but `LONGTEXT` for standard SQL cross
 ```
 sudo cp core/09-jsonarrays.php web/jsonarrays.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-jsonarrays.php && \
+codium core/09-jsonarrays.php && \
 ls web
 ```
 
@@ -670,7 +670,7 @@ sudo cp core/09-edit2.php web/edit.php && \
 sudo cp core/09-in.piecefunctions2.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess2.php web/in.editprocess.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-edit2.php core/09-in.piecefunctions2.php core/09-in.editprocess2.php && \
+codium core/09-edit2.php core/09-in.piecefunctions2.php core/09-in.editprocess2.php && \
 ls web
 ```
 
@@ -751,7 +751,7 @@ Just note:
 ```
 sudo cp core/09-jsonlinksexplained.php web/jsonlinksexplained.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-jsonlinksexplained.php && \
+codium core/09-jsonlinksexplained.php && \
 ls web
 ```
 
@@ -793,7 +793,7 @@ localhost/web/jsonlinksexplained.php
 ```
 sudo cp core/09-jsonlinks.php web/jsonlinks.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-jsonlinks.php && \
+codium core/09-jsonlinks.php && \
 ls web
 ```
 
@@ -819,7 +819,7 @@ sudo cp core/09-piece3.php web/piece.php && \
 sudo cp core/09-blog3.php web/blog.php && \
 sudo cp core/09-style7.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-edit3.php core/09-in.jsonlinks.php core/09-in.piecefunctions3.php core/09-in.editprocess3.php core/09-piece3.php core/09-blog3.php core/09-style7.css && \
+codium core/09-edit3.php core/09-in.jsonlinks.php core/09-in.piecefunctions3.php core/09-in.editprocess3.php core/09-piece3.php core/09-blog3.php core/09-style7.css && \
 ls web
 ```
 
@@ -922,7 +922,7 @@ sudo cp core/09-select.php web/select.php && \
 sudo cp core/09-in.select.php web/in.select.php && \
 sudo cp core/09-ajax.select.php web/ajax.select.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-select.php core/09-in.select.php core/09-ajax.select.php && \
+codium core/09-select.php core/09-in.select.php core/09-ajax.select.php && \
 ls web
 ```
 
@@ -950,7 +950,7 @@ sudo cp core/09-in.editprocess4.php web/in.editprocess.php && \
 sudo cp core/09-in.series4.php web/in.series.php && \
 sudo cp core/09-ajax.series4.php web/ajax.series.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-edit4.php core/09-in.piecefunctions4.php core/09-in.editprocess4.php core/09-in.series4.php core/09-ajax.series4.php && \
+codium core/09-edit4.php core/09-in.piecefunctions4.php core/09-in.editprocess4.php core/09-in.series4.php core/09-ajax.series4.php && \
 ls web
 ```
 
@@ -1033,7 +1033,7 @@ SELECT * FROM series;
 | **28** :$
 
 ```console
-atom core/09-pieces6.php
+codium core/09-pieces6.php
 ```
 
 | **B-28** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
@@ -1077,7 +1077,7 @@ Consider `form=` & `="apply2all"` in this code...
 ```
 sudo cp core/09-postformarrays.php web/postformarrays.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/postformarrays.php && \
+codium core/postformarrays.php && \
 ls web
 ```
 
@@ -1102,7 +1102,7 @@ sudo cp core/09-act.bulkpieces.php web/act.bulkpieces.php && \
 sudo cp core/09-in.metaeditfunctions7.php web/in.metaeditfunctions.php && \
 sudo cp core/09-trash7.php web/trash.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-pieces7.php core/09-act.bulkpieces.php core/09-in.metaeditfunctions7.php core/09-trash7.php && \
+codium core/09-pieces7.php core/09-act.bulkpieces.php core/09-in.metaeditfunctions7.php core/09-trash7.php && \
 ls web
 ```
 
@@ -1166,7 +1166,7 @@ sudo cp core/09-act.piecesactions.php web/act.piecesactions.php && \
 sudo cp core/09-trash8.php web/trash.php && \
 sudo cp core/09-style8.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-pieces8.php core/09-in.metaeditfunctions8.php core/09-ajax.piecesactions8.php core/09-act.piecesactions.php core/09-trash8.php core/09-style8.css && \
+codium core/09-pieces8.php core/09-in.metaeditfunctions8.php core/09-ajax.piecesactions8.php core/09-act.piecesactions.php core/09-trash8.php core/09-style8.css && \
 ls web
 ```
 
@@ -1253,7 +1253,7 @@ sudo cp core/09-trash9.php web/trash.php && \
 sudo cp core/09-in.metaeditfunctions9.php web/in.metaeditfunctions.php && \
 sudo cp core/09-ajax.piecesactions9.php web/ajax.piecesactions.php && \
 sudo cp core/09-style9.css web/style.css && \
-atom core/09-pieces9.php core/09-trash9.php core/09-in.metaeditfunctions9.php core/09-ajax.piecesactions9.php core/09-style9.css && \
+codium core/09-pieces9.php core/09-trash9.php core/09-in.metaeditfunctions9.php core/09-ajax.piecesactions9.php core/09-style9.css && \
 ls web
 ```
 
@@ -1307,7 +1307,7 @@ sudo cp core/09-in.metaeditfunctions10.php web/in.metaeditfunctions.php && \
 sudo cp core/09-ajax.metaedit.php web/ajax.metaedit.php && \
 sudo cp core/09-style10.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-pieces10.php web/pieces.php core/09-trash10.php web/trash.php core/09-in.piecefunctions10.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css && \
+codium core/09-pieces10.php web/pieces.php core/09-trash10.php web/trash.php core/09-in.piecefunctions10.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css && \
 ls web
 ```
 
@@ -1338,7 +1338,7 @@ ls web
 | **35** :$
 
 ```
-atom core/09-pieces10.php core/09-trash10.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css
+codium core/09-pieces10.php core/09-trash10.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css
 ```
 
 *Note pieces.php:*
@@ -1454,7 +1454,7 @@ localhost/web/pieces.php
 | **36** :$
 ```
 sudo cp core/09-hist10.php web/hist.php && \
-atom core/09-hist10.php && \
+codium core/09-hist10.php && \
 ls web
 ```
 
@@ -1486,7 +1486,7 @@ sudo cp core/09-ajax.series11.php web/ajax.series.php && \
 sudo cp core/09-in.head11.php web/in.head.php && \
 sudo cp core/09-style11.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/09-edit11.php core/09-ajax.edit11.php core/09-in.piecefunctions11.php core/09-in.editprocess11.php core/09-in.series11.php core/09-ajax.series11.php core/09-in.head11.php core/09-style11.css && \
+codium core/09-edit11.php core/09-ajax.edit11.php core/09-in.piecefunctions11.php core/09-in.editprocess11.php core/09-in.series11.php core/09-ajax.series11.php core/09-in.head11.php core/09-style11.css && \
 ls web
 ```
 
@@ -1568,7 +1568,7 @@ Let's add a JavaScript function for autosaves
 ```
 sudo cp core/09-edit12.php web/edit.php && \
 sudo cp core/09-hist12.php web/hist.php && \
-atom core/09-edit12.php core/09-hist12.php && \
+codium core/09-edit12.php core/09-hist12.php && \
 ls web
 ```
 
@@ -1686,7 +1686,7 @@ WHERE DEST.original_id=5
 sudo cp core/09-edit13.php web/edit.php && \
 sudo cp core/09-pieces13.php web/pieces.php && \
 sudo cp core/09-in.editprocess13.php web/in.editprocess.php && \
-atom core/09-edit13.php core/09-pieces13.php core/09-in.editprocess13.php && \
+codium core/09-edit13.php core/09-pieces13.php core/09-in.editprocess13.php && \
 ls web
 ```
 
@@ -1830,7 +1830,7 @@ var f=this; setTimeout(function(){f.disabled=true;}, 0); return true;
 | **44** :$
 ```
 sudo cp core/09-edit14.php web/edit.php && \
-atom core/09-edit14.php && \
+codium core/09-edit14.php && \
 ls web
 ```
 

@@ -306,15 +306,43 @@ exit
 > ___
 >
 
-### IV. Download and install Atom
-- This course uses Atom instead of gedit
-- Download and install from **[atom.io](https://atom.io/)**
+### IV. Download and install VSCodium
+- This course uses VSCodium instead of gedit
+- Arch/Manjaro:
+```bash
+sudo pacman -S vscodium-bin
+```
+- Debian/Ubuntu
+```bash
+sudo apt update && sudo apt upgrade -y
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \ | gpg --dearmor \ | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+| sudo tee /etc/apt/sources.list.d/vscodium.list
+sudo apt update
+sudo apt install codium
+```
+- Fedora/CentOS/openSUSE
+```bash
+sudo dnf install epel-release
+sudo dnf install snapd --skip-broken
+sudo systemctl enable --now snapd.socket
+sudo ln -s /var/lib/snapd/snap /snap
+sudo snap install codium --classic
+```
+- Or, download and install from **[vscodium.com](https://vscodium.com/)**
   - Debian/Ubuntu: .deb
   - Fedora/CentOS/openSUSE: .rpm
-- Arch/Manjaro: (packages already available)
+
+- VSCodium settings
 ```bash
-sudo pacman -S apm
-apm install atom
+codium --install-extension emroussel.atomize-atom-one-dark-theme
+codium --install-extension opensumi.opensumi-default-themes
+codium --install-extension PenumbraTheme.penumbra
+codium --install-extension timonwong.shellcheck
+```
+  - May want to add these to *File > Preferences > Settings > Extensions > ShellCheck > Exclude:*
+```console
+SC2076,SC2016,SC1090,SC2034,SC2154,SC1091,SC2206,SC2086,SC2153,SC2231
 ```
 
 ### V. XML CLI Tools (Lesson 12)

@@ -93,7 +93,7 @@ ___
 ```console
 sudo cp core/12-syntax1.xml web/syntax.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-syntax1.xml && \
+codium core/12-syntax1.xml && \
 ls web
 ```
 
@@ -165,7 +165,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax2.xml web/syntax.xml && \
-atom core/12-syntax2.xml && \
+codium core/12-syntax2.xml && \
 ls web
 ```
 
@@ -193,7 +193,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax3.xml web/syntax.xml && \
-atom core/12-syntax3.xml && \
+codium core/12-syntax3.xml && \
 ls web
 ```
 
@@ -224,7 +224,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax4.xml web/syntax.xml && \
-atom core/12-syntax4.xml && \
+codium core/12-syntax4.xml && \
 ls web
 ```
 
@@ -254,7 +254,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax5.xml web/syntax.xml && \
-atom core/12-syntax5.xml && \
+codium core/12-syntax5.xml && \
 ls web
 ```
 
@@ -306,7 +306,7 @@ localhost/web/syntax.xml
 sudo cp core/12-xmlrender6.php web/xmlrender.php && \
 sudo cp core/12-htaccess6 web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-xmlrender6.php 12-htaccess7 && \
+codium core/12-xmlrender6.php 12-htaccess7 && \
 ls web
 ```
 
@@ -354,7 +354,7 @@ localhost/web/xmlrender.xml
 ```console
 sudo cp core/12-validate7.xml web/validate.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-syntax7.xml && \
+codium core/12-syntax7.xml && \
 ls web
 ```
 
@@ -407,7 +407,7 @@ localhost/web/validate.xml
 sudo cp core/12-validate8.xml web/validate.xml && \
 sudo cp core/12-validate8.dtd web/validate.dtd && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-validate8.xml core/12-validate8.dtd && \
+codium core/12-validate8.xml core/12-validate8.dtd && \
 ls web
 ```
 
@@ -487,7 +487,7 @@ localhost/web/validate.xml
 ```console
 sudo cp core/12-validate9.xml web/validate.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-syntax9.xml && \
+codium core/12-syntax9.xml && \
 ls web
 ```
 
@@ -569,7 +569,7 @@ localhost/web/validate.xml (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 sudo cp core/12-validate10.xml web/validate.xml && \
 sudo cp core/12-validate10.xsd web/validate.xsd && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-validate10.xml core/12-validate10.xsd && \
+codium core/12-validate10.xml core/12-validate10.xsd && \
 ls web
 ```
 
@@ -703,7 +703,7 @@ localhost/web/validate.xml
 ```console
 sudo cp core/12-validate11.xml web/validate.xml && \
 sudo cp core/12-validate11.xsd web/validate.xsd && \
-atom core/12-validate11.xml core/12-validate11.xsd && \
+codium core/12-validate11.xml core/12-validate11.xsd && \
 ls web
 ```
 
@@ -1061,7 +1061,7 @@ Add style with this after the header:
 ```console
 sudo cp core/12-style12.xml web/style.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style12.xml core/12-style12.xsl && \
+codium core/12-style12.xml core/12-style12.xsl && \
 ls web
 ```
 
@@ -1134,7 +1134,7 @@ localhost/web/style.xml
 sudo cp core/12-style13.xml web/style.xml && \
 sudo cp core/12-style13.xsl web/style.xsl && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style13.xml core/12-style13.xsl && \
+codium core/12-style13.xml core/12-style13.xsl && \
 ls web
 ```
 
@@ -1267,7 +1267,7 @@ localhost/web/style.xml
 sudo cp core/12-style14.xsl web/style.xsl && \
 sudo cp core/12-style14.xml web/style.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style14.xml core/12-style14.xsl && \
+codium core/12-style14.xml core/12-style14.xsl && \
 ls web
 ```
 
@@ -1575,7 +1575,7 @@ Mainly used for developers and debugging
 sudo cp core/12-style15.xml web/style.xml && \
 sudo cp core/12-style15.xsl web/style.xsl && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style15.xml core/12-style15.xsl && \
+codium core/12-style15.xml core/12-style15.xsl && \
 ls web
 ```
 
@@ -1607,7 +1607,7 @@ sudo cp core/12-meta16.xsl web/meta.xsl && \
 sudo cp core/12-heading16.xsl web/heading.xsl && \
 sudo cp core/12-visitors16.xsl web/visitors.xsl && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-style16.xsl core/12-structure16.xsl core/12-meta16.xsl core/12-heading16.xsl core/12-visitors16.xsl && \
+codium core/12-style16.xsl core/12-structure16.xsl core/12-meta16.xsl core/12-heading16.xsl core/12-visitors16.xsl && \
 ls web
 ```
 
@@ -1700,7 +1700,7 @@ sudo cp core/12-contacts.xml web/contacts.xml && \
 sudo cp core/12-style17.xsl web/style.xsl && \
 cp core/12-contacts.xml xml/contacts.xml && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-contacts.xml core/12-style17.xsl xml/contacts.xml && \
+codium core/12-contacts.xml core/12-style17.xsl xml/contacts.xml && \
 ls web
 ```
 
@@ -1821,7 +1821,7 @@ This is not a real settings file, but the settings for your desktop machine coul
 
 ```console
 cp core/12-settings.xml xml/settings.xml && \
-atom core/12-settings.xml xml/settings.xml && \
+codium core/12-settings.xml xml/settings.xml && \
 ls xml
 ```
 
@@ -1977,7 +1977,7 @@ unzip -p xml/markdown.odt content.xml
 
 ```console
 unzip -p xml/markdown.odt content.xml > xml/markdown.xml && \
-atom xml/markdown.xml && \
+codium xml/markdown.xml && \
 ls xml
 ```
 
@@ -2042,7 +2042,7 @@ sudo cp core/12-wordpress-css.rss xml/wordpress-css.rss && \
 sudo cp core/12-rss.css web/rss.css && \
 sudo cp core/12-rss.css xml/rss.css && \
 sudo chown -R www:www /srv/www/html && \
-atom xml/wordpress-css.rss xml/rss.css && \
+codium xml/wordpress-css.rss xml/rss.css && \
 ls web
 ```
 
@@ -2085,7 +2085,7 @@ sudo cp core/12-wordpress-xsl.rss xml/wordpress-xsl.rss && \
 sudo cp core/12-rss.xsl web/rss.xsl && \
 sudo cp core/12-rss.xsl xml/rss.xsl && \
 sudo chown -R www:www /srv/www/html && \
-atom xml/wordpress-xsl.rss xml/rss.xsl && \
+codium xml/wordpress-xsl.rss xml/rss.xsl && \
 ls web
 ```
 
@@ -2118,7 +2118,7 @@ localhost/web/wordpress-xsl.xml
 sudo cp core/12-podcast.rss web/podcast.rss && \
 sudo cp core/12-podcast.rss xml/podcast.rss && \
 sudo chown -R www:www /srv/www/html && \
-atom xml/podcast.rss && \
+codium xml/podcast.rss && \
 ls web
 ```
 
@@ -2157,7 +2157,7 @@ localhost/web/podcast.xml
 sudo cp pdo-feed/* web/ && \
 sudo mv web/htaccess web/.htaccess && \
 sudo chown -R www:www /srv/www/html
-atom pdo-feed/feed.php rss.xsl blog.php in.head.php settings.php && \
+codium pdo-feed/feed.php rss.xsl blog.php in.head.php settings.php && \
 ls pdo-feed
 ```
 
@@ -2406,7 +2406,7 @@ foreach ($rss->channel->item as $item) {
 sudo cp core/12-feed.rss web/feed.rss && \
 sudo cp core/12-processfeed.php web/feed.rss && \
 sudo chown -R www:www /srv/www/html && \
-atom core/12-feed.rss core/12-processfeed.php
+codium core/12-feed.rss core/12-processfeed.php
 ```
 
 | **B-51** ://
@@ -2578,7 +2578,7 @@ sudo cp -f core/12-feed.rss web/play.rss && \
 cp pdo-aggregate/task.aggregatefetch.php play.aggregatefetch.php && \
 sudo cp pdo-aggregate/task.aggregatefetch.php web/play.aggregatefetch.php && \
 sudo chown -R www:www /srv/www/html && \
-atom play.rss play.aggregatefetch.php
+codium play.rss play.aggregatefetch.php
 ```
 
 *If you want to see any PHP errors in the processor, add this to the top:*

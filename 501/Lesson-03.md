@@ -70,7 +70,7 @@ sudo cp core/03-style1.css web/style.css && \
 sudo cp core/03-in.functions1.php web/in.functions.php && \
 sudo cp core/03-in.checks1.php web/in.checks.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website1.php core/03-style1.css core/03-in.functions1.php core/03-in.checks1.php && \
+codium core/03-website1.php core/03-style1.css core/03-in.functions1.php core/03-in.checks1.php && \
 ls web
 ```
 
@@ -152,7 +152,7 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple
 sudo cp core/03-website2.php web/website.php && \
 sudo cp core/03-in.config2.php web/in.config.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website2.php core/03-in.config2.php && \
+codium core/03-website2.php core/03-in.config2.php && \
 ls web
 ```
 
@@ -191,7 +191,7 @@ localhost/web/website.php
 sudo cp core/03-website3.php web/website.php && \
 sudo cp core/03-style3.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website3.php core/03-style3.css && \
+codium core/03-website3.php core/03-style3.css && \
 ls web
 ```
 
@@ -245,7 +245,7 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) { // test and array as on
 ```
 sudo cp core/03-website4.php web/website.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website4.php && \
+codium core/03-website4.php && \
 ls web
 ```
 *Note website.php: the same SQL query for the `$query` variable in our PHP*
@@ -277,7 +277,7 @@ localhost/web/website.php
 ```
 sudo cp core/03-website5.php web/website.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website5.php && \
+codium core/03-website5.php && \
 ls web
 ```
 *Note the same SQL query for the `$query` variable in our PHP*
@@ -312,7 +312,7 @@ sudo cp core/03-style6.css web/style.css && \
 sudo cp core/03-in.functions6.php web/in.functions.php && \
 sudo cp core/03-in.checks6.php web/in.checks.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website6.php core/03-style6.css core/03-in.functions6.php core/03-in.checks6.php && \
+codium core/03-website6.php core/03-style6.css core/03-in.functions6.php core/03-in.checks6.php && \
 ls web
 ```
 
@@ -361,7 +361,7 @@ $something_sql_safe = mysqli_real_escape_string($database, $something);
 ```
 sudo cp core/03-website7.php web/website.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website7.php && \
+codium core/03-website7.php && \
 ls web
 ```
 
@@ -417,7 +417,7 @@ $something_sql_safe = escape_sql($something);
 sudo cp core/03-website8.php web/website.php && \
 sudo cp core/03-in.config8.php web/in.config.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website8.php core/03-in.config8.php && \
+codium core/03-website8.php core/03-in.config8.php && \
 ls web
 ```
 
@@ -460,7 +460,7 @@ sudo cp core/03-style9.css web/style.css && \
 sudo cp core/03-in.functions9.php web/in.functions.php && \
 sudo cp core/03-in.checks9.php web/in.checks.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website9.php core/03-style9.css core/03-in.functions9.php core/03-in.checks9.php && \
+codium core/03-website9.php core/03-style9.css core/03-in.functions9.php core/03-in.checks9.php && \
 ls web
 ```
 
@@ -500,7 +500,7 @@ SELECT name, type, have, count, prepared FROM fruit;
 sudo cp core/03-website10.php web/website.php && \
 sudo cp core/03-in.checks10.php web/in.checks.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/03-website10.php core/03-in.checks10.php && \
+codium core/03-website10.php core/03-in.checks10.php && \
 ls web
 ```
 

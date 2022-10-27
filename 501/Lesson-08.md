@@ -53,7 +53,7 @@ sudo cp core/08-edit1.php web/edit.php && \
 sudo cp core/08-in.loginhead.php web/in.login_head.php && \
 sudo cp core/08-in.logincheck1.php web/in.logincheck.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-edit1.php core/08-in.loginhead.php core/08-in.logincheck1.php && \
+codium core/08-edit1.php core/08-in.loginhead.php core/08-in.logincheck1.php && \
 ls web
 ```
 
@@ -138,7 +138,7 @@ sudo cp core/08-edit2.php web/edit.php && \
 sudo cp core/08-in.editprocess2.php web/in.editprocess.php && \
 sudo cp core/08-in.piecefunctions2.php web/in.piecefunctions.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions2.php && \
+codium core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions2.php && \
 ls web
 ```
 
@@ -252,7 +252,7 @@ $last_id = $database->insert_id;
 sudo cp core/08-edit3.php web/edit.php && \
 sudo cp core/08-in.editprocess3.php web/in.editprocess.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-edit3.php core/08-in.editprocess3.php && \
+codium core/08-edit3.php core/08-in.editprocess3.php && \
 ls web
 ```
 
@@ -316,7 +316,7 @@ SELECT * FROM pieces;
 sudo cp core/08-edit4.php web/edit.php && \
 sudo cp core/08-in.editprocess4.php web/in.editprocess.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-edit4.php core/08-in.editprocess4.php && \
+codium core/08-edit4.php core/08-in.editprocess4.php && \
 ls web
 ```
 
@@ -438,7 +438,7 @@ sudo cp core/08-in.head.php web/in.head.php && \
 sudo cp core/08-edit5.php web/edit.php && \
 sudo cp core/08-style.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-blog.php core/08-piece.php core/08-in.logincheck2.php core/08-in.head.php core/08-edit5.php core/08-style.css && \
+codium core/08-blog.php core/08-piece.php core/08-in.logincheck2.php core/08-in.head.php core/08-edit5.php core/08-style.css && \
 ls web
 ```
 
@@ -535,7 +535,7 @@ Let's just watch it work...
 ```
 sudo cp core/08-tiny-cdn.html web/tiny.html && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-tiny-cdn.html && \
+codium core/08-tiny-cdn.html && \
 ls web
 ```
 
@@ -573,7 +573,7 @@ sudo cp core/08-tiny-man.html web/tiny.html && \
 git clone https://github.com/inkverb/tinymce-dist.git
 sudo mv tinymce-dist web/tinymce
 sudo chown -R www:www /srv/www/html && \
-atom core/08-tiny-man.html && \
+codium core/08-tiny-man.html && \
 ls web
 ```
 
@@ -612,7 +612,7 @@ We can customize the TinyMCE toolbar layout
 ```
 sudo cp core/08-tiny-cust.html web/tiny.html && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-tiny-cust.html && \
+codium core/08-tiny-cust.html && \
 ls web
 ```
 
@@ -641,7 +641,7 @@ localhost/web/tiny.html
 sudo cp core/08-in.head3-tinymce.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions3.php web/in.piecefunctions.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-in.head3-tinymce.php core/08-in.piecefunctions3.php && \
+codium core/08-in.head3-tinymce.php core/08-in.piecefunctions3.php && \
 ls web
 ```
 
@@ -695,7 +695,7 @@ Let's just watch it work for now...
 ```
 sudo cp core/08-medium-cdn.html web/medium.html && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-medium-cdn.html && \
+codium core/08-medium-cdn.html && \
 ls web
 ```
 
@@ -735,7 +735,7 @@ sudo mv medium-editor/dist/css web/medium && \
 sudo mv medium-editor/dist/js web/medium && \
 rm -rf medium-editor && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-medium-man.html && \
+codium core/08-medium-man.html && \
 ls web
 ```
 
@@ -781,7 +781,7 @@ git clone https://github.com/yabwe/medium-editor-tables.git && \
 sudo cp medium-editor-tables/dist/css/*.css web/medium/css && \
 sudo cp medium-editor-tables/dist/js/*.js web/medium/js && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-medium-tables.html && \
+codium core/08-medium-tables.html && \
 ls web web/uploads
 ```
 
@@ -800,7 +800,7 @@ localhost/web/medium.html
 sudo cp core/08-in.head4-medium.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions-medium.php web/in.piecefunctions.php && \
 sudo chown -R www:www /srv/www/html && \
-atom core/08-in.logincheck4-medium.php core/08-in.piecefunctions-medium.php && \
+codium core/08-in.logincheck4-medium.php core/08-in.piecefunctions-medium.php && \
 ls web
 ```
 

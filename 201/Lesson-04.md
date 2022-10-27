@@ -53,7 +53,7 @@ chmod +x whoown
 ls -l
 ```
 
-*Note the "x" now on whoown: `-rwxrwxr-x` ('x' appears 3 times, the last one can be dangerous because it is public)*
+*Note the "x" now on whoown: `-rwxr-xr-x` ('x' appears 3 times, the last one can be dangerous because it is public)*
 
 *This is the danger: `chmod +x whoown`*
 
@@ -85,7 +85,7 @@ chmod ug+x whoown
 ls -l
 ```
 
-*Note it is green, but "x" only appears 2 times: `-rwxrwxr--`, so only the owner can execute the file*
+*Note it is green, but "x" only appears 2 times: `-rwxr-xr--`, so only the owner can execute the file*
 
 *These are "permissions" (`-rw-rw-r--`, `-rwxrwxr--`, `-rwxrwxr-x`, etc )*
 
@@ -132,10 +132,10 @@ ls -l
 | **17** :$
 
 ```console
-chmod 664 whoown
+chmod 644 whoown
 ```
 
-| **18** :$ *Note the new permissions (`-rw-rw-r--`) are the original permissions*
+| **18** :$ *Note the new permissions (`-rw-r--r--`) are the original permissions*
 
 ```console
 ls -l
@@ -144,10 +144,10 @@ ls -l
 | **19** :$
 
 ```console
-chmod 774 whoown
+chmod 754 whoown
 ```
 
-| **20** :$ *Note, that was what we had before: `-rwxrwxr--`*
+| **20** :$ *Note, that was what we had before: `-rwxr-xr--`*
 
 ```console
 ls -l
@@ -253,14 +253,14 @@ ___
 
 # The Take
 
-- `ls -1` (with the number one `-1`, not `-l`) will list files vertically
 - `chmod` will change file permissions, see usage and examples here: [VIP/Cheat-Sheets: Permissions](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
+- `ls -1` (with the number one `-1`, not `-l`) will list files vertically
 - `ls -l` will output a list of files with "long" information that includes the permissions that `chmod` changes
 - `ls -a` shows "all" files and directories, even those hidden
 - `ls -r` shows files in "reverse" order
 - `ls -la` and `ls -al` combine the flags `-a` and `-l`, also `-arl`, `-r1la`, etc
 - `.` at the beginning of a file or directory name makes it "hidden"
-- <kbd>Ctrl</kbd> + H toggles hidden file and directory view in Nautilus
+- <kbd>Ctrl</kbd> + <kbd>H</kbd> toggles hidden file and directory view in Nautilus
 ___
 
 #### [Lesson 5: su, adduser, deluser, chown](https://github.com/inkVerb/vip/blob/master/201/Lesson-05.md)
