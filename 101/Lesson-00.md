@@ -148,7 +148,7 @@ ___
 - We use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> in the terminal for copy-paste
 - Open gedit from the GUI before entering it as a terminal command
 - `jobs`, `fg #`, `bg #`, `kill %#`, and `command &` also manage apps started from their terminal
-- `killall app-name` will end all sessions "app-name", whether started from the same terminal or not
+- `killall app-name` will end all sessions of "app-name", whether started from the same terminal or not
 
 ## Terms for apps
 
