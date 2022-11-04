@@ -37,23 +37,24 @@ ls /home
 
 | **U2** :$ (Ubuntu)
 
-- *When prompted Enter any simple password*
-- *Press `Enter` for remaining questions*
-
 ```console
 sudo adduser pinkypink
 ```
 
-| **A2** :$ (Arch/Manjaro)
-
-- *Enter `pinkypink` for user group*
-- *Press `Enter` for other questions*
 - *When prompted Enter any simple password*
+- *Press `Enter` for remaining questions*
+
+| **A2** :$ (Arch/Manjaro)
 
 ```console
 sudo groupadd pinkypink
 sudo adduser pinkypink
 ```
+
+- *Enter `pinkypink` for user group*
+- *Press `Enter` for other questions*
+- *When prompted Enter any simple password*
+
 
 *Look at `/home` again to see `pinkypink` has been added*
 
@@ -73,13 +74,13 @@ su pinkypink
 
 *See what's at "home"*
 
-| **4** :$
+| **5** :$
 
 ```console
 ls /home/pinkypink
 ```
 
-| **5** :$
+| **6** :$
 
 ```console
 ls /home/pinkypink
@@ -99,13 +100,13 @@ cd ~/School/VIP/201
 
 *Login via the terminal*
 
-| **6** :$
+| **7** :$
 
 ```console
 su pinkypink
 ```
 
-| **7** :$
+| **8** :$
 
 ```console
 cd /home/pinkypink
@@ -113,7 +114,7 @@ cd /home/pinkypink
 
 *Note the path is only `~` because `/home/pinkypink` is home for the user pinkypink*
 
-| **8** :$
+| **9** :$
 
 ```console
 ls
@@ -121,7 +122,7 @@ ls
 
 *Look at all the new directories*
 
-| **9** :$
+| **10** :$
 
 ```console
 ls -a
@@ -129,7 +130,7 @@ ls -a
 
 *Look at all the hidden directories, these are for settings and config files*
 
-| **10** :$
+| **11** :$
 
 ```console
 exit
@@ -139,7 +140,7 @@ exit
 
 ### II. `useradd`
 
-| **11** :$
+| **12** :$
 
 ```console
 sudo useradd pinkypurple
@@ -149,7 +150,7 @@ sudo useradd pinkypurple
 
 *Look at `/home` again, `pinkypurple` doesn't exist!*
 
-| **12** :$
+| **13** :$
 
 ```console
 ls /home
@@ -161,7 +162,7 @@ ls /home
 
 *Try to login as pinkypurple in the terminal*
 
-| **13** :$
+| **14** :$
 
 ```console
 su pinkypurple
@@ -171,7 +172,7 @@ su pinkypurple
 
 *Set a password for pinkypurple*
 
-| **14** :$ *Enter a simple password*
+| **15** :$ *Enter a simple password*
 
 ```console
 sudo passwd pinkypurple
@@ -179,7 +180,7 @@ sudo passwd pinkypurple
 
 *Look at `/home` again*
 
-| **15** :$
+| **16** :$
 
 ```console
 ls /home
@@ -189,7 +190,7 @@ ls /home
 
 *Now assign a "directory" to home (`-d`) and "move" any existing contents to that directory (`-m`)*
 
-| **16** :$
+| **17** :$
 
 ```console
 sudo usermod -d /home/ppurple -m pinkypurple
@@ -197,7 +198,7 @@ sudo usermod -d /home/ppurple -m pinkypurple
 
 *Look at `/home` again*
 
-| **17** :$
+| **18** :$
 
 ```console
 ls /home
@@ -207,13 +208,13 @@ ls /home
 
 *Create the home directory for pinkypurple*
 
-| **18** :$
+| **19** :$
 
 ```console
 sudo mkdir /home/ppurple
 ```
 
-| **19** :$
+| **20** :$
 
 ```console
 ls /home
@@ -221,7 +222,7 @@ ls /home
 
 *Login as pinkypurple in the terminal*
 
-| **20** :$
+| **21** :$
 
 ```console
 su pinkypurple
@@ -231,7 +232,7 @@ su pinkypurple
 
 *See where you are*
 
-| **21** :$
+| **22** :$
 
 ```console
 pwd
@@ -241,7 +242,7 @@ pwd
 
 *Go home*
 
-| **22** :$ *(This takes you to your home directory, wherever it is)*
+| **23** :$ *(This takes you to your home directory, wherever it is)*
 
 ```console
 cd
@@ -249,7 +250,7 @@ cd
 
 *See where you are*
 
-| **23** :$
+| **24** :$
 
 ```console
 pwd
@@ -257,7 +258,7 @@ pwd
 
 *Try to create a file*
 
-| **24** :$
+| **25** :$
 
 ```console
 touch newfile
@@ -265,7 +266,7 @@ touch newfile
 
 *Note the error message, you can't create a file in your own home!*
 
-| **25** :$
+| **26** :$
 
 ```console
 exit
@@ -273,7 +274,7 @@ exit
 
 *See why...*
 
-| **26** :$
+| **27** :$
 
 ```console
 ls -l /home
@@ -283,13 +284,13 @@ ls -l /home
 
 *Let pinkypurple own its own home (this will be explained more in the next section of this lesson)...*
 
-| **27** :$
+| **28** :$
 
 ```console
 sudo chown -R pinkypurple:pinkypurple /home/ppurple
 ```
 
-| **28** :$
+| **29** :$
 
 ```console
 ls -l /home
@@ -297,7 +298,7 @@ ls -l /home
 
 *Login as pinkypurple in the terminal*
 
-| **29** :$
+| **30** :$
 
 ```console
 su pinkypurple
@@ -305,7 +306,7 @@ su pinkypurple
 
 *See where you are*
 
-| **30** :$
+| **31** :$
 
 ```console
 pwd
@@ -313,19 +314,19 @@ pwd
 
 *It didn't remember where you were because this user doesn't even have settings!*
 
-| **31** :$
+| **32** :$
 
 ```console
 cd
 ```
 
-| **32** :$
+| **33** :$
 
 ```console
 pwd
 ```
 
-| **33** :$
+| **34** :$
 
 ```console
 ls
@@ -335,13 +336,13 @@ ls
 
 *Create a file*
 
-| **34** :$
+| **35** :$
 
 ```console
 touch newfile
 ```
 
-| **35** :$
+| **36** :$
 
 ```console
 ls
@@ -360,7 +361,7 @@ ls
 
 *Now exit as pinkypurple*
 
-| **36** :$
+| **37** :$
 
 ```console
 exit
@@ -378,7 +379,7 @@ cd ~/School/VIP/201
 
 ___
 
-| **37** :$
+| **38** :$
 
 ```console
 ls -l
@@ -386,13 +387,13 @@ ls -l
 
 *Note the owner of "youown"*
 
-| **38** :$ *Enter your password*
+| **39** :$ *Enter your password*
 
 ```console
 sudo chown pinkypink:pinkypink youown
 ```
 
-| **39** :$
+| **40** :$
 
 ```console
 ls -l
@@ -400,7 +401,7 @@ ls -l
 
 *Note a new owner of "youown" is pinkypink*
 
-| **40** :$
+| **41** :$
 
 ```console
 chown pinkypurple:pinkypurple youown
@@ -408,13 +409,13 @@ chown pinkypurple:pinkypurple youown
 
 *Note the error message because `chown` requires `sudo`, that's what happens if you don't use `sudo`*
 
-| **41** :$
+| **42** :$
 
 ```console
 sudo chown pinkypurple:pinkypurple youown
 ```
 
-| **42** :$
+| **43** :$
 
 ```console
 ls -l
@@ -422,13 +423,13 @@ ls -l
 
 *Note "youown" now belongs to pinkypurple*
 
-| **43** :$
+| **44** :$
 
 ```console
 sudo chown pinkypurple:pinkypink theyown
 ```
 
-| **44** :$
+| **45** :$
 
 ```console
 ls -l
@@ -448,13 +449,13 @@ exit
 ```
 ___
 
-| **45** :$
+| **46** :$
 
 ```console
 mkdir ownrship
 ```
 
-| **46** :$
+| **47** :$
 
 ```console
 touch ownrship/file
@@ -472,19 +473,19 @@ su Username
 ```
 ___
 
-| **47** :$
+| **48** :$
 
 ```console
 ls -l
 ```
 
-| **48** :$
+| **489** :$
 
 ```console
 sudo chown pinkypink:pinkypink ownrship
 ```
 
-| **49** :$
+| **50** :$
 
 ```console
 ls -l
@@ -492,7 +493,7 @@ ls -l
 
 *Note a new owner of "ownrship"*
 
-| **50** :$
+| **51** :$
 
 ```console
 ls -l ownrship/
@@ -502,13 +503,13 @@ ls -l ownrship/
 
 *Use `-R` for directories (must be CAPITAL with `chown`!)*
 
-| **51** :$
+| **52** :$
 
 ```console
 sudo chown -R pinkypink:pinkypink ownrship
 ```
 
-| **52** :$
+| **53** :$
 
 ```console
 ls -l ownrship/
@@ -518,7 +519,7 @@ ls -l ownrship/
 
 *Remove it...*
 
-| **53** :$ *"y" for Yes, might not work; "n" for No is better for this lesson*
+| **54** :$ *"y" for Yes, might not work; "n" for No is better for this lesson*
 
 ```console
 rm youown
@@ -526,13 +527,13 @@ rm youown
 
 *Note the error message because you don't own it anymore! Use `sudo`*
 
-| **54** :$
+| **55** :$
 
 ```console
 sudo rm youown
 ```
 
-| **55** :$
+| **56** :$
 
 ```console
 ls -l
@@ -544,13 +545,13 @@ ls -l
 
 *Create a file owned by root*
 
-| **56** :$
+| **57** :$
 
 ```console
 sudo touch iamroot
 ```
 
-| **57** :$
+| **58** :$
 
 ```console
 ls -l
@@ -558,7 +559,7 @@ ls -l
 
 *Note root owns "iamroot"*
 
-| **58** :$ *"y" for Yes, might not work; "n" for No is better for this lesson*
+| **59** :$ *"y" for Yes, might not work; "n" for No is better for this lesson*
 
 ```console
 rm iamroot
@@ -566,7 +567,7 @@ rm iamroot
 
 *Note only root can delete the file "iamroot"*
 
-| **59** :$
+| **60** :$
 
 ```console
 sudo rm iamroot
@@ -574,19 +575,19 @@ sudo rm iamroot
 
 *Let's cleanup these files you don't own so they don't cause problems later ...*
 
-| **60** :$
+| **61** :$
 
 ```console
 sudo rm theyown
 ```
 
-| **61** :$
+| **62** :$
 
 ```console
 sudo rm -r ownrship
 ```
 
-| **62** :$
+| **63** :$
 
 ```console
 ls -l
@@ -594,13 +595,13 @@ ls -l
 
 *...also use `sudo` to delete the puppet users we created for this lesson...*
 
-| **U63** :$ (Ubuntu)
+| **U64** :$ (Ubuntu)
 
 ```console
 sudo deluser pinkypink
 ```
 
-| **A63** :$ (Arch/Manjaro)
+| **A64** :$ (Arch/Manjaro)
 
 ```console
 sudo groupdel pinkypink
@@ -611,13 +612,13 @@ sudo userdel pinkypink
 
 *`userdel` does not delete the group*
 
-| **U64** :$ (Ubuntu)
+| **U65** :$ (Ubuntu)
 
 ```console
 sudo deluser pinkypurple
 ```
 
-| **A64** :$ (Arch/Manjaro)
+| **A65** :$ (Arch/Manjaro)
 
 ```console
 sudo userdel pinkypurple
@@ -625,7 +626,7 @@ sudo userdel pinkypurple
 
 *The users still have `/home` directories*
 
-| **65** :$
+| **66** :$
 
 ```console
 ls -l /home
@@ -635,13 +636,13 @@ ls -l /home
 
 *...remove them both*
 
-| **66** :$
+| **67** :$
 
 ```console
 sudo rm -r /home/pinkypink /home/ppurple
 ```
 
-| **67** :$
+| **68** :$
 
 ```console
 ls /home
@@ -649,7 +650,7 @@ ls /home
 
 *"Own" everything in your home directory, just to make sure all is well (always a good idea)*
 
-| **68** :$
+| **69** :$
 
 ```console
 sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME
@@ -659,7 +660,7 @@ sudo chown -R YOURUSERNAME:YOURUSERNAME /home/YOURUSERNAME
 
 *This is the file with settings for "sudoers" (users that can use `sudo`)*
 
-| **69** :$
+| **70** :$
 
 ```console
 cat /etc/sudoers
@@ -667,7 +668,7 @@ cat /etc/sudoers
 
 *Note the error, viewing the "sudoers" file requires `sudo` permissions*
 
-| **70** :$
+| **71** :$
 
 ```console
 sudo cat /etc/sudoers
@@ -675,7 +676,7 @@ sudo cat /etc/sudoers
 
 *You may not see yourself, this handy little `grep` code shows all sudoers*
 
-| **71** :$
+| **72** :$
 
 ```console
 grep -Po '^sudo.+:\K.*$' /etc/group
@@ -683,13 +684,13 @@ grep -Po '^sudo.+:\K.*$' /etc/group
 
 *You can also `sudo` desktop GUI apps, but it can be dangerous...*
 
-| **72** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
+| **73** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
 
 ```console
 sudo gedit
 ```
 
-| **73** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
+| **74** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
 
 ```console
 sudo nautilus
@@ -706,8 +707,6 @@ ___
 ```console
 exit
 ```
-___
-
 ___
 
 # The Take
