@@ -63,9 +63,23 @@ sudo adduser pinkypink
 ls /home
 ```
 
+*Login via the terminal*
+
+| **4** :$
+
+```console
+su pinkypink
+```
+
 *See what's at "home"*
 
 | **4** :$
+
+```console
+ls /home/pinkypink
+```
+
+| **5** :$
 
 ```console
 ls /home/pinkypink
@@ -79,14 +93,6 @@ Ready the CLI (if needed)
 
 ```console
 cd ~/School/VIP/201
-```
-
-`su Username`
-
-| **5** :$
-
-```console
-ls /home/pinkypink
 ```
 
 *Note the user directories & settings were created at the first GUI login*
