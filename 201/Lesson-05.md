@@ -35,15 +35,6 @@ ___
 ls /home
 ```
 
-| **U2** :$ (Ubuntu)
-
-```console
-sudo adduser pinkypink
-```
-
-- *When prompted Enter any simple password*
-- *Press `Enter` for remaining questions*
-
 | **A2** :$ (Arch/Manjaro)
 
 ```console
@@ -55,6 +46,23 @@ sudo adduser pinkypink
 - *Press `Enter` for other questions*
 - *When prompted Enter any simple password*
 
+
+| **C2** :$ (CentOS/Fedora)
+
+```console
+sudo adduser pinkypink
+```
+
+*Note no messages, all is handled*
+
+| **U2** :$ (Ubuntu)
+
+```console
+sudo adduser pinkypink
+```
+
+- *When prompted Enter any simple password*
+- *Press `Enter` for remaining questions*
 
 *Look at `/home` again to see `pinkypink` has been added*
 
@@ -595,12 +603,6 @@ ls -l
 
 *...also use `sudo` to delete the puppet users we created for this lesson...*
 
-| **U64** :$ (Ubuntu)
-
-```console
-sudo deluser pinkypink
-```
-
 | **A64** :$ (Arch/Manjaro)
 
 ```console
@@ -610,18 +612,39 @@ sudo userdel pinkypink
 
 *Note the message about the "pinkypink" group being empty, that's because `deluser` also deleted the group*
 
-*`userdel` does not delete the group*
-
-| **U65** :$ (Ubuntu)
+| **C64** :$ (CentOS/Fedora)
 
 ```console
-sudo deluser pinkypurple
+sudo userdel pinkypink
 ```
+
+*Note no messages, all is handled*
+
+| **U64** :$ (Ubuntu)
+
+```console
+sudo deluser pinkypink
+```
+
+*`userdel` does not delete the group*
+
 
 | **A65** :$ (Arch/Manjaro)
 
 ```console
 sudo userdel pinkypurple
+```
+
+| **C65** :$ (CentOS/Fedora)
+
+```console
+sudo userdel pinkypurple
+```
+
+| **U65** :$ (Ubuntu)
+
+```console
+sudo deluser pinkypurple
 ```
 
 *The users still have `/home` directories*
