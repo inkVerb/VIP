@@ -148,6 +148,12 @@ exit
 
 ### II. `useradd`
 
+Ready the CLI (if needed)
+
+```console
+cd ~/School/VIP/201
+```
+
 | **12** :$
 
 ```console
@@ -487,7 +493,7 @@ ___
 ls -l
 ```
 
-| **489** :$
+| **49** :$
 
 ```console
 sudo chown pinkypink:pinkypink ownrship
@@ -606,8 +612,8 @@ ls -l
 | **A64** :$ (Arch/Manjaro)
 
 ```console
-sudo groupdel pinkypink
 sudo userdel pinkypink
+sudo groupdel pinkypink
 ```
 
 *Note the message about the "pinkypink" group being empty, that's because `deluser` also deleted the group*
