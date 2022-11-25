@@ -17,7 +17,7 @@ gedit abcsed abcsed.setting abcd
 
 *Update abcsed to version 05:*
 
-| **abcsed** :
+| **abcsed** : v05
 
 ```sh
 #!/bin/sh
@@ -49,7 +49,7 @@ sed -i "s/$myFOO/$myBAR/g" $myFILE
 
 *Update abcsed to version 06:*
 
-| **abcsed** :
+| **abcsed** : v06
 
 ```sh
 #!/bin/sh

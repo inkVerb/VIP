@@ -31,7 +31,7 @@ cat abcd
 
 *Update comboshell to version 2:*
 
-| **comboshell** :
+| **comboshell** : v02
 
 ```sh
 #!/bin/sh
@@ -53,7 +53,7 @@ echo "$myOutput" >> sedoutput.text
 
 *Update comboshell to version 3:*
 
-| **comboshell** :
+| **comboshell** : v03
 
 ```sh
 #!/bin/sh
@@ -83,7 +83,7 @@ echo "Took out the trash." > sedoutput.text
 
 *Update comboshell to version 4:*
 
-| **comboshell** :
+| **comboshell** : v04
 
 ```sh
 #!/bin/sh
@@ -103,7 +103,7 @@ sed "s/$2/$3/g" $1 | tee sedoutput.text
 
 *Update comboshell to version 5:*
 
-| **comboshell** :
+| **comboshell** : v05
 
 ```sh
 #!/bin/sh
@@ -123,7 +123,7 @@ cat $1 | sed "s/$2/$3/g" | tee sedoutput.text
 
 *Update comboshell to version 6:*
 
-| **comboshell** :
+| **comboshell** : v06
 
 ```sh
 #!/bin/sh

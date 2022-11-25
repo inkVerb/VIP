@@ -311,7 +311,7 @@ gedit comboshell
 
 *Create comboshell as this:*
 
-| **comboshell** :
+| **comboshell** : v01
 
 ```sh
 #!/bin/sh

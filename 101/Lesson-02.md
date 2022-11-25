@@ -31,7 +31,7 @@ gedit abcsed abcd
 
 *Create abcsed as this:*
 
-| **abcsed** :
+| **abcsed** : v01
 
 ```sh
 #!/bin/sh
@@ -103,7 +103,7 @@ ls -l
 
 *Update abcsed to version 02:*
 
-| **abcsed** :
+| **abcsed** : v02
 
 ```sh
 #!/bin/sh
@@ -155,7 +155,7 @@ sed -i "s/$1/$2/" abcd
 
 *Update abcsed to version 03:*
 
-| **abcsed** :
+| **abcsed** : v03
 
 ```sh
 #!/bin/sh
@@ -207,7 +207,7 @@ gedit applefoo
 
 *Update abcsed to version 04:*
 
-| **abcsed** :
+| **abcsed** : v04
 
 ```sh
 #!/bin/sh
