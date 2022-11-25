@@ -94,13 +94,13 @@ gedit verb.ink.html
 firefox verb.ink.html
 ```
 
-| **11C** :$ (if you're using Chromium)
+| **11AC** :$ (if you're using Chromium on Arch/Manjaro)
 
 ```console
 chromium verb.ink.html
 ```
 
-OR
+| **11C** :$ (if you're using Chromium on another distro)
 
 ```console
 chromium-browser verb.ink.html
