@@ -703,23 +703,15 @@ cat /etc/sudoers
 sudo cat /etc/sudoers
 ```
 
-*You may not see yourself, this handy little `grep` code shows all sudoers*
-
-| **72** :$
-
-```console
-grep -Po '^sudo.+:\K.*$' /etc/group
-```
-
 *You can also `sudo` desktop GUI apps, but it can be dangerous...*
 
-| **73** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
+| **72** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
 
 ```console
 sudo gedit
 ```
 
-| **74** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
+| **73** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
 
 ```console
 sudo nautilus
