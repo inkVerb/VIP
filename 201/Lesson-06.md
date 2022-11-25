@@ -97,6 +97,12 @@ firefox verb.ink.html
 | **11C** :$ (if you're using Chromium)
 
 ```console
+chromium verb.ink.html
+```
+
+OR
+
+```console
 chromium-browser verb.ink.html
 ```
 
