@@ -106,7 +106,10 @@ ___
 - The double exclamation `!!` means "the last command" almost everywhere in Shell, not only in `grep`
 - `!!` might only be ignored as an operator if used with 'single' quotes: `'!!'`
 - Using 'single' quotes rather than "double" quotes means some special characters don't need to be quoted to prevent them from "operating"
-
+- Remember the three common ways to quote special characters:
+  - `'single quotes'`
+  - `/$` escape with `/` backslash
+  - Use a flag like `-z` with `sed` or `-F` with `grep`
 
 Tip: Test `sed` with `grep`
 
