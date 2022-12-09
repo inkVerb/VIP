@@ -146,7 +146,7 @@ ___
 - `find` searches for files
 - `find` needs two arguments in order to work:
   - Location
-  - `-name TEXT-TO-SEARCH-FOR`
+  - `-name what-to-search-for`
   - Order: `find /path/to/search -name what-to-search-for`
 - `*` is a "wildcard" for text
 - `.` is considered text to search for, not "concatenate" as in some languages
