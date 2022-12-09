@@ -137,7 +137,9 @@ sed -i "s/one\n/one/g" tab.file
 
 *gedit: Reload tab.file*
 
-*Note the line was not removed, use `-z` so `sed` is not confused*
+*Note the line was not removed*
+
+*Remember, `sed` works line-by-line; we use `-z` so `sed` is not confused*
 
 | **16** :$
 
