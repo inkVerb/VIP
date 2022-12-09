@@ -31,9 +31,17 @@ find "abc*"
 
 *Note the error message*
 
+| **4** :$
+
+```console
+find "/bin"
+```
+
+*Note it can find an absolute path, which starts with `/`*
+
 *Specify to search somewhere; we'll search "here" (`.` = here)*
 
-| **4** :$
+| **5** :$
 
 ```console
 find . "abc"
@@ -41,13 +49,13 @@ find . "abc"
 
 *Note it found everything, it needs: `-name`*
 
-| **5** :$
+| **6** :$
 
 ```console
 find . -name "abc"
 ```
 
-| **6** :$
+| **7** :$
 
 ```console
 find . -name "abc*"
@@ -55,7 +63,7 @@ find . -name "abc*"
 
 *...for "Directories": `-type d`*
 
-| **7** :$
+| **8** :$
 
 ```console
 find . -type d -name "abc*"
@@ -63,43 +71,43 @@ find . -type d -name "abc*"
 
 *...for "Files": `-type f`*
 
-| **8** :$
+| **9** :$
 
 ```console
 find . -type f -name "abc*"
 ```
 
-| **9** :$
+| **10** :$
 
 ```console
 touch abcsed.Setting
 ```
 
-| **10** :$
+| **11** :$
 
 ```console
 touch ink.png ink.PNG ink.jpg ink.JPG
 ```
 
-| **11** :$
+| **12** :$
 
 ```console
 mkdir png PNG jpg JPG
 ```
 
-| **12** :$
+| **13** :$
 
 ```console
 find . -name "png"
 ```
 
-| **13** :$
+| **14** :$
 
 ```console
 find . -name "*.png"
 ```
 
-| **14** :$
+| **15** :$
 
 ```console
 find . -name "*png"
@@ -107,25 +115,25 @@ find . -name "*png"
 
 *Note `find` is case-sensitive, ignore case with: `-iname`*
 
-| **15** :$
+| **16** :$
 
 ```console
 find . -iname "*png"
 ```
 
-| **16** :$
+| **17** :$
 
 ```console
 find . -iname "*jpg"
 ```
 
-| **17** :$
+| **18** :$
 
 ```console
 find . -type f -iname "*png"
 ```
 
-| **18** :$
+| **19** :$
 
 ```console
 find . -type d -iname "*png"
