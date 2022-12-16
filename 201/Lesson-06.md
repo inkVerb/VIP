@@ -160,7 +160,7 @@ rm master.zip
 curl https://github.com/inkVerb/vip/archive/master.zip
 ```
 
-*Note the redirect message; use `-L` to follow redirects*
+*Note it doesn't work; use `-L` to follow redirects*
 
 | **19** :$ *(wrong)*
 
@@ -168,9 +168,9 @@ curl https://github.com/inkVerb/vip/archive/master.zip
 curl -L https://github.com/inkVerb/vip/archive/master.zip
 ```
 
-*Note it dumped the raw output to the terminal rather than saving it*
+*Note the problem of raw output of the .zip binary file, because `curl` does not save by default rather than saving it*
 
-*Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close the output*
+*If needed, use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close the output*
 
 *Solution: Specify an output file*
 
