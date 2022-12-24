@@ -2236,6 +2236,66 @@ ls pdo-upgrade
 localhost/web/
 ```
 
+#### AJAX Security
+
+*We can send keys with our AJAX requests to verify that it came from ourselves*
+
+*Read more about [AJAX security](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/AJAX-security.md)*
+
+*Create a universal token, but only once for all*
+
+| **in.head.php** :
+
+```php
+// Create the AJAX token, only if it doesn't already exist
+if ( empty($_SESSION["token"]) ) {
+  $ajax_token = bin2hex(random_bytes(64));
+  $_SESSION["token"] = $ajax_token;
+}
+```
+
+*Add the token to every AJAX request*
+
+| **every_ajax_req.php** :
+
+```php
+$ajax_token = $_SESSION['ajax_token'];
+```
+
+| **sending_from_form.php** :
+
+```js
+function ajaxForm(form_id) { 
+  formData.append('ajax_token', <?php echo $ajax_token; ?>);
+  AJAX.send(formData);
+```
+
+| **sending_simple_array.php** :
+
+```js
+ajaxHandler.send("item_1="+<?php echo $item_1; ?>+"&ajax_token="+<?php echo $ajax_token; ?>);
+```
+
+*Check the token with the AJAX handler*
+
+| **ajax.handler.php** :
+
+```php
+
+```
+
+*Affected files, for your consideration:*
+
+- *ajax.\*.php*
+- *in.head.php*
+- *edit.php*
+- *pieces.php*
+- *medialibrary.php*
+- *in.editseries.php*
+- *in.metaeditfunctions.php*
+- *in.series.php*
+- *recover.php*
+
 #### Slugs in URL
 
 *Links to series and individual pieces use "pretty" URL slugs, reflected throughout the code*
@@ -3059,7 +3119,7 @@ function mediaFeatureInsert(thisMedia) { // These arguments can be anything, sam
   // Bind a new event listener every time the <form> is changed:
   const FORM = document.getElementById(inputFormID);
   const AJAX = new XMLHttpRequest(); // AJAX handler
-  const FD = new FormData(FORM); // Bind to-send data to form element
+  var formData = new FormData(FORM); // Bind to-send data to form element
 
   AJAX.addEventListener( "load", function(event) { // This runs when AJAX responds
     document.getElementById("feature-insert").innerHTML = event.target.responseText;
@@ -3071,7 +3131,8 @@ function mediaFeatureInsert(thisMedia) { // These arguments can be anything, sam
 
   AJAX.open("POST", "ajax.mediafeature.php");
 
-  AJAX.send(FD); // Data sent is from the form
+  formData.append('ajax_token', $ajax_token);
+  AJAX.send(formData); // Data sent is from the form
 
 }
 
