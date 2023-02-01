@@ -33,6 +33,12 @@ mysql -u admin -padminpassword
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
+*After 6*
+
+```sql
+USE webapp_db
+```
+
 | **SB-0** :// Username: `admin` Password: `adminpassword`
 
 ```console
