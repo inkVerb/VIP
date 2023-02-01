@@ -52,7 +52,7 @@ ___
 
 ### Packages & Repositories
 
-*See the list of all available software "packages"*
+*See the list of all installed software "packages"*
 
 | **3** :$
 
@@ -60,7 +60,7 @@ ___
 pacman -Qm
 ```
 
-*Those are available software packages, listed in these directories...*
+*Those are installed software packages, listed in these directories...*
 
 | **4** :$
 
