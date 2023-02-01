@@ -8,7 +8,7 @@
 
 ### [Lesson 2: cd, ../.., mkdir, rm -r](https://github.com/inkVerb/vip/blob/master/201/Lesson-02.md)
 
-### [Lesson 3: Software, apt, pacman, lsb_release](https://github.com/inkVerb/vip/blob/master/201/Lesson-03.md)
+### [Lesson 3: Software, pacman, apt, dnf, lsb_release](https://github.com/inkVerb/vip/blob/master/201/Lesson-03.md)
 
 ### [Lesson 4: ls -1 -l -a -r, chmod](https://github.com/inkVerb/vip/blob/master/201/Lesson-04.md)
 

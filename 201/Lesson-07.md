@@ -7,6 +7,14 @@ Ready the CLI
 cd ~/School/VIP/201
 ```
 
+After **22**
+
+```console
+cd ~/School/VIP/201/compress
+```
+
+Reference
+
 `wget -O vip.zip https://github.com/inkVerb/vip/archive/master.zip`
 
 #### [Compression Cheat Sheet](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Compression.md)
@@ -183,6 +191,12 @@ rm -r vip
 
 ### xz: `xz file`; `xz -d file.xz`
 
+Ready the CLI (if needed)
+
+```console
+cd ~/School/VIP/201/compress
+```
+
 | **25** :$
 
 ```console
@@ -316,7 +330,6 @@ ___
 ## II. `xz -2` `gzip` `bzip2` `tar xf`
 
 Ready the CLI (if needed)
-
 
 ```console
 cd ~/School/VIP/201/compress
