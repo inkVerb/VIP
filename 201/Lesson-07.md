@@ -7,12 +7,6 @@ Ready the CLI
 cd ~/School/VIP/201
 ```
 
-After **22**
-
-```console
-cd ~/School/VIP/201/compress
-```
-
 Reference
 
 `wget -O vip.zip https://github.com/inkVerb/vip/archive/master.zip`
@@ -599,7 +593,6 @@ Ready the CLI (if needed)
 
 ```console
 cd ~/School/VIP/201/compress
-ls -l
 ```
 
 ___
