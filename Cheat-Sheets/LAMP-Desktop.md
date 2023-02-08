@@ -273,7 +273,7 @@ sudo sed -i "s/^User.*/User www/" /etc/httpd/conf/httpd.conf
 sudo sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
 ```
 
-6. Change the php-fpm user to `www` with `sed`
+6. Change the php-fpm user to `www` with `sed` (may not be installed)
 
 | **AW6** :$
 
@@ -1108,7 +1108,7 @@ mv phpMyAdmin-x.x.x-all-languages phpMyAdmin
 | **PA3** :$
 
 ```console
-sudo mv phpMyAdmin /var/www/html/
+sudo mv phpMyAdmin /srv/www/html/
 ```
 
 4. Create the config
@@ -1116,7 +1116,7 @@ sudo mv phpMyAdmin /var/www/html/
 | **PA4** :$
 
 ```console
-cd /var/www/html/phpMyAdmin
+cd /srv/www/html/phpMyAdmin
 sudo cp config.sample.inc.php config.inc.php
 ```
 
@@ -1135,7 +1135,7 @@ Or edit with `vim`:
 | **PA5v** :$
 
 ```console
-sudo vim /var/www/html/phpMyAdmin/config.inc.php
+sudo vim /srv/www/html/phpMyAdmin/config.inc.php
 ```
 
   - Add the salt here:
@@ -1147,7 +1147,7 @@ sudo vim /var/www/html/phpMyAdmin/config.inc.php
 | **PA6** :$
 
 ```console
-sudo chown -R www:www /var/www/html/phpMyAdmin
+sudo chown -R www:www /srv/www/html/phpMyAdmin
 ```
 
 Now, you should be able to access this in your browser at the address:
