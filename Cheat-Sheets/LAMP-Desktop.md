@@ -253,6 +253,7 @@ sudo useradd -g www www
 | **AW3** :$
 
 ```console
+sudo mkdir -p /srv/www
 sudo chmod u+w /srv/www
 ```
 
@@ -273,7 +274,7 @@ sudo sed -i "s/^User.*/User www/" /etc/httpd/conf/httpd.conf
 sudo sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
 ```
 
-6. Change the php-fpm user to `www` with `sed` (may not be installed)
+6. Change the php-fpm user to `www` with `sed` (may not be installed, may not be necessary)
 
 | **AW6** :$
 
@@ -470,6 +471,7 @@ sudo vim /etc/apache2/sites-available/000-default.conf
     ```
 
   ...or for expanded options...
+  
     ```
     <Directory "/var/www/html">
     Options Indexes FollowSymLinks MultiViews
