@@ -72,7 +72,7 @@ sudo adduser pinkypink
 ls /home
 ```
 
-*Login via the terminal*
+*Login via the terminal to be able to see what's at "home"*
 
 | **4** :$
 
@@ -91,7 +91,7 @@ ls /home/pinkypink
 | **6** :$
 
 ```console
-ls /home/pinkypink
+exit
 ```
 
 *Login as pinkypink in the GUI...*
