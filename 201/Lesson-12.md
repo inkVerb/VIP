@@ -50,7 +50,7 @@ This is where your stuff goes. All your `Documents/` and `Downloads/` and `Deskt
 
 #### `/root/` – "Root" user Home Directory (also what `sudo` calls 'home')
 
-| **5** :$ "Permission denied" ?? Sometimes it doesn't exist, depending on whether root has created it*
+| **5** :$ *"Permission denied" ?? Sometimes it doesn't exist, depending on whether root has created it*
 
 ```console
 cd ../root
@@ -202,7 +202,7 @@ This is where applications go when they don't follow the rules of this file syst
 
 #### `/snap/`
 
-| **21** :$
+| **21** :$ *"No such file or directory" if you don't have any snap apps installed*
 
 ```console
 cd ../snap
@@ -222,7 +222,7 @@ Snap is a more powerful way of managing apps because it runs every app in its ow
 
 #### `/cdrom/` – CD-ROM mount path location in days of yore and lore
 
-| **23** :$
+| **23** :$ *"No such file or directory" if you don't have a CD in the drive, which you probably don't*
 
 ```console
 cd ../cdrom
@@ -279,7 +279,7 @@ This is where that Windows partition may show up if you decide to take a look at
 
 #### `/media/` — Removable Media (i.e. USB drives)
 
-| **29** :$
+| **29** :$ *"No such file or directory" if you don't have a USB in the drive, which you probably don't*
 
 ```console
 cd ../media
@@ -311,11 +311,12 @@ ls
 
 This usually contains...
 
-- `log/` for log files.
-- `email/` or `mail/` or `vmail/` for email
-- the .swp "swap file" (virtual RAM), if it is a file and not a partition
+- Log files: `log/`
+- Email: `email/` or `mail/` or `vmail/`
+- SQL databases: `lib/mysql/` (MySQL/MariaDB) or `lib/pgsql` (PostgreSQL)
+- Swap: the .swp "swap file" (virtual RAM), if it is a file and not a partition
 
-Things here can and may need to change often.
+Things here can and need to change often.
 
 This usually contains `www/` (webserver directory) for:
 
@@ -338,8 +339,8 @@ ls
 
 This contains `www/` (webserver directory) for:
 
-- Arch
-- Suse
+- Arch (& Manjaro)
+- openSUSE (& SUSE)
 
 #### `/run/` – Running pipes & sockets (the socket drawer)
 
