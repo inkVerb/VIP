@@ -219,6 +219,7 @@ if [ Test ]
 then
   ...do something
 elif [ Another Test ]
+then
   ...do another thing
 else
   ...do another another thing
@@ -296,7 +297,7 @@ gedit 01-style
 | **37** :$
 
 ```console
-./01-style urtheir
+./01-style urthere
 ```
 
 | **38** :$
