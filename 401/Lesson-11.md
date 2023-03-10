@@ -137,7 +137,50 @@ sed "s/[2-6]/%/" code-of-poetry.txt
 sed "s/[a-u]/x/g" code-of-poetry.txt
 ```
 
-### II. Heredoc: `cat <<EOF`
+### II. Space via `echo`
+
+*`echo` a tab*
+
+| **18** :$
+
+```console
+echo $'\t'
+```
+
+*`echo` a tab inside a string*
+
+| **19** :$
+
+```console
+echo Some words$'\t'now a tab$'\t'othertab
+```
+
+*`echo` a new line*
+
+| **20** :$
+
+```console
+echo $'n'
+```
+
+*`echo` a new line inside a string*
+
+| **21** :$
+
+```console
+echo "First line"$'\n'now another line
+```
+
+*`echo` new lines and tabs and concatenate string segments using "double quotes"*
+
+| **22** :$
+
+```console
+echo "First line then"$'\n'now "another" line$'\t'"after tab"
+```
+
+
+### III. Heredoc: `cat <<EOF`
 
 #### Rules of a heredoc
 1. A "heredoc" is text in a script treated as a separate text document; useful for large amounts of text.
@@ -161,7 +204,7 @@ DELIMETER
 
 **Delimeter: `EOF`**
 
-| **18** :
+| **23** :
 
 ```sh
 cat <<EOF
@@ -174,7 +217,7 @@ EOF
 
 **Delimeter: `END`**
 
-| **19** :
+| **24** :
 
 ```sh
 cat <<END
@@ -186,7 +229,7 @@ END
 
 #### Heredocs Applied
 
-| **20** :$
+| **25** :$
 
 ```console
 ls
@@ -196,7 +239,7 @@ ls
 
 **Output to file:**
 
-| **21** :
+| **26** :
 
 ```sh
 cat <<EOF > neweof
@@ -206,7 +249,7 @@ I'm at my end.
 EOF
 ```
 
-| **22** :$
+| **27** :$
 
 ```console
 ls
@@ -214,7 +257,7 @@ ls
 
 *Note the new file created: "neweof"*
 
-| **23** :$
+| **28** :$
 
 ```console
 gedit neweof
@@ -224,7 +267,7 @@ gedit neweof
 
 **Pipe output to another command:**
 
-| **24** :
+| **29** :
 
 ```sh
 cat <<EOF | sed "s/foo/bar/g" | tee neweofpipe
@@ -234,7 +277,7 @@ I'm at my pipe's foo end.
 EOF
 ```
 
-| **25** :$
+| **30** :$
 
 ```console
 ls
@@ -242,7 +285,7 @@ ls
 
 *Note the new file created: "neweofpipe"*
 
-| **26** :$
+| **31** :$
 
 ```console
 gedit neweofpipe
@@ -252,7 +295,7 @@ gedit neweofpipe
 
 **Tee a heredoc:**
 
-| **27** :
+| **32** :
 
 ```sh
 tee neweoftee <<EOF
@@ -262,7 +305,7 @@ I'm at my tee's end.
 EOF
 ```
 
-| **28** :$
+| **33** :$
 
 ```console
 ls
@@ -270,7 +313,7 @@ ls
 
 *Note the new file created: "neweoftee"*
 
-| **29** :$
+| **34** :$
 
 ```console
 gedit neweoftee
@@ -280,7 +323,7 @@ gedit neweoftee
 
 *Edit this script to see the short version*
 
-| **30** :$
+| **35** :$
 
 ```console
 gedit eofcomsub
@@ -311,7 +354,7 @@ echo "$EOFvar"
 
 *Run it*
 
-| **31** :$
+| **36** :$
 
 ```console
 ./eofcomsub
@@ -323,7 +366,7 @@ echo "$EOFvar"
 
 *Edit this script to see the short version*
 
-| **32** :$
+| **37** :$
 
 ```console
 gedit eofvarheredoc
@@ -348,7 +391,7 @@ EOF
 
 *Run it*
 
-| **33** :$
+| **38** :$
 
 ```console
 ./eofvarheredoc
@@ -358,7 +401,7 @@ EOF
 
 *Edit this script to see the short version*
 
-| **34** :$
+| **39** :$
 
 ```console
 gedit eofvarnowdoc
@@ -383,7 +426,7 @@ EOF
 
 *Run it*
 
-| **35** :$
+| **40** :$
 
 ```console
 ./eofvarnowdoc
@@ -393,7 +436,7 @@ EOF
 
 *Edit this script to see the short version*
 
-| **36** :$
+| **41** :$
 
 ```console
 gedit eofherenow
@@ -424,13 +467,13 @@ EOF
 
 *Run it*
 
-| **37** :$
+| **42** :$
 
 ```console
 ./eofherenow
 ```
 
-| **38** :$
+| **43** :$
 
 ```console
 gedit eofout
@@ -440,7 +483,7 @@ gedit eofout
 
 *Edit this script to see the short version*
 
-| **39** :$
+| **44** :$
 
 ```console
 gedit eofvariables
@@ -470,7 +513,7 @@ echo "$EOFvar"
 
 *Run it*
 
-| **40** :$
+| **45** :$
 
 ```console
 ./eofvariables

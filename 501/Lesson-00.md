@@ -193,12 +193,6 @@ ln -sfn /srv/www/html/web ~/School/VIP/501/
 | **AP5** :$
 
 ```console
-ln -sfn /srv/www/rewrite ~/School/VIP/501/
-```
-
-| **AP6** :$
-
-```console
 sudo chown -R www:www /srv/www
 ```
 
@@ -229,12 +223,6 @@ ln -sfn /var/www/html/web ~/School/VIP/501/
 ```
 
 | **DP5** :$
-
-```console
-ln -sfn /var/www/rewrite ~/School/VIP/501/
-```
-
-| **DP6** :$
 
 ```console
 sudo chown -R www:www /var/www/html/
@@ -274,12 +262,6 @@ ln -sfn /var/www/html/web ~/School/VIP/501/
 ```
 
 | **CP5** :$
-
-```console
-ln -sfn /var/www/rewrite ~/School/VIP/501/
-```
-
-| **CP6** :$
 
 ```console
 sudo chown -R www:www /var/www/html/
