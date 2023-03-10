@@ -114,7 +114,7 @@ cd ..
 
 ## Download the inkVerb/VIP repo from GitHub
 
-### `.zip` file via wget
+### `.zip` file via `wget`
 
 *Download VIP using wget*
 
@@ -152,7 +152,7 @@ ls
 rm master.zip
 ```
 
-### `.zip` file via curl
+### `.zip` file via `curl`
 
 | **18** :$ *(wrong)*
 
@@ -194,7 +194,7 @@ ls
 rm vip-curl.zip
 ```
 
-### `.tar` file (tarball) via curl
+### `.tar` file (tarball) via `curl`
 
 *Substitute `github.com` for `api.github.com/repos/` & append with `/tarball` & include output file*
 
@@ -242,7 +242,7 @@ rm -r inkVerb-VIP-SOME_CRAZY_NUMBER
 rm vip.tar
 ```
 
-### tarball via curl & untar (single command)
+### tarball via `curl` & `untar` (single command)
 
 *Substitute `github.com` for `api.github.com/repos/` & append with `/tarball` & untar it right away*
 
@@ -268,7 +268,7 @@ ls
 rm -r inkVerb-VIP-SOME_CRAZY_NUMBER
 ```
 
-### repo via git clone
+### repo via `git clone`
 
 | **32** :$
 
