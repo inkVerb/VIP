@@ -7,6 +7,12 @@ Ready the CLI
 cd ~/School/VIP/201
 ```
 
+**FOR** | **14 - 16** :$
+
+```console
+cd verb.ink
+```
+
 Reference
 
 `wget -O vip.zip https://github.com/inkVerb/vip/archive/master.zip`

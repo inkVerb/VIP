@@ -906,3 +906,12 @@ if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not f
 [[ "$Some_Variable" == "5" ]] && Variable='it is five' || Variable='not five'
 
 ```
+
+**`exit` one-line test for failed previous command in a script:**
+
+*(If the previous command failed, this will `exit` the script with the same `exit` code as the failed command)*
+
+```bash
+e="$?"; [[ "$e" = "0" ]] || exit "$e"
+```
+

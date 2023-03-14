@@ -242,7 +242,7 @@ rm -r inkVerb-VIP-SOME_CRAZY_NUMBER
 rm vip.tar
 ```
 
-### tarball via `curl` & `untar` (single command)
+### tarball via `curl` & `tar xz` (single command)
 
 *Substitute `github.com` for `api.github.com/repos/` & append with `/tarball` & untar it right away*
 

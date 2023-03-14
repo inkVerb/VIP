@@ -7,6 +7,12 @@ Ready the CLI
 cd ~/School/VIP/301
 ```
 
+**FOR** | **2 - 19** :$
+
+```console
+cd verb.ink
+```
+
 ___
 
 ### I. `odt2txt` & `pandoc`
@@ -165,9 +171,15 @@ lowriter markdown.odt &
 - `man` page
 - ...and more!
 
+| **19** :$ *(if asked, Discard)*
+
+```console
+cd ..
+```
+
 ### II. `read`
 
-| **19** :$
+| **20** :$
 
 ```console
 read
@@ -177,25 +189,25 @@ read
 
 *Nothing happened because it should be used with a variable...*
 
-| **20** :$
+| **21** :$
 
 ```console
 read Variable
 ```
 
-| **21** :$
+| **22** :$
 
 ```console
 echo $Variable
 ```
 
-| **22** :$
+| **23** :$
 
 ```console
 gedit 02-read-1
 ```
 
-| **23** :$
+| **24** :$
 
 ```console
 ./02-read-1
@@ -203,7 +215,7 @@ gedit 02-read-1
 
 *Now type something, then press Enter*
 
-| **24** :$
+| **25** :$
 
 ```console
 gedit 02-read-2
@@ -211,25 +223,25 @@ gedit 02-read-2
 
 *Note -p is for "Prompt", making things simpler*
 
-| **25** :$
+| **26** :$
 
 ```console
 ./02-read-2
 ```
 
-| **26** :$
+| **27** :$
 
 ```console
 gedit 02-read-3
 ```
 
-| **27** :$
+| **28** :$
 
 ```console
 ls
 ```
 
-| **28** :$
+| **29** :$
 
 ```console
 ./02-read-3
@@ -237,7 +249,7 @@ ls
 
 *Enter whatever you want, only letters & numbers, no spaces*
 
-| **29** :$
+| **30** :$
 
 ```console
 ls
@@ -245,13 +257,13 @@ ls
 
 *Note it created the file*
 
-| **30** :$
+| **31** :$
 
 ```console
 gedit 02-read-4
 ```
 
-| **31** :$
+| **32** :$
 
 ```console
 ./02-read-4
@@ -261,13 +273,13 @@ gedit 02-read-4
 
 *Note `-r` is for "Raw", to allow all special characters*
 
-| **32** :$
+| **33** :$
 
 ```console
 gedit 02-read-5
 ```
 
-| **33** :$
+| **34** :$
 
 ```console
 ./02-read-5
@@ -277,37 +289,37 @@ gedit 02-read-5
 
 ### III. `sleep`
 
-| **34** :$
+| **35** :$
 
 ```console
 sleep 1
 ```
 
-| **35** :$
+| **36** :$
 
 ```console
 sleep 3
 ```
 
-| **36** :$
+| **37** :$
 
 ```console
 gedit 02-sleep-1
 ```
 
-| **37** :$
+| **38** :$
 
 ```console
 ./02-sleep-1
 ```
 
-| **38** :$
+| **39** :$
 
 ```console
 gedit 02-sleep-2
 ```
 
-| **39** :$
+| **40** :$
 
 ```console
 ./02-sleep-2 "I like apples."
@@ -315,13 +327,13 @@ gedit 02-sleep-2
 
 *Put it together...*
 
-| **40** :$
+| **41** :$
 
 ```console
 gedit 02-sleep-3
 ```
 
-| **41** :$
+| **42** :$
 
 ```console
 ./02-sleep-3
@@ -337,7 +349,7 @@ gedit 02-sleep-3
 
 *Make sure LibreOffice is not running, ignore any error message...*
 
-| **42** :$
+| **43** :$
 
 ```console
 killall soffice.bin
@@ -345,7 +357,7 @@ killall soffice.bin
 
 *Open LibreOffice Writer from the terminal...*
 
-| **43** :$
+| **44** :$
 
 ```console
 lowriter
@@ -355,7 +367,7 @@ lowriter
 
 *...The terminal returns to the prompt*
 
-| **44** :$
+| **45** :$
 
 ```console
 lowriter &
@@ -367,13 +379,13 @@ lowriter &
 
 *Let's use `wait` in a script...*
 
-| **45** :$
+| **46** :$
 
 ```console
 gedit 02-waiter-1
 ```
 
-| **46** :$
+| **47** :$
 
 ```console
 ./02-waiter-1
@@ -381,13 +393,13 @@ gedit 02-waiter-1
 
 *Again, close Writer in the GUI, then watch for the message in the terminal*
 
-| **47** :$
+| **48** :$
 
 ```console
 gedit 02-waiter-2
 ```
 
-| **48** :$
+| **49** :$
 
 ```console
 ./02-waiter-2
@@ -397,13 +409,13 @@ gedit 02-waiter-2
 
 *Again, close Writer in the GUI*
 
-| **49** :$
+| **50** :$
 
 ```console
 gedit 02-waiter-3
 ```
 
-| **50** :$
+| **51** :$
 
 ```console
 ./02-waiter-3
@@ -421,7 +433,7 @@ gedit 02-waiter-3
 
 *Start Writer...*
 
-| **51** :$
+| **52** :$
 
 ```console
 lowriter &
@@ -429,7 +441,7 @@ lowriter &
 
 *Now, "wait" for it to close by watching for its PID to close...*
 
-| **52** :$
+| **53** :$
 
 ```console
 pgrep lowriter
@@ -437,7 +449,7 @@ pgrep lowriter
 
 *Note the PID number and replace 55555 with that number below:*
 
-| **53a** :$
+| **54a** :$
 
 ```console
 wait 55555
@@ -445,7 +457,7 @@ wait 55555
 
 **OR**
 
-| **53b** :$ *(or you can use this instead)*
+| **54b** :$ *(or you can use this instead)*
 
 ```console
 wait $(pgrep lowriter)
