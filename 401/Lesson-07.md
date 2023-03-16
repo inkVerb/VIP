@@ -412,6 +412,14 @@ grep -rl foo . | xargs sed -i 's/foo/bar/g'
 cat rsed/0-file rsed/one/1-file rsed/two/2-file rsed/three/3-file
 ```
 
+*Now that it is complete, run it agani and see the `sed` errors indicating that no files have the `foo` pattern to be changed...*
+
+| **40** :$
+
+```console
+grep -rl foo . | xargs sed -i 's/foo/bar/g'
+```
+
 ___
 
 # The Take
