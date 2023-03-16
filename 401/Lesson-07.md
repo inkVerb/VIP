@@ -374,6 +374,44 @@ sed "s/foo.*.bar//" <<< 12345fooSOMETHINGbar6789
 sed "s/foo.*.bar/foobar/" <<< 12345fooSOMETHINGbar6789
 ```
 
+### V. `sed` recursive directories
+
+*Prepare several files...*
+
+| **37** :$
+
+```console
+mkdir rsed rsed/one rsed/two rsed/three
+touch rsed/0-file rsed/one/1-file rsed/two/2-file rsed/three/3-file
+echo "Change the foo" > rsed/0-file
+echo "Change the foo" > rsed/one/1-file
+echo "Change the foo" > rsed/two/2-file
+echo "Change the foo" > rsed/three/3-file
+cat rsed/0-file rsed/one/1-file rsed/two/2-file rsed/three/3-file
+gedit rsed/0-file rsed/one/1-file rsed/two/2-file rsed/three/3-file
+ls rsed rsed/one rsed/two rsed/three
+```
+
+*This handy little code will `sed` replace recursively, in all directories*
+
+*Note it uses pipe `|` with `grep` to achieve this*
+
+| **38** :$
+
+```console
+grep -rl foo . | xargs sed -i 's/foo/bar/g'
+```
+
+*gedit: reload each file*
+
+*See the change in the terminal...*
+
+| **39** :$
+
+```console
+cat rsed/0-file rsed/one/1-file rsed/two/2-file rsed/three/3-file
+```
+
 ___
 
 # The Take
@@ -392,6 +430,8 @@ ___
   - `^.*foo` matches the **start** of a string
   - `foo.*` matches the **end** of a string
   - `foo.*.bar` matches **between** "foo" and "bar"
+- `sed` **recursive** operation
+  - `grep -rl foo . | xargs sed -i 's/foo/bar/g'`
 ___
 
 #### [Lesson 8: $IFS (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401/Lesson-08.md)

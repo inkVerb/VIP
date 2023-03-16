@@ -71,13 +71,22 @@ echo '<p>Poetry is code!</p>';
   - can't start with a number
 6. Concatenate strings and variables with `.`
   - JavaScript uses `+` to concatenate
-  - Shell & BASH don't concatenate
+  - Shell & BASH don't concatenate with a special character; consecutive strings concatenate automatically
 
 **Concatenation**
+
+| **PHP** :
 ```php
 echo $variable.' single quote $no_var'." double quote working $variables";
 
 echo 'string '.$variable.' string continues '.$variable." etc...";
+```
+
+| **BASH** :
+```bash
+echo $USER' single quote $DESKTOP_SESSION' " double quote working $PWD"
+
+echo 'string ' $USER ' string continues ' $DESKTOP_SESSION " etc..."
 ```
 
 7. Always test success and plan for failure, even the impossible
