@@ -485,4 +485,4 @@ pacman4console
 
 ___
 
-## Next: [Shell 401: Onward](https://github.com/inkVerb/VIP/blob/master/401/README.md)
+## Next: [Shell 401: Advance](https://github.com/inkVerb/VIP/blob/master/401/README.md)

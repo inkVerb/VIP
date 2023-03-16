@@ -9,7 +9,7 @@ Whether you want to become a computer genius or if you're a "computer dummy" and
 
 # [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301/README.md)
 
-# [Shell 401: Onward](https://github.com/inkVerb/VIP/blob/master/401/README.md)
+# [Shell 401: Advance](https://github.com/inkVerb/VIP/blob/master/401/README.md)
 
 # [Shell 501: Web Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
 
@@ -27,16 +27,16 @@ Whether you want to become a computer genius or if you're a "computer dummy" and
 ### 2. Ultra Simple — Better preparation to learn other languages!
 - The Linux "Shell/BASH" language is simpler than other languages, but shares many universal concepts of code.
 
-### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Pearl, Node.js, HTML, CSS... all sit atop Linux
+### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Pearl, Go, MySQL, HTML, CSS... all sit atop Linux
 - It's one thing to learn a web app or server programming language; it's awesome to know the language under the language so you can *control the machine it runs on.*
-- PHP will make more sense if you have seen what this does: `sudo apt install php`
+- PHP will make more sense if you have seen what this does: `sudo dnf install php`
 - Once you know how to work with a computer terminal (Linux/Unix language), all code will be less scary because you'll know where code lives!
 
 ## Who should take this course?
 - Everyone ages 7 through high school, as a general education course, home schooled or in the classroom
 - Any college student or graduate majoring in computer code
 - Anyone ages 13 or older interested in self-teaching to learn computers
-- Any entrepreneur, project manager, copywriter, marketer, graphic designer, teacher, professor, life guard, dog catcher, firefighter, chef, union-card-carrying thespian, secretary, supervisor, executive, board member, politician, bureaucrat, dictator, monarch, Amway IBO, or anyone who WILL NOT learn computer code, but wants a peaceful and powerful relationship with a marketing firm, software writer, and/or IT
+- Any entrepreneur, project manager, copywriter, marketer, graphic designer, teacher, professor, life guard, dog catcher, firefighter, chef, union-card-carrying thespian, secretary, supervisor, executive, board member, politician, bureaucrat, dictator, monarch, Amway IBO, or anyone who WILL NOT learn computer code, but wants a peaceful and powerful relationship with a marketing firm, software writer, and/or IT staff—or just wants to be smarter than a smart phone
 
 ___
 
