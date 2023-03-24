@@ -10,7 +10,7 @@ cd ~/School/VIP/301
 **FOR** | **2 - 19** :$
 
 ```console
-cd verb.ink
+cd one
 ```
 
 ___
