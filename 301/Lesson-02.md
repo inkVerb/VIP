@@ -185,7 +185,7 @@ cd ..
 read
 ```
 
-*Now type something and/or press Enter*
+*Now type something and press Enter*
 
 *Nothing happened because it should be used with a variable...*
 
@@ -194,6 +194,8 @@ read
 ```console
 read Variable
 ```
+
+*Now type something and press Enter*
 
 | **22** :$
 
