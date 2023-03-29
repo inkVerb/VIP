@@ -187,7 +187,7 @@ echo "First line then"$'\n'now "another" line$'\t'"after tab"
 2. A heredoc is a multi-line argument for a command; the first line can pipe like a normal command.
 3. A heredoc's "delimeter" (often `EOF` or `END`) can be anything, as long as both start and finish are the same.
 4. A heredoc will render variables; a nowdoc won't.
-    - **nowdoc**: Put the "delimeter" in 'single quotes' (`'EOF'`) and variables won't render.
+    - **nowdoc**: Put the "delimeter" in 'single quotes' (`<<'EOF'`) or escape (`<<\EOF`) and variables won't render.
 5. In non-Shell languages, "whitespace" can break a heredoc.
 
 Format:
@@ -560,6 +560,7 @@ ___
 
 ## Nowdocs (heredoc without variables)
 - `cat <<'EOF'` opens a nowdoc, note the `'single quotes'`
+  - Or with escape `cat <<\EOF`
 - Variables will be included as code, not as their values
 - Everything else is the same as a heredoc
 

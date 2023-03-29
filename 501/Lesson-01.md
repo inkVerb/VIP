@@ -112,7 +112,7 @@ You will see many tests with `} else {` options for reporting errors, this is wh
 
 **_GET**
 ```
-http://webaddress.com?this_name=something-here
+http://webaddress.tld?this_name=something-here
 ```
 ...becomes...
 
