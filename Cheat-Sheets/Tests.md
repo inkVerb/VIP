@@ -896,7 +896,7 @@ if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not f
 
 **BASH one-line equivalent:**
 
-*(This will NOT work in `#!/bin/sh`, only `#!/bin/bash`!)*
+*(This `[[` usage will NOT work in `#!/bin/sh`, only `#!/bin/bash`!)*
 
 ```bash
 #!/bin/bash
@@ -907,7 +907,7 @@ if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not f
 
 ```
 
-**`exit` one-line test for failed previous command in a script:**
+**BASH `exit` one-line test for failed previous command in a script:**
 
 *(If the previous command failed, this will `exit` the script with the same `exit` code as the failed command)*
 
@@ -915,3 +915,10 @@ if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not f
 e="$?"; [[ "$e" = "0" ]] || exit "$e"
 ```
 
+**BASH `cp` copy files only if a directory is not empty:**
+
+*(This silently checks via `2> /dev/null`)*
+
+```bash
+[[ -n "$(ls -A mydirectory/* 2> /dev/null)" ]] && cp mydirectory/* mydestination/
+```
