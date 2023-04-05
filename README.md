@@ -68,6 +68,7 @@ ___
 
 ## Keyboard shortcuts on desktop
 
+| Key combination                                                                    | Function               |
 |:---------------------------------------------------------------------------------- |:---------------------- |
 | <kbd>F9</kbd>                                                                      | Show/hide side panels  |
 | <kbd>Ctrl</kbd> + <kbd>A</kbd>                                                     | Select All             |
