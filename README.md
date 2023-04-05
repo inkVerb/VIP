@@ -84,6 +84,7 @@ ___
 
 ## Keyboard shortcuts in terminal
 
+| Key combination                                   | Function               |
 |:------------------------------------------------- |:---------------------- |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | Copy                   |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> | Paste                  |
