@@ -22,6 +22,14 @@ ___
 ln -sfn ~/School/VIP/301/03-* .
 ```
 
+*Create some files we can list through...*
+
+| **2** :$
+
+```console
+touch one-1 one-2 one-3 one-4 one-5 one-6 one-1.t one-2.t one-3.t one-4.t one-5.t one-6.t 1.one 2.one 3.one 4.one 5.one 6.one 1-t.one 2-t.one 3-t.one 4-t.one 5-t.one 6-t.one
+```
+
 ### I. `for Var in Lst; do`
 
 ```sh
@@ -35,19 +43,19 @@ done
 
 one*
 
-| **2** :$
+| **3** :$
 
 ```console
 gedit 03-do-echo-1
 ```
 
-| **3** :$
+| **4** :$
 
 ```console
 ls one*
 ```
 
-| **4** :$
+| **5** :$
 
 ```console
 ./03-do-echo-1
@@ -55,19 +63,19 @@ ls one*
 
 one-1*
 
-| **5** :$
+| **6** :$
 
 ```console
 gedit 03-do-echo-2
 ```
 
-| **6** :$
+| **7** :$
 
 ```console
 ls one-1*
 ```
 
-| **7** :$
+| **8** :$
 
 ```console
 ./03-do-echo-2
@@ -75,13 +83,13 @@ ls one-1*
 
 *.one
 
-| **8** :$
+| **9** :$
 
 ```console
 gedit 03-do-echo-3
 ```
 
-| **9** :$
+| **10** :$
 
 ```console
 ls *.one
@@ -89,7 +97,7 @@ ls *.one
 
 *Note `do` is on the same line as `for` via `;`*
 
-| **10** :$
+| **11** :$
 
 ```console
 ./03-do-echo-3
@@ -97,19 +105,19 @@ ls *.one
 
 *t.one
 
-| **11** :$
+| **12** :$
 
 ```console
 gedit 03-do-echo-4
 ```
 
-| **12** :$
+| **13** :$
 
 ```console
 ls *t.one
 ```
 
-| **13** :$
+| **14** :$
 
 ```console
 ./03-do-echo-4
@@ -117,19 +125,19 @@ ls *t.one
 
 3.*
 
-| **14** :$
+| **15** :$
 
 ```console
 gedit 03-do-echo-5
 ```
 
-| **15** :$
+| **16** :$
 
 ```console
 ls 3.*
 ```
 
-| **16** :$
+| **17** :$
 
 ```console
 ./03-do-echo-5
@@ -137,19 +145,19 @@ ls 3.*
 
 \*3*
 
-| **17** :$
+| **18** :$
 
 ```console
 gedit 03-do-echo-6
 ```
 
-| **18** :$
+| **19** :$
 
 ```console
 ls *3*
 ```
 
-| **19** :$
+| **20** :$
 
 ```console
 ./03-do-echo-6
@@ -157,19 +165,19 @@ ls *3*
 
 \*one* "is a file."
 
-| **20** :$
+| **21** :$
 
 ```console
 gedit 03-do-echo-7
 ```
 
-| **21** :$
+| **22** :$
 
 ```console
 ls *one*
 ```
 
-| **22** :$
+| **23** :$
 
 ```console
 ./03-do-echo-7
@@ -185,7 +193,7 @@ ls *one*
 
 *Note the error message: bash knows `break` is used by `for`...*
 
-| **23** :$
+| **24** :$
 
 ```console
 break
@@ -193,19 +201,19 @@ break
 
 *Note the two `echo` commands and where the `break` applies...*
 
-| **24** :$
+| **25** :$
 
 ```console
 gedit 03-do-echo-8
 ```
 
-| **25** :$
+| **26** :$
 
 ```console
 ls one-*
 ```
 
-| **26** :$
+| **27** :$
 
 ```console
 ./03-do-echo-8
@@ -215,7 +223,7 @@ ls one-*
 
 *Note the error message: bash knows `continue` is used by `for`...*
 
-| **27** :$
+| **28** :$
 
 ```console
 continue
@@ -223,19 +231,19 @@ continue
 
 *Note the two `echo` commands and where the `continue` applies...*
 
-| **28** :$
+| **29** :$
 
 ```console
 gedit 03-do-echo-9
 ```
 
-| **29** :$
+| **30** :$
 
 ```console
 ls one-*
 ```
 
-| **30** :$
+| **31** :$
 
 ```console
 ./03-do-echo-9
