@@ -249,6 +249,21 @@ ls one-*
 ./03-do-echo-9
 ```
 
+*This will fail...*
+
+```sh
+for Var in No_files_listed
+do
+  ...$Var becomes "No_files_listed", listing once
+done
+```
+
+| **32** :$
+
+```console
+./03-do-echo-10
+```
+
 ___
 
 # The Take
