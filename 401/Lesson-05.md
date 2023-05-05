@@ -11,6 +11,14 @@ ___
 
 ### I. Exit Code Variable: `$?`
 
+```bash
+exit 7
+
+# Results in $? = 7
+
+echo $? # 7
+```
+
 *Prepare*
 
 | **1** :$
@@ -285,6 +293,10 @@ $#"
 
 ### V. `unset` Variables
 
+```bash
+unset variable
+```
+
 *Edit this script*
 
 | **16** :$
@@ -463,6 +475,10 @@ echo "${myVar}"
 
 ### VII. `export` Variables
 
+```bash
+export var="some value"
+```
+
 *Edit these scripts to see the short version*
 
 | **22** :$
@@ -548,8 +564,8 @@ gedit varfoo
 #!/bin/sh
 
 var="fooapplefoo"
-var1=${var#foo}
-var2=${var%foo}
+var1=${var#foo} # Removes "foo" from front of value
+var2=${var%foo} # Removes "foo" from end of value
 
 echo "var: $var
 var1: $var1
@@ -566,9 +582,15 @@ var2: $var2"
 
 ### VIII. `readonly` Variables (Constants)
 
-*"Constants" are, basically, variables that can't change (oxymoron, but you get the idea)*
+```bash
+readonly ConstantVar="some value"
+```
 
-*Generally, only/always use ALL CAPS for naming a "constant" so other Shell coders understand you*
+*"Constants" are, basically, variables that can't change*
+
+*Generally in Linux code, ALL CAPS are reserved for "environment variables" listed via `printenv`, so never use ALL CAPS for a variable or constant name*
+
+*Other languages use ALL CAPS for naming constants, so we use ALL CAPS only for our examples here; don't use ALL CAPS in your actual code*
 
 #### 1. You can't change a `readonly` variable's value
 

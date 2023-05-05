@@ -83,6 +83,10 @@ gedit 10-ternary-var
 
 ### II. `${#Variable}`
 
+```bash
+${#variable} #shows number of characters in $variable
+```
+
 | **7** :$
 
 ```console
@@ -103,6 +107,11 @@ gedit 10-count
 
 ### III. `${!Variable}` Variables
 
+```bash
+variable=changeme
+${!variable} # Same as $changeme
+```
+
 | **10** :$
 
 ```console
@@ -118,6 +127,20 @@ gedit 10-varvar
 *Take a good look and try to see how that makes sense; it can be VERY useful!*
 
 ### IV. Arrays
+
+Variables with multiple values
+
+```bash
+# Auto-indexed (numbered keys)
+NumArray=(one two)
+echo ${NumArray[0]} # one
+echo ${NumArray[1]} # two
+
+# Associative (with string keys)
+KeyArray=([key1]=value1 [key2]=value2)
+echo ${KeyArray[key1]} # value1
+echo ${KeyArray[key1]} # value2
+```
 
 | **12** :$
 
@@ -316,6 +339,15 @@ gedit 10-array-associative-strings
 *Note associative arrays can have quoted strings as elements too*
 
 ### Array as list in `for` loop
+
+```bash
+for Var in ${Array[*]}
+
+do
+echo $Var
+
+done
+```
 
 | **37** :$
 
