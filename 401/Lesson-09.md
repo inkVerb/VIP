@@ -944,9 +944,9 @@ fi
 
 We looked at different `exit` codes in [301 Lesson 6](https://github.com/inkVerb/vip/blob/master/301/Lesson-06.md)
 
-Now, we will pass a child script's exit code to make the parent script exit with the same code using this magical pass-exit line:
+Now, we will pass a child script's exit code to make the parent script exit with the same code using this one line exit pass:
 
-| **magical pass-exit line** :
+| **one line exit pass** :
 
 ```bash
 e="$?"; [[ "$e" = "0" ]] || exit "$e"
@@ -974,10 +974,10 @@ gedit child-exit parent-exit
 # We pass the first argument to the child script
 ./child-exit "$1"
 
-# Uncomment to use the magical pass-exit line:
+# Uncomment to use the one line exit pass:
 #e="$?"; [[ "$e" = "0" ]] || exit "$e"
 
-# Without this, the magical pass-exit line isn't needed because the script ends
+# Without this, the one line exit pass isn't needed because the script ends
 if [ "$noargument" = "true" ]; then
   exit
 fi
@@ -1119,7 +1119,7 @@ echo $?
 ./child-exit chocolate; echo $?
 ```
 
-*Uncomment the magical pass-exit line in parent-exit...*
+*Uncomment the one line exit pass in parent-exit...*
 
 | **parent-exit** : (uncommented)
 
@@ -1129,10 +1129,10 @@ echo $?
 # We pass the first argument to the child script
 ./child-exit "$1"
 
-# Uncomment to use the magical pass-exit line:
+# Uncomment to use the one line exit pass:
 e="$?"; [[ "$e" = "0" ]] || exit "$e"
 
-# Without this, the magical pass-exit line isn't needed because the script ends
+# Without this, the one line exit pass isn't needed because the script ends
 if [ "$noargument" = "true" ]; then
   exit
 fi
@@ -1154,7 +1154,7 @@ echo "Parent is finished."
 ./child-exit three; echo $?
 ```
 
-*Now they are the same because we are using the magical pass-exit line*
+*Now they are the same because we are using the one line exit pass*
 
 | **60** :$
 
@@ -1176,7 +1176,7 @@ echo "Parent is finished."
 ./parent-exit flowers; echo $?
 ```
 
-*Try putting the magical pass-exit line* ***after*** *the `if` test, the test changes `$?` value!*
+*Try putting the one line exit pass* ***after*** *the `if` test, the test changes `$?` value!*
 
 | **parent-exit** : (MPEL is after the test)
 
@@ -1186,12 +1186,12 @@ echo "Parent is finished."
 # We pass the first argument to the child script
 ./child-exit "$1"
 
-# Without this, the magical pass-exit line isn't needed because the script ends
+# Without this, the one line exit pass isn't needed because the script ends
 if [ "$noargument" = "true" ]; then
   exit
 fi
 
-# Uncomment to use the magical pass-exit line:
+# Uncomment to use the one line exit pass:
 e="$?"; [[ "$e" = "0" ]] || exit "$e"
 
 echo "Parent is finished."
@@ -1205,7 +1205,7 @@ echo "Parent is finished."
 
 *Note other commands and even a test in the script will change the `$?` value*
 
-*This is why we need the magical pass-exit line immediately after a vital child script*
+*This is why we need the one line exit pass immediately after a vital child script*
 
 *There are other ways to exit when a vital child script fails, such as putting the entire child script in an `if` test or trailing the child script with an `|| exit`, but that makes the script difficult to read and may not properly pass the `exit` status*
 
@@ -1258,7 +1258,7 @@ ___
   - `if [ -n "$(cat SOME-FILE)" ]` will return `false` if "SOME-FILE" as no contents
     - This is because the contents of SOME-FILE would be the value of the Command Substitute; no contents = nothing to set as the value, so it would be "empty"
 
-## Magical pass-exit line (MPEL)
+## one line exit pass (MPEL)
 - `e="$?"; [[ "$e" = "0" ]] || exit "$e"`
   - This line should be added right after every essential child script, if the success of the child script matters
   - MPEL will exit if the child script fails, passing the exit status to the final exit of the parent script
