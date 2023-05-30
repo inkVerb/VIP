@@ -44,6 +44,7 @@ cd ~/
 
 - **`du`: "Disk Usage"**
 - **`df`: "Disk Filesystem"**
+- **"T": "Type"**
 - **"h": "Human"**
 - **"s": "Summarize"**
 
@@ -53,25 +54,7 @@ cd ~/
 du -sh *
 ```
 
-*Note the list of each directory's size*
-
 | **3** :$
-
-```console
-df -k
-```
-
-*Note it listed everything in kilobytes*
-
-| **4** :$
-
-```console
-df -h
-```
-
-*Note it listed everything in megabytes and gigabytes, etc*
-
-| **5** :$
 
 ```console
 du -sh School
@@ -79,17 +62,43 @@ du -sh School
 
 *Note it can tell you the size of just one directory*
 
+*Note the list of each directory's size*
+
+| **4** :$
+
+```console
+df -k
+```
+
+*Note it listed everything in kilobytes*
+
+| **5** :$
+
+```console
+df -h
+```
+
+*Note it listed everything in megabytes and gigabytes, etc*
+
+| **6** :$
+
+```console
+df -T
+```
+
+*Note it also showed the disk types*
+
 ### III. `top` & `uptime`
 
 *Now go back to where our 201 directory*
 
-| **6** :$
+| **7** :$
 
 ```console
 cd ~/School/VIP/201
 ```
 
-| **7** :$
+| **8** :$
 
 ```console
 top
@@ -99,7 +108,7 @@ top
 
 Q (or <kbd>Ctrl</kbd> + <kbd>C</kbd>) *This will CLOSE the top program*
 
-| **8** :$
+| **9** :$
 
 ```console
 top -n 1
@@ -110,7 +119,7 @@ top -n 1
 - *`-n 1` shows only one "iteration"*
 - *`-n 3` shows only three "iterations"*
 
-| **9** :$
+| **10** :$
 
 ```console
 top -n 1 -b
@@ -120,13 +129,13 @@ top -n 1 -b
 
 *It might be useful to put it in a file...*
 
-| **10** :$
+| **11** :$
 
 ```console
 top -n 1 -b > top.file
 ```
 
-| **11** :$
+| **12** :$
 
 ```console
 gedit top.file
@@ -134,7 +143,7 @@ gedit top.file
 
 *FYI, this is a little program we installed in Lesson 3, a little more colorful than `top`...*
 
-| **12** :$
+| **13** :$
 
 ```console
 htop
@@ -144,7 +153,7 @@ F10 (or Q to Quit)
 
 *For a quick peek:*
 
-| **13** :$
+| **14** :$
 
 ```console
 uptime
@@ -152,7 +161,7 @@ uptime
 
 ### IV. `ps aux`
 
-| **14** :$
+| **15** :$
 
 ```console
 ps aux
@@ -162,13 +171,13 @@ ps aux
 
 Make sure you are NOT using the browser in this command before finishing this lesson!
 
-| **15-C** :$
+| **16-C** :$
 
 ```console
 firefox &
 ```
 
-| **15-F** :$ (if using Firefox)
+| **16-F** :$ (if using Firefox)
 
 ```console
 chromium-browser &
@@ -176,7 +185,7 @@ chromium-browser &
 
 *Note we used `&` to keep it from blocking the terminal*
 
-| **16** :$
+| **17** :$
 
 ```console
 ps aux
@@ -186,13 +195,13 @@ ps aux
 
 *This uses pipe and grep to find it*
 
-| **17-C** :$
+| **18-C** :$
 
 ```console
 ps aux | grep firefox
 ```
 
-| **17-F** :$ (if using Firefox)
+| **18-F** :$ (if using Firefox)
 
 ```console
 ps aux | grep chromium-browser
@@ -202,13 +211,13 @@ ps aux | grep chromium-browser
 
 ### V. `pgrep` & `kill`
 
-| **18-C** :$
+| **19-C** :$
 
 ```console
 pgrep firefox
 ```
 
-| **18-F** :$ (if using Firefox)
+| **19-F** :$ (if using Firefox)
 
 ```console
 pgrep chromium-browser
@@ -216,7 +225,7 @@ pgrep chromium-browser
 
 *Note the PID, it's the number*
 
-| **19** :$ e.g. `kill 71771`
+| **20** :$ e.g. `kill 71771`
 
 ```console
 kill PID
@@ -224,13 +233,13 @@ kill PID
 
 *Run it again*
 
-| **20-C** :$
+| **21-C** :$
 
 ```console
 firefox &
 ```
 
-| **20-F** :$ (if using Firefox)
+| **21-F** :$ (if using Firefox)
 
 ```console
 chromium-browser &
@@ -238,13 +247,13 @@ chromium-browser &
 
 *Now kill it by process name using `killall`*
 
-| **21-C** :$ 
+| **22-C** :$ 
 
 ```console
 killall firefox
 ```
 
-| **21-F** :$ (if using Firefox)
+| **22-F** :$ (if using Firefox)
 
 ```console
 killall chromium-browser
@@ -261,6 +270,7 @@ ___
 - `du` & `df` output disk and directory size
   - `du` lists directories and size
   - `df` shows more system and "available space" information
+  - `df -T` shows same as `df -h` but also with disk types
 - "PID" stands for "process ID", it is the ID number used to control a running app
 - `ps` outputs information about running processes
   - `ps aux` is probably the most common usage
