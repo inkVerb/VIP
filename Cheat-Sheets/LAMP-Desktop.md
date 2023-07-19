@@ -95,17 +95,18 @@ sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 4. Enable MySQL (MariaDB)
 
-| **A4** :$
+| **A4e** :$
+
+```console
+sudo systemctl start mariadb
+```
+
+5. Start MySQL (MariaDB)
+
+| **A4s** :$
 
 ```console
 sudo systemctl enable mariadb
-```
-
-5. Restart MySQL (MariaDB)
-
-| **A5** :$
-
-```console
 sudo systemctl start mariadb
 ```
 
@@ -113,7 +114,7 @@ sudo systemctl start mariadb
 
 Edit with `gedit`:
 
-| **A6g** :$
+| **A5g** :$
 
 ```console
 sudo gedit /etc/httpd/conf/httpd.conf
@@ -123,7 +124,7 @@ sudo gedit /etc/httpd/conf/httpd.conf
 
 Or edit with `vim`:
 
-| **A6v** :$
+| **A5v** :$
 
 ```console
 sudo vim /etc/httpd/conf/httpd.conf
@@ -178,7 +179,7 @@ b. Web directory settings
 
 7. Restart the Apache server
 
-| **A7** :$
+| **A6** :$
 
 ```console
 sudo systemctl restart httpd
@@ -192,7 +193,7 @@ A. Start Apache only once
 
 *(You will need to run this command each time you start lessons after reboot)*
 
-| **A8e** :$
+| **A7e** :$
 
 ```console
 sudo systemctl start httpd
@@ -200,7 +201,7 @@ sudo systemctl start httpd
 
 B. Make Apache a service to always run
 
-| **A8s** :$
+| **A7s** :$
 
 ```console
 sudo systemctl enable httpd
@@ -818,19 +819,20 @@ sudo sed -i "s/LoadModule mpm_event_module/#LoadModule mpm_event_module/" /etc/h
 
 7. Enable & restart
 
-| **C10** :$
-
-```console
-sudo systemctl enable mariadb
-```
-
-| **C11** :$
+| **C10e** :$
 
 ```console
 sudo systemctl start mariadb
 ```
 
-| **C12** :$
+| **C10s** :$
+
+```console
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+```
+
+| **C11** :$
 
 ```console
 sudo systemctl restart httpd
@@ -844,7 +846,7 @@ A. Start Apache only once
 
 *(You will need to run this command each time you start lessons after reboot)*
 
-| **CS13e** :$
+| **CS12e** :$
 
 ```console
 sudo systemctl start httpd
@@ -852,7 +854,7 @@ sudo systemctl start httpd
 
 B. Make Apache a service to always run
 
-| **CS13s** :$
+| **CS12s** :$
 
 ```console
 sudo systemctl enable httpd
@@ -888,7 +890,7 @@ sudo systemctl stop httpd
 
 - Make sure SELinux is *not* enforcing
 
-| **CS14** :$
+| **CS13** :$
 
 ```console
 sudo setenforce 0

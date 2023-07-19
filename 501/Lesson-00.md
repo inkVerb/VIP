@@ -321,6 +321,7 @@ codium --install-extension emroussel.atomize-atom-one-dark-theme
 codium --install-extension opensumi.opensumi-default-themes
 codium --install-extension PenumbraTheme.penumbra
 codium --install-extension timonwong.shellcheck
+codium --enable-proposed-api timonwong.shellcheck
 ```
   - May want to add these to *File > Preferences > Settings > Extensions > ShellCheck > Exclude:*
 ```console
