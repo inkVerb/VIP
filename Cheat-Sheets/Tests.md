@@ -206,6 +206,44 @@ echo $Variabl
 done
 ```
 
+#### Handling file names directories
+
+Directories may need some cleanup of the file name
+
+- Your file lists as "Name.txt"
+- You only need to use: "Name"
+- `useVariable="$(echo ${Variable} | sed 's/\.txt//' )"`
+
+```sh
+for Variable in *.txt; do
+
+  useVariable="$(echo ${Variable} | sed 's/\.txt//' )"
+
+  echo $useVariable
+
+done
+```
+
+#### Handling empty directories
+
+If the directory is empty, then `$Variable` = `*.txt` in the loop, and `$useVariable` = `*`
+
+- We need to skip this using `continue`
+- `if [ "${useVariable}" = '*' ]; then continue; fi`
+  - Use `'`single quotes`'` so that the `*` character is not working as a RegEx wildcard
+
+```sh
+for Variable in *.txt; do
+
+  useVariable="$(echo ${Variable} | sed 's/\.txt//' )"
+
+  if [ "${useVariable}" = '*' ]; then continue; fi
+
+  echo $useVariable
+
+done
+```
+
 Also see: [Shell 301 Lesson 3](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-03.md)
 
 ___
