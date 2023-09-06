@@ -122,6 +122,8 @@ sed 's/^GRUB_TIMEOUT=5$/GRUB_TIMEOUT=0/' -i /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
+Basics are done, Arch should boot!
+
 ### Set up git and vim while we're here
 
 ```console
