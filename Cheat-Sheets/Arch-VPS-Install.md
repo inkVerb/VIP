@@ -5,14 +5,16 @@
 2. View Console
 3. In console: Boot to install Arch
 
-## Start with useful commands:
+Useful commands:
 
 ```console
 lsblk # View partitions
 ping -c 1 archlinux.org # See if network is working
 ```
 
-## To set up disks: (commands by line)
+## Install Arch on the disk
+
+### Time, keyring update, prepare the disk
 
 `vda` may change based on the main disk seen from `lsblk`...
 
@@ -26,7 +28,7 @@ Press: <key>N</key>, <key>Enter</key> (x5), <key>W</key>, <key>Enter</key> (x1)
 
 Now disk is partitioned
 
-## Format disk & mount for temp use
+### Format disk & mount for temp use
 
 Choose `btrfs` or `ext4`:
 
@@ -46,19 +48,26 @@ mount /dev/vda1 /mnt
 
 Now disk is temporarily mounted to install
 
-## Start the install
+### Mount and install
 
 ```console
 pacstrap /mnt base linux linux-firmware --noconfirm
 genfstab -L /mnt >> /mnt/etc/fstab
-arch-chroot /mnt /bin/bash
 ```
 
 Now system is ready and automatically mounted to / at startup
 
+## Enter the mounted system in `chroot`
+
+```console
+arch-chroot /mnt /bin/bash
+```
+
 We are in `chroot` to operate on that temporarily mounted system to finish our setup needed before the first boot
 
-## Set up DHCP
+## Setup access via `chroot`
+
+### Networking
 
 ```console
 cat <<EOF > /etc/systemd/network/enp1s0.network
@@ -70,7 +79,7 @@ DHCP=ipv4
 EOF
 ```
 
-## DHCP, DNS, resolv forwards
+### DHCP, DNS, resolv forwards
 
 ```console
 systemctl enable systemd-networkd
@@ -79,7 +88,7 @@ pacman -S dhcpcd --noconfirm
 systemctl enable  dhcpcd.service
 ```
 
-## Hosts
+### Hosts
 
 ```console
 echo 'myhost' > /etc/hostname
@@ -98,13 +107,13 @@ ff02::3 ip6-allhosts
 EOF
 ```
 
-## Rood password
+### Rood password
 
 ```console
 passwd
 ```
 
-## Grub
+### Grub
 
 ```console
 pacman -S grub --noconfirm
@@ -113,24 +122,19 @@ sed 's/^GRUB_TIMEOUT=5$/GRUB_TIMEOUT=0/' -i /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-## Install a couple extra packages while we're here
+### Set up git and vim while we're here
 
 ```console
 pacman -S sudo git vim --noconfirm
+touch ~/.vimrc # Other settings won't load without this
+echo 'nnoremap <C-c> "+y
+vnoremap <C-c> "+y
+nnoremap <C-p> "+p
+vnoremap <C-p> "+p
+syntax on' >> /etc/vimrc
 ```
 
-## Exit chroot & poweroff
-
-```console
-exit
-systemctl poweroff
-```
-
-In VPS Settings, remove the Custom ISO
-
-Restart the VPS and access the terminal as user: `root` Password: `whatever you typed for passwd`
-
-## Use sudo
+### Use sudo
 
 ```console
 pacman -S sudo --noconfirm
@@ -139,12 +143,28 @@ sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' -i /etc/sudoers.new
 visudo -c -f /etc/sudoers.new && mv /etc/sudoers.new /etc/sudoers
 ```
 
-## SSH
+### SSH
 
 ```console
 pacman -S openssh --noconfirm
-sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config
+sed -i 's/#Port 22/Port 1222/' /etc/ssh/sshd_config
 systemctl enable --now sshd
 ```
 
 Now the server is ready to behave like a normal Arch installation
+
+### Exit chroot & poweroff
+
+```console
+exit
+systemctl poweroff
+```
+
+In VPS Settings, remove the Custom ISO
+
+Restart the VPS
+
+Access the terminal as user: `root` Password: `whatever you typed for passwd`
+
+Follow other instructions to add `ssh` keys for access from a local terminal with no password
+
