@@ -16,9 +16,12 @@ ___
 
 ### "If the `[Test]` is `true`, `while` will `do` through `done`, then take the `[Test]` again."
 
+**`true` = `do`**: *A `while` loop will automatically `break` once the test fails*
+
+**`while` loop**
+
 ```sh
-while [ Test_is_true ]
-do
+while [ Test_is_true ]; do
   ...doing something
 done
 ```
@@ -38,6 +41,16 @@ gedit 05-while-read
 ```
 
 *Only press Enter to see what happens again and again, comply or use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
+
+**`while` counter loop**
+
+```sh
+count=0
+while [ Test_is_true ]; do
+  ...doing something
+  count=$(expr ${count} + 1)
+done
+```
 
 | **3** :$
 
@@ -73,9 +86,12 @@ gedit 05-while-count-read
 
 ### "If the `[Test]` is `false`, `until` will `do` through `done`, then take the `[Test]` again."
 
+**`false` = `do`**: *An `until` loop will will repeat as long as the test fails*
+
+**`until` loop**
+
 ```sh
-until [ Test_is_false ]
-do
+until [ Test_is_false ]; do
   ...doing something
 done
 ```
@@ -86,6 +102,16 @@ done
 
 ```console
 mkdir 05-COUNT && cp 05-until-count 05-COUNT/ && cd 05-COUNT
+```
+
+**`until` counter loop**
+
+```sh
+count=0
+until [ Test_is_false ]; do
+  ...doing something
+  count=$(expr ${count} + 1)
+done
 ```
 
 | **8** :$
@@ -259,6 +285,17 @@ gedit 05-case-chat
 
 ### IV. `case` with `y/n`
 
+```sh
+case $Var in
+  [yY] | [yY][eE][sS] )
+    echo "Yes to $Var."
+  ;;
+  [nN] | [nN][oO] )
+    echo "No to $Var."
+  ;;
+esac
+```
+
 | **31** :$
 
 ```console
@@ -273,7 +310,20 @@ gedit 05-case-yn
 
 *Run it multiple times with: y, n, Y, N, Yes, No, yes, no, YES, NO, yES, nO, yeS, yEs, and other answers*
 
-### V. `case` `y/n` & `exit 1`
+### V. `case` `y/n` & `exit 1` with `break`
+
+```sh
+case $Var in
+  [yY] | [yY][eE][sS] )
+    echo "Yes to $Var."
+    break
+  ;;
+  [nN] | [nN][oO] )
+    echo "No to $Var."
+    exit 1
+  ;;
+esac
+```
 
 | **33** :$
 

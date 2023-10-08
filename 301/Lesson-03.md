@@ -97,6 +97,14 @@ ls *.one
 
 *Note `do` is on the same line as `for` via `;`*
 
+```sh
+for mdFile in *.md; do
+
+  echo "$mdFile"
+
+done
+```
+
 | **11** :$
 
 ```console
@@ -191,6 +199,18 @@ ls *one*
 
 #### `break` will "break out" of a loop
 
+```sh
+for mdFile in *.md; do
+
+  if [ "$mdFile" = "no-more.md" ]; then
+    break
+  fi
+
+  echo "$mdFile"
+
+done
+```
+
 *Note the error message: bash knows `break` is used by `for`...*
 
 | **24** :$
@@ -221,6 +241,18 @@ ls one-*
 
 #### `continue` will skip whatever is left in a loop iteration and "continue" on to the next iteration
 
+```sh
+for mdFile in *.md; do
+
+  if [ "$mdFile" = "skip-this.md" ]; then
+    continue
+  fi
+
+  echo "$mdFile"
+
+done
+```
+
 *Note the error message: bash knows `continue` is used by `for`...*
 
 | **28** :$
@@ -249,20 +281,56 @@ ls one-*
 ./03-do-echo-9
 ```
 
-*This will fail...*
+*This will create a single false loop...*
 
 ```sh
-for Var in No_files_listed
+for Var in No_files_listed.*
 do
-  ...$Var becomes "No_files_listed", listing once
+  ...$Var becomes "No_files_listed.*", listing once
 done
 ```
 
 | **32** :$
 
 ```console
+gedit 03-do-echo-10
+```
+
+*Note there are no files starting with "two-"*
+
+| **33** :$
+
+```console
 ./03-do-echo-10
 ```
+
+*Correct this with a `continue` test...*
+
+```sh
+for mdFile in *.md; do
+
+  if [ "$mdFile" = "*.md" ]; then
+    continue
+  fi
+
+  echo "$mdFile"
+
+done
+```
+
+| **34** :$
+
+```console
+gedit 03-do-echo-11
+```
+
+| **33** :$
+
+```console
+./03-do-echo-11
+```
+
+*No more single false loop*
 
 ___
 
@@ -285,6 +353,8 @@ ___
 ##  `break` & `continue`
 - `break` will end the loop (usually in an `if` test)
 - `continue` will skip to the next loop cycle, doing nothing else (usually in an `if` test)
+- If a `for` loops through an empty list, the statement will trigger a single false loop
+  - Fix this by testing for the looped list and using `continue` if true
 - Both of these can also be used in `until` and `while` loops (covered later)
 - See usage and examples here: [Tests: for – continue & break](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#continue--break)
 

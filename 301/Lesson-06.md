@@ -24,9 +24,44 @@ su Username
 ```
 ___
 
+**Opening thoughts** :
+
+This lesson covers logs, `exit` status, `exit` channel messages, and STDOUT vs STDERR
+
+STDOUT and STDERR are part of C language, working beneath Linux, not in actual Shell scripts
+
+Your Shell script cannot create actual STDOUT or STDERR, which only comes from within the actual Linux commands themselves, but a Shell script can produce messages that behave much the same as STDOUT and STDERR; your goal as a good programmer is to keep these in agreement
+
+The only way to create your own pure STDOUT is with `echo`, which simply dumps the string to STDOUT
+
+- `echo "message"` is an alias for `echo "message" >&1`, creating STDOUT
+- `echo "message" >&2` puts that messate where we expect STDERR
+
+For a deeper understanding, one must learn the language Linux was written in and view Linux source itself, which is beyond our scope
+
+This lesson will teach how to make your scripts produce what we expect from Linux commands themselves
+
 ### *Note `exit` & `journalctl` are used for logs*
 
 ## I. System Logs via `journalctl` & `logger`
+
+**`journalctl`** :
+
+*Note `-r` is for "reverse"; it can always be skipped*
+
+```sh
+journalctl -r
+journalctl -ro verbose
+journalctl -r -t someTag
+journalctl -rp info
+journalctl -rp warn
+journalctl -rp err
+journalctl
+journalctl -o verbose
+journalctl -t someTag
+journalctl -p warn
+journalctl -p info SYSLOG_FACILITY=1 # 1 = user facility
+```
 
 *Look at some log entries on your machine*
 
@@ -56,6 +91,17 @@ journalctl -f
 
 *<kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
 
+**`logger`** :
+
+```sh
+logger "log message"
+logger -t myTag "log message"
+logger -p info "info message"
+logger -p warn "warning message"
+logger -p err "error message"
+logger -p user.info "user info message"
+```
+
 *Create a system log entry...*
 
 | **4** :$
@@ -72,7 +118,7 @@ logger "I logged this just now."
 journalctl -r
 ```
 
-*Use `-t SOME_TAG` to add your own "tag"*
+*Use `-t some_tag` to add your own "tag"*
 
 | **6** :$
 
@@ -173,10 +219,10 @@ journalctl -ro verbose SYSLOG_FACILITY=3 -p debug
 
 *Look for:*
 
-- `PRIORITY` *(7 = debug)*
-- `SYSLOG_FACILITY` *(3 = daemon)*
+- `PRIORITY` *(`7` = debug)*
+- `SYSLOG_FACILITY` *(`3` = daemon)*
 
-*Now do the same thing using the nubmers; facility "user" (1) and priority "info" (6)...*
+*Now do the same thing using the nubmers; facility `user` (`1`) and priority `info` (`6`)...*
 
 *Note numbers don't work to enter a facility*
 
@@ -315,10 +361,18 @@ rm log
 ```
 
 ### Ouput to file
-- *Send* STDOUT *(output) to a file with: `> outputfile`*
-- *Send* STDERR *(error output) to a file with: `2> outputfile`*
 
-*Send our STDOUT and STDERR to different log files*
+This redirects actual STDOUT and STDERR to a file, it is not STDOUT or STDERR that we created in the script because scripts can't create those
+
+- *Send STDOUT (output) to a file with: `> outputfile` or `1> outputfile`*
+- *Send STDERR (error output) to a file with: `2> outputfile`*
+
+```sh
+some_command > output.file
+some_command 2> error.file
+```
+
+*Send STDOUT and STDERR to different log files*
 
 | **26** :$
 
@@ -412,7 +466,9 @@ ls > /dev/null 2>&1
 
 *See! Nothing at all!*
 
-*Note `journalctl` is for system logs, but you can create your own log files this way*
+*Note `journalctl` is for system logs, but you can create your own log files by directing output in this way*
+
+*Normally, in a full Linux app that honors the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md) (explaind in Shell 201) log files like these would be sent to `/var/log/somelogfile`, which must be owned by the Linux user running the script or needs `sudo` permissions, which is where most apps running on a Linux server send their logs, such as `apache`, `nginx`, `python`, `php`, `mysql`, `postfix`, etc*
 
 ### Review output numbers
 
@@ -527,6 +583,22 @@ ___
 
 ### Creat log files for normal STDOUT and error STDERR in Shell
 
+**Output (error and normal) can be sent to files rather than the terminal**
+
+| **CLI** :
+
+```sh
+Some_command 1>> normaloutput.log
+Some_command 2>> erroroutput.log
+```
+
+| **Script head** :
+
+```sh
+exec 1>> normaloutput.log
+exec 2>> erroroutput.log
+```
+
 | **49** :$
 
 ```console
@@ -536,8 +608,8 @@ gedit ../06-logging-1
 *Note:*
 
 - *`exec` basically means "whatever the current command is"*
-- *Output channel 2 (STDERR) goes to a file*
-- *Output channel 1 (STDOUT) is unchanged and goes to the terminal*
+- *Output channel `2 `(STDERR) goes to a file*
+- *Output channel `1` (STDOUT) is unchanged and goes to the terminal*
 
 *Whatch the output of our two commands in that script...*
 
@@ -586,6 +658,20 @@ gedit ../06-logging-2
 - *error.log*
 - *normal.log*
 
+**Error and normal output can be sent to the same channel**
+
+| **CLI** :
+
+```sh
+Some_command 2>&1
+```
+
+| **Script head** :
+
+```sh
+exec 2>&1
+```
+
 | **55** :$
 
 ```console
@@ -619,6 +705,14 @@ gedit all.log
 ```
 
 *Note all the output is in the same file*
+
+**Break the script if any error**
+
+| **Script head** :
+
+```sh
+set -e
+```
 
 | **59** :$
 
@@ -667,6 +761,12 @@ gedit ../06-logging-5
 
 ### Notes about `exit` status (AKA 'exit codes')
 
+```sh
+exit 0
+exit 1
+exit 2
+```
+
 **Logs & `exit` codes are related**
 
 - *Errors are important, handle them correctly with `exit`*
@@ -679,11 +779,11 @@ gedit ../06-logging-5
 **`exit` creates different types of output**
 
 - **`exit 0` indicates mere success, possible STDOUT output**
-  - *`if`/`while` logic returns a "proper" `true` (exit-status == 0)*
+  - *`if`/`while` logic returns a "proper" `true` (exit-status == `0`)*
 - **`exit 1` indicates soft failure, possible STDOUT output**
-  - *`if`/`while` logic returns a "proper" `false` (exit-status == 1)*
+  - *`if`/`while` logic returns a "proper" `false` (exit-status == `1`)*
 - **`exit 2` indicates hard failure, probably STDERR output**
-  - *`if`/`while` logic returns a "failed" `false` (exit-status != 0)*
+  - *`if`/`while` logic returns a "failed" `false` (exit-status != `0`)*
 
 **A successful command returns `0`, unsuccessful returns `1`, something wrong returns `2`**
 
@@ -709,7 +809,7 @@ echo $?
 grep -Rq "exit" ../0*
 ```
 
-| **66** :$ *(0, true)*
+| **66** :$ *(`0`, true)*
 
 ```console
 echo $?
@@ -721,7 +821,7 @@ echo $?
 grep -R "wallawalla" ../0*
 ```
 
-| **68** :$ *(1, false)*
+| **68** :$ *(`1`, false)*
 
 ```console
 echo $?
@@ -733,7 +833,7 @@ echo $?
 grep -R "wallawalla" ../iamnothere
 ```
 
-| **70** :$ *(2, error)*
+| **70** :$ *(`2`, error)*
 
 ```console
 echo $?
@@ -747,7 +847,7 @@ echo $?
 ls
 ```
 
-| **72** :$ *(0, true)*
+| **72** :$ *(`0`, true)*
 
 ```console
 echo $?
@@ -759,7 +859,7 @@ echo $?
 ls bozo
 ```
 
-| **74** :$ *(2, error)*
+| **74** :$ *(`2`, error)*
 
 ```console
 echo $?
@@ -773,7 +873,7 @@ echo $?
 cat ../06-status0
 ```
 
-| **76** :$ *(0, true)*
+| **76** :$ *(`0`, true)*
 
 ```console
 echo $?
@@ -785,17 +885,17 @@ echo $?
 cat ../iamnothere
 ```
 
-| **78** :$ *(1, error... wait, what?)*
+| **78** :$ *(`1`, error... wait, what?)*
 
 ```console
 echo $?
 ```
 
-*...`cat` returns 1 for error; this is strange, but:*
+*...`cat` returns `1` for error; this is strange, but:*
 
-- *Technically 0 = success and non-0 = not success, nothing more*
+- *Technically `0` = success and non-`0` = not success, nothing more*
 - *Test each command to see what a failure returns if it is important to your script*
-- *It would be nice if the `cat` error returned 2 for "file does not exist" message*
+- *It would be nice if the `cat` error returned `2` for "file does not exist" message*
   - *But, maybe cats think they don't make errors ;-)*
 
 **Back to scripting...**
@@ -822,7 +922,7 @@ gedit ../06-status0
 echo $?
 ```
 
-*Note the `exit` status was 0 because the script simply quit at the end*
+*Note the `exit` status was `0` because the script simply quit at the end*
 
 | **82** :$
 
@@ -846,7 +946,7 @@ gedit ../06-status1
 echo $?
 ```
 
-*The last `exit` status was 1 because our script exited via `exit 1`*
+*The last `exit` status was `1` because our script exited via `exit 1`*
 
 | **85** :$
 
@@ -854,7 +954,7 @@ echo $?
 gedit ../06-status2
 ```
 
-*Note this only runs a simple, successful command: `ls`, then exists with `exit` status 2*
+*Note this only runs a simple, successful command: `ls`, then exists with `exit` status `2`*
 
 | **86** :$
 
@@ -870,11 +970,16 @@ gedit ../06-status2
 echo $?
 ```
 
-*The last `exit` status was 2 because our script exited via `exit 2`*
+*The last `exit` status was `2` because our script exited via `exit 2`*
 
 ## IV. Other `exit` Codes
 
-### 0, 1 & 2 are not the only way to exit!
+### `0`, `1` & `2` are not the only way to exit!
+
+```sh
+exit 3
+exit 599
+```
 
 | **88** :$
 
@@ -908,7 +1013,7 @@ echo $?
 gedit ../06-status599
 ```
 
-*Note this only runs a simple, successful command: `ls`, then exists with `exit` status 599*
+*Note this only runs a simple, successful command: `ls`, then exists with `exit` status `599`*
 
 | **92** :$
 
@@ -927,6 +1032,12 @@ echo $?
 *The last `exit` status was 87 because they can't go higher than 87*
 
 *gedit: <kbd>Ctrl</kbd> + <kbd>W</kbd> to close previous files*
+
+| **Find last exit code** :
+
+```sh
+lastExit=$?
+```
 
 **How long does an `exit` status persist?**
 
@@ -987,7 +1098,13 @@ gedit ../06-exit-check-2
 ls
 ```
 
-*Generate an STDOUT channel 1 message...*
+**Make your own channel message**
+
+```sh
+echo "My STDOUT message" >&1
+```
+
+*Generate an STDOUT channel `1` message...*
 
 | **101** :$
 
@@ -1015,7 +1132,13 @@ ls
 gedit out-1.log
 ```
 
-*Generate an STDERR channel 2 message...*
+**Make your own error channel message**
+
+```sh
+echo "My STDERR message" >&2
+```
+
+*Generate an STDERR channel `2` message...*
 
 | **105** :$
 
@@ -1045,7 +1168,13 @@ gedit out-2.log
 
 **...But we already knew about channels `1>` and `2>`; let's do channel `3>`**
 
-*Generate a custom channel 3 message...*
+**Make your own custom channel message**
+
+```sh
+echo "My custom channel message" >&3
+```
+
+*Generate a custom channel `3` message...*
 
 | **109** :$
 
@@ -1073,9 +1202,15 @@ ls
 gedit out-3.log
 ```
 
-*Generate a custom channel 0 message...*
+**Make your own zero channel message**
 
-*(Normally channel 0 should remain empty, but it technically doesn't have to be...)*
+```sh
+echo "My zero channel message" >&0
+```
+
+*Generate a custom channel `0` message...*
+
+*(Normally channel `0` should remain empty, but it technically doesn't have to be...)*
 
 | **113** :$
 
@@ -1103,6 +1238,22 @@ ls
 gedit out-0.log
 ```
 
+**Send channels to files, not terminal**
+
+```sh
+exec 0>> out-0.log
+echo "zero message" >&0
+
+exec 1>> out-1.log
+echo "STDOUT message" >&1
+
+exec 2>> out-2.log
+echo "STDOUT message" >&2
+
+exec 3>> out-3.log
+echo "Custom channel message" >&3
+```
+
 *Sent output messages to many channels from one script...*
 
 | **117** :$
@@ -1123,6 +1274,8 @@ gedit ../06-output-4
 - *out-1.log*
 - *out-2.log*
 - *out-3.log*
+
+*Every channel produced output because every log file had an entry*
 
 *Note we didn't use any `exit` codes to make these log entries!*
 
@@ -1150,7 +1303,7 @@ Ready the CLI (if needed)
 cd ~/School/VIP/301/logs
 ```
 
-### Output channels & `exit` status work together:
+### Output channels & `exit` status work together *inside a script*
 
 If there is some special situation in your script:
 - For example, use channel 3...
@@ -1367,11 +1520,11 @@ journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info
 ```
 
 ### *Moral of the story: always use `exit` with a number!*
-- `exit 0` everything is normal, no output *(with `echo "something"` `>&0` ...if you are strange)*
-- `exit 1` everything is normal, with STDOUT
-- `exit 2` something is wrong, with STDERR error messages
-- `exit 3-87` you are cool and make your own exit messages *(with `echo "something"` `>&3`-`>&87`)*
-- `exit` you are lazy and something is wrong with YOU!
+- `exit 0` everything succeeded, STDOUT allowed
+- `exit 1` soft fail, answer was "no", STDOUT message allowed
+- `exit 2` something is wrong, usually with STDERR error messages
+- `exit 3-87` you think you are special and make your own exit channels and messages *(with `echo "something"` `>&3`-`>&87`)*
+- `exit` you are lazy and probalby use other bad coding habits
 
 *FYI, you can create a read-only system log file for your script*
 
@@ -1380,6 +1533,44 @@ journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info
 ```console
 gedit ../06-logging-strong
 ```
+
+### *Multiple channels*
+
+When a script exists, all channels produce output
+
+Sending output comes from `exec` not from `exit`
+
+Eg:
+
+```sh
+exec 0>> out-0.log
+echo "zero message" >&0
+
+exec 2>> out-2.log
+echo "zero message" >&2
+```
+
+### *The irony*
+
+`exit` codes and `exec` output channels do not use the same numbers!
+
+`exit 0` corresponds with `echo "success message" >&1` (channel `1`) with `exec 1>> some_file` or `some_command 1>> some_file`
+
+`exit 1` and `exit 2` behave like `echo "success message" >&2` (channel `2`) with `exec 2>> some_file` or `some_command 2>> some_file`
+
+In the terminal, `echo "success message" >&2` still produces STDOUT and returns a `0` `exit` status; try it in the terminal yourself
+
+In all this, channel `1` via `>&1` output expects an `exit 0` status because `exit 0` results in `$?=0` which returns true (`0`) in an `if [ test ]` and any "good news" output would be directed to a file with `1>> some file`
+
+So, in Linux scripting, sending messages to channels `>&0`, `>&1`, or `>&2` will not automatically mimmic standard STDOUT and STDERR behavior
+
+To create true STDOUT behavior, simply use the `echo` command within your script, the output of which is truely STDOUT and works with `1>> some_file`; if exiting that script by command, use `exit 0`
+
+All other non-`0` `exit` codes should never be used alongside `>&1`, but conventionally `>&2`, and should be regarded the same as STDERR
+
+As [discussed](https://unix.stackexchange.com/questions/590038/why-does-a-failed-cat-return-1-but-other-fails-return-2) many Linux commands are not consistent with the type of `exit` status, except that any non-`0` is considered failure for `if [ test ]` purposes
+
+At the time Linux was written, this discrepancy wasn't any big deal, but the numbers might only be written to agree if a clone of Linux were ever written in [Go language](https://go.dev/) instead of C
 
 ___
 
@@ -1398,16 +1589,16 @@ ___
   - `SYSLOG_FACILITY=N` filter by `N` = facility number
 - Example syntax:
   - Make entry: `logger -p daemon.info` *(`daemon` facility, `info` priority)*
-  - Filter entry: `journalctl SYSLOG_FACILITY=3 -p info` *(`daemon` = facility 3)*
+  - Filter entry: `journalctl SYSLOG_FACILITY=3 -p info` *(`daemon` = facility `3`)*
 - See usage, facility numbers, and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#vi-logger--journalctl)
 
 ## `exit` status & app log files
 - `exit` code numbers are important, always use an exit code with `exit`!
 - This will hide any and all messages: `command > /dev/null 2>&1`
 - System `exit` codes:
-  - `exit 0` success, possible STDOUT, "proper" `true` (status == 0)
-  - `exit 1` soft fail, possible STDOUT, "proper" `false` (status == 1)
-  - `exit 2` hard fail, probably STDERR, "failed" `false` (status != 0)
+  - `exit 0` success, possible STDOUT, "proper" `true` (status == `0`)
+  - `exit 1` soft fail, possible STDOUT, "proper" `false` (status == `1`)
+  - `exit 2` hard fail, probably STDERR, "failed" `false` (status != `0`)
 - Custom `exit` codes:
   - Syntax: `exit 0`
   - Most numbers above `2` are either reserved by other processes or customized by the developer (you)
@@ -1417,16 +1608,20 @@ ___
       - `echo "Some message here" >&3` will add a message to your custom channel 3
       - `exit 3` must be your exit method for the output to appear
 - Proper `exit` codes allow other scripts to understand what happened after the fact
+
+## `exec` for output channels
 - Output channels
+  - All channels produce output
+  - `exit` is irrelevant to output channels
   - Syntax: `M>&N`
   - Arguments like `3>&5` & `2>&1` redirect the output channels
-  - `2>&1` redirects `2` output into `1` output
-    - `>&1` redirecs *all* output into `1` output
-  - `3>&5` redirects `3` into `5` output
-    - `>&7` redirecs *all* output into `7` output
+  - `2>&1` redirects `2` output into channel `1` output
+    - `>&1` redirecs *all* output into channel `1` output
+  - `3>&5` redirects `3` into channel `5` output
+    - `>&7` redirecs *all* output into channel `7` output
   - Output channel redirects can follow any command
     - ie: `ls 2>&1` or `ls 3>&5`
-  - `exec` as a global setting BEFORE relevant commands in the script
+  - `exec` as a global setting *before* relevant commands in the script
     - ie: `exec 2>&1` or `exec 3>&5`
 ___
 

@@ -24,7 +24,11 @@ ln -sfn ~/School/VIP/301/04-* .
 
 ### I. Replacing within Variables
 
-*Note `${var%foo}bar` will delete "foo", then append "bar" (like find-replace), if "foo" appears in the variable*
+*`$Variable` is the same as `${Variable}`, but `${Variable}` can do more...*
+
+```sh
+${Variable}Hello
+```
 
 | **2** :$
 
@@ -62,7 +66,11 @@ gedit 04-var-form-3
 ./04-var-form-3 GOOfood
 ```
 
-*`$Variable` is the same as `${Variable}`, but `${Variable}` can do more...*
+*Note `${var%foo}bar` will delete "foo" **from the end**, then append "bar" (like find-replace), if "foo" appears in the variable*
+
+```sh
+${Variable%food}
+```
 
 | **8** :$
 
@@ -82,7 +90,20 @@ gedit 04-var-form-4
 ./04-var-form-4 foodGOO
 ```
 
-*Note `%` only removes from the end of a value*
+*Note:*
+
+- `%` removes from the end of a value
+- `#` removes from the beginning of the value
+- `//string/` removes within the value (or `//$string/` to remove based on another variable)
+
+```sh
+${Variable%food}
+${Variable#food}
+${Variable//food/}
+${Variable//$food/}
+```
+
+*In this lesson, we are only looking at removing from the end of a variable, such as changing a file's extension*
 
 | **11** :$
 
@@ -137,6 +158,14 @@ ls *t.one
 ```
 
 ### II. Renaming Multiple Files at Once
+
+```sh
+for Var in *name; do
+
+mv $Var "${Var%name}newname"
+
+done
+```
 
 | **19** :$
 

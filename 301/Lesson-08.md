@@ -13,6 +13,12 @@ ___
 
 ### I. `date`
 
+| **SQL timestamp format** :
+
+```sh
+date +'%Y-%m-%d %H:%M:%S'
+```
+
 | **1** :$
 
 ```console
@@ -254,6 +260,7 @@ ___
   - each option begins with `%`
   - other characters may be included as a means of formatting the output
 - Syntax: `date +Options`
+- Timestamp in SQL format: `date +'%Y-%m-%d %H:%M:%S'`
 - See usage and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#vii-date)
 
 ## `pwgen`

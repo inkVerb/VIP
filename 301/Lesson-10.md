@@ -21,6 +21,30 @@ Nemo, we're not in Shellfish anymore...
 
 Some things can only be done in BASH
 
+FYI, the CLI we have been using is not `#!/bin/sh`, but `#!/bin/bash`
+
+By default, Manjaro GNOME uses `#!/bin/zsh` while Manjaro Plasma and XFCE use `#!/bin/bash`
+
+`#!/bin/zsh` in the terminal is pretty, color-coded, and offers command completion
+
+You can actually change which shell your terminal uses with `chsh`
+
+# `chsh`
+
+Use "pretty" ZSH (default with Manjaro-GNOME)
+
+```console
+chsh -s /bin/zsh
+```
+
+Use standard BASH
+
+```console
+chsh -s /bin/bash
+```
+
+Learn more: [Resources & Things That Run: chsh](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#xi-chsh)
+
 ### I. Ternary Statements
 
 Read the Cheat-Sheet: **[Ternary Statements](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)**
@@ -45,6 +69,12 @@ This is based on the logical flow of `&&` and `||`
 
 We address these more in [501-PHP: Ternary Statements](https://github.com/inkVerb/vip/blob/master/501/Lesson-01.md#ternary-statements)
 
+```bash
+[[ "$test_var" = "five" ]] && echo "yes, five" || echo "not five"
+
+[[ -f "real_file" ]] && echo "yes, file exists" || echo "file does not exist"
+```
+
 | **1** :$
 
 ```console
@@ -61,6 +91,12 @@ gedit 10-ternary-echo
 
 ```console
 ./10-ternary-echo four
+```
+
+```bash
+[[ "$test_var" = "five" ]] && var="yes, value five" || var="not value five"
+
+[[ -f "real_file" ]] && var="yes, file exists" || var="file does not exist"
 ```
 
 | **4** :$
@@ -128,18 +164,14 @@ gedit 10-varvar
 
 ### IV. Arrays
 
-Variables with multiple values
+An array is basically a variable with multiple values
+
+#### Auto-indexed (numbered keys)
 
 ```bash
-# Auto-indexed (numbered keys)
 NumArray=(one two)
 echo ${NumArray[0]} # one
 echo ${NumArray[1]} # two
-
-# Associative (with string keys)
-KeyArray=([key1]=value1 [key2]=value2)
-echo ${KeyArray[key1]} # value1
-echo ${KeyArray[key1]} # value2
 ```
 
 | **12** :$
@@ -177,6 +209,25 @@ gedit 10-array-index-id
 ```
 
 *Note the first element's index key ID is 0*
+
+#### Associative (with string keys)
+
+```bash
+declare -A KeyArray # must have!
+
+# All keys
+KeyArray=([key1]=value1 [key2]=value2)
+
+echo ${KeyArray[key1]} # value1
+echo ${KeyArray[key2]} # value2
+
+# Or each key
+KeyArray[key3]=value3
+KeyArray[key4]=value4
+
+echo ${KeyArray[key3]} # value3
+echo ${KeyArray[key4]} # value4
+```
 
 | **17** :$
 
@@ -275,24 +326,28 @@ ___
 ## Rule 1: An array *can't* go inside an array (no 3-D)
 ## Rule 2: Declare associative arrays first `declare -A ArrayName`
 ## Rule 3: Choose associative or auto-indexed
-EITHER
-### associative: `MyArray=([key]=frst [ky2]=sec) ... MyArray[key] MyArray[ky2]` (The key can be what you want)
 
-```sh
+***Either***
+
+### Associative: `MyArray=([key]=frst [ky2]=sec) ... MyArray[key] MyArray[ky2]` (The key can be what you want)
+
+```bash
+declare -A MyArray
 MyArray=([key]=frst [ky2]=sec)
 echo ${MyArray[key]}
 echo ${MyArray[ky2]}
+```
 
-````
-OR
-### auto-indexed: `MyArray=(one two) ... MyArray[0] MyArray[1]`
-```sh
+***Or***
+
+### Auto-indexed: `MyArray=(one two) ... MyArray[0] MyArray[1]`
+```bash
 MyArray=(one two)
 echo ${MyArray[0]}
 echo ${MyArray[1]}
 ```
 
-NOT BOTH
+***Not both!***
 
 ___
 
@@ -310,6 +365,14 @@ gedit 10-array-keys
 
 *Note that associative arrays don't necessarily keep a predictable order*
 
+### `"`Quote spaces`"`
+
+```bash
+myArray=("Spaces in string" One_word)
+echo ${myArray[0]} # Spaces in string
+echo ${myArray[1]} # One_word
+```
+
 | **33** :$
 
 ```console
@@ -323,6 +386,15 @@ gedit 10-array-strings
 ```
 
 *Note quoted strings are allowed as elements*
+
+### `"`Quote spaces`"` also in associative arrays
+
+```bash
+declare -A myArray
+myArray=([key1]="Spaces in string" [key2]=One_word )
+echo ${myArray[key1]} # Spaces in string
+echo ${myArray[key2]} # One_word
+```
 
 | **35** :$
 

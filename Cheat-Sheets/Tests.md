@@ -9,6 +9,15 @@ ___
 
 When a test answers `true`, then Shell does something via `then` or `do`
 
+#### CLI usage: `test`
+
+Every test can be tested from the command line using the `test` command, then `echo $?` will return the results (`0` = true, `1` = false)
+
+For example:
+
+- `if [ Some Test Here ]` can be run with `test Some Test Here`
+- `if [ -f "somefile" ]` can be run with `test -f "somefile"`
+
 ___
 
 ### II. `if` `then` (`else` / `elif`) `fi`

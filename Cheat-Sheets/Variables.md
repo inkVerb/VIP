@@ -177,6 +177,18 @@ ___
 ### IV. Removing text in a variable's value
 #### `${var#START}`
 #### `${var%END}`
+#### `${var%END}`
+#### `${var//remove/}`
+#### `${var//$remove/}`
+#### `${var//remove/replace}`
+#### `${var//$remove/$replace}`
+
+```sh
+${Variable%food}
+${Variable#food}
+${Variable//food/}
+${Variable//$food/}
+```
 
 1. Remove text at start: `${var#foo}`
 
@@ -234,6 +246,61 @@ returns
 
 ```sh
 barapplefoo
+```
+
+4. Remove text from anywhere: `${var//foo/}`
+
+```sh
+var=fooapplefoo
+echo ${var//apple/}
+```
+
+returning
+
+```sh
+foofoo
+```
+
+5. Remove variable from anywhere: `${var//$foo/}`
+
+```sh
+var=fooapplefoo
+bar=apple
+echo ${var//$bar/}
+```
+
+returning
+
+```sh
+foofoo
+```
+
+6. Replace text anywhere: `${var//foo/bar}`
+
+```sh
+var=fooapplefoo
+echo ${var//apple/banana}
+```
+
+returning
+
+```sh
+foobananafoo
+```
+
+7. Replace variable anywhere: `${var//$foo/$bar}`
+
+```sh
+var=fooapplefoo
+rab=apple
+bar=banana
+echo ${var//$rab/$bar}
+```
+
+returning
+
+```sh
+foobananafoo
 ```
 
 ___

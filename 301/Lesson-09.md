@@ -120,6 +120,10 @@ gedit 09-expr-show
 
 #### A. `-eq -ne -gt -lt -ge -le`
 
+```sh
+if [ 1 -gt 2 ]; then
+```
+
 | **17** :$
 
 ```console
@@ -222,6 +226,10 @@ gedit 09-operators
 
 #### B. Substitute the `$Variable`
 
+```sh
+if [ "$one" -gt "$two" ]; then
+```
+
 | **33** :$
 
 ```console
@@ -241,6 +249,11 @@ gedit 09-operators-subvar
 ```
 
 #### C. `== != > < >= <=` (BASH `#!/bin/bash`)
+
+```bash
+#!/bin/bash
+if (( "$one" >= "$two" )); then
+```
 
 | **36** :$
 
@@ -281,6 +294,8 @@ ___
   - `-le` "less than or equal to"
 - Shell does not allow "operators", only flags
 - Comparison "operators" require BASH
+  - First line of script must use `#!/bin/bash`
+  - Use `((`double parentheses`))`: `if (( "$one" >= "$two" ))`
   - `==` "equal to"
   - `!=` "not equal to"
   - `>` "greater than"

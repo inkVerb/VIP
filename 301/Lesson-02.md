@@ -209,6 +209,11 @@ echo $Variable
 gedit 02-read-1
 ```
 
+```sh
+read myVariable
+echo $myVariable
+```
+
 | **24** :$
 
 ```console
@@ -223,7 +228,12 @@ gedit 02-read-1
 gedit 02-read-2
 ```
 
-*Note -p is for "Prompt", making things simpler*
+*Note -p is for "prompt", making things simpler*
+
+```sh
+read -p "Some message" myVariable
+echo $myVariable
+```
 
 | **26** :$
 
@@ -235,6 +245,13 @@ gedit 02-read-2
 
 ```console
 gedit 02-read-3
+```
+
+*Space and markers at the end of the "prompt" message is better*
+
+```sh
+read -p "Some message: " myVariable
+echo $myVariable
 ```
 
 | **28** :$
@@ -265,6 +282,13 @@ ls
 gedit 02-read-4
 ```
 
+*Escape "quote" marks in the prompt message*
+
+```sh
+read -p "Some \"quoted\" message: " myVariable
+echo $myVariable
+```
+
 | **32** :$
 
 ```console
@@ -281,6 +305,13 @@ gedit 02-read-4
 gedit 02-read-5
 ```
 
+*This assumes that the user input will have special characters*
+
+```sh
+read -rp "Some  message: " myVariable
+echo $myVariable
+```
+
 | **34** :$
 
 ```console
@@ -290,6 +321,10 @@ gedit 02-read-5
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 ### III. `sleep`
+
+```sh
+sleep 5
+```
 
 | **35** :$
 
@@ -346,6 +381,10 @@ gedit 02-sleep-3
 ### IV. `wait`
 
 *`wait` will "wait" until the previous command finishes before moving on. It keeps Shell from stumbling over its own feet. Sometimes, scripts break and the solution is to `wait`.*
+
+```sh
+cp -r some/files to/new/dir/; wait
+```
 
 ***Let's `wait` for LibreOffice Writer:***
 
@@ -447,6 +486,14 @@ lowriter &
 
 ```console
 pgrep lowriter
+```
+
+*`wait` for a specific process to end*
+
+```sh
+wait [PID]
+
+wait 90210
 ```
 
 *Note the PID number and replace 55555 with that number below:*

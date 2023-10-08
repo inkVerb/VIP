@@ -23,6 +23,10 @@ fi
 
 Test for an existing *file* by name
 
+```sh
+[ -f $1 ]
+```
+
 | **1** :$
 
 ```console
@@ -72,6 +76,10 @@ ls
 *Note the response because the file "myfile" exists*
 
 Test for an existing *directory* by name
+
+```sh
+[ -d $1 ]
+```
 
 | **8** :$
 
@@ -188,6 +196,10 @@ gedit 01-if-else-e
 
 *Note `-e` checks whether something exists, whether as a file, directory, or link*
 
+```sh
+[ -e $1 ]
+```
+
 | **24** :$
 
 ```console
@@ -282,6 +294,12 @@ gedit 01-style
 
 *Note `;` means "new line of logic" and whitespace at the beginning of lines is ignored*
 
+```sh
+if [ -z $1 ]; then
+
+elif [ $1 = "foobar" ]; then
+```
+
 | **35** :$
 
 ```console
@@ -304,6 +322,12 @@ gedit 01-style
 
 ```console
 gedit 01-minimum
+```
+
+*Note the entire `if` statement can go on one line using `;`
+
+```sh
+if [ -z $1 ];then echo "Empty";elif [ $1 = "foobar" ];then echo "Foo Bar";else echo "Something else";fi
 ```
 
 | **39** :$
@@ -380,6 +404,10 @@ echo $?
 gedit 01-ifcomm1
 ```
 
+```sh
+if grep "foobar" somefile.txt; then
+```
+
 | **48** :$
 
 ```console
@@ -420,6 +448,12 @@ echo $?
 gedit 01-ifcomm2
 ```
 
+```sh
+if grep -q "foobar" somefile.txt; then
+
+if ! grep -q "foobar" somefile.txt; then
+```
+
 | **54** :$
 
 ```console
@@ -434,12 +468,27 @@ gedit 01-ifcomm2
 gedit 01-ifcomm3
 ```
 
+```sh
+if echo "Hello"; then
+
+if ls somefile.txt; then
+
+if ! ls nofile.txt; then
+```
+
 | **56** :$
 
 ```console
 ./01-ifcomm3
 ```
 
+*You can put this inside the actual terminal...*
+
+| **57** :$
+
+```console
+if grep -q "markdown" markdown.md; then echo "Yes: markdown"; fi
+```
 ___
 
 # The Take
@@ -472,6 +521,7 @@ ___
   - `0` = `true`
   - `1`, `2`, `3`... = `false`
   - This is how `if` performs tests
+- `if` tests can be used just as they are in the reminal directly
 - See usage and examples here: [Tests: if](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#ii-if-then-else--elif-fi)
 ___
 

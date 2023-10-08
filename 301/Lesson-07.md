@@ -58,6 +58,12 @@ ls bozo || echo no
 
 ### II. Combined `&&` (AND) `||` (OR) tests
 
+```sh
+if [ "$1" = "one" ] || [ "$1" = "two" ]; then
+
+if [ "$2" = "two" ] && [ "$1" = "one" ]; then
+```
+
 | **5** :$
 
 ```console
@@ -93,6 +99,16 @@ gedit 07-or-if
 ```console
 ./07-or-if two one
 ```
+
+*Note, you can make more complex tests with `(`parentheses`)` for order of operations*
+
+```sh
+if [ "$1" = "one" ] || ([ "$1" = "one" ] && [ "$2" = "two" ]); then
+
+if [ "$1" = "one" ] || (([ "$1" = "skip" ] && [ "$2" = "two" ]) && [ -z "$3" ]) ; then
+```
+
+*We don't demonstrate those here, but the logic is plain and works with complex statements*
 
 ### III. Read number and count
 
@@ -259,6 +275,8 @@ ___
 - `&&` and `||` combine tests
   - `&&` means "and": the test after is run if the previous test answers `true`
   - `||` means "or": the test after is run if the previous test answers `false`
+  - `(`parentheses`)` can denote order of operations in complex tests
+    - Many layers of `(`parentheses`)` are allowed
 
 ## Sourcing
 - Files can be invluded via `source` or a period `.`

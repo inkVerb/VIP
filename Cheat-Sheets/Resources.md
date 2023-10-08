@@ -195,6 +195,7 @@ ___
   - `date +%Y/%m/%d_%T`
   - `date +%Y/%m/%d_%H:%M:%S`
   - `date +%Y-%m-%d.%H-%M-%S`
+- SQL format: `date +'%Y-%m-%d %H:%M:%S'`
 
 ### Common format arguments
 - `+%D` MM/DD/YY
@@ -243,3 +244,37 @@ ___
 *Read more options here:* [https://linux.die.net/man/1/pwgen]
 
 Also see: [Shell 301 Lesson 8](https://github.com/inkVerb/vip/blob/master/301-shell/Lesson-08.md)
+
+## IX. `chsh`
+
+*You can change which shell your CLI uses*
+
+| **Use "pretty" ZSH (default with Manjaro-GNOME)** :
+
+```console
+chsh -s /bin/zsh
+```
+
+| **Use standard BASH** :
+
+```console
+chsh -s /bin/bash
+```
+
+| **Use standard BASH for user `john`** :
+
+```console
+sudo chsh -s /bin/bash john
+```
+
+| **See your current shell** :
+
+```console
+printenv SHELL
+```
+
+| **List available shells** :
+
+```console
+cat /etc/shells
+```
