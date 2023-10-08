@@ -46,7 +46,7 @@ localhost/phpMyAdmin/
 | **L0** :>
 
 ```sql
-USE webapp_db;
+USE webapp_db
 ```
 
 *Webapp login: (after command 11)*

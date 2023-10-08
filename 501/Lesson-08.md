@@ -25,32 +25,108 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
-| **S0** :$ *(password in the terminal, not safe outside these lessons!)*
+| **ST0** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
 mysql -u admin -padminpassword
 ```
 
+***If starting fresh from this point, populate the database***
+
+| **STR1** :>
+
+```sql
+CREATE DATABASE webapp_db;
+GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';
+FLUSH PRIVILEGES;
+```
+
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
-| **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+| **SB-0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
-| **S1** :>
+| **SB-1** ://phpMyAdmin **> webapp_db**
+
+| **ST1** :>
 
 ```sql
 USE webapp_db;
 ```
 
-| **S1** ://phpMyAdmin **> webapp_db**
+___
+
+### Refresh Login Framework
+
+*(In the event something was changed or starting fresh from this lesson)*
+
+| **R0** :$
+
+```
+sudo cp core/08-webapp.php web/webapp.php && \
+sudo cp core/08-account.php web/account.php && \
+sudo cp core/08-forgot.php web/forgot.php && \
+sudo cp core/08-logout.php web/logout.php && \
+sudo cp core/08-in.config.php web/in.config.php && \
+sudo cp core/08-cleanup.php web/cleanup.php && \
+sudo cp core/08-ajaxstring.php web/ajax_string.php && \
+sudo cp core/08-recover.php web/recover.php && \
+sudo cp core/08-recover_login.php web/recover_login.php && \
+sudo cp core/08-in.string_functions.php web/in.string_functions.php && \
+sudo cp core/08-in.functions.php web/in.functions.php && \
+sudo cp core/08-in.checks.php web/in.checks.php && \
+sudo cp core/08-install.php web/install.php && \
+sudo chown -R www:www /srv/www/html && \
+codium core/08-webapp.php core/08-account.php core/08-forgot.php core/08-logout.php core/08-in.config.php core/08-cleanup.php core/08-ajaxstring.php core/08-recover.php core/08-recover_login.php core/08-in.string_functions.php core/08-in.functions.php core/08-in.checks.php core/08-install.php && \
+ls web
+```
+
+***Important:** If starting from here, install the basic webapp*
+
+| **B-R0** ://
+
+```console
+localhost/web/install.php
+```
+
+**Database credentials:**
+
+```
+Database name: webapp_db
+Database user: webapp_db_user
+Database password: webappdbpassword
+Database host: localhost
+```
+
+**User creation credentials:** *(as we will use in these lessons)*
+
+```
+Username: jonboy
+Password: My#1Password
+```
+
+*Use whatever you want for all else*
+
+### Review
+
+*Examine the files now open in the text exitor; this is what we basically have running so far*
+
+*Also, feel free to explore the tables in SQL*
+
+| **SR0** :>
+
+```sql
+SHOW TABLES;
+```
 
 ___
 
-### Set up Our Editor Framework
+### Set up Editor Framework
 
 | **1** :$
+
 ```
 sudo cp core/08-edit1.php web/edit.php && \
-sudo cp core/08-in.loginhead.php web/in.login_head.php && \
+sudo cp core/08-in.login_head.php web/in.login_head.php && \
 sudo cp core/08-in.logincheck1.php web/in.logincheck.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/08-edit1.php core/08-in.loginhead.php core/08-in.logincheck1.php && \
