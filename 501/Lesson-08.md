@@ -64,7 +64,7 @@ USE webapp_db;
 
 | **R3** :$
 
-```
+```console
 sudo cp core/08-webapp.php web/webapp.php && \
 sudo cp core/08-account.php web/account.php && \
 sudo cp core/08-forgot.php web/forgot.php && \
@@ -74,12 +74,14 @@ sudo cp core/08-cleanup.php web/cleanup.php && \
 sudo cp core/08-ajaxstring.php web/ajax_string.php && \
 sudo cp core/08-recover.php web/recover.php && \
 sudo cp core/08-recover_login.php web/recover_login.php && \
+sudo cp core/08-in.login_head_old.php web/in.login_head.php && \
 sudo cp core/08-in.string_functions.php web/in.string_functions.php && \
 sudo cp core/08-in.functions.php web/in.functions.php && \
 sudo cp core/08-in.checks.php web/in.checks.php && \
 sudo cp core/08-install.php web/install.php && \
+sudo cp core/08-style_old.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-webapp.php core/08-account.php core/08-forgot.php core/08-logout.php core/08-in.config.php core/08-cleanup.php core/08-ajaxstring.php core/08-recover.php core/08-recover_login.php core/08-in.string_functions.php core/08-in.functions.php core/08-in.checks.php core/08-install.php && \
+codium core/08-webapp.php core/08-account.php core/08-forgot.php core/08-logout.php core/08-in.config.php core/08-cleanup.php core/08-ajaxstring.php core/08-recover.php core/08-recover_login.php core/08-in.login_head_old.php core/08-in.string_functions.php core/08-in.functions.php core/08-in.checks.php core/08-install.php core/08-style_old.css && \
 ls web
 ```
 
@@ -127,12 +129,12 @@ ___
 
 | **1** :$
 
-```
+```console
 sudo cp core/08-edit1.php web/edit.php && \
 sudo cp core/08-in.login_head.php web/in.login_head.php && \
 sudo cp core/08-in.logincheck1.php web/in.logincheck.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-edit1.php core/08-in.loginhead.php core/08-in.logincheck1.php && \
+codium core/08-edit1.php core/08-in.login_head.php core/08-in.logincheck1.php && \
 ls web
 ```
 
@@ -142,7 +144,10 @@ ls web
   - *Redirect to webapp.php if no login*
   - *Message and admin links if logged in*
   - *Note we used the `$head_title` variable for the browser `<title>`*
-- *in.login_head.php near the bottom has a link to edit.php*
+- *in.login_head.php has two changes:*
+  - *Line 38 redirects to blog.php*
+  - *Line 188 has a link to edit.php*
+  - *near the bottom has a link to edit.php*
 - *edit.php is very simple now, but it contains our three prep files:*
   - *in.config.php*
   - *in.functions.php*
@@ -154,7 +159,7 @@ ls web
     1. *Process the `if` tests to redirect via `header("Location: to_page.php")`*
     2. *Then create the `<head>` tag*
 
-| **B-1** :// (It should redirect to webapp.php)
+| **B-1** :// (This should redirect to webapp.php)
 
 ```console
 localhost/web/edit.php
@@ -167,9 +172,9 @@ Username: jonboy
 Password: My#1Password
 ```
 
-*Once logged in, enter the address directly because we haven't yet added a link to click...*
+*Once logged in, you can click the new "Editor" link or enter the address directly...*
 
-| **B-2** :// (It will load because you are logged in)
+| **B-2** :// (Now it will load because you are logged in)
 
 ```console
 localhost/web/edit.php
@@ -184,6 +189,7 @@ localhost/web/edit.php
 | **2** ://phpMyAdmin **> webapp_db**
 
 | **3** :>
+
 ```sql
 CREATE TABLE IF NOT EXISTS `pieces` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -212,7 +218,8 @@ CREATE TABLE IF NOT EXISTS `pieces` (
 ### Add our `<form>` to the Editor
 
 | **3** :$
-```
+
+```console
 sudo cp core/08-edit2.php web/edit.php && \
 sudo cp core/08-in.editprocess2.php web/in.editprocess.php && \
 sudo cp core/08-in.piecefunctions2.php web/in.piecefunctions.php && \
@@ -241,7 +248,7 @@ localhost/web/edit.php
 - *`htmlspecialchars($value);` converts all HTML characters to their HTML enity code*
 
 1. Fill-out the fields, being simple with what you want
-2. Click "Save"
+2. Click "Save" (only once!)
 3. Note the green message: Saved!
 
 | **B-4** :// (Save)
@@ -327,7 +334,8 @@ $last_id = $database->insert_id;
 ```
 
 | **7** :$
-```
+
+```console
 sudo cp core/08-edit3.php web/edit.php && \
 sudo cp core/08-in.editprocess3.php web/in.editprocess.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -335,7 +343,7 @@ codium core/08-edit3.php core/08-in.editprocess3.php && \
 ls web
 ```
 
-| **B-7** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
+| **B-7** :// *(**Must use** <kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/edit.php
@@ -367,7 +375,7 @@ localhost/web/edit.php
 4. Note the various and sundry save messages
 5. Note the changes in the database...
 
-| **B-8** :// (Save)
+| **B-8** :// (Save, multiple times, changing and not)
 
 ```console
 localhost/web/edit.php
@@ -391,7 +399,8 @@ SELECT * FROM pieces;
 - "Save draft" changes are not published, only saved to the `pieces` table
 
 | **9** :$
-```
+
+```console
 sudo cp core/08-edit4.php web/edit.php && \
 sudo cp core/08-in.editprocess4.php web/in.editprocess.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -399,7 +408,7 @@ codium core/08-edit4.php core/08-in.editprocess4.php && \
 ls web
 ```
 
-| **B-9** :// *('Enter' in the browser address bar to properly load)*
+| **B-9** :// *('Enter' in the browser address bar to properly load; **do not** simply reload)*
 
 ```console
 localhost/web/edit.php?=...
@@ -421,6 +430,7 @@ localhost/web/edit.php?=...
 *Create the SQL tables for publication and history...*
 
 | **9** :>
+
 ```sql
 CREATE TABLE IF NOT EXISTS `publications` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -486,16 +496,18 @@ SELECT * FROM publications;
 
 **SQL Tip**
 
-*We have many entries on our `publication_history` table...*
+*We have many entries on our `publication_history` table, even for the same piece...*
 
 | **11** :>
+
 ```sql
 SELECT id, piece_id, title, content, after FROM publication_history;
 ```
 
-*This is a handy SQL query to get only the most recent of each published piece:*
+*This is a handy SQL query to get only the most recent version of each published piece:*
 
 | **11** :>
+
 ```sql
 SELECT p1.id, p1.piece_id, p1.title, p1.content, p1.after, p1.date_live, p1.date_updated
 FROM publication_history p1 LEFT JOIN publication_history p2
@@ -508,7 +520,8 @@ WHERE p2.id IS NULL;
 ### View Our Pieces on Our Site
 
 | **12** :$
-```
+
+```console
 sudo cp core/08-htaccess web/.htaccess && \
 sudo cp core/08-blog.php web/blog.php && \
 sudo cp core/08-piece.php web/piece.php && \
@@ -564,7 +577,7 @@ localhost/web/blog.php
 localhost/web/edit.php
 ```
 
-1. Add the following code (with HTML markup):
+1. Paste-in the following code (along with HTML markup):
 
 ```html
 <p>This is HTML style: <strong>bold</strong> <em>italics <strong>bold italics</strong></em></p>
@@ -611,7 +624,8 @@ Let's just watch it work...
 ##### Core Example: CDN (Online JS)
 
 | **15** :$
-```
+
+```console
 sudo cp core/08-tiny-cdn.html web/tiny.html && \
 sudo chown -R www:www /srv/www/html && \
 codium core/08-tiny-cdn.html && \
@@ -624,7 +638,7 @@ ls web
 localhost/web/tiny.html
 ```
 
-*Note the message about domains that you should close*
+*Note the message about domains, which you should close*
 
 *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
@@ -647,7 +661,8 @@ We can download TinyMCE JavaScript and host it locally...
 ##### Core Example: Local (JS on our server)
 
 | **16** :$
-```
+
+```console
 sudo cp core/08-tiny-man.html web/tiny.html && \
 git clone https://github.com/inkverb/tinymce-dist.git
 sudo mv tinymce-dist web/tinymce
@@ -688,7 +703,8 @@ localhost/web/tiny.html
 We can customize the TinyMCE toolbar layout
 
 | **17** :$
-```
+
+```console
 sudo cp core/08-tiny-cust.html web/tiny.html && \
 sudo chown -R www:www /srv/www/html && \
 codium core/08-tiny-cust.html && \
@@ -705,7 +721,6 @@ ls web
 *- `paste_as_text`: "Paste" removes formatting (see it already "on" by clicking the "T" formatting button)*
 *- `content_css`: should be our style.css file so "Preview" uses our styling*
 
-
 | **B-17** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
@@ -716,7 +731,8 @@ localhost/web/tiny.html
 ##### TinyMCE in Our 501 Blog
 
 | **18** :$
-```
+
+```console
 sudo cp core/08-in.head3-tinymce.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions3.php web/in.piecefunctions.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -771,7 +787,8 @@ Let's just watch it work for now...
 ##### Core Example
 
 | **19** :$
-```
+
+```console
 sudo cp core/08-medium-cdn.html web/medium.html && \
 sudo chown -R www:www /srv/www/html && \
 codium core/08-medium-cdn.html && \
@@ -785,7 +802,7 @@ localhost/web/medium.html
 ```
 
 1. Type something, it is a very blank text editor
-2. Highlight some text to see styling options
+2. Highlight some text to see the styling options menu
 
 *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
@@ -806,7 +823,8 @@ We can download the Medium editor JavaScript and host it locally...
 *(Note, we will use a `git clone` from the inkVerb fork, not from yabwe, so this Lesson will continue to work after the repo is updated; for a live server, we would `git clone` from the original)*
 
 | **20** :$
-```
+
+```console
 sudo cp core/08-medium-man.html web/medium.html && \
 git clone https://github.com/inkverb/medium-editor.git && \
 sudo mkdir web/medium && \
@@ -846,22 +864,23 @@ localhost/web/medium.html
 *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ##### Medium Editor Plugin Example: Tables
-- [GitHub repo](https://github.com/yabwe/medium-editor-tables)
-- [GitHub fork](https://github.com/inkVerb/medium-editor-tables) (in case it doesn't work)
+- [GitHub repo](https://github.com/yabwe/medium-editor-tables) (original, may no longer be abailable)
+- [GitHub fork](https://github.com/inkVerb/medium-editor-tables) (in case it went missing as it did)
 
 Medium has an effective way to add plugins
 
 This plugin adds the ability to insert an HTML `<table>`
 
 | **21** :$
-```
+
+```console
 sudo cp core/08-medium-tables.html web/medium.html && \
-git clone https://github.com/yabwe/medium-editor-tables.git && \
+git clone https://github.com/inkverb/medium-editor-tables.git && \
 sudo cp medium-editor-tables/dist/css/*.css web/medium/css && \
 sudo cp medium-editor-tables/dist/js/*.js web/medium/js && \
 sudo chown -R www:www /srv/www/html && \
 codium core/08-medium-tables.html && \
-ls web web/uploads
+ls web web
 ```
 
 | **B-21** :// *(Same)*
@@ -870,16 +889,17 @@ ls web web/uploads
 localhost/web/medium.html
 ```
 
-*Notice the "Table" button in the editor*
+*Notice the "Table" button in the styling options menu (when highlighting text)*
 
 ##### Medium's Editor in Our 501 Blog
 
 | **22** :$
-```
+
+```console
 sudo cp core/08-in.head4-medium.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions-medium.php web/in.piecefunctions.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-in.logincheck4-medium.php core/08-in.piecefunctions-medium.php && \
+codium core/08-in.head4-medium.php core/08-in.piecefunctions-medium.php && \
 ls web
 ```
 
@@ -930,10 +950,13 @@ ___
 
 ##### Restore the Editor to TinyMCE
 
-The Medium Editor Is Very Plain, we will not use it for most of this project
+The Medium Editor is powerful, but lacks some of the tools we need for this project
+
+*Restore TinyMCE as our main WYSIWYG editor*
 
 | **23** :$
-```
+
+```console
 sudo cp core/08-in.head3-tinymce.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions3.php web/in.piecefunctions.php && \
 sudo chown -R www:www /srv/www/html

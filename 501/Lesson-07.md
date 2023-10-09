@@ -48,7 +48,8 @@ ___
 ### Random String
 
 | **1** :$
-```
+
+```console
 sudo cp core/07-recover1.php web/recover.php && \
 sudo cp core/07-in.string_functions.php web/in.string_functions.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -71,7 +72,8 @@ localhost/web/recover.php
 ### Login Recovery (via Security Key)
 
 | **2** :$
-```
+
+```console
 sudo cp core/07-recover2.php web/recover.php && \
 sudo cp core/07-ajaxstring.php web/ajax_string.php && \
 sudo cp core/07-recover_login.php web/recover_login.php && \
@@ -243,7 +245,8 @@ SELECT * FROM strings;
 *Create our routine .php file...*
 
 | **9** :$
-```
+
+```console
 sudo cp core/07-cleanup1.php web/cleanup.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/07-cleanup1.php && \
@@ -361,7 +364,8 @@ We use this syntax here: `php /same/path/as/cron/task/to/script.php`
 *A .php script run by `cron` needs an absolute path...*
 
 | **13** :$
-```
+
+```console
 sudo cp core/07-cleanup2.php web/cleanup.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/07-cleanup2.php && \
@@ -515,13 +519,14 @@ localhost/web/logout.php
 *Update the `usable` column in the `strings` table to include a 'cookie_login' option...*
 
 | **21** :>
+
 ```sql
-ALTER TABLE `strings`
-CHANGE  `usable`  `usable` ENUM('live', 'cookie_login', 'dead') NOT NULL;
+ALTER TABLE `strings` CHANGE `usable` `usable` ENUM('live', 'cookie_login', 'dead') NOT NULL;
 ```
 
 | **22** :$
-```
+
+```console
 sudo cp core/07-in.loginhead2.php web/in.login_head.php && \
 sudo cp core/07-logout.php web/logout.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -573,7 +578,8 @@ localhost/web/webapp.php
 *We don't want those cookie keys on our page in the future, so update to new files that don't use them...*
 
 | **24** :$
-```
+
+```console
 sudo cp core/07-in.loginhead3.php web/in.login_head.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/07-in.loginhead3.php && \

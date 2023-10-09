@@ -986,12 +986,9 @@ CREATE TABLE IF NOT EXISTS `series` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 INSERT INTO series (name, slug) VALUES ('Blog', 'blog');
-ALTER TABLE `pieces`
-ADD `series` INT UNSIGNED DEFAULT 1;
-ALTER TABLE `publications`
-ADD `series` INT UNSIGNED DEFAULT 1;
-ALTER TABLE `publication_history`
-ADD `series` INT UNSIGNED DEFAULT 1;
+ALTER TABLE `pieces` ADD `series` INT UNSIGNED DEFAULT 1;
+ALTER TABLE `publications` ADD `series` INT UNSIGNED DEFAULT 1;
+ALTER TABLE `publication_history` ADD `series` INT UNSIGNED DEFAULT 1;
 ```
 
 | **26** :>
