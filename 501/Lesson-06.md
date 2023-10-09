@@ -16,7 +16,7 @@ sudo systemctl start httpd mariadb
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2 mysql
+sudo systemctl start apache2 mariadb
 ```
 
 ___

@@ -16,7 +16,7 @@ sudo systemctl start httpd mariadb
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2 mysql
+sudo systemctl start apache2 mariadb
 ```
 
 ### This lesson uses two terminals and two browser tabs!
@@ -28,7 +28,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mysql -u admin -padminpassword
+mariadb-u admin -padminpassword
 ```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
@@ -46,7 +46,7 @@ localhost/phpMyAdmin/
 | **L0** :>
 
 ```sql
-USE webapp_db
+USE firstapp_db
 ```
 
 *Webapp login: (after command 11)*
@@ -181,13 +181,13 @@ Nearly all web apps require that you have a database, database username, and dat
 | **3** :>
 
 ```sql
-CREATE DATABASE webapp_db;
+CREATE DATABASE firstapp_db;
 ```
 
 | **4** :>
 
 ```sql
-GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';
+GRANT ALL PRIVILEGES ON firstapp_db.* TO firstapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';
 ```
 
 | **5** :>
@@ -198,8 +198,8 @@ FLUSH PRIVILEGES;
 
 **Now, we have these database credentials:** (Many web apps ask for this on install)
 ```
-Database name: webapp_db
-Database user: webapp_db_user
+Database name: firstapp_db
+Database user: firstapp_db_user
 Database password: webappdbpassword
 Database host: localhost
 ```
@@ -209,7 +209,7 @@ Database host: localhost
 | **6** :>
 
 ```sql
-USE webapp_db
+USE firstapp_db
 ```
 
 *Use our install page...*
@@ -282,7 +282,7 @@ localhost/web/install.php
 SHOW TABLES;
 ```
 
-| **SB-8** ://phpMyAdmin **> webapp_db**
+| **SB-8** ://phpMyAdmin **> firstapp_db**
 
 *Note our database has no tables, let's go back to our webform...*
 
@@ -293,8 +293,8 @@ localhost/web/install.php
 ```
 
 ```
-Database name: webapp_db
-Database user: webapp_db_user
+Database name: firstapp_db
+Database user: firstapp_db_user
 Database password: webappdbpassword
 Database host: localhost
 
@@ -313,7 +313,7 @@ Password: My#1Password
 SHOW TABLES;
 ```
 
-| **SB-9** ://phpMyAdmin **> webapp_db**
+| **SB-9** ://phpMyAdmin **> firstapp_db**
 
 | **S10** :>
 

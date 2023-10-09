@@ -16,13 +16,13 @@ sudo systemctl start httpd mariadb
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2 mysql
+sudo systemctl start apache2 mariadb
 ```
 
 Ready SQL *if continuing after not finishing this lesson last time*
 
 ```console
-mysql -u admin -padminpassword
+mariadb-u admin -padminpassword
 ```
 
 Browser: // Username: `admin` Password: `adminpassword`
@@ -65,7 +65,7 @@ ___
 | **X1** :$
 
 ```console
-sudo mysql
+sudo mariadb
 ```
 
 *Below, `admin` and `adminpassword` can be anything, but for these lessons you should not need to change them*
@@ -106,18 +106,18 @@ ___
 
 *Note this format will prompt you for a password:*
 
-- `mysql -u USERNAME -p`
+- `mariadb-u USERNAME -p`
 
 *But, this won't: (normally not "secure", but allowable for these lessons)*
 
-- `mysql -u USERNAME -pPASSWORD`
+- `mariadb-u USERNAME -pPASSWORD`
 
 *Login to MySQL as our `admin`...*
 
 | **1** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mysql -u admin -padminpassword
+mariadb-u admin -padminpassword
 ```
 
 | **B-1** :// Username: `admin` Password: `adminpassword`
@@ -287,7 +287,7 @@ QUIT
 | **18** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mysql -u new_user -pnewpassword
+mariadb-u new_user -pnewpassword
 ```
 
 | **B-18** :// Username: `new_user` Password: `newpassword`
@@ -317,7 +317,7 @@ SHOW DATABASES;
 > | **T1** :$
 
 ```console
-mysql -u admin -padminpassword
+mariadb-u admin -padminpassword
 ```
 >
 > | **T2** :>
@@ -375,7 +375,7 @@ QUIT
 | **22** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mysql -u admin -padminpassword
+mariadb-u admin -padminpassword
 ```
 
 | **B-22** :// Username: `admin` Password: `adminpassword`
@@ -475,7 +475,7 @@ QUIT
 | **32** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mysql -u new_user -pnewpassword
+mariadb-u new_user -pnewpassword
 ```
 
 | **B-32** :// Username: `new_user` Password: `newpassword`
@@ -753,7 +753,7 @@ CREATE TABLE IF NOT EXISTS `new_table` (
 | **53** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mysql -u admin -padminpassword
+mariadb-u admin -padminpassword
 ```
 
 | **B-53** :// Username: `admin` Password: `adminpassword`

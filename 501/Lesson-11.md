@@ -16,7 +16,7 @@ sudo systemctl start httpd mariadb
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2 mysql
+sudo systemctl start apache2 mariadb
 ```
 
 ___
@@ -1172,7 +1172,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mysql -u admin -padminpassword
+mariadb-u admin -padminpassword
 ```
 
 | **S1** :>
@@ -2147,7 +2147,7 @@ $updated = ($pdo->change) ? true : false;
 | **33** :$
 
 ```console
-mysql -u admin -padminpassword
+mariadb-u admin -padminpassword
 ```
 
 | **33** :>

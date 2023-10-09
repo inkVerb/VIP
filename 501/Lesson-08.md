@@ -16,7 +16,7 @@ sudo systemctl start httpd mariadb
 
 Debian/Ubuntu
 ```console
-sudo systemctl start apache2 mysql
+sudo systemctl start apache2 mariadb
 ```
 
 ### This lesson uses two terminals and two browser tabs!
@@ -25,41 +25,32 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
-| **ST0** :$ *(password in the terminal, not safe outside these lessons!)*
+| **S1** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mysql -u admin -padminpassword
+mariadb -u admin -padminpassword
 ```
 
-***If starting fresh from this point, populate the database***
+### Rebuild our web app from the beginning
 
-| **STR1** :>
+| **RS-1** :>
 
 ```sql
 CREATE DATABASE webapp_db;
 GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'webappdbpassword';
 FLUSH PRIVILEGES;
+USE webapp_db;
 ```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
-| **SB-0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+| **RSB-1** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
-| **SB-1** ://phpMyAdmin **> webapp_db**
+| **RSB-2** ://phpMyAdmin **> webapp_db**
 
-| **ST1** :>
+*Rebuild our webapp files, make sure we begin fresh...*
 
-```sql
-USE webapp_db;
-```
-
-___
-
-### Refresh Login Framework
-
-*(In the event something was changed or starting fresh from this lesson)*
-
-| **R0** :$
+| **R3** :$
 
 ```
 sudo cp core/08-webapp.php web/webapp.php && \
@@ -80,9 +71,9 @@ codium core/08-webapp.php core/08-account.php core/08-forgot.php core/08-logout.
 ls web
 ```
 
-***Important:** If starting from here, install the basic webapp*
+*Install the app, same as in [Lesson 4](https://github.com/inkVerb/vip/blob/master/501/Lesson-04.md)*
 
-| **B-R0** ://
+| **RB-3** ://
 
 ```console
 localhost/web/install.php
@@ -97,7 +88,7 @@ Database password: webappdbpassword
 Database host: localhost
 ```
 
-**User creation credentials:** *(as we will use in these lessons)*
+**User creation credentials:**
 
 ```
 Username: jonboy

@@ -90,7 +90,7 @@ In php.ini:
 | **A3** :$
 
 ```console
-sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 ```
 
 4. Enable MySQL (MariaDB)
@@ -378,7 +378,8 @@ sudo apt update
 | **D1** :$
 
 ```console
-sudo apt install mysql-server php lamp-server^
+curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash
+sudo apt install mariadb-server php lamp-server^
 ```
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
@@ -641,8 +642,8 @@ Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ub
 | **Disable MySQL** :$
 
 ```console
-sudo systemctl disable mysql
-sudo systemctl stop mysql
+sudo systemctl disable mariadb
+sudo systemctl stop mariadb
 ```
 
   - *(But, you will need to run this command each time you start lessons after reboot)*
@@ -650,7 +651,7 @@ sudo systemctl stop mysql
 | **Start MySQL once** :$
 
 ```console
-sudo systemctl start mysql
+sudo systemctl start mariadb
 ```
 
   - *(And, you can re-enable MySQL as a service with:)*
@@ -658,15 +659,15 @@ sudo systemctl start mysql
 | **MySQL as service** :$
 
 ```console
-sudo systemctl enable mysql
-sudo systemctl start mysql
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
 ```
 
 | **Disable MySQL service** :$
 
 ```console
-sudo systemctl disable mysql
-sudo systemctl stop mysql
+sudo systemctl disable mariadb
+sudo systemctl stop mariadb
 ```
 
 ___
@@ -768,7 +769,7 @@ In php.ini:
 | **C7** :$
 
 ```console
-sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 ```
 
 5. Apache settings
@@ -1248,7 +1249,7 @@ ___
 | **M1** :$
 
 ```console
-sudo mysql
+sudo mariadb
 ```
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
@@ -1280,10 +1281,10 @@ Access any MySQL user you created later with
 
 ```sh
 sudo apt-get clean
-sudo apt-get purge mysql*
+sudo apt-get purge mariadb*
 sudo apt-get update
 sudo apt-get install -f
-sudo apt-get install mysql-server
+sudo apt-get install mariadb-server
 ```
 ___
 
