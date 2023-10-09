@@ -106,7 +106,7 @@ $epoch_simple_later = time() + (30 * 24 * 60 * 60);
 
 | **1** :$
 
-```
+```console
 sudo cp core/04-time.php web/time.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/04-time.php && \
@@ -216,7 +216,7 @@ USE firstapp_db
 
 | **7** :$
 
-```
+```console
 sudo cp core/04-install.php web/install.php && \
 sudo cp core/04-in.config1.php web/in.config.php && \
 sudo cp core/04-in.checks.php web/in.checks.php && \
@@ -370,7 +370,7 @@ password_verify($form_password, $hashed_password_from_database);
 
 | **11** :$
 
-```
+```console
 sudo cp core/04-login1.php web/webapp.php && \
 sudo cp core/04-in.config2.php web/in.config.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -447,7 +447,7 @@ The `echo` message will not display, comment the `header()` line to see the mess
 
 | **12** :$
 
-```
+```console
 sudo cp core/04-logout1.php web/logout.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/04-logout1.php && \
@@ -578,7 +578,7 @@ For teaching, we will put the **user_id** as the cookie's value, but this is not
 
 | **18** :$
 
-```
+```console
 sudo cp core/04-logout3.php web/logout.php && \
 sudo cp core/04-login3.php web/webapp.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -675,7 +675,7 @@ setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 
 | **19** :$
 
-```
+```console
 sudo cp core/04-account.php web/account.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/04-account.php && \
@@ -741,7 +741,7 @@ SELECT id, fullname, email, favnumber FROM users;
 
 | **20** :$
 
-```
+```console
 sudo cp core/04-forgot.php web/forgot.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/04-forgot.php && \

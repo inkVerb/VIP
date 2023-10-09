@@ -60,7 +60,8 @@ RewriteRule ^/?([a-zA-Z0-9_]+)$ pretty_page.php?n=$1 [L]
 *Let's try...*
 
 | **1** :$
-```
+
+```console
 sudo cp core/05-pretty1.php web/pretty_page.php && \
 sudo cp core/05-htaccess1 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
@@ -109,7 +110,8 @@ RewriteRule ^pretty$ pretty_page.php [L]
 *We just tried number 2 above, now let's try 1...*
 
 | **2** :$
-```
+
+```console
 sudo cp core/05-htaccess2 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
 codium core/05-htaccess2 && \
@@ -127,7 +129,8 @@ localhost/web/My_Long_Name
 *We just tried number 2 above, now let's try 3...*
 
 | **3** :$
-```
+
+```console
 sudo cp core/05-pretty3.php web/pretty_page.php && \
 sudo cp core/05-htaccess3 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
@@ -157,7 +160,8 @@ localhost/web/My_Long_Name/Name-2
 *We just tried number 2 above, now let's try 3...*
 
 | **4** :$
-```
+
+```console
 sudo cp core/05-pretty4.php web/pretty_page.php && \
 sudo cp core/05-htaccess4 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
@@ -188,7 +192,8 @@ localhost/web/My_Long_Name/Name-2
 *And, we don't need any RegEx...*
 
 | **5** :$
-```
+
+```console
 sudo cp core/05-pretty5.php web/pretty_page.php && \
 sudo cp core/05-htaccess5 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
@@ -299,7 +304,8 @@ localhost/web/account.php
 ```
 
 | **8** :$
-```
+
+```console
 sudo cp core/05-htaccess6 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
 codium core/05-htaccess6 && \

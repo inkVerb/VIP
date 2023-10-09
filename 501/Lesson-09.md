@@ -62,7 +62,8 @@ We want to review a list of our pieces
 ### Cleanup Header/Hooter and Prepare Our "Pieces" Page Framework
 
 | **1** :$
-```
+
+```console
 sudo cp core/09-pieces1.php web/pieces.php && \
 sudo cp core/09-in.head1.php web/in.head.php && \
 sudo cp core/09-in.logincheck.php web/in.logincheck.php && \
@@ -132,7 +133,8 @@ That's quite simple, let's expand...
 ### More Useful Data, Actions, and Editable Fields
 
 | **2** :$
-```
+
+```console
 sudo cp core/09-pieces2.php web/pieces.php && \
 sudo cp core/09-delete2.php web/delete.php && \
 sudo cp core/09-undelete2.php web/undelete.php && \
@@ -194,7 +196,8 @@ While this works, we don't want a GET URL to be this powerful, use POST instead.
 ### Require POST for Our Actions
 
 | **4** :$
-```
+
+```console
 sudo cp core/09-pieces3.php web/pieces.php && \
 sudo cp core/09-in.metaeditfunctions3.php web/in.metaeditfunctions.php && \
 sudo cp core/09-style3.css web/style.css && \
@@ -263,7 +266,8 @@ SELECT piece_id, type, pubstatus, title, slug FROM publications;
 ### Trash Page with Restore and Bulk Empty
 
 | **6** :$
-```
+
+```console
 sudo cp core/09-pieces4.php web/pieces.php && \
 sudo cp core/09-trash4.php web/trash.php && \
 sudo cp core/09-undelete_trash4.php web/undelete_trash.php && \
@@ -321,7 +325,8 @@ SELECT piece_id, type, pubstatus, title, slug FROM publications;
 ### Style & JavaScript to Hide some of Our Meta
 
 | **8** :$
-```
+
+```console
 sudo cp core/09-pieces5.php web/pieces.php && \
 sudo cp core/09-trash5.php web/trash.php && \
 sudo cp core/09-style5.css web/style.css && \
@@ -381,7 +386,8 @@ This is similar to the Linux tool `diff`, which we learned about in [201-11](htt
 On your own, learn more about implementation at [github.com/poetryisCODE/htmldiff](https://github.com/poetryisCODE/htmldiff/blob/master/README.md)
 
 | **9** :$
-```
+
+```console
 sudo cp core/09-pieces6.php web/pieces.php && \
 sudo cp core/09-piece1.php web/piece.php && \
 sudo cp core/09-hist6.php web/hist.php && \
@@ -474,7 +480,8 @@ This "History" view is nice, but it could be much more functional...
 ### Revision History with More Options
 
 | **12** :$
-```
+
+```console
 sudo cp core/09-hist9.php web/hist.php && \
 codium core/09-hist9.php
 ```
@@ -575,7 +582,8 @@ We will ***not*** use the `JSON` datatype, but `LONGTEXT` for standard SQL cross
 #### JSON in PHP
 
 | **13** :$
-```
+
+```console
 sudo cp core/09-jsonarrays.php web/jsonarrays.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/09-jsonarrays.php && \
@@ -665,7 +673,8 @@ SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","ter
 *Let's implement JSON in our blog...*
 
 | **19** :$
-```
+
+```console
 sudo cp core/09-edit2.php web/edit.php && \
 sudo cp core/09-in.piecefunctions2.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess2.php web/in.editprocess.php && \
@@ -748,7 +757,8 @@ Just note:
 5. The PHP array goes to and from JSON to save in the SQL database
 
 | **20** :$
-```
+
+```console
 sudo cp core/09-jsonlinksexplained.php web/jsonlinksexplained.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/09-jsonlinksexplained.php && \
@@ -790,7 +800,8 @@ localhost/web/jsonlinksexplained.php
 *Let's look at that code again, without all the explanation...*
 
 | **21** :$
-```
+
+```console
 sudo cp core/09-jsonlinks.php web/jsonlinks.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/09-jsonlinks.php && \
@@ -810,7 +821,8 @@ localhost/web/jsonlinks.php
 ### Add Links to the Pieces
 
 | **22** :$
-```
+
+```console
 sudo cp core/09-edit3.php web/edit.php && \
 sudo cp core/09-in.jsonlinks.php web/in.jsonlinks.php && \
 sudo cp core/09-in.piecefunctions3.php web/in.piecefunctions.php && \
@@ -917,7 +929,8 @@ localhost/web/piece.php?p=3
 In Lesson 6 we learned to [AJAX a `<form>`](https://github.com/inkVerb/vip/blob/master/501/Lesson-06.md#ajax-a-form)
 
 | **24** :$
-```
+
+```console
 sudo cp core/09-select.php web/select.php && \
 sudo cp core/09-in.select.php web/in.select.php && \
 sudo cp core/09-ajax.select.php web/ajax.select.php && \
@@ -943,7 +956,8 @@ Try adding a Series with the "+ Series" form
 *Put this AJAX `<form>` into our "Edit" page...*
 
 | **25** :$
-```
+
+```console
 sudo cp core/09-edit4.php web/edit.php && \
 sudo cp core/09-in.piecefunctions4.php web/in.piecefunctions.php && \
 sudo cp core/09-in.editprocess4.php web/in.editprocess.php && \
@@ -1071,7 +1085,8 @@ Consider `form=` & `="apply2all"` in this code...
 ```
 
 | **29** :$
-```
+
+```console
 sudo cp core/09-postformarrays.php web/postformarrays.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/postformarrays.php && \
@@ -1093,7 +1108,8 @@ Check different boxes, then submit with different buttons multiple times
 ### Bulk Actions in Pieces Table: `form=` Attribute & AJAX
 
 | **30** :$
-```
+
+```console
 sudo cp core/09-pieces7.php web/pieces.php && \
 sudo cp core/09-act.bulkpieces.php web/act.bulkpieces.php && \
 sudo cp core/09-in.metaeditfunctions7.php web/in.metaeditfunctions.php && \
@@ -1155,7 +1171,8 @@ Click and try:
 *Let's AJAX these small "actions"...*
 
 | **31** :$
-```
+
+```console
 sudo cp core/09-pieces8.php web/pieces.php && \
 sudo cp core/09-in.metaeditfunctions8.php web/in.metaeditfunctions.php && \
 sudo cp core/09-ajax.piecesactions8.php web/ajax.piecesactions.php && \
@@ -1229,7 +1246,8 @@ In Pieces and Trash:
 *Since we don't need those pieces action files anymore...*
 
 | **32** :$
-```
+
+```console
 sudo rm -f web/delete.php web/undelete.php web/empty_delete.php web/unpublish.php web/republish.php web/pagify.php web/postify.php web/undelete_trash.phpweb/empty_delete_trash.php
 ls web
 ```
@@ -1244,7 +1262,8 @@ ls web
 *Let's cleanup this AJAX...*
 
 | **33** :$
-```
+
+```console
 sudo cp core/09-pieces9.php web/pieces.php && \
 sudo cp core/09-trash9.php web/trash.php && \
 sudo cp core/09-in.metaeditfunctions9.php web/in.metaeditfunctions.php && \
@@ -1296,7 +1315,8 @@ Try different Piece actions and see how the page never needs to reload
 ### Meta Edit in Pieces Table via JS Popup `<form>` & AJAX
 
 | **34** :$
-```
+
+```console
 sudo cp core/09-pieces10.php web/pieces.php && \
 sudo cp core/09-trash10.php web/trash.php && \
 sudo cp core/09-in.piecefunctions10.php web/in.piecefunctions.php && \
@@ -1334,7 +1354,7 @@ ls web
 
 | **35** :$
 
-```
+```console
 codium core/09-pieces10.php core/09-trash10.php core/09-in.metaeditfunctions10.php core/09-ajax.metaedit.php core/09-style10.css
 ```
 
@@ -1449,7 +1469,8 @@ localhost/web/pieces.php
 ### Published History to Display New Meta
 
 | **36** :$
-```
+
+```console
 sudo cp core/09-hist10.php web/hist.php && \
 codium core/09-hist10.php && \
 ls web
@@ -1473,7 +1494,8 @@ Let's cleanup edit.php
   - Slug  
 
 | **37** :$
-```
+
+```console
 sudo cp core/09-edit11.php web/edit.php && \
 sudo cp core/09-ajax.edit11.php web/ajax.edit.php && \
 sudo cp core/09-in.piecefunctions11.php web/in.piecefunctions.php && \
@@ -1562,7 +1584,8 @@ localhost/web/pieces.php
 Let's add a JavaScript function for autosaves
 
 | **38** :$
-```
+
+```console
 sudo cp core/09-edit12.php web/edit.php && \
 sudo cp core/09-hist12.php web/hist.php && \
 codium core/09-edit12.php core/09-hist12.php && \
@@ -1679,7 +1702,8 @@ WHERE DEST.original_id=5
 #### See it work...
 
 | **39** :$
-```
+
+```console
 sudo cp core/09-edit13.php web/edit.php && \
 sudo cp core/09-pieces13.php web/pieces.php && \
 sudo cp core/09-in.editprocess13.php web/in.editprocess.php && \
@@ -1825,7 +1849,8 @@ var f=this; setTimeout(function(){f.disabled=true;}, 0); return true;
 ```
 
 | **44** :$
-```
+
+```console
 sudo cp core/09-edit14.php web/edit.php && \
 codium core/09-edit14.php && \
 ls web

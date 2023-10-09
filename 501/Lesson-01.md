@@ -121,7 +121,8 @@ $_GET['this_name'] // = "something-here"
 ```
 
 | **1** :$
-```
+
+```console
 sudo cp core/01-phpget1.php web/phpget.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/01-phpget1.php && \
@@ -143,7 +144,8 @@ localhost/web/phpget.php?go=I am an apple pie
 *Note we don't need to `chown` file owner when copying over a file...*
 
 | **2** :$
-```
+
+```console
 sudo cp core/01-phpget2.php web/phpget.php && \
 codium core/01-phpget2.php && \
 ls -l web
@@ -174,7 +176,8 @@ $_POST['this_name'] // = whatever was entered into the <input>
 ```
 
 | **3** :$
-```
+
+```console
 sudo cp core/01-phppost1.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/01-phppost1.php && \
@@ -258,7 +261,8 @@ if (in_array('kiwi', $fruit)) {echo 'should not be found';}
 *Review the diagram above along side the following two steps...*
 
 | **4** :$
-```
+
+```console
 sudo cp core/01-phparrays.php web/phparrays.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/01-phparrays.php && \
@@ -311,7 +315,8 @@ foreach ($array as $item) {
 *Review the diagram above along side the following two steps...*
 
 | **5** :$
-```
+
+```console
 sudo cp core/01-phpforeach.php web/phpforeach.php && \
 codium core/01-phpforeach.php && \
 ls web
@@ -349,7 +354,8 @@ if ( Test Here ) {
 *Review the diagrams above along side the following few steps...*
 
 | **6** :$
-```
+
+```console
 sudo cp core/01-phppost2.php web/phppost.php && \
 codium core/01-phppost2.php && \
 ls web
@@ -366,7 +372,8 @@ localhost/web/phppost.php
 *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 | **7** :$
-```
+
+```console
 sudo cp core/01-phppost3.php web/phppost.php && \
 codium core/01-phppost3.php && \
 ls web
@@ -381,7 +388,8 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 | **8** :$
-```
+
+```console
 sudo cp core/01-phppost4.php web/phppost.php && \
 codium core/01-phppost4.php && \
 ls web
@@ -396,7 +404,8 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 | **9** :$
-```
+
+```console
 sudo cp core/01-phppost5.php web/phppost.php && \
 codium core/01-phppost5.php && \
 ls web
@@ -411,7 +420,8 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 | **10** :$
-```
+
+```console
 sudo cp core/01-phppost6.php web/phppost.php && \
 codium core/01-phppost6.php && \
 ls web
@@ -490,7 +500,8 @@ if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not f
 *Review the diagram above along side the following two steps...*
 
 | **11** :$
-```
+
+```console
 sudo cp core/01-phppost7.php web/phppost.php && \
 codium core/01-phppost7.php && \
 ls web
@@ -527,7 +538,8 @@ switch ($variable_to_test) {
 *Review the diagram above along side the following two steps...*
 
 | **12** :$
-```
+
+```console
 sudo cp core/01-phppost8.php web/phppost.php && \
 codium core/01-phppost8.php && \
 ls web
@@ -640,7 +652,8 @@ preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variable
 *Review the diagram above along side the following two steps...*
 
 | **13** :$
-```
+
+```console
 sudo cp core/01-phpregex1.php web/phppost.php && \
 codium core/01-phpregex1.php && \
 ls web
@@ -727,7 +740,8 @@ $argmnt = preg_replace('/([a-zA-Z0-9]+)_dogfish_([a-zA-Z0-9]+)/','$1_GoldFish_$2
 *Look at this example...*
 
 | **14** :$
-```
+
+```console
 sudo cp core/01-phpreplace.php web/phpreplace.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/01-phpreplace.php && \
@@ -787,7 +801,8 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 *Note how `preg_replace()` and `strtolower()` are used to sanitize the values...*
 
 | **15** :$
-```
+
+```console
 sudo cp core/01-phpregex2.php web/phppost.php && \
 codium core/01-phpregex2.php && \
 ls web
@@ -802,7 +817,8 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 | **16** :$
-```
+
+```console
 sudo cp core/01-phpregex3.php web/phppost.php && \
 codium core/01-phpregex3.php && \
 ls web
@@ -925,7 +941,8 @@ echo $someVariable;
 *Review the diagrams above along side the following few steps...*
 
 | **17** :$
-```
+
+```console
 sudo cp core/01-phpfunction1.php web/phppost.php && \
 codium core/01-phpfunction1.php && \
 ls web
@@ -940,7 +957,8 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 | **18** :$
-```
+
+```console
 sudo cp core/01-phpfunction2.php web/phppost.php && \
 codium core/01-phpfunction2.php && \
 ls web
@@ -955,7 +973,8 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 | **19** :$
-```
+
+```console
 sudo cp core/01-phpfunction3.php web/phppost.php && \
 codium core/01-phpfunction3.php && \
 ls web
@@ -970,7 +989,8 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 | **20** :$
-```
+
+```console
 sudo cp core/01-phpfunction4.php web/phppost.php && \
 codium core/01-phpfunction4.php && \
 ls web
@@ -985,7 +1005,8 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 | **21** :$
-```
+
+```console
 sudo cp core/01-phpfunction5.php web/phppost.php && \
 codium core/01-phpfunction5.php && \
 ls web
@@ -1005,7 +1026,8 @@ localhost/web/phppost.php
   - Double-check password
 
 | **22** :$
-```
+
+```console
 sudo cp core/01-phpfunction6.php web/phppost.php && \
 codium core/01-phpfunction6.php && \
 ls web
@@ -1071,7 +1093,8 @@ include ('./in.file.php');
 *Review the diagrams above along side the following two steps...*
 
 | **23** :$
-```
+
+```console
 sudo cp core/01-in.phpinclude.php web/in.phppost.php && \
 sudo cp core/01-phpinclude.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -1108,7 +1131,8 @@ echo CONSTANT_NAME;
 *Review the diagrams above along side the following few steps...*
 
 | **24** :$
-```
+
+```console
 sudo cp core/01-phpconstant1.php web/phppost.php && \
 codium core/01-phpconstant1.php && \
 ls web
@@ -1125,7 +1149,8 @@ localhost/web/phppost.php
 *See how `CONSTANTS` differ from `$variables`...*
 
 | **25** :$
-```
+
+```console
 sudo cp core/01-phpconstant2.php web/phppost.php && \
 codium core/01-phpconstant2.php && \
 ls web
@@ -1140,7 +1165,8 @@ localhost/web/phppost.php
 *...organize all this in an `include` config file...*
 
 | **26** :$
-```
+
+```console
 sudo cp core/01-in.config.php web/in.config.php && \
 sudo cp core/01-phpconstant3.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -1175,7 +1201,8 @@ require_once ('footer.php');
 Normally, the top and bottom of a webpage are some kind of `include` of `header.php` and `footer.php` respectively
 
 | **27** :$
-```
+
+```console
 sudo cp core/01-in.phpheader.php web/in.header.php && \
 sudo cp core/01-in.phpfooter.php web/in.footer.php && \
 sudo cp core/01-phphfconventions.php web/phppost.php && \
@@ -1207,7 +1234,8 @@ file_put_contents('./file/location', 'File content string');
 **Simple string:**
 
 | **28** :$
-```
+
+```console
 sudo cp core/01-phpfileput1.php web/phpfileput.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/01-phpfileput1.php && \
@@ -1233,7 +1261,8 @@ ls web && cat web/fileput.1
 **Variables:**
 
 | **30** :$
-```
+
+```console
 sudo cp core/01-phpfileput2.php web/phpfileput.php && \
 codium core/01-phpfileput2.php && \
 ls web
@@ -1319,7 +1348,8 @@ ls web && cat web/fileput.4
 ### VII. Handling Arrays: `$_POST` Array, `print_r()` & `var_dump()`
 
 | **36** :$
-```
+
+```console
 sudo cp core/01-phpprintr.php web/phpprintr.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/01-phpprintr.php && \
@@ -1344,7 +1374,8 @@ Fill-out the fields and click "Hit me"
 *Try the same thing with `var_dump()`...*
 
 | **37** :$
-```
+
+```console
 sudo cp core/01-phpvardump.php web/phpvardump.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/01-phpvardump.php && \
@@ -1366,7 +1397,8 @@ Fill-out the fields and click "Hit me"
 ### VIII. PHP Errors
 
 | **38** :$
-```
+
+```console
 sudo cp core/01-phperrors1.php web/phperrors.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/01-phperrors1.php && \
@@ -1391,7 +1423,8 @@ localhost/web/phperrors.php
 *Let's try the `$live` option...*
 
 | **39** :$
-```
+
+```console
 sudo cp core/01-phperrors2.php web/phperrors.php && \
 codium core/01-phperrors2.php && \
 ls web

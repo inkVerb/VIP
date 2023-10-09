@@ -64,7 +64,8 @@ website.php
 ```
 
 | **1** :$
-```
+
+```console
 sudo cp core/03-website1.php web/website.php && \
 sudo cp core/03-style1.css web/style.css && \
 sudo cp core/03-in.functions1.php web/in.functions.php && \
@@ -148,7 +149,8 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple
 *Review the diagrams above along side the following few steps...*
 
 | **2** :$
-```
+
+```console
 sudo cp core/03-website2.php web/website.php && \
 sudo cp core/03-in.config2.php web/in.config.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -187,7 +189,8 @@ localhost/web/website.php
 *Let's do the same thing, but put it in an HTML `<table>`...*
 
 | **3** :$
-```
+
+```console
 sudo cp core/03-website3.php web/website.php && \
 sudo cp core/03-style3.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
@@ -242,7 +245,8 @@ while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) { // test and array as on
 ```
 
 | **4** :$
-```
+
+```console
 sudo cp core/03-website4.php web/website.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/03-website4.php && \
@@ -274,7 +278,8 @@ localhost/web/website.php
 *Another `while` loop, different things...*
 
 | **5** :$
-```
+
+```console
 sudo cp core/03-website5.php web/website.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/03-website5.php && \
@@ -306,7 +311,8 @@ localhost/web/website.php
 	- MySQLi: `$last_id = $database->insert_id;`
 
 | **6** :$
-```
+
+```console
 sudo cp core/03-website6.php web/website.php && \
 sudo cp core/03-style6.css web/style.css && \
 sudo cp core/03-in.functions6.php web/in.functions.php && \
@@ -358,7 +364,8 @@ $something_sql_safe = mysqli_real_escape_string($database, $something);
 ```
 
 | **7** :$
-```
+
+```console
 sudo cp core/03-website7.php web/website.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/03-website7.php && \
@@ -413,7 +420,8 @@ $something_sql_safe = escape_sql($something);
 ```
 
 | **8** :$
-```
+
+```console
 sudo cp core/03-website8.php web/website.php && \
 sudo cp core/03-in.config8.php web/in.config.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -454,7 +462,8 @@ SELECT name, type, have, count, prepared FROM fruit;
 	- Syntax: `if (mysqli_affected_rows($database) == 1)`
 
 | **9** :$
-```
+
+```console
 sudo cp core/03-website9.php web/website.php && \
 sudo cp core/03-style9.css web/style.css && \
 sudo cp core/03-in.functions9.php web/in.functions.php && \
@@ -496,7 +505,8 @@ SELECT name, type, have, count, prepared FROM fruit;
 	- Syntax: `if (mysqli_affected_rows($database) == 1)`
 
 | **10** :$
-```
+
+```console
 sudo cp core/03-website10.php web/website.php && \
 sudo cp core/03-in.checks10.php web/in.checks.php && \
 sudo chown -R www:www /srv/www/html && \

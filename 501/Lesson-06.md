@@ -105,7 +105,8 @@ function doAjax() { // doAjax can be anything
 ### AJAX without PHP
 
 | **1** :$
-```
+
+```console
 sudo cp core/06-ajax1.html web/ajax.html && \
 sudo cp core/06-ajaxresponder1.txt web/ajax_responder.txt && \
 sudo chown -R www:www /srv/www/html && \
@@ -136,7 +137,8 @@ localhost/web/ajax.html
 ### AJAX with PHP
 
 | **2** :$
-```
+
+```console
 sudo cp core/06-ajax2.php web/ajax.php && \
 sudo cp core/06-ajaxresponder2.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -164,7 +166,8 @@ localhost/web/ajax.php
 ### AJAX Method: POST
 
 | **3** :$
-```
+
+```console
 sudo cp core/06-ajax3.php web/ajax.php && \
 sudo cp core/06-ajaxresponder3.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -198,7 +201,8 @@ localhost/web/ajax.php
 ### AJAX Render JavaScript from PHP
 
 | **4** :$
-```
+
+```console
 sudo cp core/06-ajax4.php web/ajax.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/06-ajax4.php && \
@@ -275,7 +279,8 @@ Our AJAX JavaScript uses these two IDs (`id=`)
 *Review the diagrams above along side the following few steps...*
 
 | **5** :$
-```
+
+```console
 sudo cp core/06-ajax5.php web/ajax.php && \
 sudo cp core/06-ajaxresponder5.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -400,7 +405,8 @@ This time, the `<form>` is wrapped in the `<div>` AJAX will change
 *Review the diagrams above along side the following few steps...*
 
 | **6** :$
-```
+
+```console
 sudo cp core/06-ajax6.php web/ajax.php && \
 sudo cp core/06-ajaxresponder6.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -477,7 +483,8 @@ function ajaxFormData(formID, postTo, ajaxUpdate) { // These arguments can be an
 ```
 
 | **7** :$
-```
+
+```console
 sudo cp core/06-ajax7.php web/ajax.php && \
 sudo cp core/06-ajaxresponder7.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
