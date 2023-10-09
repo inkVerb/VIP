@@ -27,18 +27,28 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *Make sure we have our SQL admin user*
 
-| **S1** :$ *(password in the terminal, not safe outside these lessons!)*
+| **X0** :$
 
 ```console
 sudo mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;"
+```
+
+| **S0** :$ *(password in the terminal, not safe outside these lessons!)*
+
+```console
 mariadb -u admin -padminpassword
 ```
+
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+
+| **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+
 
 ### Rebuild our web app from the beginning
 
 *Create the database with user, then use the database in the SQL terminal*
 
-| **RS-1** :>
+| **SR1** :>
 
 ```sql
 CREATE DATABASE webapp_db;
@@ -47,11 +57,8 @@ FLUSH PRIVILEGES;
 USE webapp_db;
 ```
 
-*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
-| **RSB-1** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
-
-| **RSB-2** ://phpMyAdmin **> webapp_db**
+| **SR2** ://phpMyAdmin **> webapp_db**
 
 *Rebuild our webapp files, make sure we begin fresh*
 
@@ -78,7 +85,7 @@ ls web
 
 *Install the app, same as in [Lesson 4](https://github.com/inkVerb/vip/blob/master/501/Lesson-04.md)*
 
-| **RB-3** ://
+| **B-R3** ://
 
 ```console
 localhost/web/install.php
@@ -108,7 +115,7 @@ Password: My#1Password
 
 *Also, feel free to explore the tables in SQL*
 
-| **SR0** :>
+| **RS3** :>
 
 ```sql
 SHOW TABLES;
@@ -147,7 +154,7 @@ ls web
     1. *Process the `if` tests to redirect via `header("Location: to_page.php")`*
     2. *Then create the `<head>` tag*
 
-| **B-1** :// (It may redirect to webapp.php)
+| **B-1** :// (It should redirect to webapp.php)
 
 ```console
 localhost/web/edit.php
@@ -160,7 +167,7 @@ Username: jonboy
 Password: My#1Password
 ```
 
-*Once logged in, enter the address directly because we didn't add a link to click...*
+*Once logged in, enter the address directly because we haven't yet added a link to click...*
 
 | **B-2** :// (It will load because you are logged in)
 

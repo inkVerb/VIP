@@ -33,7 +33,7 @@ mariadb-u admin -padminpassword
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
-| **SB-0** :// Username: `admin` Password: `adminpassword`
+| **S0** :// Username: `admin` Password: `adminpassword`
 
 ```console
 localhost/phpMyAdmin/
@@ -45,7 +45,7 @@ localhost/phpMyAdmin/
 USE food_db;
 ```
 
-| **SB-1** ://phpMyAdmin **> food_db**
+| **S1** ://phpMyAdmin **> food_db**
 
 ___
 

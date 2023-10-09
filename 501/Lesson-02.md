@@ -22,10 +22,10 @@ sudo systemctl start apache2 mariadb
 Ready SQL *if continuing after not finishing this lesson last time*
 
 ```console
-mariadb-u admin -padminpassword
+mariadb -u admin -padminpassword
 ```
 
-Browser: // Username: `admin` Password: `adminpassword`
+//phpMyAdmin Username: `admin` Password: `adminpassword`
 
 ```console
 localhost/phpMyAdmin/
@@ -49,10 +49,11 @@ Other SQL database software includes:
 
 SQL is a more secure, interactive alternative to XML, another way to store information data
 
-## Optional Fix: If you have trouble logging in to MySQL
-### This optional section requires a "sudoer" who can use `sudo`
->
+## Prepare MySQL
+### This section requires a "sudoer" who can use `sudo`
+
 ___
+
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** :$
@@ -91,6 +92,7 @@ QUIT
 ### IF needed, `exit` from the other "sudoer"
 >
 ___
+
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** :$
@@ -106,21 +108,21 @@ ___
 
 *Note this format will prompt you for a password:*
 
-- `mariadb-u USERNAME -p`
+- `mariadb -u USERNAME -p`
 
 *But, this won't: (normally not "secure", but allowable for these lessons)*
 
-- `mariadb-u USERNAME -pPASSWORD`
+- `mariadb -u USERNAME -pPASSWORD`
 
 *Login to MySQL as our `admin`...*
 
 | **1** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mariadb-u admin -padminpassword
+mariadb -u admin -padminpassword
 ```
 
-| **B-1** :// Username: `admin` Password: `adminpassword`
+| **S1** ://phpMyAdmin Username: `admin` Password: `adminpassword`
 
 ```console
 localhost/phpMyAdmin/
@@ -140,7 +142,7 @@ SQL queries often use ALL CAPS for SQL terms to better see the SQL language part
 SELECT user FROM mysql.user;
 ```
 
-| **B-2** ://phpMyAdmin **> User accounts**
+| **S2** ://phpMyAdmin **> User accounts**
 
 *Create a user `new_user`...*
 
@@ -158,7 +160,7 @@ CREATE USER new_user@localhost;
 SELECT user FROM mysql.user;
 ```
 
-| **B-4** ://phpMyAdmin **> User accounts**
+| **S4** ://phpMyAdmin **> User accounts**
 
 *Delete that user `new_user`...*
 
@@ -176,7 +178,7 @@ DROP USER new_user@localhost;
 SELECT user FROM mysql.user;
 ```
 
-| **B-6** ://phpMyAdmin **> User accounts**
+| **S6** ://phpMyAdmin **> User accounts**
 
 *List databases...*
 
@@ -186,7 +188,7 @@ SELECT user FROM mysql.user;
 SHOW DATABASES;
 ```
 
-| **B-7** ://phpMyAdmin **> Databases**
+| **S7** ://phpMyAdmin **> Databases**
 
 *Create a database `new_db`...*
 
@@ -204,7 +206,7 @@ CREATE DATABASE new_db;
 SHOW DATABASES;
 ```
 
-| **B-9** ://phpMyAdmin **> Databases**
+| **S9** ://phpMyAdmin **> Databases**
 
 *Delete that database `new_db`...*
 
@@ -222,7 +224,7 @@ DROP DATABASE new_db;
 SHOW DATABASES;
 ```
 
-| **B-11** ://phpMyAdmin **> Databases**
+| **S11** ://phpMyAdmin **> Databases**
 
 ### II. Privileges: User and Database
 
@@ -242,7 +244,7 @@ CREATE USER new_user@localhost; CREATE DATABASE new_db;
 SHOW DATABASES;
 ```
 
-| **B-13** ://phpMyAdmin **> Databases**
+| **S13** ://phpMyAdmin **> Databases**
 
 | **14** :>
 
@@ -250,7 +252,7 @@ SHOW DATABASES;
 SELECT user FROM mysql.user;
 ```
 
-| **B-14** ://phpMyAdmin **> User accounts**
+| **S14** ://phpMyAdmin **> User accounts**
 
 *...Note `new_user` has no password; assign one (`newpassword`)...*
 
@@ -262,7 +264,7 @@ SET PASSWORD FOR new_user@localhost=PASSWORD("newpassword");
 
 *Note `new_user` now has a password...*
 
-| **B-15** ://phpMyAdmin **> User accounts**
+| **S15** ://phpMyAdmin **> User accounts**
 
 *Always flush privileges after altering users!*
 
@@ -280,17 +282,17 @@ FLUSH PRIVILEGES;
 QUIT
 ```
 
-| **B-17** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
+| **S17** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
 *Login to MySQL with `new_user`...*
 
 | **18** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mariadb-u new_user -pnewpassword
+mariadb -u new_user -pnewpassword
 ```
 
-| **B-18** :// Username: `new_user` Password: `newpassword`
+| **S18** ://phpMyAdmin Username: `new_user` Password: `newpassword`
 
 ```console
 localhost/phpMyAdmin/
@@ -304,7 +306,7 @@ localhost/phpMyAdmin/
 SHOW DATABASES;
 ```
 
-| **B-19** ://phpMyAdmin **> Databases**
+| **S19** ://phpMyAdmin **> Databases**
 
 *Note `new_db` isn't listed! You don't have any databases! (`information_schema` doesn't count)*
 
@@ -317,7 +319,7 @@ SHOW DATABASES;
 > | **T1** :$
 
 ```console
-mariadb-u admin -padminpassword
+mariadb -u admin -padminpassword
 ```
 >
 > | **T2** :>
@@ -352,7 +354,7 @@ exit
 SHOW DATABASES;
 ```
 
-| **B-20** ://phpMyAdmin **> Databases**
+| **S20** ://phpMyAdmin **> Databases**
 
 *Exit MySQL...*
 
@@ -362,7 +364,7 @@ SHOW DATABASES;
 QUIT
 ```
 
-| **B-21** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
+| **S21** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
 ### III. Privileges Automatically Create a User
 
@@ -375,10 +377,10 @@ QUIT
 | **22** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mariadb-u admin -padminpassword
+mariadb -u admin -padminpassword
 ```
 
-| **B-22** :// Username: `admin` Password: `adminpassword`
+| **S22** ://phpMyAdmin Username: `admin` Password: `adminpassword`
 
 ```console
 localhost/phpMyAdmin/
@@ -400,7 +402,7 @@ DROP USER new_user@localhost; DROP DATABASE new_db;
 SHOW DATABASES;
 ```
 
-| **B-24** ://phpMyAdmin **> Databases**
+| **S24** ://phpMyAdmin **> Databases**
 
 | **25** :>
 
@@ -408,7 +410,7 @@ SHOW DATABASES;
 SELECT user FROM mysql.user;
 ```
 
-| **B-25** ://phpMyAdmin **> User accounts**
+| **S25** ://phpMyAdmin **> User accounts**
 
 **Create a database, then auto-create a user**
 
@@ -446,7 +448,7 @@ FLUSH PRIVILEGES;
 SHOW DATABASES;
 ```
 
-| **B-29** ://phpMyAdmin **> Databases**
+| **S29** ://phpMyAdmin **> Databases**
 
 | **30** :>
 
@@ -456,7 +458,7 @@ SELECT user FROM mysql.user;
 
 *Note `new_user` exists and has a password...*
 
-| **B-30** ://phpMyAdmin **> User accounts**
+| **S30** ://phpMyAdmin **> User accounts**
 
 *Exit MySQL...*
 
@@ -466,7 +468,7 @@ SELECT user FROM mysql.user;
 QUIT
 ```
 
-| **B-31** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
+| **S31** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
 ### IV. Tables
 
@@ -475,10 +477,10 @@ QUIT
 | **32** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mariadb-u new_user -pnewpassword
+mariadb -u new_user -pnewpassword
 ```
 
-| **B-32** :// Username: `new_user` Password: `newpassword`
+| **S32** ://phpMyAdmin Username: `new_user` Password: `newpassword`
 
 ```console
 localhost/phpMyAdmin/
@@ -492,7 +494,7 @@ localhost/phpMyAdmin/
 USE new_db
 ```
 
-| **B-33** ://phpMyAdmin **> new_db**
+| **S33** ://phpMyAdmin **> new_db**
 
 **...Now we can work with "tables" in that database...**
 
@@ -504,7 +506,7 @@ USE new_db
 SHOW TABLES;
 ```
 
-| **B-34** ://phpMyAdmin **> new_db**
+| **S34** ://phpMyAdmin **> new_db**
 
 *Note no tables, create one...*
 
@@ -524,7 +526,7 @@ CREATE TABLE `fruit` (
 SHOW TABLES;
 ```
 
-| **B-36** ://phpMyAdmin **> new_db**
+| **S36** ://phpMyAdmin **> new_db**
 
 *See what's in our `fruit` table...*
 
@@ -534,7 +536,7 @@ SHOW TABLES;
 SELECT * FROM fruit;
 ```
 
-| **B-37** ://phpMyAdmin **> fruit**
+| **S37** ://phpMyAdmin **> fruit**
 
 **Add to a table...**
 
@@ -552,11 +554,11 @@ INSERT INTO fruit (name) VALUES ('bananas');
 SELECT * FROM fruit;
 ```
 
-| **B-39a** ://phpMyAdmin **> Browse**
+| **S39a** ://phpMyAdmin **> Browse**
 
 OR
 
-| **B-39b** ://phpMyAdmin **> Table: fruit** *(top bredcrumb)*
+| **S39b** ://phpMyAdmin **> Table: fruit** *(top bredcrumb)*
 
 *Note the `type` column is `NULL`*
 
@@ -576,7 +578,7 @@ INSERT INTO fruit (name, type) VALUES ('apples', 'McIntosh');
 SELECT * FROM fruit;
 ```
 
-| **B-41** ://phpMyAdmin **> Browse**
+| **S41** ://phpMyAdmin **> Browse**
 
 *Note the `type` column is not `NULL`*
 
@@ -596,7 +598,7 @@ UPDATE fruit SET count='5' WHERE name='apples';
 SELECT * FROM fruit;
 ```
 
-| **B-43** ://phpMyAdmin **> Browse**
+| **S43** ://phpMyAdmin **> Browse**
 
 *Make more changes...*
 
@@ -614,7 +616,7 @@ UPDATE fruit SET type='nino', count='7' WHERE name='bananas';
 SELECT * FROM fruit;
 ```
 
-| **B-45** ://phpMyAdmin **> Browse**
+| **S45** ://phpMyAdmin **> Browse**
 
 *Delete an entry...*
 
@@ -632,7 +634,7 @@ DELETE FROM fruit WHERE name='apples';
 SELECT * FROM fruit;
 ```
 
-| **B-47** ://phpMyAdmin **> Browse**
+| **S47** ://phpMyAdmin **> Browse**
 
 *Delete the entire table...*
 
@@ -650,7 +652,7 @@ DROP TABLE fruit;
 SELECT * FROM fruit;
 ```
 
-| **B-49** ://phpMyAdmin **> Browse**
+| **S49** ://phpMyAdmin **> Browse**
 
 *Delete the database too...*
 
@@ -668,7 +670,7 @@ DROP DATABASE new_db;
 SHOW DATABASES;
 ```
 
-| **B-51** ://phpMyAdmin **> Databases**
+| **S51** ://phpMyAdmin **> Databases**
 
 *Exit MySQL...*
 
@@ -678,7 +680,7 @@ SHOW DATABASES;
 QUIT
 ```
 
-| **B-52** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
+| **S52** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
 #### SQL Table Rules:
 1. Tables are often created with code in a multi-line array
@@ -753,10 +755,10 @@ CREATE TABLE IF NOT EXISTS `new_table` (
 | **53** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mariadb-u admin -padminpassword
+mariadb -u admin -padminpassword
 ```
 
-| **B-53** :// Username: `admin` Password: `adminpassword`
+| **S53** ://phpMyAdmin Username: `admin` Password: `adminpassword`
 
 ```console
 localhost/phpMyAdmin/
@@ -779,7 +781,7 @@ GRANT ALL PRIVILEGES ON food_db.* TO food_usr@localhost IDENTIFIED BY 'foodpassw
 FLUSH PRIVILEGES;
 ```
 
-| **B-55** ://phpMyAdmin **> Reload navigation panel** *(icon top left, under phpMyAdmin logo)*
+| **S55** ://phpMyAdmin **> Reload navigation panel** *(icon top left, under phpMyAdmin logo)*
 
 *Note the new `food_db` database appeared on the left*
 
@@ -789,7 +791,7 @@ FLUSH PRIVILEGES;
 SHOW DATABASES;
 ```
 
-| **B-56** ://phpMyAdmin **> Databases**
+| **S56** ://phpMyAdmin **> Databases**
 
 | **57** :>
 
@@ -797,7 +799,7 @@ SHOW DATABASES;
 SELECT user FROM mysql.user;
 ```
 
-| **B-57** ://phpMyAdmin **> User accounts**
+| **S57** ://phpMyAdmin **> User accounts**
 
 *Note the user is for PHP (later), we can use the database as the `admin` user for now*
 
@@ -809,7 +811,7 @@ SELECT user FROM mysql.user;
 USE food_db;
 ```
 
-| **B-58** ://phpMyAdmin **> Databases > food_db**
+| **S58** ://phpMyAdmin **> Databases > food_db**
 
 *Create a table...*
 
@@ -840,7 +842,7 @@ SHOW TABLES;
 SELECT * FROM fruit;
 ```
 
-| **B-61** ://phpMyAdmin **> food_db > fruit**
+| **S61** ://phpMyAdmin **> food_db > fruit**
 
 *Make an entry...*
 
@@ -856,7 +858,7 @@ INSERT INTO fruit (name, type) VALUES ('apples', 'McIntosh');
 SELECT * FROM fruit;
 ```
 
-| **B-63** ://phpMyAdmin **> fruit**
+| **S63** ://phpMyAdmin **> fruit**
 
 *And another...*
 
@@ -872,7 +874,7 @@ INSERT INTO fruit (name, type) VALUES ('apples', 'Golden Delicious');
 SELECT * FROM fruit;
 ```
 
-| **B-65** ://phpMyAdmin **> fruit**
+| **S65** ://phpMyAdmin **> fruit**
 
 *Add more details to entry 1...*
 
@@ -888,7 +890,7 @@ UPDATE fruit SET have=true, count='37', prepared='dry' WHERE id=1;
 SELECT * FROM fruit;
 ```
 
-| **B-67** ://phpMyAdmin **> Browse**
+| **S67** ://phpMyAdmin **> Browse**
 
 *Make a "complete" entry...*
 
@@ -912,7 +914,7 @@ SELECT id, name FROM fruit;
 SELECT * FROM fruit;
 ```
 
-| **B-70** ://phpMyAdmin **> Browse**
+| **S70** ://phpMyAdmin **> Browse**
 
 *Let's say our nino bananas go out of stock...*
 
@@ -936,7 +938,7 @@ SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
 SELECT * FROM fruit;
 ```
 
-| **B-73** ://phpMyAdmin **> Browse**
+| **S73** ://phpMyAdmin **> Browse**
 
 ___
 

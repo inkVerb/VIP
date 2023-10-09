@@ -45,7 +45,7 @@ USE webapp_db;
 
 ### Webapp Dashboard Login:
 
-| **SB-1** :// (Check that you're logged in)
+| **B-0** :// (Check that you're logged in)
 
 ```console
 localhost/web/webapp.php
