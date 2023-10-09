@@ -138,7 +138,7 @@ That's quite simple, let's expand...
 sudo cp core/09-pieces2.php web/pieces.php && \
 sudo cp core/09-delete2.php web/delete.php && \
 sudo cp core/09-undelete2.php web/undelete.php && \
-sudo cp core/09-purge_delete2.php web/empty_delete.php && \
+sudo cp core/09-purge_delete2.php web/purge_delete.php && \
 sudo cp core/09-unpublish2.php web/unpublish.php && \
 sudo cp core/09-republish2.php web/republish.php && \
 sudo cp core/09-pagify2.php web/pagify.php && \
@@ -157,7 +157,7 @@ ls web
 
 - *delete.php*
 - *undelete.php*
-- *empty_delete.php*
+- *purge_delete.php*
 - *unpublish.php*
 - *republish.php*
 - *pagify.php*
@@ -203,7 +203,7 @@ sudo cp core/09-in.metaeditfunctions3.php web/in.metaeditfunctions.php && \
 sudo cp core/09-style3.css web/style.css && \
 sudo cp core/09-delete3.php web/delete.php && \
 sudo cp core/09-undelete3.php web/undelete.php && \
-sudo cp core/09-purge_delete3.php web/empty_delete.php && \
+sudo cp core/09-purge_delete3.php web/purge_delete.php && \
 sudo cp core/09-unpublish3.php web/unpublish.php && \
 sudo cp core/09-republish3.php web/republish.php && \
 sudo cp core/09-pagify3.php web/pagify.php && \
@@ -215,11 +215,11 @@ ls web
 *Note pieces.php:*
 
 - *We added an `include` for in.metaeditfunctions.php*
-- *We use a `postform()` function rather than links*
+- *We use our new `metaeditform()` function rather than links*
 
 *Note in.metaeditfunctions.php:*
 
-- *We created the `postform()` function*
+- *We created the `metaeditform()` function*
 - *The `style=` attribute embedded inside the `<form>` tag is necessary for `float:` to work*
 - *We check using `switch`-`case` because there are so many options for a very simple variable value test*
 
@@ -231,7 +231,7 @@ ls web
 
 - *delete.php*
 - *undelete.php*
-- *empty_delete.php*
+- *purge_delete.php*
 - *unpublish.php*
 - *republish.php*
 - *pagify.php*
@@ -376,14 +376,14 @@ In Atom:
 
 #### htmldiff.js
 
-- [GitHub repo](https://github.com/poetryisCODE/htmldiff)
-- [GitHub fork](https://github.com/inkVerb/htmldiff) (in case it doesn't work)
+- [GitHub repo](https://github.com/poetryiscode/htmldiff)
+- [GitHub fork](https://github.com/inkverb/htmldiff) (in case it doesn't work)
 
 We will use this JavaScript package to find differences in two blocks of text and highlight their differences
 
 This is similar to the Linux tool `diff`, which we learned about in [201-11](https://github.com/inkVerb/vip/blob/master/201/Lesson-11.md#diff)
 
-On your own, learn more about implementation at [github.com/poetryisCODE/htmldiff](https://github.com/poetryisCODE/htmldiff/blob/master/README.md)
+On your own, learn more about implementation at [github.com/poetryisCODE/htmldiff](https://github.com/poetryiscode/htmldiff/blob/master/README.md)
 
 | **9** :$
 
@@ -391,7 +391,7 @@ On your own, learn more about implementation at [github.com/poetryisCODE/htmldif
 sudo cp core/09-pieces6.php web/pieces.php && \
 sudo cp core/09-piece1.php web/piece.php && \
 sudo cp core/09-hist6.php web/hist.php && \
-git clone https://github.com/poetryisCODE/htmldiff.git && \
+git clone https://github.com/poetryiscode/htmldiff.git && \
 sudo cp htmldiff/htmldiff.min.js web/ && \
 sudo cp core/09-in.editprocess1.php web/in.editprocess.php && \
 sudo cp core/09-revert.php web/revert.php && \
@@ -658,7 +658,7 @@ SELECT title, slug, tags FROM pieces WHERE id=3;
 SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]';
 ```
 
-*...No matches! Try this...*
+*...MariaDB handles that well, but MySQL or other SQL engines might return no matches! If not running MariaDB, try this...*
 
 | **18** :>
 
@@ -666,7 +666,7 @@ SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary
 SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' AS JSON);
 ```
 
-*...That's how SQL handles JSON*
+*...MariaDB won't return results for `CAST() AS JSON` because MariaDB treats JSON simply as LONGTEXT, which keeps our SQL code quite simple*
 
 #### JSON in Our Blog
 
@@ -717,7 +717,7 @@ SELECT title, slug, tags FROM pieces WHERE id=3;
 1. Search for "uncomment" lines in in.editprocess.php
 2. Uncomment those lines
 3. Then run the file `sudo cp` command cluster again
-4. Then retry edit.php the browser
+4. Then Save or Update a post with tags in edit.php in the browser
 5. Note the `$Variables` with JSON values
 6. Note the SQL query and try it in the SQL terminal
 
@@ -939,6 +939,24 @@ codium core/09-select.php core/09-in.select.php core/09-ajax.select.php && \
 ls web
 ```
 
+*We need to create the `series` table and make our first entry so this can work...*
+
+| **24** :>
+
+```sql
+CREATE TABLE IF NOT EXISTS `series` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(60) NOT NULL,
+  `slug` VARCHAR(90) NOT NULL,
+  `template` INT UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+INSERT INTO series (name, slug) VALUES ('Blog', 'blog');
+ALTER TABLE `pieces` ADD `series` INT UNSIGNED DEFAULT 1;
+ALTER TABLE `publications` ADD `series` INT UNSIGNED DEFAULT 1;
+ALTER TABLE `publication_history` ADD `series` INT UNSIGNED DEFAULT 1;
+```
+
 | **B-24** ://
 
 ```console
@@ -986,24 +1004,6 @@ ls web
   - *We must `include ('./in.logincheck.php')` in the AJAX source for anything related to logged-in activity*
     - *It is not enough just to check `$_SESSION`, which usually expires after 15 minutes*
     - *We want to check for `$_COOKIE` login, which is part of in.logincheck.php*
-
-*We need to create the `series` table and make our first entry so this can work...*
-
-| **25** :>
-
-```sql
-CREATE TABLE IF NOT EXISTS `series` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(60) NOT NULL,
-  `slug` VARCHAR(90) NOT NULL,
-  `template` INT UNSIGNED DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-INSERT INTO series (name, slug) VALUES ('Blog', 'blog');
-ALTER TABLE `pieces` ADD `series` INT UNSIGNED DEFAULT 1;
-ALTER TABLE `publications` ADD `series` INT UNSIGNED DEFAULT 1;
-ALTER TABLE `publication_history` ADD `series` INT UNSIGNED DEFAULT 1;
-```
 
 | **26** :>
 
@@ -1248,7 +1248,7 @@ In Pieces and Trash:
 | **32** :$
 
 ```console
-sudo rm -f web/delete.php web/undelete.php web/empty_delete.php web/unpublish.php web/republish.php web/pagify.php web/postify.php web/undelete_trash.phpweb/empty_delete_trash.php
+sudo rm -f web/delete.php web/undelete.php web/purge_delete.php web/unpublish.php web/republish.php web/pagify.php web/postify.php web/undelete_trash.phpweb/purge_delete_trash.php
 ls web
 ```
 
