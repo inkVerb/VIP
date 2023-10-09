@@ -25,13 +25,18 @@ Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
+*Make sure we have our SQL admin user*
+
 | **S1** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
+sudo mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;"
 mariadb -u admin -padminpassword
 ```
 
 ### Rebuild our web app from the beginning
+
+*Create the database with user, then use the database in the SQL terminal*
 
 | **RS-1** :>
 
@@ -48,7 +53,7 @@ USE webapp_db;
 
 | **RSB-2** ://phpMyAdmin **> webapp_db**
 
-*Rebuild our webapp files, make sure we begin fresh...*
+*Rebuild our webapp files, make sure we begin fresh*
 
 | **R3** :$
 

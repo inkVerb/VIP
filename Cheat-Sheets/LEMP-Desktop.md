@@ -114,17 +114,37 @@ sudo systemctl status mariadb
 sudo systemctl status php-fpm
 ```
 
+#### Create the web user and directories
+
+*Note (`usermod -a -G www http`) that Nginx requires its own `http` user, so we must add it to the `www` group*
+
+*(Many Nginx servers can get away without adding the Nginx `http` user to the `www` (or other) web user group, but eventually something can break if we don't)*
+
+*Note we also add write (`+w`) permissions and own the web folder (`/srv/www`)*
+
+| **12** :$
+
+```console
+sudo useradd -g www www
+sudo usermod -a -G www http
+sudo mkdir -p /srv/www/html
+sudo chmod u+w /srv/www
+sudo chmod u+w /srv/www/html
+sudo chown -R www:www /srv/www
+```
+
 #### Using your local dev server on desktop
 
 - `/srv/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
 
 Life is easier with a local "Work" folder symlink
 
-| **12** :$
+| **13** :$
 
 ```console
 mkdir -p ~/Work/dev
 sudo mkdir -p /srv/www/html/vip
+sudo chmod u+w /srv/www/vip
 sudo ln -sfn /srv/www/html/vip ~/Work/
 ```
 
@@ -265,7 +285,7 @@ sudo nginx -t
 | **21** :$
 
 ```console
-sudo mysql
+sudo mariadb
 ```
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
@@ -279,7 +299,7 @@ sudo mysql
 | **24** :> `QUIT;`
 
 Access any MySQL user you created later with
-- `mysql -u USERNAME -p` (then enter the password)
+- `mariadb -u USERNAME -p` (then enter the password)
 
 ### MySQL phpMyAdmin
 
@@ -333,7 +353,7 @@ sudo vim /srv/www/html/phpMyAdmin/config.inc.php
 | **29** :$
 
 ```console
-sudo chown -R www-data:www-data /srv/www/html/phpMyAdmin
+sudo chown -R www:www /srv/www/html/phpMyAdmin
 ```
 
 Now, you should be able to access this in your browser at the address:

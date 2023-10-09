@@ -1084,7 +1084,6 @@ sudo systemctl enable mariadb
 sudo systemctl start mariadb
 ```
 
-
 ___
 
 ## MySQL phpMyAdmin
@@ -1093,17 +1092,19 @@ ___
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
 
-| **PA1** (Change file name)
+*Check that the hash matches*
+
+| **PA1** (Use correct file name)
 ```console
+cd ~/Downloads
 sha256sum phpMyAdmin-x.x.x-all-languages.zip
 ```
 
 2. Extract and rename the folder to: `phpMyAdmin`
 
-| **PA2** :$ (Change file name)
+| **PA2** :$ (Use correct file name)
 
 ```console
-cd ~/Downloads
 unzip phpMyAdmin-x.x.x-all-languages.zip
 mv phpMyAdmin-x.x.x-all-languages phpMyAdmin
 ```
@@ -1166,6 +1167,7 @@ Login the first time with the same user you create in "MySQL via command line" (
 
 | **PD1** (Change file name)
 ```console
+cd ~/Downloads
 sha256sum phpMyAdmin-x.x.x-all-languages.zip
 ```
 
@@ -1176,7 +1178,6 @@ sha256sum phpMyAdmin-x.x.x-all-languages.zip
 | **PD2** :$ (Change file name)
 
 ```console
-cd ~/Downloads
 unzip phpMyAdmin-x.x.x-all-languages.zip
 mv phpMyAdmin-x.x.x-all-languages phpMyAdmin
 ```
