@@ -1128,8 +1128,12 @@ sudo cp core/09-pieces7.php web/pieces.php && \
 sudo cp core/09-act.bulkpieces.php web/act.bulkpieces.php && \
 sudo cp core/09-in.metaeditfunctions7.php web/in.metaeditfunctions.php && \
 sudo cp core/09-trash7.php web/trash.php && \
+sudo cp core/09-unpublish7.php web/unpublish.php && \
+sudo cp core/09-republish7.php web/republish.php && \
+sudo cp core/09-pagify7.php web/pagify.php && \
+sudo cp core/09-postify7.php web/postify.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/09-pieces7.php core/09-act.bulkpieces.php core/09-in.metaeditfunctions7.php core/09-trash7.php && \
+codium core/09-pieces7.php core/09-act.bulkpieces.php core/09-in.metaeditfunctions7.php core/09-trash7.php core/09-unpublish7.php core/09-republish7.php core/09-pagify7.php core/09-postify7.php && \
 ls web
 ```
 
@@ -1183,6 +1187,16 @@ Click and try:
 - Pieces
 
 *Let's AJAX these small "actions"...*
+
+<!--
+# DEV
+AJAX isn't working on these actions to actually update any pieces
+maybe this line should go earlier:
+sudo cp core/09-act.piecesactions.php web/act.piecesactions.php && \
+
+Possily start back fresh from lesson 8
+
+-->
 
 | **31** :$
 
