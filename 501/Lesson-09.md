@@ -1671,8 +1671,6 @@ We need to do one more thing so we can do things right...
 
 ### Unpublished Changes: Simple Diff via SQL
 
-*This is a good and simple example of a product roadmap "new feature" task*
-
 We need a proper way to decide if there are changes to a draft in the `pieces` that have not been published to the `publications` table
 
 Interestingly, SQL has very simple ways to find differences, so we don't need complicated PHP `if` statements for this
@@ -1683,11 +1681,11 @@ Remember our workflow:
   - "Update" in our Editor (edit.php) will create a new revision in the `publications` table if there are any changes at all
   - We can view the diff between the latest draft and latest publication in History (hist.php) already
 
-#### a. We need a way in:
+#### a. We need such a way in:
 
-1. both pieces.php and edit.php
-2. to identify whether there are publishable changes to our latest draft
-3. We can do this with a simple `LEFT JOIN` MySQL query
+1. Both pieces.php and edit.php
+2. To identify whether there are publishable changes to our latest draft
+3. Which can do using a simple `LEFT JOIN` SQL query
 
 ```sql
 -- table_a has the "id" column, corresponding to the "a_id" column in table_b
@@ -1703,8 +1701,8 @@ ORDER BY B.id DESC LIMIT 1; -- Only the very last table_b entry, previous entrie
 
 #### b. In identifying differences between two tables:
 
-1. it will be more efficient to more deeply connect our queries between those two tables
-2. we can do this with SQL using `INSERT` & `SELECT` in the same query
+1. It will be more efficient to more deeply connect our queries between those two tables
+2. We can do this with SQL using `INSERT` & `SELECT` in the same query
 
 ```sql
 -- New entry
@@ -1717,7 +1715,7 @@ WHERE DEST.original_id=5
   AND ORIG.id=5;
 ```
 
-#### See it work...
+#### Apply this SQL-driven diff to both edit.php and pieces.php
 
 | **39** :$
 
@@ -1750,11 +1748,10 @@ ls web
 | **B-39** :// (if it works, we will use `1` for this step)
 
 ```console
-localhost/web/http://localhost/web/edit.php?p=1
+localhost/web/edit.php?p=1
 ```
 
-*...if that does not work...*
-
+*Only if `edit.php?p=1` doesn't edit any existing piece, find a different `id` from "Pieces"...*
 ___
 > | **B-39-fix** ://
 
@@ -1763,47 +1760,46 @@ localhost/web/pieces.php
 ```
 >
 > 1. Click "Edit" for any piece
-> 2. Use the number in `edit.php?p=NUM` to replace `1` in `U.piece_id=1` for our SQL queries
+> 2. Use the number in `edit.php?p=NUM` to replace `1` in `U.piece_id=1` for our SQL queries below
 >
 ___
 
-1. Click "Update" in the Editor
-2. Run the SQL query and note it finds one match
+1. Make sure the piece is published
+2. Make some changes anywhere
+3. Click "Save draft" or press "<kbd>Ctrl</kbd> + <kbd>S</kbd>", **NOT** "Update publication"
+5. Look for a message near the top that reads "**view diff for unpublished changes**"
+  - You may need to load from the address bar again to see that "view diff..." message
+6. Run our SQL query for this piece (change `U.piece_id=1` to another number if `edit.php?p=1` didn't work in the previous step)
 
 | **39** :>
 
 ```sql
-SELECT P.title, P.date_updated FROM pieces AS P LEFT JOIN publications AS U ON P.id=U.piece_id AND P.date_updated=U.date_updated WHERE U.piece_id=1 ORDER BY U.id DESC LIMIT 1;
+SELECT P.date_updated FROM pieces AS P LEFT JOIN publications AS U ON P.id=U.piece_id AND P.date_updated=U.date_updated WHERE U.piece_id=1 ORDER BY U.id DESC LIMIT 1;
 ```
+
+7. That SQL query should return nothing
+  - This is because the latest "draft" in `pieces` does not have the identical `date_updated` to the most recent entry by that `piece_id` in `publications`
 
 | **39a** ://phpMyAdmin **> pieces**
 
-...`date_updated` for that piece is the same on...
+...`date_updated` for that piece is different from the corresponding row on...
 
 | **39b** ://phpMyAdmin **> publications**
 
-3. Make any small change in the Editor
-4. Click "Save draft" or press "<kbd>Ctrl</kbd> + <kbd>S</kbd>", **NOT** "Update"
-5. Run the above SQL query again
-6. Note it finds no match
-  - This is because the latest "draft" in `pieces` does not have the identical `date_updated` to the most recent entry by that `piece_id` in `publications`
+*Let's update the publication and see what changes*
 
-We can do the same thing in SQL directly
-
-| **B-40** :// (Same, no reload)
-
-```console
-localhost/web/http://localhost/web/edit.php?p=1
-```
-
-1. Click "Update" in the Editor
-2. Run the same `SELECT` SQL query as before and note it finds one match
+1. Click "Update publication" in the Editor
+2. We no longer see the "**view diff for unpublished changes**" message
+3. Run the same SQL query again
 
 | **40** :>
 
 ```sql
-SELECT P.title, P.date_updated FROM pieces AS P LEFT JOIN publications AS U ON P.id=U.piece_id AND P.date_updated=U.date_updated WHERE U.piece_id=1 ORDER BY U.id DESC LIMIT 1;
+SELECT P.date_updated FROM pieces AS P LEFT JOIN publications AS U ON P.id=U.piece_id AND P.date_updated=U.date_updated WHERE U.piece_id=1 ORDER BY U.id DESC LIMIT 1;
 ```
+
+4. Note it finds one match
+  - This is because the latest "draft" in `pieces` now has one the identical `date_updated` with the most recent entry by that `piece_id` in `publications`
 
 | **40a** ://phpMyAdmin **> pieces**
 
@@ -1811,27 +1807,27 @@ SELECT P.title, P.date_updated FROM pieces AS P LEFT JOIN publications AS U ON P
 
 | **40b** ://phpMyAdmin **> publications**
 
-3. Make any small change in the Editor
-4. Click "Save draft" or press "<kbd>Ctrl</kbd> + <kbd>S</kbd>", **NOT** "Update"
-5. Run the above `SELECT` SQL query again
-6. Note it finds no match, just like before
-  - Again, `date_updated` in `pieces` and `publications` are different
-7. Run this `UPDATE` SQL query, same used in our PHP to "Update"
-  - It will `UPDATE` the `publications` entry to have the same `date_updated` as the `pieces`
-
-| **41** :>
+*FYI, we could have updated only the dates to match from different tables, even if there are other changes to the piece, with this `UPDATE` SQL query:*
 
 ```sql
 UPDATE pieces AS P, publications AS U SET U.date_updated=P.date_updated WHERE U.piece_id=1 AND P.id=1;
 ```
 
-8. Run the same `SELECT` SQL query again to see that it finds a match
+*Browse Pieces and look for a "**(pending changes)**" message by posts with the same "unpublished changes" status*
+
+| **B-41** ://
+
+```console
+localhost/web/pieces.php
+```
+
+*If you don't see any "**(pending changes)**" message, exit a piece and "Save draft" for some changes, then try Pieces again*
 
 ### Prevent Multiple `<form>` `<input>` Submissions
 
 *Create a new post...*
 
-| **B-42** :// (No "p" _GET argument, this is new)
+| **B-42** :// (No "p" _GET argument in the URL, this is a new piece)
 
 ```console
 localhost/web/edit.php
@@ -1848,7 +1844,9 @@ localhost/web/edit.php
 localhost/web/pieces.php
 ```
 
-- *Over the Internet, you may be able to save multiple duplicates before the `<form>` finishes and the page reloads*
+| **43a** ://phpMyAdmin **> pieces**
+
+- *Over the Internet, you would probably be able to save multiple duplicates before the `<form>` finishes and the page reloads*
 - *Since this sends to your local machine, you may not be able to save multiple duplicates*
 - *Regardless, we do not want the ability to keep saving a new draft, which creates a new database entry each time*
 
@@ -1878,7 +1876,7 @@ ls web
 
 *Create another new post...*
 
-| **B-44** :// (No "p" _GET argument, this is new)
+| **B-44** :// (No "p" _GET argument in the URL, this is another new piece)
 
 ```console
 localhost/web/edit.php

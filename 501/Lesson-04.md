@@ -228,7 +228,8 @@ ls web
 
 *In the config, note:*
 
-- *function escape_sql($data)* (we will start using this instead of mysqli_real_escape_string)
+- *`function escape_sql($data)`* (we will start using this instead of mysqli_real_escape_string)
+  - *The `is_null()` test makes sure we don't run `preg_replace()` against a null variable, which isn't allowed*
 
 *In the in.functions.php, note:*
 
