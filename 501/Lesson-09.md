@@ -526,7 +526,7 @@ JSON is an array that lives as a string, so you can view it with `echo` (arrays 
 **Array *as* JSON objects: (as-JSON, auto-indexed array AI)**
 
 ```json
-[ "Apple", "Banana", "Ubuntu" ]
+[ "Apple", "Banana", "Manjaro" ]
 
 [ ["","",""] , ["","",""] ]
 ```
@@ -537,7 +537,7 @@ JSON is an array that lives as a string, so you can view it with `echo` (arrays 
 {
 "count":3,
 "use":"multiple",
-"systems":[ "Apple", "Banana", "Ubuntu" ]
+"systems":[ "Apple", "Banana", "Manjaro" ]
 }
 
 { "0":{"0":"","1":"","2":""},"1":{"0":"","1":"","2":""} }
@@ -566,13 +566,20 @@ $php_arrayAI = json_decode($string_json); // From arrays inside-JSON (AS) to PHP
 According to [this article](https://stackoverflow.com/a/51775308/10343144) and [MariaDB docs](https://mariadb.com/kb/en/library/json-data-type/), SQL standards do not allow JSON datatypes
 
 - MySQL allows a `JSON` datatype, accessed with `CAST('$json' AS JSON)`
-- MariaDB and standard SQL engines use `LONGTEXT`, accessed as normal text
+- MariaDB and standard SQL engines use `JSON` as an alias for `LONGTEXT`, accessed as normal text in a string
 
 ```sql
 -- Standard SQL & MariaDB
-WHERE tags='[ "Apple", "Banana", "Ubuntu" ]'
+-- Creat a LONGTEXT column with this:
+`pieces` ADD `tags` LONGTEXT DEFAULT NULL;
+-- Match the column with this:
+WHERE tags='[ "Apple", "Banana", "Manjaro" ]'
+
 -- MySQL for JSON datatype
-WHERE tags=CAST('[ "Apple", "Banana", "Ubuntu" ]' AS JSON)
+-- Creat a JSON column with this:
+`pieces` ADD `tags` JSON DEFAULT NULL;
+-- Match the column with this:
+WHERE tags=CAST('[ "Apple", "Banana", "Manjaro" ]' AS JSON)
 ```
 
 We will ***not*** use the `JSON` datatype, but `LONGTEXT` for standard SQL cross-platform compatability
@@ -596,7 +603,7 @@ ls web
 localhost/web/jsonarrays.php
 ```
 
-*Let's try to hack some JSON into our SQL...*
+*Let's try to some JSON in our SQL...*
 
 #### JSON in SQL
 
@@ -636,7 +643,7 @@ SELECT title, slug, tags FROM pieces WHERE id=3;
 
 | **15** ://phpMyAdmin **> pieces** (Note id 3, or whatever ID you are using)
 
-| **16a** :>
+| **16** :>
 
 ```sql
 UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' WHERE id=3;
@@ -644,7 +651,7 @@ UPDATE pieces SET tags='["one tag","second tag","tertiary","quarternary","ternar
 
 | **16** ://phpMyAdmin **> pieces**
 
-| **16b** :>
+| **17** :>
 
 ```sql
 SELECT title, slug, tags FROM pieces WHERE id=3;
@@ -652,21 +659,27 @@ SELECT title, slug, tags FROM pieces WHERE id=3;
 
 *Now, select for a match in `tags`...*
 
-| **17** :>
+| **18** :> (Standard SQL & MariaDB for `TEXT` or `LONGTEXT` datatype)
 
 ```sql
 SELECT id, title, slug FROM pieces WHERE tags='["one tag","second tag","tertiary","quarternary","ternary","idunnory"]';
 ```
 
-*...MariaDB handles that well, but MySQL or other SQL engines might return no matches! If not running MariaDB, try this...*
+*Remember, MySQL allows a `JSON` datatype, but MariaDB (what we used) simply uses `JSON` as `LONGTEXT`*
 
-| **18** :>
+*On a MySQL server (not MariaDB) we could have made the colum with this:*
+
+```sql
+`pieces` ADD `tags` LONGTEXT DEFAULT NULL;
+```
+
+*Which would use this instead:*
 
 ```sql
 SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","tertiary","quarternary","ternary","idunnory"]' AS JSON);
 ```
 
-*...MariaDB won't return results for `CAST() AS JSON` because MariaDB treats JSON simply as LONGTEXT, which keeps our SQL code quite simple*
+*Note MariaDB won't return results for `CAST($json) AS JSON` because MariaDB treats JSON simply as text in a string (`LONGTEXT`, `TEXT`, etc) which follows SQL standards and keeps our SQL queries quite simple*
 
 #### JSON in Our Blog
 
@@ -754,7 +767,7 @@ Just note:
 2. We use RegEx to pull what we want
 3. We uses RegEx to cut what we don't want
 4. Everything goes into a PHP array whenever we process it  
-5. The PHP array goes to and from JSON to save in the SQL database
+5. The PHP array goes to and from JSON to easily save an array as text in the SQL database
 
 | **20** :$
 
@@ -793,8 +806,8 @@ localhost/web/jsonlinksexplained.php
 - This truncates everything after `|` Pipe in Titles, but pulls for an absent Credit first
 - Items are then processed:
   1. Starting in a PHP array
-  2. Into JSON for SQL entry
-  3. From JSON after SQL retrieval back into a PHP array
+  2. Into JSON-as-text for SQL entry
+  3. From JSON-as-text after SQL retrieval back into a PHP array
   4. Iterated into `<a>` links
 
 *Let's look at that code again, without all the explanation...*
@@ -856,7 +869,8 @@ ls web
     - *`checkPiece()`, alongside `$p_tags`*
     - *`json_decode()`, alongside `$p_tags`*
     - *SQL queries (with the `links` column)*
-    - *Uses `CAST('$json' AS JSON)`, as with `tags`
+    - *MariaDB uses a simple text match*
+      - *MySQL would use `CAST('$json' AS JSON)`, as with `tags`*
 - *in piece.php*
   - *`$nologin_allowed` variable set by ternary statement, requireing login for previews*
   - *Links and Tags show*
@@ -872,7 +886,7 @@ ls web
   - *New `input[type=text].piece` class (for editing text input)*
   - *New `.infopop`, etc classes (for `infoPop()` function)*
 
-*We need another JSON column on our tables...*
+*We need another LONGTEXT column to hold a JSON string...*
 
 | **22** :>
 
@@ -1089,7 +1103,7 @@ Consider `form=` & `="apply2all"` in this code...
 ```console
 sudo cp core/09-postformarrays.php web/postformarrays.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/postformarrays.php && \
+codium core/09-postformarrays.php && \
 ls web
 ```
 
