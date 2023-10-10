@@ -1188,16 +1188,6 @@ Click and try:
 
 *Let's AJAX these small "actions"...*
 
-<!--
-# DEV
-AJAX isn't working on these actions to actually update any pieces
-maybe this line should go earlier:
-sudo cp core/09-act.piecesactions.php web/act.piecesactions.php && \
-
-Possily start back fresh from lesson 8
-
--->
-
 | **31** :$
 
 ```console
