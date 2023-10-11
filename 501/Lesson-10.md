@@ -109,7 +109,7 @@ ls web
   - Ensure set & uncommented: `file_uploads = On` (remove any semicolon `;` at the start of the line, make sure it is `On`)
   - Edit with `gedit`:
 
-    - Arch/Manjaro?
+    - Arch/Manjaro or CentOS/Fedora
 
     | **3Ag** :$
 
@@ -119,17 +119,17 @@ sudo gedit /etc/php/php.ini
 
     - Debian/Ubuntu?
 
-    | **3Dg** :$ (maybe `7.2` is a different number)
+    | **3Dg** :$ (maybe `8.0` is a different number)
 
 ```console
-sudo gedit /etc/php/7.2/apache2/php.ini
+sudo gedit /etc/php/8.0/apache2/php.ini
 ```
 
     - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `file_uploads` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
   - Or edit with `vim`:
 
-    - Arch/Manjaro?
+    - Arch/Manjaro or CentOS/Fedora
 
     | **3Av** :$
 
@@ -137,19 +137,47 @@ sudo gedit /etc/php/7.2/apache2/php.ini
 sudo vim /etc/php/php.ini
 ```
 
-    - Debian/Ubuntu?
+    - Debian/Ubuntu
 
-    | **3Dv** :$ (maybe `7.2` is a different number)
+    | **3Dv** :$ (maybe `8.0` is a different number)
 
 ```console
-sudo vim /etc/php/7.2/apache2/php.ini
+sudo vim /etc/php/8.0/apache2/php.ini
 ```
 
     - Search by typing: `/file_uploads`, then Enter to find the line, type `:wq` to save and quit
 
+  - Or replace with `sed`:
+
+    - Arch/Manjaro or CentOS/Fedora
+
+    | **3As** :$
+
+```console
+sudo sed -i 's/^;file_uploads = On/file_uploads = On/' /etc/php/php.ini
+```
+
+    - Debian/Ubuntu?
+
+    | **3Ds** :$ (maybe `8.0` is a different number)
+
+```console
+sudo sed -i 's/^;file_uploads = On/file_uploads = On/' /etc/php/8.0/apache2/php.ini
+```
+
 2. Restart Everything
 
-| **4** :$
+- Arch/Manjaro or CentOS/Fedora
+
+| **4A** :$
+
+```console
+sudo systemctl restart httpd
+```
+
+- Debian/Ubuntu
+
+| **4D** :$
 
 ```console
 sudo systemctl restart apache2
@@ -238,7 +266,7 @@ localhost/web/upload.php
 ```
 
 1. Click "Browse..."
-2. Look in ~/School/VIP/501/test_uploads
+2. Look in ~/School/VIP/501/test_uploads/
 3. Select & "open" test1.txt
 4. Click "Upload"
 
@@ -283,7 +311,7 @@ localhost/web/upload.php
 ```
 
 1. Click "Browse..."
-2. Look in ~/School/VIP/501/test_uploads
+2. Look in ~/School/VIP/501/test_uploads/fakes/
 3. Select & "open" fake.png
 4. Click "Upload"
 
@@ -301,7 +329,7 @@ ls web/uploads
 localhost/web/upload.php
 ```
 
-Repeat steps 1-4, choosing file vip-blue.png
+Repeat steps 1-4, in test_uploads/, choosing file vip-blue.png
 
 | **10** :$
 
@@ -341,7 +369,7 @@ localhost/web/upload.php
 ```
 
 1. Click "Browse..."
-2. Look in ~/School/VIP/501/test_uploads
+2. Look in ~/School/VIP/501/test_uploads/fakes/
 3. Select & "open" fake.jpg
 4. Click "Upload"
 
@@ -359,7 +387,7 @@ ls web/uploads
 localhost/web/upload.php
 ```
 
-Repeat steps 1-4, choosing file vip-chartreuse.png
+Repeat steps 1-4, in test_uploads/, choosing file vip-chartreuse.png
 
 | **13** :$
 
@@ -390,7 +418,7 @@ localhost/web/upload.php
 ```
 
 1. Click "Browse..."
-2. Look in ~/School/VIP/501/test_uploads
+2. Look in ~/School/VIP/501/test_uploads/
 3. Select & "open" vip-chartreuse.png (Same as above)
 4. Click "Upload"
 
@@ -463,7 +491,7 @@ localhost/web/upload.php
 ```
 
 1. Click "Browse..."
-2. Look in ~/School/VIP/501/test_uploads
+2. Look in ~/School/VIP/501/test_uploads/
 3. Select & "open" vipLinux-Meshtop.jpg
 4. Click "Upload"
 
@@ -499,7 +527,7 @@ ls web/uploads
   - Ensure set: `upload_max_filesize = 5M` (make sure it is `5M`)
   - Edit with `gedit`:
 
-    - Arch/Manjaro
+    - Arch/Manjaro or CentOS/Fedora
 
     | **21Ag** :$
 
@@ -509,17 +537,17 @@ sudo gedit /etc/php/php.ini
 
     - Debian/Ubuntu
 
-    | **21Dg** :$ (maybe `7.2` is a different number)
+    | **21Dg** :$ (maybe `8.0` is a different number)
 
 ```console
-sudo gedit /etc/php/7.2/apache2/php.ini
+sudo gedit /etc/php/8.0/apache2/php.ini
 ```
 
     - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `upload_max_filesize` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
   - Or edit with `vim`:
 
-    - Arch/Manjaro
+    - Arch/Manjaro or CentOS/Fedora
 
     | **21Av** :$
 
@@ -529,17 +557,47 @@ sudo vim /etc/php/php.ini
 
     - Debian/Ubuntu
 
-    | **21Dv** :$ (maybe `7.2` is a different number)
+    | **21Dv** :$ (maybe `8.0` is a different number)
 
 ```console
-sudo vim /etc/php/7.2/apache2/php.ini
+sudo vim /etc/php/8.0/apache2/php.ini
 ```
 
     - Search by typing: `/upload_max_filesize`, then Enter to find the line, type `:wq` to save and quit
 
+  - Or replace with `sed`: (first remove any comment, then again incase it wasn't commented)
+
+    - Arch/Manjaro or CentOS/Fedora
+
+    | **21As** :$
+
+```console
+sudo sed -i 's/^;upload_max_filesize =.*/upload_max_filesize = 5M/' /etc/php/php.ini
+sudo sed -i 's/^upload_max_filesize =.*/upload_max_filesize = 5M/' /etc/php/php.ini
+```
+
+    - Debian/Ubuntu
+
+    | *21Ds** :$ (maybe `8.0` is a different number)
+
+```console
+sudo sed -i 's/^;upload_max_filesize =.*/upload_max_filesize = 5M/' /etc/php/8.0/apache2/php.ini
+sudo sed -i 's/^upload_max_filesize =.*/upload_max_filesize = 5M/' /etc/php/8.0/apache2/php.ini
+```
+
 2. Restart Everything
 
-| **22** :$
+- Arch/Manjaro or CentOS/Fedora
+
+| **22A** :$
+
+```console
+sudo systemctl restart httpd
+```
+
+- Debian/Ubuntu
+
+| **22D** :$
 
 ```console
 sudo systemctl restart apache2
@@ -592,7 +650,7 @@ localhost/web/upload.php
 ```
 
 1. Click "Browse..."
-2. Look in ~/School/VIP/501/test_uploads
+2. Look in ~/School/VIP/501/test_uploads/
 3. Select & "open" ***various files***
   - Will fail: **.bmp, .wma, .flac, .flv, .avi, .mkv, .mov**
     - vip-red.bmp
@@ -643,6 +701,7 @@ sudo mkdir web/dropzone_uploads && \
 git clone https://github.com/inkVerb/dropzone.git && \
 sudo cp dropzone/dist/min/dropzone.min.css web/ && \
 sudo cp dropzone/dist/min/dropzone.min.js web/ && \
+rm -rf dropzone && \
 sudo cp core/10-dropzone.html web/dropzone.html && \
 sudo cp core/10-dropzone.php web/dropzone.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -664,7 +723,7 @@ ls web
 localhost/web/dropzone.html
 ```
 
-1. Look in ~/School/VIP/501/test_uploads
+1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag files into the area: *"Drop files here to upload"*
 3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
@@ -678,6 +737,12 @@ ls web/dropzone_uploads
 *We have achieved drag-in file uploading*
 
 Now, it's time to implement that into what we have so far
+
+<!-- 
+# DEV
+
+Continue from here
+-->
 
 ### Media Library
 
@@ -753,7 +818,7 @@ Dropzone.options.dropzoneUploader = { // JS: .dropzoneUploader = HTML: id="dropz
 localhost/web/medialibrary.php
 ```
 
-1. Look in ~/School/VIP/501/test_uploads
+1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag files into the area: *"Drop to upload!"*
 3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
@@ -803,7 +868,7 @@ acceptedFiles: "image/jpeg, image/png, image/gif, image/svg+xml, video/webm, vid
 localhost/web/medialibrary.php
 ```
 
-1. Look in ~/School/VIP/501/test_uploads
+1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag files into the area: *"Drop to upload!"*
 3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
@@ -848,7 +913,7 @@ ls web web/media
 localhost/web/medialibrary.php
 ```
 
-1. Look in ~/School/VIP/501/test_uploads
+1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag single, then multiple files into the area: *"Drop to upload!"*
 3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
@@ -923,7 +988,7 @@ addRemoveLinks: true, // Default: false
 localhost/web/medialibrary.php
 ```
 
-1. Look in ~/School/VIP/501/test_uploads
+1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag multiple files into the area: *"Drop to upload!"*
 3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
@@ -1065,7 +1130,7 @@ init: function() {
 localhost/web/medialibrary.php
 ```
 
-1. Look in ~/School/VIP/501/test_uploads
+1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag multiple files into the area: *"Drop to upload!"*
 3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
 4. Repeat these steps with many files, including fake and disallowed
@@ -1122,7 +1187,7 @@ localhost/web/tiny.html
 
 **Upload with the image uploader**
 
-1. Look in ~/School/VIP/501/test_uploads
+1. Browse files in ~/School/VIP/501/test_uploads/
 2. In TinyMCE: Click the "image" button > Upload
 3. Drag in any .png or .jpg file to the upload area
 4. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
@@ -1135,7 +1200,7 @@ ls web/tinymce_uploads
 
 **Upload "automatically"**
 
-1. Look in ~/School/VIP/501/test_uploads
+1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag any image directly into the TinyMCE editor area
 3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
 4. Note the file name was preserved
@@ -1351,7 +1416,7 @@ CREATE TABLE IF NOT EXISTS `media_library` (
 localhost/web/medialibrary.php
 ```
 
-1. Look in ~/School/VIP/501/test_uploads
+1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag single or multiple files into the area: *"Drop to upload!"*
 3. Check in all subdirectories of the media directory:$ `ls web/media/*`
 4. Check for new SQL entries:> `SELECT * FROM media_library;`
@@ -1892,7 +1957,7 @@ localhost/web/medialibrary.php
 
 | **71** ://phpMyAdmin **> webapp_db > media_library**
 
-1. Look in ~/School/VIP/501/test_uploads
+1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag multiple files into the area: *"Drop to upload!"*
   - Will fail:
     - too-marvellous-for-words.flac (PHP can't always recognize FLAC files)
@@ -2057,10 +2122,10 @@ ___
 
 ## Apache Upload Settings
 - Apache (the web server software) has a settings for uploads
-  - File: `/etc/php/7.2/apache2/php.ini` (`7.2` is the version and can change)
+  - File: `/etc/php/8.0/apache2/php.ini` (`8.0` is the version and can change)
   - Allow uploads: `file_uploads = On`
   - File size (5MB): `upload_max_filesize = 5M`
-  - Editing this requires `sudo`, such as:$ `sudo vim /etc/php/7.2/apache2/php.ini`
+  - Editing this requires `sudo`, such as:$ `sudo vim /etc/php/8.0/apache2/php.ini`
 
 ## Basic Upload
 - | **HTML**:

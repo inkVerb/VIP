@@ -80,6 +80,8 @@ sudo cp core/08-in.functions.php web/in.functions.php && \
 sudo cp core/08-in.checks.php web/in.checks.php && \
 sudo cp core/08-install.php web/install.php && \
 sudo cp core/08-style_old.css web/style.css && \
+sudo echo '* * * * * root /usr/bin/php /srv/www/html/web/cleanup.php' > /etc/cron.d/webappcleanup && \
+sudo chmod 644 /etc/cron.d/webappcleanup && \
 sudo chown -R www:www /srv/www/html && \
 codium core/08-webapp.php core/08-account.php core/08-forgot.php core/08-logout.php core/08-in.config.php core/08-cleanup.php core/08-ajaxstring.php core/08-recover.php core/08-recover_login.php core/08-in.login_head_old.php core/08-in.string_functions.php core/08-in.functions.php core/08-in.checks.php core/08-install.php core/08-style_old.css && \
 ls web
