@@ -738,12 +738,6 @@ ls web/dropzone_uploads
 
 Now, it's time to implement that into what we have so far
 
-<!-- 
-# DEV
-
-Continue from here
--->
-
 ### Media Library
 
 #### Dropzone to Interact with Our Own AJAX Handler
