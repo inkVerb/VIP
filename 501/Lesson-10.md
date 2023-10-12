@@ -698,6 +698,7 @@ On your own, learn more about implementation at [dropzonejs.com](https://www.dro
 
 ```console
 sudo mkdir web/dropzone_uploads && \
+sudo chown -R www:www web/dropzone_uploads && \
 git clone https://github.com/inkVerb/dropzone.git && \
 sudo cp dropzone/dist/min/dropzone.min.css web/ && \
 sudo cp dropzone/dist/min/dropzone.min.js web/ && \
@@ -736,9 +737,18 @@ ls web/dropzone_uploads
 
 *We have achieved drag-in file uploading*
 
-Now, it's time to implement that into what we have so far
+#### Note on directory and file permissions
+
+*If the Linux web user (in our case `www`) does not own the folder the files are uploaded to, the upload will fail and we might never see any message as to why*
+
+*File permissions are the source of many problems in web apps, even though the problems falsely behave like they come from the web app itself*
+
+*For example, try deleting, then re-creating the `web/dropzone_uploads` directory, but without running `chown -R www:www web/dropzone_uploads` and watch Dropzone fail*
+
 
 ### Media Library
+
+We can implement Dropzone into a larger media library framework
 
 #### Dropzone to Interact with Our Own AJAX Handler
 
