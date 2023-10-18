@@ -28,7 +28,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mariadb-u admin -padminpassword
+mariadb -u admin -padminpassword
 ```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
@@ -663,7 +663,7 @@ localhost/web/upload.php
     - video.mov
 4. Click "Upload"
 5. Check the uploads directory:$ `ls web/uploads`
-6. Repeat these steps with many files, including fake and disallowed
+6. Repeat these steps with many files, including fake and disallowed; not all files will work, some only partially
 
 | **25** :$
 
@@ -727,7 +727,7 @@ localhost/web/dropzone.html
 1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag files into the area: *"Drop files here to upload"*
 3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
-4. Repeat these steps with many files, including fake and disallowed
+4. Repeat these steps with many files, including fake and disallowed; not all files will work, some only partially
 
 | **27** :$
 
@@ -822,10 +822,16 @@ Dropzone.options.dropzoneUploader = { // JS: .dropzoneUploader = HTML: id="dropz
 localhost/web/medialibrary.php
 ```
 
+- *If you "Drop to upload!" button instead of a full-width box like before, then try using the URL in another browser or a private window; not all CSS changes load because browsers cache*
+  - If you need to login again in another browser or private window: `localhost/web/webapp.php`
+    - Username: jonboy
+    - Password: My#1Password
+  - Then try **B-28** :// `localhost/web/medialibrary.php`
+
 1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag files into the area: *"Drop to upload!"*
 3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
-4. Repeat these steps with many files, including fake and disallowed
+4. Repeat these steps with many files, including fake and disallowed; not all files will work, some only partially
 
 | **29** :$
 
@@ -836,7 +842,6 @@ ls web/dropzone_uploads
 *Note:*
 
 - *Files are uploaded to `web/media/dropzone_uploads`*
-  - *We will move them to *
 - *Response messages appear in the webpage, the HTML appears in a browser "alert" box*
 - *Dropzone accepts files not allowed*
 - *`upload.php` rejects files not allowed and sends the error message in response*
@@ -858,7 +863,6 @@ ls web web/media
 ```
 
 *Note:*
-
 - *medialibrary.php: `<!-- Dropzone settings -->`*
   - *`acceptedFiles` only allows the same types of files as `upload.php`*
   - *Dropzone settings:*
@@ -875,7 +879,10 @@ localhost/web/medialibrary.php
 1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag files into the area: *"Drop to upload!"*
 3. Check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
-4. Repeat these steps with many files, including fake and disallowed
+4. Repeat these steps with many files, including fake and disallowed; not all files will work, some only partially
+
+- If you drag some file types, like .wma, .mkv, .flv, etc, your browser may ask what to do with it, but most files should behave normally
+- If you drag multiple files, you will get an AJAX response in the Dropzone area and in the JavaScript browser message, but there won't actually be any files uploaded to the `dropzone_uploads` folder
 
 | **31** :$
 
@@ -920,7 +927,7 @@ localhost/web/medialibrary.php
 1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag single, then multiple files into the area: *"Drop to upload!"*
 3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
-4. Repeat these steps with many files, including fake and disallowed
+4. Repeat these steps with many files, including fake and disallowed; not all files will work, some only partially
 
 | **33** :$
 
@@ -975,12 +982,14 @@ ls web web/media
         - *Many programmers like multiple simultaneous uploads because of how they view code*
         - *We're not writing this for ourselves, but for the people who will use it*
   - *Dropzone settings:*
+
 ```javascript
 uploadMultiple: true, // Default: false
 maxFiles: 50,
 parallelUploads: 1, // Default: 2
 addRemoveLinks: true, // Default: false
 ```
+
 - *upload.php*
   - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
   - *`$_FILES['upload_file']['tmp_name'][0]`*
@@ -995,7 +1004,7 @@ localhost/web/medialibrary.php
 1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag multiple files into the area: *"Drop to upload!"*
 3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
-4. Repeat these steps with many files, including fake and disallowed
+4. Repeat these steps with many files, including fake and disallowed; not all files will work, some only partially
 
 | **35** :$
 
@@ -1099,6 +1108,7 @@ ls web web/media
     - *We change the `init: function() {` from before*
       - *This more about JavaScript than Dropzone*
       - *`upResponse` with `responseText` adds each AJAX response to the previous response, making a "growing list" of uploaded files*
+
 ```javascript
 // Process AJAX response from upload.php
 init: function() {
@@ -1124,6 +1134,7 @@ init: function() {
 
 } // Process AJAX response
 ```
+
 - *upload.php*
   - *Is back to the full processor as before*
   - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
@@ -1137,7 +1148,7 @@ localhost/web/medialibrary.php
 1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag multiple files into the area: *"Drop to upload!"*
 3. Before clicking "OK" to acknowledge the JS browser alert, check the dropzone_uploads directory:$ `ls web/dropzone_uploads`
-4. Repeat these steps with many files, including fake and disallowed
+4. Repeat these steps with many files, including fake and disallowed; not all files will work, some only partially
 
 | **37** :$
 
@@ -1205,7 +1216,7 @@ ls web/tinymce_uploads
 **Upload "automatically"**
 
 1. Browse files in ~/School/VIP/501/test_uploads/
-2. Drag any image directly into the TinyMCE editor area
+2. Drag any image directly into the TinyMCE editor area; only images will work
 3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
 4. Note the file name was preserved
 
@@ -1244,7 +1255,7 @@ localhost/web/tiny.html
 **Upload with the "file picker"**
 
 1. In TinyMCE: Click the "image" button > General: "upload" icon
-2. Select an image file from ~/School/VIP/501/test_uploads
+2. Select an image file from ~/School/VIP/501/test_uploads; only images will work
 3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
 4. Note the file name was preserved
 
@@ -1331,7 +1342,7 @@ ls web web/uploads
 localhost/web/medium.html
 ```
 
-1. Click each "add ..." button, probably each on a new line
+1. Click each "add ..." button, probably each on a new line; if they don't appear, try reloading the webpage
 2. Try to delete media items
 3. Note it is difficult to delete the audio entry
 
@@ -1341,6 +1352,7 @@ Medium Editor is a "zen-like" text editor:
 
 - showing "only the words"
 - using as few styling buttons as possible, if any at all
+- some things may not work
 
 Adding media items can be contrary to the UX philosophy of a "zen-like" text editor
 
@@ -1353,7 +1365,6 @@ Until Medium Editor allows easy delete/properties of inserted media, our product
 
 - allow a simple Medium Editor as an option for our users, with no "insert media" options
 - require users to switch on TinyMCE to manage media and modify image properties
-
 
 ### Process Uploaded Files: SQL Database
 
@@ -1424,7 +1435,7 @@ localhost/web/medialibrary.php
 2. Drag single or multiple files into the area: *"Drop to upload!"*
 3. Check in all subdirectories of the media directory:$ `ls web/media/*`
 4. Check for new SQL entries:> `SELECT * FROM media_library;`
-5. Repeat these steps with many files, including fake and disallowed
+5. Repeat these steps with many files, including fake and disallowed; not all files will work, some only partially
 
 | **46** :$
 
