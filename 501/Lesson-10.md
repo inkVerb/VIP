@@ -745,7 +745,6 @@ ls web/dropzone_uploads
 
 *For example, try deleting, then re-creating the `web/dropzone_uploads` directory, but without running `chown -R www:www web/dropzone_uploads` and watch Dropzone fail*
 
-
 ### Media Library
 
 We can implement Dropzone into a larger media library framework
@@ -1376,6 +1375,7 @@ sudo cp core/10-in.head12.php web/in.head.php && \
 sudo cp core/10-medialibrary12.php web/medialibrary.php && \
 sudo cp core/10-upload12.php web/upload.php && \
 sudo cp core/10-style12.css web/style.css && \
+sudo chown -R www:www /srv/www/html && \
 codium core/10-medialibrary12.php core/10-upload12.php core/10-style12.css core/10-in.head12.php && \
 ls web web/media
 ```
@@ -1436,6 +1436,7 @@ localhost/web/medialibrary.php
 3. Check in all subdirectories of the media directory:$ `ls web/media/*`
 4. Check for new SQL entries:> `SELECT * FROM media_library;`
 5. Repeat these steps with many files, including fake and disallowed; not all files will work, some only partially
+6. To see the list in the browser, reload:// `localhost/web/medialibrary.php`
 
 | **46** :$
 
