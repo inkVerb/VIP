@@ -1557,14 +1557,31 @@ ls web/media/*
 - `imagemagick` *Images, from [401 Lesson 2](https://github.com/inkVerb/vip/blob/master/401/Lesson-02.md)*
   - *Learn at: [https://imagemagick.org/script/command-line-processing.php]*
 - `ffmpeg` *Video & audio*
-- `libmp3lame0` *Audio libraries for `ffmpeg`*
+- `lame` (Arch) / `libmp3lame0` (Debian) *Audio libraries for `ffmpeg`*
   - *This allows `ffmpeg` to process audio into an .mp3 file with the option: `-acodec libmp3lame`*
-  - *A more up-to-date alternative to `libmp3lame0` is: `libavcodec-extra57`*
+  - *On Debian, a more up-to-date alternative to `libmp3lame0` is: `libavcodec-extra57`*
     - *If `libavcodec-extra57` is not available, find the right number with: `sudo apt-cache search libavcodec-extra`*
 - `pandoc` *Documents, from [301 Lesson 2](https://github.com/inkVerb/vip/blob/master/301/Lesson-02.md)*
   - `texlive-...` *Dependencies for `pandoc` to create .pdf files*
 
-| **49** :$
+Arch/Manjaro
+
+| **49A** :$
+
+```console
+sudo pacman -S \
+imagemagick \
+ffmpeg \
+lame \
+pandoc \
+texlive-latex \
+texlive-fontsrecommended \
+texlive-latexrecommended
+```
+
+Debian/Ubuntu
+
+| **49D** :$
 
 ```console
 sudo apt install \
@@ -1577,6 +1594,10 @@ texlive-fonts-recommended \
 texlive-latex-recommended
 ```
 
+CentOS/Fedora
+
+*Sorry,* Redhat's CentOS/Fedora repos *don't support `pandoc` and other media packages, so many tools in the remainder of this lesson and web app will not work on those Linux distros*
+
 #### File Processing in the Linux Terminal
 
 | **50**:$
@@ -1587,7 +1608,11 @@ ls
 
 ##### `imagemagick` for Images
 
-*Watch an example of our `imagemagick` converter...*
+*Watch an example of our `imagemagick` converter*
+
+*(Tip: watch the file appear in your file explorer as you input these `convert` commands)*
+
+*Convert a large .jpg file into a smaller one, useful for a thumbnail...*
 
 | **51**:$
 
@@ -1595,7 +1620,7 @@ ls
 convert "test_uploads/vipLinux-Meshtop.jpg" -resize 484x303 "vipLinux-Meshtop_484x303.jpg"
 ```
 
-*...This is the same syntax we use in our BASH script*
+*...See the file listed, note it in the file explorer...*
 
 | **52**:$
 
@@ -1613,7 +1638,7 @@ ls -l
 convert -background none -resize 484x303 "test_uploads/star.svg" "star_484x303_svg.png"
 ```
 
-*...This is the same syntax we use in our BASH script*
+*...See the file listed, note it in the file explorer...*
 
 | **54**:$
 
@@ -1631,7 +1656,7 @@ ls -l
 convert "test_uploads/vip-red.bmp" "vip-red.png"
 ```
 
-*...This is the same syntax we use in our BASH script*
+*...See the file listed, note it in the file explorer...*
 
 | **56**:$
 
@@ -1651,7 +1676,7 @@ ls -l
 ffmpeg -i "test_uploads/video.webm" -filter:v scale=320:-1 -c:a copy "video.webm"
 ```
 
-*...This is the same syntax we use in our BASH script*
+*...See the file listed, note it in the file explorer...*
 
 | **58**:$
 
@@ -1659,7 +1684,7 @@ ffmpeg -i "test_uploads/video.webm" -filter:v scale=320:-1 -c:a copy "video.webm
 ls -l
 ```
 
-*See the new resolution with `ffprobe`...*
+*Output the file's resolution with `ffprobe`...*
 
 | **59**:$
 
@@ -1667,7 +1692,7 @@ ls -l
 ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "video.webm"
 ```
 
-*See the original resolution...*
+*Output the resolution of the source file...*
 
 | **60**:$
 
@@ -1687,7 +1712,7 @@ ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s
 ffmpeg -i "test_uploads/audio.wav" -acodec libmp3lame -vn -ar 44100 -ac 1 -b:a 96k "audio_wav96.mp3"
 ```
 
-*...This is the same syntax we use in our BASH script*
+*...See the file listed, note it in the file explorer...*
 
 | **62**:$
 
@@ -1695,7 +1720,7 @@ ffmpeg -i "test_uploads/audio.wav" -acodec libmp3lame -vn -ar 44100 -ac 1 -b:a 9
 ls -l
 ```
 
-*See the audio info with `ffprobe`...*
+*Output the audio info with `ffprobe`...*
 
 | **63**:$
 
@@ -1738,7 +1763,7 @@ pandoc -s test_uploads/markdown.htm -o out_htm.pdf
 pandoc -s test_uploads/markdown_pdf.md -o out_md.pdf
 ```
 
-*...This is the same syntax we use in our BASH script*
+*...See the file listed, note it in the file explorer...*
 
 | **68**:$
 
@@ -1748,13 +1773,17 @@ ls -l
 
 *Note `pandoc` converted .odt, .docx, .htm, and .md files into .pdf*
 
+*Try converting a .pdf file...*
+
 | **69**:$
 
 ```console
 pandoc -s test_uploads/markdown.pdf -o out_md.pdf
 ```
 
-*Note it failed because it cannot convert .pdf to .pdf*
+*Note it failed because `pandoc` cannot convert from a .pdf*
+
+*Try converting a .doc file...*
 
 | **70**:$
 
@@ -1762,9 +1791,11 @@ pandoc -s test_uploads/markdown.pdf -o out_md.pdf
 pandoc -s test_uploads/test2.doc -o out_doc.pdf
 ```
 
-*Note it failed because it cannot convert .doc*
+*Note it failed because `pandoc` cannot convert from .doc*
 
 #### File Processing via Linux in PHP
+
+PHP can use Linux media tools
 
 *Copy our web app files...*
 
@@ -1787,7 +1818,7 @@ sudo cp core/10-thumb-aud.png web/thumb-aud.png && \
 sudo cp core/10-thumb-doc.png web/thumb-doc.png && \
 sudo chown -R www:www /srv/www/html && \
 codium core/10-bash.imageprocess.sh core/10-bash.videoprocess.sh core/10-bash.audioprocess.sh core/10-bash.documprocess.sh core/10-ajax.mediainfo14.php core/10-medialibrary14.php core/10-upload14.php core/10-act.delmedia14.php core/10-style14.css && \
-ls web web/media web/media/* ls web/media/original/*
+ls web web/media web/media/* web/media/original/*
 ```
 
 *Note:*
@@ -1978,9 +2009,17 @@ localhost/web/medialibrary.php
   - Will fail:
     - too-marvellous-for-words.flac (PHP can't always recognize FLAC files)
 3. Watch changes in:
-  - The file system:$ `ls web web/media web/media/* ls web/media/original/*`
+  - The file system:$ `ls web/media web/media/* web/media/original/*`
   - The SQL table:> `SELECT * FROM media_library; SELECT * FROM media_images;`
 4. Repeat these steps with many files
+5. Reload the page at times to see uploaded files listed
+  - Note images have thumbnails, other media files have related icons
+
+| **72** :$
+
+```console
+ls web/media web/media/* web/media/original/*
+```
 
 | **72** :>
 
@@ -1990,11 +2029,6 @@ SELECT * FROM media_library; SELECT * FROM media_images;
 
 | **72** ://phpMyAdmin **> webapp_db > media_library**
 
-| **72** :$
-
-```console
-ls web web/media web/media/* ls web/media/original/*
-```
 
 #### Clear Media Libary
 
@@ -2030,7 +2064,7 @@ sudo cp core/10-ajax.mediainfoinsert.php web/ajax.mediainfoinsert.php && \
 sudo cp core/10-style15.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
 codium core/10-edit.php core/10-in.piecefunctions.php core/10-in.head15.php core/10-ajax.mediainsert.php core/10-ajax.mediainfoinsert.php core/10-style15.css && \
-ls web web/media web/media/* ls web/media/original/*
+ls web web/media web/media/* web/media/original/*
 ```
 
 *Note:*
@@ -2132,6 +2166,24 @@ Dropzone.options.dropzoneUploaderMediaInsert = { // JS: .dropzoneUploader = HTML
     - *`input[type=text].piece`*
     - *`input[type=text].slug`*
 
+| **B-73** ://
+
+```console
+localhost/web/pieces.php
+```
+
+- Click to edit any piece
+- Click on "Insert from media library" below the TinyMCE editor
+- Drag-in to upload as before
+  - Note AJAX updates the media list without needing to reload
+
+View changes in the Media library by clicking on "Media" from the top menu, or go directly
+
+| **B-74** ://
+
+```console
+http://localhost/web/medialibrary.php
+```
 ___
 
 # The Take
