@@ -62,7 +62,7 @@ anObject.aProperty; // Use a property (object variable)
 
 With many functions and variables, OOP can help organize code
 
-This also explains the basic thinking inside Javascript
+This also reflects the basic thinking inside Javascript
 
 #### A. Classes, Objects, Properties & Methods
 
@@ -94,8 +94,8 @@ return self::staticProperty;
 ```php
 return $someObject->someMethod();
 return $someObject->someProperty;
-return Class::staticMethod();
-return Class::staticProperty;
+return someClass::staticMethod();
+return someClass::staticProperty;
 ```
 
 *See how it works...*
@@ -865,6 +865,40 @@ ls web
 
 *Note on `$object`, a `foreach` loop iterates `public` `$properties`, but not `methods()` nor non-`public` `$properties`*
 
+| **Define a Class** :
+
+```php
+class LoopMe {
+
+  // Properties will show
+  var $property1 = "Prop one";
+  var $property2 = "Prop two";
+  var $property3 = "Prop three";
+
+  // Public will show
+  public     $publicProp = "Public Prop";
+  
+  // Protected and private will not show
+  protected  $protectedProp = "Protected Prop";
+  private    $privateProp = "Private Prop";
+
+  // Methods will not show
+  function cantSeeMe() {
+    echo "nothere";
+  }
+}
+```
+
+| **Instantiate an Object and Loop** :
+
+```php
+$loop_object = new LoopMe;
+
+foreach ( $loop_object as $property=>$value ) {
+    echo "$property = $value<br>";
+}
+```
+
 | **B-17** :// (Same)
 
 ```console
@@ -895,12 +929,40 @@ ls web
 
 *Note on `$object->getDefaultProperties()`, a `foreach` loop iterates all `$properties`, even non-`public` `$properties`, but still not `methods()`*
 
+```php
+class LoopMe {
+
+  // Public, protected & private will show
+  public     $publicProp = "Public Prop";
+  protected  $protectedProp = "Protected Prop";
+  private    $privateProp = "Private Prop";
+
+  // Methods will not show
+  function cantSeeMe() {
+    echo "nothere";
+  }
+}
+```
+
+| **Instantiate an Object and Loop** :
+
+```php
+$loop_object = new LoopMe;
+
+// Declare $loop_obj_props
+$loop_obj_props = $loop_object->getDefaultProperties();
+
+// Loop through $loop_obj_props with any visibility
+foreach ( $loop_obj_props as $property=>$value ) {
+    echo "$property = $value<br>";
+}
+```
+
 | **B-18** :// (Same)
 
 ```console
 localhost/web/oop.php
 ```
-
 
 ### II. PDO (PHP Data Objects)
 
@@ -1198,9 +1260,9 @@ Create a table
 | **19** :$
 
 ```console
-sudo cp core/11-pdo18.php web/pdo.php && \
+sudo cp core/11-pdo19.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo18.php && \
+codium core/11-pdo19.php && \
 ls web
 ```
 
@@ -1253,9 +1315,9 @@ Run multiple queries
 | **20** :$
 
 ```console
-sudo cp core/11-pdo19.php web/pdo.php && \
+sudo cp core/11-pdo20.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo19.php && \
+codium core/11-pdo20.php && \
 ls web
 ```
 
@@ -1316,9 +1378,9 @@ Retrieve from the database
 | **21** :$
 
 ```console
-sudo cp core/11-pdo20.php web/pdo.php && \
+sudo cp core/11-pdo21.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo20.php && \
+codium core/11-pdo21.php && \
 ls web
 ```
 
@@ -1335,9 +1397,9 @@ Update tables
 | **22** :$
 
 ```console
-sudo cp core/11-pdo21.php web/pdo.php && \
+sudo cp core/11-pdo22.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo21.php && \
+codium core/11-pdo22.php && \
 ls web
 ```
 
@@ -1398,9 +1460,9 @@ $statement->fetch(PDO::FETCH_OBJ); // Per use
 | **23** :$
 
 ```console
-sudo cp core/11-pdo22.php web/pdo.php && \
+sudo cp core/11-pdo23.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo22.php && \
+codium core/11-pdo23.php && \
 ls web
 ```
 
@@ -1458,7 +1520,7 @@ $statement->fetch(); // Per use
 
 We will build classes and methods to handle database queries for clean code
 
-| **Database Connection (Procedural)** : (pdt23.php)
+| **Database Connection (Procedural)** : (pdo24.php)
 
 ```php
 $db_name = 'test_pdo';
@@ -1478,7 +1540,7 @@ $database = new PDO($nameHostChar, $db_user, $db_pass, $opt);
 $statement = $database->query($query);
 ```
 
-| **Database Connection (OOP)** : (pdt24.php)
+| **Database Connection (OOP)** : (pdo25.php)
 
 ```php
 class DB {
@@ -1513,9 +1575,9 @@ $statement = $pdo->conn()->query($query);
 | **24** :$
 
 ```console
-sudo cp core/11-pdo23.php web/pdo.php && \
+sudo cp core/11-pdo24.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo23.php && \
+codium core/11-pdo24.php && \
 ls web
 ```
 
@@ -1532,9 +1594,9 @@ localhost/web/pdo.php
 | **25** :$
 
 ```console
-sudo cp core/11-pdo24.php web/pdo.php && \
+sudo cp core/11-pdo25.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo24.php && \
+codium core/11-pdo25.php && \
 ls web
 ```
 
@@ -1569,9 +1631,9 @@ $val = $pdo->select($table, $where_col, $where_value, $columns);
 | **26** :$
 
 ```console
-sudo cp core/11-pdo25.php web/pdo.php && \
+sudo cp core/11-pdo26.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo25.php && \
+codium core/11-pdo26.php && \
 ls web
 ```
 
@@ -1636,9 +1698,9 @@ $val = $pdo->update($table, $columns, $values, $where_col, $where_value);
 | **27** :$
 
 ```console
-sudo cp core/11-pdo26.php web/pdo.php && \
+sudo cp core/11-pdo27.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo26.php && \
+codium core/11-pdo27.php && \
 ls web
 ```
 
@@ -1696,9 +1758,9 @@ echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
 | **28** :$
 
 ```console
-sudo cp core/11-pdo27.php web/pdo.php && \
+sudo cp core/11-pdo28.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo27.php && \
+codium core/11-pdo28.php && \
 ls web
 ```
 
@@ -1802,9 +1864,9 @@ try {
 | **29** :$
 
 ```console
-sudo cp core/11-pdo28.php web/pdo.php && \
+sudo cp core/11-pdo29.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo28.php && \
+codium core/11-pdo29.php && \
 ls web
 ```
 
@@ -1812,7 +1874,7 @@ ls web
 
 *For fun, change the arguments for `select()`, `insert()`, and `delete()` methods where HTML renders at the end of the file*
 
-  - *Both in pdo28.php & pdo27.php*
+  - *Both in pdo29.php & pdo28.php*
   - *Observe how errors are handled differently with `pdo_error()`*
 
 | **B-29** :// (Same)
@@ -1874,9 +1936,9 @@ foreach ($val as $one) { echo "Some Col: $one->some_col<br>"; }
 | **30** :$
 
 ```console
-sudo cp core/11-pdo29.php web/pdo.php && \
+sudo cp core/11-pdo30.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo29.php && \
+codium core/11-pdo30.php && \
 ls web
 ```
 
@@ -1927,9 +1989,9 @@ foreach ($val as $one) { echo "Some Col: $one->some_col<br>"; }
 | **31** :$
 
 ```console
-sudo cp core/11-pdo30.php web/pdo.php && \
+sudo cp core/11-pdo31.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo30.php && \
+codium core/11-pdo31.php && \
 ls web
 ```
 
@@ -1984,9 +2046,9 @@ $statement->execute([$arg]);
 | **32** :$
 
 ```console
-sudo cp core/11-pdo31.php web/pdo.php && \
+sudo cp core/11-pdo32.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo31.php && \
+codium core/11-pdo32.php && \
 ls web
 ```
 
@@ -2139,10 +2201,11 @@ $piece_id = $pdo->lastid;
 $num_rows = $pdo->rowcount;
 $success = ($pdo->ok) ? true : false;
 $updated = ($pdo->change) ? true : false;
-
 ```
 
 *Let's see the changes in action...*
+
+### V. Webapp via PDO
 
 | **33** :$
 
@@ -2215,7 +2278,7 @@ Password: My#1Password
 localhost/web/webapp.php
 ```
 
-### V. Upgrades
+#### Webapp Upgrades
 
 *Now that we have a PDO-based CMS, let's add a few enhancements...*
 
