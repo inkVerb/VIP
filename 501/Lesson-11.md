@@ -1323,20 +1323,27 @@ ls web
 
 *Note we run a query for **multiple SQL statements** differently:*
 
-| **Run Multiple Statements** : (Line 32)
+| **Run Multiple Statements** : (processed via `$statement =` on line 32)
 
 ```php
+$query = "
+START TRANSACTION;
+INSERT INTO fruit (name) VALUES ('apple');
+INSERT INTO fruit (name) VALUES ('kiwi');
+COMMIT;
+";
+
+// $statement returns affected rows, unpredictable in multiple statements
 $statement = $database->exec($query);
 ```
 
 *This will behave differently...*
 
 ```php
+$query = "INSERT INTO fruit (name) VALUES ('apple')";
+
 // $statement success returns true
 $statement = $database->query($query);
-
-// $statement returns affected rows, unpredictable in multiple statements
-$statement = $database->exec($query);
 ```
 
 *Remember `$database->exec($query)` is for executing multiple SQL statements, such as on a database update or app installation*
@@ -1344,9 +1351,12 @@ $statement = $database->exec($query);
 - *From [PHP docs](https://www.php.net/manual/en/pdo.exec.php) we learn `exec()` returns the number of affected rows*
 - *The last statement is SQL query is `COMMIT;`, affecting 0 rows*
 - *So, `exec()` can't be used to test success of multiple SQL statements*
+  - `echo ($database->exec($multiquery)) ? 'success' : 'fail'` *will always fail*
+  - *This is why the ternary statement on line 38 failed when everything else worked*
+    - `($statement)` *(38)* `=` `->exec($query);` *(32)*
 - *If we only want one SQL statement, use `query()` instead of `exec()`*
-- *To test the database success of multiple rows, test the actual database*
-
+  - *That could be tested for success by the ternary statement on line 38*
+- *To test the database success of multiple rows, test the actual database, which we do after line 38...*
 
 | **Query Check** : (Check database for what you want)
 
@@ -1371,7 +1381,7 @@ localhost/web/pdo.php
 *Note:*
 
 - *`$statement` returns `0`*
-- *`$success` was built on ternary statements, any fail would return `false`*
+- *`$success` was built on several ternary statements; any fail would return `false`*
 
 Retrieve from the database
 
@@ -1382,6 +1392,25 @@ sudo cp core/11-pdo21.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/11-pdo21.php && \
 ls web
+```
+
+*See how we retrieve and handle numbered rows...*
+
+```php
+try {
+  $query = "SELECT * FROM fruit";
+  $statement = $database->query($query);
+} catch (PDOException $error) {
+  pdo_error($query, $error->getMessage());
+}
+
+while ($row = $statement->fetch(PDO::FETCH_NUM)) {
+  $f_name = "$row[1]";
+  $f_color = "$row[2]";
+  $f_locale = "$row[3]";
+  $f_market = "$row[4]";
+  echo "Name: $f_name Color: $f_color Farm: $f_locale Sold in: $f_market<br>";
+}
 ```
 
 | **B-21** :// (Same)
@@ -1403,6 +1432,27 @@ codium core/11-pdo22.php && \
 ls web
 ```
 
+*A test will pass because we use `->query($query)`, not `->exec($query)`...*
+
+```php
+try {
+  $query = "UPDATE fruit SET color='green', locale='Japan', market='global' WHERE name='apple'";
+  $statement = $database->query($query);
+} catch (PDOException $error) {
+  pdo_error($multiquery, $error->getMessage());
+}
+
+// If you echo $statement on success, PHP will break because $statement is an object
+echo ($statement) ? "\$statement 'apple' success" : "\$statement fail: $statement";
+
+// Watch us access the ->rowCount() method in the $statement object
+if ($statement) {
+  echo "
+  Affected rows: ".$statement->rowCount()."<br>
+  ";
+}
+```
+
 | **B-22** :// (Same)
 
 ```console
@@ -1411,13 +1461,13 @@ localhost/web/pdo.php
 
 Fun with `SELECT`
 
-*Previously (pdo20.php line 34), we defined the `fetch()` mode*
+*Previously (pdo21.php line 32), we defined the `fetch()` mode for numbers*
 
 ```php
 fetch(PDO::FETCH_NUM)
 ```
 
-*We could also define the mode:*
+*We could also define the mode for associative keys...*
 
 ```php
 fetch(PDO::FETCH_ASSOC)
@@ -1509,7 +1559,7 @@ echo "Name: $row->name Color: $row->color Farm: $row->locale Sold in: $row->mark
 
 #### *PHP objects work well with PDO database queries*
 
-From now on, we will use this:
+From now on, we will use object queries:
 
 ```php
 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, // Option
@@ -1540,7 +1590,7 @@ $database = new PDO($nameHostChar, $db_user, $db_pass, $opt);
 $statement = $database->query($query);
 ```
 
-| **Database Connection (OOP)** : (pdo25.php)
+| **Database Connection (OOP)** : (pdo24.php)
 
 ```php
 class DB {
@@ -1570,7 +1620,26 @@ $statement = $pdo->conn()->query($query);
 
 *Note the actual query building in our webpage will come before the `// Use //` line*
 
-#### Procedural
+#### Procedural Config
+
+We have been using procedural PHP for our database config
+
+| **Procedural Database Config** :
+
+```php
+$db_name = 'test_pdo';
+$db_user = 'pdo_user';
+$db_pass = 'pdopassword';
+$db_host = 'localhost';
+
+$nameHostChar = "mysql:host=$db_host; dbname=$db_name; charset=utf8mb4";
+$opt = [
+  PDO::ATTR_EMULATE_PREPARES => false,
+  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+];
+$database = new PDO($nameHostChar, $db_user, $db_pass, $opt);
+```
 
 | **24** :$
 
@@ -1581,7 +1650,22 @@ codium core/11-pdo24.php && \
 ls web
 ```
 
+*Note our object setting `PDO::FETCH_OBJ` on line 12*
+
+```php
+PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+```
+
 *Note 4 lines to handle the query below `// Use //`*
+
+```php
+$query = "SELECT * FROM fruit WHERE name='apple'";
+$statement = $database->query($query);
+$val = $statement->fetch();
+echo $val->color;
+```
+
+*Note the `$statement` is built with a single method (`->$query()`)*
 
 | **B-24** :// (Same)
 
@@ -1589,7 +1673,38 @@ ls web
 localhost/web/pdo.php
 ```
 
-#### OOP
+*That script only returns the color, one word*
+
+#### OOP Config
+
+We can use OOP for the database config
+
+| **OOP Database Config** :
+
+```php
+class DB {
+  private $db_name = 'test_pdo';
+  private $db_user = 'pdo_user';
+  private $db_pass = 'pdopassword';
+  private $db_host = 'localhost';
+
+  public function conn() {
+    $nameHostChar = "mysql:host=$this->db_host; dbname=$this->db_name; charset=utf8mb4";
+    $opt = [
+      PDO::ATTR_EMULATE_PREPARES => false,
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+    ];
+    $database = new PDO($nameHostChar, $this->db_user, $this->db_pass, $opt);
+    return $database;
+
+  } // conn()
+} // class DB
+
+$pdo = new DB; // Instantiate
+```
+
+*An OOP database config more complex, but building on it makes query work easier*
 
 | **25** :$
 
@@ -1602,13 +1717,22 @@ ls web
 
 *Note 4 lines to handle the query below `// Use //`*
 
+```php
+$query = "SELECT * FROM fruit WHERE name='apple'";
+$statement = $pdo->conn()->query($query);
+$val = $statement->fetch();
+echo $val->color;
+```
+
+*Note the `$statement` is built differently with OOP (`->conn()->query()`)*
+
 | **B-25** :// (Same)
 
 ```console
 localhost/web/pdo.php
 ```
 
-*Note the OOP looks more complex for now, but we can build on the object so query work becomes easier*
+*Same as before, the OOP script only returns the color, one word*
 
 #### Query Method: `SELECT`
 
@@ -1637,13 +1761,20 @@ codium core/11-pdo26.php && \
 ls web
 ```
 
-*Note 2 lines to handle the query below `// Use //`*
+*Note 2 lines (not 4) to handle the query below `// Use //`*
+
+```php
+$val = $pdo->select('fruit', 'name', 'apple');
+echo $val->color;
+```
 
 | **B-26** :// (Same)
 
 ```console
 localhost/web/pdo.php
 ```
+
+*This script displays both the SQL query and the one-word value for `->color`*
 
 #### Query Method: `UPDATE`
 
@@ -1706,6 +1837,17 @@ ls web
 
 *Note we run a `SELECT` query, then `UPDATE`, then `SELECT` again to show the changes, then yet again, changing two columns*
 
+*This is how simple our queries become using PDO with an OOP database config*
+
+```php
+// SELECT
+$val = $pdo->select('fruit', 'name', 'apple');
+echo "$val->name $val->color $val->locale $val->market";
+
+// UPDATE
+$val = $pdo->update('fruit', 'color', 'red', 'name', 'apple');
+```
+
 | **B-27** :// (Same)
 
 ```console
@@ -1764,9 +1906,17 @@ codium core/11-pdo28.php && \
 ls web
 ```
 
-*Note the `$change` & `$lastid` global properties to test query success*
+*Note the simple `DELETE` function...*
 
-- *(These will fail, will explain later)*
+```php
+// DELETE
+$pdo->delete('fruit', 'name', 'banana');
+echo ($pdo->change) ? "Change" : "No change";
+```
+
+*Note the `$pdo->change` & `$pdo->lastid` global properties to test query success*
+
+- *(`$pdo->lastid` will fail)*
 
 | **B-28** :// (Same)
 
@@ -1774,9 +1924,13 @@ ls web
 localhost/web/pdo.php
 ```
 
-*Note `$change` works, but `$lastid` fails to show the last new ID*
+*We don't see the entry in phpMyAdmin or the SQL terminal because the row was inserted then deleted in the same PHP script*
+
+*Note `$pdo->change` works, but `$pdo->lastid` returns `0` and does not show the last new ID*
 
   - *This is because the database is within a method within an object*
+  - *Will fail: `$this->lastid = $this->conn()->lastInsertId();`*
+  - *Will work: `$this->lastid = $database->lastInsertId();`*
 
 *The database connection is an object...*
 
@@ -1857,7 +2011,7 @@ try {
 
 *With `try`-`catch` statements, our PHP won't need a test for whether an SQL query merely worked*
 
-  - *We only need to test if rows has a `$change` and/or retrieve the `$lastid`*
+  - *We only need to test if rows has a `$change` and/or retrieve `$this->lastid`*
   - *If something didn't work, `pdo_error()` will throw an error message anyway*
   - *So, we won't do this: `if ($statement) {...}` as we did in procedural PHP*
 
@@ -1869,6 +2023,41 @@ sudo chown -R www:www /srv/www/html && \
 codium core/11-pdo29.php && \
 ls web
 ```
+
+Inside a `class`:
+
+```php
+public $lastid;
+$this->lastid = ...;
+```
+
+...becomes outside the `class`:
+
+```php
+$lastid
+```
+
+Failed in pdo28.php:
+
+```php
+function conn() {
+  ...
+  $database = new PDO($nameHostChar, $this->db_user, $this->db_pass, $opt);
+  return $database;
+}
+$this->conn()->query($query);
+$this->lastid = $this->conn()->lastInsertId();
+```
+
+Works in pdo29.php:
+
+```php
+$database = new PDO($nameHostChar, $this->db_user, $this->db_pass, $opt);
+$database->query($query);
+$this->lastid = $database->lastInsertId();
+```
+
+*Declaring the database connection variables outside the class allows us to put those settings inside a separate config file, and to access more in our `$database` object*
 
 *Note every method now has `global $database;` because `conn()` is no longer in the class, which is what we were using before*
 
@@ -1882,6 +2071,10 @@ ls web
 ```console
 localhost/web/pdo.php
 ```
+
+*Same results, except "Last new ID:" doesn't fail, but reports accurately*
+
+*We still don't see the entry in phpMyAdmin or the SQL terminal because the row was inserted then deleted in the same PHP script, but the ID has incremented up*
 
 #### `SELECT` Multiple Rows
 
@@ -1942,11 +2135,20 @@ codium core/11-pdo30.php && \
 ls web
 ```
 
+*Note near the end, the simple `SELECT` function for returning multiple rows...*
+
+```php
+$val = $pdo->selectmulti('fruit');
+foreach ($val as $one) {}
+```
+
 | **B-30** :// (Same)
 
 ```console
 localhost/web/pdo.php
 ```
+
+*phpMyAdmin and the SQL terminal still don't show entries inserted and deleted, but the "Last new ID:" keeps incrementing*
 
 #### Multiple `AND` with `SELECT` Multiple Rows
 
@@ -1995,11 +2197,22 @@ codium core/11-pdo31.php && \
 ls web
 ```
 
+*Note use of the `SELECT` function with multiple criteria*
+
+```php
+$val = $pdo->selectcomplex('fruit', 'name', 'apple');
+foreach ($val as $one) {}
+```
+
+*...that function can make several complex inquiries quite easy to code*
+
 | **B-31** :// (Same)
 
 ```console
 localhost/web/pdo.php
 ```
+
+*phpMyAdmin and the SQL terminal still don't show entries inserted and deleted, but the "Last new ID:" keeps incrementing*
 
 #### `execute()` Arguments
 
@@ -2019,6 +2232,39 @@ $statement->execute([$arg]); // $arg replaces ? in $query
 $query = "SELECT * FROM fruit WHERE name = ? AND color = ?"; // 2 arguments
 $statement = $database->prepare($query);
 $statement->execute([$arg1, $arg2]); // $arg1, $arg2 (respectively)
+```
+
+| **Build `execute()` Arguments Array** :
+
+```php
+public $change;
+
+public function update($table, $cols, $vals, $wcol, $vcol) {
+    global $database;
+
+    // Build $vals_arr through arrays and loops
+    $cols_arr = preg_split('~,\s*~', $cols);
+    $vals_arr = preg_split('~,\s*~', $vals);
+    $set_array = array_combine($cols_arr, $vals_arr);
+    $set_statement = "";
+    foreach ( $set_array as $k => $v ) {
+      $set_statement .= "$k=?,";
+    }
+    $set_statement = rtrim($set_statement, ',');
+
+    $query = "UPDATE $table SET $set_statement WHERE $wcol='$vcol';";
+
+    try {
+      $statement = $database->prepare($query);
+      $statement->execute($vals_arr);
+    } catch (PDOException $error) {
+      $this->pdo_error($query, $error->getMessage());
+    }
+
+    $this->change = ($statement->rowCount() > 0) ? true : false;
+
+    return $statement->fetch();
+  }
 ```
 
 Security:
@@ -2052,11 +2298,24 @@ codium core/11-pdo32.php && \
 ls web
 ```
 
+*Note many `->query` uses are replaced with `->execute` for security*
+
+*Note the `public function insert(...)` function uses `$statement->execute($vals_arr);` as an*
+
+*These functions help build complete `->execute()` statements with simple functions...*
+
+```php
+$pdo->insert('fruit', 'name, color, locale, market', "banana, green, Thailad, Southeast Asia");
+$val = $pdo->update('fruit', 'color, locale', 'blue, Florida', 'name', 'apple');
+```
+
 | **B-32** :// (Same)
 
 ```console
 localhost/web/pdo.php
 ```
+
+*phpMyAdmin and the SQL terminal still don't show entries inserted and deleted, but the "Last new ID:" keeps incrementing*
 
 *In out live webapp, we will use `PDO::prepare()` & `PDO::execute()` methods*
 
