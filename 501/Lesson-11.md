@@ -19,6 +19,24 @@ Debian/Ubuntu
 sudo systemctl start apache2 mariadb
 ```
 
+### This lesson uses two terminals and two browser tabs!
+
+Ready the secondary SQL terminal and secondary SQL browser (start using at step 19)
+
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+
+| **S0** :$ *(password in the terminal, not safe outside these lessons!)*
+
+```console
+mariadb -u admin -padminpassword
+```
+
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+
+| **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+
+*From now on, you may optionally follow along at the SQL prompt and/or phpMyAdmin, but no instructions will be given*
+
 ___
 
 Up until now, we have been using "procedural" PHP
@@ -1225,33 +1243,15 @@ try {
 }
 ```
 
-#### Follow along in phpMyAdmin & the MySQL terminal
+#### Prepare Database for PDO Demo
 
-Ready the secondary SQL terminal and secondary SQL browser
-
-*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
-
-| **S0** :$ *(password in the terminal, not safe outside these lessons!)*
-
-```console
-mariadb-u admin -padminpassword
-```
-
-| **S1** :>
+| **19** :>
 
 ```sql
 CREATE DATABASE test_pdo;
 GRANT ALL PRIVILEGES ON test_pdo.* TO pdo_user@localhost IDENTIFIED BY 'pdopassword';
 FLUSH PRIVILEGES;
 ```
-
-*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
-
-| **S2** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
-
-| **S3** ://phpMyAdmin **> webapp_db > test_pdo**
-
-*From now on, you may optionally follow along at the SQL prompt and/or phpMyAdmin, but no instructions will be given*
 
 #### Demonstrate
 
@@ -2466,11 +2466,7 @@ $updated = ($pdo->change) ? true : false;
 
 ### V. Webapp via PDO
 
-| **33** :$
-
-```console
-mariadb-u admin -padminpassword
-```
+Start fresh and prepare the fuller blog webapp for this lesson and the next
 
 | **33** :>
 
@@ -2478,7 +2474,6 @@ mariadb-u admin -padminpassword
 CREATE DATABASE blog_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 GRANT ALL PRIVILEGES ON blog_db.* TO blog_db_user@localhost IDENTIFIED BY 'blogdbpassword';
 FLUSH PRIVILEGES;
-QUIT;
 ```
 
 | **34** :$
@@ -2509,7 +2504,8 @@ localhost/web/install.php
 
 *Fill in the form with...*
 
-**Database info:** (We created in step 32)
+**Database info:** (We created in step 33)
+
 ```
 Database name: blog_db
 Database username: blog_db_user
@@ -2518,6 +2514,7 @@ Database host: localhost
 ```
 
 **Admin user:** (So we can remember)
+
 ```
 Name: Jon Boy
 Username: jonboy
@@ -2531,11 +2528,13 @@ Password: My#1Password
 
 *Log in and doodle around to see that everything works just as before*
 
-| **B-34b** :// (redirected here, login with above credentials)
+| **B-34b** :// ("Login" link redirects here, login with above credentials)
 
 ```console
 localhost/web/webapp.php
 ```
+
+*If you get any kind of "SQL" error message on the first login try only, it is a ghost cookie from the previous webapp thinking it is still logged in and is automatically cleared by in.logincheck.php*
 
 #### Webapp Upgrades
 

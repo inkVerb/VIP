@@ -28,7 +28,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
 ```console
-mariadb-u admin -padminpassword
+mariadb -u admin -padminpassword
 ```
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
