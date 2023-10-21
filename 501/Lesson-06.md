@@ -688,6 +688,60 @@ echo '$_SERVER["SERVER_NAME"]:'." <code>$mysite</code> // which we use to check 
 localhost/web/ajax.php
 ```
 
+### `_POST` Array
+
+Rather than sending the token in the XML head, we can simply add the token as an item to the `_POST` array with the JavaScript `formData.append()` method
+
+Instead of:
+
+```javascript
+AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION['token']; ?>");
+```
+
+Add an item to the `_POST`, *BEFORE* `.open`:
+
+```javascript
+formData.append('ajax_token', <?php echo $_SESSION['token']; ?>);
+
+AJAX.open(...);
+```
+
+And, in the AJAX handler, instead of:
+
+```php
+if ( $_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["token"] ) {...}
+```
+
+Simply check a `_POST` value:
+
+```php
+if ( $_POST['ajax_token'] === $_SESSION['token'] ) {...}
+```
+
+| **10** :$
+
+```console
+sudo cp core/06-ajax10.php web/ajax.php && \
+sudo cp core/06-ajaxresponder10.php web/ajax_responder.php && \
+sudo chown -R www:www /srv/www/html && \
+codium core/06-ajax10.php core/06-ajaxresponder10.php && \
+ls web
+```
+
+*Note:*
+- *ajax.php:*
+  - *We `.append` to the `$_POST` array the `'ajax_token'` key:*
+    - `FD.append('ajax_token', <?php echo $_SESSION['ajax_token']; ?>);`
+  - *The form works the same as in step 7*
+- *ajax_responder.php:*
+  - *Displays `$_POST["ajax_token"]` in the response*
+
+| **B-10** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/ajax.php
+```
+
 ### AJAX Security Summary
 
 - While you can check the *claimed* sending server from the header, that don't prove much

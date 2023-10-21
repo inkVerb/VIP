@@ -2549,7 +2549,7 @@ sudo chown -R www:www /srv/www/html && \
 ls pdo-upgrade
 ```
 
-*Note the new files referred to below...*
+*Note the many new files and sections referred to below...*
 
 | **B-35** :// (Note no .php file in the URL)
 
@@ -2559,9 +2559,9 @@ localhost/web/
 
 #### AJAX Security
 
-*We can send keys with our AJAX requests to verify that it came from ourselves*
+To this point, we have not implemented the [AJAX security](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/AJAX-security.md) discussed at the end of [Lesson 6](https://github.com/inkVerb/vip/blob/master/501/Lesson-06.md)
 
-*Read more about [AJAX security](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/AJAX-security.md)*
+Now, we will implement security tokens in our AJAX forms
 
 *Create a universal token, but only once for all*
 
@@ -2590,7 +2590,8 @@ function ajaxForm(form_id) {
   ...
   AJAX.open(...);
 
-  formData.setRequestHeader('ajax_token', <?php echo $ajax_token; ?>);
+  formData.append('ajax_token', <?php echo $ajax_token; ?>);
+  
   AJAX.send(formData);
 }
 ```
@@ -2600,6 +2601,11 @@ function ajaxForm(form_id) {
 ```js
 ajaxHandler.send("item_1="+<?php echo $item_1; ?>+"&ajax_token="+<?php echo $ajax_token; ?>);
 ```
+
+<!--
+# DEV
+Continue from here
+-->
 
 *Check the token with the AJAX handler*
 

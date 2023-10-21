@@ -41,6 +41,8 @@ This is the hard part, but not too hard.
 3. Put the token in the AJAX header
 4. AJAX responder: confirm the AJAX header token with the `$_SESSION` token
 
+### XML Header
+
 **send_from_me.php**
 
 ```php
@@ -96,7 +98,7 @@ $ajax_sending_page = 'my_sending_page.php';
 if ((!empty($_SERVER['HTTP_REFERER'])) && ($_SERVER['HTTP_REFERER'] === "$mysite/$ajax_sending_page")) {...}
 ```
 
-# Let's put all of this into a working example
+#### Working example
 
 **sending_from.php**
 
@@ -204,3 +206,32 @@ echo $_POST['the_simple_response'];
 ?>
 ```
 
+### `_POST` Array
+
+Rather than sending the token in the XML header, you can send it in the `_POST` array with the JavaScript `FD.append()` method
+
+In the code above, instead of:
+
+```javascript
+AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION['token']; ?>");
+```
+
+Then, just add another item in the `_POST`, *BEFORE* `.open`:
+
+```javascript
+formData.append('ajax_token', '<?php echo $_SESSION['token']; ?>');
+
+AJAX.open(...);
+```
+
+Then in the AJAX handler, instead of:
+
+```php
+if ( $_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["token"] ) {...}
+```
+
+Just check a `_POST` value:
+
+```php
+if ( $_POST['ajax_token'] === $_SESSION['token'] ) {...}
+```
