@@ -19,8 +19,8 @@ Debian/Ubuntu
 sudo systemctl start apache2 mariadb
 ```
 
+- [AJAX Security](AJAX-security.md)
 ___
-
 
 ### AJAX: Asynchronous JavaScript and XML
 
@@ -518,11 +518,181 @@ localhost/web/ajax.php
 
 ## AJAX Security
 
-We will not address AJAX security too deeply in these lessions
-
-But, hackers can send their own AJAX requests to your ajax_handler.php file
+Anyone can send their own AJAX requests to your ajax_handler.php file
 
 Read more about AJAX security in the VIP cheat sheets: [AJAX Security](AJAX-security.md)
+
+### AJAX Token
+
+The `$_SESSION` is the same in both the client's web browser and for the AJAX handler, so we can match a random string to verify that it is the same `$_SESSION` and not a random AJAX inquiry
+
+Create a token and store it in the `$_SESSION`
+
+*DO NOT use `md5()`, it's too old*
+
+```php
+// DO NOT USE THIS!
+$token = md5(rand(10000,99999));
+```
+
+*Use `bin2hex()` to create your token*
+
+```php
+$token = bin2hex(random_bytes(64));
+```
+
+*Store it in the `$_SESSION`, the AJAX handler will also be able to access it*
+
+```php
+$_SESSION["token"] = $token;
+```
+
+*Put the _SESSION token in the AJAX function on the sending page*
+
+```javascript
+AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION["token"]; ?>");
+```
+
+OR
+
+```javascript
+AJAX.setRequestHeader("ajax-token", "<?php echo $token; ?>");
+```
+
+*Note:*
+  - `ajax-token` in `AJAX.setRequestHeader("ajax-token", ...)`
+  - is `$_SERVER['HTTP_AJAX_TOKEN']` in the AJAX handler
+
+**ajax-send.php** :
+
+```php
+// Start a SESSION before our AJAX JavaScript function so we can use it
+session_start();
+
+// AJAX token
+if ( empty($_SESSION["token"]) ) {
+  $ajax_token = bin2hex(random_bytes(64));
+  $_SESSION["token"] = $ajax_token;
+}
+...
+```
+
+**ajax-send.php** : (in AJAX `<script>` function)
+
+```javascript
+...
+
+// AJAX must first open!
+AJAX.open(...);
+
+// Add your token header; use the _SESSION array
+AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION['token']; ?>");
+
+// Finally send
+AJAX.send(...);
+```
+
+**ajax-handler.php** :
+
+```php
+session_start();
+
+if ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["token"]) {
+  
+  $ajax_legit = true;
+  
+} else {
+  
+  echo "No script kiddies!";
+  exit();
+  
+}
+```
+
+| **8** :$
+
+```console
+sudo cp core/06-ajax8.php web/ajax.php && \
+sudo cp core/06-ajaxresponder8.php web/ajax_responder.php && \
+sudo chown -R www:www /srv/www/html && \
+codium core/06-ajax8.php core/06-ajaxresponder8.php && \
+ls web
+```
+
+*Note ajax.php:*
+- *Before the JavaScript is our _SESSION AJAX token generator*
+  - *`session_start();` is now above the JavaScript so that:*
+    - *The token resides in the _SESSION*
+    - *The _SESSION token can be used in the JavaScript*
+- *The form works the same as in step 7*
+
+```php
+session_start();
+
+// AJAX Token
+if ( empty($_SESSION["token"]) ) {
+  $ajax_token = bin2hex(random_bytes(64));
+  $_SESSION['token'] = $ajax_token;
+}
+```
+
+| **B-8** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/ajax.php
+```
+
+### AJAX Sending Host
+
+Another layer of security can be half-certain that the AJAX request came from the same server that we intended, but this checks the header and so it could be programmed to lie
+
+**ajax-handler.php** :
+
+```php
+// Set the server
+// $mysite = 'https://example.tld'; // can custom set it, such as in a config or database
+$mysite = $_SERVER['SERVER_NAME']; // automatically retrieve host to confirm origin is from the same web server
+$ajax_sending_page = 'my_sending_page.php';
+
+// Confirm origin server and page
+if ((!empty($_SERVER['HTTP_REFERER'])) && ($_SERVER['HTTP_REFERER'] === "$mysite/$ajax_sending_page")) {...}
+```
+
+| **9** :$
+
+```console
+sudo cp core/06-ajax9.php web/ajax.php && \
+sudo cp core/06-ajaxresponder9.php web/ajax_responder.php && \
+sudo chown -R www:www /srv/www/html && \
+codium core/06-ajax9.php core/06-ajaxresponder9.php && \
+ls web
+```
+
+*Note ajax.php:*
+- *We `echo` the `$_SERVER["SERVER_NAME"]` value, which should return as `localhost` on our local machine*
+  - *This merely demonstreates what `$_SERVER["SERVER_NAME"]` is; we don't actually use it in our AJAX sending page*
+- *The form works the same as in step 7*
+
+```php
+$mysite = $_SERVER['SERVER_NAME'];
+
+...
+
+echo '$_SERVER["SERVER_NAME"]:'." <code>$mysite</code> // which we use to check in our AJAX handler<br><hr>";
+```
+
+
+| **B-9** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/ajax.php
+```
+
+### AJAX Security Summary
+
+- While you can check the *claimed* sending server from the header, that don't prove much
+- Testing a token that we created and stored in the _SESSION is quite fool proof
+  - Except for a brute force attack testing millions of tokens; any brute force prevention should stop that
 
 ___
 
@@ -574,6 +744,15 @@ ___
     - ID for which `<form>`
     - Which .php file to AJAX the data to
     - ID for which HTML element to update with the AJAX response
+
+## AJAX Security
+- Anyone can send an AJAX request to your AJAX handler
+- A soft test looks at the "return address" or claimed http referer from the header
+  - This checks if `$_SERVER['HTTP_REFERER']` starts with `$_SERVER['SERVER_NAME']` or matches a set URL
+- The more fool-proof test is to create and match a token using the `$_SESSION`
+  - The `$_SESSION` is the same in the AJAX handler as in the client's browser
+  - Don't create the token with `md5()`
+  - Create the token witn `bin2hex()`
 
 ___
 

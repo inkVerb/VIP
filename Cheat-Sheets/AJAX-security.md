@@ -1,10 +1,12 @@
-# Sending securely in AJAX
+# Sending Securely in AJAX
 
-Anyone can mess with your website, look in the browser developer tools, and mess around
+*Learn more about AJAX in [Shell 501 Lesson 6](https://github.com/inkVerb/vip/blob/master/501/Lesson-06.md)*
+
+Anyone canlook in the browser developer tools and mess with your website
 
 Security with AJAX is important
 
-Running a SESSION is helpful
+SESSION is the same for both the client's browser and the AJAX handler on the server
 
 - Use `session_start();` inside your AJAX responder so you can use all `$_SESSION` variables in the same PHP script as your AJAX sending page
 
@@ -31,17 +33,6 @@ You can see what this should be, instead of `https://example.tld` with a simple 
 echo $_SERVER['HTTP_REFERER'];
 ```
 
-## Verify XMLHTTP/AJAX type of request via `$_SERVER` array
-
-```php
-if ( (!empty($_SERVER['HTTP_X_REQUESTED_WITH']))
-&&   ( strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') ) { 
-  $ajax = true; 
-} else { 
-  $ajax = false; 
-} 
-```
-
 ## Use a token
 This is the hard part, but not too hard.
 
@@ -65,12 +56,16 @@ $_SESSION["token"] = $token;
 // Assuming your AJAX is this
 const AJAX = new XMLHttpRequest();
 
-// This goes inside your AJAX function somewhere before AJAX.send
+...
+
+// This goes inside your AJAX function somewhere after AJAX.open and before AJAX.send
 //
 AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION["token"]; ?>");
 //
 // That creates $_SERVER['HTTP_AJAX_TOKEN'] which we can use later
 ```
+
+`AJAX.setRequestHeader("ajax-token", ...)` will become `$_SERVER['HTTP_AJAX_TOKEN']` in the AJAX handler
 
 **ajax_responder.php**
 
@@ -85,7 +80,20 @@ if ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["token"]) {
 }
 
 // Now it's safe for your AJAX responder to proceed
+```
 
+*It could be a good idea to check that the AJAX request came from the same server or whatever page or address we intended*
+
+*But, remember that `$_SERVER['HTTP_REFERER']` can lie because the information comes from the header, which is programmable, so host/server checks like this is only prevent accidents or novice hack attacks...*
+
+```php
+// Set the server
+// $mysite = 'https://example.tld'; // can custom set it, such as in a config or database
+$mysite = $_SERVER['SERVER_NAME']; // automatically retrieve host to confirm origin is from the same web server
+$ajax_sending_page = 'my_sending_page.php';
+
+// Confirm origin server and page
+if ((!empty($_SERVER['HTTP_REFERER'])) && ($_SERVER['HTTP_REFERER'] === "$mysite/$ajax_sending_page")) {...}
 ```
 
 # Let's put all of this into a working example
@@ -127,11 +135,11 @@ $_SESSION["token"] = $token;
           document.getElementById(ajaxUpdate).innerHTML =  'Oops! Something went wrong.';
         } );
 
-        // Add your token header
-        AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION["token"]; ?>");
-
-        // Open the POST connection
+        // Open the POST connection before setRequestHeader
         AJAX.open("POST", postTo);
+
+        // Add your token header
+        AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION['token']; ?>");
 
         // Data sent is from the form
         AJAX.send(FD);
@@ -155,12 +163,20 @@ $_SESSION["token"] = $token;
 ```php
 <?php
 
-$mysite = 'https://example.tld';
+// Start the _SESSION so we can have access to the $_SESSION["token"]
+session_start();
 
-// All in one test
+// $mysite = 'https://example.tld'; // manually set host
+$mysite = $_SERVER['SERVER_NAME']; // automatically retrieve host
+$ajax_sending_page = 'my_sending_page.php';
+
+// All in one test statement
 if (($_SERVER['REQUEST_METHOD'] == 'POST')
-&& ((!empty($_SERVER['HTTP_REFERER'])) && ($_SERVER['HTTP_REFERER'] === "$mysite/my_sending_page.php"))
-&& ((!empty($_SERVER['HTTP_X_REQUESTED_WITH'])) && ( strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'))
+
+// Confirm origin server and page
+&& ((!empty($_SERVER['HTTP_REFERER'])) && ($_SERVER['HTTP_REFERER'] === "$mysite/$ajax_sending_page"))
+
+// AJAX token test
 && ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["token"])) {
   
   $ajax_legit = true;
@@ -179,9 +195,6 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST')
 
 ```php
 <?php
-
-session_start();
-
 // Do all that checking we're learning about by neatly including the file above
 require_once('ajaxcheck.inc.php');
 

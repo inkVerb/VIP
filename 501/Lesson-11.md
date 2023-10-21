@@ -2597,6 +2597,11 @@ function ajaxForm(form_id) {
 ajaxHandler.send("item_1="+<?php echo $item_1; ?>+"&ajax_token="+<?php echo $ajax_token; ?>);
 ```
 
+<!--
+# DEV
+Continue from here
+-->
+
 *Check the token with the AJAX handler*
 
 | **ajax.handler.php** :
