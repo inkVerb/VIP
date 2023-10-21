@@ -2540,6 +2540,11 @@ localhost/web/webapp.php
 
 *Now that we have a PDO-based CMS, let's add a few enhancements...*
 
+<!--
+# DEV
+Continue from here
+-->
+
 | **35** :$
 
 ```console
