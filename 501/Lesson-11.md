@@ -2569,9 +2569,9 @@ localhost/web/
 
 ```php
 // Create the AJAX token, only if it doesn't already exist
-if ( empty($_SESSION["token"]) ) {
+if ( empty($_SESSION["ajax_token"]) ) {
   $ajax_token = bin2hex(random_bytes(64));
-  $_SESSION["token"] = $ajax_token;
+  $_SESSION["ajax_token"] = $ajax_token;
 }
 ```
 
@@ -2586,9 +2586,13 @@ $ajax_token = $_SESSION['ajax_token'];
 | **sending_from_form.php** :
 
 ```js
-function ajaxForm(form_id) { 
-  formData.append('ajax_token', <?php echo $ajax_token; ?>);
+function ajaxForm(form_id) {
+  ...
+  AJAX.open(...);
+
+  formData.setRequestHeader('ajax_token', <?php echo $ajax_token; ?>);
   AJAX.send(formData);
+}
 ```
 
 | **sending_simple_array.php** :
@@ -2597,17 +2601,14 @@ function ajaxForm(form_id) {
 ajaxHandler.send("item_1="+<?php echo $item_1; ?>+"&ajax_token="+<?php echo $ajax_token; ?>);
 ```
 
-<!--
-# DEV
-Continue from here
--->
-
 *Check the token with the AJAX handler*
 
 | **ajax.handler.php** :
 
 ```php
-
+if ( $_POST['ajax_token'] !== $_SESSION['ajax_token'] ) {
+  exit();
+}
 ```
 
 *Affected files, for your consideration:*
