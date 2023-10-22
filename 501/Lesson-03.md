@@ -111,13 +111,13 @@ mysqli_set_charset($database, 'utf8');
 function escape_sql($data) {
 
   // Database connection variable is needed here
-	global $database;
+  global $database;
 
-	// Remove whitespace
-	$trimmed_data = trim(preg_replace('/\s+/', ' ', $data));
+  // Remove whitespace
+  $trimmed_data = trim(preg_replace('/\s+/', ' ', $data));
 
-	// Apply mysqli_real_escape_string()
-	return mysqli_real_escape_string($database, $trimmed_data);
+  // Apply mysqli_real_escape_string()
+  return mysqli_real_escape_string($database, $trimmed_data);
 
 }
 ```
@@ -407,17 +407,29 @@ Use a function to do a little more:
 
 - `trim()` & `replace()` to remove extra spaces on user input
 - `mysqli_real_escape_string()` just the same
+- `return` an empty string if `$data` is null or empty
 
 ```php
 function escape_sql($data) {
-	global $database;
+  global $database;
+
+  // Don't process null or empty $data
+  if ( (is_null($data)) || ($data == '') ) { return ''; }
 
   $trimmed_data = trim(preg_replace('/\s+/', ' ', $data));
-	return mysqli_real_escape_string($database, $trimmed_data);
+  return mysqli_real_escape_string($database, $trimmed_data);
 }
 
 $something_sql_safe = escape_sql($something);
 ```
+
+*Note the `escape_sql()` function:*
+
+- *We might process all **possible** variables, even though our web forms might allow empty fields*
+- *We can use this function to make sure every variable is at least set*
+- *Some variables might be empty, but `preg_replace()` doesn't accept empty arguments*
+- *When running `escape_sql()` on empty or null `$data`, just return an empty string*
+- *This workflow helps to prevent many errors at many levels*
 
 | **8** :$
 

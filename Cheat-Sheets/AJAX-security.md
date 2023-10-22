@@ -51,7 +51,7 @@ This is the hard part, but not too hard.
 $token = bin2hex(random_bytes(64));
 
 // Store in SESSION
-$_SESSION["token"] = $token;
+$_SESSION['token'] = $token;
 ```
 
 ```js
@@ -62,7 +62,7 @@ const AJAX = new XMLHttpRequest();
 
 // This goes inside your AJAX function somewhere after AJAX.open and before AJAX.send
 //
-AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION["token"]; ?>");
+AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION['token']; ?>");
 //
 // That creates $_SERVER['HTTP_AJAX_TOKEN'] which we can use later
 ```
@@ -74,7 +74,7 @@ AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION["token"]; ?>");
 ```php
 session_start(); // Must have
 
-if ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["token"]) {
+if ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION['token']) {
   $token_match = true;
 } else {
   echo "No script kiddies!";
@@ -108,7 +108,7 @@ if ((!empty($_SERVER['HTTP_REFERER'])) && ($_SERVER['HTTP_REFERER'] === "$mysite
 session_start();
 
 $token = bin2hex(random_bytes(64));
-$_SESSION["token"] = $token;
+$_SESSION['token'] = $token;
 
 ?>
 
@@ -165,7 +165,7 @@ $_SESSION["token"] = $token;
 ```php
 <?php
 
-// Start the _SESSION so we can have access to the $_SESSION["token"]
+// Start the _SESSION so we can have access to the $_SESSION['token']
 session_start();
 
 // $mysite = 'https://example.tld'; // manually set host
@@ -179,7 +179,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST')
 && ((!empty($_SERVER['HTTP_REFERER'])) && ($_SERVER['HTTP_REFERER'] === "$mysite/$ajax_sending_page"))
 
 // AJAX token test
-&& ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["token"])) {
+&& ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION['token'])) {
   
   $ajax_legit = true;
   
@@ -227,7 +227,7 @@ AJAX.open(...);
 Then in the AJAX handler, instead of:
 
 ```php
-if ( $_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["token"] ) {...}
+if ( $_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION['token'] ) {...}
 ```
 
 Just check a `_POST` value:

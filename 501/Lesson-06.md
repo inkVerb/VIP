@@ -544,13 +544,13 @@ $token = bin2hex(random_bytes(64));
 *Store it in the `$_SESSION`, the AJAX handler will also be able to access it*
 
 ```php
-$_SESSION["token"] = $token;
+$_SESSION['ajax_token'] = $token;
 ```
 
 *Put the _SESSION token in the AJAX function on the sending page*
 
 ```javascript
-AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION["token"]; ?>");
+AJAX.setRequestHeader("ajax-token", "<?php echo $ajax_token; ?>");
 ```
 
 OR
@@ -570,9 +570,11 @@ AJAX.setRequestHeader("ajax-token", "<?php echo $token; ?>");
 session_start();
 
 // AJAX token
-if ( empty($_SESSION["token"]) ) {
+if ( empty($_SESSION['ajax_token']) ) {
   $ajax_token = bin2hex(random_bytes(64));
-  $_SESSION["token"] = $ajax_token;
+  $_SESSION['ajax_token'] = $ajax_token;
+} else {
+  $ajax_token = $_SESSION['ajax_token'];
 }
 ...
 ```
@@ -597,7 +599,7 @@ AJAX.send(...);
 ```php
 session_start();
 
-if ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["token"]) {
+if ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION['ajax_token']) {
   
   $ajax_legit = true;
   
@@ -630,9 +632,11 @@ ls web
 session_start();
 
 // AJAX Token
-if ( empty($_SESSION["token"]) ) {
+if ( empty($_SESSION['ajax_token']) ) {
   $ajax_token = bin2hex(random_bytes(64));
-  $_SESSION['token'] = $ajax_token;
+  $_SESSION['ajax_token'] = $ajax_token;
+} else {
+  $ajax_token = $_SESSION['ajax_token'];
 }
 ```
 
@@ -690,7 +694,7 @@ localhost/web/ajax.php
 
 ### `_POST` Array
 
-Rather than sending the token in the XML head, we can simply add the token as an item to the `_POST` array with the JavaScript `formData.append()` method
+Rather than sending the token in the XML head, we can simply add the token as an item to the `_POST` array with the JavaScript `FD.append()` method
 
 Instead of:
 
@@ -701,7 +705,7 @@ AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION['token']; ?>");
 Add an item to the `_POST`, *BEFORE* `.open`:
 
 ```javascript
-formData.append('ajax_token', <?php echo $_SESSION['token']; ?>);
+FD.append('ajax_token', <?php echo $_SESSION['token']; ?>);
 
 AJAX.open(...);
 ```
@@ -709,7 +713,7 @@ AJAX.open(...);
 And, in the AJAX handler, instead of:
 
 ```php
-if ( $_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["token"] ) {...}
+if ( $_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION['ajax_token'] ) {...}
 ```
 
 Simply check a `_POST` value:

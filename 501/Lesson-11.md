@@ -2570,23 +2570,19 @@ Now, we will implement security tokens in our AJAX forms
 
 *Create a universal token, but only once for all*
 
-| **in.head.php** :
+| **in.db.php** :
 
 ```php
 // Create the AJAX token, only if it doesn't already exist
 if ( empty($_SESSION["ajax_token"]) ) {
   $ajax_token = bin2hex(random_bytes(64));
   $_SESSION["ajax_token"] = $ajax_token;
+} else {
+  $ajax_token = $_SESSION['ajax_token'];
 }
 ```
 
 *Add the token to every AJAX request*
-
-| **every_ajax_req.php** :
-
-```php
-$ajax_token = $_SESSION['ajax_token'];
-```
 
 | **sending_from_form.php** :
 
@@ -2595,16 +2591,16 @@ function ajaxForm(form_id) {
   ...
   AJAX.open(...);
 
-  formData.append('ajax_token', <?php echo $ajax_token; ?>);
+  FD.append('ajax_token', '<?php echo $ajax_token; ?>');
   
-  AJAX.send(formData);
+  AJAX.send(FD);
 }
 ```
 
 | **sending_simple_array.php** :
 
 ```js
-ajaxHandler.send("item_1="+<?php echo $item_1; ?>+"&ajax_token="+<?php echo $ajax_token; ?>);
+AJAX.send("item_1="+<?php echo $item_1; ?>+"&ajax_token=<?php echo $ajax_token; ?>");
 ```
 
 *Check the token with the AJAX handler*
@@ -3452,7 +3448,7 @@ function mediaFeatureInsert(thisMedia) { // These arguments can be anything, sam
   // Bind a new event listener every time the <form> is changed:
   const FORM = document.getElementById(inputFormID);
   const AJAX = new XMLHttpRequest(); // AJAX handler
-  var formData = new FormData(FORM); // Bind to-send data to form element
+  const FD = new FormData(FORM); // Bind to-send data to form element
 
   AJAX.addEventListener( "load", function(event) { // This runs when AJAX responds
     document.getElementById("feature-insert").innerHTML = event.target.responseText;
@@ -3464,8 +3460,8 @@ function mediaFeatureInsert(thisMedia) { // These arguments can be anything, sam
 
   AJAX.open("POST", "ajax.mediafeature.php");
 
-  formData.append('ajax_token', $ajax_token);
-  AJAX.send(formData); // Data sent is from the form
+  FD.append('ajax_token', $ajax_token);
+  AJAX.send(FD); // Data sent is from the form
 
 }
 

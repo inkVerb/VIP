@@ -421,8 +421,8 @@ localhost/web/webapp.php
 ```php
 $_SESSION = array(); // Reset the `_SESSION` array
 session_destroy(); // Destroy the session itself
-setcookie(session_name(), null, 86401); // Set any _SESSION cookies to expire in Jan 1970
-setcookie(session_name(), null, time()-300);  // Wrong! (depending on your timezone, this could be in the future!)
+setcookie(session_name(), '', 86401); // Set any _SESSION cookies to expire in Jan 1970
+setcookie(session_name(), '', time()-300);  // Wrong! (depending on your timezone, this could be in the future!)
 ```
 
 **Redirect in PHP:**
@@ -657,7 +657,7 @@ $_SESSION['some_key'] = "some value";
 // End the SESSION with "Destroy Team Three"
 $_SESSION = array(); // Reset
 session_destroy(); // Destroy
-setcookie(session_name(), null, 86401); // 86401 = sometime in Jan 1970
+setcookie(session_name(), '', 86401); // 86401 = sometime in Jan 1970
 ```
 
 4. COOKIE (continues after browser closes)
@@ -837,7 +837,7 @@ ___
   ```php
   $_SESSION = array(); // Reset
   session_destroy(); // Destroy
-  setcookie(session_name(), null, 86401); // Expire
+  setcookie(session_name(), '', 86401); // Expire
   ```
 - COOKIE destroy:
   ```php
