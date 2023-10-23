@@ -116,6 +116,13 @@ ls web
 
 *Note we are using .html and .txt files, not .php*
 
+AJAX payload:
+
+```javascript
+ajaxHandler.open("GET", "ajax_responder.php", true); // GET could be POST
+ajaxHandler.send();
+```
+
 | **B-1** ://
 
 ```console
@@ -148,6 +155,15 @@ ls web
 
 *Note we are using .php files, no longer .html and .txt*
 
+*The AJAX code is the same except that we are using `$_SESSION['count']` to show how many times the page has loaded*
+
+AJAX payload:
+
+```javascript
+ajaxHandler.open("GET", "ajax_responder.php", true); // GET could be POST
+ajaxHandler.send();
+```
+
 | **B-2** ://
 
 ```console
@@ -173,6 +189,16 @@ sudo cp core/06-ajaxresponder3.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
 codium wecore/06-ajax3.php core/06-ajaxresponder3.php && \
 ls web
+```
+
+Now, we use `POST`
+
+```javascript
+ajaxHandler.open("POST", "ajax_responder.php", true); // POST could change to GET
+
+// Send: &_POST['foo'] = 'AJAX'; &_POST['bar'] = '5';
+ajaxHandler.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+ajaxHandler.send("foo=AJAX&bar=5");
 ```
 
 *Note:*
@@ -207,6 +233,15 @@ sudo cp core/06-ajax4.php web/ajax.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/06-ajax4.php && \
 ls web
+```
+
+Use PHP variables to create the POST array:
+
+```javascript
+ajaxHandler.open("POST", "ajax_responder.php", true); // POST could change to GET
+
+ajaxHandler.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+ajaxHandler.send(<?php echo '"foo='.$post_foo.'&bar='.$post_bar.'"'; ?>); // PHP generated statement
 ```
 
 | **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
@@ -286,6 +321,26 @@ sudo cp core/06-ajaxresponder5.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/06-ajax5.php core/06-ajaxresponder5.php && \
 ls web
+```
+
+Changes:
+
+```javascript
+var ajaxHandler = new XMLHttpRequest();
+
+// became:
+
+const AJAX = new XMLHttpRequest();
+```
+
+Now we get the `_POST` array from a `<form>`
+
+```javascript
+const form = document.getElementById("ajaxForm");
+...
+const FD = new FormData(form);
+...
+AJAX.send(FD);
 ```
 
 *Note ajax.php:*
@@ -441,6 +496,8 @@ localhost/web/ajax.php
   - "I am a new form created by AJAX"
   - "(made by AJAX)"
 4. Change the input fields and try many times
+
+*Note in the next examples, we will simplify our JavaScript into one function, among other things...*
 
 ### AJAX Capture Data from a `<form>` by `<button>`
 
@@ -702,9 +759,10 @@ Instead of:
 AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION['token']; ?>");
 ```
 
-Add an item to the `_POST`, *BEFORE* `.open`:
+Add an item to the `_POST`, *before or after* `.open`:
 
 ```javascript
+// This can go either before or after AJAX.open()
 FD.append('ajax_token', <?php echo $_SESSION['token']; ?>);
 
 AJAX.open(...);
@@ -741,6 +799,148 @@ ls web
   - *Displays `$_POST["ajax_token"]` in the response*
 
 | **B-10** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+
+```console
+localhost/web/ajax.php
+```
+
+### `<meta>` Token
+
+We can place our token inside the HTML document itself and retriev it with JavaScript
+
+This could be handy if, for any reason, our JavaScript can't be modified by PHP, so it can get the token directly from the HTML
+
+| **ajax-send.php** :
+
+```html
+<head>
+
+  <?php
+  
+  session_start();
+
+  if ( empty($_SESSION['ajax_token']) ) {
+    $ajax_token = bin2hex(random_bytes(64));
+    $_SESSION['ajax_token'] = $ajax_token;
+  } else {
+    $ajax_token = $_SESSION['ajax_token'];
+  }
+
+  ?>
+
+  <!-- We add the token here -->
+  <meta name="ajax_token" content="<?php echo $ajax_token; ?>" />
+
+</head>
+<body>
+
+  <script>
+    function ajaxFormData(formID, postTo, ajaxUpdate) {
+
+      const FORM = document.getElementById(formID);
+      const AJAX = new XMLHttpRequest();
+      const FD = new FormData(FORM);
+
+      // Get our token from the HTML <head><meta>
+      const TOKEN = document.querySelector('meta[name="ajax_token"]').content;
+
+      AJAX.addEventListener( "load", function(event) {
+        document.getElementById(ajaxUpdate).innerHTML = event.target.responseText;
+      } );
+
+      AJAX.addEventListener( "error", function(event) {
+        document.getElementById(ajaxUpdate).innerHTML =  'Oops! Something went wrong.';
+      } );
+
+      // Append another item in the _POST array keyed 'ajax_token'
+      FD.append('ajax_token', TOKEN);
+
+      // OPEN before setRequestHeader
+      AJAX.open("POST", postTo);
+
+      // Create our token header
+      AJAX.setRequestHeader("ajax-token", TOKEN);
+
+      AJAX.send(FD);
+
+    }
+  </script>
+```
+
+| **ajax-handler.php** :
+
+```php
+if ((!empty($_POST['ajax_token'])) && ($_POST['ajax_token'] === $_SESSION["ajax_token"])) {
+  
+  $ajax_post_legit = true;
+  
+} else {
+  
+  echo "No script kiddies!";
+  exit();
+}
+  
+if ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION["ajax_token"]) {
+  
+  $ajax_http_legit = true;
+  
+} else {
+  
+  echo "No script kiddies!";
+  exit();
+}
+```
+
+*Note, these are redundant; only one is needed:*
+
+```javascript
+FD.append()
+AJAX.setRequestHeader()
+```
+
+*...appear in the AJAX handler...*
+
+```php
+$_POST['ajax_token']
+$_SERVER['HTTP_AJAX_TOKEN']
+```
+
+| **11** :$
+
+```console
+sudo cp core/06-ajax11.php web/ajax.php && \
+sudo cp core/06-ajaxresponder11.php web/ajax_responder.php && \
+sudo chown -R www:www /srv/www/html && \
+codium core/06-ajax11.php core/06-ajaxresponder11.php && \
+ls web
+```
+
+*Note the `$ajax_token` is already set*
+
+Inside `<head>`:
+
+```html
+<head>
+  ...
+  <meta name="ajax_token" content="<?php echo $ajax_token; ?>" />
+  ...
+</head>
+```
+
+Inside our AJAX function:
+
+```javascript
+const TOKEN = document.querySelector('meta[name="ajax_token"]').content;
+...
+
+// Add to both the POST and the HTTP header
+FD.append('ajax_token', TOKEN);
+AJAX.open("POST", postTo); // Before setRequestHeader
+AJAX.setRequestHeader("ajax-token", TOKEN);
+```
+
+
+| **B-11** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
