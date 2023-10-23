@@ -1361,7 +1361,7 @@ $statement = $database->query($query);
 | **Query Check** : (Check database for what you want)
 
 ```php
-$query  = "SELECT * FROM fruit WHERE  name = 'kiwi'";
+$query = "SELECT * FROM fruit WHERE name = 'kiwi'";
 $statement = $database->query($query);
 if ($statement->rowCount() > 0)
 ```
@@ -2330,7 +2330,7 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
 *Assuming we initiate with:* `$pdo = new DB;`...
 
 - *in.db.php:*
-  - $ `atom pdo/in.db.php procedural/in.db.php`
+  - $ `codium pdo/in.db.php mysqli/in.db.php`
   - *Methods:*
     - `$pdo->delete()` *for simple conditions*
     - `$pdo->select()` *for simple conditions*
@@ -2350,19 +2350,19 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
 
 - *Good examples to note changes in:*
   - *in.metaeditfunctions.php*
-  - $ `atom pdo/webapp.php procedural/in.metaeditfunctions.php`
-  - $ `diff pdo/webapp.php procedural/in.metaeditfunctions.php`
+  - $ `codium pdo/webapp.php mysqli/in.metaeditfunctions.php`
+  - $ `diff pdo/webapp.php mysqli/in.metaeditfunctions.php`
   - *Note we added `global $pdo;` because the piecesaction() function will need to use the `DB` class's `$pdo` object for `$pdo->exec_()` calls*
   - *webapp.php*
-    - $ `atom pdo/webapp.php procedural/webapp.php`
-    - $ `diff pdo/webapp.php procedural/webapp.php`
+    - $ `codium pdo/webapp.php mysqli/webapp.php`
+    - $ `diff pdo/webapp.php mysqli/webapp.php`
   - *blog.php*
-    - $ `atom pdo/blog.php procedural/blog.php`
-    - $ `diff pdo/blog.php procedural/blog.php`
+    - $ `codium pdo/blog.php mysqli/blog.php`
+    - $ `diff pdo/blog.php mysqli/blog.php`
   - *in.editprocess.php (elaborate)*
-    - $ `atom pdo/in.editprocess.php procedural/in.editprocess.php`
-    - $ `diff pdo/in.editprocess.php procedural/in.editprocess.php`
-  - *Any file, in both pdo/ and procedural/*
+    - $ `atom pdo/in.editprocess.php mysqli/in.editprocess.php`
+    - $ `diff pdo/in.editprocess.php mysqli/in.editprocess.php`
+  - *Any file, in both pdo/ and mysqli/*
   - *`grep` for PDO in use*
     - $ `grep -R 'DB::trimspace(' pdo/*`
     - $ `grep -R '$pdo->delete(' pdo/*`
@@ -3314,7 +3314,7 @@ function seriesEditor(uID, pageNum = 0, detailMessage = '') { // These arguments
   } );
 
   AJAX.addEventListener( "error", function(event) { // This runs if AJAX fails
-    document.getElementById("edit-series").innerHTML =  'Oops! Something went wrong.';
+    document.getElementById("edit-series").innerHTML = 'Oops! Something went wrong.';
   } );
 
   AJAX.open("POST", "ajax.editseries.php");
@@ -3455,7 +3455,7 @@ function mediaFeatureInsert(thisMedia) { // These arguments can be anything, sam
   } );
 
   AJAX.addEventListener( "error", function(event) { // This runs if AJAX fails
-    document.getElementById("feature-insert").innerHTML =  'Oops! Something went wrong.';
+    document.getElementById("feature-insert").innerHTML = 'Oops! Something went wrong.';
   } );
 
   AJAX.open("POST", "ajax.mediafeature.php");
@@ -4160,7 +4160,7 @@ class DB {
       echo "SQL error from <pre>$query</pre><br>$error_message";
   }
 
-  // UPDATE  WHERE BINARY method for keys
+  // UPDATE WHERE BINARY method for keys
   public function key_update($table, $cols, $vals, $wcol, $vcol) {
     global $database;
 

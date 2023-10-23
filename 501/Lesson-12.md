@@ -31,9 +31,9 @@ ___
   - NOT a logic-executed script like BASH, JavaScript, PHP, et cetera
   - Looks like HTML, came after HTML to maximize HTML concepts, can't replace HTML
     - 1986: SGML (Standard Generalized Markup Language)
-    - 1993: HTML (keeps updating, version 5 in 2021)
+    - 1993: HTML (keeps updating, version 5 in 2023)
     - 1998: XML (still using version 1.0)
-  - Using SGML:
+  - Languages using SGML:
     - HTML
     - XML
     - LaTeX (print publishing language)
@@ -44,7 +44,7 @@ ___
     - Oxford English Dictionary (digital version)
     - European Commission
     - International Standards Organization
-2. Used in:
+2. XML is used in:
   - Word processor documents (.docx, .odt, et cetera)
   - Desktop settings (wallpaper, mouse speed, display brightness, audio volume, et cetera)
   - RSS feeds
@@ -58,7 +58,7 @@ ___
   - Database alternative to SQL, but needs other tools for query/parsing
 4. Comparable to JSON
   - Portable to/from JSON
-  - Machine version of what JSON is for JavaScript
+  - Machine OS version of what JSON is for JavaScript
   - JSON is used in the browser, XML is used everywhere else
 5. Can be read by many languages
   - BASH/Linux terminal (`linuxlint`)
@@ -66,12 +66,15 @@ ___
   - JavaScript (`xml2json` & `json2xml`)
   - SQL (`FOR XML AUTO`, `FOR XML PATH`, `FROM OPENXML`)
   - And many more
-    - Node.js
-    - Python
+    - C
+    - Go
     - Java
+    - Python
     - Perl
     - Swift
-    - C
+    - Android
+    - Ruby
+    - Node.js
 6. Is styleable using CSS and XSLT
 7. For machines, not browsers
   - Desktop app
@@ -80,11 +83,11 @@ ___
   - "Machine side" (server & local device, not browser)
   - In theory, an RSS/XML feed comes ***raw*** from the server and is then either:
     - Shown unaltered within a browser OR
-    - Interpreted by another app on a desktop, mobile, or server
+    - Interpreted by another app on a desktop, mobile, or server machine
   - Because XML isn't SQL
     - Query/parsing is optional, but not necessary
     - It is NOT secure; all information is public
-    - Illustration: XML is a grocery list on the wall, SQL is your credit card spending history
+    - Illustration: XML is a grocery list on the wall, SQL is a bank statement
 
 #### A. Basic Structure
 
@@ -165,6 +168,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax2.xml web/syntax.xml && \
+sudo chown -R www:www /srv/www/html && \
 codium core/12-syntax2.xml && \
 ls web
 ```
@@ -193,6 +197,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax3.xml web/syntax.xml && \
+sudo chown -R www:www /srv/www/html && \
 codium core/12-syntax3.xml && \
 ls web
 ```
@@ -224,11 +229,14 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax4.xml web/syntax.xml && \
+sudo chown -R www:www /srv/www/html && \
 codium core/12-syntax4.xml && \
 ls web
 ```
 
 *The prefix is defined by a URI in the first set of each hierarchy it is used*
+
+| **Prefix `s:`** :
 
 ```xml
 <s:table xmlns:s="https://verb.ink/stock">
@@ -254,6 +262,7 @@ localhost/web/syntax.xml
 
 ```console
 sudo cp core/12-syntax5.xml web/syntax.xml && \
+sudo chown -R www:www /srv/www/html && \
 codium core/12-syntax5.xml && \
 ls web
 ```
@@ -306,7 +315,7 @@ localhost/web/syntax.xml
 sudo cp core/12-xmlrender6.php web/xmlrender.php && \
 sudo cp core/12-htaccess6 web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-codium core/12-xmlrender6.php 12-htaccess7 && \
+codium core/12-xmlrender6.php 12-htaccess6 && \
 ls web
 ```
 
@@ -373,6 +382,8 @@ ls web
   <!ATTLIST attribs attr (val1 | val2 | val3) "val1" >
 ]>
 ```
+
+*Note `<!ELEMENT person (one,two,also,there)>` means `<person>` **must** contain tags `<one>` `<two>` `<also>` `<there>`*
 
 | **Content** :
 
@@ -512,7 +523,7 @@ ls web
     </xs:simpleType>
 
     <xs:element name="person"> <!-- Declare the <person> element -->
-      <xs:complexType> <!-- The <person> element contains either attributes or child elements -->
+      <xs:complexType> <!-- The <person> element contains attributes and/or child elements -->
         <xs:attribute name="att" type="attrvallist" default="val1"/> <!-- Include the "attrvallist" options previously defined -->
 
         <xs:sequence> <!-- The order of child elements matters, optional -->
@@ -694,7 +705,7 @@ localhost/web/validate.xml
 
 *Note `xsi:noNamespaceSchemaLocation` has one XSD location, "schema.xsd" is local*
 
-*We just used XSD with namespace*
+*Our last example used XSD with namespace*
 
 *Now, let's try without namespace...*
 
@@ -703,6 +714,7 @@ localhost/web/validate.xml
 ```console
 sudo cp core/12-validate11.xml web/validate.xml && \
 sudo cp core/12-validate11.xsd web/validate.xsd && \
+sudo chown -R www:www /srv/www/html && \
 codium core/12-validate11.xml core/12-validate11.xsd && \
 ls web
 ```
@@ -716,6 +728,45 @@ localhost/web/validate.xml
 ```
 
 ##### XSD Elements & Attributes
+
+###### Restricting options
+
+- Restricted: `type="somelist"` indicating `<xs:restriction>`
+- Any value: `type="xs:string"` accepts any string
+
+*Without `type="somelist"` indicating a previous `<xs:restriction>`, the attribute or element value could be anything*
+
+1. These two examples do not define any `type="somelist"` indicating `<xs:restriction>`, only `type="xs:string"` so their values could be anything
+
+```xml
+<!-- attribute with a default value, accepting any string value -->
+<xs:attribute name="level" type="xs:string" default="user"/>
+
+<!-- element with no default value, accepting any string value -->
+<xs:element name="name" type="xs:string"/>
+```
+
+2. This is restricted and indicates its allowed values from a list
+
+Allowed list of values: `sportattrlist`
+
+```xml
+<xs:simpleType name="sportattrlist">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="skateboard"/>
+    <xs:enumeration value="soccer"/>
+    <xs:enumeration value="golf"/>
+  </xs:restriction>
+</xs:simpleType>
+```
+
+Restricted attribute: `type="sportattrlist"`
+
+```xml
+<xs:element name="sport" type="xs:string">
+  <xs:attribute name="type" type="sportattrlist" default="skateboard"/>
+</xs:element>
+```
 
 ###### `<xs:complexType>` vs `<xs:simpleType>`
 
@@ -1144,6 +1195,21 @@ ls web
 <?xml version="1.0" encoding="utf-8" ?>
 <?xml-stylesheet type="text/xsl" href="style.xsl" ?> <!-- Add style.xsl -->
 ...
+
+<!-- Example entry -->
+
+<root>
+
+  <visitor level="admin">
+    <name>John Doe</name>
+    <login>jdoe</login>
+    <phone>555-1212</phone>
+    <email>jdoe@verb.ink</email>
+    <sport type="skateboard"/>
+    <year>1995</year>
+  </visitor>
+
+</root>
 ```
 
 | **style.xsl** :
@@ -1176,9 +1242,9 @@ ls web
               <td><xsl:value-of select="login"/></td> <!-- Content of <login> -->
               <td><xsl:value-of select="phone"/></td> <!-- et cetera -->
               <td><xsl:value-of select="email"/></td>
-              <td><xsl:value-of select="sport/@type"/></td>
+              <td><xsl:value-of select="sport/@type"/></td> <!-- Select type= in <sport> -->
               <td><xsl:value-of select="year"/></td>
-              <td><xsl:value-of select="@level"/></td> <!-- Select type= in <sport> -->
+              <td><xsl:value-of select="@level"/></td> <!-- Select level= in <visitor> -->
             </tr>
 
           </xsl:for-each>
@@ -1264,8 +1330,8 @@ localhost/web/style.xml
 | **14** :$
 
 ```console
-sudo cp core/12-style14.xsl web/style.xsl && \
 sudo cp core/12-style14.xml web/style.xml && \
+sudo cp core/12-style14.xsl web/style.xsl && \
 sudo chown -R www:www /srv/www/html && \
 codium core/12-style14.xml core/12-style14.xsl && \
 ls web
@@ -1617,6 +1683,8 @@ ls web
 localhost/web/style.xml
 ```
 
+*Note the XML document behaves the same way; the files are simply re-organized into several `xs:import` elements*
+
 ### IV. XML XPath (Reference)
 
 - `/root/element/final` = `<root><element><final>`
@@ -1704,6 +1772,49 @@ codium core/12-contacts.xml core/12-style17.xsl xml/contacts.xml && \
 ls web
 ```
 
+The structure in step 17 is slightly different than from step 16
+
+| **XSL** :
+
+```xsl
+<xsl:template match="root/visitor">
+```
+
+| **XML** :
+
+```xml
+<root>
+  <visitor>
+```
+
+...became...
+
+| **XSL** :
+
+```xsl
+<xsl:template match="root/visitors/visitor">
+```
+
+| **XML** :
+
+```xml
+<root>
+  <visitors>
+    <visitor>
+```
+
+Note these changes in the XSL stylesheet
+
+| **style.xsl** :
+
+```xsl
+<xsl:apply-templates select="root/visitors"/>
+
+...
+
+<xsl:template match="root/visitors/visitor">
+```
+
 | **B-17** ://
 
 ```console
@@ -1771,6 +1882,7 @@ localhost/web/contacts.xml
 
 ```console
 xml ed --inplace -u "//visitors/visitor[@login='jdoe']/level" -v "user" xml/contacts.xml
+sudo cp xml/contacts.xml web/contacts.xml
 ```
 
 | **B-23** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
@@ -1963,6 +2075,8 @@ ls odt
 
 *We will use the xml directory to work with only the content file...*
 
+*Output the raw XML contents to the terminal (no file will be extracted from markdown.odt)*
+
 | **37** :$
 
 ```console
@@ -2046,13 +2160,15 @@ codium xml/wordpress-css.rss xml/rss.css && \
 ls web
 ```
 
+*When entering an address with .rss in a browser, it could either display raw text or initiate a download...*
+
 | **B-44** :// **`.rss`**
 
 ```console
 localhost/web/wordpress-css.rss
 ```
 
-*To apply XSL style, we must use the `.xml` extension...*
+*To apply XSL style for viewing in a browser, we must use the `.xml` extension...*
 
 | **45** :$
 
@@ -2061,17 +2177,23 @@ sudo cp xml/wordpress-css.rss web/wordpress-css.xml && \
 sudo chown -R www:www /srv/www/html
 ```
 
+*Note the `css` statements...*
+
+```xml
+<?xml-stylesheet type="text/css" href="rss.css" ?>
+```
+
 | **B-45** :// **`.xml`**
 
 ```console
 localhost/web/wordpress-css.xml
 ```
 
-*Note the rendering does not have good formatting because it is only CSS, but nothing places HTML inside any `<html>` framework, so HTML never renders*
+*Note the rendering does not have "pretty" formatting because it is only CSS, but nothing places HTML inside any `<html>` framework, so HTML never renders*
 
-*We see only styled text, not rendered HTML*
+*We see only basic-styled text, not rendered HTML*
 
-*Rendering RSS via simple CSS is useful if the RSS feed only contains text with no HTML tags, such as news wires used for ages*
+*Rendering RSS via simple CSS is useful if the RSS feed only contains text with no HTML tags, such as news wires, which have been used for ages*
 
 *To render HTML, we need an XSL stylesheet...*
 
@@ -2089,13 +2211,19 @@ codium xml/wordpress-xsl.rss xml/rss.xsl && \
 ls web
 ```
 
+*Note the `xsl` statements...*
+
+```xml
+<?xml-stylesheet type="text/xsl" href="rss.xsl" ?
+```
+
 | **B-46** :// **`.rss`**
 
 ```console
 localhost/web/wordpress-xsl.rss
 ```
 
-*To apply XSL style, we must use the `.xml` extension...*
+*To apply XSL style for viewing in a browser, we must use the `.xml` extension...*
 
 | **47** :$
 
@@ -2122,7 +2250,11 @@ codium xml/podcast.rss && \
 ls web
 ```
 
-*Note we are using the same rss.xsl file as in our WordPress example*
+*Note we are using the same rss.xsl file as in our WordPress example...*
+
+```xml
+<?xml-stylesheet type="text/xsl" href="rss.xsl" ?>
+```
 
 | **B-48** :// **`.rss`**
 
@@ -2130,7 +2262,7 @@ ls web
 localhost/web/podcast.rss
 ```
 
-*To apply XSL style, we must use the `.xml` extension...*
+*To apply XSL style for viewing in a browser, we must use the `.xml` extension...*
 
 | **49** :$
 
@@ -2404,9 +2536,57 @@ foreach ($rss->channel->item as $item) {
 
 ```console
 sudo cp core/12-feed.rss web/feed.rss && \
-sudo cp core/12-processfeed.php web/feed.rss && \
+sudo cp core/12-processfeed.php web/processfeed.php && \
 sudo chown -R www:www /srv/www/html && \
 codium core/12-feed.rss core/12-processfeed.php
+```
+
+Use the `->children()` method to isolate entries with an XML `<prefix:>`
+
+*Load the .rss file*
+
+```php
+$rss = simplexml_load_file('http://localhost/web/feed.rss');
+```
+
+*Retrieve these `<itunes:>` prefixed elements*
+
+```xml
+<channel>
+	<title>501 Blog</title>
+...
+  <itunes:author>Jon Boy</itunes:author>
+  <itunes:owner>
+    <itunes:name>Johnny Boy</itunes:name>
+...
+```
+
+...with this `->children()` method:
+
+```php
+$channel_itunes = $rss->channel->children('http://www.itunes.com/dtds/podcast-1.0.dtd');
+...
+echo $channel_itunes->author;
+echo $channel_itunes->owner->name;
+```
+
+*Retrieve these `<itunes:>` prefixed elements*
+
+```xml
+<item>
+  <title>Media Features</title>
+...
+  <itunes:keywords></itunes:keywords>
+  <itunes:duration>Jon Boy</itunes:duration>
+...
+```
+
+...with this `->children()` method:
+
+```php
+$item_itunes = $item->children('http://www.itunes.com/dtds/podcast-1.0.dtd');
+echo $item_itunes->keywords;
+echo $item_itunes->duration;
 ```
 
 | **B-51** ://
@@ -2593,7 +2773,7 @@ error_reporting(E_ALL);
 
 2. Add a new feed that will use the URL for where this file is:
 
-| **Aggregated Feeds** :// *(same as Blog > Pieces > Aggregated Feeds)*
+| **Aggregated Feeds** :// *(same as Pieces > Aggregated Feeds)*
 
 ```console
 localhost/web/aggregator.php
