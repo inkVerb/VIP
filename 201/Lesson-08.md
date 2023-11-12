@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 8: Hash – md5sum, sha1sum, sha256sum, sha512sum
 
 Ready the CLI

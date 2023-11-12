@@ -1,4 +1,4 @@
-# Shell 101
+# Linux 101
 ## Lesson 4: Setting Variables & Setting Files
 
 Ready the CLI

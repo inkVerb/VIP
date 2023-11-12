@@ -1,4 +1,4 @@
-# Shell 101
+# Linux 101
 ## Lesson 9: find
 
 Ready the CLI

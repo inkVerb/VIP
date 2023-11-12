@@ -1,4 +1,4 @@
-# Shell 101
+# Linux 101
 ## Lesson 1: gedit, echo & sed
 
 Ready the CLI

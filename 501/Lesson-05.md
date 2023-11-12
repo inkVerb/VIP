@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 5: RewriteMod (Pretty Permalinks)
 
 Ready the CLI

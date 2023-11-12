@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 10: BASH Ternary, Variable Variables & Arrays
 
 Ready the CLI

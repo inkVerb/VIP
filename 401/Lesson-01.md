@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 1: Returns & Terminal
 
 Ready the CLI

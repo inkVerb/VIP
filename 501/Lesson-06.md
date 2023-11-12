@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 6: AJAX
 
 Ready the CLI
@@ -25,6 +25,16 @@ ___
 ### AJAX: Asynchronous JavaScript and XML
 
 AJAX changes only ***part*** of a webpage
+
+This "Asynchronous" action uses JavaScript to:
+1. Send a small XML request over HTTP/web (usually via `GET` or `POST`)
+  - It is much like submitting a web `<form>`
+    - JavaScript can create the entire XML request
+    - JavaScript can import the entire XML request from an actual `<form>` in the webpage
+2. Receive the "mini HTML webpage" that comes as a response
+3. Use JavaScript animation to update the browser with that response
+
+`XMLHttpRequest()` is the JavaScript method that sends this XML request over HTTP/web
 
 #### JavaScript: Asynchronous Animation
 - JavaScript loads as its goes, before finishing the script
@@ -70,6 +80,8 @@ This JavaScript must somehow go in your webpage:
   - `vipAjax`
   - `doAjax`
   - `ajax_changes`
+  - `ajax`
+  - `ajaxHandler`
 
 *Note this JavaScript function has settings:*
   - `ajaxHandler.open(method, file, asynchronous_tf);`
@@ -281,8 +293,8 @@ window.addEventListener( "load", function () {
     AJAX.send( FD ); // Data sent is from the form
   } // sendData() function
 
-  const form = document.getElementById( "ajaxForm" ); // Access <form id="ajaxForm">, id="ajaxForm" can be anything
-  form.addEventListener( "submit", function ( event ) { // Takeover <input type="submit">
+  const FORM = document.getElementById( "ajaxForm" ); // Access <form id="ajaxForm">, id="ajaxForm" can be anything
+  FORM.addEventListener( "submit", function ( event ) { // Takeover <input type="submit">
     event.preventDefault();
     sendData();
   } );
@@ -336,7 +348,7 @@ const AJAX = new XMLHttpRequest();
 Now we get the `_POST` array from a `<form>`
 
 ```javascript
-const form = document.getElementById("ajaxForm");
+const FORM = document.getElementById("ajaxForm");
 ...
 const FD = new FormData(form);
 ...
@@ -374,8 +386,8 @@ localhost/web/ajax.php
 In the previous example, JavaScript listens only to the `<form>` created at the first page load:
 
 ```js
-const form = document.getElementById( "ajaxForm" ); // Access form
-form.addEventListener( "submit", function ( event ) { // Takeover <input type="submit">
+const FORM = document.getElementById( "ajaxForm" ); // Access form
+FORM.addEventListener( "submit", function ( event ) { // Takeover <input type="submit">
   event.preventDefault();
   sendData();
 } );
@@ -415,7 +427,7 @@ window.addEventListener( "load", function () {
   } // sendData() function
 
   // Declare the variable the first time it is used, not a constant
-  var form = document.getElementById("ajaxForm"); // Access <form id="ajaxForm">, id="ajaxForm" can be anything
+  const form = document.getElementById("ajaxForm"); // Access <form id="ajaxForm">, id="ajaxForm" can be anything
   function listenToForm(){
     form.addEventListener( "submit", function(event) { // Takeover <input type="submit">
       event.preventDefault();

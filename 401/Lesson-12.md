@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 12: Secure Scripting & Command Hacks
 
 Ready the CLI
@@ -620,3 +620,9 @@ sudo apt install bsdgames
 - `teachgammon` - learn to play backgammon
 - `wargames` - shall we play a game?
 - `wtf` - translates acronyms for you
+
+___
+
+## Next: [Linux 501: Web Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
+
+## After: [Linux 601: SysAdmin](https://github.com/inkVerb/VIP/blob/master/601/README.md)

@@ -1,6 +1,6 @@
-# Shell 201: Files
+# Linux 201: Files
 
-## Prerequisite: [Shell 101](https://github.com/inkVerb/VIP/tree/master/101)
+## Prerequisite: [Linux 101](https://github.com/inkVerb/VIP/tree/master/101)
 
 ### [Lesson 0: sudo passwd](https://github.com/inkVerb/vip/blob/master/201/Lesson-00.md)
 

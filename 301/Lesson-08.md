@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 8: date & pwgen
 
 Ready the CLI

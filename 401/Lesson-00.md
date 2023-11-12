@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 0: 401 Cheat Sheets & Setup
 
 ### [Cron](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
@@ -15,7 +15,7 @@
 ___
 ## Prepare
 
-### I. OPTIONAL: If you did Shell 201, but on a different machine
+### I. OPTIONAL: If you did Linux 201, but on a different machine
 >
 > ___
 > Optional: You may login as a "sudoer" if needed
@@ -29,13 +29,13 @@ su Username
 > Arch/Manjaro:
 >
 > | **A1** :$
-
+>
 ```console
 sudo pacman -Syy
 ```
 >
 > | **A2** :$
-
+>
 ```console
 sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
@@ -43,13 +43,13 @@ sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2uni
 > Debian/Ubuntu:
 >
 > | **D1** :$
-
+>
 ```console
 sudo apt update
 ```
 >
 > | **D2** :$
-
+>
 ```console
 sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
@@ -57,14 +57,14 @@ sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pando
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** :$
-
+>
 ```console
 exit
 ```
 > ___
 >
 > | **M3** :$
-
+>
 ```console
 mkdir -p ~/School/VIP
 ```

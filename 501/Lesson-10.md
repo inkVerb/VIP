@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 10: Media Library, Files & Uploads
 
 Ready the CLI

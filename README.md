@@ -7,15 +7,17 @@ Start with Linux. Start simple. Start here.
 
 **Course list:**
 
-# [Shell 101: Arguments](https://github.com/inkVerb/VIP/blob/master/101/README.md)
+# [Linux 101: Arguments](https://github.com/inkVerb/VIP/blob/master/101/README.md)
 
-# [Shell 201: Files](https://github.com/inkVerb/VIP/blob/master/201/README.md)
+# [Linux 201: Files](https://github.com/inkVerb/VIP/blob/master/201/README.md)
 
-# [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301/README.md)
+# [Linux 301: Logic](https://github.com/inkVerb/VIP/blob/master/301/README.md)
 
-# [Shell 401: Advance](https://github.com/inkVerb/VIP/blob/master/401/README.md)
+# [Linux 401: Advance](https://github.com/inkVerb/VIP/blob/master/401/README.md)
 
-# [Shell 501: Web Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
+# [Linux 501: Web Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
+
+# [Linux 601: SysAdmin](https://github.com/inkVerb/VIP/blob/master/601/README.md)
 
 # [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)
 

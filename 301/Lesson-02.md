@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 2: Docs & Pausing (odt2txt, pandoc, sleep, read & wait)
 
 Ready the CLI

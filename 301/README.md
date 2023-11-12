@@ -1,6 +1,6 @@
-# Shell 301: Logic
+# Linux 301: Logic
 
-## Prerequisite: [Shell 201](https://github.com/inkVerb/VIP/tree/master/201)
+## Prerequisite: [Linux 201](https://github.com/inkVerb/VIP/tree/master/201)
 
 ### [Lesson 0: 301 Cheat Sheets & Setup](https://github.com/inkVerb/vip/blob/master/301/Lesson-00.md)
 

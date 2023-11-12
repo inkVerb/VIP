@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 1: if then fi, else & elif
 
 Ready the CLI

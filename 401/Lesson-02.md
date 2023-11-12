@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 2: netstat -natu, tcpdump, man, info
 
 Ready the CLI

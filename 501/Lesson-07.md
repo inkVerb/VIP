@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 7: Security Keys
 
 Ready the CLI
@@ -326,7 +326,7 @@ SELECT * FROM strings;
 
 ### Cleanup via `cron` Task
 
-We learned about `cron` tasks in [Shell 401 Lesson 3](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md)
+We learned about `cron` tasks in [Linux 401 Lesson 3](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md)
 
 We can use `cron` to run a php file
 
@@ -433,7 +433,7 @@ Files for `cron` jobs are finicky; follow all instructions carefully:
   - *We got `/usr/bin/php` by running: `which php`*
 - *[VIP/Cheat-Sheets: Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)*
 
-*We will edit with `vim` from [Shell 201 Lesson 11](https://github.com/inkVerb/vip/blob/master/201/Lesson-11.md#vim-is-for-awesome-people)*
+*We will edit with `vim` from [Linux 201 Lesson 11](https://github.com/inkVerb/vip/blob/master/201/Lesson-11.md#vim-is-for-awesome-people)*
 
 | **18** :$
 

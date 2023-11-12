@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 8: $IFS (Internal Field Separator)
 
 Ready the CLI

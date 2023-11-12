@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 2: cd, ../.., mkdir, rm -r
 
 Ready the CLI

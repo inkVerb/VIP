@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 1: PHP Core
 
 Ready the CLI
@@ -609,7 +609,7 @@ exit(header("Location: to_page.php"));
 
 #### Know the datatype!
 
-A "string" is a "datatype", which we looked at in [Shell 401 Lesson 6](https://github.com/inkVerb/vip/blob/master/401/Lesson-06.md)
+A "string" is a "datatype", which we looked at in [Linux 401 Lesson 6](https://github.com/inkVerb/vip/blob/master/401/Lesson-06.md)
 
 ##### Four Important Datatypes in PHP:
 - string *- any kind of raw text: name, email, web address (URL), blog post, mailing address, passwords, etc*
@@ -713,7 +713,7 @@ $Variable = ucwords($Variable);
 
 ##### RegEx Replacement & Arguments (Useful for Sanitizing and More)
 
-We looked at RegEx briefly in [Shell 401 Lesson 1](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md)
+We looked at RegEx briefly in [Linux 401 Lesson 1](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md)
 
 **RegEx arguments come from `(parentheses)`:**
 ```regex
@@ -775,7 +775,7 @@ localhost/web/phpreplace.php
 
 #### Basic PHP Escaping
 
-We looked at "escaping" certain characters in [Shell 101 Lesson 1](https://github.com/inkVerb/vip/blob/master/101/Lesson-11.md)
+We looked at "escaping" certain characters in [Linux 101 Lesson 1](https://github.com/inkVerb/vip/blob/master/101/Lesson-11.md)
 
 In any code language, certain characters "mean something", they must be "escaped" (AKA 'quoted' or 'cancelled') so the characters mean only themselves and are not "working" in the code
 

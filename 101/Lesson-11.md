@@ -1,4 +1,4 @@
-# Shell 101
+# Linux 101
 ## Lesson 11: RegEx: Quote/Escape Special Characters
 
 Ready the CLI

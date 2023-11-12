@@ -1,4 +1,4 @@
-# Shell 101
+# Linux 101
 ## Lesson 0: Terminal Control
 
 ___

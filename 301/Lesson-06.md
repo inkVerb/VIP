@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 6: exit & journalctl
 
 Ready the CLI
@@ -468,7 +468,7 @@ ls > /dev/null 2>&1
 
 *Note `journalctl` is for system logs, but you can create your own log files by directing output in this way*
 
-*Normally, in a full Linux app that honors the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md) (explaind in Shell 201) log files like these would be sent to `/var/log/somelogfile`, which must be owned by the Linux user running the script or needs `sudo` permissions, which is where most apps running on a Linux server send their logs, such as `apache`, `nginx`, `python`, `php`, `mysql`, `postfix`, etc*
+*Normally, in a full Linux app that honors the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md) (explaind in Linux 201) log files like these would be sent to `/var/log/somelogfile`, which must be owned by the Linux user running the script or needs `sudo` permissions, which is where most apps running on a Linux server send their logs, such as `apache`, `nginx`, `python`, `php`, `mysql`, `postfix`, etc*
 
 ### Review output numbers
 

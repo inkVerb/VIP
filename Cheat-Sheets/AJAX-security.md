@@ -1,6 +1,6 @@
 # Sending Securely in AJAX
 
-*Learn more about AJAX in [Shell 501 Lesson 6](https://github.com/inkVerb/vip/blob/master/501/Lesson-06.md)*
+*Learn more about AJAX in [Linux 501 Lesson 6](https://github.com/inkVerb/vip/blob/master/501/Lesson-06.md)*
 
 Anyone canlook in the browser developer tools and mess with your website
 

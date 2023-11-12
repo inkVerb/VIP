@@ -1,4 +1,4 @@
-# Shell 101
+# Linux 101
 ## Orientation: How these lessons work
 
 ___

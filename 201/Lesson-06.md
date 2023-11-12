@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 6: wget, curl, git clone
 
 Ready the CLI

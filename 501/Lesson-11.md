@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 11: Objects: OOP & PDO
 
 Ready the CLI

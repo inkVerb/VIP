@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 4: MySQL & `systemctl`
 
 Ready the CLI

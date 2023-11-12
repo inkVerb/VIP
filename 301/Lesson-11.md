@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 11: BASH select & dialog
 
 Ready the CLI

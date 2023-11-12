@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 8: CMS Blog: Edit, Display & TinyMCE
 
 Ready the CLI

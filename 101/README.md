@@ -1,4 +1,4 @@
-# Shell 101: Arguments
+# Linux 101: Arguments
 
 ## [Prepare: Apps used in these lessons](https://github.com/inkVerb/VIP/blob/master/Prepare.md)
 
@@ -20,7 +20,7 @@ ___
 
 ### [Lesson 5: Variables from Pipe & Command Substitution](https://github.com/inkVerb/vip/blob/master/101/Lesson-05.md)
 
-### [Lesson 6: tee](https://github.com/inkVerb/vip/blob/master/101/Lesson-06.md)
+### [Lesson 6: tee & < file input](https://github.com/inkVerb/vip/blob/master/101/Lesson-06.md)
 
 ### [Lesson 7: cat vs echo](https://github.com/inkVerb/vip/blob/master/101/Lesson-07.md)
 

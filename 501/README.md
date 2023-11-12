@@ -1,6 +1,6 @@
-# Shell 501: Web Stack
+# Linux 501: Web Stack
 
-## Prerequisite: [Shell 401](https://github.com/inkVerb/VIP/tree/master/401)
+## Prerequisite: [Linux 401](https://github.com/inkVerb/VIP/tree/master/401)
 
 ### [Lesson 0: LAMP Server Setup & HTML Fast](https://github.com/inkVerb/vip/blob/master/501/Lesson-00.md)
 

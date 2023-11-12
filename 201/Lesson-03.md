@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 3: Software, pacman, apt, dnf, lsb_release
 
 Ready the CLI

@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 5: More with Variables
 
 Ready the CLI

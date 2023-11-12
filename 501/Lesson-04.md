@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 4: App Install & User Login
 
 Ready the CLI

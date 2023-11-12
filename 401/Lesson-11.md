@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 11: RegEx Character Classes & Heredocs
 
 Ready the CLI
@@ -15,7 +15,7 @@ ___
 
 *For more about working with characters, refer to:* [VIP/Cheat-Sheets: Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
 
-1. In `sed` & `grep` use `[[double brackets]]` not `[single brackets]`
+1. Character classes use `[[:colon brackets:] inside brackets]` not `[single brackets]`
 2. Carrot `^` means "start of the line or string"
 3. Dollar Sign `$` means "end of the line or string"
 
@@ -137,6 +137,8 @@ sed "s/[2-6]/%/" code-of-poetry.txt
 sed "s/[a-u]/x/g" code-of-poetry.txt
 ```
 
+*Create and test more `grep` and `sed` commands against code-of-poetry.txt from the [Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) cheat sheet*
+
 ### II. Space via `echo`
 
 *`echo` a tab*
@@ -178,7 +180,6 @@ echo "First line"$'\n'now another line
 ```console
 echo "First line then"$'\n'now "another" line$'\t'"after tab"
 ```
-
 
 ### III. Heredoc: `cat <<EOF`
 

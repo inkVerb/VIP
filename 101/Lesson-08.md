@@ -1,4 +1,4 @@
-# Shell 101
+# Linux 101
 ## Lesson 8: echo, sed, cat, tee & pipe scripts
 
 Ready the CLI

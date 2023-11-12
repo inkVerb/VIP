@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 10: Dynamics of Functions
 
 Ready the CLI

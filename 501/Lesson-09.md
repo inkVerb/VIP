@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 9: Content List: Loops, Arrays, JSON & AJAX
 
 Ready the CLI

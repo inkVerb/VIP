@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 3: MySQL & PHP MySQLi
 
 Ready the CLI

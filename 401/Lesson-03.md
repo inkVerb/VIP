@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 3: Cron Daemon & $PATH Variable
 
 Ready the CLI

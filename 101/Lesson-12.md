@@ -1,4 +1,4 @@
-# Shell 101
+# Linux 101
 ## Lesson 12: grep with Special Characters
 
 Ready the CLI
@@ -178,4 +178,4 @@ sudo dnf install cowsay
 
 ___
 
-## Next: [Shell 201: Files](https://github.com/inkVerb/VIP/blob/master/201/README.md)
+## Next: [Linux 201: Files](https://github.com/inkVerb/VIP/blob/master/201/README.md)

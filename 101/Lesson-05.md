@@ -1,4 +1,4 @@
-# Shell 101
+# Linux 101
 ## Lesson 5: Variables from Pipe & Command Substitution
 
 Ready the CLI
@@ -396,4 +396,4 @@ variable="$(echo "something here")"
 
 ___
 
-#### [Lesson 6: tee](https://github.com/inkVerb/vip/blob/master/101/Lesson-06.md)
+#### [Lesson 6: tee & < file input](https://github.com/inkVerb/vip/blob/master/101/Lesson-06.md)

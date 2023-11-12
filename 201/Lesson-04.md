@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 4: ls -1 -l -a -r, chmod
 
 Ready the CLI

@@ -154,6 +154,11 @@ sort -r sortme
 
 ### `diff`
 
+There are three main commands that compare files:
+- `diff` (many options)
+- `cmp` (returns position of first difference)
+- `comm` (three columns, only processes files sorted with `sort`)
+
 | **18** :$
 
 ```console
@@ -296,17 +301,98 @@ man diff
 cd ..
 ```
 
+#### `cmp`
+
+| **36** :$
+
+```console
+cmp frc-1 frc-2
+```
+
+| **37** :$
+
+```console
+cmp frc-1 frc-3
+```
+
+| **38** :$
+
+```console
+cmp frc-1 frc-4
+```
+
+| **39** :$
+
+```console
+cmp frc-1 frc-5
+```
+
+| **40** :$
+
+```console
+cmp frc-1 frc-6
+```
+
+#### `comm`
+
+*First, prepare by creating sorted files*
+
+| **41** :$
+
+```console
+mkdir sorted
+sort frc-1 > sorted/frc-1
+sort frc-2 > sorted/frc-2
+sort frc-3 > sorted/frc-3
+sort frc-4 > sorted/frc-4
+sort frc-5 > sorted/frc-5
+sort frc-6 > sorted/frc-6
+gedit sorted/*
+```
+
+*Remember, these are sorted, so all lines have been re-arranged for alphabetical order...*
+
+| **42** :$
+
+```console
+comm sorted/frc-1 sorted/frc-2
+```
+
+| **43** :$
+
+```console
+comm sorted/frc-1 sorted/frc-3
+```
+
+| **44** :$
+
+```console
+comm sorted/frc-1 sorted/frc-4
+```
+
+| **45** :$
+
+```console
+comm sorted/frc-1 sorted/frc-5
+```
+
+| **46** :$
+
+```console
+comm sorted/frc-1 sorted/frc-6
+```
+
 ### `nano`
 
 *The simple text editor in the terminal*
 
-| **36** :$
+| **47** :$
 
 ```console
 cd verb.ink
 ```
 
-| **37** :$
+| **48** :$
 
 ```console
 nano verb.ink.html
@@ -321,7 +407,7 @@ nano verb.ink.html
 *Take note of:* ^K ^W ^O ^X M-U
 
 *Note* ^Z *will "stop" the nano session, not "undo"*
-- If you ^Z back to the terminal, resume with `fg nano`, see [Shell 101 Lesson 0](https://github.com/inkVerb/VIP/blob/master/101/Lesson-00.md)
+- If you ^Z back to the terminal, resume with `fg nano`, see [Linux 101 Lesson 0](https://github.com/inkVerb/VIP/blob/master/101/Lesson-00.md)
 
 *(<kbd>Ctrl</kbd> + <kbd>X</kbd> to eXit)*
 
@@ -329,7 +415,7 @@ nano verb.ink.html
 
 *The terminal editor used by cool people*
 
-| **38** :$
+| **49** :$
 
 ```console
 vim verb.ink.html
@@ -341,7 +427,7 @@ vim verb.ink.html
 
 *Vim has a tutorial*
 
-| **39** :$ *(inside Vim, use* :q *to quit)*
+| **50** :$ *(inside Vim, use* :q *to quit)*
 
 ```console
 vimtutor
@@ -374,6 +460,7 @@ ___
 - `sort` re-orders the lines of a file alphabetically
   - `-r` for reverse alphabetical
 - `diff` compares two files by line
+  - Many options
   - Usage: `diff file1 file2`
   - a = "added"
   - d = "deleted"
@@ -382,6 +469,8 @@ ___
   - `-i` ignore case
   - `-w` ignore all "white space" (Returns and extra spaces)
   - `-y` displays files side-by-side
+- `cmp` returns only the first difference
+- `comm` only compares files that have been sorted via `sort`, returning three columns
 
 ## Terminal text editors
 ### `nano` is great for beginners

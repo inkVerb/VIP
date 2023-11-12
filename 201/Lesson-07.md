@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 7: tar, xz, zip, gzip, bzip2
 
 Ready the CLI

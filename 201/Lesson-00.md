@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 0: sudo passwd
 
 ___
@@ -13,7 +13,7 @@ mkdir -p ~/School/VIP/201
 
 ### Create `su` (Super User) password
 
-The Shell 201 course occasionally requires `sudo` AKA `su` AKA "root" permissions.
+The Linux 201 course occasionally requires `sudo` AKA `su` AKA "root" permissions.
 
 If you are not a "sudoer", you need the machine (computer) administrator (mom, dad, owner, teacher?) nearby to input the password for some `sudo` jobs in the lessons.
 
@@ -30,7 +30,7 @@ ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** :$
-
+>
 ```console
 su username
 ```
@@ -54,10 +54,11 @@ ___
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** :$
-
+>
 ```console
 exit
 ```
+>
 ___
 
 *Login as `su` to see what it's like*

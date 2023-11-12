@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 7: Multiple Tests, Count-Loops, source & Functions
 
 Ready the CLI

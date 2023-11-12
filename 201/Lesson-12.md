@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 12: File System Hierarchy (FSH)
 
 Ready the CLI (might not be needed)
@@ -560,4 +560,4 @@ ___
 vimtutor
 ```
 
-## Next: [Shell 301: Logic](https://github.com/inkVerb/VIP/blob/master/301/README.md)
+## Next: [Linux 301: Logic](https://github.com/inkVerb/VIP/blob/master/301/README.md)

@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 1: cp, mv, ln -s, rm, touch
 
 Ready the CLI

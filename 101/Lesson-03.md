@@ -1,4 +1,4 @@
-# Shell 101
+# Linux 101
 ## Lesson 3: Arguments & Variables Review
 
 Ready the CLI
@@ -153,7 +153,7 @@ ls
 ./allarg I like to eat bananas in the morning, with eggs, over easy that is.
 ```
 
-*This `@` means "everything" in web DNS, arrays (Shell 301), and many other things*
+*This `@` means "everything" in web DNS, arrays (Linux 301), and many other things*
 
 ### Terms: Variable, Argument, Constant
 ```sh

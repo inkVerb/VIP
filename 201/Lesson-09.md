@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 9: du, df, top, ps aux, pgrep, kill
 
 Ready the CLI (might not be needed)

@@ -1,4 +1,4 @@
-# Shell 201
+# Linux 201
 ## Lesson 5: su, adduser, deluser, chown
 
 Ready the CLI

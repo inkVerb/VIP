@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 12: XML
 
 This lesson uses XML CLI tools install in [Lesson 0: Server, LAMP Setup & HTML Fast](https://github.com/inkVerb/vip/blob/master/501/Lesson-00.md)
@@ -3528,3 +3528,7 @@ Features to be added
     - Shortcodes
     - Widgets
     - Modeled after the badAd WordPress plugin
+
+_
+
+## Next: [Linux 601: SysAdmin](https://github.com/inkVerb/VIP/blob/master/601/README.md)

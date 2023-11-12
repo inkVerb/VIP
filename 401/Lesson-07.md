@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 7: More with while & sed
 
 Ready the CLI

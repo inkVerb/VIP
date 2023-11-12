@@ -1,4 +1,4 @@
-# Shell 401
+# Linux 401
 ## Lesson 9: Interpreters, errors, logic, and empty testing
 
 Ready the CLI

@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 12: BASH getopts & getopt
 
 Ready the CLI
@@ -485,4 +485,4 @@ pacman4console
 
 ___
 
-## Next: [Shell 401: Advance](https://github.com/inkVerb/VIP/blob/master/401/README.md)
+## Next: [Linux 401: Advance](https://github.com/inkVerb/VIP/blob/master/401/README.md)

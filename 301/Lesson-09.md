@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 9: Arithmetic
 
 Ready the CLI

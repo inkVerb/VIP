@@ -1,6 +1,6 @@
 # Cron Schedule Tasks
 
-Learn more about using `cron` tasks in: **[Shell 401 Lesson 3: Cron Daemon](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)**
+Learn more about using `cron` tasks in: **[Linux 401 Lesson 3: Cron Daemon](https://github.com/inkVerb/vip/blob/master/401-shell/Lesson-03.md)**
 
 ## I. Proper `cron` task line formatting
 

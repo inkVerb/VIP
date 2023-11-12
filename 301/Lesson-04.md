@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 4: for Applied
 
 Ready the CLI

@@ -1,6 +1,6 @@
-# Shell 401: Advance
+# Linux 401: Advance
 
-## Prerequisite: [Shell 301](https://github.com/inkVerb/VIP/tree/master/301)
+## Prerequisite: [Linux 301](https://github.com/inkVerb/VIP/tree/master/301)
 
 ### [Lesson 0: 401 Cheat Sheets & Setup](https://github.com/inkVerb/vip/blob/master/401/Lesson-00.md)
 

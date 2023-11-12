@@ -1,4 +1,4 @@
-# Shell 301
+# Linux 301
 ## Lesson 0: 301 Cheat Sheets & Setup
 
 ### [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
@@ -12,13 +12,13 @@
 ___
 ## Prepare
 
-### I. OPTIONAL: If you did Shell 201, but on a different machine
+### I. OPTIONAL: If you did Linux 201, but on a different machine
 >
 > ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** :$
-
+>
 ```console
 su Username
 ```
@@ -26,13 +26,13 @@ su Username
 > Arch/Manjaro:
 >
 > | **A1** :$
-
+>
 ```console
 sudo pacman -Syy
 ```
 >
 > | **A2** :$
-
+>
 ```console
 sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc texlive-core pwgen unzip
 ```
@@ -40,13 +40,13 @@ sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2uni
 > Debian/Ubuntu:
 >
 > | **D1** :$
-
+>
 ```console
 sudo apt update
 ```
 >
 > | **D2** :$
-
+>
 ```console
 sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
@@ -54,13 +54,13 @@ sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pando
 > CentOS/Fedora:
 >
 > | **C1** :$
-
+>
 ```console
 sudo dnf update
 ```
 >
 > | **C2** :$
-
+>
 ```console
 sudo dnf install -y curl cowsay dialog git net-tools htop dos2unix pwgen unzip redhat-lsb-core
 ```
@@ -70,14 +70,14 @@ sudo dnf install -y curl cowsay dialog git net-tools htop dos2unix pwgen unzip r
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** :$
-
+>
 ```console
 exit
 ```
 > ___
 >
 > | **M3** :$
-
+>
 ```console
 mkdir -p ~/School/VIP
 ```

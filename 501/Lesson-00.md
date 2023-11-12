@@ -1,4 +1,4 @@
-# Shell 501
+# Linux 501
 ## Lesson 0: Server, LAMP Setup & HTML Fast
 
 - Manjaro/Ubuntu/CentOS: [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
@@ -84,13 +84,13 @@ On a live, online web server, **`localhost`** could be **`inkisaverb.com`** or *
 
 ## Prepare
 
-### I. OPTIONAL: If you did Shell 201, but on a different machine
+### I. OPTIONAL: If you did Linux 201, but on a different machine
 >
 > ___
 > Optional: You may login as a "sudoer" if needed
 >
 > | **S1** :$
-
+>
 ```console
 su Username
 ```
@@ -98,13 +98,13 @@ su Username
 > Arch/Manjaro:
 >
 > | **A1** :$
-
+>
 ```console
 sudo pacman -Syy
 ```
 >
 > | **A2** :$
-
+>
 ```console
 sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc texlive-core pwgen unzip
 ```
@@ -112,13 +112,13 @@ sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2uni
 > Debian/Ubuntu:
 >
 > | **D1** :$
-
+>
 ```console
 sudo apt update
 ```
 >
 > | **D2** :$
-
+>
 ```console
 sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
@@ -132,7 +132,7 @@ sudo dnf update
 ```
 >
 > | **C2** :$
-
+>
 ```console
 sudo dnf install -y curl cowsay dialog git net-tools htop dos2unix pwgen unzip redhat-lsb-core
 ```
@@ -142,14 +142,14 @@ sudo dnf install -y curl cowsay dialog git net-tools htop dos2unix pwgen unzip r
 > Optional: IF you logged in as a "sudoer", now exit
 >
 > | **S2** :$
-
+>
 ```console
 exit
 ```
 > ___
 >
 > | **M3** :$
-
+>
 ```console
 mkdir -p ~/School/VIP
 ```
