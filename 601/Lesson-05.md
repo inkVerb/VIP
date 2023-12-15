@@ -25,4 +25,4 @@ ___
 
 ___
 
-#### [Lesson 6: Network](https://github.com/inkVerb/vip/blob/master/601/Lesson-06.md)
+#### [Lesson 6: Users](https://github.com/inkVerb/vip/blob/master/601/Lesson-06.md)

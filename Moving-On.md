@@ -59,7 +59,7 @@ You can skip [Linux 501](https://github.com/inkVerb/VIP/blob/master/501/README.m
 - This does not claim to be a comprehensive study guide, but approaches learning from the same organic, real-world approach
 - This course is an in-depth ***preview*** of the topics covered in the *Linux Foundation System Administrator Essentials* course
   - All topics will be addressed, introduced, and explained
-  - You may be able to pass the LFCS exam after taking this course alone, but the full training from the Linux Foundation is strongly recommended for anyone administering a mission-critical Linux server
+  - You may be able to pass the LFCS exam after taking this course alone, there is no guarantee, and the Linux Foundation courses are recommended
   - This course seeks to make that training faster and easier
   - This course seeks to boost LFCS exam scores and make the exam easier for those likely pass the exam anyway, but no guarantees
   - Success, improved scores with any exam, or ease with other training course are never guaranteed

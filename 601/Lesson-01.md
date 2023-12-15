@@ -1,5 +1,5 @@
 # Linux 601
-## Lesson 1: Commands & Package Managers
+## Lesson 1: Information Commands & Package Managers
 
 Ready the CLI
 
@@ -26,6 +26,9 @@ ___
 - `whereis`
 - `whatis`
 - `type`
+- `whoami`
+- `pwd`
+- `lsb_release -d`
 ## Package Managers
 - `dpkg`
 - `apt` (Debian)

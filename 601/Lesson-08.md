@@ -1,5 +1,5 @@
 # Linux 601
-## Lesson 8: Firewall
+## Lesson 8: Network
 
 Ready the CLI
 

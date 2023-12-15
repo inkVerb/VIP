@@ -1,5 +1,5 @@
 # Linux 601
-## Lesson 9: System Init
+## Lesson 9: LDAP
 
 Ready the CLI
 
@@ -25,4 +25,4 @@ ___
 
 ___
 
-#### [Lesson 10: Backup & Recovery](https://github.com/inkVerb/vip/blob/master/601/Lesson-10.md)
+#### [Lesson 10: Firewall & Security Modules](https://github.com/inkVerb/vip/blob/master/601/Lesson-10.md)

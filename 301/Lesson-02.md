@@ -526,6 +526,7 @@ ___
   - It has many options, but it is a simple way to let the human input variables during a script
 - `sleep` will wait a number of seconds, then continue
   - This can be useful in scripts, such as pausing the needed 2 seconds between Apache web server restarts
+  - Example of `sleep` 15 minutes a complex command: `(sleep 900; ~/runmelater.sh) &`
 - `wait` "waits" for the previous process to finish until moving on
   - This can prevent busy scripts from breaking
   - `wait` without arguments will simply wait for the previous process

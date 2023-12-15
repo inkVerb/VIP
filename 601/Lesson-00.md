@@ -140,4 +140,4 @@ ___
 
 ___
 
-#### [Lesson 1: Commands & Package Managers](https://github.com/inkVerb/vip/blob/master/601/Lesson-01.md)
+#### [Lesson 1: Information Commands & Package Managers](https://github.com/inkVerb/vip/blob/master/601/Lesson-01.md)

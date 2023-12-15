@@ -20,15 +20,16 @@ cd /
 | **2** :$
 
 ```console
-ls
+du -hsxc --exclude=proc *
 ```
 
-
-*This is the root of the Linux file system.*
+## *"Everything in Linux is a file."*
 
 ### `/` – Root Directory
 
-This is the directory of all directories.
+*This is the root of the Linux file system*
+
+This is the directory containing all directories
 
 ### Settings that change
 
@@ -43,12 +44,14 @@ cd home
 | **4** :$
 
 ```console
-ls
+ls -lF
 ```
 
 This is where your stuff goes. All your `Documents/` and `Downloads/` and `Desktop/` and other folders are in `/home/YourUSER/`, which is also the same as `~/` since it changes from user to user.
 
 #### `/root/` – "Root" user Home Directory (also what `sudo` calls 'home')
+
+This is also called "slash root", not to be confused with "the root directory" `/`
 
 | **5** :$ *"Permission denied" ?? Sometimes it doesn't exist, depending on whether root has created it*
 
@@ -59,7 +62,7 @@ cd ../root
 | **6** :$
 
 ```console
-ls
+ls -lF
 ```
 
 This is the "home" folder where stuff is kept when the "root" user needs to do something. If you login as "root", the first directory you see in the terminal should be here, written as `~/` in the terminal.
@@ -77,7 +80,7 @@ cd ../etc
 | **8** :$
 
 ```console
-ls
+ls -lF
 ```
 
 This is where most system-specific settings are stored, for example Apache, PHP, MySQL and others will have there core, most fundamental settings here. As an admin, you will need to adjust settings in this directory often.
@@ -107,7 +110,7 @@ cd ../boot
 | **10** :$
 
 ```console
-ls
+ls -lF
 ```
 
 This is for stuff that helps the computer to turn on. Don't mess.
@@ -123,7 +126,7 @@ cd ../lib
 | **12** :$
 
 ```console
-ls
+ls -lF
 ```
 
 Files that go here may be occasionally be called "dependencies". Such a "library" is a set of files used by a variety of different software applications. These libraries are used quite often by graphic and media apps since many desktop media apps actually share many of the same backend tools.
@@ -139,7 +142,7 @@ cd ../bin
 | **14** :$
 
 ```console
-ls
+ls -lF
 ```
 
 A "binary" is a computer program that has been "compiled" into using core computer language that humans can't read or understand. This is where programs like `sed`, `cat`, `echo`, `cp`, `ls`, `grep`, etc actually live. Most Linux commands are actually small programs that can be found in this directory, `sh` and `bash` from `#!/bin/sh` and `#!/bin/bash` included!
@@ -157,7 +160,7 @@ cd ../sbin
 | **16** :$
 
 ```console
-ls
+ls -lF
 ```
 
 These are more basic binaries, but they are used by the system processes, not a normal part of the Shell language because most users won't use these.
@@ -175,7 +178,7 @@ cd ../usr
 | **18** :$
 
 ```console
-ls
+ls -lF
 ```
 
 This is where installable binaries go from installable packages. When you run `sudo apt install Something` the installed program will usually put its executable files here.
@@ -195,7 +198,7 @@ cd ../opt
 | **20** :$
 
 ```console
-ls
+ls -lF
 ```
 
 This is where applications go when they don't follow the rules of this file system hierarchy. This is a great place to put your own software while you are being inventive.
@@ -211,12 +214,12 @@ cd ../snap
 | **22** :$
 
 ```console
-ls
+ls -lF
 ```
 
-This is where "snap" applications are installed. Snap is different from the system Debian repository structure. It has its own install and repository structure, but is included in the Ubuntu Software Center as of Ubuntu 18.04.
+This is where "snap" applications are installed. Snap is different from the system Debian repository structure. It has its own install and repository structure, but is included in the Ubuntu Software Center as of Ubuntu 18.04
 
-Snap is a more powerful way of managing apps because it runs every app in its own "container", so if it crashes it does not risk crashing the entire system.
+Snap is a more powerful way of managing apps because it runs every app in its own "container", so if it crashes it does not risk crashing the entire system
 
 ### Connected gadgets
 
@@ -231,20 +234,120 @@ cd ../cdrom
 | **24** :$
 
 ```console
-ls
+ls -lF
 ```
 
-This is the classic path to the on-board CD-ROM drive.
+This is the classic path to the on-board CD-ROM drive
+
+#### `/mnt/` — Mount (temporarily mount permanently connected drives)
+
+| **25** :$
+
+```console
+cd ../mnt
+```
+
+| **26** :$
+
+```console
+ls -lF
+```
+
+This is where that Windows partition may show up if you decide to take a look at it while booted in Linux. It's also where other, non-system storage drives will appear when mounted
+
+#### `/media/` — Removable Media (i.e. USB drives)
+
+| **27** :$ *"No such file or directory" if you don't have a USB in the drive, which you probably don't*
+
+```console
+cd ../media
+```
+
+| **28** :$
+
+```console
+ls -lF
+```
+
+This is where USB-connected drives usually mount.
+
+### Ever-changing
+
+#### `/var/` — Variable Data
+
+| **29** :$
+
+```console
+cd ../var
+```
+
+| **30** :$
+
+```console
+ls -lF
+```
+
+This usually contains...
+
+- Log files: `log/`
+- SQL databases: `lib/mysql/` (MySQL/MariaDB) or `lib/pgsql` (PostgreSQL)
+- Swap: the .swp "swap file" (virtual RAM), if it is a file and not a partition
+
+Things here can and need to change often.
+
+This usually contains `www/` (webserver directory) for:
+
+- Red Hat (CentOS & Fedora)
+- Debian (Debian & Ubuntu)
+
+#### `/srv/` – Service Data (data for services provided by the system)
+
+| **31** :$
+
+```console
+cd ../srv
+```
+
+| **32** :$
+
+```console
+ls -lF
+```
+
+
+This is for "served" files or services by name
+
+- `mail/` or `vmail/`
+- `ftp/`
+- `www/`
+
+It is used this way on:
+
+- Arch (& Manjaro)
+- openSUSE (& SUSE)
+
+Fedora and Debian use `/var/` for served files and leave `/srv/` empty
+
+### Pseudo file systems
+
+These are *pseudo* file systems, which exist in memory only
+
+When the system is not running, these directories are empty and when running they don't take up disk space
+
+- `/dev/`
+- `/proc/`
+- `/run/`
+- `/sys/` 
 
 #### `/dev/` — Devices
 
-| **25** :$
+| **33** :$
 
 ```console
 cd ../dev
 ```
 
-| **26** :$
+| **34** :$
 
 ```console
 ls -l
@@ -259,94 +362,31 @@ brw-rw----  1 root disk ... some-block
 crw--w----  1 root tty  ... some-tty
 ```
 
-A bluetooth device may be in here somewhere.
+A bluetooth device may be in here somewhere
 
-#### `/mnt/` — Mount (temporarily mount permanently connected drives)
+#### `/proc/` — Kernel & Process (files used by the kernel)
 
-| **27** :$
-
-```console
-cd ../mnt
-```
-
-| **28** :$
+| **35** :$
 
 ```console
-ls
+cd ../proc
 ```
 
-This is where that Windows partition may show up if you decide to take a look at it while booted in Linux. It's also where other, non-system storage drives will appear when mounted
-
-#### `/media/` — Removable Media (i.e. USB drives)
-
-| **29** :$ *"No such file or directory" if you don't have a USB in the drive, which you probably don't*
+| **36** :$
 
 ```console
-cd ../media
+ls -lF
 ```
 
-| **30** :$
+These are essential for the most basic part of the system to function
 
-```console
-ls
-```
-
-This is where USB-connected drives usually mount.
-
-### Ever-changing
-
-#### `/var/` — Variable Data
-
-| **31** :$
-
-```console
-cd ../var
-```
-
-| **32** :$
-
-```console
-ls
-```
-
-This usually contains...
-
-- Log files: `log/`
-- Email: `email/` or `mail/` or `vmail/`
-- SQL databases: `lib/mysql/` (MySQL/MariaDB) or `lib/pgsql` (PostgreSQL)
-- Swap: the .swp "swap file" (virtual RAM), if it is a file and not a partition
-
-Things here can and need to change often.
-
-This usually contains `www/` (webserver directory) for:
-
-- Red Hat (CentOS & Fedora)
-- Debian (Debian & Ubuntu)
-
-#### `/srv/` – Service Data (data for services provided by the system)
-
-| **33** :$
-
-```console
-cd ../srv
-```
-
-| **34** :$
-
-```console
-ls
-```
-
-This contains `www/` (webserver directory) for:
-
-- Arch (& Manjaro)
-- openSUSE (& SUSE)
+When runninf `du` from `/` (as in command 2), it is good to add `--exclude=proc` because they don't take actual space
 
 #### `/run/` – Running pipes & sockets (the socket drawer)
 
 This contains "while-running" files, caches, sockets, pipes, and other files that may need to be semi-temporary, but that shouldn't be automatically deleted.
 
-| **35** :$
+| **37** :$
 
 ```console
 cd ../run
@@ -355,10 +395,10 @@ cd ../run
 - This is often linked to `/var/run`
 - This uses "socket" files
 
-| **36** :$
+| **38** :$
 
 ```console
-ls -l
+ls -lF
 ```
 
 *Note permissions starting with `s` for "socket" and `p` for "pipe"*
@@ -372,10 +412,10 @@ prw------- 1 root root ... some-pipe
 
 Sockets should usually kept in subdirectories of `/run/`
 
-| **37** :$
+| **39** :$
 
 ```console
-ls
+ls -lF
 ```
 
 ##### Sockets & `/run/` subdirectories
@@ -412,22 +452,6 @@ d /run/myapp 0755 www www
 
 You could also create the `/run/` subdirectory so the app will run without reboot
 
-#### `/proc/` — Kernel & Process (files used by the kernel)
-
-| **38** :$
-
-```console
-cd ../proc
-```
-
-| **39** :$
-
-```console
-ls
-```
-
-These are essential for the most basic part of the system to function.
-
 #### `/sys/` – System's virtual file (live kernel information)
 
 | **40** :$
@@ -439,7 +463,7 @@ cd /sys
 | **41** :$
 
 ```console
-ls
+ls -lF
 ```
 
 This is a virtual file system, allowing normal text-file-like access to information about the system. It can contain live (virtual) text files that change as the system changes.
@@ -455,7 +479,7 @@ cd ../tmp
 | **43** :$
 
 ```console
-ls
+ls -lF
 ```
 
 These eventually get deleted by the system. Usually, when you choose to "open" a file from the Internet, rather than "save" it, the file is saved here.
@@ -473,9 +497,13 @@ ___
 - `/bin/` holds most of the Linux/Unix commands we use all the time
 - `/var/` holds
   - Logs
-  - The `/var/www/` "web" folder used by Apache and Nginx web servers
+  - Variables
   - The `/var/lib/mysql/` MySQL database folder
-  - Email folders
+- `/srv/` is for served files, like web or mail
+  - `mail/`
+  - `www/`
+  - `ftp/`
+- `/srv/` and `/var/` are often used for the same services on different Linux distros
 - `/lib/` holds common libraries used by multiple apps
 - `/usr/` holds the core "binary" files for most desktop apps
 - Settings for apps usually reside in either:
@@ -484,14 +512,18 @@ ___
 - `/etc/` holds text-controlled settings for system apps like MySQL, PHP, Python, Apache, Nginx, etc
 - `/media/` is where USB drives usually mount
 - `/mount/` is where internal drives (ie SATA) usually mount
-- `/sbin/`, `/boot/`, `/proc/`, `/srv/`, `/sys/` are core operating system folders, don't touch!
+- `/sbin/`, `/boot/`, `/sys/` are core operating system folders, don't touch!
 - `/tmo/` is where most temporary files go, including browser downloads in progress
 - `/opt/` is for software that doesn't always follow these "FSH" rules
-- `/run/` is for sockets
-  - `/var/run/` is often a symlink of `/run/`
-  - A socket file needs its directory to be created, the software will create the actual socket file by itself
-  - Socket files often have a location setting in the `/etc/...` settings files
-
+- Pseudo directories that exist in memory only, empty when the system is not running
+  - `/dev/`
+  - `/proc/`
+  - `/sys/`
+  - `/run/`
+    - `/run/` is for sockets
+      - `/var/run/` is often a symlink of `/run/`
+      - A socket file needs its directory to be created, the software will create the actual socket file by itself
+      - Socket files often have a location setting in the `/etc/...` settings files
 ___
 
 # Done! Have a cookie: ### #

@@ -1,5 +1,5 @@
 # Linux 601
-## Lesson 7: LDAP
+## Lesson 7: Mail
 
 Ready the CLI
 
@@ -21,8 +21,11 @@ command 1
 ___
 
 # The Take
+## Postfix
+## Dovecot
+## CLI
 
 
 ___
 
-#### [Lesson 8: Firewall](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)
+#### [Lesson 8: Network](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)

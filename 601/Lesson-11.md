@@ -1,5 +1,5 @@
 # Linux 601
-## Lesson 11: Security Modules
+## Lesson 11: System Init
 
 Ready the CLI
 
@@ -25,4 +25,4 @@ ___
 
 ___
 
-#### [Lesson 12: System Rescue](https://github.com/inkVerb/vip/blob/master/601/Lesson-12.md)
+#### [Lesson 12: Backup, Recovery & System Rescue](https://github.com/inkVerb/vip/blob/master/601/Lesson-12.md)

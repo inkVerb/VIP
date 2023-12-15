@@ -1,5 +1,5 @@
 # Linux 601
-## Lesson 10: Backup & Recovery
+## Lesson 10: Firewall & Security Modules
 
 Ready the CLI
 
@@ -25,4 +25,4 @@ ___
 
 ___
 
-#### [Lesson 11: Security Modules](https://github.com/inkVerb/vip/blob/master/601/Lesson-11.md)
+#### [Lesson 11: System Init](https://github.com/inkVerb/vip/blob/master/601/Lesson-11.md)

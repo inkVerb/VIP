@@ -628,25 +628,25 @@ A "string" is a "datatype", which we looked at in [Linux 401 Lesson 6](https://g
 filter_var($Variable, FILTER_VALIDATE_URL)
 
 // Test an email address
-filter_var($Variable,FILTER_VALIDATE_EMAIL)
+filter_var($Variable, FILTER_VALIDATE_EMAIL)
 
 // Test an integer
 filter_var($Variable, FILTER_VALIDATE_INT)
 
 // Test for string length (eg. up to 128)
-( strlen($value) <= 128 )
+( strlen($Variable) <= 128 )
 
 // Test a number with RegEx (6-32 characters)
-preg_match('/[0-9]{6,32}$/i', $Variable)
+preg_match('/^[0-9]{6,32}$/', $Variable)
 
 // Test for letters wtih RegEx, (any case, 6-32 characters)
-preg_match('/[a-zA-Z]{6,32}$/i', $Variable)
+preg_match('/^[a-zA-Z]{6,32}$/i', $Variable)
 
 // Test for alphanumeric characters or underscore wtih RegEx, (any case, any length)
-preg_match('/[a-zA-Z0-9_]$/i', $Variable)
+preg_match('/^[a-zA-Z0-9_]$/i', $Variable)
 
 // Test for password (6-32 characters, 1 uppercase, 1 lowercase, 1 number, and allow special characters: ! @ & # $ %)
-preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variable)
+preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variable)
 ```
 
 *Review the diagram above along side the following two steps...*
@@ -733,7 +733,7 @@ $number = preg_replace('/[0-9]/','#',$number); // numbers to '#'
 
 // 1st alphanumeric set becomes $1; 2nd becomes $2
 // '_dogfish_' to '_GoldFish_', preserving what is before and after
-$argmnt = preg_replace('/([a-zA-Z0-9]+)_dogfish_([a-zA-Z0-9]+)/','$1_GoldFish_$2',$argmnt);
+$argued = preg_replace('/([a-zA-Z0-9]+)_dogfish_([a-zA-Z0-9]+)/','$1_GoldFish_$2',$argued);
 // The $ in the first part makes sure the whole word is preserved
 ```
 
@@ -758,10 +758,10 @@ ls web
 */
 $dash = preg_replace('/([A-Z].[a-z]+)-([A-Z].[a-z]+)/','$1–$2',$dash); // Proper noun range to en-dash (days, months, etc)
 $dash = preg_replace('/([0-9]+)-([0-9]+)/','$1–$2',$dash); // digit range to en-dash
+$dash = str_replace('---','—',$dash); // to em-dash, someone made certain, run this first so double dashes don't get caught before this
 $dash = str_replace(' -- ',' – ',$dash); // to en-dash if couched in spaces
 $dash = str_replace(' --','—',$dash); // to em-dash, no space before
 $dash = str_replace('-- ','—',$dash); // to em-dash, no space after
-$dash = str_replace('---','—',$dash); // to em-dash, someone made certain
 $dash = str_replace('--','—',$dash); // to em-dash
 ```
 
@@ -838,8 +838,8 @@ localhost/web/phppost.php
 
 **Validate:** `01-phpregex1.php`
 ```php
-filter_var()
 preg_match()
+filter_var()
 ```
 
 **Sanitize:** `01-phpregex3.php`
@@ -854,7 +854,7 @@ strtolower()
  substr($String, 0, 128) // Truncate
 
 // Nested functions also work
-substr(preg_replace($String), 0, 128)
+substr(preg_replace("$regex","", $String), 0, 128)
 ```
 
 ### IV. PHP Functions in Forms

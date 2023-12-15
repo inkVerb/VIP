@@ -1,5 +1,5 @@
 # Linux 601
-## Lesson 12: System Rescue
+## Lesson 12: Backup, Recovery & System Rescue
 
 Ready the CLI
 
@@ -30,3 +30,5 @@ ___
 It's time to go to [The Linux Foundation](https://training.linuxfoundation.org/) and get certified
 
 Start by searching for the *Linux Foundation Certified System Administrator (LFCS)* certification
+
+If you haven't yet, be sure to finish [Linux 501: Web Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)

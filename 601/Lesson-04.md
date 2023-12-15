@@ -21,7 +21,7 @@ command 1
 ___
 
 # The Take
-
+- `dmesg` display kernel messages
 
 ___
 
