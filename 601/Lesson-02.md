@@ -296,15 +296,16 @@ gpgcheck=1
 
 ### `pacman` & `yay` (Arch)
 - *`pacman` and `yay` are not built one atop the other, as stacks are with `dpkg` and `rpm`*
-- Both based on `makepkg` (see [Arch makepkg site](https://wiki.archlinux.org/title/Makepkg))
+- Both based on the work of `makepkg` (see [Arch makepkg site](https://wiki.archlinux.org/title/Makepkg))
   - Simplifies compiling steps [from same explanation as above](https://unix.stackexchange.com/questions/605928))
-  - Basically, `makepkg -i` looks at `PKGBUILD`, then runs whatever is needed, probably something like:
+  - Basically, `makepkg` looks at `PKGBUILD`, then runs whatever is needed, probably something like:
 ```
 configure
 make
 make install DESTDIR=/usr
 ```
-  - or `cmake` or `cargo` or `npm --build` etc
+  - or `cmake` or `cargo` or `npm --build` etc (see an [article on make vs makepkg](https://unix.stackexchange.com/questions/605928/))
+  - Results in a "proper" Arch package file that can be handled locally by `pacman -U package-file.pkg.tar.zst`
 - `pacman` handles packages from the [Official Arch repositories](https://wiki.archlinux.org/title/official_repositories)
 - `yay` handles packages from the [Arch User Repository (AUR)](https://aur.archlinux.org/)
 - An Arch SysAdmin must know which package is from which repo
@@ -312,7 +313,7 @@ make install DESTDIR=/usr
 #### `pacman`
 - *The native Arch Linux package manager*
 - Handles packages from the [Official Arch repositories](https://wiki.archlinux.org/title/official_repositories)
-- Built on `makepkg` using the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
+- Built on `makepkg` output using the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
   - Resolves dependencies
   - Uses standard [Arch package guidelines](https://wiki.archlinux.org/title/Arch_package_guidelines)
 - Downloads packages to: `/var/cache/pacman/pkg/`
@@ -360,7 +361,7 @@ Include = /etc/pacman.d/mirrorlist
 #### `yay` (Yet Another Yogurt)
 - *[Yay, written in Go, from Jguer](https://github.com/Jguer/yay/blob/next/README.md)*
 - Handles packages from the [Arch User Repository (AUR)](https://aur.archlinux.org/)
-- Built on `makepkg` using the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
+- Built on `makepkg` output using the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
   - Resolves dependencies
   - Uses standard [Arch package guidelines](https://wiki.archlinux.org/title/Arch_package_guidelines)
 - Downloads packages to: `~/.cache/yay/`
@@ -396,7 +397,7 @@ Include = /etc/pacman.d/mirrorlist
     - `yay -Wu` unvote for package
   - If `sudo` gives trouble, try `--sudoflags "-A"` (at your own risk)
 
-#### `makepkg` (Under `pacman` and `yay`)
+#### `makepkg` - Finalize local packages for `pacman -U`
 - [makepkg Arch Wiki](https://wiki.archlinux.org/title/makepkg)
 - Creates the package tarball in PWD
 - `makepkg` with prper `PKGBUILD` file in PWD
@@ -406,7 +407,7 @@ Include = /etc/pacman.d/mirrorlist
 - *`makepkg` does not use `sudo`, but may ask for a password if it needs to call `sudo`*
 *So, on those "Download for Linux" areas of our favorite software sites with **Ubuntu .deb** and **RedHat/OpenSUSE .rpm** options, we could try convincing the world to include **Arch .pkg.tar.zst** also, but we don't need to because we can download install those **.deb** files on Arch with `debtap`...*
 
-#### `debtap` for `.deb` packages on Arch Linux
+#### `debtap` - Convert local `.deb` packages for `pacman -U`
 - *Only when a package cannot be found via `pacman` or `yay`!*
   - *We don't want conflicts with "proper" packages that Arch already knows how to maintain*
   - ***Use with care!***
