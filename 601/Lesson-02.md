@@ -297,7 +297,7 @@ gpgcheck=1
 ### `pacman` & `yay` (Arch)
 - *`pacman` and `yay` are not built one atop the other, as stacks are with `dpkg` and `rpm`*
 - Both based on the work of `makepkg` (see [Arch makepkg site](https://wiki.archlinux.org/title/Makepkg))
-  - Simplifies compiling steps [from same explanation as above](https://unix.stackexchange.com/questions/605928))
+  - Simplifies Arch package compiling steps [from same explanation as above](https://unix.stackexchange.com/questions/605928))
   - Basically, `makepkg` looks at `PKGBUILD`, then runs whatever is needed, probably something like:
 ```
 configure
@@ -305,7 +305,7 @@ make
 make install DESTDIR=/usr
 ```
   - or `cmake` or `cargo` or `npm --build` etc (see an [article on make vs makepkg](https://unix.stackexchange.com/questions/605928/))
-  - Results in a "proper" Arch package file that can be handled locally by `pacman -U package-file.pkg.tar.zst`
+  - Results in a "proper" Arch package file that can be handled locally by `makepkg -i` (or `pacman -U package-file.pkg.tar.zst` just the same)
 - `pacman` handles packages from the [Official Arch repositories](https://wiki.archlinux.org/title/official_repositories)
 - `yay` handles packages from the [Arch User Repository (AUR)](https://aur.archlinux.org/)
 - An Arch SysAdmin must know which package is from which repo
@@ -360,8 +360,9 @@ Include = /etc/pacman.d/mirrorlist
 
 #### `yay` (Yet Another Yogurt)
 - *[Yay, written in Go, from Jguer](https://github.com/Jguer/yay/blob/next/README.md)*
+  - *Must be installed manually, see [Installation instructions](https://github.com/Jguer/yay/blob/next/README.md#installation*
 - Handles packages from the [Arch User Repository (AUR)](https://aur.archlinux.org/)
-- Built on `makepkg` output using the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
+- May employ `makepkg` as needed to create `makepkg -i` -ready packages compliant with the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
   - Resolves dependencies
   - Uses standard [Arch package guidelines](https://wiki.archlinux.org/title/Arch_package_guidelines)
 - Downloads packages to: `~/.cache/yay/`
