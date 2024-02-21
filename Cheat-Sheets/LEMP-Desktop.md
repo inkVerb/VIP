@@ -1,4 +1,4 @@
-# LAMP Desktop
+# LEMP Desktop
 ## PHP/MySQL developer environment directly in Arch/Manjaro
 *(rather than WAMPP or XAMPP in Windows)*
 

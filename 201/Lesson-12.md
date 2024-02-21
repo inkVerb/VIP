@@ -1,11 +1,14 @@
 # Linux 201
-## Lesson 12: File System Hierarchy (FSH)
+## Lesson 12: Filesystem Hierarchy Standard (FHS)
 
 Ready the CLI (might not be needed)
 
 ```console
 cd ~/School/VIP/201
 ```
+
+- [Read more on Wikipedia](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+- [Read specs from Linux Foundation](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html)
 
 ___
 
@@ -84,6 +87,27 @@ ls -lF
 ```
 
 This is where most system-specific settings are stored, for example Apache, PHP, MySQL and others will have there core, most fundamental settings here. As an admin, you will need to adjust settings in this directory often.
+
+- **`.d`** (for *directory*) is a common ending for directories that hold multiple config files *for tools or services that only need one config file*
+  - having multiple config files can help many ways:
+    - organize
+    - customize
+    - override the main config file
+    - include these config files in the main config file
+
+For example:
+
+- `/etc/apparmor.d/`
+- `/etc/conf.d/`
+- `/etc/cron.d/`
+- `/etc/grub.d/`
+- `/etc/ipsec.d/`
+- `/etc/modprobe.d/`
+- `/etc/pacman.d/`
+- `/etc/pam.d/`
+- `/etc/profile.d/`
+- `/etc/sudoers.d/`
+
 
 Originally, this was the directory with all the stuff that didn't seem to belong anywhere else and was, accordingly called the *"etc" (etc)* directory. It should probably still be  called that.
 
@@ -489,9 +513,9 @@ ___
 # The Take
 
 - Directories in Linux hold different things
-  - This is called "File System Hierarchy (FSH)"
-- `/` is the beginning of all directories in the FSH
-  - ***Any*** path beginning with `/` will refer to the root of the FSH!
+  - This is called "Filesystem Hierarchy Standard (FHS)"
+- `/` is the beginning of all directories in the FHS
+  - ***Any*** path beginning with `/` will refer to the root of the FHS!
 - All home directories (with personal user stuff) are in `/home/`
 - The "root" (AKA `su`) user's home is `/root/`, ***not*** `/home/root/`!
 - `/bin/` holds most of the Linux/Unix commands we use all the time
@@ -514,7 +538,7 @@ ___
 - `/mount/` is where internal drives (ie SATA) usually mount
 - `/sbin/`, `/boot/`, `/sys/` are core operating system folders, don't touch!
 - `/tmo/` is where most temporary files go, including browser downloads in progress
-- `/opt/` is for software that doesn't always follow these "FSH" rules
+- `/opt/` is for software that doesn't always follow these "FHS" rules
 - Pseudo directories that exist in memory only, empty when the system is not running
   - `/dev/`
   - `/proc/`

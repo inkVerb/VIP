@@ -202,4 +202,4 @@ ___
 
 ___
 
-#### [Lesson 9: du, df, top, ps aux, pgrep, kill](https://github.com/inkVerb/vip/blob/master/201/Lesson-09.md)
+#### [Lesson 9: File Size, du, df, top, ps aux, pgrep, kill](https://github.com/inkVerb/vip/blob/master/201/Lesson-09.md)

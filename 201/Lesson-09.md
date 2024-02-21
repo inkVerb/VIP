@@ -1,5 +1,5 @@
 # Linux 201
-## Lesson 9: du, df, top, ps aux, pgrep, kill
+## Lesson 9: File Size, du, df, top, ps aux, pgrep, kill
 
 Ready the CLI (might not be needed)
 
@@ -8,6 +8,7 @@ cd ~/School/VIP/201
 ```
 
 #### [VIP/Cheat-Sheets: Resources & Things That Run](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Resources.md)
+#### [VIP/Cheat-Sheets: File Size, Binary, Hexadecimal](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Sizes-Binary-Hex.md)
 
 ___
 
@@ -19,18 +20,20 @@ i. Watch this video & notice the numbers: [RGB](https://www.youtube.com/watch?v=
 - Bottom Row: Hexadecimal (0–F)
 
 ii. bites, etc
-- **1 bit** = A single binary digit (0 or 1)
+- **1 bit** = A single binary digit (`0` or `1`)
 - **1 Byte** = 8 bits
-- **1 Kilobyte (KB)** = 1,000 Bytes
-- **1 Megabyte (MB)** = 1,000 Kilobytes
-- **1 Gigabyte (GB)** = 1,000 Megabytes
-- **1 Terabyte (TB)** = 1,000 Gigabytes
+- **1 Kilobyte (KB)** = 1,024 Bytes
+- **1 Megabyte (MB)** = 1,024 Kilobytes
+- **1 Gigabyte (GB)** = 1,024 Megabytes
+- **1 Terabyte (TB)** = 1,024 Gigabytes
 
 iii. File sizes (very generic approximation)
 - 1 minute of audio is about 10MB for normal files (128 bit)
 - 1 picture is about 1MB (1920x1080px, .png; 2560x1600px, .jpg)
   - Learn more about image [pictypes](https://github.com/inkVerb/pictypes/blob/master/README.md)
 - 1 hour video is about 1GB (1920x1080)
+
+Learn more about sizes and binary: 
 
 ### II. `du` & `df`
 
@@ -70,7 +73,7 @@ du -sh School
 df -k
 ```
 
-*Note it listed everything in kilobytes*
+*Note it listed everything in blocks (1 kilobyte = 1 block)*
 
 | **5** :$
 
@@ -78,7 +81,7 @@ df -k
 df -h
 ```
 
-*Note it listed everything in megabytes and gigabytes, etc*
+*Note it listed everything human-readable (in megabytes and gigabytes, etc)*
 
 | **6** :$
 

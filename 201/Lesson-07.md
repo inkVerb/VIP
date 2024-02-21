@@ -761,9 +761,29 @@ rm vip.tar.xz && ls -l
 tar c vip | xz > vip.tar.xz
 ```
 
-*Cleanup*
+*`-J` flag to tar up and xz-compress in one command:*
 
 | **95** :$
+
+```console
+tar Jc vip vipJ.tar.xz
+```
+
+- `-J` use `xz`
+- `-j` use `bzip2`
+- `-z` use `gzip`
+
+*See the results...*
+
+| **96** :$
+
+```console
+ls -l
+```
+
+*Cleanup*
+
+| **97** :$
 
 ```console
 rm -r vip && ls -l
@@ -771,7 +791,7 @@ rm -r vip && ls -l
 
 *Untar and decompress in one command:*
 
-| **96** :$
+| **98** :$
 
 ```console
 tar xf vip.tar.xz
@@ -779,7 +799,7 @@ tar xf vip.tar.xz
 
 *See, it worked...*
 
-| **97** :$
+| **99** :$
 
 ```console
 ls -l
@@ -791,6 +811,13 @@ ___
 
 # The Take
 
+- Important commands
+  - `tar Jc source archive.txz` make `xz` compressed tarball in one command
+    - `-J` use `xz`
+    - `-j` use `bzip2`
+    - `-z` use `gzip`
+  - `tar t archive.tar` see what's inside
+  - `tar xf archive.tar` extract
 - "Flags" (say `-f`, `-v`) can be combined like this: `-fv`
 - The `-` hyphen is optional with flags for `tar`; `tar -fv` = `tar fv`
 - These are all common compression utilities in Linux: `tar`, `xz`, `zip`, `gzip`, `bzip2`

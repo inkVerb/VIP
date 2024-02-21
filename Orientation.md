@@ -21,25 +21,6 @@ This is normal text, which may label or tell something, it is rare in these less
 
 *The following is called "preformatted" text, which uses a "monospace" font:* `preformatted monospace text` *`maybe italics all same`*
 
-| **255** :$
-
-```console
-i am command number two hundred fifty-five to be entered into the terminal
-```
-
-| **256** :$
-
-```console
-i am a normal user command because i use the dollar sign
-```
-
-| **257** :#
-
-```console
-i am a root command because i use the hash sign
-i am dangerous and powerful
-```
-
 *Below is a file named "some-file.txt" and it's contents...*
 
 | **some-file.txt** :

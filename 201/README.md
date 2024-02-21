@@ -20,13 +20,13 @@
 
 ### [Lesson 8: Hash – md5sum, sha1sum, sha256sum, sha512sum](https://github.com/inkVerb/vip/blob/master/201/Lesson-08.md)
 
-### [Lesson 9: du, df, top, ps aux, pgrep, kill](https://github.com/inkVerb/vip/blob/master/201/Lesson-09.md)
+### [Lesson 9: File Size, du, df, top, ps aux, pgrep, kill](https://github.com/inkVerb/vip/blob/master/201/Lesson-09.md)
 
 ### [Lesson 10: COMMAND > FILE, pwd, uname, who, w](https://github.com/inkVerb/vip/blob/master/201/Lesson-10.md)
 
 ### [Lesson 11: more, less, head, tail, sort, tac, diff, nano, vim](https://github.com/inkVerb/vip/blob/master/201/Lesson-11.md)
 
-### [Lesson 12: File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md)
+### [Lesson 12: Filesystem Hierarchy Standard (FHS)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md)
 
 FYI This section will install:
 - Arch/Manjaro: `sudo pacman -S --noconfirm git curl net-tools htop odt2txt dos2unix pandoc pwgen unzip`

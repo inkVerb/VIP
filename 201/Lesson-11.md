@@ -493,4 +493,4 @@ ___
 
 ___
 
-#### [Lesson 12: File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md)
+#### [Lesson 12: Filesystem Hierarchy Standard (FHS)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md)

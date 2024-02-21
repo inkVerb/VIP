@@ -19,6 +19,8 @@ sudo dd bs=4M if=manjaro-gnome-20.X.X-XXXXXX-linuxXX.iso of=/dev/sdf conv=fdatas
   - *`/dev/sdf` is the device name for the USB*
   - *The .iso filename is in the present working directory as:* "**manjaro-gnome-20.X.X-XXXXXX-linuxXX.iso**"
 
+**Or on Windows use [Rufus](https://rufus.ie/)** to burn the image to the USB
+
 ## Download Sources
 
 ### Manjaro

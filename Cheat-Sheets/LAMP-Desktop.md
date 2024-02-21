@@ -93,24 +93,31 @@ In php.ini:
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 ```
 
-4. Enable MySQL (MariaDB)
+4. MariaDB service: always or only when using?
 
-| **A4e** :$
+
+- Choose A or B:
+
+A. **Preferred** Start MariaDB only once
+
+*(You will need to run this command each time you start lessons after reboot)*
+
+| **A4s** :$
 
 ```console
 sudo systemctl start mariadb
 ```
 
-5. Start MySQL (MariaDB)
+B. Make MariaDB a service to always run
 
-| **A4s** :$
+| **A4e** :$
 
 ```console
 sudo systemctl enable mariadb
 sudo systemctl start mariadb
 ```
 
-6. Apache settings
+5. Apache settings
 
 Edit with `gedit`:
 
@@ -159,25 +166,26 @@ b. Web directory settings
     ```
     DocumentRoot "/srv/www/html"
     <Directory "/srv/www/html">
-    Options Indexes FollowSymLinks
-    AllowOverride All
-    Require all granted
+      Options Indexes FollowSymLinks
+      AllowOverride All
+      Require all granted
     </Directory>
     ```
 
   ...or for expanded options...
+
     ```
     DocumentRoot "/srv/www/html"
     <Directory "/srv/www/html">
-    Options Indexes FollowSymLinks MultiViews
-    AllowOverride All
-    Require all granted
-    Order allow,deny
-    allow from all
+      Options Indexes FollowSymLinks MultiViews
+      AllowOverride All
+      Require all granted
+      Order allow,deny
+      allow from all
     </Directory>
     ```
 
-7. Restart the Apache server
+6. Restart the Apache server
 
 | **A6** :$
 
@@ -185,15 +193,15 @@ b. Web directory settings
 sudo systemctl restart httpd
 ```
 
-8. Apache service: always or only when using?
+7. Apache service: always or only when using?
 
 - Choose A or B:
 
-A. Start Apache only once
+A. **Preferred:** Start Apache only once
 
 *(You will need to run this command each time you start lessons after reboot)*
 
-| **A7e** :$
+| **A7s** :$
 
 ```console
 sudo systemctl start httpd
@@ -201,7 +209,7 @@ sudo systemctl start httpd
 
 B. Make Apache a service to always run
 
-| **A7s** :$
+| **A7e** :$
 
 ```console
 sudo systemctl enable httpd
@@ -275,7 +283,7 @@ sudo sed -i "s/^User.*/User www/" /etc/httpd/conf/httpd.conf
 sudo sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
 ```
 
-6. Change the php-fpm user to `www` with `sed` (may not be installed, may not be necessary)
+6. **Troubleshooting Option:** Change the php-fpm user to `www` with `sed` (may not be installed, may not be necessary)
 
 | **AW6** :$
 
@@ -465,22 +473,24 @@ sudo vim /etc/apache2/sites-available/000-default.conf
 
   - After `DocumentRoot /var/www/html` Add these lines:
     ```
+    DocumentRoot "/var/www/html"
     <Directory "/var/www/html">
-    Options Indexes FollowSymLinks
-    AllowOverride All
-    Require all granted
+      Options Indexes FollowSymLinks
+      AllowOverride All
+      Require all granted
     </Directory>
     ```
 
   ...or for expanded options...
-  
+
     ```
+    DocumentRoot "/var/www/html"
     <Directory "/var/www/html">
-    Options Indexes FollowSymLinks MultiViews
-    AllowOverride All
-    Require all granted
-    Order allow,deny
-    allow from all
+      Options Indexes FollowSymLinks MultiViews
+      AllowOverride All
+      Require all granted
+      Order allow,deny
+      allow from all
     </Directory>
     ```
 
@@ -496,7 +506,7 @@ sudo systemctl reload apache2
 
 - Choose A or B:
 
-A. Start Apache only once
+A. **Preferred:** Start Apache only once
 
 *(You will need to run this command each time you start lessons after reboot)*
 
@@ -802,11 +812,22 @@ Update web directory settings
     ```
     DocumentRoot "/var/www/html"
     <Directory "/var/www/html">
-    Options Indexes FollowSymLinks MultiViews
-    AllowOverride All
-    Require all granted
-    Order allow,deny
-    allow from all
+      Options Indexes FollowSymLinks
+      AllowOverride All
+      Require all granted
+    </Directory>
+    ```
+
+  ...or for expanded options...
+
+    ```
+    DocumentRoot "/var/www/html"
+    <Directory "/var/www/html">
+      Options Indexes FollowSymLinks MultiViews
+      AllowOverride All
+      Require all granted
+      Order allow,deny
+      allow from all
     </Directory>
     ```
 
@@ -820,11 +841,19 @@ sudo sed -i "s/LoadModule mpm_event_module/#LoadModule mpm_event_module/" /etc/h
 
 7. Enable & restart
 
+- Choose A or B:
+
+A. **Preferred:** Start MariaDB only once
+
+*(You will need to run this command each time you start lessons after reboot)*
+
 | **C10e** :$
 
 ```console
 sudo systemctl start mariadb
 ```
+
+B. Make MariaDB a service to always run
 
 | **C10s** :$
 
@@ -843,7 +872,7 @@ sudo systemctl restart httpd
 
 - Choose A or B:
 
-A. Start Apache only once
+A. **Preferred:** Start Apache only once
 
 *(You will need to run this command each time you start lessons after reboot)*
 

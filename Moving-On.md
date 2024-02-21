@@ -4,11 +4,11 @@
 
 After completing [Linux 101](https://github.com/inkVerb/VIP/blob/master/101/README.md), [Linux 201](https://github.com/inkVerb/VIP/blob/master/301/README.md), [Linux 301](https://github.com/inkVerb/VIP/blob/master/301/README.md) & [Linux 401](https://github.com/inkVerb/VIP/blob/master/401/README.md), other computer languages will be easier to understand.
 
-- You already know why web languages will have settings in `/etc/...`.
+- You already know why web languages and services will have settings in `/etc/...`.
 - You already know that web programs will likely reside in `www/html/domain.tld/...` as text-editable files.
 - You already know how to edit both on a desktop GUI editor and in the terminal via `vim` or `nano`.
 - You already know how to navigate the terminal and perform basic operations on the web server that hosts your software.
-- You already know how to follow tutorials online, recognizing `input code` and what that code probably does.
+- You already know how to follow tutorials online, recognizing `text styling for input code` and what that code probably does.
 - You already know what "arguments", "variables", "functions", "include", "datatypes", and "logic tests" are when you see them in other languages.
 - You already know how to create scripts and symlinks, manage permissions, and locate files as they relate to web server content and web apps.
 - You already know the back-end of a desktop machine, if you are developing desktop software.
@@ -33,9 +33,9 @@ To gain a stronger understanding of web apps, which is where Linux is ***applied
   - POST, GET, AJAX
   - XML
   - RSS & Podcast feeds
-  - JavaScript tools
-    - TinyMCE WYSIWYG text editors
-    - Dropzone drag-in file uploaders
+  - JavaScript libraries
+    - TinyMCE WYSIWYG text editor
+    - Dropzone drag-in file uploader
   - Object Oriented Programming (OOP)
 - The web stack uses PHP, but this performs many of the same tasks as [Go](https://go.dev), [Node.js](https://nodejs.org), and other web app languages
 - Regardless of which web language you will use, PHP is a good intrduction to all of them

@@ -53,6 +53,7 @@ https://verb.vip/pretty_page.php?n=My_Long_Name
 ...using the setting...
 
 | **.htaccess** :
+
 ```
 RewriteEngine on
 RewriteRule ^/?([a-zA-Z0-9_]+)$ pretty_page.php?n=$1 [L]

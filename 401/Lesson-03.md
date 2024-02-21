@@ -59,7 +59,7 @@ echo $PATH
 
 *Note each colon `:` separates a different directory path included in the $PATH*
 
-*Note this contains many directories from the [File System Hierarchy (FSH) in 201 Lesson 12](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md)*
+*Note this contains many directories from the [Filesystem Hierarchy Standard (FHS) in 201 Lesson 12](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md)*
 
 **The point of all this so far:**
 - *$PATH contains many directories*
@@ -176,7 +176,7 @@ which firefox
 whereis firefox
 ```
 
-*You should find that these locations generally respect the [File System Hierarchy (FSH)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md).*
+*You should find that these locations generally respect the [Filesystem Hierarchy Standard (FHS)](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md).*
 
 **Add dirs to $PATH:**
 
@@ -335,7 +335,7 @@ ___
 - The `$PATH` is defined for each user in: `~/.bashrc`
 - To add a directory to the `$PATH`, put a line in `~/.bashrc` like:
   - `export PATH=$PATH:/ADD/DIR:/ANOTHER/DIR`
-- `which COMMAND` outputs the location of the command, somewhere in the FSH
+- `which COMMAND` outputs the location of the command, somewhere in the FHS
 
 ## Cron
 
