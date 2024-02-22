@@ -2,6 +2,30 @@
 ## Lesson 1: Boot & System Init
 
 # The Chalk
+## Useful Commands
+### CLI Navigation
+- `which`
+- `whereis`
+- `whatis`
+- `type`
+- `whoami`
+- `pwd` Present Working Directory (PWD)
+- `ls | wc -l` output number of files in PWD
+
+### Machine Information
+- `hostname` (machine name)
+  - `hostname -i` IP address
+- `lsb_release -d`
+- `lsmod`
+- `lscpu`
+- `lsusb`
+- `lspci`
+- `sudo dmidecode`
+  - `sudo dmidecode -t bios`
+  - `sudo dmidecode -t memory`
+  - `sudo dmidecode -t system`
+  - `sudo dmidecode -t` (for full list of Types)
+
 ## Boot Process
 1. **BIOS** - Basic Input/Output System
   - Motherboard
@@ -294,4 +318,4 @@ ExecReload=/usr/bin/busctl call org.freedesktop.DBus /org/freedesktop/DBus org.f
 
 ___
 
-#### [Lesson 2: Information, Package Managers & Users](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md)
+#### [Lesson 2: Packages](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md)

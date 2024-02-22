@@ -120,7 +120,6 @@ git init
   - `ls .git`
 
 #### Create a Repo File
-
 *Each command ends with `git status -sb -uall` to see how changes are explained*
 
 - `-s` short output
@@ -200,7 +199,6 @@ git log
 ```
 
 #### Alternates
-
 - Add many new files easily
 
 | **add many** :$
@@ -231,7 +229,6 @@ git push -u origin devel
 *...after this, `git push` will continue pushing to the `devel` branch*
 
 #### Clone
-
 - Any public repo can be cloned using `https://` addresses
   - `clone` includes the master and all branches, so `checkout` can be used later to change branches
  
@@ -291,7 +288,6 @@ git push -u origin master
 *Learn more with the [GitCheat Cheat Sheet]((https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/GitCheat.md))*
 
 #### Clone Linux Kernel
-
 - The Linux kernel is available on Git
   - If you like, you may evaluate it from the source on your local machine
 
@@ -303,4 +299,4 @@ git clone --depth 1 -b master https://git.kernel.org/pub/scm/linux/kernel/git/st
 
 ___
 
-#### [Lesson 5: Kernel](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)
+#### [Lesson 5: Kernel & Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)

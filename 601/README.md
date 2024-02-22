@@ -11,19 +11,19 @@ While this course comes after [Linux 501](https://github.com/inkVerb/VIP/tree/ma
 
 ### [Lesson 0: Prepare](https://github.com/inkVerb/vip/blob/master/601/Lesson-00.md)
 
-### [Lesson 1: Boot & System Init](https://github.com/inkVerb/vip/blob/master/601/Lesson-1.md)
+### [Lesson 1: Boot & System Init](https://github.com/inkVerb/vip/blob/master/601/Lesson-01.md)
 
-### [Lesson 2: Information, Package Managers & Users](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md)
+### [Lesson 2: Packages](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md)
 
 ### [Lesson 3: Procesesses & Monitoring](https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md)
 
 ### [Lesson 4: Git](https://github.com/inkVerb/vip/blob/master/601/Lesson-04.md)
 
-### [Lesson 5: Kernel](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)
+### [Lesson 5: Kernel & Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)
 
-### [Lesson 6: Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-06.md)
+### [Lesson 6: Network](https://github.com/inkVerb/vip/blob/master/601/Lesson-06.md)
 
-### [Lesson 7: Network](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md)
+### [Lesson 7: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md)
 
 ### [Lesson 8: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)
 

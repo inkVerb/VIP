@@ -27,6 +27,7 @@
     - `unix_chkpwd`
 - Creating your own setuid program owned by root can cause security problems
 - Sometimes, it is vital that a non-root user run programs, merely for reasons like this
+
 ### Control
 - `ulimit -a` shows the various limits placed on processes
   - Each limit is shown with a flag, such as `-c`, `-d`, `-f`, etc
@@ -36,10 +37,12 @@
 - **soft limit** - set by users
 - `ulimit -H -u 256512` set as a hard limit
 - `ulimit -S -u 256512` set as a soft limit
+
 ### Process Creation
 - The first user process is `init` with PID `1`
 - Linux systems constantly create new processes by **forking** existing processes, sometimes called **fork and exec**
 - When a process is orphaned, it is adopted by `init`
+
 ### Command Shell Terminal
 - A terminal is a simulator that interprets commands sent to the system
 - Commands in the terminal become processes
@@ -51,10 +54,12 @@
 - <key>Ctrl</key> + <key>Z</key> will stop a process in the terminal if it has not completed yet
 - `jobs` will list all process running that started in the terminal, both **background** and **foreground** that are stopped with <key>Ctrl</key> + <key>Z</key>
 - `jobs -l` will give the same list, but also with PIDs
+
 ### Future execution
 - `at` sets a job to start in the future
 - `at now + 3 hours` will open an interactive terminal to enter your command to run three hours in the future
   - When finished, press <key>Ctrl</key> + <key>D</key> to end your command (adding `EOT` as the [heredoc](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md) delimiter)
+
 ### `cron`
 - Play around with [crontab guru](https://crontab.guru/) to see how the schedule works
 - [minute] [hour] [day of month] [month] [day of week]
@@ -65,15 +70,18 @@
   - `cron.d` directory for cron tasks like this
   - Learn more from the [Cron Cheat Sheet](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md) and [401 Lesson 3](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md)
   - `anacron` is an alternative to `cron` that runs jobs with staggered timing
+
 ### Process States
 - Running - normal, using CPU, executing
 - Waiting/Sleeping - on hold until it finishes a task or receives data
 - Stopped - suspended, probably using <key>Ctrl</key> + <key>Z</key>, able to be analyzed before resuming
 - Zombie - finished, but still has a PID lingering along with a space in the "process table"
+
 ### Execution Modes
 - User mode - most programs
 - System/kernel mode - a program that gives the CPU full access to hardware
   - Used for things like accessing disk or running a program 
+
 ### Daemons
 - Background processes that only operate when needed
 - Often start at boot
@@ -83,6 +91,7 @@
   - `sshd`
   - `crond`
 - Good for security
+
 ### Process Priority
 - Processes have **priority** from the CPU
   - These are seen with `PRI` in `htop` and `PR` in `top`
@@ -91,6 +100,7 @@
   - `nice -n -10 gedit` - `gedit` will run with a semi-high priority of `-10`
 - Change priority of a running process with `renice`
   - `renice 10 -p 1555` - The process with PID `1555` will change to a semi-low priority of `10`
+
 ## Monitoring Processes
 - There are several tools for monitoring processes:
   - `top` processes
@@ -104,6 +114,7 @@
   - `sar` system activity
   - `strace` system calls made by a given process
   - The `/proc/` root folder is also useful if you know how what you are looking for
+
 ### `ps`
 - Types of `ps` options
   - UNIX options **must** start with `-`
@@ -119,12 +130,14 @@
     - `pid` - PID
     - `cputime` - Total CPU time
     - `pmem` - RAM use ratio to total RAM
+
 ### `pstree`
 - Visual geneology of multi-thread processes
 - Examples
   - `pstree -aAp`
   - `pstree -aAp $(pgrep gedit)`
   - `pstree -aAps 1555`
+
 ### `/proc/`
 - Every processes is listed in `/proc/` by PID
   - Inside `/proc/SOME_PID/task/` contains folders of child processes by PID
@@ -132,6 +145,7 @@
 - Much of the information that process monitoring tools use simply comes by reading text information from `/proc/`
 - `/proc/self` links to the current running process
   - `ls -l /proc/self` shows the PID that as its symlink
+
 ### `dd`
 - `dd` can be used as a dummy process to test system IDs, etc
   - `dd if=/dev/zero of=/dev/null`
@@ -140,6 +154,7 @@
     - `/dev/zero` and `/dev/urandom` are both valid `if=` sources
   - `dd if=/dev/urandom | pv | dd of=/dev/null` (requires the `pv` 'pipe viewer' package)
 - Use <key>Ctrl</key> + <key>Z</key> and `jobs -l` and `kill` to play around with this process
+
 ## Memory
 - `/proc/` info locations:
   - `/proc/sys/vm/`
@@ -154,6 +169,7 @@
   - `vmstat -a 1 3`
   - `vmstat -a -SM 1 3`
   - `vmstat -p /dev/sda1 1 3`
+
 ### OOM Killer (Out of Memory)
 - Linux allows memory to "overcommit"
   - If a process requests a large block of RAM, but will likely only use a small amount, Linux allows it

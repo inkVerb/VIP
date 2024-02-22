@@ -441,6 +441,7 @@ inkisaverb.com:/pubdir  /mnt/ink-pub     nfs     netdev,noauto,rsize=8192,wsize=
     - `vgreduce` shrinks a volume group
 - **Logical volumes (LV)** are partitions created from a logical volume group
   - Filesystems (ie etx4, swap, etc) reside on logical volumes, one per volume
+  
 ### Create LVM
 1. **Create a new partition table and partitions on the physical disk**
 - `m` for help to understand the interactive commands (both `fdisk` and `gdisk`)
@@ -1328,7 +1329,8 @@ mkswap /dev/sdb5
   - The system will automatically use it on boot
 - Use swap now or turn it off now:
   - `swapon`
-  - `swapoff`  
+  - `swapoff` 
+
 ## Repair
 - `fsck`
   - It is best to unmount a filesystem (via `umount`) before running `fsck`, but not required for read-only mode (`-n`)
@@ -1336,6 +1338,7 @@ mkswap /dev/sdb5
   - `-t ext4` or `-t ntfs` etc, if OS doesn't understand the filesystem type, but usually not needed
   - `touch /forcefsck` will force an `fsck` on all `/etc/fstab` listed filesystems at next startup, then `/forcefsck` will be removed after success
     - This is handy to check the `/` before it is mounted
+
 ### Extra Disk Recover Packages
 - `testdisk`
   - Undelete files from FAT, NTFS, and ext2
@@ -1353,6 +1356,7 @@ mkswap /dev/sdb5
   - Recovers damaged or deleted photo images
 - `ext4magic`
   - Undelete from ext3 and ext4
+
 ## I/O
 - Writing to and from a disk can cause an input-output pileup
 - Tools: (Arch Linux needs packages: `sysstat`, `iotop`, `bonnie++`)
@@ -1387,7 +1391,6 @@ mkswap /dev/sdb5
         - `-s 1024` 10M each file size
     - Monitor with `iostat`
       - `iostat 1 10`
-```
 
 ## Network Block Devices (NBD)
 ### What Is NBD?
@@ -1398,6 +1401,7 @@ mkswap /dev/sdb5
   - Go into your Linode / Vultr / DigitalOcean control panel and buy some block storage drive space to attach to your virtual machine
   - Then their website will instruct you to look for `/dev/nbd0` etc on your virtual machine
   - It was actually NBD that put it there for you to use
+
 ### How NBD Works
 - **A local blob as `/dev/nbd0` or `/dev/nbd1` etc points to a remote device over the network**
 - A Network Block Device is a blob in the local `/dev/` folder
@@ -1420,6 +1424,7 @@ mkswap /dev/sdb5
 - The network connection between the local blob and remote device can use
   - TCP/IP
   - Unix sockets
+
 ### Different NBD Tools & Linux Distros
 - `nbd-client` & `nbd-server` 
   - CentOS/Fedora  (`nbd` package)
