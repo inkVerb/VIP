@@ -1,187 +1,200 @@
 # Linux 601
-## Lesson 3: Procesesses & Monitoring
+## Lesson 3: Users & Groups
 
 # The Chalk
-## Processes
-### Definitions
-- **program** - written "instruction" saved in an executable file that can be "run" in the operating system
-- **process** - a program that is running in the operating system with a PID, using RAM and CPU, etc
-  - A process cannot make calls to hardware, but must interact through **system calls** to talk to the kernel, which talks to the hardware
-- **setuid program** - marked with an `s` bit in permissions, meaning that the **effective** user may not be the user that executes it
-  - Three types of UIDs:
-    - `RUID` Real user ID, user that runs the program
-    - `EUID` Effective User ID, determins privileges of the process for the kernel
-    - `SUID` Saved user ID, referred to if the process needs to change its UID
-    - See these for `gedit` (while running) with: `ps -C gedit -o pid,ruid,euid,suid,ruser,user,euser,cmd` (a section on `ps` comes later)
-  - Make a file a setuid with: `chmod u+s newprogram`
-    - Then, `ls -l` will list permissions: `-rwSr--r--` or `-rwsr-xr-x` with an `s` or `S` where the `x` would normally be
-    - Examples of setuid programs in `/usr/bin/`:
-    - `chsh`
-    - `crontab`
-    - `gpasswd`
-    - `mount`
-    - `passwd`
-    - `su`
-    - `sudo`
-    - `umount`
-    - `unix_chkpwd`
-- Creating your own setuid program owned by root can cause security problems
-- Sometimes, it is vital that a non-root user run programs, merely for reasons like this
+## Users
+- Every user has:
+  - Username
+  - Password
+  - UID (user ID number)
+  - GID (primary group ID number)
+  - Comment / GECOS (full name, email, office, phone number)
+  - Home directory (mostly in `/home/`)
+  - Login shell (usually `/bin/bash` or `/bin/zsh`, defined in `~/.bashrc`)
+- Commands
+  - `whoami` (show username)
+  - `who` (list users who are logged on)
+  - `id` (show user's UID, GID, groups)
 
-### Control
-- `ulimit -a` shows the various limits placed on processes
-  - Each limit is shown with a flag, such as `-c`, `-d`, `-f`, etc
-- `ulimit -u 256512` sets the maximum of user processes to 256,512
-- Settings are in `/etc/security/limits.conf`
-- **hard limit** - set by `root`
-- **soft limit** - set by users
-- `ulimit -H -u 256512` set as a hard limit
-- `ulimit -S -u 256512` set as a soft limit
+### Global Terminal
+- Terminal behavior is set by `bashrc` startup files
+  - Prompt
+  - Aliases
+  - Default text editor
+  - Terminal interpreter (usually `/bin/bash` or `/bin/zsh`)
+  - `$PATH` statement and other environment variables
+  - Even functions that can be called from the command line
+- Settings are the same, but some address login, others only address terminal sessions
+  - `/etc/profile` (global login startup)
+  - `/etc/bash.bashrc` (global terminal settings)
+  - Possibly additional or similarly named files, depending on distro
+- Do **not** change the global startup files in `/etc/` without good reason
 
-### Process Creation
-- The first user process is `init` with PID `1`
-- Linux systems constantly create new processes by **forking** existing processes, sometimes called **fork and exec**
-- When a process is orphaned, it is adopted by `init`
+### Per-User Terminal
+- Change and customize settings per user with hidden files, even in `/root/.bash_rc`
+- Any of these address login:
+  - `~/.bash_profile`
+  - `~/.bash_login`
+  - `~/.profile` (will override `/etc/profile`)
+- These only address terminal sessions, not the entire user login (and will override `/etc/bash.bashrc`)
+  - `~/.bash_rc` or `~/.bashrc`, dependinf on distro; both should work
+  - Any terminal customization is best to go here because these files are read in most any scenario and will override all others
+- Common settings we can put anywhere
+  - `alias rm='rm -i'`
+  - `alias l='ls -laF'`
+  - `unalias rm`
+- `~/.bash_history`
+  - `history`
+  - `history | head`
+  - `history | tail`
+  - `!50` (no `50` in bash history)
+  - `!echo` (most recent `echo` command)
 
-### Command Shell Terminal
-- A terminal is a simulator that interprets commands sent to the system
-- Commands in the terminal become processes
-- While a terminal-created process is working, the terminal command prompt is inaccessible
-- After a terminal process dies with `exit` in its program, the terminal restarts and displays a prompt for the next command
-- A command can be run in the background by adding `&` to the end of a command, then the process does not depend on the terminal
-  - This runs the process in the **background**
-  - Without `&` at the end of the command, the terminal process runs in the **foreground**
-- <key>Ctrl</key> + <key>Z</key> will stop a process in the terminal if it has not completed yet
-- `jobs` will list all process running that started in the terminal, both **background** and **foreground** that are stopped with <key>Ctrl</key> + <key>Z</key>
-- `jobs -l` will give the same list, but also with PIDs
+### User Defaults
+- `useradd` initiates many user settings
+  - `/etc/skel/` is copied as the new home folder
+    - This contains custom startup files, including those like `~/.bashrc` or `~/.bash_profile`
+  - UID is incremented from `$UID_MIN` defined in `/etc/login.defs`
+  - A group with the same name as the username is added where GID=UID
+  - A user setting entry is added to `/etc/passwd`
+  - A user password entry is added to `/etc/shadow`
+  - Group-related information is added to `/etc/group`
+  - Simple usage: `sudo useradd johndoe`
+  - Expanded usage: `sudo useradd johndoe -s /bin/zsh -m -k /etc/skel -c "John Doe" johndoe`
+- `userdel`
+  - Removes entries made in
+    - `/etc/passwd`
+    - `/etc/shadow`
+    - `/etc/group`
+  - Home directory is not deleted unless using `userdel -r`
+- `usermod -L` will lock a user's account
+  - This means the user can't login, but could still be made to execute a command using `su lockeduser -c "some command"` (more later)
+  - This is how many auto users work on Linux, such as `mail`, `www`, `httpd`, `nginx`, etc
+  - This is done with a `nologin` entry for the user in `/etc/passwd`
+  - The no login message is defined in `/etc/nologin.txt`
+  - The "no password" setting is usually indicated by `!!` or `!` in `/etc/shadow`
+  - Similarly, set a user to expire with:
+    - `chage -E 1970-01-01 johndoe` (any date in the past will lock the user account)
+- User-related files have important permissions
+  - `/etc/passwd` (`644`)
+  - `/etc/shadow` (`600`)
+  - `/etc/group` (`644`)
+- `/etc/shadow` format
+  - Username
+  - Password (`$6$`, then 8-digit salt, then password hashed with `sha512`)
+  - Last change
+  - Minimum days before password can change
+  - Maximum days after password must change
+  - Warning days before password expires
+  - Grace days after expired password  before account is disabled
+  - Expiration date
+  - Reserved field
+  - Note that all dates are in the *epoch* time, that is seconds from January 1, 1970
+- Changing a password
+  - `passwd` changes current user's password (does not `root` or `sudo`)
+  - `passwd johndoe` changes another user's password
 
-### Future execution
-- `at` sets a job to start in the future
-- `at now + 3 hours` will open an interactive terminal to enter your command to run three hours in the future
-  - When finished, press <key>Ctrl</key> + <key>D</key> to end your command (adding `EOT` as the [heredoc](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md) delimiter)
+### Security & `sudo`
+- `sudo` configs are in
+  - `/etc/sudoers`
+  - `/etc/sudoers.d`
 
-### `cron`
-- Play around with [crontab guru](https://crontab.guru/) to see how the schedule works
-- [minute] [hour] [day of month] [month] [day of week]
-  - `*` every value
-  - `,` list separator
-  - `-` range operator
-  - `/` step operator (every `/n` values; eg. every `/2` hours)
-  - `cron.d` directory for cron tasks like this
-  - Learn more from the [Cron Cheat Sheet](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md) and [401 Lesson 3](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md)
-  - `anacron` is an alternative to `cron` that runs jobs with staggered timing
+### Substitute User (`su`)
+- `su` will run a command as a sub shell for another user
+  - Syntax: `su someuser -c "some command"`
+  - This will run with with that `someuser` user's permissions
 
-### Process States
-- Running - normal, using CPU, executing
-- Waiting/Sleeping - on hold until it finishes a task or receives data
-- Stopped - suspended, probably using <key>Ctrl</key> + <key>Z</key>, able to be analyzed before resuming
-- Zombie - finished, but still has a PID lingering along with a space in the "process table"
+### Remote Graphical Login (VNC)
+- This requires the `tigervnc` package
+- Start by running the `vncserver`
 
-### Execution Modes
-- User mode - most programs
-- System/kernel mode - a program that gives the CPU full access to hardware
-  - Used for things like accessing disk or running a program 
+## Groups
+- Recorded in `/etc/group`
+  - One group per line
+    - `group:password:GID:johndoe,user2,uzrthree,bill`
+- Groups can have passwords if the system has `/etc/gshadow`
+- GID:
+  - `0`-`99` reserved for system groups
+  - `100`-`GID_MIN` are "special" (`GID_MIN`, usually `1000` is set in `/etc/login.defs`)
+  - Over `GID_MIN` are for normal users, AKA User Prive Groups (UPG)
+- A user's primary group is listed in `/etc/passwd`
+  - That primary group is also listed in `/etc/group`, but the user doesn't need to be listed here
+- `groups` command
+  - `groups` list current user's groups
+  - `groups someuser` list argued user's groups
+  - `id -Gn user1 user2 user3` list many users' groups
 
-### Daemons
-- Background processes that only operate when needed
-- Often start at boot
-- May often end with `d` in the name
-  - `systemd`
-  - `httpd`
-  - `sshd`
-  - `crond`
-- Good for security
+### Group Management
+- `groupadd`
+  - `groupadd -g 1005 somegroup`
+  - `-r` make system group (use `/etc/login.defs` `SYS_GID_MIN`-`SYS_GID_MAX` instead of `GID_MIN`-`GID_MAX`)
+- `groupmod`
+  - `groupmod -g 1005 somegroup`
+  - `-g` new GID
+  - `-p` new password
+- `groupdel`
+  - `groupdel somegroup`
+- `usermod`
+  - `-G` lists all groups, removing all others
+  - `-a` adds new groups in addition to existing groups
+  - `-g` GID of new primary group
+- Get a GID from the line in `/etc/group`
+  - `getent group somegroup`
+    - `somegroup:x:1001:` (`1001` is the GID)
 
-### Process Priority
-- Processes have **priority** from the CPU
-  - These are seen with `PRI` in `htop` and `PR` in `top`
-- Priority ranges from `-20` thru `19` (high number is lower priority)
-- Set priority when running a program with `nice`
-  - `nice -n -10 gedit` - `gedit` will run with a semi-high priority of `-10`
-- Change priority of a running process with `renice`
-  - `renice 10 -p 1555` - The process with PID `1555` will change to a semi-low priority of `10`
+### Ownership
+- `chown user somefile`
+- `chgrp group somefile`
+- `chown user:group somefile`
+- `chown -R user:group somedir`
 
-## Monitoring Processes
-- There are several tools for monitoring processes:
-  - `top` processes
-  - `htop` processes more human-readable
-  - `free` RAM and swap use
-  - `ps` detailed, customizable info on processes
-  - `pstree` processes in a tree showing parents
-  - `uptime` how long the system has been running, users logged on, and load
-  - `mpstat` for multi-core processors
-  - `numastat` NUMA (Non-Uniform Memory Architecture)
-  - `sar` system activity
-  - `strace` system calls made by a given process
-  - The `/proc/` root folder is also useful if you know how what you are looking for
+### Permissions
+- [Permissions Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Permissions.md)
+- `uuu`-`ggg`-`ooo` (User - Group - Other)
+- `rwx`-`rwx`-`rwx` (Read Write eXecute)
+  - Represented by `0`-`7`
+  - Simple algorithm:
+    - + 1 = eXecute
+    - + 2 = Write
+    - + 4 = Read
+- `chmod 755 somefile`
+  - `chmod ug+x,o-x somefile`
+  - `chmod ugo=r,ug=w somefile`
 
-### `ps`
-- Types of `ps` options
-  - UNIX options **must** start with `-`
-  - BSD options **must not** start with `-`
-  - GNU options **must** start with `--`
-- Examples
-  - `ps aux`
-  - `ps -elLf`
-    - `ps -elf` shows parent PIDs as PPIDs
-  - `ps -C gedit`
-    - `ps -C gedit -o pid,ruid,euid,suid,ruser,user,euser,cmd`
-    - `cmd` - command
-    - `pid` - PID
-    - `cputime` - Total CPU time
-    - `pmem` - RAM use ratio to total RAM
+### Default Permissions via `umask`
+- Defines permissions for new files
+  - This is a subtraction (`umask 0022` subtracts )
+- Then denied by `umask` value
+  - `umask` shows the mask
+  - `umask -S` shows defauls in letters
+  - `umask` is normally set to `0002` or `0022`
+  - Change with one argument
+    - `umask 0022`
+    - `umask u=rw,g=r,o=r`
+- Results of defaults with `umask 0022`:
+  - `0666` - `0022` = `0644` (file default)
+  - `0777` - `0022` = `0755` (directory default)
 
-### `pstree`
-- Visual geneology of multi-thread processes
-- Examples
-  - `pstree -aAp`
-  - `pstree -aAp $(pgrep gedit)`
-  - `pstree -aAps 1555`
+### Filesystem Access Control Lists (ACL)
+- If specific per user or group, the list of **permissions** is called an [Access Control List](https://en.wikipedia.org/wiki/Access-control_list) (ACL)
+- This sets different file permissions per user and group
+- This is part of the Linux kernel
+- This needs the `-acl` option when mounting
+- ACLs are especially relevant on:
+  - Some filesystem types (`ext4`, `btrfs`, etc)
+  - Linux Security Modules, like SELinux, etc
 
-### `/proc/`
-- Every processes is listed in `/proc/` by PID
-  - Inside `/proc/SOME_PID/task/` contains folders of child processes by PID
-  - Not every process will have a folder directly in `/proc/`
-- Much of the information that process monitoring tools use simply comes by reading text information from `/proc/`
-- `/proc/self` links to the current running process
-  - `ls -l /proc/self` shows the PID that as its symlink
+### ACL Tools: `getfacl` & `setfacl`
+- `getfacl somefile` get the ACL permissions for `somefile`
+- `setfacl -m u:someuer:rwx somefile` (Modify User `someuser` to have `rwx` permissions on `somefile`)
+  - `-m` Modify
+  - `u:` User permissions being set
+  - `someuser:` the user
+  - `rwx` any of `r`. `w`, or `x` for the permissions
+  - `setfacl -m d:u:someuer:rwx somedir` for a Directory (`d:`)
+- `setfacl -x u:someuser somefile` (remove ACL permissions for `someuser` on `somefile`)
 
-### `dd`
-- `dd` can be used as a dummy process to test system IDs, etc
-  - `dd if=/dev/zero of=/dev/null`
-  - `dd if=/dev/urandom of=/dev/null status=progress`
-    - Optionally add `status=progress`
-    - `/dev/zero` and `/dev/urandom` are both valid `if=` sources
-  - `dd if=/dev/urandom | pv | dd of=/dev/null` (requires the `pv` 'pipe viewer' package)
-- Use <key>Ctrl</key> + <key>Z</key> and `jobs -l` and `kill` to play around with this process
-
-## Memory
-- `/proc/` info locations:
-  - `/proc/sys/vm/`
-  - `/proc/meminfo` - RAM
-  - `/proc/swaps` - Swap
-- Memory tools from `procps`
-  - `free` basic RAM usage
-  - `vmstat` shows virtual memory use and info
-  - `pmap` maps processes in memory
-- Examples
-  - `vmstat 1 5` (display `5` iterations every `1` second)
-  - `vmstat -a 1 3`
-  - `vmstat -a -SM 1 3`
-  - `vmstat -p /dev/sda1 1 3`
-
-### OOM Killer (Out of Memory)
-- Linux allows memory to "overcommit"
-  - If a process requests a large block of RAM, but will likely only use a small amount, Linux allows it
-  - This depends on the **badness* seen in `/proc/PID/oom_score`
-- Setting: `/proc/sys/vm/overcommit_memory` (a simple digit)
-  - `0` default - permit overcommittment
-    - Rejects overcomits that are obviously a problem
-    - `root` users get more memory than normal users
-  - `1` - always overcommit
-  - `2` - never overcomit
-    - Ratio of RAM to swap set in: `/proc/sys/vm/overcommit_ratio` (default `50`)
 
 ___
 
-#### [Lesson 4: Git](https://github.com/inkVerb/vip/blob/master/601/Lesson-04.md)
+#### [Lesson 4: Git](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md)

@@ -318,4 +318,4 @@ ExecReload=/usr/bin/busctl call org.freedesktop.DBus /org/freedesktop/DBus org.f
 
 ___
 
-#### [Lesson 2: Packages](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md)
+#### [Lesson 2: Procesesses & Monitoring](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md)

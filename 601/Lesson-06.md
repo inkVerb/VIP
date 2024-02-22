@@ -679,7 +679,7 @@ IP route add default via address     device name
   - Directly edit `/sys/` pseudofiles (non-persistent)
   - `iprout2` tools, including the `ip` command (non-persistent)
   - NetworkManager (`nmtui` & `nmcli`; persistent)
-  
+
 ### Create Bonding Network Interface
 - `nmcli device status` (find network device name)
   - Say this includes devices called `enp3s0` and `enp4s0`, which we use
@@ -855,4 +855,4 @@ _dmarc.verb.ink.   IN  TXT      "v=DMABOX1; p=reject; fo=0; aspf=r; adkim=r; pct
 
 ___
 
-#### [Lesson 7: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)
+#### [Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)

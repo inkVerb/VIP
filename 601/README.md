@@ -13,9 +13,9 @@ While this course comes after [Linux 501](https://github.com/inkVerb/VIP/tree/ma
 
 ### [Lesson 1: Boot & System Init](https://github.com/inkVerb/vip/blob/master/601/Lesson-01.md)
 
-### [Lesson 2: Packages](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md)
+### [Lesson 2: Procesesses & Monitoring](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md)
 
-### [Lesson 3: Procesesses & Monitoring](https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md)
+### [Lesson 3: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md)
 
 ### [Lesson 4: Git](https://github.com/inkVerb/vip/blob/master/601/Lesson-04.md)
 
@@ -23,13 +23,13 @@ While this course comes after [Linux 501](https://github.com/inkVerb/VIP/tree/ma
 
 ### [Lesson 6: Network](https://github.com/inkVerb/vip/blob/master/601/Lesson-06.md)
 
-### [Lesson 7: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md)
+### [Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md)
 
-### [Lesson 8: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)
+### [Lesson 8: Packages](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)
 
-### [Lesson 9: Firewall](https://github.com/inkVerb/vip/blob/master/601/Lesson-09.md)
+### [Lesson 9: PAM, SSH, LDAP & Docker](https://github.com/inkVerb/vip/blob/master/601/Lesson-09.md)
 
-### [Lesson 10: PAM, SSH, LDAP & Docker](https://github.com/inkVerb/vip/blob/master/601/Lesson-10.md)
+### [Lesson 10: Firewall](https://github.com/inkVerb/vip/blob/master/601/Lesson-10.md)
 
 ### [Lesson 11: Security Modules](https://github.com/inkVerb/vip/blob/master/601/Lesson-11.md)
 
