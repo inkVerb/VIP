@@ -184,4 +184,13 @@
 
 ___
 
+
+# The Type
+
+```console
+
+```
+
+___
+
 #### [Lesson 3: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-04.md)

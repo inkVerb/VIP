@@ -270,6 +270,15 @@ The first number is a ***major***, the second number is a ***minor***; see the [
     - `GROUP="www"`
 - `udevadm monitor` watch the rules at work live
   - Try plugging in and out USB devices
+
+___
+
+# The Type
+
+```console
+
+```
+  
 ___
 
 #### [Lesson 6: Network](https://github.com/inkVerb/vip/blob/master/601/Lesson-06.md)

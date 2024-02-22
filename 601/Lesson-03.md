@@ -194,6 +194,14 @@
   - `setfacl -m d:u:someuer:rwx somedir` for a Directory (`d:`)
 - `setfacl -x u:someuser somefile` (remove ACL permissions for `someuser` on `somefile`)
 
+___
+
+
+# The Type
+
+```console
+
+```
 
 ___
 

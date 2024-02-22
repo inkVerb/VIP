@@ -122,7 +122,6 @@ yay -S virtualbox-ext-oracle
 ___
 
 ## Troubleshooting
-
 - If you encounter a network-related error on starting a VM
   - Right click on the VM in the list, then try: > Settings... > Network
     - Attached to: NAT (or something else that works)
@@ -134,10 +133,20 @@ ___
 - If you encounter other errors while using the VM, check if your disk is full where your "VirtualBox VMs" folder resides
 
 ## Relevant OS Images
+*These are useful for practice with networking and security*
 
-- (Kali Linux)[https://www.kali.org/downloads/]
-- (Metaspoitable 2)[https://sourceforge.net/projects/metasploitable/files/Metasploitable2/]
-- (Metaspoitable 3)[https://sourceforge.net/projects/metasploitable3-ub1404upgraded/]
-- (Windows for VM (Enterprise Evaluation))[https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/]
+- [Kali Linux](https://www.kali.org/downloads/)
+- [Metaspoitable 2](https://sourceforge.net/projects/metasploitable/files/Metasploitable2/)
+- [Metaspoitable 3](https://sourceforge.net/projects/metasploitable3-ub1404upgraded/)
+- [Windows for VM (Enterprise Evaluation)](https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/)
+
+### Standard Linux Images
+*These mainstream Linux distros may be useful for practice on different architectures*
+
+- [Arch](https://archlinux.org/download/)
+- [Manjaro](https://manjaro.org/download/) (OOB-ready Arch)
+- [Ubuntu](https://ubuntu.com/download/desktop)
+- [CentOS](https://www.centos.org/download/)
+- [OpenSUSE](https://get.opensuse.org/tumbleweed/?type=desktop#download) (Tumbleweed - Rolling Release)
 
 Also see [CISCO Packet Tracer](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Packet-Tracer.md) to practice making your own networks in a simulator

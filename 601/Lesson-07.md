@@ -359,7 +359,7 @@ Any of the one-line commands will work in the **Formatting** section
     - `nfs` Network File System (NFS)
     - `bind` serves as a hard link
   - `<options>`
-    - `umask=0077` for `/boot/efi`, learn about `umask` in [Lesson 6](https://github.com/inkVerb/vip/blob/master/601/Lesson-06.md)
+    - `umask=0077` for `/boot/efi` *(we learn about `umask` in [Lesson 3: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md))*
     - `defaults,noatime` most normal filesystems
     - `defaults,noatime,mode=1777` `tmpfs`
     - `noatime` same as `lsatt` `A`, don't log access timestamp to files when not modified, this can same I/O cost
@@ -1497,6 +1497,14 @@ sudo nbd-client -N exportrofile 192.168.0.5 10809 /dev/nbd1
 
 ```console
 sudo nbd-client -N exportzerodd 192.168.0.5 881188 /dev/nbd2
+```
+
+___
+
+# The Type
+
+```console
+
 ```
 
 ___

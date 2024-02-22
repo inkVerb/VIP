@@ -299,4 +299,13 @@ git clone --depth 1 -b master https://git.kernel.org/pub/scm/linux/kernel/git/st
 
 ___
 
+
+# The Type
+
+```console
+
+```
+
+___
+
 #### [Lesson 5: Kernel & Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)

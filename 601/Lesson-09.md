@@ -438,4 +438,12 @@ secrets:
 
 ___
 
+# The Type
+
+```console
+
+```
+
+___
+
 #### [Lesson 10: Firewall](https://github.com/inkVerb/vip/blob/master/601/Lesson-11.md)

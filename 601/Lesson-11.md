@@ -27,7 +27,7 @@
   - **DAC**: Discretionary Access Control (policy-based, on every UNIX/Linux kernel)
   - **MAC**: Mandatory Access Control (user-based, includes ACL, supplemental to Linux DAC)
   - **AVC**: Access Vector Cache (messages about SELinux violations)
-  - **ACL**: Access Control Lists (user/file permissions, see [Lesson 2](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md))
+  - **ACL**: Access Control Lists (user/file permissions, see [Lesson 3: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md))
   - Learn more on [UL.SE](https://unix.stackexchange.com/questions/16828)
 - Linux v6.7.4 LSMs include:
   - **SELinux** (v2.6: elaborate MAC)
@@ -58,7 +58,7 @@
 - Permanently disable: (either)
   - `SELINUX=disabled` in `/etc/selinux/config`
   - `selinux=0` to kernel via the `linux` line of GRUB config: `/boot/grub/grub.cfg`
-    - See [Lesson 5: Kernel](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md) for more
+    - See [Lesson 5: Kernel & Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md) for more
   - Only disable SELinux if you ***never*** intend to re-enable it
     - Instead of "disable and re-enable", first use `setenforce Permissive` to disble enforcement, then `setenforce Enforcing` to enforce again
 - Tools:
@@ -258,6 +258,14 @@ aa-remove-unknown (8) - remove unknown AppArmor profiles
 aa-status (8)        - display various information about the current AppArmor policy.
 aa-teardown (8)      - unload all AppArmor profiles
 aa-unconfined (8)    - output a list of processes with tcp or udp ports that do not have AppArmor profiles loaded
+```
+
+___
+
+# The Type
+
+```console
+
 ```
 
 ___

@@ -400,4 +400,12 @@ Include = /etc/pacman.d/mirrorlist
 
 ___
 
+# The Type
+
+```console
+
+```
+
+___
+
 #### [Lesson 9: PAM, SSH, LDAP & Docker](https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md)

@@ -72,7 +72,7 @@
 - `tar xfp /place/archive.tar` extract, (`p` preserve permissions, should be default anyway)
 
 #### `dd` Device Duplicator
-- `dd` was introduced in [Lesson 8: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/201/Lesson-08.md)
+- `dd` was introduced in [Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md)
   - `dd if=/dev/sda of=/dev/sdb` - Backup `sda` to `sdb`
   - `dd if=/dev/sda of=sda.img` - Backup `sda` to an `.img` file
   - `dd if=/dev/sda1 of=sda1.img` -Backup the `sda1` partition to an `.img` file
@@ -209,8 +209,16 @@ chroot /mnt/sysimage
   - This helps get the new OS get "moved in and arrange the furniture" when being installed (ie device drivers, user credentials, etc)
   - `chroot` is used manually when installing Arch
 - This is often called a "chroot-ed" environment
-- `chroot` is a standard start for fixing things on a broken Linux installation, including to repair GRUB (per [Lesson 5: Kernel](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md))
+- `chroot` is a standard start for fixing things on a broken Linux installation, including to repair GRUB (per [Lesson 5: Kernel & Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md))
 - Some commands allow non-chroot-ed access, ie SUSE/CentOS # `rpm -ivh --force --root=/mnt/sysimage /mnt/source/Packages/somepackage.rpm`
+
+___
+
+# The Type
+
+```console
+
+```
 
 ___
 

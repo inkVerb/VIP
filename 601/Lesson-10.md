@@ -236,4 +236,12 @@ sysctl -p || reboot
 
 ___
 
+# The Type
+
+```console
+
+```
+
+___
+
 #### [Lesson 11: Security Modules](https://github.com/inkVerb/vip/blob/master/601/Lesson-10.md)

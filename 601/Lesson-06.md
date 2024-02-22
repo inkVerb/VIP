@@ -855,4 +855,12 @@ _dmarc.verb.ink.   IN  TXT      "v=DMABOX1; p=reject; fo=0; aspf=r; adkim=r; pct
 
 ___
 
+# The Type
+
+```console
+
+```
+
+___
+
 #### [Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)

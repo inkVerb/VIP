@@ -47,7 +47,7 @@
 - The first menu normally seen on bootup, usually with name and logo of your Linux distro
   - If there is only one option, there may be no menu (standard on virtual machines and servers)
 - Can boot to either Linux or Windows with various options for each system
-- Updating/repairing GRUB is discussed in [Lesson 5: Kernel](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)
+- Updating/repairing GRUB is discussed in [Lesson 5: Kernel & Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)
 
 ### How GRUB works
 - Each menu item represents a **kernel command**
@@ -57,7 +57,7 @@
   2. Press <key>E</key> for "edit"
   - This will show you the kernel config for that menu item, including the **kernel command** (seen at `/proc/cmdline` after boot)
     - Many of these may involve `if` statements, but they all prepare and run the **kernel command**
-  - The **kernel command** is descussed at length in [Lesson 5: Kernel](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)
+  - The **kernel command** is descussed at length in [Lesson 5: Kernel & Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)
 - GRUB is simple, and this is about all that it does: select a **kernel command**
 - GRUB has an option for an interactive GRUB prompt with even more options, beyond the scope of this course
 
@@ -315,6 +315,15 @@ ExecReload=/usr/bin/busctl call org.freedesktop.DBus /org/freedesktop/DBus org.f
   - `systemctl start SOME_SERVICE` - Start SOME_SERVICE now
   - `systemctl stop SOME_SERVICE` - Stop SOME_SERVICE now
   - `systemctl disable SOME_SERVICE` - Disable SOME_SERVICE so it no longer runs at next startup
+
+___
+
+
+# The Type
+
+```console
+
+```
 
 ___
 
