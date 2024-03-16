@@ -33,10 +33,10 @@
   - Each limit is shown with a flag, such as `-c`, `-d`, `-f`, etc
 - `ulimit -u 256512` sets the maximum of user processes to 256,512
 - Settings are in `/etc/security/limits.conf`
-- **hard limit** - set by `root`
+- **hard limit** - set by `root` (not `sudo`)
 - **soft limit** - set by users
-- `ulimit -H -u 256512` set as a hard limit
-- `ulimit -S -u 256512` set as a soft limit
+- :# `ulimit -H -u 256512` set as a hard limit
+- :$ `ulimit -S -u 256512` set as a soft limit
 
 ### Process Creation
 - The first user process is `init` with PID `1`
@@ -62,14 +62,17 @@
 
 ### `cron`
 - Play around with [crontab guru](https://crontab.guru/) to see how the schedule works
-- [minute] [hour] [day of month] [month] [day of week]
+- `MM HH DD MM WD user command (args...)`
+  - `[minute] [hour] [date] [month] [weekday] USER COMMAND (arguments - optional)`
   - `*` every value
   - `,` list separator
   - `-` range operator
   - `/` step operator (every `/n` values; eg. every `/2` hours)
   - `cron.d` directory for cron tasks like this
   - Learn more from the [Cron Cheat Sheet](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md) and [401 Lesson 3](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md)
-  - `anacron` is an alternative to `cron` that runs jobs with staggered timing
+- `anacron` is an alternative to `cron` that runs jobs with staggered timing
+- `chrony` is the [Arch Linux package](https://wiki.archlinux.org/title/Chrony) for `cron` task functionality (not native)
+- `cron.d/` files must have `0644` permissions
 
 ### Process States
 - Running - normal, using CPU, executing
@@ -117,7 +120,7 @@
 
 ### `ps`
 - Types of `ps` options
-  - UNIX options **must** start with `-`
+  - Unix options **must** start with `-`
   - BSD options **must not** start with `-`
   - GNU options **must** start with `--`
 - Examples
@@ -166,7 +169,7 @@
   - `pmap` maps processes in memory
 - Examples
   - `vmstat 1 5` (display `5` iterations every `1` second)
-  - `vmstat -a 1 3`
+  - `vmstat -a 1 3` (`-a` for activity)
   - `vmstat -a -SM 1 3`
   - `vmstat -p /dev/sda1 1 3`
 
@@ -185,12 +188,94 @@
 ___
 
 
-# The Type
+# The Keys
+*Practice commands for SysAdmins who already know what these mean*
 
 ```console
+cd /usr/bin
+ls -l | grep rws
+find . -perm -u+s
+ls -l chsh
+ls -l crontab
+ls -l gpasswd
+ls -l mount
+ls -l passwd
+ls -l su
+ls -l sudo
+ls -l mount
+ls -l umount
+ls -l unix_chipwd
 
+ulimit -a
+cat /etc/security/limits.conf
+ulimit -a
+su
+ulimit -H -u 256512
+exit
+ulimit -S -u 64128
+
+jobs -l
+gedit &
+fg %1
+# Ctrl + Z
+bg %1
+kill %1
+
+cd /etc
+sudo find . -name "cron*"
+find . -name "cron*"
+top
+htop
+free
+uptime
+mpstat
+numstat
+sar
+strace
+
+ls /proc
+dd if=/dev/urandom | pv | dd of=/dev/null
+# Ctrl + C
+dd if=/dev/zero | pv | dd of=/dev/null
+# Ctrl + C
+gedit &
+dd if=/dev/zero of=/dev/null &
+jobs
+ps aux | grep gedit
+ps aux | grep dd
+pgrep gedit
+pgrep dd
+ps -elLf
+ps -elf
+pstree
+pstree -aAp
+pstree -aAp $(pgrep gedit)
+pgrep dd
+pstree -aAp 5555 # some PID for dd
+pstree -aAp 1 # PID for init
+free
+pgrep dd
+jobs
+kill %1
+jobs
+kill %2
+pgrep dd
+
+vmstat
+vmstat -a
+vmstat 1 5
+vmstat -a 1 4
+vmstat -p /dev/sda1 1 3
+
+sudo cat <<EOF > /etc/cron.d/chores
+0/15 * * * 2 root /usr/bin/echo "Every Tuesday, every 15 minutes from 00 minutes"
+15 12 * * * root /usr/bin/echo "Every day at 12:15 PM"
+22 4 14 * * root /usr/bin/echo "The 14th of every month at 4:22 PM"
+0 3 1 6,9 * root /usr/bin/echo "June 1 and September 1 at 3:00 AM"
+EOF
+sudo chmod 0644 /etc/cron.d/chores
 ```
 
 ___
 
-#### [Lesson 3: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-04.md)
+#### [Lesson 3: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md)

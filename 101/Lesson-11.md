@@ -21,7 +21,11 @@ echo "$$//" > money.file
 gedit money.file
 ```
 
-*Note how special characters don't always work correctly...*
+*Note how special characters don't always behave as expected*
+
+*Double dollar sign (`$$`) is the PID for the current terminal; it will be different, yet unchanged, in every terminal*
+
+*To prevent the `$$` and other special characters from "working", we need to "escape" (some say "quote") with: `\`*
 
 | **3** :$
 
@@ -37,7 +41,7 @@ echo "\$\$//" > money.file
 sed -i "s///!/g" money.file
 ```
 
-*Notice the error, "escape" (some say "quote") special characters with: `\`*
+*Notice the error*
 
 | **5** :$
 
@@ -55,6 +59,8 @@ sed -i "s/$/@/g" money.file
 
 *gedit: Reload money.file*
 
+*Note the `@` symbol appeares at the end of the line*
+
 | **7** :$
 
 ```console
@@ -62,6 +68,8 @@ sed -i "s/\$/@/g" money.file
 ```
 
 *gedit: Reload money.file*
+
+*Note even quoted, the `@` symbol appeares at the end of the line*
 
 | **8** :$
 
@@ -71,7 +79,7 @@ sed -i 's/$/@/g' money.file
 
 *gedit: Reload money.file*
 
-*Note even with 'single quotes' it still doesn't work...*
+*Note even with 'single quotes', the `@` symbol appeares at the end of the line*
 
 | **9** :$
 

@@ -36,11 +36,9 @@ Example: `#request mod bars`
 
 ### Size and which monitor, examples
 
-First monitor: `#request setgeometry 0 0 1920 1080`
-
-Second monitor: `#request setgeometry 1920 0 1920 1080`
-
-Third monitor: `#request setgeometry 3840 0 1920 1080`
+- First monitor: `#request setgeometry 0 0 1920 1080`
+- Second monitor: `#request setgeometry 1920 0 1920 1080`
+- Third monitor: `#request setgeometry 3840 0 1920 1080`
 
 ## Startup file
 

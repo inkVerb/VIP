@@ -51,7 +51,7 @@ sudo apt update
 sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
 >
-> CentOS/Fedora:
+> RedHat/CentOS:
 >
 > | **C1** :$
 >

@@ -9,7 +9,7 @@ cd ~/School/VIP/501
 
 Ready services
 
-Arch/Manjaro & CentOS/Fedora
+Arch/Manjaro & RedHat/CentOS
 ```console
 sudo systemctl start httpd mariadb
 ```
@@ -109,7 +109,7 @@ ls web
   - Ensure set & uncommented: `file_uploads = On` (remove any semicolon `;` at the start of the line, make sure it is `On`)
   - Edit with `gedit`:
 
-    - Arch/Manjaro or CentOS/Fedora
+    - Arch/Manjaro or RedHat/CentOS
 
     | **3Ag** :$
 
@@ -129,7 +129,7 @@ sudo gedit /etc/php/8.0/apache2/php.ini
 
   - Or edit with `vim`:
 
-    - Arch/Manjaro or CentOS/Fedora
+    - Arch/Manjaro or RedHat/CentOS
 
     | **3Av** :$
 
@@ -149,7 +149,7 @@ sudo vim /etc/php/8.0/apache2/php.ini
 
   - Or replace with `sed`:
 
-    - Arch/Manjaro or CentOS/Fedora
+    - Arch/Manjaro or RedHat/CentOS
 
     | **3As** :$
 
@@ -167,7 +167,7 @@ sudo sed -i 's/^;file_uploads = On/file_uploads = On/' /etc/php/8.0/apache2/php.
 
 2. Restart Everything
 
-- Arch/Manjaro or CentOS/Fedora
+- Arch/Manjaro or RedHat/CentOS
 
 | **4A** :$
 
@@ -527,7 +527,7 @@ ls web/uploads
   - Ensure set: `upload_max_filesize = 5M` (make sure it is `5M`)
   - Edit with `gedit`:
 
-    - Arch/Manjaro or CentOS/Fedora
+    - Arch/Manjaro or RedHat/CentOS
 
     | **21Ag** :$
 
@@ -547,7 +547,7 @@ sudo gedit /etc/php/8.0/apache2/php.ini
 
   - Or edit with `vim`:
 
-    - Arch/Manjaro or CentOS/Fedora
+    - Arch/Manjaro or RedHat/CentOS
 
     | **21Av** :$
 
@@ -567,7 +567,7 @@ sudo vim /etc/php/8.0/apache2/php.ini
 
   - Or replace with `sed`: (first remove any comment, then again incase it wasn't commented)
 
-    - Arch/Manjaro or CentOS/Fedora
+    - Arch/Manjaro or RedHat/CentOS
 
     | **21As** :$
 
@@ -587,7 +587,7 @@ sudo sed -i 's/^upload_max_filesize =.*/upload_max_filesize = 5M/' /etc/php/8.0/
 
 2. Restart Everything
 
-- Arch/Manjaro or CentOS/Fedora
+- Arch/Manjaro or RedHat/CentOS
 
 | **22A** :$
 
@@ -1594,9 +1594,9 @@ texlive-fonts-recommended \
 texlive-latex-recommended
 ```
 
-CentOS/Fedora
+RedHat/CentOS
 
-*Sorry,* Redhat's CentOS/Fedora repos *don't support `pandoc` and other media packages, so many tools in the remainder of this lesson and web app will not work on those Linux distros*
+*Sorry,* Redhat's RedHat/CentOS repos *don't support `pandoc` and other media packages, so many tools in the remainder of this lesson and web app will not work on those Linux distros*
 
 #### File Processing in the Linux Terminal
 

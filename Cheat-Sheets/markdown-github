@@ -1,7 +1,0 @@
-To create a code span, put your code span content between backtics.
-`CODE SPAN CONTENT`
-
-If you want your code span to contain backtics, surround the entire code span with double backtics and a space.
-`` CODE SPAN CONTENT `CODE SPAN CONTENT BETWEEN MY BACKTICS` ``
-
-In a sense, this works like single and double quotes inside of one another.

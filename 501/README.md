@@ -1,5 +1,19 @@
 # Linux 501: Web Stack
 
+- LAMP stack installation
+- HTML-CSS-JS basics
+- PHP in-depth basics
+- SQL command line basics
+- AJAX via PHP
+- POST validation & security
+- COOKIE & SESSION
+- JS libraries
+- File upload handling
+- Linux-based media/document processing
+- XML documents & command line
+- RSS & Podcast feeds
+- Create a minimalist CMS blog and RSS/Podcast feed generator website
+
 ## Prerequisite: [Linux 401](https://github.com/inkVerb/VIP/tree/master/401)
 
 ### [Lesson 0: LAMP Server Setup & HTML Fast](https://github.com/inkVerb/vip/blob/master/501/Lesson-00.md)

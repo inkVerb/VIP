@@ -4,7 +4,7 @@
 # The Chalk
 ## Linux Security Modules (LSM)
 - Security is intended to:
-  - Minimize changes and overhead in the kernel
+  - Minimize changes and overhead for the kernel
   - Allow flexibility in implementation
 - Security modules **hook** kernel calls:
   - Insert code for any program calling the kernel
@@ -15,21 +15,21 @@
 
 ### Security Module History
 - SELinux was the original
-- In 2001, it was sent to be included as a kernel module OOB
+  - In 2001, it was sent to be included as a kernel module OOB
   - There was some objection to a monolythic security solution
 - In 2003:
   - SELinux was implemented
   - Other security modules could be developed and adopted instead
   - Only one security module could be used at a time
-- Combining security modules is possible today, but be cautious
+- Combining security modules is possible today, but be cautious doing so
   - Combining consders different sec mods as "major" or "minor"
 - Workflow terms:
-  - **DAC**: Discretionary Access Control (policy-based, on every UNIX/Linux kernel)
+  - **DAC**: Discretionary Access Control (policy-based, mainly user/file permissions on every Unix/Linux kernel)
   - **MAC**: Mandatory Access Control (user-based, includes ACL, supplemental to Linux DAC)
   - **AVC**: Access Vector Cache (messages about SELinux violations)
   - **ACL**: Access Control Lists (user/file permissions, see [Lesson 3: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md))
   - Learn more on [UL.SE](https://unix.stackexchange.com/questions/16828)
-- Linux v6.7.4 LSMs include:
+- Linux v6.7.4 (2024) LSMs include:
   - **SELinux** (v2.6: elaborate MAC)
   - **Simplified Mandatory Access Control (SMACK)** (v2.6.24: MAC)
   - **AppArmor** (v2.6.36: MAC)
@@ -37,10 +37,12 @@
   - **Yama** (v3.4: extends DAC)
   - **LoadPin** (v4.7: ensures kernel files are from same filesystem)
   - **SafeSetID** (v5.1: UID/GID transitions must match a whitelist)
-  - **Lockdown** (v5.4: prevents various changes to the kernel, eg loading modules)
+  - **Lockdown** (v5.4: prevents various changes to the kernel, ie loading modules)
 
 ## Security Enhanced Linux (SELinux)
 - Developed by United States National Security Agency (NSA)
+- Primarily used by RedHat/CentOS (viz [CentOS Stream](https://www.centos.org/download/), [Fedora](https://fedoraproject.org/), or [RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux))
+  - `su` may be inaccessible; try `sudo -i`
 - Elaborate MAC
   - Uses file permissions for processes and ports, not only file permissions for users
   - These are stored separately
@@ -56,7 +58,7 @@
   - **Permissive**: Only warning, violations logged with AVE (debugging)
   - **Disabled**: SELinux not working at all
 - Permanently disable: (either)
-  - `SELINUX=disabled` in `/etc/selinux/config`
+  - `SELINUX=disabled` (in `/etc/selinux/config`)
   - `selinux=0` to kernel via the `linux` line of GRUB config: `/boot/grub/grub.cfg`
     - See [Lesson 5: Kernel & Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md) for more
   - Only disable SELinux if you ***never*** intend to re-enable it
@@ -66,10 +68,11 @@
   - `setenforce` - Set mode
   - `getenforce` - Show mode
   - Examples:
+    - `sestatus`
+    - `getenforce`
     - `setenforce Enforcing`
     - `setenforce Permissive`
     - *No `Disabled` option*
-    - `getenforce`
 
 ### SELinux Policies
 - Set in configs
@@ -158,9 +161,10 @@
   - `ps auZ` - see context labels for users
   - `ps axZ` - see context labels for processes
   - `chcon` - change context rules
-    - `chcon -t etc_t somefile`
-    - `chcon --reference onefile otherfile`
+    - `chcon -t etc_t onefile` - `etc_t` context for `onefile`
+    - `chcon --reference=onefile otherfile` - context of `onefile` for `otherfile`
   - `restorecon` - restore context to parent directory
+    - `restorecon -RFv` - `-R` recursive, `-F` force, `-v` verbose
   - `semanage fcontext` - sets a directory's context policy (`policycoreutils-python` package)
 
 #### Context Inheritance & Preservation
@@ -198,7 +202,7 @@
 - `setroubleshoot-server` package
 - Configs:
   - `/var/log/audit/audit.log` - raw issue messages
-  - `//var/log/messages` - where they get moved to
+  - `/var/log/messages` - where they get moved to
 - `sealert` views messages
 - Example: create a problem
   - `echo 'Wrong place' > /root/rootfile`
@@ -208,9 +212,9 @@
 
 ## AppArmor
 - Started by Immunex (Linux distro) in 1998
-  - SUSE via Novell took from 2005-2009
+  - [OpenSUSE](https://get.opensuse.org/tumbleweed/?type=desktop#download) via Novell took from 2005-2009
   - Canonical maintained since 2009
-- May be default for Debian and Manjaro (not Arch)
+- May be default for Debian distros and [Manjaro](https://manjaro.org/download/) (not [Arch](https://archlinux.org/download/))
 - **Security profiles** for programs
 - Considered "easier" for admins to onboard than SELinux (debated)
 - Filesystem-neutral (no context labels)
@@ -262,10 +266,141 @@ aa-unconfined (8)    - output a list of processes with tcp or udp ports that do 
 
 ___
 
-# The Type
+# The Keys
+*Practice commands for SysAdmins who already know what these mean*
+
+- **These commands should be attempted on practice machines, such as via [Oracle VirtualBox](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/VirtualBox.md), using:**
+  - ***CentOS Stream* with SELinux** for **SELinux** command practice
+    - Simple Virtualbox SELinux option is *PCI-DSS (Payment Card Industry Data Security Standard)* because it doesn't have partition mounting requirements
+  - ***Debian*** or ***OpenSUSE*** for **AppArmor** command practice
+
+| **SELinux** :$ *CentOS Stream*
 
 ```console
+sudo -i
 
+ls -l /etc/selinux/config
+ls -l /etc/sysconfig/selinux
+
+grep SELINUX= /etc/selinux/config
+grep SELINUX= /etc/sysconfig/selinux
+grep selinux= /boot/grub/grub.cfg
+
+sestatus
+getenforce
+
+ls /etc/selinux/ | wc -l
+ls -l /etc/selinux/
+setenforce Permissive
+getenforce
+setenforce Enforcing
+getenforce
+
+ps auZ
+ps axZ
+ls -Z
+ls -aZ
+
+cd
+touch onefile otherfile
+ls -lZ
+chcon -t etc_t onefile
+ls -lZ
+chcon --reference=onefile otherfile
+ls -lZ
+
+ls -Z
+ls -aZ
+ls -lZ /home/
+ls -lZ /tmp/
+ls -lZ /home/ /tmp/
+
+cd /tmp/
+touch tmpfile
+ls -Z
+
+cd
+touch homefile
+ls -Z homefile
+mv /tmp/tmpfile .
+ls -Z
+restorecon -Rv tmpfile
+ls -Z
+
+mkdir /virtualHosts
+ls -Z
+semanage fcontext -a -t httpd_sys_content_t /virtualHosts
+ls -Z
+restorecon -RFv /virtualHosts
+ls -Z
+
+
+getsebool -a
+getsebool allow_ftpd_anon_write
+
+setsebool allow_ftpd_anon_write on
+semanage boolean -l | grep allow_ftpd_anon_write
+
+setsebool -P allow_ftpd_anon_write on
+semanage boolean -l | grep allow_ftpd_anon_write
+
+ls -l /var/log/audit/audit.log
+ls -l /var/log/messages
+dnf install setroubleshoot-server
+ls -l /var/log/audit/audit.log
+ls -l /var/log/messages
+sealert
+
+echo 'Wrong place' > /root/rootfile
+mv /root/rootfile /srv/www/html/
+wget -O - localhost/rootfile
+tail /var/log/messages
+
+exit
+```
+
+| **AppArmor** :$ *Debian* or *OpenSUSE*
+
+```console
+su
+
+apparmor_status
+systemctl status apparmor
+systemctl stop apparmor
+apparmor_status
+systemctl start apparmor
+systemctl status apparmor
+apparmor_status
+
+ps aux
+
+ls /etc/apparmor.d | wc -l
+ls -l /etc/apparmor.d
+
+# OpenSUSE
+rpm -qil apparmor-utils | grep bin
+zypper install apparmor-utils
+
+# Debian
+apt install apparmor-profiles
+apt install apparmor-utils
+dpkg -L apparmor-utils | grep bin
+
+
+cd /etc/apparmor.d
+ls -l
+ls /usr/sbin/*complain | wc -l
+ls -l /usr/sbin/*complain
+ls /usr/bin/aa-* | wc -l
+ls -l /usr/bin/aa-*
+
+aa-complain
+aa-enforce
+aa-complain
+
+man apparmor.d
+
+exit
 ```
 
 ___

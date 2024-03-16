@@ -766,7 +766,7 @@ tar c vip | xz > vip.tar.xz
 | **95** :$
 
 ```console
-tar Jc vip vipJ.tar.xz
+tar Jcf vipJ.tar.xz vip
 ```
 
 - `-J` use `xz`
@@ -812,7 +812,7 @@ ___
 # The Take
 
 - Important commands
-  - `tar Jc source archive.txz` make `xz` compressed tarball in one command
+  - `tar Jcf archive.txz sourcedir` make `xz` compressed tarball in one command
     - `-J` use `xz`
     - `-j` use `bzip2`
     - `-z` use `gzip`

@@ -13,6 +13,63 @@ ___
 - **Filesystems** are formatted partitions of different types, such as **ext4**, **FAT32**, **swap**, **NTFS**, etc
 - **Virtual Filesystem** is a software layer that interacts directly with the physical disk; most filesystems use this so apps can operate easily
 
+## Disk Types
+### Connection Cables
+- **SCSI (Small Computer Systems Interface)**
+  - First developed in 1979
+  - A broad range of cables, plug types, and speeds
+  - Range from:
+  - Narrow (standard SCSI)
+    - 8 bit bus
+    - 5MB/second
+  - Wide (ultra-wide SCSI-3)
+    - 16 bit bus
+    - 160MB/second
+- **IDE (Integrated Drive Electronics) & EIDE (Enhanced IDE)**
+  - Used 1991-2012
+  - A kind of SCSI device
+  - Main internal disk connectors
+  - Obsolte
+- **SATA (Serial Advanced Technology Attachment)**
+  - First released in 2003
+  - A kind of SCSI device
+  - Replaced IDE drives
+  - Smaller cable (7 pins)
+  - Native hot swapping
+  - Fast & efficient data transfer
+  - eSATA was a SATA "next generation" dream that failed
+- **USB (Universal Serial Bus)**
+  - A kind of SCSI device
+  - Can connect any drive (flash, HDD, SSD, SATA adapters, FDD [floppy disk drive] etc)
+  - External
+- **NVMe (Non-Volatile Memory Express)**
+  - *NOT* a kind of SCSI device
+  - Faster connection between SSD media and the motherboard
+  - Usually connects to the motherboard without a cable
+### Drive Media
+- **FDD (Floppy Disk Drive)**
+  - The disk itself is floppy, but nearly comes in a sleve
+  - The sleve for the 3.5 inch is harder
+  - Older FDs were 8 inch, then 5.25 inch
+  - The 2.5 inch FD was a "next generation" dream that failed
+- **HDD (Hard Disk Drive)**
+  - Hard, spinning disk, using rotating platters and a magnetic head
+  - Rotation speed affects performance
+  - Formerly connected with IDE, not SATA
+- **Flash drive**
+  - Crafted using "**flash**" technology, borrowed from RAM's physical architecture
+  - No moving parts
+  - Often used in USB "thumb" drives
+  - Similar tech, but not the same as SSD
+- **SD (Secure Digital)**
+  - Uses flash technology
+  - Different sizes
+  - Used in cameras, smartphones, game consoles, and other mobile computing machines
+  - Uses the dedicated "SD slot" connection port
+- **SSD (Solid State Drive)**
+  - Uses flash technology
+  - No moving parts, no rotating disk
+  - Connects with SATA or NVMe
 ## Inodes
 - Every file has one **inode**
 - Hard vs soft links
@@ -144,8 +201,9 @@ ___
 
 ## Data Duplicator Tool
 - `dd` Disk/Data/Device Duplicator: copies raw data
-  - The `if=` input source almost always must be in `/dev/` folder
-  - Only duplicates raw data 
+  - The `if=` input source almost always must be in `/dev/` folder or an `.img` file
+  - Only duplicates raw data, it does not understand filesystems, directories, or mount points
+  - Only works with `/dev/` devices and/or `.img` files, [not directories nor mount points](https://unix.stackexchange.com/a/659102/315069); directories can be done, [but it is complicated](https://askubuntu.com/a/909144/880404)
   - This command is useful for low-level copies such as: backing up low-level system data like an MBR, creating empty files for swap or NBD serving, overwriting a disk, copying a damaged partition for later recovery, or even copying an entire partition table or physical drive, etc
 - `dd` is a copy process that copies direct data
 - It skips some of the file system interaction
@@ -222,7 +280,7 @@ ___
 ### Block Volumes
 - `lsblk` (list block volumes, including dev path)
     - `lsblk -f` (also label, UUID, size, use)
-- `blkid /dev/sda1` (get UUID of `/dev/sda1`)
+- :# `blkid /dev/sda1` (get UUID of `/dev/sda1`)
 - `ls -lh /dev/disk/by-uuid/`
 
 ## Partitioning
@@ -252,8 +310,8 @@ ___
 
 ### Create Partitions
 1. **Create a new partition table and partitions on the physical disk**
-- `m` for help to understand the interactive commands (both `fdisk` and `gdisk`)
-- You may follow along graphically in GParted
+- `fdisk` & `gdisk`: `m` for help to understand the interactive commands
+- You may follow along graphically in GParted (using 'Refresh...')
 - This assumes a physical disk at least 447G or larger
 - **Via `fdisk`**
 ```console
@@ -326,7 +384,7 @@ sudo gdisk /dev/sdb
 Any of the one-line commands will work in the **Formatting** section
 
 ### Formatting
-- `mkfs`: #
+- `mkfs`:#
   - Use the extension for the drive type
     - Get an easy list: `ls -lh /bin/mkfs*`
   - `mkfs.ext4 /dev/sdb1`
@@ -336,7 +394,7 @@ Any of the one-line commands will work in the **Formatting** section
   - `mkswap /dev/sdb1` (`/bin/mkfs.swap -> /bin/mkswap`, not on Arch)
 
 ### Mounting
-- `fstab` automatic mounts at boot
+- `/etc/fstab` file contains automatic mounts at boot
   - `<file system>`
     - `/dev/sdb1`
     - `UUID=s0me-l0ng-n0mb3r` (find via `lsblk -f` or `blkid /dev/sdb1`)
@@ -378,7 +436,7 @@ Any of the one-line commands will work in the **Formatting** section
       - `x-systemd.automount.device-timeout=5` timeout after 5 seconds if device is not available
       - `x-systemd.automount.idle-timeout=60` unmount if device is not used for 60 seconds
       - `x-systemd.required-by=php-fpm.service` make sure this filesystem is mounted before starting the `php-fpm` service
-  - `<dump> <pass>` (should dump? | fsck k priority during startup?)
+  - `<dump> <pass>` (should dump? | `fsck` priority during startup?)
     - `0 2` common for `/boot/efi`, `/home` and other mount points
     - `0 1` for root mount point `/`
     - `0 0` for `tmpfs` and `nfs`
@@ -874,6 +932,12 @@ pvmove /dev/sdb3
 - *There may be an "insufficient free space" error if the volume group does not have enough unused space left over*
   - *If that happens, then shrink the logical volume with `lvresize` at least as much as the size of the physical volume, then try again*
 
+| **remove PV availability** :#
+
+```console
+pvremove /dev/sdb3
+```
+
 - Look at what changed
 
 | **list blocks** :
@@ -987,7 +1051,8 @@ sdb
 
   - *Note `sdb3` still isn't being used because we did `pvmove /dev/sdb3`*
     - *Instead, the COW area of the snapshot is there because it is the first available space*
-  - *If we had not done `pvmove /dev/sdb3`, things would look like this:*
+
+- *If we had not done `pvmove /dev/sdb3`, things would look like this:*
 
 ```
 |------------------------- LVM Volume Group volgrp (447G available) ----------------------|
@@ -1307,7 +1372,7 @@ pvremove /dev/sdb1 /dev/sdb2 /dev/sdb3 /dev/sdb4 /dev/sdb5 --force --force
 
 ## Swap
 - Can be partition or file
-- **Swap file**: (2G swap file)
+- **Swap file** # (2G swap file)
 ```bash
 swapoff /var/swap.img
 touch /var/swap.img
@@ -1426,19 +1491,19 @@ mkswap /dev/sdb5
   - Unix sockets
 
 ### Different NBD Tools & Linux Distros
-- `nbd-client` & `nbd-server` 
-  - CentOS/Fedora  (`nbd` package)
-  - Debian/Ubuntu (`nbd-client` & `nbd-server` packages)
+- `nbd-client` & `nbd-server`
   - Arch (`nbd` package)
+  - RedHat/CentOS  (`nbd` package)
+  - Debian/Ubuntu (`nbd-client` & `nbd-server` packages)
   - [NBD GitHub Repo](https://github.com/NetworkBlockDevice/nbd) (all distros)
 - `nbdkit` package: plugins for building various, unconventional NBD servers
-  - CentOS/Fedora
-  - Debian/Ubuntu
   - Arch (AUR)
+  - RedHat/CentOS
+  - Debian/Ubuntu
 - xNBD: Debian
   - `xnbd-client` & `xnbd-server` packages
 - `qemu`: various tools for compatability layers (packages depend on which tool)
-  - CentOS/Fedora
+  - RedHat/CentOS
   - Debian/Ubuntu
   - Arch
 - Default NBD server port is `10809`
@@ -1469,31 +1534,31 @@ mkswap /dev/sdb5
         postrun = rm -f %s
 ```
 
-| **Start server** : default config (`/etc/nbd-server/config`)
+| **Start server** :$ default config (`/etc/nbd-server/config`)
 
 ```console
 sudo nbd-server
 ```
 
-| **Start server** : custom config
+| **Start server** :$ custom config
 
 ```console
 sudo nbd-server -C /etc/nbd-server/myconfig.conf
 ```
 
-| **Client connects to 'foo'** :
+| **Client connects to 'foo'** :$
 
 ```console
 sudo nbd-client -N foo 192.168.0.5 /dev/nbd0
 ```
 
-| **Client connects to 'exportrofile'** : redundantly specify default port `10809`
+| **Client connects to 'exportrofile'** :$ redundantly specify default port `10809`
 
 ```console
 sudo nbd-client -N exportrofile 192.168.0.5 10809 /dev/nbd1
 ```
 
-| **Client connects to 'exportzerodd'** :
+| **Client connects to 'exportzerodd'** :$
 
 ```console
 sudo nbd-client -N exportzerodd 192.168.0.5 881188 /dev/nbd2
@@ -1501,12 +1566,260 @@ sudo nbd-client -N exportzerodd 192.168.0.5 881188 /dev/nbd2
 
 ___
 
-# The Type
+# The Keys
+*Practice commands for SysAdmins who already know what these mean*
+
+- **These commands should be attempted on a practice machine with a separate, expendible, and empty drive attached**
+  - Do not use a VM with an attached virtual drive since the formatting and partitioning commands will wear heavily on the system disk
+  - Beware that the machine you use could be permanently damaged if you type `/dev/sdx` incorrectly, which is why a separate pactice machine is strongly recommended, not any mission-critical machine
+- These commands use `/dev/sdx`; but make sure you use the correct device name to avoid erasing your data
+- `fdisk` & `gdisk` are interactive and require that you follow instructions from The Chalk
+
+| **Partitioning** :$
 
 ```console
+ls -i
+ls -l
+du -shx .
+du -shx *
+df -h
 
+sudo mkdir /mnt/one /mnt/two /mnt/three /mnt/four
+
+sudo fdisk /dev/sdx # create at least 5 partitions
+sudo mkfs.ext4 /dev/sdx1
+sudo mkfs.btrfs /dev/sdx2
+sudo mkfs.fat -F32 /dev/sdx3
+sudo mkntfs /dev/sdx4
+sudo mkswap /dev/sdx5
+lsblk -f
+sudo blkid /dev/sdx1
+sudo mount /dev/sdx1 /mnt/one
+sudo mount /dev/sdx2 /mnt/two
+sudo mount /dev/sdx3 /mnt/three
+sudo mount /dev/sdx4 /mnt/four
+sudo swapon /dev/sdx5
+cd /mnt/one
+du -shx .
+df -h
+cd /mnt
+sudo umount /mnt/one
+sudo umount /mnt/two
+sudo umount /mnt/three
+sudo umount /mnt/four
+sudo swapoff /dev/sdx5
+
+sudo gdisk /dev/sdx # create at least 5 partitions
+sudo mkfs.ext4 /dev/sdx1
+sudo mkfs.btrfs /dev/sdx2
+sudo mkfs.fat -F32 /dev/sdx3
+sudo mkntfs /dev/sdx4
+sudo mkswap /dev/sdx5
+lsblk -f
+sudo mount UUID=sdx1-l0ng-n0mb3r /mnt/one
+sudo mount UUID=sdx2-l0ng-n0mb3r /mnt/two
+sudo mount UUID=sdx3-l0ng-n0mb3r /mnt/three
+sudo mount UUID=sdx4-l0ng-n0mb3r /mnt/four
+sudo swapon UUID=sdx5-l0ng-n0mb3r
+cd /mnt/one
+du -shx .
+df -h
+cd /mnt
+sudo umount /mnt/one
+sudo umount /mnt/two
+sudo umount /mnt/three
+sudo umount /mnt/four
+sudo swapoff /dev/sdx5
+
+sudo rm -rf /mnt/one /mnt/two /mnt/three /mnt/four
+```
+
+| **/etc/fstab entries** :
+
+```console
+cat <<EOF >> ~/fstab.practice
+UUID=s0me-l0ng-n0mb3r   /boot/efi      vfat    umask=0077 0 2 
+UUID=s0me-l0ng-n0mb3r   /              ext4    defaults,noatime 0 1
+/dev/sdx1               /home          btrfs   defaults,noatime,nofail 0 1
+/dev/nvme0n1p1          /mnt/ssd       ext4    defaults,noatime,nofail,x-systemd.automount 0 0
+/dev/nvme0n1p2          /mnt/hdd       ext4    defaults,noatime,nofail,x-systemd.automount.device-timeout 0 0
+/var/swap.img           none           swap    sw 0 0
+/dev/volgrp/thislvm     /thislvm       ext4    defaults 1 2
+EOF
+```
+
+| **LVM** :$
+
+```console
+sudo fdisk /dev/sdx
+# Create 5 partitions
+# Type 43 or lvm
+
+sudo gdisk /dev/sdx
+# Create 5 partitions
+# Type 8e or lvm
+
+# Choose either fdisk or gdisk above before continuing
+
+partprobe -s
+# reboot?
+
+# Create the LVM partitions
+lsblk
+sudo pvcreate /dev/sdx1
+sudo pvcreate /dev/sdx2
+sudo pvcreate /dev/sdx3 /dev/sdx4 /dev/sdx5
+
+# Create the volume group
+sudo vgcreate -s 16M volgrp /dev/sdx1 /dev/sdx2
+ls -l /dev/volgrp
+lsblk
+sudo vgextend volgrp /dev/sdx3 /dev/sdx4 /dev/sdx5
+ls -l /dev/volgrp
+lsblk
+
+# Create the logical volume
+lsblk
+sudo lvcreate -L 420G -n thislvm volgrp
+ls -l /dev/volgrp
+lsblk
+
+# Remove the logical volume
+lvremove /dev/volgrp/thislvm
+
+# Create a smaller logical volume
+lsblk
+sudo lvcreate -L 220G -n thislvm volgrp
+ls -l /dev/volgrp
+lsblk
+
+# Format the drive
+sudo mkfs.ext4 /dev/volgrp/thislvm
+
+# Mount
+sudo mkdir /mnt/thislvm
+lsblk
+sudo mount /dev/volgrp/thislvm /mnt/thislvm
+lsblk
+
+# LVM management
+sudo pvdisplay
+sudo pvdisplay /dev/sdx1
+
+sudo vgdisplay
+sudo vgdisplay /dev/volgrp
+
+sudo lvdisplay
+sudo lvdisplay /dev/volgrp/thislvm
+
+lsblk
+sudo umount /mnt/thislvm
+lsblk
+
+df -h
+sudo lvresize -r -L 200G /dev/volgrp/thislvm
+df -h
+sudo lvresize -r -L +10G /dev/volgrp/thislvm
+df -h
+
+lsblk
+df -h
+sudo pvmove /dev/sdx3
+lsblk
+df -h
+sudo pvremove /dev/sdx3
+df -h
+lsblk
+sudo vgreduce volgpr /dev/sdx3
+sudo vgextend volgpr /dev/sdx3
+
+lsblk
+sudo lvcreate -s -n thesnap -l 128 /dev/volgrp/thislvm
+lsblk
+
+sudo mkdir /mnt/thesnap
+sudo mount -o ro /dev/volgrp/thesnap /mnt/thesnap
+lsblk
+cd /mnt/thesnap
+ls
+ls -l
+
+sudo umount /mnt/thesnap
+lsblk
+sudo lvremove /dev/volgrp/thesnap
+
+sudo mount /dev/volgrp/thislvm /mnt/thislvm
+lsblk
+sudo touch /mnt/thislvm/one /mnt/thislvm/two
+ls /mnt/thislvm
+echo "I am one two" > /mnt/thislvm/echoed
+cat /mnt/thislvm/echoed
+sudo lvcreate -s -n thesnap -l 128 /dev/volgrp/thislvm
+lsblk
+sudo touch /mnt/thislvm/three /mnt/thislvm/four
+ls /mnt/thislvm
+sudo echo "I am three four" >> /mnt/thislvm/echoed
+cat /mnt/thislvm/echoed
+sudo lvconvert --mergesnapshot /dev/volgrp/thesnap
+# Re-activate
+sudo umount /mnt/thislvm
+sudo lvchange -an /dev/volgrp/thislvm # active no
+sudo lvchange -ay /dev/volgrp/thislvm # active yes
+lsblk
+mount /dev/volgrp/thislvm /mnt/thislvm
+cd /mnt/thislvm
+ls
+cat echoed
+
+sudo vgremove volgrp
+sudo pvremove /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5 --force --force
+```
+
+| **swap file** :$
+
+```console
+sudo swapoff /var/swap.img
+sudo touch /var/swap.img
+sudo chmod 600 /var/swap.img
+sudo dd status=progress if=/dev/zero of=/var/swap.img bs=2M count=1024
+sudo mkswap /var/swap.img
+sudo swapon /var/swap.img
+```
+
+| **disk monitoring & recovery** :$
+
+```console
+iostat
+iostat -mx
+iostat 1 10
+sudo iotop
+sudo iotop -o
+sudo bonnie++ -u 0 -n 0 -f -b -r 150 -d /tmp/
+```
+
+| **NBD** :$
+
+```console
+vim /etc/nbd-server/config
+sudo nbd-server
+sudo nbd-server -C /etc/nbd-server/config
+sudo mkdir /export
+sudo touch /export/foo
+sudo touch /export/export1
+sudo touch /export/otherexport
+
+# See if this works to create the files that will be mounted to the NBD
+sudo dd if=/dev/zero of=/export/export1 bs=1M count=1024 # 1G drive file
+sudo dd if=/dev/zero of=/export/otherexport bs=2M count=1024 # 2G drive file
+
+
+# Connect to export1 and otherexport
+#sudo nbd-client -N foo 192.168.0.9 /dev/nbd0
+ip a # Find one of your NIC IP addresses on the network to replace 192.168.0.9 below
+sudo nbd-client -N export1 192.168.0.9 10809 /dev/nbd1 # Ctrl + C, it won't work without a network, type for practice
+sudo nbd-client -N otherexport 192.168.0.9 10809 /dev/nbd2 # Ctrl + C, it won't work without a network, type for practice
 ```
 
 ___
 
-#### [Lesson 8: Packages](https://github.com/inkVerb/vip/blob/master/601/Lesson-09.md)
+#### [Lesson 8: Packages](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)

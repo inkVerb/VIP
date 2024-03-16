@@ -300,10 +300,75 @@ git clone --depth 1 -b master https://git.kernel.org/pub/scm/linux/kernel/git/st
 ___
 
 
-# The Type
+# The Keys
+*Practice commands for SysAdmins who already know what these mean*
 
-```console
+```consolecd
+mkdir -p ~/.ssh
+cd ~/.ssh
+ls
+# SKIP ssh-keygen if you see id_rsa.pub !!!!
+ssh-keygen -t rsa
+cat id_rsa.pub
+# Add: Github > You > Settings > Add SSH and GPG Keys https://github.com/settings/keys
 
+git config --global user.name "My Name"
+git config --global user.email "my@example.com"
+git config --global init.defaultBranch main
+ssh -T git@github.com
+# Hi YOUR_USER_NAME! You've successfully authenticated, but GitHub does not provide shell access.
+ssh -vT git@github.com
+
+cd
+mkdir vipgit
+cd vipgit
+
+cd ~/vipgit
+rm -rf viprepo
+mkdir viprepo
+cd viprepo
+git init
+git remote add viprepo git@github.com:jessesteele/viprepo.git
+git remote -v
+# Create "viprepo" on GitHub's website: https://github.com/new
+
+echo "# Title" > README.md
+git add .
+git commit -m "New readme"
+git push --set-upstream viprepo main
+
+git status
+git branch vbranch
+git checkout vbranch
+echo "Some subtitle" >> README.md
+git add README.md
+git commit -m "README sub"
+git push --set-upstream viprepo vbranch
+
+git status
+git status -sb -uall
+echo "My Name" > CREDITS
+git add .
+git commit -m "CREDITS"
+git push
+git log
+
+git checkout main
+git checkout vbranch
+
+git checkout -b tbranch
+git status
+echo "foo" > bar.text
+git add .
+git status
+git status -sb -uall
+git commit -m "Foo Bar Text"
+git push --set-upstream viprepo tbranch
+git log
+
+git checkout main
+git checkout vbranch
+git checkout tbranch
 ```
 
 ___

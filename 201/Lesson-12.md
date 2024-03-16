@@ -108,6 +108,9 @@ For example:
 - `/etc/profile.d/`
 - `/etc/sudoers.d/`
 
+- Many files in these directories use a two-digit prefix to address `include` or `source` load priority
+  - ie: `00-defaults.conf` would load before `10-defaults.conf` in the same directory
+- Many different software packages and tools use this
 
 Originally, this was the directory with all the stuff that didn't seem to belong anywhere else and was, accordingly called the *"etc" (etc)* directory. It should probably still be  called that.
 

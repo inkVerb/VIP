@@ -1,5 +1,5 @@
 # Linux 601
-## Lesson 0: 601
+## Lesson 0: POSIX & Lesson Layout
 
 ### Cheat Sheets
 
@@ -11,10 +11,61 @@ These are helpful for installing network simulation tools on Arch or Manjaro
 ___
 
 ## The Chalk
+### *The Chalk* Instructions Precede *The Keys* Commands
+- In units *101-501*, lessons began with commands, then ended with *The Take*
+  - The *Linux 601* unit will not follow this format
+- SysAdmin lessons are primarily conceptual and secondarily practice
+- These conceptual lessons will begin with *The Chalk*, then follow in a *The Keys* section
+- *The Keys* commands are intended to be manually typed into the terminal as practice for real world or examination of SysAdmin work
+  - These commands are intended to be examples only
+  - You should be able to type varied versions of these from memory
+  - You should understand these commands
+  - *The Keys* commands flow with *The Chalk* and you can follow along with two browser tabs or windows
+  - These terminal exercises are meant to be repeated many times so using the information from *The Chalk* becomes second-nature
+
+### POSIX
+- POSIX standards are published by the [OpenGroup](https://www.opengroup.org/posix-systems)
+  - [2008](https://pubs.opengroup.org/onlinepubs/9699919799/)
+  - [2017](https://pubs.opengroup.org/onlinepubs/9699919799/)
+  - `man` pages:
+    - Arch package: `posix`
+    - Debian package: `manpages-posix-dev`
+    - OpenSUSE package: `man-pages-posix`
+- [POSIX (Portable Operating System Interface)](https://en.wikipedia.org/wiki/POSIX) is the [standard](https://stackoverflow.com/a/1780614/10343144) for Unix-like (incl Linux) users, scripting, interfaces, operations, etc
+- It is set by the [IEEE (Institute of Electrical and Electronics Engineers)](https://www.ieee.org/)
+- All Linux scripts, file formats, and user settings should be [POSIX-compliant](https://superuser.com/questions/322601/) before being released as a Linux package or distro
+- In SysAdmin work, the term POSIX will come up, so know that it refers to "proper Unix/Linux"
+- Reputable Unix/Linux programmers will concern themselves with POSIX compliance
+  - Nearly every package or program we install was developed by people who spent a lot of time making sure their software was POSIX-compliant
+  - Full POSIX compliance rules are part of separate research or certification and are not covered in this course
+- POSIX compliance examples:
+  - For shell scripts: `#!/bin/sh` is not POSIX-compliant; `#!/bin/bash` is POSIX-compliant
+  - `source` is not a POSIX-compliant way to "include" files in a script; POSIX-compliance uses dot-space (`. `) at the start of the line
+  - A "user" can be almost anything; a "POSIX user" is a registered user on a Unix/Linux operating system with log in credentials, permissions, groups, etc
+  - The Filesystem Hierarchy Standard (FHS) is used in [Linux and Unix, but not part of POSIX compliance](https://unix.stackexchange.com/questions/98751), see ([201 Lesson 12: FHS](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md))
+
+### Daemons: `*d` Suffix
+- In unit [201 Lesson 12: FHS](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md), we saw how `/etc/SERVICE.d/` would be a directory containing multiple config files for a given service
+- Many cloud services have tools for a client and a server
+  - Nextcloud
+  - WebDAV
+  - Email
+  - LDAP
+  - SSH
+  - FTP
+  - Countless others
+- The server software is often called a **daemon**
+- While many client configs reside in `/etc/` as, say, `SERVICE`, the server configs may have a `d` appended to the end of the files or directories
+- A good example of this is the `ssh` service, which we will learn more about in [Lesson 9: PAM & Cloud](https://github.com/inkVerb/vip/blob/master/601/Lesson-09.md)
+  - SSH client configs: `/etc/ssh_config` & `/etc/ssh_config.d/`
+  - SSH server configs: `/etc/sshd_config` & `/etc/sshd_config.d/`
+- Seeing a service with both names of, say, `SERVICE` and `SERVICEd` can make it easy to know whether you are woring wiht the `SERVICE` client or with the `SERVICEd` daemon/server
+
 ### User Prompts: **#** or **$** in CLI Instructions
 - In many Linux instructions, including these lessons, a hash (**#**) symbol precedes many commands, either on the preceding line or the same line
 - **#** indicates that a command must be run as `root`
   - Either use `su` to login as the `root` user and work at a `root` **#** prompt
+    - **`sudo -i` = `su`** - If `su` can't be accessed (vis SELinux), `sudo -i` enters `root` if *you* are in the `wheel` group, as on CentOS often used for SELinux
   - Or use `sudo` in front of each command
 - **$** indicates that a command must be run as a normal user
   - This is why a dollar sign (**$**) preceded terminal commands in *Linux 101-501* units
@@ -25,84 +76,26 @@ ___
   - Generally, working from a **#** `root` prompt is considered "bad", but not necessarily always—especially not for SysAdmins
 - Not all commands make this specification (in these lessons or in other Linux instruction sites), so be aware that you may need to run some commands as `root` even when there is no `sudo` or preceding hash (**#**) in the line commands you see
 
-### *The Chalk* Instructions Precede Commands
-- In units *101-501*, lessons began with commands, then ended with *The Take*
-  - The *Linux 601* unit will not follow this format
-- SysAdmin lessons are primarily conceptual and secondarily practice
-- These conceptual lessons will begin with *The Chalk*, then commands may or may not follow in a *The Type* section
-  - *The Type* commands are intended to be manually typed into the terminal as practice for real world or examination of SysAdmin work
-    - These commands are intended to be examples only
-    - You should be able to type varied versions of these from memory
+### Styling Filenames in `/code/filename/and/path` Format
+- Up to this point, these lessons styled filenames as ordinary text
+  - A file in lesson notes would appear as: /path/to/file
+  - This was intended to draw student attention to CLI commands and scripting code specifically
+- From this point forward, file names also will be used in `code-styling`
+  - A file in lesson notes will now appear as: `/path/to/file`
+- This is a more standard practice in proper documentation when using Markdown for the following reasons:
+  1. We indeed need to know when we are working with code-related things or with ideas outside of code; files are part of code
+  2. In Unix & Linux, [everything is a file](https://en.wikipedia.org/wiki/Everything_is_a_file)
+    - If it is Unix/Linux code, then it is already a file
+    - Nearly every command in Unix & Linux is actually a file anyway (except `cd` and a few others)
+    - There really isn't a difference between Unix/Linux files and commands except **execution permissions**
+    - If an executable command file is written with `code`, then all other non-executable files should also
+  3. Markdown renders more than one underscore `_` as an _italics-string_ (literally `_italics-string_` in Markdown, which this is written in)
+    - Using underscore `_` for italics is standard practice in Markdown
+    - Many file names may contain underscore `_`, which Markdown may interpret as italics
+    - Underscore `_` *does not* create italics if in backticks
+    - See where this came up in [discussion on Stack Exchange](https://meta.stackexchange.com/questions/246900/)
 
 ___
-
-## Prepare
-
-| **1** :$
-
-```console
-mkdir -p ~/School/VIP/601
-```
-
->
-> ___
-> Optional: You may login as a "sudoer" if needed
->
-> | **PS1** :$
-
-```console
-su Username
-```
-
-Arch/Manjaro:
-
-| **PA1** :$
-
-```console
-sudo pacman -Syy
-```
-
-| **PA2** :$
-
-```console
-sudo pacman -S --noconfirm openssh
-```
-
-Debian/Ubuntu:
-
-| **PD1** :$
-
-```console
-sudo apt update
-```
-
-| **PD2** :$
-
-```console
-sudo apt install -y openssh
-```
-
-CentOS/Fedora:
-
-| **PC1** :$
-
-```console
-sudo dnf update
-```
-
-| **PC2** :$
-
-```console
-sudo dnf install -y openssh
-```
-
-> Optional: IF you logged in as a "sudoer", now exit
->
-> | **PS2** :$
-
-```console
-exit
-```
 
 ### OPTIONAL: If you did Linux 201, but on a different machine
 >
@@ -143,7 +136,7 @@ sudo apt update
 sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
 >
-> CentOS/Fedora:
+> RedHat/CentOS:
 >
 > | **TC1** :$
 >
@@ -174,6 +167,15 @@ ___
 
 - Your machine is up to speed with the necessary packages installed
 
+## POSIX
+- The standard for "proper Unix/Linux"
+
+## Daemons
+- When software has both a client and server, `d` may be placed on the end of files and directories to identify the server configs, not the client configs
+- Eg: with SSH:
+  - SSH client configs: `/etc/ssh_config` & `/etc/ssh_config.d/`
+  - SSH server configs: `/etc/sshd_config` & `/etc/sshd_config.d/`
+
 ## Presume to Know:
 - `find` - [101 Lesson 9: find](https://github.com/inkVerb/vip/blob/master/101/Lesson-09.md)
   - `find . -iname '*henry*'` - find all files containing "henry", ignore case
@@ -182,7 +184,7 @@ ___
 - `grep` - [101 Lesson 10: grep](https://github.com/inkVerb/vip/blob/master/101/Lesson-10.md)
   - `grep "find me" *`
   - `some command | grep "find me"`
-- Linux Filesystem Hierarchy Standard (FHS) [201 Lesson 12: grep](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md)
+- Linux Filesystem Hierarchy Standard (FHS) [201 Lesson 12: FHS](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md)
 ___
 
 #### [Lesson 1: Boot & System Init](https://github.com/inkVerb/vip/blob/master/601/Lesson-01.md)

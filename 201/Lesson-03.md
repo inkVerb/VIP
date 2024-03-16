@@ -393,7 +393,7 @@ exit
 ```
 >
 
-## CentOS/Fedora
+## RedHat/CentOS
 
 *Some commands require `sudo`, AKA "run as administrator"*
 
@@ -558,7 +558,7 @@ ___
   - `sudo apt install package-to-install` will install a package
     - `-y` will tell `apt` to automatically answer "yes" rather than prompting
   - `sudo apt remove package-to-remove` will remove (uninstall) a package
-- CentOS/Fedora: `dnf`
+- RedHat/CentOS: `dnf`
   - `sudo dnf list | head` outputs a list of *all* software packages that can be installed with `dnf`
   - `sudo dnf list installed | grep -i httpd` outputs all installed packages
   - `sudo dnf upgrade` will install packages with new versions available

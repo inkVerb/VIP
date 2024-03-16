@@ -28,17 +28,15 @@
 
 ## V. Syllabus
 ### *A. Course sections & lessons*
-
 - "Lessons" are divided by topic, not by the amount of time needed to complete
 - Lessons vary in length
 - Length of a lesson is based on the amount of demonstration needed to understand the concepts, not the work by the student
 
 ### *B. How long the course takes to complete*
-
-- Time span per academic level
+- Time span per academic level (Units 101-401, Unit 501, Unit 601)
   - K–5: Two academic years
   - Jr–Sr high school: One academic year
-  - College: Two credit hours
+  - College: Three credit hours
 - Managing time can be handled in any combination of two approaches:
   1. Shorter lessons could have time extended via more discussion, assignments, and testing
   2. Longer lessons could span longer amounts of time for teaching, keeping student workload low
@@ -47,9 +45,11 @@
   - To review and test
 
 ### *C. Graded student workload*
-
 - Each academic level should have testing and assignments with appropriate levels of difficulty for both age and pace
 - At any academic level, good homework would be to "find the command number that matches content listed in *The Take*"
+- 601: *The Chalk*
+  - Knowledge-based tests
+  - Generate practical commands as might be seen in *The Keys*
 - In K-5, the 6-12 pace could simply be halved
 - In college and university
   - Students should review lessons on their own

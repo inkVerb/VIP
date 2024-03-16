@@ -25,21 +25,25 @@
 - Many kernel commands are version-specific and can be best substituted for the current kernel version with `$(uname -r)`
    - To install a previous kernel, look for an earlier number in `/boot/`
    - In Arch/Manjaro, `uname -r` indicates kernels in `/usr/lib/modules/` (which may also contain `extramodules-` files)
-- Re-install latest kernel: #
+- Re-install latest kernel:#
   - Arch/Manjaro: `kernel-install add $(uname -r) /usr/lib/modules/$(uname -r)/vmlinuz`
     - Or remove: `kernel-install remove $(uname -r)`
   - Debian/Ubuntu: `apt-get install --reinstall linux-image-generic linux-image`
     - Install specific kernel: `update-initramfs -u -k $(uname -r)`
-  - CentOS/Fedora: `dnf reinstall kernel`
+  - RedHat/CentOS: `dnf reinstall kernel`
     - If that doesn't work, uninstall, then re-install:
       - `dnf remove kernel-$(unamne -r)`
       - `dnf install kernel-$(uname -r)`
+  - OpenSUSE: (Kernels are handles as normal packages)
+    - List all `kernel*` packages `zypper se -s 'kernel*'`
+    - Install specific kernel: `zypper in kernel-default-VER.SI.ION.NUM`
+    - Uninstall specific kernel: `zypper rm kernel-default-VER.SI.ION.NUM`
 - Update/Repairing GRUB:
   - Do this if GRUB's menu doesn't work or if other systems (ie Windows) had changes
   - This will automatically see what all operating systems are available and create a GRUB menue with options for each
   - On a damaged system, these could be run from a rescue and `chroot`, explained in [Lesson 12: Backup & System Rescue](https://github.com/inkVerb/vip/blob/master/601/Lesson-12.md)
-  - Arch & Debian: # `update-grub` (short version of `grub-mkconfig -o`)
-  - CentOS/Fedora: # `grub2-mkconfig -o "$(readlink -e /etc/grub2.conf)"`
+  - Arch & Debian:# `update-grub` (short version of `grub-mkconfig -o`)
+  - RedHat/CentOS:# `grub2-mkconfig -o "$(readlink -e /etc/grub2.conf)"`
 
 ### Kernel Command Line
 - All boot parameters are on one, single line
@@ -84,7 +88,7 @@
   - Software packages:
     - `linux-docs` (Arch) installed at: `/usr/share/doc/linux/` (symlink to `/usr/lib/modules/x.x.x-...`)
     - `linux-doc` (Debian/Ubuntu) installed at: `/usr/share/doc/linux-doc/...`
-    - `kernel-doc` (CentOS/Fedora) installed at: `/usr/share/doc/kernel-doc-x.xx.x/...`
+    - `kernel-doc` (RedHat/CentOS) installed at: `/usr/share/doc/kernel-doc-x.xx.x/...`
     - `/usr/share/doc/.../index.html` can be read in a local browser directly
     - `/usr/share/doc/.../index.rst` can be read in the terminal using vim
     - You could use `grep` from the terminal to serch documentation
@@ -131,31 +135,31 @@
 #### Tools
 - `lsmod` list loaded kernel modules
 - `modprobe` insert a kernel module (`insmod` also, but rare)
-  - Full path with module name: #
+  - Full path with module name:#
   - `insmod /lib/modules/$(uname -r)/kernel/drivers/something/some-mod.ko.zst`
   - eg: `insmod /lib/modules/$(uname -r)/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko.zst`
   - Use `insmod` if the module might **not be** in the "proper" place
-- `rmmod` remove a kernel module: #
+- `rmmod` remove a kernel module:#
   - `rmmod some-mod`
   - eg: `rmmod e1000e`
-- `modprobe` start a kernel module: #
+- `modprobe` start a kernel module:#
   - Automatically loads and unloads dependency modules
   - `modprobe some-mod` load a module
   - `modprobe -r some-mod` unload a module
   - eg: `modprobe e1000e` load the `e1000e` module
   - eg: `modprobe -r e1000e` unload the `e1000e` module
-- `modinfo` get kernel module info: #
+- `modinfo` get kernel module info:#
   - `modinfo` no arguments for all loaded mods
   - `modinfo some-mod`
   - eg: `modinfo e1000e`
   - Also seen in `/sys/module/...` pseudo filesystem
-- `depmod` rebuild kernel module dependency database: #
+- `depmod` rebuild kernel module dependency database:#
   - File is located at `/lib/modules/$(uname -r)/modules.dep`
 
 #### `/etc/modprobe.d/*.conf`
 - `.conf` files in `/etc/modprobe.d/` are scanned when using `modprobe`
 - These files contain settings, one command per line
-- Commands
+- Parameters
   - `#` comment
   - `\` continue on next line
   - `alias`: `alias newalias modulename`
@@ -172,8 +176,9 @@
     - Defines a modules pre- and post-dependencies
 
 ## Devices
-- `ls -l /dev` *Note the time of their creation*
 - `who -b` *Note the time the system booted matches*
+- `lspci -v` *Note kernel devices and the `Kernel modules:` per device*
+- `ls -l /dev` *Note the time of their creation*
 - Those `/dev/` pseudofile devices were created by `udev` at system boot
 
 ### User Device Management (`udev`)
@@ -229,7 +234,7 @@ crw-rw-rw-   1 root root        1,   5  1月 18 21:14 zero
 
 The first number is a ***major***, the second number is a ***minor***; see the [kernel docs](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Kernel-Devices.md)
 
-- **`mknod`** creates a device node: #
+- **`mknod`** creates a device node:#
   - `mknod -m 655 /dev/myusb c 254 1`
   - `mknod -m FILE_PERMISSIONS /dev/NAME TYPE MAJOR MINOR`
   - `-m` is standard file permissions for the device node pseudofile, same as used by `chmod`
@@ -273,12 +278,122 @@ The first number is a ***major***, the second number is a ***minor***; see the [
 
 ___
 
-# The Type
+# The Keys
+*Practice commands for SysAdmins who already know what these mean*
+
+| **Un/Re-Installing kernel** :#
 
 ```console
+uname -r
 
+# Arch
+cd /usr/lib/modules/
+ls
+
+# Ubuntu
+apt-get install --reinstall linux-image-generic linux-image
+update-initramfs -u -k $(uname -r)
+
+# RedHat
+dnf reinstall kernel
+dnf remove kernel-$(unamne -r)
+dnf install kernel-$(uname -r)
+
+# OpenSUSE
+zypper se -s 'kernel*'
+zypper in kernel-default-VER.SI.ION.NUM
+zypper rm kernel-default-VER.SI.ION.NUM
 ```
-  
+
+| **Kernel management** :#
+
+```console
+cat /proc/cmdline
+less /boot/grub/grub.cfg
+grep linux /boot/grub/grub.cfg
+```
+
+| **Kernel docs** :#
+
+```console
+uname -r
+
+# Arch
+pacman -S linux-docs
+cd /usr/share/doc/linux
+ls
+
+# Ubuntu
+apt-get install linux-doc
+cd /usr/share/doc/linux-doc
+ls
+
+# RedHat
+dnf install kernel-doc
+cd /usr/share/doc/
+ls kernel-*
+
+# OpenSUSE
+zypper se -s 'kernel*'
+zypper in kernel-default-VER.SI.ION.NUM
+zypper rm kernel-default-VER.SI.ION.NUM
+```
+
+| **Linux docs in browser** ://
+
+```console
+file:///usr/share/doc/
+```
+
+| **`sysctl` tool** :$
+
+```console
+sysctl -a
+cd /proc/sys
+ls
+cd /usr/lib/sysctl.d
+ls
+cd /etc/sysctl.d
+ls
+man sysctl.conf
+```
+
+| **Kernel modules** :$
+
+```console
+cd /lib/modules/$(uname -r)
+ls mod
+modprobe cdrom
+rmmod cdrom
+lsmod
+lsmod | grep alx
+lsmod | grep cdrom
+modinfo
+modinfo cdrom
+sudo depmod
+less /lib/modules/$(uname -r)/modules.dep
+cd /etc/modprobe.d/
+```
+
+| **Devices** :$
+
+```console
+who -b
+lspci -v
+ls -l /dev
+cd /etc/udev/rules.d
+ls
+cd /usr/lib/udev/rules.d
+ls
+sudo mknod -m 655 /dev/zmyusb c 254 1
+ls -l /dev
+sudo rm /dev/zmyusb
+cd /usr/lib/udev/rules.d
+
+udevadm monitor
+# Plug/unplug a USB
+# Ctrl + C
+```
 ___
 
-#### [Lesson 6: Network](https://github.com/inkVerb/vip/blob/master/601/Lesson-06.md)
+#### [Lesson 6: Networks](https://github.com/inkVerb/vip/blob/master/601/Lesson-06.md)

@@ -135,18 +135,59 @@ ___
 ## Relevant OS Images
 *These are useful for practice with networking and security*
 
-- [Kali Linux](https://www.kali.org/downloads/)
-- [Metaspoitable 2](https://sourceforge.net/projects/metasploitable/files/Metasploitable2/)
-- [Metaspoitable 3](https://sourceforge.net/projects/metasploitable3-ub1404upgraded/)
-- [Windows for VM (Enterprise Evaluation)](https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/)
+- [Kali Purple](https://www.kali.org/get-kali/#kali-installer-images) (Debian pen-testing for red-blue-team)
+  - Good for **AppArmor** practice
+  - Good for **Debian** practice
+- [CentOS Stream](https://www.centos.org/centos-stream/) (RedHat, free)
+  - Good for **SELinux** practice
+  - Easy SELinux option is *PCI-DSS (Payment Card Industry Data Security Standard)* because it doesn't have partition mounting requirements at install time
+- For additional security testing: (beyond these lessons)
+  - [Metaspoitable 2](https://sourceforge.net/projects/metasploitable/files/Metasploitable2/)
+  - [Metaspoitable 3](https://sourceforge.net/projects/metasploitable3-ub1404upgraded/)
+  - [Windows for VM (Enterprise Evaluation)](https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/)
+  - [Kali Linux](https://www.kali.org/get-kali/#kali-installer-images) (Debian pen-testing)
+  - [BlackArch Linux](https://blackarch.org/) (Arch Linux pen-testing)
 
 ### Standard Linux Images
 *These mainstream Linux distros may be useful for practice on different architectures*
 
-- [Arch](https://archlinux.org/download/)
+- [Arch](https://archlinux.org/download/) (minimalist, rolling release, bleeding edge package versions)
 - [Manjaro](https://manjaro.org/download/) (OOB-ready Arch)
-- [Ubuntu](https://ubuntu.com/download/desktop)
-- [CentOS](https://www.centos.org/download/)
+- [Ubuntu](https://ubuntu.com/download/desktop) (built on Debian)
+- [Xubuntu](https://xubuntu.org/download/) (Xfce Ubuntu - lightweight)
 - [OpenSUSE](https://get.opensuse.org/tumbleweed/?type=desktop#download) (Tumbleweed - Rolling Release)
+- [Fedora](https://fedoraproject.org/) (RedHat, free project by community funded by RedHat)
 
-Also see [CISCO Packet Tracer](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Packet-Tracer.md) to practice making your own networks in a simulator
+## Clipboard
+- Click on the VM:
+  - Settings > General > Advanced
+  - Shared Clipboard: Bidirectional
+
+## Networking
+- VirtualBox:
+  - File > Tools > Network Manager (<key>Ctrl</key> + <key>H</key>)
+  - Create... (<key>Ctrl</key> + <key>Shift</key> + <key>C</key>)
+  - Click on *the new network just created - `vboxnet0`?*
+    - Right Click > Properties (<key>Ctrl</key> + <key>Shift</key> + <key>P</key>)
+  - DHCP Server > Enable Server (checked / enabled)
+  - Change the third oclet in each *Address* field to your custom number (eg `77`)
+    - Server Address: `192.168.56.2` to `192.168.77.2`
+    - Lower Address Bound: `192.168.56.3` to `192.168.77.3`
+    - Upper Address Bound: `192.168.56.254` to `192.168.77.254`
+  - Apply
+  - Adapter > Configure Adapter Automatically (checked / enabled)
+  - Apply
+- *Connect VMs to this network*
+  - For each VM you want on this network:
+    - Click on the VM
+    - Settings > Network
+    - Adapter 1 (unchecked / disabled)
+      - *This removes the machine's ability to access the Internet*
+      - *For some distros, Adatper 1 does not conflict with Adapter 2, thus this may not be necessary*
+      - *This is necessary on Kali Linux to prevent conflict with Adapter 2*
+    - Adapter 2 (checked / enabled) > Host only Adapter
+      - *This is always necessary for the VM to attain its own unique private virtual network IP address*
+    - Adapter 2 > Name: *the same name as the new network just created - `vboxnet0`?*
+
+### Other Networking Tools
+- [CISCO Packet Tracer](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Packet-Tracer.md) to practice making your own networks in a simulator

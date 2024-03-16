@@ -10,7 +10,7 @@ cd ~/School/VIP/501
 ```
 Ready services
 
-Arch/Manjaro & CentOS/Fedora
+Arch/Manjaro & RedHat/CentOS
 ```console
 sudo systemctl start httpd mariadb
 ```
@@ -3441,10 +3441,7 @@ ___
 # Done! Have a cookie: ### #
 
 # Roadmap Assignments
-
-Features to be added
-
-*These may appear as future lessons for 601, and you can do your own as projects or homework assignments*
+*These can be projects or homework assignments*
 
 1. Add filters to pieces.php:
   - Order by (date published, title, id/started)

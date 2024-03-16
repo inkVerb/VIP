@@ -1,5 +1,5 @@
 # Linux 601
-## Lesson 6: Network
+## Lesson 6: Networks
 
 ### Reference
 
@@ -583,6 +583,7 @@ fudge A.B.C.0 stratum 10
   - `lspci` PCI devices
   - `ip link` connections (AKA `ip link show`)
   - `ip r` connections (AKA `ip link rout`)
+  - `ip a` address of host (IP address for this machine)
   - `ifconfig` (network devices)
   - `arp -a` router
 
@@ -622,13 +623,13 @@ fudge A.B.C.0 stratum 10
   - `route -n`
   - `ip r` (AKA `ip route` AKA `ip route show`)
     - `ip -6 r` for IPv6 routs
-  - `ip a` (AKA `address show`)
+  - `ip a` (AKA `ip addr` AKA `address show`)
+  - `ifconfig -a`
 
 #### Default Route
-
 *IP for router not known, such as with DHCP*
 
-- Manually set the default gateway to `192.168.1.21`: #
+- Manually set the default gateway to `192.168.1.21`:#
   - `ip route add default via 192.168.1.21 dev enp2s0`
     - ...where `enp2s0` is a card on your machine listed in:
       - `nmcli device status`
@@ -640,9 +641,9 @@ fudge A.B.C.0 stratum 10
     - `enp2s0` could also be:
       - `wlp2s0`
       - `enp3s0`
-- Restore to the normal default gateway `192.168.1.1`: #
+- Restore to the normal default gateway `192.168.1.1`:#
   - `ip route add default via 192.168.1.1 dev enp2s0`
-- In human language:
+- Command description:
 ```
 ip route add default via 192.168.1.1 dev    enp2s0
 IP route add default via address     device name
@@ -651,9 +652,9 @@ IP route add default via address     device name
 #### Static Routs
 *Usually with multiple routers*
 
-- Add a non-persistent route: #
+- Add a non-persistent route:#
   - `ip route add 10.5.0.0/16 via 192.168.1.100`
-- Delete a non-persistent route: #
+- Delete a non-persistent route:#
   - `ip route del 10.5.0.0/16 via 192.168.1.100`
 - Persistent routes:
   - Flavored distros must edit their config files and add them manually
@@ -664,8 +665,8 @@ IP route add default via address     device name
     - `systemctl enable NetworkManager-dispatcher.service`
     - `systemctl start NetworkManager-dispatcher.service`
     - Create a BASH script in `/etc/NetworkManager/dispatcher.d/` with any name like *`10-script.sh`*
-    - Own: # `chown root:root /etc/NetworkManager/dispatcher.d/10-script.sh`
-    - Executable: # `chmod ug+x /etc/NetworkManager/dispatcher.d/10-script.sh`
+    - Own:# `chown root:root /etc/NetworkManager/dispatcher.d/10-script.sh`
+    - Executable:# `chmod ug+x /etc/NetworkManager/dispatcher.d/10-script.sh`
     - Then, the script (eg *`10-script.sh`*) starts with `#!/bin/bash`, then uses standard `nmcli` commands
     
 ## Bonding
@@ -855,12 +856,118 @@ _dmarc.verb.ink.   IN  TXT      "v=DMABOX1; p=reject; fo=0; aspf=r; adkim=r; pct
 
 ___
 
-# The Type
+# The Keys
+*Practice commands for SysAdmins who already know what these mean*
+
+| **Host** :$
 
 ```console
+netstat -l
+hostname
+cat /etc/hostname
+hostname -i
+sudo hostname temp
+sudo hostnamectl set-hostname $(hostname)
+
+less /etc/hosts
+less
+```
+
+| **Time** :$
+
+```console
+vim /etc/systemd/timesyncd.conf
+ls /usr/bin/ntp*
+ntpdc -c peers
+timedatectl
+vim /etc/ntp.conf
 
 ```
 
+| **Network configs & routes** :
+
+```console
+# Network plugins are under [main] in the config...
+
+# Red Hat
+less /ext/sysconfig/network
+less /ext/sysconfig/network-scripts/ifcfg-ethX
+less /ext/sysconfig/network-scripts/ifcfg-ethX:Y
+less /ext/sysconfig/network-scripts/rout-ethX
+
+# Debian
+less /etc/network/interfaces
+
+# SUSE
+cd /etc/sysconfig/network
+ls
+
+# Arch
+cd /etc/NetworkManager
+```
+
+| **Network** :$
+
+```console
+nmcli device status
+nmtui
+man nmcli
+
+route -n
+ip r
+ip -6 r
+ip a
+ifconfig
+ip link
+arp -a
+lspci -v
+nmcli device status
+
+route -n
+ip route add 10.5.0.0/16 via 192.168.1.100
+route -n
+ip route del 10.5.0.0/16 via 192.168.1.100
+
+route -n
+ip route add default via 192.168.1.21 dev enp2s0
+route -n
+ip route add default via 192.168.1.1 dev enp2s0
+route -n
+```
+
+| **Bonding** :$
+
+```console
+nmcli device status
+# Note device names and don't reuse them below, presuming enp2s0 is the top
+nmcli connection add type bond con-name bond0 ifname bond0 bond.options "mode=active-backup,miimon=1000"
+nmcli connection add type ethernet slave-type bond con-name bond0-port1 ifname enp3s0 master bond0
+nmcli connection add type ethernet slave-type bond con-name bond0-port2 ifname enp4s0 master bond0
+nmcli connection up bond0
+```
+
+*Create the same bond with the above `nmcli` tool using `nmtui`*
+
+```console
+nmtui
+```
+
+| **DNS** :$
+
+```console
+dig +trace inkisaverb.com
+dig -t A inkisaverb.com
+dig -t AAAA inkisaverb.com
+dig -t MX inkisaverb.com
+dig -t NS inkisaverb.com
+dig -t TXT inkisaverb.com
+dig -t CAA inkisaverb.com
+dig -t CNAME inkisaverb.com
+dig -t SOA inkisaverb.com
+
+ping inkisaverb.com
+ping 192.168.1.1
+```
 ___
 
-#### [Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)
+#### [Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md)

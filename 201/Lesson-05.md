@@ -47,7 +47,7 @@ sudo adduser pinkypink
 - *When prompted Enter any simple password*
 
 
-| **C2** :$ (CentOS/Fedora)
+| **C2** :$ (RedHat/CentOS)
 
 ```console
 sudo adduser pinkypink
@@ -618,7 +618,7 @@ sudo groupdel pinkypink
 
 *Note the message about the "pinkypink" group being empty, that's because `deluser` also deleted the group*
 
-| **C64** :$ (CentOS/Fedora)
+| **C64** :$ (RedHat/CentOS)
 
 ```console
 sudo userdel pinkypink
@@ -641,7 +641,7 @@ sudo deluser pinkypink
 sudo userdel pinkypurple
 ```
 
-| **C65** :$ (CentOS/Fedora)
+| **C65** :$ (RedHat/CentOS)
 
 ```console
 sudo userdel pinkypurple

@@ -3,24 +3,30 @@
 
 # The Chalk
 ## Useful Commands
-### CLI Navigation
-- `which`
-- `whereis`
-- `whatis`
-- `type`
-- `whoami`
+### Command Info
+- `which` command location
+- `whereis` command & man-file locations
+- `whatis COMMAND_NAME` command descriptions (found across system)
+- `type COMMAND_NAME` command role or purpose
+- `whoami` current user
 - `pwd` Present Working Directory (PWD)
-- `ls | wc -l` output number of files in PWD
+- `ls | wc -l` number of files in PWD
+- `seq 10` print numbers 1-10, one per line (useful for loops)
+- `find /etc -type d -iname "*.d"`
+- `find . -perm -u+s` (for `s` permissions on **setuid** programs, see [Lesson 2: Procesesses & Monitoring](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md))
 
 ### Machine Information
 - `hostname` (machine name)
   - `hostname -i` IP address
-- `lsb_release -d`
-- `lsmod`
-- `lscpu`
-- `lsusb`
-- `lspci`
-- `sudo dmidecode`
+- `free` RAM info
+- `lsb_release -d` Architecture/ditstro
+- `lsmod` enabled modules
+- `lscpu` CPU info
+- `lsmem` RAM info
+- `lsblk` disks
+- `lsusb` USB devices
+- `lspci` PCI devices
+- `sudo dmidecode` system BIOS version
   - `sudo dmidecode -t bios`
   - `sudo dmidecode -t memory`
   - `sudo dmidecode -t system`
@@ -31,7 +37,7 @@
   - Motherboard
   - Executes GPT/MBR
 2. **GPT** - GUID Partition Table / (formerly MBR - Master Boot Record)
-  - Partitions ([Lesson 8: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md))
+  - Partitions ([Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md))
   - Executes GRUB
 3. **GRUB** - Grand Unified Bootloader
   - Menu at boot up
@@ -73,7 +79,7 @@
   - This is why many CLI commands are in `/usr/bin/`
 
 ### History of `init` Implementations
-- SysVinit in UNIX was the original implementation of `init` 
+- SysVinit in Unix was the original implementation of `init` 
   - Multi-uer mainframe (not personal machines)
   - Single core processor (one thing at a time)
   - Boot and shutdown time didn't matter
@@ -250,6 +256,19 @@
 
 ##### Examples Files
 
+**/usr/lib/systemd/system/dddummy.service** : (dummy process running `dd`)
+
+```
+[Unit]
+Description=dd dry process
+
+[Service]
+ExecStart=/usr/bin/dd if=/dev/urandom of=/dev/null
+
+[Install]
+WantedBy=multi-user.target
+```
+
 | **/usr/lib/systemd/system/sshd.service** :
 
 ```
@@ -299,7 +318,7 @@ ExecReload=/usr/bin/busctl call org.freedesktop.DBus /org/freedesktop/DBus org.f
 - Some require `root` permissions, some don't
 
 #### Using `systemctl`
-- Listing units
+- Listing units:#
   - `systemctl` - All that `systemctl` controls
     - On a LAMP server, you will see services like:
       - `httpd.service`
@@ -308,7 +327,8 @@ ExecReload=/usr/bin/busctl call org.freedesktop.DBus /org/freedesktop/DBus org.f
   - `systemctl list-units -t service` - Only running services
   - `systemctl list-units -t service --all` - All available services
   - `systemctl list-units --user "xdg*" --all` All desktop services (returns nothing on cloud VPS)
-- Managing services
+  - `systemctl | grep running` - All running services
+- Managing services:#
   - `systemctl status SOME_SERVICE` - See status of SOME_SERVICE
   - Eg: `systemctl status mariadb`
   - `systemctl enable SOME_SERVICE` - Enable SOME_SERVICE so it runs at next startup
@@ -318,11 +338,70 @@ ExecReload=/usr/bin/busctl call org.freedesktop.DBus /org/freedesktop/DBus org.f
 
 ___
 
-
-# The Type
+# The Keys
+*Practice commands for SysAdmins who already know what these mean*
 
 ```console
+ls | wc 1
+seq 10
 
+hostname
+hostname -i
+lsb_release -d
+lsmod
+lscpu
+lsmem
+lsblk
+lsusb
+lspci
+free
+
+find /usr/bin -perm -u+s
+find /etc -type d -iname "*.d"
+cd /etc
+find . -iname "*.d"
+
+whatis dmidecode
+sudo dmidecode
+sudo dmidecode -t bios
+sudo dmidecode -t memory
+sudo dmidecode -t system
+sudo dmidecode -t
+
+cd /usr/lib/systemd
+find . -name "*.service"
+cd /usr/lib/systemd/system
+ls
+cd /etc/systemd/user
+ls
+ls ~/.config/systemd/user
+ls /etc/systemd/system
+
+systemctl
+systemctl list-units -t service
+systemctl list-units -t service --all
+systemctl list-units --user "xdg*" --all
+
+su
+cat <<EOF > /usr/lib/systemd/system/ddran.service
+[Unit]
+Description=dd dry process
+
+[Service]
+ExecStart=/usr/bin/dd if=/dev/urandom of=/dev/null
+
+[Install]
+WantedBy=multi-user.target
+EOF
+cat /usr/lib/systemd/system/ddran.service
+systemctl enable ddran
+systemctl start ddran
+systemctl status ddran
+systemctl stop ddran
+systemctl status ddran
+systemctl disable ddran
+rm /usr/lib/systemd/system/ddran.service
+exit
 ```
 
 ___

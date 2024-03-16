@@ -170,7 +170,7 @@ sudo pacman -S cowsay
 sudo apt install cowsay
 ```
 
-| **C2** :$ CentOS/Fedora
+| **C2** :$ RedHat/CentOS
 
 ```console
 sudo dnf install cowsay

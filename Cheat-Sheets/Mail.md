@@ -5,7 +5,6 @@ Use this guide to understand, verify, or troubleshoot a Postfix-Dovecot mail ser
 In this article, our mail server is whatever hosts `mail.maildomain.tld`, where the Postfix, Dovecot, and port settings need to be.
 
 ## Overview: Postfix-Dovecot vmail
-
 ### Mail Quintet: Five main services
 
 A common Linux mail server uses Postfix and Dovecot for SQL-managed vmail. These email accounts are not actual Linux users on the server (as they are in pure, vanilla email). They are stored in an SQL database, along with hashed passwords, forward, and name information. The actual mail resides in a `vmail/` folder often in `/var/` or `/srv`.
@@ -84,7 +83,7 @@ There are too many config files to list all here. This is a nice start...
 
 Use `systemctl` to check the status of the services used by most Postfix/Dovecot mail servers
 
-| **Check service status** :$ (for `postfix` service)
+| **Check service status** :# (for `postfix` service)
 
 ```console
 systemctl status postfix
@@ -94,7 +93,7 @@ systemctl status postfix
 
 Look for `enabled` and green lights around `Actice: actice (running)` and `postfix.service`.
 
-| **Check other mail services** :$ (Dovecot, SpamAssassin, OpenDKIM, SQL, etc)
+| **Check other mail services** :# (Dovecot, SpamAssassin, OpenDKIM, SQL, etc)
 
 ```console
 systemctl status dovecot
@@ -452,7 +451,7 @@ tail -10f /var/log/maillog
 tail -30 /var/log/maillog
 ```
 
-| **Edit maillog file** :$ (for `vim` interaction options)
+| **Edit maillog file** :# (for `vim` interaction options)
 
 ```console
 vim /var/log/maillog

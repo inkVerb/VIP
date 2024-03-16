@@ -83,7 +83,9 @@ About `sudo` and "root"...
   - *Everything done is owned by "root" and never needs `sudo`*
   - *This is generally dangerous*
 
-***With great power comes great responsibility!***
+***With great power comes great responsibility! — Uncle Ben Parker***
+
+*(`echo !! | sed 's/Uncle Ben Parker/Stan Lee/'`)*
 
 | **4** :$
 
