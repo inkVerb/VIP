@@ -11,7 +11,7 @@ cd ~/School/VIP/201
 
 ___
 
-*WARNING: If you already have a user "pinkypink" and/or "pinkypurple", then you are very interesting and should there substitute those names for users not on your system.*
+*WARNING: If you already have a user "`pinkypink`" and/or "`pinkypurple`", then you are very interesting and should there substitute those names for users not on your system.*
 
 ### This lesson requires a "sudoer" who can use `sudo`
 >
@@ -80,7 +80,7 @@ ls /home
 su pinkypink
 ```
 
-*See what's at "home"*
+*See what's at "`home`"*
 
 | **5** :$
 
@@ -94,9 +94,9 @@ ls /home/pinkypink
 exit
 ```
 
-*Login as pinkypink in the GUI...*
+*Login as `pinkypink` in the GUI...*
 
-*..."Switch User", login as pinkypink, "Log Out", then return to this GUI session*
+*..."Switch User", login as `pinkypink`, "Log Out", then return to this GUI session*
 
 Ready the CLI (if needed)
 
@@ -120,7 +120,7 @@ su pinkypink
 cd /home/pinkypink
 ```
 
-*Note the path is only `~` because `/home/pinkypink` is home for the user pinkypink*
+*Note the path is only `~` because `/home/pinkypink` is home for the user `pinkypink`*
 
 | **9** :$
 
@@ -144,7 +144,7 @@ ls -a
 exit
 ```
 
-*Note you are no longer in `/home/pinkypink`, but are back where you were when you logged in as pinkypink*
+*Note you are no longer in `/home/pinkypink`, but are back where you were when you logged in as `pinkypink`*
 
 ### II. `useradd`
 
@@ -174,7 +174,7 @@ ls /home
 
 *Note `adduser` makes use of `useradd` and does other tasks, like setting the password*
 
-*Try to login as pinkypurple in the terminal*
+*Try to login as `pinkypurple` in the terminal*
 
 | **14** :$
 
@@ -182,9 +182,9 @@ ls /home
 su pinkypurple
 ```
 
-*You can't login because pinkypurple doesn't have a password!*
+*You can't login because `pinkypurple` doesn't have a password!*
 
-*Set a password for pinkypurple*
+*Set a password for `pinkypurple`*
 
 | **15** :$ *Enter a simple password*
 
@@ -200,7 +200,7 @@ sudo passwd pinkypurple
 ls /home
 ```
 
-*Note pinkypurple doesn't even have a home*
+*Note `pinkypurple` doesn't even have a home*
 
 *Now assign a "directory" to home (`-d`) and "move" any existing contents to that directory (`-m`)*
 
@@ -220,7 +220,7 @@ ls /home
 
 *The directory still doesn't exist!*
 
-*Create the home directory for pinkypurple*
+*Create the home directory for `pinkypurple`*
 
 | **19** :$
 
@@ -234,7 +234,7 @@ sudo mkdir /home/ppurple
 ls /home
 ```
 
-*Login as pinkypurple in the terminal*
+*Login as `pinkypurple` in the terminal*
 
 | **21** :$
 
@@ -242,7 +242,7 @@ ls /home
 su pinkypurple
 ```
 
-*Now, you are logged in and executing commands as the user "pinkypurple"*
+*Now, you are logged in and executing commands as the user "`pinkypurple`"*
 
 *See where you are*
 
@@ -294,9 +294,9 @@ exit
 ls -l /home
 ```
 
-*The home directory exists, it was assigned as home, but pinkypurple doesn't even own its own home!*
+*The home directory exists, it was assigned as home, but `pinkypurple` doesn't even own its own home!*
 
-*Let pinkypurple own its own home (this will be explained more in the next section of this lesson)...*
+*Let `pinkypurple` own its own home (this will be explained more in the next section of this lesson)...*
 
 | **28** :$
 
@@ -310,7 +310,7 @@ sudo chown -R pinkypurple:pinkypurple /home/ppurple
 ls -l /home
 ```
 
-*Login as pinkypurple in the terminal*
+*Login as `pinkypurple` in the terminal*
 
 | **30** :$
 
@@ -373,7 +373,7 @@ ls
 - `addgroup` vs `groupadd`
 - `delgroup` vs `groupdel`
 
-*Now exit as pinkypurple*
+*Now exit as `pinkypurple`*
 
 | **37** :$
 
@@ -399,7 +399,7 @@ ___
 ls -l
 ```
 
-*Note the owner of "youown"*
+*Note the owner of "`youown`"*
 
 | **39** :$ *Enter your password*
 
@@ -413,7 +413,7 @@ sudo chown pinkypink:pinkypink youown
 ls -l
 ```
 
-*Note a new owner of "youown" is pinkypink*
+*Note a new owner of "`youown`" is pinkypink*
 
 | **41** :$
 
@@ -435,7 +435,7 @@ sudo chown pinkypurple:pinkypurple youown
 ls -l
 ```
 
-*Note "youown" now belongs to pinkypurple*
+*Note "`youown`" now belongs to `pinkypurple`*
 
 | **44** :$
 
@@ -449,7 +449,7 @@ sudo chown pinkypurple:pinkypink theyown
 ls -l
 ```
 
-*Note a new owner of "theyown", the user and group are different*
+*Note a new owner of "`theyown`", the user and group are different*
 
 ### IF you logged in as sudoer with `su SUDOER`, `exit` back to your original user
 >
@@ -505,7 +505,7 @@ sudo chown pinkypink:pinkypink ownrship
 ls -l
 ```
 
-*Note a new owner of "ownrship"*
+*Note a new owner of "`ownrship`"*
 
 | **51** :$
 
@@ -513,7 +513,7 @@ ls -l
 ls -l ownrship/
 ```
 
-*Note you own the directory "ownrship", but not the file inside*
+*Note you own the directory "`ownrship`", but not the file inside*
 
 *Use `-R` for directories (must be CAPITAL with `chown`!)*
 
@@ -529,7 +529,7 @@ sudo chown -R pinkypink:pinkypink ownrship
 ls -l ownrship/
 ```
 
-*Now you own "ownrship" and the file inside*
+*Now you own "`ownrship`" and the file inside*
 
 *Remove it...*
 
@@ -555,9 +555,9 @@ ls -l
 
 *Note `sudo` allows you to delete files and directories you don't own*
 
-*`sudo` acts as "root", meaning files created with `sudo` are owned by root*
+*`sudo` acts as "root", meaning files created with `sudo` are owned by `root`*
 
-*Create a file owned by root*
+*Create a file owned by `root`*
 
 | **57** :$
 
@@ -571,7 +571,7 @@ sudo touch iamroot
 ls -l
 ```
 
-*Note root owns "iamroot"*
+*Note `root` owns "`iamroot`"*
 
 | **59** :$ *"y" for Yes, might not work; "n" for No is better for this lesson*
 
@@ -579,7 +579,7 @@ ls -l
 rm iamroot
 ```
 
-*Note only root can delete the file "iamroot"*
+*Note only `root` can delete the file "`iamroot`"*
 
 | **60** :$
 
@@ -616,7 +616,7 @@ sudo userdel pinkypink
 sudo groupdel pinkypink
 ```
 
-*Note the message about the "pinkypink" group being empty, that's because `deluser` also deleted the group*
+*Note the message about the "`pinkypink`" group being empty, that's because `deluser` also deleted the group*
 
 | **C64** :$ (RedHat/CentOS)
 
@@ -705,13 +705,13 @@ sudo cat /etc/sudoers
 
 *You can also `sudo` desktop GUI apps, but it can be dangerous...*
 
-| **72** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
+| **72** :$ *Look, then close right away, use <key>Ctrl</key> + <key>C</key> in the terminal*
 
 ```console
 sudo gedit
 ```
 
-| **73** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
+| **73** :$ *Look, then close right away, use <key>Ctrl</key> + <key>C</key> in the terminal*
 
 ```console
 sudo nautilus
@@ -731,7 +731,6 @@ exit
 ___
 
 # The Take
-
 - `adduser` & `deluser` create and delete a complete group of settings for the user
 - `useradd` & `userdel` only create and delete a user, no more
 - A user's "home" is in `/home/` by default

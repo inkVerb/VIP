@@ -148,9 +148,9 @@ gedit 07-source 07-sourced 07-sourced-also
 ls -l 07-source*
 ```
 
-*Note the file "07-source" is executable, but "07-sourced" is not*
+*Note the file "`07-source`" is executable, but "`07-sourced`" is not*
 
-*And "07-sourced" has no `#!/bin/bash` declaration*
+*And "`07-sourced`" has no `#!/bin/bash` declaration*
 
 | **16** :$
 
@@ -268,7 +268,6 @@ gedit 07-function-variables
 ___
 
 # The Take
-
 ## Combining tests
 - `while` can be used to count up to a given number, producing output at each count
 - `while` can be used to repeatedly request the human user input a response until the response is accepted

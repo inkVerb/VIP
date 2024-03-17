@@ -9,7 +9,7 @@ cd ~/School/VIP/101
 
 ___
 
-*Look inside the "abc" directory in the Nautilus file explorer*
+*Look inside the "`abc`" directory in the Nautilus file explorer*
 
 | **1** :$
 
@@ -31,7 +31,7 @@ echo "Apple Jay" > abc/jayapple
 gedit abc/*
 ```
 
-*Search contents inside files with `grep`*
+*Search for a **text string** inside file contents with `grep`*
 
 | **4** :$
 
@@ -41,7 +41,9 @@ grep jj *
 
 *Note the error about directories*
 
-*Like `cp -r`, `rm -r`, and `chown -R`, `grep` also needs `-R` with directories*
+*Like `cp -r`, `rm -r`, and `chown -R`, `grep` also needs the `-R` flag with directories*
+
+*`-R` and `-r` flags often stands for **recursive**, meaning "and inside directories"*
 
 | **5** :$
 
@@ -63,7 +65,7 @@ grep -R Apple *
 grep -R Apples like *
 ```
 
-*Notice the errors, you must "quote" multiple words with spaces*
+*Notice the error; you must "quote" the **search string** when using multiple words with spaces as a single argument*
 
 | **8** :$
 
@@ -73,8 +75,12 @@ grep -R "Apples like" *
 
 ___
 
-# The Take
+# Glossary
+- **recursive** - "and in directories", used in many file and text search/copy/delete operations, often done with `-r` or `-R` flags
+- **search string** - A text string that you search for
+- **text string** - Many letters, numbers, special characters, and spaces together as one group of text
 
+# The Take
 - `grep` searches the contents of files
 - `grep` needs two arguments in order to work:
   - Contents to search
@@ -87,4 +93,4 @@ ___
 
 ___
 
-#### [Lesson 11: RegEx: Quote/Escape Special Characters](https://github.com/inkVerb/vip/blob/master/101/Lesson-11.md)
+#### [Lesson 11: Special Characters](https://github.com/inkVerb/vip/blob/master/101/Lesson-11.md)

@@ -35,7 +35,6 @@ Let's run a `for` loop that separates each field as a "new line"...
 ___
 
 ### I. `$IFS` = new line
-
 *Edit this script to see the short version*
 
 | **1** :$
@@ -69,7 +68,6 @@ done
 ```
 
 ### II. Complex Loop Applied
-
 Integrate `pwgen` with `sed` in a `for` loop...
 
 *Edit this script to see the short version*
@@ -214,7 +212,6 @@ done
 ```
 
 ### V. `$IFS` = pipe `|`
-
 *Edit this script to see the short version*
 
 | **12** :$
@@ -249,7 +246,7 @@ done
 
 ### VI. `$IFS` in the `$PATH`
 
-*Remember learning about our $PATH in Lesson 3?*
+*Remember learning about our `$PATH` in [Lesson 3]((https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md))?*
 
 | **14** :$
 
@@ -293,7 +290,6 @@ done
 ___
 
 # The Take
-
 - The `$IFS` variable is the "Internal Field Separator"
   - This separates one field from another, such as in:
     - `do` items in a `for`/`while`/`until` loop

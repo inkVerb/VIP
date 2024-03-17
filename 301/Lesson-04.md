@@ -23,7 +23,6 @@ ln -sfn ~/School/VIP/301/04-* .
 ```
 
 ### I. Replacing within Variables
-
 *`$Variable` is the same as `${Variable}`, but `${Variable}` can do more...*
 
 ```sh
@@ -288,7 +287,6 @@ ls
 ```
 
 ### III. Applied: `odt2txt`
-
 *Now, use `odt2txt` in a `for` `...` `do` loop*
 
 | **37** :$ *(Start with a clean slate, just to be sure)*
@@ -350,7 +348,6 @@ ls *.txt
 ___
 
 # The Take
-
 ## `for` has useful application
 - It can list items and modify them
 - It can rename, move, or delete files

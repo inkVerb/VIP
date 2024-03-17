@@ -17,7 +17,7 @@ gedit how2arg
 
 ### Arguments (`$1`, `$2`, etc)
 
-*Create how2arg as this:*
+*Create `how2arg` as this:*
 
 | **how2arg** :
 
@@ -57,17 +57,23 @@ ls
 ./how2arg a b abcd
 ```
 
+*This displayed the **arguments***
+
+*Note how `\` "**backslash**" will "**quote**" the character after (`$`) so that it does not "work" inside the script*
+
 | **6** :$
 
 ```console
 ./how2arg one two three
 ```
 
-*In Terminal: Up*
+*In Terminal: <key>Up</key>*
 
 *This shows the previous command*
 
 ### Multiple Lines with `\`
+
+*Note how `\` quote before a **new line** will prevent that line from finalizing the terminal command*
 
 | **7** :$
 ```sh
@@ -77,11 +83,13 @@ two \
 three
 ```
 
-*In Terminal: Up*
+*In Terminal: <key>Up</key>*
 
 *This shows the previous command, but it all appears on one line*
 
-### Multiple Words `"`with quotes`"`
+### Multiple Words `"`with quoted arguments`"`
+
+*Use a **quoted argument** for the third argument...*
 
 | **8** :$
 
@@ -153,7 +161,7 @@ ls
 ./allarg I like to eat bananas in the morning, with eggs, over easy that is.
 ```
 
-*This `@` means "everything" in web DNS, arrays (Linux 301), and many other things*
+*This `@` means "everything" in web DNS, arrays ([Linux 301](https://github.com/inkVerb/vip/blob/master/301/README.md)), and many other things*
 
 ### Terms: Variable, Argument, Constant
 ```sh
@@ -168,13 +176,13 @@ ${10} : argument variable 10
 $10   : argument variable 1 followed by the number 0
 ```
 
-Variable: Something starting with `$` that equals some other "value"
+**Variable**: Something starting with `$` that equals some other "value", can be different each time running a command or script
 
-Value: What a "variable" equals
+**Value**: What a "variable" equals
 
-Argument: Variable set from the command line
+**Argument**: Variable set from the command line
 
-Constant: Variable that do not change
+**Constant**: Variable that do not change
 
 *We will look at* ***constants*** *more in [401 Lesson 5](https://github.com/inkVerb/vip/blob/master/401/Lesson-05.md#viii-readonly-variables-constants)*
 
@@ -248,8 +256,23 @@ pwd
 
 ___
 
-# The Take
+# Glossary
+- **argument** - separated by spaces after the command in the CLI, `$1`, `$2`, etc inside a script or program
+- **backslash** - `\` is the quote character in Shell and can quote `$` or a new line, etc
+- **constant** - a vaiable whose value cannot change
+- **environment** - the processes and constants used by the system to operate, the foundation of using the operating system
+- **new line** - moving from the end of one line to the next line, in file contents or in terminal commands;
+  - Not the same as a paragraph break, which has text styling to add extra line spacing
+  - In HTML, `<br>` is a "line break" that renders following text on a new line while `<p>...</p>` will render paragraph breaks before and after
+- **PWD** - Present Working Directory - the directory being used in the terminal
+- **quote** - prevent a coding character from "working" as code, but only its letter
+- **quoted argument** - An argument using "quotation marks" that has many words, but acts as a single argument
+  - 'Single quotes' and "double quotes" both work, but they might behave differently
+- **user** - the login account that "runs" commands and processes; everything on a computer is run by a "user" 
+- **value** - what a variable equals, what it is used as when a command or script is executed
+- **variable** - something inside the CLI or script that could have any different value each time it is used
 
+# The Take
 - Arguments (`$1`, `$2`, and `$3`, etc) work in order after their command
 - `$0` is the argument for the command that was run in the terminal
 - Terminal commands may be continued to multiple lines using `\` (this helps organize stuff)

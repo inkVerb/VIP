@@ -177,7 +177,6 @@ echo "Return code: $?"
 2. *Functions take arguments, like `$1`, `$2`, etc*
 
 ### II. Variables as `local` & Functions Declared First
-
 *Edit this script to see the short version*
 
 | **14** :$
@@ -228,12 +227,11 @@ echo "script VarB = $VarB"
 ./functionlocal
 ```
 
-*Note that the function changed the value of VarB "globally", but VarA only "locally" inside the function*
+*Note that the function changed the value of `$VarB` "globally", but `$VarA` only "locally" inside the function*
 
 ___
 
 # The Take
-
 - Remember the *5 Rules of Functions*
 1. Functions only work in BASH, not Shell
 2. Functions ***in scripts*** must be declared (defined) before they are called

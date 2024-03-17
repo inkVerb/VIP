@@ -7,8 +7,8 @@
 
 *Much of this information was taken from the GNU sed manual:* [5.5 Character Classes and Bracket Expressions](https://www.gnu.org/software/sed/manual/html_node/Character-Classes-and-Bracket-Expressions.html)
 ___
-## Class key
 
+## Class key
 ### Custom character class ranges
 
 Ranges of most alphanumeric characters can be listed intuitively
@@ -72,7 +72,6 @@ Hexadecimal digits, containing `0 1 2 3 4 5 6 7 8 9 A B C D E F a b c d e f`
 Punctuation characters: ``! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~. ``
 
 ### Grouped classes
-
 - `[:graph:]`
 Graphical characters: `[:alnum:]` and `[:punct:]`
 
@@ -95,7 +94,6 @@ Space characters, containing 'tab', 'newline', 'vertical tab', 'form feed', 'car
 Control characters: In ASCII, these characters have octal codes 000 through 037, and 177 (DEL). In other character sets, these are the equivalent characters, if any.
 
 ### Range characters with special meaning:
-
 - `]`
   - `[]ets]` Works, matches `]`, `e`, `t` & `s`
   - `[e]ts]` Fail, only matches string `ets]`
@@ -113,7 +111,6 @@ Control characters: In ASCII, these characters have octal codes 000 through 037,
 *characters "not in the `[list]`" - put anywhere but first to use this character*
 
 ### Shell command examples that "transform" characters
-
 - from upper to lower case
 `tr "[A-Z]" "[a-z]"`
 

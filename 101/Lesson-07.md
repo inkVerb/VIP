@@ -15,7 +15,7 @@ ___
 gedit abcd sedoutput.text
 ```
 
-*Remember `cat` outputs contents of a file as raw output (STDOUT)...*
+*Remember `cat` outputs contents of a file as raw output (`STDOUT`)...*
 
 | **2** :$
 
@@ -23,7 +23,7 @@ gedit abcd sedoutput.text
 cat abcd
 ```
 
-*Remember `echo` sends whatever raw input (STDIN) as raw output (STDOUT)...*
+*Remember `echo` sends whatever input (`STDIN`) as raw output (`STDOUT`)...*
 
 | **3** :$
 
@@ -31,7 +31,7 @@ cat abcd
 echo $(cat abcd)
 ```
 
-*...and `echo` doesn't preserves "new lines" (paragraph breaks) when it does*
+*...and `echo` doesn't **preserves** new lines for argued command substitution*
 
 | **4** :$
 
@@ -51,7 +51,7 @@ echo $(sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd)
 cat abcd | tee sedoutput.text
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
 | **7** :$
 
@@ -59,7 +59,7 @@ cat abcd | tee sedoutput.text
 echo $(cat abcd) | tee sedoutput.text
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
 | **8** :$
 
@@ -67,7 +67,7 @@ echo $(cat abcd) | tee sedoutput.text
 sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd | tee sedoutput.text
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
 | **9** :$
 
@@ -75,7 +75,7 @@ sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd | tee sedoutput.text
 echo $(sed "s/jjjjjjjjj/Apple likes to say abcdefghi and /" abcd) | tee sedoutput.text
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
 | **10** :$
 
@@ -129,7 +129,7 @@ cat onetwo
 echo $(cat one two)
 ```
 
-*Note `echo $(COMMAND_SUBSTITUTION)` removed the new lines like it always does*
+*Note `echo $(Command Substitution)` removed the new lines like it always does*
 
 | **18** :$
 
@@ -149,7 +149,7 @@ cat three two one >> onetwo
 cat onetwo
 ```
 
-*Note `cat` also appended onetwo via `>>`*
+*Note `cat` also appended `onetwo` via `>>`*
 
 | **21** :$
 
@@ -157,14 +157,17 @@ cat onetwo
 echo $(cat onetwo)
 ```
 
-*Note `echo $(COMMAND_SUBSTITUTION)` removed the new lines like it always does*
+*Note `echo $(Command Substitution)` removed the new lines like it always does*
 
 ___
 
-# The Take
+# Glossary
+- **preserve** - keeping and not changing; applies to many things in computer code
+- **remove new lines** - new lines in text are not preserved and all the text resides on only one line
 
-- `echo` removes "new lines" (paragraph breaks) when used to output a `$(cat file)` command substitution
-- `cat` preserves "new lines" (paragraph breaks) when used by itself
+# The Take
+- `echo` removes new lines when used to output a `$(cat file)` command substitution
+- `cat` preserves new lines when used by itself
 - `cat` can source from multiple files separated by spaces, *before* the output file indicator: `>`
 - `cat` can append to an existing file with the output file indicator: `>>`
 

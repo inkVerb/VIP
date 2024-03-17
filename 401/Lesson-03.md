@@ -29,7 +29,7 @@ But, scripts and programs with directories listed in the `$PATH` can be run this
 printenv
 ```
 
-*Look for "PATH"*
+*Look for "`$PATH`"*
 
 *More specifically...*
 
@@ -41,7 +41,7 @@ printenv PATH
 
 *This is a colon (`:`) -separated list of directories where executable files may be executed from **without entering the /complete/path/to/the/file***
 
-*Let's make this $PATH more readable,  use `sed` to resort them to go onto each line...*
+*Let's make this `$PATH` more readable,  use `sed` to resort them to go onto each line...*
 
 | **3** :$
 
@@ -49,7 +49,7 @@ printenv PATH
 echo $PATH | sed "s/:/\n/g" | tee mypath && gedit mypath
 ```
 
-*The $PATH is why commands work as commands, why we can type `echo` instead of `./echo`*
+*The `$PATH` is why commands work as commands, why we can type `echo` instead of `./echo`*
 
 | **4** :$
 
@@ -57,13 +57,13 @@ echo $PATH | sed "s/:/\n/g" | tee mypath && gedit mypath
 echo $PATH
 ```
 
-*Note each colon `:` separates a different directory path included in the $PATH*
+*Note each colon `:` separates a different directory path included in the `$PATH`*
 
 *Note this contains many directories from the [Filesystem Hierarchy Standard (FHS) in 201 Lesson 12](https://github.com/inkVerb/vip/blob/master/201/Lesson-12.md)*
 
 **The point of all this so far:**
-- *$PATH contains many directories*
-- *Each directory in $PATH is separated by a colon `:`*
+- *`$PATH` contains many directories*
+- *Each directory in `$PATH` is separated by a colon `:`*
 - *Files in these directories can be run without entering the entire path.*
 
 #### Executing a script or other file outside the `$PATH`
@@ -87,7 +87,7 @@ gedit iamexec
 echo "I am executable, but I am not in the \$PATH."
 ```
 
-*Try to run it with only the script filename as the STDIN (input)...*
+*Try to run it with only the script filename as the `STDIN` (input)...*
 
 | **6** :$
 
@@ -95,7 +95,7 @@ echo "I am executable, but I am not in the \$PATH."
 iamexec
 ```
 
-*It won't work because the script file is not located in the $PATH!*
+*It won't work because the script file is not located in the `$PATH!`*
 
 #### Three ways to execute a file outside the `$PATH`
 
@@ -132,11 +132,12 @@ echo "$(pwd)/iamexec"
 *...Something like: `/home/USERNAME/School/VIP/shell/401/iamexec` ...enter it as a command*
 
 **The point of all this so far:**
-- *Any file not in a directory listed in $PATH can only be run by including the path to the file, like: `./FILE` or `/full/path/to/FILE`*
+
+- *Any file not in a directory listed in `$PATH` can only be run by including the path to the file, like: `./FILE` or `/full/path/to/FILE`*
 
 #### Find a command's full path using `which` & `whereis`
 
-*You can check "`which`" directory of the $PATH a command is located in...*
+*You can check "`which`" directory of the `$PATH` a command is located in...*
 
 | **10** :$
 
@@ -180,13 +181,13 @@ whereis firefox
 
 **Add dirs to $PATH:**
 
-*You can add as many extra directories as you want to your user's $PATH...*
+*You can add as many extra directories as you want to your user's `$PATH`...*
+
 - In this file: `~/.bashrc`
 - Add a line with: `export PATH=$PATH:/added/dir:/add/another/dir:/add/more/dirs`
 - Careful, adding insecure files could be a way to hack your machine, use mindfully and only add directories you ***need***
 
 ### II. The `cron` Daemon
-
 *Schedule software to run at regular times*
 
 Cron tasks are processes (usually in a Shell script) that are automatically run by the system on a regular basis
@@ -224,6 +225,7 @@ The system will automatically run `cron` scripts on its own scheduled basis in f
 - Monthly: `/etc/cron.monthly/`
 
 **Instructions:**
+
 1. Each file here is a simple BASH or Shell script
 2. File Permissions: `rwxr-xr-x` set with: `chmod 755 Cron_Script_Name`
 
@@ -258,6 +260,7 @@ Or, maybe with a user, such as "jim":
 *All cron tasks are run as the "root" user unless specified otherwise*
 
 **Instructions:**
+
 1. Each `cron` file has one to-be-run Shell script *per line* with `cron` schedule settings (below & here: [VIP/Cheat-Sheets: Cron Schedule Tasks: I. Proper cron Task Line Formatting](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting))
 2. File Permissions: `rw-r--r--` set with: `chmod 644 Cron_Task_File`
 3. If creating the file by using `echo` use single 'quotes' since double "quotes" will change the meaning of some characters, though you may never see the difference in the text file
@@ -266,7 +269,6 @@ Or, maybe with a user, such as "jim":
 *(Many developers don't like it when system admins put files here.)*
 
 #### Managing jobs with `crontab`
-
 The favorite way for a system admin to set up a custom `cron` task is using the `crontab` command
 
 This will edit the file `/etc/crontab`, which is managed by the system
@@ -274,6 +276,7 @@ This will edit the file `/etc/crontab`, which is managed by the system
 Crontab entries follow the same format as the files in `cd cron.d/` (see *Cron file schedule format* (below & here: [VIP/Cheat-Sheets: Cron Schedule Tasks: I. Proper cron Task Line Formatting](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting))
 
 **Know this:**
+
 1. The `crontab` profile has one to-be-run Shell script *per line* with `cron` schedule line formatting (below)
 2. The Shell script listed at the end of the line *must be executable*, probably using: `chmod ug+x SCRIPT_FILE`
 3. The first time you run `crontab` you will be asked to choose an editor, that's normal
@@ -282,6 +285,7 @@ Crontab entries follow the same format as the files in `cd cron.d/` (see *Cron f
   - You don't have to use your `crontab` profile, but if you ask for help with other `cron` methods, expect "ONLY use `crontab` you delinquent!" to be a common answer
 
 **Instructions:**
+
 1. Edit and make entries in your `crontab` profile with:
   - `crontab -e`
 2. Use proper `cron` task line formatting (below & here: [VIP/Cheat-Sheets: Cron Schedule Tasks: I. Proper cron Task Line Formatting](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting))
@@ -294,7 +298,8 @@ Format of a `cron` line:
 
 Example of a cron line:
 
-**Everyday at 3:00 pm, run by user "john":**
+**Everyday at 3:00 pm, run by user "`john`":**
+
 ```shell
 0 15 * * * john /path/to/script
 ```
@@ -304,10 +309,10 @@ Example of a cron line:
 *Refer to this cheat-sheet for more about `cron` scheduling:* [VIP/Cheat-Sheets: Cron Schedule Tasks: I. Proper cron Task Line Formatting](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting)
 
 ### III. `cron` Problems
-
 `cron` is a system-level process, so it is unforgiving, problems are common
 
 **Consider:**
+
 1. Proper formatting of the task line - *[cheat sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#i-proper-cron-task-line-formatting)*
 2. File permissions (`cron` task file & the script to run) - *[cheat sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#1-permissions)*
 3. $PATH declaration inside the `cron` task file - *[cheat sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md#2-path)*
@@ -319,18 +324,17 @@ Example of a cron line:
 ___
 
 # The Take
-
-## $PATH
+## `$PATH`
 - *A script not in the path needs this:*
   - `/full/path/to/script` *or*
   - `./script` *(when in the directory of the script)*
 - *But, scripts and programs with directories listed in the `$PATH` can be run this way:*
     - `script`
 - The `$PATH` is the list of directories of files that can be executed from the terminal ***without*** entering the full directory path
-  - *$PATH contains many directories*
-  - *Each directory in $PATH is separated by a colon `:`*
+  - *`$PATH` contains many directories*
+  - *Each directory in `$PATH` is separated by a colon `:`*
   - *Files in these directories can be run without entering the entire path.*
-  - *Any file not in a directory listed in $PATH can only be run by including the path to the file, like `./FILE` or `/full/path/to/FILE`*
+  - *Any file not in a directory listed in `$PATH `can only be run by including the path to the file, like `./FILE` or `/full/path/to/FILE`*
 - To find the current path, enter: `echo $PATH`
 - The `$PATH` is defined for each user in: `~/.bashrc`
 - To add a directory to the `$PATH`, put a line in `~/.bashrc` like:
@@ -338,7 +342,6 @@ ___
 - `which COMMAND` outputs the location of the command, somewhere in the FHS
 
 ## Cron
-
 - The system used "`cron`" to run programs on a given schedule
 - All `cron` tasks run as the "root" user unless stated otherwise
 - A `cron` setting looks like a lot like:

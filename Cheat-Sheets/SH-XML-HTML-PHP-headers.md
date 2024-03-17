@@ -6,13 +6,13 @@ ___
 
 ## Reference
 
-Open Terminal: <kbd>F12</kbd> (dropdown terminal) / <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (normal)*
+Open Terminal: <key>F12</key> (dropdown terminal) / <key>Ctrl</key> + <key>Alt</key> + <key>T</key> (normal)*
 
-Copy and paste: <kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>
+Copy and paste: <key>Ctrl</key> + <key>C</key>, <key>Ctrl</key> + <key>V</key>
 
-Save: <kbd>Ctrl</kbd> + <kbd>S</kbd>
+Save: <key>Ctrl</key> + <key>S</key>
 
-Close: <kbd>Alt</kbd> + <kbd>F4</kbd>
+Close: <key>Alt</key> + <key>F4</key>
 
 ## Prep Folders
 

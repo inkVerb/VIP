@@ -20,10 +20,9 @@ sudo systemctl start apache2 mariadb
 ```
 
 ### This lesson uses two terminals and two browser tabs!
-
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 *Make sure we have our SQL admin user*
 
@@ -39,13 +38,12 @@ sudo mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED B
 mariadb -u admin -padminpassword
 ```
 
-*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
 
 ### Rebuild our web app from the beginning
-
 *Create the database with user, then use the database in the SQL terminal*
 
 | **SR1** :>
@@ -114,7 +112,6 @@ Password: My#1Password
 *Use whatever you want for all else*
 
 ### Review
-
 *Examine the files now open in the text exitor; this is what we basically have running so far*
 
 *Also, feel free to explore the tables in SQL*
@@ -147,14 +144,14 @@ ls web
   - *Message and admin links if logged in*
   - *Note we used the `$head_title` variable for the browser `<title>`*
 - *in.login_head.php has two changes:*
-  - *Line 38 redirects to blog.php*
-  - *Line 188 has a link to edit.php*
-  - *near the bottom has a link to edit.php*
+  - *Line 38 redirects to `blog.php`*
+  - *Line 188 has a link to `edit.php`*
+  - *near the bottom has a link to `edit.php`*
 - *edit.php is very simple now, but it contains our three prep files:*
-  - *in.config.php*
-  - *in.functions.php*
-  - *in.logincheck.php*
-- *edit.php has no `<head>` because it is created by in.logincheck.php*
+  - *`in.config.php`*
+  - *`in.functions.php`*
+  - *`in.logincheck.php`*
+- *edit.php has no `<head>` because it is created by `in.logincheck.php`*
   - *PHP redirects to a new page via `header()`, which uses `<head>`*
   - *If the `<head>` was already created in HTML, `header()` might break*
   - *So, when redirecting, such as in pages requiring login:*
@@ -182,7 +179,7 @@ Password: My#1Password
 localhost/web/edit.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Note the title of the web browser is "Editor" because we set the `<title>` tag*
 
@@ -230,13 +227,13 @@ codium core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions2.
 ls web
 ```
 
-| **B-3** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
+| **B-3** :// *(<key>Ctrl</key> + <key>R</key> to reload)*
 
 ```console
 localhost/web/edit.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Note our JavaScript in:*
 
@@ -317,7 +314,6 @@ SELECT * FROM pieces;
 *We can only create new pieces, not update*
 
 ### Add an `UPDATE` Ability to Our Form Processor
-
 **We must write the PHP script to:**
 
 - `UPDATE` existing pieces
@@ -345,7 +341,7 @@ codium core/08-edit3.php core/08-in.editprocess3.php && \
 ls web
 ```
 
-| **B-7** :// *(**Must use** <kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
+| **B-7** :// *(**Must use** <key>Ctrl</key> + <key>R</key> to reload)*
 
 ```console
 localhost/web/edit.php
@@ -353,7 +349,7 @@ localhost/web/edit.php
 
 *Note the Slug was updated because this is technically a new piece*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Note:*
 
@@ -416,7 +412,7 @@ ls web
 localhost/web/edit.php?=...
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Note:*
 
@@ -540,25 +536,25 @@ ls web
 
 - *.htaccess*
   - *Forwards basic slug to: `piece.php?s=$1`*
-- *blog.php*
+- *`blog.php`*
   - *We reverse our SQL sanitation with `htmlspecialchars_decode()`*
   - *Each piece link simply points to its slug*
-- *piece.php*
-  - *Like a single-piece viewer of blog.php*
+- *`piece.php`*
+  - *Like a single-piece viewer of `blog.php`*
   - *Logic accepts both `s=SLUG` and `p=piece_ID` GET arguments*
   - *Not restricted to SQL `type='post'`; this can also show pages*
-- *in.logincheck.php*
+- *`in.logincheck.php`*
   - *Removed redirect if not logged in*
   - *"Should not be here" scenarios now redirect to our new blog.php page*
-  - *Remove HTML headerfor in.head.php*
-- *in.head.php*
+  - *Remove HTML headerfor `in.head.php`*
+- *`in.head.php`*
   - *Contains our previous HTML head*
   - *Includes our user header links only if logged in*
 - *in.piecefunctions.php (remember)*
   - *`htmlspecialchars($value);` converts all HTML characters to their HTML enity code*
-- *edit.php*
+- *`edit.php`*
   - *Added `include ('./in.head.php');`*
-- *style.css*
+- *`style.css`*
   - *Added a `.piece-content` class for piece content*
 
 | **B-12** ://
@@ -567,7 +563,7 @@ ls web
 localhost/web/blog.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Note how each piece entry is iterated from the loop*
 
@@ -606,7 +602,6 @@ SELECT * FROM pieces;
 | **14** ://phpMyAdmin **> pieces**
 
 ### WYSIWYG Editor
-
 **What You See Is What You Get**
 
 This type of editor gives you buttons to add HTML style
@@ -642,7 +637,7 @@ localhost/web/tiny.html
 
 *Note the message about domains, which you should close*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *This form won't do anything, just give it a good look and try*
 
@@ -690,7 +685,7 @@ src='tinymce/tinymce.min.js'
 https://github.com/tinymce/tinymce-dist
 ```
 
-| **B-16** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
+| **B-16** :// *(<key>Ctrl</key> + <key>R</key> to reload)*
 
 ```console
 localhost/web/tiny.html
@@ -698,10 +693,9 @@ localhost/web/tiny.html
 
 *Note there is no message about domains*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 ##### Customize TinyMCE
-
 We can customize the TinyMCE toolbar layout
 
 | **17** :$
@@ -723,7 +717,7 @@ ls web
 *- `paste_as_text`: "Paste" removes formatting (see it already "on" by clicking the "T" formatting button)*
 *- `content_css`: should be our style.css file so "Preview" uses our styling*
 
-| **B-17** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
+| **B-17** :// *(<key>Ctrl</key> + <key>R</key> to reload)*
 
 ```console
 localhost/web/tiny.html
@@ -744,13 +738,13 @@ ls web
 
 *Note:*
 
-- *in.head.php*
+- *`in.head.php`*
   - *Note the two `<script>` sections between the comments `<!-- TinyMCE -->`*
   - *These include the JavaScript* ***in the header*** *so TinyMCE works*
   - *It calls the* ***class*** *of our "Content" `<textarea>` HTML element by `class="tinymce_editor"`*
     - *This is from the setting: `selector: '.tinymce_editor'`*
     - *This could be an ID with: `selector: '#tinymce_editor'`*
-- *in.piecefunctions.php*
+- *`in.piecefunctions.php`*
   - *Adds `class="tinymce_editor"` to `<textarea id="p_content"`*
 
 | **B-18** :// *(Same as previously, empty form)*
@@ -806,7 +800,7 @@ localhost/web/medium.html
 1. Type something, it is a very blank text editor
 2. Highlight some text to see the styling options menu
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *This form won't do anything, just give it a good look and try*
 
@@ -857,13 +851,13 @@ src="medium/js/medium-editor.js"
 https://github.com/inkverb/medium-editor
 ```
 
-| **B-20** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
+| **B-20** :// *(<key>Ctrl</key> + <key>R</key> to reload)*
 
 ```console
 localhost/web/medium.html
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 ##### Medium Editor Plugin Example: Tables
 - [GitHub repo](https://github.com/yabwe/medium-editor-tables) (original, may no longer be abailable)
@@ -907,14 +901,14 @@ ls web
 
 *Note:*
 
-- *in.head.php*
+- *`in.head.php`*
   - *Note the two `<script>` sections between the comments `<!-- Medium editor -->`*
   - *These include the CSS so Medium works*
-- *in.piecefunctions.php*
+- *`in.piecefunctions.php`*
   - *This puts the JavaScript* ***after*** *our "Content" `<textarea>` HTML element*
   - *This implements the* ***class*** *`medium_editor` for the Medium editor JavaScript to act on*
 
-| **B-22** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
+| **B-22** :// *(<key>Ctrl</key> + <key>R</key> to reload)*
 
 ```console
 localhost/web/edit.php
@@ -951,7 +945,6 @@ SELECT * FROM pieces;
 ___
 
 ##### Restore the Editor to TinyMCE
-
 The Medium Editor is powerful, but lacks some of the tools we need for this project
 
 *Restore TinyMCE as our main WYSIWYG editor*
@@ -967,7 +960,6 @@ sudo chown -R www:www /srv/www/html
 ___
 
 # The Take
-
 ## Login Checks
 - Checking for user login can be done with a separate `include` file
 - Login can affect the header and should be checked early

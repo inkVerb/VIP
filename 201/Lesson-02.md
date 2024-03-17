@@ -292,7 +292,6 @@ ls -a
 ___
 
 # The Take
-
 - `mkdir` makes a new directory this way:
   - `mkdir new-directory`
 - `cd` will change the terminal's working directory this way:

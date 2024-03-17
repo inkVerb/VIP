@@ -6,8 +6,8 @@
 ### Command Info
 - `which` command location
 - `whereis` command & man-file locations
-- `whatis COMMAND_NAME` command descriptions (found across system)
-- `type COMMAND_NAME` command role or purpose
+- `whatis Command_Name` command descriptions (found across system)
+- `type Command_Name` command role or purpose
 - `whoami` current user
 - `pwd` Present Working Directory (PWD)
 - `ls | wc -l` number of files in PWD

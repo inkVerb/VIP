@@ -20,10 +20,9 @@ sudo systemctl start apache2 mariadb
 ```
 
 ### This lesson uses two terminals and two browser tabs!
-
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -31,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 mariadb -u admin -padminpassword
 ```
 
-*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** :// Username: `admin` Password: `adminpassword`
 
@@ -50,7 +49,6 @@ USE food_db;
 ___
 
 ### MySQLi (MySQL *improved*)
-
 SQL inside PHP makes a website come to life
 
 ### I. Website via many `include` files
@@ -81,7 +79,7 @@ ls web
 localhost/web/website.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *You should recognize this from before, restructured via `include` files*
 
@@ -90,7 +88,6 @@ localhost/web/website.php
 *Now, let's put our SQL into this mix...*
 
 ### II. MySQL Config
-
 **MySQLi:** *MySQL the "safe way" in PHP*
 
 #### Example of a MySQLi Config:
@@ -158,7 +155,7 @@ codium core/03-website2.php core/03-in.config2.php && \
 ls web
 ```
 
-*Note website.php:*
+*Note `website.php`:*
 
 - *The same SQL query for the `$query` variable in our PHP*
 
@@ -176,16 +173,15 @@ SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
 
 | **SB-2** ://phpMyAdmin **> fruit**
 
-| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-2** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/website.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 ### III. SQL > PHP > HTML
-
 *Let's do the same thing, but put it in an HTML `<table>`...*
 
 | **3** :$
@@ -206,16 +202,16 @@ SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
 
 *Note the `<table>` in HTML and border lines in CSS:*
 
-- *website.php*
-- *style.css*
+- *`website.php`*
+- *`style.css`*
 
-| **B-3** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-3** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/website.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 #### SQL PHP Summary
 1. An SQL query becomes a PHP `$Variable` (with any variable name)
@@ -229,7 +225,6 @@ localhost/web/website.php
 	- Syntax: `$Item_variable = "$row[0]";` (for each column in the `SELECT` query)
 
 ### IV. SQL Multiple Rows > PHP > HTML
-
 Process many SQL entry rows via `while` loop...
 
 **Query could return multiple rows:**
@@ -252,7 +247,7 @@ sudo chown -R www:www /srv/www/html && \
 codium core/03-website4.php && \
 ls web
 ```
-*Note website.php: the same SQL query for the `$query` variable in our PHP*
+*Note `website.php`: the same SQL query for the `$query` variable in our PHP*
 
 | **S4** :> *Removed `WHERE name='bananas'` so we get multiple rows*
 
@@ -262,13 +257,13 @@ SELECT name, type, have, count, prepared FROM fruit;
 
 | **SB-4** ://phpMyAdmin **> fruit** (Same)
 
-| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-4** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/website.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 #### SQL Rows Loop Summary
 1. Each SQL row is an item that can be looped through
@@ -295,13 +290,13 @@ SELECT name, type, date_created FROM fruit;
 
 | **SB-5** ://phpMyAdmin **> fruit** (Same)
 
-| **B-5** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-5** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/website.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 ### V. SQL `INSERT` New Entry < HTML
 - See if a query succeeded without error
@@ -324,10 +319,10 @@ ls web
 
 *Note we have several new form functions & POST checks:*
 
-- *website.php*
-- *style.css*
-- *in.functions.php*
-- *in.checks.php*
+- *`website.php`*
+- *`style.css`*
+- *`in.functions.php`*
+- *`in.checks.php`*
 
 | **B-6** :// (Same)
 
@@ -343,7 +338,7 @@ localhost/web/website.php
 
 *Try to input numbers or leave a field empty to see how the form responds*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Once finished, see the new entries in the database...*
 
@@ -356,7 +351,6 @@ SELECT name, type, have, count, prepared FROM fruit;
 ```
 
 ### VI. Always Escape SQL Created by a User Action
-
 MySQLi escape function:
 
 ```php
@@ -372,7 +366,7 @@ codium core/03-website7.php && \
 ls web
 ```
 
-*Note website.php:*
+*Note `website.php`:*
 
 - *We use `mysqli_real_escape_string()` on every item in an SQL query*
 	- *This only applies to user input*
@@ -441,7 +435,7 @@ codium core/03-website8.php core/03-in.config8.php && \
 ls web
 ```
 
-*Note website.php:*
+*Note `website.php`:*
 
 - *We use our custom `escape_sql()` function in place of `mysqli_real_escape_string()`*
 
@@ -471,7 +465,7 @@ SELECT name, type, have, count, prepared FROM fruit;
 
 ### VII. SQL `UPDATE` Existing Entry < HTML
 - See if an update made a change
-	- Syntax: `if (mysqli_affected_rows($database) == 1)`
+  - Syntax: `if (mysqli_affected_rows($database) == 1)`
 
 | **9** :$
 
@@ -487,10 +481,10 @@ ls web
 
 *Note we have several new form functions & POST checks:*
 
-- *website.php*
-- *style.css*
-- *in.functions.php*
-- *in.checks.php*
+- *`website.php`*
+- *`style.css`*
+- *`in.functions.php`*
+- *`in.checks.php`*
 
 | **B-9** :// (Same)
 
@@ -500,7 +494,7 @@ localhost/web/website.php
 
 *Make changes, input numbers, or empty a field to see how the form responds*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Once finished, see the updated entries in the database...*
 
@@ -514,7 +508,7 @@ SELECT name, type, have, count, prepared FROM fruit;
 
 ### VIII. SQL `DELETE` Entry < HTML
 - See if the row was deleted, same as an update
-	- Syntax: `if (mysqli_affected_rows($database) == 1)`
+  - Syntax: `if (mysqli_affected_rows($database) == 1)`
 
 | **10** :$
 
@@ -528,8 +522,8 @@ ls web
 
 *Note we have several new form functions & POST checks:*
 
-- *website.php*
-- *in.checks.php*
+- *`website.php`*
+- *`in.checks.php`*
 
 | **B-10** :// (Same)
 
@@ -539,7 +533,7 @@ localhost/web/website.php
 
 *Use a checkbox to delete an entry*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Once finished, note the entries deleted from the database...*
 
@@ -554,7 +548,6 @@ SELECT name, type, have, count, prepared FROM fruit;
 ___
 
 # The Take
-
 ## Be organized with `include` files
 - Organize them how you want
 - We usually include two types of files:
@@ -615,6 +608,7 @@ SELECT SCOPE_IDENTITY();
 ```php
 $last_id = $database->insert_id;
 ```
+
 ___
 
 #### [Lesson 4: App Install & User Login](https://github.com/inkVerb/vip/blob/master/501/Lesson-04.md)

@@ -41,7 +41,7 @@ ls iamhere
 echo $?
 ```
 
-*Exit code `0` means the last command was a success and returned STDOUT "true"*
+*Exit code `0` means the last command was a success and returned `STDOUT` "`true`"*
 
 | **4** :$
 
@@ -55,9 +55,9 @@ ls iamNOThere
 echo $?
 ```
 
-*Exit code `2` means the last command was a failure and returned with STDERR error*
+*Exit code `2` means the last command was a failure and returned with `STDERR` error*
 
-*Exit code `1` would mean the last command was a success and returned STDOUT "false"*
+*Exit code `1` would mean the last command was a success and returned `STDOUT` "`false`"*
 
 *Edit this script*
 
@@ -104,7 +104,6 @@ echo "$? notacommand is not a real command, so exit code \"127\""
 ```
 
 ### II. `shift` Argument Variable Numbers
-
 *Edit this script*
 
 | **8** :$
@@ -163,7 +162,6 @@ echo "After shift 3
 *Note the `$0` variable does not shift,* ***only argument variables***
 
 ### III. `$@` vs `$*` (All Arguments)
-
 *These are different:*
 
 - `$@` = all arguments as separate variables
@@ -258,7 +256,6 @@ Arguments entered via \$(echo \$*) ..."
 *...No matter how we run it, `$@` & `$*` behave the same*
 
 ### IV. `$#` Argument Count
-
 *Edit this script*
 
 | **14** :$
@@ -359,9 +356,7 @@ myShiftedCount = $myShiftedCount
 ```
 
 ### VI. Variables in `${bracketts}`
-
 #### Shell (`#!/bin/sh`)
-
 *Edit this script*
 
 | **18** :$
@@ -418,7 +413,6 @@ echo "${myVar}"
 *Again, but with **BASH**...*
 
 #### BASH (`#!/bin/bash`)
-
 *Edit this script*
 
 | **20** :$
@@ -547,7 +541,6 @@ export myVar="Hello world!"
 *Note a variable only carries into another script if declared with: `export`*
 
 ### VII. Removing Text in a Variable's Value: `${var#foo}` vs `${var%foo}`
-
 *Edit this script*
 
 | **26** :$
@@ -628,7 +621,6 @@ MYROVAR="I am changed!"
 ```
 
 #### 2. You can't `unset` a `readonly` variable
-
 *Edit this script*
 
 | **30** :$
@@ -669,7 +661,6 @@ unset MYROVAR
 *ALL_UPPERCASE variables may or may not be "`readonly`"; they just "shouldn't" be changed, according to common practice*
 
 ### IX. Terminal & Environment Variables (`set`, `printenv` & `export`)
-
 Ready the CLI (if needed)
 
 ```console
@@ -913,10 +904,10 @@ printenv ALSO_VAR
 ```
 
 *Note `export readonly` is the order; `readonly export` **will not** work*
+
 ___
 
 # The Take
-
 - `$?` is the most recent exit code
 - `shift` reassigns arguments to different argument variables (`$2` becomes `$1`, etc)
 - `$0` is the "command" variable, not an "argument" variable
@@ -952,6 +943,7 @@ ___
     - `export readonly NewVariable="Variable's value"`
 
 - See usage and examples here: [Variables](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Variables.md)
+
 ___
 
 #### [Lesson 6: Data Types & Quotes](https://github.com/inkVerb/vip/blob/master/401/Lesson-06.md)

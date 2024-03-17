@@ -117,7 +117,6 @@ gedit 09-expr-show
 ```
 
 ### II. Comparison Operators
-
 #### A. `-eq -ne -gt -lt -ge -le`
 
 ```sh
@@ -280,7 +279,6 @@ gedit 09-operators-symbol
 ___
 
 # The Take
-
 - `expr` runs basic arithmetic
 - Arithmetic "operates" are mostly conventional: `+` `-` `/`
 - The "times" symbol is `\*` because `*` is a wildcard symbol and needs `\`

@@ -115,7 +115,7 @@ gedit vip.tar.xz.sha256
 sha256sum -c vip.tar.xz.sha256
 ```
 
-*The sha256sum hash file KNOWS what it's looking for, play hide-and-seek*
+*The sha256sum hash file knows what it's looking for, play hide-and-seek*
 
 | **16** :$
 
@@ -135,7 +135,7 @@ ls
 sha256sum -c vip.tar.xz.sha256
 ```
 
-*FAIL*
+*Fail!*
 
 *Try an imposter*
 
@@ -166,7 +166,6 @@ mv vip.tar.xz vip.tar.bz2 && mv vip.tar.xz.HIDING vip.tar.xz
 ___
 
 # The Take
-
 - A "hash" is file or string of text run through a one-way math formula, resulting in a long "number" (hash) made of digits and letters
 - There are different "hash" programs, but each makes a hash that is the same size
 - The original file or text cannot be discovered from the hash, but the original file or text will always result in the same hash

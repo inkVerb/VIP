@@ -97,7 +97,7 @@
   - `-r` - Recursive; *does **not*** preserve permissions, ownership, timestamps, symlinks
   - `-a` - Recursive; *does* preserve permissions, ownership, timestamps, symlinks
   - `-z` - Use file compression during the transfer
-  - `-e [COMMAND]` - Execute shell command
+  - `-e [command]` - Execute shell command
     - Eg `-e ssh` uses `ssh` to make the connection
       - Requires that the `ssh` service is running on the remote machine
         - :# `systemctl start ssh`

@@ -19,9 +19,9 @@ This is normal text, which may label or tell something, it is rare in these less
 
 *This italics text is a note that helps teach and explain something in a lesson*
 
-*The following is called "preformatted" text, which uses a "monospace" font:* `preformatted monospace text` *`maybe italics all same`*
+*The following is called "preformatted text", AKA "code text", which uses a "monospace" font:* `preformatted monospace text` *`maybe italics all the same`*
 
-*Below is a file named "some-file.txt" and it's contents...*
+*Below is a file named "`some-file.txt`" and it's contents...*
 
 | **some-file.txt** :
 
@@ -32,7 +32,7 @@ I am not a terminal command because I have no dollar sign nor hash sign.
 I belong in your text editor where some-file.txt is open.
 ```
 
-*When using copy-paste to enter a command into the terminal, <kbd>Ctrl</kbd> + <kbd>C</kbd> will work in a normal window, but use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> to paste into the terminal*
+*When using copy-paste to enter a command into the terminal, <key>Ctrl</key> + <key>C</key> will work in a normal window, but use <key>Ctrl</key> + <key>Shift</key> + <key>V</key> to paste into the terminal*
 
 | **1** :$
 
@@ -82,7 +82,9 @@ fourth broken command
 
 *...`foo` and `bar` are also normal conventions for demonstrating text that you would replace in your project*
 
-*Everything wtih all caps or all lowercase (`code` or `CODE`) probably doesn't change in the Shell language*
+*Everything wtih all caps or all lowercase (`code` or `CODE`) **probably** doesn't change in the Shell language*
+
+*Sometimes, a placeholder example may appear as `your_user_name`, `username`, `ENVIRONMENT_CONSTANT`, etc, which should be somewhat obvious as placeholders*
 
 ### Exploring files
 
@@ -126,11 +128,11 @@ nautilus .
 gedit first-file
 ```
 
-*Note that "first-file" is in the title of gedit, the text editor*
+*Note that "`first-file`" is in the title of gedit, the text editor*
 
-*Create first-file as this:*
+*Create `first-file` as this:*
 
-*(Copy-Paste this into first-file in gedit:)*
+*(Copy-Paste this into `first-file` in gedit:)*
 
 | **first-file** :
 
@@ -142,13 +144,13 @@ This is a new file.
 
 *Note the asterisk * in the title of gedit*
 
-*Use <kbd>Ctrl</kbd> + <kbd>S</kbd> to save the file*
+*Use <key>Ctrl</key> + <key>S</key> to save the file*
 
-*Note the asterisk * went away and the file "first-file" appeared in Nautilus*
+*Note the asterisk * went away and the file "`first-file`" appeared in Nautilus*
 
-*Update first-file to version 02:*
+*Update `first-file` to version 02:*
 
-*After copying the text below via <kbd>Ctrl</kbd> + <kbd>C</kbd>, in gedit, use <kbd>Ctrl</kbd> + <kbd>A</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd>*
+*After copying the text below via <key>Ctrl</key> + <key>C</key>, in gedit, use <key>Ctrl</key> + <key>A</key>, <key>Ctrl</key> + <key>V</key>, <key>Ctrl</key> + <key>S</key>*
 
 | **first-file** :
 
@@ -158,7 +160,7 @@ This is the same file, but a new version
 # v02
 ```
 
-*Version 2 of first-file should now be saved*
+*Version 2 of `first-file` should now be saved*
 
 *Let's remove that file since we no longer need it*
 

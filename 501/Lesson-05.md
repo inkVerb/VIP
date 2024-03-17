@@ -24,7 +24,6 @@ sudo systemctl start apache2 mariadb
 ___
 
 ### RewriteMod: Apache Web Server Setting
-
 **RewriteMod:** a web server settings that changes what a web address looks like
 
 1. Rewrite uses a RegEx, just like PHP `preg_match()` and `preg_replace()`
@@ -210,8 +209,8 @@ localhost/web/pretty
 ```
 
 ### The Settings
-
 Note, Apache .conf is probably:
+
 - `/etc/httpd/conf/httpd.conf` (master - Arch)
 - `/etc/httpd/sites-available/inkisaverb.com.conf` (per-site - Arch)
 - `/etc/apache2/sites-available/000-default.conf` (default - Ubuntu)
@@ -249,6 +248,7 @@ vim /etc/apache2/sites-available/000-default.conf
 *This takes you to the settings between the `<Directory>` tags*
 
 **Required settings:**
+
 ```
 AllowOverride All               # Apache config
 
@@ -265,8 +265,8 @@ RewriteEngine on                # .htaccess
 | **vim-6b** :] Esc `:q!` Enter
 
 ### Avoid Bugs
-
 **Remove a trailing slash:**
+
 ```
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} (.+)/$
@@ -347,7 +347,6 @@ localhost/web/My_Long_Name/Name-2
 ___
 
 # The Take
-
 ### This is only a basic overview!
 - RewriteMod has much, much more involved in terms of:
   - What it can do
@@ -385,7 +384,9 @@ ___
   ```
 
 ## Format
+
 | **.htaccess** :
+
 ```
 RewriteEngine on
 
@@ -406,6 +407,7 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
   With...
 
   | **.htaccess** :
+
   ```
   RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?a=$1&b=$3 [L]
   ```
@@ -423,6 +425,7 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
   ...with GET processed as...
 
   | **mypage.php** :
+  
   ```php
   $a = $_GET['a'];
   $b = $_GET['b'];

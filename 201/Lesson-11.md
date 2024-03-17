@@ -8,7 +8,7 @@ cd ~/School/VIP/201
 
 ___
 
-*Let's get another look at verb.ink.html*
+*Let's get another look at `verb.ink.html`*
 
 | **1** :$
 
@@ -32,7 +32,7 @@ cat verb.ink.html
 
 ### `more`
 
-*One page at a time: Spacebar*
+*One page at a time: <key>Spacebar</key>,*
 
 *One line at a time: Enter*
 
@@ -52,7 +52,7 @@ more -8 verb.ink.html
 
 ### `less`
 
-*Up and down: Spacebar, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, Up, Down*
+*Up and down: <key>Spacebar</key>, <key>PageUp</key>, <key>PageDown</key>, <key>Up</key>, <key>Down</key>*
 
 | **6** :$ *(Q to quit)*
 
@@ -173,7 +173,7 @@ gedit frc-*
 diff frc-1 frc-2
 ```
 
-*Note "a" means that lines are "Added"*
+*Note "`a`" means that lines are "Added"*
 
 | **20** :$
 
@@ -181,7 +181,7 @@ diff frc-1 frc-2
 diff frc-1 frc-3
 ```
 
-*Note "d" means that lines are "Deleted"*
+*Note "`d`" means that lines are "Deleted"*
 
 | **21** :$
 
@@ -189,7 +189,7 @@ diff frc-1 frc-3
 diff frc-1 frc-4
 ```
 
-*Note "c" means that the lines "Change"*
+*Note "`c`" means that the lines "Change"*
 
 *Note "13,17" means "lines 13–17"*
 
@@ -199,7 +199,7 @@ diff frc-1 frc-4
 diff frc-1 frc-5
 ```
 
-*Note frc-5 line 3 has several spaces at the end of the line; ignore with `-Z`*
+*Note `frc-5` line 3 has several spaces at the end of the line; ignore with `-Z`*
 
 | **23** :$
 
@@ -409,7 +409,7 @@ nano verb.ink.html
 *Note* ^Z *will "stop" the nano session, not "undo"*
 - If you ^Z back to the terminal, resume with `fg nano`, see [Linux 101 Lesson 0](https://github.com/inkVerb/VIP/blob/master/101/Lesson-00.md)
 
-*(<kbd>Ctrl</kbd> + <kbd>X</kbd> to eXit)*
+*(<key>Ctrl</key> + <key>X</key> to eXit)*
 
 ### `vim`
 
@@ -423,11 +423,11 @@ vim verb.ink.html
 
 *To quit, type these two characters:*
 
-:q
+`:q`
 
 *Vim has a tutorial*
 
-| **50** :$ *(inside Vim, use* :q *to quit)*
+| **50** :$ *(inside Vim, use* `:q` *to quit)*
 
 ```console
 vimtutor
@@ -438,7 +438,6 @@ vimtutor
 ___
 
 # The Take
-
 ## **more, less, head & tail** display the contents of a file in small amounts
 - `more`
   - One page at a time: Spacebar
@@ -446,7 +445,7 @@ ___
   - `more -8 file` shows 8 lines at a time
   - **Q** will quit
 - `less`
-  - Up and down: Spacebar, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, Up, Down
+  - Up and down: Spacebar, <key>PageUp</key>, <key>PageDown</key>, <key>Up</key>,, <key>Down</key>,
   - **Q** will quit
 - `head`
   - First 10 lines
@@ -462,10 +461,10 @@ ___
 - `diff` compares two files by line
   - Many options
   - Usage: `diff file1 file2`
-  - a = "added"
-  - d = "deleted"
-  - c = "changed" (different)
-  - 13,17 = lines 13 through 17
+  - `a` = "added"
+  - `d` = "deleted"
+  - `c` = "changed" (different)
+  - `13,17` = lines 13 through 17
   - `-i` ignore case
   - `-w` ignore all "white space" (Returns and extra spaces)
   - `-y` displays files side-by-side
@@ -474,9 +473,9 @@ ___
 
 ## Terminal text editors
 ### `nano` is great for beginners
-- ^ = **Ctrl**
-- M- = **Alt**
-- If you **<kbd>Ctrl</kbd> + <kbd>Z</kbd>** as "undo" on accident, `fg nano` will take you back
+- `^` = **Ctrl**
+- `M-` = **Alt**
+- If you **<key>Ctrl</key> + <key>Z</key>** as "undo" on accident, `fg nano` will take you back
 ### `vim` is for awesome people
 - Anyone can learn `vim`, especially children; so, learn young
 - `vim` emulates the terminal text editor `vi` made by Bill Joy, when computers first walked the earth in 1976

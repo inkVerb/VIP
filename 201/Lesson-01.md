@@ -87,7 +87,7 @@ ln -s file4 file5
 ls
 ```
 
-*Note file5 is a different color because it is a symlink*
+*Note file5 is a different color because it is a **symlink***
 
 | **14** :$
 
@@ -95,7 +95,7 @@ ls
 ls -l
 ```
 
-*Note file5 points to file4, indicating where the symlink leads*
+*Note file5 points to `file4`, indicating where the symlink leads*
 
 *You can also use list-long on only the symlink to see where it points*
 
@@ -119,9 +119,9 @@ gedit file4 file5
 echo FILE-5 >> file5
 ```
 
-*gedit: Reload file4 & file5*
+*gedit: Reload `file4` & `file5`*
 
-*Note both file4 and file5 say the same thing*
+*Note both `file4` and `file5` say the same thing*
 
 | **18** :$
 
@@ -129,7 +129,7 @@ echo FILE-5 >> file5
 echo SILLY-FILE5 >> file5
 ```
 
-*gedit: Reload file4 & file5*
+*gedit: Reload `file4` & `file5`*
 
 | **19** :$
 
@@ -137,7 +137,7 @@ echo SILLY-FILE5 >> file5
 echo INTO-FILE4 >> file4
 ```
 
-*gedit: Reload file4 & file5*
+*gedit: Reload `file4` & `file5`*
 
 | **20** :$
 
@@ -169,7 +169,7 @@ cat file6
 gedit file6
 ```
 
-*Note file6 is the same as file4 & file5*
+*Note `file6` is the same as `file4` & `file5`*
 
 | **25** :$
 
@@ -189,7 +189,7 @@ ls
 ls -l
 ```
 
-*Note file4 remains*
+*Note `file4` remains*
 
 | **28** :$
 
@@ -209,7 +209,7 @@ ls
 ls -l
 ```
 
-*Note file5 is "broken"*
+*Note `file5` is "broken"*
 
 | **31** :$
 
@@ -233,9 +233,9 @@ cat file4
 ls -l
 ```
 
-*Note file5 is no longer a broken symlink, but file4 isn't the same as it used to be*
+*Note file5 is no longer a broken symlink, but `file4` isn't the same as it used to be*
 
-*gedit: Save file6*
+*gedit: Save `file6`*
 
 | **34** :$
 
@@ -243,7 +243,7 @@ ls -l
 ls
 ```
 
-*Note file6 is no longer a symlink*
+*Note `file6` is no longer a symlink*
 
 | **35** :$
 
@@ -254,7 +254,12 @@ cat file6
 ___
 
 # The Take
-
+- A **symlink** is a link to another file
+  - It can be opened, edited, and saved as a file
+  - But, all reading and writing is done in the original file
+  - Deleting a symlink does not delete the original file
+  - A symlinked file's destination can be seen with `ls -l`
+  - An application editing or reading a symlink probably doesn't know the difference between a symlink and a real file
 - `cp` copies files this way:
   - `cp source-file file-copy`
 - `mv` moves files this way:

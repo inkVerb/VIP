@@ -104,7 +104,6 @@ ls
 ___
 
 # The Take
-
 - Your machine is up to speed with the necessary packages installed
 - You have the GitHub "401" files needed for this course
 

@@ -10,7 +10,6 @@ cd ~/School/VIP/401
 ___
 
 ### I. Interpreters (Shells)
-
 *That first "she-bang" line* **(#!/...)** *defines the "interpreter" or the shell.*
 
 *There are many shells to choose from...*
@@ -30,10 +29,9 @@ ___
 - `#!/bin/zsh`    Z Shell
 
 #### In the Terminal
-
 **Run in a new terminal window:**
 >
-> Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
+> Open a new terminal window: <key>Ctrl</key> + <key>Alt</key> + <key>T</key> (not <key>F12</key>)
 >
 > | **T1** :$
 
@@ -41,7 +39,7 @@ ___
 exit
 ```
 >
-> Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
+> Open a new terminal window: <key>Ctrl</key> + <key>Alt</key> + <key>T</key> (not <key>F12</key>)
 >
 > *Open up a Shell (`sh`) interpreter session...*
 >
@@ -81,7 +79,7 @@ exit
 exit
 ```
 >
-> Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
+> Open a new terminal window: <key>Ctrl</key> + <key>Alt</key> + <key>T</key> (not <key>F12</key>)
 >
 > *Now, open up a BASH (`bash`) interpreter session...*
 >
@@ -122,7 +120,6 @@ exit
 ```
 
 #### Different Interpreters Interpret Differently
-
 *Avoid writing code in too many different shells because your code may not work on all machines*
 
 *Generally:*
@@ -138,7 +135,6 @@ exit
 *Consider a comparison in Bourne Shell vs BASH:*
 
 #### Arithmetic
-
 Shell:
 
 *Edit this script to see the short version*
@@ -224,7 +220,6 @@ fi
 *Consider another comparison in Bourne Shell vs BASH:*
 
 #### Arrays
-
 Shell:
 
 *Edit this script to see the short version*
@@ -298,7 +293,6 @@ echo ${Array[@]}
 *Here's a great Wiki article about shells: [List of command-line interpreters](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)*
 
 ### II. `set` Errors & Debugging
-
 **Main `set` commands:** *(there are more than these)*
 - `set -a` ***A****ll* variables to be exported to environment
 - `set -e` ***E****xit* immediately if a command returns an exit code other than zero
@@ -615,7 +609,6 @@ false || echo "Or is false."
 *Consider four scripts:*
 
 #### 1. Stating `true`/`false`:
-
 *Edit this script to see the short version*
 
 | **25** :$
@@ -656,7 +649,6 @@ false || echo "Or is false."
 *It works whether `true`/`false` is stated or a variable:*
 
 #### 2. Variable as `true`/`false`:
-
 *Edit this script to see the short version*
 
 | **27** :$
@@ -701,7 +693,6 @@ $Var || echo "Or is false."
 *This next script does* ***NOT*** *work...*
 
 #### 3. Variable as Other *"string"*:
-
 *Edit this script to see the short version*
 
 | **29** :$
@@ -749,7 +740,6 @@ $Var || echo "Or is false."
 *Let's try a real command: `ls /directory`*
 
 #### 4. Test with Example Command `ls` & `$?` for Numeric `true`/`false`:
-
 *Watch this...*
 
 | **31** :$
@@ -823,7 +813,6 @@ ls nothere || echo "Or is false, exit code: $?"
 *So, `&&` and `||` work with any command that returns*
 
 ### IV. Using `-z`/`-n` & `unset` "the Proper Way"
-
 *Use `-z` & `-n` to determine if a variable is set or empty.*
 - `-z` Tests if a variable is NOT set
 - `-n` Tests if a variable is "***N****ot* empty" (IS set)
@@ -941,7 +930,6 @@ fi
 ```
 
 ### V. Pass child `exit` to parent
-
 We looked at different `exit` codes in [301 Lesson 6](https://github.com/inkVerb/vip/blob/master/301/Lesson-06.md)
 
 Now, we will pass a child script's exit code to make the parent script exit with the same code using this one line exit pass:
@@ -1212,7 +1200,6 @@ echo "Parent is finished."
 ___
 
 # The Take
-
 ## Interpreters
 - In `#!/bin/sh`, "`sh`" is the interpreter
 - There are many interpreters for Linux, "`bash`" & "`sh`" are probably the most common
@@ -1267,6 +1254,7 @@ ___
  - Do not run `wait` after the MPEL, otherwise you will wait forever
  - Do not run `wait` before the MPEL because the MPEL will be testing `wait` rather than the the child script you want to test
  - The MPEL may actually be able to run instead of `wait`
-___
+ 
+ ___
 
 #### [Lesson 10: Dynamics of Functions](https://github.com/inkVerb/vip/blob/master/401/Lesson-10.md)

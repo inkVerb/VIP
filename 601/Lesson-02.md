@@ -63,7 +63,7 @@
 ### `cron`
 - Play around with [crontab guru](https://crontab.guru/) to see how the schedule works
 - `MM HH DD MM WD user command (args...)`
-  - `[minute] [hour] [date] [month] [weekday] USER COMMAND (arguments - optional)`
+  - `[minute] [hour] [date] [month] [weekday] [user] [command] (arguments - optional)`
   - `*` every value
   - `,` list separator
   - `-` range operator

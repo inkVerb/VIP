@@ -252,7 +252,6 @@ ls yoyo*
 ___
 
 # The Take
-
 ## `date`
 - `date` outputs information about time ranging from year to seconds
 - `date` options

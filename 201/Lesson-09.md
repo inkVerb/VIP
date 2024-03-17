@@ -109,7 +109,7 @@ top
 
 *Notice the realtime process list*
 
-Q (or <kbd>Ctrl</kbd> + <kbd>C</kbd>) *This will CLOSE the top program*
+Q (or <key>Ctrl</key> + <key>C</key>) *This will CLOSE the top program*
 
 | **9** :$
 
@@ -194,7 +194,7 @@ chromium-browser &
 ps aux
 ```
 
-*Scroll to look for that browser's process ID (PID)*
+*Scroll to look for that browser's PID number*
 
 *This uses pipe and grep to find it*
 
@@ -269,7 +269,6 @@ killall chromium-browser
 ___
 
 # The Take
-
 - `du` & `df` output disk and directory size
   - `du` lists directories and size
   - `df` shows more system and "available space" information

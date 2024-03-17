@@ -1,7 +1,6 @@
 # Moving On
 
 ## You're ready for more
-
 After completing [Linux 101](https://github.com/inkVerb/VIP/blob/master/101/README.md), [Linux 201](https://github.com/inkVerb/VIP/blob/master/301/README.md), [Linux 301](https://github.com/inkVerb/VIP/blob/master/301/README.md) & [Linux 401](https://github.com/inkVerb/VIP/blob/master/401/README.md), other computer languages will be easier to understand.
 
 - You already know why web languages and services will have settings in `/etc/...`.
@@ -18,7 +17,6 @@ After completing [Linux 101](https://github.com/inkVerb/VIP/blob/master/101/READ
 So, don't stop here. There's much more you can do. And, it's all much, much easier now to do. Keep moving and keep going!
 
 ## Web Stack: [Linux 501](https://github.com/inkVerb/VIP/blob/master/501/README.md)
-
 To gain a stronger understanding of web apps, which is where Linux is ***applied*** to daily life, take [Linux 501](https://github.com/inkVerb/VIP/blob/master/501/README.md)
 
 - This course is ***not*** for people fully trained in PHP web stack
@@ -52,7 +50,6 @@ To gain a stronger understanding of web apps, which is where Linux is ***applied
 - The [Linux 601: SysAdmin](https://github.com/inkVerb/VIP/blob/master/601/README.md) course will seem more useful because [Linux 501: Web Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md) will give an understanding of what a Linux System Administrator is supporting for the real world
 
 ## System Administrator: [Linux 601](https://github.com/inkVerb/VIP/blob/master/601/README.md)
-
 You can skip [Linux 501](https://github.com/inkVerb/VIP/blob/master/501/README.md) and take this course directly, but it is not recommended unless you already have web programming training
 
 - This course covers remaining topics for the Linux Foundation *Linux Foundation Certified System Administrator (LFCS)* exam, not yet covered in previous VIP courses

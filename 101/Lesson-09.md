@@ -21,7 +21,7 @@ mkdir abc abc-dir
 ls
 ```
 
-*Search for files with `find`*
+*Search for files by **file name** with `find`*
 
 | **3** :$
 
@@ -37,9 +37,9 @@ find "abc*"
 find "/bin"
 ```
 
-*Note it can find an absolute path, which starts with `/`*
+*Note it can find an **absolute path**, which starts with `/`*
 
-*Specify to search somewhere; we'll search "here" (`.` = here)*
+*Specify to **search** somewhere; we'll search "here" (`.` = here)*
 
 | **5** :$
 
@@ -61,7 +61,7 @@ find . -name "abc"
 find . -name "abc*"
 ```
 
-*...for "Directories": `-type d`*
+*...for "**Directories**": `-type d`*
 
 | **8** :$
 
@@ -83,11 +83,19 @@ find . -type f -name "abc*"
 touch abcsed.Setting
 ```
 
+*Create some empty files with **file extensions** in their file names*
+
+*(File extensions usually indicate a **file type**, so you will see them often)*
+
+*(`-type` is not for 'file type', but for '`find` type')*
+
 | **11** :$
 
 ```console
 touch ink.png ink.PNG ink.jpg ink.JPG
 ```
+
+*Create some directories with the same names as some of the file extensions we just made*
 
 | **12** :$
 
@@ -113,7 +121,7 @@ find . -name "*.png"
 find . -name "*png"
 ```
 
-*Note `find` is case-sensitive, ignore case with: `-iname`*
+*Note `find` is **case-sensitive**, **ignore case** with: `-iname`*
 
 | **16** :$
 
@@ -141,8 +149,25 @@ find . -type d -iname "*png"
 
 ___
 
-# The Take
+# Glossary
+- **absolute path** - a file and it's full location, starting with the directory tree from root
+  - Starts with `/` and includes many directories
+  - eg: `/absolute/path/directory/file` or `/home/john/abcsed`
+  - We never used an absolute path until now, but it comes up later
+- **case-sensitive** - whether UPPERCASE or lowercase matters
+- **directory** - a single place that holds files or other directories
+- **directory tree** - the list of directories inside directories to show a file location
+- **file name** - the name of a file, including the file extension
+- **file extension** - part of the file name, but comes after `.` period, usually to indicate the file type; can be anything
+  - i·e: `.png`, `.jpg`, `.mp3`, `.txt`, `.doc`, `.pdf`, `.conf`, `.php`, `.html`, etc
+- **file type** - the type of file
+  - ie: picture, audio, text, document, PDA file, config, PHP file, HTML file, etc
+- **ignore case** - treat UPPERCASE and lowercase as the same
+- **path** - a file's name after the directories the file is in
+  - eg: `directory/somewhere/file`
+- **search** - look for text in file names or file contents
 
+# The Take
 - `find` searches for files
 - `find` needs two arguments in order to work:
   - Location

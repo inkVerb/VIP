@@ -23,7 +23,6 @@ sudo systemctl start apache2 mariadb
 ___
 
 ### AJAX: Asynchronous JavaScript and XML
-
 AJAX changes only ***part*** of a webpage
 
 This "Asynchronous" action uses JavaScript to:
@@ -141,7 +140,7 @@ ajaxHandler.send();
 localhost/web/ajax.html
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 - *Click the button "Go AJAX!"*
 
@@ -182,7 +181,7 @@ ajaxHandler.send();
 localhost/web/ajax.php
 ```
 
-- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 - *Reload the page several times to watch the SESSION count go up on reload*
 - *Click the button "Go AJAX!"*
 - *Reload the page again a few times*
@@ -215,24 +214,24 @@ ajaxHandler.send("foo=AJAX&bar=5");
 
 *Note:*
 
-  - *ajax.php*
-  - *ajax_responder.php*
+  - *`ajax.php`*
+  - *`ajax_responder.php`*
 
 - *We are using POST, not GET:*
-  - *ajaxHandler.open("POST", "ajax_responder.php", true);*
+  - *`ajaxHandler.open("POST", "ajax_responder.php", true);`*
 - *Added:*
   - *`ajaxHandler.setRequestHeader("Content-type", "application/x-www-form-urlencoded")`*
 - *Defined POST content in a GET-URL-like string:*
   - *`ajaxHandler.send("go=AJAX&time=5")`*
 - *ajax_responder.php processes POST arguments*
 
-| **B-3** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-3** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
-- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 - *Click the button "Go AJAX!"*
 - *Note "AJAX" & "5" appear from our line: `go=AJAX&time=5`*
 
@@ -256,13 +255,13 @@ ajaxHandler.setRequestHeader("Content-type", "application/x-www-form-urlencoded"
 ajaxHandler.send(<?php echo '"foo='.$post_foo.'&bar='.$post_bar.'"'; ?>); // PHP generated statement
 ```
 
-| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-4** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
-- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 - *Note the entire page is the same except our POST values*
 - *Note we used PHP to echo the page with our variables*
 - *Click the button "Go AJAX!"*
@@ -303,7 +302,6 @@ window.addEventListener( "load", function () {
 ```
 
 #### AJAX Response PHP:
-
 AJAX only sends this in response:
 
 ```php
@@ -366,13 +364,13 @@ AJAX.send(FD);
   3. *JavaScript runs AJAX to send the `<form>` data*
 - ***This uses the JavaScript object called "`FormData`"***
 
-| **B-5** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-5** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
-- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 1. Note:
   - "SESSION count:"
@@ -382,7 +380,6 @@ localhost/web/ajax.php
 3. Change the input fields and try many times
 
 ### AJAX Capture Data from an *AJAX-Reloaded* `<form>`
-
 In the previous example, JavaScript listens only to the `<form>` created at the first page load:
 
 ```js
@@ -398,7 +395,6 @@ If we AJAX-change the `<form>` itself using the AJAX response, AJAX will not int
 So, to listen to a `<form>` created by an AJAX response, we must create an "event listener" that refreshes with each AJAX request
 
 #### AJAX JavaScript:
-
 JavaScript adapted from [Mozilla's Developer site, MND](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_FormData_bound_to_a_form_element)
 
 ```js
@@ -440,7 +436,6 @@ window.addEventListener( "load", function () {
 ```
 
 #### AJAX Response PHP:
-
 AJAX sends the entire `<form>` again inside the response:
 
 ```php
@@ -491,13 +486,13 @@ ls web
   4. *AJAX responds with a new `<form>`*
   5. *JavaScript runs `listenToForm();` again, to listen for `<input="submit">` again*
 
-| **B-6** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-6** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
-- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 1. Note:
   - "SESSION count:"
@@ -567,13 +562,13 @@ ls web
 - *Because the `<button>` calls the AJAX JS function, we don't need to run the function on every AJAX response*
 
 
-| **B-7** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-7** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
-- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 1. Note:
   - "SESSION count:"
@@ -586,7 +581,6 @@ localhost/web/ajax.php
 4. Change the input fields and try many times
 
 ## AJAX Security
-
 Anyone can send their own AJAX requests to your ajax_handler.php file
 
 Read more about AJAX security in the VIP cheat sheets: [AJAX Security](AJAX-security.md)
@@ -632,7 +626,7 @@ AJAX.setRequestHeader("ajax-token", "<?php echo $token; ?>");
   - `ajax-token` in `AJAX.setRequestHeader("ajax-token", ...)`
   - is `$_SERVER['HTTP_AJAX_TOKEN']` in the AJAX handler
 
-**ajax-send.php** :
+| **ajax-send.php** :
 
 ```php
 // Start a SESSION before our AJAX JavaScript function so we can use it
@@ -648,7 +642,7 @@ if ( empty($_SESSION['ajax_token']) ) {
 ...
 ```
 
-**ajax-send.php** : (in AJAX `<script>` function)
+| **ajax-send.php** : (in AJAX `<script>` function)
 
 ```javascript
 ...
@@ -663,7 +657,7 @@ AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION['token']; ?>");
 AJAX.send(...);
 ```
 
-**ajax-handler.php** :
+| **ajax-handler.php** :
 
 ```php
 session_start();
@@ -709,17 +703,16 @@ if ( empty($_SESSION['ajax_token']) ) {
 }
 ```
 
-| **B-8** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-8** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
 ### AJAX Sending Host
-
 Another layer of security can be half-certain that the AJAX request came from the same server that we intended, but this checks the header and so it could be programmed to lie
 
-**ajax-handler.php** :
+| **ajax-handler.php** :
 
 ```php
 // Set the server
@@ -742,6 +735,7 @@ ls web
 ```
 
 *Note ajax.php:*
+
 - *We `echo` the `$_SERVER["SERVER_NAME"]` value, which should return as `localhost` on our local machine*
   - *This merely demonstreates what `$_SERVER["SERVER_NAME"]` is; we don't actually use it in our AJAX sending page*
 - *The form works the same as in step 7*
@@ -755,7 +749,7 @@ echo '$_SERVER["SERVER_NAME"]:'." <code>$mysite</code> // which we use to check 
 ```
 
 
-| **B-9** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-9** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/ajax.php
@@ -810,7 +804,7 @@ ls web
 - *ajax_responder.php:*
   - *Displays `$_POST["ajax_token"]` in the response*
 
-| **B-10** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-10** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/ajax.php
@@ -822,7 +816,7 @@ We can place our token inside the HTML document itself and retriev it with JavaS
 
 This could be handy if, for any reason, our JavaScript can't be modified by PHP, so it can get the token directly from the HTML
 
-| **ajax-send.php** :
+| | **ajax-send.php** :
 
 ```html
 <head>
@@ -879,7 +873,7 @@ This could be handy if, for any reason, our JavaScript can't be modified by PHP,
   </script>
 ```
 
-| **ajax-handler.php** :
+| | **ajax-handler.php** :
 
 ```php
 if ((!empty($_POST['ajax_token'])) && ($_POST['ajax_token'] === $_SESSION["ajax_token"])) {
@@ -952,7 +946,7 @@ AJAX.setRequestHeader("ajax-token", TOKEN);
 ```
 
 
-| **B-11** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-11** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/ajax.php
@@ -967,7 +961,6 @@ localhost/web/ajax.php
 ___
 
 # The Take
-
 ## AJAX: Asynchronous JavaScript and XML
 - JavaScript was created in 1995 by Netscape to compete with Microsoft
 - JavaScript loads as it goes, unlike PHP

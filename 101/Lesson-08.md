@@ -29,7 +29,7 @@ cat abcd
 ./comboshell abcd j "z-"
 ```
 
-*Update comboshell to version 2:*
+*Update `comboshell` to version 2:*
 
 | **comboshell** : v02
 
@@ -49,9 +49,9 @@ echo "$myOutput" >> sedoutput.text
 ./comboshell abcd j "z-"
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
-*Update comboshell to version 3:*
+*Update `comboshell` to version 3:*
 
 | **comboshell** : v03
 
@@ -71,7 +71,7 @@ echo "$myOutput" | tee sedoutput.text
 ./comboshell abcd j "z00 zoo "
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
 | **6** :$
 
@@ -79,9 +79,9 @@ echo "$myOutput" | tee sedoutput.text
 echo "Took out the trash." > sedoutput.text
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
-*Update comboshell to version 4:*
+*Update `comboshell` to version 4:*
 
 | **comboshell** : v04
 
@@ -99,9 +99,9 @@ sed "s/$2/$3/g" $1 | tee sedoutput.text
 ./comboshell abcd j "z-"
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
-*Update comboshell to version 5:*
+*Update `comboshell` to version 5:*
 
 | **comboshell** : v05
 
@@ -119,9 +119,9 @@ cat $1 | sed "s/$2/$3/g" | tee sedoutput.text
 ./comboshell abcd j "vip-"
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
-*Update comboshell to version 6:*
+*Update `comboshell` to version 6:*
 
 | **comboshell** : v06
 
@@ -139,9 +139,9 @@ cat $1 | sed "s/$2/$3/g" | tee -a sedoutput.text
 ./comboshell abcd j "ink-"
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
-*When we use the `-a` flag with `tee`, it will append to the output file, not overwrite, similar to using `echo >>`*
+*When we use the `-a` **flag** with `tee`, it will append to the output file, not overwrite, similar to using `echo >>`*
 
 | **10** :$
 
@@ -149,12 +149,18 @@ cat $1 | sed "s/$2/$3/g" | tee -a sedoutput.text
 ./comboshell abcd j "codeTheo-"
 ```
 
-*gedit: Reload sedoutput.text*
+*gedit: Reload `sedoutput.text`*
 
 ___
 
-# The Take
+# Glossary
+- **flag** - a single-letter command parameter that begins with `-`
+  - Not an argument
+  - Many commands use these to select different options
+  - `ls` can use the `-l` flag as in `ls -l`, also the `-a` flag
+  - Flags can be combined: `-a -l` can also be entered as `-al`, eg `ls -al`
 
+# The Take
 - Argument variables (`$1`, `$2`, etc) can be used inside `$( command substitution )`
 - `echo` can send variables to output
 - `echo` can pipe variables to a tee output with `echo $variable | tee output/file/here`

@@ -514,7 +514,6 @@ These eventually get deleted by the system. Usually, when you choose to "open" a
 ___
 
 # The Take
-
 - Directories in Linux hold different things
   - This is called "Filesystem Hierarchy Standard (FHS)"
 - `/` is the beginning of all directories in the FHS

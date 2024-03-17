@@ -15,11 +15,11 @@ ___
 echo "Output to terminal"
 ```
 
-*The "input" you enter into the terminal is called: "STDIN"*
+*The "**input**" you enter into the terminal is called: "`STDIN`"*
 
-*The "output" you see in the terminal is called: "STDOUT"*
+*The "**output**" you see in the terminal is called: "`STDOUT`"*
 
-*Below, the STDIN is `echo "Hello ink!"` and the STDOUT is `Hello ink!`*
+*Below, the `STDIN` is `echo "Hello ink!"` and the `STDOUT` is `Hello ink!`*
 
 | **2** :$
 
@@ -39,9 +39,9 @@ echo "abcdefghijklmnopqrstuvwxyz"
 ls
 ```
 
-*See, there are no files here*
+*See, there are no **files** here*
 
-*We can send STDOUT to a file with: `> MYFILE`*
+*We can send `STDOUT` (output) to a file with: `> somefile`*
 
 | **5** :$
 
@@ -63,13 +63,17 @@ ls
 gedit abcd
 ```
 
+*See the **contents** of the file*
+
 | **8** :$
 
 ```console
 echo "abcdefghijklmnopqrstuvwxyz" > abcd
 ```
 
-*gedit: Reload*
+*gedit: **Reload***
+
+*Note `>` will **overwrite** file contents, what we had before is gone*
 
 | **9** :$
 
@@ -79,6 +83,8 @@ echo "abcdefghijklmnopqrstuvwxyz" >> abcd
 
 *gedit: Reload*
 
+*Note `>>` will **append** file contents, what we had before is still there, plus what we just added*
+
 | **10** :$
 
 ```console
@@ -87,7 +93,7 @@ echo "abcdefghijklmnopqrstuvwxyz" >> abcd
 
 *gedit: Reload*
 
-*Note the number of lines*
+*Note the **number** of **lines***
 
 | **11** :$
 
@@ -104,6 +110,8 @@ sed -i "s/foo/bar/" abcd
 ```
 
 *gedit: Reload*
+
+*Note `foo` ware **replaced** with `bar`*
 
 | **13** :$
 
@@ -139,7 +147,7 @@ sed -i "/bar/d" abcd
 
 *gedit: Reload*
 
-*Note the line with "bar" is gone*
+*Note the line with "bar" is gone; we **deleted** it*
 
 | **17** :$
 
@@ -157,23 +165,37 @@ sed -i "/Replace.*/ c\The line with Mr. Apple delBar has been replaced" abcd
 
 *gedit: Reload*
 
-*<kbd>Ctrl</kbd> + <kbd>D</kbd> deletes a line in gedit*
-- Use <kbd>Ctrl</kbd> + <kbd>D</kbd> to delete the line about "Mr. Apple delBar"
-- Then <kbd>Ctrl</kbd> + <kbd>S</kbd> to save the file
+*<key>Ctrl</key> + <key>D</key> deletes a line in gedit*
+- Use <key>Ctrl</key> + <key>D</key> to delete the line about "Mr. Apple delBar"
+- Then <key>Ctrl</key> + <key>S</key> to **save** the file
 
 ___
 
-# The Take
+# Glossary
+- **append** - adding more contents to the end of a file, not overwriting what was already there
+- **contents** - what is inside a file
+- **delete** - remove something, either text, a line of a file, or a file itself
+- **input** - what we enter into the terminal
+- **input/output** - terminal CLI interaction is either input or output
+- **file** - individual items on the disk, with names and contents, shown in the terminal with the `ls` command
+- **lines** - numberd rows of the contents in a file
+- **(line) number** - the numbers that identify each line of a file
+- **output** - what the terminal displays in response to input
+- **overwrite** - remove any file contents from before, place new file contents in its place
+- **reload** - to restart part of a running process
+- **replace** - changing specific text to a different text, usually within a file's contents
+- **save** - write the contents of a file to the disk so that the changes remain
 
+# The Take
 - Computers (the terminal also) work with *input* & *output*
-- STDIN = input
-- STDOUT = output
+- `STDIN` = input
+- `STDOUT` = output
 - `echo` is a command that inputs something for simple text output
 - `echo` can send output to a file with `>` & `>>`
-- `ls` "lists" what's in the current directory as output (STDOUT)
+- `ls` "lists" what's in the current directory as output (`STDOUT`)
 - `sed` can replace or delete text in a file
 - `sed` uses "d" to delete a line
-- Gedit usees **<kbd>Ctrl</kbd> + <kbd>D</kbd>** to delete a line
+- Gedit usees **<key>Ctrl</key> + <key>D</key>** to delete a line
 
 ___
 

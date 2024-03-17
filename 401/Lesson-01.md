@@ -66,7 +66,6 @@ vim text-doc.txt
 - `dos2unix` & `unix2dos` convert text files between the DOS & Unix format
 
 ### II. Multiple Lines, One Command via `\`
-
 *Enter this in the terminal:*
 
 | **6** :
@@ -236,8 +235,7 @@ cd ~/School/VIP/401
 ```
 
 ### IV. "Reverse Search"
-
-*Press <kbd>Ctrl</kbd> + R*
+*Press <key>Ctrl</key> + <key>R</key>*
 
 *This is reverse search*
 
@@ -253,7 +251,7 @@ echo Hello world
 
 *Go again*
 
-*Press <kbd>Ctrl</kbd> + R*
+*Press <key>Ctrl</key> + R*
 
 *Type `echo "` and notice the DIFFERENT results as you type*
 
@@ -262,7 +260,6 @@ echo Hello world
 ___
 
 # The Take
-
 ## Carriage Returns
 - A "carriage return" is a hidden character at the end of DOS/Windows text lines
 - Carriage returns can cause unexpected problems in code
@@ -282,7 +279,7 @@ ___
 ## Shell History
 - View terminal history with `history`
 - History is usually kept in `~/.bash_history`
-- Search history from the terminal with **<kbd>Ctrl</kbd> + R**
+- Search history from the terminal with **<key>Ctrl</key> + R**
 
 ___
 

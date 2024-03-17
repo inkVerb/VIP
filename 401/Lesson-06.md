@@ -10,7 +10,6 @@ cd ~/School/VIP/401
 ___
 
 ### I. Introduction to "Data Types"
-
 *The value of a variable can be one of many different "types of data".*
 
 Var=5
@@ -36,7 +35,7 @@ Var=false
 - boolean *- only `true` or `false`*
   - In ***other languages*** boolean `1` and `0` are interchangeable with `true` and `false` respectively, ***not Shell***
   - Shell only recognizes `true` or `false` as boolean, not `1` or `0` because, in Shell, `1` and `0` are `exit` codes, along with `2`, `3`, `128`, and more...
-  - Do not confuse boolean `1` and `0` (non-Shell languages) with STDIN (`0`), STDOUT (`1`), and STDERR (`2`), nor with other `exit` codes.
+  - Do not confuse boolean `1` and `0` (non-Shell languages) with `STDIN` (`0`), `STDOUT` (`1`), and `STDERR` (`2`), nor with other `exit` codes.
   - ***Boolean only allows TWO values, `exit`/error/`return` codes have many more!***
     - `return` codes covered in in [Linux 401 Lesson 10](https://github.com/inkVerb/vip/blob/master/401/Lesson-10.md)
   - Review `exit` codes (which are different) in [Linux 301 Lesson 6](https://github.com/inkVerb/vip/blob/master/301/Lesson-06.md)
@@ -56,7 +55,6 @@ Var=false
 *Since Shell "doesn't use" data types, that's one less thing to worry about. This makes Shell a great first language!*
 
 ### II. Quotes: Single vs Double
-
 *Quoting with 'single' vs "double" quotes makes a difference.*
 
 #### Rules of Quotes:
@@ -104,7 +102,6 @@ echo $VarDQ
 
 
 ### III. Boolean Values
-
 Example of boolean values and quotes:
 
 *Edit this script to see the short version*
@@ -178,7 +175,6 @@ fi
 *Case and point: quotes make no difference in how a value is treated, even boolean.*
 
 ### IV. Arithmetic
-
 *Examples of integer values and quotes...*
 
 *Edit this script to see the short version*
@@ -272,7 +268,6 @@ echo "five \* six = $(expr $d5 \* $d6)"
 ___
 
 # The Take
-
 - Variables must be stored as any of many different "data types"
 - Some basic data types include:
   - string

@@ -13,9 +13,7 @@ cd ~/School/VIP/301
 ___
 
 ### I. `while`
-
 ### "If the `[Test]` is `true`, `while` will `do` through `done`, then take the `[Test]` again."
-
 **`true` = `do`**: *A `while` loop will automatically `break` once the test fails*
 
 **`while` loop**
@@ -40,7 +38,7 @@ gedit 05-while-read
 ./05-while-read
 ```
 
-*Only press Enter to see what happens again and again, comply or use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
+*Only press Enter to see what happens again and again, comply or use <key>Ctrl</key> + <key>C</key> to close*
 
 **`while` counter loop**
 
@@ -83,9 +81,7 @@ gedit 05-while-count-read
 ```
 
 ### II. `until`
-
 ### "If the `[Test]` is `false`, `until` will `do` through `done`, then take the `[Test]` again."
-
 **`false` = `do`**: *An `until` loop will will repeat as long as the test fails*
 
 **`until` loop**
@@ -174,7 +170,7 @@ gedit 05-until-read
 ./05-until-read werdup
 ```
 
-*Input wrong "passwords" to see what it does, input "werdup" or use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
+*Input wrong "passwords" to see what it does, input "werdup" or use <key>Ctrl</key> + <key>C</key> to close*
 
 | **18** :$
 
@@ -182,10 +178,9 @@ gedit 05-until-read
 ./05-until-read thepassword
 ```
 
-*Input wrong "passwords" to see what it does, input "thepassword" or use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
+*Input wrong "passwords" to see what it does, input "thepassword" or use <key>Ctrl</key> + <key>C</key> to close*
 
 ### III. `case`
-
 ### "Multiple choice variable `case`"
 
 ```sh
@@ -331,7 +326,7 @@ esac
 gedit 05-case-yn-loop
 ```
 
-*Note `exit 1` will produce* STDOUT *to `1>` but `exit 0` has no output just as `2>` is from an unwritten `exit 2` event*
+*Note `exit 1` will produce* `STDOUT` *to `1>` but `exit 0` has no output just as `2>` is from an unwritten `exit 2` event*
 
 | **34** :$
 
@@ -346,7 +341,6 @@ gedit 05-case-yn-loop
 ___
 
 # The Take
-
 - `while` & `until` loops work the same way, but with opposite tests
   - "If the `[Test]` is `true`, `while` will `do` through `done`, then take the `[Test]` again."
   - "If the `[Test]` is `false`, `until` will `do` through `done`, then take the `[Test]` again."

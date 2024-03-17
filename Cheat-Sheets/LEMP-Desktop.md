@@ -36,7 +36,7 @@ Edit with `gedit`:
 sudo gedit /etc/php/php.ini
 ```
 
-  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
+  - Search with: <key>Ctrl</key> + <key>F</key>, then type `mysqli` to find the line, <key>Ctrl</key> + <key>S</key> to save
 
 Or edit with `vim`:
 
@@ -100,7 +100,7 @@ sudo systemctl start php-fpm
 sudo systemctl status nginx
 ```
 
-  - Press <kbd>Q</kbd> to quit. ;-)
+  - Press <key>Q</key> to quit. ;-)
 
 | **10** :$
 

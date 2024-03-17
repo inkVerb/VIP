@@ -20,10 +20,9 @@ sudo systemctl start apache2 mariadb
 ```
 
 ### This lesson uses two terminals and two browser tabs!
-
 Ready the secondary SQL terminal and secondary SQL browser (start using at step 19)
 
-*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -31,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser (start using at step 
 mariadb -u admin -padminpassword
 ```
 
-*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -212,7 +211,7 @@ ls web
 
 *Note the methods don't take many arguments*
 
-| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-2** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/oop.php
@@ -1372,7 +1371,7 @@ if ($statement->rowCount() > 0)
 if ($success) try {}
 ```
 
-| **B-20** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-20** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pdo.php
@@ -2063,7 +2062,7 @@ $this->lastid = $database->lastInsertId();
 
 *For fun, change the arguments for `select()`, `insert()`, and `delete()` methods where HTML renders at the end of the file*
 
-  - *Both in pdo29.php & pdo28.php*
+  - *Both in pdo29.php & `pdo28.php`*
   - *Observe how errors are handled differently with `pdo_error()`*
 
 | **B-29** :// (Same)
@@ -2152,7 +2151,7 @@ localhost/web/pdo.php
 
 #### Multiple `AND` with `SELECT` Multiple Rows
 
-*Note we mix and match arrays for multiple `AND` arguments, much how we did with `update()` in pdo26.php*
+*Note we mix and match arrays for multiple `AND` arguments, much how we did with `update()` in `pdo26.php`*
 
 | **`selectcomplex()` method** :
 
@@ -2349,14 +2348,14 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
     - `$this->pdo_error()`
 
 - *Good examples to note changes in:*
-  - *in.metaeditfunctions.php*
+  - *`in.metaeditfunctions.php`*
   - $ `codium pdo/webapp.php mysqli/in.metaeditfunctions.php`
   - $ `diff pdo/webapp.php mysqli/in.metaeditfunctions.php`
   - *Note we added `global $pdo;` because the piecesaction() function will need to use the `DB` class's `$pdo` object for `$pdo->exec_()` calls*
-  - *webapp.php*
+  - *`webapp.php`*
     - $ `codium pdo/webapp.php mysqli/webapp.php`
     - $ `diff pdo/webapp.php mysqli/webapp.php`
-  - *blog.php*
+  - *`blog.php`*
     - $ `codium pdo/blog.php mysqli/blog.php`
     - $ `diff pdo/blog.php mysqli/blog.php`
   - *in.editprocess.php (elaborate)*
@@ -2534,10 +2533,9 @@ Password: My#1Password
 localhost/web/webapp.php
 ```
 
-*If you get any kind of "SQL" error message on the first login try only, it is a ghost cookie from the previous webapp thinking it is still logged in and is automatically cleared by in.logincheck.php*
+*If you get any kind of "SQL" error message on the first login try only, it is a ghost cookie from the previous webapp thinking it is still logged in and is automatically cleared by `in.logincheck.php`*
 
 #### Webapp Upgrades
-
 *Now that we have a PDO-based CMS, let's add a few enhancements...*
 
 <!--
@@ -2616,14 +2614,14 @@ if ( $_POST['ajax_token'] !== $_SESSION['ajax_token'] ) {
 *Affected files, for your consideration:*
 
 - *ajax.\*.php*
-- *in.head.php*
-- *edit.php*
-- *pieces.php*
-- *medialibrary.php*
-- *in.editseries.php*
-- *in.metaeditfunctions.php*
-- *in.series.php*
-- *recover.php*
+- *`in.head.php`*
+- *`edit.php`*
+- *`pieces.php`*
+- *`medialibrary.php`*
+- *`in.editseries.php`*
+- *`in.metaeditfunctions.php`*
+- *`in.series.php`*
+- *`recover.php`*
 
 #### Slugs in URL
 
@@ -2646,16 +2644,15 @@ RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
 ```
 
 #### Blog Settings
-
 Access Blog Settings via "Settings" from the header navigation row
 
 *Try uploading to "Site Images" from the "501/blog_uploads" folder*
 
 *See changes in:*
 
-  - *settings.php*
-  - *in.functions.php*
-  - *in.checks.php*
+  - *`settings.php`*
+  - *`in.functions.php`*
+  - *`in.checks.php`*
 
 *See our new database table and global variables*
 
@@ -2700,7 +2697,7 @@ foreach ($rows as $row) {
 $blog_web_base = 'http://localhost/web'; // from install.php:$web_base
 ```
 
-*...which was created by install.php*
+*...which was created by `install.php`*
 
 | **install.php** :
 
@@ -2771,7 +2768,7 @@ RewriteRule ^series/?([a-zA-Z0-9-]+)$ blog.php?s=$1 [L]
 RewriteRule ^series/?([a-zA-Z0-9-]+)/r=([0-9])$ blog.php?s=$1&r=$2 [L]
 ```
 
-*Note these rules will break relative paths, such as style.css*
+*Note these rules will break relative paths, such as `style.css`*
 
 - *If we use <link href="style.css"/>*
 - *And we load "localhost/web/series/something"*
@@ -2865,9 +2862,9 @@ if ($upload_img_success == true) {
 }
 ```
 
-| **in.editseriesdiv.php** : (in.head.php; called by: settings.php, pieces.php & edit.php)
+| **in.editseriesdiv.php** : (`in.head.php`; called by: `settings.php`, `pieces.php` & `edit.php`)
 
-*This uses `$series_editor_yn = true;` for in.head.php to `include`*
+*This uses `$series_editor_yn = true;` for `in.head.php` to `include`*
 
 ```html
 <!-- Div for series editor -->
@@ -2879,7 +2876,7 @@ if ($upload_img_success == true) {
 </div>
 ```
 
-| **in.editseriesbutton.php** : (settings.php, pieces.php & edit.php)
+| **in.editseriesbutton.php** : (`settings.php`, `pieces.php` & `edit.php`)
 
 `include` wherever you want the "Edit all series" clickable text
 
@@ -2898,7 +2895,7 @@ if ($upload_img_success == true) {
 </button>
 ```
 
-| **in.editseries.php** : (settings.php, pieces.php & edit.php)
+| **in.editseries.php** : (`settings.php`, `pieces.php` & `edit.php`)
 
 *We introduce some new functions*
 
@@ -2963,8 +2960,8 @@ div#edit-series-container {
 
 *And, we made changes so that in.series.php & ajax.series.php take arguments, used in:*
 
-- *edit.php*
-- *settings.php*
+- *`edit.php`*
+- *`settings.php`*
 
 ```php
 // Set the values
@@ -2979,10 +2976,10 @@ include ('./in.series.php');
 
 *Links to view a series can be seen in:*
 
-- *ajax.editseries.php*
-- *pieces.php*
+- *`ajax.editseries.php`*
+- *`pieces.php`*
   - *`$p_series_slug`, `$p_series_name`& `$p_series_id`*
-- *piece.php & blog.php*
+- *piece.php & `blog.php`*
   - *Follows "::" after date published*
 
 ##### Series Podcast Details
@@ -2991,7 +2988,7 @@ To open the Series Details Editor, click on "Edit podcast details" for a series 
 
 *We also added some extra series details via:*
 
-- *ajax.editseriesdetails.php*
+- *`ajax.editseriesdetails.php`*
 
 *Using from in.editseries.php:*
 
@@ -3004,7 +3001,7 @@ To open the Series Details Editor, click on "Edit podcast details" for a series 
 
 - *Pagination*
 - *Same for loading and saving the `<form>`*
-- *`$ajax_response['message']` passes through `seriesEditor()` as `detailMessage` to become `$_POST['m']` in ajax.editseries.php*
+- *`$ajax_response['message']` passes through `seriesEditor()` as `detailMessage` to become `$_POST['m']` in `ajax.editseries.php`*
   - *Then it is displayed at the top row of the `<table>` in the Series Editor in in.editseries.php `<div id="series-details-message">`*
 
 *Note, the language for iTunes podcasts only has 50 languages available; more could be added from the two-character list from [ISO 639](http://www.loc.gov/standards/iso639-2/php/code_list.php)*
@@ -3124,17 +3121,16 @@ To open the Series Details Editor, click on "Edit podcast details" for a series 
   - TV Reviews
 
 #### Piece fields
-
 *New fields `subtitle` & `excerpt`:*
 - *SQL tables:*
   - `pieces`
   - `publications`
   - `publication_history`
 - *Editing files:*
-  - *in.editprocess.php*
-  - *in.functions.php*
-  - *edit.php*
-- *Rendering in blog.php*
+  - *`in.editprocess.php`*
+  - *`in.functions.php`*
+  - *`edit.php`*
+- *Rendering in `blog.php`*
   - *If there is an excerpt, it will replace the content in blog series pages*
 
 | **blog.php** :
@@ -3148,30 +3144,28 @@ if (($p_excerpt != '') && ($p_excerpt != NULL)) {
 ```
 
 #### Audio/Video Duration
-
 - *New file:*
-  - *bash.duration.sh*
+  - *`bash.duration.sh`*
 - *Gets time information from an uploaded audio or video file*
 - *Output is sent to database table `media_library`, column `duration` in:*
-  - *upload.php*
+  - *`upload.php`*
 - *Displayed in:*
-  - *medialibrary.php*
-  - *ajax.mediainfoinsert.php*
+  - *`medialibrary.php`*
+  - *`ajax.mediainfoinsert.php`*
 - *Retrieved by:*
-  - *in.featuredmedia.php*
+  - *`in.featuredmedia.php`*
 
 #### Pagination
-
 *We added pagination to:*
-- *blog.php*
-- *pieces.php*
-- *trash.php*
-- *medialibrary.php*
+- *`blog.php`*
+- *`pieces.php`*
+- *`trash.php`*
+- *`medialibrary.php`*
 
 *We added pagination in AJAX a different way to:*
-- *ajax.editseries.php*
-- *ajax.mediainsert.php*
-- *ajax.mediafeature.php*
+- *`ajax.editseries.php`*
+- *`ajax.mediainsert.php`*
+- *`ajax.mediafeature.php`*
 
 *Our example code shows blog.php, but code for pieces.php & trash.php is identical except SQL calls and navigation links*
 
@@ -3296,7 +3290,6 @@ a.paginate.current {
 ```
 
 ##### Pagination with AJAX
-
 *This is an example of the Series Editor*
 
 *Note the `seriesEditor()` function allows a message to be passed on load, which will be used to display response messages when saving changes*
@@ -3387,7 +3380,7 @@ if ($totalpages > 1) {
 - *Video*
 - *Document*
 
-***The process:*** *In the edit workflow, we basically create a modified `mediaInsert()` JavaScript function, calling an AJAX file modified from ajax.mediainsert.php*
+***The process:*** *In the edit workflow, we basically create a modified `mediaInsert()` JavaScript function, calling an AJAX file modified from `ajax.mediainsert.php`*
 
 *The main mods are:*
 - `mediaFeatureInsert(thisMedia)` *mod from* `mediaInsert()`
@@ -3532,7 +3525,7 @@ function clearFeature(thisMedia) {
 
 | **ajax.mediafeature.php** : (new, media chooser)
 
-*This was built from ajax.mediainsert.php*
+*This was built from `ajax.mediainsert.php`*
 
 ```php
 // Extra test in the opening statement
@@ -3774,7 +3767,6 @@ date_live DESC;
 ```
 
 ### VI. Beyond
-
 You now have a basic understanding of OOP and PDO when working with PHP and SQL
 
 Our database calls use `prepare()`, `bindParam()` & `execute()`, made simple by putting `execute()` with `try` ... `catch` in a static method
@@ -3784,9 +3776,7 @@ There is much more you will be able to learn on your own
 ___
 
 # The Take
-
 ## I. OOP (Object Oriented Programming)
-
 - Vocabulary
   - **class**: a framework of functions (methods) and variables (properties)
   - **object**: a complex variable "instantiated" based on a class
@@ -4375,6 +4365,7 @@ $value2 = 'global';
 $pdo->delete($table, $column1, $value1, $column2, $value2);
 echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
 ```
+
 ___
 
 #### [Lesson 12: Production & XML](https://github.com/inkVerb/vip/blob/master/501/Lesson-12.md)

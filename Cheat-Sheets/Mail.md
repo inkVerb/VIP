@@ -89,7 +89,7 @@ Use `systemctl` to check the status of the services used by most Postfix/Dovecot
 systemctl status postfix
 ```
 
-<kbd>Q</kbd> to quit
+<key>Q</key> to quit
 
 Look for `enabled` and green lights around `Actice: actice (running)` and `postfix.service`.
 
@@ -392,7 +392,7 @@ Subject: Test Send Mail
 Hello World
 ```
 
-<kbd>Ctrl</kbd> + <kbd>D</kbd> to finish and send the email
+<key>Ctrl</key> + <key>D</key> to finish and send the email
 
 If you don't use a `From:` line, the juser will be your Linux user and the host.
 

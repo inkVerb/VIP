@@ -30,6 +30,6 @@ ___
 
 ### [Lesson 10: grep](https://github.com/inkVerb/vip/blob/master/101/Lesson-10.md)
 
-### [Lesson 11: RegEx: Quote/Escape Special Characters](https://github.com/inkVerb/vip/blob/master/101/Lesson-11.md)
+### [Lesson 11: Special Characters](https://github.com/inkVerb/vip/blob/master/101/Lesson-11.md)
 
 ### [Lesson 12: grep with Special Characters](https://github.com/inkVerb/vip/blob/master/101/Lesson-12.md)

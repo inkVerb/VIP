@@ -10,7 +10,6 @@ cd ~/School/VIP/401
 ___
 
 ### I. Counter `while` Loop
-
 *Edit this script to see the short version*
 
 | **1** :$
@@ -59,10 +58,8 @@ gedit countfile
 ```
 
 ### II. `sed` Special Characters
-
 #### `.` period = concatenate
-
-*Change "No." to "Number"...*
+*Change "`No.`" to "`Number`"...*
 
 *`.` is escaped with `\` in this `sed` command...*
 
@@ -72,9 +69,9 @@ gedit countfile
 sed -i "s/No\./Number/" countfile
 ```
 
-*gedit: Reload countfile*
+*gedit: Reload `countfile`*
 
-*Change "Number" to "Num"...*
+*Change "`Number`" to "`Num`"...*
 
 | **6** :$
 
@@ -82,9 +79,9 @@ sed -i "s/No\./Number/" countfile
 sed -i "s/Nu*/Num/" countfile
 ```
 
-*gedit: Reload countfile*
+*gedit: Reload `countfile`*
 
-*Note it now reads "Nummber" because `*` needs concatenating*
+*Note it now reads "`Nummber`" because `*` needs concatenating*
 
 *Let's use `.*.` to replace anything between "Nu" and the space after...*
 
@@ -94,14 +91,13 @@ sed -i "s/Nu*/Num/" countfile
 sed -i "s/Nu.*. /Num /" countfile
 ```
 
-*gedit: Reload countfile*
+*gedit: Reload `countfile`*
 
-*Now it reads "Num" correctly*
+*Now it reads "`Num`" correctly*
 
 *The period `.` means "more being added", in some circumstances, like `sed` and many programming languages*
 
 #### `$` = "end of line"
-
 This is the same in `vim`, so get used to it.
 
 *Add something to the end of each line*
@@ -112,10 +108,9 @@ This is the same in `vim`, so get used to it.
 sed -i "s/$/_add2end/" countfile
 ```
 
-*gedit: Reload countfile*
+*gedit: Reload `countfile`*
 
 #### `^` = "start of line"
-
 *Add something to the start of each line*
 
 | **9** :$
@@ -124,10 +119,9 @@ sed -i "s/$/_add2end/" countfile
 sed -i "s/^/add2start_/" countfile
 ```
 
-*gedit: Reload countfile*
+*gedit: Reload `countfile`*
 
 #### `\n` = new line
-
 *Add a new line to the end of each line*
 
 | **10** :$
@@ -139,7 +133,6 @@ sed -i "s/$/\n/" countfile
 *Note from [101 Lesson 11](https://github.com/inkVerb/vip/blob/master/101/Lesson-11.md) that `sed` requires the `-z` flag to search for `\n`*
 
 #### `\s` = empty line
-
 *Remove each extra line*
 
 | **11** :$
@@ -151,8 +144,7 @@ sed '/^\s*$/d' countfile
 *No need to reload countfile because we did not use `-i` flag, results show in terminal*
 
 #### `\t` = tab
-
-*Replace each tab with the string " TAB "*
+*Replace each tab with the string "` TAB `"*
 
 | **12** :$
 
@@ -160,7 +152,7 @@ sed '/^\s*$/d' countfile
 sed -i "s/\t/ TAB /" countfile
 ```
 
-*Let's change this "TAB" text into a pipe `|`*
+*Let's change this "`TAB`" text into a pipe `|`*
 
 | **13** :$
 
@@ -168,9 +160,9 @@ sed -i "s/\t/ TAB /" countfile
 sed -i "s/TAB/|/" countfile
 ```
 
-*gedit: Reload countfile*
+*gedit: Reload `countfile`*
 
-*Let's put a tab after the "start_" string...*
+*Let's put a tab after the "`start_`" string...*
 
 | **14** :$
 
@@ -178,11 +170,10 @@ sed -i "s/TAB/|/" countfile
 sed -i "s/start_/start_\t/" countfile
 ```
 
-*gedit: Reload countfile*
+*gedit: Reload `countfile`*
 
 ## III. `sed` "Delimiter"
-
-*The "delimiter" separates "foo" from "bar" in `sed "s/foo/bar/"`, here: `/`*
+*The "delimiter" separates "`foo`" from "`bar`" in `sed "s/foo/bar/"`, here: `/`*
 
 *The delimiter in `sed` can technically be anything!*
 
@@ -325,7 +316,6 @@ gedit sed-delim-var-3
 ```
 
 ### IV. `sed` wildcards
-
 *Replace everything after a match*
 
 | **31** :$
@@ -375,7 +365,6 @@ sed "s/foo.*.bar/foobar/" <<< 12345fooSOMETHINGbar6789
 ```
 
 ### V. `sed` recursive directories
-
 *Prepare several files...*
 
 | **37** :$
@@ -423,7 +412,6 @@ grep -rl foo . | xargs sed -i 's/foo/bar/g'
 ___
 
 # The Take
-
 - `while` can create an auto-counting loop when combined with `expr` for arithmetic
 - Some special characters have meaning in text tools like `sed`:
   - `.` "concatenate" ***(may need escaping, not always)***
@@ -440,6 +428,7 @@ ___
   - `foo.*.bar` matches **between** "foo" and "bar"
 - `sed` **recursive** operation
   - `grep -rl foo . | xargs sed -i 's/foo/bar/g'`
+
 ___
 
 #### [Lesson 8: $IFS (Internal Field Separator)](https://github.com/inkVerb/vip/blob/master/401/Lesson-08.md)

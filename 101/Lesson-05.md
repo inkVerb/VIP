@@ -29,6 +29,8 @@ cat applefoo
 cat abcsed
 ```
 
+*...**outputs file contents** to the terminal as **raw output***
+
 | **4** :$
 
 ```console
@@ -67,7 +69,7 @@ cat abcd
 sed -i "s/bar/foo/" applefoo
 ```
 
-*gedit: Reload applefoo*
+*gedit: Reload `applefoo`*
 
 *Now, use `sed` without the `-i` ...*
   - *It won't change the file*
@@ -173,7 +175,7 @@ echo $USER
 ./how2arg one two "$(cat applefoo)"
 ```
 
-*Next "pipe" `|` the output of `cat` into `sed`...*
+*Next "pipe" `|` will **redirect output** from `cat` into `sed`...*
 
 | **25** :$
 
@@ -259,7 +261,7 @@ gnome-mines &
 pgrep gnome-mines
 ```
 
-*Note the PID number and replace 55555 with that number below:*
+*Note the PID number and replace `55555` with that number below:*
 
 | **36** :$
 
@@ -309,7 +311,7 @@ kill $(pgrep gnome-mines)
 gedit comboshell
 ```
 
-*Create comboshell as this:*
+*Create `comboshell` as this:*
 
 | **comboshell** : v01
 
@@ -338,7 +340,7 @@ chmod ug+x comboshell
 ./comboshell applefoo foo bar
 ```
 
-*Review the contents of abcd...*
+*Review the contents of `abcd`...*
 
 | **45** :$
 
@@ -362,18 +364,25 @@ cat abcd
 
 ___
 
-# The Take
+# Glossary
+- **command substitution** - placing a command in place of a variable so the command's output becomes the value
+- **output file contents** - contents of a file are shown in the termninal; done with `cat`
+- **raw output** - output that is not changed in any way
+- **redirect output** - output from a command is sent somewhere other than the terminal
+  - Into a file with `>` or `>>`
+  - Into another command using `|` pipe
 
+# The Take
 ## Pipe `|`
-- STDIN input is, more or less what you type into the terminal
-- "Raw output" is basic text STDOUT output, more or less output in the terminal
-- `cat` will dump a file's contents as raw output (STDOUT)
+- `STDIN` input is, more or less what you type into the terminal
+- "Raw output" is basic text `STDOUT` output, more or less output in the terminal
+- `cat` will dump a file's contents as raw output (`STDOUT`)
 - `sed` *without `-i`* will dump the results as raw output, rather than changing the file
 - `sed -e` "exports" the output to a different file with `> outputfile`
-- Many commands use a file for their STDIN input "source"
-  - The file `cat` uses is the STDIN input "source"
-  - The file `sed` changes is the STDIN input "source"
-- STDOUT (output) of one command can be sent as STDIN (input) "source" to the next command using a "pipe": `|`
+- Many commands use a file for their `STDIN` input "source"
+  - The file `cat` uses is the `STDIN` input "source"
+  - The file `sed` changes is the `STDIN` input "source"
+- `STDOUT` (output) of one command can be sent as `STDIN` (input) "source" to the next command using a "pipe": `|`
   - Syntax: `command one | command two`
 
 ## `$(`Command Substitution`)`
@@ -392,7 +401,7 @@ variable="$(echo "something here")"
   - Using quotes like this is the "correct" way to use Command Substitution to set variables
 - And, use it directly, like this:
   - `some-command $(Command Substitution)` (the Command Substitution can be an argument)
-  - `some-command $(Command Substitution) > filename` (send STDOUT output into a file)
+  - `some-command $(Command Substitution) > filename` (send `STDOUT` output into a file)
 
 ___
 

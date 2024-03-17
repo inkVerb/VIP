@@ -40,8 +40,8 @@ ___
 
 1. PHP renders HTML ***after*** the entire PHP script finishes
 2. HTML and PHP work wherever they are
-  - HTML can exist outside `<?php ?>` in a .php file
-  - `<?php ?>` can be used ***inside*** an .html file
+  - HTML can exist outside `<?php ?>` in a `.php` file
+  - `<?php ?>` can be used ***inside*** an `.html` file
   - `<?php ?>` can be used ***inline*** with HTML
 
 | **.html** or **.php** :
@@ -129,7 +129,7 @@ codium core/01-phpget1.php && \
 ls -l web
 ```
 
-*Note the file owner of phpget.php changed from `root` to `www-data` after the `chown` command*
+*Note the file owner of `phpget.php` changed from `root` to `www-data` after the `chown` command*
 
 | **B-1** ://
 
@@ -137,7 +137,7 @@ ls -l web
 localhost/web/phpget.php?go=I am an apple pie
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Try the URL a few different ways to see how it works*
 
@@ -151,7 +151,7 @@ codium core/01-phpget2.php && \
 ls -l web
 ```
 
-*Note phpget.php has the same file owner as before, though we copied over it without `chown`*
+*Note `phpget.php` has the same file owner as before, though we copied over it without `chown`*
 
 | **B-2** ://
 
@@ -369,7 +369,7 @@ localhost/web/phppost.php
 
 *Try the form a few times to see how it works*
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 | **7** :$
 
@@ -513,7 +513,7 @@ ls web
 localhost/web/phppost.php
 ```
 
-*Try the form and developer view with <kbd>Ctrl</kbd> + <kbd>C</kbd>*
+*Try the form and developer view with <key>Ctrl</key> + <key>C</key>*
 
 #### `switch`-`case` Statements
 
@@ -551,7 +551,7 @@ ls web
 localhost/web/phppost.php
 ```
 
-*Try the form and developer view with <kbd>Ctrl</kbd> + <kbd>C</kbd>*
+*Try the form and developer view with <key>Ctrl</key> + <key>C</key>*
 
 *Try any color, also try selecting no color at all to see the `switch`-`default`*
 
@@ -601,14 +601,12 @@ exit(header("Location: to_page.php"));
 *...In PHP, you will see functions like these and many, many more*
 
 ### III. PHP RegEx & Validation
-
 #### Security rules:
 1. Validate first & always
 2. Sanitize second
 3. Escape before using
 
 #### Know the datatype!
-
 A "string" is a "datatype", which we looked at in [Linux 401 Lesson 6](https://github.com/inkVerb/vip/blob/master/401/Lesson-06.md)
 
 ##### Four Important Datatypes in PHP:
@@ -668,7 +666,6 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 #### Basic PHP Sanitizing Filters
-
 "Sanitizing" is basically doing a search and replace of all characters we don't want
 
 This often uses a RegEx to define those characters
@@ -712,15 +709,16 @@ $Variable = ucwords($Variable);
 *Review the diagram above along side the following two steps and elaboration...*
 
 ##### RegEx Replacement & Arguments (Useful for Sanitizing and More)
-
-We looked at RegEx briefly in [Linux 401 Lesson 1](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md)
+We looked at RegEx briefly in [401 Lesson 1](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md)
 
 **RegEx arguments come from `(parentheses)`:**
+
 ```regex
 ([something_one])...([something_two]), '$1...$2'
 ```
 
-**PHP replacement examples**
+**PHP replacement examples:**
+
 ```php
 // Syntax
 $result = str_replace('foo','bar',$string); // 'foo' to 'bar', RegEx not allowed
@@ -774,7 +772,6 @@ localhost/web/phpreplace.php
 *Try matching characters and watch them get replaced*
 
 #### Basic PHP Escaping
-
 We looked at "escaping" certain characters in [Linux 101 Lesson 1](https://github.com/inkVerb/vip/blob/master/101/Lesson-11.md)
 
 In any code language, certain characters "mean something", they must be "escaped" (AKA 'quoted' or 'cancelled') so the characters mean only themselves and are not "working" in the code
@@ -837,18 +834,21 @@ localhost/web/phppost.php
 #### Validation Summary
 
 **Validate:** `01-phpregex1.php`
+
 ```php
 preg_match()
 filter_var()
 ```
 
 **Sanitize:** `01-phpregex3.php`
+
 ```php
 preg_replace()
 strtolower()
 ```
 
 **String length:** `01-phpregex3.php`
+
 ```php
 (strlen($String) <= 128) // Validate
  substr($String, 0, 128) // Truncate
@@ -858,7 +858,6 @@ substr(preg_replace("$regex","", $String), 0, 128)
 ```
 
 ### IV. PHP Functions in Forms
-
 This is a PHP function: `preg_replace()`, which you have already been using
 
 You may define your own custom functions
@@ -866,6 +865,7 @@ You may define your own custom functions
 #### Custom PHP Functions
 
 **Define the function:**
+
 ```php
 
 function myFunctionName($arg1, $arg2, $arg3) {
@@ -876,6 +876,7 @@ function myFunctionName($arg1, $arg2, $arg3) {
 ```
 
 **Call the function:**
+
 ```php
 
 myFunctionName('John', "Jim", 'Sam');
@@ -888,6 +889,7 @@ myFunctionName('John', "Jim", 'Sam');
 ```
 
 **Variables with functions:**
+
 ```php
 
 $Variable = "I am outside the function";
@@ -922,6 +924,7 @@ echo $someArg.' and '.$anotherArg;
 ```
 
 **Function to `return` a value:**
+
 ```php
 
 function iHaveValue($oneArg) {
@@ -1042,17 +1045,15 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 ### V. Includes & Constants
-
 Config files usually use **includes** and **constants**
 
 #### Includes
-
 There are two ways to include a file, each way has two options
 
 - `include` inserts the text of a file if it exists
 - `require` is like `include`, but breaks if the file does not exist
 - `..._once` will not include the file more than one time
-- *included .php files should start with a `<?php` tag, but not end with the closing tag `?>`*
+- *included `.php` files should start with a `<?php` tag, but not end with the closing tag `?>`*
 
 ```php
 include ('path/to/file');
@@ -1111,7 +1112,6 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 #### Constants
-
 **Constant rules:**
 
 1. Constants are variables that do not ever change
@@ -1120,6 +1120,7 @@ localhost/web/phppost.php
 4. Constants can't work inside `"double quotes"` nor `'single quotes'`
 
 **Define & call a constant:**
+
 ```php
 // Define
 define ('CONSTANT_NAME', 'Constant value');
@@ -1183,7 +1184,6 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 #### Header/Footer Conventions
-
 Use `require_once`, not `include` for important files like these...
 
 ```php
@@ -1220,7 +1220,6 @@ localhost/web/phppost.php
 *Try the form and developer view*
 
 ### VI. Writing a File
-
 We can write a file from a:
 
 - Simple string
@@ -1441,7 +1440,6 @@ localhost/web/phperrors.php
 ___
 
 # The Take
-
 ## PHP Background
 - Made in 1994
 - Written in C language
@@ -1452,7 +1450,7 @@ ___
 1. PHP renders HTML ***after*** the entire PHP script finishes
 2. HTML and PHP work wherever they are
   - HTML can exist outside `<?php ?>` in a .php file
-  - `<?php ?>` can be used inside an .html file
+  - `<?php ?>` can be used inside an `.html` file
 3. Variables begin with `$`, *even when declaring the value (unlike Shell)*
 4. Variables work inside `"double quotes"` *not `'single quotes'`*
 5. Variable names allow the same characters as Shell:
@@ -1590,6 +1588,7 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 }
 set_error_handler ('my_error_handler');
 ```
+
 ___
 
 #### [Lesson 2: MySQL & phpMyAdmin](https://github.com/inkVerb/vip/blob/master/501/Lesson-02.md)

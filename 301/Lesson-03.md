@@ -191,12 +191,10 @@ ls *one*
 ./03-do-echo-7
 ```
 
-**iteration** - *Each loop "cycle" is often called an "iteration"*
+*Each loop "cycle" is often called an "**iteration**"*
 
 ### II. `break` & `continue`
-
 #### *Usually, `break` & `continue` are wrapped in an `if` test*
-
 #### `break` will "break out" of a loop
 
 ```sh
@@ -335,7 +333,6 @@ gedit 03-do-echo-11
 ___
 
 # The Take
-
 ## `for` (a loop for each of many)
 - `for` is a "loop", not a "test" like `if`
 - `for` runs (loops) a mini-script "for" each instance of a thing
@@ -347,8 +344,8 @@ ___
 - Syntax of the `for` line:
   - `for` `Variable` `in` `List`
   - (each item will sequentially be assigned as the value of `$Variable`)
-- A loop "cycle" is often called an "iteration"
 - See usage and examples here: [Tests: for](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#iii-for-variabl-in-lst)
+- An **iteration** is one cycle through a loop, such as a `for` loop
 
 ##  `break` & `continue`
 - `break` will end the loop (usually in an `if` test)

@@ -454,7 +454,7 @@ Include = /etc/pacman.d/mirrorlist
   - `yay` alias for `yay -Syu`
   - `yay -Ps` print system stats for yay
   - `yay -G aur-package-name` get (download) AUR package
-  - `yay -Gp` print to STDOUT the `PKGBUILD` from AUR
+  - `yay -Gp` print to `STDOUT` the `PKGBUILD` from AUR
   - `yay -Bi dir/path` install dependencies and build from `PKGBUILD` in `dir/path`
   - `yay -Yc` clean unneeded dependencies
   - AUR voting (yes, it does)

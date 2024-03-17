@@ -1,28 +1,30 @@
 # Verb VIP
 ## Learn Command Line Linux and Code
 
-Whether you want to become a computer genius or if you're a "computer dummy" and want to make computers less scary...
+### Start with Linux. Start simple. Start here.
 
-Start with Linux. Start simple. Start here.
+*Whether you want to become a computer genius or if you're a "computer dummy" and want to make computers less scary...*
 
-**Course list:**
 
-# [Linux 101: Arguments](https://github.com/inkVerb/VIP/blob/master/101/README.md)
 
-# [Linux 201: Files](https://github.com/inkVerb/VIP/blob/master/201/README.md)
+## Course Unit List:
 
-# [Linux 301: Logic](https://github.com/inkVerb/VIP/blob/master/301/README.md)
+### [Linux 101: Arguments](https://github.com/inkVerb/VIP/blob/master/101/README.md)
 
-# [Linux 401: Advance](https://github.com/inkVerb/VIP/blob/master/401/README.md)
+### [Linux 201: Files](https://github.com/inkVerb/VIP/blob/master/201/README.md)
 
-# [Linux 501: Web Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
+### [Linux 301: Logic](https://github.com/inkVerb/VIP/blob/master/301/README.md)
 
-# [Linux 601: SysAdmin](https://github.com/inkVerb/VIP/blob/master/601/README.md)
+### [Linux 401: Advance](https://github.com/inkVerb/VIP/blob/master/401/README.md)
 
-# [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)
+### [Linux 501: Web Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
+
+### [Linux 601: SysAdmin](https://github.com/inkVerb/VIP/blob/master/601/README.md)
+
+### [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)
 
 ## Why learn Linux?
-*Renaissance: Learn your roots first, then everything else makes more sense.*
+*Learn your roots first, then everything makes more sense.*
 
 ### 1. Universal: Linux web server, Linux desktop, Android, macOS, iOS — All the same language!
 - Linux is the most-used webserver operating system in the world, with no near rivals. It's desktop market share grows every year!
@@ -33,14 +35,14 @@ Start with Linux. Start simple. Start here.
 ### 2. Ultra Simple — Better preparation to learn other languages!
 - The Linux "Shell/BASH" language is simpler than other languages, but shares many universal concepts of code.
 
-### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Pearl, Go, MySQL, HTML, CSS... all sit atop Linux
+### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Pearl, Go, Node.JS, MySQL, MongoDB, HTML, CSS... all sit atop Linux
 - It's one thing to learn a web app or server programming language; it's awesome to know the language under the language so you can *control the machine it runs on.*
 - PHP will make more sense if you have seen what this does: `sudo dnf install php`
 - Once you know how to work with a computer terminal (Linux/Unix language), all code will be less scary because you'll know where code lives!
 
 ## Who should take this course?
 - Everyone ages 7 through high school, as a general education course, home schooled or in the classroom
-- Any college student or graduate majoring in computer code
+- Any college student or graduate majoring in computer code, business, or anything else
 - Anyone ages 13 or older interested in self-teaching to learn computers
 - Any entrepreneur, project manager, copywriter, marketer, graphic designer, teacher, professor, life guard, dog catcher, firefighter, chef, union-card-carrying thespian, secretary, supervisor, executive, board member, politician, bureaucrat, dictator, monarch, Amway IBO, or anyone who WILL NOT learn computer code, but wants a peaceful and powerful relationship with a marketing firm, software writer, and/or IT staff—or just wants to be smarter than a smart phone
 
@@ -72,27 +74,27 @@ ___
 
 | Key combination                                                                    | Function               |
 |:---------------------------------------------------------------------------------- |:---------------------- |
-| <kbd>F9</kbd>                                                                      | Show/hide side panels  |
-| <kbd>Ctrl</kbd> + <kbd>A</kbd>                                                     | Select All             |
-| <kbd>Ctrl</kbd> + <kbd>X</kbd>                                                     | Cut                    |
-| <kbd>Ctrl</kbd> + <kbd>Z</kbd>                                                     | Undo                   |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd> / <kbd>Ctrl</kbd> + <kbd>Y</kbd> | Redo                   |
-| <kbd>Ctrl</kbd> + <kbd>T</kbd>                                                     | Open a new tab         |
-| <kbd>Ctrl</kbd> + <kbd>W</kbd>                                                     | Close a tab            |
-| <kbd>Ctrl</kbd> + <kbd>LEFT-CLICK</kbd> / <kbd>MIDDLE-CLICK</kbd>                  | Open link in a new tab |
-| <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>                            | Change tab             |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>         | Move tab               |
-| <kbd>Ctrl</kbd> + <kbd>T</kbd>                                                     | New tab                |
-| <kbd>Ctrl</kbd> + <kbd>W</kbd>                                                     | Close tab              |
+| <key>F9</key>                                                                      | Show/hide side panels  |
+| <key>Ctrl</key> + <key>A</key>                                                     | Select All             |
+| <key>Ctrl</key> + <key>X</key>                                                     | Cut                    |
+| <key>Ctrl</key> + <key>Z</key>                                                     | Undo                   |
+| <key>Ctrl</key> + <key>Shift</key> + <key>Z</key> / <key>Ctrl</key> + <key>Y</key> | Redo                   |
+| <key>Ctrl</key> + <key>T</key>                                                     | Open a new tab         |
+| <key>Ctrl</key> + <key>W</key>                                                     | Close a tab            |
+| <key>Ctrl</key> + <key>LeftClick</key> / <key>MiddleClick</key>                  | Open link in a new tab |
+| <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key>                            | Change tab             |
+| <key>Ctrl</key> + <key>Shift</key> + <key>PageUp</key>/<key>PageDown</key>         | Move tab               |
+| <key>Ctrl</key> + <key>T</key>                                                     | New tab                |
+| <key>Ctrl</key> + <key>W</key>                                                     | Close tab              |
 
 ## Keyboard shortcuts in terminal
 
 | Key combination                                   | Function               |
 |:------------------------------------------------- |:---------------------- |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | Copy                   |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> | Paste                  |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | Open a new tab         |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> | Close current tab      |
+| <key>Ctrl</key> + <key>Shift</key> + <key>C</key> | Copy                   |
+| <key>Ctrl</key> + <key>Shift</key> + <key>V</key> | Paste                  |
+| <key>Ctrl</key> + <key>Shift</key> + <key>T</key> | Open a new tab         |
+| <key>Ctrl</key> + <key>Shift</key> + <key>W</key> | Close current tab      |
 
 ## About Linux
 

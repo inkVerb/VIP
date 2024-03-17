@@ -20,10 +20,9 @@ sudo systemctl start apache2 mariadb
 ```
 
 ### This lesson uses two terminals and two browser tabs!
-
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -31,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 mariadb -u admin -padminpassword
 ```
 
-*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -58,7 +57,6 @@ Password: My#1Password
 ___
 
 ### Prepare
-
 *Prepare our uploadable test files...*
 
 | **1** :$
@@ -125,7 +123,7 @@ sudo gedit /etc/php/php.ini
 sudo gedit /etc/php/8.0/apache2/php.ini
 ```
 
-    - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `file_uploads` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
+    - Search with: <key>Ctrl</key> + <key>F</key>, then type `file_uploads` to find the line, <key>Ctrl</key> + <key>S</key> to save
 
   - Or edit with `vim`:
 
@@ -279,7 +277,6 @@ ls web/uploads
 *Note your file was uploaded*
 
 ### Validate Uploaded Files
-
 **Simple image check**
 
 ```php
@@ -459,7 +456,7 @@ Repeat steps 1-4, choosing file vip-chartreuse.png ***again***
 ls -l web/uploads
 ```
 
-*Note there is a new file with "-1" at the end: vip-chartreuse-1.png*
+*Note there is a new file with "-1" at the end: `vip-chartreuse-1.png`*
 
 **File size check: 500kB**
 
@@ -543,7 +540,7 @@ sudo gedit /etc/php/php.ini
 sudo gedit /etc/php/8.0/apache2/php.ini
 ```
 
-    - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `upload_max_filesize` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
+    - Search with: <key>Ctrl</key> + <key>F</key>, then type `upload_max_filesize` to find the line, <key>Ctrl</key> + <key>S</key> to save
 
   - Or edit with `vim`:
 
@@ -672,9 +669,7 @@ ls web/uploads
 ```
 
 ### JavaScript Drag-in Uploader
-
 #### Dropzone.js
-
 - [GitHub repo](https://github.com/enyo/dropzone) (original, maintained)
 - [GitHub fork](https://github.com/inkVerb/dropzone) (legacy version used in this lesson)
 
@@ -712,10 +707,10 @@ ls web
 
 *Note:*
 
-- *dropzone.html*
+- *`dropzone.html`*
   - *This uses dropzone.js JS and CSS files*
-  - *The `<form>` calls dropzone.php*
-- *dropzone.php*
+  - *The `<form>` calls `dropzone.php`*
+- *`dropzone.php`*
   - *This works in the background, like an AJAX call with no response*
 
 | **B-26** ://
@@ -738,7 +733,6 @@ ls web/dropzone_uploads
 *We have achieved drag-in file uploading*
 
 #### Note on directory and file permissions
-
 *If the Linux web user (in our case `www`) does not own the folder the files are uploaded to, the upload will fail and we might never see any message as to why*
 
 *File permissions are the source of many problems in web apps, even though the problems falsely behave like they come from the web app itself*
@@ -746,7 +740,6 @@ ls web/dropzone_uploads
 *For example, try deleting, then re-creating the `web/dropzone_uploads` directory, but without running `chown -R www:www web/dropzone_uploads` and watch Dropzone fail*
 
 ### Media Library
-
 We can implement Dropzone into a larger media library framework
 
 #### Dropzone to Interact with Our Own AJAX Handler
@@ -765,17 +758,17 @@ ls web web/media
 
 *Note:*
 
-- *style.css*
+- *`style.css`*
   - *`@import` will include another CSS file, in this case the Dropzone CSS*
   - *`@import` is finicky about a relative path and may require "`./`"*
   - *`@import url("https://localhost/full/path/style.css")` imports from a full URL*
-- *upload.php*
+- *`upload.php`*
   - *Uploaded files go to: `web/dropzone_uploads/`*
   - *Messages were simplified:*
     - *`<p>` to `<span>...<br>`*
     - *`$info_message` holds the message until one `echo` statement at the end*
   - *This was stripped of HTML page support and only handles PHP-upload via AJAX*
-- *medialibrary.php*
+- *`medialibrary.php`*
   - *Normal webapp header/footer content*
   - *Our `<form>` from the Dropzone example*
   - *`<p id="uploadresponse">` where our AJAX handler response will appear via JavaScript `innerHTML`*
@@ -785,8 +778,8 @@ ls web web/media
         - *Dropzone settings allow both mimetype and file extensions in this list*
         - *Markdown files will be rejected by Dropzone, even with allowing `text/plain`*
         - *This would be an insecure test by itselv, but PHP will check the mimetype anyway*
-    - *`paramName: "upload_file",` uses `$_FILES['upload_file']` in upload.php*
-      - *Dropzone's default is `paramName: "file"` using `$_FILES['file']` in upload.php*
+    - *`paramName: "upload_file",` uses `$_FILES['upload_file']` in `upload.php`*
+      - *Dropzone's default is `paramName: "file"` using `$_FILES['file']` in `upload.php`*
     - *We have a function to `// Process AJAX response`*
   - *Dropzone settings:*
     - *`Dropzone.options.dropzoneUploader` uses `dropzoneUploader` to indicate `<form id="dropzone-uploader"`*
@@ -869,7 +862,7 @@ ls web web/media
 acceptedFiles: "image/jpeg, image/png, image/gif, image/svg+xml, video/webm, video/x-theora+ogg, video/ogg, video/mp4, audio/mpeg, audio/ogg, audio/x-wav, audio/wav, text/plain, text/html, .md, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/x-pdf, application/pdf",
 
 ```
-| **B-30** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-30** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -895,7 +888,6 @@ ls web/dropzone_uploads
 - *Are not uploaded, thus have no AJAX response*
 
 #### Dropzone Our AJAX with Multiple Uploads
-
 Multiple files change the `$_FILES` array, so we must change some things
 
 First, see what the `$_FILES` array for a single file upload looks like
@@ -911,13 +903,13 @@ ls web web/media
 
 *Note:*
 
-- *upload.php*
+- *`upload.php`*
   - *Shows what's in the `$_FILES` array via `var_dump()`*
   - *We process the upload simply so we can see what happens with:*
     - *`$_FILES['upload_file']['tmp_name']`*
     - *`$_FILES['upload_file']['name']`*
 
-| **B-32** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-32** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -989,12 +981,12 @@ parallelUploads: 1, // Default: 2
 addRemoveLinks: true, // Default: false
 ```
 
-- *upload.php*
+- *`upload.php`*
   - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
   - *`$_FILES['upload_file']['tmp_name'][0]`*
   - *`$_FILES['upload_file']['name'][0]`*
 
-| **B-34** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-34** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -1099,7 +1091,7 @@ ls web web/media
 
 *Note:*
 
-- *medialibrary.php*
+- *`medialibrary.php`*
   - *JavaScript concatenates each AJAX response with the variable: `upResponse`*
     - *Each response is added to the previous*
     - *Current response status (including all previous AJAX responses) is updated in the HTML page*
@@ -1134,11 +1126,11 @@ init: function() {
 } // Process AJAX response
 ```
 
-- *upload.php*
+- *`upload.php`*
   - *Is back to the full processor as before*
   - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
 
-| **B-36** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-36** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -1167,7 +1159,6 @@ This helped us understand the order of events in multiple uploads, mainly that i
 We will stop using JavaScript browser alerts in the future
 
 ### Upload with TinyMCE
-
 From [Lesson 8](https://github.com/inkVerb/vip/blob/master/501/Lesson-08.md) we already have TinyMCE from [here](https://github.com/tinymce/tinymce-dist)
 
 The directory "tinymce-dist" is at "web/tinymce"
@@ -1188,7 +1179,7 @@ ls web
 *Note:*
 
 - *Settings "`// Added for uploads & images`"*
-- *`images_upload_url` chooses our upload handler: tiny-upload.php*
+- *`images_upload_url` chooses our upload handler: `tiny-upload.php`*
 - *`images_upload_handler` basically tells TinyMCE to AJAX-processes the upload (with tiny-upload.php)*
 - *tiny-upload.php AJAX uploads, then sends the file's location in JSON:'filepath'*
 - *The TinyMCE `images_upload_handler` function interprets that JSON*
@@ -1310,7 +1301,7 @@ codium core/10-tiny-media-insert.html && \
 ls web web/uploads
 ```
 
-*Note tiny.html*
+*Note `tiny.html`*
 
 - *`<!-- TinyMCE insert ...` creates the `<button>` and the JavaScript function to add the media content to the TinyMCE `<textarea>`*
 
@@ -1389,18 +1380,18 @@ ls web web/media
 
 *Note:*
 
-- *in.head.php*
+- *`in.head.php`*
   - *Added a link to medialibrary.php in the head links*
-- *medialibrary.php*
+- *`medialibrary.php`*
   - *The JavaScript `alert` for each upload is commented and will be deleted in the future*
   - *We create `<table class="contentlib" id="media-table">`*
     - *This is similar to pieces.php and trash.php, borring much or the CSS*
   - *Dropzone settings:*
     - *We commented our `alert` function*
       - *Uncomment if you want to see it working*
-- *upload.php*
+- *`upload.php`*
   - *Added section for `SQL entry`*
-- *style.css*
+- *`style.css`*
   - *Added section for `Media Library`*
   - *This keeps the upload area on the right and the iterated library `<table>` on the left*
 
@@ -1475,14 +1466,14 @@ ls web
 - *The media editor is loaded via AJAX*
   - *This uses a `<button>` to capture a hidden `<form>`*
   - *This is borrowed from [Lesson 6](https://github.com/inkVerb/vip/blob/master/501/Lesson-06.md)*
-- *ajax.mediainfo.php*
+- *`ajax.mediainfo.php`*
   - *This both:*
     - *Creates the edit `<form>`*
     - *Processes the edit `<form>`*
-- *medialibrary.php*
+- *`medialibrary.php`*
   - *`AJAX mediaEdit`*
     - *`<div id="media-editor">` will contain the edit `<form>` after AJAX responds with it*
-    - *The "edit" `<button>` is styled to look like a link, much like the actions in pieces.php*
+    - *The "edit" `<button>` is styled to look like a link, much like the actions in `pieces.php`*
     - *The "edit" `<button>` is in a separate `<table>` column so it doesn't interfere with other HTML content*
     - *JS function `showActions` to only show the "edit" link when hovering over that `<table>` row*
     - *JS function `mediaEdit`:*
@@ -1495,15 +1486,15 @@ ls web
     - *JS function `changeFileName` creates a small `<form>` in the media editor*
       - *JS function `changeFileNameClose` removes the `<form>`*
     - *JS functions for delete actions and delete confirmation ('showDelete', `toggle`, `confirmDelete`)*
-- *upload.php*
+- *`upload.php`*
   - *Retrieves the new SQL entry ID with `$database->insert_id;`*
-  - *Includes our "edit" link, calling the JS function loaded by medialibrary.php*
+  - *Includes our "edit" link, calling the JS function loaded by `medialibrary.php`*
   - *Added the `htm` & `html` file extensions to allowed `text/html` mimetypes*
     - *Already allowed in Dropzone (medialibrary.php) because our settings there only check mimetypes and `text/html` is already listed*
-- *act.delmedia.php*
+- *`act.delmedia.php`*
   - *This processes to-be-deleted items, similarly to act.bulkpieces.php from [Lesson 9](https://github.com/inkVerb/vip/blob/master/501/Lesson-09.md)*
-  - *It receives the `POST` from `<form id="delete_action"` in medialibrary.php*
-- *style.css*
+  - *It receives the `POST` from `<form id="delete_action"` in `medialibrary.php`*
+- *`style.css`*
   - *A section `Hide notes` with the `.notehide` class to make some update notices disappear after a few seconds*
   - *Adds some `button.postform`, `pre.postform`, `span.postform` styling*
     - *This is so our AJAX `<button>` looks like an `<a>` link instead of a `<button>`*
@@ -1513,7 +1504,7 @@ ls web
   - *Styles inside our media editor: `div#media-editor-closer` & `h1#media-editor-content`*
     - *So the "&#xd7;" (`&amp;#xd7;`) and `<h1>` from AJAX can fit on the same line*
 
-| **B-47** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-47** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -1551,7 +1542,6 @@ ls web/media/*
 ```
 
 ### Process Uploaded Files: Linux Processing
-
 *Install the Linux tools on our server...*
 
 - `imagemagick` *Images, from [401 Lesson 2](https://github.com/inkVerb/vip/blob/master/401/Lesson-02.md)*
@@ -1732,11 +1722,10 @@ ffprobe -select_streams a "audio_wav96.mp3"
 
 - *MP3*
 - *Mono*
-- *44.1kHz*
+- *`44.1kHz`*
 - *96kbps*
 
 ##### `pandoc` for Documents
-
 *Now, process documents...*
 
 | **64**:$
@@ -1794,7 +1783,6 @@ pandoc -s test_uploads/test2.doc -o out_doc.pdf
 *Note it failed because `pandoc` cannot convert from .doc*
 
 #### File Processing via Linux in PHP
-
 PHP can use Linux media tools
 
 *Copy our web app files...*
@@ -1823,7 +1811,7 @@ ls web web/media web/media/* web/media/original/*
 
 *Note:*
 
-- *upload.php & medialibrary.php*
+- *upload.php & `medialibrary.php`*
   - *Upload size limit increased to `100MB`*
   - *Now allowing more mime types:*
     - *`audio/x-flac`, `audio/flac` (.flac)*
@@ -1834,13 +1822,13 @@ ls web web/media web/media/* web/media/original/*
     - *`image/bmp` (.bmp)*
     - *`image/x-windows-bmp` (.bmp)*
     - *`image/x-ms-bmp` (.bmp)*
-  - *All except .flac files will `Correct non-accepted conversions` in upload.php*
+  - *All except .flac files will `Correct non-accepted conversions` in `upload.php`*
   - *FLAC files...*
     - *Non-web-playable, but no need for name changing since everything gets converted to .mp3 for optimal podcasting anyway*
     - *Accepting the FLAC mimetype is a "developer-justice" decision; sometimes only a .flac format will be available*
   - *A converted version will be kept in the "originals" directory*
   - *We are not accepting .wma files for conversion because the mimetype does not clearly distinguish video from audio*
-- *upload.php*
+- *`upload.php`*
   - *`$upload_dir_base` was removed and replaced by `$upload_dir` because Linux BASH scripts will handle the rest*
     - *Note all uploaded files go to web/media/uploads/ then get processed by a Linux BASH script*
   - *`// All audio is converted to .mp3`, so file name check looks for .mp3 extensions in the media/audio directory*
@@ -1859,7 +1847,7 @@ ls web web/media web/media/* web/media/original/*
   - *File name check accounts for to-be-converted mime types via: `$final_extension`*
   - *BASH scripts run via `shell_exec()` according to `switch`-`case`*
   - *Final output uses `<div>` style to stagger responses across bottom of "Drop to upload!" area*
-- *medialibrary.php*
+- *`medialibrary.php`*
   - *Section for `// File & conversion links` via `switch`*
     - *Generates thumbnails and links based on file mimetype, extension, and image size*
     - *Good workflow:*
@@ -1914,20 +1902,20 @@ Dropzone.options.dropzoneUploaderMediaLibrary = { // JS: .dropzoneUploader = HTM
 };
 ```
 
-- *ajax.mediainfo.php*
+- *`ajax.mediainfo.php`*
   - *`// File name change` section updated to handle our various and sundry file names:*
     - *images with multiple files*
     - *video originals and resized conversions*
     - *audio original and .mp3 podcast conversions*
     - *documents in multiple formats*
-    - *Borrowed this file name logic from the `switch` statement in medialibrary.php*
+    - *Borrowed this file name logic from the `switch` statement in `medialibrary.php`*
   - *Allowing `FLAC` `case` for `switch ($m_mime_type)`*
   - *Changed `$m_old_file_base`, `$m_old_file_extension`, `$m_new_file_base` & `$m_file_location` to `$m_file_base`, `$m_file_extension`, `$m_file_base_new` & `$m_location` (respectively) in rest of file for consistency with the borrowed `switch` logic*
-- *act.delmedia.php*
+- *`act.delmedia.php`*
   - *Section for `// File & conversion links` to handle our various and sundry file names*
-    - *Borrowed this file name logic from the `switch` statement in medialibrary.php*
+    - *Borrowed this file name logic from the `switch` statement in `medialibrary.php`*
   - *Changed `$m_basic_location` to `$m_location` in rest of file for consistency with the borrowed `switch` logic*
-- *style.css*
+- *`style.css`*
   - *Better organizing for upload AJAX responses*
   - *Changes to*
     - *`div#media-upload`*
@@ -1937,7 +1925,7 @@ Dropzone.options.dropzoneUploaderMediaLibrary = { // JS: .dropzoneUploader = HTM
   - *This avoids hacking and ghosting Linux commands*
   - *Find the full path of a command with:$ `which some-command`*
   - *BASH scripts should also have instructions, even though we already know how they work*
-  - *bash.imageprocess.sh*
+  - *`bash.imageprocess.sh`*
     - *This has several tests and checks, including converting some mimetypes*
     - *`convert` is the command that came with the `imagemagick` package*
       - *Syntax: `convert "input_file.jpg" -resize 1920x1080 "output_file.jpg"`*
@@ -1946,7 +1934,7 @@ Dropzone.options.dropzoneUploaderMediaLibrary = { // JS: .dropzoneUploader = HTM
       - *Syntax: `convert -background none -size 1920x1080 "input_file.svg" "output_file.png"`*
     - *When finished, we move the file from media/uploads to media/originals/images*
       - *Bitmap files are converted in "originals"*
-  - *bash.videoprocess.sh*
+  - *`bash.videoprocess.sh`*
     - *This has several tests and checks, including converting non-accepted mimetypes*
     - *`ffmpeg` converts and processes video and audio files*
       - *Syntax: `ffmpeg -y -i input_file.ogg -filter:v scale=1920:-1 -c:a copy output_file.ogg`*
@@ -1960,7 +1948,7 @@ Dropzone.options.dropzoneUploaderMediaLibrary = { // JS: .dropzoneUploader = HTM
         - *Anything bigger or better, use a CDN*
     - *When finished, we move the file from media/uploads to media/originals/video*
       - *.flv, .avi, .mkv & .mov files are converted in "originals"*
-  - *bash.audioprocess.sh*
+  - *`bash.audioprocess.sh`*
     - *`ffmpeg` can process audio files, not only video*
       - *Syntax: `ffmpeg -i input_file.wav -acodec libmp3lame -vn -ar 44100 -ac 2 -b:a 96k output_file.mp3`*
         - *`-map_metadata 0` preserves tags and metadata*
@@ -1972,7 +1960,7 @@ Dropzone.options.dropzoneUploaderMediaLibrary = { // JS: .dropzoneUploader = HTM
     - *Audio processing: everything to mp3 (ideal for podcasts)*
       - *96kbps 44kHz mono mp3*
         - *(human voice doesn't go over 5kHz, you shouldn't be doing an ultra-high quality musical performance in a blog-based podcast)*
-  - *bash.docprocess.sh*
+  - *`bash.docprocess.sh`*
     - *`pandoc` converts between different document formats*
 
 *We just deleted all our uploads, clear out the SQL database after we...*
@@ -1996,7 +1984,7 @@ CREATE TABLE IF NOT EXISTS `media_images` (
 DELETE FROM media_library;
 ```
 
-| **B-71** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-71** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -2031,7 +2019,6 @@ SELECT * FROM media_library; SELECT * FROM media_images;
 
 
 #### Clear Media Libary
-
 If you need to clear out your media library without using the GUI, use this code:
 
 > *Delete all uploads on the server...*
@@ -2069,15 +2056,15 @@ ls web web/media web/media/* web/media/original/*
 
 *Note:*
 
-- *edit.php*
-  - *`$head_title` & `$heading` statements are now separate with in.head.php*
+- *`edit.php`*
+  - *`$head_title` & `$heading` statements are now separate with `in.head.php`*
   - *Our "media insert" panel will appear in the hidden `<div id="media-insert-container"`*
   - *JavaScript will unhide it, then AJAX in a mini Media Library list to choose from*
   - *We can't put the Dropzone `<div>` in that AJAX*
     - *Dropzone runs JavaScript when the its `<div>` renders*
     - *JavaScript must be run at page load; it can't be sent via AJAX*
     - *So, the Dropzone `<div>` is already in the page, just hidden within `<div id="media-insert-container"`, just above where the mini Media Library will arrive via AJAX*
-  - *`$head_title` is set to nothing so it won't show, working with in.head.php*
+  - *`$head_title` is set to nothing so it won't show, working with `in.head.php`*
     - *Our new in.head.php `include` will not `echo` anything because this is empty*
   - *Added section to `// Refresh Dropzone box after upload`*
   - *Many other JavaScript functions called by the AJAX mini Media Library are already loaded in edit.php, not sent with the AJAX*
@@ -2090,9 +2077,9 @@ ls web web/media web/media/* web/media/original/*
   - *Two main `<div>` areas:*
     - *`editor-meta-bar`*
     - *`editor-main-content`*
-- *in.piecefunctions.php*
+- *`in.piecefunctions.php`*
   - *`p_title` has a `placeholder=` attribute*
-- *in.head.php*
+- *`in.head.php`*
   - *Head links row now in `<div id="page_head"` instead of `<p>`*
   - *Now accepting `$head_title` & `$heading`*
   - *`$heading` is an optional setting and will be inherited from `$head_title` in a ternary statement if not set*
@@ -2104,7 +2091,7 @@ ls web web/media web/media/* web/media/original/*
       - *`max_height:`*
   - *Dropzone settings:*
     - *These are the complete settings*
-    - *`// Initiation` section is slimmed down for appropriate for needs in edit.php*
+    - *`// Initiation` section is slimmed down for appropriate for needs in `edit.php`*
 ```javascript
 Dropzone.options.dropzoneUploaderMediaInsert = { // JS: .dropzoneUploader = HTML: id="dropzone-uploader"
   dictDefaultMessage: 'Drop to upload!',
@@ -2139,9 +2126,9 @@ Dropzone.options.dropzoneUploaderMediaInsert = { // JS: .dropzoneUploader = HTML
 
 };
 ```
-- *ajax.mediainsert.php*
+- *`ajax.mediainsert.php`*
   - *This is our popup mini Media Library*
-  - *Each media item has a hover link to call ajax.mediainfoinsert.php*
+  - *Each media item has a hover link to call `ajax.mediainfoinsert.php`*
   - *Without starting `<th>` with width, `<!-- Set our column widths without creating a row -->`*
 ```html
 <table ...>
@@ -2151,11 +2138,11 @@ Dropzone.options.dropzoneUploaderMediaInsert = { // JS: .dropzoneUploader = HTML
   </colgroup>
   <tbody>
 ```
-- *ajax.mediainfoinsert.php*
+- *`ajax.mediainfoinsert.php`*
   - *To both edit media & add media to piece*
-  - *Cloned from ajax.mediainfo.php*
-  - *Added media & image size information from medialibrary.php, but not in ajax.mediainsert.php*
-- *style.css*
+  - *Cloned from `ajax.mediainfo.php`*
+  - *Added media & image size information from medialibrary.php, but not in `ajax.mediainsert.php`*
+- *`style.css`*
   - *`header div#page_head` & `html, body` sections to keep things tight (with all the things we are putting in our page now)*
   - *`div#media-insert-` sections*
   - *`div#editor-meta-bar` section*
@@ -2187,7 +2174,6 @@ http://localhost/web/medialibrary.php
 ___
 
 # The Take
-
 ## Apache Upload Settings
 - Apache (the web server software) has a settings for uploads
   - File: `/etc/php/8.0/apache2/php.ini` (`8.0` is the version and can change)
@@ -2243,7 +2229,9 @@ shell_exec(); // Execute a command on the Linux server
 <form action="dropzone.php" class="dropzone"></form>
 ```
 - Simple PHP processor
-  - |**dropzone.php**:
+
+| **`dropzone.php`**:
+
 ```php
 $temp_file = $_FILES['file']['tmp_name'];
 $file_path_dest =  'some_uploads_dir/'.$_FILES['file']['name'];

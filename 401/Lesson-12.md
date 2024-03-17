@@ -127,7 +127,6 @@ cp file destination
 - [Shell Script Security from Apple](https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/ShellScriptSecurity/ShellScriptSecurity.html)
 
 ### II. Other Command Line Hacks
-
 *Pay close attention to what happens...*
 
 | **1** :$
@@ -324,7 +323,7 @@ cp -r space\ names "space also"
 cp -i space\ also/* space\ names/
 ```
 
-*You can overwrite each, or not, or <kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
+*You can overwrite each, or not, or <key>Ctrl</key> + <key>C</key> to close*
 
 | **31** :$
 
@@ -332,7 +331,7 @@ cp -i space\ also/* space\ names/
 view code-of-poetry.txt
 ```
 
-*Try "i" for insert*
+*Try "`i`" for insert*
 
 *Oh no! It's read-only with `view`*
 
@@ -350,11 +349,11 @@ touch rtfile.md
 tail -f rtfile.md
 ```
 
-Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
+Open a new terminal window: <key>Ctrl</key> + <key>Alt</key> + <key>T</key> (not <key>F12</key>)
 
 **Run in a new terminal window:** *(...and keep watch in the first terminal)*
 >
-> Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
+> Open a new terminal window: <key>Ctrl</key> + <key>Alt</key> + <key>T</key> (not <key>F12</key>)
 >
 > | **T1** :$
 
@@ -394,7 +393,7 @@ echo "I am gruit." >> rtfile.md
 exit
 ```
 
-*In the original terminal: <kbd>Ctrl</kbd> + <kbd>C</kbd>*
+*In the original terminal: <key>Ctrl</key> + <key>C</key>*
 
 It never stops...
 
@@ -517,7 +516,6 @@ ls
 ___
 
 # The Take
-
 ## Secure Scripting
 - ***This lesson was only the beginning, security is a career in itself!!***
 - Security concepts are similar in most programming languages
@@ -549,7 +547,21 @@ ___
 
 Wait, what?
 
-Now, for the [BSD games](http://wiki.linuxquestions.org/wiki/BSD_games) (from the package `bsdgames`)...
+Now, for the [BSD games](http://wiki.linuxquestions.org/wiki/BSD_games) (from the package `bsd-games` or `bsdgames`)...
+
+| **A1a** :$
+
+```console
+sudo pacman -S bsd-games
+```
+
+...OR...
+
+| **A1u** :$
+
+```console
+yay -S bsd-games
+```
 
 | **D1** :$
 

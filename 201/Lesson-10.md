@@ -61,7 +61,7 @@ gedit top.file
 top -n 1 -b > top.file
 ```
 
-*gedit: Reload top.file*
+*gedit: Reload `top.file`*
 
 *Note the file contents changed*
 
@@ -193,7 +193,7 @@ ls ..
 ls .. > ls.file
 ```
 
-*gedit: Reload ls.file*
+*gedit: Reload `ls.file`*
 
 *...or into another directory*
 
@@ -232,11 +232,10 @@ gedit outputs/ls.file
 ___
 
 # The Take
-
-- STDOUT output of many terminal commands can be sent to a file by adding `> outputfile` to the end of the command
+- `STDOUT` output of many terminal commands can be sent to a file by adding `> outputfile` to the end of the command
  - This includes: `ls`, `df`, `who`, `pwd`, `ps aux`, `top`, and many more
 - *Note that `> outputfile` would overwrite the output file; `>> outputfile` would append the output file*
-- "PWD" stands for "present working directory"
+- "PWD" stands for "Present Working Directory"
   - `pwd` displays the PWD
 - `who` displays the current user and most recent login time
 - `w` displays uptime, some load information, and user info from `who`

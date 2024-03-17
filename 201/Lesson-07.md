@@ -49,7 +49,7 @@ unzip vip.zip
 ls -l
 ```
 
-*What a strange name, "VIP-master"*
+*What a strange name, "`VIP-master`"*
 
 | **5** :$
 
@@ -63,7 +63,7 @@ mv VIP-master vip
 ls -l
 ```
 
-*That zip file was strange, let's delete it*
+*That `.zip` file was strange, let's delete it*
 
 | **7** :$
 
@@ -225,7 +225,7 @@ xz -d vip.tar.xz
 ls -l
 ```
 
-*Note the .tar.xz file is gone*
+*Note the `.tar.xz` file is gone*
 
 *Now you would normally want to untar it*
 
@@ -241,7 +241,7 @@ tar -xf vip.tar
 ls -l
 ```
 
-*Create the .tar.xz file without removing the original using `-c`*
+*Create the `.tar.xz` file without removing the original using `-c`*
 
 | **31** :$
 
@@ -257,7 +257,7 @@ ls -l
 
 *Compare types*
 
-*Note which files are larger and smaller: .tar .zip .tar.xz*
+*Note which files are larger and smaller: `.tar` `.zip` `.tar.xz`*
 
 ### Combine `tar` & `xz` into one command
 
@@ -273,7 +273,7 @@ rm vip.tar.xz vip.tar
 ls -l
 ```
 
-*Now we will create a .*
+*Now we will create a `.tar.xz` file*
 
 *Note without `-v` for "Verbose" it is nice and quiet*
 
@@ -451,7 +451,7 @@ gzip -d vip.tar.gz
 ls -l
 ```
 
-*Note `vip.tar.gz` is was replaced, just as with xz*
+*Note `vip.tar.gz` is was replaced, just as with `xz`*
 
 *We want `vip.tar.gz` for reference, so cleanup...*
 
@@ -475,7 +475,7 @@ ls -l
 bzip2 vip.tar
 ```
 
-*Note `vip.tar.bz2` replaced `vip.tar`, just as with xz and gzip*
+*Note `vip.tar.bz2` replaced `vip.tar`, just as with `xz` and `gzip`*
 
 | **59** :$
 
@@ -483,7 +483,7 @@ bzip2 vip.tar
 ls -l
 ```
 
-*Note `-d` is for "Decompress" as with gzip*
+*Note `-d` is for "Decompress" as with `gzip`*
 
 | **60** :$
 
@@ -545,7 +545,7 @@ tar -xf vip.tar.gz
 ls -l
 ```
 
-*Done in one step AND the original vip.tar.gz file is still there!*
+*Done in one step AND the original `vip.tar.gz` file is still there!*
 
 *"Again!" — Baby Dinosaur*
 
@@ -623,7 +623,7 @@ tar tf vip.tar
 ls -l
 ```
 
-*Note `tar t...` works with .tar files and with its compressors (gzip, bzip2, and xz)*
+*Note `tar t...` works with `.tar` files and with its compressors (`gzip`, `bzip2`, and `xz`)*
 
 | **76** :$
 
@@ -810,7 +810,6 @@ ls -l
 ___
 
 # The Take
-
 - Important commands
   - `tar Jcf archive.txz sourcedir` make `xz` compressed tarball in one command
     - `-J` use `xz`

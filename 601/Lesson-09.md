@@ -708,8 +708,8 @@ session     optional    pam_permit.so
   - *Docker prefers `.yaml` for YAML files over `.yml`, but both work*
   - *The config file is `compose.yaml` and must be in the present working directory*
   - *If `compose.yaml` is not present, `docker` will search for the legacy `docker-compose.yaml`*
-- | **`compose.yaml` PWD** :# `docker compose up -d` - start
-- | **`compose.yaml` PWD** :# `docker compose down` - stop
+- **`compose.yaml` in PWD** :# `docker compose up -d` - start
+- **`compose.yaml` in PWD** :# `docker compose down` - stop
 
 #### Using `docker compose`
 - *See `docker compose` examples from the [Docker docs: compose file](https://docs.docker.com/compose/compose-file/) examples*
@@ -1539,8 +1539,8 @@ sudo systemctl disable docker
   - Most files should have `644` permissions, including `.pub` keys and `authorized_keys`
   - Private files should have `600` permissions, including private key (`.pub` file counterpart), `config`, and `known_hosts`
 - `ssh` into a remote server
-  - `ssh USER@IP.ADD.RESS.OR.DOMAIN` (login)
-  - `ssh USER@IP.ADD.RESS.OR.DOMAIN some command` (only run a command on the remote machine)
+  - `ssh user@ip.add.ress.or.domain` (login)
+  - `ssh user@ip.add.ress.or.domain some command` (only run a command on the remote machine)
 - `scp` copy files
   - `scp localfile user@remotehost.tld:/path/to/destination`
   - `scp user@remotehost.tld:/path/to/remote/file localdestination`

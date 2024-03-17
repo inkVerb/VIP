@@ -79,7 +79,7 @@ echo "Hello Apple pie."
 !!
 ```
 
-*In scripts, `!!` means "whatever the last command was, watch..."*
+*In scripts, `!!` means "whatever the **previous command** was, watch..."*
 
 | **11** :$
 
@@ -87,7 +87,9 @@ echo "Hello Apple pie."
 grep -RF "!!" *
 ```
 
-*Sometimes, special characters can only be "escaped" with 'single quotes'*
+*You can also see previous commands in the **terminal history** with <key>Up</key>*
+
+*Sometimes, special characters can only be quoted/escaped with 'single quotes'*
 
 | **12** :$
 
@@ -99,8 +101,13 @@ grep -RF '!!' *
 
 ___
 
-# The Take
+# Glossary
+- **previous command** - the most recent command entered in the terminal, access with:
+  - <key>Up</key>
+  - `!!`
+- **terminal history** - the previous commands entered in the terminal; often called "BASH history"
 
+# The Take
 - `grep` handles special characters differently
 - `grep` uses `-F` to ignore special characters
 - The double exclamation `!!` means "the last command" almost everywhere in Shell, not only in `grep`

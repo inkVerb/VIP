@@ -47,8 +47,8 @@ Terms
 ### Repositories, Branches, Forks & Pulls
 - A Git project is called a **repository** or "repo" in most discussion
 - This is structured in the URL and on a GitHub profile:
-  - `https://github.com/USERNAME/REPOSITORY`
-  - The `USERNAME` can be for a user or for an organization
+  - `https://github.com/username/repository`
+  - The `username` can be for a user or for an organization
 - One repository can have many branches
   - One branch is usually intended for development
   - A `main` branch always exists, usually intended for production
@@ -316,7 +316,7 @@ git config --global user.name "My Name"
 git config --global user.email "my@example.com"
 git config --global init.defaultBranch main
 ssh -T git@github.com
-# Hi YOUR_USER_NAME! You've successfully authenticated, but GitHub does not provide shell access.
+# Hi your_user_name! You've successfully authenticated, but GitHub does not provide shell access.
 ssh -vT git@github.com
 
 cd

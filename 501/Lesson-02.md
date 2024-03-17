@@ -105,7 +105,6 @@ ___
 
 
 ### I. Basics: User and Database
-
 *Note this format will prompt you for a password:*
 
 - `mariadb -u USERNAME -p`
@@ -314,7 +313,7 @@ SHOW DATABASES;
 
 **Run in a new terminal window:**
 >
-> Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
+> Open a new terminal window: <key>Ctrl</key> + <key>Alt</key> + <key>T</key> (not <key>F12</key>)
 >
 > | **T1** :$
 
@@ -367,7 +366,6 @@ QUIT
 | **S21** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
 ### III. Privileges Automatically Create a User
-
 #### SQL Privileges Rules:
 1. A user must have "privileges" on a database to use that database
 2. A so-called "admin" user simply has "privileges" for everything on every database
@@ -471,7 +469,6 @@ QUIT
 | **S31** ://phpMyAdmin **> Log out** *(icon top left, under phpMyAdmin logo)*
 
 ### IV. Tables
-
 *Login to MySQL as the user of the database, not as the `admin` user...*
 
 | **32** :$ *(password in the terminal, not safe outside these lessons!)*
@@ -729,13 +726,15 @@ QUIT
 ```
 
 ### V. SQL Done Right
-
 #### Create the Right Way: *with details*
 ##### 1. Database:
+
 ```sql
 CREATE DATABASE new_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
+
 ##### 2. Table:
+
 ```sql
 CREATE TABLE IF NOT EXISTS `new_table` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -743,7 +742,9 @@ CREATE TABLE IF NOT EXISTS `new_table` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 ```
+
 ##### 3. Comment:
+
 ```sql
 -- This is an SQL comment
 -- Use comments to label your code, like in any other code
@@ -943,7 +944,6 @@ SELECT * FROM fruit;
 ___
 
 # The Take
-
 ## SQL Basics
 - SQL is a database language used by many, not only MySQL
 - SQL has databases and users for them

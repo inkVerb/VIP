@@ -221,7 +221,7 @@ ls
 ls -a
 ```
 
-*In Nautilus (the file explorer) press <kbd>Ctrl</kbd> + H to toggle view of hidden files and directories*
+*In Nautilus (the file explorer) press <key>Ctrl</key> + H to toggle view of hidden files and directories*
 
 #### Reverse order
 
@@ -252,7 +252,6 @@ ls -1r
 ___
 
 # The Take
-
 - `chmod` will change file permissions, see usage and examples here: [VIP/Cheat-Sheets: Permissions](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Permissions.md)
 - `ls -1` (with the number one `-1`, not `-l`) will list files vertically
 - `ls -l` will output a list of files with "long" information that includes the permissions that `chmod` changes
@@ -260,7 +259,7 @@ ___
 - `ls -r` shows files in "reverse" order
 - `ls -la` and `ls -al` combine the flags `-a` and `-l`, also `-arl`, `-r1la`, etc
 - `.` at the beginning of a file or directory name makes it "hidden"
-- <kbd>Ctrl</kbd> + <kbd>H</kbd> toggles hidden file and directory view in Nautilus
+- <key>Ctrl</key> + <key>H</key> toggles hidden file and directory view in Nautilus
 ___
 
 #### [Lesson 5: su, adduser, deluser, chown](https://github.com/inkVerb/vip/blob/master/201/Lesson-05.md)

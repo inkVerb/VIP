@@ -1,5 +1,5 @@
 # Linux 101
-## Lesson 11: RegEx: Quote/Escape Special Characters
+## Lesson 11: Special Characters
 
 Ready the CLI
 
@@ -21,9 +21,11 @@ echo "$$//" > money.file
 gedit money.file
 ```
 
-*Note how special characters don't always behave as expected*
+*Note how **special characters** don't always behave as expected*
 
-*Double dollar sign (`$$`) is the PID for the current terminal; it will be different, yet unchanged, in every terminal*
+*Special characters that "work" are often called **operators***
+
+*Double dollar sign (`$$`) is the **PID number** for the current terminal; it will be different, yet unchanged, in every terminal*
 
 *To prevent the `$$` and other special characters from "working", we need to "escape" (some say "quote") with: `\`*
 
@@ -33,7 +35,7 @@ gedit money.file
 echo "\$\$//" > money.file
 ```
 
-*gedit: Reload money.file*
+*gedit: Reload `money.file`*
 
 | **4** :$
 
@@ -49,7 +51,7 @@ sed -i "s///!/g" money.file
 sed -i "s/\//\!/g" money.file
 ```
 
-*gedit: Reload money.file*
+*gedit: Reload `money.file`*
 
 | **6** :$
 
@@ -57,7 +59,7 @@ sed -i "s/\//\!/g" money.file
 sed -i "s/$/@/g" money.file
 ```
 
-*gedit: Reload money.file*
+*gedit: Reload `money.file`*
 
 *Note the `@` symbol appeares at the end of the line*
 
@@ -67,7 +69,7 @@ sed -i "s/$/@/g" money.file
 sed -i "s/\$/@/g" money.file
 ```
 
-*gedit: Reload money.file*
+*gedit: Reload `money.file`*
 
 *Note even quoted, the `@` symbol appeares at the end of the line*
 
@@ -77,7 +79,7 @@ sed -i "s/\$/@/g" money.file
 sed -i 's/$/@/g' money.file
 ```
 
-*gedit: Reload money.file*
+*gedit: Reload `money.file`*
 
 *Note even with 'single quotes', the `@` symbol appeares at the end of the line*
 
@@ -87,13 +89,13 @@ sed -i 's/$/@/g' money.file
 sed -i 's/\$/@/g' money.file
 ```
 
-*gedit: Reload money.file*
+*gedit: Reload `money.file`*
 
 *Sometimes we need BOTH 'single quotes' AND the "backslash" (`\`) quote/escape character!*
 
-*(Can you figure out what `$` means? The answer is in 401 Lesson 7)*
+*(Can you figure out what `$` means? The answer is in [401 Lesson 7](https://github.com/inkVerb/vip/blob/master/401/Lesson-07.md))*
 
-*Use `\` with letters to work with non-characters*
+*Use `\` with letters to represent **metacharacters***
 
 *Note `\t` = tab, `\n` = new line*
 
@@ -115,7 +117,7 @@ gedit tab.file
 sed -i "s/no/\t no/" tab.file
 ```
 
-*gedit: Reload tab.file*
+*gedit: Reload `tab.file`*
 
 *Note the tab*
 
@@ -125,7 +127,7 @@ sed -i "s/no/\t no/" tab.file
 sed -i "s/\t no/no/" tab.file
 ```
 
-*gedit: Reload tab.file*
+*gedit: Reload `tab.file`*
 
 *Note the tab is gone*
 
@@ -135,7 +137,7 @@ sed -i "s/\t no/no/" tab.file
 sed -i "s/one/one\n/" tab.file
 ```
 
-*gedit: Reload tab.file*
+*gedit: Reload `tab.file`*
 
 | **15** :$
 
@@ -143,7 +145,7 @@ sed -i "s/one/one\n/" tab.file
 sed -i "s/one\n/one/g" tab.file
 ```
 
-*gedit: Reload tab.file*
+*gedit: Reload `tab.file`*
 
 *Note the line was not removed*
 
@@ -155,23 +157,31 @@ sed -i "s/one\n/one/g" tab.file
 sed -i -z "s/one\n/one/g" tab.file
 ```
 
-*gedit: Reload tab.file*
+*gedit: Reload `tab.file`*
 
 ___
 
+# Glossary
+- **special character** - any character that is not a letter or number
+- **metacharacter** - invisible characters, neither special character nor letter nor number
+  - eg: "tab" or "new line" or "start of line" or "end of line"
+  - `\t` = "tab" metacharacter
+  - `\n` = "new line" metacharacter
+- **operator** - a special character that "does something" in computer code (usually for math code, but not always)
+- **PID number** - Process ID number - the special number assigned to a running process on the system; every running process has one
+
 # The Take
+- We must know when and how to quote or "escape" certain characters
+- We will revisit special characters when we learn about RegEx in [401 Lesson 11](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md)
+- Read more in the [Character Classes](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Characters.md#Classes) cheat sheet
+  - ie: 'only letters' or 'only numbers' or 'only letters and numbers'
 
-## "RegEx"
-- "RegEx" is short for "regular expression"
-- Knowing when and how to escape certain characters is part of making a "RegEx"
-- We will revisit RegEx again briefly in [Lesson 401-11](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md) when we discuss "[Character Classes](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Characters.md#Classes)" (ie: 'only letters' or 'only numbers' or 'only letters and numbers')
-
-## Why "escape" some characters?
+## Why "quote/escape" some characters?
 - Some special characters "mean something" and will "work"
   - These often include: `$`, `^`, `/`, `?`, `*`, `.`, among others
-  - These special characters might be called "**operators**", but the word "**operator**" is more often used to describe special characters used in math functions
-- If you want to use a special character literally, without it "working", it must be "escaped" AKA "quoted"
-- Common ways of "escaping" working characters:
+  - These special characters might be called "**operators**", but the word "**operator**" is more often used to describe special characters used in math
+- If you want to use an operator character literally without it "working", it must be "quoted" AKA "escaped"
+- Common ways of "escaping" operators:
   1. Backslash (`\`)
   2. 'Single quotes' (`'single_quotes'`)
   3. Flags (`-F` or `-z` etc)

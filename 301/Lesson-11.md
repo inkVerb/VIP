@@ -104,7 +104,7 @@ echo 2 | ./11-menu-case
 dialog --option1 "args" --option2 "args" [size] 2> Output_File
 ```
 
-*We learned about `2> output.file` as STDERR from [Lesson 6](https://github.com/inkVerb/vip/blob/master/301/Lesson-06.md#ouput-to-file)*
+*We learned about `2> output.file` as `STDERR` from [Lesson 6](https://github.com/inkVerb/vip/blob/master/301/Lesson-06.md#ouput-to-file)*
 
 *5 = height; 18 = width as [size]...*
 
@@ -178,7 +178,7 @@ dialog --inputbox "Enter a color" 7 21
 ls *.file
 ```
 
-*Send "2>" output to color.file*
+*Send "`2>`" output to `color.file`*
 
 | **17** :$
 
@@ -272,7 +272,7 @@ gedit 11-dialog-2
 
 *Menu with multiple options...*
 
-*Run this in the terminal and output to size.file...*
+*Run this in the terminal and output to `size.file`...*
 
 | **30** :$
 
@@ -337,9 +337,9 @@ gedit 11-dialog-4
 *`dialog` in `$(`[Command Substitution](https://github.com/inkVerb/vip/blob/master/101/Lesson-05.md)`)` needs an exit code redirect on the end: `3>&1 1>&2 2>&3 3>&-`*
 
   - *[Exit Codes](https://github.com/inkVerb/vip/blob/master/301/Lesson-06.md#iii-logging-with-exit-codes) usually output:*
-    - *Error output: STDERR via `exit 2`, using `2> Output_File` or*
-    - *Normal output: STDOUT via `exit 1`, using `> Output_File`*
-  - *The useful output from `dialog` is STDERR via `exit 2`*
+    - *Error output: `STDERR` via `exit 2`, using `2> Output_File` or*
+    - *Normal output: `STDOUT` via `exit 1`, using `> Output_File`*
+  - *The useful output from `dialog` is `STDERR` via `exit 2`*
   - *So, we must convert the `dialog` output into a kind of output that `$(Command Substitution)` can understand*
   - *Syntax: `$(dialog ... 3>&1 1>&2 2>&3 3>&-)`*
 
@@ -349,7 +349,7 @@ gedit 11-dialog-4
 ./11-dialog-4
 ```
 
-*gedit: Reload size.file*
+*gedit: Reload `size.file`*
 
 | **39** :$ *(select any size)*
 
@@ -357,7 +357,7 @@ gedit 11-dialog-4
 ./11-dialog-4
 ```
 
-*gedit: Reload size.file*
+*gedit: Reload `size.file`*
 
 *Do the same thing with `if` tests*
 
@@ -373,7 +373,7 @@ gedit 11-dialog-5
 ./11-dialog-5
 ```
 
-*gedit: Reload size.file*
+*gedit: Reload `size.file`*
 
 *Lots more to learn, easily*
 
@@ -386,7 +386,6 @@ dialog man
 ___
 
 # The Take
-
 ## `select`
 - `select` only works in BASH
 - `select` creates a simple text input menu for terminal dialog
@@ -415,7 +414,7 @@ done
   - `--msgbox` (one argument)
   - `--yesno` (no arguments)
   - `--menu "Heading" Height Width Num-Of-Options 1 Opt1 2 Opt2 Tail-Commands`
-- The output we want from `dialog` is STDERR (as if `exit 2`), which we learned in [Lesson 6](https://github.com/inkVerb/vip/blob/master/301/Lesson-06.md#iii-logging-with-exit-codes)
+- The output we want from `dialog` is `STDERR` (as if `exit 2`), which we learned in [Lesson 6](https://github.com/inkVerb/vip/blob/master/301/Lesson-06.md#iii-logging-with-exit-codes)
   - In a script, the tail command can directly output to a file via `2> Output_File`
   - `$(Command Substitution)` syntax: `$(dialog ... 3>&1 1>&2 2>&3 3>&-)`
 - How to capture a `dialog --yesno` response:

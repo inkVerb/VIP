@@ -94,7 +94,6 @@ sudo systemctl status mysql
 ```
 
 ### Make MySQL secure
-
 *This is not necessary, but most MySQL instructions will assume this was done, including this tutorial.*
 
 > | **Q1** `sudo mysql_secure_installation`
@@ -112,9 +111,7 @@ sudo systemctl status mysql
 7. "YES" - Reload privilege tables now?
 
 ### Login to MySQL
-
 #### Choose one of two ways:
-
 ##### 1. First time ever
 
 | **6** :$ *(If you need, type `exit` to leave)*
@@ -132,7 +129,6 @@ mysql -u root -p
 ```
 
 ### The MySQL command prompt: `mysql>_`
-
 *Note most coders put SQL commands in ALL CAPS, but lowercase also works.*
 
 #### Change MySQL root password
@@ -166,7 +162,7 @@ QUIT
 
 ___
 
-| **11** :$ *And enter the password: ( newpassword )*
+| **11** :$ *And enter the password: ( `newpassword` )*
 
 ```console
 mysql -u root -p
@@ -199,7 +195,7 @@ CREATE DATABASE vipdatabase;
 SHOW DATABASES;
 ```
 
-*Now we made the database "vipdatabase"! Yeah!*
+*Now we made the database "`vipdatabase`"! Yeah!*
 
 *List users:*
 
@@ -231,7 +227,7 @@ SELECT user FROM mysql.user;
 FLUSH PRIVILEGES;
 ```
 
-*Now we made the user "vipuser", and it can access "vipdatabase"! Yeah!*
+*Now we made the user "`vipuser`", and it can access "`vipdatabase`"! Yeah!*
 
 *Let's have another look at the databases...*
 
@@ -241,7 +237,7 @@ FLUSH PRIVILEGES;
 SHOW DATABASES;
 ```
 
-*Delete the database "vipdatabase"*
+*Delete the database "`vipdatabase`"*
 
 | **20** :>
 
@@ -265,7 +261,7 @@ SELECT user FROM mysql.user;
 
 *...but but the user is still there!*
 
-*Delete the user "vipuser"*
+*Delete the user "`vipuser`"*
 
 | **23** :>
 
@@ -289,7 +285,6 @@ QUIT
 ___
 
 ### MySQL via Shell
-
 *Look at this carefully:*
 
 - `mysql -u root -pnewpassword -e "MYSQL COMMAND GOES HERE;"`
@@ -308,7 +303,7 @@ mysql -u root -pnewpassword -e "SHOW DATABASES;"
 
 *This is the normal way:*
 
-| **27** :$ *Enter the password ( newpassword )*
+| **27** :$ *Enter the password ( `newpassword` )*
 
 ```console
 mysql -u root -p -e "SHOW DATABASES;"
@@ -346,7 +341,7 @@ mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"
 mysql -u root -pnewpassword -e "GRANT ALL PRIVILEGES ON vipdatabase.* TO 'vipuser'@'localhost' IDENTIFIED BY 'vippassword'; FLUSH PRIVILEGES;"
 ```
 
-*Note we put "FLUSH PRIVILEGES;" in the same command because ";" separates commands.*
+*Note we put "`FLUSH PRIVILEGES;`" in the same command because ";" separates commands.*
 
 | **33** :$
 
@@ -393,7 +388,6 @@ mysql -u root -pnewpassword -e "SELECT user FROM mysql.user;"
 *Conclusion: The commands in MySQL can be run from a Shell prompt.*
 
 ### MySQL password file for secure Shell scripts
-
 *But, the password should never go on the command line. Do this instead:*
 
 1. Put special MySQL admin user & password info in a file: /path/to/userinfo/file
@@ -491,7 +485,7 @@ mysql --defaults-extra-file=~/School/VIP/401/mysqlinfofile -e "SHOW DATABASES;"
 
 *(This was for a MySQL admin user, which is useful in Shell scripts, but you could do it for a normal MySQL user with the appropriate SQL commands.)*
 
-*DISCLAIMER: On a production server, this method has some security problems of having an admin MySQL user's password in a readable file. But, you need to find your own way to deal with that securely, probably by keeping it in a secure location and not readable by the public.*
+***Disclaimer**: On a production server, this method has some security problems of having an admin MySQL user's password in a readable file. But, you need to find your own way to deal with that securely, probably by keeping it in a secure location and not readable by the public.*
 
 #### Now remove that tutorial admin user so it doesn't cause the codepocalypse...
 
@@ -512,7 +506,6 @@ exit
 ___
 
 # The Take
-
 ## `systemctl`
 - `systemctl` manages background server "services", such as an SQL or web server
 - Syntax: `systemctl COMMAND SERVICE`
@@ -536,6 +529,7 @@ ___
   password = MYSQLUSERPASSWORD
   host = localhost
   ```
+
 ## Develop PHP & MySQL on your Ubuntu desktop
 - For your own Ubuntu desktop developer setup for PHP & MySQL, follow the instructions here: [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)
 

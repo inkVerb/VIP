@@ -16,8 +16,7 @@ Debian & Ubuntu use `apt` or `apt-get` to install and update software packages
 These tools are called "package managers"
 
 ## Arch/Manjaro
-
-*Check the Linux version info*
+s*Check the Linux version info*
 
 | **1** :$
 
@@ -51,7 +50,6 @@ su Username
 ___
 
 ### Packages & Repositories
-
 *See the list of all installed software "packages"*
 
 | **3** :$
@@ -94,7 +92,6 @@ cat /etc/pacman.d/mirrorlist
   	  - Then, you can install AUR packages from the GUI Software manager, but that does not affect AUR installation from the terminal
 
 ### Maintenance & Upgrades
-
 *Update the current software package version lists (no updates are installed)*
 
 | **6** :$
@@ -140,10 +137,9 @@ sudo yay -Yc
 ```
 
 ### Installing
-
 *Install the `git` package*
 
-| **11** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **11** :$ *Unless it is installed already, you will need to press Y, then <key>Enter</key>*
 
 ```console
 sudo pacman -S git
@@ -151,7 +147,7 @@ sudo pacman -S git
 
 *Install `cowsay`*
 
-| **12** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **12** :$ *Unless it is installed already, you will need to press Y, then <key>Enter</key>*
 
 ```console
 sudo pacman -S cowsay
@@ -170,7 +166,6 @@ sudo pacman -S --noconfirm curl net-tools htop odt2txt dos2unix pandoc texlive-c
 ```
 
 ### Uninstalling (for reference)
-
 *Uninstall a package*
 
 ```console
@@ -198,7 +193,6 @@ exit
 >
 
 ## Debian/Ubuntu
-
 *Check the Linux version info*
 
 | **1** :$
@@ -233,7 +227,6 @@ su Username
 ___
 
 ### Packages & Repositories
-
 *See the list of all available software "packages"*
 
 | **3** :$
@@ -260,7 +253,7 @@ cat /etc/apt/sources.list
   - *it has more packages*
   - *it is from Ubuntu's company, Canonical, so it is trusted*
 
-| **5** :$ *Probably press <kbd>Ctrl</kbd> + <kbd>C</kbd> to cancel if it asks*
+| **5** :$ *Probably press <key>Ctrl</key> + <key>C</key> to cancel if it asks*
 
 ```console
 sudo add-apt-repository multiverse
@@ -268,7 +261,7 @@ sudo add-apt-repository multiverse
 
 *This adds a graphics driver repository and can help if your graphics are slow of glitchy*
 
-| **6** :$ *Probably press <kbd>Ctrl</kbd> + <kbd>C</kbd> to cancel if it asks*
+| **6** :$ *Probably press <key>Ctrl</key> + <key>C</key> to cancel if it asks*
 
 ```console
 sudo add-apt-repository ppa:graphics-drivers/ppa
@@ -289,7 +282,6 @@ sudo add-apt-repository ppa:graphics-drivers/ppa
 *You may see any of these add-repo methods on websites under "install for Linux" instructions, this is for Debian/Ubuntu*
 
 ### Maintenance & Upgrades
-
 *Update the current software package version lists (no updates are installed)*
 
 | **7** :$
@@ -311,7 +303,7 @@ sudo apt list --upgradable
 
 *Upgrade (install updates)*
 
-| **9** :$ *If updates are available, you will need to press Y, then Enter*
+| **9** :$ *If updates are available, you will need to press Y, then <key>Enter</key>*
 
 ```console
 sudo apt upgrade
@@ -334,10 +326,9 @@ sudo apt-get autoremove
 ```
 
 ### Installing
-
 *Install the `git` package*
 
-| **12** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **12** :$ *Unless it is installed already, you will need to press Y, then <key>Enter</key>*
 
 ```console
 sudo apt install git
@@ -345,7 +336,7 @@ sudo apt install git
 
 *Install `cowsay`*
 
-| **13** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **13** :$ *Unless it is installed already, you will need to press Y, then <key>Enter</key>*
 
 ```console
 sudo apt install cowsay
@@ -356,14 +347,13 @@ sudo apt install cowsay
 *Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `pwgen` and `unzip` packages*
 - *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
 
-| **14** :$ *Use `-y` so you DO NOT need to press Y, then Enter*
+| **14** :$ *Use `-y` so you DO NOT need to press Y, then <key>Enter</key>*
 
 ```console
 sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc pwgen unzip
 ```
 
 ### Uninstalling (for reference)
-
 *Uninstall a package*
 
 ```console
@@ -394,7 +384,6 @@ exit
 >
 
 ## RedHat/CentOS
-
 *Some commands require `sudo`, AKA "run as administrator"*
 
 *Not all users can run with `sudo`*
@@ -413,7 +402,6 @@ su Username
 ___
 
 ### Packages & Repositories
-
 *See the list of all available software "packages"*
 
 | **1** :$
@@ -423,7 +411,6 @@ sudo dnf list
 ```
 
 ### Maintenance & Upgrades
-
 *Update the current software package version lists (no updates are installed)*
 
 | **2** :$
@@ -442,13 +429,13 @@ sudo dnf list updates
 
 *Upgrade (install updates)*
 
-| **4** :$ *If updates are available, you will need to press Y, then Enter*
+| **4** :$ *If updates are available, you will need to press Y, then <key>Enter</key>*
 
 ```console
 sudo dnf update
 ```
 
-*Remove downloaded packages after they are installed, multiple times you may need to press Y, then Enter*
+*Remove downloaded packages after they are installed, multiple times you may need to press Y, then <key>Enter</key>*
 
 | **5** :$
 
@@ -465,10 +452,9 @@ sudo dnf autoremove
 ```
 
 ### Installing
-
 *Install the `git` package*
 
-| **7** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **7** :$ *Unless it is installed already, you will need to press Y, then <key>Enter</key>*
 
 ```console
 sudo dnf install git
@@ -476,7 +462,7 @@ sudo dnf install git
 
 *Install `cowsay`*
 
-| **8** :$ *Unless it is installed already, you will need to press Y, then Enter*
+| **8** :$ *Unless it is installed already, you will need to press Y, then <key>Enter</key>*
 
 ```console
 sudo dnf install cowsay
@@ -488,7 +474,7 @@ sudo dnf install cowsay
 - *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
 - *Currently thest are broken and will not work on CentOS: `odt2txt pandoc`*
 
-| **9** :$ *Use `-y` so you DO NOT need to press Y, then Enter*
+| **9** :$ *Use `-y` so you DO NOT need to press Y, then <key>Enter</key>*
 
 ```console
 sudo dnf install -y curl net-tools htop dos2unix pwgen unzip redhat-lsb-core
@@ -511,7 +497,6 @@ lsb_release -r -s
 ```
 
 ### Uninstalling (for reference)
-
 *Uninstall a package*
 
 ```console
@@ -532,7 +517,6 @@ exit
 ___
 
 # The Take
-
 ## Linux Version
 - `lsb_release -a` outputs information about the current version of Linux
 - `lsb_release -r -s` will only output the basic version number

@@ -12,7 +12,6 @@ mkdir -p ~/School/VIP/201
 ```
 
 ### Create `su` (Super User) password
-
 The Linux 201 course occasionally requires `sudo` AKA `su` AKA "root" permissions.
 
 If you are not a "sudoer", you need the machine (computer) administrator (mom, dad, owner, teacher?) nearby to input the password for some `sudo` jobs in the lessons.
@@ -74,8 +73,7 @@ su
 About `sudo` and "root"...
 
 ### Prompts show power
-
-*Remember from [0-Rientation](https://github.com/inkVerb/vip/blob/master/101/0-Rientation.md):*
+*Remember from [Orientation](https://github.com/inkVerb/vip/blob/master/101/Orientation.md):*
 
 - *`$` indicates a normal "user" prompt*
   - *This includes a sudoer and non-sudoer*
@@ -112,12 +110,11 @@ yay -S --noconfirm adduser
 ___
 
 # The Take
-
 ## `su`, `sudo` & "root":
 - `sudo command` will run `command` as a "super user" AKA "root", what Windows calls an "admin"
 - `passwd` will change the user's own login password
 - `sudo passwd` creates/changes the password for root login via `su`
-- `su OTHER_USER` will log you in as another user in a terminal
+- `su other-user` will log you in as another user in a terminal
 - `su` (all by itself) will login as "root" so all commands will run as "root", without needing `sudo`
 - To login as "root" with `su`, a password must be set first using: `sudo passwd`
 - Logging in as root is generally considered dangerous, best use `sudo command`

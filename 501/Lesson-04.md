@@ -20,10 +20,9 @@ sudo systemctl start apache2 mariadb
 ```
 
 ### This lesson uses two terminals and two browser tabs!
-
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -31,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 mariadb -u admin -padminpassword
 ```
 
-*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **SB-0** :// Username: `admin` Password: `adminpassword`
 
@@ -40,7 +39,6 @@ localhost/phpMyAdmin/
 ```
 
 ### Used later in this lesson
-
 *SQL database: (after command 6)*
 
 | **L0** :>
@@ -67,7 +65,6 @@ Password: My#1Password
 ___
 
 ### I. PHP Epoch & Time
-
 **The PHP epoch:** *seconds from midnight Jan 1, 1970*
 
 The PHP epoch is an integer, so you can add time with simple arithmetic
@@ -119,10 +116,9 @@ ls web
 localhost/web/time.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 ### II. Password Hash Checks
-
 **Hash password one-way:**
 
 ```php
@@ -173,7 +169,6 @@ Conclusion:
 - Using the password or hash to find an SQL match for a user is an out-dated method of validating a user
 
 ### III. Web App Installer
-
 Nearly all web apps require that you have a database, database username, and database password already set up
 
 *Create our database and its login now...*
@@ -226,12 +221,12 @@ codium core/04-install.php core/04-in.config1.php core/04-in.checks.php core/04-
 ls web
 ```
 
-*In the config, note:*
+*Note `in.config.php` (`04-in.config1.php`):*
 
 - *`function escape_sql($data)`* (we will start using this instead of mysqli_real_escape_string)
   - *The `is_null()` test makes sure we don't run `preg_replace()` against a null variable, which isn't allowed*
 
-*In the in.functions.php, note:*
+*Note `in.functions.php` (`04-in.functions.php`):*
 
 - *Validation and sanitizing set a `$regex_` variable first, which is more neat and tidy*
 - *This style isolates the RegEx to help any RegEx hunting in the future*
@@ -275,7 +270,7 @@ $db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]
 localhost/web/install.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 | **S8** :>
 
@@ -379,7 +374,7 @@ codium core/04-login1.php core/04-in.config2.php && \
 ls web
 ```
 
-*Note in.config.php:*
+*Note `in.config.php` (`04-in.config2.php`):*
 
 - *`session_start();`*
 
@@ -413,7 +408,6 @@ localhost/web/webapp.php
 ```
 
 ### V. Logout
-
 **Logout can be done 3 ways; use them all!**
 
 "Session Destroy Team Three"
@@ -455,9 +449,9 @@ codium core/04-logout1.php && \
 ls web
 ```
 
-*After looking through logout.php, continue to be logged out immediately...*
+*After looking through `logout.php`, continue to be logged out immediately...*
 
-| **B-12a** :// (5 second logout and redirect to webapp.php!)
+| **B-12a** :// (5 second logout and redirect to `webapp.php`!)
 
 ```console
 localhost/web/logout.php
@@ -498,12 +492,12 @@ ls web
 
 *Note:*
 
-- *logout.php (04-logout2.php)*
-- *webapp.php (04-login2.php)*
+- *`logout.php` (`04-logout2.php`)*
+- *`webapp.php` (`04-login2.php`)*
 
-*After looking through logout.php and webapp.php, continue to be logged out immediately...*
+*After looking through `logout.php` and `webapp.php`, continue to be logged out immediately...*
 
-| **B-13** :// (Instant logout and redirect to webapp.php with message!)
+| **B-13** :// (Instant logout and redirect to `webapp.php` with message!)
 
 ```console
 localhost/web/logout.php
@@ -512,7 +506,6 @@ localhost/web/logout.php
 *Let's make a login using cookies...*
 
 ### VI. 'Remember Me' Login Cookies
-
 Cookies are much like the `$_SESSION` array, but
 
 1. They have an expiration (in **PHP epoch**)
@@ -589,10 +582,10 @@ ls web
 
 *Note:*
 
-- *webapp.php (04-login3.php)*
-- *logout.php (04-logout3.php)*
+- *`webapp.php` (`04-login3.php`)*
+- *`logout.php` (`04-logout3.php`)*
 
-*Review cookie logic in webapp.php by searching "$_COOKIE"*
+*Review cookie logic in `webapp.php` by searching "$_COOKIE"*
 
 | **B-18a** :// (previous)
 
@@ -616,19 +609,13 @@ localhost/web/webapp.php
 ```
 
 #### Never put username, password, email, name, or other user info in a cookie!
-
-This is a matter or proper security habits
-
-Cookies should only store information that only your app can interpret
-
-Cookies store otherwise useless information which you then use to look up the user's specific information in your SQL database
-
-This was only an example of how a cookie behaves
-
-Later we will put a secret key into the cookie for proper security
+- This is a matter or proper security habits
+- Cookies should only store information that only your app can interpret
+- Cookies store otherwise useless information which you then use to look up the user's specific information in your SQL database
+- This was only an example of how a cookie behaves
+- Later we will put a secret key into the cookie for proper security
 
 #### Variable Review
-
 4 types of PHP variables:
 
 1. Simple (ends with PHP script)
@@ -683,7 +670,7 @@ codium core/04-account.php && \
 ls web
 ```
 
-*Try an alternate way for no-login by searching "webapp.php" and uncommenting the line*
+*Try an alternate way for no-login by searching "`webapp.php`" and uncommenting the line*
 
 | **B-19** ://
 
@@ -691,7 +678,7 @@ ls web
 localhost/web/account.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 | **S19** :>
 
@@ -725,7 +712,6 @@ Password: My#1Password
 *When finished, make sure the username and password are the same for future reference*
 
 ### VIII. Forgot Password
-
 *Make sure you know your favorite number and email before continuing...*
 
 | **S20** :>
@@ -755,7 +741,7 @@ ls web
 localhost/web/forgot.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *...You must be logged out for it to work*
 
@@ -784,7 +770,6 @@ localhost/web/account.php
 ___
 
 # The Take
-
 ## Web App Installer
 - Web apps use SQL
   - database name

@@ -23,7 +23,6 @@ sudo systemctl start apache2 mariadb
 ___
 
 ### I. XML Structure
-
 **eXtensible Markup Language**
 
 1. Is static text
@@ -181,7 +180,7 @@ ls web
 </root>
 ```
 
-| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-2** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -215,14 +214,13 @@ ls web
 </table>
 ```
 
-| **B-3** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-3** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/syntax.xml
 ```
 
 #### C. Namespace Prefix
-
 *Same words with a different purpose*
 
 | **4** :$
@@ -236,7 +234,7 @@ ls web
 
 *The prefix is defined by a URI in the first set of each hierarchy it is used*
 
-| **Prefix `s:`** :
+| **Prefix `s:** :
 
 ```xml
 <s:table xmlns:s="https://verb.ink/stock">
@@ -250,7 +248,7 @@ ls web
 </s:table>
 ```
 
-| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-4** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -291,7 +289,7 @@ ls web
 <![CDATA[ " ' < > & ]]>
 ```
 
-| **B-5** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-5** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -300,7 +298,6 @@ localhost/web/syntax.xml
 *Note, `[` and `]` characters can work raw inside `<![CDATA[ ... ]]>`*
 
 #### E. XML from PHP
-
 *We can use PHP to render XML*
 
 - *This needs:*
@@ -346,7 +343,6 @@ localhost/web/xmlrender.xml
 ```
 
 ### II. XML Validation (DTD & XSD)
-
 *The XML document will define its own schema to validate itself*
 
 *There are two systems for this:*
@@ -462,7 +458,7 @@ ls web
 </root>
 ```
 
-| **B-8** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-8** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/validate.xml
@@ -486,9 +482,7 @@ localhost/web/validate.xml
 - `standalone=` has NO effect on XSD, which we prefer over DTD anyway
 
 #### B. XSD (XML Schema Definition)
-
 ##### XSD Basics
-
 *XSD uses validation terms in XML language, not DTD (SGML) language*
 
 *Note this example defines validation for the same XML in the previous two examples...*
@@ -565,11 +559,10 @@ ls web
 | **B-9** ://
 
 ```console
-localhost/web/validate.xml (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+localhost/web/validate.xml (<key>Ctrl</key> + <key>R</key> to reload)
 ```
 
 ##### Include XSD
-
 *You can include the XSD schema from a separate file*
 
 *These have the same XML and XSD...*
@@ -644,7 +637,7 @@ ls web
 </root>
 ```
 
-| **B-10** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-10** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/validate.xml
@@ -721,7 +714,7 @@ ls web
 
 *Note only the XSD declarations changed, everything else is the same*
 
-| **B-11** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-11** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/validate.xml
@@ -778,13 +771,13 @@ Restricted attribute: `type="sportattrlist"`
   - Attributes
   - Elements
 
-| **`<elem>` `simpleType` self-closing** : (XDS considers same as empty)
+| **<elem>` `simpleType` self-closing** : (XDS considers same as empty)
 
 ```xml
 <elem/>
 ```
 
-| **`<elem>` `simpleType` empty** : (XDS considers same as self-closing)
+| **<elem>` `simpleType` empty** : (XDS considers same as self-closing)
 
 ```xml
 <elem></elem>
@@ -828,13 +821,13 @@ Restricted attribute: `type="sportattrlist"`
   - Attributes
   - Elements
 
-| **`<elem>` `complexType` with attributes** :
+| **<elem>` `complexType` with attributes** :
 
 ```xml
 <elem attr="here"/>
 ```
 
-| **`<elem>` `complexType` with other elements** :
+| **<elem>` `complexType` with other elements** :
 
 ```xml
 <elem>
@@ -1070,7 +1063,6 @@ Restricted attribute: `type="sportattrlist"`
 - Custom, defined by `<xs:simpleType name="custom_type_name_here">...</xs:simpleType>`
 
 ##### DTD vs XSD Summary:
-
 - *DTD is older and simpler*
   - *Less control*
   - *Uses SGML syntax*
@@ -1090,7 +1082,6 @@ Restricted attribute: `type="sportattrlist"`
 You can learn much more about XSD, this is enough for you to follow more advanced XSD elsewhere and later in these lessons
 
 ### III. XSLT (eXtensible Stylesheet Language Transformations)
-
 **CSS for XML**
 
 An .xsl document is essentially HTML with embedded CSS, plus some logic (like `for-each` loops used in a `<table>`)
@@ -1104,7 +1095,6 @@ Add style with this after the header:
 ```
 
 #### A. Basic Demonstration
-
 *Take normal XML...*
 
 | **12** :$
@@ -1257,7 +1247,7 @@ ls web
 </xsl:stylesheet>
 ```
 
-| **B-13** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-13** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/style.xml
@@ -1266,7 +1256,6 @@ localhost/web/style.xml
 *Now, you see a hideously styled table in HTML*
 
 #### B. Logic
-
 1. `<xsl:for-each select="">`
 - HTML to render for each content of multiple elements
   - `select="some/path"` = `<some><path>This content here</path></some>`
@@ -1354,7 +1343,7 @@ ls web
 </td>
 ```
 
-| **B-14** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-14** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/style.xml
@@ -1402,7 +1391,7 @@ Either `match=` or `name=` is required
   - Note use of `mode="color-red"`
   - The same information would be applied two different ways, two different times
 
-| **`<xsl:template mode="">` viz `<xsl:apply-templates mode="">`** :
+| **<xsl:template mode="">` viz `<xsl:apply-templates mode="">** :
 
 ```xml
 <!-- Our HTML applies the templates for easy reading -->
@@ -1432,7 +1421,7 @@ Either `match=` or `name=` is required
   - Note use of `name="color-blue"`
   - The same information would be applied two different ways, two different times
 
-| **`<xsl:template name="">` viz `<xsl:call-template name="">`** :
+| **<xsl:template name="">` viz `<xsl:call-template name="">** :
 
 ```xml
 <xsl:template match="visitor" name="color-blue">
@@ -1600,7 +1589,6 @@ Summary:
 ```
 
 ##### 3. `<xsl:import>`
-
 Similar to `include`
 
 ```xml
@@ -1617,7 +1605,6 @@ Similar to `include`
 ```
 
 ##### 4. `<xsl:message>`
-
 Mainly used for developers and debugging
 
 ```xml
@@ -1645,7 +1632,7 @@ codium core/12-style15.xml core/12-style15.xsl && \
 ls web
 ```
 
-| **B-15** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-15** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/style.xml
@@ -1663,7 +1650,7 @@ localhost/web/style.xml
 </xsl:template>
 ```
 
-| **16** :$ *Copy 12-style15.xml again in case you make changes*
+| **16** :$ *Copy `12-style15.xml` again in case you make changes*
 
 ```console
 sudo cp core/12-style15.xml web/style.xml && \
@@ -1677,7 +1664,7 @@ codium core/12-style16.xsl core/12-structure16.xsl core/12-meta16.xsl core/12-he
 ls web
 ```
 
-| **B-16** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-16** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/style.xml
@@ -1686,7 +1673,6 @@ localhost/web/style.xml
 *Note the XML document behaves the same way; the files are simply re-organized into several `xs:import` elements*
 
 ### IV. XML XPath (Reference)
-
 - `/root/element/final` = `<root><element><final>`
 
 #### A. Path Syntax
@@ -1741,7 +1727,6 @@ localhost/web/style.xml
 | `self`               | Current node                                                                                    |
 
 ### V. XML via CLI with XMLStarlet
-
 XMLStarlet uses the terminal command `xml` or `xmlstarlet` if you prefer
 
 We use XML Path syntax with many other XML tools, including CLI tools like XMLStarlet
@@ -1870,7 +1855,7 @@ sudo cp xml/contacts.xml web/contacts.xml
 
 *Watch John Doe's Login change to "johndoe"...*
 
-| **B-22** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-22** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/contacts.xml
@@ -1885,7 +1870,7 @@ xml ed --inplace -u "//visitors/visitor[@login='jdoe']/level" -v "user" xml/cont
 sudo cp xml/contacts.xml web/contacts.xml
 ```
 
-| **B-23** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-23** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/contacts.xml
@@ -1902,7 +1887,7 @@ xml ed --inplace -u "//visitors/visitor[@login='johndoe']/level" -v "user" xml/c
 sudo cp xml/contacts.xml web/contacts.xml
 ```
 
-| **B-24** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-24** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/contacts.xml
@@ -1917,14 +1902,13 @@ xml ed --inplace -u "//visitors/visitor[@login='smithymars']/level" -v "admin" x
 sudo cp xml/contacts.xml web/contacts.xml
 ```
 
-| **B-25** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-25** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/contacts.xml
 ```
 
 #### Settings file
-
 XML can be used to store settings, such as on your desktop
 
 This is not a real settings file, but the settings for your desktop machine could look very similar to this
@@ -1954,7 +1938,7 @@ xml ed -L -s /conf/displays -t elem -n display \
 ```
 
 *Note in Atom:*
-  - *We just made a mess: settings.xml `<display>` elements now have the new information, plus the new `<display>` entry with the same information*
+  - *We just made a mess: `settings.xml` `<display>` elements now have the new information, plus the new `<display>` entry with the same information*
   - *All the empty lines were removed, which is good*
     - *`xmlstarlet` will format the XML document to remove unneeded white space*
 
@@ -1966,7 +1950,7 @@ xml ed -L -s /conf/displays -t elem -n display \
 cp core/12-settings.xml xml/settings.xml
 ```
 
-*Tip: add strange whitespace in settings.xml, then watch it all disappear to perfect formatting*
+*Tip: add strange whitespace in `settings.xml`, then watch it all disappear to perfect formatting*
 
 *Insert a display (right way: rename a stand-in called `displayINS`)*
 
@@ -2044,7 +2028,6 @@ xml ed -L -u "/conf/audio/adevice[@id='1']/level" -v "50" xml/settings.xml
 ```
 
 #### Hack an Open Document `.odt` file
-
 *Copy the `.odt` we want to use*
 
 | **35** :$
@@ -2071,7 +2054,7 @@ ls odt
 
   - *Especially note `content.xml`*
 
-*`unzip` allows you to dump the content of only one file as STDOUT output*
+*`unzip` allows you to dump the content of only one file as `STDOUT` output*
 
 *We will use the xml directory to work with only the content file...*
 
@@ -2123,7 +2106,7 @@ This will change every `<text:p>` node to contain "I was a paragraph, inserted b
 xml ed --inplace -u "//text:p" -v "I was a paragraph, inserted by XMLStarlet." xml/markdown.xml
 ```
 
-*Note the changes to markdown.xml in Atom*
+*Note the changes to `markdown.xml` in Atom*
 
 *Let's hack that `.odt` file in the odt directory and change it from the command line...*
 
@@ -2145,7 +2128,6 @@ lowriter xml/hacked.odt
 ```
 
 #### RSS Feed from WordPress
-
 ##### WP-RSS via Simple CSS
 
 | **44** :$
@@ -2278,9 +2260,7 @@ localhost/web/podcast.xml
 ```
 
 ### VI. PHP Integration
-
 #### Create an iTunes podcast-ready RSS feed
-
 *You can learn more about iTunes podcast RSS feed tags [here](https://help.apple.com/itc/podcasts_connect/#/itcb54353390), along with other [requirements](https://podcasters.apple.com/support/823-podcast-requirements)*
 
 | **50** :$
@@ -2319,7 +2299,7 @@ RewriteRule ^series/?([a-zA-Z0-9-]+)/feed$ feed.php?s=$1 [L]
 
 *Note the "Feeds" rule must appear before "Slugs" & "Blog" because of the logical hierarchy*
 
-- *Rewrite must catch `feed` before trying it as a slug, otherwise it will be interpreted as a slug and sent to piece.php*
+- *Rewrite must catch `feed` before trying it as a slug, otherwise it will be interpreted as a slug and sent to `piece.php`*
 
 - *In .htaccess, try placing the "Feeds" rule after "Blog" to see it break*
 
@@ -2338,7 +2318,7 @@ RewriteRule ^series/?([a-zA-Z0-9-]+)/feed$ feed.php?s=$1 [L]
 echo (isset($podcast_empty_field_warning)) ? $podcast_empty_field_warning : false;
 ```
 
-*Note these sections came from ajax.editseriesdetails.php*
+*Note these sections came from `ajax.editseriesdetails.php`*
 
 **Link to RSS/Podcast feeds**
 
@@ -2383,7 +2363,7 @@ header('Content-type: text/xml');
 
 | **feed.php** :
 
-This allows us to add XSL style without the .xml file extension:
+This allows us to add XSL style without the `.xml` file extension:
 
 ```php
 header('Content-type: text/xml');
@@ -2402,7 +2382,6 @@ header('Content-type: text/xml');
 ```
 
 #### Aggregate another RSS feed
-
 *Take this example of an iTunes-ready feed*
 
 | **feed.rss** :
@@ -2607,9 +2586,9 @@ ls pdo-aggregate/*
 
 *Our new files are:*
 
-- *aggregator.php*
-  - *Calls: ajax.editfeed.php*
-- *task.aggregatefetch.php*
+- *`aggregator.php`*
+  - *Calls: `ajax.editfeed.php`*
+- *`task.aggregatefetch.php`*
   - *Items from an aggregated feed will be added to `publications`, but not `pieces` nor `publication_history`*
   - *Aggregated entries on `publications` will NOT have a `piece_id`*
   - *Aggregated entries on `publications` will contain:*
@@ -2710,7 +2689,7 @@ onclick="
 ">Cancel</button>';
 ```
 
-*The actual feed processing is done by task.aggregatefetch.php*
+*The actual feed processing is done by `task.aggregatefetch.php`*
 
 - *Peruse this file, but note that it runs `UPDATE` rather than `INSERT` based on a matching `guid`*
 - *`guid` is based created for each feed `<item>`, based on a `title`-generated `slug`*
@@ -2743,7 +2722,6 @@ $query->bindParam(':column', $col);
 ```
 
 ##### Testing for learning purposes
-
 *You can test and see how changes to a feed will affect what the feed processes*
 
 *We will create a small place to play and learn, called a "sandbox"*
@@ -2829,7 +2807,6 @@ sudo chown -R www:www /srv/www/html
 ```
 
 ##### Create a `cron` task to process feeds
-
 *For the feed processor to work (task.aggregatefetch.php), we need a `cron` task to call the file*
 
 - *PHP is a "dead" system; it only works when a file is accessed*
@@ -2866,13 +2843,13 @@ sudo vim /etc/cron.d/webapp
 
 2. Press:
 
-- <kbd>i</kbd>
+- <key>i</key>
 - <kyb>Ctrl</kybd> + <kyb>V</kybd>
-- <kbd>Esc</kbd>
+- <key>Esc</key>
 
 3. Type:
 
-`w:` <kbd>Enter</kbd>
+`w:` <key>Enter</key>
 
 *Note when you are finished with these lessons, you will want to delete that `cron` task...*
 
@@ -2884,7 +2861,6 @@ sudo rm /etc/cron.d/webapp
 ___
 
 # The Take
-
 ## XML Structure
 - **eXtensible Markup Language**
 - Uses tags similar to HTML
@@ -3189,7 +3165,7 @@ ___
 </root>
 ```
 
-| **Count `<visitor>`** :
+| **Count `<visitor>** :
 
 ```console
 xmlstarlet sel -t -v "count(//visitors/visitor)" xml/contacts.xml
@@ -3201,25 +3177,25 @@ xmlstarlet sel -t -v "count(//visitors/visitor)" xml/contacts.xml
 xmlstarlet sel -t -m "//visitors/visitor" -v "name" -o " - " -v "sport/@type" -o " (" -v "level" -o ")" -n xml/contacts.xml
 ```
 
-| **Select `<email>` for `<visitor><name>Marshan Wills`** :
+| **Select `<email>` for `<visitor><name>Marshan Wills** :
 
 ```console
 xml sel -t -v "//visitors/visitor[name='Marshan Wills']/email" xml/contacts.xml
 ```
 
-| **Select `<name>` for `<visitor login="jupitersong">`** :
+| **Select `<name>` for `<visitor login="jupitersong">** :
 
 ```console
 xml sel -t -v "//visitors/visitor[@login='jupitersong']/name" xml/contacts.xml
 ```
 
-| **Change `<visitor login="jdoe">` to `logn="johndoe"`** :
+| **Change `<visitor login="jdoe">` to `logn="johndoe"** :
 
 ```console
 xml ed --inplace -u "//visitors/visitor[@login='jdoe']/@login" -v "johndoe" xml/contacts.xml
 ```
 
-| **Change `<visitor login="jdoe"><level>` to `user`** :
+| **Change `<visitor login="jdoe"><level>` to `user** :
 
 ```console
 xml ed --inplace -u "//visitors/visitor[@login='jdoe']/level" -v "user" xml/contacts.xml
@@ -3469,20 +3445,20 @@ ___
   - Add options to the `series` table for feed elements per Series
 6. Make themeable
   - Create a 'themes' folder
-  - Rewrite edit.php & blog.php to:
+  - Rewrite `edit.php` & `blog.php` to:
     - Use HTML DOM from theme files in 'themes' folder
     - Use CSS from 'themes' folder
   - Add `theme` column to `blog_settings` in SQL
     - Selection should be based on subfolder name in 'themes' folder
     - Settings should check for the folder
     - Include Theme selection in settings.php
-  - Rewrite in.head.php to use the theme or a default
+  - Rewrite `in.head.php` to use the theme or a default
   - Create a default theme
 7. Series & Landing Page
   - Add `landing` column in `blog_settings` in SQL
     - Options are any piece or series
   - Create an `<input>` to set a piece as the `template` for a series on the `series` table
-  - Indicate a piece is a template in pieces.php and edit.php
+  - Indicate a piece is a template in `pieces.php` and edit.php
   - The root web URL will point to either the selected pieces series or the selected "page" piece
 8. Menus
   - Add a `menus` table to the database

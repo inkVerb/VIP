@@ -25,7 +25,7 @@ gedit abcsed abcd
 
 ## shebang in Shell scripts
 
-*"shebang" is what we call the `#!` in a Shell script*
+*"**shebang**" is what we call the `#!` in a Shell **script***
 
 *Now, to our first Shell script...*
 
@@ -51,7 +51,7 @@ sed -i "s/$1/z/" abcd
 ./abcsed
 ```
 
-*Note the error message*
+*Note the **error message***
 
 | **3** :$
 
@@ -75,15 +75,17 @@ ls -l
 
 *Note the colors of the files and letters "-rwx"*
 
+*The `x` and the file beeing green means the file is now **executable***
+
 | **6** :$
 
 ```console
 ./abcsed a
 ```
 
-*Now, it works, no error*
+*Now, it works, no error message*
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **7** :$
 
@@ -91,7 +93,7 @@ ls -l
 ./abcsed b
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **8** :$
 
@@ -99,9 +101,9 @@ ls -l
 ./abcsed c
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
-*Update abcsed to version 02:*
+***Update** `abcsed` to **version** 02:*
 
 | **abcsed** : v02
 
@@ -119,7 +121,7 @@ sed -i "s/$1/$2/" abcd
 ./abcsed d z
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **10** :$
 
@@ -127,7 +129,7 @@ sed -i "s/$1/$2/" abcd
 ./abcsed e z
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **11** :$
 
@@ -135,7 +137,7 @@ sed -i "s/$1/$2/" abcd
 ./abcsed z j
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **12** :$
 
@@ -143,7 +145,7 @@ sed -i "s/$1/$2/" abcd
 ./abcsed z j
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **13** :$
 
@@ -151,9 +153,9 @@ sed -i "s/$1/$2/" abcd
 ./abcsed z j
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
-*Update abcsed to version 03:*
+*Update `abcsed` to version 03:*
 
 | **abcsed** : v03
 
@@ -165,7 +167,7 @@ sed -i "s/$1/$2/g" abcd
 # v03
 ```
 
-*Note "g" to "globally" replace every occurance per line*
+*Note "`g`" to "globally" replace every occurance per line*
 
 | **14** :$
 
@@ -173,7 +175,7 @@ sed -i "s/$1/$2/g" abcd
 ./abcsed z j
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **15** :$
 
@@ -181,7 +183,7 @@ sed -i "s/$1/$2/g" abcd
 ./abcsed f z
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **16** :$
 
@@ -189,23 +191,19 @@ sed -i "s/$1/$2/g" abcd
 ./abcsed z j
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **17** :$
 
 ```console
-echo "Apples like foo." >> applefoo
-```
-
-*Note `echo ... >>` will also create a file if it doesn't already exist*
-
+echo "Apples like foo." >> applefoog
 | **18** :$
 
 ```console
 gedit applefoo
 ```
 
-*Update abcsed to version 04:*
+*Update `abcsed` to version 04:*
 
 | **abcsed** : v04
 
@@ -223,7 +221,7 @@ sed -i "s/$1/$2/g" $3
 ./abcsed foo bar applefoo
 ```
 
-*gedit: Reload applefoo*
+*gedit: Reload `applefoo`*
 
 | **20** :$
 
@@ -231,7 +229,7 @@ sed -i "s/$1/$2/g" $3
 ./abcsed g z abcd
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **21** :$
 
@@ -239,12 +237,20 @@ sed -i "s/$1/$2/g" $3
 ./abcsed z j abcd
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 ___
 
-# The Take
+# Glossary
+- **error message** - text output that explains why there is a problem with the input or process
+- **executable** - a setting on a file so the file can be "run" as a process, needed for scripts
+- **global** - in all places, everywhere
+- **script** - a file with many CLI commands which run automatically from a file
+- **shebang** - the code `#!` which works at a file's first line
+- **update** - make changes to the newest available version
+- **version** - the new code when a file or program is changed, each has its own number
 
+# The Take
 - Gedit can open multiple files from the terminal
 - Sometimes, programmers create a Shell script or any file by copying and pasting the entire contents of the file from a webpage
 - `#!` is read "shebang"

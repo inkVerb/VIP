@@ -39,7 +39,7 @@ sudo tcpdump
 
 *Note the ongoing list of network activity*
 
-*<kbd>Ctrl</kbd> + <kbd>C</kbd> will close the dump*
+*<key>Ctrl</key> + <key>C</key> will close the dump*
 
 ### IF needed, `exit` from the other "sudoer"
 >
@@ -62,7 +62,6 @@ ss -tln
 ```
 
 ### `man` & `info`
-
 *FYI, this is a great tool to change settings from the terminal: `gsettings`*
 
 | **4** :$
@@ -145,7 +144,6 @@ info imagemagick
 ___
 
 # The Take
-
 - `netstat` displays network connections to your machine (including Internet)
 - `tcpdump` also displays network connections, but at a `root` level and updates live
   - This is useful for finding hackers, but anti-hacking is beyond the scope of this lesson

@@ -15,7 +15,7 @@ ___
 gedit abcsed abcsed.setting abcd
 ```
 
-*Update abcsed to version 05:*
+*Update `abcsed` to version 05:*
 
 | **abcsed** : v05
 
@@ -31,13 +31,15 @@ sed -i "s/$myFOO/$myBAR/g" $myFILE
 # v05
 ```
 
+*Note we **set** the variables*
+
 | **2** :$
 
 ```console
 ./abcsed h z abcd
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **3** :$
 
@@ -45,9 +47,9 @@ sed -i "s/$myFOO/$myBAR/g" $myFILE
 ./abcsed z j abcd
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
-*Update abcsed to version 06:*
+*Update `abcsed` to version 06:*
 
 | **abcsed** : v06
 
@@ -64,7 +66,7 @@ sed -i "s/$myFOO/$myBAR/g" $myFILE
 # v06
 ```
 
-*Create abcsed.setting as this:*
+*Create `abcsed.setting` as this:*
 
 | **abcsed.setting** :
 
@@ -78,7 +80,7 @@ myFILE=abcd
 ./abcsed i z
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
 | **5** :$
 
@@ -86,9 +88,9 @@ myFILE=abcd
 ./abcsed z j
 ```
 
-*gedit: Reload abcd*
+*gedit: Reload `abcd`*
 
-*Note this format "includes" or "sources" the text of any file as if it was text of the script itself*
+*Note this line starting with a `.` period will "**source**" or "include" the text of any file as if it was text of the script itself*
 
 ```sh
 . some/file/with/text/to/be/included
@@ -96,8 +98,12 @@ myFILE=abcd
 
 ___
 
-# The Take
+# Glossary
+- **set** - assign a value to a variable, eg "set the variable"
+- **source** - include another file's contents as part of the contents in a script; Shell starts a line with `.` to do this
+  - ***include*** - the term for "source" in other computer languages, not the Shell language
 
+# The Take
 ## Variables
 - A variable (`$variable`) or argument (`$1`, `$2`, etc) can be used to set the value of another variable
 - A variable name **must**:

@@ -148,9 +148,9 @@ This nifty code allows for a global argument (use with, not part of, `getopts`):
 
 *About our `exit` codes:*
 
-- *We use `exit 1` for "proper false" (STDOUT) when the user asks for help*
+- *We use `exit 1` for "proper false" (`STDOUT`) when the user asks for help*
   - *This can be tested later, such as with `$?` to see if it was a valid command*
-- *We use `exit 2` for "error" (STDERR) when user inputs wrong flags*
+- *We use `exit 2` for "error" (`STDERR`) when user inputs wrong flags*
   - *This can be tested later, such as with `$?` or with `set -e` to exit with any error*
 - *The script will automatically use `exit 0` once our `getopts` loop ends with proper flags*
 
@@ -224,7 +224,7 @@ gedit 12-flags-3
 ./12-flags-3 -abcd Dunno Dubbo
 ```
 
-*...Note no "Dubbo", only one argument allowed this way*
+*...Note no "`Dubbo`", only one argument allowed this way*
 
 | **18** :$
 
@@ -248,7 +248,7 @@ gedit 12-flags-4
 ./12-flags-4 -a Alpha -bcd Bogma
 ```
 
-*...Note "Bogma" came from our `$globalArg` cluster, not from `getopts`*
+*...Note "`Bogma`" came from our `$globalArg` cluster, not from `getopts`*
 
 | **21** :$
 
@@ -397,7 +397,6 @@ gedit 12-long
 ___
 
 # The Take
-
 ## `getopts` & `getopt` (similar, yet worlds apart)
 - Both receive, check, and process flags and related arguments for a BASH script
 - Both require `while` and `case` loops

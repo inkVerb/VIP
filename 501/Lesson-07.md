@@ -20,10 +20,9 @@ sudo systemctl start apache2 mariadb
 ```
 
 ### This lesson uses two terminals and two browser tabs!
-
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -31,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 mariadb -u admin -padminpassword
 ```
 
-*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -96,7 +95,7 @@ ls web
   - The string is tested in the database for a match and expiration date
   - If matched, the page redirects to webapp.php using `header`
 - *account.php has links for logout and the main webapp*
-- *webapp.php replaced the login workflow an `include` for in.login_head.php*
+- *webapp.php replaced the login workflow an `include` for `in.login_head.php`*
 - *in.login_head.php:*
   - contains the login workflow that webapp used to
   - has links for Account Settings and logout
@@ -211,7 +210,7 @@ SELECT * FROM strings;
 2. Try the three SQL queries under **...Teaching tip...**
 3. Click the link to login, but note it should have expired
 4. Click around and explore
-  - Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> to see the developer view of pages
+  - Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> to see the developer view of pages
   - Compare the pages with the .php files
 
 *When finished, delete all expired strings...*
@@ -241,7 +240,6 @@ SELECT * FROM strings;
 *Create a .php file to do the same thing...*
 
 ### Cleanup PHP Job Script
-
 *Create our routine .php file...*
 
 | **9** :$
@@ -325,7 +323,6 @@ SELECT * FROM strings;
 *You may repeat all commands 8–9 to see this again*
 
 ### Cleanup via `cron` Task
-
 We learned about `cron` tasks in [Linux 401 Lesson 3](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md)
 
 We can use `cron` to run a php file
@@ -356,7 +353,6 @@ SELECT * FROM strings;
 | **SB-12** ://phpMyAdmin **> strings**
 
 #### Anything Run from the Terminal Can Be Run by `cron`
-
 Make sure you test your `cron` tasks by running them from the terminal
 
 We use this syntax here: `php /same/path/as/cron/task/to/script.php`
@@ -391,7 +387,6 @@ SELECT * FROM strings;
 | **SB-14** ://phpMyAdmin **> strings**
 
 #### Creating a `cron` Task File
-
 *Create a few more keys to delete after 20 seconds...*
 
 | **B-15** :// (Use credentials or 'Back')
@@ -489,12 +484,12 @@ SELECT * FROM strings;
 *When finished, let's use a key for our login cookie...*
 
 ### Keys for Cookie Login
-
 Remember from [Lesson 4](https://github.com/inkVerb/vip/blob/master/501/Lesson-04.md#v-remember-me-login-cookies) that storing user info in a cookie is not secure
 
 Instead, one good option is to store a key, like the keys we just set up
 
 **Workflow:**
+
 ```
 $_COOKIE['user_key'] --> key finds user_id --> user_id logs in
 ```
@@ -536,8 +531,8 @@ ls web
 
 *Note:*
 
-  - *in.login_head.php*
-  - *logout.php*
+  - *`in.login_head.php`*
+  - *`logout.php`*
 
 - *Cookie login refers to the key, no longer the user's ID*
 - *We escape the key from the cookie before searching for the key in the database*
@@ -616,7 +611,6 @@ sudo rm /etc/cron.d/webappcleanup
 ___
 
 # The Take
-
 ## Random String
 - A PHP function can create a random string of characters
 - Functions of all sorts can be handy to `include` in a PHP script
@@ -673,6 +667,7 @@ ___
 - Our purpose is to understand these things:
   - When you use security features on websites and apps
   - If you do more in-depth study of these topics
+
 ___
 
 #### [Lesson 8: CMS Blog: Edit, Display & TinyMCE](https://github.com/inkVerb/vip/blob/master/501/Lesson-08.md)

@@ -25,7 +25,7 @@ ___
 mkdir one && cp *.odt one && cp markdown.md one && cd one
 ```
 
-*Convert .odt files to .txt*
+*Convert `.odt` files to `.txt`*
 
 | **2** :$
 
@@ -33,13 +33,13 @@ mkdir one && cp *.odt one && cp markdown.md one && cd one
 ls
 ```
 
-| **3** :$ *(may need a few seconds to load, then press Enter)*
+| **3** :$ *(may need a few seconds to load, then press <key>Enter</key>)*
 
 ```console
 lowriter *.odt &
 ```
 
-*Note the contents of the .odt files*
+*Note the contents of the `.odt` files*
 
 *Close the file, just to make sure we don't have any problems...*
 
@@ -49,7 +49,7 @@ lowriter *.odt &
 killall soffice.bin
 ```
 
-*Try to open one .odt file with gedit...*
+*Try to open one `.odt` file with gedit...*
 
 | **5** :$
 
@@ -57,7 +57,7 @@ killall soffice.bin
 gedit ODT-FILE.odt
 ```
 
-*Close the file in gedit with <kbd>Ctrl</kbd> + <kbd>W</kbd>*
+*Close the file in gedit with <key>Ctrl</key> + <key>W</key>*
 
 *Note .odt files are very big and can't be opened with text editors, but we can convert them...*
 
@@ -73,7 +73,7 @@ odt2txt ODT-FILE.odt
 ls
 ```
 
-*Note it either echoed the STDOUT in the terminal or created "ODT-FILE.txt"*
+*Note it either echoed the `STDOUT` in the terminal or created "ODT-FILE.txt"*
 
 *This more reliably creates a .txt file:*
 
@@ -95,7 +95,7 @@ ls
 gedit ODT-FILE.txt
 ```
 
-*Close the file in gedit with <kbd>Ctrl</kbd> + <kbd>W</kbd>, then delete the .txt file so we can try another way...*
+*Close the file in gedit with <key>Ctrl</key> + <key>W</key>, then delete the `.txt` file so we can try another way...*
 
 | **11** :$
 
@@ -185,7 +185,7 @@ cd ..
 read
 ```
 
-*Now type something and press Enter*
+*Now type something and press <key>Enter</key>*
 
 *Nothing happened because it should be used with a variable...*
 
@@ -195,7 +195,7 @@ read
 read Variable
 ```
 
-*Now type something and press Enter*
+*Now type something and press <key>Enter</key>*
 
 | **22** :$
 
@@ -220,7 +220,7 @@ echo $myVariable
 ./02-read-1
 ```
 
-*Now type something, then press Enter*
+*Now type something, then press <key>Enter</key>*
 
 | **25** :$
 
@@ -297,7 +297,7 @@ echo $myVariable
 
 *Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
-*Note `-r` is for "Raw", to allow all special characters*
+*Note the `-r` flag is for "Raw", to allow all special characters*
 
 | **33** :$
 
@@ -318,7 +318,7 @@ echo $myVariable
 ./02-read-5
 ```
 
-*Copy-paste this with "special" characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
+*Copy-paste this with special characters: `Yo & ^^ / hello \ \ \ Dolly! :-)`*
 
 ### III. `sleep`
 
@@ -376,10 +376,9 @@ gedit 02-sleep-3
 ./02-sleep-3
 ```
 
-*Now type something, then press Enter*
+*Now type something, then press <key>Enter</key>*
 
 ### IV. `wait`
-
 *`wait` will "wait" until the previous command finishes before moving on. It keeps Shell from stumbling over its own feet. Sometimes, scripts break and the solution is to `wait`.*
 
 ```sh
@@ -496,7 +495,7 @@ wait [PID]
 wait 90210
 ```
 
-*Note the PID number and replace 55555 with that number below:*
+*Note the PID number and replace `55555` with that number below:*
 
 | **54a** :$
 
@@ -519,10 +518,9 @@ wait $(pgrep lowriter)
 ___
 
 # The Take
-
 - `odt2txt` converts an .odt file into a raw text file
 - `pandoc` can do many more conversions than `odt2txt`, including markdown, PDF, EPUB, and even MediaWiki!
-- `read` accepts STDIN input and sets it as a variable
+- `read` accepts `STDIN` input and sets it as a variable
   - It has many options, but it is a simple way to let the human input variables during a script
 - `sleep` will wait a number of seconds, then continue
   - This can be useful in scripts, such as pausing the needed 2 seconds between Apache web server restarts

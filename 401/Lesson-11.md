@@ -137,7 +137,7 @@ sed "s/[2-6]/%/" code-of-poetry.txt
 sed "s/[a-u]/x/g" code-of-poetry.txt
 ```
 
-*Create and test more `grep` and `sed` commands against code-of-poetry.txt from the [Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) cheat sheet*
+*Create and test more `grep` and `sed` commands against `code-of-poetry.txt` from the [Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) cheat sheet*
 
 ### II. Space via `echo`
 
@@ -182,7 +182,6 @@ echo "First line then"$'\n'now "another" line$'\t'"after tab"
 ```
 
 ### III. Heredoc: `cat <<EOF`
-
 #### Rules of a heredoc
 1. A "heredoc" is text in a script treated as a separate text document; useful for large amounts of text.
 2. A heredoc is a multi-line argument for a command; the first line can pipe like a normal command.
@@ -200,7 +199,6 @@ DELIMETER
 ```
 
 #### Common Examples:
-
 *Copy-paste as one command, then again line-by-line:*
 
 **Delimeter: `EOF`**
@@ -256,7 +254,7 @@ EOF
 ls
 ```
 
-*Note the new file created: "neweof"*
+*Note the new file created: "`neweof`"*
 
 | **28** :$
 
@@ -284,7 +282,7 @@ EOF
 ls
 ```
 
-*Note the new file created: "neweofpipe"*
+*Note the new file created: "`neweofpipe`"*
 
 | **31** :$
 
@@ -312,7 +310,7 @@ EOF
 ls
 ```
 
-*Note the new file created: "neweoftee"*
+*Note the new file created: "`neweoftee`"*
 
 | **34** :$
 
@@ -525,7 +523,6 @@ echo "$EOFvar"
 ___
 
 # The Take
-
 ## RegEx Character Classes
 - A "character class" is a group of character types
 - Character classes are part of creating a "RegEx" (as introduced in [Lesson 101-11](https://github.com/inkVerb/vip/blob/master/101/Lesson-11.md))
@@ -577,6 +574,7 @@ ___
   - This does not apply to Shell and BASH
 
 ### Know the [rules of a heredoc](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md#rules-of-a-heredoc)
+
 ___
 
 #### [Lesson 12: Secure Scripting & Command Hacks](https://github.com/inkVerb/vip/blob/master/401/Lesson-12.md)

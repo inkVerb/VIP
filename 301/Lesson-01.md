@@ -47,7 +47,7 @@ gedit 01-if-file
 ./01-if-file myfile
 ```
 
-*Note it says nothing because the file "myfile" does not exist*
+*Note it says nothing because the file "`myfile`" does not exist*
 
 | **4** :$
 
@@ -73,7 +73,7 @@ ls
 ./01-if-file myfile
 ```
 
-*Note the response because the file "myfile" exists*
+*Note the response because the file "`myfile`" exists*
 
 Test for an existing *directory* by name
 
@@ -194,7 +194,7 @@ gedit 01-if-else-dir
 gedit 01-if-else-e
 ```
 
-*Note `-e` checks whether something exists, whether as a file, directory, or link*
+*Note `-e` checks only whether something "exists", whether as a file, directory, or link*
 
 ```sh
 [ -e $1 ]
@@ -292,7 +292,7 @@ This is standard practice for `if` and many other logic statements
 gedit 01-style
 ```
 
-*Note `;` means "new line of logic" and whitespace at the beginning of lines is ignored*
+*Note `;` means "new line of logic" and **whitespace** at the beginning of lines is ignored*
 
 ```sh
 if [ -z $1 ]; then
@@ -368,7 +368,7 @@ The command runs; if it succeeds, the test answers true
 gedit markdown.md
 ```
 
-*Note the contents of markdown.md*
+*Note the contents of `markdown.md`*
 
 | **43** :$
 
@@ -396,7 +396,7 @@ grep "Markdown" markdown.md
 echo $?
 ```
 
-*Only "markdown", not "Markdown"*
+*Only "`markdown`", not "`Markdown`"*
 
 | **47** :$
 
@@ -492,8 +492,10 @@ if grep -q "markdown" markdown.md; then echo "Yes: markdown"; fi
 ___
 
 # The Take
-
 - Shell scripts use logic tests
+- **whitespace** - any extra space, including more than one continguous space, leading or trailing space on a line or string, or tabs
+  - Often seen as a problem and removed by many text operations
+  - A kind of metacharacter (see [Characters](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Characters.md#RegEx-Metacharacters) cheat sheet) and dealt with in RegEx ([401 Lesson 11](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md))
 
 ## `if` (a logical test)
 - Procedure of an `if` test:

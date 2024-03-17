@@ -20,10 +20,9 @@ sudo systemctl start apache2 mariadb
 ```
 
 ### This lesson uses two terminals and two browser tabs!
-
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -31,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 mariadb -u admin -padminpassword
 ```
 
-*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
+*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -80,33 +79,33 @@ ls web
 *Note basic changes:*
 
 - *`$edit_page_yn` to see whether to add JS for TinyMCE:*
-  - *in.head.php*
+  - *`in.head.php`*
   - *pieces.php: `false`*
   - *edit.php: `true`*
 - *`$nologin_allowed` to redirect if not logged in:*
   - *pieces.php: `false`*
-  - *in.head.php*
+  - *`in.head.php`*
   - *edit.php: `false`*
   - *blog.php: `true`*
   - *webapp.php: `true`*
-- *in.head.php*
+- *`in.head.php`*
   - *HTML page starts at end of logic*
   - *`<h1>` page name is part*
   - *TinyMCE uses class `#p_content` for the selector*
-- *in.logincheck.php*
+- *`in.logincheck.php`*
   - *Added some logic near the end to keep things clean*
-- *in.footer.php*
+- *`in.footer.php`*
   - *Finally here in all page files*
   - *Simple for now: `</body>` & `</html>`*
-- *webapp.php*
+- *`webapp.php`*
   - *Only handles login/logout*
   - *Is a little more complicated because it processes the POST for the login `<form>`*
-- *account.php*
+- *`account.php`*
   - *Ready for our new in.head and in.footer files*
 
 ***Note our new file:***
 
-- *pieces.php*
+- *`pieces.php`*
   - *Lists all pieces in a `while` loop and `<table>`*
   - *We will add more later*
 
@@ -116,7 +115,7 @@ ls web
 localhost/web/pieces.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Review pieces on our SQL table...*
 
@@ -155,21 +154,21 @@ ls web
 
 *Note simple SQL queries based on GET arguments:*
 
-- *delete.php*
-- *undelete.php*
-- *purge_delete.php*
-- *unpublish.php*
-- *republish.php*
-- *pagify.php*
-- *postify.php*
+- *`delete.php`*
+- *`undelete.php`*
+- *`purge_delete.php`*
+- *`unpublish.php`*
+- *`republish.php`*
+- *`pagify.php`*
+- *`postify.php`*
 
-| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-2** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Observe changes to pieces on our SQL table...*
 
@@ -214,7 +213,7 @@ ls web
 
 *Note pieces.php:*
 
-- *We added an `include` for in.metaeditfunctions.php*
+- *We added an `include` for `in.metaeditfunctions.php`*
 - *We use our new `metaeditform()` function rather than links*
 
 *Note in.metaeditfunctions.php:*
@@ -229,21 +228,21 @@ ls web
 
 *Note these validate POST instead of GET, no other differences:*
 
-- *delete.php*
-- *undelete.php*
-- *purge_delete.php*
-- *unpublish.php*
-- *republish.php*
-- *pagify.php*
-- *postify.php*
+- *`delete.php`*
+- *`undelete.php`*
+- *`purge_delete.php`*
+- *`unpublish.php`*
+- *`republish.php`*
+- *`pagify.php`*
+- *`postify.php`*
 
-| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-4** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Observe changes to pieces on our SQL table...*
 
@@ -288,21 +287,21 @@ ls web
 
 *Note these redirect to trash.php, not pieces.php:*
 
-- *undelete_trash.php*
-- *purge_delete_trash.php*
+- *`undelete_trash.php`*
+- *`purge_delete_trash.php`*
 
 *Note empty_all_trash.php:*
 
 - *This has a `while` loop to delete each "dead" piece*
 
 
-| **B-6** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-6** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Review "pieces" on our SQL table...*
 
@@ -359,13 +358,13 @@ ls web
 - *This isn't about beauty as much as it is about being more readable*
   - *This is called "UX theory" (User eXperience theory)*
 
-| **B-8** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-8** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 In Atom:
 
@@ -373,9 +372,7 @@ In Atom:
 - Double click `.classes` in the .css to see where they appear in the .php
 
 ### Revision History
-
 #### htmldiff.js
-
 - [GitHub repo](https://github.com/poetryiscode/htmldiff)
 - [GitHub fork](https://github.com/inkverb/htmldiff) (in case it doesn't work)
 
@@ -420,13 +417,13 @@ ls web
 - *Added a `.purple` class*
 - *Added a section for "htmldiff.js"*
 
-| **B-9** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-9** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 Hover over a "Status" section and click "history", it should take you somewhere like...
 
@@ -436,7 +433,7 @@ Hover over a "Status" section and click "history", it should take you somewhere 
 localhost/web/hist.php?p=3
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *...This is using our htmldiff.js framework*
 
@@ -504,14 +501,13 @@ $new_id = $row[0];
   - *This bumped our old htmldiff DOM `<h2>` tags to `<h3>`*
   - *It is VERY important to preserve header hierarchy, starting with `<h1>` and going down*
 
-| **B-12** :// (or whatever ID, <kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-12** :// (or whatever ID, <key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/hist.php?p=3
 ```
 
 ### Tags Field via JSON
-
 We are starting to use JSON
 
 JSON is an array that lives as a string, so you can view it with `echo` (arrays must be looped or dumped to view)
@@ -606,7 +602,6 @@ localhost/web/jsonarrays.php
 *Let's try to some JSON in our SQL...*
 
 #### JSON in SQL
-
 *Review our SQL tables...*
 
 | **13a** ://phpMyAdmin **> pieces**
@@ -682,7 +677,6 @@ SELECT id, title, slug FROM pieces WHERE tags=CAST('["one tag","second tag","ter
 *Note MariaDB won't return results for `CAST($json) AS JSON` because MariaDB treats JSON simply as text in a string (`LONGTEXT`, `TEXT`, etc) which follows SQL standards and keeps our SQL queries quite simple*
 
 #### JSON in Our Blog
-
 *Let's implement JSON in our blog...*
 
 | **19** :$
@@ -698,9 +692,9 @@ ls web
 
 *Note `p_tags` in:*
 
-- *edit.php*
-- *piecefunctions.php*
-- *in.editprocess.php*
+- *`edit.php`*
+- *`piecefunctions.php`*
+- *`in.editprocess.php`*
 
 *Note how in.editprocess.php processes JSON in SQL queries and `json_decode()` in PHP*
 
@@ -712,7 +706,7 @@ ls web
 localhost/web/edit.php?p=3
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Note the new "Tags" field and the `="p_tags"` values in HTML*
 
@@ -735,10 +729,10 @@ SELECT title, slug, tags FROM pieces WHERE id=3;
 6. Note the SQL query and try it in the SQL terminal
 
 ### Links JSON RegEx Process
-
 #### We start by processing PHP arrays
 
 **Process a PHP array:**
+
 ```php
 foreach ($rarray as $item) {
     echo $item[0];
@@ -748,6 +742,7 @@ foreach ($rarray as $item) {
 ```
 
 **Display human-readable 3-D PHP array:**
+
 ```php
 foreach ($links_array as $line_item) {
   echo "<pre><b>$line_item</b></pre>";
@@ -758,7 +753,6 @@ foreach ($links_array as $line_item) {
 ```
 
 #### We also include RegEx and careful logic
-
 Don't pick apart the PHP in this next file too carefully
 
 Just note:
@@ -850,12 +844,12 @@ ls web
 
 *Note:*
 
-- *edit.php*
+- *`edit.php`*
   - *Links to "View on blog" and "Preview draft"*
   - *Content is closer to the top*
   - *The `="submit"` buttons were moved to just after "Content"*
   - *Links uses the new function `infoPop()` for a usage tip*
-- *in.piecefunctions.php*
+- *`in.piecefunctions.php`*
   - *`p_links` has been added to both functions:*
     - *`checkPiece()`*
     - *`pieceInput()`*
@@ -864,22 +858,22 @@ ls web
     - *`p_after`*
     - *`p_links`*
   - *New function for an "info" popup help*
-- *in.editprocess.php*
+- *`in.editprocess.php`*
   - *`$p_links` appears*
     - *`checkPiece()`, alongside `$p_tags`*
     - *`json_decode()`, alongside `$p_tags`*
     - *SQL queries (with the `links` column)*
     - *MariaDB uses a simple text match*
       - *MySQL would use `CAST('$json' AS JSON)`, as with `tags`*
-- *in piece.php*
+- *in `piece.php`*
   - *`$nologin_allowed` variable set by ternary statement, requireing login for previews*
   - *Links and Tags show*
   - *There is a "View on blog" link at the top*
   - *Each iterated link's `<a>` and `<b>` tags have `class="link_item"`, smart to do, we may use later*
-- *in blog.php*
+- *in `blog.php`*
   - *Tags show on hovering over a piece via JavaScript*
   - *Wordlength is truncated as a "preview" via the `preview_text()` function*
-- *in style.css*
+- *in `style.css`*
   - *New `section.links` class (for displaying Links)*
   - *New `section.tags` class (for displaying Tags)*
   - *New `textarea.meta` class (for editing After and Links)*
@@ -935,9 +929,7 @@ localhost/web/piece.php?p=3
 *Let's add a "Series" option...*
 
 ### Piece Series Defined by SQL Table
-
 #### AJAX a `<form>` to `INSERT` SQL
-
 *First, a review...*
 
 In Lesson 6 we learned to [AJAX a `<form>`](https://github.com/inkVerb/vip/blob/master/501/Lesson-06.md#ajax-a-form)
@@ -977,7 +969,7 @@ ALTER TABLE `publication_history` ADD `series` INT UNSIGNED DEFAULT 1;
 localhost/web/select.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 Try adding a Series with the "+ Series" form
 
@@ -1005,19 +997,19 @@ ls web
 - *edit.php:*
   - *`<form>` no longer wraps `<input>` items,*
   - *Every `<input>` uses the `form=` attribute*
-- *in.piecefunctions.php*
+- *`in.piecefunctions.php`*
   - *`form="edit_piece"` added to every `<input>` and `<textarea>`*
-    - *This allows side-by-side forms, as with edit.php*
-- *in.editprocess.php*
+    - *This allows side-by-side forms, as with `edit.php`*
+- *`in.editprocess.php`*
   - *`p_series` validation runs an SQL query to see if the Series actually exists*
   - *`$p_series` also appears in SQL queries and dup checks*
-- *in.series.php & ajax.series.php*
+- *in.series.php & `ajax.series.php`*
   - *These run an AJAX `<form>`, nearly identical to what we did in Lesson 6*
     - *This uses a `<button>` that activates the AJAX, not an `<input type="submit">` with an AJAX `<form>` capture `window.addEventListener`*
   - *Both the `<select>` input and the new Series `<form>` are wrapped in a `<div>` for AJAX to reload*
   - *We must `include ('./in.logincheck.php')` in the AJAX source for anything related to logged-in activity*
     - *It is not enough just to check `$_SESSION`, which usually expires after 15 minutes*
-    - *We want to check for `$_COOKIE` login, which is part of in.logincheck.php*
+    - *We want to check for `$_COOKIE` login, which is part of `in.logincheck.php`*
 
 | **26** :>
 
@@ -1052,7 +1044,6 @@ SELECT * FROM series;
 *We just used `form=` to put a `<form>` among other `<form>` items; let's do more...*
 
 ### Side-by-Side Forms
-
 *First, a review...*
 
 | **28** :$
@@ -1061,13 +1052,13 @@ SELECT * FROM series;
 codium core/09-pieces6.php
 ```
 
-| **B-28** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-28** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 We already have a `<form>` inside many of these `<table>` cells (the links that appear on hover)
 
@@ -1113,7 +1104,7 @@ ls web
 localhost/web/postformarrays.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 Check different boxes, then submit with different buttons multiple times
 
@@ -1142,7 +1133,7 @@ ls web
 - *View of deleted pieces is gone, but logic still allows for them*
   - *We will AJAX changes later and want to still see "just deleted" pieces*
 - *Bulk actions section hides/shows via JavaScript*
-  - *These call act.bulkpieces.php*
+  - *These call `act.bulkpieces.php`*
 
 *Note act.bulkpieces.php:*
 
@@ -1163,21 +1154,21 @@ ls web
 
 *Note trash.php:*
 
-- *This is similar to pieces.php*
+- *This is similar to `pieces.php`*
 - *Deleted pieces can be previewed and edited*
 - *Classes for "live" pieces are allowed*
   - *We will AJAX changes later and want to still see "just restored" pieces*
 - *Bulk actions section hides/shows via JavaScript*
-  - *These call act.bulkpieces.php*
+  - *These call `act.bulkpieces.php`*
 
 
-| **B-30** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-30** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 Click and try:
 
@@ -1202,13 +1193,13 @@ codium core/09-pieces8.php core/09-in.metaeditfunctions8.php core/09-ajax.pieces
 ls web
 ```
 
-| **B-31** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-31** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 *Notice the AJAX functions with every piece*
 
@@ -1229,7 +1220,7 @@ In Pieces and Trash:
 *Note pieces.php:*
 
 - *Added a JavaScript function `clearChanged`*
-  - *Used in `<code class="renew" ...>changed</code>` in ajax.piecesactions.php*
+  - *Used in `<code class="renew" ...>changed</code>` in `ajax.piecesactions.php`*
 
 *Note in style.css:*
 
@@ -1242,22 +1233,22 @@ In Pieces and Trash:
   - *Now, it generates AJAX calls with the `<forms>`*
   - *The AJAX JavaScript adds the `.renew` CSS class to the `<tr>`*
     - *`document.getElementById("prow_ID").classList.add("renew");`*
-    - *This class `.renew` is in our new style.css*
+    - *This class `.renew` is in our new `style.css`*
 
 *Note AJAX is handled by:*
 
-- *ajax.piecesactions.php*
+- *`ajax.piecesactions.php`*
   - *AJAX calls this by default*
   - *It re-creates the entire `<tr>` and sends it for AJAX to update*
   - *It adds a note `<code class="renew" ...>changed</code>`*
-    - *This class `.renew` is in our new style.css*
+    - *This class `.renew` is in our new `style.css`*
     - *We need this note because UX theory (User eXperience) demands that appearance changes both:*
-    - *Clicking "changed" will activate JavaScript's `clearChanged` created in pieces.php*
+    - *Clicking "changed" will activate JavaScript's `clearChanged` created in `pieces.php`*
       - *This will remove the "changed" text and the "renew" class*
       1. *Be explained to the user*
       2. *Be axiomatic to the user (self-explanatory)*
 
-- *act.piecesactions.php*
+- *`act.piecesactions.php`*
   - *Handles the action and redirects if AJAX doesn't get triggered for some reason*
   - *The entire page will reload*
 
@@ -1297,9 +1288,9 @@ ls web
 - *Classes `.deleting`, `.undeleting` & `.renew` so the messge looks like a button*
   - *This is part of good US theory, intuitive and axiomatic*
 - *The changes to this class affect "changed" indicator, from:*
-  - *pieces.php*
-  - *trash.php*
-  - *in.metaeditfunctions.php*
+  - *`pieces.php`*
+  - *`trash.php`*
+  - *`in.metaeditfunctions.php`*
 
 *Note in in.metaeditfunctions.php:*
 
@@ -1307,13 +1298,13 @@ ls web
   - *Changes the page more directly with AJAX calls*
   - *Changes the text of the "changed" button, while we're at it*
 
-| **B-33** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-33** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 Try different Piece actions and see how the page never needs to reload
 
@@ -1383,7 +1374,7 @@ codium core/09-pieces10.php core/09-trash10.php core/09-in.metaeditfunctions10.p
   - *This was heavily adopted from the first and final AJAX examples in Lesson 6*
   - *It is accompanies by several other JavaScript that you can search by double-clicking*
 - *Nearly all JavaScript loads from pieces.php and in.metaeditfunctions.php, not sent from AJAX (ajax.metaedit.php)*
-- *Some JavaScript was migrated from edit.php*
+- *Some JavaScript was migrated from `edit.php`*
 - *Basic layout:*
 ```html
 <tr>
@@ -1423,17 +1414,17 @@ function clearChanged() {}
 *Note ajax.metaedit.php:*
 
 - *This both renders and processes the `<form>`*
-- *It is a toned-down edit.php, some from in.editprocess.php*
+- *It is a toned-down edit.php, some from `in.editprocess.php`*
 - *After submitting the `<form>`, the output updates the "changed" indicator in the `<table>` row*
 - *Our `pieceInput()` function has the `_me` appendage for some fields*
   - *These options were added to in.piecefunctions.php so the fields would be shorter in our Meta Edit*
 
-*Note style.css*
+*Note `style.css`*
 
 - *`.metaupdate` class for the `<table>` row after Meta Edit AJAX finishes*
 - *`.metaedit` class for our new `pieceInput()` function*
-  - *From in.piecefunctions.php*
-  - *Used by ajax.metaedit.php*
+  - *From `in.piecefunctions.php`*
+  - *Used by `ajax.metaedit.php`*
 - *The `font-size` is smaller, just to make sure everything fits*
   - *`tr.pieces`, the normal table `small`*
   - *`tr.metaedit` and several `<form>` elements `x-small`*
@@ -1459,7 +1450,7 @@ document.getElementById("title_"+p_id).innerHTML = '<b>'+jsonMetaEditResponse["t
 document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditResponse["message"]+'&nbsp;';
 ```
 
-| **B-35** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-35** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1467,7 +1458,7 @@ localhost/web/pieces.php
 
 *Clicking on any Piece Title will bring up our JavaScript "Meta Edit" box*
 
-*Note on HTML entity symbols: pieces.php, trash.php, in.metaeditfunctions.php*
+*Note on HTML entity symbols: pieces.php, trash.php, `in.metaeditfunctions.php`*
 
 - *The pencil symbol next to each Piece Title*
   - *This often means "edit", so we should change that text...*
@@ -1482,7 +1473,7 @@ localhost/web/pieces.php
     - *Reverse pilcrow for "Posts": no writer's use outside of some software coding*
 
 
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
 
 ### Published History to Display New Meta
 
@@ -1494,7 +1485,7 @@ codium core/09-hist10.php && \
 ls web
 ```
 
-| **B-36** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-36** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1503,8 +1494,7 @@ localhost/web/pieces.php
 Click on "history" for any Piece
 
 ### AJAX our Editor
-
-Let's cleanup edit.php
+*Let's cleanup `edit.php`*
 
 - Better HTML viewing, outside `<?php` tags
 - AJAX for:
@@ -1529,42 +1519,42 @@ ls web
 
 *Note:*
 
-- *edit.php*
+- *`edit.php`*
   - *Uses new JavaScript*
     - *`onNavWarn()` & `offNavWarn()` to warn users navigating away after potential unsave changes*
     - *`Disable "Enter" key on forms`*
     - *`ajaxSaveDraft()` to AJAX our "Save draft" button*
       - *Clicking "Save draft" will not reload the entire page, but it still saves*
     - *For new pieces with no ID*
-      - *The Javascript <kbd>Ctrl</kbd> + <kbd>S</kbd> listener will trigger the "Save draft" button*
-      - *TinyMCE's <kbd>Ctrl</kbd> + <kbd>S</kbd> hotkey will trigger a false ajaxSaveDraft() that simply clicks the "Save draft" button just the same*
+      - *The Javascript <key>Ctrl</key> + <key>S</key> listener will trigger the "Save draft" button*
+      - *TinyMCE's <key>Ctrl</key> + <key>S</key> hotkey will trigger a false ajaxSaveDraft() that simply clicks the "Save draft" button just the same*
       - *Search: `// AJAX false triggers in new piece`*
-    - *`addEventListener` to capture "<kbd>Ctrl</kbd> + <kbd>S</kbd>" for the "Save draft" button*
+    - *`addEventListener` to capture "<key>Ctrl</key> + <key>S</key>" for the "Save draft" button*
       - *When editing an existing Piece, it will send the `ajaxSaveDraft()` AJAX call directly*
       - *When editing a new Piece with no ID yet, it will use JavaScript to "click" the "Save draft" `<input type="submit"`*
     - *AJAX response appears inside `<div id="ajax_save_draft_response"`*
     - *AJAX will update the of the slug `<input value=""`*
     - *JavaScript for `showSlugEdit()`, `showGoLiveOptionsBox()`, `showGoLiveOptionsLabel()`, etc closes `<?php` tags so as to use HTML syntax highlighting*
-- *ajax.edit.php*
-  - *Only purpose is to include in.editprocess.php for AJAX calls from edit.php*
-- *in.piecefunctions.php*
+- *`ajax.edit.php`*
+  - *Only purpose is to include in.editprocess.php for AJAX calls from `edit.php`*
+- *`in.piecefunctions.php`*
   - *Added two warnings JavaScript functions to every `<form>` `<input>`:*
     - *`onchange="onNavWarn();"`*
     - *`onkeyup="onNavWarn();"`*
     - *Not added to `<textarea`...`name="p_content"` because we don't want to run a JS function on every letter typed*
       - *We will build a solution for the `p_content` with our autosave feature in the next step*
   - *Changed `<input id="p_slug"` to `class="slug"` to match our new CSS*
-- *in.editprocess.php*
+- *`in.editprocess.php`*
   - *Uses AJAX for "Save draft"*
     - *`$response`*
     - *`$r_class`*
     - *`$ajax_response`*
     - *`$json_response`*
-- *in.series.php & ajax.series.php*
+- *in.series.php & `ajax.series.php`*
   - *Added two warnings JavaScript functions to every `<form>` `<input>`:*
     - *`onchange="onNavWarn();"`*
     - *`onkeyup="onNavWarn();"`*
-- *in.head.php*
+- *`in.head.php`*
   - *For AJAX and other JavaScript to read TinyMCE content, we need this in the config:*
 ```javascript
 setup: function (editor) {
@@ -1573,7 +1563,7 @@ setup: function (editor) {
   });
 },
 ```
-  - *For TinyMCE to allos the "<kbd>Ctrl</kbd> + <kbd>S</kbd>" AJAX hotkey, we need this in the config:*
+  - *For TinyMCE to allos the "<key>Ctrl</key> + <key>S</key>" AJAX hotkey, we need this in the config:*
 ```javascript
 init_instance_callback: function (editor) {
   editor.addShortcut("ctrl+s", "Save draft", "custom_ctrl_s");
@@ -1582,11 +1572,11 @@ init_instance_callback: function (editor) {
   });
 },
 ```
-- *style.css*
+- *`style.css`*
   - *`Notice hides` section, making class `.notehide` disappear after 8 seconds*
   - *Added `input[type=text].slug` so the slug `<input type="text"` isn't ridiculously long like before*
 
-| **B-37** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-37** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1594,7 +1584,7 @@ localhost/web/pieces.php
 
 1. Click "Edit" for any piece
 2. Click "Save draft" and watch for the message
-3. Press "<kbd>Ctrl</kbd> + <kbd>S</kbd>" to watch the same message
+3. Press "<key>Ctrl</key> + <key>S</key>" to watch the same message
 4. Click "Update" or "Publish" and the page will reload instead of AJAX
 
 ### JavaScript Auto-Save
@@ -1614,7 +1604,7 @@ This autosave function serves many purposes, including nav warnings when changes
 
 *Note:*
 
-- *edit.php*
+- *`edit.php`*
   - *In JavaScript, we added our `pieceAutoSave()` function to our AJAX `ajaxSaveDraft()` function*
     - *This keeps everything up to date*
   - *`autoSaveTimer()` is created by `function Timer` to loop our autosave every 30 seconds*
@@ -1625,7 +1615,7 @@ This autosave function serves many purposes, including nav warnings when changes
   - *`// Run this when the page loads` section looks for old autosaves on page load and warns about differences*
     - *If there is an unsaved autosave found, the 30 second autosave loop will not start*
       - *We run `autoSaveTimer.stop();`right after we create `autoSaveTimer()` to make sure it isn't running, such as in this situation where an unsaved autosave was found*
-    - *`See diff...` `<button>` will send JSON with an unsaved autosave to hist.php*
+    - *`See diff...` `<button>` will send JSON with an unsaved autosave to `hist.php`*
   - *30-second autosave differences will trigger the nav warning `onNavWarn();`*
     - *We don't want to trigger `onNavWarn();` from our TinyMCE/content editor because that runs the function every time the user types, which is too much CPU expense*
     - *Times it won't work are few and acceptable in most recovery-autosave efforts in current software*
@@ -1640,7 +1630,7 @@ This autosave function serves many purposes, including nav warnings when changes
       - *Turns off our navigation warning with `offNavWarn()`*
       - *Sends the `<form name="edit_piece"` via JavaScript rather than `<input type="submit"`*
   - *`htmlchars(string)` function because we will pass JS variable `recover_as` through an HTML form*
-- *hist.php*
+- *`hist.php`*
   - *Added `include ('./in.piecefunctions.php');` because we will use this to process an autosave recovery*
   - *Added `if (isset($_POST['as_json']))` scenario for processing an autosave recovery*
   - *Added `// Recovered autosave` scenario loading an autosave review*
@@ -1648,9 +1638,9 @@ This autosave function serves many purposes, including nav warnings when changes
       - *`$_GET['o']`*
       - *`$_GET['a']`*
       - *`$_POST['old_as']`*
-  - *`htmlspecialchars($_POST['old_as'])` to decode our `recover_as = htmlchars(old_as)` from edit.php*
+  - *`htmlspecialchars($_POST['old_as'])` to decode our `recover_as = htmlchars(old_as)` from `edit.php`*
 
-| **B-38** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
+| **B-38** :// (<key>Ctrl</key> + <key>R</key> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1658,8 +1648,8 @@ localhost/web/pieces.php
 
 1. Click "Edit" for any piece
 2. Type some changes in the "Content" (TinyMCE) field
-3. Wait 30 seconds and **DO NOT** press "<kbd>Ctrl</kbd> + <kbd>S</kbd>"
-4. Press "<kbd>Ctrl</kbd> + <kbd>R</kbd>" to reload the page
+3. Wait 30 seconds and **DO NOT** press "<key>Ctrl</key> + <key>S</key>"
+4. Press "<key>Ctrl</key> + <key>R</key>" to reload the page
   - Agree to a warning to navigate away and leave the page
   - If there is no navigate away warning, you didn't wait long enough after changes
 5. When the page reloads, you will see the message about unsaved changes
@@ -1670,7 +1660,6 @@ localhost/web/pieces.php
 We need to do one more thing so we can do things right...
 
 ### Unpublished Changes: Simple Diff via SQL
-
 We need a proper way to decide if there are changes to a draft in the `pieces` that have not been published to the `publications` table
 
 Interestingly, SQL has very simple ways to find differences, so we don't need complicated PHP `if` statements for this
@@ -1682,7 +1671,6 @@ Remember our workflow:
   - We can view the diff between the latest draft and latest publication in History (hist.php) already
 
 #### a. We need such a way in:
-
 1. Both pieces.php and edit.php
 2. To identify whether there are publishable changes to our latest draft
 3. Which can do using a simple `LEFT JOIN` SQL query
@@ -1729,12 +1717,12 @@ ls web
 
 *Note:*
 
-- *edit.php & pieces.php*
+- *edit.php & `pieces.php`*
   - *Checks if a Piece draft and publication is different*
     - *This uses our SQL `LEFT JOIN` query*
   - *Search: `// Unpublished changes to draft`*
   - *Search: `$draft_diff`*
-- *in.editprocess.php*
+- *`in.editprocess.php`*
   - *Will `UPDATE` or `INSERT INTO` the `publications` and `publication_history` tables by cloning `FROM` the `pieces` table*
     - *This will clone `date_updated` from `pieces` to `publications`, used by our `LEFT JOIN` difference check*
     - *Search: `INSERT INTO publication_history`*
@@ -1766,7 +1754,7 @@ ___
 
 1. Make sure the piece is published
 2. Make some changes anywhere
-3. Click "Save draft" or press "<kbd>Ctrl</kbd> + <kbd>S</kbd>", **NOT** "Update publication"
+3. Click "Save draft" or press "<key>Ctrl</key> + <key>S</key>", **NOT** "Update publication"
 5. Look for a message near the top that reads "**view diff for unpublished changes**"
   - You may need to load from the address bar again to see that "view diff..." message
 6. Run our SQL query for this piece (change `U.piece_id=1` to another number if `edit.php?p=1` didn't work in the previous step)
@@ -1824,7 +1812,6 @@ localhost/web/pieces.php
 *If you don't see any "**(pending changes)**" message, exit a piece and "Save draft" for some changes, then try Pieces again*
 
 ### Prevent Multiple `<form>` `<input>` Submissions
-
 *Create a new post...*
 
 | **B-42** :// (No "p" _GET argument in the URL, this is a new piece)
@@ -1834,7 +1821,7 @@ localhost/web/edit.php
 ```
 
 1. Enter a boring title you will recognize
-2. Many times as fast as you can: click "Save draft" or press "<kbd>Ctrl</kbd> + <kbd>S</kbd>"
+2. Many times as fast as you can: click "Save draft" or press "<key>Ctrl</key> + <key>S</key>"
 
 *Have a look...*
 
@@ -1894,7 +1881,6 @@ localhost/web/pieces.php
 ___
 
 # The Take
-
 ## PHP Arrays
 - Arrays can be 2-D
   - A big group
@@ -2018,6 +2004,7 @@ WHERE B.a_id=5; -- The table_b match is more important, which could matter later
 ```
 - The main takeaway is:
   - ***Deeper knowledge of SQL will improve your PHP work***
+  
 ___
 
 #### [Lesson 10: Media Library, Files & Uploads](https://github.com/inkVerb/vip/blob/master/501/Lesson-10.md)

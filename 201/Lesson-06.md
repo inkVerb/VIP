@@ -14,7 +14,7 @@ cd verb.ink
 ```
 ___
 
-*Download the entire verb.ink page using wget*
+*Download the entire verb.ink web page using `wget`*
 
 | **1** :$
 
@@ -48,7 +48,7 @@ ls
 gedit index.html
 ```
 
-*Download the verb.ink index page using curl*
+*Download the verb.ink index page using `curl`*
 
 | **6** :$
 
@@ -130,7 +130,7 @@ wget https://github.com/inkVerb/vip/archive/master.zip
 ls
 ```
 
-*Specify a different output filename with: `-O SAVEASNAME` (CAPITAL '-O'!)*
+*Specify a different output filename with: `-O SaveAsName` (CAPITAL '-O'!)*
 
 | **15** :$
 
@@ -168,9 +168,9 @@ curl https://github.com/inkVerb/vip/archive/master.zip
 curl -L https://github.com/inkVerb/vip/archive/master.zip
 ```
 
-*Note the problem of raw output of the .zip binary file, because `curl` does not save by default rather than saving it*
+*Note the problem of raw output of the `.zip` binary file, because `curl` does not save by default rather than saving it*
 
-*If needed, use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close the output*
+*If needed, use <key>Ctrl</key> + <key>C</key> to close the output*
 
 *Solution: Specify an output file*
 
@@ -296,7 +296,7 @@ cd vip
 ls
 ```
 
-*Note, you can't see the hidden directory ".git" with a normal `ls` command, use `-a`...*
+*Note, you can't see the hidden directory "`.git`" with a normal `ls` command, use `-a`...*
 
 | **36** :$
 
@@ -304,7 +304,7 @@ ls
 ls -a
 ```
 
-*Note the hidden ".git" directory*
+*Note the hidden "`.git`" directory*
 
 | **37** :$
 
@@ -312,7 +312,7 @@ ls -a
 ls -l .git/objects/pack
 ```
 
-*Note the ".git" directory contains a few read-only files in "objects/pack/", making it harder to delete*
+*Note the "`.git`" directory contains a few read-only files in "objects/pack/", making it harder to delete*
 
 | **38** :$
 
@@ -326,9 +326,9 @@ cd ..
 rm -r vip
 ```
 
-*Note the error message because of the read-only files (<kbd>Ctrl</kbd> + <kbd>C</kbd> to get out of there!)*
+*Note the error message because of the read-only files (<key>Ctrl</key> + <key>C</key> to get out of there!)*
 
-*Removing a git-cloned directory is easier with `sudo`*
+*Removing a `git`-cloned directory is easier with `sudo`*
 
 ### This lesson requires a "sudoer" who can use `sudo`
 >
@@ -372,7 +372,6 @@ ___
 ___
 
 # The Take
-
 - `wget` simply downloads and saves a file from a Web address
 - `wget -O filename` specifies a "Save as..." filename for the download
 - `curl` opens a Web address's content as raw output
