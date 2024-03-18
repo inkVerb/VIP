@@ -76,25 +76,6 @@ ___
   - Generally, working from a **#** `root` prompt is considered "bad", but not necessarily always—especially not for SysAdmins
 - Not all commands make this specification (in these lessons or in other Linux instruction sites), so be aware that you may need to run some commands as `root` even when there is no `sudo` or preceding hash (**#**) in the line commands you see
 
-### Styling Filenames in `/code/filename/and/path` Format
-- Up to this point, these lessons styled filenames as ordinary text
-  - A file in lesson notes would appear as: /path/to/file
-  - This was intended to draw student attention to CLI commands and scripting code specifically
-- From this point forward, file names also will be used in `code-styling`
-  - A file in lesson notes will now appear as: `/path/to/file`
-- This is a more standard practice in proper documentation when using Markdown for the following reasons:
-  1. We indeed need to know when we are working with code-related things or with ideas outside of code; files are part of code
-  2. In Unix & Linux, [everything is a file](https://en.wikipedia.org/wiki/Everything_is_a_file)
-    - If it is Unix/Linux code, then it is already a file
-    - Nearly every command in Unix & Linux is actually a file anyway (except `cd` and a few others)
-    - There really isn't a difference between Unix/Linux files and commands except **execution permissions**
-    - If an executable command file is written with `code`, then all other non-executable files should also
-  3. Markdown renders more than one underscore `_` as an _italics-string_ (literally `_italics-string_` in Markdown, which this is written in)
-    - Using underscore `_` for italics is standard practice in Markdown
-    - Many file names may contain underscore `_`, which Markdown may interpret as italics
-    - Underscore `_` *does not* create italics if in backticks
-    - See where this came up in [discussion on Stack Exchange](https://meta.stackexchange.com/questions/246900/)
-
 ___
 
 ### OPTIONAL: If you did Linux 201, but on a different machine
