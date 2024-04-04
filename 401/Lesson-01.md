@@ -235,7 +235,7 @@ cd ~/School/VIP/401
 ```
 
 ### IV. "Reverse Search"
-*Press <key>Ctrl</key> + <key>R</key>*
+*Press <kbd>Ctrl</kbd> + <kbd>R</kbd>*
 
 *This is reverse search*
 
@@ -251,7 +251,7 @@ echo Hello world
 
 *Go again*
 
-*Press <key>Ctrl</key> + R*
+*Press <kbd>Ctrl</kbd> + R*
 
 *Type `echo "` and notice the DIFFERENT results as you type*
 
@@ -279,7 +279,7 @@ ___
 ## Shell History
 - View terminal history with `history`
 - History is usually kept in `~/.bash_history`
-- Search history from the terminal with **<key>Ctrl</key> + R**
+- Search history from the terminal with **<kbd>Ctrl</kbd> + R**
 
 ___
 

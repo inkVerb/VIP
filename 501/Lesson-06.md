@@ -140,7 +140,7 @@ ajaxHandler.send();
 localhost/web/ajax.html
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 - *Click the button "Go AJAX!"*
 
@@ -181,7 +181,7 @@ ajaxHandler.send();
 localhost/web/ajax.php
 ```
 
-- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 - *Reload the page several times to watch the SESSION count go up on reload*
 - *Click the button "Go AJAX!"*
 - *Reload the page again a few times*
@@ -225,13 +225,13 @@ ajaxHandler.send("foo=AJAX&bar=5");
   - *`ajaxHandler.send("go=AJAX&time=5")`*
 - *ajax_responder.php processes POST arguments*
 
-| **B-3** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-3** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
-- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 - *Click the button "Go AJAX!"*
 - *Note "AJAX" & "5" appear from our line: `go=AJAX&time=5`*
 
@@ -255,13 +255,13 @@ ajaxHandler.setRequestHeader("Content-type", "application/x-www-form-urlencoded"
 ajaxHandler.send(<?php echo '"foo='.$post_foo.'&bar='.$post_bar.'"'; ?>); // PHP generated statement
 ```
 
-| **B-4** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
-- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 - *Note the entire page is the same except our POST values*
 - *Note we used PHP to echo the page with our variables*
 - *Click the button "Go AJAX!"*
@@ -364,13 +364,13 @@ AJAX.send(FD);
   3. *JavaScript runs AJAX to send the `<form>` data*
 - ***This uses the JavaScript object called "`FormData`"***
 
-| **B-5** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-5** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
-- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 1. Note:
   - "SESSION count:"
@@ -486,13 +486,13 @@ ls web
   4. *AJAX responds with a new `<form>`*
   5. *JavaScript runs `listenToForm();` again, to listen for `<input="submit">` again*
 
-| **B-6** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-6** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
-- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 1. Note:
   - "SESSION count:"
@@ -562,13 +562,13 @@ ls web
 - *Because the `<button>` calls the AJAX JS function, we don't need to run the function on every AJAX response*
 
 
-| **B-7** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-7** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
 ```
 
-- *Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+- *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 1. Note:
   - "SESSION count:"
@@ -703,7 +703,7 @@ if ( empty($_SESSION['ajax_token']) ) {
 }
 ```
 
-| **B-8** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-8** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
@@ -749,7 +749,7 @@ echo '$_SERVER["SERVER_NAME"]:'." <code>$mysite</code> // which we use to check 
 ```
 
 
-| **B-9** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-9** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
@@ -804,7 +804,7 @@ ls web
 - *ajax_responder.php:*
   - *Displays `$_POST["ajax_token"]` in the response*
 
-| **B-10** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-10** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php
@@ -946,7 +946,7 @@ AJAX.setRequestHeader("ajax-token", TOKEN);
 ```
 
 
-| **B-11** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-11** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/ajax.php

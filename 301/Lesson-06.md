@@ -89,7 +89,7 @@ journalctl -f
 
 *...now click some actions in the desktop GUI and watch entries appear*
 
-*<key>Ctrl</key> + <key>C</key> to close*
+*<kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
 
 **`logger`** :
 
@@ -570,7 +570,7 @@ ls bozo 2> 2.log
 
 Ready the CLI (if needed)
 
-*gedit: <key>Ctrl</key> + <key>W</key> to close previous files*
+*gedit: <kbd>Ctrl</kbd> + <kbd>W</kbd> to close previous files*
 
 ```console
 cd ~/School/VIP/301/logs
@@ -1029,7 +1029,7 @@ echo $?
 
 *The last `exit` status was `87` because they can't go higher than `87`*
 
-*gedit: <key>Ctrl</key> + <key>W</key> to close previous files*
+*gedit: <kbd>Ctrl</kbd> + <kbd>W</kbd> to close previous files*
 
 | **Find last exit code** :
 
@@ -1086,7 +1086,7 @@ gedit ../06-exit-check-2
 
 *Now it recognizes the last `exit` status because it was generated inside the same script*
 
-*gedit: <key>Ctrl</key> + <key>W</key> to close previous files*
+*gedit: <kbd>Ctrl</kbd> + <kbd>W</kbd> to close previous files*
 
 ### Sent custom messages to output channels 3-87
 

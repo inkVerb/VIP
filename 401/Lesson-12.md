@@ -323,7 +323,7 @@ cp -r space\ names "space also"
 cp -i space\ also/* space\ names/
 ```
 
-*You can overwrite each, or not, or <key>Ctrl</key> + <key>C</key> to close*
+*You can overwrite each, or not, or <kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
 
 | **31** :$
 
@@ -349,11 +349,11 @@ touch rtfile.md
 tail -f rtfile.md
 ```
 
-Open a new terminal window: <key>Ctrl</key> + <key>Alt</key> + <key>T</key> (not <key>F12</key>)
+Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
 
 **Run in a new terminal window:** *(...and keep watch in the first terminal)*
 >
-> Open a new terminal window: <key>Ctrl</key> + <key>Alt</key> + <key>T</key> (not <key>F12</key>)
+> Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
 >
 > | **T1** :$
 
@@ -393,7 +393,7 @@ echo "I am gruit." >> rtfile.md
 exit
 ```
 
-*In the original terminal: <key>Ctrl</key> + <key>C</key>*
+*In the original terminal: <kbd>Ctrl</kbd> + <kbd>C</kbd>*
 
 It never stops...
 

@@ -4,20 +4,21 @@
 # The Chalk
 ## Useful Commands
 ### Command Info
-- `which` command location
-- `whereis` command & man-file locations
-- `whatis Command_Name` command descriptions (found across system)
-- `type Command_Name` command role or purpose
-- `whoami` current user
-- `pwd` Present Working Directory (PWD)
-- `ls | wc -l` number of files in PWD
-- `seq 10` print numbers 1-10, one per line (useful for loops)
+- `which` - command location
+- `whereis` - command & man-file locations
+- `whatis Command_Name` - command descriptions (found across system)
+- `type Command_Name` - command role or purpose
+- `whoami` - current user
+- `pwd` - Present Working Directory (PWD)
+- `ls | wc -l` - number of files in PWD
+- `seq 10` - print numbers 1-10, one per line (useful for loops)
 - `find /etc -type d -iname "*.d"`
 - `find . -perm -u+s` (for `s` permissions on **setuid** programs, see [Lesson 2: Procesesses & Monitoring](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md))
+  - `-perm` - Permissions search with same notation at `chmod`, but prefix with `-` hyphen
 
 ### Machine Information
-- `hostname` (machine name)
-  - `hostname -i` IP address
+- `timedatectl` Time info
+- `uptime` Machine uptime
 - `free` RAM info
 - `lsb_release -d` Architecture/ditstro
 - `lsmod` enabled modules
@@ -34,18 +35,18 @@
 
 ## Boot Process
 1. **BIOS** - Basic Input/Output System
-  - Motherboard
+  - Stored in flash memory on the Motherboard
   - Executes GPT/MBR
 2. **GPT** - GUID Partition Table / (formerly MBR - Master Boot Record)
-  - Partitions ([Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md))
+  - Bootable partition ([Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md))
   - Executes GRUB
 3. **GRUB** - Grand Unified Bootloader
   - Menu at boot up
-  - Executes **kernel command** (seen at `/proc/cmdline` after boot)
+  - Executes the **kernel command** (seen at `/proc/cmdline` after boot)
 4. **Kernel** - The actual Operating System
   - Executes `/sbin/init`
 5. **Init** - Init (via `systemd`)
-  - Executes targets (formerly runlevels)
+  - Executes **targets** (formerly **runlevels**)
 6. **Targets** - Stages of finishing the machine for normal use
   - Executes tools in `/usr/lib/systemd/` by configs in `/lib/systemd/system/`
 
@@ -60,7 +61,7 @@
   - Also includes kernel commands for booting Windows
 - Examine the kernel command for each GRUB menu item:
   1. Highlight an item on the GRUB menu
-  2. Press <key>E</key> for "edit"
+  2. Press <kbd>E</kbd> for "edit"
   - This will show you the kernel config for that menu item, including the **kernel command** (seen at `/proc/cmdline` after boot)
     - Many of these may involve `if` statements, but they all prepare and run the **kernel command**
   - The **kernel command** is descussed at length in [Lesson 5: Kernel & Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)
@@ -91,12 +92,16 @@
 - `systemd` replaced Upstart
   - Fedora in 2011
   - Then RHEL and SUSE
-  - Ubunty 16.04
+  - Ubuntu 16.04
   - Still contains wappers for SysVinit utilities for backwared compatability
   - An exciting human side of its development and Linux-wide implementation
   - All main Linux distros today
 
 ### `systemd`
+- *Implementing* `init` with `systemd` means:
+  - `/sbin/init` is a symlink to `/lib/systemd/systemd`
+    - Thus other things can happen
+  - **see for yourself** :$ `ls -l /sbin/init`
 - Advantages over SysVinit and Upstart
   - Boots faster
   - Agressive parallel capability
@@ -109,38 +114,40 @@
 - Uses `.service` files
 - Handles user processes without `root` privileges
 
-#### SysVinit Run Levels vs `systemd` Targets
+#### `systemd` Targets vs SysVinit Run Levels
 - SysVinit used **run levels**; each run level had to finish before the next was allowed to begin
   - This was because the first processors had only one core and boot rarely happened, so boot speed was obsolete
   - Run levels used shell scripts to run each program
 - `systemd` replaced this with **targets**, which can run with some parallel concurrency
   - This is allowed because of multicore processors and our need for speed
-  - An actual program runs the 
+  - An actual program runs the targets
+  - See the target on your machine with:$
+    - `systemd-analyze` - status
+    - `systemd-analyze critical-chain` - tree
 
-| SysVinit     | Sys V Name                                                    | systemd target      |
+| SysVinit     | Sys V Name                                                    | `systemd` target      |
 |:-------------|:--------------------------------------------------------------|:--------------------|
 | Run level 0  | Halt                                                          | `shutdown.target`   |
-| Run level 1  | Singer-user text mode                                         | `rescue.target`     |
+| Run level 1  | Singer-user text mode                                         | `sysinit.target`<br>`rescue.target`     |
 | Run level 2  | Not used (user-definable)                                     | ∅                  |
-| Run level 3  | Multiuser text mode<br> (networking included)                 | `multi-user.target` |
+| Run level 3  | Multiuser text mode<br> (networking included)                 | `sockets.target`<br>`basic.target`<br>`network.target`<br>`multi-user.target` |
 | Run level 4  | Not used (user-definable)                                     | ∅                  |
 | Run level 5  | Multiuser graphical mode<br> (with X-window GUI login screen) | `graphical.target`  |
 | Run level 6  | Reboot                                                        | `reboot.target`     |
 | Emergency    | ∅                                                            | `emergency.target`  |
 
-#### `systemd` Config Files
+#### `systemd` Unit Config Files (`.service`, et al)
 - Tools
-  - `/lib/systemd/` is a common symlink to `/usr/lib/systemd/`
+  - `/lib/` is a common symlink to `/usr/lib/`
+  - Thus `/lib/systemd/` is usually `/usr/lib/systemd/`
 - User unit configs
   - `/etc/systemd/user/`
   - `~/.config/systemd/user/`
 
-#### System Unit Config `.service` Files
-##### Locations
+##### Unit Config File Locations
 
 | Unit            | Location                   |
 |:----------------|---------------------------:|
-| Default         | `/usr/lib/systemd/system/` |
 | Default         |     `/lib/systemd/system/` |
 | Runtime         |     `/run/systemd/system/` |
 | System specific |     `/etc/systemd/system/` |
@@ -149,9 +156,14 @@
 
 - These should have permissions:
   - `rw-r--r--`
-  - `chmod 644`
+  - `chmod 0644`
+- Some user-specific directories may not exist if they would be empty, especially in the home folder
 
-##### Unit Types
+##### Unit Config File Types
+*The config files run & monitored by `systemctl`*
+
+- *Note files of a specific extension may also require specific attributes (below)*
+  - ie: `.timer` files may require a `[Timer]` section and attributes
 - `.automount` - Mountpoints mounted automatically; requires matching `.mount` unit
 - `.device` - Devices that need `systemd`
 - `.mount` - Mountpoints managed by `systemd`
@@ -165,9 +177,9 @@
 - `.target` - For booting stages
 - `.timer` - Like a `cron` task; matching unit starts at specified time
 
-##### File Attributes & Settings
-- *This is not comprehensive, but most of these are not used in common unit configs*
-- *More common sections and attributes tend to come toward the top*
+##### Unit Config File Attributes & Settings
+- *Not comprehensive, yet most of these are not used in common unit configs*
+- *Those toward the top tend to be more common sections and attributes*
 - `[Unit]`
   - `Description=` - Appears at top of `systemctl status`
   - `Documentation=` - `man` references
@@ -254,13 +266,13 @@
 - `[Slice]`
   - No attributes, but other resource management definitions
 
-##### Examples Files
+##### Example Unit Config Files
 
-**/usr/lib/systemd/system/dddummy.service** : (dummy process running `dd`)
+| **/usr/lib/systemd/system/dddummy.service** : (dummy service running `dd`)
 
 ```
 [Unit]
-Description=dd dry process
+Description=dd running nothing
 
 [Service]
 ExecStart=/usr/bin/dd if=/dev/urandom of=/dev/null
@@ -269,7 +281,7 @@ ExecStart=/usr/bin/dd if=/dev/urandom of=/dev/null
 WantedBy=multi-user.target
 ```
 
-| **/usr/lib/systemd/system/sshd.service** :
+| **/usr/lib/systemd/system/sshd.service** : (`ssh` server login service)
 
 ```
 [Unit]
@@ -288,7 +300,7 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
-| **/lib/systemd/system/dbus.service** :
+| **/lib/systemd/system/dbus.service** : (**D-Bus** desktop inter-app comm service)
 
 ```
 [Unit]
@@ -312,21 +324,124 @@ ExecStart=/usr/bin/dbus-broker-launch --scope system --audit
 ExecReload=/usr/bin/busctl call org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus ReloadConfig
 ```
 
-### The `systemctl` Tool
-*The main utility for managing services*
-- `systemctl` is at `/usr/bin/systemctl`
-- Some require `root` permissions, some don't
+- *Note `After=network.target` in these below, so they run with the `network.target`*
 
-#### Using `systemctl`
+| **/lib/systemd/system/httpd.service** : (stock **Apache** service)
+
+```
+[Unit]
+Description=Apache Web Server
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/httpd -k start -DFOREGROUND
+ExecStop=/usr/bin/httpd -k graceful-stop
+ExecReload=/usr/bin/httpd -k graceful
+PrivateTmp=true
+LimitNOFILE=infinity
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
+```
+
+| **/lib/systemd/system/php-fpm.service** : (stock **PHP-FPM FastCGI** service)
+
+```
+[Unit]
+Description=The PHP FastCGI Process Manager
+After=network.target
+
+[Service]
+Type=notify
+PIDFile=/run/php-fpm/php-fpm.pid
+ExecStart=/usr/bin/php-fpm --nodaemonize --fpm-config /etc/php/php-fpm.conf
+ExecReload=/bin/kill -USR2 $MAINPID
+PrivateTmp=true
+ProtectSystem=full
+PrivateDevices=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK AF_UNIX
+RestrictNamespaces=true
+
+[Install]
+WantedBy=multi-user.target
+```
+
+- *Custom `.service` examples*
+
+| **/etc/systemd/system/mynodeapp.service** : (**Node.js** app as a `.service`)
+
+```
+[Unit]
+Description=My Node.js App
+Documentation=https://mynodeappdomain.tld/read-the-docs
+ConditionPathExists=/srv/www/node
+After=network.target
+
+[Service]
+Environment=NODE_PORT=3001
+Type=simple
+User=www
+Group=www
+ExecStart=/usr/bin/node /srv/www/node/my_node_app.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+| **/etc/systemd/system/mygoapp.service** : (**Go** app as a `.service`)
+
+```
+[Unit]
+Description=My Go App
+Documentation=https://mygoappdomain.tld/read-the-docs
+ConditionPathExists=/srv/www/mygoapp
+After=network.target
+
+[Service]
+Type=simple
+User=www
+Group=www
+WorkingDirectory=/srv/www/mygoapp
+ExecStart=/usr/local/go/bin/go run .
+SyslogIdentifier=MyGoAppService
+StandardOutput=syslog
+StandardError=syslog
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### The `systemctl` Tool
+*The main utility for managing Units*
+
+- `systemctl` is at `/usr/bin/systemctl`
+- Some uses require `root` permissions; some don't
+- Runs & monitors processes defined in **System Unit Config Files**
+- Looks for argued config files in the `.../systemd/.../` locations (above)
+- Searches for `.service` files by default, others must be specified
+  - eg: `httpd.service` can be managed with `systemctl ... httpd`
+    - `systemctl ... httpd.service` is redundant
+  - This may not be true for other Unit Config filetypes
+
+##### Using `systemctl`
 - Listing units:#
   - `systemctl` - All that `systemctl` controls
     - On a LAMP server, you will see services like:
       - `httpd.service`
       - `mariadb.service`
       - `php-fpm.service`
+  - `systemctl list-units -t timer` - Only running timers
   - `systemctl list-units -t service` - Only running services
   - `systemctl list-units -t service --all` - All available services
-  - `systemctl list-units --user "xdg*" --all` All desktop services (returns nothing on cloud VPS)
   - `systemctl | grep running` - All running services
 - Managing services:#
   - `systemctl status SOME_SERVICE` - See status of SOME_SERVICE
@@ -342,11 +457,64 @@ ___
 *Practice commands for SysAdmins who already know what these mean*
 
 ```console
-ls | wc 1
-seq 10
+which cd
+which ls
+which echo
+which cat
+which wc
+which lsb_release
+which free
 
-hostname
-hostname -i
+whereis cd
+whereis ls
+whereis echo
+whereis cat
+whereis wc
+whereis lsb_release
+whereis free
+
+whatis cd
+whatis ls
+whatis echo
+whatis cat
+whatis wc
+whatis lsb_release
+whatis free
+
+type cd
+type ls
+type echo
+type cat
+type wc
+type lsb_release
+type free
+
+whoami
+pwd
+
+ls | wc -l
+cd /usr/bin
+pwd
+ls | wc -l
+ls ls* | wc -l
+cd /etc
+pwd
+ls | wc -l
+
+seq 10
+seq 20
+seq 15
+
+which lsb_release
+whereis lsb_release
+whatis lsb_release
+type lsb_release
+man lsb_release
+
+timedatectl
+uptime
+
+free
 lsb_release -d
 lsmod
 lscpu
@@ -354,12 +522,11 @@ lsmem
 lsblk
 lsusb
 lspci
-free
 
-find /usr/bin -perm -u+s
 find /etc -type d -iname "*.d"
 cd /etc
 find . -iname "*.d"
+
 
 whatis dmidecode
 sudo dmidecode
@@ -368,24 +535,50 @@ sudo dmidecode -t memory
 sudo dmidecode -t system
 sudo dmidecode -t
 
-cd /usr/lib/systemd
-find . -name "*.service"
-cd /usr/lib/systemd/system
+cat /proc/cmdline
+vim /proc/cmdline
+cd /proc
+cat cmdline
+
+ls -l /sbin/init
+cd /sbin
+pwd
+ls | wc -l
 ls
+ls -l init
+cd /lib/systemd
+ls | wc -l
+ls -l systemd
+
+cd /usr/lib/systemd
+ls
+find . -name "*.service"
+find . -name "*.service" | wc -l
+cd /lib/systemd/system
+ls
+ls | wc -l
+cd /run/systemd/system
+ls
+ls | wc -l
+cd /etc/systemd/system
+ls
+ls | wc -l
 cd /etc/systemd/user
 ls
+ls | wc -l
 ls ~/.config/systemd/user
 ls /etc/systemd/system
 
 systemctl
+systemctl list-units -t timer
 systemctl list-units -t service
 systemctl list-units -t service --all
 systemctl list-units --user "xdg*" --all
 
 su
-cat <<EOF > /usr/lib/systemd/system/ddran.service
+cat <<EOF > /etc/systemd/system/ddran.service
 [Unit]
-Description=dd dry process
+Description=dd running nothing
 
 [Service]
 ExecStart=/usr/bin/dd if=/dev/urandom of=/dev/null
@@ -393,14 +586,20 @@ ExecStart=/usr/bin/dd if=/dev/urandom of=/dev/null
 [Install]
 WantedBy=multi-user.target
 EOF
-cat /usr/lib/systemd/system/ddran.service
+
+cat /etc/systemd/system/ddran.service
+
+systemctl status ddran
 systemctl enable ddran
 systemctl start ddran
 systemctl status ddran
 systemctl stop ddran
 systemctl status ddran
 systemctl disable ddran
-rm /usr/lib/systemd/system/ddran.service
+systemctl status ddran
+
+rm /etc/systemd/system/ddran.service
+
 exit
 ```
 

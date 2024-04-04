@@ -22,7 +22,7 @@ sudo systemctl start apache2 mariadb
 ### This lesson uses two terminals and two browser tabs!
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -30,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 mariadb -u admin -padminpassword
 ```
 
-*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -123,7 +123,7 @@ sudo gedit /etc/php/php.ini
 sudo gedit /etc/php/8.0/apache2/php.ini
 ```
 
-    - Search with: <key>Ctrl</key> + <key>F</key>, then type `file_uploads` to find the line, <key>Ctrl</key> + <key>S</key> to save
+    - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `file_uploads` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
   - Or edit with `vim`:
 
@@ -540,7 +540,7 @@ sudo gedit /etc/php/php.ini
 sudo gedit /etc/php/8.0/apache2/php.ini
 ```
 
-    - Search with: <key>Ctrl</key> + <key>F</key>, then type `upload_max_filesize` to find the line, <key>Ctrl</key> + <key>S</key> to save
+    - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `upload_max_filesize` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
   - Or edit with `vim`:
 
@@ -862,7 +862,7 @@ ls web web/media
 acceptedFiles: "image/jpeg, image/png, image/gif, image/svg+xml, video/webm, video/x-theora+ogg, video/ogg, video/mp4, audio/mpeg, audio/ogg, audio/x-wav, audio/wav, text/plain, text/html, .md, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/x-pdf, application/pdf",
 
 ```
-| **B-30** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-30** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -909,7 +909,7 @@ ls web web/media
     - *`$_FILES['upload_file']['tmp_name']`*
     - *`$_FILES['upload_file']['name']`*
 
-| **B-32** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-32** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -986,7 +986,7 @@ addRemoveLinks: true, // Default: false
   - *`$_FILES['upload_file']['tmp_name'][0]`*
   - *`$_FILES['upload_file']['name'][0]`*
 
-| **B-34** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-34** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -1130,7 +1130,7 @@ init: function() {
   - *Is back to the full processor as before*
   - *Adds a 3-D array key `[0]` so the array can work, otherwise it won't*
 
-| **B-36** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-36** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -1504,7 +1504,7 @@ ls web
   - *Styles inside our media editor: `div#media-editor-closer` & `h1#media-editor-content`*
     - *So the "&#xd7;" (`&amp;#xd7;`) and `<h1>` from AJAX can fit on the same line*
 
-| **B-47** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-47** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/medialibrary.php
@@ -1984,7 +1984,7 @@ CREATE TABLE IF NOT EXISTS `media_images` (
 DELETE FROM media_library;
 ```
 
-| **B-71** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-71** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/medialibrary.php

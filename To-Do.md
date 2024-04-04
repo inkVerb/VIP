@@ -37,4 +37,4 @@ These are topics to be added either in the form of units or cheat sheets
 - MariaDB settings
 - Overview of POSIX
 - Creating package installers for Debian, RPM, and Arch
-- GRUB terminal, kernel configs used by GRUB, and creating GRUB menues
+- GRUB terminal, kernel configs used by GRUB, and creating GRUB menus

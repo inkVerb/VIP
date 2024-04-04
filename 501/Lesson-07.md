@@ -22,7 +22,7 @@ sudo systemctl start apache2 mariadb
 ### This lesson uses two terminals and two browser tabs!
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -30,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 mariadb -u admin -padminpassword
 ```
 
-*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -210,7 +210,7 @@ SELECT * FROM strings;
 2. Try the three SQL queries under **...Teaching tip...**
 3. Click the link to login, but note it should have expired
 4. Click around and explore
-  - Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> to see the developer view of pages
+  - Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> to see the developer view of pages
   - Compare the pages with the .php files
 
 *When finished, delete all expired strings...*

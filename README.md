@@ -74,27 +74,27 @@ ___
 
 | Key combination                                                                    | Function               |
 |:---------------------------------------------------------------------------------- |:---------------------- |
-| <key>F9</key>                                                                      | Show/hide side panels  |
-| <key>Ctrl</key> + <key>A</key>                                                     | Select All             |
-| <key>Ctrl</key> + <key>X</key>                                                     | Cut                    |
-| <key>Ctrl</key> + <key>Z</key>                                                     | Undo                   |
-| <key>Ctrl</key> + <key>Shift</key> + <key>Z</key> / <key>Ctrl</key> + <key>Y</key> | Redo                   |
-| <key>Ctrl</key> + <key>T</key>                                                     | Open a new tab         |
-| <key>Ctrl</key> + <key>W</key>                                                     | Close a tab            |
-| <key>Ctrl</key> + <key>LeftClick</key> / <key>MiddleClick</key>                  | Open link in a new tab |
-| <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key>                            | Change tab             |
-| <key>Ctrl</key> + <key>Shift</key> + <key>PageUp</key>/<key>PageDown</key>         | Move tab               |
-| <key>Ctrl</key> + <key>T</key>                                                     | New tab                |
-| <key>Ctrl</key> + <key>W</key>                                                     | Close tab              |
+| <kbd>F9</kbd>                                                                      | Show/hide side panels  |
+| <kbd>Ctrl</kbd> + <kbd>A</kbd>                                                     | Select All             |
+| <kbd>Ctrl</kbd> + <kbd>X</kbd>                                                     | Cut                    |
+| <kbd>Ctrl</kbd> + <kbd>Z</kbd>                                                     | Undo                   |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd> / <kbd>Ctrl</kbd> + <kbd>Y</kbd> | Redo                   |
+| <kbd>Ctrl</kbd> + <kbd>T</kbd>                                                     | Open a new tab         |
+| <kbd>Ctrl</kbd> + <kbd>W</kbd>                                                     | Close a tab            |
+| <kbd>Ctrl</kbd> + <kbd>LeftClick</kbd> / <kbd>MiddleClick</kbd>                  | Open link in a new tab |
+| <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>                            | Change tab             |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>         | Move tab               |
+| <kbd>Ctrl</kbd> + <kbd>T</kbd>                                                     | New tab                |
+| <kbd>Ctrl</kbd> + <kbd>W</kbd>                                                     | Close tab              |
 
 ## Keyboard shortcuts in terminal
 
 | Key combination                                   | Function               |
 |:------------------------------------------------- |:---------------------- |
-| <key>Ctrl</key> + <key>Shift</key> + <key>C</key> | Copy                   |
-| <key>Ctrl</key> + <key>Shift</key> + <key>V</key> | Paste                  |
-| <key>Ctrl</key> + <key>Shift</key> + <key>T</key> | Open a new tab         |
-| <key>Ctrl</key> + <key>Shift</key> + <key>W</key> | Close current tab      |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | Copy                   |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> | Paste                  |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | Open a new tab         |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> | Close current tab      |
 
 ## About Linux
 

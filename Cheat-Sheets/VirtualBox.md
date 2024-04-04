@@ -165,10 +165,10 @@ ___
 
 ## Networking
 - VirtualBox:
-  - File > Tools > Network Manager (<key>Ctrl</key> + <key>H</key>)
-  - Create... (<key>Ctrl</key> + <key>Shift</key> + <key>C</key>)
+  - File > Tools > Network Manager (<kbd>Ctrl</kbd> + <kbd>H</kbd>)
+  - Create... (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>)
   - Click on *the new network just created - `vboxnet0`?*
-    - Right click menu > Properties (<key>Ctrl</key> + <key>Shift</key> + <key>P</key>)
+    - Right click menu > Properties (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>)
   - DHCP Server > Enable Server (checked / enabled)
   - Change the third oclet in each *Address* field to your custom number (eg `77`)
     - Server Address: `192.168.56.2` to `192.168.77.2`

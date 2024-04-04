@@ -38,7 +38,7 @@ gedit 05-while-read
 ./05-while-read
 ```
 
-*Only press Enter to see what happens again and again, comply or use <key>Ctrl</key> + <key>C</key> to close*
+*Only press Enter to see what happens again and again, comply or use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
 
 **`while` counter loop**
 
@@ -170,7 +170,7 @@ gedit 05-until-read
 ./05-until-read werdup
 ```
 
-*Input wrong "passwords" to see what it does, input "werdup" or use <key>Ctrl</key> + <key>C</key> to close*
+*Input wrong "passwords" to see what it does, input "werdup" or use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
 
 | **18** :$
 
@@ -178,7 +178,7 @@ gedit 05-until-read
 ./05-until-read thepassword
 ```
 
-*Input wrong "passwords" to see what it does, input "thepassword" or use <key>Ctrl</key> + <key>C</key> to close*
+*Input wrong "passwords" to see what it does, input "thepassword" or use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close*
 
 ### III. `case`
 ### "Multiple choice variable `case`"

@@ -33,7 +33,7 @@ mkdir one && cp *.odt one && cp markdown.md one && cd one
 ls
 ```
 
-| **3** :$ *(may need a few seconds to load, then press <key>Enter</key>)*
+| **3** :$ *(may need a few seconds to load, then press <kbd>Enter</kbd>)*
 
 ```console
 lowriter *.odt &
@@ -57,7 +57,7 @@ killall soffice.bin
 gedit ODT-FILE.odt
 ```
 
-*Close the file in gedit with <key>Ctrl</key> + <key>W</key>*
+*Close the file in gedit with <kbd>Ctrl</kbd> + <kbd>W</kbd>*
 
 *Note .odt files are very big and can't be opened with text editors, but we can convert them...*
 
@@ -95,7 +95,7 @@ ls
 gedit ODT-FILE.txt
 ```
 
-*Close the file in gedit with <key>Ctrl</key> + <key>W</key>, then delete the `.txt` file so we can try another way...*
+*Close the file in gedit with <kbd>Ctrl</kbd> + <kbd>W</kbd>, then delete the `.txt` file so we can try another way...*
 
 | **11** :$
 
@@ -185,7 +185,7 @@ cd ..
 read
 ```
 
-*Now type something and press <key>Enter</key>*
+*Now type something and press <kbd>Enter</kbd>*
 
 *Nothing happened because it should be used with a variable...*
 
@@ -195,7 +195,7 @@ read
 read Variable
 ```
 
-*Now type something and press <key>Enter</key>*
+*Now type something and press <kbd>Enter</kbd>*
 
 | **22** :$
 
@@ -220,7 +220,7 @@ echo $myVariable
 ./02-read-1
 ```
 
-*Now type something, then press <key>Enter</key>*
+*Now type something, then press <kbd>Enter</kbd>*
 
 | **25** :$
 
@@ -376,7 +376,7 @@ gedit 02-sleep-3
 ./02-sleep-3
 ```
 
-*Now type something, then press <key>Enter</key>*
+*Now type something, then press <kbd>Enter</kbd>*
 
 ### IV. `wait`
 *`wait` will "wait" until the previous command finishes before moving on. It keeps Shell from stumbling over its own feet. Sometimes, scripts break and the solution is to `wait`.*

@@ -22,7 +22,7 @@ sudo systemctl start apache2 mariadb
 ### This lesson uses two terminals and two browser tabs!
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 *Make sure we have our SQL admin user*
 
@@ -38,7 +38,7 @@ sudo mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED B
 mariadb -u admin -padminpassword
 ```
 
-*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -179,7 +179,7 @@ Password: My#1Password
 localhost/web/edit.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note the title of the web browser is "Editor" because we set the `<title>` tag*
 
@@ -227,13 +227,13 @@ codium core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions2.
 ls web
 ```
 
-| **B-3** :// *(<key>Ctrl</key> + <key>R</key> to reload)*
+| **B-3** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/edit.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note our JavaScript in:*
 
@@ -341,7 +341,7 @@ codium core/08-edit3.php core/08-in.editprocess3.php && \
 ls web
 ```
 
-| **B-7** :// *(**Must use** <key>Ctrl</key> + <key>R</key> to reload)*
+| **B-7** :// *(**Must use** <kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/edit.php
@@ -349,7 +349,7 @@ localhost/web/edit.php
 
 *Note the Slug was updated because this is technically a new piece*
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note:*
 
@@ -412,7 +412,7 @@ ls web
 localhost/web/edit.php?=...
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note:*
 
@@ -563,7 +563,7 @@ ls web
 localhost/web/blog.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note how each piece entry is iterated from the loop*
 
@@ -637,7 +637,7 @@ localhost/web/tiny.html
 
 *Note the message about domains, which you should close*
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *This form won't do anything, just give it a good look and try*
 
@@ -685,7 +685,7 @@ src='tinymce/tinymce.min.js'
 https://github.com/tinymce/tinymce-dist
 ```
 
-| **B-16** :// *(<key>Ctrl</key> + <key>R</key> to reload)*
+| **B-16** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/tiny.html
@@ -693,7 +693,7 @@ localhost/web/tiny.html
 
 *Note there is no message about domains*
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ##### Customize TinyMCE
 We can customize the TinyMCE toolbar layout
@@ -717,7 +717,7 @@ ls web
 *- `paste_as_text`: "Paste" removes formatting (see it already "on" by clicking the "T" formatting button)*
 *- `content_css`: should be our style.css file so "Preview" uses our styling*
 
-| **B-17** :// *(<key>Ctrl</key> + <key>R</key> to reload)*
+| **B-17** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/tiny.html
@@ -800,7 +800,7 @@ localhost/web/medium.html
 1. Type something, it is a very blank text editor
 2. Highlight some text to see the styling options menu
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *This form won't do anything, just give it a good look and try*
 
@@ -851,13 +851,13 @@ src="medium/js/medium-editor.js"
 https://github.com/inkverb/medium-editor
 ```
 
-| **B-20** :// *(<key>Ctrl</key> + <key>R</key> to reload)*
+| **B-20** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/medium.html
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ##### Medium Editor Plugin Example: Tables
 - [GitHub repo](https://github.com/yabwe/medium-editor-tables) (original, may no longer be abailable)
@@ -908,7 +908,7 @@ ls web
   - *This puts the JavaScript* ***after*** *our "Content" `<textarea>` HTML element*
   - *This implements the* ***class*** *`medium_editor` for the Medium editor JavaScript to act on*
 
-| **B-22** :// *(<key>Ctrl</key> + <key>R</key> to reload)*
+| **B-22** :// *(<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)*
 
 ```console
 localhost/web/edit.php

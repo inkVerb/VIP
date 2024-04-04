@@ -313,7 +313,7 @@ SHOW DATABASES;
 
 **Run in a new terminal window:**
 >
-> Open a new terminal window: <key>Ctrl</key> + <key>Alt</key> + <key>T</key> (not <key>F12</key>)
+> Open a new terminal window: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> (not <kbd>F12</kbd>)
 >
 > | **T1** :$
 

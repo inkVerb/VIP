@@ -91,6 +91,6 @@ ibus-setup
 
 ## Super + Space = Change language input
 
-- <key>Super</key> = <key>Meta</key> = <key>Windows</key>
+- <kbd>Super</kbd> = <kbd>Meta</kbd> = <kbd>Windows</kbd>
 
 # Done! Have a cookie: ### #

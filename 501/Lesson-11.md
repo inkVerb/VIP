@@ -22,7 +22,7 @@ sudo systemctl start apache2 mariadb
 ### This lesson uses two terminals and two browser tabs!
 Ready the secondary SQL terminal and secondary SQL browser (start using at step 19)
 
-*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -30,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser (start using at step 
 mariadb -u admin -padminpassword
 ```
 
-*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -211,7 +211,7 @@ ls web
 
 *Note the methods don't take many arguments*
 
-| **B-2** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/oop.php
@@ -1371,7 +1371,7 @@ if ($statement->rowCount() > 0)
 if ($success) try {}
 ```
 
-| **B-20** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-20** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pdo.php

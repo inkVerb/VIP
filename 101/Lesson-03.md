@@ -67,7 +67,7 @@ ls
 ./how2arg one two three
 ```
 
-*In Terminal: <key>Up</key>*
+*In Terminal: <kbd>Up</kbd>*
 
 *This shows the previous command*
 
@@ -83,7 +83,7 @@ two \
 three
 ```
 
-*In Terminal: <key>Up</key>*
+*In Terminal: <kbd>Up</kbd>*
 
 *This shows the previous command, but it all appears on one line*
 

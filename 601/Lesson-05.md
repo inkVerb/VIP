@@ -28,7 +28,7 @@
 - Re-install latest kernel:#
   - Arch/Manjaro: `kernel-install add $(uname -r) /usr/lib/modules/$(uname -r)/vmlinuz`
     - Or remove: `kernel-install remove $(uname -r)`
-  - Debian/Ubuntu: `apt-get install --reinstall linux-image-generic linux-image`
+  - Debian/Ubuntu: `apt-get install --reinstall linux-image-generic`
     - Install specific kernel: `update-initramfs -u -k $(uname -r)`
   - RedHat/CentOS: `dnf reinstall kernel`
     - If that doesn't work, uninstall, then re-install:
@@ -45,11 +45,24 @@
   - Arch & Debian:# `update-grub` (short version of `grub-mkconfig -o`)
   - RedHat/CentOS:# `grub2-mkconfig -o "$(readlink -e /etc/grub2.conf)"`
 
+### Kernel Docs
+- Official docs: [kernel.org/doc/html](https://www.kernel.org/doc/html/) (listed by version)
+- Software packages:
+  - `linux-docs` (Arch) installed at: `/usr/share/doc/linux/` (symlink to `/usr/lib/modules/x.x.x-...`)
+  - `linux-doc` (Debian/Ubuntu) installed at: `/usr/share/doc/linux-doc/...`
+  - `kernel-doc` (RedHat/CentOS) installed at: `/usr/share/doc/kernel-doc-x.xx.x/...`
+  - `/usr/share/doc/.../index.html` can be read in a local browser directly
+  - `/usr/share/doc/.../index.rst` can be read in the terminal using vim
+  - You could use `grep` from the terminal to serch documentation
+
 ### Kernel Command Line
 - All boot parameters are on one, single line
   - This is called the ***kernel command line*** or ***boot command line***
   - Usually the `linux` line of GRUB config: `/boot/grub/grub.cfg`
     - Default from the `GRUB_CMDLINE_LINUX_DEFAULT=` statement in `/etc/default/grub`
+  - `man bootparam`
+  - List of all kernel boot parameters:
+    - `kernel-parameters.txt` in kernel source
 - Find out what command line your system booted with:
   - `cat /proc/cmdline`
 - Breakdown
@@ -82,17 +95,6 @@
     - Best applied through `grub2-mkconfig` tool
       - BIOS: `grub2-mkconfig -o /boot/grub2/grub.cfg` for BIOS firmware
       - UEFI: `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg` for UEIF firmware
-- **List of all kernel boot parameters**
-  - `kernel-parameters.txt` in kernel source
-  - Official docs: [kernel.org/doc/html](https://www.kernel.org/doc/html/) (listed by version)
-  - Software packages:
-    - `linux-docs` (Arch) installed at: `/usr/share/doc/linux/` (symlink to `/usr/lib/modules/x.x.x-...`)
-    - `linux-doc` (Debian/Ubuntu) installed at: `/usr/share/doc/linux-doc/...`
-    - `kernel-doc` (RedHat/CentOS) installed at: `/usr/share/doc/kernel-doc-x.xx.x/...`
-    - `/usr/share/doc/.../index.html` can be read in a local browser directly
-    - `/usr/share/doc/.../index.rst` can be read in the terminal using vim
-    - You could use `grep` from the terminal to serch documentation
-  - `man bootparam`
 
 ### Boot Failure Causes
 - **No bootloader screen**
@@ -119,14 +121,16 @@
   - Each line of output refers to a subdirectory-based pseudofile in `/proc/sys/`
   - `vm.zone_reclaim_mode=` is the pseudofile contents of `/proc/sys/vm/zone_reclaim_mode`
   - Changing these pseudofile contents will change the settings seen from `sysctl -a`
+- Settings:
+  - `/etc/sysctl.conf`: original file
+  - `/usr/lib/sysctl.d/`: vendor-specific setting files, vary per distro
+  - `/etc/sysctl.d/`: files will override
 - Change settings:
   - `sudo sh -c 'echo 0 > /proc/sys/vm/zone_reclaim_mode'` (must use `sh -c` to run command as, or use `echo` from root prompt `#`)
   - `sudo sysctl vm.zone_reclaim_mode=0` (or run `sysctl` from root prompt `#`)
   - `/etc/sysctl.conf` - Settings will be implemented at boot
-    - Learn more: `man sysctl.conf`
-    - `/etc/sysctl.conf`: original file
-    - `/usr/lib/sysctl.d/`: vendor-specific setting files, vary per distro
-    - `/etc/sysctl.d/`: files will override
+- Learn more:
+  - `man sysctl.conf`
 
 ### Kernel Modules
 - Modules are located in `/lib/modules/$(uname -r)`
@@ -153,7 +157,7 @@
   - `modinfo some-mod`
   - eg: `modinfo e1000e`
   - Also seen in `/sys/module/...` pseudo filesystem
-- `depmod` rebuild kernel module dependency database:#
+- `depmod` rebuild kernel module dependency database
   - File is located at `/lib/modules/$(uname -r)/modules.dep`
 
 #### `/etc/modprobe.d/*.conf`
@@ -285,14 +289,17 @@ ___
 
 ```console
 uname -r
-
-# Arch
 cd /usr/lib/modules/
 ls
 
+# Arch
+pacman -S linux
+kernel-install add $(uname -r) /usr/lib/modules/$(uname -r)/vmlinuz
+kernel-install remove $(uname -r)
+
 # Ubuntu
-apt-get install --reinstall linux-image-generic linux-image
-update-initramfs -u -k $(uname -r)
+apt-get install --reinstall linux-image-generic   # newest version
+update-initramfs -u -k $(uname -r)                # current version
 
 # RedHat
 dnf reinstall kernel
@@ -303,14 +310,6 @@ dnf install kernel-$(uname -r)
 zypper se -s 'kernel*'
 zypper in kernel-default-VER.SI.ION.NUM
 zypper rm kernel-default-VER.SI.ION.NUM
-```
-
-| **Kernel management** :#
-
-```console
-cat /proc/cmdline
-less /boot/grub/grub.cfg
-grep linux /boot/grub/grub.cfg
 ```
 
 | **Kernel docs** :#
@@ -345,12 +344,22 @@ zypper rm kernel-default-VER.SI.ION.NUM
 file:///usr/share/doc/
 ```
 
+| **Kernel management** :#
+
+```console
+man bootparam
+cat /proc/cmdline
+less /boot/grub/grub.cfg
+grep linux /boot/grub/grub.cfg
+```
+
 | **`sysctl` tool** :$
 
 ```console
 sysctl -a
 cd /proc/sys
 ls
+less /etc/sysctl.conf
 cd /usr/lib/sysctl.d
 ls
 cd /etc/sysctl.d
@@ -362,17 +371,18 @@ man sysctl.conf
 
 ```console
 cd /lib/modules/$(uname -r)
-ls mod
+lsmod
 modprobe cdrom
 rmmod cdrom
 lsmod
 lsmod | grep alx
 lsmod | grep cdrom
-modinfo
+modinfo alx
 modinfo cdrom
 sudo depmod
 less /lib/modules/$(uname -r)/modules.dep
 cd /etc/modprobe.d/
+ls
 ```
 
 | **Devices** :$
@@ -388,7 +398,9 @@ ls
 sudo mknod -m 655 /dev/zmyusb c 254 1
 ls -l /dev
 sudo rm /dev/zmyusb
+ls -l /dev
 cd /usr/lib/udev/rules.d
+ls
 
 udevadm monitor
 # Plug/unplug a USB

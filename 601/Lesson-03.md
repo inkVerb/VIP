@@ -8,9 +8,9 @@
   - Password
   - UID (user ID number)
   - GID (primary group ID number)
-  - Comment / GECOS (full name, email, office, phone number)
+  - Comment / [GECOS](https://en.wikipedia.org/wiki/Gecos_field) (full name, email, office, phone number)
   - Home directory (mostly in `/home/`)
-  - Login shell (usually `/bin/bash` or `/bin/zsh`, defined in `~/.bashrc`)
+  - Login shell (usually `/bin/bash` or `/bin/zsh`, defined in `/etc/passwd`)
 - Commands
   - `whoami` - show username
   - `who` - list users who are logged on
@@ -22,9 +22,16 @@
   - Prompt
   - Aliases
   - Default text editor
-  - Terminal interpreter (usually `/bin/bash` or `/bin/zsh`)
+  - Terminal Shell interpreter (usually `/bin/bash` or `/bin/zsh`)
   - `$PATH` statement and other environment variables
   - Even functions that can be called from the command line
+- Shell
+  - `echo $SHELL` your shell
+  - `ps -p $$` ps information on your shell (`$$` is the terminal's PID)
+  - `cat /etc/shells` available shells
+  - `chsh -s /bin/zsh` changes your shell to `zsh`
+    - Recoeded in `/etc/passwd`
+  - `sudo chsh -s /bin/bash someuser` changes shell of `someuser` to `bash`
 - Settings are the same, but some address login, others only address terminal sessions
   - `/etc/profile` (global login startup)
   - `/etc/bash.bashrc` (global terminal settings)
@@ -52,12 +59,9 @@
 - Check `bash` history
   - `!50` (no `50` in bash history)
   - `!echo` (most recent `echo` command)
-- Shell
-  - `echo $SHELL` your shell
-  - `cat /etc/shells` available shells
 
 ### User Defaults
-- `useradd` #
+- `useradd`:#
   - initiates many user settings
   - `/etc/skel/` is copied as the new home folder (Arch requires the `-k /etc/skel` flag and argument)
     - This contains custom startup files, including those like `~/.bashrc` or `~/.bash_profile`
@@ -74,19 +78,23 @@
     - `-m` make user's default directory
     - `-k /etc/skel` default directory and settings
     - `-c` comment (display name)
-- `userdel` #
+- `userdel`:#
   - Removes entries made in
     - `/etc/passwd` (user info)
     - `/etc/shadow` (user's hadhed password)
     - `/etc/group` (group settings & users)
   - Home directory is not deleted unless using `userdel -r`
-- `usermod` #
-  - `usermod -L` will lock a user's account
-    - This means the user can't login, but could still be made to execute a command using `su lockeduser -c "some command"` (more later)
+- `usermod`:#
+  - `usermod -L someuser` will lock the account for `someuser`
+    - This means the user can't login, but still...
+      - Any user can be made to execute a command using `su lockeduser -c "some command"` (more later)
+    - The "no password" setting usually prefixes `!!` or `!` to the user's pasword string in `/etc/shadow`
     - This is how many auto users work on Linux, such as `mail`, `www`, `httpd`, `nginx`, etc
-    - This is done with a `nologin` entry for the user in `/etc/passwd`
-    - The no login message is defined in `/etc/nologin.txt`
-    - The "no password" setting is usually indicated by `!!` or `!` in `/etc/shadow`
+      - :$ `grep 'nologin' /etc/passwd` shows the list on your machine
+    - This is done with a `nologin` shell entry for the user in `/etc/passwd`
+      - :# `chsh -s /usr/sbin/nologin someuser` changes the shell for `someuser` to `/usr/sbin/nologin`
+        - This will also prevent the user from running scripts with `sudo su someuser -c ...` because that also needs a shell to execute the command
+      - A custom `nologin` message can be defined in `/etc/nologin.txt`, overridden by `/etc/nologin` for non-`root` users; it might not always display
   - `usermod -U` will unlock a user's account
     - Similarly, set a user to expire with:#
       - :# `chage -E 1970-01-01 johndoe` (any date in the past will lock the user account)
@@ -94,11 +102,19 @@
       - change the last three `:` colons to `:::` to easily unlock an account locked wich `chage`
 - User-related files have important permissions
   - `/etc/passwd` (`644`)
-  - `/etc/shadow` (`600`)
   - `/etc/group` (`644`)
+  - `/etc/shadow` (`600`)
+- `/etc/passwd`
+  - Username
+  - Password (usually `x` with the password hashed in `/etc/shadow`)
+  - UID
+  - GID
+  - Comment / GECOS
+  - Home directory
+  - Login shell
 - `/etc/shadow` format
   - Username
-  - Password (`$6$`, then 8-digit salt, then password hashed with `sha512`)
+  - Password (`$6$`|`$y$`, then 8-digit salt, then password hashed with `sha512`)
   - Last change
   - Minimum days before password can change
   - Maximum days after password must change
@@ -108,30 +124,34 @@
   - Reserved field
   - Note that all dates are in the *epoch* time, that is seconds from January 1, 1970
 - Changing a password
-  - `passwd` changes current user's password (does not `root` or `sudo`)
-  - `passwd johndoe` changes another user's password
+  - :$ `passwd` changes current user's password (does not `root` or `sudo`)
+  - :# `passwd someuser` changes the password for `someuser`
 
 ### Security & `sudo`
 - `sudo` configs are in
   - `/etc/sudoers`
   - `/etc/sudoers.d`
+    - "`@includedir /etc/sudoers.d`" must be added to `/etc/sudoers`
 
 ### Substitute User (`su`)
-- `su` will run a command as a sub shell for another user
+- `su someuser` will login as `someuser`
+- `su someuser -c ...` will run a command as a sub shell for `someuser`
   - Syntax: `su someuser -c "some command"`
-  - This will run with with that `someuser` user's permissions
+  - This will run `some command` with the permissions of `someuser`
 
 ### Local GUI Login
 - On boot to a GUI, a list of users appears
 - Each of these has a file named by the user in `/var/lib/AccountsService/users/`
+  - Users appear having `SystemAccount=false` in their file appear on the GUI login list
 - To prevent a user from being on this list, such as `root`, add a line with `SystemAccount=true` to the user's file there
-  - Eg user `root`: `echo 'SystemAccount=true' >> /var/lib/AccountsService/users/root`
-  - Eg user `pinky`: `echo 'SystemAccount=true' >> /var/lib/AccountsService/users/pinky`
+  - eg user `root`: `echo 'SystemAccount=true' >> /var/lib/AccountsService/users/root`
+  - eg user `pinky`: `echo 'SystemAccount=true' >> /var/lib/AccountsService/users/pinky`
   - Make sure you don't have duplicate entries: `cat /var/lib/AccountsService/users/pinky`
 
 ### Remote Graphical Login (VNC)
 - This requires the `tigervnc` package
 - Start by running the `vncserver`
+- These lessons don't cover this in depth
 
 ## Groups
 - Recorded in `/etc/group`
@@ -189,7 +209,8 @@
 
 ### Default Permissions via `umask`
 - Defines permissions for new files
-  - This is a subtraction (`umask 0022` subtracts )
+  - This is a subtraction (`umask 0022` subtracts from `0666` to set new file default permissions)
+  - With a mask of `0022` a new file's default will be `0644`
 - Then denied by `umask` value
   - `umask` shows the mask
   - `umask -S` shows defauls in letters
@@ -222,41 +243,74 @@
 
 ___
 
-
 # The Keys
 *Practice commands for SysAdmins who already know what these mean*
+
+- *Broken into sections because some are prerequesite*
+
+| **user & shell settings** :$
 
 ```console
 whoami
 who
 id
+
+ls ~/.bash*
+cat ~/.bashrc
+echo $PATH
+echo $SHELL
+ps -p $$
+cat /etc/shells
+
+cat /etc/profile
+less /etc/profile
+cat /etc/bash.bashrc
+less /etc/bash.bashrc
+
+grep alias ~/.bashrc
+cat ~/.profile
+grep alias ~/.profile
+
 alias voovoo="echo hello"
 voovoo
 unalias voovoo
 voovoo
 echo 'alias voovoo="echo hello"' >> ~/.profile
-ls ~/.bash*
-cat ~/.bashrc
-grep alias ~/.bashrc
+vim ~/.profile
 
 history
+echo $SHELL
 cat ~/.bash_history
+cat ~/.zsh_history
 history | head
 history | tail
 
 echo $SHELL
+ps -p $$
 cat /etc/shells
 
+cd /etc/skel
+ls -a
+```
+
+| **add/remove users & shells** :$
+
+```console
 cd /home
 ls
 sudo useradd pinky
 ls
 grep pinky /etc/passwd
+grep $USER /etc/passwd
+sudo grep pinky /etc/shadow
 sudo passwd pinky
 # 123456 x2
+sudo grep pinky /etc/shadow
 echo $SHELL
 su pinky
 # 123456
+whoami
+who
 echo $SHELL
 exit
 ls
@@ -265,6 +319,7 @@ grep pinky /etc/passwd
 
 sudo useradd pinky -d /home/pinky
 ls
+grep pinky /etc/passwd
 sudo passwd pinky
 # 123456 x2
 su pinky
@@ -277,28 +332,48 @@ grep pinky /etc/passwd
 ls
 sudo rm -r /home/pinky
 ls
+```
+
+| **create test users & settings** :$
+
+```console
+cd /home
 
 sudo useradd pinky -m -k /etc/skel
 ls
+grep pinky /etc/passwd
+sudo grep pinky /etc/shadow
 sudo passwd pinky
 # 123456 x2
+sudo grep pinky /etc/shadow
+su pinky
+# 123456
+echo $SHELL
+chsh -s /bin/zsh
+exit
 su pinky
 # 123456
 echo $SHELL
 exit
-sudo userdel pinky
-grep pinky /etc/passwd
-sudo rm -r /home/pinky
-ls
+sudo chsh -s /bin/sh pinky
+su pinky
+# 123456
+echo $SHELL
+exit
 
 sudo useradd binky -s /bin/bash -m -k /etc/skel
 grep binky /etc/passwd
+sudo grep binky /etc/shadow
 sudo passwd binky
 # 123456 x2
+sudo grep binky /etc/shadow
+
 sudo useradd zinky -s /bin/zsh -m -k /etc/skel
 grep zinky /etc/passwd
+sudo grep zinky /etc/shadow
 sudo passwd zinky
 # 123456 x2
+sudo grep zinky /etc/shadow
 
 su binky
 # 123456
@@ -311,32 +386,36 @@ su zinky
 whoami
 echo $SHELL
 exit
+```
 
-su pinky
-#123456
-echo $SHELL
-chsh -s /bin/bash
-echo $SHELL
-exit
-su pinky
-#123456
-echo $SHELL
-exit
+| **user login** :$
 
+```console
 sudo cat /etc/shadow
 sudo grep pinky /etc/shadow
-sudo usermod -L pinky1
+sudo usermod -L pinky
 sudo grep pinky /etc/shadow
 su pinky
 #123456
+grep pinky /etc/passwd
+sudo chsh -s /usr/sbin/nologin pinky
+grep pinky /etc/passwd
+su pinky
+#123456
+sudo grep pinky /etc/shadow
 sudo usermod -U pinky
 sudo grep pinky /etc/shadow
 su pinky
 #123456
+grep pinky /etc/passwd
+sudo chsh -s /bin/sh pinky
+grep pinky /etc/passwd
+su pinky
+#123456
 exit
 
-sudo chage -l pinky
 sudo grep pinky /etc/shadow
+sudo chage -l pinky
 sudo chage -E 1970-01-01 pinky
 sudo grep pinky /etc/shadow
 sudo chage -l pinky
@@ -366,15 +445,25 @@ ls
 grep SystemAccount *
 exit
 cd /home
+```
 
-sudo cat /etc/group
+| **groups** :$
+
+```console
+sudo less /etc/group
+sudo less /etc/gshadow
 less /etc/login.defs
+vim /etc/login.defs # Search for GID_MIN
 groups pinky
+groups binky
+groups zinky
 groups root
 groups $(whoami)
 id pinky binky zinky
 id -Gn pinky binky zinky
 id $(whoami)
+id -Gn $(whoami)
+groups $(whoami)
 sudo groupadd inky
 sudo usermod pinky -aG inky
 groups pinky
@@ -385,21 +474,36 @@ groups zinky
 sudo usermod pinky -aG binky
 sudo usermod pinky -aG zinky
 id pinky
+id -Gn pinky
+groups pinky
 
+getent group inky
+getent group pinky
+getent group binky
+getent group zinky
 getent group inky
 sudo groupmod -g 1155 inky
 id pinky
 getent group inky
+```
 
+| **create test files** :$
+
+```console
 su pinky
 # 123456
 cd
+pwd
 mkdir touchy
 cd touchy
 touch one two three
 ls -l
 exit
+```
 
+| **ownership** :$
+
+```console
 su
 cd /home/pinky/touchy
 ls -l
@@ -409,9 +513,9 @@ chown zinky:zinky three
 ls -l
 chgrp inky three
 ls -l
-chgrp zinky one
-ls -l
 chown zinky one
+ls -l
+chgrp zinky one
 ls -l
 chown zinky two
 ls -l
@@ -425,36 +529,47 @@ ls -l
 exit
 
 su binky
+# 123456
 cd /home/zinky
 touch canttouchthis
 exit
 su pinky
+# 123456
 cd ~/touchy
+pwd
 ls
 mv one four
-ls
+ls -l
 mv four one
-ls
+ls -l
 cd
+ls -l
+mv touchy wuchy
 ls -l
 mv wuchy touchy
 ls -l
-mb touchy wuchy
 exit
 
 su pinky
+# 123456
 cd ~/touchy
+ls -l
 chown pinky:pinky one
 chown -R pinky:pinky /home/pinky/touchy
 exit
 cd /home/pinky
 ls -l
 ls -l /home/pinky/touchy
-chown -R pinky:pinky /home/pinky/touchy
+sudo chown -R pinky:pinky /home/pinky/touchy
 ls -l
 ls -l /home/pinky/touchy
+```
 
+| **permissions** :$
+
+```console
 su pinky
+# 123456
 cd ~/touchy
 ls -l
 chmod ug+x one two
@@ -470,6 +585,7 @@ ls -l
 exit
 
 su pinky
+# 123456
 cd ~/touchy
 umask
 umask 0002
@@ -479,9 +595,15 @@ ls -l
 umask 0022
 touch five
 ls -l
+rm four five
 exit
+```
 
+| **ACL management** :$
+
+```console
 su pinky
+# 123456
 cd ~/touchy
 getfacl *
 getfacl one
@@ -490,35 +612,41 @@ exit
 cd /home/pinky/touchy
 getfacl one
 ls -l one
-setfacl -m u:binky:rwx one
+sudo setfacl -m u:binky:rwx one
 ls -l one
 getfacl one
+
 ls -l two
 getfacl two
-setfacl -m u:zinky:w two
+sudo setfacl -m u:zinky:w two
 ls -l two
 getfacl two
-setfacl -m u:binky:rw two
+sudo setfacl -m u:binky:rw two
 ls -l two
 getfacl two
 
 ls -l three
 getfacl three
-setfacl -m u:zinky: three
+sudo setfacl -m u:zinky:r three
 ls -l three
 getfacl three
-setfacl -m u:binky:rwx three
+sudo setfacl -m u:binky:rwx three
 ls -l three
 getfacl three
 
 getfacl *
-setfacl -x u:binky one two three
+ls -l
+sudo setfacl -x u:binky one two three
 getfacl *
 ls -l
-setfacl -x u:zinky one two three
+sudo setfacl -x u:zinky one two three
+getfacl *
 ls -l
+```
 
-exit
+| **remove test users & settings** :$
+
+```console
 grep pinky /etc/passwd
 grep binky /etc/passwd
 grep zinky /etc/passwd
@@ -538,7 +666,6 @@ cd /home
 ls
 sudo rm -r /home/pinky /home/binky /home/zinky
 ls
-
 ```
 
 ___

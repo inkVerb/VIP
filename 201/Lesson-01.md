@@ -243,9 +243,15 @@ ls -l
 ls
 ```
 
+| **35** :$
+
+```console
+ls -l
+```
+
 *Note `file6` is no longer a symlink*
 
-| **35** :$
+| **36** :$
 
 ```console
 cat file6

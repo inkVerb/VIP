@@ -288,7 +288,7 @@ ___
   - `partprobe -s` Inform OS of partition table changes
     - Update OS with new partition info, but reboot is more reliable
   - `cat /proc/partitions` live partitions for OS
-  - `fdisk -l /dev/sda` (only display partition info, non-interactive, same as `p` within the menues)
+  - `fdisk -l /dev/sda` (only display partition info, non-interactive, same as `p` within the menus)
 - MBR & GPT Tools
   - `fdisk /dev/sda` (interactive)
     - `m` help Menu
@@ -318,68 +318,68 @@ ___
 sudo fdisk /dev/sdb
 ```
   - GPT (preferred)
-    - `g` <key>Enter</key>
+    - `g` <kbd>Enter</kbd>
     - Create partition
-      - `n` <key>Enter</key>
-      - <key>Enter</key> (default next available partition number)
-      - <key>Enter</key> (default next available sector)
-      - `+100G` <key>Enter</key> or whatever size you want, on final partition <key>Enter</key> for default
+      - `n` <kbd>Enter</kbd>
+      - <kbd>Enter</kbd> (default next available partition number)
+      - <kbd>Enter</kbd> (default next available sector)
+      - `+100G` <kbd>Enter</kbd> or whatever size you want, on final partition <kbd>Enter</kbd> for default
         - On second-last partition, swap being final, `-16G` would use everything but the last 16G
-      - ? `y` <key>Enter</key> if asked to remove the signature (overwriting a existing filesystem)
+      - ? `y` <kbd>Enter</kbd> if asked to remove the signature (overwriting a existing filesystem)
       - *Repeat these **Create partition** instructions until the disk is full*
     - `w` (write changes and move on) or `q` (quit and abort, if this was just an exercise)
   - MBR (legacy)
-    - `o` <key>Enter</key> (DOS is the same as MBR for partition tables)
+    - `o` <kbd>Enter</kbd> (DOS is the same as MBR for partition tables)
     - Create partition
-      - `n` <key>Enter</key>
-      - <key>Enter</key> (default `p` for primary partition)
+      - `n` <kbd>Enter</kbd>
+      - <kbd>Enter</kbd> (default `p` for primary partition)
         - Or `e` *Note **MBR logical partitions** (in an **extended container**) are not the same as **LVM logical volumes***
-      - <key>Enter</key> (default next available partition number)
-      - <key>Enter</key> (default next available sector)
-      - `+100G` <key>Enter</key> or whatever size you want, on final partition <key>Enter</key> for default
+      - <kbd>Enter</kbd> (default next available partition number)
+      - <kbd>Enter</kbd> (default next available sector)
+      - `+100G` <kbd>Enter</kbd> or whatever size you want, on final partition <kbd>Enter</kbd> for default
         - On second-last partition, swap being final, `-16G` would use everything but the last 16G
-      - ? `y` <key>Enter</key> if asked to remove the signature (overwriting a existing filesystem)
+      - ? `y` <kbd>Enter</kbd> if asked to remove the signature (overwriting a existing filesystem)
       - *Repeat these **Create partition** instructions until the disk is full*
     - Change a partition type to Linux swap?
       - `t`
-      - ? <key>Enter</key> if asked (default, the partition we just created or enter a preferred partition number)
+      - ? <kbd>Enter</kbd> if asked (default, the partition we just created or enter a preferred partition number)
         - It is good practice for Linux swap to be the last partition made, at the end of the disk, in which case you would use the default here anyway
-      - ? `L` <key>Enter</key> will list type choices (if you are curious)
+      - ? `L` <kbd>Enter</kbd> will list type choices (if you are curious)
         - `19` for Linux swap
         - `swap` alias for Linux swap
         - FYI code `83` (alias `linux`) is the default type (Linux filesystem), which it already is
-      - `19` or `swap`, <key>Enter</key>
+      - `19` or `swap`, <kbd>Enter</kbd>
     - Change a partition type for NTFS or FAT32?
       - *Note any type will work with for NTFS or FAT32, this is moot and merely being excessively finicky*
         - *Being excessively finicky, if you are preparing a recovery partition or EFI partition for Windows, you might consider researching other Microsoft partition types*
-      - `t` <key>Enter</key>
-      - ? <key>Enter</key> if asked (default, the partition we just created or enter a preferred partition number)
+      - `t` <kbd>Enter</kbd>
+      - ? <kbd>Enter</kbd> if asked (default, the partition we just created or enter a preferred partition number)
         - It is good practice for Linux swap to be the last partition made, at the end of the disk, in which case you would use the default here anyway
-      - ? `L` <key>Enter</key> will list type choices (if you are curious)
+      - ? `L` <kbd>Enter</kbd> will list type choices (if you are curious)
         - `11` for Microsoft basic data
         - FYI code `83` (alias `linux`) is the default type (Linux filesystem), which it already is
-      - `11` <key>Enter</key>
-    - `w` <key>Enter</key> (write changes and move on) or `q` <key>Enter</key> (quit and abort, if this was just an exercise)
+      - `11` <kbd>Enter</kbd>
+    - `w` <kbd>Enter</kbd> (write changes and move on) or `q` <kbd>Enter</kbd> (quit and abort, if this was just an exercise)
 - **Via `gdisk`**
 ```console
 sudo gdisk /dev/sdb
 ```
   - GPT (only option)
-    - `o` <key>Enter</key>
-    - `y` <key>Enter</key>
+    - `o` <kbd>Enter</kbd>
+    - `y` <kbd>Enter</kbd>
     - Create partition
-      - `n` <key>Enter</key>
-      - <key>Enter</key> (default next available partition number)
-      - <key>Enter</key> (default next available sector)
-      - `+100G` <key>Enter</key> or whatever size you want, on final partition <key>Enter</key> for default
+      - `n` <kbd>Enter</kbd>
+      - <kbd>Enter</kbd> (default next available partition number)
+      - <kbd>Enter</kbd> (default next available sector)
+      - `+100G` <kbd>Enter</kbd> or whatever size you want, on final partition <kbd>Enter</kbd> for default
         - On second-last partition, swap being final, `-16G` would use everything but the last 16G
-      - ? `L` <key>Enter</key> <key>Enter</key> will list type choices (if you are curious)
+      - ? `L` <kbd>Enter</kbd> <kbd>Enter</kbd> will list type choices (if you are curious)
         - FYI code `8300` is for Linux filesystem (the default type)
         - FYI code `8200` is for Linux swap
         - FYI code `0700` is for Microsoft basic data (NTFS & FAT32)
-      - <key>Enter</key> (default `8300` Linux filesystem)
+      - <kbd>Enter</kbd> (default `8300` Linux filesystem)
       - *Repeat these **Create partition** instructions until the disk is full*
-    - `w` <key>Enter</key> (write changes and move on) or `q` <key>Enter</key> (quit and abort, if this was just an exercise)
+    - `w` <kbd>Enter</kbd> (write changes and move on) or `q` <kbd>Enter</kbd> (quit and abort, if this was just an exercise)
 2. **Format the partitions just made**
 Any of the one-line commands will work in the **Formatting** section
 
@@ -510,59 +510,59 @@ inkisaverb.com:/pubdir  /mnt/ink-pub     nfs     netdev,noauto,rsize=8192,wsize=
 sudo fdisk /dev/sdb
 ```
   - GPT (preferred)
-    - `g` <key>Enter</key>
+    - `g` <kbd>Enter</kbd>
     - Create type-LVM partition
-      - `n` <key>Enter</key>
-      - <key>Enter</key> (default next available partition number)
-      - <key>Enter</key> (default next available sector)
-      - `+100G` <key>Enter</key> or on final partition <key>Enter</key> for default (you want 4 or 5 total)
-      - ? `y` <key>Enter</key> if asked to remove the signature (overwriting a existing filesystem)
-      - `t` <key>Enter</key>
-      - ? <key>Enter</key> if asked (default, the partition we just created with `n`)
-      - ? `L` <key>Enter</key> will list type choices (if you are curious)
+      - `n` <kbd>Enter</kbd>
+      - <kbd>Enter</kbd> (default next available partition number)
+      - <kbd>Enter</kbd> (default next available sector)
+      - `+100G` <kbd>Enter</kbd> or on final partition <kbd>Enter</kbd> for default (you want 4 or 5 total)
+      - ? `y` <kbd>Enter</kbd> if asked to remove the signature (overwriting a existing filesystem)
+      - `t` <kbd>Enter</kbd>
+      - ? <kbd>Enter</kbd> if asked (default, the partition we just created with `n`)
+      - ? `L` <kbd>Enter</kbd> will list type choices (if you are curious)
         - `43` for type-LVM
         - `lvm` alias for type-LVM
         - FYI code `20` (alias `linux`) is the default type (Linux filesystem), which it already is
-      - `43` or `lvm`,  <key>Enter</key>
+      - `43` or `lvm`,  <kbd>Enter</kbd>
       - *Repeat these **Create type-LVM partition** instructions until there are 4 partitions and the disk is full*
     - `w` (write changes and move on) or `q` (quit and abort, if this was just an exercise)
   - MBR (legacy)
     - `o` (DOS is the same as MBR for partition tables)
     - Create type-LVM partition
-      - `n` <key>Enter</key>
-      - <key>Enter</key> (default `p` for primary partition)
+      - `n` <kbd>Enter</kbd>
+      - <kbd>Enter</kbd> (default `p` for primary partition)
         - Or `e` *Note **MBR logical partitions** (in an **extended container**) are not the same as **LVM logical volumes***
-      - <key>Enter</key> (default next available partition number)
-      - <key>Enter</key> (default next available sector)
-      - `+100G` <key>Enter</key> or on final partition <key>Enter</key> for default (you want 3 or 4 total)
-      - ? `y` <key>Enter</key> if asked to remove the signature (overwriting a existing filesystem)
-      - `t` <key>Enter</key>
-      - ? <key>Enter</key> if asked (default, the partition we just created with `n`)
-      - ? `L` <key>Enter</key> will list type choices (if you are curious)
+      - <kbd>Enter</kbd> (default next available partition number)
+      - <kbd>Enter</kbd> (default next available sector)
+      - `+100G` <kbd>Enter</kbd> or on final partition <kbd>Enter</kbd> for default (you want 3 or 4 total)
+      - ? `y` <kbd>Enter</kbd> if asked to remove the signature (overwriting a existing filesystem)
+      - `t` <kbd>Enter</kbd>
+      - ? <kbd>Enter</kbd> if asked (default, the partition we just created with `n`)
+      - ? `L` <kbd>Enter</kbd> will list type choices (if you are curious)
         - `8e` for type-LVM
         - `lvm` alias for type-LVM
         - FYI code `83` (alias `linux`) is the default type (Linux filesystem), which it already is
-      - `8e` or `lvm`,  <key>Enter</key>
+      - `8e` or `lvm`,  <kbd>Enter</kbd>
       - *Repeat these **Create type-LVM partition** instructions until there are 4 partitions and the disk is full*
-    - `w` <key>Enter</key>, `y` <key>Enter</key> (write changes and move on) or `q` <key>Enter</key> (quit and abort, if this was just an exercise)
+    - `w` <kbd>Enter</kbd>, `y` <kbd>Enter</kbd> (write changes and move on) or `q` <kbd>Enter</kbd> (quit and abort, if this was just an exercise)
 - **Via `gdisk`**
 ```console
 sudo gdisk /dev/sdb
 ```
   - GPT (only option)
-    - `o` <key>Enter</key>
-    - `y` <key>Enter</key>
+    - `o` <kbd>Enter</kbd>
+    - `y` <kbd>Enter</kbd>
     - Create type-LVM partition
-      - `n` <key>Enter</key>
-      - <key>Enter</key> (default next available partition number)
-      - <key>Enter</key> (default next available sector)
-      - `+100G` or on final partition <key>Enter</key> for default (you want 4 or 5 total)
-      - ? `L` <key>Enter</key> <key>Enter</key> will list type choices (if you are curious)
+      - `n` <kbd>Enter</kbd>
+      - <kbd>Enter</kbd> (default next available partition number)
+      - <kbd>Enter</kbd> (default next available sector)
+      - `+100G` or on final partition <kbd>Enter</kbd> for default (you want 4 or 5 total)
+      - ? `L` <kbd>Enter</kbd> <kbd>Enter</kbd> will list type choices (if you are curious)
         - `8e00` for type-LVM
         - FYI code `8300` is the default type (Linux filesystem)
-      - `8e00` <key>Enter</key>
+      - `8e00` <kbd>Enter</kbd>
       - *Repeat these **Create type-LVM partition** instructions until there are 4 partitions and the disk is full*
-    - `w` <key>Enter</key> (write changes and move on) or `q` <key>Enter</key> (quit and abort, if this was just an exercise)
+    - `w` <kbd>Enter</kbd> (write changes and move on) or `q` <kbd>Enter</kbd> (quit and abort, if this was just an exercise)
 - ***Note:*** *Normally we do this on more than one physical disk*
   - *We would repeat this on drives like `/dev/sdc`, etc*
   - *This example only uses one physical drive to demonstrate the commands*
@@ -1570,7 +1570,7 @@ ___
 *Practice commands for SysAdmins who already know what these mean*
 
 - **These commands should be attempted on a practice machine with a separate, expendible, and empty drive attached**
-  - Do not use a VM with an attached virtual drive since the formatting and partitioning commands will wear heavily on the system disk
+  - Do not use a VM with an attached virtual drive since the formatting and partitioning commands will wear heavily on the hypervisor's system disk (probably the machine you have VirtualBox installed on)
   - Beware that the machine you use could be permanently damaged if you type `/dev/sdx` incorrectly, which is why a separate pactice machine is strongly recommended, not any mission-critical machine
 - These commands use `/dev/sdx`; but make sure you use the correct device name to avoid erasing your data
 - `fdisk` & `gdisk` are interactive and require that you follow instructions from The Chalk

@@ -5,15 +5,17 @@ ___
 
 Ready the CLI
 
-*<key>Scroll Lock</key> OR <key>Ctrl</key> + <key>Alt</key> + <key>T</key> OR <key>F12</key> (or new terminal from the desktop menues)*
+*<kbd>Scroll Lock</kbd> OR <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> OR <kbd>F12</kbd> (or new terminal from the desktop menus)*
 
-*Copy and paste this **command** into the **terminal***
+*Copy and paste this into the **terminal***
 
 | **1** :$
 
 ```console
 mkdir -p ~/School/VIP/101
 ```
+
+*Note in the command line above, `mkdir` is the **command** while `mkdir -p ~/School/VIP/101` is the **command line***
 
 *Using the terminal is also called using the **CLI** (as opposed to the **GUI**, which uses the mouse much more)*
 
@@ -37,7 +39,7 @@ gedit
 
 *gedit can be called a **process***
 
-*Terminal: <key>Ctrl</key> + <key>Z</key>*
+*Terminal: <kbd>Ctrl</kbd> + <kbd>Z</kbd>*
 
 *Note gedit won't respond*
 
@@ -57,7 +59,7 @@ fg 1
 
 *Note gedit is no longer **stopped**, it is in the termina's **foreground**, but the terminal is still **occupied***
 
-*Terminal: <key>Ctrl</key> + <key>Z</key>*
+*Terminal: <kbd>Ctrl</kbd> + <kbd>Z</kbd>*
 
 *Note gedit stopped again*
 
@@ -99,7 +101,7 @@ jobs
 gedit
 ```
 
-*Terminal: <key>Ctrl</key> + <key>C</key>*
+*Terminal: <kbd>Ctrl</kbd> + <kbd>C</kbd>*
 
 *Note gedit closed*
 
@@ -154,7 +156,8 @@ jobs
 ___
 
 # Glossary
-- **command** - the first "word" of something entered into the terminal, which then does something; entire refers to the entire line of words and letters
+- **command** - the first "word" of something entered into the terminal, which then does something
+- **command line** - the entire set of "words" entered into the terminal together, which then does something
 - **CLI** - Command Line Interface - AKA the terminal - interacting with programs and files by typing commands
 - **CLI/GUI** - Command Line Interface / Graphical User Interface - these terms are mutually exclusive and distinguish one from the other
   - *CLI* generally suggests *not GUI*
@@ -171,7 +174,7 @@ ___
 - **occupied** - the terminal is handling a job, so it can't be used
 - **process** - a software application (app) operational/running on the system
 - **running** - a job is operational on the system and responding normally
-- **stopped** - a job is "frozen", but still alive on the system (via <key>Ctrl</key> + <key>Z</key> in the terminal)
+- **stopped** - a job is "frozen", but still alive on the system (via <kbd>Ctrl</kbd> + <kbd>Z</kbd> in the terminal)
 - **terminal** - the code screen where commands are entered, using input and output
 - **terminated** - when a job has been killed
 
@@ -179,17 +182,17 @@ ___
 - *These are only for the GUI, not the CLI*
 - **open** - a window on the desktop starts and can be seen on the desktop
 - **resize** - changing the size of an open window on the desktop by clicking and adjusting the edge of the window
-- **minimized** - a window cannot be seen, but is still listed on a taskbar, system tray, or with <key>Alt</key> + <key>Tab</key> 
+- **minimized** - a window cannot be seen, but is still listed on a taskbar, system tray, or with <kbd>Alt</kbd> + <kbd>Tab</kbd> 
 - **maximized** - a window takes up the full screen and cannot be resized; on most systems, click the "maximize" button in the corner of the window or double click on the title bar of the window (to maximize) or drag the window down from the top to (to un-maximise)
 - **restored** - AKA "un-minimized" or "un-maximized" - a window can be seen on the desktop and can be resized, after having been minimized or maximized
 - **full screen** - a window fills the screen and the title bar can't be seen; it cannot be minimized, resotred, or maximized
-  - Swith this back and forth with <key>F11</key> - *this is very useful when focusing on only one desktop application, don't be fraid to use it often*
+  - Swith this back and forth with <kbd>F11</kbd> - *this is very useful when focusing on only one desktop application, don't be fraid to use it often*
 
 
 # The Take
 - The terminal can control desktop app sessions, such as gedit and Gnome Mines and others
-- **<key>Ctrl</key> + <key>Z</key>** and **<key>Ctrl</key> + <key>C</key>** manage apps started from their terminal
-- We use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> and <key>Ctrl</key> + <key>Shift</key> + <key>V</key> in the terminal for copy-paste
+- **<kbd>Ctrl</kbd> + <kbd>Z</kbd>** and **<kbd>Ctrl</kbd> + <kbd>C</kbd>** manage apps started from their terminal
+- We use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> in the terminal for copy-paste
 - Open gedit from the GUI before entering it as a terminal command
 - `jobs`, `fg #`, `bg #`, `kill %#`, and `command &` also manage apps started from their terminal
 - `killall app-name` will end all sessions of "app-name", whether started from the same terminal or not

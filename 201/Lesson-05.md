@@ -705,13 +705,13 @@ sudo cat /etc/sudoers
 
 *You can also `sudo` desktop GUI apps, but it can be dangerous...*
 
-| **72** :$ *Look, then close right away, use <key>Ctrl</key> + <key>C</key> in the terminal*
+| **72** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
 
 ```console
 sudo gedit
 ```
 
-| **73** :$ *Look, then close right away, use <key>Ctrl</key> + <key>C</key> in the terminal*
+| **73** :$ *Look, then close right away, use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal*
 
 ```console
 sudo nautilus

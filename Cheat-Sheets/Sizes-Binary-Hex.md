@@ -15,6 +15,7 @@ ___
 - `1` and `0` are used in Binary numbering, which computers use
 - Each `1` or `0` is a `bit`
 - `Bits` come in two pairs of `4`, making `8 bits`, AKA `1 Byte`, AKA `1` "oclet
+
 ### Binary Groups of `4` (`1`-`15`; `A`-`F`)
 ```
 | Binary | Hexadecimal | Decimal |
@@ -38,6 +39,7 @@ ___
 ```
 - *Notice with Binary and Hexadecimal, the group of `4` binaries create the same letter*
   - *This is one reason why Hexadecimal is convenient*
+
 ### Examples of Oclets
 ```
 | Binary    | Hexadecimal | Decimal |
@@ -59,43 +61,50 @@ ___
 | 1111 0000 | F0          | 240     |
 | 1111 1111 | FF          | 255     |
 ```
+
 ### Oclet Charts
 - Binary numbers work in powers of `2` because they only have two possible digits
+
 ```
-| Binary    | Exponents of 2 | Decimal |
-| :-------- | :------------- | :------ |
-| 0000 0000 | 0<sup>0</sup>  | 0       |
-| 0000 0001 | 2<sup>0</sup>  | 1       |
-| 0000 0010 | 2<sup>1</sup>  | 2       |
-| 0000 0100 | 2<sup>2</sup>  | 4       |
-| 0000 1000 | 2<sup>3</sup>  | 8       |
-| 0001 0000 | 2<sup>4</sup>  | 16      |
-| 0010 0000 | 2<sup>5</sup>  | 32      |
-| 0100 0000 | 2<sup>6</sup>  | 64      |
-| 1000 0000 | 2<sup>7</sup>  | 128     |
+| Binary    | Exponents of 2 | Hexadecimal | Decimal |
+| :-------- | :------------- | :---------- | :------ |
+| 0000 0000 | 0<sup>0</sup>  | 00          | 0       |
+| 0000 0001 | 2<sup>0</sup>  | 01          | 1       |
+| 0000 0010 | 2<sup>1</sup>  | 02          | 2       |
+| 0000 0100 | 2<sup>2</sup>  | 08          | 4       |
+| 0000 1000 | 2<sup>3</sup>  | 08          | 8       |
+| 0001 0000 | 2<sup>4</sup>  | 10          | 16      |
+| 0010 0000 | 2<sup>5</sup>  | 20          | 32      |
+| 0100 0000 | 2<sup>6</sup>  | 40          | 64      |
+| 1000 0000 | 2<sup>7</sup>  | 80          | 128     |
 ```
 
 - Decimal values per place:
 
 ### `1    1    1    1    1    1    1    1` (Binary)
 ### `128  64   32   16   8    4    2    1` (Decimal)
+### `80   40   20   10   8    4    2    1` (Hexadecimal)
 
 - *Use the `1` place to add numbers to convert between decimal and binary*
-- `00100001` = `32` + `1` = `33`
-- `10000010` = `128` + `2` = `130`
-- `11000000` = `128` + `64` = `192`
-- `10101000` = `128` + `32` + `8` = `168`
-- `11111111` = `128` + `64` + `32` + `16` + `8` + `4` + `2` + `1` = `255`
+- `00100001` = `21` = `33` = `32` + `1`
+- `10000010` = `82` = `130` = `128` + `2`
+- `10100000` = `A0` = `160` = `128` + `32`
+- `10101000` = `A8` = `168` = `128` + `32` + `8`
+- `10110000` = `B0` = `176` = `128` + `32` + `16`
+- `11000000` = `C0` = `192` = `128` + `64`
+- `11010000` = `D0` = `208` = `128` + `64` + `16`
+- `11100000` = `E0` = `224` = `128` + `64` + `32`
+- `11110000` = `F0` = `240` = `128` + `64` + `32` + `16`
+- `11111111` = `FF` = `255` = `128` + `64` + `32` + `16` + `8` + `4` + `2` + `1`
 - *Or use `0` to subtract from `255*
-- `11101111` = `255` - `16` = `239`
-- `11111110` = `255` - `1` = `254`
-- `01110111` = `255` - `128` - `8` = `119`
-- `11110000` = `255` - `8` - `4` - `2` - `1` = `240`
-- `00000000` = `128` - `64` - `32` - `16` - `8` - `4` - `2` - `1` = `0`
+- `11111110` = `FE` = `254` = `255` - `1`
+- `11110001` = `F1` = `241` = `255` - `8` - `4` - `2`
+- `11101111` = `EF` = `239` = `255` - `16`
+- `01110111` = `77` = `119` = `255` - `128` - `8`
+- `00000000` = `00` = `0` = `128` - `64` - `32` - `16` - `8` - `4` - `2` - `1`
 
 ### Converting Binary in Your Head
-
-*To get fast at converting hex-bin in your head:*
+*To get fast at converting bin-hex in your head:*
 
 - Remembering key values like:
   - `1 1 1 1` matches `8 4 2 1`
@@ -105,10 +114,11 @@ ___
   - `1100` = `C` = `12`
   - `1111` = `F` = `15`
 
-*To get fast at converting dec-bin in your head:*
+*To get fast at converting bin-dec in your head:*
 
-- `1 1 1 1 0 0 0 0` matches `128 + 64 + 32 + 16`
-- Adding and subtracting `128`, `64`, `32`, `16`, `8`, and `4`
+- Review:
+  - `1 1 1 1 0 0 0 0` matches `128 + 64 + 32 + 16`
+  - Adding and subtracting `128`, `64`, `32`, `16`, `8`, and `4`
 
 *Converting between binary and hexadecimal is easier because the places cycle every `4` bits, while decimal cycle places don't even match up*
 

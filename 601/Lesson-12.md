@@ -146,10 +146,10 @@
   - `root` access without password
 - Boot in emergency or rescue mode:
   1. Select an entry from the GRUB menu
-  2. Press <key>E</key> for "edit"
-    - If you don't like what you see, press <key>Esc</key> and return to step 1 to select a menu item you like more in step 2
+  2. Press <kbd>E</kbd> for "edit"
+    - If you don't like what you see, press <kbd>Esc</kbd> and return to step 1 to select a menu item you like more in step 2
   3. Add the word `emercengy` or `rescue` to the kernel command line in the config file
-  4. Press <key>F10</key> or other instructions to boot
+  4. Press <kbd>F10</kbd> or other instructions to boot
 - Once booted, you can work your SysAdmin magic
 
 ### 2. Boot from Attached `.iso` or Plugged Linux USB
@@ -209,7 +209,7 @@
   - OS-A is dead on the machine
     - The system is installed on `/dev/sdX`
   - OS-B is already booted, running from a plugged USB (or image attached to the VM)
-    - *Plug a Linux USB, <key>F12</key>/<key>Esc</key>/etc boot menu, choose the USB*
+    - *Plug a Linux USB, <kbd>F12</kbd>/<kbd>Esc</kbd>/etc boot menu, choose the USB*
     - *Or "attach" a Linux image to the VM in VirtualBox, your cloud account, or other hypervizor, then boot to the image*
   - OS-B runs and manages files on dead OS-A disks *as if* it was OS-A
     - OS-B will see the OS-A system as installed on `/dev/sdX`

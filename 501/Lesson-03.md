@@ -22,7 +22,7 @@ sudo systemctl start apache2 mariadb
 ### This lesson uses two terminals and two browser tabs!
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -30,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 mariadb -u admin -padminpassword
 ```
 
-*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :// Username: `admin` Password: `adminpassword`
 
@@ -79,7 +79,7 @@ ls web
 localhost/web/website.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *You should recognize this from before, restructured via `include` files*
 
@@ -173,13 +173,13 @@ SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
 
 | **SB-2** ://phpMyAdmin **> fruit**
 
-| **B-2** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/website.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ### III. SQL > PHP > HTML
 *Let's do the same thing, but put it in an HTML `<table>`...*
@@ -205,13 +205,13 @@ SELECT name, type, have, count, prepared FROM fruit WHERE name='bananas';
 - *`website.php`*
 - *`style.css`*
 
-| **B-3** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-3** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/website.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 #### SQL PHP Summary
 1. An SQL query becomes a PHP `$Variable` (with any variable name)
@@ -257,13 +257,13 @@ SELECT name, type, have, count, prepared FROM fruit;
 
 | **SB-4** ://phpMyAdmin **> fruit** (Same)
 
-| **B-4** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/website.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 #### SQL Rows Loop Summary
 1. Each SQL row is an item that can be looped through
@@ -290,13 +290,13 @@ SELECT name, type, date_created FROM fruit;
 
 | **SB-5** ://phpMyAdmin **> fruit** (Same)
 
-| **B-5** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-5** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/website.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ### V. SQL `INSERT` New Entry < HTML
 - See if a query succeeded without error
@@ -338,7 +338,7 @@ localhost/web/website.php
 
 *Try to input numbers or leave a field empty to see how the form responds*
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Once finished, see the new entries in the database...*
 
@@ -494,7 +494,7 @@ localhost/web/website.php
 
 *Make changes, input numbers, or empty a field to see how the form responds*
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Once finished, see the updated entries in the database...*
 
@@ -533,7 +533,7 @@ localhost/web/website.php
 
 *Use a checkbox to delete an entry*
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Once finished, note the entries deleted from the database...*
 

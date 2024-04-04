@@ -22,7 +22,7 @@ sudo systemctl start apache2 mariadb
 ### This lesson uses two terminals and two browser tabs!
 Ready the secondary SQL terminal and secondary SQL browser
 
-*(<key>Ctrl</key> + <key>Shift</key> + <key>T</key> for new terminal tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -30,7 +30,7 @@ Ready the secondary SQL terminal and secondary SQL browser
 mariadb -u admin -padminpassword
 ```
 
-*(<key>Ctrl</key> + <key>T</key> for new browser tab; <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key> to switch tabs)*
+*(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
 
@@ -115,7 +115,7 @@ ls web
 localhost/web/pieces.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Review pieces on our SQL table...*
 
@@ -162,13 +162,13 @@ ls web
 - *`pagify.php`*
 - *`postify.php`*
 
-| **B-2** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Observe changes to pieces on our SQL table...*
 
@@ -236,13 +236,13 @@ ls web
 - *`pagify.php`*
 - *`postify.php`*
 
-| **B-4** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Observe changes to pieces on our SQL table...*
 
@@ -295,13 +295,13 @@ ls web
 - *This has a `while` loop to delete each "dead" piece*
 
 
-| **B-6** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-6** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Review "pieces" on our SQL table...*
 
@@ -358,13 +358,13 @@ ls web
 - *This isn't about beauty as much as it is about being more readable*
   - *This is called "UX theory" (User eXperience theory)*
 
-| **B-8** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-8** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 In Atom:
 
@@ -417,13 +417,13 @@ ls web
 - *Added a `.purple` class*
 - *Added a section for "htmldiff.js"*
 
-| **B-9** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-9** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 Hover over a "Status" section and click "history", it should take you somewhere like...
 
@@ -433,7 +433,7 @@ Hover over a "Status" section and click "history", it should take you somewhere 
 localhost/web/hist.php?p=3
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *...This is using our htmldiff.js framework*
 
@@ -501,7 +501,7 @@ $new_id = $row[0];
   - *This bumped our old htmldiff DOM `<h2>` tags to `<h3>`*
   - *It is VERY important to preserve header hierarchy, starting with `<h1>` and going down*
 
-| **B-12** :// (or whatever ID, <key>Ctrl</key> + <key>R</key> to reload)
+| **B-12** :// (or whatever ID, <kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/hist.php?p=3
@@ -706,7 +706,7 @@ ls web
 localhost/web/edit.php?p=3
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Note the new "Tags" field and the `="p_tags"` values in HTML*
 
@@ -969,7 +969,7 @@ ALTER TABLE `publication_history` ADD `series` INT UNSIGNED DEFAULT 1;
 localhost/web/select.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 Try adding a Series with the "+ Series" form
 
@@ -1052,13 +1052,13 @@ SELECT * FROM series;
 codium core/09-pieces6.php
 ```
 
-| **B-28** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-28** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 We already have a `<form>` inside many of these `<table>` cells (the links that appear on hover)
 
@@ -1104,7 +1104,7 @@ ls web
 localhost/web/postformarrays.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 Check different boxes, then submit with different buttons multiple times
 
@@ -1162,13 +1162,13 @@ ls web
   - *These call `act.bulkpieces.php`*
 
 
-| **B-30** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-30** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 Click and try:
 
@@ -1193,13 +1193,13 @@ codium core/09-pieces8.php core/09-in.metaeditfunctions8.php core/09-ajax.pieces
 ls web
 ```
 
-| **B-31** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-31** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Notice the AJAX functions with every piece*
 
@@ -1298,13 +1298,13 @@ ls web
   - *Changes the page more directly with AJAX calls*
   - *Changes the text of the "changed" button, while we're at it*
 
-| **B-33** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-33** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 Try different Piece actions and see how the page never needs to reload
 
@@ -1450,7 +1450,7 @@ document.getElementById("title_"+p_id).innerHTML = '<b>'+jsonMetaEditResponse["t
 document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditResponse["message"]+'&nbsp;';
 ```
 
-| **B-35** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-35** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1473,7 +1473,7 @@ localhost/web/pieces.php
     - *Reverse pilcrow for "Posts": no writer's use outside of some software coding*
 
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 ### Published History to Display New Meta
 
@@ -1485,7 +1485,7 @@ codium core/09-hist10.php && \
 ls web
 ```
 
-| **B-36** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-36** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1526,10 +1526,10 @@ ls web
     - *`ajaxSaveDraft()` to AJAX our "Save draft" button*
       - *Clicking "Save draft" will not reload the entire page, but it still saves*
     - *For new pieces with no ID*
-      - *The Javascript <key>Ctrl</key> + <key>S</key> listener will trigger the "Save draft" button*
-      - *TinyMCE's <key>Ctrl</key> + <key>S</key> hotkey will trigger a false ajaxSaveDraft() that simply clicks the "Save draft" button just the same*
+      - *The Javascript <kbd>Ctrl</kbd> + <kbd>S</kbd> listener will trigger the "Save draft" button*
+      - *TinyMCE's <kbd>Ctrl</kbd> + <kbd>S</kbd> hotkey will trigger a false ajaxSaveDraft() that simply clicks the "Save draft" button just the same*
       - *Search: `// AJAX false triggers in new piece`*
-    - *`addEventListener` to capture "<key>Ctrl</key> + <key>S</key>" for the "Save draft" button*
+    - *`addEventListener` to capture "<kbd>Ctrl</kbd> + <kbd>S</kbd>" for the "Save draft" button*
       - *When editing an existing Piece, it will send the `ajaxSaveDraft()` AJAX call directly*
       - *When editing a new Piece with no ID yet, it will use JavaScript to "click" the "Save draft" `<input type="submit"`*
     - *AJAX response appears inside `<div id="ajax_save_draft_response"`*
@@ -1563,7 +1563,7 @@ setup: function (editor) {
   });
 },
 ```
-  - *For TinyMCE to allos the "<key>Ctrl</key> + <key>S</key>" AJAX hotkey, we need this in the config:*
+  - *For TinyMCE to allos the "<kbd>Ctrl</kbd> + <kbd>S</kbd>" AJAX hotkey, we need this in the config:*
 ```javascript
 init_instance_callback: function (editor) {
   editor.addShortcut("ctrl+s", "Save draft", "custom_ctrl_s");
@@ -1576,7 +1576,7 @@ init_instance_callback: function (editor) {
   - *`Notice hides` section, making class `.notehide` disappear after 8 seconds*
   - *Added `input[type=text].slug` so the slug `<input type="text"` isn't ridiculously long like before*
 
-| **B-37** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-37** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1584,7 +1584,7 @@ localhost/web/pieces.php
 
 1. Click "Edit" for any piece
 2. Click "Save draft" and watch for the message
-3. Press "<key>Ctrl</key> + <key>S</key>" to watch the same message
+3. Press "<kbd>Ctrl</kbd> + <kbd>S</kbd>" to watch the same message
 4. Click "Update" or "Publish" and the page will reload instead of AJAX
 
 ### JavaScript Auto-Save
@@ -1640,7 +1640,7 @@ This autosave function serves many purposes, including nav warnings when changes
       - *`$_POST['old_as']`*
   - *`htmlspecialchars($_POST['old_as'])` to decode our `recover_as = htmlchars(old_as)` from `edit.php`*
 
-| **B-38** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-38** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/pieces.php
@@ -1648,8 +1648,8 @@ localhost/web/pieces.php
 
 1. Click "Edit" for any piece
 2. Type some changes in the "Content" (TinyMCE) field
-3. Wait 30 seconds and **DO NOT** press "<key>Ctrl</key> + <key>S</key>"
-4. Press "<key>Ctrl</key> + <key>R</key>" to reload the page
+3. Wait 30 seconds and **DO NOT** press "<kbd>Ctrl</kbd> + <kbd>S</kbd>"
+4. Press "<kbd>Ctrl</kbd> + <kbd>R</kbd>" to reload the page
   - Agree to a warning to navigate away and leave the page
   - If there is no navigate away warning, you didn't wait long enough after changes
 5. When the page reloads, you will see the message about unsaved changes
@@ -1754,7 +1754,7 @@ ___
 
 1. Make sure the piece is published
 2. Make some changes anywhere
-3. Click "Save draft" or press "<key>Ctrl</key> + <key>S</key>", **NOT** "Update publication"
+3. Click "Save draft" or press "<kbd>Ctrl</kbd> + <kbd>S</kbd>", **NOT** "Update publication"
 5. Look for a message near the top that reads "**view diff for unpublished changes**"
   - You may need to load from the address bar again to see that "view diff..." message
 6. Run our SQL query for this piece (change `U.piece_id=1` to another number if `edit.php?p=1` didn't work in the previous step)
@@ -1821,7 +1821,7 @@ localhost/web/edit.php
 ```
 
 1. Enter a boring title you will recognize
-2. Many times as fast as you can: click "Save draft" or press "<key>Ctrl</key> + <key>S</key>"
+2. Many times as fast as you can: click "Save draft" or press "<kbd>Ctrl</kbd> + <kbd>S</kbd>"
 
 *Have a look...*
 

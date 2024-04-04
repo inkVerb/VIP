@@ -32,7 +32,7 @@ I am not a terminal command because I have no dollar sign nor hash sign.
 I belong in your text editor where some-file.txt is open.
 ```
 
-*When using copy-paste to enter a command into the terminal, <key>Ctrl</key> + <key>C</key> will work in a normal window, but use <key>Ctrl</key> + <key>Shift</key> + <key>V</key> to paste into the terminal*
+*When using copy-paste to enter a command into the terminal, <kbd>Ctrl</kbd> + <kbd>C</kbd> will work in a normal window, but use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> to paste into the terminal*
 
 | **1** :$
 
@@ -144,13 +144,13 @@ This is a new file.
 
 *Note the asterisk * in the title of gedit*
 
-*Use <key>Ctrl</key> + <key>S</key> to save the file*
+*Use <kbd>Ctrl</kbd> + <kbd>S</kbd> to save the file*
 
 *Note the asterisk * went away and the file "`first-file`" appeared in Nautilus*
 
 *Update `first-file` to version 02:*
 
-*After copying the text below via <key>Ctrl</key> + <key>C</key>, in gedit, use <key>Ctrl</key> + <key>A</key>, <key>Ctrl</key> + <key>V</key>, <key>Ctrl</key> + <key>S</key>*
+*After copying the text below via <kbd>Ctrl</kbd> + <kbd>C</kbd>, in gedit, use <kbd>Ctrl</kbd> + <kbd>A</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd>*
 
 | **first-file** :
 

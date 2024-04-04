@@ -125,7 +125,7 @@ Here are some other examples of other devices:
 
 `sudo fastboot flash boot recovery-i-downloaded-prolly-twrp-3.x.2.x.1.x.zip`
 
-3. Boot to the recovery CWM/TWRP (probably from menues using volume/power keys in the bootloader)
+3. Boot to the recovery CWM/TWRP (probably from menus using volume/power keys in the bootloader)
 (Sometimes the bootloader can boot to the revoery. Sony: only when a recovery is installed, the LED will briefly light up on boot; when the LED lights, press VOLUME UP to enter recovery)
 4. Factory reset
 - Use the recovery CWM/TWRP to do a "factory reset" AKA "wipe". The new ROM can't install on top of an existing, working Android operating system.
@@ -134,7 +134,7 @@ Here are some other examples of other devices:
 - Option 2: `adb sideload` (below; installs, but does not copy; instructions are in the recovery CWM/TWRP; skip the rest of instructions)
 - Option 3: Just copy it to the SD card physically, mount as a disk in Android to "copy files", or copy it some other way to get it in the phone
 6. Install the ROM
-- In the recovery CWM/TWRP menues, find the options to choose and Install a ROM.
+- In the recovery CWM/TWRP menus, find the options to choose and Install a ROM.
 
 ## adb and fastboot commands
 

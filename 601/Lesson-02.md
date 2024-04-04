@@ -12,7 +12,12 @@
     - `RUID` Real user ID, user that runs the program
     - `EUID` Effective User ID, determins privileges of the process for the kernel
     - `SUID` Saved user ID, referred to if the process needs to change its UID
-    - See these for `gedit` (while running) with: `ps -C gedit -o pid,ruid,euid,suid,ruser,user,euser,cmd` (a section on `ps` comes later)
+    - ie: see these for a text editor (while running):$
+      - `ps -C gedit` (Gnome)
+      - `ps -C gedit -o cmd,pid,uid,ruid,euid,suid,user,ruser,euser,suser`
+      - `ps -C mousepad` (Xfce)
+      - `ps -C mousepad -o cmd,pid,uid,ruid,euid,suid,user,ruser,euser,suser`
+      - A section on `ps` comes later in this lesson
   - Make a file a setuid with: `chmod u+s newprogram`
     - Then, `ls -l` will list permissions: `-rwSr--r--` or `-rwsr-xr-x` with an `s` or `S` where the `x` would normally be
     - Examples of setuid programs in `/usr/bin/`:
@@ -28,16 +33,6 @@
 - Creating your own setuid program owned by root can cause security problems
 - Sometimes, it is vital that a non-root user run programs, merely for reasons like this
 
-### Control
-- `ulimit -a` shows the various limits placed on processes
-  - Each limit is shown with a flag, such as `-c`, `-d`, `-f`, etc
-- `ulimit -u 256512` sets the maximum of user processes to 256,512
-- Settings are in `/etc/security/limits.conf`
-- **hard limit** - set by `root` (not `sudo`)
-- **soft limit** - set by users
-- :# `ulimit -H -u 256512` set as a hard limit
-- :$ `ulimit -S -u 256512` set as a soft limit
-
 ### Process Creation
 - The first user process is `init` with PID `1`
 - Linux systems constantly create new processes by **forking** existing processes, sometimes called **fork and exec**
@@ -51,33 +46,78 @@
 - A command can be run in the background by adding `&` to the end of a command, then the process does not depend on the terminal
   - This runs the process in the **background**
   - Without `&` at the end of the command, the terminal process runs in the **foreground**
-- <key>Ctrl</key> + <key>Z</key> will stop a process in the terminal if it has not completed yet
-- `jobs` will list all process running that started in the terminal, both **background** and **foreground** that are stopped with <key>Ctrl</key> + <key>Z</key>
+- <kbd>Ctrl</kbd> + <kbd>Z</kbd> will stop a process in the terminal if it has not completed yet
+- `jobs` will list all process running that started in the terminal, both **background** and **foreground** that are stopped with <kbd>Ctrl</kbd> + <kbd>Z</kbd>
 - `jobs -l` will give the same list, but also with PIDs
 
-### Future execution
-- `at` sets a job to start in the future
-- `at now + 3 hours` will open an interactive terminal to enter your command to run three hours in the future
-  - When finished, press <key>Ctrl</key> + <key>D</key> to end your command (adding `EOT` as the [heredoc](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md) delimiter)
+### `ps` Process Snapshot (PS)
+- Types of `ps` options
+  - Unix options **must** start with `-`
+  - BSD options **must not** start with `-`
+  - GNU options **must** start with `--`
+- `pgrep` finds the PID for a process, shortening the work of `ps | grep [some-command]`
+- Examples:$
+  - `ps aux`
+    - `ps aux | grep gedit` (GNOME)
+    - `pgrep gedit` (GNOME)
+    - `ps aux | grep gedit` (Xfce)
+    - `pgrep gedit` (Xfce)
+  - `ps -elLf`
+    - `ps -elf` shows parent PIDs as PPIDs
+  - `ps -C gedit`
+    - `ps -C gedit -o cmd,pid,cputime,pmem`
+    - `-C gedit` isolates the command `gedit` to retrieve information for
+    - `cmd` - command
+    - `pid` - PID
+    - `cputime` - Total CPU time
+    - `pmem` - RAM use ratio to total RAM
 
-### `cron`
-- Play around with [crontab guru](https://crontab.guru/) to see how the schedule works
-- `MM HH DD MM WD user command (args...)`
-  - `[minute] [hour] [date] [month] [weekday] [user] [command] (arguments - optional)`
-  - `*` every value
-  - `,` list separator
-  - `-` range operator
-  - `/` step operator (every `/n` values; eg. every `/2` hours)
-  - `cron.d` directory for cron tasks like this
-  - Learn more from the [Cron Cheat Sheet](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md) and [401 Lesson 3](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md)
-- `anacron` is an alternative to `cron` that runs jobs with staggered timing
-- `chrony` is the [Arch Linux package](https://wiki.archlinux.org/title/Chrony) for `cron` task functionality (not native)
-- `cron.d/` files must have `0644` permissions
+### `pstree` PS Tree
+- Visual geneology of multi-thread processes
+- Examples:$
+  - `pstree -aAp`
+  - `pstree -aAp 1` - PID for `init`
+  - `pstree -aAp $(pgrep gedit)` (GNOME)
+  - `pstree -aAp $(pgrep mousepad)` (Xfce)
+  - `pstree -aAps 1555`
+- A desktop GUI often outputs much more than a web server with `pstree`
+
+### `/proc/`
+- Every processes is listed in `/proc/` by PID
+  - Inside `/proc/SOME_PID/task/` contains folders of child processes by PID
+  - Not every process will have a folder directly in `/proc/`
+- Much of the information that process monitoring tools use simply comes by reading text information from `/proc/`
+- `/proc/self` links to the current running process
+  - `ls -l /proc/self` shows the PID that as its symlink
+
+#### Test with `dd`
+- `dd` can be used as a dummy process to test system IDs, etc:$
+  - `dd if=/dev/zero of=/dev/null`
+  - `dd if=/dev/urandom of=/dev/null status=progress`
+    - Optionally add `status=progress`
+    - `/dev/zero` and `/dev/urandom` are both valid `if=` sources
+  - `dd if=/dev/urandom | pv | dd of=/dev/null` (requires the `pv` 'pipe viewer' package)
+- Use <kbd>Ctrl</kbd> + <kbd>Z</kbd> and `jobs -l` and `kill` to play around with this process
+- Start a `dd` test for `ps` examination:$
+  - `dd if=/dev/zero of=/dev/null &`
+  - `ps aux | grep dd`
+  - `ps -C dd -o cmd,pid,cputime,pmem,uid,ruid,euid,suid,user,ruser,euser,suser`
+
+### Control
+- `ulimit -a` shows the various limits placed on processes
+  - Each limit is shown with a flag, such as `-c`, `-d`, `-f`, etc
+- `ulimit -u 256512` sets the maximum of user processes to 256,512
+- Settings are in `/etc/security/limits.conf`
+- **hard limit** - set by `root` (not `sudo`)
+- **soft limit** - set by users
+- :# `ulimit -H -u 256512` set as a hard limit
+- :$ `ulimit -S -u 256512` set as a soft limit
 
 ### Process States
+- Managed with `jobs`
 - Running - normal, using CPU, executing
 - Waiting/Sleeping - on hold until it finishes a task or receives data
-- Stopped - suspended, probably using <key>Ctrl</key> + <key>Z</key>, able to be analyzed before resuming
+- Stopped - suspended, probably using <kbd>Ctrl</kbd> + <kbd>Z</kbd>, able to be analyzed before resuming
 - Zombie - finished, but still has a PID lingering along with a space in the "process table"
 
 ### Execution Modes
@@ -104,11 +144,28 @@
 - Change priority of a running process with `renice`
   - `renice 10 -p 1555` - The process with PID `1555` will change to a semi-low priority of `10`
 
-## Monitoring Processes
-- There are several tools for monitoring processes:
+## Memory
+- `/proc/` info locations:
+  - `/proc/meminfo` - RAM
+  - `/proc/swaps` - Swap
+  - `/proc/sys/vm/` - Virtual RAM
+  - `/proc/sys/vm/overcommit_memory` - Overcomit setting (default `0`, see OOM below)
+
+### Memory tools from `procps` package
+- `free` basic RAM and swap use
+- `pmap` maps processes in memory
+  - `pmap -x [PID]`
+- `vmstat` shows virtual memory use and info
+  - `vmstat 1 5` (display `5` iterations every `1` second)
+  - `vmstat -a 1 3` (`-a` for activity)
+  - `vmstat -a -SM 1 3`
+  - `vmstat -p /dev/sda1 1 3`
+
+### Other Processes Monitoring Tools
+- There are several tools for monitoring processes: (some are redundant)
   - `top` processes
   - `htop` processes more human-readable
-  - `free` RAM and swap use
+  - `free` basic RAM and swap use
   - `ps` detailed, customizable info on processes
   - `pstree` processes in a tree showing parents
   - `uptime` how long the system has been running, users logged on, and load
@@ -118,72 +175,54 @@
   - `strace` system calls made by a given process
   - The `/proc/` root folder is also useful if you know how what you are looking for
 
-### `ps`
-- Types of `ps` options
-  - Unix options **must** start with `-`
-  - BSD options **must not** start with `-`
-  - GNU options **must** start with `--`
-- Examples
-  - `ps aux`
-  - `ps -elLf`
-    - `ps -elf` shows parent PIDs as PPIDs
-  - `ps -C gedit`
-    - `ps -C gedit -o pid,ruid,euid,suid,ruser,user,euser,cmd`
-    - `cmd` - command
-    - `pid` - PID
-    - `cputime` - Total CPU time
-    - `pmem` - RAM use ratio to total RAM
-
-### `pstree`
-- Visual geneology of multi-thread processes
-- Examples
-  - `pstree -aAp`
-  - `pstree -aAp $(pgrep gedit)`
-  - `pstree -aAps 1555`
-
-### `/proc/`
-- Every processes is listed in `/proc/` by PID
-  - Inside `/proc/SOME_PID/task/` contains folders of child processes by PID
-  - Not every process will have a folder directly in `/proc/`
-- Much of the information that process monitoring tools use simply comes by reading text information from `/proc/`
-- `/proc/self` links to the current running process
-  - `ls -l /proc/self` shows the PID that as its symlink
-
-### `dd`
-- `dd` can be used as a dummy process to test system IDs, etc
-  - `dd if=/dev/zero of=/dev/null`
-  - `dd if=/dev/urandom of=/dev/null status=progress`
-    - Optionally add `status=progress`
-    - `/dev/zero` and `/dev/urandom` are both valid `if=` sources
-  - `dd if=/dev/urandom | pv | dd of=/dev/null` (requires the `pv` 'pipe viewer' package)
-- Use <key>Ctrl</key> + <key>Z</key> and `jobs -l` and `kill` to play around with this process
-
-## Memory
-- `/proc/` info locations:
-  - `/proc/sys/vm/`
-  - `/proc/meminfo` - RAM
-  - `/proc/swaps` - Swap
-- Memory tools from `procps`
-  - `free` basic RAM usage
-  - `vmstat` shows virtual memory use and info
-  - `pmap` maps processes in memory
-- Examples
-  - `vmstat 1 5` (display `5` iterations every `1` second)
-  - `vmstat -a 1 3` (`-a` for activity)
-  - `vmstat -a -SM 1 3`
-  - `vmstat -p /dev/sda1 1 3`
-
 ### OOM Killer (Out of Memory)
 - Linux allows memory to "overcommit"
   - If a process requests a large block of RAM, but will likely only use a small amount, Linux allows it
   - This depends on the **badness* seen in `/proc/PID/oom_score`
 - Setting: `/proc/sys/vm/overcommit_memory` (a simple digit)
-  - `0` default - permit overcommittment
+  - `0` - default - permit overcommittment
     - Rejects overcomits that are obviously a problem
     - `root` users get more memory than normal users
   - `1` - always overcommit
   - `2` - never overcomit
-    - Ratio of RAM to swap set in: `/proc/sys/vm/overcommit_ratio` (default `50`)
+- Ratio of RAM to swap set in: `/proc/sys/vm/overcommit_ratio` (default `50`)
+
+## Task Scheduling
+### `at` Future Execution
+- `at` sets a job to start in the future
+- Requirements:
+  - Install the `at` package
+  - `atd` service must be running:#
+    - `systemctl start atd`
+- Interactive:$ (opens interactive terminal for set or relative time in future)
+  - `at 22:00`
+  - `at now + 3 hours`
+  - `at now + 1 minute`
+  - `at now + 1 day`
+  - `at now + 1 week`
+  - `at now + 1 month`
+  - `at now + 1 year`
+  - When finished, press <kbd>Ctrl</kbd> + <kbd>D</kbd> to end your command (showing `<EOT>` as the [heredoc](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md) delimiter)
+- Plain command examples:$
+  - `at 22:00 -f /path/to/command/or/script`
+  - `echo "echo 'hello world'" | at 22:00`
+  - `echo "cat fish" | at 23:00`
+  - `echo "uptime" | at 01:24`
+
+### `cron`
+- Schedule tasks
+- Play around with [crontab guru](https://crontab.guru/) to see how the schedule works
+- `MM HH DD MM WD user command (args...)`
+  - `[minute] [hour] [date] [month] [weekday] [user] [command] (arguments - optional)`
+  - `*` every value
+  - `,` list separator
+  - `-` range operator
+  - `/` step operator (every `/n` values; eg. every `/2` hours)
+  - `cron.d` directory for cron tasks like this
+  - Learn more from the [Cron Cheat Sheet](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Cron.md) and [401 Lesson 3](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md)
+- `anacron` is an alternative to `cron` that runs jobs with staggered timing
+- `chrony` is the [Arch Linux package](https://wiki.archlinux.org/title/Chrony) for `cron` task functionality (not native)
+- `cron.d/` files must have `0644` permissions
 
 ___
 
@@ -192,9 +231,15 @@ ___
 *Practice commands for SysAdmins who already know what these mean*
 
 ```console
+find /usr/bin -perm -u+s
 cd /usr/bin
 ls -l | grep rws
+
+find . -perm -u+x
 find . -perm -u+s
+find . -perm -u+x | wc -l
+find . -perm -u+s | wc -l
+
 ls -l chsh
 ls -l crontab
 ls -l gpasswd
@@ -206,6 +251,59 @@ ls -l mount
 ls -l umount
 ls -l unix_chipwd
 
+# Choose gedit for GNOME or mousepad for Xfce
+gedit &&
+ps -C gedit
+ps -C gedit -o cmd,pid,uid,ruid,euid,suid,user,ruser,euser,suser
+ps -C gedit -o cmd,pid,cputime,pmem
+pgrep gedit
+pstree -aAp $(pgrep gedit)
+killall gedit
+
+mousepad &&
+ps -C mousepad
+ps -C mousepad -o cmd,pid,uid,ruid,euid,suid,user,ruser,euser,suser
+ps -C mousepad -o cmd,pid,cputime,pmem
+pgrep mousepad
+pstree -aAp $(pgrep mousepad)
+killall mousepad
+
+pstree -aAp
+
+ls /proc
+cd /proc
+ls -l
+dd if=/dev/urandom | pv | dd of=/dev/null
+# Ctrl + C
+dd if=/dev/zero | pv | dd of=/dev/null
+# Ctrl + C
+gedit &     # Choose one
+mousepad &  # Choose one
+dd if=/dev/zero of=/dev/null &
+jobs -l
+ps -C dd
+ps -C dd -o cmd,pid,cputime,pmem,uid,ruid,euid,suid,user,ruser,euser,suser
+ps aux | grep gedit     # Choose one
+ps aux | grep mousepad  # Choose one
+ps aux | grep dd
+pgrep dd
+ps -elLf
+ps -elf
+pstree
+pstree -aAp
+pstree -aAp 1 # PID for init
+pgrep dd
+pstree -aAp 5555 # some PID for dd
+free
+pgrep dd
+jobs
+kill %1
+free
+jobs
+kill %2
+free
+pgrep dd
+
 ulimit -a
 cat /etc/security/limits.conf
 ulimit -a
@@ -215,65 +313,64 @@ exit
 ulimit -S -u 64128
 
 jobs -l
-gedit &
+gedit &     # Choose one
+mousepad &  # Choose one
+jobs -l
 fg %1
 # Ctrl + Z
 bg %1
+jobs -l
 kill %1
+jobs -l
 
-cd /etc
-sudo find . -name "cron*"
-find . -name "cron*"
-top
-htop
+cd /proc
+ls
+cd sys/vm
+ls
+cat overcommit_memory
+cat overcommit_ratio
+
 free
-uptime
-mpstat
-numstat
-sar
-strace
-
-ls /proc
-dd if=/dev/urandom | pv | dd of=/dev/null
-# Ctrl + C
-dd if=/dev/zero | pv | dd of=/dev/null
-# Ctrl + C
-gedit &
-dd if=/dev/zero of=/dev/null &
-jobs
-ps aux | grep gedit
-ps aux | grep dd
-pgrep gedit
-pgrep dd
-ps -elLf
-ps -elf
-pstree
-pstree -aAp
-pstree -aAp $(pgrep gedit)
-pgrep dd
-pstree -aAp 5555 # some PID for dd
-pstree -aAp 1 # PID for init
-free
-pgrep dd
-jobs
-kill %1
-jobs
-kill %2
-pgrep dd
-
+pmap -x 5555
 vmstat
 vmstat -a
 vmstat 1 5
 vmstat -a 1 4
 vmstat -p /dev/sda1 1 3
 
-sudo cat <<EOF > /etc/cron.d/chores
+top
+htop
+uptime
+mpstat
+numstat
+sar
+strace
+
+echo "echo 'hello world'" | at 23:00
+at 14:09 -f somescript
+# End each with Ctrl + D
+at now + 3 hours
+at now + 1 week
+at 22:56
+
+cd /etc
+sudo find . -name "cron*"
+find . -name "cron*"
+
+su
+
+cat <<EOF > /etc/cron.d/chores
 0/15 * * * 2 root /usr/bin/echo "Every Tuesday, every 15 minutes from 00 minutes"
 15 12 * * * root /usr/bin/echo "Every day at 12:15 PM"
-22 4 14 * * root /usr/bin/echo "The 14th of every month at 4:22 PM"
+22 4 14 * * root /usr/bin/echo "The 14th of every month at 4:22 AM"
 0 3 1 6,9 * root /usr/bin/echo "June 1 and September 1 at 3:00 AM"
 EOF
+
+exit
+
 sudo chmod 0644 /etc/cron.d/chores
+
+sudo rm /etc/cron.d/chores
 ```
 
 ___

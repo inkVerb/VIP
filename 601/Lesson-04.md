@@ -116,8 +116,23 @@ git init
 
 - *See what happened...*
   - `git status`
+  - `git remote`
   - `ls -a`
   - `ls .git`
+
+| **status check** :$
+
+```console
+git status
+git status -sb -uall
+```
+
+| **remote check** :$
+
+```console
+git remote
+git remote -v
+```
 
 #### Create a Repo File
 *Each command ends with `git status -sb -uall` to see how changes are explained*
@@ -130,14 +145,12 @@ git init
 
 ```console
 echo "Hello Taiwan" > motd
-git status -sb -uall
 ```
 
 | **add file** :$
 
 ```console
 git add motd
-git status -sb -uall
 ```
 
 #### Commit New File
@@ -146,14 +159,18 @@ git status -sb -uall
 
 ```console
 git commit -m 'Message of the day'
-git status -sb -uall
 ```
 
-| **push new file** :$
+| **push first time** :$
+
+```console
+git push -u origin main
+```
+
+| **push after first time** :$
 
 ```console
 git push
-git status -sb -uall
 ```
 
 #### Change & Commit Existing File
@@ -162,34 +179,31 @@ git status -sb -uall
 
 ```console
 echo "Hello USA" > motd
-git status -sb -uall
+```
+
+| **diff changes** :$ *pending changes before `git add`*
+
+```console
+git diff
 ```
 
 | **add changes** :$
 
 ```console
-git add motd
-git status -sb -uall
+git add .
+git add *
 ```
 
 | **commit changes** :$
 
 ```console
 git commit -m 'New message of the day'
-git status -sb -uall
-```
-
-| **diff changes** :$
-
-```console
-git diff
 ```
 
 | **push changes** :$
 
 ```console
 git push
-git status -sb -uall
 ```
 
 | **check log** :$
@@ -215,15 +229,43 @@ git add .
 git push -u origin main
 ```
 
-*...after this, `git push` will continue pushing to the `main` branch*
+- *after this, `git push` will continue pushing to the `main` branch*
+- *redundant if:*
+  - *already on `git branch -M main` or*
+  - *already pushed with `-u origin main`*
 
-| **push to devel branch** :$
+| **create and use branch `devel`** :$ *`-M` Move/force, optional*
+
+```console
+git branch -M devel
+```
+
+| **use new branch `devel`** :$ *`-b` Branch/new*
 
 ```console
 git checkout -b devel
-git add .
+```
+
+| **use existing branch `devel`** :$
+
+```console
+git checkout devel
+```
+
+| **push to devel branch first time** :$
+
+```console
+git add *
 git commit -m 'Things changed'
 git push -u origin devel
+```
+
+| **push to devel branch afterward** :$
+
+```console
+git add *
+git commit -m 'Things changed'
+git push
 ```
 
 *...after this, `git push` will continue pushing to the `devel` branch*
@@ -244,7 +286,7 @@ git clone https://github.com/inkverb/vip
 | **clone working repo** :$
 
 ```console
-git clone git@github.com:inkVerb/VIP.git
+git clone git@github.com:inkverb/vip.git
 ```
 
 - Now edit and push changes
@@ -253,9 +295,9 @@ git clone git@github.com:inkVerb/VIP.git
 | **push to devel branch** :$
 
 ```console
-git add .
+git add *
 git commit -m 'Things changed'
-git push -u origin master
+git push -u origin devel
 ```
 
 - You could add a tag anywhere after `clone` and before `push`
@@ -303,6 +345,8 @@ ___
 # The Keys
 *Practice commands for SysAdmins who already know what these mean*
 
+| **SSH keys for GitHub** :$
+
 ```consolecd
 mkdir -p ~/.ssh
 cd ~/.ssh
@@ -310,40 +354,88 @@ ls
 # SKIP ssh-keygen if you see id_rsa.pub !!!!
 ssh-keygen -t rsa
 cat id_rsa.pub
-# Add: Github > You > Settings > Add SSH and GPG Keys https://github.com/settings/keys
+# Add: Github > You > Settings > SSH and GPG Keys https://github.com/settings/keys
+```
 
-git config --global user.name "My Name"
+| **setup GitHub CLI & sandbox** :$
+
+```console
+git config --global user.name "myusername"
 git config --global user.email "my@example.com"
 git config --global init.defaultBranch main
-ssh -T git@github.com
-# Hi your_user_name! You've successfully authenticated, but GitHub does not provide shell access.
-ssh -vT git@github.com
+ls -l ~/.gitconfig
+vim ~/.gitconfig
 
 cd
 mkdir vipgit
 cd vipgit
+```
 
+| **test GitHub SSH connection** :$
+
+```console
+ssh -T git@github.com
+# Hi your_user_name! You've successfully authenticated, but GitHub does not provide shell access.
+
+ssh -vT git@github.com
+```
+
+| **new repo** :$
+
+- *Create repo `viprepo` at [GitHub.com/new](https://github.com/new)*
+  - *anytime before `git push`*
+  - *it can be empty*
+
+```console
 cd ~/vipgit
-rm -rf viprepo
+
 mkdir viprepo
 cd viprepo
+
 git init
-git remote add viprepo git@github.com:jessesteele/viprepo.git
+git remote add origin git@github.com:myusername/viprepo.git
+
+git remote
 git remote -v
-# Create "viprepo" on GitHub's website: https://github.com/new
+git status
+
+git branch -M main # redundant
+git status
 
 echo "# Title" > README.md
-git add .
-git commit -m "New readme"
-git push --set-upstream viprepo main
+git add README.md
+git status
 
+git commit -m "New readme"
+git status
+
+# Create git repo `viprepo` before proceeding
+
+#git push --set-upstream viprepo main # same as below
+
+git push -u origin main
+```
+
+| **push to main** :$
+
+```console
+git status
+echo "## Subtitle" >> README.md
+git add .
+git status
+git commit -m "README sub"
+git push
+```
+
+| **push to branch** :$
+
+```console
 git status
 git branch vbranch
-git checkout vbranch
-echo "Some subtitle" >> README.md
-git add README.md
+echo "Some text" >> README.md
+git add .
 git commit -m "README sub"
-git push --set-upstream viprepo vbranch
+git push -u origin vbranch
 
 git status
 git status -sb -uall
@@ -352,9 +444,17 @@ git add .
 git commit -m "CREDITS"
 git push
 git log
+```
 
+| **branches** :$
+
+```console
 git checkout main
+git status
+git status -sb -uall
 git checkout vbranch
+git status
+git status -sb -uall
 
 git checkout -b tbranch
 git status
@@ -362,13 +462,67 @@ echo "foo" > bar.text
 git add .
 git status
 git status -sb -uall
+
 git commit -m "Foo Bar Text"
-git push --set-upstream viprepo tbranch
+git push -u origin tbranch
+git status
+git status -sb -uall
 git log
 
+git branch devel
+git checkout devel
+git status
+git status -sb -uall
+
+git checkout devel
 git checkout main
 git checkout vbranch
 git checkout tbranch
+
+git checkout devel
+git tag -a v0.2 -m 'Devel stage 2'
+git push -u origin devel
+
+git checkout vbranch
+git tag -a v0.21 -m 'V-Devel stage 2'
+git push -u origin vbranch
+
+git checkout tbranch
+git tag -a v0.22 -m 'T-Devel stage 2'
+git push
+
+git checkout main
+git tag -a v0.23 -m 'Main stage 2'
+git push -u origin main
+```
+
+| **monitoring** :$
+
+```console
+git remote
+git remote -v
+
+git status
+git status -sb -uall
+
+git diff # before git add
+
+git log
+```
+
+| **remove GitHub CLI settings & sandbox** :$
+
+```console
+rm -rf ~/viprepo
+rm -f ~/.gitconfig
+```
+
+- ***IF `.ssh/` was NEW**, the keys can be removed later for further practice:*
+
+| **remove ALL `.ssh/` keys** :$ ***CAUTION!***
+
+```console
+rm -rf ~/.ssh
 ```
 
 ___

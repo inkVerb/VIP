@@ -32,7 +32,7 @@ cat verb.ink.html
 
 ### `more`
 
-*One page at a time: <key>Spacebar</key>,*
+*One page at a time: <kbd>Spacebar</kbd>,*
 
 *One line at a time: Enter*
 
@@ -52,7 +52,7 @@ more -8 verb.ink.html
 
 ### `less`
 
-*Up and down: <key>Spacebar</key>, <key>PageUp</key>, <key>PageDown</key>, <key>Up</key>, <key>Down</key>*
+*Up and down: <kbd>Spacebar</kbd>, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, <kbd>Up</kbd>, <kbd>Down</kbd>*
 
 | **6** :$ *(Q to quit)*
 
@@ -409,7 +409,7 @@ nano verb.ink.html
 *Note* ^Z *will "stop" the nano session, not "undo"*
 - If you ^Z back to the terminal, resume with `fg nano`, see [Linux 101 Lesson 0](https://github.com/inkVerb/VIP/blob/master/101/Lesson-00.md)
 
-*(<key>Ctrl</key> + <key>X</key> to eXit)*
+*(<kbd>Ctrl</kbd> + <kbd>X</kbd> to eXit)*
 
 ### `vim`
 
@@ -445,7 +445,7 @@ ___
   - `more -8 file` shows 8 lines at a time
   - **Q** will quit
 - `less`
-  - Up and down: Spacebar, <key>PageUp</key>, <key>PageDown</key>, <key>Up</key>,, <key>Down</key>,
+  - Up and down: Spacebar, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, <kbd>Up</kbd>,, <kbd>Down</kbd>,
   - **Q** will quit
 - `head`
   - First 10 lines
@@ -475,7 +475,7 @@ ___
 ### `nano` is great for beginners
 - `^` = **Ctrl**
 - `M-` = **Alt**
-- If you **<key>Ctrl</key> + <key>Z</key>** as "undo" on accident, `fg nano` will take you back
+- If you **<kbd>Ctrl</kbd> + <kbd>Z</kbd>** as "undo" on accident, `fg nano` will take you back
 ### `vim` is for awesome people
 - Anyone can learn `vim`, especially children; so, learn young
 - `vim` emulates the terminal text editor `vi` made by Bill Joy, when computers first walked the earth in 1976

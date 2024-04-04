@@ -72,88 +72,94 @@ touch file
 | **11** :$
 
 ```console
-cd ../dirlink
+ls
 ```
 
 | **12** :$
 
 ```console
-ls
+cd ../dirlink
 ```
 
 | **13** :$
 
 ```console
-touch subdirectory/alsofile
+ls
 ```
 
-| **14** :$
+| **134** :$
 
 ```console
-cd subdirectory
+touch subdirectory/alsofile
 ```
 
 | **15** :$
 
 ```console
-ls
+cd subdirectory
 ```
 
 | **16** :$
 
 ```console
-cd ../../directory/subdirectory
+ls
 ```
 
 | **17** :$
 
 ```console
-ls
+cd ../../directory/subdirectory
 ```
 
 | **18** :$
 
 ```console
-cd ../..
+ls
 ```
 
 | **19** :$
 
 ```console
-ls
+cd ../..
 ```
 
 | **20** :$
 
 ```console
-mkdir dirnew
+ls
 ```
 
 | **21** :$
 
 ```console
-ls
+mkdir dirnew
 ```
 
-| **22** :$
+| **212** :$
 
 ```console
-cd dirnew
+ls
 ```
 
 | **23** :$
 
 ```console
-touch delfile
+cd dirnew
 ```
 
 | **24** :$
 
 ```console
-ls
+touch delfile
 ```
 
 | **25** :$
+
+```console
+ls
+```
+
+| **26** :$
 
 ```console
 cd ..
@@ -161,25 +167,25 @@ cd ..
 
 *Use `touch` & `ls` with a different directory...*
 
-| **26** :$
+| **267** :$
 
 ```console
 ls dirnew
 ```
 
-| **27** :$
+| **28** :$
 
 ```console
 touch dirnew/alsodel dirnew/alsoalso
 ```
 
-| **28** :$
+| **29** :$
 
 ```console
 ls -l dirnew
 ```
 
-| **29** :$
+| **30** :$
 
 ```console
 rm dirnew
@@ -189,19 +195,19 @@ rm dirnew
 
 *Use `-r` (Recursive) to remove directories*
 
-| **30** :$
+| **31** :$
 
 ```console
 rm -r dirnew
 ```
 
-| **31** :$
+| **32** :$
 
 ```console
 ls
 ```
 
-| **32** :$
+| **33** :$
 
 ```console
 cp directory cpdirnew
@@ -211,19 +217,19 @@ cp directory cpdirnew
 
 *Use `-r` with `cp` as well as `rm` for directories*
 
-| **33** :$
+| **34** :$
 
 ```console
 cp -r directory cpdirnew
 ```
 
-| **34** :$
+| **35** :$
 
 ```console
 ls
 ```
 
-| **35** :$
+| **36** :$
 
 ```console
 mv -r cpdirnew cpdir
@@ -231,19 +237,19 @@ mv -r cpdirnew cpdir
 
 *Note, `mv` rejects `-r`, just use `mv` even for directories*
 
-| **36** :$
+| **37** :$
 
 ```console
 mv cpdirnew cpdir
 ```
 
-| **37** :$
+| **38** :$
 
 ```console
 ls
 ```
 
-| **38** :$
+| **39** :$
 
 ```console
 cd cpdir
@@ -251,31 +257,31 @@ cd cpdir
 
 *Note that `.` = "current directory" and `..` = "parent directory"... even with `ls`...*
 
-| **39** :$
-
-```console
-ls .
-```
-
 | **40** :$
 
 ```console
-ls ..
+ls .
 ```
 
 | **41** :$
 
 ```console
-cd ..
+ls ..
 ```
 
 | **42** :$
 
 ```console
-ls .
+cd ..
 ```
 
 | **43** :$
+
+```console
+ls .
+```
+
+| **44** :$
 
 ```console
 ls ..
@@ -283,7 +289,7 @@ ls ..
 
 *These are even listed with the "all" flag (`-a`)*
 
-| **44** :$
+| **45** :$
 
 ```console
 ls -a

@@ -3,149 +3,149 @@
 - [Blender Wiki](https://wiki.blender.org/index.php/)
 - Blender Hotkeys: [Docs](http://download.blender.org/documentation/BlenderHotkeyReference.pdf)
 Filmic Blender: [Filmic-blender](https://github.com/sobotka/filmic-blender)
-- Why filmic-blender: [YouTube](https://www.youtube.com/watch?v=m9AT7H<key>4</key>GGrA)
+- Why filmic-blender: [YouTube](https://www.youtube.com/watch?v=m9AT7H<kbd>4</kbd>GGrA)
 
 #### Differencing Objects
-- Snap [https://blender.stackexchange.com/questions/3978<key>4</key>/snapping-two-objects-by-edge-in-object-mode]
+- Snap [https://blender.stackexchange.com/questions/3978<kbd>4</kbd>/snapping-two-objects-by-edge-in-object-mode]
 - Boolean Modifier [YouTube](https://www.youtube.com/watch?v=lDweCpDAB_o)
 
 #### Pi Menu
-- <key>Ctrl</key> + <key>Alt</key> + <key>U</key> (File > User Preferences...)
+- <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>U</kbd> (File > User Preferences...)
   - Add-ons > Categories > User Interface
   - Pi Menu
   - Save User Settings
 
 #### Extra Objects
-- <key>Ctrl</key> + <key>Alt</key> + <key>U</key> (File > User Preferences...)
+- <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>U</kbd> (File > User Preferences...)
   - Add-ons > Categories > Add Mesh
   - Extra Objects
   - Save User Settings
 
 #### Mouse
 - Scroll = zoom
-  - <key>MiddleClidk</key> + Move = orbit
-  - <key>Shift</key> + <key>MiddleClidk</key> + Move = pan
-  - <key>Ctrl</key> + <key>LeftClick</key> = Circle select
-  - <key>Shift</key> + <key>Space</key> / <key>Ctrl</key> + <key>Up/Down</key> = Max
-  - <key>Ctrl</key> + <key>Space</key> = hide arrows
-  - <key>Alt</key> + <key>Space</key> = Orientation
+  - <kbd>MiddleClidk</kbd> + Move = orbit
+  - <kbd>Shift</kbd> + <kbd>MiddleClidk</kbd> + Move = pan
+  - <kbd>Ctrl</kbd> + <kbd>LeftClick</kbd> = Circle select
+  - <kbd>Shift</kbd> + <kbd>Space</kbd> / <kbd>Ctrl</kbd> + <kbd>Up/Down</kbd> = Max
+  - <kbd>Ctrl</kbd> + <kbd>Space</kbd> = hide arrows
+  - <kbd>Alt</kbd> + <kbd>Space</kbd> = Orientation
 
 - Select:
-  - <key>Ctrl</key> + <key>Tab</key> / <key>Ctrl</key> + <key>LeftClick</key> + Drag
-  - <key>A</key> = select all/none
-  - <key>B</key> = border select
-  - <key>C</key> = circle select
-  - <key>Q</key> = Pi View Menu
-  - <key>Z</key> = Pi Shade Menu (no Pi = wire frame / solid)
-  - <key>Tab</key> = Pi Mode Menu (no Pi = Edit mode on/off)
-  - <key>N</key> = Properties panel (set number values for object size/place, etc)
-  - <key>Shift</key> + <key>A</key> = add menu
-  - <key>Shift</key> + <key>S</key> = snap menu
-  - <key>Shift</key> + <key>Z</key> = quick render
-  - <key>X</key>/<key>Y</key>/<key>Z</key> = axis (again for local)
-  - <key>Shift</key> + X/Y/Z = plane (again for local)
-  - <key>G</key> = Grab
-  - <key>S</key> = Scale
-  - <key>R</key> = Rotate
-  - <key>Ctrl</key> + <key>A</key> = Apply menu (Apply the Location/Rotation/Scale changes BEFORE doing other operations such as Bevel)
-  - <key>Ctrl</key> + <key>Alt</key> + <key>Shift</key> + <key>C</key> = Set Origin
+  - <kbd>Ctrl</kbd> + <kbd>Tab</kbd> / <kbd>Ctrl</kbd> + <kbd>LeftClick</kbd> + Drag
+  - <kbd>A</kbd> = select all/none
+  - <kbd>B</kbd> = border select
+  - <kbd>C</kbd> = circle select
+  - <kbd>Q</kbd> = Pi View Menu
+  - <kbd>Z</kbd> = Pi Shade Menu (no Pi = wire frame / solid)
+  - <kbd>Tab</kbd> = Pi Mode Menu (no Pi = Edit mode on/off)
+  - <kbd>N</kbd> = Properties panel (set number values for object size/place, etc)
+  - <kbd>Shift</kbd> + <kbd>A</kbd> = add menu
+  - <kbd>Shift</kbd> + <kbd>S</kbd> = snap menu
+  - <kbd>Shift</kbd> + <kbd>Z</kbd> = quick render
+  - <kbd>X</kbd>/<kbd>Y</kbd>/<kbd>Z</kbd> = axis (again for local)
+  - <kbd>Shift</kbd> + X/Y/Z = plane (again for local)
+  - <kbd>G</kbd> = Grab
+  - <kbd>S</kbd> = Scale
+  - <kbd>R</kbd> = Rotate
+  - <kbd>Ctrl</kbd> + <kbd>A</kbd> = Apply menu (Apply the Location/Rotation/Scale changes BEFORE doing other operations such as Bevel)
+  - <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> = Set Origin
   - Origin to Geometry, etc
-  - <key>Shift</key> + <key>D</key> = Duplicate
-  - <key>Alt</key> + <key>D</key> = Duplicate as link
-  - <key>Ctrl</key> + <key>L</key> = Link objects to last selected
-  - <key>Shift</key> + <key>L</key> = Select Link menu
-  - <key>U</key> = Unlink menu
-  - <key>L</key> = make Local
+  - <kbd>Shift</kbd> + <kbd>D</kbd> = Duplicate
+  - <kbd>Alt</kbd> + <kbd>D</kbd> = Duplicate as link
+  - <kbd>Ctrl</kbd> + <kbd>L</kbd> = Link objects to last selected
+  - <kbd>Shift</kbd> + <kbd>L</kbd> = Select Link menu
+  - <kbd>U</kbd> = Unlink menu
+  - <kbd>L</kbd> = make Local
 
 ## Edit Mode:
-- <key>Ctrl</key> + <key>Tab</key> = Mesh Select Mode (Vertex, Face, Edge)
-- <key>E</key> = extrude
-- <key>P</key> = sPlit to new object
+- <kbd>Ctrl</kbd> + <kbd>Tab</kbd> = Mesh Select Mode (Vertex, Face, Edge)
+- <kbd>E</kbd> = extrude
+- <kbd>P</kbd> = sPlit to new object
 
-- *NOTE: Apply any scaling changes (<key>Ctrl</key> + A) BEFORE Bevel, otherwise bevel will be scaled as well.*
-- <key>Ctrl</key> + <key>R</key> = add mid lines; Mouse Wheel > more
-- <key>Ctrl</key> + <key>B</key> = bevel edges; Mouse Wheel > more
-- <key>Ctrl</key> + <key>Shift</key> + <key>B</key> = bevel verticies; Mouse Wheel > more
-- <key>Ctrl</key> + <key>E</key> = Edges menu
-- <key>Ctrl</key> + <key>RightClick</key> = select range
-- <key>Ctrl</key> + <key>Alt</key> + <key>RightClick</key> = selecte entire UV loop
+- *NOTE: Apply any scaling changes (<kbd>Ctrl</kbd> + A) BEFORE Bevel, otherwise bevel will be scaled as well.*
+- <kbd>Ctrl</kbd> + <kbd>R</kbd> = add mid lines; Mouse Wheel > more
+- <kbd>Ctrl</kbd> + <kbd>B</kbd> = bevel edges; Mouse Wheel > more
+- <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> = bevel verticies; Mouse Wheel > more
+- <kbd>Ctrl</kbd> + <kbd>E</kbd> = Edges menu
+- <kbd>Ctrl</kbd> + <kbd>RightClick</kbd> = select range
+- <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>RightClick</kbd> = selecte entire UV loop
   - Changes with Vertex, Face, Edge Mesh Select Mode
-- <key>Ctrl</key> + <key>R</key> = loop cut (mouse wheel = add more)
-  - <key>LeftClick</key>, move = set place (+ <key>Ctrl</key> = snapping)
-    - <key>LeftClick</key> = apply place
-    - <key>Esc</key> = cancel place and use original
-- <key>K</key> = Knife tool
-  - <key>LeftClick</key> = drag/click to cut
-  - <key>Enter</key>/<key>Space</key> = apply cut
-  - <key>Esc</key>/<key>RightClick</key> = cancel cuts
-  - <key>Ctrl</key> = place cut at midpoint of affected lines
-  - <key>Shift</key> = allow cut point NOT on an edge
-  - <key>E</key> = start <key>A</key> new cut line
-  - <key>C</key> = <key>4</key><key>5</key>° snapping
-  - <key>Z</key> = also cut all edges and surfaces behind view
+- <kbd>Ctrl</kbd> + <kbd>R</kbd> = loop cut (mouse wheel = add more)
+  - <kbd>LeftClick</kbd>, move = set place (+ <kbd>Ctrl</kbd> = snapping)
+    - <kbd>LeftClick</kbd> = apply place
+    - <kbd>Esc</kbd> = cancel place and use original
+- <kbd>K</kbd> = Knife tool
+  - <kbd>LeftClick</kbd> = drag/click to cut
+  - <kbd>Enter</kbd>/<kbd>Space</kbd> = apply cut
+  - <kbd>Esc</kbd>/<kbd>RightClick</kbd> = cancel cuts
+  - <kbd>Ctrl</kbd> = place cut at midpoint of affected lines
+  - <kbd>Shift</kbd> = allow cut point NOT on an edge
+  - <kbd>E</kbd> = start <kbd>A</kbd> new cut line
+  - <kbd>C</kbd> = <kbd>4</kbd><kbd>5</kbd>° snapping
+  - <kbd>Z</kbd> = also cut all edges and surfaces behind view
 
 ### View
-- <key>1</key> = front
-- <key>2</key> = orbit back
-- <key>3</key> = right side
-- <key>4</key> = orbit left
-- <key>5</key> = orthogonal/perspective toggle
-- <key>6</key> = orbit right
-- <key>7</key> = top
-- <key>8</key> = orbit forward
-- <key>9</key> = 
-- <key>0</key> = camera view
-- <key>1</key> + <key>Ctrl</key> = back
-- <key>2</key> + <key>Ctrl</key> = pan down
-- <key>3</key> + <key>Ctrl</key> = left side
-- <key>4</key> + <key>Ctrl</key> = pan left
-- <key>6</key> + <key>Ctrl</key> = pan right
-- <key>7</key> + <key>Ctrl</key> = bottom
-- <key>8</key> + <key>Ctrl</key> = pan up
-- <key>9</key> + <key>Ctrl</key> =
-- <key>0</key> + <key>Ctrl</key> = set active opject as camera
-- <key>0</key> + <key>Ctrl</key> + <key>Alt</key> = set user view as camera
-- <key>+</key> = zoom in
-- <key>-</key> = zoom out
-- <key>/</key> = toggle local view
-- <key>.</key> = view selected
+- <kbd>1</kbd> = front
+- <kbd>2</kbd> = orbit back
+- <kbd>3</kbd> = right side
+- <kbd>4</kbd> = orbit left
+- <kbd>5</kbd> = orthogonal/perspective toggle
+- <kbd>6</kbd> = orbit right
+- <kbd>7</kbd> = top
+- <kbd>8</kbd> = orbit forward
+- <kbd>9</kbd> = 
+- <kbd>0</kbd> = camera view
+- <kbd>1</kbd> + <kbd>Ctrl</kbd> = back
+- <kbd>2</kbd> + <kbd>Ctrl</kbd> = pan down
+- <kbd>3</kbd> + <kbd>Ctrl</kbd> = left side
+- <kbd>4</kbd> + <kbd>Ctrl</kbd> = pan left
+- <kbd>6</kbd> + <kbd>Ctrl</kbd> = pan right
+- <kbd>7</kbd> + <kbd>Ctrl</kbd> = bottom
+- <kbd>8</kbd> + <kbd>Ctrl</kbd> = pan up
+- <kbd>9</kbd> + <kbd>Ctrl</kbd> =
+- <kbd>0</kbd> + <kbd>Ctrl</kbd> = set active opject as camera
+- <kbd>0</kbd> + <kbd>Ctrl</kbd> + <kbd>Alt</kbd> = set user view as camera
+- <kbd>+</kbd> = zoom in
+- <kbd>-</kbd> = zoom out
+- <kbd>/</kbd> = toggle local view
+- <kbd>.</kbd> = view selected
 
 ### Verticies
-- <key>Ctrl</key> + <key>V</key>
+- <kbd>Ctrl</kbd> + <kbd>V</kbd>
 
 - Add Modifier > Subdivision Surface (smooth via adding verticies)
 
 #### Pi Menu
 - Activate
-  - <key>Ctrl</key> + <key>Alt</key> + <key>U</key> (File > User Preferences...)
+  - <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>U</kbd> (File > User Preferences...)
   - Add-ons > Categories > User Interface
   - Pi Menu
   - Save User Settings
 - Use
-  - <key>Shift</key> + <key>A</key> = Add
-  - <key>Shift</key> + <key>V</key> = Vertical slide
-  - <key>Ctrl</key> + <key>Alt</key> + <key>Q</key> = <key>4</key>-View
-  - <key>Ctrl</key> + <key>H</key> = hooks menu
-  - <key>Shift</key> + <key>D</key> = duplicate
-  - <key>Ctrl</key> + <key>M</key> = merg
-  - <key>Ctrl</key> + <key>J</key> = join
-  - <key>Ctrl</key> + <key>Alt</key> + <key>Shift</key> + <key>C</key> = origin to geometry
-  - <key>Shift</key> + <key>D</key> = duplicate
-  - <key>Alt</key> + <key>D</key> = linked duplicate
-  - <key>Ctrl</key> + <key>L</key> = make links
+  - <kbd>Shift</kbd> + <kbd>A</kbd> = Add
+  - <kbd>Shift</kbd> + <kbd>V</kbd> = Vertical slide
+  - <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Q</kbd> = <kbd>4</kbd>-View
+  - <kbd>Ctrl</kbd> + <kbd>H</kbd> = hooks menu
+  - <kbd>Shift</kbd> + <kbd>D</kbd> = duplicate
+  - <kbd>Ctrl</kbd> + <kbd>M</kbd> = merg
+  - <kbd>Ctrl</kbd> + <kbd>J</kbd> = join
+  - <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> = origin to geometry
+  - <kbd>Shift</kbd> + <kbd>D</kbd> = duplicate
+  - <kbd>Alt</kbd> + <kbd>D</kbd> = linked duplicate
+  - <kbd>Ctrl</kbd> + <kbd>L</kbd> = make links
 
 #### Groups
-- <key>Ctrl</key> + <key>G</key> = new group
-- <key>Ctrl</key> + <key>Alt</key> + <key>G</key> = remove from groups
-- <key>Ctrl</key> + Ald + <key>Shift</key> + <key>G</key> = remobe from all groups
-- <key>Ctrl</key> + <key>Shift</key> + <key>G</key> = add selected to active group
-- <key>Alt</key> + <key>Shift</key> + <key>G</key> = remove selected to active group
-- <key>Ctrl</key> + <key>1</key> = subdivision
+- <kbd>Ctrl</kbd> + <kbd>G</kbd> = new group
+- <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>G</kbd> = remove from groups
+- <kbd>Ctrl</kbd> + Ald + <kbd>Shift</kbd> + <kbd>G</kbd> = remobe from all groups
+- <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd> = add selected to active group
+- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd> = remove selected to active group
+- <kbd>Ctrl</kbd> + <kbd>1</kbd> = subdivision
 
 ##### See Groups (Two ways)
 - Properties menu (Picture of the cube on right)
-- <key>Shift</key> + <key>G</key> = group/parentselect menu
+- <kbd>Shift</kbd> + <kbd>G</kbd> = group/parentselect menu
 
 #### Parenting
-- <key>Ctrl</key> + <key>P</key> = parent set
-- <key>Alt</key> + <key>P</key> = parent clear
+- <kbd>Ctrl</kbd> + <kbd>P</kbd> = parent set
+- <kbd>Alt</kbd> + <kbd>P</kbd> = parent clear

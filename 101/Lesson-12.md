@@ -87,7 +87,7 @@ echo "Hello Apple pie."
 grep -RF "!!" *
 ```
 
-*You can also see previous commands in the **terminal history** with <key>Up</key>*
+*You can also see previous commands in the **terminal history** with <kbd>Up</kbd>*
 
 *Sometimes, special characters can only be quoted/escaped with 'single quotes'*
 
@@ -103,7 +103,7 @@ ___
 
 # Glossary
 - **previous command** - the most recent command entered in the terminal, access with:
-  - <key>Up</key>
+  - <kbd>Up</kbd>
   - `!!`
 - **terminal history** - the previous commands entered in the terminal; often called "BASH history"
 

@@ -170,7 +170,7 @@ curl -L https://github.com/inkVerb/vip/archive/master.zip
 
 *Note the problem of raw output of the `.zip` binary file, because `curl` does not save by default rather than saving it*
 
-*If needed, use <key>Ctrl</key> + <key>C</key> to close the output*
+*If needed, use <kbd>Ctrl</kbd> + <kbd>C</kbd> to close the output*
 
 *Solution: Specify an output file*
 
@@ -326,7 +326,7 @@ cd ..
 rm -r vip
 ```
 
-*Note the error message because of the read-only files (<key>Ctrl</key> + <key>C</key> to get out of there!)*
+*Note the error message because of the read-only files (<kbd>Ctrl</kbd> + <kbd>C</kbd> to get out of there!)*
 
 *Removing a `git`-cloned directory is easier with `sudo`*
 

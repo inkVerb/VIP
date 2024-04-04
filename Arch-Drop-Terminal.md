@@ -1,22 +1,22 @@
 # Arch Drop Terminal
 
-With this, you can either use <key>Scroll Lock</key> or <key>F12</key> for the dropdown terminal
+With this, you can either use <kbd>Scroll Lock</kbd> or <kbd>F12</kbd> for the dropdown terminal
 
 ## Conventional hotkeys for Arch & Manjaro
 
 |:-------------------------------------------------------------------------- |:---------------------- |
-| <key>Ctrl</key> + <key>Alt</key> + <key>T</key>                            | Open floating terminal |
-| <key>Scroll Lock</key>                                                     | Dropdown terminal      |
-| <key>F12</key>                                                             | Dropdown terminal      |
-| <key>F11</key>                                                             | Full screen            |
-| <key>Ctrl</key> + <key>PageUp</key>/<key>PageDown</key>                    | Change tab             |
-| <key>Ctrl</key> + <key>Shift</key> + <key>PageUp</key>/<key>PageDown</key> | Move tab               |
-| <key>Ctrl</key> + <key>T</key>                                             | New tab                |
-| <key>Ctrl</key> + <key>W</key>                                             | Close tab              |
-| <key>Ctrl</key> + <key>Shift</key> + <key>T</key>                          | New tab in terminal    |
-| <key>Ctrl</key> + <key>Shift</key> + <key>W</key>                          | Close tab in terminal  |
-| <key>Shift</key> + <key>PageUp</key>/<key>PageDown</key>                   | Change volume          |
-| <key>Shift</key> + <key>Break</key>                                        | Mute volume            |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>                            | Open floating terminal |
+| <kbd>Scroll Lock</kbd>                                                     | Dropdown terminal      |
+| <kbd>F12</kbd>                                                             | Dropdown terminal      |
+| <kbd>F11</kbd>                                                             | Full screen            |
+| <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>                    | Change tab             |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> | Move tab               |
+| <kbd>Ctrl</kbd> + <kbd>T</kbd>                                             | New tab                |
+| <kbd>Ctrl</kbd> + <kbd>W</kbd>                                             | Close tab              |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd>                          | New tab in terminal    |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd>                          | Close tab in terminal  |
+| <kbd>Shift</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>                   | Change volume          |
+| <kbd>Shift</kbd> + <kbd>Break</kbd>                                        | Mute volume            |
 
 ## 1. Install the Xfce4 terminal
 

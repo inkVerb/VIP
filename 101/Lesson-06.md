@@ -127,7 +127,7 @@ echo $input3
 chmod ug+x interact
 ```
 
-*Run the command; each time it prompts, type anything and then press <key>Enter</key>
+*Run the command; each time it prompts, type anything and then press <kbd>Enter</kbd>
 
 | **12** :$
 

@@ -180,7 +180,7 @@ ls web
 </root>
 ```
 
-| **B-2** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-2** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -214,7 +214,7 @@ ls web
 </table>
 ```
 
-| **B-3** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-3** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -248,7 +248,7 @@ ls web
 </s:table>
 ```
 
-| **B-4** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-4** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -289,7 +289,7 @@ ls web
 <![CDATA[ " ' < > & ]]>
 ```
 
-| **B-5** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-5** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/syntax.xml
@@ -458,7 +458,7 @@ ls web
 </root>
 ```
 
-| **B-8** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-8** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/validate.xml
@@ -559,7 +559,7 @@ ls web
 | **B-9** ://
 
 ```console
-localhost/web/validate.xml (<key>Ctrl</key> + <key>R</key> to reload)
+localhost/web/validate.xml (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 ```
 
 ##### Include XSD
@@ -637,7 +637,7 @@ ls web
 </root>
 ```
 
-| **B-10** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-10** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/validate.xml
@@ -714,7 +714,7 @@ ls web
 
 *Note only the XSD declarations changed, everything else is the same*
 
-| **B-11** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-11** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/validate.xml
@@ -1247,7 +1247,7 @@ ls web
 </xsl:stylesheet>
 ```
 
-| **B-13** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-13** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/style.xml
@@ -1343,7 +1343,7 @@ ls web
 </td>
 ```
 
-| **B-14** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-14** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/style.xml
@@ -1538,15 +1538,15 @@ Summary:
   - `<xsl:template match="*">` all elements
   - `<xsl:template match=".">` current element
 
-##### 2. `<xsl:key>`
+##### 2. `<xsl:kbd>`
 
 | **XSL** :
 
 ```xml
-<!-- Define the <xsl:key> outside any <xsl:template> -->
+<!-- Define the <xsl:kbd> outside any <xsl:template> -->
 <xsl:key name="call-something" match="element/path" use="container"/>
 
-<!-- Use the <xsl:key> -->
+<!-- Use the <xsl:kbd> -->
 <xsl:for-each select="key('call-something', 'Find me')">
   <td>
     <xsl:value-of select="title"/>
@@ -1556,7 +1556,7 @@ Summary:
 </xsl:for-each>
 ```
 
-- `<xsl:key>` Attributes:
+- `<xsl:kbd>` Attributes:
   - `name=`: QName, used when calling such as `some-name` in:
     - `<xsl:for-each select="key('some-name', 'search-this')">`
   - `match=`: XML path structure to parent element
@@ -1632,7 +1632,7 @@ codium core/12-style15.xml core/12-style15.xsl && \
 ls web
 ```
 
-| **B-15** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-15** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/style.xml
@@ -1664,7 +1664,7 @@ codium core/12-style16.xsl core/12-structure16.xsl core/12-meta16.xsl core/12-he
 ls web
 ```
 
-| **B-16** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-16** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/style.xml
@@ -1855,7 +1855,7 @@ sudo cp xml/contacts.xml web/contacts.xml
 
 *Watch John Doe's Login change to "johndoe"...*
 
-| **B-22** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-22** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/contacts.xml
@@ -1870,7 +1870,7 @@ xml ed --inplace -u "//visitors/visitor[@login='jdoe']/level" -v "user" xml/cont
 sudo cp xml/contacts.xml web/contacts.xml
 ```
 
-| **B-23** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-23** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/contacts.xml
@@ -1887,7 +1887,7 @@ xml ed --inplace -u "//visitors/visitor[@login='johndoe']/level" -v "user" xml/c
 sudo cp xml/contacts.xml web/contacts.xml
 ```
 
-| **B-24** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-24** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/contacts.xml
@@ -1902,7 +1902,7 @@ xml ed --inplace -u "//visitors/visitor[@login='smithymars']/level" -v "admin" x
 sudo cp xml/contacts.xml web/contacts.xml
 ```
 
-| **B-25** :// (<key>Ctrl</key> + <key>R</key> to reload)
+| **B-25** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
 ```console
 localhost/web/contacts.xml
@@ -2843,13 +2843,13 @@ sudo vim /etc/cron.d/webapp
 
 2. Press:
 
-- <key>i</key>
+- <kbd>i</kbd>
 - <kyb>Ctrl</kybd> + <kyb>V</kybd>
-- <key>Esc</key>
+- <kbd>Esc</kbd>
 
 3. Type:
 
-`w:` <key>Enter</key>
+`w:` <kbd>Enter</kbd>
 
 *Note when you are finished with these lessons, you will want to delete that `cron` task...*
 

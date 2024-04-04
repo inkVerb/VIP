@@ -165,9 +165,9 @@ sed -i "/Replace.*/ c\The line with Mr. Apple delBar has been replaced" abcd
 
 *gedit: Reload*
 
-*<key>Ctrl</key> + <key>D</key> deletes a line in gedit*
-- Use <key>Ctrl</key> + <key>D</key> to delete the line about "Mr. Apple delBar"
-- Then <key>Ctrl</key> + <key>S</key> to **save** the file
+*<kbd>Ctrl</kbd> + <kbd>D</kbd> deletes a line in gedit*
+- Use <kbd>Ctrl</kbd> + <kbd>D</kbd> to delete the line about "Mr. Apple delBar"
+- Then <kbd>Ctrl</kbd> + <kbd>S</kbd> to **save** the file
 
 ___
 
@@ -195,7 +195,7 @@ ___
 - `ls` "lists" what's in the current directory as output (`STDOUT`)
 - `sed` can replace or delete text in a file
 - `sed` uses "d" to delete a line
-- Gedit usees **<key>Ctrl</key> + <key>D</key>** to delete a line
+- Gedit usees **<kbd>Ctrl</kbd> + <kbd>D</kbd>** to delete a line
 
 ___
 

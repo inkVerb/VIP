@@ -15,39 +15,46 @@ ___
 Services on the network can include:
 
 - Webservers like Apache or Nginx
-- Mail like Postfix and Dovecot
-- User servers like LDAP or WebDAV
-- Databse servers that accept network access like MySQL or MariaDB
+- Mail like Postfix, Dovecot, and Exim
+- User services like LDAP or WebDAV
+- Served databases that accept network access like MySQL, MariaDB, or MongoDB
 - DNS nameservers like Bind
 - NBD to use block devices (disks) over the network
 - FTP, SSH, SIP, and much more
 
 Knowing how to manage these is each a separate topic unto itself
 
-All of these will require that the network be operating, which this lesson addresses
+All of these require that the network be operating, which this lesson addresses
 
-To see which host machine services are listening on the network, use:
+Useful network commands:
 
-- `netstat -l`
+- Host machine services listening on the network
+  - :$ `netstat -l`
+- **Netowrks**, **gateways**, and **NICs**:
+  - :$ `netstat -rn` = `route -n`
 
-This shows how each service listens:
+This shows how each service listens on the network:
 
-1. to which port on the network
-2. from which socket on the host machine
+1. on IPs and ports (both local host machine and remote)
+2. from which local socket (host machine)
 
-Your host machine is found through its IP address, which actually exists as a binary number, best understood in hexadecimal numerals
+Your host machine is found on the network through its IP address, which actually exists as a binary number, best understood in hexadecimal numerals
 
 ## Binary & Hexadecimal
-Study binary and hexadecimal systems thoroughly: [VIP/Cheat-Sheets: File Size, Binary, Hexadecimal](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Sizes-Binary-Hex.md)
+For a thorough look at binary oclets and hexadecimal numbers, see [VIP/Cheat-Sheets: File Size, Binary, Hexadecimal](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Sizes-Binary-Hex.md)
 
 Everything after this will presume knowledge of binary oclets and corresponding hexadecimal pairs
 
 ## Terms
+### Network Interface Card (NIC)
+- The card on a motherboard or PCI slot or plugged via USB that accesses the network
+- Usually either WiFi or ethernet
+
 ### Media Access Control (MAC)
-- This is a unique number to a network device
-  - Theoretically, it is burned into the network card by the manufacturer
+- A unique number for a network device
+  - Theoretically, it is burned into the NIC by the manufacturer
   - This can be changed, but that could cause problems
-- This is a 12-digit hexadecimal number, using three oclets
+- A 12-digit hexadecimal number, using three oclets
   - Eg: `FF:E6:05:9D:42:75`
 - Earlier pairs of these oclets may be specifically reserved by individual manufacturers
   - Keep your MAC address private as it could be used to ghost your device for malicious use
@@ -55,17 +62,29 @@ Everything after this will presume knowledge of binary oclets and corresponding 
   - *If your machine has both ethernet and WiFi cards, your machine will have two MAC addresses*
 
 ### Local Area Network (LAN)
-- The network in your home or office
+- The network in your home or office or something like that
 - All host devices using the same WiFi or ethernet router are on this network
 - Devices using services like YouTube or Spotify can use this network to remotely control each other
+- Sometimes meaning *Land Area Network* to distinguish from **WLAN**
+
+### Wireless LAN (WLAN)
+- Redundant and often TMI (too much information)
+- Extra clarity that the LAN uses WiFi, not Ethernet
+- Most LANs at home or office use both LAN and WLAN
+- A "mobile hot spot" is a WLAN, not a LAN, (though it probably has Ethernet plugs used only bye NetAdmins)
 
 ### Wide Area Network (WAN)
 - A network that connetcs multiple Local Area Networks
 - It includes multiple locations
 - The Internet itself is a kind of Wide Area Network
 
+### Subnet
+- Redundantly clarifying: *the immediate LAN **and not** the WAN*
+- eg a **gateway** is always for each **subnet**
+  - A **gatweay** is the "gate" to leave the **subnet** to enter the WAN, worlwdide Internet, etc
+
 ### Internet Service Provider (ISP)
-- This is a company that offers internet service
+- Any company that offers Internet service
 - These include AT&T, Spectrum, Taiwan Mobile, Virgin Mobile, Chinanet and many others
 
 ### Network Address Translation (NAT)
@@ -74,60 +93,139 @@ Everything after this will presume knowledge of binary oclets and corresponding 
   - Others are unique throughout the worldwide Internet
 - NAT grants your private IP address on the network into a public IP address the Internet can interpret
 
-### Network Mask
-- Masks an oclet of an IP address, blocking it from being used by public Internet IP addresses
-- Uses all `1` digits (`11111111` or `255` for a full oclet)
-- Compare two IP addresses in lieu of the mask
-  - Masked oclets same = both IPs are on the same **local** network
-  - Masked oclets different = IPs are **remote** on different networks
-- Thus determines whether an IP address is **remote** or **local**
-  - **Remote** - different subnet, **default gateway** required
-  - **Local** - same subnet, no **default gateway** required
-- Formats
-  - `1` binary = Network
-  - `0` binary = Host
-  - Mask: `255`.`0`.`0`.`0` = `11111111`.`00000000`.`00000000`.`00000000` = `/8`
-    - The first oclet is reserved for the local network
-  - Mask: `255`.`255`.`0`.`0` = `11111111`.`11111111`.`00000000`.`00000000` = `/16`
-    - The first two oclets are reserved for the local network
-- Most network hardware requires that the `1`s be contiguous:
-  - `11111111.11111111.00000000.00000000` (`255.255.0.0/16`) contiguous (allowed)
-  - `11111111.11111100.00000000.00000000` (`255.252.0.0/14`) contiguous (allowed)
-  - `11111111.11110000.00000000.00000000` (`255.240.0.0/12`) contiguous (allowed)
-  - `11111111.11000000.00000000.00000000` (`255.192.0.0/10`) contiguous (allowed)
-  - `11111111.00000000.00000000.00000000` (`255.0.0.0/8`) contiguous (allowed)
-  - `11110000.11111111.00000010.00000001` (`240.255.2.1/??`) *discontiguous (not allowed)*
+### Local Boxes
+#### Router
+- Connects a network to other networks, including the worlwdide Internet
+- Is the **NAT** server (if you have one which you probably do)
 
-### Dynamic Host Configuration Protocol (DHCP)
-- Automatically assign IP addresses to machines on a network
-- This can be done through a DHCP server
-- This can be done automatically in a peer-to-peer situation (APIPA)
-  - All machines must be configured to use DHCP
-  - No DHCP server is available
+#### Switch
+- Is the **LAN** server (Local Area Network server)
+- Is the **DHCP** server for machines on the LAN it serves
+- Uses **MAC** address to identify each machine on the LAN it serves
+- Can connect to a router
+- Connects different machines on the same network
+- Can use WiFi or ethernet
+  - Usually both in a home or office
+- Usually has WiFi antennas and/or a few ethernet jacks
+
+#### Router-Switch
+- A router with a switch built inside
+- The *consumer router*, probably with "Router" printed on the case somewhere
+- Probably the main WiFi/LAN box in your home or office that your **ISP** gave you with setup instructions that you might have been scared to read, bearing a large and fashionable logo of your **ISP**
+
+#### Hub
+- Connects all machines to each other or the network
+- Uses **broadcast**, very public where everyone sees everyone
+- Almost the same as one ethernet CAT-5 or CAT-6 cable plugged directly between two computers as P2P networking
+  - The cable used in that way could itself be called a "hub"
+
+#### Modem
+- Connects outside Internet to a router (from: broadband, NAS, POTS line, power line, satellite, etc)
+- At home or office, has one coax cable input and one ethernet jack output
+- Plugs into both the TV cable line and into your **router-switch** at a home or office
+- Probably that other, less fashionable box in your home or office that your **ISP** gave you with setup instructions that you might have been even more scared to read and usually sits closer to the TV
 
 ### Internet Protocol (IP)
 - Used in:
-  - IP Header
-  - IP Data
   - IP Packets
+    - IP Header
+    - IP Data
+    - IP Trailer
+    - IP Footer
   - IP Address (v4 or v6)
   - Etc
+- (An/The) **IP** - universally-used bad slang meaning "IP *Address*"
 
-### Protocol Data Unit (PDU)
-- Categorized as:
-  - Segments(TCP links)
-  - Packets (IP header/data, sent to/from IP addresses)
-  - Frames (ARP calls)
-  - Bits (Eterhent chatter, ATM transactions, WiFi chatter)
-- These are ***too small*** to include fuller information used in:
+### IP Address
+- A numeric address in binary that identifies a machine on a network
+- IP addresses are almost always translated to human-readable decimal, so they look like this:
+  - IPv4 eg: `192.168.7.7`
+    - (actually `11000000.10101000.00000111.00000111`)
+  - IPv6 eg: `f800:19f0:72d1:5f8c:58cf:4ff:e89b:a851`
+    - (actually `1111100000000000:1100111110000:111001011010001:101111110001100:101100011001111:10011111111:1110100010011011:1010100001010001`)
+
+#### Network IP Addresses
+- Ends in `0`: address for the *network itself* (**switch**)
+  - `192.168.0.0`
+  - `192.168.1.0`
+- Ends in `1`: address for the network **gateway** (**router**)
+  - `192.168.0.1`
+  - `192.168.1.1`
+  - **Gateway** - the IP address that network machines use to identify the **router** and thus talk to the WAN, other networks, or the worldwide Internet
+- These numbers are standard settings, but they could be manually configured otherwise by a network administrator
+- See your network addresses:$ `netstat -rn` or `route -n`
+
+#### Network Mask
+- AKA *netmask* or *mask*, implicated when discussing a *subnet mask*
+- Masks binary bits in oclets of an IP address
+  - Blocks it from being used by public Internet IP addresses
+  - Makes the blocked portion *unchangable*
+- Common masks:
+  - `255.255.255.0` AKA `/24`
+  - `255.0.0.0` AKA `/8`
+- `255` here means that this oclet is reserved for the network
+- Compare two IP addresses in lieu of the mask:
+  - Masked oclets are same = both IPs are on the same **local** network
+  - Masked oclets are different = IPs are **remote** on different networks
+- Thus determines whether an IP address is **remote** or **local**
+  - **Remote IP address** - different subnet, **default gateway** required
+  - **Local IP address** - same subnet, **default gateway** *NOT* required
+- **IP address prefix**: (`X.X.X/X`)
+  - The first part of every IP address on the network (`X.X.X`), plus the mask (`/X`)
+  - eg: `192.168.38/24` means every IP address on the network will start with `192.168.38`
+    - Mask: `255.255.255.0` AKA `/24`
+    - Machine 1: `192.168.38.52`
+    - Machine 2: `192.168.38.1`
+  - eg: `10/8` means every IP address on the network will start with `10`
+    - Mask: `255.0.0.0` AKA `/8`
+    - Machine 1: `10.0.0.1`
+    - Machine 2: `10.175.4.58`
+- *More is addressed later in **Subnet Mask***
+
+### Dynamic Host Configuration Protocol (DHCP)
+- Automatically assign IP addresses to machines on a LAN
+- This can be done through a DHCP server (the **switch**)
+  - The **switch** acts as the DHCP server
+
+### Automatic Private IP Address (APIPA)
+- `169.254/16`
+- AKA *auto-IP*, auto-assigning local IP addresses when there is no DHCP server
+- Done automatically in a peer-to-peer situation
+  - All machines must be configured to use DHCP
+  - No DHCP server is available
+
+### Transmission Control Protocol (TCP)
+- *Considered a kind of Internet Protocol*
+- The basic *network* connection language
+- Individual units of TCP information are called "**links**" or "**PDU Segments**"
+- Almost all *inter-machine* network connections are using this under the hood
   - SSH login or command
   - HTTP web page (load a webpage or an AJAX request)
   - FTP file upload
+  - SMTP/IMAP/POP email
   - VoIP/SIP phone call
-  - SMTP email
+  - IP networking
+  - Any WiFi/ethernet/etc connection
+- Usually ***not** intra-machine* communication (pluggable device peripherals)
+  - PCI
+  - USB
+  - SATA
+  - NVMe
+  - Video
+    - VGA
+    - DVI
+    - HDMI
+    - DP
+
+### Protocol Data Unit (PDU)
+- Categorized as:
+  - Segments (**TCP** links)
+  - Packets (**IP** header/data/trailer/footer, sent to/from IP addresses)
+  - Frames (**ARP** calls)
+  - Bits (Eterhent chatter, ATM transactions, WiFi chatter)
 
 ### Address Resolution Protocol (ARP)
-- Basic messages betwen networked computers as they shake hands
+- Basic messaging betwen networked computers as they shake hands
 - In headers, essentially with To/From information like IP and MAC addresses
 
 ### Packet
@@ -137,56 +235,105 @@ Everything after this will presume knowledge of binary oclets and corresponding 
   - Payload
   - Footer
 
-#### Integrated Services Digical Network (ISDN)
+### Mobile ISP
+*(Not likely on Linux SysAdmin exams, but helps keep a perspective in networking)*
+
+#### Access Stratum (NAS & AS) Protocols
+- *Considered a kind of Internet Protocol*
+- **Non-Access Stratum (NAS)**: (Network Layer) mobile device and ISP nodes deeper in the network
+- **Access Stratum (AS)**: (Data Layer) mobile device and radio towers
+- Wireless protocols used by ISPs to communicate with UE devices
+  - LTE
+  - GSM
+  - UMITS
+  - 4G/5G/etc
+- A more basic layer than TCP
+
+#### User Equipment (UE)
+- Usually a mobile phone, SIM-card tablet, or "mobile hot spot"
+- Mobile equipment that connects to an **ISP**'s mobile service radio towers
+  - LTE
+  - GSM
+  - UMITS
+  - 4G/5G/etc
+- Uses **NAS/AS** protocols
+  - Basically it's own way to talk to mobile service towers instead of **modem-switch-router** like in a home or office
+
+### Integrated Services Digical Network (ISDN)
 **AKA: Basic Rate Interface (BRI)**
 
-*Not on Linux SysAdmin exams, but helps keep a perspective in networking*
+*(Not likely on Linux SysAdmin exams, but helps keep a perspective in networking)*
 
 - Transmits both data and voice over a digital line
-  - Probalby an old phone line or cable TV line that became Internet, cable, and TV service combined
+  - Broadband or fiberoptic line
+  - Could be an old phone line or cable TV line that became Internet, cable, and TV service combined
   - Usually includes and serves:
-    - SIP trunking/termination (VoIP service)
+    - SIP trunking/termination (VoIP phone service)
     - Cable TV
     - Internet service
 - **ISDN switch** (road box?)
   - Probably the ISP box at the end of your driveway
+  - Provides the `U` interface for NT devices
 - **Network Termination (NT)**
-  - **NT1** (modem?)
+  - **NT1** (modem/UE)
     - Setup per instructions from the ISP (with login), probably the "modem"
+    - Mobile phone, tablet, mobile "hot spot" (when using mobile Internet service like LTE/GSM/4G/5G/etc)
     - Provides the `T` interface cable, which plugs Internet service into a WiFi Router
-  - **NT2** (router?)
-    - Probably the ethernet/WiFi router all your household devices connect to
+  - **NT2** (router/switch)
+    - Probably the ethernet/WiFi router or switch all your household devices connect to
     - Provides the `S` interface cable or WiFi signal, which connects to TE
 - **Termination Equipment (TE)** can include:
   - PC
-  - Mobile phone or tablet
+  - Mobile phone or tablet (when using WiFi)
   - VoIP/ISDN phone
   - Cable TV channel box (usually includes remote control, a kind of TA)
   - Smart TV that can change cable channels and uses ethernet or WiFi
   - Gaming console
   - WebCam
-  - Another router to distripute service to more terminal points
+  - Another switch or router to distribute service to more terminal points
 - **Terminal Adapter (TA)**
   - Allows non-ISDN equipment to operate on ISDN network
   - Adapter that creates an SIP/VoIP interface for a standard phone
   - Cable TV box so a monitor or old TV can view cable TV channels
-- Search online for more details
-- Basic map is this:
+  - Provides the `R` interface to equipment needing the adaptation
+- Basic diagram:
+
 ```
 [Old TV/Monitor TE]---R---[TA]---S---[NT2]---T---[NT1]---U---{ISDN switch}
-[Standard Phone TE]---R---[TA]---S---[NT2]---T---[NT1]---U---{ISDN switch}
+[Old POTS Phone TE]---R---[TA]---S---[NT2]---T---[NT1]---U---{ISDN switch}
 [PC/mobile/VoIP TE]--------------S---[NT2]---T---[NT1]---U---{ISDN switch}
 ```
-- `R` - `S` - `T` - `U` represent connection links on the way to the ISDN switch, then on toward the Internet
+
+- `R` - `S` - `T` - `U` represent connection links (cables & radio) on the way to the ISDN switch, then on toward the Internet
 
 ## Layers
+- Data communication layers help explain where we are working in the hardware-software stack
+- There are two main models:
+  - **[OSI (Open Systems Interconnection)](https://en.wikipedia.org/wiki/OSI_model)** - the first developed in the 1970s by the [International Organization for Standardization (ISO)](https://www.iso.org/) (the company that certifies factories to fly the *ISO 9001* flag at their driveways)
+    - Seven layers (first five same as TCP/IP)
+    - Theoretical, not practical
+    - This standard is highly controversial and disliked by many who work in the field of SysDevOps and IT
+    - Because of the authors, the model is likely intended to be used for "ISO" certification for SysDevOps and IP, to determine whether SysOps and DevOps are being done responsibly, reliably, and securely
+  - **[TCP/IP (AKA Internet protocol suite)](https://en.wikipedia.org/wiki/Internet_protocol_suite)** - the second developed in the 1970s by the US Department of Defense
+    - Five layers (same layers as OSI)
+    - Adopted in 1983 as the official standard for ARPANET (succeeded by the Internet)
+    - Inspired as a replacement for the OSI model because it didn't seem to fit how things worked in the real world
+    - This seems to be the preferred model for many SysDevOps IT technicians because it is more practical for people working in the field
+- Generally, you can follow any model you like without owing any loyalty to the other
+- There is some ambiguity on the precise terms for each layer; the table below attempts to reconcile this for simplicity and understanding
+
+### Devices Span Layers
+- WiFi operates on Layer 1 in place of a cable, but on Layer 2 in supplying the connection for MAC addresses and ARP calls for the subnet
+- Switches operate on Layer 2 in serving MAC addresses and ARP calls for the subnet, but on Layer 3 if connecting to any larger network
+
+### Layers Table
 | Layer       | TCP/IP      | OSI                                     | Uses                                              | Protocol Data Units |
 | :---------: | :---------: | :-------------------------------------: | :-----------------------------------------------: | :-----------------: |
-| 7<br>6<br>5 | Application | Application<br>Presentation<br>Session  | HTTP, SMTP, FTP,<br>DNS, SSH, Telnet,<br>VoIP/SIP |                     |
+| 7<br>6<br>5 | Application | Application<br>Presentation<br>Session  | HTTP, SMTP, FTP, DNS, SSH, Telnet, VoIP/SIP       |                     |
 | 4           | Transport   | Transport                               | TCP, UDP                                          | Segments            |
-| 3           | Network     | Network                                 | IP Addresses, IP Headers, IP Data                 | Packets             |
-| 2           | Data/Access | Data Link                               | MAC, ARP calls, Router, Switch, WiFi              | Frames              |
-| 1           |             | Physical                                | Eternet, ATM, Cables, Hub, WiFi                   | Bits                |
+| 3           | Network     | Network                                 | Router/Switch, IP (Header, Data, Trailer, Footer), NAS           | Packets             |
+| 2           | Access Link | Data Link                               | Switch, MAC, ARP calls, WiFi, AS          | Frames              |
+| 1           |             | Physical                                | Eternet, Optical/Copper Cables, Hub, ATM, WiFi    | Bits                |
 
 ## IPv4 Addresses
 ### Oclets
@@ -197,7 +344,7 @@ Everything after this will presume knowledge of binary oclets and corresponding 
 - IPv4 uses four oclets in its address
 - We humans write these in decimal (`0`-`9`), but that just makes it easy for us; they remain binary
 
-### Subnet Mask: Host v Network
+### Subnet Mask
 - A network and host machine use different binary places for their addresses
 - A subnet mask blocks off binary places so they can only be used to
 - A mask uses `1` in binary to block (mask) binary places to be used only for the network's address
@@ -217,62 +364,85 @@ Everything after this will presume knowledge of binary oclets and corresponding 
   - Host addresses on that network: `125.59.2.249`, `125.59.2.1` `125.59.2.38`
     - (First three oclets always the same, others can be anything)
 
+#### Mask in Binary vs Decimal
+- Masks are in binary, using all `1` digits (`11111111` or `255` for a full oclet)
+- Formats:
+  - `1` binary = Network: *Any `1` or `0` in these places may not change*
+  - `0` binary = Host: *Any `1` or `0` in these places could be anything*
+  - Mask: `255`.`0`.`0`.`0` = `11111111`.`00000000`.`00000000`.`00000000` = `/8`
+    - The first oclet is reserved for the local network
+  - Mask: `255`.`255`.`0`.`0` = `11111111`.`11111111`.`00000000`.`00000000` = `/16`
+    - The first two oclets are reserved for the local network
+- Most network hardware requires that the `1`s be contiguous:
+  - `11111111.11111111.00000000.00000000` (`255.255.0.0` = `/16`) contiguous (allowed)
+  - `11111111.11111110.00000000.00000000` (`255.254.0.0` = `/15`) contiguous (allowed)
+  - `11111111.11111100.00000000.00000000` (`255.252.0.0` = `/14`) contiguous (allowed)
+  - `11111111.11111000.00000000.00000000` (`255.248.0.0` = `/13`) contiguous (allowed)
+  - `11111111.11110000.00000000.00000000` (`255.240.0.0` = `/12`) contiguous (allowed)
+  - `11111111.11100000.00000000.00000000` (`255.224.0.0` = `/11`) contiguous (allowed)
+  - `11111111.11000000.00000000.00000000` (`255.192.0.0` = `/10`) contiguous (allowed)
+  - `11111111.10000000.00000000.00000000` (`255.128.0.0` = `/9`) contiguous (allowed)
+  - `11111111.00000000.00000000.00000000` (`255.0.0.0` = `/8`) contiguous (allowed)
+  - `11110000.11111111.00000010.00000001` (`240.255.2.1` = `/??`) *discontiguous (not allowed)*
+
+##### Network Mask & Prefix Examples
+*Each IP in this entire list is for a different machine!*
+
+- Network A:
+  - `192.168.38.31/16` (`192.168.38/24` = first three oclets are masked)
+  - `192.168.38.57/16` (`192.168.38/24` = first three oclets are masked)
+  - `192.168.38.0/16` network IP
+  - `255.255.255.0` = `/24` mask
+- Network B:
+  - `192.168.191.31/16` (`192.168.191/24` = first three oclets are masked)
+  - `192.168.191.57/16` (`192.168.191/24` = first three oclets are masked)
+  - `192.168.191.0/16` network IP
+  - `255.255.255.0` = `/24` mask
+- Network C:
+  - `172.21.77.31/16` (`172.21/16` = first two oclets are masked)
+  - `172.21.62.57/16` (`/172.2116` = first two oclets are masked)
+  - `172.21.0.0/16` network IP
+  - `255.255.0.0` = `/16` mask
+- Network D:
+  - `172.30.77.31/16` (`172.30/16` = first two oclets are masked)
+  - `172.30.62.57/16` (`172.30/16` = first two oclets are masked)
+  - `172.30.0.0/16` network IP
+  - `255.255.0.0` = `/16` mask
+- Network E:
+  - `10.129.77.31/8` (`10/8` = first oclet is masked)
+  - `10.106.62.57/8` (`10/8` = first oclet is masked)
+  - `10.0.0.0/8` network IP
+  - `255.0.0.0` = `/8` mask
+- Network F:
+  - `10.23.77.31/8` (`10.23/12` = first oclet is masked)
+  - `10.23.62.57/8` (`10.23/12` = first oclet is masked)
+  - `10.23.0.0/8` network IP
+  - `255.240.0.0` = `/12` mask
+  - `11111111.11110000.00000000.00000000` = `/12` = `8` + `4` mask in binary
+  - `23` is `00010111`, protected by the first half oclet mask of `11110000`
+- Network G:
+  - `172.17.77.31/12` (`/12` = first and half oclet is masked)
+  - `172.17.62.57/12` (`/12` = first and half oclet is masked)
+  - `172.17.0.0/12` network IP
+  - `255.240.0.0` = `/12` mask
+  - `11111111.11110000.00000000.00000000` = `/12` = `8` + `4` mask in binary
+  - `17` is `00010001`, protected by the first half oclet mask of `11110000`
+
 ### Classful Masking (before 1993)
-- Class A: `0-127` (*network* uses first oclet)
+- **Class A**: `0-127` (*network* uses first oclet)
   - *`0`*.`0`.`0`.`0` - *`127`*.`255`.`255`.`255`
-- Class B: `128-191` (*network* uses first two oclets)
+- **Class B**: `128-191` (*network* uses first two oclets)
   - *`128`*.*`0`*.`0`.`0` - *`191`*.*`255`*.`255`.`255`
-- Class C: `192-223` (*network* uses first three oclets)
+- **Class C**: `192-223` (*network* uses first three oclets)
   - *`192`*.*`0`*.*`0`*.`0` - *`223`*.*`255`*.*`255`*.`255`
-- Class D: `224-239` (no oclets reserved for network)
+- **Class D**: `224-239` (no oclets reserved for network)
   - `224`.`0`.`0`.`0` - *`239`*.`255`.`255`.`255`
   - Used by IP-based streaming services like cable TV
-- Class E: `240-255` (no oclets reserved for network)
+- **Class E**: `240-255` (no oclets reserved for network)
   - `240`.`0`.`0`.`0` - `255`.`255`.`255`.`255`
   - Reserved for research by IT teams
 
-### Classless Inter-Domain Routing (CIDR) Masking
-- 1993 introduced CIDR to replace **classful** IP addressing
-- CIDR uses Variable Length Subnet Masking (VLSM)
-- Class Mask Notation: `255`.`0`.`0`.`0`
-- CIDR Mask Notation: `/8` (first `8` binary places)
-- Because it does not break in oclet increments, CIDR allowes more flexibility for number of network-host addresses
-- Classfull mask oclets are either `255` or `0` (`11111111` or `00000000`), allowing only three options
-  - A: `255.0.0.0`
-  - B: `255.255.0.0`
-  - C: `255.255.255.0`
-- CIDR mask values can be any number using contiguous preceding `1` values:
-  - `10000000.00000000.00000000.00000000` (`/1`) (`128.0.0.0`)
-  - `11110000.00000000.00000000.00000000` (`/4`) (`240.0.0.0`)
-  - `11111111.10000000.00000000.00000000` (`/9`) (`255.128.0.0`)
-  - `11111111.11000000.00000000.00000000` (`/10`) (`255.192.0.0`)
-  - `11111111.11111000.00000000.00000000` (`/13`) (`255.248.0.0`)
-  - `11111111.11111111.00000000.00000000` (`/16`) (`255.255.0.0`)
-  - Et cetera, up to 32 possible masks
-
-### IP addressTypes
-- **Unicast**: Cloud servers, your computer/phone on the Internet
-  - `120.53.207.5`
-- **Network**: Networks
-  - Uses only `0` for the host (non-masked) portion of the address
-  - `120.0.0.0`
-  - `113.24.0.0`
-  - `47.53.4.0`
-- **Multicast**: `224-239`.`X`.`X`.`X` (cablt TV, stock market feed, news feed, IP radio)
-  - *So-configured hosts listen* to this host address
-  - Prefix: `1110` (`224-239` in the first oclet)
-  - No mask, others don't matter
-  - `224.0.0.1`
-  - `238.14.15.254`
-  - `239.1.1.19`
-- **Broadcast**: `X`.`X|255`.`X|255`.`255` (usually for network to talk to itself, routine business, exploited for DDoS attacks)
-  - *All hosts listen* to this host address
-  - Uses only `1`, (`11111111` AKA `255`) for host (non-masked) portion of the address
-  - `8.255.255.255`
-  - `137.14.255.255`
-  - `137.14.3.255`
-
-### Unicast Classes
+#### Unicast Classes
 - **Class A: `0-127`**
   - *`0`*.`0`.`0`.`0` - *`127`*.`255`.`255`.`255`
   - First oclet digit is `0`: *`00000000`* - *`011111111`*
@@ -305,21 +475,68 @@ Everything after this will presume knowledge of binary oclets and corresponding 
   - Reserved network address: `X`.`X`.`X`.`0`
   - Private range: (`192.168/16`) `192`.`168`.`0`.`0` - `192`.`168`.`255`.`255`
 
-### Multicast Class
+#### Multicast Class
 - **Class D: `224-239`**
   - *`224`*.`0`.`0`.`0` - *`239`*.`255`.`255`.`255`
   - First four oclet digits are `1110`: *`11100000`* - *`11101111`*
   - Mask: none
   - `224`.`0`.`0`.`X` Local Link Multicasts
 
-### IT Reserved Class
+#### IT Reserved Class
 - **Class E: `240-255`**
   - *`240`*.`0`.`0`.`0` - *`255`*.`255`.`255`.`255`
   - First four oclet digits are `1111`: *`11110000`* - *`11111111`*
   - Mask: anything
   - Entirely reserved for broadcasts
 
-## Local IPv4 addresses
+### Classless Inter-Domain Routing (CIDR) Masking
+- 1993 introduced CIDR to replace **classful** IP addressing
+- CIDR uses Variable Length Subnet Masking (VLSM)
+- Class Mask Notation: `255`.`0`.`0`.`0`
+- CIDR Mask Notation: `/X`
+  - `/8` (first `8` binary places)
+  - `/16` (first `16` binary places)
+- Because it does not break in oclet increments, CIDR allowes more flexibility for number of network-host addresses
+- Classfull mask oclets are either `255` or `0` (`11111111` or `00000000`), allowing only three options
+  - A: `255.0.0.0`
+  - B: `255.255.0.0`
+  - C: `255.255.255.0`
+- CIDR mask values can be any number using contiguous preceding `1` values:
+  - `10000000.00000000.00000000.00000000` (`/1`) (`128.0.0.0`)
+  - `11110000.00000000.00000000.00000000` (`/4`) (`240.0.0.0`)
+  - `11111111.10000000.00000000.00000000` (`/9`) (`255.128.0.0`)
+  - `11111111.11000000.00000000.00000000` (`/10`) (`255.192.0.0`)
+  - `11111111.11111000.00000000.00000000` (`/13`) (`255.248.0.0`)
+  - `11111111.11111111.00000000.00000000` (`/16`) (`255.255.0.0`)
+  - Et cetera, up to 32 possible masks
+
+## Reserved & Local IPv4 addresses
+- **[RFC5735](https://datatracker.ietf.org/doc/html/rfc5735#section-3)** has more information on various reserved IP addresses
+
+### IPv4 Address Types
+- **Unicast**: Cloud servers, your computer/phone on the Internet
+  - `120.53.207.5` (example only)
+  - `4.129.82.193` (example only)
+  - `87.6.253.17` (example only)
+- **Network**: Networks
+  - Uses only `0` for last oclet and/or the host (non-masked) portion of the address
+  - `120.0.0.0`
+  - `113.24.0.0`
+  - `47.53.4.0`
+- **Multicast**: `224-239`.`X`.`X`.`X` (cablt TV, stock market feed, news feed, IP radio)
+  - *So-configured hosts listen* to this host address
+  - Prefix: `1110` (`224-239` in the first oclet)
+  - No mask, others don't matter
+  - `224.0.0.1`
+  - `238.14.15.254`
+  - `239.1.1.19`
+- **Broadcast**: `X`.`X|255`.`X|255`.`255` (usually for network to talk to itself, routine business, exploited for DDoS attacks)
+  - *All hosts listen* to this host address
+  - Uses only `1`, (`11111111` AKA `255`) for host (non-masked) portion of the address
+  - `8.255.255.255`
+  - `29.7.255.255`
+  - `135.14.3.255`
+
 ### Directed Broadcast
 - Host uses all binary `1`, `255` for all host octets
   - Class A: `X`.`255`.`255`.`255`
@@ -330,15 +547,17 @@ Everything after this will presume knowledge of binary oclets and corresponding 
   1. Cause a machine to send a **directed broadcast** to other machines (via `255` hosts)
   2. All machines process the broadcast
   3. Those machines respond to the first machine with a denial
+- `255.255.255.255` is for **Local Broadcast**
 
-### Local Broadcast
+### Private IPv4 Addresses
+#### Local Broadcast
 - **`255`.`255`.`255`.`255`**
 - DHCP requests query this address
   - A new machine sends a request to this local broadcast to ask for an automatically assigned IP address
-- Layer three routers always drop DHCP rewuests
+- Layer three routers and switches always drop DHCP requests
   - Unless configured for "DHCP forwarding/relay"
 
-### Local Loopback
+#### Local Loopback
 - `127`.`X`.`X`.`X`
   - `127`.`0`.`0`.`1` = `localhost`
   - `127`.`0`.`1`.`1` = `$HOSTNAME`
@@ -348,28 +567,51 @@ Everything after this will presume knowledge of binary oclets and corresponding 
 - Used by a device to send a message to itself for testing
   - Verifying installation of a TCP/IP stack
 - Different from a router/switch loopback address
+- Per [RFC5735](https://datatracker.ietf.org/doc/html/rfc5735#section-3):
 
-### Local DHCP
+> `127.0.0.0/8` - This block is assigned for use as the Internet host
+> loopback address.  A datagram sent by a higher-level protocol to an
+> address anywhere within this block loops back inside the host.  This
+> is ordinarily implemented using only `127.0.0.1/32` for loopback.  As
+> described in [[RFC1122], Section 3.2.1.3](https://datatracker.ietf.org/doc/html/rfc1122#section-3.2.1.3), addresses within the entire
+> `127.0.0.0/8` block do not legitimately appear on any network anywhere.
+
+#### Local DHCP Discovery Source
 - `0`.`0`.`0`.`0`
-  - Used by a host machine to be assigned a local IP by DHCP
-### Private IPv4 Addresses
-#### Private Internets
-- Per [RFC1918](https://datatracker.ietf.org/doc/html/rfc1918), IANA has reserved these for private internets:
-  - ISPs will not accept these addresses
-```
-10.0.0.0    - 10.255.255.255  (10/8 prefix)
-172.16.0.0  - 172.31.255.255  (172.16/12 prefix)
-192.168.0.0 - 192.168.255.255 (192.168/16 prefix)
-```
-- Note this uses **CIDR**, not **classful**
+- Used by a host machine as a spoof "source" address so it can learn its own address, particularly when assigned a local IP by DHCP
+- Per [RFC1122](https://www.rfc-editor.org/rfc/rfc1122#page-30):
 
-#### Link-Local `169`.`254`.`X`.`X` (APIPA)
-- Per [RFC9327](https://datatracker.ietf.org/doc/html/rfc9327), Automatic Private IP Address (APIPA) can be chosen by a PC configured for DHCP ***when no DHCP server is available***
+> (a)  `{ 0, 0 }`
+> 
+> This host on this network.  MUST NOT be sent, except as
+> a source address as part of an initialization procedure
+> by which the host learns its own IP address.
+
+#### Link-Local (APIPA)
+- `169`.`254`.`X`.`X`
+- Reserved for the immediate subnet of a machine
+- Per [RFC9327](https://datatracker.ietf.org/doc/html/rfc9327), Automatic Private IP Address (**APIPA**) can be chosen by a PC configured for DHCP ***when no DHCP server is available***
   - PC automatically chooses its own IP in range `169.254/16` (`169`.`254`.`X`.`X`)
 - Traffic on these addresses is non-routable
+- Per [RFC5735](https://datatracker.ietf.org/doc/html/rfc5735#section-3):
 
-### Pigeons
-- Per [RFC1149](https://datatracker.ietf.org/doc/html/rfc1149) pigeons can be used in place of an Internet cable
+> `169.254.0.0/16` - This is the "link local" block.  As described in
+> [[RFC3927](https://datatracker.ietf.org/doc/html/rfc3927)], it is allocated for communication between hosts on a
+> single link.  Hosts obtain these addresses by auto-configuration,
+> such as when a DHCP server cannot be found.
+
+#### Private Internets
+- Per [RFC1918](https://datatracker.ietf.org/doc/html/rfc1918):
+  - IANA has reserved these for private internets
+  - ISPs will not accept these addresses
+
+> ```
+> 10.0.0.0    - 10.255.255.255  (10/8 prefix)
+> 172.16.0.0  - 172.31.255.255  (172.16/12 prefix)
+> 192.168.0.0 - 192.168.255.255 (192.168/16 prefix)
+> ```
+
+- Note this uses **CIDR**, not **classful**
 
 ## IPv6 Addresses
 ### Format
@@ -406,52 +648,62 @@ Everything after this will presume knowledge of binary oclets and corresponding 
   - `2001:0000:6001:5FC6:5400:0000:0000:0000` = `2001:0:6001:5FC6:5400::` (can only use `::` once)
 
 ### Network Masking
-- IPv6 does not use subnet masking, but rather uses a "prefix" with the same notation as CIDR
+- IPv6 does not use subnet masking, but rather uses a **prefix length** with the same notation as CIDR
+  - Often called "**prefix**" for short
 - `/64` binary places is standard for network mask length
-  - Eg: `2001:19F0:0420:0000:/64` is the network portion of an IPv6 address
+  - eg: `2001:19F0:0420:A29D:/64` is the network **prefix** of an IPv6 address
     - The first four hexadecs take up a total of `64` binary places, `16` per hexadec group
-    - All host machines on this network will begin their IPv6 address with `2001:19F0:`
-    - The host machine will likely have `2001:19F0::` as its IP address
+    - All host machines on this network will begin their IPv6 address with `2001:19F0:0420:A29D:`
+    - Likely **gateway**/network IP: `2001:19F0:0420:A29D::`
+    - Likely **switch** IP: `2001:19F0:0420:A29D::1`
 
-### Types
+### IPv6 Address Types
 #### Unicast
-##### Global
+##### Global Unicast
 - Can be either:
   - Mannually assigned, such as on the host and recorded in DNS
   - Dynamically assigned, such as through DHCP
 
-##### Link-local
+##### Link-local Unicast
 - Automatically on every machine
 - Non-routable (as with IPv4)
-- `FE80::/10` (1111111010 0000000010)
+- `FE80::/64` (`1111111010:0000000010`)
 - Not necessarily bound to a MAC address
 
 #### Multicast
 - Packets are delivered to multiple IP destinations
+- `FF00::/8`
 
 #### Anycast
 - A packet is delivered to the first available of multiple IP destinations (in network routing structure)
 
 #### IPv4-Mapped
 - An IPv4 address's four oclets replace the last two hexadecs of an IPv6 address
-  - `::FFFF:X.X.X.X/96`
+- `::FFFF:X.X.X.X/96`
 
 #### Loopback
+- For `localhost`
 - All `0` and ends with binary `1`
 - `::1/128`
+
+## Pigeons & Ravens
+- Per [RFC1149](https://datatracker.ietf.org/doc/html/rfc1149), pigeons and ravens can be used in flight, in place of networking cable or radio, to transmit IP datagrams
+- Yes, "avian carriers" (pigeons & ravens)
 
 ## Host
 ### Basics
 - The host name is recorded in `/etc/hostname`
-- `hostname` see the name of your machine's host
-  - `hostname -i` for your IP address
-- `#` `hostname inky` sets the host name to `inky`
 - Extended host IP information is in `/etc/hosts`
-- `#` `hostnamectl set-hostname inky` persistently set the hostname
+- `hostname` (machine name)
+  - `hostname -i` set host IP address from `/etc/hosts` (not DHCP)
+- :# `hostname inky` sets the host name to `inky`
+- :# `hostnamectl set-hostname inky` persistently set the host name to `inky`
   - `hostnamectl --help`
 
 ### Basic config
+
 | **/etc/hosts** : (any second host is an alias)
+
 ```
 127.0.0.1 localhost
 127.0.1.1 host_name
@@ -472,6 +724,7 @@ Everything after this will presume knowledge of binary oclets and corresponding 
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ```
+
 ### Host-Related Files
 - `/etc/hosts`
 - `/etc/hostname`
@@ -481,7 +734,7 @@ ff02::2 ip6-allrouters
 
 ## Network Time Protocol (NTP)
 ### Structure
-- Network time is ddivided into **strata**
+- Network time is divided into **strata**
   - strata `0` is a special clock: radio, atomic clock, shortwave GMT, etc
   - strata `1` NTP server connected directloy to `0` (via cable, etc)
   - strata `2` NTP server referencing strata `1`
@@ -491,15 +744,30 @@ ff02::2 ip6-allrouters
   - client: gets time from server or peer
   - peer: synchronizes time between other peers (peers prioritized over defined servers)
 
+### NTP Daemon (Service)
+- :# `systemctl start ntpd` start your NTP daemon
+- The NTP daemon helps with time syncronization, which is helpful, but not security related
+- Running the NTP daemon is [considered wise, but optional](https://unix.stackexchange.com/questions/386914)
+
 ### Tools
 #### `ntp`
 - *Different NTP tools conflict; choose one*
-- `ntp` primary time tool
+- `ntp*` primary time tool kit
   - `/etc/ntp.conf`
+  - `ls /usr/bin/ntp*`
 - `chrony` cross-environment, including cross-network and VM (optional package)
   - `/etc/chrony.conf`
 - `systemd-timesyncd` - `ntp` client included in `systemd` package
   - `/etc/systemd/timesyncd.conf`
+
+#### Local Query
+- *The NTP daemon must be running for some queries to work*
+- :$ `ntpdc` open the NTP prompt
+  - :$ `ntpdc -c [some NTP command]` run a single NTP command without opening the NTP prompt
+  - :$ `ntpdc -c peers` show time difference between local and authoritative servers
+- :$ `timedatectl` part of `systemd` and `systemd-timesyncd`
+
+### Configs
 
 #### Pool
 - The NTP Pool Project relieves the query load on NTP servers by cycling through allowed IP addresses to make inquiries
@@ -531,11 +799,8 @@ restrict 127.0.0.1
 restrict ::1
 ```
 
-#### Local Query
-- `ntpdc -c peers` show time difference between local and authoritative servers
-- `timedatectl` part of `systemd` and `systemd-timesyncd`
+#### NTPD Server Configs
 
-#### NTPD Server
 | **/etc/ntp.conf** : (access control)
 
 ```
@@ -568,8 +833,8 @@ fudge A.B.C.0 stratum 10
 
 ## Network Devices
 ### Names
-- List network devices and `dev` names:
-  - `nmcli device status`
+- List network devices and `dev` names
+  - :$ `nmcli device status`
 - Common names:
   - `eno1` (EtherNet with firmware/BIOS onboard index `1`)
   - `ens1` (EtherNet with firmware/BIOS hotplug slot `1`)
@@ -590,13 +855,16 @@ fudge A.B.C.0 stratum 10
 ### Configs (old)
 - Configs like these are from the days when normal networks were all hard-wired, not using WiFi, USB, or DHCP in networks
 - Today, a machine has many network divices with many networks for each to choose from; configs get complicated
+- It is generally better to use `networkmanager` commands
+  - `nmtui`
+  - `nmcli`
 
 #### Network Configs
 - Red Hat
-  - `/ext/sysconfig/network`
-  - `/ext/sysconfig/network-scripts/ifcfg-ethX`
-  - `/ext/sysconfig/network-scripts/ifcfg-ethX:Y`
-  - `/ext/sysconfig/network-scripts/rout-ethX`
+  - `/etc/sysconfig/network`
+  - `/etc/sysconfig/network-scripts/ifcfg-ethX`
+  - `/etc/sysconfig/network-scripts/ifcfg-ethX:Y`
+  - `/etc/sysconfig/network-scripts/rout-ethX`
 - Debian
   - `/etc/network/interfaces`
 - SUSE
@@ -610,8 +878,12 @@ fudge A.B.C.0 stratum 10
   - `ifupdown`: `/etc/network/interfaces`
   - `ifcfg-rh`: `/etc/sysconfig/network-scripts`
   - `ifcfg-suse`: simple compatability with SUSE
-  - `key-file`: generic replacesment for some particular configs
-  - Plugins are in a comma-separated list under `[main]` in `/etc/NetworkManager/NetworkManager.conf`
+  - `keyfile`: generic replacesment for some particular configs
+  - Plugins are in a comma-separated list in:
+    - in `/etc/NetworkManager/NetworkManager.conf`
+    - under `[main]`
+    - for `plugins=`
+    - eg: `plugins=ifupdown,keyfile`
 
 #### Network Manager Interfaces
 - `nmtui` - Text User Interface
@@ -619,19 +891,104 @@ fudge A.B.C.0 stratum 10
 - Both of these access the same settings as the *WiFi* and *Wired* network settings in a desktop GUI like GNOME or Xfce
 
 ### Routing
-- Get information
-  - `route -n`
-  - `ip r` (AKA `ip route` AKA `ip route show`)
-    - `ip -6 r` for IPv6 routs
-  - `ip a` (AKA `ip addr` AKA `address show`)
-  - `ifconfig -a`
+#### Basics for Beginners
+- ***IP routing tables** are well beyond the scope of this course*
+  - *System Administrators* and *Network Administrators* often overlap, but have different areas of training
+  - *This provides a basic overview so the `ip route` commands are understandable* for SysAdmins without network experience
+- Over a WAN like the worldwide Internet, each machine must connect through many different routers in order to talk to another machine across the network
+- The list of which routers to go through in what order is called a "**route**"
+- Routers and large servers often keep **routing tables** to look up best routes
+- Routes can change all the time, so routers must ask each other where to go
+- **Route** example:
 
-#### Default Route
-*IP for router not known, such as with DHCP*
+```
+[your-COMPUTER]--[house-ROUTER]--[new-york-ROUTER]--[tokyo-ROUTER]--[taiwan-website-HOST]
+[first.ip.ad.1]--[next.ip.ad.2]--[next.ip.addre.3]--[next.ip.ad.4]--[thelast.ip.addrss.5]
+```
+- **Hopping** - Each machine asks the next machine which machine to go to next
+  - Each "**hop**" asks for the "**next hop**"
+  - The chain of "**hops**" is called a "**route**"
+- **Routing** - deciding the best **route** (chain of **hops**)
+- **Routing protocols** - *priority* for deciding the best **route**
+  - RIP (Routing Information Protocol)
+    - *hop count*
+  - OSPF (Open Shortest Path First)
+    - *distance; adaptable and scalable*
+  - IGRP (Interior Gateway Routing Protocol)
+    - *bandwidth, capacity & load*
+  - EIGRP (Enhanced Interior Gateway Routing Protocol)
+    - *IGRP + routers sharing route plans*
+  - BGP (Border Gateway Protocol)
+    - *origin, distance, neighbor routers*
+  - IS-IS (Immediate System to Immediate System)
+    - *distance + router groups*
+- For SysAdmins, thee most important **route** (**next hop**) is the **gateway** used by the host machine the SysAdmin manages
+  - Rephrased: *the only **route** most SysAdmins need is the **first hop** (the **gateway**)*
 
-- Manually set the default gateway to `192.168.1.21`:#
+#### Routing by NIC
+- Your machine keeps a **route** setting for the **gateway** for each NIC connected to a LAN
+  - On a DHCP server, this **route** setting is temporary and changes every time you connect to Ethernet or WiFi (which is why it often takes a few seconds to connect)
+- Your WiFi could connect to a different LAN than your Ethernet plug
+  - So, each **gateway** setting is kept per NIC
+    - (One for the WiFi device, one for the Ethernet device)
+- *Deciding "**routes**" is why it is called a "**router**"!*
+- You can configure this **gateway route** manually with the `ip route` command
+  - *When managing servers on a LAN, a SysAdmin may need to do this*
+- ***Remember:*** Most DHCP servers (router/switch) decide their own IP address (since they decide everyone else's IP address)
+  - The **router/gateway** IP address is set in the machine, probably won't change, and is listed in the printed manual
+  - It usually is `192.168.1.1`
+  - Use `route -n` to find the **gateway** IP address
+  - For the practice commands below, you will need to change it back to the correct one once finished
+
+#### `ip route` Command
+- The `ip route` command sets the **next hop** when looking for a given IP address
+  - `default` is for all "to" addresses
+  - `192.168.1.1` is most likely the **gateway** for the current **subnet**
+
+```
+ip route add  192.168.77.3  via 192.168.1.1  dev     enp2s0
+ip route add  default       via 192.168.1.1  dev     enp2s0
+ip route add  To-Address    via Next-hop     For-NIC NIC-device-name
+```
+
+- Knowing machine information, such as NIC device names (eg `enp2s0`), is important for using the `ip route` command
+- Get simple **route** tables for your machine:$
+  - `ip r` = `ip route` = `ip route show`
+  - `ip -6 r` for IPv6 routs
+- Get NIC & **gateway** information:$
+  - `route -n` = `netstat -rn`
+  - `ip a` = `ip addr` = `address show`
+  - `ifconfig -a` (elaborate)
+  - `nmcli device status` (NIC: device, name, type, state, connection)
+
+#### Reading `route -n` Output
+- :$ `route -n`
+  - Output:
+```
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.1.1     0.0.0.0         UG    100    0        0 enp2s0
+0.0.0.0         192.168.1.1     0.0.0.0         UG    600    0        0 wlp1s0
+192.168.1.0     0.0.0.0         255.255.255.0   U     100    0        0 enp2s0
+192.168.1.0     0.0.0.0         255.255.255.0   U     600    0        0 wlp1s0
+```
+- `0.0.0.0` is basically a placeholder meaning:
+  - "unknown self" or "anything" or "nothing" or "Not-Applicable"
+  - `0.0.0.0` was how your machine first identified itself to get its IP address from the DHCP server
+- This table means:
+  - Both the Ethernet NIC (`enp2s0`) and WiFi NIC (`wlp1s0`) are...
+  - Both connected to the same **router** (`192.168.1.1`)
+  - For the same network (`192.168.1.0`) with mask `255.255.255.0`
+- Note each NIC has:
+  - Network with mask (`192.168.1.0` with `255.255.255.0`)
+  - Gateway (`192.168.1.1`) for the next stop on the way to the worlwdide Internet
+
+#### Set Default Gateway Route
+*`default` **gateway** IP address when router not known*
+
+- Know your original **gateway** from `route -n`
+- Manually set the default **gateway** to `192.168.1.21`:#
   - `ip route add default via 192.168.1.21 dev enp2s0`
-    - ...where `enp2s0` is a card on your machine listed in:
+    - ...where `enp2s0` is a NIC on your machine listed in:
       - `nmcli device status`
       - Also visible in all of these:
         - `ifconfig`
@@ -641,13 +998,8 @@ fudge A.B.C.0 stratum 10
     - `enp2s0` could also be:
       - `wlp2s0`
       - `enp3s0`
-- Restore to the normal default gateway `192.168.1.1`:#
+- Restore to the normal default **gateway** `192.168.1.1`:#
   - `ip route add default via 192.168.1.1 dev enp2s0`
-- Command description:
-```
-ip route add default via 192.168.1.1 dev    enp2s0
-IP route add default via address     device name
-```
 
 #### Static Routs
 *Usually with multiple routers*
@@ -659,7 +1011,7 @@ IP route add default via address     device name
 - Persistent routes:
   - Flavored distros must edit their config files and add them manually
     - Debian: `/etc/network/interfaces`
-    - Red Hat: `/ext/sysconfig/network-scripts/rout-ethX`
+    - Red Hat: `/etc/sysconfig/network-scripts/rout-ethX`
     - SUSE: `/etc/sysconfig/network/ifroute-eth0`
   - Arch uses a service, then adds scripts: [read more](https://wiki.archlinux.org/title/NetworkManager#Network_services_with_NetworkManager_dispatcher)
     - `systemctl enable NetworkManager-dispatcher.service`
@@ -695,7 +1047,6 @@ nmcli connection up bond0
 - System may need `reboot` and changes will persist
 
 ## DNS & Host Name Resolution
-
 **Resolution** - translating hostnames to their host machine IP addresses
 
 - If your machine cannot **resolve** a hostname in `/etc/hosts`, then it will do a full DNS lookup
@@ -718,10 +1069,9 @@ nmcli connection up bond0
 - `nslookup` (depreciated)
 
 ### DNS
-
 - A host machine's DNS use is configured in `/etc/resolv.conf`
   - This will list sources to search for DNS records
-  - This file is probably generated automatically, such as by NetworkManager or DHCP
+  - This file is probably generated automatically, such as by NetworkManager or the DHCP server
 
 | **/etc/resolve.conf** :
 
@@ -735,7 +1085,6 @@ nameserver your:ISP:provider:name:server::
 ```
 
 ### What is a Domain Name Server (DNS)?
-
 **DNS nameserver** - a server with `bind` or other DNS service answering to port `53` with record for a domain host name
 
 - Your nameserver is probably either your domain registrar or VPS service where you "park" the DNS records
@@ -793,9 +1142,9 @@ _dmarc.verb.ink.   IN  TXT      "v=DMABOX1; p=reject; fo=0; aspf=r; adkim=r; pct
 - Reverse IP address examples:
   - `207.246.96.85` = `85.96.246.207.in-addr.arpa`
   - `2001:19f0:6001:1450:5400:4ff:fe74:28a7` = `7.a.8.2.4.7.e.f.f.f.4.0.0.0.4.5.0.5.4.1.1.0.0.6.0.f.9.1.1.0.0.2.ip6.arpa`
-- Eg, find reverse DNS with `host some.ip.addr.ess`
+- Find reverse DNS with:$ `host some.ip.addr.ess`
 
-*Learn more about DNS and DNS records by searching on your own*
+*More about DNS and DNS records goes beyond the scope of this course*
 
 ## Troubleshooting Network Problems
 - Network problems come from either software or hardware; know which
@@ -806,7 +1155,7 @@ _dmarc.verb.ink.   IN  TXT      "v=DMABOX1; p=reject; fo=0; aspf=r; adkim=r; pct
     - `dig`, `host`
     - Trace packets: `traceroute`, `mtr`
       - These are similar to CISCO's Packet Tracer, see [VIP/Cheat-Sheets: Packet Tracer](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Packet-Tracer.md)
-  - Gateway
+  - **Gateway**
     - `route -n` should should be in order
   - IP configuration
     - `ifconfig` or `ip` - look to see that everything is set and working
@@ -821,10 +1170,10 @@ _dmarc.verb.ink.   IN  TXT      "v=DMABOX1; p=reject; fo=0; aspf=r; adkim=r; pct
 ## IP Cheat Sheet
 ### Common IP Addresses
 ```
-::1         # localhost & loopback
-127.0.0.1   # localhost
-127.0.1.1   # $HOSTNAME
-192.168.1.0 # Router's IP on network
+::1         # localhost & loopback (IPv6)
+127.0.0.1   # localhost (a loopback)
+127.0.1.1   # $HOSTNAME (a loopback)
+192.168.1.0 # Network IP address
 192.168.1.1 # Gateway for machines to access Internet
 192.168.1.X # Other hosts connected to the network (incl your machine's network IP)
 
@@ -863,9 +1212,12 @@ ___
 
 ```console
 netstat -l
-hostname
+netstat -rn
+
 cat /etc/hostname
+hostname
 hostname -i
+
 sudo hostname temp
 sudo hostnamectl set-hostname $(hostname)
 
@@ -877,11 +1229,14 @@ less
 
 ```console
 vim /etc/systemd/timesyncd.conf
-ls /usr/bin/ntp*
-ntpdc -c peers
-timedatectl
-vim /etc/ntp.conf
 
+ls /usr/bin/ntp*
+
+ntpdc -c peers
+
+timedatectl
+
+vim /etc/ntp.conf
 ```
 
 | **Network configs & routes** :
@@ -889,11 +1244,14 @@ vim /etc/ntp.conf
 ```console
 # Network plugins are under [main] in the config...
 
+less /etc/NetworkManager/NetworkManager.conf
+grep plugins= /etc/NetworkManager/NetworkManager.conf
+
 # Red Hat
-less /ext/sysconfig/network
-less /ext/sysconfig/network-scripts/ifcfg-ethX
-less /ext/sysconfig/network-scripts/ifcfg-ethX:Y
-less /ext/sysconfig/network-scripts/rout-ethX
+less /etc/sysconfig/network
+less /etc/sysconfig/network-scripts/ifcfg-ethX
+less /etc/sysconfig/network-scripts/ifcfg-ethX:Y
+less /etc/sysconfig/network-scripts/rout-ethX
 
 # Debian
 less /etc/network/interfaces
@@ -904,11 +1262,15 @@ ls
 
 # Arch
 cd /etc/NetworkManager
+ls
 ```
 
 | **Network** :$
 
 ```console
+netstat -l
+netstat -rn
+
 nmcli device status
 nmtui
 man nmcli

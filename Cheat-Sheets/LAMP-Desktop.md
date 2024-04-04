@@ -64,7 +64,7 @@ Edit with `gedit`:
 sudo gedit /etc/php/php.ini
 ```
 
-  - Search with: <key>Ctrl</key> + <key>F</key>, then type `mysqli` to find the line, <key>Ctrl</key> + <key>S</key> to save
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
 Or edit with `vim`:
 
@@ -127,7 +127,7 @@ Edit with `gedit`:
 sudo gedit /etc/httpd/conf/httpd.conf
 ```
 
-  - Search with: <key>Ctrl</key> + <key>F</key>, <key>Ctrl</key> + <key>S</key> to save
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
 Or edit with `vim`:
 
@@ -398,7 +398,7 @@ sudo apt install mariadb-server php lamp-server^
 sudo gedit /etc/php/7.2/apache2/php.ini
 ```
 
-  - Search with: <key>Ctrl</key> + <key>F</key>, then type `mysqli` to find the line, <key>Ctrl</key> + <key>S</key> to save
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
 Or edit with `vim`:
 
@@ -435,7 +435,7 @@ sudo systemctl restart apache2
 sudo systemctl status apache2
 ```
 
-  - Press <key>Q</key> to quit. ;-)
+  - Press <kbd>Q</kbd> to quit. ;-)
 
 5. Apache settings
 
@@ -756,7 +756,7 @@ Edit with `gedit`:
 sudo gedit /etc/php.ini
 ```
 
-  - Search with: <key>Ctrl</key> + <key>F</key>, then type `mysqli` to find the line, <key>Ctrl</key> + <key>S</key> to save
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
 Or edit with `vim`:
 
@@ -792,7 +792,7 @@ Edit with `gedit`:
 sudo gedit /etc/httpd/conf/httpd.conf
 ```
 
-  - Search with: <key>Ctrl</key> + <key>F</key>, <key>Ctrl</key> + <key>S</key> to save
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
 Or edit with `vim`:
 

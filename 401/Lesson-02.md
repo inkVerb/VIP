@@ -39,7 +39,7 @@ sudo tcpdump
 
 *Note the ongoing list of network activity*
 
-*<key>Ctrl</key> + <key>C</key> will close the dump*
+*<kbd>Ctrl</kbd> + <kbd>C</kbd> will close the dump*
 
 ### IF needed, `exit` from the other "sudoer"
 >

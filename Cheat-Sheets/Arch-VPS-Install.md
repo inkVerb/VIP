@@ -24,7 +24,7 @@ pacman -Sy archlinux-keyring --noconfirm
 fdisk /dev/vda
 ```
 
-Press: <key>N</key>, <key>Enter</key> (x5), <key>W</key>, <key>Enter</key> (x1)
+Press: <kbd>N</kbd>, <kbd>Enter</kbd> (x5), <kbd>W</kbd>, <kbd>Enter</kbd> (x1)
 
 Now disk is partitioned
 

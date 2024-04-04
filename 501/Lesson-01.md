@@ -137,7 +137,7 @@ ls -l web
 localhost/web/phpget.php?go=I am an apple pie
 ```
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 *Try the URL a few different ways to see how it works*
 
@@ -369,7 +369,7 @@ localhost/web/phppost.php
 
 *Try the form a few times to see how it works*
 
-*Use <key>Ctrl</key> + <key>Shift</key> + <key>C</key> in browser to see the developer view*
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
 | **7** :$
 
@@ -513,7 +513,7 @@ ls web
 localhost/web/phppost.php
 ```
 
-*Try the form and developer view with <key>Ctrl</key> + <key>C</key>*
+*Try the form and developer view with <kbd>Ctrl</kbd> + <kbd>C</kbd>*
 
 #### `switch`-`case` Statements
 
@@ -551,7 +551,7 @@ ls web
 localhost/web/phppost.php
 ```
 
-*Try the form and developer view with <key>Ctrl</key> + <key>C</key>*
+*Try the form and developer view with <kbd>Ctrl</kbd> + <kbd>C</kbd>*
 
 *Try any color, also try selecting no color at all to see the `switch`-`default`*
 
