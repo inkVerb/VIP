@@ -2069,7 +2069,7 @@ ip a # User your NIC IP addresses to replace 192.168.0.9 below
 ## It won't work without a network, still type for practice
 sudo nbd-client -N foo 192.168.0.9 10809 /dev/nbd0
 sudo nbd-client -N export1 192.168.0.9 10809 /dev/nbd1
-sudo nbd-client -N otherexport 192.168.0.9 10809 /dev/nbd2 # Ctrl + C, it won't work without a network, type for practice
+sudo nbd-client -N otherexport 192.168.0.9 10809 /dev/nbd2
 ```
 
 ___
