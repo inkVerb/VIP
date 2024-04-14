@@ -130,7 +130,7 @@ wget https://github.com/inkVerb/vip/archive/master.zip
 ls
 ```
 
-*Specify a different output filename with: `-O SaveAsName` (CAPITAL '-O'!)*
+*Specify a different output filename with: `-O SaveAsName` (CAPITAL `-O`!)*
 
 | **15** :$
 
@@ -330,22 +330,12 @@ rm -r vip
 
 *Removing a `git`-cloned directory is easier with `sudo`*
 
-### This lesson requires a "sudoer" who can use `sudo`
->
-___
-> Optional: You may login as a "sudoer" if needed
->
-> | **S1** :$
-
-```console
-su Username
-```
-___
+*But, since you own the directory, you can use the `-f` flag to "force" the `rm` operation...*
 
 | **40** :$
 
 ```console
-sudo rm -r vip
+rm -rf vip
 ```
 
 | **41** :$
@@ -356,16 +346,6 @@ ls
 
 *...all gone, no problem*
 
-### IF needed, `exit` from the other "sudoer"
->
-___
-> Optional: IF you logged in as a "sudoer", now exit
->
-> | **S2** :$
-
-```console
-exit
-```
 ___
 
 
@@ -381,6 +361,9 @@ ___
 - `git clone GitHub-REPOSITORY-address` is how `git` "downloads" a GitHub repo
 - When downloading a .zip file or .tar file (tarball) from GitHub, the contents will have a strange name
 - Using `git clone` is the simplest way to download a GitHub repo
+  - GitHub repos contain some read-only files in the `.git` directory
+  - Deleting these needs the `-f` flag to avoid prompts
+    - `rm -rf somegitrepo`
 
 ___
 

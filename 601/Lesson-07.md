@@ -8,10 +8,45 @@ ___
 # The Chalk
 ## Important Terms
 - **Physical drives** can be held in your hand and plugged into a computer via SATA, NVMe, mSATA, or USB ports
-- **Partition tables** are created with `fdisk`, formerly using **MBR**, but should use **GPT** on machines made after 2010
-- **Partitions** are large sections of a disk created with `fdisk`, listed on the disk's partition table, unformatted and empty
-- **Filesystems** are formatted partitions of different types, such as **ext4**, **FAT32**, **swap**, **NTFS**, etc
+- **Partition tables** are created with `fdisk` & `gdisk`, formerly using **MBR**, but should use **GPT** on machines made after 2010
+- **Partitions** are large sections of a disk created with `fdisk` & `gdisk`, listed on the disk's partition table, unformatted and empty
+- **Filesystems** are formatted partitions of different types, such as **ext4**, **FAT32**, **swap**, **NTFS**, **BTRFS**, etc
 - **Virtual Filesystem** is a software layer that interacts directly with the physical disk; most filesystems use this so apps can operate easily
+
+## I/O Tools
+- Writing to and from a disk can cause an input-output pileup
+- Tools: (Arch Linux needs packages: `sysstat`, `iotop`, `bonnie++`)
+  - `iostat` - monitor I/O by disk devices
+    - `-m` megabites
+    - `-x` details
+  - `iotop` - current I/O usage, must run as `root`
+    - `-o` only processes doing I/O
+  - `fuser /some/path` find out which user is using a part of the filesystem
+- Stress test tools
+  - `bonnie++` tests writing to file systems
+    - Output report packages: `boncsv2html`, `boncsv2txt`
+    - Run as root requires `-u 0`
+    - If `-d` not specified for destination write, current path must be writable
+    - Eg: `bonnie++ -u 0 -n 0 -f -b -r 150 -d /tmp/`
+      - `-u 0` run as root
+      - `-n 0` no file creation tests
+      - `-f` no per character I/O tests
+      - `-b` do `fsync` after every write, flushing to disk and no writing to cache
+      - `-r 150` use only 150M or RAM
+      - `-d /tmp/` destination: `/tmp/`
+  - `fs_mark`
+    - Download: [sourceforge.net/projects/fsmark/](http://sourceforge.net/projects/fsmark/)
+    - Arch Linux: `glmark2` package
+    - Fedora: `glibc-static` package
+    - SUSE: `glibc-devel-static` package
+    - Debian: `fsmark` package
+    - Example:
+      - `fs_mark -d /tmp -n 1000 -s 10240`
+        - `-d /tmp` destination `/tmp`
+        - `-n 1000` 1,000 files
+        - `-s 1024` 10M each file size
+    - Monitor with `iostat`
+      - `iostat 1 10`
 
 ## Disk Types
 ### Connection Cables
@@ -38,6 +73,7 @@ ___
   - Native hot swapping
   - Fast & efficient data transfer
   - eSATA was a SATA "next generation" dream that failed
+  - mSATA usually connects to the motherboard without a cable
 - **USB (Universal Serial Bus)**
   - A kind of SCSI device
   - Can connect any drive (flash, HDD, SSD, SATA adapters, FDD [floppy disk drive] etc)
@@ -70,6 +106,7 @@ ___
   - Uses flash technology
   - No moving parts, no rotating disk
   - Connects with SATA or NVMe
+
 ## Inodes
 - Every file has one **inode**
 - Hard vs soft links
@@ -86,8 +123,8 @@ ___
     - Modified contents
     - Changed inode info
 - In the filesystem **directory**
-  - **Filename** with matching **inode** number
-- `ls -i` to output files with matching **inode** numbers
+  - **Filename** with corresponding **inode** number
+- `ls -i` to output files with corresponding **inode** numbers
 
 ## Partition Tables
 - `fdisk` creates partition tables (MBR or GPT) and their partitions
@@ -235,21 +272,36 @@ ___
   - `ln -n` no-deference
   - `ln -f` force suppress most error messages
 
-### Second Extended Filesystem
-- Four namespaces
+### Extended Filesystem
+- `ext2`, `ext3`, `ext4`
+- Four file attribute namespaces
   - User
   - Trusted
-  - Secutiry (SELinux)
+  - Secutiry (viz SELinux)
   - System (Access Control Lists)
-- File Flags
-  - `a` Append-only: only append (`>>`)
+- File attribute flags
+  - `a` append-only: only append (forces `>>`)
   - `A` no `atime` update: access time will not be modified
+  - `c` compress automatically by kernel
+  - `C` no COW (copy on write)
   - `d` no-Dump: ignored by `dump`, useful for swap or cache files
+  - `D` write changes synchronously
   - `e` uses Extents for mapping blocks; cannot be removed via `chattr`
-  - `E` Enctrypted
-  - `i` Immutable: no modification allowed, even by `root`, no link, delete, rename; `su`/`root` can change this
-  - `s` When deleted, blocks are zeroed
+  - `E` enctrypted
+  - `F` path lookup is case-sensitive; can only be added to empty directories
+  - `i` immutable: no modification allowed, even by `root`, no link, delete, rename; `su`/`root` can change this
+  - `I` directory indexted via hashed trees; `chattr` can't set, but `lsattr` can show
+  - `j` same as `data=journal` mount option, all data written to journal before writing file itself; mounting with `data=journal` is redundant
+  - `m` exclude file from compression (when per-file compression supported)
+  - `N` data is stored inline with the inode itself; `chattr` can't set, but `lsattr` can show
+  - `P` directory enforces hierarchical structure for project IDs; can be added to directories only
+  - `s` when deleted, blocks are zeroed
+  - `S` same as `sync` mount option, changes written cynchronously to disk
+  - `t` no tail-merging (for partial block at end of file merged with other files)
+  - `T` top of directory hierarchy; can be added to directories only
   - `u` Undelete allowed by user, contents saved on delete
+  - `x` use DAX (direct access) mode if kernel supports; override with `dax=never` mount option
+  - `V` fs-verity enabled; unwriteable, all data verified against croptographic hash of entire contents; `chattr` can't set, but `lsattr` can show
 - Tools
   - `lsattr` list attributes
   - `chattr` change attributes
@@ -259,6 +311,12 @@ ___
       - `-f` force suppress most error messages
       - `-v` set file version number
       - `-p` set file project number
+  - Examples:#
+    - `lsattr`
+    - `lsattr somefile`
+    - `chattr -RVf +aAdeisu somefile`
+    - `chattr -V =dsu somefile`
+    - `chattr -f -aAei somefile`
 
 ### Size
 - `du` Directory Use (permissions-relevant)
@@ -279,7 +337,7 @@ ___
 
 ### Block Volumes
 - `lsblk` (list block volumes, including dev path)
-    - `lsblk -f` (also label, UUID, size, use)
+    - `lsblk -f` (filesystem type, label, UUID, size, use)
 - :# `blkid /dev/sda1` (get UUID of `/dev/sda1`)
 - `ls -lh /dev/disk/by-uuid/`
 
@@ -336,29 +394,35 @@ sudo fdisk /dev/sdb
         - Or `e` *Note **MBR logical partitions** (in an **extended container**) are not the same as **LVM logical volumes***
       - <kbd>Enter</kbd> (default next available partition number)
       - <kbd>Enter</kbd> (default next available sector)
-      - `+100G` <kbd>Enter</kbd> or whatever size you want, on final partition <kbd>Enter</kbd> for default
-        - On second-last partition, swap being final, `-16G` would use everything but the last 16G
+      - `+100G` <kbd>Enter</kbd> or whatever size you want, on last partition <kbd>Enter</kbd> for default
+        - On second-last partition, swap being last, `-16G` would use everything but the last 16G
       - ? `y` <kbd>Enter</kbd> if asked to remove the signature (overwriting a existing filesystem)
       - *Repeat these **Create partition** instructions until the disk is full*
     - Change a partition type to Linux swap?
-      - `t`
+      - `t` <kbd>Enter</kbd> (for type)
       - ? <kbd>Enter</kbd> if asked (default, the partition we just created or enter a preferred partition number)
         - It is good practice for Linux swap to be the last partition made, at the end of the disk, in which case you would use the default here anyway
-      - ? `L` <kbd>Enter</kbd> will list type choices (if you are curious)
-        - `19` for Linux swap
-        - `swap` alias for Linux swap
-        - FYI code `83` (alias `linux`) is the default type (Linux filesystem), which it already is
+      - ? `l` <kbd>Enter</kbd> will list type choices (if you are curious)
       - `19` or `swap`, <kbd>Enter</kbd>
     - Change a partition type for NTFS or FAT32?
       - *Note any type will work with for NTFS or FAT32, this is moot and merely being excessively finicky*
         - *Being excessively finicky, if you are preparing a recovery partition or EFI partition for Windows, you might consider researching other Microsoft partition types*
-      - `t` <kbd>Enter</kbd>
-      - ? <kbd>Enter</kbd> if asked (default, the partition we just created or enter a preferred partition number)
+      - `t` <kbd>Enter</kbd> (for type)
+      - `p` <kbd>Enter</kbd> (for partition list)
+      - ? Input partition number <kbd>Enter</kbd> if asked (default if most recently created partition)
         - It is good practice for Linux swap to be the last partition made, at the end of the disk, in which case you would use the default here anyway
-      - ? `L` <kbd>Enter</kbd> will list type choices (if you are curious)
+      - ? `l` <kbd>Enter</kbd> will list type choices (if you are curious)
         - `11` for Microsoft basic data
-        - FYI code `83` (alias `linux`) is the default type (Linux filesystem), which it already is
       - `11` <kbd>Enter</kbd>
+    - Change an existing partition type to anything non-Linux?
+      - `p` <kbd>Enter</kbd> (for partition list)
+      - `t` <kbd>Enter</kbd> (for type)
+      - ? Input partition number <kbd>Enter</kbd> if asked
+      - ? `l` <kbd>Enter</kbd> will list type choices (if you are curious)
+        - FYI code `83` (alias `linux`) is for Linux filesystem (the default type)
+        - FYI code `19` (alias `swap`) is for Linux swap
+        - FYI code `44` (alias `lvm`) is for Linux LVM
+        - FYI code `11` is for Microsoft basic data (NTFS & FAT32)
     - `w` <kbd>Enter</kbd> (write changes and move on) or `q` <kbd>Enter</kbd> (quit and abort, if this was just an exercise)
 - **Via `gdisk`**
 ```console
@@ -371,11 +435,12 @@ sudo gdisk /dev/sdb
       - `n` <kbd>Enter</kbd>
       - <kbd>Enter</kbd> (default next available partition number)
       - <kbd>Enter</kbd> (default next available sector)
-      - `+100G` <kbd>Enter</kbd> or whatever size you want, on final partition <kbd>Enter</kbd> for default
-        - On second-last partition, swap being final, `-16G` would use everything but the last 16G
-      - ? `L` <kbd>Enter</kbd> <kbd>Enter</kbd> will list type choices (if you are curious)
+      - `+100G` <kbd>Enter</kbd> or whatever size you want, on last partition <kbd>Enter</kbd> for default
+        - On second-last partition, swap being last, `-16G` would use everything but the last 16G
+      - ? `l` <kbd>Enter</kbd> <kbd>Enter</kbd> will list type choices (if you are curious)
         - FYI code `8300` is for Linux filesystem (the default type)
         - FYI code `8200` is for Linux swap
+        - FYI code `8e00` is for Linux LVM
         - FYI code `0700` is for Microsoft basic data (NTFS & FAT32)
       - <kbd>Enter</kbd> (default `8300` Linux filesystem)
       - *Repeat these **Create partition** instructions until the disk is full*
@@ -483,15 +548,19 @@ inkisaverb.com:/pubdir  /mnt/ink-pub     nfs     netdev,noauto,rsize=8192,wsize=
 - `man lvm` shows all tools (including `vgcreate`, `pvcreate`, etc, which simlink back to `/sbin/lvm`)
   - `ls -l /bin/gv*`
   - `ls -l /bin/pv*`
+  - `ls -l /bin/gv* | wc -l`
+  - `ls -l /bin/pv* | wc -l`
 - `ls -l /sbin/lv*` shows LVM tools in addition to `lvm`
 - **Physical volumes** are partitions adopted by an LVM
-  - Created with `fdisk`, possibly formatted with tools like `mkfs.*`
+  - Created with `fdisk` or `gdisk`
+    - `fdisk` type `44` or `lvm`
+    - `gdisk` type `8e00` or `lvm`
   - Tools: (link back to `/bin/lvm`)
     - `pvcreate` adopts a partition to become a physical volume
     - `pvdisplay` lists physical volumes in use
     - `pvmove` moves data between physical volumes in the same group
     - `pvremove` removes a partition from a physical volume
-- **Volume group (VG)** are physical volumes, even on different disks, pooled into one
+- **Volume groups (VG)** are physical volumes, even on different disks, pooled into one
   - Behaves, in a way, like a virtual disk
   - Tools: (link back to `/bin/lvm`)
     - `vgcreate` creates a volume group
@@ -520,10 +589,10 @@ sudo fdisk /dev/sdb
       - `t` <kbd>Enter</kbd>
       - ? <kbd>Enter</kbd> if asked (default, the partition we just created with `n`)
       - ? `L` <kbd>Enter</kbd> will list type choices (if you are curious)
-        - `43` for type-LVM
+        - `44` for type-LVM
         - `lvm` alias for type-LVM
         - FYI code `20` (alias `linux`) is the default type (Linux filesystem), which it already is
-      - `43` or `lvm`,  <kbd>Enter</kbd>
+      - `44` or `lvm`,  <kbd>Enter</kbd>
       - *Repeat these **Create type-LVM partition** instructions until there are 4 partitions and the disk is full*
     - `w` (write changes and move on) or `q` (quit and abort, if this was just an exercise)
   - MBR (legacy)
@@ -539,10 +608,10 @@ sudo fdisk /dev/sdb
       - `t` <kbd>Enter</kbd>
       - ? <kbd>Enter</kbd> if asked (default, the partition we just created with `n`)
       - ? `L` <kbd>Enter</kbd> will list type choices (if you are curious)
-        - `8e` for type-LVM
+        - `8e00` for type-LVM
         - `lvm` alias for type-LVM
         - FYI code `83` (alias `linux`) is the default type (Linux filesystem), which it already is
-      - `8e` or `lvm`,  <kbd>Enter</kbd>
+      - `8e00` or `lvm`,  <kbd>Enter</kbd>
       - *Repeat these **Create type-LVM partition** instructions until there are 4 partitions and the disk is full*
     - `w` <kbd>Enter</kbd>, `y` <kbd>Enter</kbd> (write changes and move on) or `q` <kbd>Enter</kbd> (quit and abort, if this was just an exercise)
 - **Via `gdisk`**
@@ -672,7 +741,6 @@ vgextend volgrp /dev/sdb4 /dev/sdb5
 ```
 
 - Create the "thislvm" logical volume from "volgrp"
-  - Size here is 420G, but any size within the drive limit is allowed
 
 | **create logical volume** :#
 
@@ -681,6 +749,7 @@ lvcreate -L 420G -n thislvm volgrp
 ```
 
 - *Note this created the device `thislvm` at `/dev/volgrp/thislvm`, which we can now mount*
+  - *Size here is `420G`, but any size within the drive limit is allowed*
 
 - You can delete the locigal volume with `lvremove`
 
@@ -829,7 +898,9 @@ pvdisplay /dev/sdb1
 
 ```console
 vgdisplay
-vgdisplay /dev/volgrp
+vgdisplay volgrp
+vgs
+vgs volgrp
 ```
 
 - Display all logical volume info, then specifically for the logical volume "thislvm"
@@ -871,7 +942,7 @@ sdb
 └─sdb5
 ```
 
-- Resize the logical volume
+- Resize the logical volume to an absolute size of `200G`
 
 | **resize LV** :#
 
@@ -881,7 +952,7 @@ lvresize -r -L 200G /dev/volgrp/thislvm
 
 - *You may be asked if you want to unmount the volume first; choose yes `y`*
 
-- Grow the logical volume +10G relatively
+- Grow the logical volume `+10G` relatively
 
 | **grow LV** :#
 
@@ -987,7 +1058,97 @@ vgextend volgpr /dev/sdb3
 |-----------------------------------------------------------------------------------------|
 ```
 
-5. **Take LVM snapshots**
+5. **Merge LVM groups**
+
+- Remove that physical volume (ie `/dev/sdb3`) from its "volgrp" volume group
+
+| **reduce VG** :#
+
+```console
+vgreduce volgpr /dev/sdb3
+```
+
+| **display VG** :#
+
+```console
+vgdisplay
+vgdisplay volgrp
+vgs
+vgs volgrp
+```
+
+- *Now we could:*
+  - *Use `fdisk` or `gdisk` to re-partition the space on `/dev/sdb3` to have many partitions*
+  - *Format and use `/dev/sdb3` as its own partition*
+  - *Use `vgcreate` to make a new volume group with only `/dev/sdb3` in that group*
+    - *We'll do this...*
+
+- Create a new volume group
+
+| **new VG** :#
+
+```console
+vgcreate newgrp /dev/sdb3
+```
+
+| **display VGs** :#
+
+```console
+vgdisplay
+vgdisplay volgrp
+vgdisplay newgrp
+vgs
+vgs volgrp
+vgs newgrp
+```
+
+- *Now, we could:*
+  - *Add other volumes to the LVM group `newgrp` with `vgextend newgrp /dev/sdxX`*
+    - *If they exist, which they probably don't because we didn't make them*
+  - *Create a logical volume with `lvcreate -L 100G -n thatlvm newgrp`*
+  - *Merge `newgrp` with `volgrp`*
+    - *We'll do this...*
+
+- First, deactivate all volume groups, whether they need it or not
+  - `-an`: "active = no"
+
+| **deactive volume groups** :#
+
+```console
+vgchange -an volgrp
+vgchange -an newgrp
+```
+
+| **display VGs** :#
+
+```console
+vgs
+```
+
+- Merge volume group `newgrp` into volume group `volgrp`
+
+| **merge volume groups** :#
+
+```console
+vgmerge volgrp newgrp
+```
+
+| **display VG** :#
+
+```console
+vgs
+```
+
+- Finally, reactivate the volume group remaining
+  - `-ay`: "active = yes"
+
+| **reactive volume group** :#
+
+```console
+vgchange -ay volgrp
+```
+
+6. **Take LVM snapshots**
 
 - *Snapshots for LVM don't capture the entire disk, only the changes, like snapping a point in time to refer back to*
   - *These changes are called "deltas"*
@@ -1135,7 +1296,7 @@ sdb
 └─sdb5
 ```
 
-6. **Restore Snapshots (Merge)**
+7. **Restore Snapshots (Merge)**
 
 - Mount the LV
 
@@ -1342,7 +1503,7 @@ cat echoed
 
 - *Note that all changes since the snapshot was taken are gone, we back to only "one" and "two"*
 
-7. **Delete the LVM**
+7. **delete the LVM**
 
 - Remove the volume group
 
@@ -1422,41 +1583,6 @@ mkswap /dev/sdb5
 - `ext4magic`
   - Undelete from ext3 and ext4
 
-## I/O
-- Writing to and from a disk can cause an input-output pileup
-- Tools: (Arch Linux needs packages: `sysstat`, `iotop`, `bonnie++`)
-  - `iostat` - monitor I/O by disk devices
-    - `-m` megabites
-    - `-x` details
-  - `iotop` - current I/O usage, must run as `root`
-    - `-o` only processes doing I/O
-  - `fuser /some/path` find out which user is using a part of the filesystem
-- Stress test tools
-  - `bonnie++` tests writing to file systems
-    - Output report packages: `boncsv2html`, `boncsv2txt`
-    - Run as root requires `-u 0`
-    - If `-d` not specified for destination write, current path must be writable
-    - Eg: `bonnie++ -u 0 -n 0 -f -b -r 150 -d /tmp/`
-      - `-u 0` run as root
-      - `-n 0` no file creation tests
-      - `-f` no per character I/O tests
-      - `-b` do `fsync` after every write, flushing to disk and no writing to cache
-      - `-r 150` use only 150M or RAM
-      - `-d /tmp/` destination: `/tmp/`
-  - `fs_mark`
-    - Download: [sourceforge.net/projects/fsmark/](http://sourceforge.net/projects/fsmark/)
-    - Arch Linux: `glmark2` package
-    - Fedora: `glibc-static` package
-    - SUSE: `glibc-devel-static` package
-    - Debian: `fsmark` package
-    - Example:
-      - `fs_mark -d /tmp -n 1000 -s 10240`
-        - `-d /tmp` destination `/tmp`
-        - `-n 1000` 1,000 files
-        - `-s 1024` 10M each file size
-    - Monitor with `iostat`
-      - `iostat 1 10`
-
 ## Network Block Devices (NBD)
 ### What Is NBD?
 - NBD is a module in the kernel
@@ -1509,6 +1635,16 @@ mkswap /dev/sdb5
 - Default NBD server port is `10809`
 - Examples:
 
+| **create empty files as dummy devices** :#
+
+```console
+dd if=/dev/urandom of=/export/foo bs=1M count=256
+dd if=/dev/urandom of=/export/exportrofile bs=1M count=512
+dd if=/dev/urandom of=/export/exportzerodd bs=1M count=768
+```
+
+- *Those three "devices" are fake; empty files we would treat the same as a mouse or DVD drive, or anything such in `/dev/`*
+
 | **/etc/nbd-server/config** : at 192.168.0.5
 
 ```
@@ -1534,35 +1670,39 @@ mkswap /dev/sdb5
         postrun = rm -f %s
 ```
 
-| **Start server** :$ default config (`/etc/nbd-server/config`)
+| **start server** :# default config (`/etc/nbd-server/config`)
 
 ```console
-sudo nbd-server
+nbd-server
 ```
 
-| **Start server** :$ custom config
+| **start server** :# custom config
 
 ```console
-sudo nbd-server -C /etc/nbd-server/myconfig.conf
+nbd-server -C /etc/nbd-server/myconfig.conf
 ```
 
-| **Client connects to 'foo'** :$
+| **client connects to 'foo'** :#
 
 ```console
-sudo nbd-client -N foo 192.168.0.5 /dev/nbd0
+nbd-client -N foo 192.168.0.5 /dev/nbd0
 ```
 
-| **Client connects to 'exportrofile'** :$ redundantly specify default port `10809`
+| **client connects to 'exportrofile'** :# redundantly specify default port `10809`
 
 ```console
-sudo nbd-client -N exportrofile 192.168.0.5 10809 /dev/nbd1
+nbd-client -N exportrofile 192.168.0.5 10809 /dev/nbd1
 ```
 
-| **Client connects to 'exportzerodd'** :$
+| **client connects to 'exportzerodd'** :#
 
 ```console
-sudo nbd-client -N exportzerodd 192.168.0.5 881188 /dev/nbd2
+nbd-client -N exportzerodd 192.168.0.5 881188 /dev/nbd2
 ```
+
+- *Remember, these are "devices", not "drives"*
+  - *You can't format them*
+  - *You can't `mount` them*
 
 ___
 
@@ -1575,7 +1715,7 @@ ___
 - These commands use `/dev/sdx`; but make sure you use the correct device name to avoid erasing your data
 - `fdisk` & `gdisk` are interactive and require that you follow instructions from The Chalk
 
-| **Partitioning** :$
+| **info** :$
 
 ```console
 ls -i
@@ -1583,10 +1723,42 @@ ls -l
 du -shx .
 du -shx *
 df -h
+```
 
-sudo mkdir /mnt/one /mnt/two /mnt/three /mnt/four
+| **extended attributes** :$
+
+```console
+cd 
+mkdir test
+cd test
+touch one two three
+lsattr
+sudo chattr -Vf +aAdeisu one
+lsattr
+sudo chattr =isu two
+lsattr
+sudo chattr -e three
+lsattr
+ls
+rm one two
+ls
+rm three
+ls
+sudo chattr =e *
+rm one two
+ls
+```
+
+| **partitioning** :$
+
+```console
+cd /mnt
+sudo mkdir one two three four
 
 sudo fdisk /dev/sdx # create at least 5 partitions
+# g # greate new partition table GPT
+# n # create new partition
+sudo partprobe -s
 sudo mkfs.ext4 /dev/sdx1
 sudo mkfs.btrfs /dev/sdx2
 sudo mkfs.fat -F32 /dev/sdx3
@@ -1631,7 +1803,8 @@ sudo umount /mnt/three
 sudo umount /mnt/four
 sudo swapoff /dev/sdx5
 
-sudo rm -rf /mnt/one /mnt/two /mnt/three /mnt/four
+cd /mnt
+sudo rm -rf one two three four
 ```
 
 | **/etc/fstab entries** :
@@ -1651,15 +1824,21 @@ EOF
 | **LVM** :$
 
 ```console
+# Choose fdisk or gdisk below
+
 sudo fdisk /dev/sdx
 # Create 5 partitions
-# Type 43 or lvm
+# sdx3 & sdx4 at 5G is wise so pvmove takes less time
+# t # change type
+# Type 44 or lvm
 
 sudo gdisk /dev/sdx
 # Create 5 partitions
-# Type 8e or lvm
+# sdx3 & sdx4 at 5G is wise so pvmove takes less time
+# n # new partition
+# Type 8e00 or lvm
 
-# Choose either fdisk or gdisk above before continuing
+# Choose either fdisk or gdisk above
 
 partprobe -s
 # reboot?
@@ -1684,23 +1863,65 @@ sudo lvcreate -L 420G -n thislvm volgrp
 ls -l /dev/volgrp
 lsblk
 
-# Remove the logical volume
-lvremove /dev/volgrp/thislvm
+# Management practice
+sudo lvremove /dev/volgrp/thislvm
+sudo lvcreate -L 320G -n thislvm volgrp
+
+sudo mkfs.ext4 /dev/volgrp/thislvm
+lsblk -f
+sudo lvresize -r -L 350G /dev/volgrp/thislvm
+sudo lvresize -r -L +70G /dev/volgrp/thislvm
+sudo lvresize -r -L 440G /dev/volgrp/thislvm
+
+sudo pvmove /dev/sdx3
+sudo vgreduce volgrp /dev/sdx3
+sudo pvremove /dev/sdx3
+sudo pvcreate /dev/sdx3
+sudo vgextend volgrp /dev/sdx3
+sudo pvmove /dev/sdx4
+
+sudo vgreduce volgrp /dev/sdx3 /dev/sdx4
+sudo pvremove /dev/sdx3 /dev/sdx4
+sudo pvcreate /dev/sdx3 /dev/sdx4
+sudo vgcreate -s 16M newgrp /dev/sdx3 /dev/sdx4
+sudo vgs
+sudo vgdisplay
+sudo vgs newgrp
+sudo vgs volgrp
+sudo vgdisplay newgrp
+sudo vgdisplay volgrp
+sudo vgchange -an newgrp
+sudo vgchange -an volgrp
+sudo vgmerge volgrp newgrp
+sudo change -ay volgrp
+
+sudo vgremove volgrp
+sudo vgcreate -s 16M volgrp /dev/sdx1
+sudo vgextend volgrp /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5
+
+sudo pvremove /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5 --force --force
+sudo pvcreate /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5
+
+# Remove to proceed
+sudo lvremove /dev/volgrp/thislvm
+sudo vgremove volgrp
+sudo pvremove /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5 --force --force
 
 # Create a smaller logical volume
-lsblk
+sudo pvcreate /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5
+lsblk -f
 sudo lvcreate -L 220G -n thislvm volgrp
 ls -l /dev/volgrp
-lsblk
+lsblk -f
 
 # Format the drive
 sudo mkfs.ext4 /dev/volgrp/thislvm
 
 # Mount
 sudo mkdir /mnt/thislvm
-lsblk
+lsblk -f
 sudo mount /dev/volgrp/thislvm /mnt/thislvm
-lsblk
+lsblk -f
 
 # LVM management
 sudo pvdisplay
@@ -1712,9 +1933,9 @@ sudo vgdisplay /dev/volgrp
 sudo lvdisplay
 sudo lvdisplay /dev/volgrp/thislvm
 
-lsblk
+lsblk -f
 sudo umount /mnt/thislvm
-lsblk
+lsblk -f
 
 df -h
 sudo lvresize -r -L 200G /dev/volgrp/thislvm
@@ -1722,10 +1943,10 @@ df -h
 sudo lvresize -r -L +10G /dev/volgrp/thislvm
 df -h
 
-lsblk
+lsblk -f
 df -h
 sudo pvmove /dev/sdx3
-lsblk
+lsblk -f
 df -h
 sudo pvremove /dev/sdx3
 df -h
@@ -1733,29 +1954,31 @@ lsblk
 sudo vgreduce volgpr /dev/sdx3
 sudo vgextend volgpr /dev/sdx3
 
-lsblk
+# LVM snapshots
+
+lsblk -f
 sudo lvcreate -s -n thesnap -l 128 /dev/volgrp/thislvm
-lsblk
+lsblk -f
 
 sudo mkdir /mnt/thesnap
 sudo mount -o ro /dev/volgrp/thesnap /mnt/thesnap
-lsblk
+lsblk -f
 cd /mnt/thesnap
 ls
 ls -l
 
 sudo umount /mnt/thesnap
-lsblk
+lsblk -f
 sudo lvremove /dev/volgrp/thesnap
 
 sudo mount /dev/volgrp/thislvm /mnt/thislvm
-lsblk
+lsblk -f
 sudo touch /mnt/thislvm/one /mnt/thislvm/two
 ls /mnt/thislvm
 echo "I am one two" > /mnt/thislvm/echoed
 cat /mnt/thislvm/echoed
 sudo lvcreate -s -n thesnap -l 128 /dev/volgrp/thislvm
-lsblk
+lsblk -f
 sudo touch /mnt/thislvm/three /mnt/thislvm/four
 ls /mnt/thislvm
 sudo echo "I am three four" >> /mnt/thislvm/echoed
@@ -1765,7 +1988,7 @@ sudo lvconvert --mergesnapshot /dev/volgrp/thesnap
 sudo umount /mnt/thislvm
 sudo lvchange -an /dev/volgrp/thislvm # active no
 sudo lvchange -ay /dev/volgrp/thislvm # active yes
-lsblk
+lsblk -f
 mount /dev/volgrp/thislvm /mnt/thislvm
 cd /mnt/thislvm
 ls
@@ -1808,15 +2031,44 @@ sudo touch /export/foo
 sudo touch /export/export1
 sudo touch /export/otherexport
 
-# See if this works to create the files that will be mounted to the NBD
-sudo dd if=/dev/zero of=/export/export1 bs=1M count=1024 # 1G drive file
-sudo dd if=/dev/zero of=/export/otherexport bs=2M count=1024 # 2G drive file
+# Create the files that will be mounted to the NBD
+sudo dd if=/dev/urandom of=/export/foo bs=1M count=128 status=progress
+sudo dd if=/dev/urandom of=/export/export1 bs=1M count=128 status=progress
+sudo dd if=/dev/urandom of=/export/otherexport bs=1M count=128 status=progress
 
+# Server configs
+cat <<EOF >> /etc/nbd-server/config
+[generic]
+user = nbd 
+group = nbd
+[foo]
+exportname = /export/foo
+EOF
 
-# Connect to export1 and otherexport
-#sudo nbd-client -N foo 192.168.0.9 /dev/nbd0
-ip a # Find one of your NIC IP addresses on the network to replace 192.168.0.9 below
-sudo nbd-client -N export1 192.168.0.9 10809 /dev/nbd1 # Ctrl + C, it won't work without a network, type for practice
+cat <<EOF >> /etc/nbd-server/config
+[generic]
+user = nbd 
+group = nbd
+[export1]
+exportname = /export/export1
+EOF
+
+cat <<EOF >> /etc/nbd-server/config
+[generic]
+user = nbd 
+group = nbd
+[otherexport]
+exportname = /export/otherexport
+EOF
+
+# Start the NBD server
+nbd-server
+ip a # User your NIC IP addresses to replace 192.168.0.9 below
+
+# On client
+## It won't work without a network, still type for practice
+sudo nbd-client -N foo 192.168.0.9 10809 /dev/nbd0
+sudo nbd-client -N export1 192.168.0.9 10809 /dev/nbd1
 sudo nbd-client -N otherexport 192.168.0.9 10809 /dev/nbd2 # Ctrl + C, it won't work without a network, type for practice
 ```
 

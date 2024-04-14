@@ -1077,15 +1077,15 @@ require_once ('path/to/file');
 - Use `.inc.php` at the end of included file names
 - Put included files in a subdirectory called `inc`
 
-Then we get this:
+The normal convention is this: `filename.inc.php`
 
 ```php
 include ('./inc/file.inc.php');
 ```
 
-...But it's not core, so we did: `in.filename.php`
+...But it's not in PHP core
 
-Then we get this:
+To be simple and different, we will use this: `in.filename.php`
 
 ```php
 include ('./in.file.php');
