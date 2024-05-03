@@ -187,7 +187,7 @@ ___
 - `sha1sum` is the second-oldest used today, from the late 1990s
   - Because it's not too big, it doesn't slow down software and Internet too much, but is safer than `md5sum`
   - ***Some developers consider it outdated***, but not all; it depends on how important the project is
-- `sha256sum` **is probably best for normal computing*** well through the year 2020
+- `sha256sum` ***is probably best for normal computing*** well through the year 2020
   - Its hashes are much longer than `sha1sum` and much more difficult to crack
   - Internet and CPU speeds are fast enough that the longer hash shouldn't slow down software too much
   - Anything longer could slow down software and usually wouldn't be necessary

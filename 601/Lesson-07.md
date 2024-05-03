@@ -109,9 +109,6 @@ ___
 
 ## Inodes
 - Every file has one **inode**
-- Hard vs soft links
-  - Hard link: both files share the same **inode**
-  - Soft link: points to other file, each with its own **inode**
 - Every **inode** has:
   - Inode number
   - Permissions
@@ -122,9 +119,27 @@ ___
     - Access
     - Modified contents
     - Changed inode info
-- In the filesystem **directory**
+- The filesystem **directory** has:
   - **Filename** with corresponding **inode** number
-- `ls -i` to output files with corresponding **inode** numbers
+  - `ls -i` to output files with corresponding **inode** numbers
+  - Hard vs soft links
+    - Hard link: both files share the same **inode**
+    - Soft link: points to other file, each with its own **inode**
+  - Create your own example:
+
+| **inode example** :$
+
+```console
+touch one          # original file
+ln one two         # hard link
+ls -i              # same inode
+touch three        # original file
+ln -s three four   # symbolic link
+ls -i              # unique inodes
+rm one three       # break links
+ls -i              # same inodes as before, though originals deleted
+rm two four        # cleanup
+```
 
 ## Partition Tables
 - `fdisk` creates partition tables (MBR or GPT) and their partitions
@@ -320,6 +335,7 @@ ___
 
 ### Size
 - `du` Directory Use (permissions-relevant)
+  - For specific directory, default `.`
   - `-h` Human-readable, ie: G, M, K, etc
   - `-s` only Size of parent directories, not subdirectories
   - `-x` eXclude other file systems, such as other mounted drives
@@ -334,6 +350,8 @@ ___
   - `-T` list Type
   - `df` (each disk)
   - `df .` (current disk)
+  - Standard command:
+    - **`df -Th`**
 
 ### Block Volumes
 - `lsblk` (list block volumes, including dev path)
@@ -1591,7 +1609,7 @@ mkswap /dev/sdb5
 - NBD is often how a cloud system mounts a large "block storage" drive device to our virtual machine for a cloud service like Linode, Vultr, or DigitalOcean, which then we sysadmin-customers simply see as `/dev/nbd0` etc
   - Go into your Linode / Vultr / DigitalOcean control panel and buy some block storage drive space to attach to your virtual machine
   - Then their website will instruct you to look for `/dev/nbd0` etc on your virtual machine
-  - It was actually NBD that put it there for you to use
+  - It may have been NBD that put it there for you to use
 
 ### How NBD Works
 - **A local blob as `/dev/nbd0` or `/dev/nbd1` etc points to a remote device over the network**
@@ -1618,9 +1636,10 @@ mkswap /dev/sdb5
 
 ### Different NBD Tools & Linux Distros
 - `nbd-client` & `nbd-server`
-  - Arch (`nbd` package)
-  - RedHat/CentOS  (`nbd` package)
-  - Debian/Ubuntu (`nbd-client` & `nbd-server` packages)
+  - Arch: `nbd` package
+  - OpenSUSE: `nbd` package
+  - RedHat/CentOS: `nbd` package
+  - Debian/Ubuntu: `nbd-client` & `nbd-server` packages
   - [NBD GitHub Repo](https://github.com/NetworkBlockDevice/nbd) (all distros)
 - `nbdkit` package: plugins for building various, unconventional NBD servers
   - Arch (AUR)
@@ -2023,6 +2042,10 @@ sudo bonnie++ -u 0 -n 0 -f -b -r 150 -d /tmp/
 | **NBD** :$
 
 ```console
+# Enable kernel module
+sudo modprobe nbd
+
+# Configs and process
 vim /etc/nbd-server/config
 sudo nbd-server
 sudo nbd-server -C /etc/nbd-server/config
@@ -2070,6 +2093,9 @@ ip a # User your NIC IP addresses to replace 192.168.0.9 below
 sudo nbd-client -N foo 192.168.0.9 10809 /dev/nbd0
 sudo nbd-client -N export1 192.168.0.9 10809 /dev/nbd1
 sudo nbd-client -N otherexport 192.168.0.9 10809 /dev/nbd2
+
+# Remove kernel module
+sudo modprobe -r nbd
 ```
 
 ___

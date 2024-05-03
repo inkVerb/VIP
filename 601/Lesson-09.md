@@ -37,7 +37,9 @@
 ## Secure Shell (SSH)
 - Packages:
   - Arch: `openssh` package
-  - Debian: `openssh-server` & `openssh-client`
+  - OpenSUSE: `openssh` package
+  - Debian/Ubuntu: `openssh-server` & `openssh-client` packages
+  - RedHat/CentOS: `openssh-server` & `openssh-clients` packages
 - Uses the native Linux PAM
 - Login to a remote Linux/Unix machine
 - Can use password or key authentication
@@ -94,10 +96,11 @@ cat ~/.ssh/My_new_key.pub
 - `/etc/ssh/ssh_config` - Client - *on local client machine connecting outward*
   - `Port` (whaterver you choose, but both machines must agree; can be overridden with `-p` in the `ssh` command)
 - `/etc/ssh/sshd_config` - Server - *on remote host machine receiving incoming connection(s)*
+  - `Port` (whaterver you choose, but both machines must agree)
   - `PermitRootLogin` (`prohibit-password` for keys or simply `no` to prohibit any SSH login as `root`)
   - `PubkeyAuthentication` (`yes`)
   - `PasswordAuthentication` (`no`)
-  - `Port` (whaterver you choose, but both machines must agree)
+    - Change to `yes` to allow password login, such as on private networks, but `no` is best practice
 
 #### SSH Authorised Keys & Known Hosts
 - SSH keys are also used by GitHub (*Settings > SSH and GPG keys*)
