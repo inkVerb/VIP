@@ -11,6 +11,7 @@
 - `whoami` - current user
 - `pwd` - Present Working Directory (PWD)
 - `ls | wc -l` - number of files in PWD
+  - `wc` - word count (needs piped input, like `tee`)
 - `seq 10` - print numbers 1-10, one per line (useful for loops)
 - `find /etc -type d -iname "*.d"`
 - `find . -perm -u+s` (for `s` permissions on **setuid** programs, see [Lesson 2: Procesesses & Monitoring](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md))
@@ -22,6 +23,7 @@
 - `free` RAM info
 - `lsb_release -d` Architecture/ditstro
 - `lsmod` enabled modules
+- `lsgpu` (`intel-gpu-tools` package on all distros)
 - `lscpu` CPU info
 - `lsmem` RAM info
 - `lsblk` disks
@@ -518,6 +520,7 @@ free
 lsb_release -d
 lsmod
 lscpu
+lsgpu
 lsmem
 lsblk
 lsusb
@@ -526,7 +529,6 @@ lspci
 find /etc -type d -iname "*.d"
 cd /etc
 find . -iname "*.d"
-
 
 whatis dmidecode
 sudo dmidecode

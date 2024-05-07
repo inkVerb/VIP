@@ -9,9 +9,9 @@
   - A process cannot make calls to hardware, but must interact through **system calls** to talk to the kernel, which talks to the hardware
 - **setuid program** - marked with an `s` bit in permissions, meaning that the **effective** user may not be the user that executes it
   - Three types of UIDs:
-    - `RUID` Real user ID, user that runs the program
+    - `RUID` Real User ID, user that runs the program
     - `EUID` Effective User ID, determins privileges of the process for the kernel
-    - `SUID` Saved user ID, referred to if the process needs to change its UID
+    - `SUID` Saved User ID, referred to if the process needs to change its UID
     - ie: see these for a text editor (while running):$
       - `ps -C gedit` (Gnome)
       - `ps -C gedit -o cmd,pid,uid,ruid,euid,suid,user,ruser,euser,suser`
@@ -128,21 +128,40 @@
 ### Daemons
 - Background processes that only operate when needed
 - Often start at boot
+- Good for security
 - May often end with `d` in the name
   - `systemd`
   - `httpd`
   - `sshd`
   - `crond`
-- Good for security
 
-### Process Priority
+### Process Priority & `nice`
 - Processes have **priority** from the CPU
-  - These are seen with `PRI` in `htop` and `PR` in `top`
-- Priority ranges from `-20` thru `19` (high number is lower priority)
+- `nice` can set this priority at execution
+- Lower number = higher priority
+  - Priority ranges from `-20` thru `19` (high number is lower priority)
+  - (Sometimes priority is `0`-`39` and `nice` value is `-20`-`19`)
+- See priority and `nice` values:
+  - `htop`:
+    - `PRI` - priority
+    - `NI` - `nice` value
+  - `top`:
+    - `PR` - priority
+    - `NI` - `nice` value
+  - Priority: `PRI` in `htop` and `PR` in `top`
 - Set priority when running a program with `nice`
-  - `nice -n -10 gedit` - `gedit` will run with a semi-high priority of `-10`
+  - `nice -n -10 gedit`
+  - `nice --10 gedit` (same)
+    - `gedit` will run with a semi-high `nice` priority of `-10`
+    - `-n` can be replaced with a dash `-` and no space
+    - `nice -n 9 gedit` (priority of `9`)
+    - `nice -9 gedit` (same)
 - Change priority of a running process with `renice`
-  - `renice 10 -p 1555` - The process with PID `1555` will change to a semi-low priority of `10`
+  - `renice -n 10 -p 1555`
+  - `renice 10 1555` (same)
+    - The process with PID `1555` will change to a semi-low priority of `10`
+    - `-n` is optional, but the priority after and may be relative or absolute depending on environment variable `POSIXLY_CORRECT`
+    - `-p` is optional, but the PID after is necessary even without it
 
 ## Memory
 - `/proc/` info locations:
@@ -178,7 +197,7 @@
 ### OOM Killer (Out of Memory)
 - Linux allows memory to "overcommit"
   - If a process requests a large block of RAM, but will likely only use a small amount, Linux allows it
-  - This depends on the **badness* seen in `/proc/PID/oom_score`
+  - This depends on the *badness* seen in `/proc/PID/oom_score`
 - Setting: `/proc/sys/vm/overcommit_memory` (a simple digit)
   - `0` - default - permit overcommittment
     - Rejects overcomits that are obviously a problem

@@ -74,12 +74,14 @@
   - Host machine **identify files** (required, automatic)
     - *A way for clients to know that this is a server they recognize and "trust"*
       - First login with `ssh` or `sftp` in will ask to "trust" the server based on these identity files
-    - Reside at `/etc/ssh/*_key`
+    - Reside at `/etc/ssh/ssh_host_*_key`
     - Recorded by local clients in `~/.ssh/known_hosts` per remote host (*add to known_hosts* message the first time you `ssh` in)
     - Must be different on each host machine
-    - Re-create: `ssh-keygen -A`
-      - This is wise before first deploying a production server
-      - Doing this after production launch will cause all clients to "distrust" this server
+    - New keys
+      - Remove old: `rm /etc/ssh/ssh_host_*_key*`
+      - Re-create: `ssh-keygen -A`
+        - This is wise before first deploying a production server
+        - Doing this after production launch will cause all clients to "distrust" this server
 - Complete set of commands to create local keys:
 ```console
 mkdir -p ~/.ssh
@@ -243,15 +245,22 @@ URI             ldap://localhost              # For server itself
 OR these also work...
 
 ```
-BASE            dc=somedomain,dc=tld          # from: /etc/hosts: 127.0.1.1 somehost.somedomain.tld somehost
-URI             ldap://IP4.ADD.R3S.XXX:389    # from: ip a
+BASE            dc=somedomain,dc=tld          # from client: /etc/hosts: 127.0.1.1 somehost.somedomain.tld somehost
+URI             ldap://IP4.ADD.R3S.XXX:389    # from client: ip a (port :389 optional default)
 ```
 
 | **ldap.conf** : (client)
 
 ```
-BASE            dc=somedomain,dc=tld       # For remote client: OR sub.somedomain.tld: dc=sub,dc=somedomain,dc=tld # DNS listing not needed
-URI             ldap://somedomain.tld:389  # For remote client: OR ldap://sub.somedomain.tld:389 OR ldap://X.X.X.X:389
+BASE            dc=somedomain,dc=tld       # For remote server: OR sub.somedomain.tld: dc=sub,dc=somedomain,dc=tld # DNS listing not needed
+URI             ldap://somedomain.tld:389  # For remote server: OR ldap://sub.somedomain.tld:389 OR ldap://X.X.X.X:389
+```
+
+OR these also work...
+
+```
+BASE            dc=somedomain,dc=tld          # from server: /etc/hosts: 127.0.1.1 somehost.somedomain.tld somehost
+URI             ldap://IP4.ADD.R3S.XXX:389    # from server: ip a (port :389 optional default)
 ```
 
 - Debian also needs to run # `dpkg-reconfigure slapd` with reasonably obvious answers on the interactive menus 
@@ -562,18 +571,19 @@ userPassword: {SSHA}lOnGhaSsSh3D/pA55wD+inthisplace0
 | **PAM-LDAP Authentication Diagram** :
 
 ```
-[ user auth request via PAM ] --> [ PAM-SSSD interface via sss.so ] --> [ SSSD interface for remote auth ] --> [ LDAP server ]
+[ user auth request via PAM ] --> [ PAM-SSSD sss.so interface ] --net--> [ SSSD remote auth interface ] --> [ LDAP server ]
 ```
 
-- Begins with the Pluggable Authentication Module (PAM)
+- Client SSSD begins work with the Pluggable Authentication Module (PAM)
   - PAM is Linux's default authentication tool
-- PAM uses the `pam.sss.so` module to communicate with SSSD
-- `sss.so` and `sssd` use one SSSD-LDAP config file
+  - Client SSSD uses the `pam.sss.so` module to communicate with PAM
+    - `sss.so` and `sssd` use one SSSD-LDAP config file
 - Client config files:
   - SSSD-LDAP: `/etc/sssd/conf.d/00-sssd.conf`
   - PAM-LDAP:
     - Arch & CentOS: `/etc/pam.d/system-auth`
     - Ubuntu: `/etc/pam.d/common-session.conf`
+    - OpenSUSE: `/etc/pam.d/common-auth` & `/etc/pam.d/common-password`
     - Generally:
       - Add `sufficient pam_ldap.so` before any line with `pam_unix.so`
       - But `session` line uses ` optional`
@@ -632,11 +642,11 @@ session     optional    pam_permit.so
 - A private network is both difficult and not so necessary for services like SSSD
 - A larger private network could host its own DNS servers, supporting the SSL certificates and SSSD domain settings
   - Such a large network would also present a higher need for security
-- Usually, remode directory services like SSSD are used over the public Internet, not a local IP based private network
+- Usually, remote directory services like SSSD are used over the public Internet, not a local IP based private network
 - These lessons do not cover domain-based services running in the cloud, including installation of an SSSD server
 
 ## Docker
-- [Docker docs: Reference](https://docs.docker.com/reference/) runs full-OS containers using the main host machine's kernel
+- [Docker](https://docs.docker.com/reference/) runs full-OS containers using the main host machine's kernel
 - `docker --help`
 - Primarily used in cloud
 - Unlike other network-based services, PAM would be used for SSH to access the machine hosting the Docker container, not with Docker directly
@@ -718,6 +728,10 @@ session     optional    pam_permit.so
 - *See `docker compose` examples from the [Docker docs: compose file](https://docs.docker.com/compose/compose-file/) examples*
 - In the software world, a `.yaml` file is created by a Docker engineer, then given to the SysAdmin for deployment
 - For a SysAdmin, understanding the `.yaml` file is not as important knowing what one can look like and how to use it
+- ***Disambiguation***
+  - `docker compose` and `docker-compose` are two command structures that are in flux
+  - See [related article](https://stackoverflow.com/questions/66514436/)
+  - If the command `docker compose` does not work, instead try `docker-compose` with the same flags and options
 
 ##### `.yaml` Examples
 - This `.yaml` file will work:
@@ -929,13 +943,13 @@ sudo docker rmi -f [ helloworld IMAGE ID ]
 - *Installing an email server is beyond the scope of core Linux SysAdmin skills*
   - Managing an email server is almost a separate profession to itself
   - In the past, installing postfix was part of SysAdmin training, but not so much in 2024
-  - Email is heavily dependent on DNS for security tools like SSL (viz `CAA` records) and [OpenDKIM](http://www.opendkim.org/), SPF (Sender Policy Framework viz [RFC 7208](https://datatracker.ietf.org/doc/html/rfc7208)), and [DMARC(https://dmarc.org/)] `TXT` records
+  - Email is heavily dependent on DNS for security tools like SSL (viz `CAA` records) and [OpenDKIM](http://www.opendkim.org/), SPF (Sender Policy Framework viz [RFC 7208](https://datatracker.ietf.org/doc/html/rfc7208)), and [DMARC](https://dmarc.org/) `TXT` records
   - Backup mail servers are declared in DNS and often synced via the Linux `rsync` tool (see [Rsync on the Samba homepage](https://rsync.samba.org/))
   - Proper setup of an email server can take one full working day for an experienced SysAdmin working on multiple servers in the cloud
 - It is important for any SysAdmin to know about the main tools used for email servers
 - ***Incoming mail uses port `25`***
   - If your firewall does not allow this port, your server can't receive incoming email
-  - This is not the same as using ports `465` or `587` rather thanport `25` for SMTP *authentication*
+  - This is not the same as using ports `465` or `587` rather than port `25` for SMTP *authentication*
   - Don't use port `25` for SMTP in your email client
   - Don't block port `25` on your email server either
 - For some mail server facts, overall Postfix structure, ports, troubleshooting, and mail server interaction via `telnet`, see the [Mail Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Mail.md)
@@ -953,8 +967,8 @@ sudo docker rmi -f [ helloworld IMAGE ID ]
 - An alternative to `sendmail` is to use `msmtp` ([from Martin Lambers](https://marlam.de/msmtp/))
   - This acts as a minimalist mail client on the backend of the LAMP/LEMP server
   - Employs whatever security anti-spammy tools the corresponding email server uses (OpenDKIM, SPF, DMARC, etc)
-  - With this, the `sendmail` command will use the `msmtp` client's email server to send mail rather than the server itself
-- As email security becomes more sophisticated and requires configuring, sending email from the Linux command line becomes less common plage
+  - With this, the `sendmail` command will use the `msmtp` client's email server to send mail rather than the bare bones LAMP/LEMP server itself
+- As email security becomes more sophisticated and requires configuring, sending email from the Linux command line becomes less common place
 - For dedicated mail on production servers, services like Postfix and Exim are preferred over simply `sendmail`
 
 ### Postfix
@@ -965,7 +979,7 @@ sudo docker rmi -f [ helloworld IMAGE ID ]
 - Used in concert with:
   - [Dovecot](https://www.dovecot.org/) for IMAP (Internet Messaging Access Protocol) mailbox directory sync (as opposed to POP retrieve mailboxing)
     - [Sieve](https://pigeonhole.dovecot.org/) email filters, from Pigeonhole viz [RFC 5228](https://datatracker.ietf.org/doc/html/rfc5228)
-  - [PostfixAdmin](https://postfixadmin.github.io/postfixadmin/) for PHP control of Postfix virtual users and mailboxes
+  - [PostfixAdmin](https://postfixadmin.github.io/postfixadmin/) for PHP web app control of Postfix virtual users and mailboxes
   - [Roundcube](https://roundcube.net/) webmail
   - [OpenDKIM](http://www.opendkim.org/) email key signatures to authenticate each email's origin (many email servers use)
   - [Diffie–Hellman key exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) for security
@@ -1002,13 +1016,13 @@ ___
 
 ### Know your VM network IP
 
-| **Machine-1** :$
+| **Client** :$
 
 ```console
 ip a
 ```
 
-| **Machine-2** :$
+| **Server** :$
 
 ```console
 ip a
@@ -1016,7 +1030,7 @@ ip a
 
 ### PAM
 
-| **Machine-1** :$
+| **Client** :$
 
 ```console
 cd /etc/pam.d
@@ -1027,7 +1041,8 @@ vim /etc/securetty # Add lines with IP address of Machine-2
 
 ### SSH
 #### Setup
-| **Machine-1** :$
+
+| **Client** :$
 
 ```console
 sudo apt-get install openssh-client
@@ -1039,7 +1054,7 @@ ssh-keygen -t rsa
 cat id_rsa.pub # Copy to clipboard
 ```
 
-| **Machine-2** :$
+| **Server** :$
 
 ```console
 sudo apt-get install openssh-server
@@ -1055,33 +1070,41 @@ vim /etc/ssh/sshd_config
   # PermitRootLogin prohibit-password
   # PubkeyAuthentication yes
   # PasswordAuthentication no
+
+rm /etc/ssh/ssh_host_*_key*
 ssh-keygen -A
 ```
 
-#### Connect
+#### Prepare
 
-| **Machine-2** :$
+| **Client** :$
+
+```console
+cd
+touch m1
+mkdir m1.d
+touch m1.d/m1.in
+```
+
+| **Server** :$
 
 ```console
 cd
 sudo touch /root/m2
 sudo mkdir /root/m2.d
 sudo touch /m2.d/m2.in
-sudo systemctl start ssh
+sudo systemctl start ssh  # May be redundant
 ip a
 
 ls
 cat m1
 ```
 
-| **Machine-1** :$
+#### Connect
+
+| **Client** :$
 
 ```console
-cd
-touch m1
-mkdir m1.d
-touch /m1.d/m1.in
-
 ssh root@192.168.77.X
 ls
 exit
@@ -1148,11 +1171,19 @@ vim /etc/ldap/ldap.conf
 | **Server** :$
 
 ```console
+# Identify anonymous (since no credentials given)
 ldapwhoami -x
 
+# Search for admin user
 sudo ldapsearch -H ldapi:// -Y EXTERNAL -b "cn=config" "(olcRootDN=*)" olcSuffix olcRootDN olcRootPW -LLL -Q
+
+# admin self-identity
 ldapwhoami -D "cn=admin,dc=somedomain,dc=tld" -W
+
+# Normal Linux user identity
 ldapwhoami -Y EXTERNAL -H ldapi:/// -Q
+
+# root Linux user identity
 sudo ldapwhoami -Y EXTERNAL -H ldapi:/// -Q
 
 # Add a user
@@ -1410,7 +1441,7 @@ sudo apt install docker docker-compose
 sudo zypper install docker docker-compose docker-compose-switch
 
 # System service
-sudo systemctl enable
+sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl status docker
 

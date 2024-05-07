@@ -138,7 +138,13 @@
 
 #### Tools
 - `lsmod` list loaded kernel modules
-- `modprobe` insert a kernel module (`insmod` also, but rare)
+- `modprobe` start a kernel module:#
+  - Automatically loads and unloads dependency modules
+  - `modprobe some-mod` load a module
+  - `modprobe -r some-mod` unload a module
+  - eg: `modprobe e1000e` load the `e1000e` module
+  - eg: `modprobe -r e1000e` unload the `e1000e` module
+- `insmod` insert a kernel module (`modprobe` alternative, but rare)
   - Full path with module name:#
   - `insmod /lib/modules/$(uname -r)/kernel/drivers/something/some-mod.ko.zst`
   - eg: `insmod /lib/modules/$(uname -r)/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko.zst`
@@ -146,12 +152,6 @@
 - `rmmod` remove a kernel module:#
   - `rmmod some-mod`
   - eg: `rmmod e1000e`
-- `modprobe` start a kernel module:#
-  - Automatically loads and unloads dependency modules
-  - `modprobe some-mod` load a module
-  - `modprobe -r some-mod` unload a module
-  - eg: `modprobe e1000e` load the `e1000e` module
-  - eg: `modprobe -r e1000e` unload the `e1000e` module
 - `modinfo` get kernel module info:#
   - `modinfo` no arguments for all loaded mods
   - `modinfo some-mod`

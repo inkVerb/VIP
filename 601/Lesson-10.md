@@ -35,15 +35,15 @@
 
 ### History
 1. First generation firewalls were from the late 1980s
-  - Filtered only packets, *not the connection*
+   - Filtered only packets, *not the connection*
 2. Second generation firewalls used **stateful filters**
-  - Evaluate connection: new, existing, none
-  - DDoS attacks overwhelm this firewall
+   - Evaluate connection: new, existing, none
+   - DDoS attacks overwhelm this firewall
 3. Third generation fiewalls also use the **application layer**
-  - Aware of:
-    - Application type
-    - Protocol
-  - Blocks anything OOO (Out Of Ordinary), only allows NOB (Need to Operate Basis)
+   - Aware of:
+     - Application type
+     - Protocol
+   - Blocks anything OOO (Out Of Ordinary), only allows NOB (Need to Operate Basis)
 
 ### Interfaces & Tools
 #### Low in the Stack
@@ -110,6 +110,8 @@ echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf
 sysctl -p || reboot
 ```
 
+  - *The line `net.ipv4.ip_forward=1` probably resides commented in `/etc/sysctl.conf`*
+
 #### Zones
 - On most Linux systems, the default is **public**
 - *Never use a more open zone than necessary!*
@@ -152,12 +154,13 @@ sysctl -p || reboot
 - Allow all connections
 
 #### Zone Management
-- `firewall-cmd --help`
-- `firewall-cmd --get-zones`
-- `firewall-cmd --get-default-zone`
-- `firewall-cmd --get-active-zones`
-  - *Use interfaces from that output*
-  - *Or get available interfaces from:$ `nmcli device status`*
+- Get information as a normal user:$
+  - `firewall-cmd --help`
+  - `firewall-cmd --get-zones`
+  - `firewall-cmd --get-default-zone`
+  - `firewall-cmd --get-active-zones`
+    - *Use interfaces from that output*
+    - *Or get available interfaces from:$ `nmcli device status`*
 - Deeper access must be done as `root`:#
   - `firewall-cmd --state`
   - `firewall-cmd --reload`

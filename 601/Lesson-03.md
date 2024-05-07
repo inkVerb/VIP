@@ -114,7 +114,11 @@
   - Login shell
 - `/etc/shadow` format
   - Username
-  - Password (`$6$`|`$y$`, then 8-digit salt, then password hashed with `sha512`)
+  - Password
+    - Hashed: `$6$`|`$y$`, then 8-digit salt, then password hashed with `sha512`
+    - `!` = login blocked
+    - `!!`|`*`|`!*` = password never set, login blocked
+    - empty (`USER::...`) no password required; <kbd>Enter</kbd> itself will login
   - Last change
   - Minimum days before password can change
   - Maximum days after password must change
@@ -132,7 +136,8 @@
   - `/etc/sudoers`
   - `/etc/sudoers.d`
     - "`@includedir /etc/sudoers.d`" must be added to `/etc/sudoers`
-
+- Many users are made sudoers by being in the `sudo` group in `/etc/group`
+  - `/etc/sudoers` needs `%sudo   ALL=(ALL:ALL) ALL` uncommented
 ### Substitute User (`su`)
 - `su someuser` will login as `someuser`
 - `su someuser -c ...` will run a command as a sub shell for `someuser`

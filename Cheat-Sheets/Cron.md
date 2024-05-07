@@ -19,37 +19,37 @@ Examples of a `cron` line:
 
 **Everyday Monday at 9:37 am:**
 ```shell
-37 9 * * mon /path/to/script
+37 9 * * mon root /path/to/script
 ```
 
 **21st of every month at 6 pm:**
 ```shell
-0 18 21 * * /path/to/script
+0 18 21 * * root /path/to/script
 ```
 
 **Every hour at 15 minuts & 45 minutes past the hour:** *Yes, you can do multiple.*
 ```shell
-15,45 * * * * /path/to/script
+15,45 * * * * root /path/to/script
 ```
 
 **Everyday at 1 am & 1 pm:** *Yes, you can do multiple.*
 ```shell
-0 1,13 * * * /path/to/script
+0 1,13 * * * root /path/to/script
 ```
 
 **Everyday minute of every day:**
 ```shell
-* * * * * /path/to/script
+* * * * * root /path/to/script
 ```
 
 **Everyday 15 minutes:**
 ```shell
-*/15 * * * * /path/to/script
+*/15 * * * * root /path/to/script
 ```
 
 **Everyday 6 hours:**
 ```shell
-0 */6 * * * /path/to/script
+0 */6 * * * root /path/to/script
 ```
 
 **Everyday January, May, and August on the first day at midnight:** *Yes, you can do multiple months.*
@@ -193,19 +193,27 @@ Log entries are your friend!
 
 If you have trouble and still can't figure out what in the world is going on, here's an easy way to troubleshoot:
 
-1. Open a separate terminal and run: `journalctl -f`
-2. Run your `cron` task to run every minute with this schedule: `*/1 * * * *`
-
+1. Run your `cron` task to run every minute with this schedule: `*/1 * * * *`
 **For example:**
 ```shell
-*/1 * * * * [everything after, properly formatted] /path/to/my/troubled/script
+*/1 * * * * root /path/to/my/troubled/script
 ```
 
+2. Open a separate terminal and run: `journalctl -f`
 3. Watch the terminal where you ran `journalctl -f` for log entries
-  - Just past the 00 second mark of each minute is when you will probably see the entry
+  - Just past the `00` second mark of each minute is when you will probably see the entry
   - Success (white): `...CRON[123456]: (user) CMD (/path/to/my/troubled/script)`
   - Trouble (red): `cron[123456]: Error: error message; while reading /etc/cron.d/troubledtask`
   - Search the Internet for "cron Error: error message" (whatever you get instead of 'error message')
 
-### 5. Consider this article on Stack Exchange: Server Fault
+### 5. Year option
+- There is a sixth *year* option (without it, just leave it blank)
+- Four digit year `1970` - `2099`
+
+**midnight January 1, 2030:**
+```shell
+0 0 1 1 * 2030 root /path/to/one/year/script
+```
+
+### 6. Consider this article on Stack Exchange: Server Fault
 [How to fix all of your crontab related woes/problems (Linux)](https://serverfault.com/a/449652/487033)

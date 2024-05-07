@@ -12,25 +12,29 @@ ___
 
 ## The Chalk
 ### *The Chalk* Instructions Precede *The Keys* Commands
-- In units *101-501*, lessons began with commands, then ended with *The Take*
+- In units *101-501*, lessons began with explanation and commands to demonstrate, then ended with *The Take*
   - The *Linux 601* unit will not follow this format
 - SysAdmin lessons are primarily conceptual and secondarily practice
 - These conceptual lessons will begin with *The Chalk*, then follow in a *The Keys* section
-- *The Keys* commands are intended to be manually typed into the terminal as practice for real world or examination of SysAdmin work
+- *The Chalk* explains history, packages, programs, usage, theory, and implementation
+- *The Keys* are practice commands to reinforce teachings from *The Chalk*
+  - Practice commands for SysAdmins who already understand them
+  - Intended to be manually typed into the terminal as practice for real world or examination of SysAdmin work
   - These commands are intended to be examples only
   - You should be able to type varied versions of these from memory
   - You should understand these commands
-  - *The Keys* commands flow with *The Chalk* and you can follow along with two browser tabs or windows
-  - These terminal exercises are meant to be repeated many times so using the information from *The Chalk* becomes second-nature
+- *The Keys* commands flow with *The Chalk* and you can follow along with two browser tabs or windows
+- *The Keys* terminal exercises are meant to be repeated many times so using the information from *The Chalk* becomes second-nature
 
 ### POSIX
 - POSIX standards are published by the [OpenGroup](https://www.opengroup.org/posix-systems)
   - [2008](https://pubs.opengroup.org/onlinepubs/9699919799/)
   - [2017](https://pubs.opengroup.org/onlinepubs/9699919799/)
-  - `man` pages:
+  - Install POSIX `man` pages package:
     - Arch package: `posix`
     - Debian package: `manpages-posix-dev`
     - OpenSUSE package: `man-pages-posix`
+    - RedHat/CentOS: install manually
 - [POSIX (Portable Operating System Interface)](https://en.wikipedia.org/wiki/POSIX) is the [standard](https://stackoverflow.com/a/1780614/10343144) for Unix-like (incl Linux) users, scripting, interfaces, operations, etc
 - It is set by the [IEEE (Institute of Electrical and Electronics Engineers)](https://www.ieee.org/)
 - All Linux scripts, file formats, and user settings should be [POSIX-compliant](https://superuser.com/questions/322601/) before being released as a Linux package or distro

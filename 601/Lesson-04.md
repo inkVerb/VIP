@@ -8,11 +8,11 @@ The Linux kernel originally had no official home for development, but eventually
 
 - A Git repo contains:
   1. Database objects (3 types)
-    - Blobs: file contents in chunks of binary data
-    - Trees: sets of blobs with file names, thus directory structure
-    - Commits: descriptions of each tree's change step
+     - Blobs: file contents in chunks of binary data
+     - Trees: sets of blobs with file names, thus directory structure
+     - Commits: descriptions of each tree's change step
   2. Directory cache
-    - State of directory tree
+     - State of directory tree
 
 This manages changes better than keeping files separate
 
@@ -416,6 +416,19 @@ git status
 git push -u origin main
 ```
 
+...simple version...
+
+```console
+cd viprepo
+echo "# viprepo" > README.md
+git init
+git remote add origin git@github.com:myusername/viprepo
+git branch -M main
+git add README.md
+git commit -m "first commit message"
+git push -u origin
+```
+
 | **push to main** :$
 
 ```console
@@ -431,7 +444,10 @@ git push
 
 ```console
 git status
-git branch vbranch
+
+git branch vbranch    # create the branch 'vbranch'
+git checkout vbranch  # working on branch `vbranch` (optional, for 'git status')
+
 echo "Some text" >> README.md
 git add .
 git commit -m "README sub"

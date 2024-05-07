@@ -55,7 +55,7 @@
   - **Policies**: System-wide control (defaults for applying context rules)
 - Three **modes**: (uses only one)
   - **Enforcing**: Fully enforced, violations logged with AVC
-  - **Permissive**: Only warning, violations logged with AVE (debugging)
+  - **Permissive**: Only warning, violations logged with AVC (debugging)
   - **Disabled**: SELinux not working at all
 - Permanently disable: (either)
   - `SELINUX=disabled` (in `/etc/selinux/config`)
