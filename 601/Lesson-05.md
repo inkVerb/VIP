@@ -20,7 +20,7 @@
 - `dmesg` display kernel messages
 
 ### Repairing & Re-installing the Kernel
-*Every Linux installation maintains basic and some previous images that can be booted from in `/boot/`*
+*Every major Linux installation maintains basic and some previous images that can be booted from in `/boot/`*
 
 - Many kernel commands are version-specific and can be best substituted for the current kernel version with `$(uname -r)`
    - To install a previous kernel, look for an earlier number in `/boot/`
@@ -56,6 +56,8 @@
   - You could use `grep` from the terminal to serch documentation
 
 ### Kernel Command Line
+*The command that GRUB runs to start the kernel, kept at `/proc/cmdline`*
+
 - All boot parameters are on one, single line
   - This is called the ***kernel command line*** or ***boot command line***
   - Usually the `linux` line of GRUB config: `/boot/grub/grub.cfg`
@@ -66,7 +68,7 @@
 - Find out what command line your system booted with:
   - `cat /proc/cmdline`
 - Breakdown
-  - `root=` the root filesystem, can take any accepted mount form also used in `/etc/fstab`
+  - `root=` the root filesystem, can take any accepted form of the first mount setting used in `/etc/fstab`
   - `rw` read-write root device on boot
   - `ro` read-only root device on boot
   - `find_preseed=` automatically pre-set install answers (Debian)
@@ -78,16 +80,18 @@
   - `splash` shows the boot splash screen
   - `nomodeset` do not load video drivers for a high-res splash video on boot
   - `rhgb` Red Hat graphical boot facility (example of a parameter added by a vendor)
-- **Settings for the *kernel command line***
-  - Xubuntu:
-    - `linux   /boot/vmlinuz-6.5.0-14-generic root=UUID=s0m3-l0ng-uid-47h3-d1sk-xzy81a51nk1n ro  quiet splash $vt_handoff`
+- **Examples of the *kernel command line***
   - Arch:
     - `linux   /boot/vmlinuz-linux root=UUID=s0m3-l0ng-uid-47h3-d1sk-xzy81a51nk1n rw  loglevel=3 quiet`
   - Manjaro:
     - `linux   /boot/vmlinuz-6.1-x86_64 root=UUID=s0m3-l0ng-uid-47h3-d1sk-xzy81a51nk1n rw  quiet splash apparmor=1 security=apparmor udev.log_priority=3`
+  - Xubuntu:
+    - `linux   /boot/vmlinuz-6.5.0-14-generic root=UUID=s0m3-l0ng-uid-47h3-d1sk-xzy81a51nk1n ro  quiet splash $vt_handoff`
   - Kali:
     - `linux   /boot/vmlinuz-6.3.0-kali1-amd64 root=UUID=s0m3-l0ng-uid-47h3-d1sk-xzy81a51nk1n ro  quiet splash`
-  - CentOS: (not edited directly)
+  - OpenSUSE:
+    - `linux   /boot/vmlinuz-6.7.5-1-default root=UUID=s0m3-l0ng-uid-47h3-d1sk-xzy81a51nk1n splash=silent mitigations=auto quiet security=apparmor`
+  - CentOS SE: (not edited directly in `grub.cfg`)
     - `set kernelopts="root/dev/mapper/cs-root ro crashkernel=auto resume=/dev/mapper/cs-swap rd.lvm.lv=cs/root rd.lvm.lv=cs/swap rhgb quiet`
     - Actually in `/boot/grub2/grubenv`: `kernelopts="root/dev/mapper/cs-root ro crashkernel=auto resume=/dev/mapper/cs-swap rd.lvm.lv=cs/root rd.lvm.lv=cs/swap rhgb quiet`
     - Root settings in `/etc/default/grub`: `GRUB_CMDLINE_LINUX`
@@ -117,6 +121,8 @@
     - `1` single user
 
 ### The `sysctl` Tool
+*System settings for settings files in `/proc/sys/`*
+
 - See current values: `sysctl -a`
   - Each line of output refers to a subdirectory-based pseudofile in `/proc/sys/`
   - `vm.zone_reclaim_mode=` is the pseudofile contents of `/proc/sys/vm/zone_reclaim_mode`
@@ -133,6 +139,8 @@
   - `man sysctl.conf`
 
 ### Kernel Modules
+*Modules that add capability to the kernel*
+
 - Modules are located in `/lib/modules/$(uname -r)`
 - Modules allod hardware drivers, network protocols, filesystems, and other such things that help the kernel
 
@@ -158,7 +166,7 @@
   - eg: `modinfo e1000e`
   - Also seen in `/sys/module/...` pseudo filesystem
 - `depmod` rebuild kernel module dependency database
-  - File is located at `/lib/modules/$(uname -r)/modules.dep`
+  - Database file is located at `/lib/modules/$(uname -r)/modules.dep`
 
 #### `/etc/modprobe.d/*.conf`
 - `.conf` files in `/etc/modprobe.d/` are scanned when using `modprobe`
@@ -183,10 +191,12 @@
 - `who -b` *Note the time the system booted matches*
 - `lspci -v` *Note kernel devices and the `Kernel modules:` per device*
 - `ls -l /dev` *Note the time of their creation*
-- Those `/dev/` pseudofile devices were created by `udev` at system boot
+- Those `/dev/` pseudofile devices were created by udev at system boot
 
-### User Device Management (`udev`)
-- **`udev`** discovers onboard and peripheral hardware
+### User Device Management (udev)
+*Devices located in `/dev/`*
+
+- **udev** discovers onboard and peripheral hardware
   - Used during:
     - System boot
     - Hotplugging (AKA *plug and play*)
@@ -197,12 +207,12 @@
     - Set file permissions and ownerships
     - Carry out other related tasks
   - This creates device nodes used by applications and OS subsystems to talk to that hardware
-  - Special rules can be written for `udev`
+  - Special rules can be written for udev
 
-### Workflow
+### Device Workflow
 1. Devices are added or removed
-2. The kernel signals `udev`
-3. `udev` scans `/etc/udev/rules.d/` for files that govern the device
+2. The kernel signals udev
+3. udev scans `/etc/udev/rules.d/` for files that govern the device
 
 #### Device Node Creation
 - `ls -l /dev`
@@ -238,6 +248,7 @@ crw-rw-rw-   1 root root        1,   5  1月 18 21:14 zero
 
 The first number is a ***major***, the second number is a ***minor***; see the [kernel docs](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Kernel-Devices.md)
 
+##### Create Custom Device Node (`mknod`)
 - **`mknod`** creates a device node:#
   - `mknod -m 655 /dev/myusb c 254 1`
   - `mknod -m FILE_PERMISSIONS /dev/NAME TYPE MAJOR MINOR`
@@ -252,22 +263,22 @@ The first number is a ***major***, the second number is a ***minor***; see the [
     - This takes experience to know, sometimes just follow instructions
   - *`mknod` is an old school tool only used in a nightmare scenario today*
   - *Solving issues with an installed Linux server is best done by booting to an attached image, or USB if using a local machine*
-  - Today, `udev` handles these automatically
+  - Today, udev handles these automatically
 
-#### Daemon
-- `udev` uses one of two daemons to monitor netlink sockets
+#### Devcice Daemon
+- udev uses one of two daemons to monitor netlink sockets
   - `udevd`
   - `systemd-udevd`
-- When a device is attached or removed, the kernel's `uevent` facility signals sends a message through the socket, then `udev` works its magic
+- When a device is attached or removed, the kernel's `uevent` facility signals sends a message through the socket, then udev works its magic
 
-#### Components
-- `udev` uses three components:
+#### Device Components
+- udev uses three components:
   - `libudev` - a library with info about devices
   - `udevd`/`systemd-udevd` - manages the `/dev/` folder
   - `udevadm` - control & diagnostics
 
-### Rules Files
-- `udev` rules are kept in two folders:
+### Device Rules Files
+- udev rules are kept in two folders:
   - `/usr/lib/udev/rules.d/*.rules`
   - `/etc/udev/rules.d/*.rules`
   - `/run/udev/rules.d/*.rules` (a third location you can create)
@@ -302,6 +313,7 @@ apt-get install --reinstall linux-image-generic   # newest version
 update-initramfs -u -k $(uname -r)                # current version
 
 # RedHat
+# SELinux: su = sudo -i
 dnf reinstall kernel
 dnf remove kernel-$(unamne -r)
 dnf install kernel-$(uname -r)
@@ -395,12 +407,11 @@ cd /etc/udev/rules.d
 ls
 cd /usr/lib/udev/rules.d
 ls
+
 sudo mknod -m 655 /dev/zmyusb c 254 1
 ls -l /dev
 sudo rm /dev/zmyusb
 ls -l /dev
-cd /usr/lib/udev/rules.d
-ls
 
 udevadm monitor
 # Plug/unplug a USB

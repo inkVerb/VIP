@@ -1,20 +1,9 @@
 # Linux 601
-## Lesson 4: Git
+## Lesson 4: Git & Revision Control
 
 # The Chalk
-## Git
-### What is Git?
-The Linux kernel originally had no official home for development, but eventually found a home with a comercial project called BitKeeper. In 2005, BitKeeper's restricted licence could no longer work with Linux's OpenSource model. Hence, Git was authored by Linus Torvalds specifically for Linux kernel development.
-
-- A Git repo contains:
-  1. Database objects (3 types)
-     - Blobs: file contents in chunks of binary data
-     - Trees: sets of blobs with file names, thus directory structure
-     - Commits: descriptions of each tree's change step
-  2. Directory cache
-     - State of directory tree
-
-This manages changes better than keeping files separate
+## Revision Control Systems
+*(AKA Source Control Systems)*
 
 ### What is Revision Control?
 Tracks changes for:
@@ -24,25 +13,63 @@ Tracks changes for:
 - Who
 - Why
 
-Terms
-
+### Terms
+- **Software Configuration Management (SCM)**
+  - Broader arena of software revision control
 - **Revision Control System (RCS)**
-  - Track changes in files
+  - Track changes in software development
 - **Distributed Revision Control System (DRCS)**
-  - RCS with many contributors
-- **Concurrent Versions System (CVS)**
+  - RCS that can easily harmonize from many contributors
+  - Elaborate and reliable
+  - Distributed - local repositories on each client, then pushed to the hosting server
+- **Centralized Versions Control System (CVS)**
   - Simultaneous different versions of the same code
+  - Good for small teams
+  - Centrallized - server repository pushed directly from clients to the hosting server
+
+### Revision Control System Implementations
+- Distributed
+  - **[GitHub](https://github.com)** (Git) - powerfull web GUI; most widely used, hosts Linux source
+  - **[Fossil](https://www.fossil-scm.org/)** - local install; also PM: bug tracks, wiki, chat, email alerts, blog; from SQLite developer
+  - **[Mercurial](https://www.mercurial-scm.org/)**
+  - **[Monotone](https://www.monotone.ca/)**
+  - **[GNU Arch](https://www.gnu.org/software/gnu-arch/)** - discontinued
+- Centralized
+  - **[Apache Subversion](https://subversion.apache.org/)** (SVN) - also hosts WordPress plugins
+  - **[Concurrent Versions System](https://cvs.nongnu.org/)** (CVS)
+  - **[GNU Revision Control System](https://www.gnu.org/software/rcs/)** (RCS)
 
 ### History
 - **RCS**: Originally, every file had changes tracked in a subfolder `RCS/` with `v` appended to a text file with the same name
   - One file, one change
 - **CVS**: Next, many files in one change; central server tracks changes
   - Multiple contributors, file changes can conflict
-- **Git** has no central change tracking
+- **Git**: Does not require central change tracking
   - Every repository is authoritative
   - Every repository contains the entire code
   - Change review structure can be hierarchical or flat
   - A tool, not a method
+
+## Git
+*([github.com](https://github.com))*
+
+### What is Git?
+The Linux kernel originally had no official home for development, but eventually found a home with a comercial project called BitKeeper.
+
+In 2005, BitKeeper's restricted licence could no longer work with Linux's OpenSource model. Hence, Git was authored by Linus Torvalds specifically for Linux kernel development.
+
+In 2018, Microsoft bought GitHub for $7.5 billion USD.
+
+A Git repo contains:
+
+1. Database objects (3 types)
+   - Blobs: file contents in chunks of binary data
+   - Trees: sets of blobs with file names, thus directory structure
+   - Commits: descriptions of each tree's change step
+2. Directory cache
+   - State of directory tree
+
+This manages changes better than keeping files separate
 
 ### Repositories, Branches, Forks & Pulls
 - A Git project is called a **repository** or "repo" in most discussion
@@ -52,6 +79,7 @@ Terms
 - One repository can have many branches
   - One branch is usually intended for development
   - A `main` branch always exists, usually intended for production
+    - The `main` branch can also be called the `master`, depending on how you use `git` commands; just stay consistent with each repo
 - Each repository may be **forked**
   - Forking creates an independent repository for your own user account or on an organization you own or have the right permissions for
 - After forking and committing changes, you may make a **pull request** with the original repository
@@ -153,6 +181,18 @@ echo "Hello Taiwan" > motd
 git add motd
 ```
 
+| **add all files** :$
+
+```console
+git add .
+```
+
+...or...
+
+```console
+git add *
+```
+
 #### Commit New File
 
 | **commit new file** :$
@@ -161,13 +201,13 @@ git add motd
 git commit -m 'Message of the day'
 ```
 
-| **push first time** :$
+| **push first time to `main`** :$
 
 ```console
 git push -u origin main
 ```
 
-| **push after first time** :$
+| **push after working on `main` branch** :$
 
 ```console
 git push
@@ -212,47 +252,55 @@ git push
 git log
 ```
 
-#### Alternates
-- Add many new files easily
-
-| **add many** :$
-
-```console
-git add .
-```
-
+#### Branches
 - Push to specific branch
+  - First time pushing to this branch
+  - Push to this branch while using another branch
 
-| **push to main branch** :$
+| **push to `main` branch specifically** :$
 
 ```console
 git push -u origin main
 ```
 
-- *after this, `git push` will continue pushing to the `main` branch*
+- *after this, `git push` will continue pushing to the working branch, seen with `git status`*
 - *redundant if:*
   - *already on `git branch -M main` or*
   - *already pushed with `-u origin main`*
 
-| **create and use branch `devel`** :$ *`-M` Move/force, optional*
+| **push to working branch** :$
+
+```console
+git push
+```
+
+- *pushes to branch specified already with `git checkout somebranch`*
+
+| **create & use new branch `devel`** :$ *via `branch -M` Move/force, optional*
 
 ```console
 git branch -M devel
 ```
 
-| **use new branch `devel`** :$ *`-b` Branch/new*
+| **create & use new branch `devel`** :$ *via `checkout -b` Branch/new*
 
 ```console
 git checkout -b devel
 ```
 
-| **use existing branch `devel`** :$
+| **create new branch `devel`** :$
+
+```console
+git branch devel
+```
+
+| **work on existing branch `devel`** :$
 
 ```console
 git checkout devel
 ```
 
-| **push to devel branch first time** :$
+| **push to `devel` branch first time** :$ *(or while working on another branch)*
 
 ```console
 git add *
@@ -260,7 +308,7 @@ git commit -m 'Things changed'
 git push -u origin devel
 ```
 
-| **push to devel branch afterward** :$
+| **push after first push while working on `devel` branch** :$
 
 ```console
 git add *
@@ -268,11 +316,25 @@ git commit -m 'Things changed'
 git push
 ```
 
-*...after this, `git push` will continue pushing to the `devel` branch*
+| **merge `devel` branch into `main`** :$
+
+```console
+git checkout main
+git merge origin/devel
+git push
+```
+
+| **merge `main` branch into `devel`** :$
+
+```console
+git checkout devel
+git merge main
+git push
+```
 
 #### Clone
 - Any public repo can be cloned using `https://` addresses
-  - `clone` includes the master and all branches, so `checkout` can be used later to change branches
+  - `clone` includes the main and all branches, so `checkout` can be used later to change branches
  
 | **clone unowned repo** :$
 
@@ -283,14 +345,14 @@ git clone https://github.com/inkverb/vip
 - A repo you own which you will push back requires `git@` notation, under "SSH" on the GitHub website
   - You must have SSH keys set up with your GitHub account to push changes (above)
 
-| **clone working repo** :$
+| **clone owned repo** :$
 
 ```console
 git clone git@github.com:inkverb/vip.git
 ```
 
 - Now edit and push changes
-- No need to `checkout` because working on master branch
+- No need to `checkout` because working on main branch
 
 | **push to devel branch** :$
 
@@ -310,7 +372,7 @@ git tag -a v0.2 -m 'Devel stage 2'
 
 - Clone from the `devel` branch in your working repo
 
-| **clone working repo 'devel' branch** :$
+| **clone owned repo `devel` branch** :$
 
 ```console
 git clone -b devel git@github.com:inkVerb/VIP.git
@@ -319,12 +381,12 @@ git clone -b devel git@github.com:inkVerb/VIP.git
 - Now edit and push changes
 - No need to `checkout` because the `devel` branch was specified at `clone`
 
-| **push to devel branch** :$
+| **push to `devel` branch** :$
 
 ```console
 git add .
 git commit -m 'Things changed'
-git push -u origin master
+git push -u origin main
 ```
 
 *Learn more with the [GitCheat Cheat Sheet]((https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/GitCheat.md))*
@@ -336,7 +398,7 @@ git push -u origin master
 | **clone linux kernel** :$
 
 ```console
-git clone --depth 1 -b master https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git linux/
+git clone --depth 1 -b main https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git linux/
 ```
 
 ___
@@ -510,6 +572,53 @@ git push
 git checkout main
 git tag -a v0.23 -m 'Main stage 2'
 git push -u origin main
+
+# Change branches
+
+touch tfile
+git checkout tbranch
+git add tfile
+git commit -m "add t file"
+git push
+
+touch vfile
+git checkout vbranch
+git add vfile
+git commit -m "add v file"
+git push
+
+touch dfile
+git checkout devel
+git add dfile
+git commit -m "add devel file"
+git push
+
+git checkout main
+
+git merge origin/tbranch -m "merge tbranch to main"
+git push
+
+git merge origin/vbranch -m "merge vbranch to main"
+git push
+
+git merge origin/devel -m "merge devel to main"
+git push
+
+# Update branches to main
+
+git rebase main # redundant
+
+git checkout vbranch
+git merge main
+git push
+
+git checkout tbranch
+git merge main
+git push
+
+git checkout devel
+git merge main
+git push
 ```
 
 | **monitoring** :$

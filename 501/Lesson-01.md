@@ -1363,6 +1363,8 @@ localhost/web/phpprintr.php
 
 Fill-out the fields and click "Hit me"
 
+*This displays the `$_POST` array contents using `print_r()`*
+
 *Note this is the entire `$_POST` array, only what was in the `<form>`*
 
 *Note phpprintr.php: both file and browser*
@@ -1414,7 +1416,7 @@ localhost/web/phperrors.php
 
 **PHP Error Handler Rules:**
 
-1. We only saw this erro message because we used `echo` to show it in the error handler
+1. We only saw this error message because we used `echo` to show it in the error handler
 2. Many errors still happen we don't see because the error handler doesn't `echo` them
 3. You don't want any unseen errors in your PHP, it slows down your site and other things
 4. Develop with an error handler, turn it off once you have no errors and you go live
@@ -1562,9 +1564,19 @@ switch ($variable) {
 ```php
 function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
   // Function settings here
-  $message = "Error in '$e_file' on line $e_line:\n$e_message\n";
-  $message .= "<pre>" .print_r(debug_backtrace(), 1) . "</pre>\n";
-  echo nl2br($message);
+  $message = "Error in '$e_file' on line $e_line:$e_message<br>";
+  $message .= nl2br(print_r(debug_backtrace(), 1));
+  echo $message;
+}
+set_error_handler ('my_error_handler');
+```
+- May devs like to style the message with red and preformatted text (`<pre style='color:red'>`)
+```php
+function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
+  // Function settings here
+  $message = "<pre style='color:red'>Error in '$e_file' on line $e_line:$e_message</pre>";
+  $message .= "<pre style='color:red'>" . print_r(debug_backtrace(), 1) . "</pre>";
+  echo $message;
 }
 set_error_handler ('my_error_handler');
 ```
@@ -1576,11 +1588,11 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 
   global $live;
 
-  $message = "Error in '$e_file' on line $e_line:\n$e_message\n";
-  $message .= "<pre>" .print_r(debug_backtrace(), 1) . "</pre>\n";
+  $message = "<pre style='color:red'>Error in '$e_file' on line $e_line:$e_message</pre>";
+  $message .= "<pre style='color:red'>" . print_r(debug_backtrace(), 1) . "</pre>";
 
   if ($live != true) {
-      echo nl2br($message);
+      echo $message;
   } else {
     // Script to send an email or something else
   }

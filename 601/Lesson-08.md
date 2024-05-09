@@ -174,16 +174,6 @@
 - `.tgz` - [Slackware](http://www.slackware.com/) (tarballs handled manually)
 - `.apk` - [Android](https://www.android.com/)
 
-### Revision Control
-- Revision Control Systems (AKA Source Control Systems)
-  - [GitHub](https://github.com) - most widely used, hosts Linux source
-  - [Subversion](https://subversion.apache.org/) (SVN) - hosts WordPress plugins
-  - [Concurrent Versions System](https://cvs.nongnu.org/) (CVS)
-  - [Revision Control System](https://www.gnu.org/software/rcs/) (GNU RCS)
-  - [Mercurial](https://www.mercurial-scm.org/)
-  - [Monotone](https://www.monotone.ca/)
-  - [GNU Arch](https://www.gnu.org/software/gnu-arch/) - discontinued
-
 ### `dpkg` (`apt` Debian)
 #### `dpkg`
 - Dependency/conflict unaware

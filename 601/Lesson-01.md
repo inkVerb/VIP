@@ -30,6 +30,7 @@
 - `lsusb` USB devices
 - `lspci` PCI devices
 - `sudo dmidecode` system BIOS version
+  - Desktop Management Interface (DMI)
   - `sudo dmidecode -t bios`
   - `sudo dmidecode -t memory`
   - `sudo dmidecode -t system`
