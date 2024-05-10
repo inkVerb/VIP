@@ -1654,35 +1654,50 @@ mkswap /dev/sdb5
 - Default NBD server port is `10809`
 - Examples:
 
-| **create empty files as dummy devices** :#
+| **create empty files as block devices on the server** :#
 
 ```console
+# Create the files
 dd if=/dev/urandom of=/export/foo bs=1M count=256
 dd if=/dev/urandom of=/export/exportrofile bs=1M count=512
-dd if=/dev/urandom of=/export/exportzerodd bs=1M count=768
+dd if=/dev/urandom of=/export/export.img bs=1M count=768
+
+# Format the files so they are readable as block volumes
+mkfs.ext4 /export/foo
+mkfs.ext4 /export/export.img
+mkfs.ext4 /export/exportrofile
 ```
 
-- *Those three "devices" are fake; empty files we would treat the same as a mouse or DVD drive, or anything such in `/dev/`*
+| **/etc/nbd-server/config** : server at 192.168.0.5 (simple)
 
-| **/etc/nbd-server/config** : at 192.168.0.5
+```
+[generic] # required
+  user = nbd 
+  group = nbd
+[foo] # whatever name, required
+  exportname = /export/foo
+```
+
+| **/etc/nbd-server/config** : server at 192.168.0.5 (simple)
 
 ```
 [generic] # required
         user = nbd
         group = nbd
-[foo] # whatever name
-        exportname = /path/to/foo/file # only required setting
-[exportrofile]
-        exportname = /path/to/read/only/file # only required setting
+[nbdname] # whatever name, required
+        exportname = /path/to/nbdname/file # only required setting
+[exportimg]
+        exportname = /export/export.img # only required setting
         authfile =  # left empty to allow from all
-        readonly = true
-        port = 881188
-[exportzerodd] # export an empty dd-made file that resets on each run
-        exportname = /path/to/some/empty/file # only required setting
-        authfile = /path/to/some/empty/authfile # file that contains allowed IP addresses and ports per line as: some.ip.addr.here/port
-        timeout = 30
-        filesize = 10000000
         readonly = false
+        port = 881188
+[exportrofile] # export an empty dd-made file that resets on each run
+        exportname = /export/exportrofile # only required setting
+        authfile = /path/to/some/empty/authfile # file that contains allowed IP addresses and some.ip.addr.here/port1
+        some.ip.addr.here/port2
+        timeout = 30
+        filesize = 512000
+        readonly = true
         multifile = false
         copyonwrite = false
         prerun = dd if=/dev/zero of=%s bs=1k count=500
@@ -2059,27 +2074,29 @@ sudo dd if=/dev/urandom of=/export/foo bs=1M count=128 status=progress
 sudo dd if=/dev/urandom of=/export/export1 bs=1M count=128 status=progress
 sudo dd if=/dev/urandom of=/export/otherexport bs=1M count=128 status=progress
 
+# Format the files
+sudo mkfs.ext4 /export/foo
+sudo mkfs.ext4 /export/export1
+sudo mkfs.ext4 /export/otherexport
+
 # Server configs
 cat <<EOF >> /etc/nbd-server/config
 [generic]
 user = nbd 
 group = nbd
+EOF
+
+cat <<EOF >> /etc/nbd-server/config
 [foo]
 exportname = /export/foo
 EOF
 
 cat <<EOF >> /etc/nbd-server/config
-[generic]
-user = nbd 
-group = nbd
 [export1]
 exportname = /export/export1
 EOF
 
 cat <<EOF >> /etc/nbd-server/config
-[generic]
-user = nbd 
-group = nbd
 [otherexport]
 exportname = /export/otherexport
 EOF

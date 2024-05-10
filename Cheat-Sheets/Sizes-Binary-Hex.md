@@ -14,10 +14,10 @@ ___
 - Computers think only `on` and `off`, `true` or `false`, `1` or `0`
 - `1` and `0` are used in Binary numbering, which computers use
 - Each `1` or `0` is a `bit`
-- `Bits` come in two pairs of `4`, making `8 bits`, AKA `1 Byte`, AKA `1` "oclet
+- `Bits` come in two pairs of `4`, making `8 bits`, AKA `1 Byte`, AKA `1` "oclet"
 
 ### Binary Groups of `4` (`1`-`15`; `A`-`F`)
-```
+
 | Binary | Hexadecimal | Decimal |
 | :----- | :---------- | :------ |
 | 0000   | 0           | 0       |
@@ -36,12 +36,12 @@ ___
 | 1101   | D           | 13      |
 | 1110   | E           | 14      |
 | 1111   | F           | 15      |
-```
+
 - *Notice with Binary and Hexadecimal, the group of `4` binaries create the same letter*
   - *This is one reason why Hexadecimal is convenient*
 
 ### Examples of Oclets
-```
+
 | Binary    | Hexadecimal | Decimal |
 | :-------- | :---------- | :------ |
 | 0001 0001 | 11          | 17      |
@@ -60,12 +60,11 @@ ___
 | 1110 0110 | E5          | 229     |
 | 1111 0000 | F0          | 240     |
 | 1111 1111 | FF          | 255     |
-```
+
 
 ### Oclet Charts
 - Binary numbers work in powers of `2` because they only have two possible digits
 
-```
 | Binary    | Exponents of 2 | Hexadecimal | Decimal |
 | :-------- | :------------- | :---------- | :------ |
 | 0000 0000 | 0<sup>0</sup>  | 00          | 0       |
@@ -77,7 +76,6 @@ ___
 | 0010 0000 | 2<sup>5</sup>  | 20          | 32      |
 | 0100 0000 | 2<sup>6</sup>  | 40          | 64      |
 | 1000 0000 | 2<sup>7</sup>  | 80          | 128     |
-```
 
 - Decimal values per place:
 
@@ -134,8 +132,8 @@ ___
 - **`1 Petabyte (PB)`** = 1,024 Terabytes
 - **`1 Exabyte  (EB)`** = 1,024 Petabytes
 
-Approximate examples:
-- 1 minute of audio is about 10MB for normal files (128 bit)
-- 1 picture is about 1MB (1920x1080px, .png; 2560x1600px, .jpg)
+### Approximate examples:
+- `10MB` = 1 minute of audio (128 bit)
+- `1MB` = 1 picture  (1920x1080px `.png`; 2560x1600px, `.jpg`)
   - Learn more about image [pictypes](https://github.com/inkVerb/pictypes/blob/master/README.md)
-- 1 hour video is about 1GB (1920x1080)
+- `1GB` = 1 hour video (1920x1080)

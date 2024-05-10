@@ -51,7 +51,8 @@ Tracks changes for:
   - A tool, not a method
 
 ## Git
-*([github.com](https://github.com))*
+- *[github.com](https://github.com)*
+- *[Git Wiki](https://en.wikipedia.org/wiki/Git)*
 
 ### What is Git?
 The Linux kernel originally had no official home for development, but eventually found a home with a comercial project called BitKeeper.
