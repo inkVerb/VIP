@@ -208,29 +208,36 @@ Host some_nickname
   - server configure wizard:$ `dpkg-reconfigure slapd`
   - [Debian config](https://wiki.debian.org/LDAP/PAM)
 - [OpenSUSE](https://doc.opensuse.org/documentation/leap/security/html/book-security/cha-security-ldap.html#sec-security-ldap-server-install)
-  - client package: `yast2-auth-client`
-  - server package: `389-ds`
+  - client package: `openldap2-client` (or alt `yast2-auth-client`)
+  - server package: `openldap2` (or alt `389-ds`)
   - *Yeah, OpenSUSE thinks a little differently*
-- RedHat
+- RedHat (server discontinued in 2022)
   - clients package: `openldap-clients`
   - server package: `openldap-servers` [depreciated in 2022 in favor of Red Hat Directory Server](https://access.redhat.com/solutions/2440481)
   - *Yeah, RedHat thinks they are more than a little different*
 
 #### Server
-- Arch: `/etc/openldap/config.ldif` ([created manually](https://wiki.archlinux.org/title/OpenLDAP#The_server))
-- Arch data: `/var/lib/openldap/openldap-data/`
-- Debian: `/etc/ldap/slapd.d/` (automated by `slapd`)
-- Debian data: `/var/lib/ldap/`
 - Standard, default server ports
   - `389` - Non-secure authentication
   - `636` - TLS authentication
 
-#### Configs
+##### Server Configs
+- Arch config: `/etc/openldap/config.ldif` ([created manually](https://wiki.archlinux.org/title/OpenLDAP#The_server))
+  - Arch data: `/var/lib/openldap/openldap-data/`
+- Debian config: `/etc/ldap/slapd.d/` (automated by `slapd`)
+  - Debian data: `/var/lib/ldap/`
+- OpenSUSE config: `/etc/openldap/slapd.conf`
+  - OpenSUSE data: `/var/lib/ldap/`
+
+#### Client
 - *LDAP clients have minimal configuration*
 - *This tells the client how to reach the server*
 - *The server uses a client config to "reach itself"*
+
+##### Client Configs
 - Arch: `/etc/openldap/ldap.conf`
 - Debian: `/etc/ldap/ldap.conf`
+- OpenSUSE: `/etc/openldap/ldap.conf`
 - *Note this is minimal configuration for a working example*
 
 | **ldap.conf** : (server)

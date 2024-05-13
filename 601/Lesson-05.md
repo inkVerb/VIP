@@ -261,6 +261,7 @@ The first number is a ***major***, the second number is a ***minor***; see the [
   - MAJOR/MINOR
     - Device types listed in [kernel documentation](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Kernel-Devices.md)
     - This takes experience to know, sometimes just follow instructions
+  - Remove a device `/dev/devicename` created with `mknod` using:# `rm /dev/devicename`
   - *`mknod` is an old school tool only used in a nightmare scenario today*
   - *Solving issues with an installed Linux server is best done by booting to an attached image, or USB if using a local machine*
   - Today, udev handles these automatically

@@ -551,6 +551,9 @@ inkisaverb.com:/pubdir  /mnt/ink-pub     nfs     netdev,noauto,rsize=8192,wsize=
   - Note there is no `un` in `umount`, a common oversight
   - `umount /dev/sdb4` (device)
   - `umount /home` (mount point)
+  - `umount -l /dev/sdb2` to override "target is busy" warning
+    - `-l` - Lazy `umount` for busy devices (incl NBD)
+    - `-f` - Force `umount` for busy network file systems (not NBD)
 - `automount` (not on Arch)
 - `findmnt` outputs the `/etc/fstab`-formatted mount entry for the argued device
   - `findmnt /dev/sdb1`
@@ -1604,10 +1607,10 @@ mkswap /dev/sdb5
 ## Network Block Devices (NBD)
 ### What Is NBD?
 - NBD is a module in the kernel
-  - Command to use the NBD module: `sudo modprobe nbd`
-  - That module makes all of this work...
+  - The client `nbd` module, not the server
+  - *The module is loaded automatically by the `nbd-client` command, so you don't need to load it!*
 - NBD is often how a cloud system mounts a large "block storage" drive device to our virtual machine for a cloud service like Linode, Vultr, or DigitalOcean, which then we sysadmin-customers simply see as `/dev/nbd0` etc
-  - Go into your Linode / Vultr / DigitalOcean control panel and buy some block storage drive space to attach to your virtual machine
+  - Go into your Vultr / Linode / DigitalOcean control panel and buy some block storage drive space to attach to your virtual machine
   - Then their website will instruct you to look for `/dev/nbd0` etc on your virtual machine
   - It may have been NBD that put it there for you to use
 
@@ -1654,18 +1657,52 @@ mkswap /dev/sdb5
 - Default NBD server port is `10809`
 - Examples:
 
+### NBD Workflow
+*After `nbd-server` and `nbd-client` are installed on server and client respectively...*
+
+1. Create the device on the server
+    - `dd` create a file
+    - `mkfs.` format the file with a filesystem
+    - `chown` the file by the `nbd` user and group
+2. List the device in the NBD config
+    - `/etc/nbd-server/config` needs a two-line entry (more options allowed)
+```
+[device-name]
+exportfile = /path/to/dd/file
+```
+3. Start the NBD server with `nbd-server`, done
+4. Add the new device to the client:#
+    - `nbd-client -N device-name ip.addr.4nbd.srvr /dev/nbddevname`
+    - (Now it will be listed in output from `lsblk` or `ls /dev`)
+5. Mount the device on the client:#
+    - `mount /dev/nbddevname /mnt/existingdir`
+6. For proper removal from client:
+    - Unmount, then disconnect the device from the client:#
+```
+umount /mnt/existingdir
+nbd-client -d /dev/nbddevname
+```
+
+### Configs
+
 | **create empty files as block devices on the server** :#
 
 ```console
 # Create the files
-dd if=/dev/urandom of=/export/foo bs=1M count=256
-dd if=/dev/urandom of=/export/exportrofile bs=1M count=512
-dd if=/dev/urandom of=/export/export.img bs=1M count=768
+mkdir /export
+dd if=/dev/urandom of=/export/foofile bs=1M count=256
+dd if=/dev/urandom of=/export/export.img bs=1M count=512
+dd if=/dev/urandom of=/export/exportrofile bs=1M count=768
 
 # Format the files so they are readable as block volumes
-mkfs.ext4 /export/foo
+mkfs.ext4 /export/foofile
 mkfs.ext4 /export/export.img
 mkfs.ext4 /export/exportrofile
+
+# Own these so they can be handled by the NBD server
+chown nbd:nbd /export/foofile
+chown nbd:nbd /export/export.img
+chown nbd:nbd /export/exportrofile
 ```
 
 | **/etc/nbd-server/config** : server at 192.168.0.5 (simple)
@@ -1675,34 +1712,101 @@ mkfs.ext4 /export/exportrofile
   user = nbd 
   group = nbd
 [foo] # whatever name, required
-  exportname = /export/foo
+  exportname = /export/foofile
 ```
 
-| **/etc/nbd-server/config** : server at 192.168.0.5 (simple)
+| **/etc/nbd-server/config** : server at 192.168.0.5 (simple, readonly)
 
 ```
 [generic] # required
-        user = nbd
-        group = nbd
-[nbdname] # whatever name, required
-        exportname = /path/to/nbdname/file # only required setting
-[exportimg]
-        exportname = /export/export.img # only required setting
-        authfile =  # left empty to allow from all
-        readonly = false
-        port = 881188
-[exportrofile] # export an empty dd-made file that resets on each run
-        exportname = /export/exportrofile # only required setting
-        authfile = /path/to/some/empty/authfile # file that contains allowed IP addresses and some.ip.addr.here/port1
-        some.ip.addr.here/port2
-        timeout = 30
-        filesize = 512000
-        readonly = true
-        multifile = false
-        copyonwrite = false
-        prerun = dd if=/dev/zero of=%s bs=1k count=500
-        postrun = rm -f %s
+  user = nbd 
+  group = nbd
+[foo] # whatever name, required
+  exportname = /export/foofile
+  readonly = true
 ```
+
+| **/etc/nbd-server/config** : server at 192.168.0.5 (simple, many devices)
+
+```
+[generic] # required
+  user = nbd 
+  group = nbd
+[foo] # whatever name, required
+  exportname = /export/foofile
+[exportimg]
+  exportname = /export/export.img
+  port = 881188
+[exportrofile]
+  exportname = /export/exportrofile
+  readonly = true
+```
+
+
+| **/etc/nbd-server/config** : server at 192.168.0.5 (elaborate)
+
+```
+[generic] # required
+  user = nbd
+  group = nbd
+[nbdname] # whatever name, required
+  exportname = /path/to/nbdname/file # only required setting
+[exportimg]
+  exportname = /export/export.img # only required setting
+  authfile =  # left empty to allow from all
+  readonly = false # redundant
+  port = 881188
+[exportrofile] # export an empty dd-made file that resets on each run
+  exportname = /export/exportrofile # only required setting
+  authfile = /path/to/some/authfile # file containing allowed IPs as some.ip.addr.here/port1
+  timeout = 30
+  filesize = 512000
+  readonly = true
+  multifile = false
+  copyonwrite = false
+  prerun = dd if=/dev/zero of=%s bs=1k count=500
+  postrun = rm -f %s
+```
+
+#### Include Multiple Configs
+- `includedir = /etc/nbd-server/conf.d` allows multiple configs
+  - Each included config must end with `.conf`
+
+| **/etc/nbd-server/config** : server at 192.168.0.5 (multiple configs)
+
+```
+[generic] # required
+  user = nbd
+  group = nbd
+  includedir = /etc/nbd-server/conf.d
+```
+
+- Included configs...
+
+| **/etc/nbd-server/conf.d/fooconf.conf** :
+
+```
+[foo] # whatever name, required
+  exportname = /export/foofile
+```
+
+| **/etc/nbd-server/conf.d/export-img.conf** :
+
+```
+[exportimg]
+  exportname = /export/export.img
+  port = 881188
+```
+
+| **/etc/nbd-server/conf.d/exportrofile.conf** :
+
+```
+[exportrofile]
+  exportname = /export/exportrofile
+  readonly = true
+```
+
+### Commands
 
 | **start server** :# default config (`/etc/nbd-server/config`)
 
@@ -1734,9 +1838,50 @@ nbd-client -N exportrofile 192.168.0.5 10809 /dev/nbd1
 nbd-client -N exportzerodd 192.168.0.5 881188 /dev/nbd2
 ```
 
-- *Remember, these are "devices", not "drives"*
-  - *You can't format them*
-  - *You can't `mount` them*
+| **client disconnects device** :#
+
+```console
+nbd-client -d /dev/nbd0
+```
+
+| **client adds and mounts device for use** :#
+
+```console
+nbd-client -N foo 192.168.0.5 /dev/nbd0
+mkdir /mnt/nbd0
+mount /dev/nbd0 /mnt/nbd0
+```
+
+*Reload & disconnecting...*
+
+| **client unmounts, then disconnects device** :#
+
+```console
+umount /mnt/nbd0
+nbd-client -d /dev/nbd0
+```
+
+| **server changes & reloads config** :#
+
+```console
+killall nbd-server
+nbd-server
+```
+
+| **client disconnects, then re-connects device** :#
+
+```console
+umount /mnt/nbd0
+nbd-client -d /dev/nbd0
+nbd-client -N foo 192.168.0.5 /dev/nbd0
+mount /dev/nbd0 /mnt/nbd0
+```
+
+*Changing server `config` file(s)...*
+
+1. Disconnect ***all*** clients with:# `nbd-client -d /dev/...` for ***each*** NBD connection
+2. Server:# `kill -HUP $(pgrep nbd-server)`
+   - First getting the proper PID from `pgrep nbd-server` may work better than command substitution `$(pgrep nbd-server)`
 
 ___
 
@@ -2057,22 +2202,20 @@ sudo bonnie++ -u 0 -n 0 -f -b -r 150 -d /tmp/
 | **NBD** :$
 
 ```console
-# Enable kernel module
-sudo modprobe nbd
-
 # Configs and process
 vim /etc/nbd-server/config
 sudo nbd-server
 sudo nbd-server -C /etc/nbd-server/config
-sudo mkdir /export
-sudo touch /export/foo
-sudo touch /export/export1
-sudo touch /export/otherexport
 
 # Create the files that will be mounted to the NBD
+sudo mkdir /export
 sudo dd if=/dev/urandom of=/export/foo bs=1M count=128 status=progress
 sudo dd if=/dev/urandom of=/export/export1 bs=1M count=128 status=progress
 sudo dd if=/dev/urandom of=/export/otherexport bs=1M count=128 status=progress
+
+sudo chown /export/foo
+sudo chown /export/export1
+sudo chown /export/otherexport
 
 # Format the files
 sudo mkfs.ext4 /export/foo
@@ -2080,22 +2223,26 @@ sudo mkfs.ext4 /export/export1
 sudo mkfs.ext4 /export/otherexport
 
 # Server configs
-cat <<EOF >> /etc/nbd-server/config
+cat <<EOF > /etc/nbd-server/config
 [generic]
 user = nbd 
 group = nbd
+includedir = /etc/nbd-server/conf.d
 EOF
 
-cat <<EOF >> /etc/nbd-server/config
+mkdir -p /etc/nbd-server/conf.d
+
+cat <<EOF > /etc/nbd-server/conf.d/foo.conf
 [foo]
 exportname = /export/foo
 EOF
 
-cat <<EOF >> /etc/nbd-server/config
+cat <<EOF > /etc/nbd-server/conf.d/e1.conf
 [export1]
 exportname = /export/export1
 EOF
 
+# Still can add to the main config directly
 cat <<EOF >> /etc/nbd-server/config
 [otherexport]
 exportname = /export/otherexport
@@ -2105,14 +2252,50 @@ EOF
 nbd-server
 ip a # User your NIC IP addresses to replace 192.168.0.9 below
 
-# On client
+# Connect NBDs on client
 ## It won't work without a network, still type for practice
+lsblk
 sudo nbd-client -N foo 192.168.0.9 10809 /dev/nbd0
+lsblk
 sudo nbd-client -N export1 192.168.0.9 10809 /dev/nbd1
+lsblk
 sudo nbd-client -N otherexport 192.168.0.9 10809 /dev/nbd2
+lsblk
 
-# Remove kernel module
-sudo modprobe -r nbd
+# Mount for use on client
+sudo mkdir /mnt/nbd0 /mnt/nbd1 /mnt/nbd2
+sudo mount /dev/nbd0 /mnt/nbd0
+sudo mount /dev/nbd1 /mnt/nbd1
+sudo mount /dev/nbd2 /mnt/nbd2
+cd /mnt/nbd0
+ls
+touch here
+
+# Remove from client
+sudo umount /mnt/nbd0
+sudo umount /mnt/nbd1
+sudo umount /mnt/nbd2
+lsblk
+sudo nbd-client -d /dev/nbd0
+lsblk
+sudo nbd-client -d /dev/nbd1
+lsblk
+sudo nbd-client -d /dev/nbd2
+lsblk
+
+# Change & reload the server
+cat /etc/nbd-server/conf.d/e1.conf
+sudo sed -i 's/export1/export5/' /etc/nbd-server/conf.d/e1.conf
+cat /etc/nbd-server/conf.d/e1.conf
+pgrep nbd-server
+kill -HUP {nbd-server PID you got} # using $(pgrep nbd-server) might not work!
+
+# Re-connect on client
+sudo nbd-client -N export5 192.168.0.9 10809 /dev/nbd1
+
+# Remove the module on the client (once all NBDs are disconnected)
+sudo modprobe -r nbd  # this works
+sudo rmmod nbd        # or this
 ```
 
 ___

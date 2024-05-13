@@ -431,3 +431,57 @@ ___
 It's time to go to [The Linux Foundation](https://training.linuxfoundation.org/) and get certified
 
 Search for the *Linux Foundation Certified System Administrator (LFCS)* certification
+
+Wait...
+
+Can you tell me what the matrix is?
+
+| **A1** :$ Arch/Manjaro
+
+```console
+sudo pacman -S cmatrix sl
+```
+
+| **D1** :$ Debian/Ubuntu
+
+```console
+sudo apt install cmatrix sl
+```
+
+| **AD2** :$
+
+```console
+cmatrix
+```
+
+| **AD3** :$
+
+```console
+sl
+```
+
+Or OpenSUSE:
+
+| **S1** :$
+
+```console
+sudo zypper install vim vim-plugin-matrix sl
+```
+
+| **S2** :$
+
+```console
+vim
+```
+
+| **S3** :vim
+
+```console
+:Matrix
+```
+
+| **S4** :$
+
+```console
+sl
+```

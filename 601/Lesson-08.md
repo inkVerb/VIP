@@ -145,7 +145,7 @@
     - It can be heavy on system resources needed just to maintain one container per app
     - Not ideal for non-critical small home/office budget desktop machines running many apps
       - Apps on a home or office machine (even for gaming or proffessional software) are unlikely to crash without reason
-      - Running containers for every desktop app will slow the app startup and the entire machine, adding risk to a system-wide crash
+      - Running containers for every desktop app will slow the app startup and the entire machine, adding to risk of a system-wide crash
       - If apps crash on a home or office system, usually a reboot solves it, not as problematic as on a production server
 
 ### High and Low Levels of the PM Stack
@@ -159,8 +159,8 @@
     - `rpm` (RedHat)
     - `makepkg` ([Arch](https://wiki.archlinux.org/title/makepkg) compile helper, [explanation](https://unix.stackexchange.com/questions/605928))
   - **High level**: resolves dependencies, handle low-level package tools
-    - **`rpm`**: `zypper`, `dnf`, (legacy `yum`)
     - **`dpkg`**: `apt`, `apt-get`, `apt-cache`
+    - **`rpm`**: `zypper`, `dnf`, (legacy `yum`)
     - **`makepkg`**: `pacman`, `yay`
   - *SysAdmins should know how to use both high and low level tools for their distros!*
 
@@ -207,6 +207,7 @@
   - `apt` pagkage manager (more user-friendly, may be interactive)
   - `apt` extentions may be able to work with some `.rpm` files
 - Some queries:# (`-y` flag can be used to make most `apt` and `apt-get` commands non-interactive)
+  - `apt list --installed|--upgradeable|--all-versions` list either of the arguments 
   - `apt-file update` update `apt-file` tool (`apt-file` may need installing first)
   - `apt-cache search package-name` search repositories for `package-name`
   - `apt-cache show package-name` info for `package-name`
@@ -258,32 +259,15 @@
 - Some `-q` (query) co-flags: (ie `-qa`)
   - `-q` (`-q` alone) query installed package version
   - `-a` all installed packages
-  - `-f` what package a file came from (`rpm -qf  /bin/mv`)
-  - `-i` package info (`rpm -qi git`)
-  - `-l` list contents of a specific file
-  - `-p` query package file, not package database
+  - `-f` what package a file came from (`rpm -qf /bin/mv`)
+  - `-i` package info (`rpm -qi gedit`)
+  - `-l` list file contents hierarchy of a specific package (`rpm -ql gedit`)
   - `--requires` - list dependencies/prerequisites
   - `--whatprovides` - which package meets a requisite
-- Some `-V` (verify) co-flags: (ie `-Va`)
+- The `-V` (verify) co-flag: (viz `-Va`)
   - `-a` all packages on system
-  - `-5` MD5 differs
-  - `-S` file size differs
-  - `-T` mtime differs
-  - `-D` dev major/minor number differs
-  - `-M` mode differs (permissions)
-  - `-L` readlink path doesn't match
-  - `-U` user ownership differs
-  - `-G` group ownership differs
   - No output = no errors (no `STDOUT`, only `STDERR`; `$?` = `0`)
-- Some `-i` (install) & `-e` (erase) flags
-  - `-v` verbose
-  - `-h` progress hash marks (as in `########`)
-  - `--test` see if it would succeed or fail & what errors would be reported
-- Some queries:#
-  - `rpm -ivh NAME-VERSION-RELEASE.DISTRO.ARCHITECTURE` installs
-  - Replaced config files are saved as `.rpmsave`
-  - If no need to replace config files, new potential files are saved as `.rpmnew`
-  - `rpm -e package-name` erase (remove/uninstall)
+- `-e package-name` erase (remove/uninstall)
 
 #### `dnf` (RedHat/CentOS)
 - Replaced `yum`; mostly backward compatible
@@ -322,7 +306,7 @@ gpgcheck=1
 - `dnf shell shellfile.txt` executes `dnf` shell script file in its own `dnf` shell
 - `dnf install --downloadonly package-name` only download `package-name` package to `/var/cache/dnf/`
 - `dnf history` history of `dnf` commands
-- `dnf clean packages|metadata|expired-cache|rpmdb|plugins|all` clears installed packages from `/var/cache/dnf/`
+- `dnf clean packages|metadata|all` clears installed packages from `/var/cache/dnf/`
 
 #### `zypper` (OpenSUSE)
 - Installs from repositories
@@ -333,7 +317,7 @@ gpgcheck=1
   - `zypper repos` list available repos
   - `zypper search findword` search for "findword"
   - `zypper info package-name` info about `package-name` package
-  - `zypper search --provides /path/to/some/file` list package that owns `/path/to/some/file`
+  - `zypper search --provides /path/to/some/program` list package that owns `/path/to/some/program`
   - `zypper install package-name` install `package-name` package
   - `zypper install package-name --non-interactive` install `package-name` package non-interactive
   - `zypper update` update all packages
@@ -401,14 +385,14 @@ Include = /etc/pacman.d/mirrorlist
   - `pacman -Syy package-name` update all repo lists, then install `package-name` package
   - `pacman -Sw package-name` only download the `.pkg.tar.zst` file for the package to `/var/cache/pacman/pkg/`
   - `pacman -Syuw --noconfirm`
-  - `pacman -U package_name-version.pkg.tar.zst` manually install `package_name-version.pkg.tar.zst` from that downloaded file
+  - `pacman -U package_name-VERSION.pkg.tar.zst` manually install `package_name-VERSION.pkg.tar.zst` from that downloaded file
   - `pacman -Scc` clean cache
   - `pacman -R package-name` remove the `package-name` package
   - `pacman -Rsc` remove unneeded dependencies
   - `pacman -Qe` list explicitly-installed packages
   - `pacman -Ql package-name` what file the `package-name` package has
   - `pacman -Qii package-name` info on `package-name` package
-  - `pacman -Qo /path/to/some/file` list package that owns `/path/to/some/file`
+  - `pacman -Qo /path/to/some/program` list package that owns `/path/to/some/program`
   - `pactree package-name` what the `package-name` package depends on
   - `pactree -r package-name` what depends on the `package-name` package
 
@@ -507,6 +491,9 @@ dpkg -P package-name
 apt-file update
 apt-get install package-name
 apt-cache search package-name
+apt list --installed
+apt list --upgradeable
+apt list --all-versions
 apt-get update
 apt-get upgrade -y
 apt-get install -y package-name
@@ -522,20 +509,10 @@ apt-get clean
 ```console
 rpm --rebuilddb
 rpm -qa
-rpm -qf
-rpm -qi
-rpm -ql
-rpm -qp
+rpm -qf /bin/mv
+rpm -qi gedit
+rpm -ql gedit
 rpm -Va
-rpm -V5
-rpm -VS
-rpm -VT
-rpm -VD
-rpm -VM
-rpm -VL
-rpm -VU
-rpm -VG
-rpm -ivh NAME-VERSION-RELEASE.DISTRO.ARCHITECTURE
 rpm -e package name
 ```
 
@@ -545,31 +522,29 @@ rpm -e package name
 dnf --disablerepo repo-name
 dnf --enablerepo repo-name
 dnf search findword
-dnf info package-name
 dnf list installed
 dnf list available
 dnf list updates
+dnf info git
+dnf install --downloadonly git
+find /var/cache -iname "*git*" # use this in the next command
+dnf localinstall /var/cache/dnf/appstream-l07GNum84/packages/git-2.43.0-1.el9.x86_64.rpm
+dnf remove git
+dnf install git
+dnf groupinstall package-group
 dnf grouplist
 dnf groupinfo package-group
 cd /etc
 ls
-dnf provides /etc/openldap/slapd.conf
-dnf install package-name
-dnf localinstall package-file-name
-dnf groupinstall package-group
-dnf remove package-name
+dnf provides /etc/crontab
 dnf update
-dnf update package-name
+dnf update git
 dnf list "dnf-plugin*"
 dnf repolist
 dnf shell
-dnf install --downloadonly package-name
 dnf history
 dnf clean packages
 dnf clean metadata
-dnf clean expired-cache
-dnf clean rpmdb
-dnf clean plugins
 dnf clean all
 ```
 
@@ -579,13 +554,13 @@ dnf clean all
 zypper list-updates
 zypper repos
 zypper search findword
-zypper info package-name
-zypper search --provides /path/to/some/file
-zypper install package-name
-zypper install packagename --non-interactive
+zypper info cowsay
+zypper install cowsay
+zypper search --provides /bin/cowsay
+zypper remove cowsay
+zypper install cowsay --non-interactive
 zypper update
 zypper update --non-interactive
-zypper remove package-name
 zypper shell
 zypper addrepo http://example.com/path/to/repo some-alias-repo-name
 zypper removerepo some-alias-repo-name
@@ -600,11 +575,11 @@ pacman -Qs findword
 pacman -Sy archlinux-keyring
 pacman -Syy
 pacman -Syyu
-pacman -S package-name
-pacman -Syy package-name
-pacman -Sw package-name
-ls /var/cache/pacman/pkg/package_name*
-pacman -U /var/cache/pacman/pkg/package_name-version.pkg.tar.zst
+pacman -S cowsay
+pacman -Syy cowsay
+pacman -Sw cowsay
+ls /var/cache/pacman/pkg/cowsay*
+pacman -U /var/cache/pacman/pkg/cowsay-VERSION.pkg.tar.zst
 ls /var/cache/pacman/pkg/
 pacman -Scc
 ls /var/cache/pacman/pkg/
