@@ -1184,7 +1184,7 @@ vgchange -ay volgrp
 |------------------------- LVM Volume Group volgrp (447G available) ----------------------|
 |                                                                                         |
 |     sdb1-PV-100G     sdb2-PV-100G     sdb3-PV-100G     sdb4-PV-100G     sdb5-PV-47G     |
-|         snapshot         snapshot         snapshot         snapshot                     | Snapshots on each PV they record for
+|         snapshot         snapshot         snapshot         snapshot                     | Snapshots on respective PV
 |_____********* Logical Volume 210G *** COW xxxxxxxxxxxx ************___space_left_over___|
 |                                                                                         |
 |-----------------------------------------------------------------------------------------|
@@ -1192,7 +1192,7 @@ vgchange -ay volgrp
 
 - Create a snapshot without persistent size
   - *`-s` for snapshot*
-  - *`-n` for the name'*
+  - *`-n` for the name*
   - *`-l 128` for size of 128 extants (extant size was determined with the `-s` flag in `vgcreate -s ...`)*
 
 | **create snapshot** :#
@@ -1881,8 +1881,6 @@ mount /dev/nbd0 /mnt/nbd0
 
 1. Disconnect ***all*** clients with:# `nbd-client -d /dev/...` for ***each*** NBD connection
 2. Server:# `kill -HUP $(pgrep nbd-server)`
-   - First getting the proper PID from `pgrep nbd-server` may work better than command substitution `$(pgrep nbd-server)`
-
 ___
 
 # The Keys
@@ -2000,22 +1998,23 @@ UUID=s0me-l0ng-n0mb3r   /              ext4    defaults,noatime 0 1
 EOF
 ```
 
-| **LVM** :$
+| **LVM** :$ *(smaller sizes to save time)*
 
 ```console
 # Choose fdisk or gdisk below
 
 sudo fdisk /dev/sdx
 # Create 5 partitions
-# sdx3 & sdx4 at 5G is wise so pvmove takes less time
+# sdx3 & sdx4 at 1G is wise so pvmove takes less time
+# n # new partition
 # t # change type
 # Type 44 or lvm
 
 sudo gdisk /dev/sdx
 # Create 5 partitions
-# sdx3 & sdx4 at 5G is wise so pvmove takes less time
+# sdx3 & sdx4 at 1G is wise so pvmove takes less time
 # n # new partition
-# Type 8e00 or lvm
+# Type 8e00 for LVM
 
 # Choose either fdisk or gdisk above
 
@@ -2038,19 +2037,19 @@ lsblk
 
 # Create the logical volume
 lsblk
-sudo lvcreate -L 420G -n thislvm volgrp
+sudo lvcreate -L 4G -n thislvm volgrp
 ls -l /dev/volgrp
 lsblk
 
 # Management practice
 sudo lvremove /dev/volgrp/thislvm
-sudo lvcreate -L 320G -n thislvm volgrp
+sudo lvcreate -L 3G -n thislvm volgrp
 
 sudo mkfs.ext4 /dev/volgrp/thislvm
 lsblk -f
-sudo lvresize -r -L 350G /dev/volgrp/thislvm
-sudo lvresize -r -L +70G /dev/volgrp/thislvm
-sudo lvresize -r -L 440G /dev/volgrp/thislvm
+sudo lvresize -r -L 2G /dev/volgrp/thislvm
+sudo lvresize -r -L +500M /dev/volgrp/thislvm
+sudo lvresize -r -L 3G /dev/volgrp/thislvm
 
 sudo pvmove /dev/sdx3
 sudo vgreduce volgrp /dev/sdx3
@@ -2089,7 +2088,7 @@ sudo pvremove /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5 --force --force
 # Create a smaller logical volume
 sudo pvcreate /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5
 lsblk -f
-sudo lvcreate -L 220G -n thislvm volgrp
+sudo lvcreate -L 2G -n thislvm volgrp
 ls -l /dev/volgrp
 lsblk -f
 
@@ -2117,9 +2116,9 @@ sudo umount /mnt/thislvm
 lsblk -f
 
 df -h
-sudo lvresize -r -L 200G /dev/volgrp/thislvm
+sudo lvresize -r -L 3G /dev/volgrp/thislvm
 df -h
-sudo lvresize -r -L +10G /dev/volgrp/thislvm
+sudo lvresize -r -L +1G /dev/volgrp/thislvm
 df -h
 
 lsblk -f
@@ -2288,7 +2287,8 @@ cat /etc/nbd-server/conf.d/e1.conf
 sudo sed -i 's/export1/export5/' /etc/nbd-server/conf.d/e1.conf
 cat /etc/nbd-server/conf.d/e1.conf
 pgrep nbd-server
-kill -HUP {nbd-server PID you got} # using $(pgrep nbd-server) might not work!
+kill -HUP {nbd-server PID you got}
+# or: kill -HUP $(pgrep nbd-server)
 
 # Re-connect on client
 sudo nbd-client -N export5 192.168.0.9 10809 /dev/nbd1

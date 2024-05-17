@@ -563,7 +563,7 @@ userPassword: {SSHA}lOnGhaSsSh3D/pA55wD+inthisplace0
 - Installed for work with LDAP using different packages per distro
   - [Arch](https://wiki.archlinux.org/title/LDAP_authentication#Online_and_offline_authentication_with_SSSD): `sssd`
   - [Debian](https://ubuntu.com/server/docs/service-sssd-ldap): `sssd-ldap`
-  - [OpenSUSE](https://software.opensuse.org/download/package?package=sssd&project=network%3Aldap) `sssd`
+  - [OpenSUSE](https://software.opensuse.org/download/package?package=sssd&project=network%3Aldap): `sssd`
   - [RedHat](https://access.redhat.com/documentation/fr-fr/red_hat_enterprise_linux/9/html/configuring_authentication_and_authorization_in_rhel/configuring-sssd-to-use-ldap-and-require-tls-authentication_configuring-sssd-to-use-ldap-and-require-tls-authentication): `sssd sssd-ldap oddjob-mkhomedir`
 
 ### PAM-SSSD Client Authentication for LDAP
