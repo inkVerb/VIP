@@ -34,9 +34,9 @@ cat verb.ink.html
 
 *One page at a time: <kbd>Spacebar</kbd>,*
 
-*One line at a time: Enter*
+*One line at a time: <kbd>Enter</kbd>*
 
-| **4** :$ *(Space to the end or Q to quit)*
+| **4** :$ *(<kbd>Spacebar</kbd> to the end or <kbd>Q</kbd> to quit)*
 
 ```console
 more verb.ink.html
@@ -44,7 +44,7 @@ more verb.ink.html
 
 *Eight lines at a time*
 
-| **5** :$ *(Q to quit)*
+| **5** :$ *(<kbd>Q</kbd> to quit)*
 
 ```console
 more -8 verb.ink.html
@@ -54,7 +54,7 @@ more -8 verb.ink.html
 
 *Up and down: <kbd>Spacebar</kbd>, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, <kbd>Up</kbd>, <kbd>Down</kbd>*
 
-| **6** :$ *(Q to quit)*
+| **6** :$ *(<kbd>Q</kbd> to quit)*
 
 ```console
 less verb.ink.html
@@ -289,7 +289,7 @@ diff -B frc-1 frc-2
 
 *There is always more to learn*
 
-| **34** :$ *(Q to quit)*
+| **34** :$ *(<kbd>Q</kbd> to quit)*
 
 ```console
 man diff
@@ -400,9 +400,9 @@ nano verb.ink.html
 
 *Options listed at the bottom*
 
-*Tip:*  ^ = Ctrl
+*Tip:*  ^ = <kbd>Ctrl</kbd>
 
-*Tip:* M- = Alt
+*Tip:* M- = <kbd>Alt</kbd>
 
 *Take note of:* ^K ^W ^O ^X M-U
 
@@ -440,13 +440,13 @@ ___
 # The Take
 ## **more, less, head & tail** display the contents of a file in small amounts
 - `more`
-  - One page at a time: Spacebar
-  - One line at a time: Enter
+  - One page at a time: <kbd>Spacebar</kbd>
+  - One line at a time: <kbd>Enter</kbd>
   - `more -8 file` shows 8 lines at a time
-  - **Q** will quit
+  - **<kbd>Q</kbd>** will quit
 - `less`
-  - Up and down: Spacebar, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, <kbd>Up</kbd>,, <kbd>Down</kbd>,
-  - **Q** will quit
+  - Up and down: <kbd>Spacebar</kbd>, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, <kbd>Up</kbd>,, <kbd>Down</kbd>,
+  - **<kbd>Q</kbd>** will quit
 - `head`
   - First 10 lines
   - `head -8 file` shows the first 8 lines
@@ -473,8 +473,8 @@ ___
 
 ## Terminal text editors
 ### `nano` is great for beginners
-- `^` = **Ctrl**
-- `M-` = **Alt**
+- `^` = **<kbd>Ctrl</kbd>**
+- `M-` = **<kbd>Alt</kbd>**
 - If you **<kbd>Ctrl</kbd> + <kbd>Z</kbd>** as "undo" on accident, `fg nano` will take you back
 ### `vim` is for awesome people
 - Anyone can learn `vim`, especially children; so, learn young
