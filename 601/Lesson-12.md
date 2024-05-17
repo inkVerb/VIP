@@ -59,8 +59,8 @@
 ### Backup Utilities
 - `tar` - "ball" up many files into one "tarball" (for faster upload/download and file compression prep)
 - `cpio` - file archive tool that can include symlinks etc
-- `gzip`. `bzip2` & `xz` - compress `.tar` files
-- `dd` - "direct data"; can copy entire partitions and disks (including partition tables)
+- `gzip`, `bzip2` & `xz` - compress `.tar` files
+- `dd` - "Data Duplicator"; copies entire partitions and disks (including partition tables)
 - `rsync` - synchronizes directories across networks
 - `dump` & `restore` - old; read from filesystem directly; require same filesystem for restore; we have newer alternatices
 - `mt` - query and position tapes before backup and restore
@@ -208,8 +208,9 @@
 - *One OS can puppet another OS*
   - OS-A is dead on the machine
     - The system is installed on `/dev/sdX`
+      - *(`/dev/sdX` contains `/boot/`)*
   - OS-B is already booted, running from a plugged USB (or image attached to the VM)
-    - *Plug a Linux USB, <kbd>F12</kbd>/<kbd>Esc</kbd>/etc boot menu, choose the USB*
+    - *Plug a Linux USB, <kbd>F12</kbd>/<kbd>F8</kbd>/<kbd>F2</kbd>/<kbd>Esc</kbd>/etc boot menu, choose the Linux USB*
     - *Or "attach" a Linux image to the VM in VirtualBox, your cloud account, or other hypervizor, then boot to the image*
   - OS-B runs and manages files on dead OS-A disks *as if* it was OS-A
     - OS-B will see the OS-A system as installed on `/dev/sdX`

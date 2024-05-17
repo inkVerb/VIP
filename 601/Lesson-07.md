@@ -251,7 +251,7 @@ rm two four        # cleanup
   - devfs
   - debugfs
 
-## Data Duplicator Tool
+## Device Duplicator Tool
 - `dd` Disk/Data/Device Duplicator: copies raw data
   - The `if=` input source almost always must be in `/dev/` folder or an `.img` file
   - Only duplicates raw data, it does not understand filesystems, directories, or mount points
