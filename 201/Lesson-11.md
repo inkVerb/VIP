@@ -32,7 +32,7 @@ cat verb.ink.html
 
 ### `more`
 
-*One page at a time: <kbd>Spacebar</kbd>,*
+*One page at a time: <kbd>Spacebar</kbd>*
 
 *One line at a time: <kbd>Enter</kbd>*
 
@@ -295,39 +295,33 @@ diff -B frc-1 frc-2
 man diff
 ```
 
-| **35** :$
-
-```console
-cd ..
-```
-
 #### `cmp`
 
-| **36** :$
+| **35** :$
 
 ```console
 cmp frc-1 frc-2
 ```
 
-| **37** :$
+| **36** :$
 
 ```console
 cmp frc-1 frc-3
 ```
 
-| **38** :$
+| **37** :$
 
 ```console
 cmp frc-1 frc-4
 ```
 
-| **39** :$
+| **38** :$
 
 ```console
 cmp frc-1 frc-5
 ```
 
-| **40** :$
+| **39** :$
 
 ```console
 cmp frc-1 frc-6
@@ -337,7 +331,7 @@ cmp frc-1 frc-6
 
 *First, prepare by creating sorted files*
 
-| **41** :$
+| **40** :$
 
 ```console
 mkdir sorted
@@ -352,31 +346,31 @@ gedit sorted/*
 
 *Remember, these are sorted, so all lines have been re-arranged for alphabetical order...*
 
-| **42** :$
+| **41** :$
 
 ```console
 comm sorted/frc-1 sorted/frc-2
 ```
 
-| **43** :$
+| **42** :$
 
 ```console
 comm sorted/frc-1 sorted/frc-3
 ```
 
-| **44** :$
+| **43** :$
 
 ```console
 comm sorted/frc-1 sorted/frc-4
 ```
 
-| **45** :$
+| **44** :$
 
 ```console
 comm sorted/frc-1 sorted/frc-5
 ```
 
-| **46** :$
+| **45** :$
 
 ```console
 comm sorted/frc-1 sorted/frc-6
@@ -386,13 +380,13 @@ comm sorted/frc-1 sorted/frc-6
 
 *The simple text editor in the terminal*
 
-| **47** :$
+| **46** :$
 
 ```console
-cd verb.ink
+cd ../verb.ink
 ```
 
-| **48** :$
+| **47** :$
 
 ```console
 nano verb.ink.html
@@ -415,7 +409,7 @@ nano verb.ink.html
 
 *The terminal editor used by cool people*
 
-| **49** :$
+| **48** :$
 
 ```console
 vim verb.ink.html
@@ -427,7 +421,7 @@ vim verb.ink.html
 
 *Vim has a tutorial*
 
-| **50** :$ *(inside Vim, use* `:q` *to quit)*
+| **49** :$ *(inside Vim, use* `:q` *to quit)*
 
 ```console
 vimtutor
@@ -445,7 +439,7 @@ ___
   - `more -8 file` shows 8 lines at a time
   - **<kbd>Q</kbd>** will quit
 - `less`
-  - Up and down: <kbd>Spacebar</kbd>, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, <kbd>Up</kbd>,, <kbd>Down</kbd>,
+  - Up and down: <kbd>Spacebar</kbd>, <kbd>PageUp</kbd>, <kbd>PageDown</kbd>, <kbd>Up</kbd>, <kbd>Down</kbd>,
   - **<kbd>Q</kbd>** will quit
 - `head`
   - First 10 lines

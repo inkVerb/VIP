@@ -1,7 +1,7 @@
 # Linux 201
 ## Lesson 12: Filesystem Hierarchy Standard (FHS)
 
-Ready the CLI (might not be needed)
+Ready the CLI
 
 ```console
 cd ~/School/VIP/201
@@ -20,10 +20,10 @@ ___
 cd /
 ```
 
-| **2** :$
+| **2** :$ *(requires `sudo`)*
 
 ```console
-du -hsxc --exclude=proc *
+sudo du -hsxc --exclude=proc *
 ```
 
 ## *"Everything in Linux is a file."*
@@ -142,6 +142,8 @@ ls -lF
 
 This is for stuff that helps the computer to turn on. Don't mess.
 
+These are disk images of Linux, used by boot and some are here for backup. This directory also includes the GRUB boot menu.
+
 #### `/lib/` — Shared Libraries (may be used by many different applications)
 
 | **11** :$
@@ -210,9 +212,9 @@ ls -lF
 
 This is where installable binaries go from installable packages. When you run `sudo apt install Something` the installed program will usually put its executable files here.
 
-It is called the "user" directory because, for the most part, all desktop users will access binaries (programs) that have been installed to this directory.
+Every command entered into the terminal is done by some user, even if the user is `root`. It is called the "user" directory because all users will access binaries (programs) that have been installed to this directory.
 
-Debian (.deb files) should install here in order to be "properly" installed.
+Debian (`.deb` files) should install here in order to be "properly" installed.
 
 #### `/opt/` – Optional Packages (resident aliens)
 
@@ -244,9 +246,9 @@ cd ../snap
 ls -lF
 ```
 
-This is where "snap" applications are installed. Snap is different from the system Debian repository structure. It has its own install and repository structure, but is included in the Ubuntu Software Center as of Ubuntu 18.04
+This is where "snap" applications are installed. Snap is different from the system Debian repository structure. It has its own install and repository structure, but is included in the Ubuntu Software Center as of Ubuntu 18.04.
 
-Snap is a more powerful way of managing apps because it runs every app in its own "container", so if it crashes it does not risk crashing the entire system
+Snap is a more powerful way of managing apps because it runs every app in its own "container", so if it crashes it does not risk crashing the entire system.
 
 ### Connected gadgets
 
@@ -264,7 +266,7 @@ cd ../cdrom
 ls -lF
 ```
 
-This is the classic path to the on-board CD-ROM drive
+This is the classic path to the on-board CD-ROM drive.
 
 #### `/mnt/` — Mount (temporarily mount permanently connected drives)
 
@@ -280,7 +282,7 @@ cd ../mnt
 ls -lF
 ```
 
-This is where that Windows partition may show up if you decide to take a look at it while booted in Linux. It's also where other, non-system storage drives will appear when mounted
+This is where that Windows partition may show up if you decide to take a look at it while booted in Linux. It's also where other, non-system storage drives will appear when mounted.
 
 #### `/media/` — Removable Media (i.e. USB drives)
 
@@ -350,8 +352,8 @@ This is for "served" files or services by name
 
 It is used this way on:
 
-- Arch (& Manjaro)
-- openSUSE (& SUSE)
+- Arch/Manjaro
+- OpenSUSE
 
 Fedora and Debian use `/var/` for served files and leave `/srv/` empty
 
