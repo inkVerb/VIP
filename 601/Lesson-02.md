@@ -4,6 +4,11 @@
 # The Chalk
 ## Processes
 ### Definitions
+- **builtin** - commands that do not need a specific program in `/sbin/` or `/usr/bin/`, but are "built-in" as part of the shell
+  - ie: `echo`, `cd`, `kill`, `ulimit`, `exit`, `exec`, `time`, `eval`, `printf`, `jobs`, `bg`, `fg`, `getopts`, `history`, `pwd`, `type`, `read`, `return`, `export`, `shift`, `unset`, `wait`, `source`, `case`, `if`, `true`, `false`, `for`, `while`, `until`, `continue`
+  - See with: `type echo`, `type cd`, `type kill`, etc
+  - More on shells in [Lesson 3]((https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md))
+  - All non-builtin commands are *programs*
 - **program** - written "instruction" saved in an executable file that can be "run" in the operating system
 - **process** - a program that is running in the operating system with a PID, using RAM and CPU, etc
   - A process cannot make calls to hardware, but must interact through **system calls** to talk to the kernel, which talks to the hardware

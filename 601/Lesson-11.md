@@ -2,6 +2,7 @@
 ## Lesson 11: Security Modules
 
 # The Chalk
+*This lesson presume commands are run as `root`*
 ## Linux Security Modules (LSM)
 - Security is intended to:
   - Minimize changes and overhead for the kernel
@@ -12,6 +13,10 @@
     - Protect from malicious action
     - Take security action before/after kernel action
 - Read more in Shaun Ruffell's article: [A Brief Tour of Linux Security Modules](https://www.starlab.io/blog/a-brief-tour-of-linux-security-modules)
+- Main security modules used today are **SELinux** and **AppArmor**
+  - These have special profiles that are best created by security specialists
+  - The role of the SysAdmin is usually to implement the security policies and profiles created by those specialists, not to create those security profiles themselves
+  - We will examine some tools to modify these security policies and profiles, but only for broader understanding, not for production use or best practice
 
 ### Security Module History
 - SELinux was the original
@@ -74,22 +79,6 @@
     - `setenforce Permissive`
     - *No `Disabled` option*
 
-### SELinux Policies
-- Set in configs
-- Policies are installed in `/etc/selinux/SELINUX_TYPE`
-- Common policies:
-  - **targeted**:
-    - More restricted to "targeted" processes
-    - User and `init` processes not targeted
-    - Targets network processes
-    - RAM restrictions for all processes
-  - **minimum**:
-    - Similar to **targeted** policy
-    - Targeted processes must be "selected"
-  - **Multi-Level Security (MLS)**:
-    - Highly restrictive everywhere
-    - Every process placed in a **security domain** with specific rules
-
 ### SELinux Context
 - Four contexts:
   - User: `_u`
@@ -98,16 +87,21 @@
   - Level: `s...`
 - Context nomenclature:
   - `ls -Z` shows context rules for files
-  - Eg: `-rw-------. root root system_u:object_r:admin_home_t:s0 somefile`
+  - eg: `-rw-------. root root system_u:object_r:admin_home_t:s0 somefile`
   - User: `system_u`
   - Role: `object_r`
   - Type: `admin_home_t`
   - Level: `s0`
+- Context rules are defined in `/etc/selinux/targeted/contexts/`
+  - `targeted/` may be different, depending on the SELinux distro and deployment
+  - Subdirectories `users/` and `files/` contain respective rules
+- List of all (requires the `seinfo` package)
+  - Types: `seinfo -t`
+  - Users: `seinfo -u`
+  - Roles: `seinfo -r`
 
-#### Multi Level Security (MLS)
-*Context values of MLS*
-
-- User:
+#### User Contexts:
+*Linux users are mapped to actual SELinux users (ending with `_u`) as part of employing the security hook in the kernel module*
 
 | User         | Default Role | Additional Roles                                 |
 | :----------- | :----------- | :----------------------------------------------- |
@@ -123,7 +117,7 @@
     - `object_r`
     - `default_t`
 
-- Role & Type:
+#### Role & Type Contexts:
 
 | Role         | Type         | Login via X Window       | `su`/`sudo` | Execute in `~/` & `/tmp/` | Networking   |
 | :----------- | :----------- | :----------------------- | :---------- | :------------------------ | :----------- |
@@ -135,50 +129,114 @@
 | `secadm_r`   | `secadm_t`   |                          | yes         | yes                       | yes          |
 | `sysadm_r`   | `sysadm_t`   | if `xdm_sysadm_login` on | yes         | yes                       | yes          |
 
-- Level:
+#### Context Inheritance & Preservation
+- *`cp`, `mv`, `mkdir`, `touch` and other CLI tools support SELinux if installed*
+- New files inherit the context of the parent directory
+- Moved files will preserve their original context
+- Context Tools:
+  - `chcon` & `chcat` are covered later in **Levels**
+  - `semanage fcontext` sets policy for files and directories
+    - `semanage fcontext -a -t httpd_sys_content_t /somedir`
+    - ***Must*** use absolute path
+    - ***Must*** follow with `restorecon` command for same file or directory
+  - `restorecon` implements file and directory context from `semanage fcontext`
+    - `restorecon -RFv /somedir/somefile`
+      - `-R` - Recursive
+      - `-F` - Force
+      - `-v` - Verbose
+      - Can use relative path
+  - Usage:
+```console
+semanage fcontext -a -t httpd_tmp_t /somedir
+restorecon -R /somedir
+semanage fcontext -z -t httpd_tmp_t /somedir/somefile
+restorecon /somedir/somefile
+```
 
-| Sensitivity Level |       |          |          |          |     |            |
-| :---------------  | :---- | :------- | :------- | :------- | :-- | :--------- |
-| *Category &rarr;* |       | `c0`     | `c1`     | `c2`     | ... | `c255`     |
-| **Top Secret**    | `s15` | `s15:c0` | `s15:c1` | `s15:c2` | ... | `s15:c255` |
-| ...               | ...   | ...      | ...      | ...      | ... | ...        |
-| **Secret**        | `s3`  | `s3:c0`  | `s3:c1`  | `s3:c2`  | ... | `s3:c4`    |
-| **Confidential**  | `s2`  | `s2:c0`  | `s2:c1`  | `s2:c2`  | ... | `s2:c4`    |
-| **Restricted**    | `s1`  | `s1:c0`  | `s1:c1`  | `s1:c2`  | ... | `s1:c4`    | 
-| **Unclassified**  | `s0`  | `s0:c0`  | `s0:c1`  | `s0:c2`  | ... | `s0:c4`    |
+### SELinux Policies
+- Set in configs
+- Policies are installed in `/etc/selinux/targeted/`
+  - `targeted/` may be different, depending on the SELinux distro and deployment
+- Common policies:
+  - **targeted**:
+    - More restricted to "targeted" processes
+    - User and `init` processes not targeted
+    - Targets network processes
+    - RAM restrictions for all processes
+  - **minimum**:
+    - Similar to **targeted** policy
+    - Targeted processes must be "selected"
+  - **Multi Level Security (MLS) & Multi Category Security (MCS)**:
+    - Highly restrictive everywhere
+    - Every process placed in a **security domain** with specific rules
 
-- Multiple category syntax:
-  - **`.`** range
-  - **`,`** list
+#### Policy Terms
+- ***Subject*** - a *user*, *program*, or *process* assigned *sensitivity level* or *categories*
+- ***Sensitivity*** levels (MLS, `s0`-`s15`)
+  - Hierarchical *clearance*
+  - Subjects with higher clearance can access subjects with lower clearance
+  - *Subjects* may each only be assigned one
+- ***Categories*** (MCS, `c0`-`c1023`)
+  - Unique
+  - Subjects must be assigned a category to access it
+  - *Subjects* may each be assigned many
+- ***Security Level*** - a set of *sensitivity* and *category*
+  - eg: `s0`
+  - eg: `s1:c15`
+  - eg: `s5:c12.c17,c934`
+- ***Object*** - a human-readable *security level*
+  - Set in `/etc/selinux/targeted/setrans.conf`
+    - `targeted/` is the *SELinux type* and could be different depending on the distro and deployment
+  - See with:# `chcat -L`
+  - eg: `SystemLow` = `s0`
+  - eg: `Maintainers` = `s15:c0.c1023`
+  - eg: `Accounting` = `s1:c49`
+
+| MLS/MCS Security Levels  |                       |          |          |          |     |               |
+| :----------------------- | :-------------------- | :------- | :------- | :------- | :-- | :------------ |
+|                          | ***Category &rarr;*** | `c0`     | `c1`     | `c2`     | ... | `c1023`       |
+| ***Sensitivity &darr;*** |                       |          |          |          |     |               |
+| **Top Secret**           | `s15`                 | `s15:c0` | `s15:c1` | `s15:c2` | ... | `s15:c1023`   |
+| ...                      | ...                   | ...      | ...      | ...      | ... | ...           |
+| **Secret**               | `s3`                  | `s3:c0`  | `s3:c1`  | `s3:c2`  | ... | `s3:c1023`    |
+| **Confidential**         | `s2`                  | `s2:c0`  | `s2:c1`  | `s2:c2`  | ... | `s2:c1023`    |
+| **Restricted**           | `s1`                  | `s1:c0`  | `s1:c1`  | `s1:c2`  | ... | `s1:c1023`    |
+| **Unclassified**         | `s0`                  | `s0:c0`  | `s0:c1`  | `s0:c2`  | ... | `s0:c1023`    |
+
+- Level syntax:
+  - **`:`** sensitivity-category delimiter
+  - **`.`** category range
+  - **`,`** category list
   - `c2.c7` = `c2,c4,c5,c6,c7`
   - `c1.c4,c11` = `c1,c2,c3,c4,c11`
 - Level examples:
   - `s0:c7`
   - `s3:c8.c12`
   - `s5:c31.c52,c89`
-- Tools:
-  - `ls -Z`  - see rule labels for files
-  - `ps auZ` - see context labels for users
-  - `ps axZ` - see context labels for processes
-  - `chcon` - change context rules
+- Level tools:#
+  - `chcat` - change category
+    - `-l` apply to users, not files
+    - `chcat -- +c5,-c32 /some/file` (add `c5`, remove `c32` for `/some/file`)
+    - `chcat -l -- +c9,-c2 someuser` (add `c9`, remove `c2` for `someuser`)
+    - `chcat -L` lists available category *objects*
+      - Set in `/etc/selinux/targeted/setrans.conf`
+    - `chcat -- +SystemHigh,-SystemLow /some/file` (add/remove `setrans.conf` *objects*)
+  - `chcon` - change context
+    - `-r` role
+    - `-t` type
+    - `-l` level/category
+    - `chcon -R -l s5 /home/someuser`
+    - `chcon -l s12 /etc/some.config`
     - `chcon -t etc_t onefile` - `etc_t` context for `onefile`
     - `chcon --reference=onefile otherfile` - context of `onefile` for `otherfile`
   - `restorecon` - restore context to parent directory
     - `restorecon -RFv` - `-R` recursive, `-F` force, `-v` verbose
   - `semanage fcontext` - sets a directory's context policy (`policycoreutils-python` package)
+  - `ls -Z`  - see rule labels for files
+  - `ps auZ` - see context labels for users
+  - `ps axZ` - see context labels for processes
 
-#### Context Inheritance & Preservation
-- *`cp`, `mv`, `mkdir`, `touch` and other CLI tools support SELinux if installed*
-- New files inherit the context of the parent directory
-- Moved files will preserve their original context
-- `chcon` changes file and directory context according to the command
-- `restorecon` sets file and directory context according to the parent directory
-  - `restorecon -RFc /somedir`
-  - `restorecon -Rv /somedir`
-- `semanage fcontext` sets policy for new files and directories
-  - `semanage fcontext -a -t httpd_sys_content_t /somedir`
-
-#### SELinux Booleans
+### SELinux Booleans
 - ***Booleans** in SELinux set behavior without changing policy*
   - Customizes SELinux, not a backdoor change
 - Boolean tools:
@@ -197,7 +255,7 @@
     - `getsebool cluster_manage_all_files` = `on` (current)
     - `semanage boolean -l cluster_manage_all_files` = `on` (persistant?)
 
-#### Monitor SELinux Access
+### Monitor SELinux Access
 - *SELinux has a tool to monitor and logs issues*
 - `setroubleshoot-server` package
 - Configs:
@@ -286,6 +344,17 @@ grep SELINUX= /etc/selinux/config
 grep SELINUX= /etc/sysconfig/selinux
 grep selinux= /boot/grub/grub.cfg
 
+chcat -L
+cd /etc/selinux
+find . -name setrans.conf
+cat /etc/selinux/targeted/setrans.conf
+cd /etc/selinux/targeted/contexts
+ls
+cd /etc/selinux/targeted/contexts/users
+ls
+cd /etc/selinux/targeted/contexts/files
+ls
+
 sestatus
 getenforce
 
@@ -301,15 +370,33 @@ ps axZ
 ls -Z
 ls -aZ
 
-cd
+mkdir /srv/lv
+cd /srv/lv
 touch onefile otherfile
-ls -lZ
-chcon -t etc_t onefile
-ls -lZ
-chcon --reference=onefile otherfile
-ls -lZ
-
 ls -Z
+chcon -t etc_t onefile
+ls -Z
+chcon --reference=onefile otherfile
+ls -Z
+touch levelfile
+chcon -l s12 levelfile
+ls -Z
+chcon -t s5:c14 levelfile
+ls -Z
+chcat -- +c5 levelfile
+ls -Z
+chcat -- +s7,-c14 levelfile
+ls -Z
+chcat -l -- +s15 someuser
+chcat -L
+chcat -- +SystemLow levelfile
+ls -Z
+chcat -- +SystemHigh,-SystemLow levelfile
+ls -Z
+
+cd /
+ls -Z
+ls -lZ
 ls -aZ
 ls -lZ /home/
 ls -lZ /tmp/
@@ -327,22 +414,28 @@ ls -Z
 restorecon -Rv tmpfile
 ls -Z
 
-mkdir /virtualHosts
-ls -Z
-semanage fcontext -a -t httpd_sys_content_t /virtualHosts
-ls -Z
-restorecon -RFv /virtualHosts
-ls -Z
-
+dnf install seinfo
+seinfo -t # choose a type for below (to replace httpd_tmp_t), not all types will work
+mkdir /srv/vm
+ls -Z /srv
+semanage fcontext -a -t httpd_tmp_t /srv/vm
+ls -Z /srv
+restorecon -RFv /srv/vm
+ls -Z /srv
+touch /srv/vm/somefile
+semanage fcontext -a -t httpd_tmp_t /srv/vm/somefile
+ls -Z /srv/vm
+restorecon /srv/vm/somefile
+ls -Z /srv/vm
 
 getsebool -a
-getsebool allow_ftpd_anon_write
+getsebool ftpd_anon_write
 
-setsebool allow_ftpd_anon_write on
-semanage boolean -l | grep allow_ftpd_anon_write
+setsebool ftpd_anon_write on
+semanage boolean -l | grep ftpd_anon_write
 
-setsebool -P allow_ftpd_anon_write on
-semanage boolean -l | grep allow_ftpd_anon_write
+setsebool -P ftpd_anon_write on
+semanage boolean -l | grep ftpd_anon_write
 
 ls -l /var/log/audit/audit.log
 ls -l /var/log/messages
@@ -394,9 +487,9 @@ ls -l /usr/sbin/*complain
 ls /usr/bin/aa-* | wc -l
 ls -l /usr/bin/aa-*
 
-aa-complain
-aa-enforce
-aa-complain
+aa-complain git
+aa-enforce git
+aa-complain git
 
 man apparmor.d
 

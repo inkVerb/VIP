@@ -16,8 +16,11 @@
   - `who` - list users who are logged on
     - `who -b` - boot time
   - `id` - show user's UID, GID, groups
+- Every command must be executed by a *user*, even if the user is `root`
+  - This is why every user must *log in*, even if the user is `root`
+  - The only exception is `init`, which is run by the kernel at boot time
 
-### Global Terminal
+### Terminal - Global Settings
 - Terminal behavior is set by `bashrc` startup files
   - Prompt
   - Aliases
@@ -38,7 +41,7 @@
   - Possibly additional or similarly named files, depending on distro
 - Do **not** change the global startup files in `/etc/` without good reason
 
-### Per-User Terminal
+### Terminal - Per-User Settings
 - Change and customize settings per user with hidden files, even in `/root/.bash_rc`
 - Any of these address login:
   - `~/.bash_profile`

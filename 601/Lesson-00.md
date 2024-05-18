@@ -58,7 +58,7 @@ ___
   - SSH
   - FTP
   - Countless others
-- The server software is often called a **daemon**
+- Server service software is often called a **daemon**
 - While many client configs reside in `/etc/` as, say, `SERVICE`, the server configs may have a `d` appended to the end of the files or directories
 - A good example of this is the `ssh` service, which we will learn more about in [Lesson 9: PAM & Cloud](https://github.com/inkVerb/vip/blob/master/601/Lesson-09.md)
   - SSH client configs: `/etc/ssh_config` & `/etc/ssh_config.d/`
@@ -79,6 +79,84 @@ ___
 - These lessons don't add `sudo` to all commands run as `root` because you may or may not already be logged in as `root` depending on your situation
   - Generally, working from a **#** `root` prompt is considered "bad", but not necessarily always—especially not for SysAdmins
 - Not all commands make this specification (in these lessons or in other Linux instruction sites), so be aware that you may need to run some commands as `root` even when there is no `sudo` or preceding hash (**#**) in the line commands you see
+
+### SysDevOps - Software Jobs
+- **SysOps** - System Operations
+  - **SysAdmin** - System Administration *(this course)*
+    - Knows every Linux distro
+  - Network management
+  - Monitoring
+  - Troubleshooting
+  - **SecOps** - Security Operations (white-hat hackers)
+    - Blue Team - Defense: make the system strong against attacks
+    - Red Team - Offense: invited to hack into the system to find vulnerability
+    - Knows [Kali Linux](https://www.kali.org) or [Black Arch Linux](https://blackarch.org)
+- **DevOps** - Development Operations
+  - Software Development- Writing programs, apps & websites
+    - Common languages: C, Go, Node.js, Python, PHP, Java, Ruby, Qt
+  - **PM** - Product Management (designs & plans the app on paper)
+  - Software testing
+  - Software deployment and updates
+
+### Stack Exchange
+- [Stack Exchange](https://stackexchange.com) (SE) is a collection of Q&A sites
+- Nearly all SysAdmins—and professionals in many other fields—seek answers on SE
+  - SE is ***not*** a "forum"; it is strictly for questions and answers!
+  - SE is ***not*** a substitute for good knowledge and study! 
+  - Software and other professionals need to recognize SE jargon
+- In the sofware world, these are often given nicknames ending in **.SE**
+- Many sites are subdomains of [stackexchange.com](https://stackexchange.com):
+  - *Unix & Linux* - [unix.stackexchange.com](https://unix.stackexchange.com)
+    - UL.SE
+    - Unix.SE
+  - *WordPress* - [wordpress.stackexchange.com](https://wordpress.stackexchange.com)
+    - WP.SE
+    - WordPress.SE
+  - *Database Administrators* - [dba.stackexchange.com](https://dba.stackexchange.com)
+    - Database.SE
+    - DBA.SE
+  - *Information Security* - [security.stackexchange.com](https://security.stackexchange.com/)
+    - IS.SE
+    - Security.SE
+  - *English Language & Usage* - [english.stackexchange.com/](https://english.stackexchange.com)
+    - ELU.SE
+  - *English Language Learners* - [ell.stackexchange.com](https://ell.stackexchange.com)
+    - ELL.SE
+  - *Interpersonal Skills* - [interpersonal.stackexchange.com](https://interpersonal.stackexchange.com)
+    - IPS.SE
+  - *User Experience* - [ux.stackexchange.com](https://ux.stackexchange.com)
+    - UX.SE
+  - *Meta* - [meta.stackexchange.com](https://meta.stackexchange.com) (Main Q&A about SE itself)
+    - Meta.SE
+- Many sites have their own domain, but are part of the SE network, user profile, and company:
+  - *Stack Overflow* - [stackoverflow.com](https://stackoverflow.com) (the original)
+    - SO.SE
+  - *Super User* - [superuser.com](https://superuser.com)
+    - SU.SE
+    - SuperUser.SE
+  - *Server Fault* - [serverfault.com](https://serverfault.com)
+    - SF.SE
+    - ServerFault.SE
+  - *Ask Ubuntu* - [askubuntu.com](https://askubuntu.com)
+    - AU.SE
+    - Ubuntu.SE
+- Questions and answers must:
+  - Be concise and clear
+  - Cite, quote, and link to third-party information
+  - Use [Markdown](https://en.wikipedia.org/wiki/Markdown) formatting to make things clear
+  - Remain "on-topic" for the purpose of the site
+- Every site has privileged users who can "flag" and remove content that doesn't meet these standards
+  - Reviewers - who have relatively high reputation
+  - Moderators - who are elected by other users on the site
+- Every site has a "meta" site, where general discussion is allowed and the standards of citing and being on topic are not as heavily enforced
+- Joining SE sites can be difficult and feel unfriendly in the beginning
+- If you want to login and post questions or answers:
+  - Keep a good attitude
+  - Welcome dissent
+  - Try to improve yourself
+  - Avoid arguments in the comments
+  - Be ready for almost every question or answer to get negative feedback
+- The heavy standards of SE are a reason it is the go-to place for quality Q&A
 
 ___
 
@@ -160,6 +238,32 @@ ___
 - Eg: with SSH:
   - SSH client configs: `/etc/ssh_config` & `/etc/ssh_config.d/`
   - SSH server configs: `/etc/sshd_config` & `/etc/sshd_config.d/`
+
+## SysDevOps - Software Jobs
+- **SysOps** - System Operations
+  - **SysAdmin** - System Administration *(this course)*
+  - **SecOps** - Security Operations (white-hat hackers)
+    - **Blue Team** - Defense
+    - **Red Team** - Offense
+- **DevOps** - Development Operations
+  - Software Development - Writing programs, apps & websites
+  - **PM** - Product Management (designs & plans the app on paper)
+
+## Stack Exchange
+- Q&A site for many professions, especially software
+  - Not a "forum"; stricly questions and answers
+  - SE does not replace the need to learn on your own!
+- A network of many Q&A sites
+- SE sites often nicknamed as **SomeSite.SE**
+- High standards, heavily enforced
+  - Uses flags for content that might need improvement
+  - Reviewers - users with relatively high reputation
+  - Moderators - elected by other users
+- Uses [Markdown](https://en.wikipedia.org/wiki/Markdown) formatting
+- "Meta" is a sub-site for general discussion about each site
+  - SE has its own main Meta site, Meta.SE
+- Many are subdomains of [stackexchange.com](https://stackexchange.com)
+- Some use their own domain, but are still part of the SE network
 
 ## Presume to Know:
 - `find` - [101 Lesson 9: find](https://github.com/inkVerb/vip/blob/master/101/Lesson-09.md)
