@@ -266,6 +266,11 @@ ___
 ```console
 man firewall-cmd
 firewall-cmd --help
+
+systemctl start firewalld
+systemctl status firewalld
+
+firewall-cmd --state
 firewall-cmd --get-zones
 firewall-cmd --get-default-zone
 
@@ -276,7 +281,7 @@ firewall-cmd --get-default-zone
 
 firewall-cmd --get-active-zones
 nmcli device status
-# Note the interface outputs, these are used instead od `enp2s0`
+# Note the interface outputs, these are used instead of `enp2s0`
 
 sudo firewall-cmd --state
 sudo firewall-cmd --reload
