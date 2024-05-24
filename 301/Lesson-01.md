@@ -39,7 +39,7 @@ gedit 01-if-file
 ./01-if-file
 ```
 
-*Note it says "Yes." because "nothing" technically exists*
+*Note the test returns `true` because technically "nothing" does exist*
 
 | **3** :$
 
@@ -47,7 +47,7 @@ gedit 01-if-file
 ./01-if-file myfile
 ```
 
-*Note it says nothing because the file "`myfile`" does not exist*
+*Note the test returns `false` because the file "`myfile`" does not exist*
 
 | **4** :$
 
