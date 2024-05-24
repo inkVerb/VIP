@@ -4,11 +4,11 @@
 # The Chalk
 ## Processes
 ### Definitions
-- **builtin** - commands that do not need a specific program in `/sbin/` or `/usr/bin/`, but are "built-in" as part of the shell
+- **builtin** - a command that does not need a specific program in `/sbin/` or `/usr/bin/`, but is "built-in" as part of the shell
   - ie: `echo`, `cd`, `kill`, `ulimit`, `exit`, `exec`, `time`, `eval`, `printf`, `jobs`, `bg`, `fg`, `getopts`, `history`, `pwd`, `type`, `read`, `return`, `export`, `shift`, `unset`, `wait`, `source`, `case`, `if`, `true`, `false`, `for`, `while`, `until`, `continue`
   - See with: `type echo`, `type cd`, `type kill`, etc
-  - More on shells in [Lesson 3]((https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md))
-  - All non-builtin commands are *programs*
+  - More on shells in ([Lesson 3: Users & Groups](https://github.com/inkVerb/vip/blob/master/601/Lesson-03.md))
+  - All non-builtin commands are **programs**
 - **program** - written "instruction" saved in an executable file that can be "run" in the operating system
 - **process** - a program that is running in the operating system with a PID, using RAM and CPU, etc
   - A process cannot make calls to hardware, but must interact through **system calls** to talk to the kernel, which talks to the hardware
@@ -17,7 +17,7 @@
     - `RUID` Real User ID, user that runs the program
     - `EUID` Effective User ID, determins privileges of the process for the kernel
     - `SUID` Saved User ID, referred to if the process needs to change its UID
-    - ie: see these for a text editor (while running):$
+    - ie: see these for a text editor (while running) :$
       - `ps -C gedit` (Gnome)
       - `ps -C gedit -o cmd,pid,uid,ruid,euid,suid,user,ruser,euser,suser`
       - `ps -C mousepad` (Xfce)
@@ -26,15 +26,16 @@
   - Make a file a setuid with: `chmod u+s newprogram`
     - Then, `ls -l` will list permissions: `-rwSr--r--` or `-rwsr-xr-x` with an `s` or `S` where the `x` would normally be
     - Examples of setuid programs in `/usr/bin/`:
-    - `chsh`
-    - `crontab`
-    - `gpasswd`
-    - `mount`
-    - `passwd`
-    - `su`
-    - `sudo`
-    - `umount`
-    - `unix_chkpwd`
+      - `chsh`
+      - `crontab`
+      - `gpasswd`
+      - `mount`
+      - `passwd`
+      - `su`
+      - `sudo`
+      - `umount`
+      - `unix_chkpwd`
+    - Find all in `/usr/bin/` with :$ `find /usr/bin/ -perm -u+s`
 - Creating your own setuid program owned by root can cause security problems
 - Sometimes, it is vital that a non-root user run programs, merely for reasons like this
 
@@ -61,7 +62,7 @@
   - BSD options **must not** start with `-`
   - GNU options **must** start with `--`
 - `pgrep` finds the PID for a process, shortening the work of `ps | grep [some-command]`
-- Examples:$
+- Examples :$
   - `ps aux`
     - `ps aux | grep gedit` (GNOME)
     - `pgrep gedit` (GNOME)
@@ -79,7 +80,7 @@
 
 ### `pstree` PS Tree
 - Visual geneology of multi-thread processes
-- Examples:$
+- Examples :$
   - `pstree -aAp`
   - `pstree -aAp 1` - PID for `init`
   - `pstree -aAp $(pgrep gedit)` (GNOME)
@@ -96,14 +97,14 @@
   - `ls -l /proc/self` shows the PID that as its symlink
 
 #### Test with `dd`
-- `dd` can be used as a dummy process to test system IDs, etc:$
+- `dd` can be used as a dummy process to test system IDs, etc :$
   - `dd if=/dev/zero of=/dev/null`
   - `dd if=/dev/urandom of=/dev/null status=progress`
     - Optionally add `status=progress`
     - `/dev/zero` and `/dev/urandom` are both valid `if=` sources
   - `dd if=/dev/urandom | pv | dd of=/dev/null` (requires the `pv` 'pipe viewer' package)
 - Use <kbd>Ctrl</kbd> + <kbd>Z</kbd> and `jobs -l` and `kill` to play around with this process
-- Start a `dd` test for `ps` examination:$
+- Start a `dd` test for `ps` examination :$
   - `dd if=/dev/zero of=/dev/null &`
   - `ps aux | grep dd`
   - `ps -C dd -o cmd,pid,cputime,pmem,uid,ruid,euid,suid,user,ruser,euser,suser`
@@ -216,9 +217,9 @@
 - `at` sets a job to start in the future
 - Requirements:
   - Install the `at` package
-  - `atd` service must be running:#
+  - `atd` service must be running :#
     - `systemctl start atd`
-- Interactive:$ (opens interactive terminal for set or relative time in future)
+- Interactive :$ (opens interactive terminal for set or relative time in future)
   - `at 22:00`
   - `at now + 3 hours`
   - `at now + 1 minute`
@@ -227,7 +228,7 @@
   - `at now + 1 month`
   - `at now + 1 year`
   - When finished, press <kbd>Ctrl</kbd> + <kbd>D</kbd> to end your command (showing `<EOT>` as the [heredoc](https://github.com/inkVerb/vip/blob/master/401/Lesson-11.md) delimiter)
-- Plain command examples:$
+- Plain command examples :$
   - `at 22:00 -f /path/to/command/or/script`
   - `echo "echo 'hello world'" | at 22:00`
   - `echo "cat fish" | at 23:00`

@@ -205,7 +205,7 @@ Host some_nickname
 - [Ubuntu](https://ubuntu.com/server/docs/service-ldap): `slapd` `ldap-utils` packages
   - client package: `ldap-utils`
   - server package: `slapd`
-  - server configure wizard:$ `dpkg-reconfigure slapd`
+  - server configure wizard :$ `dpkg-reconfigure slapd`
   - [Debian config](https://wiki.debian.org/LDAP/PAM)
 - [OpenSUSE](https://doc.opensuse.org/documentation/leap/security/html/book-security/cha-security-ldap.html#sec-security-ldap-server-install)
   - client package: `openldap2-client` (or alt `yast2-auth-client`)
@@ -469,7 +469,7 @@ loginShell: /bin/bash
 homeDirectory: /home/bill
 ```
 
-- Add all above four files with this:$ `ldapadd -D "cn=admin,dc=somedomain,dc=tld" -W -f FILENAME.ldif`
+- Add all above four files with this :$ `ldapadd -D "cn=admin,dc=somedomain,dc=tld" -W -f FILENAME.ldif`
   - `ldapadd -D "cn=admin,dc=somedomain,dc=tld" -W -f group.ldif`
   - `ldapadd -D "cn=admin,dc=somedomain,dc=tld" -W -f people.ldif`
   - `ldapadd -D "cn=admin,dc=somedomain,dc=tld" -W -f linuxuser-group.ldif`
@@ -508,17 +508,17 @@ userPassword: {SSHA}lOnGhaSsSh3D/pA55wD+inthisplace0
 - Initiate the file with: `ldapmodify -D "cn=admin,dc=somedomain,dc=tld" -W -f userpass.ldif`
 
 ##### Search the nodes
-- Search for the user Bill:$
+- Search for the user Bill :$
   - `ldapsearch -D "cn=admin,dc=somedomain,dc=tld" -W -LLL -b dc=somedomain,dc=tld '(uid=bill)' cn gidNumber`
 - *Note the `uid` in the member-nodes became the `uidNumber` of the individual entry*
   - We don't search for `uid=bill`, but `uid={bill's uidNumber}`
 - These only return `true`/`false` match in the LDAP database
   - `true` = `result: 0 Success` & `# numResponses: 1`
-  - Search for user Bill in People (uid=10000):$
+  - Search for user Bill in People (uid=10000) :$
     - `ldapsearch -D "cn=admin,dc=somedomain,dc=tld" -W -b "ou=People,dc=somedomain,dc=tld" uid=10000`
-  - Search for group linuxusers in Groups (gid=5000):$
+  - Search for group linuxusers in Groups (gid=5000) :$
     - `ldapsearch -D "cn=admin,dc=somedomain,dc=tld" -W -b "ou=Groups,dc=somedomain,dc=tld" gid=5000`
-  - Search for user Bill in the linuxusers group:$
+  - Search for user Bill in the linuxusers group :$
     - `ldapsearch -D "cn=admin,dc=somedomain,dc=tld" -W -b "cn=linuxusers,ou=Groups,dc=somedomain,dc=tld" uid=10000`
 
 ### LDAP Schema
@@ -534,8 +534,8 @@ userPassword: {SSHA}lOnGhaSsSh3D/pA55wD+inthisplace0
 
 ### LDAP Commands
 - `ldap*`
-- List:$ `ls -1 /usr/bin/ldap*`
-- How many:$ `ls /usr/bin/ldap* | wc -l`
+- List :$ `ls -1 /usr/bin/ldap*`
+- How many :$ `ls /usr/bin/ldap* | wc -l`
 
 ### `man` Pages
 - `ldap`
@@ -675,7 +675,7 @@ session     optional    pam_permit.so
 - Docker commands work only for the running service:#
   - `systemctl enable docker`
   - `systemctl start docker`
-- Container/Image management:$
+- Container/Image management :$
   - `docker info` - Docker information
   - `docker -v` - Docker version
   - `docker-compose -v` - Docker Compose version

@@ -64,7 +64,7 @@
   - `!echo` (most recent `echo` command)
 
 ### User Defaults
-- `useradd`:#
+- `useradd` :#
   - initiates many user settings
   - `/etc/skel/` is copied as the new home folder (Arch requires the `-k /etc/skel` flag and argument)
     - This contains custom startup files, including those like `~/.bashrc` or `~/.bash_profile`
@@ -81,16 +81,16 @@
     - `-m` make user's default directory
     - `-k /etc/skel` default directory and settings
     - `-c` comment (display name)
-- `userdel`:#
+- `userdel` :#
   - Removes entries made in
     - `/etc/passwd` (user info)
     - `/etc/shadow` (user's hadhed password)
     - `/etc/group` (group settings & users)
   - Home directory is not deleted unless using `userdel -r`
-- `usermod`:#
+- `usermod` :#
   - `usermod -L someuser` will lock the account for `someuser`
     - This means the user can't login, but still...
-      - Any user can be made to execute a command using `su lockeduser -c "some command"` (more later)
+      - Any user can be made to execute a command using `su someuser -c "some command"` (more later)
     - The "no password" setting usually prefixes `!!` or `!` to the user's pasword string in `/etc/shadow`
     - This is how many auto users work on Linux, such as `mail`, `www`, `httpd`, `nginx`, etc
       - :$ `grep 'nologin' /etc/passwd` shows the list on your machine
@@ -99,7 +99,7 @@
         - This will also prevent the user from running scripts with `sudo su someuser -c ...` because that also needs a shell to execute the command
       - A custom `nologin` message can be defined in `/etc/nologin.txt`, overridden by `/etc/nologin` for non-`root` users; it might not always display
   - `usermod -U` will unlock a user's account
-    - Similarly, set a user to expire with:#
+    - Similarly, set a user to expire with :#
       - :# `chage -E 1970-01-01 johndoe` (any date in the past will lock the user account)
     - User password lock info is stored in one line at the end of `/etc/shadow`
       - change the last three `:` colons to `:::` to easily unlock an account locked wich `chage`
@@ -141,6 +141,10 @@
     - "`@includedir /etc/sudoers.d`" must be added to `/etc/sudoers`
 - Many users are made sudoers by being in the `sudo` group in `/etc/group`
   - `/etc/sudoers` needs `%sudo   ALL=(ALL:ALL) ALL` uncommented
+- Add individual users with this line in any of the `/etc/sudoers` or `/etc/sudoers.d/` files
+  - `someuser ALL=(ALL:ALL) ALL` (same line as `root ALL=(ALL:ALL) ALL`)
+- Only edit `/etc/sudoers` with `visudo` :$ `sudo visudo`
+  - This adds security to prevent attacks
 ### Substitute User (`su`)
 - `su someuser` will login as `someuser`
 - `su someuser -c ...` will run a command as a sub shell for `someuser`
@@ -230,7 +234,7 @@
   - `0666` - `0022` = `0644` (file default)
   - `0777` - `0022` = `0755` (directory default)
 
-### Filesystem Access Control Lists (ACL)
+## Filesystem Access Control Lists (ACL)
 - If specific per user or group, the list of **permissions** is called an [Access Control List](https://en.wikipedia.org/wiki/Access-control_list) (ACL)
 - This sets different file permissions per user and group
 - This is part of the Linux kernel
@@ -357,7 +361,7 @@ sudo grep pinky /etc/shadow
 su pinky
 # 123456
 echo $SHELL
-chsh -s /bin/zsh
+chsh -s /bin/bash
 exit
 su pinky
 # 123456
@@ -438,10 +442,20 @@ su pinky
 #123456
 exit
 
+sudo visudo
 sudo vim /etc/sudoers
 su
 cd /etc/sudoers.d
 ls
+exit
+
+su pinky
+#123456
+sudo touch here
+exit
+sudo usermod pinky -aG sudo
+su pinky
+sudo touch here
 exit
 
 su pinky -c ls ~/

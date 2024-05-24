@@ -326,7 +326,7 @@ rm two four        # cleanup
       - `-f` force suppress most error messages
       - `-v` set file version number
       - `-p` set file project number
-  - Examples:#
+  - Examples :#
     - `lsattr`
     - `lsattr somefile`
     - `chattr -RVf +aAdeisu somefile`
@@ -467,7 +467,7 @@ sudo gdisk /dev/sdb
 Any of the one-line commands will work in the **Formatting** section
 
 ### Formatting
-- `mkfs`:#
+- `mkfs` :#
   - Use the extension for the drive type
     - Get an easy list: `ls -lh /bin/mkfs*`
   - `mkfs.ext4 /dev/sdb1`
@@ -1671,13 +1671,13 @@ mkswap /dev/sdb5
 exportfile = /path/to/dd/file
 ```
 3. Start the NBD server with `nbd-server`, done
-4. Add the new device to the client:#
+4. Add the new device to the client :#
     - `nbd-client -N device-name ip.addr.4nbd.srvr /dev/nbddevname`
     - (Now it will be listed in output from `lsblk` or `ls /dev`)
-5. Mount the device on the client:#
+5. Mount the device on the client :#
     - `mount /dev/nbddevname /mnt/existingdir`
 6. For proper removal from client:
-    - Unmount, then disconnect the device from the client:#
+    - Unmount, then disconnect the device from the client :#
 ```
 umount /mnt/existingdir
 nbd-client -d /dev/nbddevname
@@ -1879,8 +1879,8 @@ mount /dev/nbd0 /mnt/nbd0
 
 *Changing server `config` file(s)...*
 
-1. Disconnect ***all*** clients with:# `nbd-client -d /dev/...` for ***each*** NBD connection
-2. Server:# `kill -HUP $(pgrep nbd-server)`
+1. Disconnect ***all*** clients with :# `nbd-client -d /dev/...` for ***each*** NBD connection
+2. Server :# `kill -HUP $(pgrep nbd-server)`
 ___
 
 # The Keys

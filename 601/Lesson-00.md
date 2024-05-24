@@ -62,7 +62,7 @@ ___
 - While many client configs reside in `/etc/` as, say, `SERVICE`, the server configs may have a `d` appended to the end of the files or directories
 - A good example of this is the `ssh` service, which we will learn more about in [Lesson 9: PAM & Cloud](https://github.com/inkVerb/vip/blob/master/601/Lesson-09.md)
   - SSH client configs: `/etc/ssh_config` & `/etc/ssh_config.d/`
-  - SSH server configs: `/etc/sshd_config` & `/etc/sshd_config.d/`
+  - SSH server configs: `/etc/sshd_config` & `/etc/sshd_config.d/` (daemons)
 - Seeing a service with both names of, say, `SERVICE` and `SERVICEd` can make it easy to know whether you are woring wiht the `SERVICE` client or with the `SERVICEd` daemon/server
 
 ### User Prompts: **#** or **$** in CLI Instructions
@@ -80,7 +80,7 @@ ___
   - Generally, working from a **#** `root` prompt is considered "bad", but not necessarily always—especially not for SysAdmins
 - Not all commands make this specification (in these lessons or in other Linux instruction sites), so be aware that you may need to run some commands as `root` even when there is no `sudo` or preceding hash (**#**) in the line commands you see
 
-### SysDevOps - Software Jobs
+### SysDevOps - Software Work
 - **SysOps** - System Operations
   - **SysAdmin** - System Administration *(this course)*
     - Knows every Linux distro
@@ -90,7 +90,7 @@ ___
   - **SecOps** - Security Operations (white-hat hackers)
     - Blue Team - Defense: make the system strong against attacks
     - Red Team - Offense: invited to hack into the system to find vulnerability
-    - Knows [Kali Linux](https://www.kali.org) or [Black Arch Linux](https://blackarch.org)
+    - Knows [Kali Linux](https://www.kali.org) or [Black Arch Linux](https://blackarch.org) or comparable distro
 - **DevOps** - Development Operations
   - Software Development- Writing programs, apps & websites
     - Common languages: C, Go, Node.js, Python, PHP, Java, Ruby, Qt
@@ -99,12 +99,12 @@ ___
   - Software deployment and updates
 
 ### Stack Exchange
-- [Stack Exchange](https://stackexchange.com) (SE) is a collection of Q&A sites
-- Nearly all SysAdmins—and professionals in many other fields—seek answers on SE
+- [Stack Exchange](https://stackexchange.com) (SE) is a network of Q&A sites
+- Nearly all SysAdmins—and many professionals in other fields—seek answers on SE
   - SE is ***not*** a "forum"; it is strictly for questions and answers!
   - SE is ***not*** a substitute for good knowledge and study! 
   - Software and other professionals need to recognize SE jargon
-- In the sofware world, these are often given nicknames ending in **.SE**
+- In the sofware world, these are often given nicknames ending in "**.SE**"
 - Many sites are subdomains of [stackexchange.com](https://stackexchange.com):
   - *Unix & Linux* - [unix.stackexchange.com](https://unix.stackexchange.com)
     - UL.SE
@@ -150,7 +150,7 @@ ___
   - Moderators - who are elected by other users on the site
 - Every site has a "meta" site, where general discussion is allowed and the standards of citing and being on topic are not as heavily enforced
 - Joining SE sites can be difficult and feel unfriendly in the beginning
-- If you want to login and post questions or answers:
+- If you want an account to post questions or answers or vote:
   - Keep a good attitude
   - Welcome dissent
   - Try to improve yourself
@@ -234,7 +234,7 @@ ___
 - The standard for "proper Unix/Linux"
 
 ## Daemons
-- When software has both a client and server, `d` may be placed on the end of files and directories to identify the server configs, not the client configs
+- When software has both a client and server (running a daemon), `d` may be placed on the end of files and directories to identify the server/daemon configs, not the client configs
 - Eg: with SSH:
   - SSH client configs: `/etc/ssh_config` & `/etc/ssh_config.d/`
   - SSH server configs: `/etc/sshd_config` & `/etc/sshd_config.d/`
@@ -247,7 +247,7 @@ ___
     - **Red Team** - Offense
 - **DevOps** - Development Operations
   - Software Development - Writing programs, apps & websites
-  - **PM** - Product Management (designs & plans the app on paper)
+  - **PM** - Product Management (design & plan apps on paper)
 
 ## Stack Exchange
 - Q&A site for many professions, especially software

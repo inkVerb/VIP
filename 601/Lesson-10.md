@@ -154,13 +154,13 @@ sysctl -p || reboot
 - Allow all connections
 
 #### Zone Management
-- Get information as a normal user:$
+- Get information as a normal user :$
   - `firewall-cmd --help`
   - `firewall-cmd --get-zones`
   - `firewall-cmd --get-default-zone`
   - `firewall-cmd --get-active-zones`
     - *Use interfaces from that output*
-    - *Or get available interfaces from:$ `nmcli device status`*
+    - *Or get available interfaces from :$ `nmcli device status`*
 - Deeper access must be done as `root`:#
   - `firewall-cmd --state`
   - `firewall-cmd --reload`

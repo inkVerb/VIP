@@ -153,7 +153,7 @@ Everything after this will presume knowledge of binary oclets and corresponding 
   - `192.168.1.1`
   - **Gateway** - the IP address that network machines use to identify the **router** and thus talk to the WAN, other networks, or the worldwide Internet
 - These numbers are standard settings, but they could be manually configured otherwise by a network administrator
-- See your network addresses:$ `netstat -rn` or `route -n`
+- See your network addresses :$ `netstat -rn` or `route -n`
 
 #### Network Mask
 - AKA *netmask* or *mask*, implicated when discussing a *subnet mask*
@@ -952,10 +952,10 @@ ip route add  To-Address    via Next-hop     For-NIC NIC-device-name
 ```
 
 - Knowing machine information, such as NIC device names (eg `enp2s0`), is important for using the `ip route` command
-- Get simple **route** tables for your machine:$
+- Get simple **route** tables for your machine :$
   - `ip r` = `ip route` = `ip route show`
   - `ip -6 r` for IPv6 routs
-- Get NIC & **gateway** information:$
+- Get NIC & **gateway** information :$
   - `route -n` = `netstat -rn`
   - `ip a` = `ip addr` = `address show`
   - `ifconfig -a` (elaborate)
@@ -986,7 +986,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 *`default` **gateway** IP address when router not known*
 
 - Know your original **gateway** from `route -n`
-- Manually set the default **gateway** to `192.168.1.21`:#
+- Manually set the default **gateway** to `192.168.1.21` :#
   - `ip route add default via 192.168.1.21 dev enp2s0`
     - ...where `enp2s0` is a NIC on your machine listed in:
       - `nmcli device status`
@@ -998,15 +998,15 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
     - `enp2s0` could also be:
       - `wlp2s0`
       - `enp3s0`
-- Restore to the normal default **gateway** `192.168.1.1`:#
+- Restore to the normal default **gateway** `192.168.1.1` :#
   - `ip route add default via 192.168.1.1 dev enp2s0`
 
 #### Static Routs
 *Usually with multiple routers*
 
-- Add a non-persistent route:#
+- Add a non-persistent route :#
   - `ip route add 10.5.0.0/16 via 192.168.1.100`
-- Delete a non-persistent route:#
+- Delete a non-persistent route :#
   - `ip route del 10.5.0.0/16 via 192.168.1.100`
 - Persistent routes:
   - Flavored distros must edit their config files and add them manually
@@ -1017,8 +1017,8 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
     - `systemctl enable NetworkManager-dispatcher.service`
     - `systemctl start NetworkManager-dispatcher.service`
     - Create a BASH script in `/etc/NetworkManager/dispatcher.d/` with any name like *`10-script.sh`*
-    - Own:# `chown root:root /etc/NetworkManager/dispatcher.d/10-script.sh`
-    - Executable:# `chmod ug+x /etc/NetworkManager/dispatcher.d/10-script.sh`
+    - Own :# `chown root:root /etc/NetworkManager/dispatcher.d/10-script.sh`
+    - Executable :# `chmod ug+x /etc/NetworkManager/dispatcher.d/10-script.sh`
     - Then, the script (eg *`10-script.sh`*) starts with `#!/bin/bash`, then uses standard `nmcli` commands
     
 ## Bonding
@@ -1142,7 +1142,7 @@ _dmarc.verb.ink.   IN  TXT      "v=DMABOX1; p=reject; fo=0; aspf=r; adkim=r; pct
 - Reverse IP address examples:
   - `207.246.96.85` = `85.96.246.207.in-addr.arpa`
   - `2001:19f0:6001:1450:5400:4ff:fe74:28a7` = `7.a.8.2.4.7.e.f.f.f.4.0.0.0.4.5.0.5.4.1.1.0.0.6.0.f.9.1.1.0.0.2.ip6.arpa`
-- Find reverse DNS with:$ `host some.ip.addr.ess`
+- Find reverse DNS with :$ `host some.ip.addr.ess`
 
 *More about DNS and DNS records goes beyond the scope of this course*
 

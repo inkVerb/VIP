@@ -4,8 +4,8 @@
 # The Chalk
 ## Useful Commands
 ### Command Info
-- `which` - command location
-- `whereis` - command & man-file locations
+- `which Command_Name` - command location
+- `whereis Command_Name` - command & man-file locations
 - `whatis Command_Name` - command descriptions (found across system)
 - `type Command_Name` - command role or purpose
 - `whoami` - current user
@@ -40,18 +40,24 @@
 1. **BIOS** - Basic Input/Output System
   - Stored in flash memory on the Motherboard
   - Executes GPT/MBR
-2. **GPT** - GUID Partition Table / (formerly MBR - Master Boot Record)
-  - Bootable partition ([Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md))
+2. **GPT** - GUID Partition Table (formerly MBR - Master Boot Record)
+  - Bootable partition
   - Executes GRUB
+  - [Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md)
 3. **GRUB** - Grand Unified Bootloader
   - Menu at boot up
-  - Executes the **kernel command** (seen at `/proc/cmdline` after boot)
+  - Executes the **kernel command** (recorded at `/proc/cmdline` after boot)
+  - [Lesson 1: Boot & System Init](https://github.com/inkVerb/vip/blob/master/601/Lesson-01.md) (this lesson)
 4. **Kernel** - The actual Operating System
   - Executes `/sbin/init`
+  - [Lesson 5: Kernel & Devices](https://github.com/inkVerb/vip/blob/master/601/Lesson-05.md)
 5. **Init** - Init (via `systemd`)
   - Executes **targets** (formerly **runlevels**)
+  - [Lesson 1: Boot & System Init - init](https://github.com/inkVerb/vip/blob/master/601/Lesson-01.md#init) (this lesson)
+  - [Lesson 2: Procesesses & Monitoring - Process Creation](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md#process-creation)
 6. **Targets** - Stages of finishing the machine for normal use
   - Executes tools in `/usr/lib/systemd/` by configs in `/lib/systemd/system/`
+  - [Lesson 1: Boot & System Init - Targets](https://github.com/inkVerb/vip/blob/master/601/Lesson-01.md#targets) (this lesson)
 
 ## GRUB
 - The first menu normally seen on bootup, usually with name and logo of your Linux distro
@@ -117,18 +123,18 @@
 - Uses `.service` files
 - Handles user processes without `root` privileges
 
-#### `systemd` Targets vs SysVinit Run Levels
-- SysVinit used **run levels**; each run level had to finish before the next was allowed to begin
+#### Targets
+- **SysVinit** used **run levels**; each run level had to finish before the next was allowed to begin
   - This was because the first processors had only one core and boot rarely happened, so boot speed was obsolete
   - Run levels used shell scripts to run each program
-- `systemd` replaced this with **targets**, which can run with some parallel concurrency
+- **`systemd`** replaced **SysVinit run levels** with **targets**, which can run with some parallel concurrency
   - This is allowed because of multicore processors and our need for speed
   - An actual program runs the targets
-  - See the target on your machine with:$
+  - See the target on your machine with :$
     - `systemd-analyze` - status
     - `systemd-analyze critical-chain` - tree
 
-| SysVinit     | Sys V Name                                                    | `systemd` target      |
+| SysVinit     | Name                                                          | `systemd` target      |
 |:-------------|:--------------------------------------------------------------|:--------------------|
 | Run level 0  | Halt                                                          | `shutdown.target`   |
 | Run level 1  | Singer-user text mode                                         | `sysinit.target`<br>`rescue.target`     |
@@ -137,7 +143,7 @@
 | Run level 4  | Not used (user-definable)                                     | ∅                  |
 | Run level 5  | Multiuser graphical mode<br> (with X-window GUI login screen) | `graphical.target`  |
 | Run level 6  | Reboot                                                        | `reboot.target`     |
-| Emergency    | ∅                                                            | `emergency.target`  |
+| emergency    | Emergency shell                                               | `emergency.target`  |
 
 #### `systemd` Unit Config Files (`.service`, et al)
 - Tools
@@ -436,7 +442,7 @@ WantedBy=multi-user.target
   - This may not be true for other Unit Config filetypes
 
 ##### Using `systemctl`
-- Listing units:#
+- Listing units :#
   - `systemctl` - All that `systemctl` controls
     - On a LAMP server, you will see services like:
       - `httpd.service`
@@ -446,7 +452,7 @@ WantedBy=multi-user.target
   - `systemctl list-units -t service` - Only running services
   - `systemctl list-units -t service --all` - All available services
   - `systemctl | grep running` - All running services
-- Managing services:#
+- Managing services :#
   - `systemctl status SOME_SERVICE` - See status of SOME_SERVICE
   - Eg: `systemctl status mariadb`
   - `systemctl enable SOME_SERVICE` - Enable SOME_SERVICE so it runs at next startup
@@ -519,6 +525,11 @@ uptime
 
 free
 lsb_release -d
+lsb_release -v
+lsb_release -i
+lsb_release -c
+lsb_release -a
+lsb_release -r
 lsmod
 lscpu
 lsgpu

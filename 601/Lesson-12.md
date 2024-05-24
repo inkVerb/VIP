@@ -230,7 +230,7 @@ chroot /mnt/sysimage
       - This is one reason in `/etc/fstab` it is better to use `UUID=` than `/dev/sdX` filesystem values
       - If `/etc/fstab` uses `/dev/` volumes rather than `UUID=`, this may need to be amended early in the recovery work
   - Thus OS-A `/` is at OS-B `/mnt/sysimage`
-  - Your terminal from OS-B becomes the puppet master of the OS-A puppet dead machine with this `chroot` command:#
+  - Your terminal from OS-B becomes the puppet master of the OS-A puppet dead machine with this `chroot` command :#
     - `chroot /mnt/sysimage`
     - Then you have access to work your SysAdmin magic
 - This almost always happens automatically behind the scenes when installing mainstream Linux distros
@@ -427,7 +427,7 @@ exit
 ```
 ___
 
-# Done! Have a cookie:### #
+# Done! Have a cookie: ### #
 
 It's time to go to [The Linux Foundation](https://training.linuxfoundation.org/) and get certified
 

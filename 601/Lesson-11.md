@@ -187,7 +187,7 @@ restorecon /somedir/somefile
 - ***Object*** - a human-readable *security level*
   - Set in `/etc/selinux/targeted/setrans.conf`
     - `targeted/` is the *SELinux type* and could be different depending on the distro and deployment
-  - See with:# `chcat -L`
+  - See with :# `chcat -L`
   - eg: `SystemLow` = `s0`
   - eg: `Maintainers` = `s15:c0.c1023`
   - eg: `Accounting` = `s1:c49`
@@ -213,7 +213,7 @@ restorecon /somedir/somefile
   - `s0:c7`
   - `s3:c8.c12`
   - `s5:c31.c52,c89`
-- Level tools:#
+- Level tools :#
   - `chcat` - change category
     - `-l` apply to users, not files
     - `chcat -- +c5,-c32 /some/file` (add `c5`, remove `c32` for `/some/file`)

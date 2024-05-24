@@ -186,7 +186,7 @@
   - `.debian.tar.gz` or `.diff.gz` tarball patches and files created
 - View `.deb` package with: `apt-get source`
   - `apt-get source package-name && ls`
-- Some queries:#
+- Some queries :#
   - `dpkg -s dpkg | grep -i Version` (`-i` for Ignore case)
   - `dpkg -V` verify all installed packages
   - `dpkg -V package-name` verify `package-name` package integrity
@@ -206,7 +206,7 @@
   - `apt-get` pagkage manager (technical, SysAdmin-friendly, better automation for scripts)
   - `apt` pagkage manager (more user-friendly, may be interactive)
   - `apt` extentions may be able to work with some `.rpm` files
-- Some queries:# (`-y` flag can be used to make most `apt` and `apt-get` commands non-interactive)
+- Some queries :# (`-y` flag can be used to make most `apt` and `apt-get` commands non-interactive)
   - `apt list --installed|--upgradeable|--all-versions` list either of the arguments 
   - `apt-file update` update `apt-file` tool (`apt-file` may need installing first)
   - `apt-cache search package-name` search repositories for `package-name`
@@ -285,7 +285,7 @@ baseurl=http://example.com/path/to/repo
 enabled=1
 gpgcheck=1
 ```
-- Some queries:#
+- Some queries :#
 - `dnf --disablerepo repo-name` sets `enabled=0` in `.repo` config
 - `dnf --enablerepo repo-name` sets `enabled=1` in `.repo` config
 - `dnf search findword` search for "findword"
@@ -312,7 +312,7 @@ gpgcheck=1
 - Installs from repositories
 - Resolves dependencies
 - Downloads packages to: `/var/cache/zypp/`
-- Some queries:#
+- Some queries :#
   - `zypper list-updates` list available updates
   - `zypper repos` list available repos
   - `zypper search findword` search for "findword"
@@ -370,7 +370,7 @@ Include = /etc/pacman.d/mirrorlist
   - Built on a `git` repo, main repo is the [Arch Linux GitLab Packages](https://gitlab.archlinux.org/archlinux/packaging/packages) site
   - Contains a [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) file with `make` instructions used by `makepkg`
 - Read the official Arch `pacman` usage [Tips and tricks](https://wiki.archlinux.org/title/Pacman/Tips_and_tricks)
-- Main queries:#
+- Main queries :#
   - Option `--noconfirm` option answers "yes" or "default" to any interactive prompts
   - Option `--needed` chooses the most needed option if for interactive prompts, which `--noconfirm` may not have an answer for
   - Options `--noconfirm --needed` the surest way to be non-interactive
@@ -424,7 +424,7 @@ Include = /etc/pacman.d/mirrorlist
   - *This is why `yay` stands for "Yet Nother Yogurt", all helpers should basically do the same thing: read `PKGBUILD` and run `makepkg`*
 - Many `pacman` standard flags also apply, but not `--needed`
 - *`yay` must always run as normal user!*
-- Main unique `yay` queries:$
+- Main unique `yay` queries :$
   - `yay` alias for `yay -Syu`
   - `yay -Ps` print system stats for yay
   - `yay -G aur-package-name` get (download) AUR package
@@ -439,10 +439,10 @@ Include = /etc/pacman.d/mirrorlist
 
 #### `makepkg` - Finalize local packages for `pacman -U`
 - [makepkg Arch Wiki](https://wiki.archlinux.org/title/makepkg)
-- Create the `pacman` package tarball in PWD:$
+- Create the `pacman` package tarball in PWD :$
   - `makepkg` with prper `PKGBUILD` file in PWD
     - Results in `package_name-version.pkg.tar.zst` in PWD with file name as `PKGBUILD` instructed
-- Install a `.pkg.tar.zst` file in PWD:$
+- Install a `.pkg.tar.zst` file in PWD :$
   - `makepkg -i` in PWD containing `package_name-version.pkg.tar.zst` (same as `pacman -U ./package_name-version.pkg.tar.zst`)
   - `makepkg -c` clean up leftover files & directories after install (right after `makepkg -i` in same PWD)
 - *`makepkg` does not use `sudo`, but may ask for a password if it needs to call `sudo`*
