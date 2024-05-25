@@ -342,17 +342,123 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
   - NetworkManager (`nmtui` & `nmcli`; persistent)
 
 ### Create Bonding Network Interface
-- `nmcli device status` (find network device name)
+- `nmcli device status` (find network device names)
   - Say this includes devices called `enp3s0` and `enp4s0`, which we use
-- Create an interface bond called `bond0`
+- Create an interface bond called `Bond0` with device name `bond0`
 ```
-nmcli connection add type bond con-name bond0 ifname bond0 bond.options "mode=active-backup,miimon=1000"
-nmcli connection add type ethernet slave-type bond con-name bond0-port1 ifname enp3s0 master bond0
-nmcli connection add type ethernet slave-type bond con-name bond0-port2 ifname enp4s0 master bond0
-nmcli connection up bond0
+nmcli connection add type bond con-name Bond0 ifname bond0 bond.options "mode=active-backup,miimon=1000"
+nmcli connection add type ethernet slave-type bond con-name Bond0-Port1 ifname enp3s0 master bond0
+nmcli connection add type wifi ssid "Home WiFi" slave-type bond con-name Bond0-Port2 ifname wlp4s0 master bond0
+nmcli connection up Bond0
 ```
 - `nmcli device status`
 - System may need `reboot` and changes will persist
+
+## Tool Comparisons (`nmtui` & `nmcli`)
+### Settings from `nmtui`, `nmcli` & `route -n`
+- Note: `nmcli` *CONNECTION* = `nmtui` *Profile name*
+
+| **`nmcli device status` output** :
+
+```
+DEVICE  TYPE      STATE      CONNECTION
+enp0s1  ethernet  connected  Wired connection 1
+enp1s0  ethernet  connected  Wired connection 2 
+wlp2s0  wifi      connected  Home WiFi
+```
+
+| **`nmtui` menu** :
+
+```
+Ethernet
+  Wired connection 1
+  Wired connection 2
+Wi-Fi
+  Home WiFi
+```
+
+| **`nmtui` Edit Connection** :
+
+```
+Profile name: Wired connection 1
+      Device: enp0s1
+```
+
+```
+Profile name: Wired connection 2
+      Device: enp1s0
+```
+
+```
+Profile name: Home WiFi
+      Device: wlp2s0
+```
+
+| **`route -n` output** :
+
+```
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.0.2.0        0.0.0.0         UG    100    0        0 enp0s1
+0.0.0.0         192.168.1.1     0.0.0.0         UG    100    0        0 enp1s0
+0.0.0.0         192.168.1.1     0.0.0.0         UG    600    0        0 wlp2s0
+10.0.2.0        0.0.0.0         255.255.255.0   U     100    0        0 enp0s1
+192.168.1.0     0.0.0.0         255.255.255.0   U     100    0        0 enp1s0
+192.168.1.0     0.0.0.0         255.255.255.0   U     600    0        0 wlp2s0
+```
+
+### Bonding in `nmtui` & `nmcli`
+
+| **`nmcli` bonding command** :#
+
+```console
+nmcli connection add type bond con-name Bond0 ifname bond0 bond.options "mode=active-backup,miimon=1000"
+nmcli connection add type ethernet slave-type bond con-name Bond0-Port1 ifname enp1s0 master bond0
+nmcli connection add type wifi ssid "Home WiFi" slave-type bond con-name Bond0-Port2 ifname wlp2s0 master bond0
+nmcli connection up Bond0
+```
+
+| **`nmcli device status` output** :
+
+```
+DEVICE  TYPE      STATE      CONNECTION
+bond0   bond      connecting Bond0
+```
+
+| **`nmtui` menu** :
+
+```
+Bond
+  Bond0
+```
+
+| **`nmtui` Edit Connection** :
+
+```
+Profile name: Bond0
+      Device: bond0
+
+BOND
+Slaves
+  bond0-port2
+  bond0-port1
+___________________________________________
+
+                Mode: <Active Backup>
+             Primary: _____________________
+     Link monitoring: <MII (recommended)>
+Monitoring frequency: 1000______ ms
+       Link up delay: 0_________ ms
+```
+
+| **`nmcli` bonding command** :# (again for reference to `nmtui` settings above)
+
+```console
+nmcli connection add type bond con-name Bond0 ifname bond0 bond.options "mode=active-backup,miimon=1000"
+nmcli connection add type ethernet slave-type bond con-name Bond0-Port1 ifname enp1s0 master bond0
+nmcli connection add type wifi ssid "Home WiFi" slave-type bond con-name Bond0-Port2 ifname wlp2s0 master bond0
+nmcli connection up Bond0
+```
 
 ## DNS & Host Name Resolution
 **Resolution** - translating hostnames to their host machine IP addresses
@@ -528,11 +634,12 @@ route -n
 
 ```console
 nmcli device status
-# Note device names and don't reuse them below, presuming enp2s0 is the top
-nmcli connection add type bond con-name bond0 ifname bond0 bond.options "mode=active-backup,miimon=1000"
-nmcli connection add type ethernet slave-type bond con-name bond0-port1 ifname enp3s0 master bond0
-nmcli connection add type ethernet slave-type bond con-name bond0-port2 ifname enp4s0 master bond0
-nmcli connection up bond0
+# Note device names and don't reuse them below, presuming enp2s0 is listed at top
+nmcli connection add type bond con-name Bond0 ifname bond0 bond.options "mode=active-backup,miimon=1000"
+nmcli connection add type ethernet slave-type bond con-name Bond0-Port1 ifname enp3s0 master bond0
+nmcli connection add type wifi ssid "Home WiFi" slave-type bond con-name Bond0-Port2 ifname wlp4s0 master bond0
+nmcli connection up Bond0
+nmtui
 ```
 
 *Create the same bond with the above `nmcli` tool using `nmtui`*
