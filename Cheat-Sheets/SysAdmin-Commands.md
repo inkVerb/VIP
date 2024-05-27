@@ -1642,7 +1642,8 @@ systemctl status apparmor
 ### Lesson 12: Backup & System Rescue
 
 ```console
-rsync -avze ssh syncme.d root@192.168.77.4:/root/
+tar Jcvf var.txz /var
+rsync -avze ssh syncme.d root@192.168.77.X:/root/
 
 rescue
 emergency
