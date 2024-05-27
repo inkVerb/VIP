@@ -174,6 +174,141 @@
 - `.tgz` - [Slackware](http://www.slackware.com/) (tarballs handled manually)
 - `.apk` - [Android](https://www.android.com/)
 
+### `pacman` & `yay` (Arch)
+- *`pacman` and `yay` are not built one atop the other, as stacks are with `dpkg` and `rpm`*
+- Both based on the work of `makepkg` (see [Arch makepkg site](https://wiki.archlinux.org/title/Makepkg))
+  - Simplifies Arch package compiling steps [from same explanation as above](https://unix.stackexchange.com/questions/605928))
+  - Basically, `makepkg` looks at `PKGBUILD`, then runs whatever is needed, probably something like:
+```
+configure
+make
+make install DESTDIR=/usr
+```
+  - or `cmake` or `cargo` or `npm --build` etc (see an [article on make vs makepkg](https://unix.stackexchange.com/questions/605928/))
+  - Results in a "proper" Arch package file that can be handled locally by `makepkg -i` (or `pacman -U package-file.pkg.tar.zst` just the same)
+- `pacman` handles packages from the [Official Arch repositories](https://wiki.archlinux.org/title/official_repositories)
+- `yay` handles packages from the [Arch User Repository (AUR)](https://aur.archlinux.org/)
+- An Arch SysAdmin must know which package is from which repo
+
+#### `pacman`
+- *The native Arch Linux package manager*
+- Handles packages from the [Official Arch repositories](https://wiki.archlinux.org/title/official_repositories)
+- Built on `makepkg` output using the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
+  - Resolves dependencies
+  - Uses standard [Arch package guidelines](https://wiki.archlinux.org/title/Arch_package_guidelines)
+- Downloads packages to: `/var/cache/pacman/pkg/`
+- Package files: `PACKAGE_NAME-VERSION.pkg.tar.zst`
+- Repos listed in `/etc/pacman.conf`
+  - Repo entry examples: `core` and `extra`
+
+| **from /etc/pacman.conf**:
+```
+[core]
+SigLevel = PackageRequired
+Include = /etc/pacman.d/mirrorlist
+
+[extra]
+SigLevel = PackageRequired
+Include = /etc/pacman.d/mirrorlist
+```
+- Uses official packages by default, which more or less don't need extensive compiling
+- Each package is:
+  - Built on a `git` repo, main repo is the [Arch Linux GitLab Packages](https://gitlab.archlinux.org/archlinux/packaging/packages) site
+  - Contains a [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) file with `make` instructions used by `makepkg`
+- Read the official Arch `pacman` usage [Tips and tricks](https://wiki.archlinux.org/title/Pacman/Tips_and_tricks)
+- Main queries :#
+  - Option `--noconfirm` option answers "yes" or "default" to any interactive prompts
+  - Option `--needed` chooses the most needed option if for interactive prompts, which `--noconfirm` may not have an answer for
+  - Options `--noconfirm --needed` the surest way to be non-interactive
+  - `pacman -Ss findword findotherword` search for words `findword` and `findotherwordd` etc
+  - `pacman -Qs findinstalledpackage` search for installed packages for `findword`
+  - `pacman -Sy archlinux-keyring` updates the keyring (needed if too long without software updates)
+  - `pacman -Syy` update package version lists
+  - `pacman -Syyu` update main repo packages (update version lists, then install updates)
+    - Only one `-y` is needed as an `-S` subflag; two `-y` subflags will force an upgrade of package lists even if they seem up-to-date
+    - Generally, if `installing PACKAGE (...) breaks dependency '...' required by OTHERPACKAGE`, just remove the `OTHERPACKAGE` package, then try `-Syyu` again, *but at your own risk!!*
+  - `pacman -S package-name` install `package-name` package
+  - `pacman -Syy package-name` update all repo lists, then install `package-name` package
+  - `pacman -R package-name` remove `package-name` package
+  - `pacman -Sw package-name` only download the `.pkg.tar.zst` file for the package to `/var/cache/pacman/pkg/`
+  - `pacman -Syuw --noconfirm`
+  - `pacman -U package_name-VERSION.pkg.tar.zst` manually install `package_name-VERSION.pkg.tar.zst` from that downloaded file
+  - `pacman -Scc` clean cache
+  - `pacman -R package-name` remove the `package-name` package
+  - `pacman -Rsc` remove unneeded dependencies
+  - `pacman -Qe` list explicitly-installed packages
+  - `pacman -Ql package-name` what file the `package-name` package has
+  - `pacman -Qii package-name` info on `package-name` package
+  - `pacman -Qo /path/to/some/program` list package that owns `/path/to/some/program`
+  - `pactree package-name` what the `package-name` package depends on
+  - `pactree -r package-name` what depends on the `package-name` package
+
+#### `yay` (Yet Another Yogurt)
+- *[Yay, written in Go, from Jguer](https://github.com/Jguer/yay/blob/next/README.md)*
+  - *Must be installed manually, see [Installation instructions](https://github.com/Jguer/yay/blob/next/README.md#installation*
+- Handles packages from the [Arch User Repository (AUR)](https://aur.archlinux.org/)
+- May employ `makepkg` as needed to create `makepkg -i` -ready packages compliant with the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
+  - Resolves dependencies
+  - Uses standard [Arch package guidelines](https://wiki.archlinux.org/title/Arch_package_guidelines)
+- Downloads packages to: `~/.cache/yay/`
+- All packages are listed on the AUR in `https://aur.archlinux.org/packages/`
+  - Download and `makepkg` information is in `PKGBUILD`, so additional repo settings are not needed
+- An [AUR helper](https://wiki.archlinux.org/title/AUR_helpers), which largely substitutes for `pacman`, but:
+  - May compile some programs more extensively from source
+  - Handles more diverse `PKGBUILD` instructions depending on what a source code needs
+  - *Must not be run with `sudo` or as `root`!*
+    - Because this often compiles source code, which requires a normal user
+    - Compiling as `root` can create many strange permissions-related issues
+    - Installing on the [Linux FHS](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) requires `root` or `sudo`, but not compiling code itself
+    - This can create a trouble, which is why inkVerb (this VIP Linux class maintainer) wrote the ([yeo tool](https://github.com/inkVerb/yeo/blob/main/README.md))
+- There are many *other* [AUR helpers](https://wiki.archlinux.org/title/AUR_helpers) than `yay`:
+  - `aura`
+  - `pacaur`
+  - `pakku`
+  - `pamac`
+  - `trizen`
+  - ...
+  - *This is why `yay` stands for "Yet Nother Yogurt", all helpers should basically do the same thing: read `PKGBUILD` and run `makepkg`*
+- Many `pacman` standard flags also apply, but not `--needed`
+- *`yay` must always run as normal user!*
+- Main unique `yay` queries :$
+  - `yay` alias for `yay -Syu`
+  - `yay -Ps` print system stats for yay
+  - `yay -G aur-package-name` get (download) AUR package
+  - `yay -Gp` print to `STDOUT` the `PKGBUILD` from AUR
+  - `yay -Bi dir/path` install dependencies and build from `PKGBUILD` in `dir/path`
+  - `yay -Yc` clean unneeded dependencies
+  - AUR voting (yes, it does)
+    - Requires `AUR_USERNAME` and `AUR_PASSWORD` in the environment
+    - `yay -Wv` vote up for package
+    - `yay -Wu` unvote for package
+  - If messages with `sudo` give trouble, try `--sudoflags "-A"` (at your own risk)
+
+#### `makepkg` - Finalize local packages for `pacman -U`
+- [makepkg Arch Wiki](https://wiki.archlinux.org/title/makepkg)
+- Create the `pacman` package tarball in PWD :$
+  - `makepkg` with prper `PKGBUILD` file in PWD
+    - Results in `package_name-version.pkg.tar.zst` in PWD with file name as `PKGBUILD` instructed
+- Install a `.pkg.tar.zst` file in PWD :$
+  - `makepkg -i` in PWD containing `package_name-version.pkg.tar.zst` (same as `pacman -U ./package_name-version.pkg.tar.zst`)
+  - `makepkg -c` clean up leftover files & directories after install (right after `makepkg -i` in same PWD)
+- *`makepkg` does not use `sudo`, but may ask for a password if it needs to call `sudo`*
+*So, on those "Download for Linux" areas of our favorite software sites with **Ubuntu .deb** and **RedHat/OpenSUSE .rpm** options, we could try convincing the world to include **Arch .pkg.tar.zst** also, but we don't need to because we can download install those **.deb** files on Arch with `debtap`...*
+
+#### `debtap` - Convert local `.deb` packages for `pacman -U`
+- *Only when a package cannot be found via `pacman` or `yay`!*
+  - *We don't want conflicts with "proper" packages that Arch already knows how to maintain*
+  - ***Use with care!***
+- Install [debtap from the AUR](https://aur.archlinux.org/packages/debtap)
+  - `yay -S debtap`
+  - `sudo debtap -u` (to properly update the `debtap` tool)
+- Download and install a `.deb` package
+  - `debtap manually-downloaded-package.deb`
+  - Now that should create a proper Arch package named something like `manually-downloaded-package.pkg.tar.zst`
+- Install with Arch tools, either:
+  - `sudo pacman -U manually-downloaded-package.pkg.tar.zst`
+  - `makepkg -i` (from the same PWD)
+
 ### `dpkg` (`apt` Debian)
 #### `dpkg`
 - Dependency/conflict unaware
@@ -290,6 +425,8 @@ gpgcheck=1
 - `dnf --enablerepo repo-name` sets `enabled=1` in `.repo` config
 - `dnf search findword` search for "findword"
 - `dnf info package-name` info about `package-name` package
+- `dnf update` update all installed packages from their repos
+- `dnf update package-name` update specific package `package-name` from its repo
 - `dnf list installed|updates|available` list either of the arguments
 - `dnf grouplist` info on installed package groups & available updates
 - `dnf groupinfo package-group` info on specific `package-group` package group
@@ -298,8 +435,6 @@ gpgcheck=1
 - `dnf localinstall package-file-name` install from local file `package-file-name.rpm`
 - `dnf groupinstall package-group` install software group `package-group`
 - `dnf remove package-name` remove `package-name` package
-- `dnf update` update all installed packages from their repos
-- `dnf update package-name` update specific package `package-name` from its repo
 - `dnf list "dnf-plugin*"` list all `dnf` plugins
 - `dnf repolist` list enabled repos
 - `dnf shell` enter interactive `dnf` shell
@@ -314,153 +449,19 @@ gpgcheck=1
 - Downloads packages to: `/var/cache/zypp/`
 - Some queries :#
   - `zypper list-updates` list available updates
+  - `zypper update` update all packages
+  - `zypper update --non-interactive` update all packages non-interactive
   - `zypper repos` list available repos
   - `zypper search findword` search for "findword"
   - `zypper info package-name` info about `package-name` package
   - `zypper search --provides /path/to/some/program` list package that owns `/path/to/some/program`
   - `zypper install package-name` install `package-name` package
   - `zypper install package-name --non-interactive` install `package-name` package non-interactive
-  - `zypper update` update all packages
-  - `zypper update --non-interactive` update all packages non-interactive
   - `zypper remove package-name` remove `package-name` package
   - `zypper shell` enter interactive `zypper` shell
   - `zypper addrepo http://example.com/path/to/repo some-alias-repo-name` add a repo with `some-alias-repo-name` as your custom repo nickname
   - `zypper removerepo some-alias-repo-name` remove the repo nicknamed `some-alias-repo-name`
   - `zypper clean --all` clears installed packages from `/var/cache/zypp/`
-
-### `pacman` & `yay` (Arch)
-- *`pacman` and `yay` are not built one atop the other, as stacks are with `dpkg` and `rpm`*
-- Both based on the work of `makepkg` (see [Arch makepkg site](https://wiki.archlinux.org/title/Makepkg))
-  - Simplifies Arch package compiling steps [from same explanation as above](https://unix.stackexchange.com/questions/605928))
-  - Basically, `makepkg` looks at `PKGBUILD`, then runs whatever is needed, probably something like:
-```
-configure
-make
-make install DESTDIR=/usr
-```
-  - or `cmake` or `cargo` or `npm --build` etc (see an [article on make vs makepkg](https://unix.stackexchange.com/questions/605928/))
-  - Results in a "proper" Arch package file that can be handled locally by `makepkg -i` (or `pacman -U package-file.pkg.tar.zst` just the same)
-- `pacman` handles packages from the [Official Arch repositories](https://wiki.archlinux.org/title/official_repositories)
-- `yay` handles packages from the [Arch User Repository (AUR)](https://aur.archlinux.org/)
-- An Arch SysAdmin must know which package is from which repo
-
-#### `pacman`
-- *The native Arch Linux package manager*
-- Handles packages from the [Official Arch repositories](https://wiki.archlinux.org/title/official_repositories)
-- Built on `makepkg` output using the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
-  - Resolves dependencies
-  - Uses standard [Arch package guidelines](https://wiki.archlinux.org/title/Arch_package_guidelines)
-- Downloads packages to: `/var/cache/pacman/pkg/`
-- Package files: `PACKAGE_NAME-VERSION.pkg.tar.zst`
-- Repos listed in `/etc/pacman.conf`
-  - Repo entry examples: `core` and `extra`
-
-| **from /etc/pacman.conf**:
-```
-[core]
-SigLevel = PackageRequired
-Include = /etc/pacman.d/mirrorlist
-
-[extra]
-SigLevel = PackageRequired
-Include = /etc/pacman.d/mirrorlist
-```
-- Uses official packages by default, which more or less don't need extensive compiling
-- Each package is:
-  - Built on a `git` repo, main repo is the [Arch Linux GitLab Packages](https://gitlab.archlinux.org/archlinux/packaging/packages) site
-  - Contains a [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) file with `make` instructions used by `makepkg`
-- Read the official Arch `pacman` usage [Tips and tricks](https://wiki.archlinux.org/title/Pacman/Tips_and_tricks)
-- Main queries :#
-  - Option `--noconfirm` option answers "yes" or "default" to any interactive prompts
-  - Option `--needed` chooses the most needed option if for interactive prompts, which `--noconfirm` may not have an answer for
-  - Options `--noconfirm --needed` the surest way to be non-interactive
-  - `pacman -Ss findword findotherword` search for words `findword` and `findotherwordd` etc
-  - `pacman -Qs findword` search for installed packages for `findword`
-  - `pacman -Sy archlinux-keyring` updates the keyring (needed if too long without software updates)
-  - `pacman -Syy` update package version lists
-  - `pacman -Syyu` update main repo packages (update version lists, then install updates)
-    - Only one `-y` is needed as an `-S` subflag; two `-y` subflags will force an upgrade of package lists even if they seem up-to-date
-    - Generally, if `installing PACKAGE (...) breaks dependency '...' required by OTHERPACKAGE`, just remove the `OTHERPACKAGE` package, then try `-Syyu` again, *but at your own risk!!*
-  - `pacman -S package-name` install `package-name` package
-  - `pacman -Syy package-name` update all repo lists, then install `package-name` package
-  - `pacman -Sw package-name` only download the `.pkg.tar.zst` file for the package to `/var/cache/pacman/pkg/`
-  - `pacman -Syuw --noconfirm`
-  - `pacman -U package_name-VERSION.pkg.tar.zst` manually install `package_name-VERSION.pkg.tar.zst` from that downloaded file
-  - `pacman -Scc` clean cache
-  - `pacman -R package-name` remove the `package-name` package
-  - `pacman -Rsc` remove unneeded dependencies
-  - `pacman -Qe` list explicitly-installed packages
-  - `pacman -Ql package-name` what file the `package-name` package has
-  - `pacman -Qii package-name` info on `package-name` package
-  - `pacman -Qo /path/to/some/program` list package that owns `/path/to/some/program`
-  - `pactree package-name` what the `package-name` package depends on
-  - `pactree -r package-name` what depends on the `package-name` package
-
-#### `yay` (Yet Another Yogurt)
-- *[Yay, written in Go, from Jguer](https://github.com/Jguer/yay/blob/next/README.md)*
-  - *Must be installed manually, see [Installation instructions](https://github.com/Jguer/yay/blob/next/README.md#installation*
-- Handles packages from the [Arch User Repository (AUR)](https://aur.archlinux.org/)
-- May employ `makepkg` as needed to create `makepkg -i` -ready packages compliant with the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
-  - Resolves dependencies
-  - Uses standard [Arch package guidelines](https://wiki.archlinux.org/title/Arch_package_guidelines)
-- Downloads packages to: `~/.cache/yay/`
-- All packages are listed on the AUR in `https://aur.archlinux.org/packages/`
-  - Download and `makepkg` information is in `PKGBUILD`, so additional repo settings are not needed
-- An [AUR helper](https://wiki.archlinux.org/title/AUR_helpers), which largely substitutes for `pacman`, but:
-  - May compile some programs more extensively from source
-  - Handles more diverse `PKGBUILD` instructions depending on what a source code needs
-  - *Must not be run with `sudo` or as `root`!*
-    - Because this often compiles source code, which requires a normal user
-    - Compiling as `root` can create many strange permissions-related issues
-    - Installing on the [Linux FHS](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) requires `root` or `sudo`, but not compiling code itself
-    - This can create a trouble, which is why inkVerb (this VIP Linux class maintainer) wrote the ([yeo tool](https://github.com/inkVerb/yeo/blob/main/README.md))
-- There are many *other* [AUR helpers](https://wiki.archlinux.org/title/AUR_helpers) than `yay`:
-  - `aura`
-  - `pacaur`
-  - `pakku`
-  - `pamac`
-  - `trizen`
-  - ...
-  - *This is why `yay` stands for "Yet Nother Yogurt", all helpers should basically do the same thing: read `PKGBUILD` and run `makepkg`*
-- Many `pacman` standard flags also apply, but not `--needed`
-- *`yay` must always run as normal user!*
-- Main unique `yay` queries :$
-  - `yay` alias for `yay -Syu`
-  - `yay -Ps` print system stats for yay
-  - `yay -G aur-package-name` get (download) AUR package
-  - `yay -Gp` print to `STDOUT` the `PKGBUILD` from AUR
-  - `yay -Bi dir/path` install dependencies and build from `PKGBUILD` in `dir/path`
-  - `yay -Yc` clean unneeded dependencies
-  - AUR voting (yes, it does)
-    - Requires `AUR_USERNAME` and `AUR_PASSWORD` in the environment
-    - `yay -Wv` vote up for package
-    - `yay -Wu` unvote for package
-  - If messages with `sudo` give trouble, try `--sudoflags "-A"` (at your own risk)
-
-#### `makepkg` - Finalize local packages for `pacman -U`
-- [makepkg Arch Wiki](https://wiki.archlinux.org/title/makepkg)
-- Create the `pacman` package tarball in PWD :$
-  - `makepkg` with prper `PKGBUILD` file in PWD
-    - Results in `package_name-version.pkg.tar.zst` in PWD with file name as `PKGBUILD` instructed
-- Install a `.pkg.tar.zst` file in PWD :$
-  - `makepkg -i` in PWD containing `package_name-version.pkg.tar.zst` (same as `pacman -U ./package_name-version.pkg.tar.zst`)
-  - `makepkg -c` clean up leftover files & directories after install (right after `makepkg -i` in same PWD)
-- *`makepkg` does not use `sudo`, but may ask for a password if it needs to call `sudo`*
-*So, on those "Download for Linux" areas of our favorite software sites with **Ubuntu .deb** and **RedHat/OpenSUSE .rpm** options, we could try convincing the world to include **Arch .pkg.tar.zst** also, but we don't need to because we can download install those **.deb** files on Arch with `debtap`...*
-
-#### `debtap` - Convert local `.deb` packages for `pacman -U`
-- *Only when a package cannot be found via `pacman` or `yay`!*
-  - *We don't want conflicts with "proper" packages that Arch already knows how to maintain*
-  - ***Use with care!***
-- Install [debtap from the AUR](https://aur.archlinux.org/packages/debtap)
-  - `yay -S debtap`
-  - `sudo debtap -u` (to properly update the `debtap` tool)
-- Download and install a `.deb` package
-  - `debtap manually-downloaded-package.deb`
-  - Now that should create a proper Arch package named something like `manually-downloaded-package.pkg.tar.zst`
-- Install with Arch tools, either:
-  - `sudo pacman -U manually-downloaded-package.pkg.tar.zst`
-  - `makepkg -i` (from the same PWD)
 
 ___
 
@@ -471,12 +472,13 @@ ___
 
 ```console
 pacman -Ss findword findotherword
-pacman -Qs findword
+pacman -Qs findinstalledpackage
 pacman -Sy archlinux-keyring
 pacman -Syy
 pacman -Syyu
 pacman -S cowsay
 pacman -Syy cowsay
+pacman -R cowsay
 pacman -Sw cowsay
 ls /var/cache/pacman/pkg/cowsay*
 pacman -U /var/cache/pacman/pkg/cowsay-VERSION.pkg.tar.zst
@@ -589,8 +591,8 @@ dnf info git
 dnf install --downloadonly git
 find /var/cache -iname "*git*" # use this in the next command
 dnf localinstall /var/cache/dnf/appstream-l07GNum84/packages/git-2.43.0-1.el9.x86_64.rpm
-dnf remove git
 dnf install git
+dnf remove git
 dnf groupinstall package-group
 dnf grouplist
 dnf groupinfo package-group
@@ -616,8 +618,8 @@ zypper repos
 zypper search findword
 zypper info cowsay
 zypper install cowsay
-zypper search --provides /bin/cowsay
 zypper remove cowsay
+zypper search --provides /bin/cowsay
 zypper install cowsay --non-interactive
 zypper update
 zypper update --non-interactive

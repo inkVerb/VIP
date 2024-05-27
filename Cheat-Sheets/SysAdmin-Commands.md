@@ -794,7 +794,7 @@ modprobe -r nbd
 ```console
 # Arch: pacman
 pacman -Ss findword findotherword
-pacman -Qs findword
+pacman -Qs findinstalledpackage
 pacman -Sy archlinux-keyring
 pacman -Syy
 pacman -Syyu
@@ -1413,4 +1413,239 @@ lsblk -f
 update-grub
 
 exit
+```
+
+## Final Tough List
+*For typing into a text editor, not the terminal!*
+
+### Lesson 1: Boot & System Init
+
+```console
+cat <<EOF > /etc/systemd/system/ddran.service
+[Unit]
+Description=dd running nothing
+
+[Service]
+ExecStart=/usr/bin/dd if=/dev/urandom of=/dev/null
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+shutdown.target
+-
+sysinit.target
+rescue.target
+--
+sockets.target
+basic.target
+network.target
+multi-user.target
+--
+graphical.target
+-
+reboot.target
+-
+emergency.target
+```
+
+### Lesson 2: Procesesses & Monitoring
+
+```console
+ps -C gedit -o cmd,pid,uid,ruid,euid,suid,user,ruser,euser,suser
+ulimit -H -u 256512
+umask 0022
+
+/etc/cron.d/somejob
+0 1 * * 2 user some command
+chmod 0644 /etc/cron.d/somejob
+```
+
+### Lesson 3: Users & Groups
+
+```console
+alias vovo="echo hello"
+unalias vovo
+useradd pinky -m -k /etc/skel
+usermod pinky -aG sudo
+```
+
+### Lesson 4: Git & Revision Control
+
+```console
+
+git remote add origin git@github.com:myusername/viprepo.git
+git push -u origin main
+git merge origin/newbranch -m "Merged"
+git push origin -d newbranch    # Remote delete
+git branch -d newbranch         # Local delete
+```
+
+### Lesson 5: Kernel & Devices
+
+```console
+pacman -S linux                                                      # newest version
+kernel-install add $(uname -r) /usr/lib/modules/$(uname -r)/vmlinuz  # current version
+kernel-install remove $(uname -r)
+
+apt-get install --reinstall linux-image-generic   # newest version
+update-initramfs -u -k $(uname -r)                # current version
+
+sudo -i
+dnf reinstall kernel           # newest version
+dnf install kernel-$(uname -r) # current version
+dnf remove kernel-$(uname -r)
+
+zypper in kernel-default                  # newest version
+zypper se -s 'kernel*'
+zypper in kernel-default-VER.SI.ION.NUM   # current version
+zypper rm kernel-default-VER.SI.ION.NUM
+
+/etc/sysctl.conf
+/proc/cmd
+mknod -m 655 /dev/zmyusb c 254 1
+dmidecode -t
+```
+
+### Lesson 6: Networks
+
+```console
+ip route add 10.5.0.0/16 via 192.168.1.100
+ip route del 10.5.0.0/16 via 192.168.1.100
+ip route add default via 192.168.1.21 dev enp2s0
+ip route del default via 192.168.1.21 dev enp2s0
+
+nmcli connection add type bond con-name Bond0 ifname bond0 bond.options "mode=active-backup,miimon=1000"
+nmcli connection add type ethernet slave-type bond con-name Bond0-Port1 ifname enp3s0 master bond0
+nmcli connection add type wifi ssid "Home WiFi" slave-type bond con-name Bond0-Port2 ifname wlp4s0 master bond0
+nmcli connection up Bond0
+nmcli connection down Bond0
+```
+
+### Lesson 7: Disk & Partitioning
+
+```console
+/etc/fstab
+UUID=s0me-l0ng-n0mb3r   /boot/efi      vfat    umask=0077 0 2 
+UUID=s0me-l0ng-n0mb3r   /              ext4    defaults,noatime 0 1
+/dev/sdx1               /home          btrfs   defaults,noatime,nofail 0 1
+/var/swap.img           none           swap    sw 0 0
+/dev/volgrp/thislvm     /thislvm       ext4    defaults 1 2
+
+pvcreate /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4
+vgcreate -s 16M volgrp /dev/sdx1
+vgextend volgrp /dev/sdx2 /dev/sdx3 /dev/sdx4
+lvcreate -L 400G -n thislvm volgrp
+
+pvmove /dev/sdx3
+vgreduce volgrp /dev/sdx3
+pvremove /dev/sdx3
+lvresize -f -L 2g
+
+lvcreate -s -n thesnap -l 128 /dev/volgrp/thislvm
+lvconvert --mergesnapshot /dev/volgrp/thesnap
+
+lvchange -an /dev/volgrp/thislvm
+lvchange -ay /dev/volgrp/thislvm
+
+/etc/nbd-server/config
+[generic]
+user = nbd 
+group = nbd
+[foo]
+exportname = /export/foo
+
+nbd-client -N foo 192.168.0.9 10809 /dev/nbd0
+```
+
+### Lesson 8: Packages
+
+```console
+pacman -Ss findword findotherword
+pacman -Qs findinstalledpackage
+pacman -Sy archlinux-keyring
+pacman -Syyu
+pacman -S cowsay
+pacman -R cowsay
+pacman -Scc
+
+apt-get update
+apt-get upgrade -y
+apt-get install cowsay
+apt-get remove cowsay
+apt-get autoremove
+apt-get clean
+
+dnf search findword
+dnf install git
+dnf remove git
+dnf clean all
+
+zypper search findword
+zypper install cowsay
+zypper clean --all
+```
+
+### Lesson 9: PAM & Cloud (SSH, LDAP, Docker, Mail)
+
+```console
+ssh-keygen -t rsa -N "" -f key_1 -C Key-1
+ssh root@192.168.77.X
+scp ~/m1 root@192.168.77.X:~/
+scp root@192.168.77.X:~/m2 ~/
+
+dpkg-reconfigure slapd
+/etc/ldap/ldap.conf
+  # BASE    dc=localhost,dc=localdomain
+  # URI     ldap://localhost:389
+  # BASE    dc=somedomain,dc=tld
+  # URI     ldap://192.168.77.X
+  
+docker compose up -d
+docker compose down
+docker pull centos
+docker run -d -t --name bagged centos
+docker exec -it bagged bash
+docker ps
+docker stop bagged
+```
+
+### Lesson 10: Firewall
+
+```console
+firewall-cmd --zone=dmz --list-all
+firewall-cmd --set-default-zone=public
+firewall-cmd --get-default-zone
+firewall-cmd --state
+```
+
+### Lesson 11: Security Modules
+
+```console
+sestatus
+getenforce
+
+/etc/selinux/
+setenforce Permissive
+getenforce
+setenforce Enforcing
+getenforce
+ls -Z
+
+aa-enabled
+aa-status
+
+apparmor_status
+systemctl status apparmor
+```
+
+### Lesson 12: Backup & System Rescue
+
+```console
+rsync -avze ssh syncme.d root@192.168.77.4:/root/
+
+rescue
+emergency
+chroot /mnt/fixsys
+fsck /dev/sdb1
 ```
