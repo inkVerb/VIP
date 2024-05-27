@@ -593,6 +593,7 @@ su
 cat <<EOF > /etc/systemd/system/ddran.service
 [Unit]
 Description=dd running nothing
+After=sockets.target
 
 [Service]
 ExecStart=/usr/bin/dd if=/dev/urandom of=/dev/null

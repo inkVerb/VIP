@@ -38,8 +38,8 @@
 - Packages:
   - Arch: `openssh` package
   - OpenSUSE: `openssh` package
-  - Debian/Ubuntu: `openssh-server` & `openssh-client` packages
-  - RedHat/CentOS: `openssh-server` & `openssh-clients` packages
+  - Debian: `openssh-server` & `openssh-client` packages
+  - RedHat: `openssh-server` & `openssh-clients` packages
 - Uses the native Linux PAM
 - Login to a remote Linux/Unix machine
 - Can use password or key authentication
@@ -174,7 +174,7 @@ Host some_nickname
 - The `ssh` server does not necessarily need to use PAM
   - PAM helps track user logon time, etc
   - `ssh` with PAM used to require only `root` login, but that is outdated information; today `ssh` with PAM can authenticate normal users also
-- `UsePAM yes` is turned on for `ssh` on many Linux Distros (including Ubuntu, CentOS, and Arch)
+- `UsePAM yes` is turned on for `ssh` on many Linux Distros (including Debian, RedHat, and Arch)
 - `/etc/ssh/sshd_config` is ***not*** the main place for this setting, tho it shows up there sometimes
   - Many obvious settings in `/etc/` are set by the SysAdmin; distro defaults for many packages are usually deeper in `/etc/`, `/user/lib/`, `/lib/` and such
 - Search to find the default settings
@@ -588,9 +588,9 @@ userPassword: {SSHA}lOnGhaSsSh3D/pA55wD+inthisplace0
 - Client config files:
   - SSSD-LDAP: `/etc/sssd/conf.d/00-sssd.conf`
   - PAM-LDAP:
-    - Arch & CentOS: `/etc/pam.d/system-auth`
-    - Ubuntu: `/etc/pam.d/common-session.conf`
-    - OpenSUSE: `/etc/pam.d/common-auth` & `/etc/pam.d/common-password`
+    - Arch & RedHat: `/etc/pam.d/system-auth`
+    - Debian: `/etc/pam.d/common-*`
+    - OpenSUSE: `/etc/pam.d/common-*`
     - Generally:
       - Add `sufficient pam_ldap.so` before any line with `pam_unix.so`
       - But `session` line uses ` optional`
@@ -616,7 +616,7 @@ cache_credentials = true
 ldap_tls_reqcert = allow
 ```
 
-| **/etc/pam.d/system-auth** || **/etc/pam.d/common-session.conf** : (PAM-LDAP Client)
+| **/etc/pam.d/system-auth** || **/etc/pam.d/common-\*** : (PAM-LDAP Client)
 
 ```
 <pre>
@@ -672,7 +672,7 @@ session     optional    pam_permit.so
   - RedHat: *manually add special repositories*
 
 ### Docker Management
-- Docker commands work only for the running service:#
+- Docker commands work only for the running service :#
   - `systemctl enable docker`
   - `systemctl start docker`
 - Container/Image management :$
@@ -685,37 +685,39 @@ session     optional    pam_permit.so
   - `docker ps -a` - List *all* available Docker containers
   - `docker rmi -f IMAGE_ID 2ND_IMAGE_ID ...` - Forcibly remove a Docker image (often needs force)
   - `docker rm -f CONTAINER_ID | NAMES` - Forcibly remove Docker container (force only needed if it is running)
-- Container creation:# (inside PWD containing `Dockerfile`, etc)
+- Container creation :# (inside PWD containing `Dockerfile`, etc)
   - `docker build .` - Build without usable tag
   - `docker build -t some-tag .` - Build using a tag `some-tag` to use in `docker run` commands, etc
-- Pull and start "Hello World":#
+- Pull and start "Hello World" :#
   - Hello World: `docker run hello-world`
-- Pull, start, and enter BASH:#
+- Pull, start, and enter BASH :#
   - Ubuntu: `docker run -it ubuntu bash`
-  - CentOS: `docker run -it centos bash`
-- Pull only:#
+  - Alpine: `docker run -it alpine bash`
+- Pull only :#
   - Ubuntu: `docker pull ubuntu`
-  - CentOS: `docker pull centos`
+  - Alpine: `docker pull alpine`
   - Hello World: `docker pull hello-world`
-- Start:# `docker run -d -t`
-  - `-d` flag for **daemon**
-  - `-t` flag for pseudo-TTY *so it actually starts running*
-  - Ubuntu: `docker run -d -t ubuntu`
-  - CentOS: `docker run -d -t centos`
-  - Hello world: `docker run -d -t hello-world`
-- Start `-p 80:80`:# ***with port** to use at `localhost` on local desktop web browser*
+- Start :# `docker run -dt`
+  - `-d` flag for **detatch** *(daemon, run in background)*
+  - `-t` flag for pseudo-**TTY** *(so it actually starts running)*
+  - Ubuntu: `docker run -dt ubuntu`
+  - Alpine: `docker run -dt alpine`
+  - Hello world: `docker run -dt hello-world`
+- Start `-p 80:80` :# ***with port** to use at `localhost` on local desktop web browser*
   - `docker run -d -p 80:80 ubuntu` (if it is ready to run a webserver, which it probalby isn't)
   - `docker run -d -p 80:80 some-oob-ready-webserver-container`
-- Stop:#
+- Stop :#
   - `docker ps`
   - `docker stop CONTAINER_ID`
-- Custom-named "**bagged**" CentOS image:#
-  - `docker pull centos` - Download a CentOS Docker image
-  - `docker run -d -t --name bagged centos` - Start the "bagged" container using the CentOS image we just downloaded
+- Custom-named "**bagged**" Alpine image :#
+  - `docker pull alpine` - Download a Alpine Docker image
+  - `docker run -dt --name bagged alpine` - Start the "bagged" container using the Alpine image we just downloaded
   - `docker exec -it bagged bash` - Enter the *bagged* container's **BASH** CLI
+    - `-i` flag for **interface** 
+    - `-t` flag for pseudo-**TTY**
   - `exit` - Exit the BASH CLI
   - `docker exec -it bagged sh` - Enter the *bagged* container's **Shell** CLI
-- List running Docker containers:#
+- List running Docker containers :#
   - `docker ps` - View all Docker containers
 
 ### Docker Compose
@@ -754,7 +756,7 @@ services:
     command: echo "I'm running ${COMPOSE_PROJECT_NAME}"
 ```
 
-  - With this file in the same directory, simply run:# `docker compose up -d`
+  - With this file in the same directory, simply run :# `docker compose up -d`
 
 - These ***example*** files are templates and require other things to be in place
   - Such `.yaml` files are likely budled for the SysAdmin to deploy
@@ -1399,8 +1401,8 @@ cache_credentials = true
 ldap_tls_reqcert = allow
 EOF
 
-ls /etc/pam.d/common-session.conf
-vim /etc/pam.d/common-session.conf
+ls /etc/pam.d/
+vim /etc/pam.d/common-session
 
 sudo cat <<EOF > /etc/pam.d/common-session.conf
 auth        sufficient  pam_ldap.so
@@ -1460,13 +1462,13 @@ sudo docker run hello-world
 sudo docker ps
 
 # Start containers
-sudo docker run -d -t ubuntu
-sudo docker run -d -t hello-world
+sudo docker run -dt ubuntu
+sudo docker run -dt hello-world
 sudo docker ps
 
-# CentOS
-sudo docker pull centos
-sudo docker run -d -t --name bagged centos
+# Alpine
+sudo docker pull alpine
+sudo docker run -dt --name bagged alpine
 sudo docker ps
 sudo docker exec -it bagged bash
 ## Now in the Docker shell
@@ -1667,11 +1669,11 @@ session     optional    pam_permit.so
 ```
 
 ### Docker
-- Debian/Arch/SUSE packages: `docker` & `docker-compose`
+- Debian/Arch/OpenSUSE packages: `docker` & `docker-compose`
 - `systemctl start docker` - Start the Docker service
 - `docker compose` t- Activate a `.yaml` file in PWD
 - `docker build -t MY_TAG .` - Build a container from `Dockerfile` in PWD
-- `docker run -d -t SOME_CONTAINER` - Start running a containter
+- `docker run -dt SOME_CONTAINER` - Start running a containter
 - `docker exec -it CONTAINER_ID bash` - Enter the container's running CLI `/bin/bash` shell
 - `docker ps` - List running containers
 - `docker ps -a` - List all available containers

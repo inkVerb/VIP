@@ -57,6 +57,7 @@ su
 cat <<EOF > /etc/systemd/system/ddran.service
 [Unit]
 Description=dd running nothing
+After=sockets.target
 
 [Service]
 ExecStart=/usr/bin/dd if=/dev/urandom of=/dev/null
@@ -1032,6 +1033,12 @@ apt install sssd-ldap
 
 vim /etc/sssd/conf.d/00-sssd.conf
 vim /etc/pam.d/common-session.conf
+vim /etc/pam.d/system-auth
+
+auth      sufficient  pam_ldap.so
+account   sufficient  pam_ldap.so
+password  sufficient  pam_ldap.so
+session   optional    pam_ldap.so
 
 systemctl start sssd
 systemctl start slapd
@@ -1055,8 +1062,8 @@ systemctl status docker
 docker run -it ubuntu
 docker run hello-world
 
-docker pull centos
-docker run -d -t --name bagged centos
+docker pull alpine
+docker run -dt --name bagged alpine
 docker ps
 docker exec -it bagged bash
 ## Now in the Docker shell
@@ -1424,6 +1431,7 @@ exit
 cat <<EOF > /etc/systemd/system/ddran.service
 [Unit]
 Description=dd running nothing
+After=sockets.target
 
 [Service]
 ExecStart=/usr/bin/dd if=/dev/urandom of=/dev/null
@@ -1456,8 +1464,7 @@ ps -C gedit -o cmd,pid,uid,ruid,euid,suid,user,ruser,euser,suser
 ulimit -H -u 256512
 umask 0022
 
-/etc/cron.d/somejob
-0 1 * * 2 user some command
+0 1 * * 2 user /usr/bin/some/command with args
 chmod 0644 /etc/cron.d/somejob
 ```
 
@@ -1476,6 +1483,7 @@ usermod pinky -aG sudo
 
 git remote add origin git@github.com:myusername/viprepo.git
 git push -u origin main
+git tag -a v0.1 -m "Message"
 git merge origin/newbranch -m "Merged"
 git push origin -d newbranch    # Remote delete
 git branch -d newbranch         # Local delete
@@ -1532,21 +1540,22 @@ UUID=s0me-l0ng-n0mb3r   /              ext4    defaults,noatime 0 1
 /var/swap.img           none           swap    sw 0 0
 /dev/volgrp/thislvm     /thislvm       ext4    defaults 1 2
 
-pvcreate /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4
-vgcreate -s 16M volgrp /dev/sdx1
-vgextend volgrp /dev/sdx2 /dev/sdx3 /dev/sdx4
+pvcreate /dev/sdb1 /dev/sdb2 /dev/sdb3
+vgcreate -s 16M volgrp /dev/sdb1 /dev/sdb2 /dev/sdb3
 lvcreate -L 400G -n thislvm volgrp
-
-pvmove /dev/sdx3
-vgreduce volgrp /dev/sdx3
-pvremove /dev/sdx3
-lvresize -f -L 2g
-
 lvcreate -s -n thesnap -l 128 /dev/volgrp/thislvm
-lvconvert --mergesnapshot /dev/volgrp/thesnap
+lvresize -f -L 300G /dev/volgrp/thislvm
+
+pvmove /dev/sdb3
+vgreduce vogrp /dev/sdb3
+vgextend volgrp /dev/sdb4 /dev/sdb5
+pvremove /dev/sdb3
 
 lvchange -an /dev/volgrp/thislvm
+lvconvert --mergesnapshot /dev/volgrp/thesnap
 lvchange -ay /dev/volgrp/thislvm
+
+mount -o ro /dev/volgrp/thesnap /mnt/thesnap
 
 /etc/nbd-server/config
 [generic]
@@ -1594,17 +1603,31 @@ ssh root@192.168.77.X
 scp ~/m1 root@192.168.77.X:~/
 scp root@192.168.77.X:~/m2 ~/
 
+apt install slapd ldap-utils
 dpkg-reconfigure slapd
+systemctl start slapd
 /etc/ldap/ldap.conf
   # BASE    dc=localhost,dc=localdomain
   # URI     ldap://localhost:389
   # BASE    dc=somedomain,dc=tld
   # URI     ldap://192.168.77.X
-  
+
+apt install sssd-ldap
+systemctl start sssd
+
+cat /etc/sssd/conf.d/00-sssd.conf
+cat /etc/pam.d/common-session.conf
+cat /etc/pam.d/system-auth
+
+auth      sufficient  pam_ldap.so
+account   sufficient  pam_ldap.so
+password  sufficient  pam_ldap.so
+session   optional    pam_ldap.so
+
 docker compose up -d
 docker compose down
-docker pull centos
-docker run -d -t --name bagged centos
+docker pull alpine
+docker run -dt --name bagged alpine
 docker exec -it bagged bash
 docker ps
 docker stop bagged

@@ -12,7 +12,7 @@
 - **program** - written "instruction" saved in an executable file that can be "run" in the operating system
 - **process** - a program that is running in the operating system with a PID, using RAM and CPU, etc
   - A process cannot make calls to hardware, but must interact through **system calls** to talk to the kernel, which talks to the hardware
-- **setuid program** - marked with an `s` bit in permissions, meaning that the **effective** user may not be the user that executes it
+- **setuid program** - marked with an `s` bit in permissions, meaning that the **effective** user/group *is the **owner** of the file*, not the user that executes it
   - Three types of UIDs:
     - `RUID` Real User ID, user that runs the program
     - `EUID` Effective User ID, determins privileges of the process for the kernel

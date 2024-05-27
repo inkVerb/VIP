@@ -200,7 +200,7 @@ fudge A.B.C.0 stratum 10
   - `eth0` (legacy wired ethernet)
   - `wlan0` (legacy wireless LAN)
   - `wlp2` (Wireless LAN PCI bus `2`)
-  - `wlp2s0` (Wireless LAN ISDN `S` interface)
+  - `wlp2s0` (Wireless LAN PCI bus `2` ISDN `S` interface)
 - Device-IP maps: (use `| grep something` to narrow results)
   - `lspci` PCI devices
   - `ip link` connections (AKA `ip link show`)
