@@ -305,8 +305,8 @@ cd /usr/lib/modules/
 ls
 
 # Arch
-pacman -S linux
-kernel-install add $(uname -r) /usr/lib/modules/$(uname -r)/vmlinuz
+pacman -S linux                                                      # newest version
+kernel-install add $(uname -r) /usr/lib/modules/$(uname -r)/vmlinuz  # current version
 kernel-install remove $(uname -r)
 
 # Ubuntu
@@ -315,13 +315,14 @@ update-initramfs -u -k $(uname -r)                # current version
 
 # RedHat
 # SELinux: su = sudo -i
-dnf reinstall kernel
-dnf remove kernel-$(unamne -r)
-dnf install kernel-$(uname -r)
+dnf reinstall kernel           # newest version
+dnf install kernel-$(uname -r) # current version
+dnf remove kernel-$(uname -r)
 
 # OpenSUSE
+zypper in kernel-default                  # newest version
 zypper se -s 'kernel*'
-zypper in kernel-default-VER.SI.ION.NUM
+zypper in kernel-default-VER.SI.ION.NUM   # current version
 zypper rm kernel-default-VER.SI.ION.NUM
 ```
 
@@ -346,9 +347,9 @@ cd /usr/share/doc/
 ls kernel-*
 
 # OpenSUSE
-zypper se -s 'kernel*'
-zypper in kernel-default-VER.SI.ION.NUM
-zypper rm kernel-default-VER.SI.ION.NUM
+zypper install kernel-docs
+cd /usr/share/doc/kernel-docs
+ls
 ```
 
 | **Linux docs in browser** ://

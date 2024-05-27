@@ -272,9 +272,18 @@ systemctl status firewalld
 
 firewall-cmd --state
 firewall-cmd --get-zones
+firewall-cmd --get-active-zones
 firewall-cmd --get-default-zone
 
 sudo firewall-cmd --set-default-zone=dmz
+firewall-cmd --get-default-zone
+sudo firewall-cmd --set-default-zone=public
+firewall-cmd --get-default-zone
+sudo firewall-cmd --set-default-zone=work
+firewall-cmd --get-default-zone
+sudo firewall-cmd --set-default-zone=public
+firewall-cmd --get-default-zone
+sudo firewall-cmd --set-default-zone=trusted
 firewall-cmd --get-default-zone
 sudo firewall-cmd --set-default-zone=public
 firewall-cmd --get-default-zone
@@ -285,6 +294,8 @@ nmcli device status
 
 sudo firewall-cmd --state
 sudo firewall-cmd --reload
+sudo firewall-cmd --zone=dmz --list-all
+sudo firewall-cmd --zone=work --list-all
 sudo firewall-cmd --zone=public --list-all
 sudo firewall-cmd --zone=trusted --list-all
 

@@ -551,8 +551,11 @@ cat /etc/hostname
 hostname
 hostname -i
 
-sudo hostname temp
+hostname
 sudo hostnamectl set-hostname $(hostname)
+hostname
+sudo hostname temp    # Not persistent
+hostname
 
 less /etc/hosts
 less
@@ -580,21 +583,21 @@ vim /etc/ntp.conf
 less /etc/NetworkManager/NetworkManager.conf
 grep plugins= /etc/NetworkManager/NetworkManager.conf
 
+# Arch
+cd /etc/NetworkManager
+ls
+
+# Debian
+less /etc/network/interfaces
+
 # Red Hat
 less /etc/sysconfig/network
 less /etc/sysconfig/network-scripts/ifcfg-ethX
 less /etc/sysconfig/network-scripts/ifcfg-ethX:Y
 less /etc/sysconfig/network-scripts/rout-ethX
 
-# Debian
-less /etc/network/interfaces
-
 # SUSE
 cd /etc/sysconfig/network
-ls
-
-# Arch
-cd /etc/NetworkManager
 ls
 ```
 
@@ -626,7 +629,7 @@ ip route del 10.5.0.0/16 via 192.168.1.100
 route -n
 ip route add default via 192.168.1.21 dev enp2s0
 route -n
-ip route add default via 192.168.1.1 dev enp2s0
+ip route del default via 192.168.1.21 dev enp2s0
 route -n
 ```
 

@@ -1173,7 +1173,7 @@ vim /etc/ldap/ldap.conf
   # URI     ldap://192.168.77.X
 ```
 
-#### Basic Users
+#### LDAP Basic Users
 
 | **Server** :$
 

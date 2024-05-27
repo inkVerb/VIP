@@ -379,6 +379,14 @@ rm two four        # cleanup
   - `sfdisk` (non-interactive)
 - GPT fdisk Tools
   - `gdisk` (interactive)
+    - `?` help Menu
+    - `p` Partition table info *(includes pending changes)*
+    - `o` new GPT partition table
+    - `n` New partition
+    - `d` Delete partition
+    - `t` change partition Type
+    - `w` Write and exit
+    - `q` Quit without changes
   - `sgdisk` (non-interactive)
 - GNU Tools
   - `parted` (CLI)
@@ -1932,9 +1940,10 @@ ls
 cd /mnt
 sudo mkdir one two three four
 
+# fdisk (legacy, can skip to gdisk)
 sudo fdisk /dev/sdx # create at least 5 partitions
-# g # greate new partition table GPT
-# n # create new partition
+# g # new partition table GPT
+# n # new partition
 sudo partprobe -s
 sudo mkfs.ext4 /dev/sdx1
 sudo mkfs.btrfs /dev/sdx2
@@ -1958,7 +1967,10 @@ sudo umount /mnt/three
 sudo umount /mnt/four
 sudo swapoff /dev/sdx5
 
+# gdisk
 sudo gdisk /dev/sdx # create at least 5 partitions
+# o # new partition table GPT
+# n # new partition
 sudo mkfs.ext4 /dev/sdx1
 sudo mkfs.btrfs /dev/sdx2
 sudo mkfs.fat -F32 /dev/sdx3
@@ -2062,10 +2074,11 @@ sudo vgreduce volgrp /dev/sdx3 /dev/sdx4
 sudo pvremove /dev/sdx3 /dev/sdx4
 sudo pvcreate /dev/sdx3 /dev/sdx4
 sudo vgcreate -s 16M newgrp /dev/sdx3 /dev/sdx4
+
 sudo vgs
-sudo vgdisplay
 sudo vgs newgrp
 sudo vgs volgrp
+sudo vgdisplay
 sudo vgdisplay newgrp
 sudo vgdisplay volgrp
 sudo vgchange -an newgrp
@@ -2073,9 +2086,11 @@ sudo vgchange -an volgrp
 sudo vgmerge volgrp newgrp
 sudo change -ay volgrp
 
+sudo lvremove /dev/volgrp/thislvm
 sudo vgremove volgrp
 sudo vgcreate -s 16M volgrp /dev/sdx1
 sudo vgextend volgrp /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5
+sudo vgremove volgrp
 
 sudo pvremove /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5 --force --force
 sudo pvcreate /dev/sdx1 /dev/sdx2 /dev/sdx3 /dev/sdx4 /dev/sdx5
@@ -2202,6 +2217,7 @@ sudo bonnie++ -u 0 -n 0 -f -b -r 150 -d /tmp/
 
 ```console
 # Configs and process
+sudo mv /etc/nbd-server/config /etc/nbd-server/config.bak
 vim /etc/nbd-server/config
 sudo nbd-server
 sudo nbd-server -C /etc/nbd-server/config
@@ -2222,16 +2238,17 @@ sudo mkfs.ext4 /export/export1
 sudo mkfs.ext4 /export/otherexport
 
 # Server configs
-cat <<EOF > /etc/nbd-server/config
+sudo mv /etc/nbd-server/config /etc/nbd-server/config.bak
+sudo cat <<EOF > /etc/nbd-server/config
 [generic]
 user = nbd 
 group = nbd
 includedir = /etc/nbd-server/conf.d
 EOF
 
-mkdir -p /etc/nbd-server/conf.d
+sudo mkdir -p /etc/nbd-server/conf.d
 
-cat <<EOF > /etc/nbd-server/conf.d/foo.conf
+sudo cat <<EOF > /etc/nbd-server/conf.d/foo.conf
 [foo]
 exportname = /export/foo
 EOF
@@ -2242,13 +2259,13 @@ exportname = /export/export1
 EOF
 
 # Still can add to the main config directly
-cat <<EOF >> /etc/nbd-server/config
+sudo cat <<EOF >> /etc/nbd-server/config
 [otherexport]
 exportname = /export/otherexport
 EOF
 
 # Start the NBD server
-nbd-server
+sudo nbd-server
 ip a # User your NIC IP addresses to replace 192.168.0.9 below
 
 # Connect NBDs on client

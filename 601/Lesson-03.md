@@ -289,9 +289,9 @@ unalias voovoo
 voovoo
 echo 'alias voovoo="echo hello"' >> ~/.profile
 vim ~/.profile
+sed -i '/alias voovoo=/d' ~/.profile
 
 history
-echo $SHELL
 cat ~/.bash_history
 cat ~/.zsh_history
 history | head
@@ -427,7 +427,7 @@ su pinky
 exit
 
 sudo grep pinky /etc/shadow
-sudo chage -l pinky
+sudo chage -l pinky 
 sudo chage -E 1970-01-01 pinky
 sudo grep pinky /etc/shadow
 sudo chage -l pinky

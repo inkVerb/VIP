@@ -457,6 +457,21 @@ exit
 ```console
 su
 
+# Arch
+pacman -Syy apparmor
+
+# Debian
+apt install apparmor-profiles
+apt install apparmor-utils
+dpkg -L apparmor-utils | grep bin
+
+# OpenSUSE
+rpm -qil apparmor-utils | grep bin
+zypper install apparmor-utils
+
+aa-enabled
+aa-status
+
 apparmor_status
 systemctl status apparmor
 systemctl stop apparmor
@@ -469,16 +484,6 @@ ps aux
 
 ls /etc/apparmor.d | wc -l
 ls -l /etc/apparmor.d
-
-# OpenSUSE
-rpm -qil apparmor-utils | grep bin
-zypper install apparmor-utils
-
-# Debian
-apt install apparmor-profiles
-apt install apparmor-utils
-dpkg -L apparmor-utils | grep bin
-
 
 cd /etc/apparmor.d
 ls -l

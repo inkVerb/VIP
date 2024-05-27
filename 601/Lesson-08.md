@@ -467,6 +467,66 @@ ___
 # The Keys
 *Practice commands for SysAdmins who already know what these mean*
 
+| **Arch `pacman`** :#
+
+```console
+pacman -Ss findword findotherword
+pacman -Qs findword
+pacman -Sy archlinux-keyring
+pacman -Syy
+pacman -Syyu
+pacman -S cowsay
+pacman -Syy cowsay
+pacman -Sw cowsay
+ls /var/cache/pacman/pkg/cowsay*
+pacman -U /var/cache/pacman/pkg/cowsay-VERSION.pkg.tar.zst
+ls /var/cache/pacman/pkg/
+pacman -Scc
+ls /var/cache/pacman/pkg/
+pacman -Rsc
+pacman -Qe
+pacman -Ql package-name
+pacman -Qii package-name
+pacman -Qo /path/to/some/file
+pactree package-name
+pactree -r package-name
+```
+
+| **Arch `yay`** :#
+
+```console
+yay -Syyu
+yay -Ps
+yay -Yc
+yay -Gp aur-package-name # Output PKGBUILD for that package
+yay -S aur-package-name
+yay -R aur-package-name
+```
+
+| **Arch `makepkg`** :#
+
+```console
+pacman -Sw package-name
+cd /var/cache/pacman/pkg/
+ls
+cd
+mkdir pacmanw
+cd pacmanw
+ls /var/cache/pacman/pkg/
+cp /var/cache/pacman/pkg/package_name-version.pkg.tar.zst .
+tar xf package_name-version.pkg.tar.zst
+ls
+# assuming output is "opt"
+cd opt
+ls
+cd package_name
+cd ~/pacmanw
+makepkg -i
+makepkg -c
+cd
+rm -rf pacmanw
+```
+
 | **Debian `dpkg`** :#
 
 ```console
@@ -565,66 +625,6 @@ zypper shell
 zypper addrepo http://example.com/path/to/repo some-alias-repo-name
 zypper removerepo some-alias-repo-name
 zypper clean --all
-```
-
-| **Arch `pacman`** :#
-
-```console
-pacman -Ss findword findotherword
-pacman -Qs findword
-pacman -Sy archlinux-keyring
-pacman -Syy
-pacman -Syyu
-pacman -S cowsay
-pacman -Syy cowsay
-pacman -Sw cowsay
-ls /var/cache/pacman/pkg/cowsay*
-pacman -U /var/cache/pacman/pkg/cowsay-VERSION.pkg.tar.zst
-ls /var/cache/pacman/pkg/
-pacman -Scc
-ls /var/cache/pacman/pkg/
-pacman -Rsc
-pacman -Qe
-pacman -Ql package-name
-pacman -Qii package-name
-pacman -Qo /path/to/some/file
-pactree package-name
-pactree -r package-name
-```
-
-| **Arch `yay`** :#
-
-```console
-yay -Syyu
-yay -Ps
-yay -Yc
-yay -Gp aur-package-name # Output PKGBUILD for that package
-yay -S aur-package-name
-yay -R aur-package-name
-```
-
-| **Arch `makepkg`** :#
-
-```console
-pacman -Sw package-name
-cd /var/cache/pacman/pkg/
-ls
-cd
-mkdir pacmanw
-cd pacmanw
-ls /var/cache/pacman/pkg/
-cp /var/cache/pacman/pkg/package_name-version.pkg.tar.zst .
-tar xf package_name-version.pkg.tar.zst
-ls
-# assuming output is "opt"
-cd opt
-ls
-cd package_name
-cd ~/pacmanw
-makepkg -i
-makepkg -c
-cd
-rm -rf pacmanw
 ```
 
 ___
