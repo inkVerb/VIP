@@ -943,7 +943,7 @@ vim /etc/securetty # Add lines with IP address of Machine-2
 
 # SSH
 ## Client
-sudo apt-get install openssh-client
+apt-get install openssh-client
 mkdir ~/.ssh
 chmod 700 ~/.ssh
 cd ~/.ssh
@@ -952,13 +952,13 @@ ssh-keygen -t rsa -N "" -f id_rsa -C ID_RSA
 cat id_rsa.pub # Copy to clipboard
 
 ## Server
-sudo apt-get install openssh-server
-sudo systemctl status ssh
-sudo systemctl start ssh
-sudo mkdir /root/.ssh
-sudo chmod 700 /root/.ssh
+apt-get install openssh-server
+systemctl status ssh
+systemctl start ssh
+mkdir /root/.ssh
+chmod 700 /root/.ssh
 cd /root/.ssh
-sudo echo 'ssh-rsa THAT_LONG_SSH_KEY= user@machine' > authorized_keys
+echo 'ssh-rsa THAT_LONG_SSH_KEY= user@machine' > authorized_keys
 
 vim /etc/ssh/sshd_config
   # Uncomment & set:
@@ -971,9 +971,9 @@ ssh-keygen -A
 systemctl start ssh
 
 cd
-sudo touch /root/m2
-sudo mkdir /root/m2.d
-sudo touch /m2.d/m2.in
+touch /root/m2
+mkdir /root/m2.d
+touch /m2.d/m2.in
 
 # Client
 cd
@@ -996,8 +996,8 @@ vim m1 # Make some changes
 
 # LDAP
 ## Server
-sudo apt install slapd ldap-utils
-sudo dpkg-reconfigure slapd
+apt install slapd ldap-utils
+dpkg-reconfigure slapd
 # No
 # Any domain, or the pre-defined domain in /etc/hosts
 # Organization name
@@ -1012,13 +1012,13 @@ vim /etc/ldap/ldap.conf    # Arch is: /etc/openldap/ldap.conf
   # BASE    dc=localhost,dc=localdomain
   # URI     ldap://localhost:389
 
-sudo systemctl status slapd
-sudo systemctl start slapd
-sudo systemctl status slapd
+systemctl status slapd
+systemctl start slapd
+systemctl status slapd
 ip a
 
 ## Client
-sudo apt install ldap-utils
+apt install ldap-utils
 
 vim /etc/ldap/ldap.conf
 # Below uses the IP address from `ip a` on the server
@@ -1027,38 +1027,38 @@ vim /etc/ldap/ldap.conf
   # URI     ldap://192.168.77.X
 
 # SSSD
-sudo apt update
-sudo apt install sssd-ldap
+apt update
+apt install sssd-ldap
 
 vim /etc/sssd/conf.d/00-sssd.conf
 vim /etc/pam.d/common-session.conf
 
-sudo systemctl start sssd
-sudo systemctl start slapd
-sudo systemctl status sssd
+systemctl start sssd
+systemctl start slapd
+systemctl status sssd
 
 # Docker
 ## Arch
-sudo pacman -Syy docker docker-compose
+pacman -Syy docker docker-compose
 
 ## Debian
-sudo apt install docker docker-compose
+apt install docker docker-compose
 
 ## OpenSUSE
-sudo zypper install docker docker-compose docker-compose-switch
+zypper install docker docker-compose docker-compose-switch
 
 ## All distros
-sudo systemctl enable docker
-sudo systemctl start docker
-sudo systemctl status docker
+systemctl enable docker
+systemctl start docker
+systemctl status docker
 
-sudo docker run -it ubuntu
-sudo docker run hello-world
+docker run -it ubuntu
+docker run hello-world
 
-sudo docker pull centos
-sudo docker run -d -t --name bagged centos
-sudo docker ps
-sudo docker exec -it bagged bash
+docker pull centos
+docker run -d -t --name bagged centos
+docker ps
+docker exec -it bagged bash
 ## Now in the Docker shell
 uname
 whoami
@@ -1069,11 +1069,11 @@ ls
 lsblk
 exit
 
-sudo docker ps
-sudo docker stop [ helloworld CONTAINER ID | NAMES ]
-sudo docker ps
-sudo docker stop bagged
-sudo docker ps
+docker ps
+docker stop [ helloworld CONTAINER ID | NAMES ]
+docker ps
+docker stop bagged
+docker ps
 
 ## Docker Compose
 mkdir .docker
@@ -1091,16 +1091,16 @@ EOF
 
 ls *
 cd ../busybox
-sudo docker compose up -d
-sudo docker ps # No listing
-sudo docker compose down
+docker compose up -d
+docker ps # No listing
+docker compose down
 
-sudo docker images
-sudo docker rmi -f [ helloworld IMAGE ID ]
+docker images
+docker rmi -f [ helloworld IMAGE ID ]
 
-sudo systemctl stop docker
-sudo systemctl stop docker.socket
-sudo systemctl disable docker
+systemctl stop docker
+systemctl stop docker.socket
+systemctl disable docker
 ```
 
 ## Lesson 10: Firewall
@@ -1117,62 +1117,62 @@ firewall-cmd --get-zones
 firewall-cmd --get-active-zones
 firewall-cmd --get-default-zone
 
-sudo firewall-cmd --set-default-zone=dmz
+firewall-cmd --set-default-zone=dmz
 firewall-cmd --get-default-zone
-sudo firewall-cmd --set-default-zone=public
+firewall-cmd --set-default-zone=public
 firewall-cmd --get-default-zone
-sudo firewall-cmd --set-default-zone=work
+firewall-cmd --set-default-zone=work
 firewall-cmd --get-default-zone
-sudo firewall-cmd --set-default-zone=public
+firewall-cmd --set-default-zone=public
 firewall-cmd --get-default-zone
-sudo firewall-cmd --set-default-zone=trusted
+firewall-cmd --set-default-zone=trusted
 firewall-cmd --get-default-zone
-sudo firewall-cmd --set-default-zone=public
+firewall-cmd --set-default-zone=public
 firewall-cmd --get-default-zone
 
 firewall-cmd --get-active-zones
 nmcli device status
 # Note the interface outputs, these are used instead of `enp2s0`
 
-sudo firewall-cmd --state
-sudo firewall-cmd --reload
-sudo firewall-cmd --zone=dmz --list-all
-sudo firewall-cmd --zone=work --list-all
-sudo firewall-cmd --zone=public --list-all
-sudo firewall-cmd --zone=trusted --list-all
+firewall-cmd --state
+firewall-cmd --reload
+firewall-cmd --zone=dmz --list-all
+firewall-cmd --zone=work --list-all
+firewall-cmd --zone=public --list-all
+firewall-cmd --zone=trusted --list-all
 
-sudo firewall-cmd --zone=internal --change-interface=enp2s0
-sudo firewall-cmd --zone=internal --change-interface=enp2s0 --permanent
-sudo firewall-cmd --get-zone-of-interface=enp2s0
+firewall-cmd --zone=internal --change-interface=enp2s0
+firewall-cmd --zone=internal --change-interface=enp2s0 --permanent
+firewall-cmd --get-zone-of-interface=enp2s0
 
-sudo firewall-cmd --zone=trusted --add-source=192.168.0.0/24
-sudo firewall-cmd --zone=trusted --list-sources
-sudo firewall-cmd --zone=trusted --add-source=192.168.1.0/24 --permanent
-sudo firewall-cmd --zone=trusted --list-sources --permanent
-sudo firewall-cmd --zone=trusted --list-sources
+firewall-cmd --zone=trusted --add-source=192.168.0.0/24
+firewall-cmd --zone=trusted --list-sources
+firewall-cmd --zone=trusted --add-source=192.168.1.0/24 --permanent
+firewall-cmd --zone=trusted --list-sources --permanent
+firewall-cmd --zone=trusted --list-sources
 
-sudo firewall-cmd --zone=trusted --remove-source=192.168.1.0/24 --permanent
-sudo firewall-cmd --zone=trusted --list-sources --permanent
-sudo firewall-cmd --zone=trusted --remove-source=192.168.0.0/24
-sudo firewall-cmd --zone=trusted --list-sources
+firewall-cmd --zone=trusted --remove-source=192.168.1.0/24 --permanent
+firewall-cmd --zone=trusted --list-sources --permanent
+firewall-cmd --zone=trusted --remove-source=192.168.0.0/24
+firewall-cmd --zone=trusted --list-sources
 
-sudo firewall-cmd --zone=public --list-services
-sudo firewall-cmd --zone=external --add-service=ssh --permanent
-sudo firewall-cmd --zone=public --list-services
-sudo firewall-cmd --zone=external --remove-service=ssh --permanent
-sudo firewall-cmd --zone=public --list-services
+firewall-cmd --zone=public --list-services
+firewall-cmd --zone=external --add-service=ssh --permanent
+firewall-cmd --zone=public --list-services
+firewall-cmd --zone=external --remove-service=ssh --permanent
+firewall-cmd --zone=public --list-services
 
-sudo firewall-cmd --zone=work --list-ports
-sudo firewall-cmd --zone=work --add-port=21/tcp
-sudo firewall-cmd --zone=work --list-ports
-sudo firewall-cmd --zone=work --remove-port=21/tcp
-sudo firewall-cmd --zone=work --list-ports
+firewall-cmd --zone=work --list-ports
+firewall-cmd --zone=work --add-port=21/tcp
+firewall-cmd --zone=work --list-ports
+firewall-cmd --zone=work --remove-port=21/tcp
+firewall-cmd --zone=work --list-ports
 
-sudo firewall-cmd --zone=work --list-forward
-sudo firewall-cmd --zone=work --add-forward-port=port=80:proto=tcp:toport=8080
-sudo firewall-cmd --zone=work --list-forward
-sudo firewall-cmd --zone=work --remove-forward-port=port=80:proto=tcp:toport=8080
-sudo firewall-cmd --zone=work --list-forward
+firewall-cmd --zone=work --list-forward
+firewall-cmd --zone=work --add-forward-port=port=80:proto=tcp:toport=8080
+firewall-cmd --zone=work --list-forward
+firewall-cmd --zone=work --remove-forward-port=port=80:proto=tcp:toport=8080
+firewall-cmd --zone=work --list-forward
 ```
 
 ## Lesson 11: Security Modules
@@ -1338,18 +1338,18 @@ man apparmor.d
 
 ```console
 # dd
-sudo dd status=progress if=/dev/sda of=/dev/sdx
+dd status=progress if=/dev/sda of=/dev/sdx
 
 # tar
-sudo mkdir -p /mnt/backup
-sudo mount /dev/sdx1 /mnt/backup
-sudo tar Jcvf /mnt/backup/var.bak.txz /var
-sudo tar Jcvf /mnt/backup/srv.bak.txz /srv
+mkdir -p /mnt/backup
+mount /dev/sdx1 /mnt/backup
+tar Jcvf /mnt/backup/var.bak.txz /var
+tar Jcvf /mnt/backup/srv.bak.txz /srv
 
 # rsync
 ## Remote
-sudo systemctl start rsync
-sudo systemctl start ssh
+systemctl start rsync
+systemctl start ssh
 ip a
 
 ## Source
@@ -1384,16 +1384,16 @@ ls -l
 mkdir ~/backups
 
 ## Source
-sudo rsync -avze ssh /var someuser@192.168.77.X:/home/someuser/
-sudo rsync -avze ssh /srv someuser@192.168.77.X:/home/someuser/
+rsync -avze ssh /var someuser@192.168.77.X:/home/someuser/
+rsync -avze ssh /srv someuser@192.168.77.X:/home/someuser/
 
-sudo cat <<EOF > /etc/cron.d/backup
+cat <<EOF > /etc/cron.d/backup
 0 1 * * 2 root /usr/bin/rsync -aze ssh /srv someuser@192.168.77.X:/home/someuser/backups/2
 0 1 * * 3 root /usr/bin/rsync -aze ssh /srv someuser@192.168.77.X:/home/someuser/backups/3
 0 1 * * 4 root /usr/bin/rsync -aze ssh /srv someuser@192.168.77.X:/home/someuser/backups/4
 0 1 * * 5 root /usr/bin/rsync -aze ssh /srv someuser@192.168.77.X:/home/someuser/backups/5
 EOF
-sudo chmod 0644 /etc/cron.d/backup
+chmod 0644 /etc/cron.d/backup
 
 ## System Rescue
 # Add 'emergency' or 'rescue' to the end of the 'linux' line in grub.cfg
@@ -1404,9 +1404,9 @@ df -h
 
 fsck /dev/sdb1
 
-sudo mkdir /mnt/fixsys
-sudo mount /dev/sdb1 /mnt/fixsys
-sudo chroot /mnt/fixsys
+mkdir /mnt/fixsys
+mount /dev/sdb1 /mnt/fixsys
+chroot /mnt/fixsys
 
 cat /etc/fstab
 lsblk -f
