@@ -1,6 +1,8 @@
 # Linux 601
 ## Lesson 12: Backup & System Rescue
 
+- [SysAdmin Commands](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/SysAdmin-Commands.md)
+
 # The Chalk
 ## Backup
 1. *Everything breaks; it's not **if**, but **when***
@@ -429,7 +431,7 @@ ___
 
 # Done! Have a cookie: ### #
 
-Practice commands for all Linux 601 one lessons in **[VIP/Cheat-Sheets: SysAdmin Commands](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/SysAdmin-Commands.md)**
+Practice commands for all Linux 601 one lessons in [VIP/Cheat-Sheets: SysAdmin Commands](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/SysAdmin-Commands.md)
 
 When ready go to [The Linux Foundation](https://training.linuxfoundation.org/) and get certified
 

@@ -1,8 +1,8 @@
 # Linux 601
 ## Lesson 6: Networks
 
-### [VIP/Cheat-Sheets: File Size, Binary, Hexadecimal](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Sizes-Binary-Hex.md)
-### [VIP/Cheat-Sheets: Networking](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Networking.md)
+- [File Size, Binary, Hexadecimal](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Sizes-Binary-Hex.md)
+- [Networking](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Networking.md)
 
 ___
 

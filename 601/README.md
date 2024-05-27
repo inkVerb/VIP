@@ -1,13 +1,18 @@
 # Linux 601: SysAdmin
 
-### Cheat Sheets (for simulation environments)
+## Cheat Sheets
 
-- [CISCO Packet Tracer](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Packet-Tracer.md)
+### For Multiple Linux Distros via Virtual Machines
 - [Oracle VirtualBox](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/VirtualBox.md)
+
+### For Further Practice after Completing This Course
+- [SysAdmin Commands](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/SysAdmin-Commands.md)
 
 ## Prerequisite: [Linux 401](https://github.com/inkVerb/VIP/tree/master/401)
 
 While this course comes after [Linux 501](https://github.com/inkVerb/VIP/tree/master/501), it is not a prerequesite. However, it is recommended to complete [Linux 501](https://github.com/inkVerb/VIP/tree/master/501) first so that a System Administrator can understand what a Linux server might be used for
+
+
 
 ### [Lesson 0: POSIX & Lesson Layout](https://github.com/inkVerb/vip/blob/master/601/Lesson-00.md)
 
