@@ -707,7 +707,7 @@ QUIT
     - `MEDIUMTEXT` up to 16,777,215 characters
     - `LONGTEXT` up to 4,294,967,295 characters
     - `TIMESTAMP` date and time
-5. SQL "columns" usually need an `id` column
+5. SQL tables usually need an `id` column
   - Syntax: `` `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, ... PRIMARY KEY (`id`) ``
 6. When creating an SQL "table", include:
   - Each column
@@ -826,7 +826,7 @@ CREATE TABLE IF NOT EXISTS `fruit` (
   `have` BOOLEAN NOT NULL DEFAULT false,
   `count` INT DEFAULT 0,
   `prepared` ENUM('fresh', 'dry', 'cooked', 'NA') NOT NULL,
-  `date_created` TIMESTAMP NOT NULL,
+  `date_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 ```

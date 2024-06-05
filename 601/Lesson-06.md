@@ -106,7 +106,7 @@ ff02::2 ip6-allrouters
 - Running the NTP daemon is [considered wise, but optional](https://unix.stackexchange.com/questions/386914)
 
 ### Tools
-#### `ntp`
+#### `ntp*` (`ntpd` package)
 - *Different NTP tools conflict; choose one*
 - `ntp*` primary time tool kit
   - `/etc/ntp.conf`
@@ -122,11 +122,23 @@ ff02::2 ip6-allrouters
   - :$ `ntpdc -c [some NTP command]` run a single NTP command without opening the NTP prompt
   - :$ `ntpdc -c peers` show time difference between local and authoritative servers
 - :$ `timedatectl` part of `systemd` and `systemd-timesyncd`
+- :$ `ntpdate pool.time.tld`
 
 ### Configs
 #### Pool
 - The NTP Pool Project relieves the query load on NTP servers by cycling through allowed IP addresses to make inquiries
 - The pool is defined in the config files
+
+| **/etc/ntp.conf** : (pool)
+
+```
+driftfile /var/lib/ntp/ntp.drift
+
+pool 0.pool.ntp.org
+pool 1.pool.ntp.org
+pool 2.pool.ntp.org
+pool 3.pool.ntp.org
+```
 
 | **/etc/ntp.conf** : (standard)
 
@@ -215,6 +227,7 @@ fudge A.B.C.0 stratum 10
 - It is generally better to use `networkmanager` commands
   - `nmtui`
   - `nmcli`
+    - `man nmcli-examples`
 
 #### Network Configs
 - Red Hat
@@ -572,6 +585,9 @@ ntpdc -c peers
 
 timedatectl
 
+apt-get install ntpd
+ntpdate pool.time.tld
+
 vim /etc/ntp.conf
 ```
 
@@ -610,6 +626,7 @@ netstat -rn
 nmcli device status
 nmtui
 man nmcli
+man nmcli-examples
 
 route -n
 ip r

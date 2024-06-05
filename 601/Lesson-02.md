@@ -109,15 +109,35 @@
   - `ps aux | grep dd`
   - `ps -C dd -o cmd,pid,cputime,pmem,uid,ruid,euid,suid,user,ruser,euser,suser`
 
-### Control
-- `ulimit -a` shows the various limits placed on processes
-  - Each limit is shown with a flag, such as `-c`, `-d`, `-f`, etc
-- `ulimit -u 256512` sets the maximum of user processes to 256,512
-- Settings are in `/etc/security/limits.conf`
-- **hard limit** - set by `root` (not `sudo`)
-- **soft limit** - set by users
-- :# `ulimit -H -u 256512` set as a hard limit
-- :$ `ulimit -S -u 256512` set as a soft limit
+### Process Limit Control
+- Process limit tettings are in `/etc/security/limits.conf`
+  - This file contains documentation and is the "proper" way to limit the number of processes
+- `ulimit` is a shell built-in that can change the number of processes *for the current shell*
+  - `ulimit` only works for the shell in which it is executed
+  - `ulimit -a` shows the various limits placed on processes
+    - Each limit is shown with a flag, such as `-c`, `-d`, `-f`, etc
+  - `ulimit -u 256512` sets the maximum of user processes to 256,512
+  - **hard limit** - set by `root` (not `sudo`)
+  - **soft limit** - set by users
+  - :# `ulimit -H -u 256512` set as a hard limit
+  - :$ `ulimit -S -u 256512` set as a soft limit
+
+| **`/etc/security/limits.conf`** : (`nproc` - max number of processes)
+
+```
+#<domain>      <type>  <item>         <value>
+#
+
+#*               soft    core            0
+#*               hard    rss             10000
+#@student        hard    nproc           20
+#@faculty        soft    nproc           20
+#@faculty        hard    nproc           50
+#ftp             hard    nproc           0
+#@student        -       maxlogins       4
+userjohn         hard    nproc           5125
+userjohn         soft    nproc           4012
+```
 
 ### Process States
 - Managed with `jobs`
@@ -154,6 +174,7 @@
   - `top`:
     - `PR` - priority
     - `NI` - `nice` value
+    - `-n 1` = only one iteration
   - Priority: `PRI` in `htop` and `PR` in `top`
 - Set priority when running a program with `nice`
   - `nice -n -10 gedit`
@@ -364,6 +385,7 @@ vmstat -a 1 4
 vmstat -p /dev/sda1 1 3
 
 top
+top -n 1
 htop
 uptime
 mpstat

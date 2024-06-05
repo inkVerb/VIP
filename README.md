@@ -1,11 +1,9 @@
-# Verb VIP
+# VIP Code
 ## Learn Command Line Linux and Code
 
 ### Start with Linux. Start simple. Start here.
 
 *Whether you want to become a computer genius or if you're a "computer dummy" and want to make computers less scary...*
-
-
 
 ## Course Unit List:
 

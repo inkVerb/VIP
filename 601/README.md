@@ -12,8 +12,6 @@
 
 While this course comes after [Linux 501](https://github.com/inkVerb/VIP/tree/master/501), it is not a prerequesite. However, it is recommended to complete [Linux 501](https://github.com/inkVerb/VIP/tree/master/501) first so that a System Administrator can understand what a Linux server might be used for
 
-
-
 ### [Lesson 0: POSIX & Lesson Layout](https://github.com/inkVerb/vip/blob/master/601/Lesson-00.md)
 
 ### [Lesson 1: Boot & System Init](https://github.com/inkVerb/vip/blob/master/601/Lesson-01.md)
@@ -32,7 +30,7 @@ While this course comes after [Linux 501](https://github.com/inkVerb/VIP/tree/ma
 
 ### [Lesson 8: Packages](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md)
 
-### [Lesson 9: PAM & Cloud (SSH, LDAP, Docker, Mail)](https://github.com/inkVerb/vip/blob/master/601/Lesson-09.md)
+### [Lesson 9: PAM & Cloud (SSH, SSL, LDAP, VM, Docker, Mail)](https://github.com/inkVerb/vip/blob/master/601/Lesson-09.md)
 
 ### [Lesson 10: Firewall](https://github.com/inkVerb/vip/blob/master/601/Lesson-10.md)
 

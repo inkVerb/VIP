@@ -85,6 +85,11 @@ rm /etc/systemd/system/ddran.service
 ```console
 find /usr/bin -perm -u+s
 
+top -n 1
+free
+vmstat
+mpstat
+
 cd /usr/bin
 ls -l | grep rws
 find . -perm -u+s
@@ -464,8 +469,14 @@ udevadm monitor
 ## Lesson 6: Networks
 
 ```console
+apt-get install ntpd
+ntpdate pool.time.tld
+
 netstat -l
 netstat -rn
+
+iostat
+sudo iotop
 
 cat /etc/hostname
 hostname
@@ -490,6 +501,7 @@ netstat -rn
 nmcli device status
 nmtui
 man nmcli
+man nmcli-examples
 nmcli --help
 
 route -n
@@ -793,6 +805,12 @@ modprobe -r nbd
 ## Lesson 8: Packages
 
 ```console
+# Building from Source
+cd /path/of/source
+./configure
+make
+sudo make install
+
 # Arch: pacman
 pacman -Ss findword findotherword
 pacman -Qs findinstalledpackage
@@ -976,7 +994,7 @@ touch /root/m2
 mkdir /root/m2.d
 touch /m2.d/m2.in
 
-# Client
+## Client
 cd
 touch m1
 mkdir m1.d
@@ -994,6 +1012,10 @@ scp -r root@192.168.77.X:~/m2.d ~/
 ls
 ssh root@192.168.77.X
 vim m1 # Make some changes
+
+# SSL
+openssl x509 -noout -subject -in cert.pem
+openssl x509 -noout -text -in cert.pem
 
 # LDAP
 ## Server
@@ -1060,7 +1082,8 @@ systemctl start docker
 systemctl status docker
 
 docker run -it ubuntu
-docker run hello-world
+docker run helloworld
+docker run -d -p 80:80 helloworld
 
 docker pull alpine
 docker run -dt --name bagged alpine
@@ -1104,6 +1127,11 @@ docker compose down
 
 docker images
 docker rmi -f [ helloworld IMAGE ID ]
+
+## Docker Build
+docker build .
+docker images
+docker build -t helloworld .
 
 systemctl stop docker
 systemctl stop docker.socket
@@ -1177,7 +1205,6 @@ firewall-cmd --zone=work --list-ports
 
 firewall-cmd --zone=work --list-forward
 firewall-cmd --zone=work --add-forward-port=port=80:proto=tcp:toport=8080
-firewall-cmd --zone=work --list-forward
 firewall-cmd --zone=work --remove-forward-port=port=80:proto=tcp:toport=8080
 firewall-cmd --zone=work --list-forward
 ```
@@ -1460,8 +1487,14 @@ emergency.target
 ### Lesson 2: Procesesses & Monitoring
 
 ```console
+top -n 1
+vmstat
+mpstat
+
 ps -C gedit -o cmd,pid,uid,ruid,euid,suid,user,ruser,euser,suser
+cat /etc/security/limits.conf
 ulimit -H -u 256512
+
 umask 0022
 
 0 1 * * 2 user /usr/bin/some/command with args
@@ -1518,10 +1551,20 @@ dmidecode -t
 ### Lesson 6: Networks
 
 ```console
+apt-get install ntpd
+ntpdate pool.time.tld
+
+iostat
+iotop
+netstat -rn
+route -n
+
 ip route add 10.5.0.0/16 via 192.168.1.100
 ip route del 10.5.0.0/16 via 192.168.1.100
 ip route add default via 192.168.1.21 dev enp2s0
 ip route del default via 192.168.1.21 dev enp2s0
+
+man nmcli-examples
 
 nmcli connection add type bond con-name Bond0 ifname bond0 bond.options "mode=active-backup,miimon=1000"
 nmcli connection add type ethernet slave-type bond con-name Bond0-Port1 ifname enp3s0 master bond0
@@ -1570,6 +1613,10 @@ nbd-client -N foo 192.168.0.9 10809 /dev/nbd0
 ### Lesson 8: Packages
 
 ```console
+./configure
+make
+sudo make install
+
 pacman -Ss findword findotherword
 pacman -Qs findinstalledpackage
 pacman -Sy archlinux-keyring
@@ -1595,7 +1642,7 @@ zypper install cowsay
 zypper clean --all
 ```
 
-### Lesson 9: PAM & Cloud (SSH, LDAP, Docker, Mail)
+### Lesson 9: PAM & Cloud (SSH, SSL, LDAP, Docker, Mail)
 
 ```console
 ssh-keygen -t rsa -N "" -f key_1 -C Key-1
@@ -1640,6 +1687,9 @@ firewall-cmd --zone=dmz --list-all
 firewall-cmd --set-default-zone=public
 firewall-cmd --get-default-zone
 firewall-cmd --state
+
+firewall-cmd --zone=work --add-forward-port=port=80:proto=tcp:toport=8080
+firewall-cmd --zone=work --remove-forward-port=port=80:proto=tcp:toport=8080
 ```
 
 ### Lesson 11: Security Modules

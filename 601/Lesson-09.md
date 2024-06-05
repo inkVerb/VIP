@@ -1,5 +1,5 @@
 # Linux 601
-## Lesson 9: PAM & Cloud (SSH, LDAP, Docker, Mail)
+## Lesson 9: PAM & Cloud (SSH, SSL, LDAP, VM, Docker, Mail)
 
 # The Chalk
 ## Pluggable Authentication Module (PAM)
@@ -186,6 +186,92 @@ Host some_nickname
 ```
 [ SSH client login request (likely keys, maybe password) ] --> [ PAM-SSH interface on SSH server ] --> [ SSH client user is granted login permissions as a Linux user on the SSH server ]
 ```
+
+## Secure Sockets Layer (SSL)
+- SSL certificates are used to secure connections made over the web
+- SSL certificates are used in:
+  - Web sites
+  - Email
+  - LDAP
+  - NFS
+  - many others
+- Web servers have the capability of creating and managine their own SSL certificates
+- To be trustworthy, certificates are "signed" by a third party "certificate authority", often called a CA
+  - A server can sign its own certificates
+  - Self-signed certificates are often called "snake oil" certificates
+  - A common third-party CA is Letsencrypt, which has a package for most Linux distros
+- Each certificate is issued for a specific "common name" called 
+- The usual location of SSL certificates on a server is: `/etc/ssl/server/`
+  - Letsencrypt will install them to `/etc/letsencrypt/live/`
+  - SSL certificates could technically be kept anywhere
+- The main tool used to manage SSL certificates is: `openssl`
+- Location of certificates are set in config files for each service that uses them
+- **[X.509](https://en.wikipedia.org/wiki/X.509)** is a standard used by the [International Telecommunications Union (ITU)](https://en.wikipedia.org/wiki/International_Telecommunication_Union)
+  - All SSL certificates are technically **X.509** certificates
+  - You will see this number often, now you know what it refers to
+    - Don't expect a *Z.509* or *X.510*, etc in SSL
+
+### Certificate Structure
+- SSL certificates often end in `.pem`, but there are other extensions that can be used
+- Common extensions
+  - `.key` Private key that signs new keys or verifies existing certificeates
+  - `.csr` Certificate Signing Request (CSR)
+  - `.crt` Certificate, actually used for deployment
+  - `.pem` Privacy Enhanced Mail (PEM), defined in [RFC 1422](https://www.rfc-editor.org/rfc/rfc1422)
+    - Often used in place of any or all of the above extensions
+- Certificate/Chain File
+  - May include multiple certificates, often an "intermediatary" certificate
+  - Usually a `.key` or `.pem` file called `cert.pem` or `fullchain.pem` (Letsencrypt)
+  - The "certificate" file used on the public server, issued by the CA, for public use in configs
+    - `SSLCertificateFile` Apache
+    - `ssl_certificate` Nginx
+- Key File
+  - The private file on the server that generates the CSR
+  - Usually a `.crt` or `.pem` file called `private.pem` or `privkey.pem` (Letsencrypt)
+  - The "key" file used on the server, referenced for internal use in configs 
+    - `SSLCertificateKeyFile` Apache
+    - `ssl_certificate_key` Nginx
+- Certificate Signing Request (CSR)
+  - The file generated from the private key file, given to the CA for signing the actual certificate
+- Common Name (CN)
+  - The domain the certificate is used for
+  - Can include a list
+  - Technically does not need to be a domain, but the Internet will check the actual domain against the `CN` in the certificate
+- Certificate Authority (CA)
+  - The third party (or self if self-signed) which signed the CSR
+
+### Self-Signed SSL Certificates
+*Note the use of `x509` in the commands*
+- SSL certificates are **signed** by definition, which means `openssl` first needs an existing **key** to **sign** the new certificates
+  - If your server both creates the keys and signs the certificates, that is **self-signed**
+- You can use `openssl` to create the keys and sign the certificate in one command or in two commands
+- The commands below use `.key`, `.csr`, and `.crt` to indicate files
+  - They often use `.pem` for all files on many production servers
+  - These file names could be changed to almost anything
+- ***One command:***
+  - One year, will ask questions :# 
+    - `openssl req -x509 -newkey rsa:2048 -keyout private.key -out cert.crt -sha256 -days 365 -nodes`
+  - Ten years, will not ask questions :#
+    - `openssl req -x509 -newkey rsa:2048 -keyout private.key -out cert.crt -sha256 -days 3650 -nodes -subj "/CN=example.tld"`
+      - Or elaborate `-subj "/C=USA/ST=Michigan/L=Big City/O=ABC Company/OU=Company Department/CN=example.tld"`
+- ***Three commands:***
+  1. Create key :#
+    - `openssl genrsa -out private.key 2048`
+  2. Create **cert signing request** :#
+    - `openssl req -newkey rsa:2048 -keyout private.key -out certsignreq.csr -nodes -subj "/CN=example.tld"`
+      - Or elaborate `-subj "/C=USA/ST=Michigan/L=Big City/O=ABC Company/OU=Company Department/CN=example.tld"`
+  3. Sign the **cert signing request** :#
+    - `openssl x509 -signkey private.key -in certsignreq.csr -req -days 365 -out cert.crt`
+
+### Check SSL Certificate Information
+- Check full information :#
+  - `openssl x509 -noout -text -in cert.pem`
+  - Shows full information, including the certificate itself, signatures, times, versions, policies, X509 version, everything there is to see in the certificate
+- Check `-subj` information :#
+  - `openssl x509 -noout -subject -in cert.pem`
+  - Only information in the `-subj` parameter of the signing request
+    - eg: `"/C=USA/ST=Michigan/L=Big City/O=ABC Company/OU=Company Department/CN=example.tld"`
+    - eg: `"/CN=example.tld"`
 
 ## Lightweight Directory Access Protocol (LDAP)
 - [OpenLDAP](https://www.openldap.org/) (AKA *LDAP*) is kind of online address book that serves user "directory" lookup and authentication
@@ -652,6 +738,78 @@ session     optional    pam_permit.so
 - Usually, remote directory services like SSSD are used over the public Internet, not a local IP based private network
 - These lessons do not cover domain-based services running in the cloud, including installation of an SSSD server
 
+## Virtual Machines (VM)
+- Kernel-based Virtual Machine (KVM): The Linux kernel native hypervisor module
+  - Find the module with :$ `lsmod | grep kvm`
+- [Virtual Machine Manager](https://virt-manager.org/) has two tools to manage VMs:
+  - `virt-install` - CLI
+  - `virt-manager` - GUI
+- Linux natively uses the folder `/var/lib/libvirt/` for VM management
+  - `ls /var/lib/libvirt/`
+- Some machines do not support native VM management
+  - eg, a CPU with the `svm` or `vmx` flag in `/proc/cpuinfo` is incompatible
+  - Check for any results from :$ `egrep -m 1 "svm|vmx" /proc/cpuinfo`
+    - If there is any output, then your CPU is incompatible
+
+### Examples: Install VM via `virt-install`
+
+| **basic** :#
+
+```console
+virt-install \
+--name my-vm \      # Any name
+--memory 2048 \     # RAM in MB
+--vcpus 2 \         # CPU cores
+--disk size=8 \     # in GB
+--location ./path/to/linux-image.iso \  # can be .img or .iso
+--graphics none \
+--extra-args "console=tty0 console=ttyS0,115200n9"
+```
+
+| **expanded options** :#
+
+```console
+virt-install \
+--name my-vm2 \
+--memory 4096 \
+--vcpus 3 \
+--location /var/lib/libvirt/images/centos-image.iso \
+--disk /var/lib/libvirt/filesystems/my-vm-dir,device=disk,bus=virtio,size=8 \
+--network bridge:br0 \    # Network, existing network device name
+--os-variant centos9.0 \  # Optional, helps virt-installer know what to do
+--os-type linux \         # Optional
+--nographics \
+--extra-args='console tty0 console ttyS0,115200n8 serial'
+```
+
+| **two disk locations** :#
+
+```console
+virt-install \
+--virt-type kvm \
+--name=my-vm3 \
+--memory=2048 \
+--location /var/lib/libvirt/images/linux-image.iso \
+--disk path=/var/lib/libvirt/images/my-vm-dir-1.qcow2,size=5 \
+--disk path=/var/lib/libvirt/images/my-vm-dir-2.qcow2,size=2 \
+--graphics none \
+--extra-args='console=tty0 console=ttyS0,115200n8 serial'
+```
+
+| **web source - Debian** :#
+
+```console
+virt-install \
+--virt-type kvm \
+--name=my-vm4 \
+--memory 2048 \
+--location http://ftp.at.debian.org/debian/dists/stable/main/installer-amd64/ \
+--disk path=/var/lib/libvirt/images/my-vm-dir-1.qcow2,size=5 \
+--disk path=/var/lib/libvirt/images/my-vm-dir-2.qcow2,size=2 \
+--graphics none \
+--extra-args='console=tty0 console=ttyS0,115200n8 serial'
+```
+
 ## Docker
 - [Docker](https://docs.docker.com/reference/) runs full-OS containers using the main host machine's kernel
 - `docker --help`
@@ -690,12 +848,12 @@ session     optional    pam_permit.so
   - `docker build -t some-tag .` - Build using a tag `some-tag` to use in `docker run` commands, etc
 - Pull and start "Hello World" :#
   - Hello World: `docker run hello-world`
-- Pull, start, and enter BASH :#
-  - Ubuntu: `docker run -it ubuntu bash`
-  - Alpine: `docker run -it alpine bash`
 - Pull only :#
   - Ubuntu: `docker pull ubuntu`
   - Alpine: `docker pull alpine`
+- Pull, start, and enter BASH :#
+  - Ubuntu: `docker run -it ubuntu bash`
+  - Alpine: `docker run -it alpine bash`
   - Hello World: `docker pull hello-world`
 - Start :# `docker run -dt`
   - `-d` flag for **detatch** *(daemon, run in background)*
@@ -706,6 +864,7 @@ session     optional    pam_permit.so
 - Start `-p 80:80` :# ***with port** to use at `localhost` on local desktop web browser*
   - `docker run -d -p 80:80 ubuntu` (if it is ready to run a webserver, which it probalby isn't)
   - `docker run -d -p 80:80 some-oob-ready-webserver-container`
+  - `docker run -d -p 80:80 alpine --restart=always` (always run when the Docker loads)
 - Stop :#
   - `docker ps`
   - `docker stop CONTAINER_ID`
@@ -1126,6 +1285,19 @@ scp -r root@192.168.77.X:~/m2.d ~/
 ls
 ssh root@192.168.77.X
 vim m1 # Make some changes
+```
+
+### SSL
+*Any machine with `openssl` installed*
+
+#### Setup
+
+```console
+openssl req -x509 -newkey rsa:2048 -keyout private.key -out cert.crt -sha256 -days 3650 -nodes -subj "/C=USA/ST=Michigan/L=Big City/O=ABC Company/OU=Company Department/CN=example.tld"
+```
+
+```console
+openssl x509 -noout -subject -in cert.pem
 ```
 
 ### LDAP
@@ -1587,6 +1759,10 @@ sudo systemctl disable docker
 - `scp` copy files
   - `scp localfile user@remotehost.tld:/path/to/destination`
   - `scp user@remotehost.tld:/path/to/remote/file localdestination`
+
+### SSL
+- Know how to get information from a certificate:
+  - `openssl x509 -noout -subject -in cert.pem`
 
 ### LDAP (Lightweight Directory Access Protocol)
 - Often known as **Open LDAP**

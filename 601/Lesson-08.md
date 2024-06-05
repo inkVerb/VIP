@@ -20,6 +20,21 @@
 - Scripts often run by interpreters (HTML, BASH, XML) *may* also be compiled
 - So: programs are either **compiled** or **interpreted**
 
+## Building from Source
+- Packages can often be distributed by source
+- "Source packages" are technically "GNU packages" because they would work on any Linux distro
+  - Remember, Linux is built on GNU, so a "GNU source package" is coded at a lower level of the stack than the Linux kernel itself, hence the term *source*
+- Usually a source is a tarball downloaded, extracted, then built
+- Building a GNU package from source involves three simple commands
+  - Inside the package directory :$
+```console
+./configure
+make
+sudo make install
+```
+- It is important to *only* run `make install` as `root`, not the other commands
+  - Running `make` as `root` (AKA :$ `sudo make` or :# `make`) can cause serious problems because it is compiling and then `root` would own the compiled code itself
+
 ## Package Managers
 - Benefits:
   - Automated
@@ -468,6 +483,15 @@ ___
 # The Keys
 *Practice commands for SysAdmins who already know what these mean*
 
+| **Building from source with `make`** :$
+
+```console
+cd /path/of/source
+./configure
+make
+sudo make install
+```
+
 | **Arch `pacman`** :#
 
 ```console
@@ -631,4 +655,4 @@ zypper clean --all
 
 ___
 
-#### [Lesson 9: PAM & Cloud (SSH, LDAP, Docker, Mail)](https://github.com/inkVerb/vip/blob/master/601/Lesson-09.md)
+#### [Lesson 9: PAM & Cloud (SSH, SSL, LDAP, VM, Docker, Mail)](https://github.com/inkVerb/vip/blob/master/601/Lesson-09.md)
