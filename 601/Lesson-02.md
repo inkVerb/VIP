@@ -271,10 +271,15 @@ userjohn         soft    nproc           4012
 - `chrony` is the [Arch Linux package](https://wiki.archlinux.org/title/Chrony) for `cron` task functionality (not native)
 - `cron.d/` files must have `0644` permissions
 
-## Service Monitoring with `monit`
-- *A daemon babysitter*
-- `monit` runs as a daemon, wakes itself, checks on processes according to its config files, then goes back to sleep
+## Service Monitoring with `monit` (M/Monit)
+- ***M/Monit** is basically a daemon babysitter called `monit`*
+  - If a daemon, like a web, email, or SQL server, locks up, breaks, or gets over-loaded, `monit` will automatically restart it based on config criteria (see configs below)
+  - This is a good idea for any SysAdmin who doesn't want to watch a server 24/7
+  - `monit` will *not* configure or troubleshoot for a daemon
+- `monit` runs asleep as a daemon, wakes itself, checks on processes according to its config files, then goes back to sleep
 - Learn more from the [M/Monit Documentation](https://mmonit.com/monit/documentation/monit.html)
+
+### `monit` Configs
 - Configs are per monitored service, not mainly for `monit` itself
 - Config directory: `/etc/monit/monitrc.d/`
 - Monit often watches the *PID file* or socket file for each running daemon, usually somewhere in `/run/` or `/var/`
