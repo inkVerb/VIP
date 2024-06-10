@@ -208,6 +208,7 @@ userjohn         soft    nproc           4012
   - `vmstat -p /dev/sda1 1 3`
 
 ### Other Processes Monitoring Tools
+- *These are CLI tools, not babysitters like `monit` (below)*
 - There are several tools for monitoring processes: (some are redundant)
   - `top` processes
   - `htop` processes more human-readable
@@ -269,6 +270,72 @@ userjohn         soft    nproc           4012
 - `anacron` is an alternative to `cron` that runs jobs with staggered timing
 - `chrony` is the [Arch Linux package](https://wiki.archlinux.org/title/Chrony) for `cron` task functionality (not native)
 - `cron.d/` files must have `0644` permissions
+
+## Service Monitoring with `monit`
+- *A daemon babysitter*
+- `monit` runs as a daemon, wakes itself, checks on processes according to its config files, then goes back to sleep
+- Learn more from the [M/Monit Documentation](https://mmonit.com/monit/documentation/monit.html)
+- Configs are per monitored service, not mainly for `monit` itself
+- Config directory: `/etc/monit/monitrc.d/`
+- Monit often watches the *PID file* or socket file for each running daemon, usually somewhere in `/run/` or `/var/`
+  - Whenever a daemon runs, most often from `sysinit` and `.service` files, etc, it will have a `.pid` file that can be monitored by babysitters like `monit`
+- The `monit` package for most distros will include its own OOB `.service` file, probably at `/usr/lib/systemd/system/monit.service`
+  - Enable the `monit` service with :# `systemctl enable monit`
+  - Start the `monit` service with :# `systemctl start monit`
+- Some vendors may recommend their own `monit` config or advice against it
+  - eg: Do not use `monit` for Apache, which has its own monitoring process that will conflict
+- Some service file examples:
+
+| **nginx** :
+
+```
+check process nginx with pidfile /run/nginx.pid
+  group www
+  start program = "/usr/bin/systemctl start nginx"
+  stop program = "/usr/bin/systemctl stop nginx"
+  if 5 restarts within 5 cycles then timeout
+  if loadavg (15min) > 15 for 5 times within 15 cycles then restart
+  if memory usage > 80% for 4 cycles then restart
+  if swap usage > 50% for 4 cycles then restart
+```
+
+| **mysql** :
+
+```
+check process mysql with pidfile /var/lib/mysql/j.pid
+  group mysql
+  start program = "/usr/bin/systemctl start mysql"
+  stop program = "/usr/bin/systemctl stop mysql"
+  if 5 restarts within 5 cycles then timeout
+  if loadavg (15min) > 15 for 5 times within 15 cycles then restart
+  if memory usage > 80% for 4 cycles then restart
+  if swap usage > 50% for 4 cycles then restart
+```
+
+| **postfix** :
+
+```
+check process postfix with pidfile /var/spool/postfix/pid/master.pid
+  group vmail
+  start program = "/usr/bin/systemctl start postfix"
+  stop  program = "/usr/bin/systemctl stop postfix"
+  if failed port 587 protocol smtp then restart
+  if failed port 465 protocol smtp then restart
+  if 5 restarts within 5 cycles then timeout
+```
+
+| **dovecot** :
+
+```
+check process dovecot with pidfile /var/run/dovecot/master.pid
+  group vmail
+  start program = "/usr/bin/systemctl start dovecot"
+  stop program = "/usr/bin/systemctl stop dovecot"
+  group vmail
+  if failed port 993 for 5 cycles then restart
+  if failed port 995 for 5 cycles then restart
+  if 5 restarts within 25 cycles then timeout
+```
 
 ___
 
@@ -418,6 +485,9 @@ exit
 sudo chmod 0644 /etc/cron.d/chores
 
 sudo rm /etc/cron.d/chores
+
+cd /etc/monit/monitrc.d
+sudo systemctl enable monit
 ```
 
 ___

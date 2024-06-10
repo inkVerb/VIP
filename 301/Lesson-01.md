@@ -324,7 +324,7 @@ elif [ $1 = "foobar" ]; then
 gedit 01-minimum
 ```
 
-*Note the entire `if` statement can go on one line using `;`
+*Note the entire `if` statement can go on one line using `;`*
 
 ```sh
 if [ -z $1 ];then echo "Empty";elif [ $1 = "foobar" ];then echo "Foo Bar";else echo "Something else";fi
