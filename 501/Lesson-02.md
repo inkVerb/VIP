@@ -901,18 +901,18 @@ SELECT * FROM fruit;
 INSERT INTO fruit (name, type, have, count, prepared) VALUES ('bananas', 'nino', true, 58, 'fresh');
 ```
 
-*Look at only `id` and `name`...*
-
 | **69** :>
 
 ```sql
-SELECT id, name FROM fruit;
+SELECT * FROM fruit;
 ```
+
+*Look at only `id` and `name`...*
 
 | **70** :>
 
 ```sql
-SELECT * FROM fruit;
+SELECT id, name FROM fruit;
 ```
 
 | **S70** ://phpMyAdmin **> Browse**
@@ -982,13 +982,13 @@ ___
   - You can delete and add entries and use an SQL terminal in phpMyAdmin if needed for learning or reference
 
 ## SQL for an App
-- SQL belongs inside a "logic code" like PHP (or Node, Python, etc)
+- SQL belongs inside a "logic code" like PHP (or Node, Python, Go, etc)
   - In the next lesson, we will put SQL inside PHP to make a website come to life
   - This is how most software applications are made
   - SQL has alternatives (MongoDB, ScalaQL, PostgreSQL) just how PHP has alternatives (Node.js, Python, Go)
 - In app development:
   1. Learn the SQL you need to do what you need done *correctly*
-    - *(don't be a 'sript kiddy', who just copies from others without understanding)*
+      - *(don't be a 'sript kiddy', who just copies from others without understanding)*
   2. Maintain a "cheat sheet of SQL recipes to hack" for building your PHP code
   3. Prepare your SQL queries in a text editor *to each specific need*
   4. Copy-paste your SQL queries into the terminal *to test them*
