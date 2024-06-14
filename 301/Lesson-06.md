@@ -1246,7 +1246,7 @@ exec 1>> out-1.log
 echo "STDOUT message" >&1
 
 exec 2>> out-2.log
-echo "STDOUT message" >&2
+echo "STDERR message" >&2
 
 exec 3>> out-3.log
 echo "Custom channel message" >&3
@@ -1276,6 +1276,10 @@ gedit ../06-output-4
 *Every channel produced output because every log file had an entry*
 
 *Note we didn't use any `exit` codes to make these log entries!*
+
+*Note `exit` codes do not produce output channel content; **all channels already have any content sent to them***
+
+*In proper Shell scripting, **only** send output to a channel if it needs to be there*
 
 **Output channel syntax:**
 
@@ -1517,7 +1521,7 @@ journalctl -rt RoutineCheck SYSLOG_FACILITY=16 -p info
 ```
 
 ### *Moral of the story: always use `exit` with a number!*
-- `exit 0` everything succeeded, `STDOUT` allowed
+- `exit 0` success, `STDOUT` allowed
 - `exit 1` soft fail, answer was "no", `STDOUT` message allowed
 - `exit 2` something is wrong, usually with `STDERR` error messages
 - `exit 3-87` you think you are special and make your own exit channels and messages *(with `echo "something"` `>&3`-`>&87`)*
@@ -1534,17 +1538,132 @@ gedit ../06-logging-strong
 ### *Multiple channels*
 When a script exists, all channels produce output
 
-Sending output comes from `exec` not from `exit`
-
-Eg:
+Output messages come from `exec` not from `exit`
 
 ```sh
 exec 0>> out-0.log
-echo "zero message" >&0
+echo "Zero message" >&0
+
+exec 1>> out-1.log
+echo "Output message" >&1
 
 exec 2>> out-2.log
-echo "zero message" >&2
+echo "Error message" >&2
 ```
+
+*Note these `exit` codes/stati and the output channels...*
+
+*Prepare...*
+
+| **142** :$
+
+```console
+echo "foo" > grepme
+```
+
+#### i. Channel `&1` (`STDOUT`); `exit 0` = `true`:
+
+| **143** :$
+
+```console
+grep foo grepme
+```
+
+*The output was directed like `exec 1>&1`*
+
+| **144** :$
+
+```console
+echo $?
+```
+
+*Send channel `&1` to `/dev/null` so we don't see it...*
+
+| **145** :$
+
+```console
+grep foo grepme 1> /dev/null
+```
+
+| **146** :$
+
+```console
+echo $?
+```
+
+#### ii. Channel `&1` (`STDOUT`); `exit 1` = `false`:
+
+| **147** :$
+
+```console
+grep nothere grepme
+```
+
+| **148** :$
+
+```console
+echo $?
+```
+
+*Send channel `&1` to `/dev/null` so we don't see it...*
+
+| **149** :$
+
+```console
+grep foo grepme 1> /dev/null
+```
+
+*The output was directed like `exec 1>&1`*
+
+| **150** :$
+
+```console
+echo $?
+```
+
+*The `ls` output was from channel `&2`, send it to `/dev/null` so we don't see it...*
+
+| **151** :$
+
+```console
+grep nothere grepme 2> /dev/null
+```
+
+#### iii. Channel `&2` (`STDERR`); `exit 2` = `false`:
+
+| **152** :$
+
+```console
+grep foo nofile
+```
+
+*The output was directed like `exec 2>&2`*
+
+| **153** :$
+
+```console
+echo $?
+```
+
+*Send channel `&2` to `/dev/null` so we don't see it...*
+
+| **144** :$
+
+```console
+grep foo nofile 2> /dev/null
+```
+
+| **155** :$
+
+```console
+echo $?
+```
+
+*Note:*
+
+- *`exit 0` and `exit 1` produce channel `&1` (`STDOUT`) output*
+- *`exit 2` produces channel `&2` (`STDERR`) output*
+- ***The `exit` code and the output channel are not the same!***
 
 ### *The irony*
 `exit` codes and `exec` output channels do not use the same numbers!
@@ -1565,7 +1684,7 @@ All other non-`0` `exit` codes should never be used alongside `>&1`, but convent
 
 As [discussed](https://unix.stackexchange.com/questions/590038/why-does-a-failed-cat-return-1-but-other-fails-return-2) many Linux commands are not consistent with the type of `exit` status, except that any non-`0` is considered failure for `if [ test ]` purposes
 
-At the time Linux was written, this discrepancy wasn't any big deal, but the numbers might only be written to agree if a clone of Linux were ever written in [Go language](https://go.dev/) instead of C
+At the time Linux was written, this discrepancy wasn't any big deal, but the numbers might only be re-written to agree if a clone of Linux were ever re-written in [Go language](https://go.dev/) instead of C
 
 ___
 
@@ -1588,35 +1707,50 @@ ___
 
 ## `exit` status & app log files
 - `exit` code numbers are important, always use an exit code with `exit`!
-- This will hide any and all messages: `command > /dev/null 2>&1`
 - System `exit` codes:
-  - `exit 0` success, possible `STDOUT`, "proper" `true` (status == `0`)
-  - `exit 1` soft fail, possible `STDOUT`, "proper" `false` (status == `1`)
-  - `exit 2` hard fail, probably `STDERR`, "failed" `false` (status != `0`)
+  - `exit 0` - `true`: success, possible `STDOUT`, "proper" `true` (status == `0`)
+  - `exit 1` - `false`: soft fail, possible `STDOUT`, "proper" `false` (status == `1`)
+  - `exit 2` - `false`: hard fail, probably `STDERR`, "failed" `false` (status != `0`)
 - Custom `exit` codes:
-  - Syntax: `exit 0`
+  - Syntax: `exit 7`
   - Most numbers above `2` are either reserved by other processes or customized by the developer (you)
-    - Following example uses the custom output channel 3:
-      - `exec 3>> Output-File` defines the custom exit channel 3 to output to a specific log file
-      - `2>&3` will send all `STDERR` (channel 2 output) into your custom channel 3
-      - `echo "Some message here" >&3` will add a message to your custom channel 3
-      - `exit 3` must be your exit method for the output to appear
-- Proper `exit` codes allow other scripts to understand what happened after the fact
 
-## `exec` for output channels
-- Output channels
-  - All channels produce output
-  - `exit` is irrelevant to output channels
-  - Syntax: `M>&N`
+## `exec` & output channels
+- This will hide messages from both main output (`&1` and `&2`): `command > /dev/null 2>&1`
+- Syntax:
+  - `>&1`
+  - `>&2`
+- Example of the custom output channel `3`:
+  - `exec 3>> Output-File` defines the custom exit channel 3 to output to a specific log file
+  - `2>&3` will send all `STDERR` (channel 2 output) into your custom channel 3
+  - `echo "Some message here" >&3` will add a message to your custom channel 3
+- Output channel facts
   - Arguments like `3>&5` & `2>&1` redirect the output channels
   - `2>&1` redirects `2` output into channel `1` output
-    - `>&1` redirecs *all* output into channel `1` output
   - `3>&5` redirects `3` into channel `5` output
-    - `>&7` redirecs *all* output into channel `7` output
+  - `>&7` = `1>&7` redirecs `1` output into channel `7` output
+  - `>&1` = `1>&1` redirecs `1` output into channel `1` output (redundant)
   - Output channel redirects can follow any command
-    - ie: `ls 2>&1` or `ls 3>&5`
+    - eg: `ls 2>&1` or `ls 3>&5`
   - `exec` as a global setting *before* relevant commands in the script
-    - ie: `exec 2>&1` or `exec 3>&5`
+    - eg: `exec 2>&5` must come before using `ls >&5`
+    - eg: `exec 4>> out-3.log` must come before using `ls >&4`
+
+## Output channels (`&1`, `&2` etc) vs `exit` codes
+- `exit` codes are not the same as output channels!
+- All output channels produce output if they have any
+  - So, only send messages to the output channel that you will use
+- `exit` codes and output channels work independently of each other
+  - But, you should make them agree
+- Proper `exit` codes allow other scripts to understand what happened after the command finishes
+  - `exit` codes **do not** determine content of output channels!
+  - Only `>&1` or `>&2` etc determine content of output channels!
+- Channel + `exit` usage:
+  - Channel `>&1` messages should be used with both `exit 0` (`true`) and `exit 1` (`false`) in your script
+  - Channel `>&2` messages should only be used with `exit 2` (`false`) in your script
+  - Channel `>&3` messages or other could be used with `exit 3` or other
+    - (If you want custom output and exit codes for a larger software application)
+
 ___
 
 #### [Lesson 7: Multiple Tests, Counters, source & Functions](https://github.com/inkVerb/vip/blob/master/301/Lesson-07.md)

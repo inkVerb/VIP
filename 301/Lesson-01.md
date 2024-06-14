@@ -396,9 +396,35 @@ grep "Markdown" markdown.md
 echo $?
 ```
 
-*Only "`markdown`", not "`Markdown`"*
+*Note `true` and `false` are both commands...*
 
 | **47** :$
+
+```console
+true
+```
+
+| **48** :$
+
+```console
+echo $?
+```
+
+| **49** :$
+
+```console
+false
+```
+
+| **50** :$
+
+```console
+echo $?
+```
+
+*Only "`markdown`", not "`Markdown`"*
+
+| **51** :$
 
 ```console
 gedit 01-ifcomm1
@@ -408,7 +434,7 @@ gedit 01-ifcomm1
 if grep "foobar" somefile.txt; then
 ```
 
-| **48** :$
+| **52** :$
 
 ```console
 ./01-ifcomm1
@@ -416,25 +442,25 @@ if grep "foobar" somefile.txt; then
 
 *Use `grep -q` for no output, only `true`/`false` (`0` or `1`, `2`, `3`...)...*
 
-| **49** :$
+| **53** :$
 
 ```console
 grep -q "markdown" markdown.md
 ```
 
-| **50** :$
+| **54** :$
 
 ```console
 echo $?
 ```
 
-| **51** :$
+| **55** :$
 
 ```console
 grep -q "Markdown" markdown.md
 ```
 
-| **52** :$
+| **56** :$
 
 ```console
 echo $?
@@ -442,31 +468,99 @@ echo $?
 
 *Use `if !` to reverse the response of a command...*
 
-| **53** :$
-
-```console
-gedit 01-ifcomm2
-```
-
 ```sh
 if grep -q "foobar" somefile.txt; then
 
 if ! grep -q "foobar" somefile.txt; then
 ```
 
-| **54** :$
+| **57** :$
+
+```console
+! true
+```
+
+| **58** :$
+
+```console
+echo $?
+```
+
+| **59** :$
+
+```console
+! false
+```
+
+| **60** :$
+
+```console
+echo $?
+```
+
+| **61** :$
+
+```console
+! grep "markdown" markdown.md
+```
+
+| **62** :$
+
+```console
+echo $?
+```
+
+| **63** :$
+
+```console
+! grep "Markdown" markdown.md
+```
+
+| **64** :$
+
+```console
+echo $?
+```
+
+| **65** :$
+
+```console
+! grep -q "markdown" markdown.md
+```
+
+| **66** :$
+
+```console
+echo $?
+```
+
+| **67** :$
+
+```console
+! grep -q "Markdown" markdown.md
+```
+
+| **68** :$
+
+```console
+echo $?
+```
+
+*Note we don't always need an `else` statement if we only need to verify one condition*
+
+| **69** :$
+
+```console
+gedit 01-ifcomm2
+```
+
+| **70** :$
 
 ```console
 ./01-ifcomm2
 ```
 
-*This works with any command...*
-
-| **55** :$
-
-```console
-gedit 01-ifcomm3
-```
+*This `!` operator works with any command...*
 
 ```sh
 if echo "Hello"; then
@@ -476,15 +570,45 @@ if ls somefile.txt; then
 if ! ls nofile.txt; then
 ```
 
-| **56** :$
+| **71** :$
+
+```console
+ls
+```
+
+| **72** :$
+
+```console
+echo $?
+```
+
+| **73** :$
+
+```console
+! ls
+```
+
+| **74** :$
+
+```console
+echo $?
+```
+
+| **75** :$
+
+```console
+gedit 01-ifcomm3
+```
+
+| **76** :$
 
 ```console
 ./01-ifcomm3
 ```
 
-*You can put this inside the actual terminal...*
+*You can put an entire `if` test inside the actual terminal...*
 
-| **57** :$
+| **77** :$
 
 ```console
 if grep -q "markdown" markdown.md; then echo "Yes: markdown"; fi

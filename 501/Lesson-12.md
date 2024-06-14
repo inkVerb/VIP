@@ -60,7 +60,7 @@ ___
   - Machine OS version of what JSON is for JavaScript
   - JSON is used in the browser, XML is used everywhere else
 5. Can be read by many languages
-  - BASH/Linux terminal (`linuxlint`)
+  - BASH/Linux terminal (`xmlstarlet`)
   - PHP (`xml_parser_create` & `SimpleXML`)
   - JavaScript (`xml2json` & `json2xml`)
   - SQL (`FOR XML AUTO`, `FOR XML PATH`, `FROM OPENXML`)
@@ -1727,7 +1727,7 @@ localhost/web/style.xml
 | `self`               | Current node                                                                                    |
 
 ### V. XML via CLI with XMLStarlet
-XMLStarlet uses the terminal command `xml` or `xmlstarlet` if you prefer
+XMLStarlet uses the terminal command `xml` or `xmlstarlet` as you prefer
 
 We use XML Path syntax with many other XML tools, including CLI tools like XMLStarlet
 
@@ -2888,7 +2888,7 @@ ___
   - Machine version of what JSON is for JavaScript
   - JSON is used in the browser, XML is used everywhere else
 - Can be read by many languages
-  - BASH/Linux terminal (`linuxlint`)
+  - BASH/Linux terminal (`xmlstarlet`)
   - PHP (`xml_parser_create` & `SimpleXML`)
   - JavaScript (`xml2json` & `json2xml`)
   - SQL (`FOR XML AUTO`, `FOR XML PATH`, `FROM OPENXML`)

@@ -2,9 +2,29 @@
 ## Lesson 9: PAM & Cloud (SSH, SSL, LDAP, VM, Docker, Mail)
 
 # The Chalk
+- *Cloud tools with login can piggy-back off of the native Linux PAM login*
+- Some cloud services *should* use PAM:
+  - FTP (file transfer)
+  - SSH (remote login)
+  - rsync (remote sync)
+- Some cloud services *might* use PAM if configured:
+  - Database server (SQL, MongoDB)
+  - Email (SMTP, IMAP, POP)
+  - Docker (containers)
+  - SSSD (remode filesystem directory)
+  - LDAP (user list lookup)
+  - Kerberos (network login lookup)
+  - Virtual Machines
+- Some cloud services *do not* use PAM:
+  - Web server (incl PHP, Node.js, Go apps)
+  - SSL (certificates)
+
 ## Pluggable Authentication Module (PAM)
+*Native Linux user login*
+
 - *[Wikipedia article](https://en.wikipedia.org/wiki/Linux_PAM)*
 - *[Arch Wiki](https://wiki.archlinux.org/title/PAM)*
+- *[Microsoft: "Privileged Access Management (PAM)"](https://www.microsoft.com/en-us/security/business/security-101/what-is-privileged-access-management-pam)*
 - PAM is the underlying login system for Linux users
 - PAM is used when you use the log in page on a GUI-based Linux system like GNOME, Xfce, KDE, etc
 - PAM is used if you log on to a local or cloud Linux machine that *does not* use any GUI at all
