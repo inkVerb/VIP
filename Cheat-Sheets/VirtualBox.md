@@ -13,19 +13,9 @@ For reference:
 - (Arch Wiki)[https://wiki.archlinux.org/title/VirtualBox]
 - (Manjaro Wiki)[https://wiki.manjaro.org/index.php/VirtualBox]
 
-*Install VirtualBox*
-
-| **1** :$
-
-```console
-sudo pacman -Syy virtualbox
-```
-
-*Install host kernel modules (very necessary)*
-
 *First get your kernel version*
 
-| **2** :$
+| **1** :$
 
 ```console
 mhwd-kernel -li
@@ -37,18 +27,30 @@ mhwd-kernel -li
 Currently running: 6.1.69-1-MANJARO (linux61)
 The following kernels are installed in your system:
    * linux419
-   * linux61
+   * linux69
 ```
 
-*(only the bottom kernel version matters, `linux61`)*
+*(only the bottom kernel version matters, `linux69`)*
 
-*...in which case we use `61` for `linux61` in the `linux*-virtualbox-host-modules` package...*
+*Install VirtualBox*
 
-| **3** :$ (this command will need to be modified to correct `linux61` to your current kernel version number)
+| **2** :$
 
 ```console
-sudo pacman -S linux61-virtualbox-host-modules
+sudo pacman -Syy virtualbox
 ```
+
+*Install host kernel modules (very necessary)*
+
+*...in which case we use `69` for `linux69` in the `linux*-virtualbox-host-modules` package...*
+
+|  If the `pacman` installer asked about the above package, then skip step 3
+|  
+|  | **3** :$ (this command will need to be modified to correct `linux69` to your current kernel version number)
+|  
+|  ```console
+|  sudo pacman -S linux69-virtualbox-host-modules
+|  ```
 
 *Avoid trouble, make your current desktop user a member of the `vboxusers` group*
 
@@ -76,7 +78,7 @@ sudo modprobe vboxnetflt vboxnetadp
 
 *Prevent Wayland from blocking some keyboard input?*
 
-| **7** :$ **??**
+| **7** :$ **?? if Wayland is enabled**
 
 ```console
 gsettings get org.gnome.mutter.wayland xwayland-grab-access-rules

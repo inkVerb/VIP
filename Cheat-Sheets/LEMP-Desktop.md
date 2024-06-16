@@ -6,6 +6,8 @@
 
 ***This is only for Arch/Manjaro and installs Nginx!*** *For Apache on Arch/Manjaro or Debian/Ubuntu, see [LAMP Desktop](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/LAMP-Desktop.md)*
 
+*DEV note: This is in beta and has not been tested; PHP-FPM may not work*
+
 ### Update
 
 | **0** :$
@@ -50,17 +52,22 @@ sudo vim /etc/php/php.ini
 
 In php.ini:
 
-  - Uncomment (remove the semicolon `;` at the start of the line)
+  - Uncomment & set values (remove the semicolon `;` at the start of the line)
     - `extension=mysqli`
+    - `extension=pdo_mysql`
     - `extension=iconv`
+    - `upload_max_filesize = 50M`
+	  - `file_uploads = On`
 
-3. Start Everything
+3. MariaDB setup *before starting the service*
 
 | **3** :$
 
 ```console
-sudo systemctl enable nginx
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 ```
+
+4. Start Services
 
 | **4** :$
 
@@ -71,47 +78,13 @@ sudo systemctl start nginx
 | **5** :$
 
 ```console
-sudo systemctl enable mariadb
+sudo systemctl start mariadb
 ```
 
 | **6** :$
 
 ```console
-sudo systemctl start mariadb
-```
-
-| **7** :$
-
-```console
-sudo systemctl enable php-fpm
-```
-
-| **8** :$
-
-```console
 sudo systemctl start php-fpm
-```
-
-4. Look for the green dot as the All-OK
-
-| **9** :$
-
-```console
-sudo systemctl status nginx
-```
-
-  - Press <kbd>Q</kbd> to quit. ;-)
-
-| **10** :$
-
-```console
-sudo systemctl status mariadb
-```
-
-| **11** :$
-
-```console
-sudo systemctl status php-fpm
 ```
 
 #### Create the web user and directories
@@ -122,7 +95,7 @@ sudo systemctl status php-fpm
 
 *Note we also add write (`+w`) permissions and own the web folder (`/srv/www`)*
 
-| **12** :$
+| **7** :$
 
 ```console
 sudo useradd -g www www
@@ -139,12 +112,12 @@ sudo chown -R www:www /srv/www
 
 Life is easier with a local "Work" folder symlink
 
-| **13** :$
+| **8** :$
 
 ```console
 mkdir -p ~/Work/dev
 sudo mkdir -p /srv/www/html/vip
-sudo chmod u+w /srv/www/vip
+sudo chmod u+w /srv/www/html/vip
 sudo ln -sfn /srv/www/html/vip ~/Work/
 ```
 
@@ -161,7 +134,7 @@ sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 
 #### Always own web stuff first!
 
-| **14** :$
+| **9** :$
 
 ```console
 sudo chown -R www:www /srv/www
@@ -173,7 +146,7 @@ sudo chown -R www:www /srv/www
 
 Edit with `gedit`:
 
-| **15g** :$
+| **10g** :$
 
 ```console
 sudo gedit /etc/nginx/nginx.conf
@@ -181,7 +154,7 @@ sudo gedit /etc/nginx/nginx.conf
 
 Or edit with `vim`:
 
-| **15v** :$
+| **10v** :$
 
 ```console
 sudo vim /etc/nginx/nginx.conf
@@ -207,16 +180,26 @@ sudo vim /etc/nginx/nginx.conf
     - Nginx will break if an `include` file doesn't exist
     - So, create the rewrite file, though it's empty
 
-| **16** :$
+| **11** :$
 
 ```console
 sudo touch /srv/www/rewrite
 ```
 
-| **17** :$
+| **12** :$
 
 ```console
 sudo chown -R www:www /srv/www
+```
+
+| **/etc/php/php-fpm.d/www.conf** :
+
+```
+[www]
+user=www
+group=www
+listen.owner = www
+listen.group = www
 ```
 
 
@@ -224,7 +207,7 @@ sudo chown -R www:www /srv/www
 
 Edit with `gedit`:
 
-| **18g** :$
+| **13g** :$
 
 ```console
 sudo gedit /etc/nginx/php_fastcgi.conf
@@ -232,7 +215,7 @@ sudo gedit /etc/nginx/php_fastcgi.conf
 
 Or edit with `vim`:
 
-| **18v** :$
+| **13v** :$
 
 ```console
 sudo vim /etc/nginx/php_fastcgi.conf
@@ -260,7 +243,7 @@ sudo vim /etc/nginx/php_fastcgi.conf
 
 3. Reload Nginx after any changes
 
-| **19** :$
+| **14** :$
 
 ```console
 sudo systemctl reload nginx
@@ -268,21 +251,43 @@ sudo systemctl reload nginx
 
   - Check for specific errors in Nginx server configs
 
-| **20** :$
+| **15** :$
 
 ```console
 sudo nginx -t
 ```
 
-4. Remember with rewrites...
+Remember with rewrites...
 
 *Your code must reflect the names of any URLs as you want them rewritten, not as they actually are.*
+
+4. Look for the green dot as the All-OK
+
+| **16** :$
+
+```console
+sudo systemctl status nginx
+```
+
+  - Press <kbd>Q</kbd> to quit. ;-)
+
+| **17** :$
+
+```console
+sudo systemctl status mariadb
+```
+
+| **18** :$
+
+```console
+sudo systemctl status php-fpm
+```
 
 ### MySQL via Command Line
 
 1. Access MySQL as root user with
 
-| **21** :$
+| **19** :$
 
 ```console
 sudo mariadb
@@ -290,16 +295,25 @@ sudo mariadb
 
 2. Create a database admin user in MySQL with: (user: `admin` password: `adminpassword`)
 
-| **22** :>  `GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;`
+| **20** :>
 
-| **23** :> `FLUSH PRIVILEGES;`
+```console
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;
+```
+
+| **21** :>
+
+```console
+FLUSH PRIVILEGES;
+```
 
 3. Exit MySQL
 
-| **24** :> `QUIT;`
+| **22** :>
 
-Access any MySQL user you created later with
-- `mariadb -u USERNAME -p` (then enter the password)
+```console
+QUIT;
+```
 
 ### MySQL phpMyAdmin
 
@@ -307,7 +321,7 @@ Access any MySQL user you created later with
 2. Extract and rename the folder to: `phpMyAdmin`
 3. In the terminal, move it to `/srv/www/html/` (so it is at `/srv/www/html/phpMyAdmin`)
 
-| **25** :$
+| **23** :$
 
 ```console
 sudo mv phpMyAdmin /srv/www/html/
@@ -315,13 +329,13 @@ sudo mv phpMyAdmin /srv/www/html/
 
 4. Create the config
 
-| **26** :$
+| **24** :$
 
 ```console
 cd /srv/www/html/phpMyAdmin
 ```
 
-| **27** :$
+| **25** :$
 
 ```console
 sudo cp config.sample.inc.php config.inc.php
@@ -330,7 +344,7 @@ sudo cp config.sample.inc.php config.inc.php
 5. Set the blowfish salt (32 characters long, random)
   - Edit with `gedit`:
 
-| **28g** :$
+| **26g** :$
 
 ```console
 sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
@@ -338,7 +352,7 @@ sudo gedit /srv/www/html/phpMyAdmin/config.inc.php
 
 Or edit with `vim`:
 
-| **28v** :$
+| **286v** :$
 
 ```console
 sudo vim /srv/www/html/phpMyAdmin/config.inc.php
@@ -350,7 +364,7 @@ sudo vim /srv/www/html/phpMyAdmin/config.inc.php
 
 6. Own everything properly
 
-| **29** :$
+| **27** :$
 
 ```console
 sudo chown -R www:www /srv/www/html/phpMyAdmin
@@ -437,8 +451,8 @@ sudo vim /etc/nginx/nginx.conf
 
 ```
 [www]
-user=www
-group=www
+user = www
+group = www
 listen.owner = www
 listen.group = www
 ```

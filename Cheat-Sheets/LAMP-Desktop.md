@@ -51,7 +51,7 @@ sudo pacman -Syy
 | **A1** :$
 
 ```console
-sudo pacman -S --noconfirm apache php php-apache mariadb
+sudo pacman -S --noconfirm apache php php-apache php-fpm mariadb
 ```
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
@@ -82,10 +82,10 @@ In php.ini:
     - `extension=mysqli`
     - `extension=pdo_mysql`
     - `extension=iconv`
-    - `upload_max_filesize = 10M`
-	- `file_uploads = On`
+    - `upload_max_filesize = 50M`
+	  - `file_uploads = On`
 
-3. MariaDB setup
+3. MariaDB setup *before starting the service*
 
 | **A3** :$
 
@@ -288,8 +288,8 @@ sudo sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
 | **AW6** :$
 
 ```console
-sudo sed -i "s/^user =.*/user = www/" /etc/php-fpm.d/www.conf
-sudo sed -i "s/^group =.*/group = www/" /etc/php-fpm.d/www.conf
+sudo sed -i "s/^user =.*/user = www/" /etc/php/php-fpm.d/www.conf
+sudo sed -i "s/^group =.*/group = www/" /etc/php/php-fpm.d/www.conf
 ```
 
 7. Restart the Apache server
@@ -416,8 +416,8 @@ In php.ini:
     - `extension=mysqli`
     - `extension=pdo_mysql`
     - `extension=iconv`
-    - `upload_max_filesize = 10M`
-	- `file_uploads = On`
+    - `upload_max_filesize = 50M`
+	  - `file_uploads = On`
 
 3. Restart Everything
 
@@ -771,8 +771,11 @@ sudo vim /etc/php.ini
 In php.ini:
 
   - Uncomment & set values (remove the semicolon `;` at the start of the line)
-    - `upload_max_filesize = 10M`
-    - `file_uploads = On`
+    - `extension=mysqli`
+    - `extension=pdo_mysql`
+    - `extension=iconv`
+    - `upload_max_filesize = 50M`
+	  - `file_uploads = On`
 
 4. MariaDB setup
 
