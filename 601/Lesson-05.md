@@ -20,14 +20,24 @@
 - `dmesg` display kernel messages
 
 ### Repairing & Re-installing the Kernel
-*Every major Linux installation maintains basic and some previous images that can be booted from in `/boot/`*
-
+- *Every major Linux installation maintains basic and some previous images that can be booted from in `/boot/`*
+  - *These are usually available in "Advanced options" or similar at the GRUB boot menu*
+- Some kernels are LTS; others are short-life
+  - You may want to do some direct management of the kernel and keep different kernel-boot options
+  - Changing the kernel will not normally affect the rest of the softwrae packages installed
+#### Kernel Management
 - Many kernel commands are version-specific and can be best substituted for the current kernel version with `$(uname -r)`
    - To install a previous kernel, look for an earlier number in `/boot/`
    - In Arch/Manjaro, `uname -r` indicates kernels in `/usr/lib/modules/` (which may also contain `extramodules-` files)
 - Re-install latest kernel :#
-  - Arch/Manjaro: `kernel-install add $(uname -r) /usr/lib/modules/$(uname -r)/vmlinuz`
+  - Arch: `kernel-install add $(uname -r) /usr/lib/modules/$(uname -r)/vmlinuz`
     - Or remove: `kernel-install remove $(uname -r)`
+  - Manjaro: `mhwd-kernel` *(special tool that handles kernel-related/dependent packages)*
+    - Manjaro has a special tool: [Manjaro Hardware Detection](https://wiki.manjaro.org/index.php/Manjaro_Hardware_Detection) (`mhwd`)
+    - [MHWD kernel management](https://wiki.manjaro.org/index.php/Manjaro_Kernels) (`mhwd-kernel`)
+      - List available kernels :# `mhwd-kernel -l`
+      - List installed kernels :# `mhwd-kernel -li`
+      - Install kernel `linux69` :# `mhwd-kernel -i linux69`
   - Debian/Ubuntu: `apt-get install --reinstall linux-image-generic`
     - Install specific kernel: `update-initramfs -u -k $(uname -r)`
   - RedHat/CentOS: `dnf reinstall kernel`
@@ -57,16 +67,25 @@
 
 ### Kernel Command Line
 *The command that GRUB runs to start the kernel, kept at `/proc/cmdline`*
+- Called the ***kernel command line*** or ***boot command line***
+  - All boot parameters are on this one, single line
 
-- All boot parameters are on one, single line
-  - This is called the ***kernel command line*** or ***boot command line***
-  - Usually the `linux` line of GRUB config: `/boot/grub/grub.cfg`
-    - Default from the `GRUB_CMDLINE_LINUX_DEFAULT=` statement in `/etc/default/grub`
-  - `man bootparam`
-  - List of all kernel boot parameters:
-    - `kernel-parameters.txt` in kernel source
-- Find out what command line your system booted with:
+#### Location
+- Usually resides the `linux` line of GRUB config: `/boot/grub/grub.cfg`
+- Default is set from the `GRUB_CMDLINE_LINUX_DEFAULT=` statement in `/etc/default/grub`
+- Find out what command line your system booted with :$
   - `cat /proc/cmdline`
+
+#### Update "Properly"
+  1. Set the `GRUB_CMDLINE_LINUX_DEFAULT=` statement in `/etc/default/grub`
+  2. Run :# `update-grub`
+  - Be cautious about modifying this line too much
+  - To select a different kernel, use proper kernel install tools per distro! (above)
+
+#### `/proc/cmdline` parameters
+- List of all kernel boot parameters
+  - `kernel-parameters.txt` in kernel source
+  - `man bootparam`
 - Breakdown
   - `root=` the root filesystem, can take any accepted form of the first mount setting used in `/etc/fstab`
   - `rw` read-write root device on boot

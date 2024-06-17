@@ -37,7 +37,8 @@ sed -i "s?listen.group = http?listen.group = www?" /etc/php/php-fpm.d/www.conf
 mkdir -p /srv/www/html/vip
 chmod u+w /srv/www/html/vip
 chown -R www:www /srv/www
-for deskuser in /home/; do
+for deskuser in /home/*; do
+  deskuser=$(basename $deskuser)
   if [ -d "/home/$deskuser/.config" ] && [ -d "/home/$deskuser/.local" ]; then
     mkdir -p /home/$deskuser/Work/dev
     ln -sfn /srv/www/html/vip /home/$deskuser/Work/

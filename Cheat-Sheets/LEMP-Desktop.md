@@ -165,14 +165,16 @@ sudo vim /etc/nginx/nginx.conf
   ```
   location / {
     root /srv/www/html;
-    index index.htm index.html index.php;
+    #index index.htm index.html index.php; # PHP breaks this Nginx configuration
+    index index.htm index.html;
     include /srv/www/rewrite; # Rewrites go here, more convenient
   }
 
-  location ~ [^/]\.(php|html|htm)(/|$) {
-    root /srv/www/html;
-    include /etc/nginx/php_fastcgi.conf;
-  }
+  # PHP-FPM breaks this Nginx configuration
+  #location ~ [^/]\.(php|html|htm)(/|$) {
+  #  root /srv/www/html;
+  #  include /etc/nginx/php_fastcgi.conf;
+  #}
   ```
 
   - Rewrites:
