@@ -195,7 +195,7 @@ ___
   - `date +%Y/%m/%d_%T`
   - `date +%Y/%m/%d_%H:%M:%S`
   - `date +%Y-%m-%d.%H-%M-%S`
-- SQL format: `date +'%Y-%m-%d %H:%M:%S'`
+- SQL format: `date +'%Y-%m-%d %H:%M:%S'` | `date +'%F %T'`
 
 ### Common format arguments
 - `+%D` MM/DD/YY
@@ -211,6 +211,20 @@ ___
 - `+%H` HH
 - `+%M` mm (minute)
 - `+%S` SS (seconds)
+
+### Timezones
+- Set `env TZ=` before the `date` command to get time in a specific timezone
+  - `env TZ=America/Detroit date +'%F %T'`
+  - `env TZ=Hongkong date +%Y_%m_%d`
+  - `env TZ=Greenwich date +'%Y-%m-%d %H:%M:%S'`
+  - `env TZ=Australia/Melbourne date +%Y-%m-%d_%T`
+  - `env TZ=Pacific/Honolulu date`
+- List available timezones
+  - `awk '/^Z/ { print $2 }; /^L/ { print $3 }' /usr/share/zoneinfo/tzdata.zi`
+  - Poke around in `/usr/share/zoneinfo/`
+  
+
+
 
 *Read more options here:* [https://www.computerhope.com/unix/udate.htm]
 

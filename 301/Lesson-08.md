@@ -13,10 +13,16 @@ ___
 
 ### I. `date`
 
-| **SQL timestamp format** :
+| **SQL timestamp format** : (reliable)
 
 ```sh
 date +'%Y-%m-%d %H:%M:%S'
+```
+
+| **SQL timestamp format** : (simplified)
+
+```sh
+date +'%F %T'
 ```
 
 | **1** :$
@@ -249,6 +255,62 @@ gedit 08-date-name
 ls yoyo*
 ```
 
+### IV. Other tools
+
+*Use SQL format*
+
+| **31** :$
+
+```console
+date +'%F %T'
+```
+
+*Or use this for the same SQL format*
+
+| **32** :$
+
+```console
+date +'%Y-%m-%d %H:%M:%S'
+```
+
+*Use `env TZ=America/Detroit` before `date` for the timezone*
+
+| **33** :$
+
+```console
+env TZ=America/Detroit date +'%F %T'
+```
+
+*See a list of all available timezones in `/usr/share/zoneinfo/tzdata.zi`*
+
+| **34** :$
+
+```console
+awk '/^Z/ { print $2 }; /^L/ { print $3 }' /usr/share/zoneinfo/tzdata.zi
+```
+
+*Also note the timezones exist in a directory structure inside `/usr/share/zoneinfo/`*
+
+| **35** :$
+
+```console
+ls /usr/share/zoneinfo
+```
+
+| **36** :$
+
+```console
+ls /usr/share/zoneinfo/Australia
+```
+
+*Note the actual city files store binary data*
+
+| **36** :$
+
+```console
+cat /usr/share/zoneinfo/Australia/Sydney
+```
+
 ___
 
 # The Take
@@ -259,7 +321,9 @@ ___
   - each option begins with `%`
   - other characters may be included as a means of formatting the output
 - Syntax: `date +Options`
-- Timestamp in SQL format: `date +'%Y-%m-%d %H:%M:%S'`
+- Timestamp in SQL format: `date +'%Y-%m-%d %H:%M:%S'` or `date +'%F %T'`
+- Use a timezone with an `env` argument: `env TZ=America/Detroit date +'%F %T'`
+  - See all available timezones: `awk '/^Z/ { print $2 }; /^L/ { print $3 }' /usr/share/zoneinfo/tzdata.zi`
 - See usage and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#vii-date)
 
 ## `pwgen`
