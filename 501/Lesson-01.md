@@ -36,6 +36,15 @@ ___
   - CSS
   - JavaScript
 
+### CSS & JS: Operation vs Appeal
+- CSS & JS have two main purposes:
+  1. Operation: Make a site operational for proper UX (ie save & error messages)
+  2. Appeal: Make a site pleasant, easy to use, beautiful, even trendy
+- Know the difference between CSS-JS Operation and CSS-JS Appeal
+  - The operational side is indeed more than just "eye candy"
+  - The appeal indeed adds marketable value to the final product
+- *CSS & JS in this course only focus on **operational** CSS-JS, **not appeal***
+
 ### PHP Rules:
 
 1. PHP renders HTML ***after*** the entire PHP script finishes

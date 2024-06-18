@@ -33,6 +33,7 @@
   - Arch: `kernel-install add $(uname -r) /usr/lib/modules/$(uname -r)/vmlinuz`
     - Or remove: `kernel-install remove $(uname -r)`
   - Manjaro: `mhwd-kernel` *(special tool that handles kernel-related/dependent packages)*
+    - Manjaro is [built on, but different from Arch (more than other distro stackss)](https://wiki.manjaro.org/index.php/Manjaro:A_Different_Kind_of_Beast)
     - Manjaro has a special tool: [Manjaro Hardware Detection](https://wiki.manjaro.org/index.php/Manjaro_Hardware_Detection) (`mhwd`)
     - [MHWD kernel management](https://wiki.manjaro.org/index.php/Manjaro_Kernels) (`mhwd-kernel`)
       - List available kernels :# `mhwd-kernel -l`

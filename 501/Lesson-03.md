@@ -119,9 +119,9 @@ function escape_sql($data) {
 }
 ```
 
-#### Example of a MySQLi Query:
+#### Example of a PHP-MySQLi Query:
 
-**Query:**
+**`SELECT` query & test:**
 
 ```php
 $query = "SELECT column_name, other_column FROM table_name WHERE column_name='some_value'";
@@ -134,12 +134,12 @@ if ($call) { //// Test the query //// see more below ////
 } // End query test //
 ```
 
-**Query tests:**
+**Most query tests:**
 
 ```php
 if ($call) // (all queries) If the query worked, no errors
 if (mysqli_num_rows($call) == 1) // (SELECT) If the query returned exactly 1 row
-if (mysqli_affected_rows($database) == 1) // (UPDATE and DELETE) If the query changed exactly 1 row
+if (mysqli_affected_rows($database) == 1) // (INSERT, UPDATE, DELETE) If the query changed exactly 1 row
 while ( $row = mysqli_fetch_array($call, MYSQLI_NUM) ) // (SELECT) Loop multiple rows (used later)
 ```
 
