@@ -41,7 +41,7 @@ lowriter *.odt &
 
 *Note the contents of the `.odt` files*
 
-*Close the file, just to make sure we don't have any problems...*
+*Close the files, just to make sure we don't have any problems...*
 
 | **4** :$
 

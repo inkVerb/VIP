@@ -16,6 +16,7 @@
   - `who` - list users who are logged on
     - `who -b` - boot time
   - `id` - show user's UID, GID, groups
+  - `last` - show a history of user logins
 - Every command must be executed by a *user*, even if the user is `root`
   - This is why every user must *log in*, even if the user is `root`
   - The only exception is `init`, which is run by the kernel at boot time

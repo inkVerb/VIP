@@ -196,6 +196,12 @@ ___
   - `date +%Y/%m/%d_%H:%M:%S`
   - `date +%Y-%m-%d.%H-%M-%S`
 - SQL format: `date +'%Y-%m-%d %H:%M:%S'` | `date +'%F %T'`
+- Convert existing date string (eg: `Tue, 22 Feb 2022 22:22:22 -0200`)
+  - `date -d "2022-02-22T22:22:22Z" +"%F %T"`
+  - `date -d "Tue, 22 Feb 2022 22:22:22 -0200" +"%F %T"`
+  - `date -d "Tue, 22 Feb 2022 22:22:22 -0200" +"%Y-%m-%d %H:%M:%S"`
+  - `date -d "Tue, 22 Feb 2022 22:22:22 -0200" +"%A, %B %e, %Y, %H:%M:%S"`
+  - `date -d "Tue, 22 Feb 2022 22:22:22 -0200"`
 
 ### Common format arguments
 - `+%D` MM/DD/YY

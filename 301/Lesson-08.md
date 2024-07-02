@@ -25,6 +25,15 @@ date +'%Y-%m-%d %H:%M:%S'
 date +'%F %T'
 ```
 
+| **Convert any date to other format** : (`-d "Some_Existing_Date"`)
+
+```sh
+date -d "2022-02-22T22:22:22Z"
+date -d "Tue, 22 Feb 2022 22:22:22 -0200"
+date -d "2022-02-22T22:22:22Z" +"%F %T"
+date -d "Tue, 22 Feb 2022 22:22:22 -0200" +"%F %T"
+```
+
 | **1** :$
 
 ```console
@@ -145,10 +154,10 @@ date +%S
 
 *Nifty combos*
 
-| **16** :$
+| **16** :$ (Day, Month D, YYYY, HH:MM:SS)
 
 ```console
-date +%Y_%m_%d_%T
+date +'%A, %B %e, %Y, %H:%M:%S'
 ```
 
 | **17** :$
@@ -168,6 +177,7 @@ date +%Y/%m/%d_%H:%M:%S
 ```console
 date +%Y-%m-%d.%H-%M-%S
 ```
+
 
 ### II. `pwgen`
 
@@ -286,18 +296,24 @@ env TZ=America/Detroit date +'%F %T'
 | **34** :$
 
 ```console
+timedatectl list-timezones
+```
+
+| **35** :$
+
+```console
 awk '/^Z/ { print $2 }; /^L/ { print $3 }' /usr/share/zoneinfo/tzdata.zi
 ```
 
 *Also note the timezones exist in a directory structure inside `/usr/share/zoneinfo/`*
 
-| **35** :$
+| **36** :$
 
 ```console
 ls /usr/share/zoneinfo
 ```
 
-| **36** :$
+| **37** :$
 
 ```console
 ls /usr/share/zoneinfo/Australia
@@ -305,7 +321,7 @@ ls /usr/share/zoneinfo/Australia
 
 *Note the actual city files store binary data*
 
-| **36** :$
+| **38** :$
 
 ```console
 cat /usr/share/zoneinfo/Australia/Sydney
@@ -322,8 +338,13 @@ ___
   - other characters may be included as a means of formatting the output
 - Syntax: `date +Options`
 - Timestamp in SQL format: `date +'%Y-%m-%d %H:%M:%S'` or `date +'%F %T'`
+- Convert existing date with the `-d` flag
+  - `date -d "2022-02-22T22:22:22Z"`
+  - `date -d "2022-02-22T22:22:22Z" +"%F %T"`
 - Use a timezone with an `env` argument: `env TZ=America/Detroit date +'%F %T'`
-  - See all available timezones: `awk '/^Z/ { print $2 }; /^L/ { print $3 }' /usr/share/zoneinfo/tzdata.zi`
+  - See all available timezones:
+    - `timedatectl list-timezones`
+    - `awk '/^Z/ { print $2 }; /^L/ { print $3 }' /usr/share/zoneinfo/tzdata.zi`
 - See usage and examples here: [Resources & Things That Run: journalctl & logger](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md#vii-date)
 
 ## `pwgen`

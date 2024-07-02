@@ -115,6 +115,7 @@ ff02::2 ip6-allrouters
   - `/etc/chrony.conf`
 - `systemd-timesyncd` - `ntp` client included in `systemd` package
   - `/etc/systemd/timesyncd.conf`
+  - `timedatectl show-timesync --all` - check config
 
 #### Local Query
 - *The NTP daemon must be running for some queries to work*
@@ -584,11 +585,11 @@ ls /usr/bin/ntp*
 ntpdc -c peers
 
 timedatectl
+timedatectl show-timesync --all
+cat /etc/ntp.conf
 
 apt-get install ntpd
 ntpdate pool.time.tld
-
-vim /etc/ntp.conf
 ```
 
 | **Network configs & routes** :

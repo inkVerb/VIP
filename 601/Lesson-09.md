@@ -262,6 +262,7 @@ Host some_nickname
 
 ### Self-Signed SSL Certificates
 *Note the use of `x509` in the commands*
+- **[X.509](https://en.wikipedia.org/wiki/X.509)** is an international standard for cryptographic keys in telecommunications, including Internet
 - SSL certificates are **signed** by definition, which means `openssl` first needs an existing **key** to **sign** the new certificates
   - If your server both creates the keys and signs the certificates, that is **self-signed**
 - You can use `openssl` to create the keys and sign the certificate in one command or in two commands
@@ -1132,7 +1133,7 @@ sudo docker rmi -f [ helloworld IMAGE ID ]
   - Managing an email server is almost a separate profession to itself
   - In the past, installing postfix was part of SysAdmin training, but not so much in 2024
   - Email is heavily dependent on DNS for security tools like SSL (viz `CAA` records) and [OpenDKIM](http://www.opendkim.org/), SPF (Sender Policy Framework viz [RFC 7208](https://datatracker.ietf.org/doc/html/rfc7208)), and [DMARC](https://dmarc.org/) `TXT` records
-  - Backup mail servers are declared in DNS and often synced via the Linux `rsync` tool (see [Rsync on the Samba homepage](https://rsync.samba.org/))
+  - Backup mail servers are declared in DNS and often synced via the Linux `rsync` tool (see [Rsync on the Samba homepage](https://rsync.samba.org/), more in [Lesson 12]((https://github.com/inkVerb/vip/blob/master/601/Lesson-12.md)))
   - Proper setup of an email server can take one full working day for an experienced SysAdmin working on multiple servers in the cloud
 - It is important for any SysAdmin to know about the main tools used for email servers
 - ***Incoming mail uses port `25`***
