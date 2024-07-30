@@ -230,6 +230,7 @@ Include = /etc/pacman.d/mirrorlist
 - Each package is:
   - Built on a `git` repo, main repo is the [Arch Linux GitLab Packages](https://gitlab.archlinux.org/archlinux/packaging/packages) site
   - Contains a [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) file with `make` instructions used by `makepkg`
+  - `package-name-VERSION.pkg.tar.zst` is a likely name of an actual Arch package file
 - Read the official Arch `pacman` usage [Tips and tricks](https://wiki.archlinux.org/title/Pacman/Tips_and_tricks)
 - Main queries :#
   - Option `--noconfirm` option answers "yes" or "default" to any interactive prompts
@@ -242,12 +243,12 @@ Include = /etc/pacman.d/mirrorlist
   - `pacman -Syyu` update main repo packages (update version lists, then install updates)
     - Only one `-y` is needed as an `-S` subflag; two `-y` subflags will force an upgrade of package lists even if they seem up-to-date
     - Generally, if `installing PACKAGE (...) breaks dependency '...' required by OTHERPACKAGE`, just remove the `OTHERPACKAGE` package, then try `-Syyu` again, *but at your own risk!!*
+  - `pacman -U package-file.pkg.tar.zst` manually install package from `.tar.zst` file
   - `pacman -S package-name` install `package-name` package
   - `pacman -Syy package-name` update all repo lists, then install `package-name` package
   - `pacman -R package-name` remove `package-name` package
   - `pacman -Sw package-name` only download the `.pkg.tar.zst` file for the package to `/var/cache/pacman/pkg/`
-  - `pacman -Syuw --noconfirm`
-  - `pacman -U package_name-VERSION.pkg.tar.zst` manually install `package_name-VERSION.pkg.tar.zst` from that downloaded file
+  - `pacman -Syuw --noconfirm``package_name-VERSION.pkg.tar.zst` from that downloaded file
   - `pacman -Scc` clean cache
   - `pacman -R package-name` remove the `package-name` package
   - `pacman -Rsc` remove unneeded dependencies
@@ -346,6 +347,7 @@ Include = /etc/pacman.d/mirrorlist
   - `dpkg -I some_package-name_amd64.deb` info about package file, probably in `/var/lib/dpkg/`
   - `dpkg -c some_package-name_amd64.deb` contents of package file, probably in `/var/lib/dpkg/`
   - `dpkg -S /etc/openldap/slapd.conf` list package that owns `/etc/openldap/slapd.conf`
+  - `dpkg -i package-file.deb` manually install package from `.deb` file
   - `dpkg -r package-name` remove (uninstall) `package-name`, keep config files
   - `dpkg -P package-name` remove (uninstall) `package-name`, purge config files
 
@@ -406,6 +408,8 @@ Include = /etc/pacman.d/mirrorlist
     2. `/etc/rpmrc`
     3. `~/.rpmrc`
     - Specify using `--rcfile`
+- `rpm -i package-file-VERSION.rpm` manually install package from `.rpm` file
+  - `rpm -qpR package-file-VERSION.rpm` check for dependencies needed by `.rpm` file
 - Some `-q` (query) co-flags: (ie `-qa`)
   - `-q` (`-q` alone) query installed package version
   - `-a` all installed packages
@@ -477,6 +481,13 @@ gpgcheck=1
   - `zypper addrepo http://example.com/path/to/repo some-alias-repo-name` add a repo with `some-alias-repo-name` as your custom repo nickname
   - `zypper removerepo some-alias-repo-name` remove the repo nicknamed `some-alias-repo-name`
   - `zypper clean --all` clears installed packages from `/var/cache/zypp/`
+
+## `penguinsay` Raw Package Examples
+- Build your own minimum package examples for [**penguinsay**](https://github.com/JesseSteele/penguinsay)
+- This example guides how to create a `penguinsay` command package for:
+  - Arch (`makepkg`)
+  - Debian (`dpkg`)
+  - RPM (`rpm` for OpenSUSE & RedHat/CentOS)
 
 ___
 

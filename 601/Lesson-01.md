@@ -13,9 +13,13 @@
 - `ls | wc -l` - number of files in PWD
   - `wc` - word count (needs piped input, like `tee`)
 - `seq 10` - print numbers 1-10, one per line (useful for loops)
+
+### Searching for Files
 - `find /etc -type d -iname "*.d"`
 - `find . -perm -u+s` (for `s` permissions on **setuid** programs, see [Lesson 2: Procesesses & Monitoring](https://github.com/inkVerb/vip/blob/master/601/Lesson-02.md))
   - `-perm` - Permissions search with same notation at `chmod`, but prefix with `-` hyphen
+- `locate Some_File` finds a file
+  - First run :# `updatedb` to build a current searchable database of all files to be found using `locate`
 
 ### Machine Information
 - `timedatectl` Time info

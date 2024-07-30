@@ -256,6 +256,19 @@ fudge A.B.C.0 stratum 10
     - for `plugins=`
     - eg: `plugins=ifupdown,keyfile`
 
+#### `ifconfig` Command
+- Assign a persistent IP address manually
+
+```
+ifconfig enp2s0 192.168.77.3 netmask 255.255.255.0
+```
+
+- Remove a persistent IP address by resetting it
+
+```
+ifconfig enp2s0 0.0.0.0
+```
+
 #### Network Manager Interfaces
 - `nmtui` - Text User Interface
 - `nmcli` - Command Line Interface
@@ -623,6 +636,9 @@ ls
 ```console
 netstat -l
 netstat -rn
+
+ifconfig enp2s0 192.168.77.3 netmask 255.255.255.0
+ifconfig enp2s0 0.0.0.0
 
 nmcli device status
 nmtui
