@@ -492,14 +492,16 @@ gpgcheck=1
 
 ### `penguinsay` Command Package
 - Minimum `echo`-back command package called [**`penguinsay`**](https://github.com/JesseSteele/penguinsay)
+  - Creates an executable command based on a BASH script
 
 ### `toplogger` Service Package
 - `top` per-minute logger service package called [**`toplogger`**](https://github.com/inkVerb/toplogger)
+  - Adds an infinite looping script in `/usr/lib/...`
+  - Adds and enables a service via `systemctl`
 
 ### `501webapp` 501 Web App
 - The VIP Code 501 CMS web app-as-package called [**`501webapp`**](https://github.com/inkVerb/501webapp)
-  - Installs the 501 CMS web app created in [Linux 501: PHP-XML Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
-  - Requires the `inklampdesktop` package [(from above)](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/desktoplamp.sh)
+  - Installs the 501 CMS web app created in [Linux 501: PHP-XML Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md) to the web folder
 
 ___
 
