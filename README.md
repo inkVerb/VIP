@@ -15,7 +15,7 @@
 
 ### [Linux 401: Advance](https://github.com/inkVerb/VIP/blob/master/401/README.md)
 
-### [Linux 501: Web Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
+### [Linux 501: PHP-XML Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
 
 ### [Linux 601: SysAdmin](https://github.com/inkVerb/VIP/blob/master/601/README.md)
 

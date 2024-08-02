@@ -112,11 +112,11 @@ sudo make install
     - This is used by security proffessionals for penetration and security testing
 - *Kali and Ubuntu are both good for learning `dpkg`, `apt`, and `apt-get`*
 
-#### RHEL (RedHat Enterprise Linux)
+#### RedHat
 - [RedHat](https://www.redhat.com/)'s main Linux distros are:
   - [CentOS](https://www.centos.org/) (free, project by RedHat)
   - [Fedora](https://fedoraproject.org/) (free, project by community, funded by RedHat)
-  - [RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) (enterprise, RedHat flagship project)
+  - [RHEL (RedHat Enterprise Linux)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) (enterprise, RedHat flagship project)
 - RedHat distros use some free and some proprietary repositories
   - BaseOS
   - AppStream
@@ -181,10 +181,11 @@ sudo make install
 
 ### Package Formats
 - `.deb` - Debian (Ubuntu & Kali)
-- `.rpm` - RHEL (RedHat/CentOS) & SUSE
+- `.rpm` - RedHat/CentOS (RHEL & Fedora) & OpenSUSE
 - `.pkg.tar.zst` - [Arch](https://wiki.archlinux.org/title/creating_packages) (tarballs handled manually)
+  - via :$ `sudo pacman -U package-name-VERSION.pkg.tar.zst`
   - [Arch can install both](https://superuser.com/questions/1312946/) `.deb` and `.rpm` because it has a minimalist architecture
-  - `.deb` - via `debtap` [AUR package](https://aur.archlinux.org/packages/debtap)
+  - `.deb` - via [`debtap` AUR package](https://aur.archlinux.org/packages/debtap) to create Arch `.pkg.tar.zst` package
   - `.rmp` - [somewhat more involved](https://unix.stackexchange.com/questions/115245/)
 - `.tgz` - [Slackware](http://www.slackware.com/) (tarballs handled manually)
 - `.apk` - [Android](https://www.android.com/)
@@ -200,7 +201,7 @@ make
 make install DESTDIR=/usr
 ```
   - or `cmake` or `cargo` or `npm --build` etc (see an [article on make vs makepkg](https://unix.stackexchange.com/questions/605928/))
-  - Results in a "proper" Arch package file that can be handled locally by `makepkg -i` (or `pacman -U package-file.pkg.tar.zst` just the same)
+  - Results in a "proper" Arch package file that can be handled locally by `makepkg -i` (or `pacman -U package-name-VERSION.pkg.tar.zst` just the same)
 - `pacman` handles packages from the [Official Arch repositories](https://wiki.archlinux.org/title/official_repositories)
 - `yay` handles packages from the [Arch User Repository (AUR)](https://aur.archlinux.org/)
 - An Arch SysAdmin must know which package is from which repo
@@ -211,8 +212,8 @@ make install DESTDIR=/usr
 - Built on `makepkg` output using the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
   - Resolves dependencies
   - Uses standard [Arch package guidelines](https://wiki.archlinux.org/title/Arch_package_guidelines)
-- Downloads packages to: `/var/cache/pacman/pkg/`
-- Package files: `PACKAGE_NAME-VERSION.pkg.tar.zst`
+- Downloads packages to `/var/cache/pacman/pkg/`
+- Package files `package-name-VERSION.pkg.tar.zst`
 - Repos listed in `/etc/pacman.conf`
   - Repo entry examples: `core` and `extra`
 
@@ -243,12 +244,12 @@ Include = /etc/pacman.d/mirrorlist
   - `pacman -Syyu` update main repo packages (update version lists, then install updates)
     - Only one `-y` is needed as an `-S` subflag; two `-y` subflags will force an upgrade of package lists even if they seem up-to-date
     - Generally, if `installing PACKAGE (...) breaks dependency '...' required by OTHERPACKAGE`, just remove the `OTHERPACKAGE` package, then try `-Syyu` again, *but at your own risk!!*
-  - `pacman -U package-file.pkg.tar.zst` manually install package from `.tar.zst` file
+  - `pacman -U package-name-VERSION.pkg.tar.zst` manually install package from `.tar.zst` file
   - `pacman -S package-name` install `package-name` package
   - `pacman -Syy package-name` update all repo lists, then install `package-name` package
   - `pacman -R package-name` remove `package-name` package
   - `pacman -Sw package-name` only download the `.pkg.tar.zst` file for the package to `/var/cache/pacman/pkg/`
-  - `pacman -Syuw --noconfirm``package_name-VERSION.pkg.tar.zst` from that downloaded file
+  - `pacman -Syuw --noconfirm``package-name-VERSION.pkg.tar.zst` from that downloaded file
   - `pacman -Scc` clean cache
   - `pacman -R package-name` remove the `package-name` package
   - `pacman -Rsc` remove unneeded dependencies
@@ -304,12 +305,12 @@ Include = /etc/pacman.d/mirrorlist
 - [makepkg Arch Wiki](https://wiki.archlinux.org/title/makepkg)
 - Create the `pacman` package tarball in PWD :$
   - `makepkg` with prper `PKGBUILD` file in PWD
-    - Results in `package_name-version.pkg.tar.zst` in PWD with file name as `PKGBUILD` instructed
+    - Results in `package-name-VERSION.pkg.tar.zst` in PWD with file name as `PKGBUILD` instructed
 - Install a `.pkg.tar.zst` file in PWD :$
-  - `makepkg -i` in PWD containing `package_name-version.pkg.tar.zst` (same as `pacman -U ./package_name-version.pkg.tar.zst`)
+  - `makepkg -i` in PWD containing `package-name-VERSION.pkg.tar.zst` (same as `pacman -U ./package-name-VERSION.pkg.tar.zst`)
   - `makepkg -c` clean up leftover files & directories after install (right after `makepkg -i` in same PWD)
 - *`makepkg` does not use `sudo`, but may ask for a password if it needs to call `sudo`*
-*So, on those "Download for Linux" areas of our favorite software sites with **Ubuntu .deb** and **RedHat/OpenSUSE .rpm** options, we could try convincing the world to include **Arch .pkg.tar.zst** also, but we don't need to because we can download install those **.deb** files on Arch with `debtap`...*
+*So, on those "Download for Linux" areas of our favorite software sites with **Ubuntu .deb** and **RedHat/OpenSUSE .rpm** options, we could try convincing the world to include **Arch `.pkg.tar.zst`** also, but we don't need to because we can download install those **.deb** files on Arch with `debtap`...*
 
 #### `debtap` - Convert local `.deb` packages for `pacman -U`
 - *Only when a package cannot be found via `pacman` or `yay`!*
@@ -482,12 +483,23 @@ gpgcheck=1
   - `zypper removerepo some-alias-repo-name` remove the repo nicknamed `some-alias-repo-name`
   - `zypper clean --all` clears installed packages from `/var/cache/zypp/`
 
-## `penguinsay` Raw Package Examples
-- Build your own minimum package examples for [**penguinsay**](https://github.com/JesseSteele/penguinsay)
-- This example guides how to create a `penguinsay` command package for:
+## Raw Package Examples
+- These repositories contain examples of actual Linux installer packages build from scratch
+- They are build for:
   - Arch (`makepkg`)
   - Debian (`dpkg`)
-  - RPM (`rpm` for OpenSUSE & RedHat/CentOS)
+  - RPM (`rpm` for RedHat/CentOS & OpenSUSE)
+
+### `penguinsay` Command Package
+- Minimum `echo`-back command package called [**`penguinsay`**](https://github.com/JesseSteele/penguinsay)
+
+### `toplogger` Service Package
+- `top` per-minute logger service package called [**`toplogger`**](https://github.com/inkVerb/toplogger)
+
+### `501webapp` 501 Web App
+- The VIP Code 501 CMS web app-as-package called [**`501webapp`**](https://github.com/inkVerb/501webapp)
+  - Installs the 501 CMS web app created in [Linux 501: PHP-XML Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
+  - Requires the `inklampdesktop` package [(from above)](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/desktoplamp.sh)
 
 ___
 
@@ -550,8 +562,8 @@ cd
 mkdir pacmanw
 cd pacmanw
 ls /var/cache/pacman/pkg/
-cp /var/cache/pacman/pkg/package_name-version.pkg.tar.zst .
-tar xf package_name-version.pkg.tar.zst
+cp /var/cache/pacman/pkg/package-name-VERSION.pkg.tar.zst .
+tar xf package-name-VERSION.pkg.tar.zst
 ls
 # assuming output is "opt"
 cd opt

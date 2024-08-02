@@ -1,4 +1,4 @@
-# Linux 501: Web Stack
+# Linux 501: PHP-XML Stack
 
 - LAMP stack installation
 - HTML-CSS-JS basics
