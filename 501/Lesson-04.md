@@ -212,6 +212,8 @@ USE firstapp_db
 | **7** :$
 
 ```console
+mkdir preapp
+mv web/* preapp/
 sudo cp core/04-install.php web/install.php && \
 sudo cp core/04-in.config1.php web/in.config.php && \
 sudo cp core/04-in.checks.php web/in.checks.php && \
@@ -255,10 +257,10 @@ Order of these special characters matters in a RegEx!
 $db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]{6,32}$/', $_POST['db_pass']))
 ```
 
-**Powerful SQL use:**
+**Powerful SQL-PHP workflow:**
 
-- We created our SQL config file with `file_put_contents()`
-- We made `ALTER` and `CREATE TABLE` SQL queries inside our PHP
+- Create the SQL config file with `file_put_contents()`
+- Make SQL settings via `ALTER` and `CREATE TABLE` SQL queries inside the PHP
 
 *Review the diagrams above along side the following few steps...*
 

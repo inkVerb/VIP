@@ -237,6 +237,12 @@ Include = /etc/pacman.d/mirrorlist
   - Option `--noconfirm` option answers "yes" or "default" to any interactive prompts
   - Option `--needed` chooses the most needed option if for interactive prompts, which `--noconfirm` may not have an answer for
   - Options `--noconfirm --needed` the surest way to be non-interactive
+    - `-y` sync
+    - `-u` upgrade
+    - `-w` only download, do not install
+    - `-S` install
+    - `-Q` query/search
+    - `-R` remove
   - `pacman -Ss findword findotherword` search for words `findword` and `findotherwordd` etc
   - `pacman -Qs findinstalledpackage` search for installed packages for `findword`
   - `pacman -Sy archlinux-keyring` updates the keyring (needed if too long without software updates)
@@ -247,11 +253,15 @@ Include = /etc/pacman.d/mirrorlist
   - `pacman -U package-name-VERSION.pkg.tar.zst` manually install package from `.tar.zst` file
   - `pacman -S package-name` install `package-name` package
   - `pacman -Syy package-name` update all repo lists, then install `package-name` package
-  - `pacman -R package-name` remove `package-name` package
   - `pacman -Sw package-name` only download the `.pkg.tar.zst` file for the package to `/var/cache/pacman/pkg/`
-  - `pacman -Syuw --noconfirm``package-name-VERSION.pkg.tar.zst` from that downloaded file
+  - `pacman -Syuw` upgrade, but only download
+  - `pacman -Syuw package-name-VERSION.pkg.tar.zst --noconfirm` upgrade and install `package-name`, but only download
+  - `pacman -Su` make upgrades of whatever packages have already been downloaded
   - `pacman -Scc` clean cache
   - `pacman -R package-name` remove the `package-name` package
+  - `pacman -Rsn package-name` remove and purge `package-name` (remove any configs and dependencies also)
+    - `-Rs` removes unneeded dependencies
+    - `-Rn` purges any altered config files (from `backup=()` array in `PKGBUILD` package file)
   - `pacman -Rsc` remove unneeded dependencies
   - `pacman -Qe` list explicitly-installed packages
   - `pacman -Ql package-name` what file the `package-name` package has
@@ -375,7 +385,7 @@ Include = /etc/pacman.d/mirrorlist
   - `apt-get install package-name -y` install `package-name` package non-interactive
   - `apt-get remove package-name` remove `package-name` package
   - `apt-get remove package-name -y` remove `package-name` package non-interactive
-  - `apt-get --purge remove package-name` remove and purge `package-name`
+  - `apt-get --purge remove package-name` remove and purge `package-name` (remove any configs also)
   - `apt-get autoremove` remove packages no longer needed (clean the downloaded, installed package files, probably from `/var/lib/dpkg/`)
   - `apt-get clean` cleans archived package files, if not in the normal download location
   - `apt update` retrieve list of available updates and package version numbers (or `apt-get update`)
@@ -390,7 +400,7 @@ Include = /etc/pacman.d/mirrorlist
   - `apt clean` cleans archived package files, if not in the normal download location
 
 ### `rpm` (`dnf` RedHat & `zypper` OpenSUSE)
-#### `rpm` (RedHat Package Manager)
+- `rpm` and its handlers `dnf` and `zypper` will purge any configs by default, so they do not have any "purge" option as `pacman` and `apt-get` do
 - Installs only from local files unless an absolute path is given for a package
 - Knows, but does not resolve dependencies
 - `.rpm` files
@@ -476,6 +486,7 @@ gpgcheck=1
   - `zypper info package-name` info about `package-name` package
   - `zypper search --provides /path/to/some/program` list package that owns `/path/to/some/program`
   - `zypper install package-name` install `package-name` package
+  - `zypper install -f package-name` install `package-name` package, purge any old configs
   - `zypper install package-name --non-interactive` install `package-name` package non-interactive
   - `zypper remove package-name` remove `package-name` package
   - `zypper shell` enter interactive `zypper` shell
@@ -483,26 +494,41 @@ gpgcheck=1
   - `zypper removerepo some-alias-repo-name` remove the repo nicknamed `some-alias-repo-name`
   - `zypper clean --all` clears installed packages from `/var/cache/zypp/`
 
-## Raw Package Examples
-- These repositories contain examples of actual Linux installer packages build from scratch
-- They are build for:
-  - Arch (`makepkg`)
-  - Debian (`dpkg`)
-  - RPM (`rpm` for RedHat/CentOS & OpenSUSE)
+## Creating Packages
+- This Cheat Sheet's repositories contain breakdown and examples of actual Linux installer packages built from scratch
+- They are build with:
+  - Arch (`makepkg` for `pacman`)
+  - Debian (`dpkg` for `apt-get`)
+  - RPM (`rpm` for OpenSUSE `zypper` & for RedHat/CentOS `dnf`)
+- This Cheat Sheet is part of this lesson and teaching content
 
-### `penguinsay` Command Package
-- Minimum `echo`-back command package called [**`penguinsay`**](https://github.com/JesseSteele/penguinsay)
-  - Creates an executable command based on a BASH script
-
-### `toplogger` Service Package
-- `top` per-minute logger service package called [**`toplogger`**](https://github.com/inkVerb/toplogger)
-  - Adds an infinite looping script in `/usr/lib/...`
-  - Adds and enables a service via `systemctl`
-
-### `501webapp` 501 Web App
-- The VIP Code 501 CMS web app-as-package called [**`501webapp`**](https://github.com/inkVerb/501webapp)
-  - Checks an elaborate list of dependencies needed for the PHP web app to work
-  - `git` clones the 501 CMS web app created in [Linux 501: PHP-XML Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md) and places the production portion in the web folder
+### [Package Architectures](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Package-Architectures.md)
+- Take-away points:
+  - **Arch** uses a single `PKGBUILD` file in a directory named anything you want
+    - This contains all meta info and scripts
+  - **Debian** uses a directory of the package name, containing a `DEBIAN/` subdirectory with:
+    - A `control` file with only meta info
+    - Separately, other files with scripts and lists as needed
+      - `conffiles`
+      - `postinst`
+      - `prerm`
+      - `postrm`
+      - et cetera
+    - Outside the `DEBIAN/` directory:
+      - Files in relative paths to `/` where they will be installed
+  - **RPM** uses a directory named `rpmbuild/`, containing a `SPECS/` subdirectory with a `.spec` file with all meta info and scripts
+    - A peer `SOURCES/` subdirectory contains source files, installed according to `.spec` file information
+  - Steps to prepare packages:
+    1. Directory structure, files, and configs are put in preparation directory
+    2. Package is prepared with low-level package manager (`makepkg`, `dpkg-deb`, `rpmbuild`)
+      - This produces the type of package downloadable in repositories
+    3. Package is installed with top-level package manager (`pacman`, `dpkg`/`apt-get`, `rpm`/`zypper`/`dnf`)
+  - Significant differences:
+    - Arch is most simple
+    - Debian is most functional
+    - RPM is most elaborate
+    - Arch does not usually handle post-install scripts, including `systemctl` commands, unlike Debian and RPM
+    - RPM will "purge" any config files on every removal, unlike Arch and Debian
 
 ___
 

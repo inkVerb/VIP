@@ -64,15 +64,15 @@ This "Asynchronous" action uses JavaScript to:
   Info goes here
 </some_tag>
 ```
-- ***AJAX can use either*** **XML** or **JSON**
+- ***AJAX calls can use either*** **XML** or **JSON**
   - JSON is an alternative to XML
   - JSON may be more common in AJAX
-- - We will ***not*** teach XML or JSON in this course
-
+  - JSON & XML are covered more in later lessons, *not* in this lesson
+    - JSON in [Lesson 9](https://github.com/inkVerb/vip/blob/master/501/Lesson-09.md)
+    - XML in [Lesson 12](https://github.com/inkVerb/vip/blob/master/501/Lesson-12.md)
+  
 #### AJAX Components
-
 ##### JavaScript:
-
 This JavaScript must somehow go in your webpage:
 
 *Note these can be anything:*
@@ -268,9 +268,7 @@ localhost/web/ajax.php
 - *Note `$post_go` and `$post_time` replaced the values in the line: `go=AJAX&time=5`*
 
 ### AJAX Capture Data from a `<form>`
-
 #### AJAX JavaScript:
-
 JavaScript adapted from [Mozilla's Developer site, MND](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_FormData_bound_to_a_form_element)
 
 ```js
@@ -507,7 +505,6 @@ localhost/web/ajax.php
 *Note in the next examples, we will simplify our JavaScript into one function, among other things...*
 
 ### AJAX Capture Data from a `<form>` by `<button>`
-
 In the previous two examples, we interrupted `<input type="submit">`
 
 Here is a way to use a `<button>` to AJAX-capture the `<form>`
@@ -586,7 +583,6 @@ Anyone can send their own AJAX requests to your ajax_handler.php file
 Read more about AJAX security in the VIP cheat sheets: [AJAX Security](AJAX-security.md)
 
 ### AJAX Token
-
 The `$_SESSION` is the same in both the client's web browser and for the AJAX handler, so we can match a random string to verify that it is the same `$_SESSION` and not a random AJAX inquiry
 
 Create a token and store it in the `$_SESSION`
@@ -610,7 +606,7 @@ $token = bin2hex(random_bytes(64));
 $_SESSION['ajax_token'] = $token;
 ```
 
-*Put the _SESSION token in the AJAX function on the sending page*
+*Put the `_SESSION` token in the AJAX function on the sending page*
 
 ```javascript
 AJAX.setRequestHeader("ajax-token", "<?php echo $ajax_token; ?>");
@@ -650,7 +646,7 @@ if ( empty($_SESSION['ajax_token']) ) {
 // AJAX must first open!
 AJAX.open(...);
 
-// Add your token header; use the _SESSION array
+// Add your token header; use the `_SESSION` array
 AJAX.setRequestHeader("ajax-token", "<?php echo $_SESSION['token']; ?>");
 
 // Finally send
@@ -685,10 +681,10 @@ ls web
 ```
 
 *Note ajax.php:*
-- *Before the JavaScript is our _SESSION AJAX token generator*
+- *Before the JavaScript is our `_SESSION` AJAX token generator*
   - *`session_start();` is now above the JavaScript so that:*
-    - *The token resides in the _SESSION*
-    - *The _SESSION token can be used in the JavaScript*
+    - *The token resides in the `_SESSION`*
+    - *The `_SESSION` token can be used in the JavaScript*
 - *The form works the same as in step 7*
 
 ```php
@@ -811,7 +807,6 @@ localhost/web/ajax.php
 ```
 
 ### `<meta>` Token
-
 We can place our token inside the HTML document itself and retriev it with JavaScript
 
 This could be handy if, for any reason, our JavaScript can't be modified by PHP, so it can get the token directly from the HTML
@@ -953,9 +948,8 @@ localhost/web/ajax.php
 ```
 
 ### AJAX Security Summary
-
-- While you can check the *claimed* sending server from the header, that don't prove much
-- Testing a token that we created and stored in the _SESSION is quite fool proof
+- While you can check the *claimed* sending server from the header, that doesn't prove much
+- Testing a token that we created and stored in the `_SESSION` is quite fool proof
   - Except for a brute force attack testing millions of tokens; any brute force prevention should stop that
 
 ___
