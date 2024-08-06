@@ -505,19 +505,21 @@ gpgcheck=1
 ### [Package Architectures](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Package-Architectures.md)
 - Take-away points:
   - **Arch** uses a single `PKGBUILD` file in a directory named anything you want
-    - This contains all meta info and scripts
-  - **Debian** uses a directory of the package name, containing a `DEBIAN/` subdirectory with:
-    - A `control` file with only meta info
-    - Separately, other files with scripts and lists as needed
+    - Meta info and all scripts: `PKGBUILD`
+    - If using source files, these can be anywhere in the same directory
+  - **Debian** uses a directory of the package name, containing a `DEBIAN/` subdirectory with a `control` file only for meta info:
+    - Meta info only: `DEBIAN/control`
+    - Separately in `DEBIAN/`, other files for scripts and lists as needed
       - `conffiles`
       - `postinst`
       - `prerm`
       - `postrm`
       - et cetera
     - Outside the `DEBIAN/` directory:
-      - Files in relative paths to `/` where they will be installed
+      - If using source files, files reside in relative paths to `/` where they will be installed
   - **RPM** uses a directory named `rpmbuild/`, containing a `SPECS/` subdirectory with a `.spec` file with all meta info and scripts
-    - A peer `SOURCES/` subdirectory contains source files, installed according to `.spec` file information
+    - Meta info and all scripts: `SPECS/package-name.spec`
+    - If using source files, a peer `SOURCES/` subdirectory contains source files
   - Steps to prepare packages:
     1. Directory structure, files, and configs are put in preparation directory
     2. Package is prepared with low-level package manager (`makepkg`, `dpkg-deb`, `rpmbuild`)
