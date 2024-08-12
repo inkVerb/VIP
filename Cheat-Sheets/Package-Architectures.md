@@ -68,6 +68,7 @@ package() {
 }
 ```
 
+- `$srcdir` is the PWD when running `makepkg`; all files and directories are relative to `$srcdir`
 - While Debian and RPM have ways to use `systemctl` to manage service status, Arch sets up packages with `chroot` in a way that does not allow this
   - For this reason, `systemctl enable some-service` usually needs to be run manually after a package is installed
   - There are work-arounds, but they are complicated and generally not thought to be necessary by Arch administrators
@@ -111,6 +112,44 @@ package() {
   - Git commit hash (eye-sore, automatic)
   - These examples cover all scenarios, including `git tag` creation and the corresponding `pkgver()` function
 
+###### The `source=` Value
+- These assume that the `source=` value is set to use a Git repository as so
+
+| **`PKGBUILD` lines for `pkgver()` function** :
+
+```
+...
+pkgname=package-name
+pkgver=1 # Must not be empty (can be anything), later replaced with the pkgver() function
+...
+source=("package-name::git+https://github.com/username/package-repo.git")
+...
+
+pkgver() {
+  cd "$pkgdir"  # Many online examples use $pkgname; $pkgdir is safer and needed here
+  ... <some command to get unique version number>
+}
+
+...
+
+package() {
+  ...
+}
+```
+
+- Note on variables
+  - Given `source=("package-name::git+https://github.com/username/package-repo.git")`
+    - This clones and re-names the `package-repo` repo to `package-name`
+  - `$pkgname` = `package-repo`
+    - Generic, used in many examples, including the [guidelines for VCS sources](https://wiki.archlinux.org/title/VCS_package_guidelines#VCS_sources)
+  - `$pkgdir` =`package-name`
+    - Safer, more reliable, works either way
+  - If given `source=("git+https://github.com/username/package-repo.git")`
+    - Then `$pkgname` = `$pkgdir` = `package-repo`
+  - Both `$pkgname` & `$pkgdir` are inside `$srcdir`
+    - `$pkgname` = `${srcdir}/package-repo/`
+    - `$pkgdir` = `${srcdir}/package-name/`
+
 ###### Using `git tag`
 - Git tags can be [annotated or un-annotated](https://stackoverflow.com/questions/11514075/)
   - `man git-tag` explains the purpose for each
@@ -131,7 +170,7 @@ git tag -a v-1.5.r22 -m "Added new UI options"
 
 ```
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgdir"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 ```
@@ -148,7 +187,7 @@ git tag -a v-1.5.r22 -m "Added new UI options"
 
 ```
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgdir"
   git describe --long --abbrev=7 | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 ```
@@ -165,7 +204,7 @@ git tag v-1.5.r22
 
 ```
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgdir"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 ```
@@ -182,7 +221,7 @@ git tag -a v-1.5.r22
 
 ```
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgdir"
   git describe --long --tags --abbrev=7 | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 ```
@@ -198,7 +237,7 @@ pkgver() {
 
 ```
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgdir"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 ```
@@ -215,7 +254,7 @@ pkgver() {
 
 ```
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgdir"
     ( set -o pipefail
       git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
