@@ -75,6 +75,10 @@ package() {
   - `some-file.conf`
   - `package-name-service-maybe.service`
   - `maybe-some-script.sh`
+- Arch allows for a dynamic `pkgver=` value using a function instead (`pkgver()`)
+  - This allows the `PKGBUILD` file to be written only once, but still pass on updated version numbers to `pacman` with the `-Sy` version update flags
+    - Version updates come from the source (GitHub, Subversion, et al)
+  - This is explained in the [Arch VCS Guidelines](https://wiki.archlinux.org/title/VCS_package_guidelines) and a basic, working example included in the [**`gophersay-git`**](https://github.com/JesseSteele/gophersay-git) demo
 
 #### Arch: Workflow
 - On install (`pacman -S`)
@@ -89,9 +93,141 @@ package() {
 - On purge (`pacman -Rn`):
 6. Package is *completely* undone according to steps 1 & 2 (ignoring `backup=()`)
 
+#### Arch `PKGBUILD` `pkgver()` Function
+- `pkgver()` retrieves a dynamic version number directly from the GitHub/Subversion/etc source
+- `PKGBUILD` does not need to be updated with each update from the upstream source
+- This is the "proper [Arch way](https://wiki.archlinux.org/title/Arch_terminology#The_Arch_Way)"
+
+##### `pkgver()` Examples
+- The [Arch Wiki on VCS package guidelines](https://wiki.archlinux.org/title/VCS_package_guidelines#The_pkgver()_function) explains this in greater detail
+- Supported version control systems are:
+  - Bazaar
+  - Git
+  - Mercurial
+  - Subversion
+- These examples only use Git (`git`)
+- The Git `pkgver()` function can extract a unique software version from either of two pieces of meta info:
+  - Git commit tag (clean, entered manually)
+  - Git commit hash (eye-sore, automatic)
+  - These examples cover all scenarios, including `git tag` creation and the corresponding `pkgver()` function
+
+###### Using `git tag`
+- Git tags can be [annotated or un-annotated](https://stackoverflow.com/questions/11514075/)
+  - `man git-tag` explains the purpose for each
+  - Commits for official production use "should" be annotated, but "should" doesn't always happen
+  - Some put a `v` in their tag for "version", but not everyone
+  - These are examples for each scenario
+- The `r` is important to include in tags, otherwise the `PKGBUILD` script [could fail](https://wiki.archlinux.org/title/VCS_package_guidelines#The_pkgver()_function)
+
+**Tagged & annotated**
+
+| **`git tag`** :$ (annotated)
+
+```console
+git tag -a v-1.5.r22 -m "Added new UI options"
+```
+
+| **`pkgver()`** : (extracts tag from repo)
+
+```
+pkgver() {
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+```
+
+**Tagged & annotated with `v-` previx**
+
+| **`git tag`** :$ (`v-` version, annotated)
+
+```console
+git tag -a v-1.5.r22 -m "Added new UI options"
+```
+
+| **`pkgver()`** : (removes `v-` in `sed` statement `s/^v-//...`)
+
+```
+pkgver() {
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+```
+
+**Tagged & un-annotated**
+
+| **`git tag`** :$ (un-annotated)
+
+```console
+git tag v-1.5.r22
+```
+
+| **`pkgver()`** : (extracts tag from repo)
+
+```
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+```
+
+**Tagged & un-annotated with `v-` previx**
+
+| **`git tag`** :$ (`v-` version, un-annotated)
+
+```console
+git tag -a v-1.5.r22
+```
+
+| **`pkgver()`** : (removes `v-` in `sed` statement `s/^v-//...`)
+
+```
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+```
+
+###### Using hash, without `git tag`
+- Git commits do not require tags, so many may not even have one
+- While the maintainer may or may not use tags, that could change for future commits without warning
+- One can always
+
+**Git hash from `pkgver()`**
+
+| **`pkgver()`** : (hash, no tag)
+
+```
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+```
+
+**One-size-fits-all hash/tag-agnostic `pkgver()`**
+  - Tries in order:
+    - annotated tag
+    - un-annotated tag
+    - no tag
+  - None of these remove `v-` or other prefixes, but you would need to know those anyway, and this will produce a univue `pkgver` value regardless
+  - This is the function used in the package exampleslisted at the bottom of this cheat sheet
+
+| **`pkgver()`** : (most scenarios will work)
+
+```
+pkgver() {
+  cd "$pkgname"
+    ( set -o pipefail
+      git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
+}
+```
+
 #### Arch: Further Reading
 - [Arch Wiki: PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD)
 - [Arch Wiki: Creating Packages](https://wiki.archlinux.org/title/Creating_packages)
+- [Arch Wiki: VCS Guidelines](https://wiki.archlinux.org/title/VCS_package_guidelines) (for building from source)
 
 ### Debian
 #### Debian: Assets & Methodology
@@ -359,8 +495,14 @@ Thu Jan 01 00:00:00 UTC 1970 jd@example.tld
 These repositories contain examples of actual Linux installer packages built from scratch
 
 ### `penguinsay` Command Package
-- Minimum `echo`-back command package called [**`penguinsay`**](https://github.com/JesseSteele/penguinsay)
-  - Creates an executable command based on a BASH script
+- Minimum `echo` talkback command package called [**`penguinsay`**](https://github.com/JesseSteele/penguinsay)
+  - Creates an executable command from a BASH script
+
+### `gophersay` Command Package
+- Minimum `Println` talkback command package called [**`gophersay`**](https://github.com/JesseSteele/gophersay)
+  - Compiles a Go script into an executable command
+  - Demonstrates a variety of compiling workflows, including local, `.tar` tarball, and download from source
+  - Includes `pkgver()` function for Arch `PKGBUILD` ([`gophersay-git`](https://github.com/JesseSteele/gophersay-git))
 
 ### `toplogger` Service Package
 - `top` per-minute logger service package called [**`toplogger`**](https://github.com/inkVerb/toplogger)
@@ -371,3 +513,4 @@ These repositories contain examples of actual Linux installer packages built fro
 - The VIP Code 501 CMS web app-as-package called [**`501webapp`**](https://github.com/inkVerb/501webapp)
   - Checks an elaborate list of dependencies needed for the PHP web app to work
   - `git` clones the 501 CMS web app created in [Linux 501: PHP-XML Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md) and places the production portion in the web folder
+  - Includes `pkgver()` function for Arch `PKGBUILD`

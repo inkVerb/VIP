@@ -95,6 +95,9 @@ This manages changes better than keeping files separate
 - Most commits are known by a treeish hash and date, etc
 - Tags can be custom added to a commit, usually if it is noteworthy or "important"
 - Add tags to a commit with `git tag -a Tag.name -m 'Message about the tag here'`
+  - Tags can be [annotated or un-annotated](https://stackoverflow.com/questions/11514075/)
+  - `man git-tag` explains the purpose for each
+  - `-m "Message..."` is the annotation, a "should" for production commits
 
 ### Common Commands
 - `git --version`

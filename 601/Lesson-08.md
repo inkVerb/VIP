@@ -5,6 +5,10 @@
 ## Architecture & Compiling
 - Different Linux "**distributions**" (distros) have different "**architecture**"
   - An **architecture** defines the layout and behavior of a **distro**
+  - *The architecture depends on the **package manager** and how packages are structured*
+    - Arch (`pacman`)
+    - Debian (`dpkg`)
+    - RPM (`rpm`)
   - Many times, the terms **distro** and **artitecture** are used interchangeably, but they are not identical
   - Directories and files may have different names and locations in `/etc/`, `/usr/lib/`, `/srv/`, or `/var/`
   - These also may use different package managers
@@ -35,7 +39,48 @@ sudo make install
 - It is important to *only* run `make install` as `root`, not the other commands
   - Running `make` as `root` (AKA :$ `sudo make` or :# `make`) can cause serious problems because it is compiling and then `root` would own the compiled code itself
 
+## Creating Packages
+- Packages are easier to understand if you have built a few packages first
+- The [Package Architectures Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Package-Architectures.md) lists repositories that break down examples of actual Linux installer packages built from scratch
+- They are build with:
+  - Arch (`makepkg` for `pacman`)
+  - Debian (`dpkg` for `apt-get`)
+  - RPM (`rpm` for OpenSUSE `zypper` & for RedHat/CentOS `dnf`)
+- This Cheat Sheet is part of this lesson and teaching content
+  - Complete that Cheat Sheet before continuing
+
+### [Package Architectures](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Package-Architectures.md) Cheat Sheet
+- Take-away points:
+  - **Arch** uses a single `PKGBUILD` file in a directory named anything you want
+    - Meta info and all scripts: `PKGBUILD`
+    - If using source files, these can be anywhere in the same directory
+  - **Debian** uses a directory of the package name, containing a `DEBIAN/` subdirectory with a `control` file only for meta info:
+    - Meta info only: `DEBIAN/control`
+    - Separately in `DEBIAN/`, other files for scripts and lists as needed
+      - `conffiles`
+      - `postinst`
+      - `prerm`
+      - `postrm`
+      - et cetera
+    - Outside the `DEBIAN/` directory:
+      - If using source files, files reside in relative paths to `/` where they will be installed
+  - **RPM** uses a directory named `rpmbuild/`, containing a `SPECS/` subdirectory with a `.spec` file with all meta info and scripts
+    - Meta info and all scripts: `SPECS/package-name.spec`
+    - If using source files, a peer `SOURCES/` subdirectory contains source files
+  - Steps to prepare packages:
+    1. Directory structure, files, and configs are put in preparation directory
+    2. Package is prepared with low-level package manager (`makepkg`, `dpkg-deb`, `rpmbuild`)
+      - This produces the type of package downloadable in repositories
+    3. Package is installed with top-level package manager (`pacman`, `dpkg`/`apt-get`, `rpm`/`zypper`/`dnf`)
+  - Significant differences:
+    - Arch is most simple
+    - Debian is most functional
+    - RPM is most elaborate
+    - Arch does not usually handle post-install scripts, including `systemctl` commands, unlike Debian and RPM
+    - RPM will "purge" any config files on every removal, unlike Arch and Debian
+
 ## Package Managers
+- The game-changing difference in a Linux distibution's "architecture"
 - Benefits:
   - Automated
   - Scalable
@@ -84,17 +129,32 @@ sudo make install
       - *(mainly binary, grouped, and meta packages)*
     - *(few optional repos channels also available ie 32bit, testing, staging, etc)*
     - Packages are ready-to-install
-  - [Arch User Repository](https://aur.archlinux.org/) - community maintained (some binary, but mostly source packages with compile and installation scripts)
+  - [Arch User Repository (AUR)](https://aur.archlinux.org/)
+    - community maintained
+      - *(some binary, but mostly source packages with compile and installation scripts)*
     - `yay` AUR package "helper" (compiler and/or source install scripts)
-      - There are many other package "helpers" in addition to `yay`, in 2024 this is primary
-    - Packages need preparation in different amounts before installing
+      - "Yet Another Yogurt"
+      - See the `yay` [GitHub project repository](https://github.com/Jguer/yay/blob/next/README.md)
+      - Must be [installed manually](https://github.com/Jguer/yay/blob/next/README.md#installation)
+      - There are many other package "helpers" in addition to `yay`; in 2024 `yay` is favored and well-supported
+    - Packages need preparation in different amounts, depending on the source from the vendor
+      - Generally, if you are a software developer or an enthusiast, and your software is not in the Arch Official Repository, then you can write a package to go here so it is easy to install on Arch
   - Both use `makepkg` under the hood
 - Arch also has security distro, which uses its own repositories, still `pacman` and `yay`
-  - [BlackArch Linux](https://blackarch.org/) (Arch Linux pen-testing, comparable to Kali Linux)
-    - This is used by security proffessionals for penetration and security testing
-- Only Arch uses different package managers for different repositories
+  - These are used by security proffessionals for penetration and security testing:
+    - (Arch Linux pen-testing, comparable to Kali Linux)
+      - Both use Arch Linux under the hood and are bonafied Arch
+    - [ArchStrike](https://archstrike.org/)
+      - Bootstraps packages ("[the Arch way](https://wiki.archlinux.org/title/Arch_terminology#The_Arch_Way)")
+      - Customizable nicely alongside standard Arch 
+      - More stable
+    - [BlackArch](https://blackarch.org/)
+      - Hand-rolled packages
+      - Has approx 10GB `.iso` to install fully offline
+      - Could get bloated
+- Only Arch uses different package manager *commands* (ie `pacman` vs `yay`) for different repositories
   - This is because of how the repositories are structured
-- *Arch and Black Arch are both good for learning `makepkg`, `pacman`, and `yay`*
+- *Arch and its security-testing distros are all good for learning `makepkg`, `pacman`, and `yay`*
 
 #### Debian
 - Debian's main distro stack is Ubuntu (from [Canonical](https://canonical.com/))
@@ -107,9 +167,10 @@ sudo make install
 - `apt-get` & `apt` package managers
 - Use `dpkg` under the hood
 - Debian also has security distro, which uses [its own repositories](https://www.kali.org/docs/general-use/kali-linux-sources-list-repositories/), still `dpkg`, `apt`, and `apt-get`
-  - [Kali Linux](https://www.kali.org/) uses 
+  - [Kali](https://www.kali.org/)
     - Kali Linux is maintained by [OffSec (Offensive Security)](https://www.offsec.com/)
     - This is used by security proffessionals for penetration and security testing
+    - A fork from Debian; functions much the same, but is ***not*** using Debian under the hood!
 - *Kali and Ubuntu are both good for learning `dpkg`, `apt`, and `apt-get`*
 
 #### RedHat
@@ -150,7 +211,7 @@ sudo make install
 - Android is still build on Linux, even while its drivers are not included in the official Linux kernel
 
 #### Others
-- [Homebrew](https://brew.sh/) is a popular package manager that can be installed on Apple Macintosh systems
+- [Homebrew](https://brew.sh/) is a popular package manager for Apple Macintosh systems
 - [Snap](https://snapcraft.io/) from [Canonical](https://canonical.com/) is a cross-platform package manager that installs and runs packages in containers
   - In theory, the commands and structure will remain the same across Linux architectures
   - It's packages are fully "contained", meaning it is not architecture/distro dependent
@@ -165,9 +226,10 @@ sudo make install
 
 ### High and Low Levels of the PM Stack
 - Package managers employ other tools
-- ***Always know how to rebuild packages from source***
-  - Eg `rpm`: `rpmbuild --rebuild -rb package-00.00.00.src.rpm` with results appearing in `/root/rpmbuild/`
-  - Eg `makepkg`: (in PWD where a proper PKGBUILD file resides)
+- ***Always know how to build packages from source***
+  - Arch `makepkg`: in PWD where a proper `PKGBUILD` file resides, `.pkg.tar.zst` appearing in same PWD
+  - Debian `dpkg`: `dpkg-deb --build package` where `package` is the directory of the package, with `.deb` results appearing in PWD
+  - RPM `rpm`: `rpmbuild -ba ~/rpmbuild/SPECS/package.spec` with `.rpm` results appearing in `rpmbuild/`
 - Package Tools:
   - **Low level**: minimal installs, dependencies cause warnings or errors
     - `dpkg` (Debian)
@@ -215,9 +277,11 @@ make install DESTDIR=/usr
 - Downloads packages to `/var/cache/pacman/pkg/`
 - Package files `package-name-VERSION.pkg.tar.zst`
 - Repos listed in `/etc/pacman.conf`
+  - [**ArchStrike** can be setup on a current Arch distro](https://archstrike.org/wiki/setup) by motifying this `pacman.conf` file
   - Repo entry examples: `core` and `extra`
 
-| **from /etc/pacman.conf**:
+| **from /etc/pacman.conf** :
+
 ```
 [core]
 SigLevel = PackageRequired
@@ -227,6 +291,7 @@ Include = /etc/pacman.d/mirrorlist
 SigLevel = PackageRequired
 Include = /etc/pacman.d/mirrorlist
 ```
+
 - Uses official packages by default, which more or less don't need extensive compiling
 - Each package is:
   - Built on a `git` repo, main repo is the [Arch Linux GitLab Packages](https://gitlab.archlinux.org/archlinux/packaging/packages) site
@@ -494,43 +559,34 @@ gpgcheck=1
   - `zypper removerepo some-alias-repo-name` remove the repo nicknamed `some-alias-repo-name`
   - `zypper clean --all` clears installed packages from `/var/cache/zypp/`
 
-## Creating Packages
-- This Cheat Sheet's repositories contain breakdown and examples of actual Linux installer packages built from scratch
-- They are build with:
-  - Arch (`makepkg` for `pacman`)
-  - Debian (`dpkg` for `apt-get`)
-  - RPM (`rpm` for OpenSUSE `zypper` & for RedHat/CentOS `dnf`)
-- This Cheat Sheet is part of this lesson and teaching content
+## Security Testing Distro Architectures: Arch vs Kali
+The main difference between [Kali](https://www.kali.org/), [BlackArch](https://blackarch.org/), and [ArchStrike](https://archstrike.org/) is how they compare to **[the Arch Way](https://wiki.archlinux.org/title/Arch_terminology#The_Arch_Way)**
 
-### [Package Architectures](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Package-Architectures.md)
-- Take-away points:
-  - **Arch** uses a single `PKGBUILD` file in a directory named anything you want
-    - Meta info and all scripts: `PKGBUILD`
-    - If using source files, these can be anywhere in the same directory
-  - **Debian** uses a directory of the package name, containing a `DEBIAN/` subdirectory with a `control` file only for meta info:
-    - Meta info only: `DEBIAN/control`
-    - Separately in `DEBIAN/`, other files for scripts and lists as needed
-      - `conffiles`
-      - `postinst`
-      - `prerm`
-      - `postrm`
-      - et cetera
-    - Outside the `DEBIAN/` directory:
-      - If using source files, files reside in relative paths to `/` where they will be installed
-  - **RPM** uses a directory named `rpmbuild/`, containing a `SPECS/` subdirectory with a `.spec` file with all meta info and scripts
-    - Meta info and all scripts: `SPECS/package-name.spec`
-    - If using source files, a peer `SOURCES/` subdirectory contains source files
-  - Steps to prepare packages:
-    1. Directory structure, files, and configs are put in preparation directory
-    2. Package is prepared with low-level package manager (`makepkg`, `dpkg-deb`, `rpmbuild`)
-      - This produces the type of package downloadable in repositories
-    3. Package is installed with top-level package manager (`pacman`, `dpkg`/`apt-get`, `rpm`/`zypper`/`dnf`)
-  - Significant differences:
-    - Arch is most simple
-    - Debian is most functional
-    - RPM is most elaborate
-    - Arch does not usually handle post-install scripts, including `systemctl` commands, unlike Debian and RPM
-    - RPM will "purge" any config files on every removal, unlike Arch and Debian
+- **[Kali](https://www.kali.org/)** is a *fork* from Debian; everything is maintained independently and *by hand*, thus *can get out-dated*
+- **[BlackArch](https://blackarch.org/)** is built on Arch & can be installed alongside Arch; packages are mainteined *by hand*, thus *can get out-dated*
+- **[ArchStrike](https://archstrike.org/)** is build on Arch & can be installed alongside Arch; packages are *bootstrapped* and *automatically up-to-date*
+
+The Arch Way: [Arch Linux Principles](https://wiki.archlinux.org/title/Arch_Linux#Principles)
+
+- Simplicity (minimalist, plays well with other kids, "[fewer chiefs, more Indians](https://en.wiktionary.org/wiki/too_many_chiefs_and_not_enough_Indians)")
+- Modernity (up-to-date, [bleeding edge](https://en.wikipedia.org/wiki/Emerging_technologies#In_the_media), [rolling release](https://en.wikipedia.org/wiki/Rolling_release))
+- Pragmatism (vs idealism)
+- User centrality (niche-ish: for its own loyal users, not "all things to all users")
+- Versatility (installs CLI-only, almost anything can be added; same distro for server, cloud, desktop, engineering, pentesting, etc; "User Repository – AUR" for almost every non-official package)
+
+From [**Black Arch vs Arch Strike** :r/hacking // Reddit](https://www.reddit.com/r/hacking/comments/a9cnvl/black_arch_vs_arch_strike/):
+
+> Kali is point release, and it's an absolute b!tch to get working with any package not available via the official repos whereas on Arch (rolling release FTW) you can install everything kali provides, plus the AUR. Also xfce, kde-plasma, i3-gaps.
+>
+> Arch linux already lets you expand its base access to packages via very convenient methods, so you can have ArchStrike AND BlackArch on the same system. BlackArch manages its packages using a custom, hand rolled package manager for its packages and iirc keeps them in ~/.hax. ArchStrike manages its packages by bootstrapping pacman with the ArchStrike repositories. In my experience, blackarch's hand rolled manager is bloated and unstable. Since Arch already has a stable and extensible package manager, ArchStrike just uses that. Install both and see what you think.
+>
+> ...
+>
+> Kali is a Debian fork that's maintained seperately from Debian itself. ArchStrike and BlackArch are just Arch with extended functionality, but are maintained by the Arch devs at their core.
+>
+> ...
+>
+> Any tutorial worth its salt uses particular tools of version X or newer, so that anybody with the necessary tools can follow. If a tutorial specifies Kali but isn't on configuring Kali itself or something along those lines, that should be a red flag.
 
 ___
 
