@@ -97,7 +97,8 @@ package() {
 #### Arch `PKGBUILD` `pkgver()` Function
 - `pkgver()` retrieves a dynamic version number directly from the GitHub/Subversion/etc source
 - `PKGBUILD` does not need to be updated with each update from the upstream source
-- This is the "proper [Arch way](https://wiki.archlinux.org/title/Arch_terminology#The_Arch_Way)"
+- This follows the "proper [Arch way](https://wiki.archlinux.org/title/Arch_terminology#The_Arch_Way)"
+- One of the strong advantages Arch has over Debian and RPM
 
 ##### `pkgver()` Examples
 - The [Arch Wiki on VCS package guidelines](https://wiki.archlinux.org/title/VCS_package_guidelines#The_pkgver()_function) explains this in greater detail
