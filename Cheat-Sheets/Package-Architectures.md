@@ -394,8 +394,12 @@ fi
 10. `postrm` script runs
 
 #### Debian: Further Reading
+- [Debian Policy Manual](https://www.debian.org/doc/debian-policy/index.html)
 - [Debian Wiki: HowToPackageForDebian](https://wiki.debian.org/HowToPackageForDebian)
 - [Debian Wiki: Packaging](https://wiki.debian.org/Packaging)
+- Building packages from upstream source: (uses upstream `debian/` directory instead of `DEBIAN/`; demoed in [gophersay example](https://github.com/JesseSteele/gophersay))
+  - [Debian Wiki: UpstreamGuide](https://wiki.debian.org/UpstreamGuide)
+  - [Debian Maintainer's Guide](https://www.debian.org/doc/manuals/maint-guide/index.en.html)
 
 ### RPM
 #### RPM: Assets & Methodology
