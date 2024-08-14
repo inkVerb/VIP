@@ -341,8 +341,8 @@ $_GET // set in URL
 $_POST // not in URL
 
 // Persistent arrays: (keep working in the browser even after the PHP script finishes)
-$_SESSION // Until browser closes or too much time passes
-$_COOKIE // Even after browser closes, until certain time passes
+$_SESSION // - Server-RAM  - Until browser closes or too much time passes
+$_COOKIE  // - Client-disk - Even after browser closes, until certain time passes
 ```
 
 Login uses `$_SESSION` and `$_COOKIE` variables

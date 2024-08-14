@@ -1,5 +1,6 @@
 # Linux 601
 ## Lesson 4: Git & Revision Control
+- *Git setup and beginner reference: the [GitCheat Cheat Sheet]((https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/GitCheat.md))*
 
 # The Chalk
 ## Revision Control Systems
@@ -98,6 +99,7 @@ This manages changes better than keeping files separate
   - Tags can be [annotated or un-annotated](https://stackoverflow.com/questions/11514075/)
   - `man git-tag` explains the purpose for each
   - `-m "Message..."` is the annotation, a "should" for production commits
+  - Leave out `-m` on a `commit` will open options for a 
 
 ### Common Commands
 - `git --version`
@@ -109,7 +111,16 @@ This manages changes better than keeping files separate
 - `git add` Add file contents to the index
 - `git mv` Move or rename a file, directory or symlink
 - `git commit` Record changes to the repository
-- `git merge` Join two development histories together
+- `git reset` - Cleanup history
+  - `--soft` *Index* history stages, but into one commit, at a certain point, *keeping* the commits that came after
+  - `--mixed` *Mix* history stages, all into one commit, at a certain point, *keeping* the commits that came after (default)
+  - `--hard` *Revert to* history at a certain point, *erasing* the commits after (rewrites local PWD to past)
+- `git rebase` *Rewrite all* history from a certain point, *changing* all commits after to reflect that past change
+  - Advanced & complex use of `git`
+  - Alternative companion of `git merge`
+  - Dangerous on public repos
+  - Disambiguation: [very different from `git reset`](https://stackoverflow.com/questions/11225293)
+- `git merge` Join two branch histories into one going forward
 - `git pull` Fetch from and integrate with another repository or local branch
 - `git push` Update remote refs and associated objects
 
@@ -393,7 +404,112 @@ git commit -m 'Things changed'
 git push -u origin main
 ```
 
-*Learn more with the [GitCheat Cheat Sheet]((https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/GitCheat.md))*
+#### Reset
+- `git reset` can be `--soft`, `--mixed` (default), or `--hard` ([read more](https://stackoverflow.com/questions/3528245/))
+  - Index/combine [history from any point](https://stackoverflow.com/questions/5189560/)
+    - `--soft` (keep some stages, one commit)
+    - `--mixed` (one stage, one commit)
+    - Because you were scatter-brained and made too many small commits
+  - Erase/delete [history from any point](https://stackoverflow.com/questions/1338728)
+    - `--hard` (return to the past, and delete all history after that point)
+    - Because your cat walked across your keyboard, then you did a commit
+- Can do this for whatever branch you are on
+- Either relative to `HEAD` or by hash:
+  - `HEAD`: `git reset --hard HEAD~4` (`4` can be any number of steps in history you want to take back; `1` removes only one)
+  - Hash: `git reset -hard 7h310ngH4sh` (`7h310ngH4sh` is the hash to reset to see in `git log`)
+- **If already did a `git push`, use `git reset` or `git push` with `--force`**
+
+First, choose a branch to work on and choose the point in commit history; eg: `devel` or `main`
+
+| **choose & review the `devel` branch** :$
+
+```console
+git checkout devel
+git log
+```
+
+| **choose & review the `main` branch** :$
+
+```console
+git checkout main
+git log
+```
+
+Revert to past and delete history with `--hard`
+
+| **reset back two commits** :$ (step back relative by `2`)
+
+```console
+git reset --hard HEAD~2
+```
+
+| **reset to specific commit** :$ (hash `7h310ngH4sh` from `git log`)
+
+```console
+git reset --hard 7h310ngH4sh
+```
+
+Combine all past into the one commit that started it all
+
+- Default is `--mixed`, all into one commit
+- Use `--soft` to keep a staged index, but in one commit
+
+| **combine history into a certain point** :$ (step back relative by `3`)
+
+```console
+git reset --soft HEAD~3
+```
+
+| **combine history into a certain point** :$  (hash `7h310ngH4sh` from `git log`)
+
+```console
+git reset --soft 7h310ngH4sh
+```
+
+Commit changes, new message or interactive choice
+
+| **interactive commit** :$
+
+```console
+git commit
+```
+
+| **custom commit** :$
+
+```console
+git commit -m "My new message for this single, combined history"
+```
+
+#### Merge
+- Combine one branch into another
+  - After many stages and commits, this branch is ready to join into the `main` branch
+- As one commit with `--squash`
+  - This avoides clutter in the `main` branch history
+
+| **merge & squash `devel` into `main` branch** :$ (or whatever branches you want to work with)
+
+```console
+git checkout main
+git merge --squash devel
+git commit -m "My message on devel branch into main branch"
+```
+
+#### Fork & Pull
+*How to contribute to other GitHub projects*
+
+A **fork** basically copies a repo owned by someone else to become your own Git project on your account which you can change, commit, and push as your own public repo
+
+A **pull** will commit changes on your forked repo back into the original repo it came from; you do this my making a **pull request**, then the original owner approves the request for the **pull**
+
+These are **GitHub** operations (not **Git**) and [must be completed through the GitHub](https://stackoverflow.com/questions/65580560) web interface or a separate GitHub CLI tool from `git` (the `git` command can't do this)
+
+Usually the GitHub web interface should be good enough for forks and pull requests because the operations rarely need automating in BASH scripts and require few clicks
+
+If you want to fork and pull from the CLI, learn about the [gh_fork tool in the GitHub docs](https://cli.github.com/manual/gh_repo_fork)
+
+___
+
+*Git setup and beginner reference: the [GitCheat Cheat Sheet]((https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/GitCheat.md))*
 
 #### Clone Linux Kernel
 - The Linux kernel is available on Git
@@ -528,7 +644,7 @@ git push
 git log
 ```
 
-| **branches** :$
+| **branches & merging** :$
 
 ```console
 git checkout main
@@ -622,6 +738,52 @@ git push
 
 git checkout devel
 git merge main
+git push
+```
+
+| **resets** :$
+
+```console
+# Create a commit history
+
+git checkout devel
+git log
+
+echo "change one" > resetme
+git add resetme
+git commit -m "Change one"
+git log
+
+echo "change two" >> resetme
+git add resetme
+git commit -m "Change two"
+echo "change three" >> resetme
+git add resetme
+git commit -m "Change three"
+echo "change four" >> resetme
+git add resetme
+git commit -m "Change four"
+echo "change five" >> resetme
+git add resetme
+git commit -m "Change five"
+echo "change six" >> resetme
+git add resetme
+git commit -m "Change six"
+echo "change seven" >> resetme
+git add resetme
+git commit -m "Change seven"
+
+git log
+
+git reset --hard HEAD~1
+git log
+
+git reset HEAD~2
+git log
+
+git reset --soft HEAD~3
+git log
+
 git push
 ```
 

@@ -1,4 +1,7 @@
 # GitHub
+*Setup & basic commands for beginners*
+
+## Learn more in [Code 601 Lesson 4: Git](https://github.com/inkVerb/vip/blob/master/601/Lesson-04.md)
 
 ## Update an existing repo from the command line
 
@@ -102,8 +105,7 @@ https://github.com/inkVerb/YourRepo.git
 
 - #### Confirm ###?
 
-
-## Setup Git SSH keys ## Optional!
+## Setup Git SSH keys ## (optional)
 - Create ssh keys (-N "" for no passphrase, -f /path/to/KEYNAME)
 
 `ssh-keygen -t rsa -N "" -f ~/.ssh/GitHub`
