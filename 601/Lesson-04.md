@@ -101,6 +101,30 @@ This manages changes better than keeping files separate
   - `-m "Message..."` is the annotation, a "should" for production commits
   - Leave out `-m` on a `commit` will open options for a 
 
+### GitHub vs Git
+- *Some operations can only be performed by GitHub, not Git*
+- *These must either be performed by the [GitHub.com](https://github.com) web interface or a `gh` CLI tool*
+- Some common GitHub operations
+  - Fork
+  - Pull
+  - Release
+
+#### Fork & Pull
+*How to contribute to other GitHub projects*
+
+- A **fork** basically copies a repo owned by someone else to become your own Git project on your account which you can change, commit, and push as your own public repo
+- A **pull** will commit changes on your forked repo back into the original repo it came from; you do this my making a **pull request**, then the original owner approves the request for the **pull**
+- These are **GitHub** operations (not **Git**) and [must be completed through the GitHub](https://stackoverflow.com/questions/65580560) web interface or a separate GitHub CLI tool from `git` (the `git` command can't do this)
+- Usually the GitHub web interface should be good enough for forks and pull requests because the operations rarely need automating in BASH scripts and require few clicks
+- If you want to fork and pull from the CLI, learn about the [gh_fork tool in the GitHub docs](https://cli.github.com/manual/gh_repo_fork)
+
+#### Releases
+- Separate to branches and commits, Git allows **[releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)**
+- Releases can be seen in [source code archives](https://docs.github.com/en/repositories/working-with-files/using-files/downloading-source-code-archives)
+- Releases are handled through GitHub
+  - The GitHub web interface
+  - The `gh` command on the [command line](https://stackoverflow.com/questions/21214562)
+
 ### Common Commands
 - `git --version`
 - `git help`
@@ -493,20 +517,6 @@ git checkout main
 git merge --squash devel
 git commit -m "My message on devel branch into main branch"
 ```
-
-#### Fork & Pull
-*How to contribute to other GitHub projects*
-
-A **fork** basically copies a repo owned by someone else to become your own Git project on your account which you can change, commit, and push as your own public repo
-
-A **pull** will commit changes on your forked repo back into the original repo it came from; you do this my making a **pull request**, then the original owner approves the request for the **pull**
-
-These are **GitHub** operations (not **Git**) and [must be completed through the GitHub](https://stackoverflow.com/questions/65580560) web interface or a separate GitHub CLI tool from `git` (the `git` command can't do this)
-
-Usually the GitHub web interface should be good enough for forks and pull requests because the operations rarely need automating in BASH scripts and require few clicks
-
-If you want to fork and pull from the CLI, learn about the [gh_fork tool in the GitHub docs](https://cli.github.com/manual/gh_repo_fork)
-
 ___
 
 *Git setup and beginner reference: the [GitCheat Cheat Sheet]((https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/GitCheat.md))*
