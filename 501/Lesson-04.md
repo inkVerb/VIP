@@ -214,12 +214,12 @@ USE firstapp_db
 ```console
 mkdir preapp
 mv web/* preapp/
-sudo cp core/04-install.php web/install.php && \
+sudo cp core/04-install1.php web/install.php && \
 sudo cp core/04-in.config1.php web/in.config.php && \
 sudo cp core/04-in.checks.php web/in.checks.php && \
 sudo cp core/04-in.functions.php web/in.functions.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-install.php core/04-in.config1.php core/04-in.checks.php core/04-in.functions.php && \
+codium core/04-install1.php core/04-in.config1.php core/04-in.checks.php core/04-in.functions.php && \
 ls web
 ```
 
@@ -266,7 +266,7 @@ $db_pass = (preg_match('/[A-Za-z0-9 \'\/&\*=\]\|[<>;,\.:\^\?\+\$%-‘~!@#)(}{_ ]
 
 *Look, but don't touch...*
 
-| **B-8a** ://
+| **B-7** ://
 
 ```console
 localhost/web/install.php
@@ -274,17 +274,19 @@ localhost/web/install.php
 
 *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
-| **S8** :>
+| **S7** :>
 
 ```sql
 SHOW TABLES;
 ```
 
-| **SB-8** ://phpMyAdmin **> firstapp_db**
+| **SB-7** ://phpMyAdmin **> firstapp_db**
 
-*Note our database has no tables, let's go back to our webform...*
+*Note our database has no tables*
 
-| **B-8b** :// (same, start filling-in)
+*Let's fill-in our webform...*
+
+| **B-8** :// (same, start filling-in)
 
 ```console
 localhost/web/install.php
@@ -305,23 +307,120 @@ Password: My#1Password
 
 *Enter the information above into the webform, then continue*
 
-| **S9** :>
+| **S8** :>
 
 ```sql
 SHOW TABLES;
 ```
 
-| **SB-9** ://phpMyAdmin **> firstapp_db**
+| **SB-8** ://phpMyAdmin **> firstapp_db**
 
-| **S10** :>
+| **S9** :>
 
 ```sql
 SELECT * FROM users;
 ```
 
-| **SB-10** ://phpMyAdmin **> users**
+| **SB-9** ://phpMyAdmin **> users**
 
 *Note the `pass` column is a long string; that is the one-way hashed password*
+
+*Set defaults for our install page...*
+
+| **10** :$
+
+```console
+sudo cp core/04-install2.php web/install.php && \
+sudo chown -R www:www /srv/www/html && \
+codium core/04-install2.php && \
+ls web
+```
+
+| **B-10** ://
+
+```console
+localhost/web/install.php
+```
+
+*Note the new block of code checks for an existing `in.sql.php` file, for if it was already installed*
+ - *`DEFINE ('DB_CONFIGURED', true);` sets if the installation is configured*
+   - *Without this line, the installer will still work, but the fields in the form can be already filled-in, such as if we already created a database with credentials*
+     - *We will do more with this in [601 Lesson 8: Packages](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md) and the [Package Architectures Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Package-Architectures.md) with the [**501webapp**](https://github.com/inkVerb/501webapp) package*
+ - *If `DB_CONFIGURED == true`, then `exit (header("Location: webapp.php"));` exits and redirects to the main blog*
+ - *This allows for database credentials to be pre-configured, but not yet installed*
+
+| **install.php** :
+
+```php
+// POSTed form?
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+...
+
+    // Heredoc:
+    $sqlConfigFile = <<<EOF
+<?php
+DEFINE ('DB_NAME', '$db_name');
+DEFINE ('DB_USER', '$db_user');
+DEFINE ('DB_PASSWORD', '$db_pass');
+DEFINE ('DB_HOST', '$db_host');
+
+// This disables the installer
+DEFINE ('DB_CONFIGURED', true);
+EOF;
+
+    // Write the file:
+    file_put_contents('./in.sql.php', $sqlConfigFile);
+
+...
+
+// Installed already, so in.sql.php already exists?
+} elseif (file_exists('./in.sql.php'))  {
+
+  // Include the file we know we have
+  require_once ('./in.sql.php');
+
+  // Configured?
+  if (DB_CONFIGURED == true ) {
+    exit (header("Location: webapp.php"));
+  }
+
+  // Database variables
+  $db_name = DB_NAME;
+  $db_user = DB_USER;
+  $db_pass = DB_PASSWORD;
+  $db_host = DB_HOST;
+
+// Don't let those variables be empty
+} else { 
+  
+  // Blank database variables
+  $db_name = '';
+  $db_user = '';
+  $db_pass = '';
+  $db_host = '';
+
+} // Finish POST/installed if
+
+// Our actual signup page
+
+echo '<h1>Admin signup</h1>';
+echo '
+<form action="install.php" method="post">';
+
+echo '<b>Database info</b><br><br>
+Database name: <input type="text" name="db_name" value="'.$db_name.'"><br><br>
+Database username: <input type="text" name="db_user" value="'.$db_user.'"><br><br>
+Database password: <input type="text" name="db_pass" value="'.$db_pass.'"><br><br>
+Database host: <input type="text" name="db_host"  value="'.$db_host.'"> (leave as <i>localhost</i> unless told otherwise)<br><br>
+<br><br>
+<b>Admin user</b><br><br>';
+```
+
+*Note on install pages:*
+- *This `install.php` file should be deleted if we aren't using it, but we won't do that now because we are still testing*
+- *On a production website, once installed, this file must be removed so we don't compromise the system*
+- *We want a file*
 
 *Website ready*
 
