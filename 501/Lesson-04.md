@@ -419,8 +419,9 @@ Database host: <input type="text" name="db_host"  value="'.$db_host.'"> (leave a
 
 *Note on install pages:*
 - *This `install.php` file should be deleted if we aren't using it, but we won't do that now because we are still testing*
-- *On a production website, once installed, this file must be removed so we don't compromise the system*
-- *We want a file*
+- *On a production website, once installed, either this file must automatically redirect or be removed so we don't compromise the system*
+
+*You may just move on or run the installer again, create a second web admin login, and see what changes; move on when you are ready*
 
 *Website ready*
 
