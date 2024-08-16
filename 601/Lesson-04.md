@@ -437,7 +437,8 @@ git push -u origin main
   - Erase/delete [history from any point](https://stackoverflow.com/questions/1338728)
     - `--hard` (return to the past, and delete all history after that point)
     - Because your cat walked across your keyboard, then you did a commit
-- Can do this for whatever branch you are on
+- Undo all of your changes since your last commit:
+  - `git reset --hard HEAD`
 - Either relative to `HEAD` or by hash:
   - `HEAD`: `git reset --hard HEAD~4` (`4` can be any number of steps in history you want to take back; `1` removes only one)
   - Hash: `git reset -hard 7h310ngH4sh` (`7h310ngH4sh` is the hash to reset to see in `git log`)
@@ -460,6 +461,12 @@ git log
 ```
 
 Revert to past and delete history with `--hard`
+
+| **reset back to last commit** :$ (undoes all changes to files since last commit)
+
+```console
+git reset --hard HEAD
+```
 
 | **reset back two commits** :$ (step back relative by `2`)
 
