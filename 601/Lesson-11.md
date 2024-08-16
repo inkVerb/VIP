@@ -279,6 +279,7 @@ restorecon /somedir/somefile
 - Allows "learning/complaining" mode: not enforced, but logged to create new **security profiles**
   - Comparable to SELinux "permissive" mode
 - Runs as a service controlled by `systemctl`
+- Working demo service with AppArmor profile in [**`toplogger` package**](https://github.com/inkVerb/toplogger) package
 
 ### Service Status
 - `systemctl status apparmor`
@@ -286,7 +287,7 @@ restorecon /somedir/somefile
 
 ### Modes & Profiles
 - Profiles' location:
-  - `/etc/apparmor.d`
+  - `/etc/apparmor.d/`
   - Installed with `apparmor-profiles` package
     - Or per distro
     - Or by individual packages as they are installed

@@ -552,6 +552,7 @@ These repositories contain examples of actual Linux installer packages built fro
 - `top` per-minute logger service package called [**`toplogger`**](https://github.com/inkVerb/toplogger)
   - Adds an infinite looping script in `/usr/lib/...`
   - Adds and enables a service via `systemctl`
+  - Adds an AppArmor profile in `/etc/apparmor.d/...`
 
 ### `501webapp` 501 Web App
 - The VIP Code 501 CMS web app-as-package called [**`501webapp`**](https://github.com/inkVerb/501webapp)
