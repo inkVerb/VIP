@@ -298,7 +298,7 @@ localhost/web/website.php
 
 *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
-### V. SQL `INSERT` New Entry < HTML
+### V. HTML > PHP > SQL `INSERT` New Entry
 - See if a query succeeded without error
 	- Syntax: `if ($row)`
 - Bonus tip: Get the ID of whatever new row you just inserted:
@@ -463,7 +463,7 @@ localhost/web/website.php
 SELECT name, type, have, count, prepared FROM fruit;
 ```
 
-### VII. SQL `UPDATE` Existing Entry < HTML
+### VII. HTML > PHP > SQL `UPDATE` Existing Entry
 - See if an update made a change
   - Syntax: `if (mysqli_affected_rows($database) == 1)`
 
@@ -506,7 +506,7 @@ localhost/web/website.php
 SELECT name, type, have, count, prepared FROM fruit;
 ```
 
-### VIII. SQL `DELETE` Entry < HTML
+### VIII. HTML > PHP > SQL `DELETE` Entry
 - See if the row was deleted, same as an update
   - Syntax: `if (mysqli_affected_rows($database) == 1)`
 

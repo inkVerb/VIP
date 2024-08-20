@@ -12,6 +12,13 @@ Further research is absolutely necessary to master package creation
 This serves as a general framework and point of reference for anyone getting started
 
 ## Essential Package Structure
+- Arch and Debian packages both contain in-place files with directories relative to `/` on the to-install system
+- Both install and remove will compare the files on the system to these in-place files, making the system match or remove files according to that structure
+- RPM has a different process that involves knowing a list of the files, rather than a relative structure
+- So, Arch can more easily interpret and install `.deb` files with the [AUR `debtap` tool](https://aur.archlinux.org/packages/debtap)
+  - Though an available AUR package is almost always better than using `debtap some-debian-dl.deb`
+- And, if you look inside a `.pkg.tar.zst` file, you may see similar relative directories like `usr/` and `etc/` as in the rood of a Debian package directory structure
+
 ### Arch
 #### Arch: Assets & Methodology
 - Single directory with any name
@@ -58,6 +65,7 @@ depends=('bash', 'systemd')
 source=("maybe-some-script.sh" "${pkgname}-service-maybe.service" "some-file.conf")
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 backup=("etc/$pkgname/conf")
+install="somescript.install"
 
 package() {
 
@@ -68,7 +76,13 @@ package() {
 }
 ```
 
-- `$srcdir` is the PWD when running `makepkg`; all files and directories are relative to `$srcdir`
+- `$srcdir` is `src/` from the PWD when running `makepkg`
+  - Files are copied here from the `source=()` array
+- Hashes in `sha256sum=()` are for files in the `source=()` array respectively
+  - Obtain each hash with `sha256sum file-in-source-array`
+- `install=` is a variable of any Shell or BASH script ending in `.install`
+  - This has sections to run before and after install, update, and remove
+  - [Read more on `install=`](https://wiki.archlinux.org/title/PKGBUILD#install), view the [prototype .install file](https://gitlab.archlinux.org/pacman/pacman/raw/master/proto/proto.install)
 - While Debian and RPM have ways to use `systemctl` to manage service status, Arch sets up packages with `chroot` in a way that does not allow this
   - For this reason, `systemctl enable some-service` usually needs to be run manually after a package is installed
   - There are work-arounds, but they are complicated and generally not thought to be necessary by Arch administrators
@@ -82,23 +96,71 @@ package() {
   - This is explained in the [Arch VCS Guidelines](https://wiki.archlinux.org/title/VCS_package_guidelines) and a basic, working example included in the [**`gophersay-git`**](https://github.com/JesseSteele/gophersay-git) demo
 
 #### Arch: Workflow
-- On install (`pacman -S`)
-1. Package meta setup according to meta section of `PKGBUILD` file
-2. Files are put in place according to their detected location found in the prepared package
-- On update (`pacman -Syu`) or remove (`pacman -R`):
-3. Files listed in `backup=()` array are not removed or replaced
-  - Would-be new files saved as `.pacnew`
-  - Would-be replaced files *if changed* copied as `.pacsave`
-- On remove (`pacman -R`):
-5. Package is *carefully* undone according to steps 1 & 2 (respecting `backup=()`)
-- On purge (`pacman -Rn`):
-6. Package is *completely* undone according to steps 1 & 2 (ignoring `backup=()`)
+1. Making package (`makepkg`): Package meta setup according to meta section of `PKGBUILD` file
+  - Source files for compiling are in; or first cloned into `src/repo-source-name/` (from a VCS like Git)
+    - `$srcdir` = `src/`
+    - Files are placed in this directory as listed in `PKGBUILD`: `source=()`
+  - Finally, compiled binaries and other to-be-installed "package" files move to `pkg/package-name/`
+    - `$pkgdir` = `pkg/package-name/`
+2. Install (`pacman -S`): Files are put in place according to their detected location found in the prepared package
+  - Copied into place from `pkg/package-name/`
+3. On update (`pacman -Syu`) or remove (`pacman -R`): `pkg/package-name/` defines what on system is updated/removed
+  - Files listed in `backup=()` array are not removed or replaced
+    - Would-be new files saved as `.pacnew`
+    - Would-be replaced files *if changed* copied as `.pacsave`
+5. Remove (`pacman -R`): Package is *carefully* undone according to steps 1 & 2 (respecting `backup=()`)
+6. Purge (`pacman -Rn`): Package is *completely* undone according to steps 1 & 2 (ignoring `backup=()`)
+
+#### Arch `PKGBUILD` `install=` script
+- Vaue is any file with `.install` extension (using `install="somescript.install"`)
+-- This workflow is used in the [**`501webapp`**](https://github.com/inkVerb/501webapp) package
+
+| **`somescript.install`** : ([Read more on `install=`](https://wiki.archlinux.org/title/PKGBUILD#install), [prototype .install file](https://gitlab.archlinux.org/pacman/pacman/raw/master/proto/proto.install))
+
+```
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+#post_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
+```
 
 #### Arch `PKGBUILD` `pkgver()` Function
 - `pkgver()` retrieves a dynamic version number directly from the GitHub/Subversion/etc source
 - `PKGBUILD` does not need to be updated with each update from the upstream source
 - This follows the "proper [Arch way](https://wiki.archlinux.org/title/Arch_terminology#The_Arch_Way)"
 - One of the strong advantages Arch has over Debian and RPM
+- This workflow is used in the [**`501webapp`**](https://github.com/inkVerb/501webapp) & [**`gophersay`**](https://github.com/JesseSteele/gophersay) packages
 
 ##### `pkgver()` Examples
 - The [Arch Wiki on VCS package guidelines](https://wiki.archlinux.org/title/VCS_package_guidelines#The_pkgver()_function) explains this in greater detail
@@ -292,8 +354,83 @@ pkgver() {
   - *Installing with `dpkg` needs root permissions!*
 
 #### Debian: Structure & Meta Config Template
+- The Debian package itself resides inside a `.deb` file
+  - This file is made from directories
+  - It contains a `DEBIAN/` directory, specifically `DEBIAN/control` with instructions
+- Creation and installation of a `.deb` package follows three steps:
+  1. Create the Debian package directory one of two ways:
+    - Optionally start with the **maintainer** package directory
+      - The primary config file is `debian/control`
+      - `dpkg-buildpackage` assembles the Debian package directory
+      - This follows the **maintainer** [Debian Policy Manual](https://www.debian.org/doc/debian-policy/index.html)
+      - This is the workflow in the [**`gophersay` packages**](https://github.com/JesseSteele/gophersay)
+    - Create the Debian package directory **manually**
+      - This is the workflow in the [**`penguinsay`**](https://github.com/JesseSteele/penguinsay), [**`gophersay`**](https://github.com/JesseSteele/gophersay), [**`toplogger`**](https://github.com/inkVerb/toplogger), and [**`501webapp`**](https://github.com/inkVerb/501webapp) packages
+  2. Build the Debian package directory
+    - Having created **manually** or as a **maintainer** (with `dpkg-buildpackage`)
+    - The prinary config file is `DEBIAN/control`
+    - `dpkg-deb --build` builds the `.deb` file
+    - This follows the package [Debian GNU/Linux FAQ: control file](https://www.debian.org/doc/manuals/debian-faq/pkg-basics.en.html#controlfile)
+  3. Install the package
+    - Having created, downloaded, or otherwise obtained the `.deb` file
+    - `dpkg -i package-name.deb` installs the package
+    - `apt-get` and `apt` run this `dpkg -i` command under the hood
 
-| **Debian Package Structure** :
+##### Maintainer Assembly
+*Prep to run `dpkg-buildpackage`*
+
+| **Debian Maintainter Structure** : (Run `dpkg-buildpackage -us -uc` on this to assemble package structure below)
+
+```
+PWD/
+└─ build-name-me-anything/
+   ├─ debian/
+   │  ├─ compat
+   │  ├─ control
+   │  ├─ copyright
+   │  ├─ changelog
+   │  ├─ install
+   │  └─ rules
+   ├─ other-source-files
+   └─ other-sources/
+```
+
+- The structure above can vary with files in `debian/`, but note how it is a different structure from `DEBIAN/` in an actual package directory structure
+
+| **`debian/control`** : (two paragraphs, [read more](https://www.debian.org/doc/debian-policy/ch-controlfields.html#debian-source-package-template-control-files-debian-control))
+
+```
+Source: package-nmae
+Section: games
+Priority: optional
+Maintainer: Jesse Steele <codes@jessesteele.com>
+Homepage: https://github.com/JesseSteele/repo-nmae
+Build-Depends: debhelper (>= 10), golang-go
+Standards-Version: 3.9.6
+
+Package: package-nmae
+#Version: 1.0.0 # NO! Inherited from `debian/changelog`
+Architecture: all
+Depends: bash (>= 4.0)
+Description: Gopher talkback written in Go for Linux
+```
+
+- In the file above, the lower stanza is used to populate the `DEBIAN/control` file, except `Version:` comes from the `debian/changelog` file, below
+
+| **`debian/changelog`** : (supplies `Version:` in `DEBIAN/control`)
+
+```
+package-nmae (1.0.0-1) stable; urgency=low
+
+  * First release
+
+ -- Jesse Steele <codes@jessesteele.com>  Thu, 1 Jan 1970 00:00:00 +0000
+```
+
+##### Package Building
+*Prep to run `dpkg-deb`, or built by `dpkg-buildpackage` from above*
+
+| **Debian Package Structure** : (Run `dpkg-deb --build` on this to build `.deb` file)
 
 ```
 $PWD
@@ -377,29 +514,30 @@ fi
   - `maybe-some-script.sh`
 
 #### Debian: Workflow
-- On `apt install` (or `dpkg -i`)
-1. Package meta setup according to `DEBIAN/control` file
-2. Files are put in place according to relative path strucutre inside the package directory
-3. `postinst` script runs
-- On `apt upgrade` or `apt remove`:
-4. Files listed in `control` are not removed or replaced
-- On `apt remove`:
-5. `prerm` script runs
-6. Package is *carefully* undone according to steps 1 & 2 (respecting `conffiles`)
-7. `postrm` script runs
-- On `apt remove --purge`:
-8. `prerm` script runs
-9. Package is *completely* undone according to steps 1 & 2 (ignoring `conffiles`)
+1. On "**maintainer**" package creation (`sudo dpkg-buildpackage -us -uc`): Package creator assembled according to `debian/control`
+  - This is different from `DEBIAN/control` and has different rules (see [**maintainer**: Debian source package template control files](https://www.debian.org/doc/debian-policy/ch-controlfields.html#debian-source-package-template-control-files-debian-control))
+2. On `apt install` (or `dpkg -i`): Package meta setup according to `DEBIAN/control` file
+3. Files are put in place according to relative path strucutre inside the package directory
+4. `postinst` script runs
+5. On `apt upgrade` or `apt remove`: Files listed in `control` are not removed or replaced
+6. On `apt remove`: `prerm` script runs
+7. Package is *carefully* undone according to steps 1 & 2 (respecting `conffiles`)
+8. `postrm` script runs
+9. On `apt remove --purge`: `prerm` script runs
+10. Package is *completely* undone according to steps 1 & 2 (ignoring `conffiles`)
   - `purge` as `$1` argument, answering true for: `if [ "$1" = "purge" ]`
-10. `postrm` script runs
+11. `postrm` script runs
 
 #### Debian: Further Reading
 - [Debian Policy Manual](https://www.debian.org/doc/debian-policy/index.html)
+  - [Debian source package template control files](https://www.debian.org/doc/debian-policy/ch-controlfields.html#debian-source-package-template-control-files-debian-control)
+  - [`debian/control` file List of fields](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-controlfieldslist)
 - [Debian Wiki: HowToPackageForDebian](https://wiki.debian.org/HowToPackageForDebian)
 - [Debian Wiki: Packaging](https://wiki.debian.org/Packaging)
 - Building packages from upstream source: (uses upstream `debian/` directory instead of `DEBIAN/`; demoed in [gophersay example](https://github.com/JesseSteele/gophersay))
   - [Debian Wiki: UpstreamGuide](https://wiki.debian.org/UpstreamGuide)
   - [Debian Maintainer's Guide](https://www.debian.org/doc/manuals/maint-guide/index.en.html)
+  - [Debian control file](https://www.debian.org/doc/manuals/debian-faq/pkg-basics.en.html#controlfile)
 
 ### RPM
 #### RPM: Assets & Methodology

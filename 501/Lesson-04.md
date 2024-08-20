@@ -346,7 +346,7 @@ localhost/web/install.php
  - *`DEFINE ('DB_CONFIGURED', true);` sets if the installation is configured*
    - *Without this line, the installer will still work, but the fields in the form can be already filled-in, such as if we already created a database with credentials*
      - *We will do more with this in [601 Lesson 8: Packages](https://github.com/inkVerb/vip/blob/master/601/Lesson-08.md) and the [Package Architectures Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Package-Architectures.md) with the [**501webapp**](https://github.com/inkVerb/501webapp) package*
- - *If `DB_CONFIGURED == true`, then `exit (header("Location: webapp.php"));` exits and redirects to the main blog*
+ - *If `(defined('DB_CONFIGURED')) && (DB_CONFIGURED == true)`, then `exit (header("Location: webapp.php"));` exits and redirects to the main blog*
  - *This allows for database credentials to be pre-configured, but not yet installed*
 
 | **install.php** :
@@ -380,8 +380,8 @@ EOF;
   // Include the file we know we have
   require_once ('./in.sql.php');
 
-  // Configured?
-  if (DB_CONFIGURED == true ) {
+  // Defined & Configured?
+  if ((defined('DB_CONFIGURED')) && (DB_CONFIGURED == true)) {
     exit (header("Location: webapp.php"));
   }
 
@@ -433,8 +433,8 @@ PHP has 3 main groups of variables:
 
 ```php
 // Script-specific: (stop working after the PHP script finishes)
-$Simple_variables or $Simple_Array[0] // Must be "global" to work inside and outside functions
-CONSTANT_VARIABLES // Never change, work everywhere
+$Simple_variable or $Simple_Array[0] // Must be "global" to work inside and outside functions
+CONSTANT_VARIABLE // Never changes, work everywhere, called only "constant"
 
 // Method arrays: (work only from form submission or page load)
 $_GET // set in URL

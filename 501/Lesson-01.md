@@ -572,7 +572,9 @@ localhost/web/phppost.php
 
 empty($testme)
 
-isset($testme)
+isset($testme) // Test if variable is set
+
+defined('CONSTANT_NAME') // Test if constant is defined
 
 array_key_exists($key, $array_name)
 
@@ -1164,6 +1166,22 @@ localhost/web/phppost.php
 sudo cp core/01-phpconstant2.php web/phppost.php && \
 codium core/01-phpconstant2.php && \
 ls web
+```
+
+| **`CONSTANT` vs `$variable` test & `echo`** :
+
+```php
+if (isset($variable)) {
+  
+  echo "isset() $variable <br>";
+
+}
+
+if (defined('CONSTANT_ONE')) {
+
+  echo "defined() ".CONSTANT_ONE." <br>";
+
+}
 ```
 
 | **B-25** :// (Same)
