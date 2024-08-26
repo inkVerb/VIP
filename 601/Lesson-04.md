@@ -355,6 +355,14 @@ git commit -m 'Things changed'
 git push
 ```
 
+| **merge `main` branch into `devel`** :$
+
+```console
+git checkout devel
+git merge main
+git push
+```
+
 | **merge `devel` branch into `main`** :$
 
 ```console
@@ -363,11 +371,13 @@ git merge origin/devel
 git push
 ```
 
-| **merge `main` branch into `devel`** :$
+| **merge-squash `devel` branch into `main`** :$ ("squash" all `devel` commits into one on `main`)
 
 ```console
-git checkout devel
-git merge main
+git checkout main
+git merge --squash origin/devel
+git add *
+git commit -m "Devel squashed into main branch"
 git push
 ```
 
