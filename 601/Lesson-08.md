@@ -560,11 +560,11 @@ gpgcheck=1
   - `zypper clean --all` clears installed packages from `/var/cache/zypp/`
 
 ## Security Testing Distro Architectures: Arch vs Kali
-The main difference between [Kali](https://www.kali.org/), [BlackArch](https://blackarch.org/), and [ArchStrike](https://archstrike.org/) is how they compare to **[the Arch Way](https://wiki.archlinux.org/title/Arch_terminology#The_Arch_Way)**
+The main difference between [Kali](https://www.kali.org/), [ArchStrike](https://archstrike.org/), and [BlackArch](https://blackarch.org/) is how they compare to **[the Arch Way](https://wiki.archlinux.org/title/Arch_terminology#The_Arch_Way)**
 
 - **[Kali](https://www.kali.org/)** is a *fork* from Debian; everything is maintained independently and *by hand*, thus *can get out-dated*
-- **[BlackArch](https://blackarch.org/)** is built on Arch & can be installed alongside Arch; packages are mainteined *by hand*, thus *can get out-dated*
 - **[ArchStrike](https://archstrike.org/)** is build on Arch & can be installed alongside Arch; packages are *bootstrapped* and *automatically up-to-date*
+- **[BlackArch](https://blackarch.org/)** is built on Arch & can be installed alongside Arch; packages are mainteined *by hand*, thus *can get out-dated*
 
 The Arch Way: [Arch Linux Principles](https://wiki.archlinux.org/title/Arch_Linux#Principles)
 
@@ -574,7 +574,7 @@ The Arch Way: [Arch Linux Principles](https://wiki.archlinux.org/title/Arch_Linu
 - User centrality (niche-ish: for its own loyal users, not "all things to all users")
 - Versatility (installs CLI-only, almost anything can be added; same distro for server, cloud, desktop, engineering, pentesting, etc; "User Repository – AUR" for almost every non-official package)
 
-From [**Black Arch vs Arch Strike** :r/hacking // Reddit](https://www.reddit.com/r/hacking/comments/a9cnvl/black_arch_vs_arch_strike/):
+From [**ArchStrike vs BlackArch** :r/hacking // Reddit](https://www.reddit.com/r/hacking/comments/a9cnvl/black_arch_vs_arch_strike/):
 
 > Kali is point release, and it's an absolute b!tch to get working with any package not available via the official repos whereas on Arch (rolling release FTW) you can install everything kali provides, plus the AUR. Also xfce, kde-plasma, i3-gaps.
 >

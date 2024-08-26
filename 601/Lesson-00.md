@@ -83,14 +83,13 @@ ___
 ### SysDevOps - Software Work
 - **SysOps** - System Operations
   - **SysAdmin** - System Administration *(this course)*
-    - Knows every Linux distro
   - Network management
   - Monitoring
   - Troubleshooting
   - **SecOps** - Security Operations (white-hat hackers)
     - Blue Team - Defense: make the system strong against attacks
     - Red Team - Offense: invited to hack into the system to find vulnerability
-    - Knows [Kali Linux](https://www.kali.org) or [Black Arch Linux](https://blackarch.org) or comparable distro
+    - Knows [Kali](https://www.kali.org), [ArchStrike](https://archstrike.org/), [BlackArch](https://blackarch.org/) or comparable "pen-testing" distro
 - **DevOps** - Development Operations
   - Software Development- Writing programs, apps & websites
     - Common languages: C, Go, Node.js, Python, PHP, Java, Ruby, Qt
