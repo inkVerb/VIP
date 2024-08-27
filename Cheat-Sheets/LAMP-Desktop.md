@@ -26,7 +26,7 @@ sudo chown -R http:http /srv/www
 sudo chown -R www-data:www-data /var/www
 ```
 
-- CentOS/Fedora
+- RedHat/CentOS
 
 ```console
 sudo chown -R apache:apache /var/www
@@ -682,7 +682,7 @@ sudo systemctl stop mariadb
 
 ___
 
-## CentOS/Fedora
+## RedHat/CentOS
 
 ### Update
 
@@ -978,7 +978,7 @@ sudo apachectl -S
 - This is longer text to type every time the web directory needs to be owned
 - This makes commands incompatible with Arch/Manjaro servers
 - You may or may not want to change the web user to `www`
-- VIP Linux lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or CentOS/Fedora systems
+- VIP Linux lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or RedHat/CentOS systems
 
 #### Change the web user & group to `www`
 
@@ -1193,7 +1193,7 @@ Now, you should be able to access this in your browser at the address:
 
 Login the first time with the same user you create in "MySQL via command line" (below)
 
-### MySQL phpMyAdmin (Debian/Ubuntu & CentOS/Fedora)
+### MySQL phpMyAdmin (Debian/Ubuntu & RedHat/CentOS)
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
 
@@ -1312,7 +1312,7 @@ Access any MySQL user you created later with
 
 ***If*** in Debian/Ubuntu and you ever need to wipe MySQL clean and completely start over:
 
-```sh
+```console
 sudo apt-get clean
 sudo apt-get purge mariadb*
 sudo apt-get update
@@ -1399,7 +1399,7 @@ sys_temp_dir = /var/www/tmp
 ```
 Now you can use PHP to upload, but php is limited to the www directory
 
-### CentOS/Fedora
+### RedHat/CentOS
 
 | **SC1** :$
 

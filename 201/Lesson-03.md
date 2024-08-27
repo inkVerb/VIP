@@ -383,6 +383,120 @@ exit
 ```
 >
 
+## OpenSUSE
+*Some commands require `sudo`, AKA "run as administrator"*
+
+*Not all users can run with `sudo`*
+
+### This lesson requires a "sudoer" who can use `sudo`
+>
+___
+> Optional: You may login as a "sudoer" if needed
+>
+> | **S1** :$
+
+```console
+su Username
+```
+>
+___
+
+### Packages & Repositories
+*See the list of all available software "packages"*
+
+| **1** :$
+
+```console
+sudo dnf list
+```
+
+### Maintenance & Upgrades
+*See what can packages on your machine have a new version available*
+
+| **2** :$
+
+```console
+sudo zypper list-updates
+```
+
+*Upgrade (install updates)*
+
+| **3** :$ *If updates are available, you will need to press Y, then <kbd>Enter</kbd>*
+
+```console
+sudo zypper update
+```
+
+*Remove unneeded packages, likely made obsolete after an upgrade*
+
+| **4** :$
+
+```console
+sudo zypper clean --all
+```
+
+### Installing
+*Install the `git` package*
+
+| **5** :$ *Unless it is installed already, you will need to press Y, then <kbd>Enter</kbd>*
+
+```console
+sudo zypper install git
+```
+
+*Install `cowsay`*
+
+| **6** :$ *Unless it is installed already, you will need to press Y, then <kbd>Enter</kbd>*
+
+```console
+sudo zypper install cowsay
+```
+
+*You can install more than one package...*
+
+*Install the `curl` `net-tools` `htop` `odt2txt` `dos2unix` `pandoc` `pwgen` and `unzip` packages*
+- *(the command `netstat` comes from the package `net-tools`, we'll use it in a later lesson)*
+
+| **7** :$ *Use `-y` so you DO NOT need to press Y, then <kbd>Enter</kbd>*
+
+```console
+sudo zypper install -y curl net-tools htop dos2unix odt2txt pandoc pwgen unzip
+```
+
+*Check the Linux version info*
+
+| **8** :$
+
+```console
+lsb_release -a
+```
+
+*Get just the number*
+
+| **9** :$
+
+```console
+lsb_release -r -s
+```
+
+### Uninstalling (for reference)
+*Uninstall a package*
+
+```console
+sudo zypper remove some-package-name
+```
+
+### IF needed, `exit` from the other "sudoer"
+>
+> Optional: IF you logged in as a "sudoer", now exit
+>
+> | **S2** :$
+
+```console
+exit
+```
+>
+
 ## RedHat/CentOS
 *Some commands require `sudo`, AKA "run as administrator"*
 
