@@ -9,7 +9,7 @@ cd ~/School/VIP/501
 
 Ready services
 
-Arch/Manjaro & RedHat/CentOS
+Arch/Manjaro, OpenSUSE, RedHat/CentOS
 ```console
 sudo systemctl start httpd mariadb
 ```
@@ -1582,6 +1582,19 @@ pandoc \
 texlive-latex-base \
 texlive-fonts-recommended \
 texlive-latex-recommended
+```
+
+OpenSUSE
+
+| **49E** :$
+
+```console
+sudo zypper install \
+ImageMagick \
+ffmpeg \
+lame \
+pandoc \
+texlive-scheme-full
 ```
 
 RedHat/CentOS

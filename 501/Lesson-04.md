@@ -9,7 +9,7 @@ cd ~/School/VIP/501
 
 Ready services
 
-Arch/Manjaro & RedHat/CentOS
+Arch/Manjaro, OpenSUSE, RedHat/CentOS
 ```console
 sudo systemctl start httpd mariadb
 ```

@@ -137,7 +137,7 @@ sudo zypper update
 sudo dnf install -y curl cowsay dialog git net-tools htop dos2unix odt2txt pandoc pwgen unzip
 ```
 >
-> Fedora/CentOS:
+> RedHat/CentOS:
 >
 > | **C1** :$
 
@@ -249,7 +249,39 @@ sudo ln -sfn /var/www /srv/
 sudo chown -R www:www /srv/www
 ```
 
-- Fedora/CentOS:
+- OpenSUSE:
+
+| **EP1** :$
+
+```console
+cd ~/School/VIP
+```
+
+| **EP2** :$
+
+```console
+git clone https://github.com/inkVerb/501
+```
+
+| **EP3** :$
+
+```console
+sudo mkdir /srv/www/html/web
+```
+
+| **EP4** :$
+
+```console
+ln -sfn /srv/www/html/web ~/School/VIP/501/
+```
+
+| **EP5** :$
+
+```console
+sudo chown -R www:www /srv/www/html/
+```
+
+- RedHat/CentOS:
 
 | **CP1** :$
 
@@ -281,7 +313,7 @@ ln -sfn /var/www/html/web ~/School/VIP/501/
 sudo chown -R www:www /var/www/html/
 ```
 
-| **CP7** :$ (Make CentOS work with these lessons)
+| **CP6** :$ (Make CentOS work with these lessons)
 
 ```console
 sudo ln -sfn /var/www /srv/
@@ -317,7 +349,7 @@ echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
 sudo apt update
 sudo apt install codium
 ```
-- Fedora/CentOS/openSUSE
+- RedHat/CentOS/openSUSE
 ```bash
 sudo dnf install epel-release
 sudo dnf install snapd --skip-broken
@@ -327,7 +359,7 @@ sudo snap install codium --classic
 ```
 - Or, download and install from **[vscodium.com](https://vscodium.com/)**
   - Debian/Ubuntu: .deb
-  - Fedora/CentOS/openSUSE: .rpm
+  - RedHat/CentOS/openSUSE: .rpm
 
 - VSCodium settings
 ```bash
@@ -354,7 +386,7 @@ xmlstarlet # XMLStarlet
 | **AL1** :$
 
 ```console
-sudo pacman -S --noconfirm libxml2 xmlstarlet imagemagick
+sudo pacman -S --noconfirm libxml2 xmlstarlet
 ```
 
 - Debian/Ubuntu:
@@ -362,7 +394,15 @@ sudo pacman -S --noconfirm libxml2 xmlstarlet imagemagick
 | **DL1** :$
 
 ```console
-sudo apt install -y libxml2-utils xmlstarlet imagemagick
+sudo apt install -y libxml2-utils xmlstarlet
+```
+
+- OpenSUSE:
+
+| **EL1** :$
+
+```console
+sudo zypper install -y libxml2 xmlstarlet
 ```
 
 ### VI. HTML-CSS-JS Crash Course

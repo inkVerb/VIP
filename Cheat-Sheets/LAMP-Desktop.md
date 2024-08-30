@@ -8,7 +8,7 @@
 
 ___
 
-Web server settings differ on different distros (Arch, CentOS & Ubuntu)
+Web server settings differ on different distros (Arch, Debian, OpenSUSE, CentOS)
 
 These instructions have an option standardize the web user to `www`
 
@@ -26,6 +26,12 @@ sudo chown -R http:http /srv/www
 sudo chown -R www-data:www-data /var/www
 ```
 
+- OpenSUSE
+
+```console
+sudo chown -R wwwrun:wwwrun /srv/www
+```
+
 - RedHat/CentOS
 
 ```console
@@ -33,7 +39,6 @@ sudo chown -R apache:apache /var/www
 ```
 
 ## Arch/Manjaro
-
 ### Update
 
 | **A0** :$
@@ -43,7 +48,6 @@ sudo pacman -Syy
 ```
 
 ### Setup LAMP
-
 #### Install
 
 1. Install the LAMP server
@@ -322,7 +326,6 @@ sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 ```
 
 #### Final notes on web folders
-
 Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
 
 ...This is how you will own the web directory from now on and in VIP Linux lessons
@@ -332,7 +335,6 @@ Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ub
 - `/srv/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
 
 #### Using your desktop LAMP server
-
 *(Optionally, you can turn MySQL off with:)*
 
 | **Disable MySQL** :$
@@ -378,7 +380,6 @@ sudo apt update
 ```
 
 ### Setup LAMP
-
 #### Install
 
 1. Install the LAMP server
@@ -392,20 +393,20 @@ sudo apt install mariadb-server php lamp-server^
 
 2. Turn on the PHP-MySQL functionality in your `php.ini` file
 
-| **D2g** :$ (maybe `7.2` is a different number)
+| **D2g** :$ (maybe `8` is a different number)
 
 ```console
-sudo gedit /etc/php/7.2/apache2/php.ini
+sudo gedit /etc/php/8/apache2/php.ini
 ```
 
   - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
 
 Or edit with `vim`:
 
-| **D2v** :$ (maybe `7.2` is a different number)
+| **D2v** :$ (maybe `8` is a different number)
 
 ```console
-sudo vim /etc/php/7.2/apache2/php.ini
+sudo vim /etc/php/8/apache2/php.ini
 ```
 
   - Search by typing: `/something_to_search`, then Enter to find the line, type `:wq` to save and quit
@@ -636,7 +637,6 @@ sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 ```
 
 #### Final notes on web folders
-
 Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
 
 ...This is how you will own the web directory from now on and in VIP Linux lessons
@@ -646,7 +646,6 @@ Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ub
 - `/var/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
 
 #### Using your desktop LAMP server
-
 *(Optionally, you can turn MySQL off with:)*
 
 | **Disable MySQL** :$
@@ -682,8 +681,334 @@ sudo systemctl stop mariadb
 
 ___
 
-## RedHat/CentOS
+## OpenSUSE
+### Update
 
+| **E0** :$
+
+```console
+sudo zypper update -y
+```
+
+### Setup LAMP
+#### Install
+
+1. Install the LAMP server
+
+| **E1** :$
+
+```console
+sudo zypper install -y httpd php mariadb
+```
+
+Create a normal directory structure
+
+| **E2** :$
+
+```console
+sudo mkdir -p /srv/www/html
+```
+
+4. Turn on the PHP-MySQL functionality in your `php.ini` file
+
+Edit with `gedit`:
+
+| **E3g** :$
+
+```console
+sudo gedit /etc/php8/cli/php.ini
+```
+
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `mysqli` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
+
+Or edit with `vim`:
+
+| **E3v** :$
+
+```console
+sudo vim /etc/php8/cli/php.ini
+```
+
+  - Search by typing: `/something_to_search`, then Enter to find the line, type `:wq` to save and quit
+
+In php.ini:
+
+  - Uncomment & set values (remove the semicolon `;` at the start of the line)
+    - `extension=mysqli`
+    - `extension=pdo_mysql`
+    - `extension=iconv`
+    - `upload_max_filesize = 50M`
+	  - `file_uploads = On`
+
+4. MariaDB setup
+
+| **E4** :$ (If you get any error, you can probably ignore it and just move on)
+
+```console
+sudo mariadb-upgrade
+```
+
+5. Apache settings
+
+Edit with `gedit`:
+
+| **E5g** :$
+
+```console
+sudo gedit /etc/apache2/default-server.conf
+```
+
+  - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
+
+Or edit with `vim`:
+
+| **E5v** :$
+
+```console
+sudo vim /etc/apache2/default-server.conf
+```
+
+  - Search by typing: `/`..., type `:wq` to save and quit
+
+Update web directory settings
+
+  - Comment both `<Directory /srv/www...` entries
+
+  - Find `DocumentRoot "/srv/www/htdocs"` replace it to look like this:
+    ```
+    DocumentRoot "/srv/www/htdocs"
+    <Directory "/srv/www/htdocs">
+      Options Indexes FollowSymLinks
+      AllowOverride All
+      Require all granted
+    </Directory>
+    ```
+
+  ...or for expanded options...
+
+    ```
+    DocumentRoot "/srv/www/html"
+    <Directory "/srv/www/html">
+      Options Indexes FollowSymLinks MultiViews
+      AllowOverride All
+      Require all granted
+      Order allow,deny
+      allow from all
+    </Directory>
+    ```
+
+Disable the MPM event module, which conflicts with the MPM prefork module installed with the package *(don't ask why it was installed with a configuration that doesn't conflicts with itself)*
+
+| **E6** :$
+
+```consol
+sudo sed -i "s/LoadModule mpm_event_module/#LoadModule mpm_event_module/" /etc/httpd/conf.modules.d/00-mpm.conf
+```
+
+7. Enable & restart
+
+- Choose A or B:
+
+A. **Preferred:** Start MariaDB only once
+
+*(You will need to run this command each time you start lessons after reboot)*
+
+| **E7e** :$
+
+```console
+sudo systemctl start mariadb
+```
+
+B. Make MariaDB a service to always run
+
+| **E7s** :$
+
+```console
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+```
+
+| **E8** :$
+
+```console
+sudo systemctl restart apache2
+```
+
+8. Apache service: always or only when using?
+
+- Choose A or B:
+
+A. **Preferred:** Start Apache only once
+
+*(You will need to run this command each time you start lessons after reboot)*
+
+| **ES9e** :$
+
+```console
+sudo systemctl start apache2
+```
+
+B. Make Apache a service to always run
+
+| **ES9s** :$
+
+```console
+sudo systemctl enable apache2
+sudo systemctl start apache2
+```
+
+*(Later, you can turn this off with:)*
+
+| **Disable Apache** :$
+
+```console
+sudo systemctl disable apache2
+sudo systemctl stop apache2
+```
+
+About Apache and PHP users...
+
+| **Check the web user running php-fpm** :$
+
+```console
+ps aux | grep php-fpm | awk '{print $1}'
+```
+
+- The Apache web user is defined in `/etc/httpd/conf/httpd.conf`, which we previously edited
+- The php-fpm user, from the PHP Apache extension, is defined in `/etc/php-fpm.d/www.conf`, but we removed php-fpm, so this doesn't matter
+
+| **Check for specific errors in Apache server configs** :$
+
+```console
+sudo apachectl -t
+```
+
+| **Check for Apache users and Settings** :$
+
+```console
+sudo apachectl -S
+```
+
+### Change the web user to `www` (for VIP Linux lessons)
+- The default web user on CentOS & Fedora systems is `apache`
+- This is longer text to type every time the web directory needs to be owned
+- This makes commands incompatible with Arch/Manjaro servers
+- You may or may not want to change the web user to `www`
+- VIP Linux lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or RedHat/CentOS systems
+
+#### Change the web user & group to `www`
+
+1. Create the `www` user
+
+| **EW1** :$
+
+```console
+sudo groupadd www
+```
+
+2. Create the `www` group
+
+| **EW2** :$
+
+```console
+sudo useradd -g www www
+```
+
+3. Set web directory permissions
+
+| **EW3** :$
+
+```console
+sudo chmod u+w /srv/www
+```
+
+4. Set web folder ownership to `www` (and a few other folders)
+
+| **EW4** :$
+
+```console
+sudo chown -R www:www /srv/www
+```
+
+5. Change the Apache user to `www` with `sed`
+
+| **EW5** :$
+
+```console
+sudo sed -i "s/^User.*/User www/" /etc/apache2/uid.conf
+sudo sed -i "s/^Group.*/Group www/" /etc/apache2/uid.conf
+```
+
+7. Restart the Apache server
+
+| **EW6** :$
+
+```console
+sudo systemctl restart httpd
+```
+
+8. Life is easier with a local "Work" folder symlink
+
+| **EW7** :$
+
+```console
+mkdir -p ~/Work/dev
+sudo mkdir -p /srv/www/html/vip
+sudo ln -sfn /srv/www/html/vip ~/Work/
+```
+
+- Now:
+  - Your projects go in: `~/Work/vip/SOMETHING` (owned by `www`, not you)
+  - Use the web address: `localhost/vip/SOMETHING`
+- During development:
+  - Edit files in: `~/Work/dev`
+  - Copy dev files to view in browser on each save with:
+
+```console
+sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
+```
+
+#### Final notes on web folders
+
+Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
+
+...This is how you will own the web directory from now on and in VIP Linux lessons
+
+**Using your local dev server on desktop**
+
+- `/srv/www/html/SOMETHING` = WebBrowser: `localhost/SOMETHING`
+
+#### Using your desktop LAMP server
+
+*(Optionally, you can turn MySQL off with:)*
+
+| **Disable MySQL** :$
+
+```console
+sudo systemctl disable mariadb
+sudo systemctl stop mariadb
+```
+
+  - *(But, you will need to run this command each time you start lessons after reboot)*
+
+| **Start MySQL** :$
+
+```console
+sudo systemctl start mariadb
+```
+
+  - *(And, you can re-enable MySQL as a service with:)*
+
+| **Start MySQL** :$
+
+```console
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+```
+
+___
+
+## RedHat/CentOS
 ### Update
 
 | **C0** :$
@@ -707,7 +1032,6 @@ sudo dnf install -y dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8
 ```
 
 ### Setup LAMP
-
 #### Install
 
 1. Install the LAMP server
@@ -1119,8 +1443,7 @@ sudo systemctl start mariadb
 ___
 
 ## MySQL phpMyAdmin
-
-### MySQL phpMyAdmin (Arch/Manjaro)
+### MySQL phpMyAdmin (Arch/Manjaro & OpenSUSE)
 
 1. Download [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
 
@@ -1274,7 +1597,6 @@ Login the first time with the same user you create in "MySQL via command line" (
 ___
 
 ## Arch, CentOS & Debian
-
 ### MySQL via Command Line
 
 1. Access MySQL as root user with
@@ -1322,7 +1644,6 @@ sudo apt-get install mariadb-server
 ___
 
 ## Make PHP More Secure
-
 This is not necessary for VIP Linux lessons, but may be helpful in some situations
 
 ### Arch/Manjaro
@@ -1377,18 +1698,18 @@ sudo mkdir -p /var/www/tmp
 sudo chmod -R 777 /var/www/tmp
 ```
 
-| **SD3** :$ (maybe '7.2' is a different number)
+| **SD3** :$ (maybe '8' is a different number)
 
 ```console
-sudo chmod 644 /etc/php/7.2/apache2/php.ini
+sudo chmod 644 /etc/php/8/apache2/php.ini
 ```
 
 Open php.ini and make these settings:
 
-| **SD4** :$ (maybe '7.2' is a different number)
+| **SD4** :$ (maybe '8' is a different number)
 
 ```console
-sudo vim /etc/php/7.2/apache2/php.ini
+sudo vim /etc/php/8/apache2/php.ini
 ```
 
 ```
@@ -1397,6 +1718,44 @@ open_basedir = /var/www
 sys_temp_dir = /var/www/tmp
 
 ```
+Now you can use PHP to upload, but php is limited to the www directory
+
+### OpenSUSE
+
+| **SE1** :$
+
+```console
+sudo mkdir -p /srv/www/tmp
+```
+
+| **SE2** :$
+
+```console
+sudo chmod -R 777 /srv/www/tmp
+```
+
+| **SE3** :$
+
+```console
+sudo chmod 644 /etc/php8/cli/php.ini
+```
+
+Open php.ini and make these settings:
+
+| **SE4** :$ (maybe '8' is a different number)
+
+```console
+sudo vim /etc/php8/cli/php.ini
+```
+
+```
+open_basedir = /srv/www
+
+sys_temp_dir = /srv/www/tmp
+
+upload_tmp_dir = /srv/www/tmp
+```
+
 Now you can use PHP to upload, but php is limited to the www directory
 
 ### RedHat/CentOS
