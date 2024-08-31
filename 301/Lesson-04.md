@@ -94,12 +94,15 @@ gedit 04-var-form-4
 - `%` removes from the end of a value
 - `#` removes from the beginning of the value
 - `//string/` removes within the value (or `//$string/` to remove based on another variable)
+- `//string/replace` replaces within the value (or `//$string/$replace` to replace based on other variables)
 
 ```sh
 ${Variable%food}
 ${Variable#food}
 ${Variable//food/}
 ${Variable//$food/}
+${Variable//food/bard}
+${Variable//$food/$bard}
 ```
 
 *In this lesson, we are only looking at removing from the end of a variable, such as changing a file's extension*
@@ -357,9 +360,16 @@ ___
 ## Replacement within variables
 - `${Var%foo}` will remove "foo" from the end of the value of variable `$Var`
 - `${Var%foo}bar` will remove "foo" from the end, then add "bar" to the end the value of variable `$Var`
-  - This can be useful to:
-    1. Change a string quickly inside a script
-    2. Call a known variable based on arguments or a settings file, etc
+- Other replacements:
+  - `%` removes from the end of a value
+  - `#` removes from the beginning of the value
+  - `//string/` removes within the value (or `//$string/`)
+  - `//string/replace` replaces within the value (or `//$string/$replace`)
+  - *Choose the correct way*
+    - *Do **not** use `//string/replace` within file if you only want to change the end or beginning*
+- This can be useful to:
+  1. Change a string quickly inside a script
+  2. Call a known variable based on arguments or a settings file, etc
 - See usage and examples here: [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
 ___
 

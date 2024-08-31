@@ -188,6 +188,8 @@ ${Variable%food}
 ${Variable#food}
 ${Variable//food/}
 ${Variable//$food/}
+${Variable//food/bard}
+${Variable//$food/$bard}
 ```
 
 1. Remove text at start: `${var#foo}`
