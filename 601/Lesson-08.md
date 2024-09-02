@@ -337,7 +337,7 @@ Include = /etc/pacman.d/mirrorlist
 
 #### `yay` (Yet Another Yogurt)
 - *[Yay, written in Go, from Jguer](https://github.com/Jguer/yay/blob/next/README.md)*
-  - *Must be installed manually, see [Installation instructions](https://github.com/Jguer/yay/blob/next/README.md#installation*
+  - *Must be installed manually, see [Installation instructions](https://github.com/Jguer/yay/blob/next/README.md#installation)*
 - Handles packages from the [Arch User Repository (AUR)](https://aur.archlinux.org/)
 - May employ `makepkg` as needed to create `makepkg -i` -ready packages compliant with the [Arch build system](https://wiki.archlinux.org/title/Arch_build_system)
   - Resolves dependencies
@@ -352,7 +352,7 @@ Include = /etc/pacman.d/mirrorlist
     - Because this often compiles source code, which requires a normal user
     - Compiling as `root` can create many strange permissions-related issues
     - Installing on the [Linux FHS](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) requires `root` or `sudo`, but not compiling code itself
-    - This can create a trouble, which is why inkVerb (this VIP Linux class maintainer) wrote the ([yeo tool](https://github.com/inkVerb/yeo/blob/main/README.md))
+    - This can create a trouble, which is why inkVerb (this VIP Linux class maintainer) wrote the ([`yeo` tool](https://github.com/inkVerb/yeo/blob/main/README.md))
 - There are many *other* [AUR helpers](https://wiki.archlinux.org/title/AUR_helpers) than `yay`:
   - `aura`
   - `pacaur`
@@ -543,19 +543,20 @@ gpgcheck=1
 - Resolves dependencies
 - Downloads packages to: `/var/cache/zypp/`
 - Some queries :#
+  - `zypper packages` list available packages
   - `zypper list-updates` list available updates
   - `zypper update` update all packages
-  - `zypper update --non-interactive` update all packages non-interactive
+    - `--non-interactive` update all packages non-interactive
   - `zypper repos` list available repos
   - `zypper search findword` search for "findword"
   - `zypper info package-name` info about `package-name` package
   - `zypper search --provides /path/to/some/program` list package that owns `/path/to/some/program`
   - `zypper install package-name` install `package-name` package
-  - `zypper install -f package-name` install `package-name` package, purge any old configs
-  - `zypper install package-name --non-interactive` install `package-name` package non-interactive
+    - `-f` install `package-name` package, purge any old configs
+    - `--non-interactive` install `package-name` package non-interactive
   - `zypper remove package-name` remove `package-name` package
   - `zypper shell` enter interactive `zypper` shell
-  - `zypper addrepo http://example.com/path/to/repo some-alias-repo-name` add a repo with `some-alias-repo-name` as your custom repo nickname
+    - `zypper addrepo http://example.com/path/to/repo some-alias-repo-name` add a repo with `some-alias-repo-name` as your custom repo nickname
   - `zypper removerepo some-alias-repo-name` remove the repo nicknamed `some-alias-repo-name`
   - `zypper clean --all` clears installed packages from `/var/cache/zypp/`
 

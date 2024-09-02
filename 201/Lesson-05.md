@@ -25,7 +25,9 @@ su Username
 ```
 ___
 
-### I. `adduser`
+### I. `adduser` & `useradd -U -m -k /etc/skel`
+
+*Arch & OpenSUSE do not have the `adduser` tool, a shortcut for `useradd` with options*
 
 *Look at the `/home` directory to see the users on the machine*
 
@@ -35,25 +37,16 @@ ___
 ls /home
 ```
 
+*Note each of these user home directories contains default files that can be added from `/etc/skel` via `-k /etc/skel`*
+
 | **A2** :$ (Arch/Manjaro)
 
 ```console
-sudo groupadd pinkypink
-sudo adduser pinkypink
+sudo useradd pinkypink -U -m -k /etc/skel
+sudo passwd pinkypink
 ```
 
-- *Enter `pinkypink` for user group*
-- *Press `Enter` for other questions*
 - *When prompted Enter any simple password*
-
-
-| **C2** :$ (RedHat/CentOS)
-
-```console
-sudo adduser pinkypink
-```
-
-*Note no messages, all is handled*
 
 | **U2** :$ (Ubuntu)
 
@@ -61,8 +54,26 @@ sudo adduser pinkypink
 sudo adduser pinkypink
 ```
 
+- *If prompted Enter any simple password*
+- *Press `Enter` for any remaining questions*
+
+| **E2** :$ (OpenSUSE)
+
+```console
+sudo useradd pinkypink -U -m -k /etc/skel
+sudo passwd pinkypink
+```
+
 - *When prompted Enter any simple password*
-- *Press `Enter` for remaining questions*
+
+| **C2** :$ (RedHat/CentOS)
+
+```console
+sudo adduser pinkypink
+```
+
+- *If prompted Enter any simple password*
+- *Press `Enter` for any remaining questions*
 
 *Look at `/home` again to see `pinkypink` has been added*
 
@@ -85,8 +96,10 @@ su pinkypink
 | **5** :$
 
 ```console
-ls /home/pinkypink
+ls -a /home/pinkypink
 ```
+
+*Note all hidden files (starting with `.`) are standard settings added from `/etc/skel/` with the `-k` flag*
 
 | **6** :$
 
@@ -173,6 +186,9 @@ ls /home
 *Note `useradd` is simple and doesn't even create a password*
 
 *Note `adduser` makes use of `useradd` and does other tasks, like setting the password*
+
+  - *Arch/Manjaro and OpenSUSE may have some `adduser` script, but it is best to do this manually via `useradd`*
+  - *Basically the same: `useradd someuser -U -m -k /etc/skel`*
 
 *Try to login as `pinkypurple` in the terminal*
 
@@ -732,6 +748,8 @@ ___
 
 # The Take
 - `adduser` & `deluser` create and delete a complete group of settings for the user
+  - These may not be available on Arch/Manjaro & OpenSUSE systems
+  - `adduser` is basically a shortcut for `useradd someuser -U -m -k /etc/skel` anyway, so just learn to use that
 - `useradd` & `userdel` only create and delete a user, no more
 - A user's "home" is in `/home/` by default
 - File "permissions" relate to users who own the files

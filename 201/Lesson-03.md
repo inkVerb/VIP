@@ -497,7 +497,7 @@ exit
 ```
 >
 
-## RedHat/CentOS
+## OpenSUSE & RedHat/CentOS
 *Some commands require `sudo`, AKA "run as administrator"*
 
 *Not all users can run with `sudo`*
@@ -656,6 +656,15 @@ ___
   - `sudo apt install package-to-install` will install a package
     - `-y` will tell `apt` to automatically answer "yes" rather than prompting
   - `sudo apt remove package-to-remove` will remove (uninstall) a package
+- OpenSUSE: `zypper`
+  - `sudo zypper packages` outputs a list of *all* software packages that can be installed with `zypper`
+  - `sudo zypper list-updates` list available updates
+  - `sudo zypper addrepo http://example.com/path/to/repo some-alias-repo-name` add a repo with `some-alias-repo-name` as your custom repo nickname
+  - `sudo zypper update` will install packages with new versions available
+    - `--non-interactive` will tell `zypper` to automatically answer "yes" rather than prompting
+  - `sudo zypper install package-to-install` will install a package
+    - `--non-interactive` will tell `zypper` to automatically answer "yes" rather than prompting
+  - `sudo zypper remove package-to-remove` will remove (uninstall) a package
 - RedHat/CentOS: `dnf`
   - `sudo dnf list | head` outputs a list of *all* software packages that can be installed with `dnf`
   - `sudo dnf list installed | grep -i httpd` outputs all installed packages

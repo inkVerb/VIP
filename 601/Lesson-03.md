@@ -77,8 +77,9 @@
   - A user password entry is added to `/etc/shadow`
   - Group-related information is added to `/etc/group`
   - Simple usage: `sudo useradd johndoe`
-  - Expanded usage: `sudo useradd johndoe -s /bin/zsh -m -k /etc/skel -c "John Doe"`
+  - Expanded usage: `sudo useradd johndoe -s /bin/zsh -U -m -k /etc/skel -c "John Doe"`
     - `-s /bin/zsh` shell: `zsh`
+    - `-U` create and add to group of same name
     - `-m` make user's default directory
     - `-k /etc/skel` default directory and settings
     - `-c` comment (display name)
@@ -197,6 +198,7 @@
   - `-G` declare new list of all groups, removing all other groups
   - `-a` adds new groups in addition to existing groups
   - `-g` GID of new primary group
+  - eg :# `usermod someuser -aG alsogroup`
 - Get a GID from the line in `/etc/group`
   - `getent group somegroup`
     - `somegroup:x:1001:` (`1001` is the GID)
