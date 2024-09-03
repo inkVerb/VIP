@@ -352,6 +352,20 @@ localhost/web/install.php
 | **install.php** :
 
 ```php
+// Redirect if already configured
+if (file_exists('./in.sql.php'))  {
+
+  // Include the file we know we have
+  require_once ('./in.sql.php');
+
+  // Configured?
+  if ((defined('DB_CONFIGURED')) && (DB_CONFIGURED == true)) {
+    exit (header("Location: webapp.php"));
+  }
+}
+
+...
+
 // POSTed form?
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -374,16 +388,12 @@ EOF;
 
 ...
 
-// Installed already, so in.sql.php already exists?
-} elseif (file_exists('./in.sql.php'))  {
-
-  // Include the file we know we have
-  require_once ('./in.sql.php');
-
-  // Defined & Configured?
-  if ((defined('DB_CONFIGURED')) && (DB_CONFIGURED == true)) {
-    exit (header("Location: webapp.php"));
-  }
+// Installed already, so in.sql.php already exists, but not DB_CONFIGURED?
+} elseif ( (file_exists('./in.sql.php'))
+ && (defined('DB_NAME'))
+ && (defined('DB_USER'))
+ && (defined('DB_PASSWORD'))
+ && (defined('DB_HOST')) )  {
 
   // Database variables
   $db_name = DB_NAME;
@@ -392,7 +402,7 @@ EOF;
   $db_host = DB_HOST;
 
 // Don't let those variables be empty
-} else { 
+} else {
   
   // Blank database variables
   $db_name = '';
