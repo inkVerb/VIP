@@ -1118,7 +1118,7 @@ sudo docker rmi -f [ helloworld IMAGE ID ]
 ```
 
 ## Mail
-- [Mail Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Mail.md)
+- [Mail Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Mail-Postfix.md)
 - Linux servers primarily use one of three email services:
   - Sendmail
   - Postfix
@@ -1141,7 +1141,7 @@ sudo docker rmi -f [ helloworld IMAGE ID ]
   - This is not the same as using ports `465` or `587` rather than port `25` for SMTP *authentication*
   - Don't use port `25` for SMTP in your email client
   - Don't block port `25` on your email server either
-- For some mail server facts, overall Postfix structure, ports, troubleshooting, and mail server interaction via `telnet`, see the [Mail Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Mail.md)
+- For some mail server facts, overall Postfix structure, ports, troubleshooting, and mail server interaction via `telnet`, see the [Mail Cheat Sheet](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Mail-Postfix.md)
 - The `sendmail` command is necessary for Postfix or a server using PHP web apps to send emails, but that command might be from the Postfix package, not from the Sendmail package
 
 ### Sendmail

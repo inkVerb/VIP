@@ -408,6 +408,16 @@ telnet mail.maildomain.tld 25
 
 A `220` response is healthy and means the connection is working.
 
+## Mail Queue
+
+Mail processes in a queue
+
+If you need to clean out the mail queue, here are some useful tools:
+
+- Postfix: `mailq | awk '$7~/@/{print$1}' | while read qid; do postsuper -d $qid; done`
+  - The operative command is: `postsuper -p`
+  - From [ServerFault](https://serverfault.com/questions/1047113)
+
 ## Logs
 
 Monitor logs:

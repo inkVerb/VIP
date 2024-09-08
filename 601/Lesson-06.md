@@ -26,6 +26,8 @@ Useful network commands:
 
 - Host machine services listening on the network
   - :$ `netstat -l`
+- Ports accessed from the network
+  - :$ `netstat -tuplen`
 - **Netowrks**, **gateways**, and **NICs**:
   - :$ `netstat -rn` = `route -n`
 

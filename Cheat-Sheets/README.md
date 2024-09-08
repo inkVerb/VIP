@@ -21,7 +21,7 @@ ___
 ### [Cron Schedule Tasks](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
 
 ___
-### [Mail Servers](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Mail.md)
+### [Mail Servers wtih Postfix](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Mail-Postfix.md)
 
 ___
 ### [AJAX security](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/AJAX-security.md)
