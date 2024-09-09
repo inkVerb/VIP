@@ -359,7 +359,9 @@ echo "$EOFvar"
 ./eofcomsub
 ```
 
-*Note echoing without "quotes" makes everything appear on one line.*
+*Note:*
+  - *echoing any heredoc variable without "quotes" (`$no_quotes`) converts new lines to spaces and the content appears on one line*
+  - *echoing a heredoc-as-variable with the variable in `"$quotes"` will preserve new lines*
 
 **Heredoc containing variables in a script:**
 
