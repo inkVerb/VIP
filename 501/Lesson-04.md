@@ -621,7 +621,7 @@ localhost/web/logout.php
 Cookies are much like the `$_SESSION` array, but
 
 1. They have an expiration (in **PHP epoch**)
-2. They are set with the `setcookir()` function
+2. They are set with the `setcookie()` function
 
 Create a cookie:
 
@@ -635,7 +635,7 @@ Now, this will exist at that domain/host:
 $_COOKIE['cookie_name']
 ```
 
-Unset the cookie
+Unset the cookie:
 
 ```php
 unset($_COOKIE['cookie_name']); // Unset the cookie so if tests don't find it later

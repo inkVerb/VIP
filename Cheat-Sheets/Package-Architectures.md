@@ -683,7 +683,10 @@ These repositories contain examples of actual Linux installer packages built fro
 ### `gophersay` Command Package
 - Minimum `Println` talkback command package called [**`gophersay`**](https://github.com/JesseSteele/gophersay)
   - Compiles a Go script into an executable command
-  - Demonstrates a variety of compiling workflows, including local, `.tar` tarball, and download from source
+  - Demonstrates a variety of compiling workflows, including:
+    - Local code to compile ([`gophersay`](https://github.com/JesseSteele/gophersay))
+    - Tarball `.tar` file inincluded ([`gophersay-tar`](https://github.com/JesseSteele/gophersay-tar))
+    - Download from source ([`gophersay-git`](https://github.com/JesseSteele/gophersay-git))
   - Includes `pkgver()` function for Arch `PKGBUILD` ([`gophersay-git`](https://github.com/JesseSteele/gophersay-git))
 
 ### `toplogger` Service Package
