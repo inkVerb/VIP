@@ -35,7 +35,7 @@ Your Shell script cannot create actual `STDOUT` or `STDERR`, which only comes fr
 The only way to create your own pure `STDOUT` is with `echo`, which simply dumps the string to `STDOUT`
 
 - `echo "message"` is an alias for `echo "message" >&1`, creating `STDOUT`
-- `echo "message" >&2` puts that messate where we expect `STDERR`
+- `echo "message" >&2` puts that message where we expect `STDERR`
 
 For a deeper understanding, one must learn the language Linux was written in and view Linux source itself, which is beyond our scope
 
@@ -1316,7 +1316,7 @@ If there is some special situation in your script:
 
 Real life example:
 
-*FYI, preview of [Lesson 8](https://github.com/inkVerb/vip/blob/master/301/Lesson-08.md: `date`...*
+*FYI, preview of [Lesson 8](https://github.com/inkVerb/vip/blob/master/301/Lesson-08.md): `date`...*
 
 | **119** :$
 

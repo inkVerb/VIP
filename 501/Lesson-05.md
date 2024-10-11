@@ -108,7 +108,7 @@ RewriteRule ^/?([a-zA-Z0-9_-]+)(.*/)?([a-zA-Z0-9_-]+)?$ pretty_page.php?n=$1&o=$
 RewriteRule ^pretty$ pretty_page.php [L]
 ```
 
-*We just tried number 2 above, now let's try 1...*
+*We just tried number 1 above, now let's try 2...*
 
 | **2** :$
 
@@ -158,7 +158,7 @@ localhost/web/My_Long_Name/Name-2
 
 *...Feel free to try different strings after `localhost/web/`, before and after the `/`*
 
-*We just tried number 2 above, now let's try 3...*
+*We just tried number 3 above, now let's try 4...*
 
 | **4** :$
 
@@ -218,10 +218,10 @@ Note, Apache .conf is probably:
 
 **RewriteMod** requires three settings to work:
 
-1. Module enabled, in .conf: `LoadModule rewrite_module modules/mod_rewrite.so`
+1. Module enabled, in `.conf`: `LoadModule rewrite_module modules/mod_rewrite.so`
 - Ubuntu can also use in the terminal: `sudo a2enmod rewrite`
-2. Directory tags, in .conf:  Between the `<Directory>` tags: `AllowOverride All`
-3. .htaccess file in web directory: `/srv/www/html/your/web/dir/.htaccess`
+2. Directory tags, in `.conf`:  Between the `<Directory>` tags: `AllowOverride All`
+3. `.htaccess` file in web directory: `/srv/www/html/your/web/dir/.htaccess`
 
 *Edit the Apache web server settings file...*
 
@@ -305,9 +305,12 @@ localhost/web/account.php/
 localhost/web/account.php
 ```
 
+*Use all these in our new `.htaccess` file and restore our last `pretty_page.php` file...*
+
 | **8** :$
 
 ```console
+sudo cp core/05-pretty4.php web/pretty_page.php && \
 sudo cp core/05-htaccess6 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
 codium core/05-htaccess6 && \
@@ -370,7 +373,7 @@ ___
     AllowOverride All
   </Directory>
   ```
-  2. .htaccess (a hidden file in the web directory)
+  2. `.htaccess` (a hidden file in the web directory)
   | **/srv/www/html/your/web/dir/.htaccess** :
   ```
   RewriteEngine on

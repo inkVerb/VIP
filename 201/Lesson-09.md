@@ -287,6 +287,12 @@ ___
   - `top -n 1 -b` same as above, `-b` shows all info regardless of terminal height
 - `htop` is like `top`, but prettier and easier to read
   - **F10** will quit, but so will **Q** if **F10** is unavailable
+- Alternative monitors: (not covered in this course)
+  - `nmon`
+  - `atop`
+  - `bpytop`
+  - `glances`
+  - `bashtop`
 - `uptime` shows only the uptime, which equals the "demigod" status of a Linux guru
 - **"human"**: The "h" stands for "human" in many commands, including:
   - `du -sh *`
