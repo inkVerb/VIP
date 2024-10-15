@@ -1326,6 +1326,8 @@ date +%Y-%m-%d_%H:%M:%S
 
 *...We will use that to create a timestamp...*
 
+*Remember: `logger -p local0.info` = `journalctl SYSLOG_FACILITY=16 -p info`
+
 | **routine-check** :
 
 ```sh
@@ -1345,7 +1347,7 @@ Then, maybe the next script you run is...
 if [ $? = 3 ]; then # Test if the last `exit` status was 3
   # Make an entry with logger:
     # local0 is a custom "Facility" for journalctl and logger...
-  logger -t RoutineCheck -p local0.info "Check found a status three."
+  logger -t RoutineCheck -p local0.info "Check found a status three. See Check.log for details."
 fi
 ```
 
