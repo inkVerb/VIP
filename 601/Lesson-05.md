@@ -439,6 +439,7 @@ udevadm monitor
 # Plug/unplug a USB
 # Ctrl + C
 ```
+
 ___
 
 #### [Lesson 6: Networks](https://github.com/inkVerb/vip/blob/master/601/Lesson-06.md)

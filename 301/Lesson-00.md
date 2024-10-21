@@ -1,15 +1,14 @@
 # Linux 301
 ## Lesson 0: 301 Cheat Sheets & Setup
 
-### [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
-
-### [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
-
-### [Arrays](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Arrays.md)
-
-### [Resources](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md)
+### Cheat Sheets
+- [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
+- [Tests](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md)
+- [Arrays](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Arrays.md)
+- [Resources](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md)
 
 ___
+
 ## Prepare
 
 ### I. OPTIONAL: If you did Linux 201, but on a different machine

@@ -1,6 +1,7 @@
 # Linux 501
-## Lesson 0: Server, LAMP Setup & HTML Fast
+## Lesson 0: LAMP Server Setup & HTML Fast
 
+### Cheat Sheets
 - Manjaro/Ubuntu/CentOS: [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
 
 ___

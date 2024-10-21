@@ -1894,6 +1894,7 @@ session     optional    pam_permit.so
   - The `sendmail` command could be provided by the Sendmail package, but also by Postfix or others
   - The `sendmail` command is necessary for Postfix or a server using PHP web apps to send emails
   - The `sendmail` command can send an email from the CLI
+
 ___
 
 #### [Lesson 10: Firewall](https://github.com/inkVerb/vip/blob/master/601/Lesson-10.md)

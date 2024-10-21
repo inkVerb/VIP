@@ -1,18 +1,16 @@
 # Linux 401
 ## Lesson 0: 401 Cheat Sheets & Setup
 
-### [Cron](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
+### Cheat Sheets
+- [Cron](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Cron.md)
+- [Resources](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md)
+- [LAMP-Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
+- [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
+- [Tests: BASH](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#welcome-to-bash)
+- [Characters](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Characters.md)
 
-### [Resources](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Resources.md)
-
-### [LAMP-Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
-
-### [Variables](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Variables.md)
-
-### [Tests: BASH](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#welcome-to-bash)
-
-### [Characters](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Characters.md)
 ___
+
 ## Prepare
 
 ### I. OPTIONAL: If you did Linux 201, but on a different machine

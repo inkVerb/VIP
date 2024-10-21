@@ -1,29 +1,41 @@
 # VIP Code
 ## Learn Command Line Linux and Code
 
-### Start with Linux. Start simple. Start here.
-
-*Whether you want to become a computer genius or if you're a "computer dummy" and want to make computers less scary...*
+### Start with Linux.
+Who is this course for?
+- Students of any age, elementary through college or beyond
+- Business leaders who want to understand IT professionals and their important decisions
+- Aspiring tech lead candidates who want a pragmatic lay of the land before diving deep
+- Young people who want to be a wiz-kid at software in the next few years of school
+- Anyone who wants an overview of Linux, Node.js, Go, Python, PHP, SQL, XML, and web servers
+- Devs who want to understand the server their apps sit on
+- Devs who want to overcome fear of any scripting terminal
+- Devs who know one language, but want to branch out
+- Parents who want their children to learn that phones and computers are tools, not only toys
 
 ## Course Unit List:
-
 ### [Linux 101: Arguments](https://github.com/inkVerb/VIP/blob/master/101/README.md)
+- How the basic command line makes its way into a Linux script
 
 ### [Linux 201: Files](https://github.com/inkVerb/VIP/blob/master/201/README.md)
+- Files, directories, formats, and power user tips
 
 ### [Linux 301: Logic](https://github.com/inkVerb/VIP/blob/master/301/README.md)
+- `if`, `while`, and other logic concepts used in every computer language (easiest to understand here in Linux)
 
 ### [Linux 401: Advance](https://github.com/inkVerb/VIP/blob/master/401/README.md)
+- Taking everything so far and doing more
 
 ### [Linux 501: PHP-XML Stack](https://github.com/inkVerb/VIP/blob/master/501/README.md)
+- Basic web app concepts for many server-side languages, using PHP, SQL, AJAX, XML linting, and building a basic blog app
 
 ### [Linux 601: SysAdmin](https://github.com/inkVerb/VIP/blob/master/601/README.md)
+- Administration of the Linux system, networking basics, creating and using install packages, Git, security, and under the hood
 
 ### [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)
 
 ## Why learn Linux?
 *Learn your roots first, then everything makes more sense.*
-
 ### 1. Universal: Linux web server, Linux desktop, Android, macOS, iOS — All the same language!
 - Linux is the most-used webserver operating system in the world, with no near rivals. It's desktop market share grows every year!
 - Linux is free and secure, for web servers, desktops, and Android. The Linux language is the same everywhere.
@@ -32,10 +44,11 @@
 
 ### 2. Ultra Simple — Better preparation to learn other languages!
 - The Linux "Shell/BASH" language is simpler than other languages, but shares many universal concepts of code.
+- Units 501 explores other languages and concepts that run on Linux platforms
 
-### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Pearl, Go, Node.JS, MySQL, MongoDB, HTML, CSS... all sit atop Linux
+### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Go, Node.js, SQL, MongoDB, HTML, CSS, JS... all sit atop Linux
 - It's one thing to learn a web app or server programming language; it's awesome to know the language under the language so you can *control the machine it runs on.*
-- PHP will make more sense if you have seen what this does: `sudo dnf install php`
+- PHP will make more sense if you have seen what this does: `sudo apt-get install php`
 - Once you know how to work with a computer terminal (Linux/Unix language), all code will be less scary because you'll know where code lives!
 
 ## Who should take this course?
@@ -45,7 +58,6 @@
 - Any entrepreneur, project manager, copywriter, marketer, graphic designer, teacher, professor, life guard, dog catcher, firefighter, chef, union-card-carrying thespian, secretary, supervisor, executive, board member, politician, bureaucrat, dictator, monarch, Amway IBO, or anyone who WILL NOT learn computer code, but wants a peaceful and powerful relationship with a marketing firm, software writer, and/or IT staff—or just wants to be smarter than a smart phone
 
 ___
-
 
 ## Install Linux
 - [BIOS, EFI & Other Settings for Linux](https://github.com/inkVerb/VIP/blob/master/install-BIOS-UEFI.md)
@@ -72,7 +84,6 @@ ___
 
 | Key combination                                                                    | Function               |
 |:---------------------------------------------------------------------------------- |:---------------------- |
-| <kbd>F9</kbd>                                                                      | Show/hide side panels  |
 | <kbd>Ctrl</kbd> + <kbd>A</kbd>                                                     | Select All             |
 | <kbd>Ctrl</kbd> + <kbd>X</kbd>                                                     | Cut                    |
 | <kbd>Ctrl</kbd> + <kbd>Z</kbd>                                                     | Undo                   |

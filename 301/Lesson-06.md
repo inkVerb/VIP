@@ -1688,6 +1688,8 @@ As [discussed](https://unix.stackexchange.com/questions/590038/why-does-a-failed
 
 At the time Linux was written, this discrepancy wasn't any big deal, but the numbers might only be re-written to agree if a clone of Linux were ever re-written in [Go language](https://go.dev/) instead of C
 
+The problem with writing Linux in Go language is "garbage collecting" for RAM management, which is done very efficiently and manually in BASH written in C
+
 ___
 
 # The Take

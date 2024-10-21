@@ -703,6 +703,7 @@ dig -t SOA inkisaverb.com
 ping inkisaverb.com
 ping 192.168.1.1
 ```
+
 ___
 
 #### [Lesson 7: Disk & Partitioning](https://github.com/inkVerb/vip/blob/master/601/Lesson-07.md)
