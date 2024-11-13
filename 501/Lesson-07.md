@@ -52,7 +52,7 @@ ___
 sudo cp core/07-recover1.php web/recover.php && \
 sudo cp core/07-in.string_functions.php web/in.string_functions.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/07-recover1.php core/07-in.string_functions.php && \
+code core/07-recover1.php core/07-in.string_functions.php && \
 ls web
 ```
 
@@ -80,7 +80,7 @@ sudo cp core/07-webapp.php web/webapp.php && \
 sudo cp core/07-in.loginhead1.php web/in.login_head.php && \
 sudo cp core/07-account.php web/account.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/07-recover2.php core/07-ajaxstring.php core/07-recover_login.php core/07-webapp.php core/07-in.loginhead1.php core/07-account.php && \
+code core/07-recover2.php core/07-ajaxstring.php core/07-recover_login.php core/07-webapp.php core/07-in.loginhead1.php core/07-account.php && \
 ls web
 ```
 
@@ -247,7 +247,7 @@ SELECT * FROM strings;
 ```console
 sudo cp core/07-cleanup1.php web/cleanup.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/07-cleanup1.php && \
+code core/07-cleanup1.php && \
 ls web
 ```
 
@@ -364,7 +364,7 @@ We use this syntax here: `php /same/path/as/cron/task/to/script.php`
 ```console
 sudo cp core/07-cleanup2.php web/cleanup.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/07-cleanup2.php && \
+code core/07-cleanup2.php && \
 ls web
 ```
 
@@ -525,7 +525,7 @@ ALTER TABLE `strings` CHANGE `usable` `usable` ENUM('live', 'cookie_login', 'dea
 sudo cp core/07-in.loginhead2.php web/in.login_head.php && \
 sudo cp core/07-logout.php web/logout.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/07-in.loginhead2.php core/07-logout.php && \
+code core/07-in.loginhead2.php core/07-logout.php && \
 ls web
 ```
 
@@ -577,7 +577,7 @@ localhost/web/webapp.php
 ```console
 sudo cp core/07-in.loginhead3.php web/in.login_head.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/07-in.loginhead3.php && \
+code core/07-in.loginhead3.php && \
 ls web
 ```
 

@@ -81,7 +81,7 @@ sudo cp core/08-style_old.css web/style.css && \
 sudo echo '* * * * * root /usr/bin/php /srv/www/html/web/cleanup.php' > /etc/cron.d/webappcleanup && \
 sudo chmod 644 /etc/cron.d/webappcleanup && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-webapp.php core/08-account.php core/08-forgot.php core/08-logout.php core/08-in.config.php core/08-cleanup.php core/08-ajaxstring.php core/08-recover.php core/08-recover_login.php core/08-in.login_head_old.php core/08-in.string_functions.php core/08-in.functions.php core/08-in.checks.php core/08-install.php core/08-style_old.css && \
+code core/08-webapp.php core/08-account.php core/08-forgot.php core/08-logout.php core/08-in.config.php core/08-cleanup.php core/08-ajaxstring.php core/08-recover.php core/08-recover_login.php core/08-in.login_head_old.php core/08-in.string_functions.php core/08-in.functions.php core/08-in.checks.php core/08-install.php core/08-style_old.css && \
 ls web
 ```
 
@@ -133,7 +133,7 @@ sudo cp core/08-edit1.php web/edit.php && \
 sudo cp core/08-in.login_head.php web/in.login_head.php && \
 sudo cp core/08-in.logincheck1.php web/in.logincheck.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-edit1.php core/08-in.login_head.php core/08-in.logincheck1.php && \
+code core/08-edit1.php core/08-in.login_head.php core/08-in.logincheck1.php && \
 ls web
 ```
 
@@ -223,7 +223,7 @@ sudo cp core/08-edit2.php web/edit.php && \
 sudo cp core/08-in.editprocess2.php web/in.editprocess.php && \
 sudo cp core/08-in.piecefunctions2.php web/in.piecefunctions.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions2.php && \
+code core/08-edit2.php core/08-in.editprocess2.php core/08-in.piecefunctions2.php && \
 ls web
 ```
 
@@ -337,7 +337,7 @@ $last_id = $database->insert_id;
 sudo cp core/08-edit3.php web/edit.php && \
 sudo cp core/08-in.editprocess3.php web/in.editprocess.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-edit3.php core/08-in.editprocess3.php && \
+code core/08-edit3.php core/08-in.editprocess3.php && \
 ls web
 ```
 
@@ -402,7 +402,7 @@ SELECT * FROM pieces;
 sudo cp core/08-edit4.php web/edit.php && \
 sudo cp core/08-in.editprocess4.php web/in.editprocess.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-edit4.php core/08-in.editprocess4.php && \
+code core/08-edit4.php core/08-in.editprocess4.php && \
 ls web
 ```
 
@@ -528,7 +528,7 @@ sudo cp core/08-in.head.php web/in.head.php && \
 sudo cp core/08-edit5.php web/edit.php && \
 sudo cp core/08-style.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-blog.php core/08-piece.php core/08-in.logincheck2.php core/08-in.head.php core/08-edit5.php core/08-style.css && \
+code core/08-blog.php core/08-piece.php core/08-in.logincheck2.php core/08-in.head.php core/08-edit5.php core/08-style.css && \
 ls web
 ```
 
@@ -625,7 +625,7 @@ Let's just watch it work...
 ```console
 sudo cp core/08-tiny-cdn.html web/tiny.html && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-tiny-cdn.html && \
+code core/08-tiny-cdn.html && \
 ls web
 ```
 
@@ -664,7 +664,7 @@ sudo cp core/08-tiny-man.html web/tiny.html && \
 git clone https://github.com/inkverb/tinymce-dist.git
 sudo mv tinymce-dist web/tinymce
 sudo chown -R www:www /srv/www/html && \
-codium core/08-tiny-man.html && \
+code core/08-tiny-man.html && \
 ls web
 ```
 
@@ -703,7 +703,7 @@ We can customize the TinyMCE toolbar layout
 ```console
 sudo cp core/08-tiny-cust.html web/tiny.html && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-tiny-cust.html && \
+code core/08-tiny-cust.html && \
 ls web
 ```
 
@@ -732,7 +732,7 @@ localhost/web/tiny.html
 sudo cp core/08-in.head3-tinymce.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions3.php web/in.piecefunctions.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-in.head3-tinymce.php core/08-in.piecefunctions3.php && \
+code core/08-in.head3-tinymce.php core/08-in.piecefunctions3.php && \
 ls web
 ```
 
@@ -787,7 +787,7 @@ Let's just watch it work for now...
 ```console
 sudo cp core/08-medium-cdn.html web/medium.html && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-medium-cdn.html && \
+code core/08-medium-cdn.html && \
 ls web
 ```
 
@@ -828,7 +828,7 @@ sudo mv medium-editor/dist/css web/medium && \
 sudo mv medium-editor/dist/js web/medium && \
 rm -rf medium-editor && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-medium-man.html && \
+code core/08-medium-man.html && \
 ls web
 ```
 
@@ -875,7 +875,7 @@ git clone https://github.com/inkverb/medium-editor-tables.git && \
 sudo cp medium-editor-tables/dist/css/*.css web/medium/css && \
 sudo cp medium-editor-tables/dist/js/*.js web/medium/js && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-medium-tables.html && \
+code core/08-medium-tables.html && \
 ls web web
 ```
 
@@ -895,7 +895,7 @@ localhost/web/medium.html
 sudo cp core/08-in.head4-medium.php web/in.head.php && \
 sudo cp core/08-in.piecefunctions-medium.php web/in.piecefunctions.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/08-in.head4-medium.php core/08-in.piecefunctions-medium.php && \
+code core/08-in.head4-medium.php core/08-in.piecefunctions-medium.php && \
 ls web
 ```
 

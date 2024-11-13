@@ -166,7 +166,7 @@ $anObject->bMethod();
 ```console
 sudo cp core/11-oop1.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop1.php && \
+code core/11-oop1.php && \
 ls web
 ```
 
@@ -190,7 +190,7 @@ localhost/web/oop.php
 ```console
 sudo cp core/11-oop2.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop2.php && \
+code core/11-oop2.php && \
 ls web
 ```
 
@@ -226,7 +226,7 @@ A complex method
 ```console
 sudo cp core/11-oop3.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop3.php && \
+code core/11-oop3.php && \
 ls web
 ```
 
@@ -313,7 +313,7 @@ $topicObject = new Topic;
 ```console
 sudo cp core/11-oop4.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop4.php && \
+code core/11-oop4.php && \
 ls web
 ```
 
@@ -332,7 +332,7 @@ localhost/web/oop.php
 ```console
 sudo cp core/11-oop5.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop5.php && \
+code core/11-oop5.php && \
 ls web
 ```
 
@@ -351,7 +351,7 @@ localhost/web/oop.php
 ```console
 sudo cp core/11-oop6.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop6.php && \
+code core/11-oop6.php && \
 ls web
 ```
 
@@ -368,7 +368,7 @@ Order doesn't matter...
 ```console
 sudo cp core/11-oop7.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop7.php && \
+code core/11-oop7.php && \
 ls web
 ```
 
@@ -387,7 +387,7 @@ You can destroy an object by using `unset($object)`
 ```console
 sudo cp core/11-oop8.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop8.php && \
+code core/11-oop8.php && \
 ls web
 ```
 
@@ -446,7 +446,7 @@ echo $ObjectParent->childProperty;
 ```console
 sudo cp core/11-oop9.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop9.php && \
+code core/11-oop9.php && \
 ls web
 ```
 
@@ -517,7 +517,7 @@ $ObjectParent->childMethodRet();
 ```console
 sudo cp core/11-oop10.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop10.php && \
+code core/11-oop10.php && \
 ls web
 ```
 
@@ -583,7 +583,7 @@ echo someClass::staticMethod();
 ```console
 sudo cp core/11-oop11.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop11.php && \
+code core/11-oop11.php && \
 ls web
 ```
 
@@ -612,7 +612,7 @@ localhost/web/oop.php
 ```console
 sudo cp core/11-oop12.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop12.php && \
+code core/11-oop12.php && \
 ls web
 ```
 
@@ -657,7 +657,7 @@ localhost/web/oop.php
 ```console
 sudo cp core/11-oop13.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop13.php && \
+code core/11-oop13.php && \
 ls web
 ```
 
@@ -698,7 +698,7 @@ localhost/web/oop.php
 ```console
 sudo cp core/11-oop14.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop14.php && \
+code core/11-oop14.php && \
 ls web
 ```
 
@@ -727,7 +727,7 @@ localhost/web/oop.php
 ```console
 sudo cp core/11-oop15.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop15.php && \
+code core/11-oop15.php && \
 ls web
 ```
 
@@ -784,7 +784,7 @@ localhost/web/oop.php
 ```console
 sudo cp core/11-oop16.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop16.php && \
+code core/11-oop16.php && \
 ls web
 ```
 
@@ -876,7 +876,7 @@ $loop_object = new LoopClass;
 ```console
 sudo cp core/11-oop17.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop17.php && \
+code core/11-oop17.php && \
 ls web
 ```
 
@@ -940,7 +940,7 @@ $loop_obj_props = $loop_object->getDefaultProperties();
 ```console
 sudo cp core/11-oop18.php web/oop.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-oop18.php && \
+code core/11-oop18.php && \
 ls web
 ```
 
@@ -1261,7 +1261,7 @@ Create a table
 ```console
 sudo cp core/11-pdo19.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo19.php && \
+code core/11-pdo19.php && \
 ls web
 ```
 
@@ -1316,7 +1316,7 @@ Run multiple queries
 ```console
 sudo cp core/11-pdo20.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo20.php && \
+code core/11-pdo20.php && \
 ls web
 ```
 
@@ -1389,7 +1389,7 @@ Retrieve from the database
 ```console
 sudo cp core/11-pdo21.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo21.php && \
+code core/11-pdo21.php && \
 ls web
 ```
 
@@ -1427,7 +1427,7 @@ Update tables
 ```console
 sudo cp core/11-pdo22.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo22.php && \
+code core/11-pdo22.php && \
 ls web
 ```
 
@@ -1511,7 +1511,7 @@ $statement->fetch(PDO::FETCH_OBJ); // Per use
 ```console
 sudo cp core/11-pdo23.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo23.php && \
+code core/11-pdo23.php && \
 ls web
 ```
 
@@ -1645,7 +1645,7 @@ $database = new PDO($nameHostChar, $db_user, $db_pass, $opt);
 ```console
 sudo cp core/11-pdo24.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo24.php && \
+code core/11-pdo24.php && \
 ls web
 ```
 
@@ -1710,7 +1710,7 @@ $pdo = new DB; // Instantiate
 ```console
 sudo cp core/11-pdo25.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo25.php && \
+code core/11-pdo25.php && \
 ls web
 ```
 
@@ -1756,7 +1756,7 @@ $val = $pdo->select($table, $where_col, $where_value, $columns);
 ```console
 sudo cp core/11-pdo26.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo26.php && \
+code core/11-pdo26.php && \
 ls web
 ```
 
@@ -1830,7 +1830,7 @@ $val = $pdo->update($table, $columns, $values, $where_col, $where_value);
 ```console
 sudo cp core/11-pdo27.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo27.php && \
+code core/11-pdo27.php && \
 ls web
 ```
 
@@ -1901,7 +1901,7 @@ echo ($pdo->change) ? "Stuff changed<br>" : "No change<br>";
 ```console
 sudo cp core/11-pdo28.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo28.php && \
+code core/11-pdo28.php && \
 ls web
 ```
 
@@ -2019,7 +2019,7 @@ try {
 ```console
 sudo cp core/11-pdo29.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo29.php && \
+code core/11-pdo29.php && \
 ls web
 ```
 
@@ -2130,7 +2130,7 @@ foreach ($val as $one) { echo "Some Col: $one->some_col<br>"; }
 ```console
 sudo cp core/11-pdo30.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo30.php && \
+code core/11-pdo30.php && \
 ls web
 ```
 
@@ -2192,7 +2192,7 @@ foreach ($val as $one) { echo "Some Col: $one->some_col<br>"; }
 ```console
 sudo cp core/11-pdo31.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo31.php && \
+code core/11-pdo31.php && \
 ls web
 ```
 
@@ -2293,7 +2293,7 @@ $statement->execute([$arg]);
 ```console
 sudo cp core/11-pdo32.php web/pdo.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/11-pdo32.php && \
+code core/11-pdo32.php && \
 ls web
 ```
 
@@ -2329,7 +2329,7 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
 *Assuming we initiate with:* `$pdo = new DB;`...
 
 - *in.db.php:*
-  - $ `codium pdo/in.db.php mysqli/in.db.php`
+  - $ `code pdo/in.db.php mysqli/in.db.php`
   - *Methods:*
     - `$pdo->delete()` *for simple conditions*
     - `$pdo->select()` *for simple conditions*
@@ -2349,14 +2349,14 @@ We will rebuild our blog CMS to access SQL with PDO rather than MySQLi
 
 - *Good examples to note changes in:*
   - *`in.metaeditfunctions.php`*
-  - $ `codium pdo/webapp.php mysqli/in.metaeditfunctions.php`
+  - $ `code pdo/webapp.php mysqli/in.metaeditfunctions.php`
   - $ `diff pdo/webapp.php mysqli/in.metaeditfunctions.php`
   - *Note we added `global $pdo;` because the piecesaction() function will need to use the `DB` class's `$pdo` object for `$pdo->exec_()` calls*
   - *`webapp.php`*
-    - $ `codium pdo/webapp.php mysqli/webapp.php`
+    - $ `code pdo/webapp.php mysqli/webapp.php`
     - $ `diff pdo/webapp.php mysqli/webapp.php`
   - *`blog.php`*
-    - $ `codium pdo/blog.php mysqli/blog.php`
+    - $ `code pdo/blog.php mysqli/blog.php`
     - $ `diff pdo/blog.php mysqli/blog.php`
   - *in.editprocess.php (elaborate)*
     - $ `atom pdo/in.editprocess.php mysqli/in.editprocess.php`

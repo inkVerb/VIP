@@ -106,7 +106,7 @@ $epoch_simple_later = time() + (30 * 24 * 60 * 60);
 ```console
 sudo cp core/04-time.php web/time.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-time.php && \
+code core/04-time.php && \
 ls web
 ```
 
@@ -144,7 +144,7 @@ This only returns `true` or NULL because the hash is different each time
 ```console
 sudo cp core/04-passhash.php web/passhash.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-passhash.php && \
+code core/04-passhash.php && \
 ls web
 ```
 
@@ -219,7 +219,7 @@ sudo cp core/04-in.config1.php web/in.config.php && \
 sudo cp core/04-in.checks.php web/in.checks.php && \
 sudo cp core/04-in.functions.php web/in.functions.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-install1.php core/04-in.config1.php core/04-in.checks.php core/04-in.functions.php && \
+code core/04-install1.php core/04-in.config1.php core/04-in.checks.php core/04-in.functions.php && \
 ls web
 ```
 
@@ -332,7 +332,7 @@ SELECT * FROM users;
 ```console
 sudo cp core/04-install2.php web/install.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-install2.php && \
+code core/04-install2.php && \
 ls web
 ```
 
@@ -482,7 +482,7 @@ password_verify($form_password, $hashed_password_from_database);
 sudo cp core/04-login1.php web/webapp.php && \
 sudo cp core/04-in.config2.php web/in.config.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-login1.php core/04-in.config2.php && \
+code core/04-login1.php core/04-in.config2.php && \
 ls web
 ```
 
@@ -557,7 +557,7 @@ The `echo` message will not display, comment the `header()` line to see the mess
 ```console
 sudo cp core/04-logout1.php web/logout.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-logout1.php && \
+code core/04-logout1.php && \
 ls web
 ```
 
@@ -598,7 +598,7 @@ $_SESSION['just_logged_out'] = true;
 sudo cp core/04-logout2.php web/logout.php && \
 sudo cp core/04-login2.php web/webapp.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-logout2.php core/04-login2.php && \
+code core/04-logout2.php core/04-login2.php && \
 ls web
 ```
 
@@ -688,7 +688,7 @@ For teaching, we will put the **user_id** as the cookie's value, but this is not
 sudo cp core/04-logout3.php web/logout.php && \
 sudo cp core/04-login3.php web/webapp.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-logout3.php core/04-login3.php && \
+code core/04-logout3.php core/04-login3.php && \
 ls web
 ```
 
@@ -778,7 +778,7 @@ setcookie('cookie_name', null, 86401); // 86401 = sometime in Jan 1970
 ```console
 sudo cp core/04-account.php web/account.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-account.php && \
+code core/04-account.php && \
 ls web
 ```
 
@@ -843,7 +843,7 @@ SELECT id, fullname, email, favnumber FROM users;
 ```console
 sudo cp core/04-forgot.php web/forgot.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/04-forgot.php && \
+code core/04-forgot.php && \
 ls web
 ```
 

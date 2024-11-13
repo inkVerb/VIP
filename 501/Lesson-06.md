@@ -37,10 +37,12 @@ This "Asynchronous" action uses JavaScript to:
 
 #### JavaScript: Asynchronous Animation
 - JavaScript loads as its goes, before finishing the script
-  - Called "asynchronous"
+  - Called "stream"
+  - Streaming this mini HTML webpage is called "asynchronous"
   - Different from PHP Rule 1: Render *after* the script
   - This lets JavaScript animate and move
 - JavaScript was created in 1995 by Netscape to compete with Microsoft
+  - Netscape became Firefox in 2002
 - JavaScript animates pieces of HTML and CSS
 - Remember [Lesson 0: HTML Fast](https://github.com/inkVerb/vip/blob/master/501/Lesson-00.md#html--css-crash-course):
   - HTML is a manikin
@@ -121,7 +123,7 @@ function doAjax() { // doAjax can be anything
 sudo cp core/06-ajax1.html web/ajax.html && \
 sudo cp core/06-ajaxresponder1.txt web/ajax_responder.txt && \
 sudo chown -R www:www /srv/www/html && \
-codium core/06-ajax1.html core/06-ajaxresponder1.txt && \
+code core/06-ajax1.html core/06-ajaxresponder1.txt && \
 ls web
 ```
 
@@ -160,7 +162,7 @@ localhost/web/ajax.html
 sudo cp core/06-ajax2.php web/ajax.php && \
 sudo cp core/06-ajaxresponder2.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/06-ajax2.php core/06-ajaxresponder2.php && \
+code core/06-ajax2.php core/06-ajaxresponder2.php && \
 ls web
 ```
 
@@ -198,7 +200,7 @@ localhost/web/ajax.php
 sudo cp core/06-ajax3.php web/ajax.php && \
 sudo cp core/06-ajaxresponder3.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
-codium wecore/06-ajax3.php core/06-ajaxresponder3.php && \
+code core/06-ajax3.php core/06-ajaxresponder3.php && \
 ls web
 ```
 
@@ -242,7 +244,7 @@ localhost/web/ajax.php
 ```console
 sudo cp core/06-ajax4.php web/ajax.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/06-ajax4.php && \
+code core/06-ajax4.php && \
 ls web
 ```
 
@@ -275,7 +277,7 @@ JavaScript adapted from [Mozilla's Developer site, MND](https://developer.mozill
 window.addEventListener( "load", function () {
   function sendData() {
     const AJAX = new XMLHttpRequest(); // AJAX handler
-    const FD = new FormData(form); // Bind to-send data to form element
+    const FD = new FormData(FORM); // Bind to-send data to form element
 
     AJAX.addEventListener( "load", function(event) { // This runs when AJAX responds
       document.getElementById("ajax_changes").innerHTML = event.target.responseText;
@@ -327,7 +329,7 @@ Our AJAX JavaScript uses these two IDs (`id=`)
 sudo cp core/06-ajax5.php web/ajax.php && \
 sudo cp core/06-ajaxresponder5.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/06-ajax5.php core/06-ajaxresponder5.php && \
+code core/06-ajax5.php core/06-ajaxresponder5.php && \
 ls web
 ```
 
@@ -344,11 +346,11 @@ const AJAX = new XMLHttpRequest();
 Now we get the `_POST` array from a `<form>`
 
 ```javascript
-const FORM = document.getElementById("ajaxForm");
-...
-const FD = new FormData(form);
+const FD = new FormData(FORM);
 ...
 AJAX.send(FD);
+...
+const FORM = document.getElementById("ajaxForm");
 ```
 
 *Note ajax.php:*
@@ -470,7 +472,7 @@ This time, the `<form>` is wrapped in the `<div>` AJAX will change
 sudo cp core/06-ajax6.php web/ajax.php && \
 sudo cp core/06-ajaxresponder6.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/06-ajax6.php core/06-ajaxresponder6.php && \
+code core/06-ajax6.php core/06-ajaxresponder6.php && \
 ls web
 ```
 
@@ -549,7 +551,7 @@ function ajaxFormData(formID, postTo, ajaxUpdate) { // These arguments can be an
 sudo cp core/06-ajax7.php web/ajax.php && \
 sudo cp core/06-ajaxresponder7.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/06-ajax7.php core/06-ajaxresponder7.php && \
+code core/06-ajax7.php core/06-ajaxresponder7.php && \
 ls web
 ```
 
@@ -676,7 +678,7 @@ if ($_SERVER['HTTP_AJAX_TOKEN'] === $_SESSION['ajax_token']) {
 sudo cp core/06-ajax8.php web/ajax.php && \
 sudo cp core/06-ajaxresponder8.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/06-ajax8.php core/06-ajaxresponder8.php && \
+code core/06-ajax8.php core/06-ajaxresponder8.php && \
 ls web
 ```
 
@@ -726,7 +728,7 @@ if ((!empty($_SERVER['HTTP_REFERER'])) && ($_SERVER['HTTP_REFERER'] === "$mysite
 sudo cp core/06-ajax9.php web/ajax.php && \
 sudo cp core/06-ajaxresponder9.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/06-ajax9.php core/06-ajaxresponder9.php && \
+code core/06-ajax9.php core/06-ajaxresponder9.php && \
 ls web
 ```
 
@@ -788,7 +790,7 @@ if ( $_POST['ajax_token'] === $_SESSION['token'] ) {...}
 sudo cp core/06-ajax10.php web/ajax.php && \
 sudo cp core/06-ajaxresponder10.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/06-ajax10.php core/06-ajaxresponder10.php && \
+code core/06-ajax10.php core/06-ajaxresponder10.php && \
 ls web
 ```
 
@@ -912,7 +914,7 @@ $_SERVER['HTTP_AJAX_TOKEN']
 sudo cp core/06-ajax11.php web/ajax.php && \
 sudo cp core/06-ajaxresponder11.php web/ajax_responder.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/06-ajax11.php core/06-ajaxresponder11.php && \
+code core/06-ajax11.php core/06-ajaxresponder11.php && \
 ls web
 ```
 

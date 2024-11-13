@@ -291,15 +291,23 @@ date +'%Y-%m-%d %H:%M:%S'
 env TZ=America/Detroit date +'%F %T'
 ```
 
-*See a list of all available timezones in `/usr/share/zoneinfo/tzdata.zi`*
+*But `env TZ=` does **not** set the timezone permanently for the terminal session*
 
 | **34** :$
+
+```console
+env TZ=America/Detroit date +'%F %T'
+```
+
+*See a list of all available timezones in `/usr/share/zoneinfo/tzdata.zi`*
+
+| **35** :$
 
 ```console
 timedatectl list-timezones
 ```
 
-| **35** :$
+| **36** :$
 
 ```console
 awk '/^Z/ { print $2 }; /^L/ { print $3 }' /usr/share/zoneinfo/tzdata.zi
@@ -307,13 +315,13 @@ awk '/^Z/ { print $2 }; /^L/ { print $3 }' /usr/share/zoneinfo/tzdata.zi
 
 *Also note the timezones exist in a directory structure inside `/usr/share/zoneinfo/`*
 
-| **36** :$
+| **37** :$
 
 ```console
 ls /usr/share/zoneinfo
 ```
 
-| **37** :$
+| **38** :$
 
 ```console
 ls /usr/share/zoneinfo/Australia
@@ -321,7 +329,7 @@ ls /usr/share/zoneinfo/Australia
 
 *Note the actual city files store binary data*
 
-| **38** :$
+| **39** :$
 
 ```console
 cat /usr/share/zoneinfo/Australia/Sydney

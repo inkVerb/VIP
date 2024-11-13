@@ -66,7 +66,7 @@ RewriteRule ^/?([a-zA-Z0-9_]+)$ pretty_page.php?n=$1 [L]
 sudo cp core/05-pretty1.php web/pretty_page.php && \
 sudo cp core/05-htaccess1 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-codium core/05-pretty1.php core/05-htaccess1 && \
+code core/05-pretty1.php core/05-htaccess1 && \
 ls web
 ```
 
@@ -115,7 +115,7 @@ RewriteRule ^pretty$ pretty_page.php [L]
 ```console
 sudo cp core/05-htaccess2 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-codium core/05-htaccess2 && \
+code core/05-htaccess2 && \
 ls web
 ```
 
@@ -135,7 +135,7 @@ localhost/web/My_Long_Name
 sudo cp core/05-pretty3.php web/pretty_page.php && \
 sudo cp core/05-htaccess3 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-codium core/05-pretty3.php core/05-htaccess3 && \
+code core/05-pretty3.php core/05-htaccess3 && \
 ls web
 ```
 *Notice in the RegEx, this requies a `/` in the middle, otherwise it won't work...*
@@ -166,7 +166,7 @@ localhost/web/My_Long_Name/Name-2
 sudo cp core/05-pretty4.php web/pretty_page.php && \
 sudo cp core/05-htaccess4 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-codium core/05-pretty4.php core/05-htaccess4 && \
+code core/05-pretty4.php core/05-htaccess4 && \
 ls web
 ```
 
@@ -198,7 +198,7 @@ localhost/web/My_Long_Name/Name-2
 sudo cp core/05-pretty5.php web/pretty_page.php && \
 sudo cp core/05-htaccess5 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-codium core/05-pretty5.php core/05-htaccess5 && \
+code core/05-pretty5.php core/05-htaccess5 && \
 ls web
 ```
 
@@ -313,7 +313,7 @@ localhost/web/account.php
 sudo cp core/05-pretty4.php web/pretty_page.php && \
 sudo cp core/05-htaccess6 /srv/www/html/web/.htaccess && \
 sudo chown -R www:www /srv/www/html && \
-codium core/05-htaccess6 && \
+code core/05-htaccess6 && \
 ls web
 ```
 

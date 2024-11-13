@@ -134,7 +134,7 @@ $_GET['this_name'] // = "something-here"
 ```console
 sudo cp core/01-phpget1.php web/phpget.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-phpget1.php && \
+code core/01-phpget1.php && \
 ls -l web
 ```
 
@@ -156,7 +156,7 @@ localhost/web/phpget.php?go=I am an apple pie
 
 ```console
 sudo cp core/01-phpget2.php web/phpget.php && \
-codium core/01-phpget2.php && \
+code core/01-phpget2.php && \
 ls -l web
 ```
 
@@ -189,7 +189,7 @@ $_POST['this_name'] // = whatever was entered into the <input>
 ```console
 sudo cp core/01-phppost1.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-phppost1.php && \
+code core/01-phppost1.php && \
 ls web
 ```
 
@@ -274,7 +274,7 @@ if (in_array('kiwi', $fruit)) {echo 'should not be found';}
 ```console
 sudo cp core/01-phparrays.php web/phparrays.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-phparrays.php && \
+code core/01-phparrays.php && \
 ls web
 ```
 
@@ -327,7 +327,7 @@ foreach ($array as $item) {
 
 ```console
 sudo cp core/01-phpforeach.php web/phpforeach.php && \
-codium core/01-phpforeach.php && \
+code core/01-phpforeach.php && \
 ls web
 ```
 
@@ -366,7 +366,7 @@ if ( Test Here ) {
 
 ```console
 sudo cp core/01-phppost2.php web/phppost.php && \
-codium core/01-phppost2.php && \
+code core/01-phppost2.php && \
 ls web
 ```
 
@@ -384,7 +384,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phppost3.php web/phppost.php && \
-codium core/01-phppost3.php && \
+code core/01-phppost3.php && \
 ls web
 ```
 
@@ -400,7 +400,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phppost4.php web/phppost.php && \
-codium core/01-phppost4.php && \
+code core/01-phppost4.php && \
 ls web
 ```
 
@@ -416,7 +416,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phppost5.php web/phppost.php && \
-codium core/01-phppost5.php && \
+code core/01-phppost5.php && \
 ls web
 ```
 
@@ -432,7 +432,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phppost6.php web/phppost.php && \
-codium core/01-phppost6.php && \
+code core/01-phppost6.php && \
 ls web
 ```
 
@@ -512,7 +512,7 @@ if [ "$Some_Variable" == "5" ]; then Variable='it is five'; else Variable='not f
 
 ```console
 sudo cp core/01-phppost7.php web/phppost.php && \
-codium core/01-phppost7.php && \
+code core/01-phppost7.php && \
 ls web
 ```
 
@@ -550,7 +550,7 @@ switch ($variable_to_test) {
 
 ```console
 sudo cp core/01-phppost8.php web/phppost.php && \
-codium core/01-phppost8.php && \
+code core/01-phppost8.php && \
 ls web
 ```
 
@@ -664,7 +664,7 @@ preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@&#$%]{6,32}$/', $Variabl
 
 ```console
 sudo cp core/01-phpregex1.php web/phppost.php && \
-codium core/01-phpregex1.php && \
+code core/01-phpregex1.php && \
 ls web
 ```
 
@@ -753,7 +753,7 @@ $argued = preg_replace('/([a-zA-Z0-9]+)_dogfish_([a-zA-Z0-9]+)/','$1_GoldFish_$2
 ```console
 sudo cp core/01-phpreplace.php web/phpreplace.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-phpreplace.php && \
+code core/01-phpreplace.php && \
 ls web
 ```
 
@@ -812,7 +812,7 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 
 ```console
 sudo cp core/01-phpregex2.php web/phppost.php && \
-codium core/01-phpregex2.php && \
+code core/01-phpregex2.php && \
 ls web
 ```
 
@@ -828,7 +828,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phpregex3.php web/phppost.php && \
-codium core/01-phpregex3.php && \
+code core/01-phpregex3.php && \
 ls web
 ```
 
@@ -958,7 +958,7 @@ echo $someVariable;
 
 ```console
 sudo cp core/01-phpfunction1.php web/phppost.php && \
-codium core/01-phpfunction1.php && \
+code core/01-phpfunction1.php && \
 ls web
 ```
 
@@ -974,7 +974,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phpfunction2.php web/phppost.php && \
-codium core/01-phpfunction2.php && \
+code core/01-phpfunction2.php && \
 ls web
 ```
 
@@ -990,7 +990,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phpfunction3.php web/phppost.php && \
-codium core/01-phpfunction3.php && \
+code core/01-phpfunction3.php && \
 ls web
 ```
 
@@ -1006,7 +1006,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phpfunction4.php web/phppost.php && \
-codium core/01-phpfunction4.php && \
+code core/01-phpfunction4.php && \
 ls web
 ```
 
@@ -1022,7 +1022,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phpfunction5.php web/phppost.php && \
-codium core/01-phpfunction5.php && \
+code core/01-phpfunction5.php && \
 ls web
 ```
 
@@ -1043,7 +1043,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phpfunction6.php web/phppost.php && \
-codium core/01-phpfunction6.php && \
+code core/01-phpfunction6.php && \
 ls web
 ```
 
@@ -1110,7 +1110,7 @@ include ('./in.file.php');
 sudo cp core/01-in.phpinclude.php web/in.phppost.php && \
 sudo cp core/01-phpinclude.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-in.phpinclude.php core/01-phpinclude.php && \
+code core/01-in.phpinclude.php core/01-phpinclude.php && \
 ls web
 ```
 
@@ -1146,7 +1146,7 @@ echo CONSTANT_NAME;
 
 ```console
 sudo cp core/01-phpconstant1.php web/phppost.php && \
-codium core/01-phpconstant1.php && \
+code core/01-phpconstant1.php && \
 ls web
 ```
 
@@ -1164,7 +1164,7 @@ localhost/web/phppost.php
 
 ```console
 sudo cp core/01-phpconstant2.php web/phppost.php && \
-codium core/01-phpconstant2.php && \
+code core/01-phpconstant2.php && \
 ls web
 ```
 
@@ -1198,7 +1198,7 @@ localhost/web/phppost.php
 sudo cp core/01-in.config.php web/in.config.php && \
 sudo cp core/01-phpconstant3.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-in.config.php core/01-phpconstant3.php && \
+code core/01-in.config.php core/01-phpconstant3.php && \
 ls web
 ```
 
@@ -1234,7 +1234,7 @@ sudo cp core/01-in.phpheader.php web/in.header.php && \
 sudo cp core/01-in.phpfooter.php web/in.footer.php && \
 sudo cp core/01-phphfconventions.php web/phppost.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-in.phpheader.php core/01-in.phpfooter.php core/01-phphfconventions.php && \
+code core/01-in.phpheader.php core/01-in.phpfooter.php core/01-phphfconventions.php && \
 ls web
 ```
 
@@ -1264,7 +1264,7 @@ file_put_contents('./file/location', 'File content string');
 ```console
 sudo cp core/01-phpfileput1.php web/phpfileput.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-phpfileput1.php && \
+code core/01-phpfileput1.php && \
 ls web
 ```
 
@@ -1290,7 +1290,7 @@ ls web && cat web/fileput.1
 
 ```console
 sudo cp core/01-phpfileput2.php web/phpfileput.php && \
-codium core/01-phpfileput2.php && \
+code core/01-phpfileput2.php && \
 ls web
 ```
 
@@ -1319,7 +1319,7 @@ EOF;
 | **32** :$
 ```
 sudo cp core/01-phpfileput3.php web/phpfileput.php && \
-codium core/01-phpfileput3.php && \
+code core/01-phpfileput3.php && \
 ls web
 ```
 
@@ -1350,7 +1350,7 @@ EOF;
 | **34** :$
 ```
 sudo cp core/01-phpfileput4.php web/phpfileput.php && \
-codium core/01-phpfileput4.php && \
+code core/01-phpfileput4.php && \
 ls web
 ```
 
@@ -1378,7 +1378,7 @@ ls web && cat web/fileput.4
 ```console
 sudo cp core/01-phpprintr.php web/phpprintr.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-phpprintr.php && \
+code core/01-phpprintr.php && \
 ls web
 ```
 
@@ -1406,7 +1406,7 @@ Fill-out the fields and click "Hit me"
 ```console
 sudo cp core/01-phpvardump.php web/phpvardump.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-phpvardump.php && \
+code core/01-phpvardump.php && \
 ls web
 ```
 
@@ -1429,7 +1429,7 @@ Fill-out the fields and click "Hit me"
 ```console
 sudo cp core/01-phperrors1.php web/phperrors.php && \
 sudo chown -R www:www /srv/www/html && \
-codium core/01-phperrors1.php && \
+code core/01-phperrors1.php && \
 ls web
 ```
 
@@ -1454,7 +1454,7 @@ localhost/web/phperrors.php
 
 ```console
 sudo cp core/01-phperrors2.php web/phperrors.php && \
-codium core/01-phperrors2.php && \
+code core/01-phperrors2.php && \
 ls web
 ```
 

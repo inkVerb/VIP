@@ -335,20 +335,20 @@ exit
 > ___
 >
 
-### IV. Download and install VSCodium
-- This course uses VSCodium instead of gedit
+### IV. Download and install Code-OSS
+- This course uses [Code OSS](https://code.visualstudio.com/), the engine under VSCode
 - Arch/Manjaro:
 ```bash
-sudo pacman -S vscodium-bin
+sudo pacman -S code
 ```
 - Debian/Ubuntu
 ```bash
 sudo apt update && sudo apt upgrade -y
-wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \ | gpg --dearmor \ | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
-echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
-| sudo tee /etc/apt/sources.list.d/vscodium.list
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/keyrings/microsoft-archive-keyring.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
-sudo apt install codium
+sudo apt install code
 ```
 - RedHat/CentOS/openSUSE
 ```bash
@@ -356,19 +356,16 @@ sudo dnf install epel-release
 sudo dnf install snapd --skip-broken
 sudo systemctl enable --now snapd.socket
 sudo ln -s /var/lib/snapd/snap /snap
-sudo snap install codium --classic
+sudo snap install code-oss --edge
 ```
-- Or, download and install from **[vscodium.com](https://vscodium.com/)**
-  - Debian/Ubuntu: .deb
-  - RedHat/CentOS/openSUSE: .rpm
 
-- VSCodium settings
+- Code-OSS settings
 ```bash
-codium --install-extension emroussel.atomize-atom-one-dark-theme
-codium --install-extension opensumi.opensumi-default-themes
-codium --install-extension PenumbraTheme.penumbra
-codium --install-extension timonwong.shellcheck
-codium --enable-proposed-api timonwong.shellcheck
+code --install-extension emroussel.atomize-atom-one-dark-theme
+code --install-extension opensumi.opensumi-default-themes
+code --install-extension PenumbraTheme.penumbra
+code --install-extension timonwong.shellcheck
+code --enable-proposed-api timonwong.shellcheck
 ```
   - May want to add these to *File > Preferences > Settings > Extensions > ShellCheck > Exclude:*
 ```console
@@ -525,6 +522,41 @@ ___
   - `onload="jsFunction()"`
   - These are called "events"
 
+___
+
+### Or, download and install VSCodium
+- This course uses VSCodium instead of gedit
+- Arch/Manjaro:
+```bash
+sudo pacman -S vscodium-bin
+```
+- Debian/Ubuntu
+```bash
+sudo apt update && sudo apt upgrade -y
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \ | gpg --dearmor \ | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+| sudo tee /etc/apt/sources.list.d/vscodium.list
+sudo apt update
+sudo apt install codium
+```
+- RedHat/CentOS/openSUSE
+```bash
+sudo dnf install epel-release
+sudo dnf install snapd --skip-broken
+sudo systemctl enable --now snapd.socket
+sudo ln -s /var/lib/snapd/snap /snap
+sudo snap install codium --classic
+```
+- Or, download and install from **[vscodium.com](https://vscodium.com/)**
+  - Debian/Ubuntu: .deb
+  - RedHat/CentOS/openSUSE: .rpm
+
+#### To use Codium in these lessons
+Create a terminal shortcut:
+
+```
+alias code='codium'
+```
 ___
 
 #### [Lesson 1: PHP Core](https://github.com/inkVerb/vip/blob/master/501/Lesson-01.md)
