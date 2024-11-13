@@ -32,6 +32,9 @@ Who is this course for?
 ### [Linux 601: SysAdmin](https://github.com/inkVerb/VIP/blob/master/601/README.md)
 - Administration of the Linux system, networking basics, creating and using install packages, Git, security, and under the hood
 
+### [Linux 701: Lead Prep](https://github.com/inkVerb/VIP/blob/master/701/README.md)
+- Survey and side-by-side comparison of server & base concepts for: Node.js, Go language, and Python
+
 ### [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)
 
 ## Why learn Linux?
@@ -44,7 +47,7 @@ Who is this course for?
 
 ### 2. Ultra Simple — Better preparation to learn other languages!
 - The Linux "Shell/BASH" language is simpler than other languages, but shares many universal concepts of code.
-- Units 501 explores other languages and concepts that run on Linux platforms
+- Units 501 & 701 explore other languages and concepts that run on Linux platforms
 
 ### 3. Ultimate Knowledge, Ultimate Control — PHP, Python, Go, Node.js, SQL, MongoDB, HTML, CSS, JS... all sit atop Linux
 - It's one thing to learn a web app or server programming language; it's awesome to know the language under the language so you can *control the machine it runs on.*
