@@ -70,7 +70,7 @@ Tasks performed:
 
 ### [Lesson 8: Logins](https://github.com/inkVerb/vip/blob/master/701/Lesson-08.md)
 
-### [Lesson 9: Blog)](https://github.com/inkVerb/vip/blob/master/701/Lesson-09.md)
+### [Lesson 9: Blog](https://github.com/inkVerb/vip/blob/master/701/Lesson-09.md)
 
 ### [Lesson 10: Upload Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-10.md)
 
