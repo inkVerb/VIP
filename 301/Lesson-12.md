@@ -37,12 +37,14 @@ gedit 12-flags-1
 
 *Note the line with `while getopts`*
 
-- `:` first means that non-listed flags can won't cause error messages
+- `:` first means that non-listed flags can be used and thus won't cause error messages
   - This allows for `*` and `?` to be used in `case` arguments
 - `a:` means the `-a` flag requires an argument
+  - The `getopts` loop will break if the `-a` flag has no argument
   - The argument will be set as `$OPTARG` in the `while getopts` loop
   - This is a "flag argument" AKA "option argument", as opposed to a `$1` style argument
-- `a` not followed by `:` would mean that the `-a` flag ignores arguments
+- `a` not followed by `:` would mean that the `-a` flag requires there be no argument
+  - The `getopts` loop will break if the `-a` flag has an argument
 
 | **2** :$ (help)
 
@@ -148,9 +150,9 @@ This nifty code allows for a global argument (use with, not part of, `getopts`):
 
 *About our `exit` codes:*
 
-- *We use `exit 1` for "proper false" (`STDOUT`) when the user asks for help*
+- *We use `exit 1` for "proper false" when the user asks for help*
   - *This can be tested later, such as with `$?` to see if it was a valid command*
-- *We use `exit 2` for "error" (`STDERR`) when user inputs wrong flags*
+- *We use `exit 2` for "error" when user inputs wrong flags*
   - *This can be tested later, such as with `$?` or with `set -e` to exit with any error*
 - *The script will automatically use `exit 0` once our `getopts` loop ends with proper flags*
 
@@ -409,6 +411,7 @@ ___
   - Even without flag-related arguments, if flags appear at the end of non-related arguments, the flags may be ignored
 
 ## `getopts` (for one-letter flags)
+- Eg: `-a`
 - Procedure of a `getopts` flag set:
   - `while getopts` defines the allowed flags
   - `do` opens a case loop
@@ -422,6 +425,7 @@ ___
 ## *Explaining `getopt` in detail is beyond the scope of this survey lesson*
 
 ## `getopt` (for one-letter OR long-word flags)
+- Eg: `-a` or `--alpha`
 - Procedure of a `getopt` flag set:
   - `optionsVariable=$(getopt ...)` defines the allowed flags (optionsVariable can be any variable)
   - `eval set --"$optionsVariable"` checks that the variables will work

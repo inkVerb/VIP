@@ -17,7 +17,7 @@ ___
 This works much like a `for` loop (from [Lesson 3](https://github.com/inkVerb/vip/blob/master/301/Lesson-03.md#i-for-var-in-lst-do))...
 
 ```sh
-select Var in Some_List
+select Var in Some List
 do
   if [ $Var = "item1" ]; then
     ...
@@ -60,7 +60,7 @@ gedit 11-menu-if-var
 *Do the same thing with a `case` loop*
 
 ```sh
-select Var in Some_List
+select Var in Some List
 do
   case $Var in
     item1)
