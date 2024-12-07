@@ -5,7 +5,7 @@ Who this course is for:
 - Tech lead candidates who want a pragmatic & contrasting overview before going deeper
 - Inform business leaders to understand the IT world's important decisions
 
-This course is a survey of three common server-side languages:
+This course is a survey of Linux hosting, applied to three common server-side languages:
 - Node.js
 - Go
 - Python
@@ -36,14 +36,15 @@ Tasks performed:
   - GraphQL
 - Read & write files
 - Login via `SESSION` & `COOKIE`
-- Blog
-  - User account
-  - TinyMCE editor
-  - Publish RSS feeds
 - Upload handling
-- Send mail via SMTP credentials
-- XML linting
-  - Import RSS feeds
+
+Create a server-side language with BASH
+- Handle methods
+- Functions for common processing
+- Intergration with Frontend State JS libraries
+  - Vue
+  - React
+  - Angular
 
 ## Cheat Sheets
 - [LEMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LEMP-Desktop.md)
@@ -70,10 +71,10 @@ Tasks performed:
 
 ### [Lesson 8: Logins](https://github.com/inkVerb/vip/blob/master/701/Lesson-08.md)
 
-### [Lesson 9: Blog](https://github.com/inkVerb/vip/blob/master/701/Lesson-09.md)
+### [Lesson 9: Upload Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-09.md)
 
-### [Lesson 10: Upload Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-10.md)
+### [Lesson 10: BASH as server-side via Go](https://github.com/inkVerb/vip/blob/master/701/Lesson-10.md)
 
-### [Lesson 11: Mail via SMTP](https://github.com/inkVerb/vip/blob/master/701/Lesson-11.md)
+### [Lesson 11: BASH functions to handle common server-side logic](https://github.com/inkVerb/vip/blob/master/701/Lesson-11.md)
 
-### [Lesson 12: XML Linting](https://github.com/inkVerb/vip/blob/master/701/Lesson-12.md)
+### [Lesson 12: Frontend State Intergration](https://github.com/inkVerb/vip/blob/master/701/Lesson-12.md)
