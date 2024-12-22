@@ -201,16 +201,10 @@ echo $HISTSIZE
 | **20** :$ *(or whatever the file name is)*
 
 ```console
-vim .bash_history
+history
 ```
 
-| **vim** :] `:set number`
-
-| **vim** :] PgUp *(repeat until first line)*
-
-*Note the command on line 2*
-
-| **vim** :] `:q!`
+*Note the second-to-last command*
 
 | **21** :$
 
@@ -218,7 +212,7 @@ vim .bash_history
 !-2
 ```
 
-*Note `!-2` calles the 2nd to last command, as for all `!-Nth` usage*
+*Note `!-2` calls the 2nd to last command, as for all `!-Nth` usage*
 
 | **22** :$
 
@@ -268,7 +262,7 @@ ___
   1. Don't use Windows in the first place
   2. Copy and paste raw text from the questionable file into a Linux text editor like Atom, gedit, `nano`, or `vim`
     - There's a slim chance it might not work
-  3. Use `dos2unix File-to-Fix`, installed with `sudo apt install dos2unix`
+  3. Use `dos2unix File-to-Fix`, installed with the `dos2unix` package
     - Most certain conversion
 
 ## Multiple Lines, One Command: `\`
