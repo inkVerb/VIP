@@ -758,6 +758,7 @@ ls web
 ```
 
 **Note this converts dashes from common misuse to proper:**
+
 ```php
 /*
 ** em-dash: (long)

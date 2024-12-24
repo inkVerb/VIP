@@ -32,7 +32,7 @@ mariadb -u admin -padminpassword
 
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
-| **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`
+| **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`**
 
 *From now on, you may optionally follow along at the SQL prompt and/or phpMyAdmin, but no instructions will be given*
 

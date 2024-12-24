@@ -1,4 +1,4 @@
-# Web-PHP Desktop
+# Web-Dev Desktop
 ## These scripts will install a webstack
 
 - [LAMP Desktop script](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/desktoplamp.sh) (Apache; HTML and PHP)

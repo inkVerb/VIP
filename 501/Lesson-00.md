@@ -170,12 +170,13 @@ mkdir -p ~/School/VIP
 ```
 >
 
-### II. Install LAMP
+### II. Install LAMP Desktop
 
 Now, follow all instructions in [LAMP Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LAMP-Desktop.md)
 - Setup the LAMP server
-- Setup MySQL phpMyAdmin
-- Setup MySQL via command line
+- Also setup:
+  - MySQL phpMyAdmin
+  - MySQL via command line
 
 ### III. `git clone` our scripts for this lesson
 
@@ -336,12 +337,16 @@ exit
 >
 
 ### IV. Download and install Code-OSS
-- This course uses [Code OSS](https://code.visualstudio.com/), the engine under VSCode
-- Arch/Manjaro:
+*This course uses [Code OSS](https://code.visualstudio.com/), the engine under VSCode*
+
+| **Arch/Manjaro** :$
+
 ```bash
-sudo pacman -S code
+sudo pacman -Syy code
 ```
-- Debian/Ubuntu
+
+| **Debian/Ubuntu** :$
+
 ```bash
 sudo apt update && sudo apt upgrade -y
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -350,7 +355,9 @@ sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/micros
 sudo apt update
 sudo apt install code
 ```
-- RedHat/CentOS/openSUSE
+
+| **RedHat/CentOS/openSUSE** :$
+
 ```bash
 sudo dnf install epel-release
 sudo dnf install snapd --skip-broken
@@ -359,7 +366,8 @@ sudo ln -s /var/lib/snapd/snap /snap
 sudo snap install code-oss --edge
 ```
 
-- Code-OSS settings
+| **Code-OSS settings** :$
+
 ```bash
 code --install-extension emroussel.atomize-atom-one-dark-theme
 code --install-extension opensumi.opensumi-default-themes
@@ -367,7 +375,9 @@ code --install-extension PenumbraTheme.penumbra
 code --install-extension timonwong.shellcheck
 code --enable-proposed-api timonwong.shellcheck
 ```
-  - May want to add these to *File > Preferences > Settings > Extensions > ShellCheck > Exclude:*
+
+- May want to add these to *File > Preferences > Settings > Extensions > ShellCheck > Exclude:*
+
 ```console
 SC2076,SC2016,SC1090,SC2034,SC2154,SC1091,SC2206,SC2086,SC2153,SC2231
 ```
