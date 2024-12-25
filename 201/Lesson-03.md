@@ -162,7 +162,7 @@ sudo pacman -S cowsay
 | **13** :$ *Use `--noconfirm` so you DO NOT need to press Y, then Enter*
 
 ```console
-sudo pacman -S --noconfirm curl net-tools htop odt2txt dos2unix pandoc texlive-core pwgen unzip
+sudo pacman -S --noconfirm curl net-tools tcpdump htop odt2txt dos2unix pandoc texlive-core pwgen unzip
 ```
 
 ### Uninstalling (for reference)
@@ -350,7 +350,7 @@ sudo apt install cowsay
 | **14** :$ *Use `-y` so you DO NOT need to press Y, then <kbd>Enter</kbd>*
 
 ```console
-sudo apt install -y curl net-tools htop odt2txt dos2unix pandoc pwgen unzip
+sudo apt install -y curl net-tools tcpdump htop odt2txt dos2unix pandoc pwgen unzip
 ```
 
 ### Uninstalling (for reference)
@@ -460,7 +460,7 @@ sudo zypper install cowsay
 | **7** :$ *Use `-y` so you DO NOT need to press Y, then <kbd>Enter</kbd>*
 
 ```console
-sudo zypper install -y curl net-tools htop dos2unix odt2txt pandoc pwgen unzip
+sudo zypper install -y curl net-tools tcpdump htop dos2unix odt2txt pandoc pwgen unzip
 ```
 
 *Check the Linux version info*
@@ -591,7 +591,7 @@ sudo dnf install cowsay
 | **9** :$ *Use `-y` so you DO NOT need to press Y, then <kbd>Enter</kbd>*
 
 ```console
-sudo dnf install -y curl net-tools htop dos2unix pwgen unzip redhat-lsb-core
+sudo dnf install -y curl net-tools tcpdump htop dos2unix pwgen unzip redhat-lsb-core
 ```
 
 *Check the Linux version info*

@@ -11,7 +11,7 @@ ___
 
 ### `netstat -natu` & `sudo tcpdump`
 
-| **1** :$
+| **1** :$ (Requires the `net-tools` package, installed from [201 Lesson 3](https://github.com/inkVerb/vip/blob/master/201/Lesson-03.md))
 
 ```console
 netstat -natu
@@ -31,7 +31,7 @@ su Username
 ```
 ___
 
-| **2** :$
+| **2** :$ (Requires the `tcpdump` package, installed from [201 Lesson 3](https://github.com/inkVerb/vip/blob/master/201/Lesson-03.md))
 
 ```console
 sudo tcpdump
@@ -62,12 +62,11 @@ ss -tln
 ```
 
 ### `man` & `info`
-*FYI, this is a great tool to change settings from the terminal: `gsettings`*
 
 | **4** :$
 
 ```console
-man gsettings
+man netstat
 ```
 
 *This is a how-to manual for a terminal program that manages settings for the desktop environment*
@@ -79,19 +78,17 @@ man gsettings
 | **5** :$
 
 ```console
-info gsettings
+info netstat
 ```
 
 *Press Q to quit*
 
 *The `man` and `info` tools are useful for many things*
 
-*Consider `lsb_release` which shows detailed information about your current Linux distribution*
-
 | **5** :$
 
 ```console
-man lsb_release
+man ss
 ```
 
 | **6** :$
@@ -124,22 +121,23 @@ man sed
 man echo
 ```
 
+*FYI, this is a great tool to change settings from the terminal: `gsettings`*
+
 | **11** :$
 
 ```console
-man imagemagick
+man gsettings
 ```
-
-*...but not always...*
 
 | **12** :$
 
 ```console
-info imagemagick
+info gsettings
 ```
 
-*Note `imagemagick` changes images from the terminal, learn to use at:*
-- [www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)
+*Many CLI commands are best understood using the `man` & `info` tools*
+
+*Documentation read with these are often called "`man` pages"*
 
 ___
 

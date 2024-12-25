@@ -16,7 +16,7 @@ ___
 #### What is `$PATH`?
 
 A script or other program ***not*** in the path needs this:
-  1. `/full/path/to/script` "full" path
+  1. `/full/path/to/script` "full" path (sometimes called 'absolute' path)
   2. `~/myhome/to/script` "home" path
   3. `./script` "here" path (when in the directory of the script)
 
@@ -39,7 +39,7 @@ printenv
 printenv PATH
 ```
 
-*This is a colon (`:`) -separated list of directories where executable files may be executed from **without entering the /complete/path/to/the/file***
+*This is a colon (`:`) -separated list of directories in which executable files may be executed **without entering the `/full/path/to/the/file`***
 
 *Let's make this `$PATH` more readable,  use `sed` to resort them to go onto each line...*
 
@@ -101,7 +101,7 @@ iamexec
 
 *Same script, same location, three different ways to execute...*
 
-1. "full" path (get with `pwd`)
+1. "absolute" path (get with `pwd`)
 
 *Enter the output of this as a new command in the terminal:*
 

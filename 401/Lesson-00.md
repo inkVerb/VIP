@@ -35,7 +35,7 @@ sudo pacman -Syy
 > | **A2** :$
 >
 ```console
-sudo pacman -S --noconfirm curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
+sudo pacman -S --noconfirm curl cowsay dialog git net-tools tcpdump htop odt2txt dos2unix pandoc pwgen unzip
 ```
 >
 > Debian/Ubuntu:
@@ -49,7 +49,7 @@ sudo apt update
 > | **D2** :$
 >
 ```console
-sudo apt install -y curl cowsay dialog git net-tools htop odt2txt dos2unix pandoc pwgen unzip
+sudo apt install -y curl cowsay dialog git net-tools tcpdump htop odt2txt dos2unix pandoc pwgen unzip
 ```
 >
 > OpenSUSE:
@@ -63,7 +63,7 @@ sudo zypper update
 > | **E2** :$
 >
 ```console
-sudo dnf install -y curl cowsay dialog git net-tools htop dos2unix odt2txt pandoc pwgen unzip
+sudo dnf install -y curl cowsay dialog git net-tools tcpdump htop dos2unix odt2txt pandoc pwgen unzip
 ```
 >
 > RedHat/CentOS:
@@ -77,7 +77,7 @@ sudo dnf update
 > | **C2** :$
 >
 ```console
-sudo dnf install -y curl cowsay dialog git net-tools htop dos2unix pwgen unzip redhat-lsb-core
+sudo dnf install -y curl cowsay dialog git net-tools tcpdump htop dos2unix pwgen unzip redhat-lsb-core
 ```
 > Currently thest are broken and will not work on CentOS: `odt2txt pandoc`
 >
