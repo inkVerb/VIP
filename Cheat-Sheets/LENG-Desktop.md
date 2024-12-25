@@ -33,7 +33,7 @@ Prepare a place for the certs
 | **E2** :$
 
 ```console
-sudo mkdir -p /etc/nginx/ssl
+sudo mkdir -p /etc/ssl/desk
 ```
 
 Create the 10-year snakeoil certs
@@ -41,7 +41,16 @@ Create the 10-year snakeoil certs
 | **E3** :$
 
 ```console
-sudo openssl req -x509 -newkey rsa:4096 -keyout /etc/nginx/ssl/snakeoil.key.pem -out /etc/nginx/ssl/snakeoil.crt.pem -sha256 -days 3650 -nodes -subj "/C=XX/ST=Some State/L=Some City/O=Snakeoil/OU=Learning/CN=myComputer"
+sudo openssl req -x509 -newkey rsa:4096 -keyout /etc/ssl/desk/snakeoil.key.pem -out /etc/ssl/desk/snakeoil.crt.pem -sha256 -days 3650 -nodes -subj "/C=XX/ST=Some State/L=Some City/O=Snakeoil/OU=Learning/CN=myComputer"
+```
+
+Create a small [Diffie-Hellman Group](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) file for how most of us should do security these days
+
+| **E4** :$ (Nginx thinks anything less than `2048` is too small and it will refuse to start; production servers may need `4096` or higher)
+
+```console
+sudo openssl dhparam -out /etc/ssl/desk/dhparams.pem 2048
+sudo chmod 600 /etc/ssl/desk/dhparams.pem
 ```
 
 #### Nginx
@@ -188,8 +197,9 @@ server {
   http2 on;
   server_name localhost;
 
-  ssl_certificate      /etc/nginx/ssl/snakeoil.crt.pem;
-  ssl_certificate_key  /etc/nginx/ssl/snakeoil.key.pem;
+  ssl_certificate      /etc/ssl/desk/snakeoil.crt.pem;
+  ssl_certificate_key  /etc/ssl/desk/snakeoil.key.pem;
+  ssl_dhparam          /etc/ssl/desk/dhparams.pem;
 
   root /srv/www/html;
   index index.html;
@@ -258,8 +268,9 @@ server {
   http2 on;
   server_name localhost;
 
-  ssl_certificate      /etc/nginx/ssl/snakeoil.crt.pem;
-  ssl_certificate_key  /etc/nginx/ssl/snakeoil.key.pem;
+  ssl_certificate      /etc/ssl/desk/snakeoil.crt.pem;
+  ssl_certificate_key  /etc/ssl/desk/snakeoil.key.pem;
+  ssl_dhparam          /etc/ssl/desk/dhparams.pem;
 
   location / {
     proxy_pass http://localhost:9001;
@@ -596,25 +607,27 @@ yay -Syy --noconfirm mongodb-compass
 sudo vim /etc/mongodb.conf
 ```
 
-Create it as the following:
+Ensure it reflects the following:
 
 | **`mongodb.conf`** : (using `localhost` & port `27017`)
 
 ```
 systemLog:
-   destination: file
-   path: "/var/log/mongodb/mongod.log"
-   logAppend: true
+  destination: file
+  logAppend: true
+  path: "/var/log/mongodb/mongod.log"
 storage:
-   journal:
-      enabled: true
+  dbPath: /var/lib/mongodb
+  journal:
+    enabled: true
 processManagement:
-   fork: true
+  fork: true
+  timeZoneInfo: /usr/share/zoneinfo
 net:
-   bindIp: 127.0.0.1
-   port: 27017
+  port: 27017
+  bindIp: 127.0.0.1
 setParameter:
-   enableLocalhostAuthBypass: false
+  enableLocalhostAuthBypass: false
 
 # Dev-shell use; may not be suited for a production server
 security:
