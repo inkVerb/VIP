@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 1: 
+## Lesson 1: Web Hosting
 
 Ready the CLI
 

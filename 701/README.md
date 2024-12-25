@@ -53,9 +53,9 @@ Create a server-side language with BASH
 - The [Linux 501](https://github.com/inkVerb/VIP/tree/master/501) unit introduces concepts that are assumed in this course
 - The [Linux 601](https://github.com/inkVerb/VIP/tree/master/601) unit introduces the server & services we will be customizing
 
-### [Lesson 0: LEMP Server Setup](https://github.com/inkVerb/vip/blob/master/701/Lesson-00.md)
+### [Lesson 0: LENG Server Setup](https://github.com/inkVerb/vip/blob/master/701/Lesson-00.md)
 
-### [Lesson 1: Hosting](https://github.com/inkVerb/vip/blob/master/701/Lesson-01.md)
+### [Lesson 1: Web Hosting](https://github.com/inkVerb/vip/blob/master/701/Lesson-01.md)
 
 ### [Lesson 2: Database Connections](https://github.com/inkVerb/vip/blob/master/701/Lesson-02.md)
 

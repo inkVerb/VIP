@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 0: POSIX & Lesson Layout
+## Lesson 0: LENG Server Setup
 
 ### Cheat Sheets
 
@@ -148,4 +148,4 @@ exit
 
 ___
 
-#### [Lesson 1: ](https://github.com/inkVerb/vip/blob/master/701/Lesson-01.md)
+#### [Lesson 1: Web Hosting](https://github.com/inkVerb/vip/blob/master/701/Lesson-01.md)
