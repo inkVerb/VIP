@@ -128,10 +128,11 @@ http {
     types_hash_max_size 4096;
     client_max_body_size 1000M;
 
-    # SSL
+    # Global SSL
     ssl_prefer_server_ciphers on;
-    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384;
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_dhparam /etc/ssl/desk/dhparams.pem;
 
     # MIME
     include mime.types;
@@ -199,7 +200,6 @@ server {
 
   ssl_certificate      /etc/ssl/desk/snakeoil.crt.pem;
   ssl_certificate_key  /etc/ssl/desk/snakeoil.key.pem;
-  ssl_dhparam          /etc/ssl/desk/dhparams.pem;
 
   root /srv/www/html;
   index index.html;
@@ -241,7 +241,10 @@ server {
   server_name localhost;
 
   location / {
-    proxy_pass http://localhost:9001;
+    proxy_pass http://127.0.0.1:9001;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -262,6 +265,7 @@ sudo vim /etc/nginx/conf.d/rphttps.conf
 | **`rphttps.conf`** :
 
 ```
+# HTTPS port 443
 server {
   listen 443 ssl;
   listen [::]:443 ssl;
@@ -270,16 +274,27 @@ server {
 
   ssl_certificate      /etc/ssl/desk/snakeoil.crt.pem;
   ssl_certificate_key  /etc/ssl/desk/snakeoil.key.pem;
-  ssl_dhparam          /etc/ssl/desk/dhparams.pem;
 
   location / {
-    proxy_pass http://localhost:9001;
+    proxy_pass http://127.0.0.1:9001;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_hide_header Upgrade;
   }
+}
+
+# Redirect HTTP port 80 to HTTPS port 443
+server {
+  listen 80;
+  listen [::]:80;
+  server_name localhost;
+  
+  return 301 https://$host$request_uri;
 }
 ```
 

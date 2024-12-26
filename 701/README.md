@@ -55,7 +55,7 @@ Create a server-side language with BASH
 
 ### [Lesson 0: LENG Server Setup](https://github.com/inkVerb/vip/blob/master/701/Lesson-00.md)
 
-### [Lesson 1: Web Hosting](https://github.com/inkVerb/vip/blob/master/701/Lesson-01.md)
+### [Lesson 1: Web Hosting & Proxied Services](https://github.com/inkVerb/vip/blob/master/701/Lesson-01.md)
 
 ### [Lesson 2: Database Connections](https://github.com/inkVerb/vip/blob/master/701/Lesson-02.md)
 

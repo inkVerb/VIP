@@ -148,4 +148,4 @@ exit
 
 ___
 
-#### [Lesson 1: Web Hosting](https://github.com/inkVerb/vip/blob/master/701/Lesson-01.md)
+#### [Lesson 1: Web Hosting & Proxied Services](https://github.com/inkVerb/vip/blob/master/701/Lesson-01.md)
