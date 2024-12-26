@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 1: Web Hosting
+## Lesson 1: Web Hosting & Proxied Services
 
 Ready the CLI
 
@@ -1078,4 +1078,4 @@ ___
 
 ___
 
-#### [Lesson 2: Database Connections](https://github.com/inkVerb/vip/blob/master/701/Lesson-02.md)
+#### [Lesson 2: Method Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-02.md)

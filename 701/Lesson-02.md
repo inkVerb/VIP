@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 2: 
+## Lesson 2: Method Handling
 
 Ready the CLI
 
@@ -15,4 +15,4 @@ ___
 
 ___
 
-#### [Lesson 3: ](https://github.com/inkVerb/vip/blob/master/701/Lesson-03.md)
+#### [Lesson 3: Database Connections](https://github.com/inkVerb/vip/blob/master/701/Lesson-03.md)

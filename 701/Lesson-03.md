@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 3: 
+## Lesson 3: Database Connections
 
 Ready the CLI
 

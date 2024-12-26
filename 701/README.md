@@ -57,9 +57,9 @@ Create a server-side language with BASH
 
 ### [Lesson 1: Web Hosting & Proxied Services](https://github.com/inkVerb/vip/blob/master/701/Lesson-01.md)
 
-### [Lesson 2: Database Connections](https://github.com/inkVerb/vip/blob/master/701/Lesson-02.md)
+### [Lesson 2: Method Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-02.md)
 
-### [Lesson 3: Method Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-03.md)
+### [Lesson 3: Database Connections](https://github.com/inkVerb/vip/blob/master/701/Lesson-03.md)
 
 ### [Lesson 4: URL Rewrite & Parsing](https://github.com/inkVerb/vip/blob/master/701/Lesson-04.md)
 
