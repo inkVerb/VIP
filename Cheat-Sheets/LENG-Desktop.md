@@ -382,12 +382,14 @@ sudo systemctl stop nginx
 sudo pacman -Syy --noconfirm nodejs
 ```
 
-*Node Version Manager*
+*Node Version Manager & Node Package Manager*
+
+*(We may not use these in our lessons, but they can be useful for more extensive development with Node.js)*
 
 | **NGP2** :$
 
 ```console
-sudo pacman -Syy --noconfirm nvm
+sudo pacman -Syy --noconfirm nvm npm
 ```
 
 #### Go Compiler

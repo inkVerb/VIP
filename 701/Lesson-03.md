@@ -6,6 +6,13 @@ Ready the CLI
 ```console
 cd ~/School/VIP/701
 ```
+
+Ready services
+
+```console
+sudo systemctl start nginx
+```
+
 ___
 
 

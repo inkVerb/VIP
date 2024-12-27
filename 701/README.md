@@ -1,11 +1,11 @@
 # Linux 701: Lead Prep
-*Overview of multiple server-side languages*
+*Overview of multiple **backend** (server-side) languages*
 
 Who this course is for:
 - Tech lead candidates who want a pragmatic & contrasting overview before going deeper
 - Inform business leaders to understand the IT world's important decisions
 
-This course is a survey of Linux hosting, applied to three common server-side languages:
+This course is a survey of Linux hosting, applied to three common backend languages:
 - Node.js
 - Go
 - Python
@@ -16,7 +16,7 @@ How they are each:
 
 The stack this covers:
 - Nginx installation & reverse proxy configuration
-- Server-side languages to perform tasks:
+- Backend languages to perform tasks
 
 Tasks performed:
 - Hosting for `localhost` (desktop) & multiple domains (web server)
@@ -29,6 +29,7 @@ Tasks performed:
     - MySQL/MariaDB
     - PostgreSQL
 - Method handling
+- RegEx validation & sanitizing
 - URL rewrites & parsing
 - AJAX
 - API
@@ -38,7 +39,7 @@ Tasks performed:
 - Login via `SESSION` & `COOKIE`
 - Upload handling
 
-Create a server-side language with BASH
+Create a backend language with BASH
 - Handle methods
 - Functions for common processing
 - Intergration with Frontend State JS libraries
@@ -57,7 +58,7 @@ Create a server-side language with BASH
 
 ### [Lesson 1: Web Hosting & Proxied Services](https://github.com/inkVerb/vip/blob/master/701/Lesson-01.md)
 
-### [Lesson 2: Method Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-02.md)
+### [Lesson 2: Method & RegEx Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-02.md)
 
 ### [Lesson 3: Database Connections](https://github.com/inkVerb/vip/blob/master/701/Lesson-03.md)
 

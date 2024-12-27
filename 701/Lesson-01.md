@@ -14,7 +14,6 @@ ___
 | **1** :$
 
 ```console
-cp hw1.py work/hw.py
 code hw1.py
 ```
 
@@ -54,7 +53,7 @@ if __name__ == "__main__":
 | **2** :$
 
 ```console
-python hw.py
+python hw1.py
 ```
 
 | **B-2** ://
@@ -62,6 +61,8 @@ python hw.py
 ```console
 localhost:9001
 ```
+
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
 
 *Note how the terminal responds each time you access or refresh the webpage*
 
@@ -72,7 +73,6 @@ localhost:9001
 | **3** :$
 
 ```console
-cp hw2.py work/hw.py
 code hw2.py
 ```
 
@@ -110,7 +110,7 @@ with socketserver.TCPServer((HOST, PORT), CustomHandler) as httpd:
 | **3** :$
 
 ```console
-sudo python hw.py
+sudo python hw2.py
 ```
 
 *Note no port is specified because it uses the default port `80`*
@@ -121,6 +121,8 @@ sudo python hw.py
 localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
 *You could change the `PORT` constant to `9001` to use `localhost:9001` as in our first example from `hw1.py`*
 
 *To use SSL, we need to do more than change `PORT` to `443`...*
@@ -130,7 +132,6 @@ localhost
 | **4** :$
 
 ```console
-cp hw3.py work/hw.py
 code hw3.py
 ```
 
@@ -175,7 +176,7 @@ with socketserver.TCPServer((HOST, PORT), CustomHandler) as httpd:
 | **5** :$
 
 ```console
-sudo python hw.py
+sudo python hw3.py
 ```
 
 *Note no port is specified because it uses the default port `443`*
@@ -189,6 +190,8 @@ sudo python hw.py
 https://localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
 *Changing the `PORT` constant to anything but `443` won't work because this uses SSL*
 
 *Let's include our [Diffie-Hellman Group](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) key file in this SSL config to see how that looks...*
@@ -198,7 +201,6 @@ https://localhost
 | **6** :$
 
 ```console
-cp hw4.py work/hw.py
 code hw4.py
 ```
 
@@ -243,7 +245,7 @@ with socketserver.TCPServer((HOST, PORT), CustomHandler) as httpd:
 | **7** :$
 
 ```console
-sudo python hw.py
+sudo python hw4.py
 ```
 
 | **B-7** ://
@@ -252,13 +254,14 @@ sudo python hw.py
 https://localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
 ### Node Server
 #### Port `9001`
 
 | **8** :$
 
 ```console
-cp hw1.node work/hw.node
 code hw1.node
 ```
 
@@ -293,7 +296,7 @@ process.on('SIGINT', function () {
 | **9** :$
 
 ```console
-node hw.node
+node hw1.node
 ```
 
 | **B-9** ://
@@ -301,6 +304,8 @@ node hw.node
 ```console
 localhost:9001
 ```
+
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
 
 *Note how the terminal responds each time you access or refresh the webpage*
 
@@ -311,7 +316,6 @@ localhost:9001
 | **10** :$
 
 ```console
-cp hw2.node work/hw.node
 code hw2.node
 ```
 
@@ -352,7 +356,7 @@ process.on('SIGINT', () => {
 | **11** :$
 
 ```console
-sudo node hw.node
+sudo node hw2.node
 ```
 
 *Note no port is specified because it uses the default port `80`*
@@ -363,6 +367,8 @@ sudo node hw.node
 localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
 *You could change the `PORT` constant to `9001` to use `localhost:9001` as in our first example from `hw1.node`*
 
 *To use SSL, we need to do more than change `PORT` to `443`...*
@@ -372,7 +378,6 @@ localhost
 | **12** :$
 
 ```console
-cp hw13.node work/hw.node
 code hw3.node
 ```
 
@@ -416,7 +421,7 @@ process.on('SIGINT', () => {
 | **13** :$
 
 ```console
-sudo node hw.node
+sudo node hw3.node
 ```
 
 *Note no port is specified because it uses the default port `443`*
@@ -430,6 +435,8 @@ sudo node hw.node
 https://localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
 *Changing the `PORT` constant to anything but `443` won't work because this uses SSL*
 
 *Let's include our [Diffie-Hellman Group](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) key file in this SSL config to see how that looks...*
@@ -439,7 +446,6 @@ https://localhost
 | **14** :$
 
 ```console
-cp hw4.node work/hw.node
 code hw4.node
 ```
 
@@ -481,7 +487,7 @@ process.on('SIGINT', () => {
 | **15** :$
 
 ```console
-sudo node hw.node
+sudo node hw4.node
 ```
 
 | **B-15** ://
@@ -490,6 +496,7 @@ sudo node hw.node
 https://localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
 
 ### Go Server
 *Go is different from Python and Node*
@@ -502,7 +509,6 @@ https://localhost
 | **16** :$
 
 ```console
-cp hw1.go work/hw.go
 code hw1.go
 ```
 
@@ -556,7 +562,7 @@ func handleConnection(conn net.Conn) {
 | **17** :$
 
 ```console
-go run hw.go
+go run hw1.go
 ```
 
 | **B-17** ://
@@ -564,6 +570,8 @@ go run hw.go
 ```console
 localhost:9001
 ```
+
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
 
 *Note how the terminal responds each time you access or refresh the webpage*
 
@@ -574,7 +582,6 @@ localhost:9001
 | **18** :$
 
 ```console
-cp hw2.go work/hw.go
 code hw2.go
 ```
 
@@ -618,7 +625,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 | **19** :$
 
 ```console
-sudo go run hw.go
+sudo go run hw2.go
 ```
 
 | **B-19** ://
@@ -627,12 +634,13 @@ sudo go run hw.go
 localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
 #### Port `443` for HTTPS-SSL
 
 | **20** :$
 
 ```console
-cp hw3.go work/hw.go
 code hw3.go
 ```
 
@@ -695,7 +703,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 | **21** :$
 
 ```console
-sudo go run hw.go
+sudo go run hw3.go
 ```
 
 *Note no port is specified because it uses the default port `443`*
@@ -709,6 +717,8 @@ sudo go run hw.go
 https://localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
 *Changing the `PORT` constant to anything but `443` won't work because this uses SSL*
 
 *Let's include our [Diffie-Hellman Group](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) key file in this SSL config to see how that looks...*
@@ -718,7 +728,6 @@ https://localhost
 | **22** :$
 
 ```console
-cp hw4.go work/hw.go
 code hw4.go
 ```
 
@@ -789,7 +798,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 | **23** :$
 
 ```console
-sudo go run hw.go
+sudo go run hw4.go
 ```
 
 | **B-23** ://
@@ -798,10 +807,12 @@ sudo go run hw.go
 https://localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
 ### Nginx Reverse-Proxy Server
 The more efficient web server
 
-*While these three server-side languages are capable of handling their own web service for HTTP (`80`) and HTTPS (`443`), Nginx is much better equipped for a few reasons:*
+*While these three **backend** (server-side) languages are capable of handling their own web service for HTTP (`80`) and HTTPS (`443`), Nginx is much better equipped for a few reasons:*
 - *Terminating SSL connections*
 - *Handling high traffic from the web*
 - *Serving more than one website or app*
@@ -962,6 +973,8 @@ sudo python hw.py
 https://localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
 #### Node.js
 
 | **28** :$
@@ -1006,6 +1019,8 @@ sudo node hw.node
 ```console
 https://localhost
 ```
+
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
 
 #### Go
 
@@ -1058,6 +1073,8 @@ sudo go run hw.go
 https://localhost
 ```
 
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
 ___
 
 # The Take
@@ -1078,4 +1095,4 @@ ___
 
 ___
 
-#### [Lesson 2: Method Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-02.md)
+#### [Lesson 2: Method & RegEx Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-02.md)
