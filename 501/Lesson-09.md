@@ -58,7 +58,7 @@ ___
 
 We want to review a list of our pieces
 
-### Cleanup Header/Hooter and Prepare Our "Pieces" Page Framework
+### Cleanup Header/Footer and Prepare Our "Pieces" Page Framework
 
 | **1** :$
 
@@ -273,7 +273,7 @@ sudo cp core/09-undelete_trash4.php web/undelete_trash.php && \
 sudo cp core/09-purge_delete_trash4.php web/purge_delete_trash.php && \
 sudo cp core/09-purge_all_trash.php web/purge_all_trash.php && \
 sudo chown -R www:www /srv/www/html && \
-code core/09-pieces4.php core/09-trash4.php core/09-undelete_trash.php core/09-purge_delete_trash.php core/09-empty_all_trash.php && \
+code core/09-pieces4.php core/09-trash4.php core/09-undelete_trash4.php core/09-purge_delete_trash4.php core/09-purge_all_trash.php && \
 ls web
 ```
 
@@ -330,7 +330,7 @@ sudo cp core/09-pieces5.php web/pieces.php && \
 sudo cp core/09-trash5.php web/trash.php && \
 sudo cp core/09-style5.css web/style.css && \
 sudo chown -R www:www /srv/www/html && \
-code core/09-pieces5.php core/09-trash5.php core/09-style3.css && \
+code core/09-pieces5.php core/09-trash5.php core/09-style5.css && \
 ls web
 ```
 

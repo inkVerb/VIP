@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 9: 
+## Lesson 9: Upload Handling
 
 Ready the CLI
 
@@ -15,4 +15,4 @@ ___
 
 ___
 
-#### [Lesson 10: ](https://github.com/inkVerb/vip/blob/master/701/Lesson-10.md)
+#### [Lesson 10: BASH as server-side via Go](https://github.com/inkVerb/vip/blob/master/701/Lesson-10.md)

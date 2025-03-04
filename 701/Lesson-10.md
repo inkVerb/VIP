@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 10: 
+## Lesson 10: BASH as server-side via Go
 
 Ready the CLI
 
@@ -15,4 +15,4 @@ ___
 
 ___
 
-#### [Lesson 11: ](https://github.com/inkVerb/vip/blob/master/701/Lesson-11.md)
+#### [Lesson 11: BASH functions to handle common server-side logic](https://github.com/inkVerb/vip/blob/master/701/Lesson-11.md)

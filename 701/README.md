@@ -70,7 +70,7 @@ Create a backend language with BASH
 
 ### [Lesson 7: Read & Write Files](https://github.com/inkVerb/vip/blob/master/701/Lesson-07.md)
 
-### [Lesson 8: Logins](https://github.com/inkVerb/vip/blob/master/701/Lesson-08.md)
+### [Lesson 8: Login, SESSION & COOKIES](https://github.com/inkVerb/vip/blob/master/701/Lesson-08.md)
 
 ### [Lesson 9: Upload Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-09.md)
 

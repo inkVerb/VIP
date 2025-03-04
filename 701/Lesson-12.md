@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 12: 
+## Lesson 12: Frontend State Intergration
 
 Ready the CLI
 

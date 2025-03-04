@@ -38,6 +38,12 @@ sudo mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED B
 mariadb -u admin -padminpassword
 ```
 
+| **SO** :> *(If returning after **SR1**)*
+
+```sql
+USE webapp_db;
+```
+
 *(<kbd>Ctrl</kbd> + <kbd>T</kbd> for new browser tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
 
 | **S0** ://phpMyAdmin **> `localhost/phpMyAdmin/` Username: `admin` Password: `adminpassword`**
@@ -78,11 +84,17 @@ sudo cp core/08-in.functions.php web/in.functions.php && \
 sudo cp core/08-in.checks.php web/in.checks.php && \
 sudo cp core/08-install.php web/install.php && \
 sudo cp core/08-style_old.css web/style.css && \
-sudo echo '* * * * * root /usr/bin/php /srv/www/html/web/cleanup.php' > /etc/cron.d/webappcleanup && \
-sudo chmod 644 /etc/cron.d/webappcleanup && \
 sudo chown -R www:www /srv/www/html && \
 code core/08-webapp.php core/08-account.php core/08-forgot.php core/08-logout.php core/08-in.config.php core/08-cleanup.php core/08-ajaxstring.php core/08-recover.php core/08-recover_login.php core/08-in.login_head_old.php core/08-in.string_functions.php core/08-in.functions.php core/08-in.checks.php core/08-install.php core/08-style_old.css && \
 ls web
+```
+
+*On a production server we need this*
+
+| **`/etc/cron.d/webappcleanup`** :
+
+```
+* * * * * root /usr/bin/php /srv/www/html/web/cleanup.php
 ```
 
 *Install the app, same as in [Lesson 4](https://github.com/inkVerb/vip/blob/master/501/Lesson-04.md)*
@@ -406,25 +418,6 @@ code core/08-edit4.php core/08-in.editprocess4.php && \
 ls web
 ```
 
-| **B-9** :// *('Enter' in the browser address bar to properly load; **do not** simply reload)*
-
-```console
-localhost/web/edit.php?=...
-```
-
-*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
-
-*Note:*
-
-- *in.editprocess.php adds*
-  - *Several calls for a `publications` table were added*
-  - *`$p_status` variable*
-  - *`$editing_published_piece` variable*
-  - *`$editing_existing_piece` variable*
-- *edit.php has a "New or update" if statement*
-  - *"Save draft" and "Publish" `<submit>` inputs for the `<form>`*
-  - *`$editing_published_piece` changes "Publish" to "Update"*
-
 *Create the SQL tables for publication and history...*
 
 | **9** :>
@@ -459,20 +452,33 @@ CREATE TABLE IF NOT EXISTS `publication_history` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 ```
 
+| **B-9** :// *('Enter' in the browser address bar to properly load; **do not** simply reload)*
+
+```console
+localhost/web/edit.php?=...
+```
+
+*Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
+
+*Note:*
+
+- *in.editprocess.php adds*
+  - *Several calls for a `publications` table were added*
+  - *`$p_status` variable*
+  - *`$editing_published_piece` variable*
+  - *`$editing_existing_piece` variable*
+- *edit.php has a "New or update" if statement*
+  - *"Save draft" and "Publish" `<submit>` inputs for the `<form>`*
+  - *`$editing_published_piece` changes "Publish" to "Update"*
+
 | **9a** ://phpMyAdmin **> webapp_db** *(Refresh)*
 
 | **9b** ://phpMyAdmin **> webapp_db > publications**
 
-1. Make a few slight changes, or not
+1. Make a few slight changes, or not (in the web app, not in phpMyAdmin)
 2. Click "Save draft", "Publish", or "Update"
 3. Note the various and sundry save messages
-4. Note the changes in the database...
-
-| **B-10** :// (Save draft / Publish / Update)
-
-```console
-localhost/web/edit.php
-```
+4. Note the changes in the database  (SQL terminal or phpMyAdmin)
 
 | **10a** :>
 
@@ -514,6 +520,14 @@ WHERE p2.id IS NULL;
 ```
 
 *That complexity is why we put our publications and history in different tables*
+
+*Note how the buttons change if we use a new piece...*
+
+| **B-11** :// (Save draft / Publish / Update)
+
+```console
+localhost/web/edit.php
+```
 
 ### View Our Pieces on Our Site
 
@@ -620,6 +634,8 @@ Let's just watch it work...
 
 ##### Core Example: CDN (Online JS)
 
+*This may be locked since we don't have an API key, but you can see it is there...*
+
 | **15** :$
 
 ```console
@@ -635,11 +651,9 @@ ls web
 localhost/web/tiny.html
 ```
 
-*Note the message about domains, which you should close*
-
 *Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> in browser to see the developer view*
 
-*This form won't do anything, just give it a good look and try*
+*This form won't do anything, just give it a good look*
 
 *Note:*
 
@@ -653,7 +667,7 @@ src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
 
 We can download TinyMCE JavaScript and host it locally...
 
-*(Note, we will use a `git clone` from the inkVerb fork, not from tinymce, so this Lesson will continue to work after the repo is updated; for a live server, we would `git clone` from the original)*
+*(Note, we will use a `git clone` from the inkVerb fork, not from tinymce, so this Lesson will continue to work after the repo is updated; for a live server, we would `git clone` from the original developer)*
 
 ##### Core Example: Local (JS on our server)
 
@@ -722,7 +736,6 @@ ls web
 ```console
 localhost/web/tiny.html
 ```
-
 
 ##### TinyMCE in Our 501 Blog
 

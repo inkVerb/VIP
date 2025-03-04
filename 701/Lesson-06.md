@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 6: 
+## Lesson 6: API
 
 Ready the CLI
 
@@ -15,4 +15,4 @@ ___
 
 ___
 
-#### [Lesson 7: ](https://github.com/inkVerb/vip/blob/master/701/Lesson-07.md)
+#### [Lesson 7: Read & Write Files](https://github.com/inkVerb/vip/blob/master/701/Lesson-07.md)

@@ -368,6 +368,8 @@ code core/07-cleanup2.php && \
 ls web
 ```
 
+*Note `cleanup.php` now deletes any entry that is not `usable` OR has expired*
+
 *Run it from the terminal...*
 
 | **14** :$
@@ -444,7 +446,7 @@ sudo vim /etc/cron.d/webappcleanup
 * * * * * root /usr/bin/php /srv/www/html/web/cleanup.php
 ```
 
-| **vim-16b** :] Esc
+| **vim-16b** :] <kbd>Esc</kbd>
 
 | **vim-16c** :] `:wq` (Write and quit)
 
@@ -607,6 +609,8 @@ SELECT * FROM strings;
 ```console
 sudo rm /etc/cron.d/webappcleanup
 ```
+
+*...on a production server we need it*
 
 ___
 

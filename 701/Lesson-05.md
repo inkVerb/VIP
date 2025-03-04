@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 5: 
+## Lesson 5: AJAX
 
 Ready the CLI
 
@@ -15,4 +15,4 @@ ___
 
 ___
 
-#### [Lesson 6: ](https://github.com/inkVerb/vip/blob/master/701/Lesson-06.md)
+#### [Lesson 6: API](https://github.com/inkVerb/vip/blob/master/701/Lesson-06.md)

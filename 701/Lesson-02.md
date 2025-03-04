@@ -1033,7 +1033,8 @@ localhost
 ### Validate & Sanitize with RegEx
 *Basic RegEx checks for POST submissions*
 
-#### Python
+#### Basic valida-sanitize-quote
+##### Python
 
 | **25** :$
 
@@ -1090,51 +1091,102 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             query_components = urllib.parse.parse_qs(post_data.decode())
 
             # Validate & sanitize
+            ## Name
             if 'fullname' in query_components:
                 fullname = query_components['fullname'][0]
                 if not re.match(r'^[a-zA-Z ]{6,32}$', fullname, re.IGNORECASE):
                     errors.append("Full name must be 6-32 characters long, containing only letters and spaces.")
-
+                else:
+                    fullname_s = re.sub(r'[^a-zA-Z ]', '', fullname)[:32]
+            else:
+                errors.append("No name entered.")
+            
+            ## Username
             if 'username' in query_components:
                 username = query_components['username'][0]
                 if not re.match(r'^[a-zA-Z0-9_]{6,32}$', username, re.IGNORECASE):
                     errors.append("Username must be 6-32 characters long, containing only letters, numbers, and underscores.")
-
+                else:
+                    username_s = re.sub(r'[^a-zA-Z0-9_]', '', username)[:32]
+            else:
+                errors.append("No username entered.")
+            
+            ## Email
             if 'email' in query_components:
                 email = query_components['email'][0]
                 if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email):
                     errors.append("Invalid email format.")
-
+                else:
+                    email_s = re.sub(r'[^a-zA-Z0-9._-@]', '', email)
+            else:
+                errors.append("No email entered.")
+            
+            ## Webpage
             if 'webpage' in query_components:
                 webpage = query_components['webpage'][0]
-                if not re.match(r'^https?://(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:/.*)?$', webpage):
+                if not re.match(r'^https?://(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:/[^\s]*)?(?:\?[^#\s]*)?$', webpage):
                     errors.append("Invalid URL format.")
-
+                else:
+                    webpage_s = re.sub(r'[^a-zA-Z0-9.-:/?=&%]', '', webpage)
+            else:
+                errors.append("No webpage entered.")
+            
+            ## Favorite number
             if 'number' in query_components:
                 number = query_components['number'][0]
                 try:
                     number = int(number)
                     if not (0 <= number <= 100):
                         errors.append("Favorite number must be between 0 and 100.")
+                    else:
+                        number_s = number
                 except ValueError:
                     errors.append("Favorite number must be an integer.")
-
-            if 'password' in query_components and 'password2' in query_components:
+            else:
+                errors.append("No favorite number entered.")
+            
+            ## Password
+            if 'password' in query_components:
                 password = query_components['password'][0]
+                if not re.match(r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%]{6,32}$', password):
+                    errors.append("Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character.")
+                else:
+                    password_s = re.sub(r'[^a-zA-Z0-9!@#$%]', '', password)
+            else:
+                errors.append("No password entered.")
+
+            ## Password match
+            if 'password' in query_components and 'password2' in query_components:
                 password2 = query_components['password2'][0]
                 if password != password2:
                     errors.append("Passwords do not match.")
-                elif not re.match(r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%]{6,32}$', password):
-                    errors.append("Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character.")
+            else:
+                errors.append("Password must be entered twice.")
 
+            # Error/success message
             if errors:
                 response += '<pre>' + '\n'.join(errors) + '</pre>'
             else:
                 response += '<code>Form submitted successfully!</code><br>'
-
+            
         else:
             response += '<pre>No POST entries.</pre>'
+        
+        ## Quote for HTML rendering
+        fullname_s_h = html.escape(fullname_s)
+        username_s_h = html.escape(username_s)
+        email_s_h = html.escape(email_s)
+        webpage_s_h = html.escape(webpage_s)
+        number_s_h = html.escape(fullname_s)
+        password_s_h = html.escape(number_s)
 
+        ## Build and display the response
+        response += '<p>Name: ' + password_s_h + '</p>'
+        response += '<p>Username: ' + username_s_h + '</p>'
+        response += '<p>Email: ' + email_s_h + '</p>'
+        response += '<p>Webpage: ' + webpage_s_h + '</p>'
+        response += '<p>Favorite number: ' + number_s_h + '</p>'
+        response += '<p>Password: ' + password_s_h + '</p>'
         response += html_form
         response += html_doc_end
         self.wfile.write(response.encode())
@@ -1169,7 +1221,7 @@ localhost
 
 *(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
 
-#### Node.js
+##### Node.js
 
 | **27** :$
 
@@ -1223,51 +1275,114 @@ const server = http.createServer((req, res) => {
         let errors = [];
 
         // Validate & sanitize
+        /// Name
         if ('fullname' in queryObject) {
             if (!/^[a-zA-Z ]{6,32}$/i.test(queryObject.fullname)) {
                 errors.push("Full name must be 6-32 characters long, containing only letters and spaces.");
+            } else {
+                let fullname_s = queryObject.fullname.replace(/[^a-zA-Z ]/g, '').slice(0, 32);
             }
+        } else {
+            errors.push("No name entered.");
         }
-
+        
+        /// Username
         if ('username' in queryObject) {
             if (!/^[a-zA-Z0-9_]{6,32}$/i.test(queryObject.username)) {
                 errors.push("Username must be 6-32 characters long, containing only letters, numbers, and underscores.");
+            } else {
+                let username_s = queryObject.username.replace(/[^a-zA-Z0-9_]/g, '').slice(0, 32);
             }
+        } else {
+            errors.push("No email entered.");
         }
-
+        
+        /// Email
         if ('email' in queryObject) {
             if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(queryObject.email)) {
                 errors.push("Invalid email format.");
+            } else {
+                let email_s = queryObject.email.replace(/[^a-zA-Z0-9._-@]/g, '');
             }
+        } else {
+            errors.push("No email entered.");
         }
-
+        
+        /// Webpage
         if ('webpage' in queryObject) {
-            if (!/^https?:\/\/(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:\/.*)?$/.test(queryObject.webpage)) {
+            if (!/^https?:\/\/(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:\/[^\s]*)?(?:\?[^#\s]*)?$/.test(queryObject.webpage)) {
                 errors.push("Invalid URL format.");
+            } else {
+                let webpage_s = queryObject.webpage.replace(/[^a-zA-Z0-9.-:/?]/g, '');
             }
+        } else {
+            errors.push("No webpage entered.");
         }
-
+        
+        /// Favorite number
         if ('number' in queryObject) {
             let number = parseInt(queryObject.number, 10);
             if (isNaN(number) || number < 0 || number > 100) {
                 errors.push("Favorite number must be between 0 and 100.");
+            } else {
+                let number_s += number;
             }
+        } else {
+            errors.push("No favorite number entered.");
+        }
+        
+        /// Password
+        if ('password' in queryObject) {
+            if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%]{6,32}$/.test(queryObject.password)) {
+                errors.push("Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character.");
+            } else {
+                let password_s = queryObject.password.replace(/[^a-zA-Z0-9!@#$%]/g, '');
+            }
+        } else {
+            errors.push("No password entered.");
         }
 
+        /// Password match
         if ('password' in queryObject && 'password2' in queryObject) {
             if (queryObject.password !== queryObject.password2) {
                 errors.push("Passwords do not match.");
-            } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%]{6,32}$/.test(queryObject.password)) {
-                errors.push("Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character.");
+            } else {
+            errors.push("Password must be entered twice.");
             }
         }
-
+        
+        // Error/success message
         if (errors.length) {
             response += `<pre>${errors.join('\n')}</pre>`;
         } else {
             response += `<code>Form submitted successfully!</code><br>`;
         }
 
+        /// Create a function to quote HTML special characters
+        const escapeHtml = (unsafe) => {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        };
+
+        /// Quote for HTML rendering
+        let fullname_s_h = escapeHtml(fullname_s);
+        let username_s_h = escapeHtml(username_s);
+        let email_s_h = escapeHtml(email_s);
+        let webpage_s_h = escapeHtml(webpage_s);
+        let number_s_h = escapeHtml(fullname_s);
+        let password_s_h = escapeHtml(number_s);
+
+        /// Build and display the response
+        response += '<p>Name: ' + fullname_s + '</p>';
+        response += '<p>Username: ' + username_s + '</p>';
+        response += '<p>Email: ' + email_s + '</p>';
+        response += '<p>Webpage: ' + webpage_s + '</p>';
+        response += '<p>Favorite number: ' + number_s + '</p>';
+        response += '<p>Password: ' + password_s + '</p>';
         response += htmlForm + htmlDocEnd;
         res.end(response);
     });
@@ -1299,7 +1414,7 @@ localhost
 
 *(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
 
-#### Go
+##### Go
 
 | **29** :$
 
@@ -1319,6 +1434,7 @@ import (
     "strconv"
     "strings"
     "unicode"
+    "html"    // for html.EscapeString
 )
 
 const htmlDocStart = `
@@ -1372,76 +1488,132 @@ func handler(w http.ResponseWriter, r *http.Request) {
     var errors []string
 
     // Validate & sanitize
+    /// Name
     if fullname, ok := r.PostForm["fullname"]; ok {
         if !regexp.MustCompile(`^[a-zA-Z ]{6,32}$`).MatchString(fullname[0]) {
             errors = append(errors, "Full name must be 6-32 characters long, containing only letters and spaces.")
+        } else {
+            sanitized := regexp.MustCompile(`[^a-zA-Z ]`).ReplaceAllString(fullname[0], "")
+            if len(sanitized) > 32 {
+                sanitized = sanitized[:32]
+            }
+            var fullname_s = sanitized
         }
+    } else {
+        errors = append(errors, "No name entered.")
     }
-
+    
+    /// Username
     if username, ok := r.PostForm["username"]; ok {
         if !regexp.MustCompile(`^[a-zA-Z0-9_]{6,32}$`).MatchString(username[0]) {
             errors = append(errors, "Username must be 6-32 characters long, containing only letters, numbers, and underscores.")
+        } else {
+            sanitized := regexp.MustCompile(`[^a-zA-Z0-9_]`).ReplaceAllString(username[0], "")
+            if len(sanitized) > 32 {
+                sanitized = sanitized[:32]
+            }
+            var username_s = sanitized
         }
+    } else {
+        errors = append(errors, "No username entered.")
     }
-
+    
+    /// Email
     if email, ok := r.PostForm["email"]; ok {
         if !regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`).MatchString(email[0]) {
             errors = append(errors, "Invalid email format.")
+        } else {
+            var email_s = regexp.MustCompile(`[^a-zA-Z0-9._-@]`).ReplaceAllString(email[0], "")
         }
+    } else {
+        errors = append(errors, "No email entered.")
     }
-
+    
+    /// Webpage
     if webpage, ok := r.PostForm["webpage"]; ok {
-        webpageRegex := regexp.MustCompile(`^https?:\/\/(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:\/.*)?$`)
+        webpageRegex := regexp.MustCompile(`^https?:\/\/(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:\/[^\s]*)?(?:\?[^#\s]*)?$`)
         if !webpageRegex.MatchString(webpage[0]) {
             errors = append(errors, "Invalid URL format.")
+        } else {
+            var webpage_s = regexp.MustCompile(`[^a-zA-Z0-9.-:/?]`).ReplaceAllString(webpage[0], "")
         }
     }
-
+    
+    /// Favorite number
     if number, ok := r.PostForm["number"]; ok {
         num, err := strconv.Atoi(number[0])
         if err != nil || num < 0 || num > 100 {
             errors = append(errors, "Favorite number must be between 0 and 100.")
+        } else {
+            var number_s = number
         }
+    } else {
+        errors = append(errors, "No favorite number entered.")
+    }
+    
+    // Password
+    if password, ok := r.PostForm["password"]; ok {
+        if len(password[0]) < 6 || len(password[0]) > 32 {
+            errors = append(errors, "Password must be 6-32 characters long.")
+        } else {
+            hasNumber := false
+            hasLower := false
+            hasUpper := false
+            hasSpecial := false
+            for _, char := range password[0] {
+                if unicode.IsDigit(char) {
+                    hasNumber = true
+                } else if unicode.IsLower(char) {
+                    hasLower = true
+                } else if unicode.IsUpper(char) {
+                    hasUpper = true
+                } else if strings.ContainsRune("!@#$%", char) {
+                    hasSpecial = true
+                }
+            }
+            if !hasNumber || !hasLower || !hasUpper || !hasSpecial {
+                errors = append(errors, "Password must include at least one number, one lowercase letter, one uppercase letter, and one special character (!@#$%).")
+            } else {
+                var password_s = regexp.MustCompile(`[^a-zA-Z0-9!@#$%]`).ReplaceAllString(password[0], "")
+            }
+        }
+    } else {
+        errors = append(errors, "No password entered.")
     }
 
+    /// Password match
     if password, ok := r.PostForm["password"]; ok {
         if password2, ok := r.PostForm["password2"]; ok {
             if password[0] != password2[0] {
                 errors = append(errors, "Passwords do not match.")
-            } else {
-                // Password validation without lookahead
-                if len(password[0]) < 6 || len(password[0]) > 32 {
-                    errors = append(errors, "Password must be 6-32 characters long.")
-                } else {
-                    hasNumber := false
-                    hasLower := false
-                    hasUpper := false
-                    hasSpecial := false
-                    for _, char := range password[0] {
-                        if unicode.IsDigit(char) {
-                            hasNumber = true
-                        } else if unicode.IsLower(char) {
-                            hasLower = true
-                        } else if unicode.IsUpper(char) {
-                            hasUpper = true
-                        } else if strings.ContainsRune("!@#$%", char) {
-                            hasSpecial = true
-                        }
-                    }
-                    if !hasNumber || !hasLower || !hasUpper || !hasSpecial {
-                        errors = append(errors, "Password must include at least one number, one lowercase letter, one uppercase letter, and one special character (!@#$%).")
-                    }
-                }
             }
+        } else {
+            errors = append(errors, "Passwords must be entered twice.")
         }
     }
 
+    // Error/success message
     if len(errors) > 0 {
         response += `<pre>` + strings.Join(errors, "\n") + `</pre>`
-    } else {
+    } else if len(errors) <= 0 {
         response += `<code>Form submitted successfully!</code><br>`
     }
 
+    /// Quote for HTML rendering
+    var fullname_s_h = html.EscapeString(fullname_s)
+    var username_s_h = html.EscapeString(username_s)
+    var email_s_h = html.EscapeString(email_s)
+    var webpage_s_h = html.EscapeString(webpage_s)
+    var number_s_h = html.EscapeString(number_s)
+    var password_s_h = html.EscapeString(password_s)
+
+    /// Build and display the response
+    response += '<p>Name: ' + fullname_s_h + '</p>'
+    response += '<p>Username: ' + username_s_h + '</p>'
+    response += '<p>Email: ' + email_s_h + '</p>'
+    response += '<p>Webpage: ' + webpage_s_h + '</p>'
+    response += '<p>Favorite number: ' + number_s_h + '</p>'
+    response += '<p>Password: ' + password_s_h + '</p>'
     response += htmlForm + htmlDocEnd
     fmt.Fprint(w, response)
 }
@@ -1483,6 +1655,43 @@ form input.error {
 
 .green {
     color: #33cc33;
+}
+```
+
+*...That gets included by simply making our HTML document start with this:*
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+```
+
+*Also, these three examples will dynamically add `class="error"` to the `<form>` through a replace function*
+
+| **Python** :
+
+```py
+for key in errors.keys():
+    html_form = html_form.replace(f'name="{key}"', f'name="{key}" class="error"')
+
+```
+
+| **Node.js** :
+
+```js
+for (let key in errors) {
+    htmlForm = htmlForm.replace(new RegExp(`name="${key}"`, 'g'), `name="${key}" class="error"`);
+}
+```
+
+| **Go** :
+
+```go
+for key := range errors {
+    htmlForm = strings.Replace(htmlForm, fmt.Sprintf(`name="%s"`, key), fmt.Sprintf(`name="%s" class="error"`, key), -1)
 }
 ```
 
@@ -1539,61 +1748,116 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         
         response = html_doc_start
-        errors = []
+        errors = {}
 
         if content_length:
             post_data = self.rfile.read(int(content_length))
             query_components = urllib.parse.parse_qs(post_data.decode())
 
             # Validate & sanitize
+            ## Name
             if 'fullname' in query_components:
                 fullname = query_components['fullname'][0]
                 if not re.match(r'^[a-zA-Z ]{6,32}$', fullname, re.IGNORECASE):
-                    errors.append("Full name must be 6-32 characters long, containing only letters and spaces.")
-
+                    errors['fullname'] = "Full name must be 6-32 characters long, containing only letters and spaces."
+                else:
+                    fullname_s = re.sub(r'[^a-zA-Z ]', '', fullname)[:32]
+            else:
+                errors['fullname'] = "No name entered."
+            
+            ## Username
             if 'username' in query_components:
                 username = query_components['username'][0]
                 if not re.match(r'^[a-zA-Z0-9_]{6,32}$', username, re.IGNORECASE):
-                    errors.append("Username must be 6-32 characters long, containing only letters, numbers, and underscores.")
-
+                    errors['username'] = "Username must be 6-32 characters long, containing only letters, numbers, and underscores."
+                else:
+                    username_s = re.sub(r'[^a-zA-Z0-9_]', '', username)[:32]
+            else:
+                errors['username'] = "No username entered."
+            
+            ## Email
             if 'email' in query_components:
                 email = query_components['email'][0]
                 if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email):
-                    errors.append("Invalid email format.")
-
+                    errors['email'] = "Invalid email format."
+                else:
+                    email_s = re.sub(r'[^a-zA-Z0-9._-@]', '', email)
+            else:
+                errors['email'] = "No email entered."
+            
+            ## Webpage
             if 'webpage' in query_components:
                 webpage = query_components['webpage'][0]
-                if not re.match(r'^https?://(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:/.*)?$', webpage):
-                    errors.append("Invalid URL format.")
-
+                if not re.match(r'^https?://(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:/[^\s]*)?(?:\?[^#\s]*)?$', webpage):
+                    errors['webpage'] = "Invalid URL format."
+                else:
+                    webpage_s = re.sub(r'[^a-zA-Z0-9.-:/?=&%]', '', webpage)
+            else:
+                errors['webpage'] = "No webpage entered."
+            
+            ## Favorite number
             if 'number' in query_components:
                 number = query_components['number'][0]
                 try:
                     number = int(number)
                     if not (0 <= number <= 100):
-                        errors.append("Favorite number must be between 0 and 100.")
+                        errors['number'] = "Favorite number must be between 0 and 100."
+                    else:
+                        number_s = number
                 except ValueError:
-                    errors.append("Favorite number must be an integer.")
-
-            if 'password' in query_components and 'password2' in query_components:
+                    errors['number'] = "Favorite number must be an integer."
+            else:
+                errors['number'] = "No favorite number entered."
+            
+            ## Password
+            if 'password' in query_components:
                 password = query_components['password'][0]
+                if not re.match(r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%]{6,32}$', password):
+                    errors['password'] = "Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character."
+                else:
+                    password_s = re.sub(r'[^a-zA-Z0-9!@#$%]', '', password)
+            else:
+                errors['password'] = "No password entered."
+
+            ## Password match
+            if 'password' in query_components and 'password2' in query_components:
                 password2 = query_components['password2'][0]
                 if password != password2:
-                    errors.append("Passwords do not match.")
-                elif not re.match(r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%]{6,32}$', password):
-                    errors.append("Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character.")
-
-            if errors:
-                response += '<div class="error">' + '<br>'.join(errors) + '</div>'
-                for field in ["fullname", "username", "email", "webpage", "number", "password", "password2"]:
-                    if field in query_components and any(err.lower().startswith(field) for err in errors):
-                        response = response.replace(f'name="{field}"', f'name="{field}" class="error"')
+                    errors['password2'] = "Passwords do not match."
             else:
-                response += '<div class="green">Form submitted successfully!</div>'
+                errors['password2'] = "Password must be entered twice."
 
+            # Error/success message
+            if errors:
+                response += '<code class="error">'
+                for key, value in errors.items():
+                    response += f'Error in {key}: {value}<br>'
+                response += '</code>'
+                
+                # Dynamically add error class to inputs
+                for key in errors.keys():
+                    html_form = html_form.replace(f'name="{key}"', f'name="{key}" class="error"')
+            else:
+                response += '<code class="green">Form submitted successfully!</code><br>'
+            
         else:
-            response += '<div class="error">No POST entries.</div>'
+            response += '<pre>No POST entries.</pre>'
+        
+        ## Quote for HTML rendering
+        fullname_s_h = html.escape(fullname_s)
+        username_s_h = html.escape(username_s)
+        email_s_h = html.escape(email_s)
+        webpage_s_h = html.escape(webpage_s)
+        number_s_h = html.escape(number_s)
+        password_s_h = html.escape(password_s)
 
+        ## Build and display the response
+        response += '<p>Name: ' + fullname_s_h + '</p>'
+        response += '<p>Username: ' + username_s_h + '</p>'
+        response += '<p>Email: ' + email_s_h + '</p>'
+        response += '<p>Webpage: ' + webpage_s_h + '</p>'
+        response += '<p>Favorite number: ' + number_s_h + '</p>'
+        response += '<p>Password: ' + password_s_h + '</p>'
         response += html_form
         response += html_doc_end
         self.wfile.write(response.encode())
@@ -1602,7 +1866,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        response = html_doc_start + '<div class="error">No form yet.</div>' + html_form + html_doc_end
+        response = html_doc_start + '<pre>No form yet.</pre>' + html_form + html_doc_end
         self.wfile.write(response.encode())
 
 if __name__ == "__main__":
@@ -1641,7 +1905,6 @@ code regex-post-css.node
 ```js
 const http = require('http');
 const querystring = require('querystring');
-const fs = require('fs');
 
 const PORT = 9001;
 const HOST = '127.0.0.1';
@@ -1683,59 +1946,128 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
         const queryObject = querystring.parse(body);
         let response = htmlDocStart;
-        let errors = [];
+        let errors = {};
 
         // Validate & sanitize
+        /// Name
         if ('fullname' in queryObject) {
             if (!/^[a-zA-Z ]{6,32}$/i.test(queryObject.fullname)) {
-                errors.push("Full name must be 6-32 characters long, containing only letters and spaces.");
+                errors['fullname'] = "Full name must be 6-32 characters long, containing only letters and spaces.";
+            } else {
+                let fullname_s = queryObject.fullname.replace(/[^a-zA-Z ]/g, '').slice(0, 32);
             }
+        } else {
+            errors['fullname'] = "No name entered.";
         }
-
+        
+        /// Username
         if ('username' in queryObject) {
             if (!/^[a-zA-Z0-9_]{6,32}$/i.test(queryObject.username)) {
-                errors.push("Username must be 6-32 characters long, containing only letters, numbers, and underscores.");
+                errors['username'] = "Username must be 6-32 characters long, containing only letters, numbers, and underscores.";
+            } else {
+                let username_s = queryObject.username.replace(/[^a-zA-Z0-9_]/g, '').slice(0, 32);
             }
+        } else {
+            errors['username'] = "No username entered.";
         }
-
+        
+        /// Email
         if ('email' in queryObject) {
             if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(queryObject.email)) {
-                errors.push("Invalid email format.");
+                errors['email'] = "Invalid email format.";
+            } else {
+                let email_s = queryObject.email.replace(/[^a-zA-Z0-9._-@]/g, '');
             }
+        } else {
+            errors['email'] = "No email entered.";
         }
-
+        
+        /// Webpage
         if ('webpage' in queryObject) {
-            if (!/^https?:\/\/(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:\/.*)?$/.test(queryObject.webpage)) {
-                errors.push("Invalid URL format.");
+            if (!/^https?:\/\/(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:\/[^\s]*)?(?:\?[^#\s]*)?$/.test(queryObject.webpage)) {
+                errors['webpage'] = "Invalid URL format.";
+            } else {
+                let webpage_s = queryObject.webpage.replace(/[^a-zA-Z0-9.-:/?]/g, '');
             }
+        } else {
+            errors['webpage'] = "No webpage entered.";
         }
-
+        
+        /// Favorite number
         if ('number' in queryObject) {
             let number = parseInt(queryObject.number, 10);
             if (isNaN(number) || number < 0 || number > 100) {
-                errors.push("Favorite number must be between 0 and 100.");
+                errors['number'] = "Favorite number must be between 0 and 100.";
+            } else {
+                let number_s = number;
             }
+        } else {
+            errors['number'] = "No favorite number entered.";
+        }
+        
+        /// Password
+        if ('password' in queryObject) {
+            if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%]{6,32}$/.test(queryObject.password)) {
+                errors['password'] = "Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character.";
+            } else {
+                let password_s = queryObject.password.replace(/[^a-zA-Z0-9!@#$%]/g, '');
+            }
+        } else {
+            errors['password'] = "No password entered.";
         }
 
+        /// Password match
         if ('password' in queryObject && 'password2' in queryObject) {
             if (queryObject.password !== queryObject.password2) {
-                errors.push("Passwords do not match.");
-            } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%]{6,32}$/.test(queryObject.password)) {
-                errors.push("Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character.");
+                errors['password2'] = "Passwords do not match.";
             }
-        }
-
-        if (errors.length) {
-            response += `<div class="error">${errors.join('<br>')}</div>`;
-            Object.keys(queryObject).forEach(field => {
-                if (errors.some(err => err.toLowerCase().startsWith(field))) {
-                    response = response.replace(`name="${field}"`, `name="${field}" class="error"`);
-                }
-            });
         } else {
-            response += `<div class="green">Form submitted successfully!</div>`;
+            errors['password2'] = "Password must be entered twice.";
+        }
+        
+        // Error/success message
+        if (Object.keys(errors).length > 0) {
+            response += '<code class="error">';
+            for (let key in errors) {
+                if (errors.hasOwnProperty(key)) {
+                    response += `Error in ${key}: ${errors[key]}<br>`;
+                }
+            }
+            response += '</code>';
+            
+            // Dynamically add error class to inputs
+            for (let key in errors) {
+                htmlForm = htmlForm.replace(new RegExp(`name="${key}"`, 'g'), `name="${key}" class="error"`);
+            }
+        } else {
+            response += '<code class="green">Form submitted successfully!</code><br>';
         }
 
+        /// Create a function to quote HTML special characters
+        const escapeHtml = (unsafe) => {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        };
+
+        /// Quote for HTML rendering
+        let fullname_s_h = escapeHtml(fullname_s);
+        let username_s_h = escapeHtml(username_s);
+        let email_s_h = escapeHtml(email_s);
+        let webpage_s_h = escapeHtml(webpage_s);
+        let number_s_h = escapeHtml(fullname_s);
+        let password_s_h = escapeHtml(number_s);
+
+        /// Build and display the response
+        response += '<p>Name: ' + fullname_s + '</p>';
+        response += '<p>Username: ' + username_s + '</p>';
+        response += '<p>Email: ' + email_s + '</p>';
+        response += '<p>Webpage: ' + webpage_s + '</p>';
+        response += '<p>Favorite number: ' + number_s + '</p>';
+        response += '<p>Password: ' + password_s + '</p>';
         response += htmlForm + htmlDocEnd;
         res.end(response);
     });
@@ -1787,6 +2119,7 @@ import (
     "strconv"
     "strings"
     "unicode"
+    "html"    // for html.EscapeString
 )
 
 const htmlDocStart = `
@@ -1840,84 +2173,146 @@ func handler(w http.ResponseWriter, r *http.Request) {
     }
 
     response := htmlDocStart
-    var errors []string
+    errors := make(map[string]string)
 
     // Validate & sanitize
+    /// Name
     if fullname, ok := r.PostForm["fullname"]; ok {
         if !regexp.MustCompile(`^[a-zA-Z ]{6,32}$`).MatchString(fullname[0]) {
-            errors = append(errors, "Full name must be 6-32 characters long, containing only letters and spaces.")
+            errors["fullname"] = "Full name must be 6-32 characters long, containing only letters and spaces."
+        } else {
+            sanitized := regexp.MustCompile(`[^a-zA-Z ]`).ReplaceAllString(fullname[0], "")
+            if len(sanitized) > 32 {
+                sanitized = sanitized[:32]
+            }
+            var fullname_s = sanitized
         }
+    } else {
+        errors["fullname"] = "No name entered."
     }
-
+    
+    /// Username
     if username, ok := r.PostForm["username"]; ok {
         if !regexp.MustCompile(`^[a-zA-Z0-9_]{6,32}$`).MatchString(username[0]) {
-            errors = append(errors, "Username must be 6-32 characters long, containing only letters, numbers, and underscores.")
+            errors["username"] = "Username must be 6-32 characters long, containing only letters, numbers, and underscores."
+        } else {
+            sanitized := regexp.MustCompile(`[^a-zA-Z0-9_]`).ReplaceAllString(username[0], "")
+            if len(sanitized) > 32 {
+                sanitized = sanitized[:32]
+            }
+            var username_s = sanitized
         }
+    } else {
+        errors["username"] = "No username entered."
     }
-
+    
+    /// Email
     if email, ok := r.PostForm["email"]; ok {
         if !regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`).MatchString(email[0]) {
-            errors = append(errors, "Invalid email format.")
+            errors["email"] = "Invalid email format."
+        } else {
+            var email_s = regexp.MustCompile(`[^a-zA-Z0-9._-@]`).ReplaceAllString(email[0], "")
         }
+    } else {
+        errors["email"] = "No email entered."
     }
-
+    
+    /// Webpage
     if webpage, ok := r.PostForm["webpage"]; ok {
-        webpageRegex := regexp.MustCompile(`^https?:\/\/(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:\/.*)?$`)
+        webpageRegex := regexp.MustCompile(`^https?:\/\/(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:\/[^\s]*)?(?:\?[^#\s]*)?$`)
         if !webpageRegex.MatchString(webpage[0]) {
-            errors = append(errors, "Invalid URL format.")
+            errors["webpage"] = "Invalid URL format."
+        } else {
+            var webpage_s = regexp.MustCompile(`[^a-zA-Z0-9.-:/?]`).ReplaceAllString(webpage[0], "")
         }
+    } else {
+        errors["webpage"] = "No webpage entered."
     }
-
+    
+    /// Favorite number
     if number, ok := r.PostForm["number"]; ok {
         num, err := strconv.Atoi(number[0])
         if err != nil || num < 0 || num > 100 {
-            errors = append(errors, "Favorite number must be between 0 and 100.")
+            errors["number"] = "Favorite number must be between 0 and 100."
+        } else {
+            var number_s = number
         }
+    } else {
+        errors["number"] = "No favorite number entered."
     }
-
+    
+    // Password
     if password, ok := r.PostForm["password"]; ok {
-        if password2, ok := r.PostForm["password2"]; ok {
-            if password[0] != password2[0] {
-                errors = append(errors, "Passwords do not match.")
-            } else {
-                // Password validation without lookahead
-                if len(password[0]) < 6 || len(password[0]) > 32 {
-                    errors = append(errors, "Password must be 6-32 characters long.")
-                } else {
-                    hasNumber := false
-                    hasLower := false
-                    hasUpper := false
-                    hasSpecial := false
-                    for _, char := range password[0] {
-                        if unicode.IsDigit(char) {
-                            hasNumber = true
-                        } else if unicode.IsLower(char) {
-                            hasLower = true
-                        } else if unicode.IsUpper(char) {
-                            hasUpper = true
-                        } else if strings.ContainsRune("!@#$%", char) {
-                            hasSpecial = true
-                        }
-                    }
-                    if !hasNumber || !hasLower || !hasUpper || !hasSpecial {
-                        errors = append(errors, "Password must include at least one number, one lowercase letter, one uppercase letter, and one special character (!@#$%).")
-                    }
+        if len(password[0]) < 6 || len(password[0]) > 32 {
+            errors["password"] = "Password must be 6-32 characters long."
+        } else {
+            hasNumber := false
+            hasLower := false
+            hasUpper := false
+            hasSpecial := false
+            for _, char := range password[0] {
+                if unicode.IsDigit(char) {
+                    hasNumber = true
+                } else if unicode.IsLower(char) {
+                    hasLower = true
+                } else if unicode.IsUpper(char) {
+                    hasUpper = true
+                } else if strings.ContainsRune("!@#$%", char) {
+                    hasSpecial = true
                 }
             }
-        }
-    }
-
-    if len(errors) > 0 {
-        response += `<div class="error">` + strings.Join(errors, "<br>") + `</div>`
-        for field := range r.PostForm {
-            if strings.Contains(strings.Join(errors, ""), field) {
-                htmlForm = strings.ReplaceAll(htmlForm, `name="`+field+`"`, `name="`+field+`" class="error"`)
+            if !hasNumber || !hasLower || !hasUpper || !hasSpecial {
+                errors["password"] = "Password must include at least one number, one lowercase letter, one uppercase letter, and one special character (!@#$%)."
+            } else {
+                var password_s = regexp.MustCompile(`[^a-zA-Z0-9!@#$%]`).ReplaceAllString(password[0], "")
             }
         }
     } else {
-        response += `<div class="green">Form submitted successfully!</div>`
+        errors["password"] = "No password entered."
     }
 
+    /// Password match
+    if password, ok := r.PostForm["password"]; ok {
+        if password2, ok := r.PostForm["password2"]; ok {
+            if password[0] != password2[0] {
+                errors["password2"] = "Passwords do not match."
+            }
+        } else {
+            errors["password2"] = "Passwords must be entered twice."
+        }
+    }
+
+    // Error/success message
+    if len(errors) > 0 {
+        response += '<code class="error">'
+        for key, value := range errors {
+            response += fmt.Sprintf("Error in %s: %s<br>", key, value)
+        }
+        response += '</code>'
+        
+        // Dynamically add error class to inputs
+        for key := range errors {
+            htmlForm = strings.Replace(htmlForm, fmt.Sprintf(`name="%s"`, key), fmt.Sprintf(`name="%s" class="error"`, key), -1)
+        }
+    } else {
+        response += '<code class="green">Form submitted successfully!</code><br>'
+    }
+
+    /// Quote for HTML rendering
+    var fullname_s_h = html.EscapeString(fullname_s)
+    var username_s_h = html.EscapeString(username_s)
+    var email_s_h = html.EscapeString(email_s)
+    var webpage_s_h = html.EscapeString(webpage_s)
+    var number_s_h = html.EscapeString(number_s)
+    var password_s_h = html.EscapeString(password_s)
+
+    /// Build and display the response
+    response += '<p>Name: ' + fullname_s_h + '</p>'
+    response += '<p>Username: ' + username_s_h + '</p>'
+    response += '<p>Email: ' + email_s_h + '</p>'
+    response += '<p>Webpage: ' + webpage_s_h + '</p>'
+    response += '<p>Favorite number: ' + number_s_h + '</p>'
+    response += '<p>Password: ' + password_s_h + '</p>'
     response += htmlForm + htmlDocEnd
     fmt.Fprint(w, response)
 }
@@ -1930,6 +2325,660 @@ go run regex-post-css.go
 ```
 
 | **B-37** ://
+
+```console
+localhost
+```
+
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
+#### With `<form>` & function building
+*Replacing to add a `class="error"` attribute in a static `<form>` is fun, but it would be better to build each `<input>` with a function that takes errors into consideration*
+
+*Each example will use a `functions.*` file to check POST content and to render a `<form>`. This will generate `<form> <input>` with both `vlaue=` content and any errors*
+
+*The overall file for the rendered page will be smaller so you can see more of the backend language doing the lifting of running a backend web app*
+
+##### Python
+
+| **38** :$
+
+```console
+code functions.py regex-post-function.py
+```
+
+| **`functions.py`** :
+
+```py
+import re
+
+errors = {}
+
+def check_post(name, value):
+    global errors
+    
+    if name == 'fullname':
+        if not re.match(r'^[a-zA-Z ]{6,32}$', value, re.IGNORECASE):
+            errors[name] = "Full name must be 6-32 characters long, containing only letters and spaces."
+            return re.sub(r'[^a-zA-Z ]', '', value)[:32]
+    elif name == 'username':
+        if not re.match(r'^[a-zA-Z0-9_]{6,32}$', value, re.IGNORECASE):
+            errors[name] = "Username must be 6-32 characters long, containing only letters, numbers, and underscores."
+            return re.sub(r'[^a-zA-Z0-9_]', '', value)[:32]
+    elif name == 'email':
+        if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', value):
+            errors[name] = "Invalid email format."
+            return re.sub(r'[^a-zA-Z0-9._-@]', '', value)
+    elif name == 'webpage':
+        if not re.match(r'^https?://(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:/[^\s]*)?(?:\?[^#\s]*)?$', value):
+            errors[name] = "Invalid URL format."
+            return re.sub(r'[^a-zA-Z0-9.-:/?=&%]', '', value)
+    elif name == 'number':
+        try:
+            num = int(value)
+            if not (0 <= num <= 100):
+                errors[name] = "Favorite number must be between 0 and 100."
+                return ''
+            return num
+        except ValueError:
+            errors[name] = "Favorite number must be an integer."
+            return ''
+    elif name == 'password':
+        if not re.match(r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%]{6,32}$', value):
+            errors[name] = "Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character."
+            return re.sub(r'[^a-zA-Z0-9!@#$%]', '', value)
+    return value
+
+def form_input(name, value):
+    input_type = 'text' if name not in ['password', 'password2'] else 'password'
+    error_class = ' class="error"' if name in errors else ''
+    return f'<input type="{input_type}" name="{name}" value="{value}"{error_class}>'
+```
+
+| **`regex-post-function.py`** :
+
+```py
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from urllib.parse import parse_qs
+import html
+import functions # Import our functions file, no file extension needed for .py names in PWD
+
+PORT = 9001
+HOST = "127.0.0.1"
+
+html_doc_start = """
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+"""
+
+html_doc_end = """
+</body>
+</html>
+"""
+
+class CustomHandler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        content_length = int(self.headers.get('Content-Length', 0))
+        post_data = self.rfile.read(content_length).decode()
+        query_components = parse_qs(post_data)
+        
+        # Validate & Sanitize
+        fullname = functions.check_post('fullname', query_components.get('fullname', [''])[0])
+        username = functions.check_post('username', query_components.get('username', [''])[0])
+        email = functions.check_post('email', query_components.get('email', [''])[0])
+        webpage = functions.check_post('webpage', query_components.get('webpage', [''])[0])
+        number = functions.check_post('number', query_components.get('number', [''])[0])
+        password = functions.check_post('password', query_components.get('password', [''])[0])
+        
+        if 'password2' in query_components and password != query_components.get('password2', [''])[0]:
+            functions.errors['password2'] = "Passwords do not match."
+
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        
+        response = html_doc_start
+        if functions.errors:
+            response += '<code class="error">'
+            for key, value in functions.errors.items():
+                response += f'Error in {key}: {value}<br>'
+            response += '</code>'
+        else:
+            response += '<code class="green">Form submitted successfully!</code><br>'
+        
+        # Quote for HTML rendering
+        fullname_h = html.escape(fullname)
+        username_h = html.escape(username)
+        email_h = html.escape(email)
+        webpage_h = html.escape(webpage)
+        number_h = html.escape(str(number))
+        password_h = html.escape(password)
+        
+        # Build and display the response
+        response += f'<p>Name: {fullname_h}</p>'
+        response += f'<p>Username: {username_h}</p>'
+        response += f'<p>Email: {email_h}</p>'
+        response += f'<p>Webpage: {webpage_h}</p>'
+        response += f'<p>Favorite number: {number_h}</p>'
+        response += f'<p>Password: {password_h}</p>'
+
+        # Construct the form
+        response += f'<form action="/" method="post">'
+        response += f'Full name: {functions.form_input("fullname", fullname)}<br><br>'
+        response += f'Username: {functions.form_input("username", username)}<br><br>'
+        response += f'Email: {functions.form_input("email", email)}<br><br>'
+        response += f'Webpage: {functions.form_input("webpage", webpage)}<br><br>'
+        response += f'Favorite number: {functions.form_input("number", number)}<br><br>'
+        response += f'Password: {functions.form_input("password", "")}<br><br>'
+        response += f'Password again: {functions.form_input("password2", "")}<br><br>'
+        response += '<input type="submit" value="Submit Button">'
+        response += '</form>'
+    
+        # Finish & display the document
+        response += html_doc_end
+        self.wfile.write(response.encode())
+        
+    # No POST, Python still needs to do this again to return something because of how it handles request methods and variable scope
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        
+        # Create empty variables
+        fullname = ""
+        username = ""
+        email = ""
+        webpage = ""
+        number = ""
+
+        # Construct the form
+        response += f'<form action="/" method="post">'
+        response += f'Full name: {functions.form_input("fullname", fullname)}<br><br>'
+        response += f'Username: {functions.form_input("username", username)}<br><br>'
+        response += f'Email: {functions.form_input("email", email)}<br><br>'
+        response += f'Webpage: {functions.form_input("webpage", webpage)}<br><br>'
+        response += f'Favorite number: {functions.form_input("number", number)}<br><br>'
+        response += f'Password: {functions.form_input("password", "")}<br><br>'
+        response += f'Password again: {functions.form_input("password2", "")}<br><br>'
+        response += '<input type="submit" value="Submit Button">'
+        response += '</form>'
+    
+        # Finish & display the document
+        response += html_doc_end
+        self.wfile.write(response.encode())
+
+if __name__ == "__main__":
+    with HTTPServer((HOST, PORT), CustomHandler) as httpd:
+        print(f"Starting Python server on port {PORT}...")
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print("Server stopped by user.")
+```
+
+| **39** :$
+
+```console
+python regex-post-function.py
+```
+
+| **B-39** ://
+
+```console
+localhost
+```
+
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
+##### Node.js
+
+| **40** :$
+
+```console
+code functions.node regex-post-function.node
+```
+
+*Note we use `.js` as the extension for the `functions.*` file so we don't need to specify the file extension in the main Node script*
+
+| **`functions.js`** :
+
+```js
+let errors = {};
+
+function checkPost(name, value) {
+    switch (name) {
+        case 'fullname':
+            if (!/^[a-zA-Z ]{6,32}$/i.test(value)) {
+                errors[name] = "Full name must be 6-32 characters long, containing only letters and spaces.";
+                return value.replace(/[^a-zA-Z ]/g, '').slice(0, 32);
+            }
+            break;
+        case 'username':
+            if (!/^[a-zA-Z0-9_]{6,32}$/i.test(value)) {
+                errors[name] = "Username must be 6-32 characters long, containing only letters, numbers, and underscores.";
+                return value.replace(/[^a-zA-Z0-9_]/g, '').slice(0, 32);
+            }
+            break;
+        case 'email':
+            if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+                errors[name] = "Invalid email format.";
+                return value.replace(/[^a-zA-Z0-9._-@]/g, '');
+            }
+            break;
+        case 'webpage':
+            if (!/^https?:\/\/(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:\/[^\s]*)?(?:\?[^#\s]*)?$/.test(value)) {
+                errors[name] = "Invalid URL format.";
+                return value.replace(/[^a-zA-Z0-9.-:/?]/g, '');
+            }
+            break;
+        case 'number':
+            let num = parseInt(value, 10);
+            if (isNaN(num) || num < 0 || num > 100) {
+                errors[name] = "Favorite number must be between 0 and 100.";
+                return '';
+            }
+            return num;
+        case 'password':
+            if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%]{6,32}$/.test(value)) {
+                errors[name] = "Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character.";
+                return value.replace(/[^a-zA-Z0-9!@#$%]/g, '');
+            }
+            break;
+    }
+    return value;
+}
+
+function formInput(name, value) {
+    let inputType = name === 'password' ? 'password' : 'text';
+    let errorClass = errors[name] ? ' class="error"' : '';
+    return `<input type="${inputType}" name="${name}" value="${value ? value : ''}"${errorClass}>`;
+}
+
+module.exports = { checkPost, formInput, errors };
+```
+
+| **`regex-post-function.node`** :
+
+```js
+const http = require('http');
+const querystring = require('querystring');
+const functions = require('./functions'); // Import our functions file, no file extension needed for .js names
+
+const PORT = 9001;
+const HOST = '127.0.0.1';
+
+const htmlDocStart = `
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+`;
+
+const htmlDocEnd = `
+</body>
+</html>
+`;
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+
+    let response = htmlDocStart;
+
+    if (req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', () => {
+            const queryObject = querystring.parse(body);
+
+            // Validate & Sanitize
+            let fullname = functions.checkPost('fullname', queryObject.fullname || '');
+            let username = functions.checkPost('username', queryObject.username || '');
+            let email = functions.checkPost('email', queryObject.email || '');
+            let webpage = functions.checkPost('webpage', queryObject.webpage || '');
+            let number = functions.checkPost('number', queryObject.number || '');
+            let password = functions.checkPost('password', queryObject.password || '');
+            
+            if ('password2' in queryObject && password !== queryObject.password2) {
+                functions.errors['password2'] = "Passwords do not match.";
+            }
+
+            if (Object.keys(functions.errors).length > 0) {
+                response += '<code class="error">';
+                for (let key in functions.errors) {
+                    if (functions.errors.hasOwnProperty(key)) {
+                        response += `Error in ${key}: ${functions.errors[key]}<br>`;
+                    }
+                }
+                response += '</code>';
+            } else {
+                response += '<code class="green">Form submitted successfully!</code><br>';
+            }
+
+            // Quote for HTML rendering
+            const escapeHtml = (unsafe) => {
+                return unsafe
+                    .replace(/&/g, "&")
+                    .replace(/</g, "<")
+                    .replace(/>/g, ">")
+                    .replace(/"/g, """)
+                    .replace(/'/g, "'");
+            };
+            let fullname_h = escapeHtml(fullname);
+            let username_h = escapeHtml(username);
+            let email_h = escapeHtml(email);
+            let webpage_h = escapeHtml(webpage);
+            let number_h = escapeHtml(number);
+            let password_h = escapeHtml(password);
+
+            // Build and display the response
+            response += '<p>Name: ' + fullname_h + '</p>';
+            response += '<p>Username: ' + username_h + '</p>';
+            response += '<p>Email: ' + email_h + '</p>';
+            response += '<p>Webpage: ' + webpage_h + '</p>';
+            response += '<p>Favorite number: ' + number_h + '</p>';
+            response += '<p>Password: ' + password_h + '</p>';
+
+            // Construct the form
+            response += '<form action="/" method="post">';
+            response += `Full name: ${functions.formInput("fullname", fullname)}<br><br>`;
+            response += `Username: ${functions.formInput("username", username)}<br><br>`;
+            response += `Email: ${functions.formInput("email", email)}<br><br>`;
+            response += `Webpage: ${functions.formInput("webpage", webpage)}<br><br>`;
+            response += `Favorite number: ${functions.formInput("number", number)}<br><br>`;
+            response += `Password: ${functions.formInput("password", "")}<br><br>`;
+            response += `Password again: ${functions.formInput("password2", "")}<br><br>`;
+            response += '<input type="submit" value="Submit Button">';
+            response += '</form>';
+    
+            // Finish & display the document
+            response += htmlDocEnd;
+            res.end(response);
+
+        });
+
+    // No POST, still needs to do this again because of variable scope
+    } else {
+
+        // Create empty variables
+        let fullname = "";
+        let username = "";
+        let email = "";
+        let webpage = "";
+        let number = "";
+
+        // Construct the form
+        response += '<form action="/" method="post">';
+        response += `Full name: ${functions.formInput("fullname", fullname)}<br><br>`;
+        response += `Username: ${functions.formInput("username", username)}<br><br>`;
+        response += `Email: ${functions.formInput("email", email)}<br><br>`;
+        response += `Webpage: ${functions.formInput("webpage", webpage)}<br><br>`;
+        response += `Favorite number: ${functions.formInput("number", number)}<br><br>`;
+        response += `Password: ${functions.formInput("password", "")}<br><br>`;
+        response += `Password again: ${functions.formInput("password2", "")}<br><br>`;
+        response += '<input type="submit" value="Submit Button">';
+        response += '</form>';
+
+        // Finish & display the document
+        response += htmlDocEnd;
+        res.end(response);
+    }
+
+    
+});
+
+server.listen(PORT, HOST, () => {
+    console.log(`Starting Node.js server on port ${PORT}...`);
+});
+
+process.on('SIGINT', () => {
+    console.log('Server stopped by user.');
+    server.close(() => {
+        process.exit(0);
+    });
+});
+```
+
+| **41** :$
+
+```console
+node regex-post-function.node
+```
+
+| **B-41** ://
+
+```console
+localhost
+```
+
+*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
+##### Go
+
+| **42** :$
+
+```console
+code functions.go regex-post-function.go
+```
+
+| **`functions.go`** :
+
+```go
+package main // With this, we don't need any include or require statement in the main .go script file
+
+import (
+    "net/url"
+    "regexp"
+    "strconv"
+)
+
+var errors map[string]string
+
+func init() {
+    errors = make(map[string]string)
+}
+
+func checkPost(name, value string) string {
+    switch name {
+    case "fullname":
+        if !regexp.MustCompile(`^[a-zA-Z ]{6,32}$`).MatchString(value) {
+            errors[name] = "Full name must be 6-32 characters long, containing only letters and spaces."
+            return regexp.MustCompile(`[^a-zA-Z ]`).ReplaceAllString(value, "")[:32]
+        }
+    case "username":
+        if !regexp.MustCompile(`^[a-zA-Z0-9_]{6,32}$`).MatchString(value) {
+            errors[name] = "Username must be 6-32 characters long, containing only letters, numbers, and underscores."
+            return regexp.MustCompile(`[^a-zA-Z0-9_]`).ReplaceAllString(value, "")[:32]
+        }
+    case "email":
+        if !regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`).MatchString(value) {
+            errors[name] = "Invalid email format."
+            return regexp.MustCompile(`[^a-zA-Z0-9._-@]`).ReplaceAllString(value, "")
+        }
+    case "webpage":
+        webpageRegex := regexp.MustCompile(`^https?:\/\/(?:[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,6})|[0-9]{1,3}(?:\.[0-9]{1,3}){3})(?:\/[^\s]*)?(?:\?[^#\s]*)?$`)
+        if !webpageRegex.MatchString(value) {
+            errors[name] = "Invalid URL format."
+            return regexp.MustCompile(`[^a-zA-Z0-9.-:/?]`).ReplaceAllString(value, "")
+        }
+    case "number":
+        num, err := strconv.Atoi(value)
+        if err != nil || num < 0 || num > 100 {
+            errors[name] = "Favorite number must be between 0 and 100."
+            return ""
+        }
+        return value
+    case "password":
+        if !regexp.MustCompile(`^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%]{6,32}$`).MatchString(value) {
+            errors[name] = "Password must be 6-32 characters long, including at least one number, one lowercase letter, one uppercase letter, and one special character."
+            return regexp.MustCompile(`[^a-zA-Z0-9!@#$%]`).ReplaceAllString(value, "")
+        }
+    }
+    return value
+}
+
+func formInput(name, value string) string {
+    inputType := "text"
+    if name == "password" {
+        inputType = "password"
+    }
+    errorClass := ""
+    if _, ok := errors[name]; ok {
+        errorClass = ` class="error"`
+    }
+    return `<input type="` + inputType + `" name="` + name + `" value="` + value + `" ` + errorClass + `>`
+}
+```
+
+| **`regex-post-function.go`** :
+
+```go
+package main
+
+import (
+    "fmt"
+    "net/http"
+    "html"
+)
+
+const htmlDocStart = `
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+`
+
+const htmlDocEnd = `
+</body>
+</html>
+`
+
+func main() {
+    const (
+        PORT = 9001
+        HOST = "127.0.0.1"
+    )
+
+    http.HandleFunc("/", handler)
+
+    fmt.Printf("Starting Go server on port %d...\n", PORT)
+    err := http.ListenAndServe(fmt.Sprintf("%s:%d", HOST, PORT), nil)
+    if err != nil {
+        fmt.Printf("Server error: %v\n", err)
+    }
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "text/html; charset=utf-8")
+    
+    var response = htmlDocStart
+
+    if r.Method == "POST" {
+        err := r.ParseForm()
+        if err != nil {
+            http.Error(w, "Error parsing form", http.StatusBadRequest)
+            return
+        }
+
+        // Validate & Sanitize
+        fullname := checkPost("fullname", r.FormValue("fullname"))
+        username := checkPost("username", r.FormValue("username"))
+        email := checkPost("email", r.FormValue("email"))
+        webpage := checkPost("webpage", r.FormValue("webpage"))
+        number := checkPost("number", r.FormValue("number"))
+        password := checkPost("password", r.FormValue("password"))
+
+        if r.FormValue("password2") != password {
+            errors["password2"] = "Passwords do not match."
+        }
+
+        if len(errors) > 0 {
+            response += `<code class="error">`
+            for key, value := range errors {
+                response += fmt.Sprintf("Error in %s: %s<br>", key, value)
+            }
+            response += `</code>`
+        } else {
+            response += `<code class="green">Form submitted successfully!</code><br>`
+        }
+
+        // Quote for HTML rendering
+        fullname_h := html.EscapeString(fullname)
+        username_h := html.EscapeString(username)
+        email_h := html.EscapeString(email)
+        webpage_h := html.EscapeString(webpage)
+        number_h := html.EscapeString(number)
+        password_h := html.EscapeString(password)
+
+        // Build and display the response
+        response += fmt.Sprintf("<p>Name: %s</p>", fullname_h)
+        response += fmt.Sprintf("<p>Username: %s</p>", username_h)
+        response += fmt.Sprintf("<p>Email: %s</p>", email_h)
+        response += fmt.Sprintf("<p>Webpage: %s</p>", webpage_h)
+        response += fmt.Sprintf("<p>Favorite number: %s</p>", number_h)
+        response += fmt.Sprintf("<p>Password: %s</p>", password_h)
+
+        // Construct the form
+        response += `<form action="/" method="post">`
+        response += `Full name: ` + formInput("fullname", fullname) + `<br><br>`
+        response += `Username: ` + formInput("username", username) + `<br><br>`
+        response += `Email: ` + formInput("email", email) + `<br><br>`
+        response += `Webpage: ` + formInput("webpage", webpage) + `<br><br>`
+        response += `Favorite number: ` + formInput("number", number) + `<br><br>`
+        response += `Password: ` + formInput("password", "") + `<br><br>`
+        response += `Password again: ` + formInput("password2", "") + `<br><br>`
+        response += `<input type="submit" value="Submit Button">`
+        response += `</form>`
+        
+        // Finish & display the document
+        response += htmlDocEnd
+        fmt.Fprint(w, response)
+
+    // No POST, still needs to do this again because of variable scope
+    } else {
+
+        // Create empty variables
+        fullname := ""
+        username := ""
+        email := ""
+        webpage := ""
+        number := ""
+
+        // Construct the form
+        response += `<form action="/" method="post">`
+        response += `Full name: ` + formInput("fullname", fullname) + `<br><br>`
+        response += `Username: ` + formInput("username", username) + `<br><br>`
+        response += `Email: ` + formInput("email", email) + `<br><br>`
+        response += `Webpage: ` + formInput("webpage", webpage) + `<br><br>`
+        response += `Favorite number: ` + formInput("number", number) + `<br><br>`
+        response += `Password: ` + formInput("password", "") + `<br><br>`
+        response += `Password again: ` + formInput("password2", "") + `<br><br>`
+        response += `<input type="submit" value="Submit Button">`
+        response += `</form>`
+    
+        // Finish & display the document
+        response += htmlDocEnd
+        fmt.Fprint(w, response)
+    }
+}
+```
+
+| **43** :$
+
+```console
+go run regex-post-function.go
+```
+
+| **B-43** ://
 
 ```console
 localhost

@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 8: 
+## Lesson 8: Login, SESSION & COOKIES
 
 Ready the CLI
 
@@ -15,4 +15,4 @@ ___
 
 ___
 
-#### [Lesson 9: )](https://github.com/inkVerb/vip/blob/master/701/Lesson-09.md)
+#### [Lesson 9: Upload Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-09.md)

@@ -540,7 +540,7 @@ export myVar="Hello world!"
 
 *Note a variable only carries into another script if declared with: `export`*
 
-### VII. Removing Text in a Variable's Value: `${var#foo}` vs `${var%foo}`
+### VIII. Removing Text in a Variable's Value: `${var#foo}` vs `${var%foo}`
 *Edit this script*
 
 | **26** :$
@@ -573,7 +573,252 @@ var2: $var2"
 
 *Take a good look at that*
 
-### VIII. `readonly` Variables (Constants)
+### IX. Terminal & Environment Variables (`unset`, `set`, `printenv` & `export`)
+Ready the CLI (if needed)
+
+```console
+cd ~/School/VIP/401
+```
+
+#### Command line variables
+
+*You can work with variables directly...*
+
+| **28** :$
+
+```console
+myvar="Yoohoo!"
+```
+
+| **29** :$
+
+```console
+echo $myvar
+```
+
+| **30** :$
+
+```console
+unset myvar
+```
+
+| **31** :$
+
+```console
+echo $myvar
+```
+
+*...Now it's gone!*
+
+#### `set` *without arguments* lists all current variables and functions, everywhere
+
+| **32** :$
+
+```console
+set
+```
+
+*It listed everything, let's do one page at a time...*
+
+| **33** :$
+
+```console
+set | more
+```
+
+*We will do more with `set` in [Lesson 9](https://github.com/inkVerb/vip/blob/master/401/Lesson-09.md)*
+
+#### `printenv` lists all variables in the *environment*; you may remember from [101-Lesson 3](https://github.com/inkVerb/vip/blob/master/101/Lesson-03.md)
+
+| **34** :$
+
+```console
+printenv
+```
+
+| **35** :$
+
+```console
+printenv USER
+```
+
+| **36** :$
+
+```console
+echo $USER
+```
+
+*We can add a variable to the environment...*
+
+| **37** :$
+
+```console
+myvar="Yipyip"
+```
+
+| **38** :$
+
+```console
+echo $myvar
+```
+
+| **39** :$
+
+```console
+printenv myvar
+```
+
+*I didn't display via `printenv` because it's not in the environment, let's put it there...*
+
+| **440** :$
+
+```console
+export myvar
+```
+
+| **41** :$
+
+```console
+printenv myvar
+```
+
+*Try looking for it...*
+
+| **42** :$
+
+```console
+printenv
+```
+
+*We can change it...*
+
+| **43** :$
+
+```console
+myvar="Yakyak"
+```
+
+| **44** :$
+
+```console
+echo $myvar
+```
+
+| **45** :$
+
+```console
+printenv myvar
+```
+
+*And remove it...*
+
+| **46** :$
+
+```console
+unset myvar
+```
+
+| **47** :$
+
+```console
+echo $myvar
+```
+
+| **48** :$
+
+```console
+printenv myvar
+```
+
+*Make it `readonly`...*
+
+| **49** :$
+
+```console
+myvar="Coocoo"
+```
+
+| **50** :$
+
+```console
+echo $myvar
+```
+
+| **51** :$
+
+```console
+readonly myvar
+```
+
+| **52** :$
+
+```console
+myvar="Coocoo"
+```
+
+| **53** :$
+
+```console
+unset myvar
+```
+
+*...We can't change a `readonly` variable*
+
+**One problem: `readonly` variables should be $ALL_CAPPS for good coding etiquette**
+
+*Let's do it right, you can also make a variable `readonly` when you first set it...*
+
+| **54** :$
+
+```console
+readonly MY_NEW_VAR="Cadoo"
+```
+
+| **55** :$
+
+```console
+echo $MY_NEW_VAR
+```
+
+| **56** :$
+
+```console
+MY_NEW_VAR="Nutty"
+```
+
+*...good, it's `readonly`*
+
+| **57** :$
+
+```console
+export MY_NEW_VAR
+```
+
+| **58** :$
+
+```console
+printenv MY_NEW_VAR
+```
+
+*That's how it's done*
+
+*All in one command...*
+
+| **59** :$
+
+```console
+export readonly ALSO_VAR="VIP Linux"
+```
+
+| **60** :$
+
+```console
+printenv ALSO_VAR
+```
+
+*Note `export readonly` is the order; `readonly export` **will not** work*
+
+### X. `readonly` Variables (Constants)
 
 ```bash
 readonly ConstantVar="some value"
@@ -589,7 +834,7 @@ readonly ConstantVar="some value"
 
 *Edit this script*
 
-| **28** :$
+| **61** :$
 
 ```console
 gedit variable-readonly-1
@@ -614,7 +859,7 @@ MYROVAR="I am changed!"
 
 *Run it and watch carefully*
 
-| **29** :$
+| **62** :$
 
 ```console
 ./variable-readonly-1
@@ -623,7 +868,7 @@ MYROVAR="I am changed!"
 #### 2. You can't `unset` a `readonly` variable
 *Edit this script*
 
-| **30** :$
+| **63** :$
 
 ```console
 gedit variable-readonly-2
@@ -639,16 +884,16 @@ gedit variable-readonly-2
 # Create a variable as read-only
 readonly MYROVAR="I am read-only, a never-changing constant!"
 
-# echo the variable
-echo "Whatami: $MYROVAR"
-
 # Try to unset the variable
 unset MYROVAR
+
+# echo the variable
+echo "Whatami: $MYROVAR"
 ```
 
 *Run it and watch carefully*
 
-| **31** :$
+| **64** :$
 
 ```console
 ./variable-readonly-2
@@ -659,251 +904,6 @@ unset MYROVAR
 *(This is why environment variables are ALL_UPPERCASE, see with `printenv`)*
 
 *ALL_UPPERCASE variables may or may not be "`readonly`"; they just "shouldn't" be changed, according to common practice*
-
-### IX. Terminal & Environment Variables (`set`, `printenv` & `export`)
-Ready the CLI (if needed)
-
-```console
-cd ~/School/VIP/401
-```
-
-#### `set` *without arguments* lists all current variables and functions, everywhere
-
-| **32** :$
-
-```console
-set
-```
-
-*It listed everything, let's do one page at a time...*
-
-| **33** :$
-
-```console
-set | more
-```
-
-*We will do more with `set` in [Lesson 9](https://github.com/inkVerb/vip/blob/master/401/Lesson-09.md)*
-
-#### Command line variables
-
-*You can work with variables directly...*
-
-| **34** :$
-
-```console
-myvar="Yoohoo!"
-```
-
-| **35** :$
-
-```console
-echo $myvar
-```
-
-| **36** :$
-
-```console
-unset myvar
-```
-
-| **37** :$
-
-```console
-echo $myvar
-```
-
-*...Now it's gone!*
-
-#### `printenv` lists all variables in the *environment*; you may remember from [101-Lesson 3](https://github.com/inkVerb/vip/blob/master/101/Lesson-03.md)
-
-| **38** :$
-
-```console
-printenv
-```
-
-| **39** :$
-
-```console
-printenv USER
-```
-
-| **40** :$
-
-```console
-echo $USER
-```
-
-*We can add a variable to the environment...*
-
-| **41** :$
-
-```console
-myvar="Yipyip"
-```
-
-| **42** :$
-
-```console
-echo $myvar
-```
-
-| **43** :$
-
-```console
-printenv myvar
-```
-
-*I didn't display via `printenv` because it's not in the environment, let's put it there...*
-
-| **44** :$
-
-```console
-export myvar
-```
-
-| **45** :$
-
-```console
-printenv myvar
-```
-
-*Try looking for it...*
-
-| **46** :$
-
-```console
-printenv
-```
-
-*We can change it...*
-
-| **47** :$
-
-```console
-myvar="Yakyak"
-```
-
-| **48** :$
-
-```console
-echo $myvar
-```
-
-| **49** :$
-
-```console
-printenv myvar
-```
-
-*And remove it...*
-
-| **50** :$
-
-```console
-unset myvar
-```
-
-| **51** :$
-
-```console
-echo $myvar
-```
-
-| **52** :$
-
-```console
-printenv myvar
-```
-
-*Make it `readonly`...*
-
-| **53** :$
-
-```console
-myvar="Coocoo"
-```
-
-| **54** :$
-
-```console
-echo $myvar
-```
-
-| **55** :$
-
-```console
-readonly myvar
-```
-
-| **56** :$
-
-```console
-myvar="Coocoo"
-```
-
-| **57** :$
-
-```console
-unset myvar
-```
-
-*...We can't change a `readonly` variable*
-
-**One problem: `readonly` variables should be $ALL_CAPPS for good coding etiquette**
-
-*Let's do it right, you can also make a variable `readonly` when you first set it...*
-
-| **58** :$
-
-```console
-readonly MY_NEW_VAR="Cadoo"
-```
-
-| **59** :$
-
-```console
-echo $MY_NEW_VAR
-```
-
-| **60** :$
-
-```console
-MY_NEW_VAR="Nutty"
-```
-
-*...good, it's `readonly`*
-
-| **61** :$
-
-```console
-export MY_NEW_VAR
-```
-
-| **62** :$
-
-```console
-printenv MY_NEW_VAR
-```
-
-*That's how it's done*
-
-*All in one command...*
-
-| **63** :$
-
-```console
-export readonly ALSO_VAR="VIP Linux"
-```
-
-| **64** :$
-
-```console
-printenv ALSO_VAR
-```
-
-*Note `export readonly` is the order; `readonly export` **will not** work*
 
 ___
 

@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 4: 
+## Lesson 4: URL Rewrite & Parsing
 
 Ready the CLI
 
@@ -22,4 +22,4 @@ ___
 
 ___
 
-#### [Lesson 5: ](https://github.com/inkVerb/vip/blob/master/701/Lesson-05.md)
+#### [Lesson 5: AJAX](https://github.com/inkVerb/vip/blob/master/701/Lesson-05.md)
