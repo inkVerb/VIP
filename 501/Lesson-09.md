@@ -1755,9 +1755,9 @@ ___
 1. Make sure the piece is published
 2. Make some changes anywhere
 3. Click "Save draft" or press "<kbd>Ctrl</kbd> + <kbd>S</kbd>", **NOT** "Update publication"
-5. Look for a message near the top that reads "**view diff for unpublished changes**"
+4. Look for a message near the top that reads "**view diff for unpublished changes**"
   - You may need to load from the address bar again to see that "view diff..." message
-6. Run our SQL query for this piece (change `U.piece_id=1` to another number if `edit.php?p=1` didn't work in the previous step)
+5. Run our SQL query for this piece (change `U.piece_id=1` to another number if `edit.php?p=1` didn't work in the previous step)
 
 | **39** :>
 
@@ -1765,7 +1765,7 @@ ___
 SELECT P.date_updated FROM pieces AS P LEFT JOIN publications AS U ON P.id=U.piece_id AND P.date_updated=U.date_updated WHERE U.piece_id=1 ORDER BY U.id DESC LIMIT 1;
 ```
 
-7. That SQL query should return nothing
+6. That SQL query should return nothing
   - This is because the latest "draft" in `pieces` does not have the identical `date_updated` to the most recent entry by that `piece_id` in `publications`
 
 | **39a** ://phpMyAdmin **> pieces**
