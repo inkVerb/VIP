@@ -381,9 +381,19 @@ gedit rsed/0-file rsed/one/1-file rsed/two/2-file rsed/three/3-file
 ls rsed rsed/one rsed/two rsed/three
 ```
 
-*This handy little code will `sed` replace recursively, in all directories*
+*This handy little `xargs` code will `sed` replace recursively, in all directories*
 
-*Note it uses pipe `|` with `grep` to achieve this*
+**`| xargs`** executes code for each line produced before `|`, avoiding need of a `for` loop
+
+| **`xargs` example** :
+
+```bash
+grep foo * | xargs sed 's/foo/bar/'
+```
+
+*...Runs `sed 's/foo/bar/` for each line produced by `grep foo *`*
+
+*(`xargs` won't exceed the maximum number of `ARG_MAX`, found with `getconf ARG_MAX`; [read more](https://stackoverflow.com/a/1902876/10343144))*
 
 | **38** :$
 
@@ -401,7 +411,7 @@ grep -rl foo . | xargs sed -i 's/foo/bar/g'
 cat rsed/0-file rsed/one/1-file rsed/two/2-file rsed/three/3-file
 ```
 
-*Now that it is complete, run it agani and see the `sed` errors indicating that no files have the `foo` pattern to be changed...*
+*Now that it is complete, run it again and see the `sed` errors indicating that no files have the `foo` pattern to be changed...*
 
 | **40** :$
 

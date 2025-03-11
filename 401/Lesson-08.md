@@ -22,10 +22,10 @@ file1 file2 file3 file4 file5
 ...but Linux sees it as this...
 
 ```bash
-file1${$IFS}file2${$IFS}file3${$IFS}file4${$IFS}file5
+file1${IFS}file2${IFS}file3${IFS}file4${IFS}file5
 ```
 
-"Fields" are important because a `for` loop will loop once per field.
+"Fields" are important because a `for` loop will loop once per field. (We learned about `for` loops in [301-03](https://github.com/inkVerb/vip/blob/master/301/Lesson-03.md))
 
 ...The question is: ***What constitutes a field?***
 
