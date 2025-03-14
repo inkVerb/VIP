@@ -28,6 +28,18 @@ ___
 - `#!/bin/ksh`    Korn Shell
 - `#!/bin/zsh`    Z Shell
 
+**Bourne Shell** was last updated in 1989, and most `/bin/sh` commands merely link to `/bin/bash` these days
+
+Special instructions for non-Ubuntu machines:
+
+This lesson requires a proper `/bin/sh` for the first two sections to demonstrate the limits of Bourne Shell (`/bin/sh`)
+
+Use the [Cheat Sheet: Bourne Shell](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Bourne-Shell.md) to install
+
+Many of the failures you will see in this lesson will not affect most machines since few machines actually use the legacy `/bin/sh`
+
+Ubuntu's `/bin/sh` link to `/bin/dash` will bring many of the Bourne Shell limits, so it could affect Ubuntu systems
+
 #### In the Terminal
 **Run in a new terminal window:**
 >
@@ -156,14 +168,19 @@ _5=5
 _6=6
 
 # Shell:
-echo "Trying Shell..."
+echo "Trying Shell flags..."
 if [ $_5 -lt $_6 ]; then
 echo "Less than! It works!"
 fi
 
 # BASH:
-echo "Trying BASH..."
+echo "Trying BASH operators..."
 if (( $_5 < $_6 )); then
+echo "Less than! It works!"
+fi
+
+echo "Trying BASH operators..."
+if [[ $_5 < $_6 ]]; then
 echo "Less than! It works!"
 fi
 
@@ -198,14 +215,19 @@ _5=5
 _6=6
 
 # Shell:
-echo "Trying Shell..."
+echo "Trying Shell flags..."
 if [ $_5 -lt $_6 ]; then
 echo "Less than! It works!"
 fi
 
 # BASH:
-echo "Trying BASH..."
+echo "Trying BASH operators..."
 if (( $_5 < $_6 )); then
+echo "Less than! It works!"
+fi
+
+echo "Trying BASH operators..."
+if [[ $_5 < $_6 ]]; then
 echo "Less than! It works!"
 fi
 
@@ -297,7 +319,7 @@ echo ${Array[@]}
 - `set -a` ***A****ll* variables to be exported to environment
 - `set -e` ***E****xit* immediately if a command returns an exit code other than zero
 - `set -n` Do ***N****ot* execute commands, only read them
-- `set -t` Exi****T*** after executing only one command
+- `set -t` *Exi****T*** after executing only one command
 - `set -u` Treat ***U****nset* variables as errors
 - `set -v` ***V****erbose* (Print shell inputs line by line as the script executes)
 - `set -x` Print *e****X****ecuted* commands and their arguments line by line
