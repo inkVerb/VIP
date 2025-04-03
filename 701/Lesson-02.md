@@ -592,7 +592,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
     // Start the document
     w.Header().Set("Content-Type", "text/html; charset=utf-8")
     
-    // Parse the URL for GET entries
+    // Parse the URL for GET entries, no FORM needed for URL-GET
     values, err := url.ParseQuery(r.URL.RawQuery)
     if err != nil {
         http.Error(w, "Error parsing query", http.StatusBadRequest)
@@ -972,20 +972,20 @@ func handler(w http.ResponseWriter, r *http.Request) {
     // Start the document
     w.Header().Set("Content-Type", "text/html; charset=utf-8")
     
-    // Parse the URL for POST entries
+    // Parse the URL for FORM entries
     err := r.ParseForm()
     if err != nil {
         http.Error(w, "Error parsing form", http.StatusBadRequest)
         return
     }
-    values := r.PostForm
 
     // Construct the $response variable inside its function
     response := htmlDocStart
 
     // Append the $response
     /// If no POST entries, say so
-    if len(values) == 0 {
+    if len(r.PostForm) == 0 {
+    // if len(r.Form) == 0 { // Could also work for FORM, whether GET or POST
         response += `<pre>No form yet.</pre>`
     
     /// If POST entries, show them
@@ -993,15 +993,27 @@ func handler(w http.ResponseWriter, r *http.Request) {
         response += `<code>`
         
         //// Process only specified POST items
-        if one, ok := values["one"]; ok {
+        if one, ok := r.PostForm["one"]; ok {
             response += fmt.Sprintf("one: %s<br>", one[0])
         }
-        if two, ok := values["two"]; ok {
+        // Could also work for FORM, whether GET or POST
+        // if one := r.FormValue("one"); one != "" {
+        //     response += fmt.Sprintf("one: %s<br>", one)
+        // }
+        if two, ok := r.PostForm["two"]; ok {
             response += fmt.Sprintf("two: %s<br>", two[0])
         }
-        if three, ok := values["three"]; ok {
+        // Could also work for FORM, whether GET or POST
+        // if two := r.FormValue("two"); two != "" {
+        //     response += fmt.Sprintf("two: %s<br>", two)
+        // }
+        if three, ok := r.PostForm["three"]; ok {
             response += fmt.Sprintf("three: %s<br>", three[0])
         }
+        // Could also work for FORM, whether GET or POST
+        // if three := r.FormValue("three"); three != "" {
+        //     response += fmt.Sprintf("three: %s<br>", three)
+        // }
         
         response += `</code><br>`
     }
@@ -1676,7 +1688,6 @@ form input.error {
 ```py
 for key in errors.keys():
     html_form = html_form.replace(f'name="{key}"', f'name="{key}" class="error"')
-
 ```
 
 | **Node.js** :
@@ -2883,6 +2894,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
     var response = htmlDocStart
 
     if r.Method == "POST" {
+    // if r.Method == "GET" { // If you want to test for GET and use the same code below with <form method="post">
         err := r.ParseForm()
         if err != nil {
             http.Error(w, "Error parsing form", http.StatusBadRequest)
@@ -2890,12 +2902,20 @@ func handler(w http.ResponseWriter, r *http.Request) {
         }
 
         // Validate & Sanitize
+        //// POST or GET
         fullname := checkPost("fullname", r.FormValue("fullname"))
         username := checkPost("username", r.FormValue("username"))
         email := checkPost("email", r.FormValue("email"))
         webpage := checkPost("webpage", r.FormValue("webpage"))
         number := checkPost("number", r.FormValue("number"))
         password := checkPost("password", r.FormValue("password"))
+        //// Only POST, but would need testing for nil[0] to avoid a runtime panic if any iterm were empty
+        // fullname := checkPost("fullname", r.PostForm["fullname"][0])
+        // username := checkPost("username", r.PostForm["username"][0])
+        // email := checkPost("email", r.PostForm["email"][0])
+        // webpage := checkPost("webpage", r.PostForm["webpage"][0])
+        // number := checkPost("number", r.PostForm["number"][0])
+        // password := checkPost("password", r.PostForm["password"][0])
 
         if r.FormValue("password2") != password {
             errors["password2"] = "Passwords do not match."
@@ -2989,7 +3009,35 @@ localhost
 ___
 
 # The Take
-
+- Go does not need to specify importing other files in the same directory that use `package main`, unlike Python and Node.js
+- Nginx can forward an app (Go, Node, Python, etc) running on a port to the standard domain
+  - Running on port `9001` normally needs `domain.tld:9001`
+  - Nginx uses `proxy_pass http://127.0.0.1:9001;` so `domain.tld` works just the same
+- Go, Python, and Node.js can parse GET and POST methods
+  - They all need to be prepared before use, unlike PHP
+  - Python:
+    - Parse the HTTP request:
+      - `post_data = self.rfile.read(int(content_length))`
+      - `query_components = urllib.parse.parse_qs(post_data.decode())`
+    - `<input name="input_name"` = `query_components['fullname'][0]`
+  - Node.js:
+    - Parse the HTTP request:
+      - `req.on('data', chunk => { body += chunk.toString(); });`
+      - `const queryObject = querystring.parse(body);`
+    - `<input name="input_name"` = `queryObject.input_name`
+  - Go:
+    - Parse the HTTP request: `func handler(w http.ResponseWriter, r *http.Request)`
+    - `values, err := url.ParseQuery(r.URL.RawQuery)` (parse GET from URL)
+    - `values := r.PostForm` (parse POST, safe)
+      - Both `values` above: `<input name="input_name"` = `values["input_name"]`
+    - `if len(r.PostForm) == 0 {` (test for FORM POST presence)
+    - `if len(r.Form) == 0 {` (test for FORM presence, whether POST or GET)
+    - `if r.Method == "POST" { ... }` (test for POST request method)
+    - `if r.Method == "GET" { ... }` (test for GET request method)
+      - All `if` above: `<input name="input_name"` = `r.FormValue("input_name")` only from FORM, whether POST or GET
+      - Unsafe direct use of `PostForm`: `<input name="input_name"` = `r.PostForm["input_name"][0]` only from POST
+        - That `[0]` key on the end is necessary because of how `PostForm` works, not with `FormValue`
+        - This could cause a runtime panic in Go if not properly tested for `nil[0]`
 ___
 
 #### [Lesson 3: Database Connections](https://github.com/inkVerb/vip/blob/master/701/Lesson-03.md)

@@ -102,10 +102,9 @@ Now, follow all instructions in [LENG Desktop](https://github.com/inkVerb/vip/bl
   - This includes Nginx
 - Make sure Code-OSS and extensions are installed
 - Install and setup everything for:
-  - Node.js
-  - Go
   - Python
-  - MongoDB
+  - Node.js (limited)
+  - Go
   - SQLite
   - MySQL/MariaDB
   - PostgreSQL

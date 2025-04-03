@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 12: Frontend State Intergration
+## Lesson 12: Linux Installer Packages
 
 Ready the CLI
 

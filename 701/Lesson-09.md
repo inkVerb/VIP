@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 9: Upload Handling
+## Lesson 9: API
 
 Ready the CLI
 

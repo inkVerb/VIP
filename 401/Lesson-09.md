@@ -619,12 +619,14 @@ false && echo $?
 *Example in a Script:*
 
 ```sh
-true && echo "And/Or is true." || echo "And/Or is false."
 true && echo "And is true."
+true && echo "And/Or is true." || echo "And/Or is false."
+true && echo "And/Or is true." || echo "And/Or is false." && echo "Last also true."
 true || echo "Or is false."
 
-false && echo "And/Or is true." || echo "And/Or is false."
 false && echo "And is true."
+false && echo "And/Or is true." || echo "And/Or is false."
+false && echo "And/Or is true." || echo "And/Or is false." && echo "Last also true."
 false || echo "Or is false."
 ```
 
@@ -648,14 +650,16 @@ gedit truefalse
 
 echo "No variable, simply stating \"true\""
 # Simple test: true
-true && echo "And/Or is true." || echo "And/Or is false."
 true && echo "And is true."
+true && echo "And/Or is true." || echo "And/Or is false."
+true && echo "And/Or is true." || echo "And/Or is false." && echo "Last also true."
 true || echo "Or is false."
 
 echo "No variable, simply stating \"false\""
 # Same simple test: false
-false && echo "And/Or is true." || echo "And/Or is false."
 false && echo "And is true."
+false && echo "And/Or is true." || echo "And/Or is false."
+false && echo "And/Or is true." || echo "And/Or is false." && echo "Last also true."
 false || echo "Or is false."
 
 ```
@@ -690,16 +694,18 @@ Var=true
 echo "Variable set to: $Var"
 
 # Simple test:
-$Var && echo "And/Or is true." || echo "And/Or is false."
 $Var && echo "And is true."
+$Var && echo "And/Or is true." || echo "And/Or is false."
+$Var && echo "And/Or is true." || echo "And/Or is false." && echo "Last also true."
 $Var || echo "Or is false."
 
 Var=false
 echo "Variable set to: $Var"
 
 # Same simple test:
-$Var && echo "And/Or is true." || echo "And/Or is false."
 $Var && echo "And is true."
+$Var && echo "And/Or is true." || echo "And/Or is false."
+$Var && echo "And/Or is true." || echo "And/Or is false." && echo "Last also true."
 $Var || echo "Or is false."
 
 ```
@@ -734,16 +740,18 @@ Var=apples
 echo "Variable set to: $Var"
 
 # Simple test:
-$Var && echo "And/Or is true." || echo "And/Or is false."
 $Var && echo "And is true."
+$Var && echo "And/Or is true." || echo "And/Or is false."
+$Var && echo "And/Or is true." || echo "And/Or is false." && echo "Last also true."
 $Var || echo "Or is false."
 
 Var=pencils
 echo "Variable set to: $Var"
 
 # Same simple test:
-$Var && echo "And/Or is true." || echo "And/Or is false."
 $Var && echo "And is true."
+$Var && echo "And/Or is true." || echo "And/Or is false."
+$Var && echo "And/Or is true." || echo "And/Or is false." && echo "Last also true."
 $Var || echo "Or is false."
 ```
 

@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 11: BASH functions to handle common server-side logic
+## Lesson 11: Frontend State Intergration
 
 Ready the CLI
 
@@ -15,4 +15,4 @@ ___
 
 ___
 
-#### [Lesson 12: Frontend State Intergration](https://github.com/inkVerb/vip/blob/master/701/Lesson-12.md)
+#### [Lesson 12: Linux Installer Packages](https://github.com/inkVerb/vip/blob/master/701/Lesson-12.md)

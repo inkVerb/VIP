@@ -23,7 +23,6 @@ Tasks performed:
   - Self-server for HTTP & SSL
   - Nginx reverse-proxy for HTTP & SSL
 - Database connection
-  - MongoDB (for Node.js only)
   - SQL
     - SQLite included
     - MySQL/MariaDB
@@ -64,18 +63,18 @@ Create a backend language with BASH
 
 ### [Lesson 4: URL Rewrite & Parsing](https://github.com/inkVerb/vip/blob/master/701/Lesson-04.md)
 
-### [Lesson 5: AJAX](https://github.com/inkVerb/vip/blob/master/701/Lesson-05.md)
+### [Lesson 5: Async and AJAX](https://github.com/inkVerb/vip/blob/master/701/Lesson-05.md)
 
-### [Lesson 6: API](https://github.com/inkVerb/vip/blob/master/701/Lesson-06.md)
+### [Lesson 6: Login, SESSION & COOKIES](https://github.com/inkVerb/vip/blob/master/701/Lesson-06.md)
 
-### [Lesson 7: Read & Write Files](https://github.com/inkVerb/vip/blob/master/701/Lesson-07.md)
+### [Lesson 7: Files & Uploads](https://github.com/inkVerb/vip/blob/master/701/Lesson-07.md)
 
-### [Lesson 8: Login, SESSION & COOKIES](https://github.com/inkVerb/vip/blob/master/701/Lesson-08.md)
+### [Lesson 8: Web Installer](https://github.com/inkVerb/vip/blob/master/701/Lesson-08.md)
 
-### [Lesson 9: Upload Handling](https://github.com/inkVerb/vip/blob/master/701/Lesson-09.md)
+### [Lesson 9: API](https://github.com/inkVerb/vip/blob/master/701/Lesson-09.md)
 
 ### [Lesson 10: BASH as server-side via Go](https://github.com/inkVerb/vip/blob/master/701/Lesson-10.md)
 
-### [Lesson 11: BASH functions to handle common server-side logic](https://github.com/inkVerb/vip/blob/master/701/Lesson-11.md)
+### [Lesson 11: Frontend State Intergration](https://github.com/inkVerb/vip/blob/master/701/Lesson-11.md)
 
-### [Lesson 12: Frontend State Intergration](https://github.com/inkVerb/vip/blob/master/701/Lesson-12.md)
+### [Lesson 12: Linux Installer Packages](https://github.com/inkVerb/vip/blob/master/701/Lesson-12.md)

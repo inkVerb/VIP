@@ -9,11 +9,12 @@
 ***If you are running another Linux architecture, you may need to create a [Virtual Machine](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/VirtualBox.md) with Arch or Manjaro***
 
 ### Update
+*And we need to ensure a make dependency*
 
 | **0** :$
 
 ```console
-sudo pacman -Syy
+sudo pacman -Syy base-devel --noconfirm
 ```
 
 ### Setup LENG
@@ -374,9 +375,31 @@ sudo systemctl stop nginx
 *So SSL can be running for your `localhost` developer environment*
 
 ### Servers & Server-Side
-#### Node.js Server
+#### Python
 
 | **NGP1** :$
+
+```console
+sudo pacman -Syy --noconfirm python pip
+```
+
+*Database dependencies for SQLite, MySQL/MariaDB, and PostgreSQL*
+
+| **NG2** :$
+
+```console
+pip3 install mysql-connector-python psycopg2-binary
+```
+
+| **Confirm Python DB Dependencies** :$
+
+```console
+python3 -c "import sqlite3, mysql.connector, psycopg2; print('All good')"
+```
+
+#### Node.js Server
+
+| **NGP3** :$
 
 ```console
 sudo pacman -Syy --noconfirm nodejs
@@ -386,26 +409,46 @@ sudo pacman -Syy --noconfirm nodejs
 
 *(We may not use these in our lessons, but they can be useful for more extensive development with Node.js)*
 
-| **NGP2** :$
+| **NGP4** :$
 
 ```console
 sudo pacman -Syy --noconfirm nvm npm
 ```
 
+*Database dependencies for SQLite, MySQL/MariaDB, and PostgreSQL*
+
+| **NGP5** :$
+
+```console
+npm install sqlite3 mysql pg
+```
+
+| **Confirm Node.js DB Dependencies** :$
+
+```console
+node -e "require('sqlite3'); require('mysql'); require('pg'); console.log('All good')"
+```
+
 #### Go Compiler
 
-| **NGP3** :$
+| **NGP6** :$
 
 ```console
 sudo pacman -Syy --noconfirm go
 ```
 
-#### Python
+*Database dependencies for SQLite, MySQL/MariaDB, and PostgreSQL*
 
-| **NGP4** :$
+| **NGP7** :$
 
 ```console
-sudo pacman -Syy --noconfirm python
+go get github.com/mattn/go-sqlite3 github.com/go-sql-driver/mysql github.com/lib/pq
+```
+
+| **Confirm Go DB Dependencies** :$
+
+```console
+ls -l ~/go/pkg/mod
 ```
 
 ### Databases
@@ -571,8 +614,37 @@ sudo su postgres -c "psql -d somedb"
 - Create a PostgreSQL admin user: (user: `admin` password: `adminpassword`)
   - *You cannot login without specifying a database, but any database may be used with this user*
 
+- One command
+
 ```console
 psql -U postgres -c "CREATE ROLE admin WITH PASSWORD 'adminpassword'; GRANT ALL PRIVILEGES ON DATABASE postgres TO admin WITH GRANT OPTION;"
+```
+
+- Login to PostgreSQL first
+
+```console
+sudo -u postgres psql
+```
+
+- In the SQL terminal :>
+
+```sql
+CREATE ROLE admin WITH LOGIN PASSWORD 'adminpassword';
+GRANT ALL PRIVILEGES ON DATABASE postgres TO admin WITH GRANT OPTION;
+\q
+```
+
+- Now, login as `admin`
+
+```console
+psql -U admin -d postgres -h localhost -W
+```
+
+- Then enter password: `adminpassword`
+- Or as one command:
+
+```console
+PGPASSWORD=adminpassword psql -U admin -d postgres -h localhost -w
 ```
 
 #### MongoDB install & setup
@@ -580,13 +652,13 @@ psql -U postgres -c "CREATE ROLE admin WITH PASSWORD 'adminpassword'; GRANT ALL 
 
 1. Install MongoDB from the AUR (choose one)
 
-| **J1u** :$ use the Ubuntu-compiled binary (compile options unknown)
+| **J1u** :$ use the Ubuntu-compiled binary (compile options unknown, but do this one)
 
 ```console
 yay -Syy --noconfirm mongodb-bin
 ```
 
-| **J1c** :$ compiled on your machine (may take a long time or have issues)
+| **J1c** :$ compiled on your machine (don't do this; it may take a long time and have issues)
 
 ```console
 yay -Syy --noconfirm mongodb

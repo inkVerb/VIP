@@ -1,5 +1,5 @@
 # Linux 701
-## Lesson 7: Read & Write Files
+## Lesson 7: Files & Uploads
 
 Ready the CLI
 
@@ -15,4 +15,4 @@ ___
 
 ___
 
-#### [Lesson 8: Login, SESSION & COOKIES](https://github.com/inkVerb/vip/blob/master/701/Lesson-08.md)
+#### [Lesson 8: Web Installer](https://github.com/inkVerb/vip/blob/master/701/Lesson-08.md)
