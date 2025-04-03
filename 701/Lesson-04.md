@@ -1661,7 +1661,7 @@ ___
   - These URL rewrites easily convert to GET arguments that can direct where we need to be within our webapp
   - URL rewrites are often called "pretty URLs"
 ## Separate Files for Same App
-- We can create a separate web product (ie: Profile view page) in a separate file, but incorporate it into the same deployment
+- We can create a separate web product (ie: Profile view page as `profile.*`) in a separate file, but incorporate it into the same deployment
   - Python and Node.js need a kind of statement to include the other file, perhaps as a module
   - Go does not `include` the other file, but implies it through the same package, ie `main` in `package main` for any `.go` files in the same directory at run time or compile time
     - Go will need to `go run` both files if not compiled first
@@ -1673,6 +1673,8 @@ ___
 - SQLite is simpler for many reasons:
   - It does not need to run as a service, lightening load on the system and creates less work for the SysAdmin
   - It does not need user or password settings, so config files are simpler
+- The database processes are also in a separate file for the same reasons as the `profile.*` file
+  - This way, a team or developer focused on SQL calls can maintain that file separately from the overall product roadmap
 ___
 
 #### [Lesson 5: Async and AJAX](https://github.com/inkVerb/vip/blob/master/701/Lesson-05.md)
