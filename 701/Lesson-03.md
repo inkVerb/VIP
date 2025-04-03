@@ -3522,11 +3522,15 @@ localhost
 ___
 
 # The Take
-- Python, Node.js, and Go are all capable of working with various SQL engine
+- Python, Node.js, and Go are all capable of working with various SQL engines
 - The interaction per SQL engine can be in a separate file, function, or object from the rest of the program
   - The Python, Node.js, or Go program can remain the same, regardless of which SQL engine is used
   - Which SQL engine to use can be any mere option in a config file
   - We might say such an app is "database engine agnostic" beyond the database config
+- Since Go compiles at or before run time, database config files should use plain text (ie `.conf`), not `.go` extensions
+  - This keeps them editable by the SysAdmin
+  - Keep them as simple as possible
+  - Plan for your code to use this structure
 ___
 
 #### [Lesson 4: URL Rewrite & Parsing](https://github.com/inkVerb/vip/blob/master/701/Lesson-04.md)

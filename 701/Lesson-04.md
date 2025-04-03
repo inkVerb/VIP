@@ -1655,7 +1655,24 @@ go run backend.go profile.go
 ___
 
 # The Take
-
+## URL Rewrites
+- Python, Node.js, and Go handle URL rewrites internally
+  - No server modifications are needed as PHP needs in Apache's `.conf` site files, or more commonly `.htaccess`
+  - These URL rewrites easily convert to GET arguments that can direct where we need to be within our webapp
+  - URL rewrites are often called "pretty URLs"
+## Separate Files for Same App
+- We can create a separate web product (ie: Profile view page) in a separate file, but incorporate it into the same deployment
+  - Python and Node.js need a kind of statement to include the other file, perhaps as a module
+  - Go does not `include` the other file, but implies it through the same package, ie `main` in `package main` for any `.go` files in the same directory at run time or compile time
+    - Go will need to `go run` both files if not compiled first
+  - This is useful so that each different file could be treated as a different web product, such as for different Product Managers or different Products, etc
+    - Specializing the organization also prevents different teams from creating complex conflicts for `git` versioning
+## Databases
+- MySQL/MariaDB and PostgreSQL need to run as services (via `systemctl start ...`)
+  - This takes up system resources
+- SQLite is simpler for many reasons:
+  - It does not need to run as a service, lightening load on the system and creates less work for the SysAdmin
+  - It does not need user or password settings, so config files are simpler
 ___
 
 #### [Lesson 5: Async and AJAX](https://github.com/inkVerb/vip/blob/master/701/Lesson-05.md)
