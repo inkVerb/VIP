@@ -229,13 +229,11 @@ if __name__ == "__main__":
 ```
 
 #### Node.js
-- *Node.js broke during course development with a [remarkably common yet unfixed error](https://stackoverflow.com/questions/68441706)*
-- *Node.js is untested for this lesson*
 
 | **2** :$
 
 ```console
-code functions.node backend-app.node
+code functions.js backend-app.js
 ```
 
 *Note we use `.js` as the extension for the `functions.*` file so we don't need to specify the file extension in the main Node script*
@@ -298,7 +296,7 @@ function formInput(name, value) {
 module.exports = { checkPost, formInput, errors };
 ```
 
-| **`backend-app.node`** :
+| **`backend-app.js`** :
 
 ```js
 const http = require('http');
@@ -892,7 +890,7 @@ localhost
 ```console
 cp sqlite-db.js db.js
 cp sqlite-process.js db-process.js
-node backend-app.node
+node backend-app.js
 ```
 
 | **B-9** ://
@@ -1152,7 +1150,7 @@ localhost
 ```console
 cp mysql-db.js db.js
 cp mysql-process.js db-process.js
-node backend-app.node
+node backend-app.js
 ```
 
 | **B-16** ://
@@ -1407,7 +1405,7 @@ localhost
 ```console
 cp postgres-db.js db.js
 cp postgres-process.js db-process.js
-node backend-app.node
+node backend-app.js
 ```
 
 | **B-23** ://
@@ -1664,10 +1662,10 @@ if __name__ == "__main__":
 | **27** :$
 
 ```console
-code backend-users-app.node
+code backend-users-app.js
 ```
 
-| **`backend-users-app.node`** :
+| **`backend-users-app.js`** :
 
 ```js
 const http = require('http');
@@ -2260,8 +2258,8 @@ localhost
 ```console
 cp sqlite-db.js db.js
 cp sqlite-full-process.js db-process.js
-cp backend-users-app.node backend.node
-node backend.node
+cp backend-users-app.js backend.js
+node backend.js
 ```
 
 | **B-33** ://
@@ -2571,7 +2569,7 @@ localhost
 ```console
 cp mysql-db.js db.js
 cp mysql-full-process.js db-process.js
-node backend.node
+node backend.js
 ```
 
 | **B-39** ://
@@ -2859,7 +2857,7 @@ localhost
 ```console
 cp postgres-db.js db.js
 cp postgres-full-process.js db-process.js
-node backend.node
+node backend.js
 ```
 
 | **B-45** ://
@@ -3422,7 +3420,7 @@ localhost
 
 ```console
 cp sqlite-db.js db.js
-node backend.node
+node backend.js
 ```
 
 | **B-52** ://
@@ -3439,7 +3437,7 @@ localhost
 
 ```console
 cp mysql-db.js db.js
-node backend.node
+node backend.js
 ```
 
 | **B-53** ://
@@ -3456,7 +3454,7 @@ localhost
 
 ```console
 cp postgres-db.js db.js
-node backend.node
+node backend.js
 ```
 
 | **B-54** ://

@@ -116,10 +116,10 @@ if __name__ == "__main__":
 | **2** :$
 
 ```console
-code rewrite-get.node
+code rewrite-get.js
 ```
 
-| **`rewrite-get.node`** :
+| **`rewrite-get.js`** :
 
 ```js
 const http = require('http');
@@ -331,7 +331,7 @@ Operative Python code:
 | **5** :$
 
 ```console
-node rewrite-get.node
+node rewrite-get.js
 ```
 
 | **B-5** ://
@@ -496,10 +496,10 @@ if __name__ == "__main__":
 | **8** :$
 
 ```console
-code rewrite-multi-get.node
+code rewrite-multi-get.js
 ```
 
-| **`rewrite-multi-get.node`** :
+| **`rewrite-multi-get.js`** :
 
 ```js
 const http = require('http');
@@ -729,7 +729,7 @@ Operative Python code:
 | **11** :$
 
 ```console
-node rewrite-multi-get.node
+node rewrite-multi-get.js
 ```
 
 | **B-11** ://
@@ -951,10 +951,10 @@ def handle_profile_request(path):
 | **15** :$
 
 ```console
-code backend-users-app.node profile.js
+code backend-users-app.js profile.js
 ```
 
-| **`backend-users-app.node`** :
+| **`backend-users-app.js`** :
 
 ```js
 const http = require('http');
@@ -1558,8 +1558,8 @@ python backend.py
 
 ```console
 cp sqlite-db.js db.js
-cp backend-users-app.node backend.node
-node backend.node
+cp backend-users-app.js backend.js
+node backend.js
 ```
 
 | **B-19** ://
@@ -1590,21 +1590,21 @@ sudo systemctl start mariadb postgresql
 
 ```console
 cp sqlite-db.js db.js
-node backend.node
+node backend.js
 ```
 
 | **MySQL/MariaDB Node.js** :$
 
 ```console
 cp mysql-db.js db.js
-node backend.node
+node backend.js
 ```
 
 | **PostgreSQL Node.js** :$
 
 ```console
 cp postgres-db.js db.js
-node backend.node
+node backend.js
 ```
 
 ###### Go

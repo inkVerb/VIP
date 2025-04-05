@@ -94,10 +94,10 @@ localhost:9001?ONE=one&TWO=two&THREE=three
 | **4** :$
 
 ```console
-code dump-get.node
+code dump-get.js
 ```
 
-| **`dump-get.node`** :
+| **`dump-get.js`** :
 
 ```js
 const http = require('http');
@@ -144,7 +144,7 @@ process.on('SIGINT', () => {
 | **5** :$
 
 ```console
-node dump-get.node
+node dump-get.js
 ```
 
 | **B-5** ://
@@ -267,7 +267,7 @@ python dump-get.py
 | **10-n** :$
 
 ```console
-node dump-get.node
+node dump-get.js
 ```
 
 | **10-g** :$
@@ -432,10 +432,10 @@ localhost
 | **15** :$
 
 ```console
-code form-get.node
+code form-get.js
 ```
 
-| **`form-get.node`** :
+| **`form-get.js`** :
 
 ```js
 const http = require('http');
@@ -519,7 +519,7 @@ process.on('SIGINT', () => {
 | **16** :$
 
 ```console
-node form-get.node
+node form-get.js
 ```
 
 | **B-16** ://
@@ -808,10 +808,10 @@ localhost
 | **21** :$
 
 ```console
-code form-post.node
+code form-post.js
 ```
 
-| **`form-post.node`** :
+| **`form-post.js`** :
 
 ```js
 const http = require('http');
@@ -900,7 +900,7 @@ process.on('SIGINT', () => {
 | **22** :$
 
 ```console
-node form-post.node
+node form-post.js
 ```
 
 | **B-22** ://
@@ -1238,10 +1238,10 @@ localhost
 | **27** :$
 
 ```console
-code regex-post.node
+code regex-post.js
 ```
 
-| **`regex-post.node`** :
+| **`regex-post.js`** :
 
 ```js
 const http = require('http');
@@ -1415,7 +1415,7 @@ process.on('SIGINT', () => {
 | **28** :$
 
 ```console
-node regex-post.node
+node regex-post.js
 ```
 
 | **B-28** ://
@@ -1908,10 +1908,10 @@ localhost
 | **34** :$
 
 ```console
-code regex-post-css.node
+code regex-post-css.js
 ```
 
-| **`regex-post-css.node`** :
+| **`regex-post-css.js`** :
 
 ```js
 const http = require('http');
@@ -2099,7 +2099,7 @@ process.on('SIGINT', () => {
 | **35** :$
 
 ```console
-node regex-post-css.node
+node regex-post-css.js
 ```
 
 | **B-35** ://
@@ -2550,7 +2550,7 @@ localhost
 | **40** :$
 
 ```console
-code functions.node regex-post-function.node
+code functions.js regex-post-function.js
 ```
 
 *Note we use `.js` as the extension for the `functions.*` file so we don't need to specify the file extension in the main Node script*
@@ -2612,7 +2612,7 @@ function formInput(name, value) {
 module.exports = { checkPost, formInput, errors };
 ```
 
-| **`regex-post-function.node`** :
+| **`regex-post-function.js`** :
 
 ```js
 const http = require('http');
@@ -2760,7 +2760,7 @@ process.on('SIGINT', () => {
 | **41** :$
 
 ```console
-node regex-post-function.node
+node regex-post-function.js
 ```
 
 | **B-41** ://

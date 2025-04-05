@@ -262,7 +262,7 @@ https://localhost
 | **8** :$
 
 ```console
-code hw1.node
+code hw1.js
 ```
 
 *Note:*
@@ -271,7 +271,7 @@ code hw1.node
 - *`localhost` is defined by using `127.0.0.1`*
 - *Loading `http` brings native tools in Node for an HTTP server*
 
-| **`hw1.node`** : port `9001`
+| **`hw1.js`** : port `9001`
 
 ```js
 var http = require('http');
@@ -291,12 +291,12 @@ process.on('SIGINT', function () {
 });
 ```
 
-*Note that we don't use `sudo` to run this `.node` app because it uses a **non-privileged port** (above `1024`)*
+*Note that we don't use `sudo` to run this `.js` app because it uses a **non-privileged port** (above `1024`)*
 
 | **9** :$
 
 ```console
-node hw1.node
+node hw1.js
 ```
 
 | **B-9** ://
@@ -316,7 +316,7 @@ localhost:9001
 | **10** :$
 
 ```console
-code hw2.node
+code hw2.js
 ```
 
 *Note:*
@@ -328,7 +328,7 @@ code hw2.node
 - *Running `server.listen` organizes things a little better*
 - *Running `server.close` makes for a more graceful shutdown of the server*
 
-| **`hw2.node`** : port `80` for HTTP
+| **`hw2.js`** : port `80` for HTTP
 
 ```js
 const http = require('http');
@@ -356,7 +356,7 @@ process.on('SIGINT', () => {
 | **11** :$
 
 ```console
-sudo node hw2.node
+sudo node hw2.js
 ```
 
 *Note no port is specified because it uses the default port `80`*
@@ -369,7 +369,7 @@ localhost
 
 *(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
 
-*You could change the `PORT` constant to `9001` to use `localhost:9001` as in our first example from `hw1.node`*
+*You could change the `PORT` constant to `9001` to use `localhost:9001` as in our first example from `hw1.js`*
 
 *To use SSL, we need to do more than change `PORT` to `443`...*
 
@@ -378,14 +378,14 @@ localhost
 | **12** :$
 
 ```console
-code hw3.node
+code hw3.js
 ```
 
 *Note:*
 - *`port` is assigned to `443` for SSL*
 - *Loading `https` allows us to use SSL features (noted with comments)*
 
-| **`hw3.node`** : port `443` for HTTPS-SSL
+| **`hw3.js`** : port `443` for HTTPS-SSL
 
 ```js
 const https = require('https');
@@ -421,7 +421,7 @@ process.on('SIGINT', () => {
 | **13** :$
 
 ```console
-sudo node hw3.node
+sudo node hw3.js
 ```
 
 *Note no port is specified because it uses the default port `443`*
@@ -446,12 +446,12 @@ https://localhost
 | **14** :$
 
 ```console
-code hw4.node
+code hw4.js
 ```
 
-*Note everything is the same as `hw3.node` for SSL, except we have one `dhparams` statement (noted with a DH comment)*
+*Note everything is the same as `hw3.js` for SSL, except we have one `dhparams` statement (noted with a DH comment)*
 
-| **`hw4.node`** : SSL with DH
+| **`hw4.js`** : SSL with DH
 
 ```js
 const https = require('https');
@@ -487,7 +487,7 @@ process.on('SIGINT', () => {
 | **15** :$
 
 ```console
-sudo node hw4.node
+sudo node hw4.js
 ```
 
 | **B-15** ://
@@ -980,10 +980,10 @@ https://localhost
 | **28** :$
 
 ```console
-code hwrp.node
+code hwrp.js
 ```
 
-| **`hwrp.node`** :
+| **`hwrp.js`** :
 
 ```js
 const http = require('http');
@@ -1011,7 +1011,7 @@ process.on('SIGINT', () => {
 | **29** :$
 
 ```console
-sudo node hw.node
+sudo node hw.js
 ```
 
 | **B-29** ://
