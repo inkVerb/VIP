@@ -465,6 +465,8 @@ const options = {
   key: fs.readFileSync('/etc/ssl/desk/snakeoil.key.pem'),
   cert: fs.readFileSync('/etc/ssl/desk/snakeoil.crt.pem'),
   dhparam: fs.readFileSync('/etc/ssl/desk/dhparams.pem') // DH
+};
+
 
 // HTTPS
 const server = https.createServer(options, (req, res) => {
@@ -677,6 +679,7 @@ func main() {
   tlsConfig := &tls.Config{
     Certificates: []tls.Certificate{cert},
     CipherSuites: []uint16{
+      tls.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
       tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
       tls.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
     },
@@ -724,90 +727,7 @@ https://localhost
 *Let's include our [Diffie-Hellman Group](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) key file in this SSL config to see how that looks...*
 
 #### SSL with DH
-
-| **22** :$
-
-```console
-code hw4.go
-```
-
-*Note everything is the same as `hw3.go` for SSL, except we have a few `dhParams` statements (noted with `DH` comments)*
-*Loading `io/ioutil` allowed us to use `dhParams`*
-
-| **`hw4.go`** : SSL with DH
-
-```go
-package main
-
-import (
-  "fmt"
-  "io/ioutil"
-  "log"
-  "net/http"
-
-  "crypto/tls"
-)
-
-func main() {
-  const (
-    PORT = 443
-    HOST = "127.0.0.1"
-  )
-
-  // SSL certs
-  cert, err := tls.LoadX509KeyPair("/etc/ssl/desk/snakeoil.crt.pem", "/etc/ssl/desk/snakeoil.key.pem")
-  if err != nil {
-    log.Fatal(err)
-  }
-
-  // DH
-  dhParams, err := ioutil.ReadFile("/etc/ssl/desk/dhparams.pem")
-  if err != nil {
-    log.Fatal(err)
-  }
-
-  // SSL/TLS ciphers
-  tlsConfig := &tls.Config{
-    Certificates: []tls.Certificate{cert},
-    CipherSuites: []uint16{
-      tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
-      tls.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
-    },
-    PreferServerCipherSuites: true,
-  }
-  tlsConfig.BuildNameToCertificate()
-  tlsConfig.SetSessionTicketKeys([][32]byte{{}})
-  tlsConfig.DHParams, err = tls.X509KeyPair(dhParams, dhParams) // DH
-
-  server := &http.Server{
-    Addr:      fmt.Sprintf("%s:%d", HOST, PORT),
-    Handler:   http.HandlerFunc(handler),
-    TLSConfig: tlsConfig,
-  }
-
-  fmt.Printf("Starting Go server on port %d with SSL...\n", PORT)
-  log.Fatal(server.ListenAndServeTLS("", ""))
-}
-
-func handler(w http.ResponseWriter, r *http.Request) {
-  w.Header().Set("Content-Type", "text/html; charset=utf-8")
-  w.Write([]byte("Ink is a verb. Ink!"))
-}
-```
-
-| **23** :$
-
-```console
-sudo go run hw4.go
-```
-
-| **B-23** ://
-
-```console
-https://localhost
-```
-
-*(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+*We don't need this because Go already has this and used it in `hw3.go` from the ECDHE cyphers, which is another cool thing about Go*
 
 ### Nginx Reverse-Proxy Server
 The more efficient web server
@@ -859,7 +779,7 @@ http {
   server {
     listen 80;
     server_name localhost;  # Can replace with a domain
-    return 301 https://$host$request_uri;
+    return 302 https://$host$request_uri;
   }
 }
 ```
@@ -906,15 +826,15 @@ server {
 
 *Assuming the [LENG Desktop](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/LENG-Desktop.md), we will move the reverse-proxy SSL Nginx config into place...*
 
-| **24** :$
+| **22** :$
 
 ```console
-sudo ln -sfn /etc/nginx/conf.d/rphttp.conf /etc/nginx/enabled.d/active.conf
+sudo ln -sfn /etc/nginx/conf.d/rphttps.conf /etc/nginx/enabled.d/active.conf
 ```
 
 *Start our Nginx server for this configuration*
 
-| **25** :$
+| **23** :$
 
 ```console
 sudo systemctl start nginx
@@ -931,7 +851,7 @@ Apps that run behind an Nginx reverse-proxy server
 
 #### Python
 
-| **26** :$
+| **24** :$
 
 ```console
 code hwrp.py
@@ -947,27 +867,27 @@ HOST = "127.0.0.1"
 
 class CustomHandler(http.server.SimpleHTTPRequestHandler):
   def do_GET(self):
-  self.send_response(200)
-  self.send_header("Content-type", "text/html")
-  self.end_headers()
-  self.wfile.write(b"Ink is a verb. Ink!")
+    self.send_response(200)
+    self.send_header("Content-type", "text/html")
+    self.end_headers()
+    self.wfile.write(b"Ink is a verb. Ink!")
 
 if __name__ == "__main__":
   with http.server.HTTPServer((HOST, PORT), CustomHandler) as httpd:
     print(f"Starting Python server on port {PORT}...")
     try:
-    httpd.serve_forever()
+      httpd.serve_forever()
     except KeyboardInterrupt:
-    print("Server stopped by user.")
+      print("Server stopped by user.")
 ```
 
-| **27** :$
+| **25** :$
 
 ```console
-sudo python hw.py
+sudo python hwrp.py
 ```
 
-| **B-27** ://
+| **B-25** ://
 
 ```console
 https://localhost
@@ -977,7 +897,7 @@ https://localhost
 
 #### Node.js
 
-| **28** :$
+| **26** :$
 
 ```console
 code hwrp.js
@@ -1008,13 +928,13 @@ process.on('SIGINT', () => {
 });
 ```
 
-| **29** :$
+| **27** :$
 
 ```console
-sudo node hw.js
+sudo node hwrp.js
 ```
 
-| **B-29** ://
+| **B-27** ://
 
 ```console
 https://localhost
@@ -1024,7 +944,7 @@ https://localhost
 
 #### Go
 
-| **30** :$
+| **28** :$
 
 ```console
 code hwrp.go
@@ -1061,19 +981,33 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-| **31** :$
+| **29** :$
 
 ```console
-sudo go run hw.go
+sudo go run hwrp.go
 ```
 
-| **B-31** ://
+| **B-29** ://
 
 ```console
 https://localhost
 ```
 
 *(When finished: <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to exit)*
+
+*For future lessons, we don't need HTTPS specifically, so let's go back to our non-SSL Nginx config...*
+
+| **30** :$
+
+```console
+sudo ln -sfn /etc/nginx/conf.d/rphttp.conf /etc/nginx/enabled.d/active.conf
+```
+
+| **31** :$
+
+```console
+sudo systemctl restart nginx
+```
 
 ___
 
@@ -1082,6 +1016,7 @@ ___
   - Serving web apps
   - SSL/TLS
   - [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) keys
+    - Go handles this natively with ECDHE cyphers; other languages need it declared explicitly
 - Nginx is still more efficient
   - High-traffic
   - More than one web app on the same server

@@ -295,7 +295,7 @@ server {
   listen [::]:80;
   server_name localhost;
   
-  return 301 https://$host$request_uri;
+  return 302 https://$host$request_uri; # 301 would be a permanent redirect good for production; we want 302 temporary so we have options
 }
 ```
 
