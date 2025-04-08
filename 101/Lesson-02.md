@@ -197,6 +197,8 @@ sed -i "s/$1/$2/g" abcd
 
 ```console
 echo "Apples like foo." >> applefoog
+```
+
 | **18** :$
 
 ```console
