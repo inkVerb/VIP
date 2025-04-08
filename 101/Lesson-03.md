@@ -257,7 +257,7 @@ pwd
 ___
 
 # Glossary
-- **argument** - separated by spaces after the command in the CLI, `$1`, `$2`, etc inside a script or program
+- **script arguments** - the space-separated CLI options that become `$1`, `$2`, etc inside the script
 - **backslash** - `\` is the quote character in Shell and can quote `$` or a new line, etc
 - **constant** - a vaiable whose value cannot change
 - **environment** - the processes and constants used by the system to operate, the foundation of using the operating system

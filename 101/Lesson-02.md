@@ -251,6 +251,7 @@ ___
 - **shebang** - the code `#!` which works at a file's first line
 - **update** - make changes to the newest available version
 - **version** - the new code when a file or program is changed, each has its own number
+- **arguments** - the options after a CLI command, separated by spaces
 
 # The Take
 - Gedit can open multiple files from the terminal
