@@ -1738,6 +1738,10 @@ for key := range errors {
 }
 ```
 
+*This `style.css` file does **NOT** need to be in the web directory, just in the same directory as the `.py`/`.js`/`.go` file calling it*
+
+*(This is one of the beautiful things about such languages as these running a web app on its own port server behind Nginx)*
+
 ##### Python
 
 | **32** :$
