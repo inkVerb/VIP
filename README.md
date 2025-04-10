@@ -32,7 +32,7 @@ Who is this course for?
 ### [Linux 601: SysAdmin](https://github.com/inkVerb/VIP/blob/master/601/README.md)
 - Administration of the Linux system, networking basics, creating and using install packages, Git, security, and under the hood
 
-### [Linux 701: Lead Prep](https://github.com/inkVerb/VIP/blob/master/701/README.md)
+### [Linux 701: SaaS Draft](https://github.com/inkVerb/VIP/blob/master/701/README.md)
 - Survey and side-by-side comparison of server & base concepts for: Node.js, Go language, and Python
 
 ### [Cheat Sheets](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/README.md)

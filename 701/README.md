@@ -1,14 +1,15 @@
-# Linux 701: Lead Prep
-*Overview of multiple **backend** (server-side) languages*
+# Linux 701: SaaS Draft
+*A DevOps overview **backend**, server-side languages*
 
 Who this course is for:
 - Tech lead candidates who want a pragmatic & contrasting overview before going deeper
-- Inform business leaders to understand the IT world's important decisions
+- Business leaders wanting to understand the IT world's important decisions
+- Product Managers wanting to understand the pros, cons, and workflows of various server-side structures
 
 This course is a survey of Linux hosting, applied to three common backend languages:
+- Python
 - Node.js
 - Go
-- Python
 
 How they are each:
 - Installed & configured
@@ -31,12 +32,10 @@ Tasks performed:
 - RegEx validation & sanitizing
 - URL rewrites & parsing
 - AJAX
-- API
-  - Vanilla
-  - GraphQL
-- Read & write files
 - Login via `SESSION` & `COOKIE`
+- Read & write files
 - Upload handling
+- Vanilla API creation
 
 Create a backend language with BASH
 - Handle methods
