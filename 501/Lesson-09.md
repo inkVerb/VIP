@@ -1441,6 +1441,27 @@ $json_response = json_encode($ajax_response, JSON_FORCE_OBJECT);
 echo $json_response;
 ```
 
+*One entry might look like this in JSON:*
+
+```json
+{"title":"Mama Cookies","message":"logic dictates"}
+```
+
+*Multiple entries might look like this in JSON:*
+
+```json
+[
+  {"title":"Two Pice","message":"logic dictates"},
+  {"title":"Fifteen Overlords","message":"logic dictates"},
+  {"title":"Mama Cookies","message":"logic dictates"},
+  {"title":"Fortnight Control","message":"logic dictates"}
+]
+```
+
+*...which is a lot less to send as an AJAX response than a block of rendered HTML code*
+
+*So, let the JavaScript already in the browser parse that JSON response and render the rest of the HTML...*
+
 - *pieces.php parses it for JavaScript:*
   - *Note `+` is "concatenate" in JavaScript, which is `.` in PHP*
 
@@ -1449,6 +1470,30 @@ var jsonMetaEditResponse = JSON.parse(event.target.responseText);
 document.getElementById("title_"+p_id).innerHTML = '<b>'+jsonMetaEditResponse["title"]+' &#9998;</b>';
 document.getElementById("changed_"+p_id).innerHTML = '&nbsp;'+jsonMetaEditResponse["message"]+'&nbsp;';
 ```
+
+*...depending on the rest of our HTML structure, this might result in...*
+
+*For one entry:*
+
+```html
+<h1 id="title_3"><b>Mama Cookies &#9998</b></h1>
+<p id="changed_3"> logic dictates </p>
+```
+
+*For multiple entries:*
+
+```html
+<h1 id="title_1"><b>Two Pice &#9998</b></h1>
+<p id="changed_1"> logic dictates </p>
+<h1 id="title_2"><b>Fifteen Overlords &#9998</b></h1>
+<p id="changed_2"> logic dictates </p>
+<h1 id="title_3"><b>Mama Cookies &#9998</b></h1>
+<p id="changed_3"> logic dictates </p>
+<h1 id="title_4"><b>Fortnight Control &#9998</b></h1>
+<p id="changed_4"> logic dictates </p>
+```
+
+*This is why sending JSON objects as an AJAX response is wise and common practice*
 
 | **B-35** :// (<kbd>Ctrl</kbd> + <kbd>R</kbd> to reload)
 
