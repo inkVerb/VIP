@@ -10,11 +10,11 @@ cd ~/School/VIP/401
 ___
 
 ### 5 Rules of Functions:
-1. Functions ***MIGHT NOT*** work in Shell ***before 2018***...
-  - **On 32 bit Linux machines**, functions only work in BASH, ***NOT*** Shell.
-  - **On 64 bit Linux machines**, (most 2018 & later), functions work in ***BOTH*** BASH ***AND*** Shell.
-2. Functions must be declared before called.
+1. A function is a custom command within a script, probably to reuse code.
+2. Functions must be declared before called in interpreted (script) languages (Linux, JS, PHP, Python, Ruby).
+  - This is unlike compiled languages (C, Go, Rust, Java, Swift).
 3. Functions take arguments.
+  - Some call these "parameters".
 4. Variables in functions can be either:
   - `global` (for the entire script)
   - `local` (for the function only)
