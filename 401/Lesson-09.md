@@ -964,7 +964,7 @@ We looked at different `exit` codes in [301 Lesson 6](https://github.com/inkVerb
 
 Now, we will pass a child script's exit code to make the parent script exit with the same code using this one line exit pass:
 
-| **one line exit pass** :
+| **One Line Exit Pass (OLEP)** :
 
 ```bash
 e="$?"; [[ "$e" = "0" ]] || exit "$e"
@@ -995,11 +995,6 @@ gedit child-exit parent-exit
 # Uncomment to use the one line exit pass:
 #e="$?"; [[ "$e" = "0" ]] || exit "$e"
 
-# Without this, the one line exit pass isn't needed because the script ends
-if [ "$noargument" = "true" ]; then
-  exit
-fi
-
 echo "Parent is finished."
 ```
 
@@ -1018,8 +1013,6 @@ if [ -n "$willexit" ]; then
   else
     exit 1
   fi
-else
-  noargument="true"
 fi
 ```
 
@@ -1150,11 +1143,6 @@ echo $?
 # Uncomment to use the one line exit pass:
 e="$?"; [[ "$e" = "0" ]] || exit "$e"
 
-# Without this, the one line exit pass isn't needed because the script ends
-if [ "$noargument" = "true" ]; then
-  exit
-fi
-
 echo "Parent is finished."
 ```
 
@@ -1196,7 +1184,7 @@ echo "Parent is finished."
 
 *Try putting the one line exit pass* ***after*** *the `if` test, the test changes `$?` value!*
 
-| **parent-exit** : (MPEL is after the test)
+| **parent-exit** : (OLEP is after the test)
 
  ```bash
 #!/bin/bash
@@ -1275,15 +1263,15 @@ ___
   - `if [ -n "$(cat SOME-FILE)" ]` will return `false` if "SOME-FILE" as no contents
     - This is because the contents of SOME-FILE would be the value of the Command Substitute; no contents = nothing to set as the value, so it would be "empty"
 
-## one line exit pass (MPEL)
+## one line exit pass (OLEP)
 - `e="$?"; [[ "$e" = "0" ]] || exit "$e"`
   - This line should be added right after every essential child script, if the success of the child script matters
-  - MPEL will exit if the child script fails, passing the exit status to the final exit of the parent script
-- We need the MPEL because other scripts and even an `if` test or `wait` will change the last exit code `$?` value
+  - OLEP will exit if the child script fails, passing the exit status to the final exit of the parent script
+- We need the OLEP because other scripts and even an `if` test or `wait` will change the last exit code `$?` value
 - **Caution:**
- - Do not run `wait` after the MPEL, otherwise you will wait forever
- - Do not run `wait` before the MPEL because the MPEL will be testing `wait` rather than the the child script you want to test
- - The MPEL may actually be able to run instead of `wait`
+ - Do not run `wait` after the OLEP, otherwise you will wait forever
+ - Do not run `wait` before the OLEP because the OLEP will be testing `wait` rather than the the child script you want to test
+ - The OLEP may actually be able to run instead of `wait`
  
  ___
 
