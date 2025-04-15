@@ -168,8 +168,8 @@ ls
 $vari : variable
 $shoe : variable
 
-$VARI : constant variable (do not change)
-$USER : environment constant variable (may change when you log out)
+$VARI : constant (do not change)
+$USER : environment constant (may change when you log out)
 
 $1    : argument variable 1
 ${10} : argument variable 10
@@ -182,7 +182,7 @@ $10   : argument variable 1 followed by the number 0
 
 **Argument**: Variable set from the command line
 
-**Constant**: Variable that do not change
+**Constant**: Variable that does not change
 
 *We will look at* ***constants*** *more in [401 Lesson 5](https://github.com/inkVerb/vip/blob/master/401/Lesson-05.md#viii-readonly-variables-constants)*
 
@@ -265,7 +265,7 @@ ___
   - Not the same as a paragraph break, which has text styling to add extra line spacing
   - In HTML, `<br>` is a "line break" that renders following text on a new line while `<p>...</p>` will render paragraph breaks before and after
 - **PWD** - Present Working Directory - the directory being used in the terminal
-- **quote** - prevent a coding character from "working" as code, but only its letter
+- **quote** - prevent one coding character from "working" as code, as we used backslash `\`
 - **quoted argument** - An argument using "quotation marks" that has many words, but acts as a single argument
   - 'Single quotes' and "double quotes" both work, but they might behave differently
 - **user** - the login account that "runs" commands and processes; everything on a computer is run by a "user" 
