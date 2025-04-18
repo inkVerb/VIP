@@ -14,9 +14,9 @@ ___
 2. Functions must be declared before called in interpreted (script) languages (Linux, JS, PHP, Python, Ruby).
   - This is unlike compiled languages (C, Go, Rust, Java, Swift).
 3. Functions take arguments.
-  - Some call these "parameters".
+  - Some call these "parameters".211212111
 4. Variables in functions can be either:
-  - `global` (for the entire script)
+  - **global** (for the entire script, not an allowed Linux term)
   - `local` (for the function only)
 5. Functions don't `exit`; they `return`, but `exit` & `return` codes are the same
   - If a `return` code is not set, the last executed command's `exit` status will be used instead
@@ -202,6 +202,8 @@ echo "function VarB = $VarB"
 }
 
 # Set the global variables
+echo "
+Set variables:"
 VarA="apples"
 VarB="bananas"
 
@@ -212,9 +214,13 @@ echo "script VarB = $VarB"
 # Call the function
 # VarA sets "local"
 # VarB sets "global"
+echo "
+Call function:"
 varfunction
 
 # echo the global variables again to see what changed
+echo "
+Final Countdown:"
 echo "script VarA = $VarA"
 echo "script VarB = $VarB"
 ```
@@ -238,11 +244,13 @@ ___
   - This is not true in other "compiles" programs, only scripts because scripts are processed in order while compiled programs are run by the computer all at once
   - Understanding this, that scripts are processed "in order" helps to understand what a "script" is among programming languages
 3. Functions take arguments; `$1`, `$2`, etc work within the function
-4. Variables in functions can be `local` or `global`
-  - `global` is the default
+4. Variables in functions can be `local` or **global**
+  - **global** is the default in Linux
+    - We don't actually type `global` since it is not a term Linux recognizes
+    - Other languages use `global` since `local` is the default in many other languages
   - Examples:
     - `local Variable=value`
-    - `global Variable=value`
+    - **global** `Variable=value`
 5. `exit` & `return`
   - `$?` is the variable for the last `exit` or `return` code
   - Terminal commands have `exit` codes
