@@ -175,7 +175,7 @@ echo $USER
 ./how2arg one two "$(cat applefoo)"
 ```
 
-*Next "pipe" `|` will **redirect output** from `cat` into `sed`...*
+*Next "pipe"* `|` *will **redirect output** from `cat` into `sed`...*
 
 | **25** :$
 
@@ -235,7 +235,26 @@ echo $(hostnamectl)
 echo $(hostnamectl) > hostnamectl_echo
 ```
 
+*`echo` can preserve lines from command substitution with "quotes"...*
+
 | **33** :$
+
+```console
+echo "$(hostnamectl)"
+```
+
+*`echo` "quoted" content it into a file...*
+
+| **34** :$
+
+```console
+echo "$(hostnamectl)" > hostnamectl_echo
+```
+
+*gedit: Reload `hostnamectl_echo`*
+
+
+| **35** :$
 
 ```console
 gedit hostnamectl_echo
@@ -247,7 +266,7 @@ gedit hostnamectl_echo
 
 *Let's `kill` a desktop app using Command Substitution...*
 
-| **34** :$
+| **36** :$
 
 ```console
 gnome-mines &
@@ -255,7 +274,7 @@ gnome-mines &
 
 *Get the app's "process ID" (PID)...*
 
-| **35** :$
+| **37** :$
 
 ```console
 pgrep gnome-mines
@@ -263,7 +282,7 @@ pgrep gnome-mines
 
 *Note the PID number and replace `55555` with that number below:*
 
-| **36** :$
+| **38** :$
 
 ```console
 kill 55555
@@ -271,19 +290,19 @@ kill 55555
 
 *Do it again, note the number changes...*
 
-| **37** :$
+| **39** :$
 
 ```console
 gnome-mines &
 ```
 
-| **38** :$
+| **40** :$
 
 ```console
 pgrep gnome-mines
 ```
 
-| **39** :$
+| **41** :$
 
 ```console
 kill 55555
@@ -291,13 +310,13 @@ kill 55555
 
 *Now, replace the PID number with `$(what gets the number)`, specifically: `$(pgrep gnome-mines)`...*
 
-| **40** :$
+| **42** :$
 
 ```console
 gnome-mines &
 ```
 
-| **41** :$
+| **43** :$
 
 ```console
 kill $(pgrep gnome-mines)
@@ -305,7 +324,7 @@ kill $(pgrep gnome-mines)
 
 *...Try it a few more times if you want, always the same, no changing numbers!*
 
-| **42** :$
+| **44** :$
 
 ```console
 gedit comboshell
@@ -326,7 +345,7 @@ $myOutput"
 # v01
 ```
 
-| **43** :$
+| **45** :$
 
 ```console
 chmod ug+x comboshell
@@ -334,7 +353,7 @@ chmod ug+x comboshell
 
 *Watch Command Substitution work...*
 
-| **44** :$
+| **46** :$
 
 ```console
 ./comboshell applefoo foo bar
@@ -342,7 +361,7 @@ chmod ug+x comboshell
 
 *Review the contents of `abcd`...*
 
-| **45** :$
+| **47** :$
 
 ```console
 cat abcd
@@ -350,13 +369,13 @@ cat abcd
 
 *Watch Command Substitution work...*
 
-| **46** :$
+| **48** :$
 
 ```console
 ./comboshell abcd jjjjjjjjj "Apple likes to say abcdefghi and "
 ```
 
-| **47** :$
+| **49** :$
 
 ```console
 ./comboshell abcd j " zz"
