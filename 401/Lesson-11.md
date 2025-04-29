@@ -162,7 +162,7 @@ echo Some words$'\t'now a tab$'\t'othertab
 | **20** :$
 
 ```console
-echo $'n'
+echo $'\n'
 ```
 
 *`echo` a new line inside a string*
@@ -181,7 +181,7 @@ echo "First line"$'\n'now another line
 echo "First line then"$'\n'now "another" line$'\t'"after tab"
 ```
 
-### III. Heredoc: `cat <<EOF`
+### III. Heredoc & Nowdoc: `cat <<EOF`
 #### Rules of a heredoc
 1. A "heredoc" is text in a script treated as a separate text document; useful for large amounts of text.
 2. A heredoc is a multi-line argument for a command; the first line can pipe like a normal command.
@@ -398,7 +398,7 @@ EOF
 ./eofvarheredoc
 ```
 
-**Nowdoc cancels variables in a script:**
+*A **nowdoc** cancels variables in a script:**
 
 *Edit this script to see the short version*
 
