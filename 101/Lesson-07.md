@@ -159,6 +159,20 @@ echo $(cat onetwo)
 
 *Note `echo $(Command Substitution)` removed the new lines like it always does*
 
+*...But it won't when we use "double quotes"...*
+
+| **22** :$
+
+```console
+echo "$(cat onetwo)"
+```
+
+| **23** :$
+
+```console
+echo "$(cat abcd)"
+```
+
 ___
 
 # Glossary
