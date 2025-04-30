@@ -181,6 +181,7 @@ ___
 
 # The Take
 - `echo` removes new lines when used to output a `$(cat file)` command substitution
+  - But, `echo` will preserve new lines when command substitution is wrapped with "double quotes" `"$(cat file)"`
 - `cat` preserves new lines when used by itself
 - `cat` can source from multiple files separated by spaces, *before* the output file indicator: `>`
 - `cat` can append to an existing file with the output file indicator: `>>`
