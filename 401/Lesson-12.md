@@ -20,8 +20,8 @@ ___
 ```sh
 #!/bin/sh
 
-read USERNAME
-echo $USERNAME
+read inputname
+echo $inputname
 ```
 
 *What if the user types `rm -r *` at the input?*
@@ -35,25 +35,27 @@ Three Golden Rules of General Security & Safety:
   2. **Don't do less than necessary**
   3. **Be proper: Follow formatting and procedure**
 
-##### 1. Validate a user-input variables with a [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) test (requires BASH)
+##### 1. Validate (Check if correct, yes/no)
+- Confirm a user-input with a [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) test (requires BASH)
 - **Validating is generally a good idea anyway, so a user mistake doesn't break your script**
 - **Validation** does not remove anything unwanted, but rejects everything if an input has the wrong format or characters
 - This test would reject non-alphanumerics characters (`[:alnum:]`):
-  - `[[ "$USERNAME" =~ [:alnum:] ]]`
+  - `[[ "$inputname" =~ [:alnum:] ]]`
   - `[:alnum:]` from: [Characters: Grouped classes](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md#grouped-classes)
   - Example using `read`:
 ```bash
 #!/bin/bash
 
-read USERNAME
-if [[ "$USERNAME" =~ [:alnum:] ]]; then
-echo "Username  valid."
+read inputname
+if [[ "$inputname" =~ [:alnum:] ]]; then
+echo "Input name is valid: $inputname"
 else
-echo "Your username is valid: $USERNAME"
+echo "Your input name is NOT valid!"
 fi
 ```
 
-##### 2. Sanitize
+##### 2. Sanitize (Remove unwanted characters)
+- Remove everything that doesn't belong
 1. You can use tools like `sed` or `grep` or something else to reject or remove certain characters a user inputs
   - This is called **"sanitizing"**
   - E.g. consider HTML <form><input> tags that do this automatically with the `type` attribute
@@ -62,7 +64,7 @@ fi
     - This had to be done with extra code in older versions of HTML and in more basic computer languages
 2. Most computer languages automatically sanitize inputs enough, so you don't need to as often
   - So, the above example would only damage an ancient Shell machine, not BASH or other modern interpreters
-3. Using quotes, like `echo "$USERNAME"`, also prevents most of the problems, *(but you should be doing that anyway)*
+3. Using quotes, like `echo "$inputname"`, also prevents most of the problems, *(but you should be doing that anyway)*
 4. There are some other commands, like above, that prevent things like this
 
 ##### 3. Always quote variables
@@ -80,7 +82,7 @@ var2="$(echo "$var1")"
 echo "$var2" >> somefile
 ```
 
-- **Do `{this}` TO BE AWESOME** in your script:
+- **DO `${this}` TO BE AWESOME** in your script:
 ```sh
 var1="Apples"
 var2="$(echo "${var1}")"
@@ -97,6 +99,9 @@ echo "${var2}" >> somefile
 ##### 5. Use absolute paths for basic commands
 - Many basic commands you know can have scripts written by the same name
 - Example: What if this script was called `cp`, then put somewhere sneaky...
+
+| **`cp`** :
+
 ```sh
 #!/bin/sh
 
