@@ -28,27 +28,16 @@ echo $USERNAME
 
 *This is a normal problem in many programming languages, which is why inputs are "sanitized".*
 
-#### B. Sanitize
-1. You can use tools like `sed` or `grep` or something else to reject or remove certain characters a user inputs
-  - This is called **"sanitizing"**
-  - E.g. consider HTML <form><input> tags that do this automatically with the `type` attribute
-    - `type="email"` will only allow email addresses
-    - `type="url"` will only allow a web address
-    - This had to be done with extra code in older versions of HTML and in more basic computer languages
-2. Most computer languages automatically sanitize inputs enough, so you don't need to as often
-  - So, the above example would only damage an ancient Shell machine, not BASH or other modern interpreters
-3. Using quotes, like `echo "$USERNAME"`, also prevents most of the problems, *(but you should be doing that anyway)*
-4. There are some other commands, like above, that prevent things like this
-
-#### C. Starting Security Solutions
+#### B. Starting Security Solutions
 
 Three Golden Rules of General Security & Safety:
   1. **Don't do more than necessary**
   2. **Don't do less than necessary**
   3. **Be proper: Follow formatting and procedure**
 
-##### 1. Sanitize a user-input variables with a [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) test (requires BASH)
-- **Sanitizing is generally a good idea anyway, so a user mistake doesn't break your script**
+##### 1. Validate a user-input variables with a [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) test (requires BASH)
+- **Validating is generally a good idea anyway, so a user mistake doesn't break your script**
+- **Validation** does not remove anything unwanted, but rejects everything if an input has the wrong format or characters
 - This test would reject non-alphanumerics characters (`[:alnum:]`):
   - `[[ "$USERNAME" =~ [:alnum:] ]]`
   - `[:alnum:]` from: [Characters: Grouped classes](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md#grouped-classes)
@@ -64,12 +53,17 @@ echo "Your username is valid: $USERNAME"
 fi
 ```
 
-##### 2. Shell script file names get no extension, `.sh` if you must
-- Shell scripts get functionality from `#!/bin/...` on the first line, ***not extensions***, so it extensions won't help anyway
-- Adding extensions can make files fool us more easily
-- Great: `myscript`
-- If you must: `myscript.sh`
-- NEVER: `myscript.work` `myscript.exe` `myscript.scripts` `sh.myscript`
+##### 2. Sanitize
+1. You can use tools like `sed` or `grep` or something else to reject or remove certain characters a user inputs
+  - This is called **"sanitizing"**
+  - E.g. consider HTML <form><input> tags that do this automatically with the `type` attribute
+    - `type="email"` will only allow email addresses
+    - `type="url"` will only allow a web address
+    - This had to be done with extra code in older versions of HTML and in more basic computer languages
+2. Most computer languages automatically sanitize inputs enough, so you don't need to as often
+  - So, the above example would only damage an ancient Shell machine, not BASH or other modern interpreters
+3. Using quotes, like `echo "$USERNAME"`, also prevents most of the problems, *(but you should be doing that anyway)*
+4. There are some other commands, like above, that prevent things like this
 
 ##### 3. Always quote variables
 - ***DO NOT*** do this in your script:
@@ -93,7 +87,14 @@ var2="$(echo "${var1}")"
 echo "${var2}" >> somefile
 ```
 
-##### 4. Use absolute paths for basic commands
+##### 4. Shell script file names get no extension, `.sh` if you must
+- Shell scripts get functionality from `#!/bin/...` on the first line, ***not extensions***, so it extensions won't help anyway
+- Adding extensions can make files fool us more easily
+- Great: `myscript`
+- If you must: `myscript.sh`
+- NEVER: `myscript.work` `myscript.exe` `myscript.scripts` `sh.myscript`
+
+##### 5. Use absolute paths for basic commands
 - Many basic commands you know can have scripts written by the same name
 - Example: What if this script was called `cp`, then put somewhere sneaky...
 ```sh
@@ -113,7 +114,7 @@ cp file destination
 - Find the absolute path with `which`
   - For`cp`: `which cp`
 
-##### 5. Don't put `.` (here) in your `$PATH` setting
+##### 6. Don't put `.` (here) in your `$PATH` setting
 - Section I. explained how directories can be added to your `$PATH`
 - It's tempting to add `.` to `$PATH` so testing scrips won't need the "here" path `./` like in these VIP Linux lessons
   - Developers might do this on test machines to make work faster
@@ -121,7 +122,7 @@ cp file destination
 - This security measure is similar to putting absolute paths in your scripts
 - Review the `$PATH` environment variable in [Lesson 03](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md)
 
-##### 6. Consider guides from Apple and Google
+##### 7. Consider guides from Apple and Google
 - *(Yep, Google uses Linux and Apple uses Unix, similar)*
 - [Shell Style Guide from Google](https://google.github.io/styleguide/shell.xml)
 - [Shell Script Security from Apple](https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/ShellScriptSecurity/ShellScriptSecurity.html)

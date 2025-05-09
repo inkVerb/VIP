@@ -161,7 +161,7 @@ ___
 - **file extension** - part of the file name, but comes after `.` period, usually to indicate the file type; can be anything
   - i·e: `.png`, `.jpg`, `.mp3`, `.txt`, `.doc`, `.pdf`, `.conf`, `.php`, `.html`, etc
 - **file type** - the type of file
-  - ie: picture, audio, text, document, PDA file, config, PHP file, HTML file, etc
+  - ie: picture, audio, text, document, PDF file, config, PHP file, HTML file, etc
 - **ignore case** - treat UPPERCASE and lowercase as the same
 - **path** - a file's name after the directories the file is in
   - eg: `directory/somewhere/file`
