@@ -115,49 +115,45 @@ ls web
 sudo gedit /etc/php/php.ini
 ```
 
-    - Debian/Ubuntu?
+- Debian/Ubuntu
 
-    | **3Dg** :$ (maybe `8.0` is a different number)
+| **3Dg** :$ (maybe `8.0` is a different number)
 
 ```console
 sudo gedit /etc/php/8.0/apache2/php.ini
 ```
 
-    - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `file_uploads` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
+   - Search with: <kbd>Ctrl</kbd> + <kbd>F</kbd>, then type `file_uploads` to find the line, <kbd>Ctrl</kbd> + <kbd>S</kbd> to save
+ - Or edit with `vim`:
+   - Arch/Manjaro or RedHat/CentOS
 
-  - Or edit with `vim`:
-
-    - Arch/Manjaro or RedHat/CentOS
-
-    | **3Av** :$
+   | **3Av** :$
 
 ```console
 sudo vim /etc/php/php.ini
 ```
 
-    - Debian/Ubuntu
+- Debian/Ubuntu
 
-    | **3Dv** :$ (maybe `8.0` is a different number)
+| **3Dv** :$ (maybe `8.0` is a different number)
 
 ```console
 sudo vim /etc/php/8.0/apache2/php.ini
 ```
+   - Search by typing: `/file_uploads`, then Enter to find the line, type `:wq` to save and quit
 
-    - Search by typing: `/file_uploads`, then Enter to find the line, type `:wq` to save and quit
+ - Or replace with `sed`:
+   - Arch/Manjaro or RedHat/CentOS
 
-  - Or replace with `sed`:
-
-    - Arch/Manjaro or RedHat/CentOS
-
-    | **3As** :$
+| **3As** :$
 
 ```console
 sudo sed -i 's/^;file_uploads = On/file_uploads = On/' /etc/php/php.ini
 ```
 
-    - Debian/Ubuntu?
+- Debian/Ubuntu?
 
-    | **3Ds** :$ (maybe `8.0` is a different number)
+| **3Ds** :$ (maybe `8.0` is a different number)
 
 ```console
 sudo sed -i 's/^;file_uploads = On/file_uploads = On/' /etc/php/8.0/apache2/php.ini
@@ -181,7 +177,7 @@ sudo systemctl restart httpd
 sudo systemctl restart apache2
 ```
 
-### Basic File Upload
+### I. Basic File Upload
 
 | **5** :$
 
@@ -218,7 +214,7 @@ ls web
 
 ```php
 $file_name = basename($_FILES['some_upload_file']['name']); // Name of the file only, 'name' is a PHP key that does not change
-$temp_file = $_FILES['upload_file']['tmp_name']; // Where the uploaded file actually is, managed by the system
+$temp_file = $_FILES['some_upload_file']['tmp_name']; // Where the uploaded file actually is, managed by the system
 move_uploaded_file($temp_file, $destination_location); // Move an uploaded file
 $file_mime = mime_content_type($any_file); // Get the mime type, requires full path to file
 ```
@@ -276,7 +272,7 @@ ls web/uploads
 
 *Note your file was uploaded*
 
-### Validate Uploaded Files
+### II. Validate Uploaded Files
 **Simple image check**
 
 ```php
@@ -668,7 +664,7 @@ localhost/web/upload.php
 ls web/uploads
 ```
 
-### JavaScript Drag-in Uploader
+### III. JavaScript Drag-in Uploader
 #### Dropzone.js
 - [GitHub repo](https://github.com/enyo/dropzone) (original, maintained)
 - [GitHub fork](https://github.com/inkVerb/dropzone) (legacy version used in this lesson)
@@ -739,7 +735,7 @@ ls web/dropzone_uploads
 
 *For example, try deleting, then re-creating the `web/dropzone_uploads` directory, but without running `chown -R www:www web/dropzone_uploads` and watch Dropzone fail*
 
-### Media Library
+### IV. Media Library
 We can implement Dropzone into a larger media library framework
 
 #### Dropzone to Interact with Our Own AJAX Handler
@@ -1158,7 +1154,7 @@ This helped us understand the order of events in multiple uploads, mainly that i
 
 We will stop using JavaScript browser alerts in the future
 
-### Upload with TinyMCE
+### V. Upload with TinyMCE
 From [Lesson 8](https://github.com/inkVerb/vip/blob/master/501/Lesson-08.md) we already have TinyMCE from [here](https://github.com/tinymce/tinymce-dist)
 
 The directory "tinymce-dist" is at "web/tinymce"
@@ -1356,7 +1352,7 @@ Until Medium Editor allows easy delete/properties of inserted media, our product
 - allow a simple Medium Editor as an option for our users, with no "insert media" options
 - require users to switch on TinyMCE to manage media and modify image properties
 
-### Process Uploaded Files: SQL Database
+### VI. Process Uploaded Files: SQL Database
 
 | **45** :$
 
@@ -1446,7 +1442,7 @@ We have a list of media files uploaded and entered in our SQL database
 
 Now, let's edit and delete those files and entries...
 
-### Process Uploaded Files: Media Properties `<form>`
+### VII. Process Uploaded Files: Media Properties `<form>`
 
 | **47** :$
 
@@ -1541,7 +1537,7 @@ SELECT * FROM media_library;
 ls web/media/*
 ```
 
-### Process Uploaded Files: Linux Processing
+### VIII. Process Uploaded Files: Linux Processing
 *Install the Linux tools on our server...*
 
 - `imagemagick` *Images, from [401 Lesson 2](https://github.com/inkVerb/vip/blob/master/401/Lesson-02.md)*
@@ -2050,7 +2046,7 @@ If you need to clear out your media library without using the GUI, use this code
 > ```
 >
 
-### Insert Media in the Piece Editor
+### IX. Insert Media in the Piece Editor
 
 | **73** :$
 

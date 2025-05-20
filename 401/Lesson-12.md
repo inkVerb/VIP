@@ -67,7 +67,7 @@ fi
 3. Using quotes, like `echo "$inputname"`, also prevents most of the problems, *(but you should be doing that anyway)*
 4. There are some other commands, like above, that prevent things like this
 
-##### 3. Always quote variables
+##### 3. Quote variables
 - ***DO NOT*** do this in your script:
 ```sh
 var1=Apples
@@ -120,7 +120,8 @@ cp file destination
   - For`cp`: `which cp`
 
 ##### 6. Don't put `.` (here) in your `$PATH` setting
-- Section I. explained how directories can be added to your `$PATH`
+- [Lesson 3 Section I.](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md#i-the-path-environment-variable) explained how directories can be added to your `$PATH`
+  - Probably `~/.bashrc` containing: `export PATH=$PATH:/added/dir:/add/another/dir:/add/more/dirs`
 - It's tempting to add `.` to `$PATH` so testing scrips won't need the "here" path `./` like in these VIP Linux lessons
   - Developers might do this on test machines to make work faster
 - This would allow a deadly script named `ls` or `sed` do destroy everything
@@ -532,7 +533,7 @@ ___
 - Best practices:
   1. Sanitize user input for what it should be, [character class](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md) tests are great!
   2. Don't use file extensions in script file names, `.sh` if you must
-  3. Always quote variables
+  3. Quote variables
   4. Use absolute paths for normal commands, find them with: `which COMMAND`
   5. Don't put `.` (here) in your `$PATH` setting
   6. Read other guides, such as:
