@@ -29,8 +29,8 @@ A "protocol" explains how a "host" is reached
 - `ftp://` insecure Internet file server (File Transfer Protocol)
 - `ftps://` secure Internet file server (File Transfer Protocol Secure)
 - `file://` file location on your local computer (just for viewing files, can't run PHP)
-- `tel:`
-- `mailto:`
+- `tel:` telephone protocol (use the phone software to make a call)
+- `mailto:` email (use the default email app to prepare a new email)
 
 #### C. 'path'
 A "path" is a file location, the word comes from talk about the Linux terminal
