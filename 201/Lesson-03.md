@@ -133,7 +133,7 @@ sudo pacman -Scc
 sudo pacman -Rs $(pacman -Qdtq)
 
 # AUR
-sudo yay -Yc
+yay -Yc
 ```
 
 ### Installing
@@ -175,9 +175,9 @@ sudo pacman -Rs some-package-name # And remove dependencies
 sudo pacman -Rns some-package-name # And remove dependencies & configs
 
 # AUR
-sudo yay -R some-package-name
-sudo yay -Rs some-package-name # And remove dependencies
-sudo yay -Rns some-package-name # And remove dependencies & configs
+yay -R some-package-name
+yay -Rs some-package-name # And remove dependencies
+yay -Rns some-package-name # And remove dependencies & configs
 ```
 
 ### IF needed, `exit` from the other "sudoer"
