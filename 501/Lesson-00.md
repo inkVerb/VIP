@@ -197,13 +197,13 @@ git clone https://github.com/inkVerb/501
 | **AP3** :$
 
 ```console
-sudo mkdir -p /srv/www/html/web
+sudo mkdir -p ~/School/VIP/501/web
 ```
 
 | **AP4** :$
 
 ```console
-ln -sfn /srv/www/html/web ~/School/VIP/501/
+sudo ln -sfn ~/School/VIP/501/web /srv/www/html/
 ```
 
 | **AP5** :$
@@ -229,13 +229,13 @@ git clone https://github.com/inkVerb/501
 | **DP3** :$
 
 ```console
-sudo mkdir /var/www/html/web
+sudo mkdir -p ~/School/VIP/501/web
 ```
 
 | **DP4** :$
 
 ```console
-ln -sfn /var/www/html/web ~/School/VIP/501/
+sudo ln -sfn ~/School/VIP/501/web /srv/www/html/
 ```
 
 | **DP5** :$
@@ -244,7 +244,7 @@ ln -sfn /var/www/html/web ~/School/VIP/501/
 sudo chown -R www:www /var/www/html/
 ```
 
-| **DP7** :$ (Make Debian work with these lessons)
+| **DP7** :$ (Make Debian work with these lessons; servers use the `/srv/` directory)
 
 ```console
 sudo ln -sfn /var/www /srv/
@@ -268,13 +268,13 @@ git clone https://github.com/inkVerb/501
 | **EP3** :$
 
 ```console
-sudo mkdir /srv/www/html/web
+sudo mkdir -p ~/School/VIP/501/web
 ```
 
 | **EP4** :$
 
 ```console
-ln -sfn /srv/www/html/web ~/School/VIP/501/
+sudo ln -sfn ~/School/VIP/501/web /srv/www/html/
 ```
 
 | **EP5** :$
@@ -315,7 +315,7 @@ ln -sfn /var/www/html/web ~/School/VIP/501/
 sudo chown -R www:www /var/www/html/
 ```
 
-| **CP6** :$ (Make CentOS work with these lessons)
+| **CP6** :$ (Make CentOS work with these lessons; servers use the `/srv/` directory)
 
 ```console
 sudo ln -sfn /var/www /srv/

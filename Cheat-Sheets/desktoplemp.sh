@@ -4,41 +4,41 @@
 ##DEV Currently does not work with PHP-FPM, only serving static html pages
 
 # Update
-pacman -Syyu --needed --noconfirm
+/usr/bin/pacman -Syyu --needed --noconfirm
 
 # Tools
-pacman -S --needed --noconfirm pwgen zip htop which vim curl wget make cronie
+/usr/bin/pacman -S --needed --noconfirm pwgen zip htop which vim curl wget make cronie
 
 # Setup LEMP
-pacman -S --needed --noconfirm nginx mariadb php php-fpm
+/usr/bin/pacman -S --needed --noconfirm nginx mariadb php php-fpm
 
 # Web user & folder
-groupadd www
-useradd -g www www
-usermod -a -G www http
-mkdir -p /srv/www/html
-chmod u+w /srv/www
-chmod u+w /srv/www/html
-chown -R www:www /srv/www
+/usr/bin/groupadd www
+/usr/bin/useradd -g www www
+/usr/bin/usermod -a -G www http
+/usr/bin/mkdir -p /srv/www/html
+/usr/bin/chmod u+w /srv/www
+/usr/bin/chmod u+w /srv/www/html
+/usr/bin/chown -R www:www /srv/www
 
 # Update server settings
 ### Web user
-sed -i "s/^user =.*/user = www/" /etc/php/php-fpm.d/www.conf
-sed -i "s/^group =.*/group = www/" /etc/php/php-fpm.d/www.conf
-sed -i "s/^listen.owner =.*/listen.owner = www/" /etc/php/php-fpm.d/www.conf
-sed -i "s/^listen.group =.*/listen.group = www/" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s/^user =.*/user = www/" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s/^group =.*/group = www/" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s/^listen.owner =.*/listen.owner = www/" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s/^listen.group =.*/listen.group = www/" /etc/php/php-fpm.d/www.conf
 
-sed -i "s?user = http?user = www?" /etc/php/php-fpm.d/www.conf
-sed -i "s?group = http?group = www?" /etc/php/php-fpm.d/www.conf
-sed -i "s?listen.owner = http?listen.owner = www?" /etc/php/php-fpm.d/www.conf
-sed -i "s?listen.group = http?listen.group = www?" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s?user = http?user = www?" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s?group = http?group = www?" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s?listen.owner = http?listen.owner = www?" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s?listen.group = http?listen.group = www?" /etc/php/php-fpm.d/www.conf
 
 # Local link in Work folder (for each desktop user)
-mkdir -p /srv/www/html/vip
-chmod u+w /srv/www/html/vip
-chown -R www:www /srv/www
+/usr/bin/mkdir -p /srv/www/html/vip
+/usr/bin/chmod u+w /srv/www/html/vip
+/usr/bin/chown -R www:www /srv/www
 for deskuser in /home/*; do
-  deskuser=$(basename $deskuser)
+  deskuser=$(/usr/bin/basename $deskuser)
   if [ -d "/home/$deskuser/.config" ] && [ -d "/home/$deskuser/.local" ]; then
     mkdir -p /home/$deskuser/Work/dev
     ln -sfn /srv/www/html/vip /home/$deskuser/Work/
@@ -47,20 +47,20 @@ for deskuser in /home/*; do
 done
 
 # PHP Settings
-sed -i 's/;extension=mysqli/extension=mysqli/' /etc/php/php.ini
-sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/' /etc/php/php.ini
-sed -i 's/;extension=iconv/extension=iconv/' /etc/php/php.ini
-sed -i 's/^upload_max_filesize.*/upload_max_filesize = 50M/' /etc/php/php.ini
-sed -i 's/^file_uploads.*/file_uploads = On/' /etc/php/php.ini
+/usr/bin/sed -i 's/;extension=mysqli/extension=mysqli/' /etc/php/php.ini
+/usr/bin/sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/' /etc/php/php.ini
+/usr/bin/sed -i 's/;extension=iconv/extension=iconv/' /etc/php/php.ini
+/usr/bin/sed -i 's/^upload_max_filesize.*/upload_max_filesize = 50M/' /etc/php/php.ini
+/usr/bin/sed -i 's/^file_uploads.*/file_uploads = On/' /etc/php/php.ini
 
 # Nginx settings
-cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.vipbak
+/usr/bin/cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.vipbak
 # # Replaces the cat heredoc below; below is more elaborate
 # sed -i 's?#user http;?user www www;?' /etc/nginx/nginx.conf
 # sed -i 's?/usr/share/nginx/html;?/srv/www/html;?' /etc/nginx/nginx.conf
 # sed -i 's?index.html index.htm;?index.html index.htm index.php;?' /etc/nginx/nginx.conf
 # cat heredoc; more elaborate; PHP-FPM (created below) not working, so commented
-cat <<EOF > /etc/nginx/nginx.conf
+/usr/bin/cat <<EOF > /etc/nginx/nginx.conf
 user www www;
 
 worker_processes     1;
@@ -100,11 +100,11 @@ http {
 }
 EOF
 
-touch /srv/www/rewrite
-chown -R www:www /srv/www
+/usr/bin/touch /srv/www/rewrite
+/usr/bin/chown -R www:www /srv/www
 
 ## PHP-FPM
-cat <<'EOF' > /etc/nginx/php_fastcgi.conf
+/usr/bin/cat <<'EOF' > /etc/nginx/php_fastcgi.conf
 # 404
   try_files $fastcgi_script_name =404;
 
@@ -131,19 +131,20 @@ EOF
 
 ## MySQL via Command Line
 /usr/bin/mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+#### Start MariaDB so we can interact with it
+/usr/bin/systemctl start mariadb
 /usr/bin/mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;"
 
-# Start Services
-systemctl start nginx
-systemctl start mariadb
-systemctl start php-fpm
+# Start Other Services
+/usr/bin/systemctl start nginx
+/usr/bin/systemctl start php-fpm
 
 # - Check for specific errors in Nginx server configs
 # nginx -t
 
 # Remove unneeded packages
-pacman -Rsc --noconfirm
-pacman -Scc --noconfirm
+/usr/bin/pacman -Rsc --noconfirm
+/usr/bin/pacman -Scc --noconfirm
 
 # Finish message
 echo "

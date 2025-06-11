@@ -3,37 +3,37 @@
 # This installs LAMP to an Arch/Manjaro Desktop with a www web user
 
 # Update
-pacman -Syyu --needed --noconfirm
+/usr/bin/pacman -Syyu --needed --noconfirm
 
 # Tools
-pacman -S --needed --noconfirm pwgen zip htop which vim curl wget make cronie
+/usr/bin/pacman -S --needed --noconfirm pwgen zip htop which vim curl wget make cronie
 
 # Setup LAMP
-pacman -S --needed --noconfirm apache php php-apache php-fpm mariadb
+/usr/bin/pacman -S --needed --noconfirm apache php php-apache php-fpm mariadb
 
 # Web user & folder
-groupadd www
-useradd -g www www
-usermod -a -G www http
-mkdir -p /srv/www/html
-chmod u+w /srv/www
-chmod u+w /srv/www/html
-chown -R www:www /srv/www
+/usr/bin/groupadd www
+/usr/bin/useradd -g www www
+/usr/bin/usermod -a -G www http
+/usr/bin/mkdir -p /srv/www/html
+/usr/bin/chmod u+w /srv/www
+/usr/bin/chmod u+w /srv/www/html
+/usr/bin/chown -R www:www /srv/www
 
 # Update server to www user
-sed -i "s/^User.*/User www/" /etc/httpd/conf/httpd.conf
-sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
-sed -i "s/^user =.*/user = www/" /etc/php/php-fpm.d/www.conf
-sed -i "s/^group =.*/group = www/" /etc/php/php-fpm.d/www.conf
-sed -i "s/^listen.owner =.*/listen.owner = www/" /etc/php/php-fpm.d/www.conf
-sed -i "s/^listen.group =.*/listen.group = www/" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s/^User.*/User www/" /etc/httpd/conf/httpd.conf
+/usr/bin/sed -i "s/^Group.*/Group www/" /etc/httpd/conf/httpd.conf
+/usr/bin/sed -i "s/^user =.*/user = www/" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s/^group =.*/group = www/" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s/^listen.owner =.*/listen.owner = www/" /etc/php/php-fpm.d/www.conf
+/usr/bin/sed -i "s/^listen.group =.*/listen.group = www/" /etc/php/php-fpm.d/www.conf
 
 # Local link in Work folder (for each desktop user)
-mkdir -p /srv/www/html/vip
-chmod u+w /srv/www/html/vip
-chown -R www:www /srv/www
+/usr/bin/mkdir -p /srv/www/html/vip
+/usr/bin/chmod u+w /srv/www/html/vip
+/usr/bin/chown -R www:www /srv/www
 for deskuser in /home/*; do
-  deskuser=$(basename $deskuser)
+  deskuser=$(/usr/bin/basename $deskuser)
   if [ -d "/home/$deskuser/.config" ] && [ -d "/home/$deskuser/.local" ]; then
     mkdir -p /home/$deskuser/Work/dev
     ln -sfn /srv/www/html/vip /home/$deskuser/Work/
@@ -42,19 +42,19 @@ for deskuser in /home/*; do
 done
 
 # PHP Settings
-sed -i 's/;extension=mysqli/extension=mysqli/' /etc/php/php.ini
-sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/' /etc/php/php.ini
-sed -i 's/;extension=iconv/extension=iconv/' /etc/php/php.ini
-sed -i 's/^upload_max_filesize.*/upload_max_filesize = 50M/' /etc/php/php.ini
-sed -i 's/^file_uploads.*/file_uploads = On/' /etc/php/php.ini
+/usr/bin/sed -i 's/;extension=mysqli/extension=mysqli/' /etc/php/php.ini
+/usr/bin/sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/' /etc/php/php.ini
+/usr/bin/sed -i 's/;extension=iconv/extension=iconv/' /etc/php/php.ini
+/usr/bin/sed -i 's/^upload_max_filesize.*/upload_max_filesize = 50M/' /etc/php/php.ini
+/usr/bin/sed -i 's/^file_uploads.*/file_uploads = On/' /etc/php/php.ini
 
 # Apache Settings
-sed -i "s?^LoadModule mpm_event_module modules/mod_mpm_event.so?#LoadModule mpm_event_module modules/mod_mpm_event.so?" /etc/httpd/conf/httpd.conf
-sed -i "s?^#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so?LoadModule mpm_prefork_module modules/mod_mpm_prefork.so?" /etc/httpd/conf/httpd.conf
-sed -i "s?^#LoadModule http2_module modules/mod_http2.so?LoadModule http2_module modules/mod_http2.so?" /etc/httpd/conf/httpd.conf
-sed -i "s?^#LoadModule rewrite_module modules/mod_rewrite.so?LoadModule rewrite_module modules/mod_rewrite.so?" /etc/httpd/conf/httpd.conf
-sed -i 's?DocumentRoot "/srv/http"?DocumentRoot "/srv/www/html"?' /etc/httpd/conf/httpd.conf
-cat <<EOF >> /etc/httpd/conf/httpd.conf
+/usr/bin/sed -i "s?^LoadModule mpm_event_module modules/mod_mpm_event.so?#LoadModule mpm_event_module modules/mod_mpm_event.so?" /etc/httpd/conf/httpd.conf
+/usr/bin/sed -i "s?^#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so?LoadModule mpm_prefork_module modules/mod_mpm_prefork.so?" /etc/httpd/conf/httpd.conf
+/usr/bin/sed -i "s?^#LoadModule http2_module modules/mod_http2.so?LoadModule http2_module modules/mod_http2.so?" /etc/httpd/conf/httpd.conf
+/usr/bin/sed -i "s?^#LoadModule rewrite_module modules/mod_rewrite.so?LoadModule rewrite_module modules/mod_rewrite.so?" /etc/httpd/conf/httpd.conf
+/usr/bin/sed -i 's?DocumentRoot "/srv/http"?DocumentRoot "/srv/www/html"?' /etc/httpd/conf/httpd.conf
+/usr/bin/cat <<EOF >> /etc/httpd/conf/httpd.conf
 LoadModule php_module modules/libphp.so
 AddHandler php-script .php
 Include conf/extra/php_module.conf
@@ -70,7 +70,7 @@ Protocols h2 http/1.1
 EOF
 
 ## PHP-FPM
-cat <<'EOF' > /etc/nginx/php_fastcgi.conf
+/usr/bin/cat <<'EOF' > /etc/nginx/php_fastcgi.conf
 # 404
   try_files $fastcgi_script_name =404;
 
@@ -97,12 +97,13 @@ EOF
 
 ### MySQL via Command Line
 /usr/bin/mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+#### Start MariaDB so we can interact with it
+/usr/bin/systemctl start mariadb
 /usr/bin/mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;"
 
-# Start Services
-systemctl start httpd
-systemctl start mariadb
-systemctl start php-fpm
+# Start Other Services
+/usr/bin/systemctl start httpd
+/usr/bin/systemctl start php-fpm
 
 # - Check for specific errors in Apache server configs
 # apachectl -t
@@ -111,8 +112,8 @@ systemctl start php-fpm
 # apachectl -S
 
 # Remove unneeded packages
-pacman -Rsc --noconfirm
-pacman -Scc --noconfirm
+/usr/bin/pacman -Rsc --noconfirm
+/usr/bin/pacman -Scc --noconfirm
 
 # Finish message
 echo "

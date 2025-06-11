@@ -19,6 +19,25 @@ Debian/Ubuntu
 sudo systemctl start apache2 mariadb
 ```
 
+If teaching multiple students
+
+Prep directory
+```console
+cd ~/School/VIP
+```
+
+Schoolwork directory
+```console
+mv 501 STUDENT_1/
+mv STUDENT_2/501 .
+```
+
+Re-ready the CLI
+
+```console
+cd ~/School/VIP/501
+```
+
 - [AJAX Security](AJAX-security.md)
 ___
 

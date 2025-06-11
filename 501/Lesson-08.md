@@ -19,18 +19,39 @@ Debian/Ubuntu
 sudo systemctl start apache2 mariadb
 ```
 
+If teaching multiple students
+
+Prep directory
+```console
+cd ~/School/VIP
+```
+
+Webapp database ***dump***
+```console
+mariadb-dump -u admin -padminpassword webapp_db > STUDENT_1/webapp_db.sql
+```
+
+Webapp database ***restore***
+```console
+mariadb -u admin -padminpassword webapp_db < STUDENT_2/webapp_db.sql
+```
+
+Schoolwork directory
+```console
+mv 501 STUDENT_1/
+mv STUDENT_2/501 .
+```
+
+Re-ready the CLI
+
+```console
+cd ~/School/VIP/501
+```
+
 ### This lesson uses two terminals and two browser tabs!
 Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
-
-*Make sure we have our SQL admin user*
-
-| **X0** :$
-
-```console
-sudo mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'adminpassword' WITH GRANT OPTION;"
-```
 
 | **S0** :$ *(password in the terminal, not safe outside these lessons!)*
 
@@ -60,7 +81,6 @@ GRANT ALL PRIVILEGES ON webapp_db.* TO webapp_db_user@localhost IDENTIFIED BY 'w
 FLUSH PRIVILEGES;
 USE webapp_db;
 ```
-
 
 | **SR2** ://phpMyAdmin **> webapp_db**
 

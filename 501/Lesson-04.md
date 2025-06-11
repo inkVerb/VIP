@@ -19,6 +19,35 @@ Debian/Ubuntu
 sudo systemctl start apache2 mariadb
 ```
 
+If teaching multiple students
+
+Prep directory
+```console
+cd ~/School/VIP
+```
+
+Webapp database ***dump***
+```console
+mariadb-dump -u admin -padminpassword firstapp_db > STUDENT_1/firstapp_db.sql
+```
+
+Webapp database ***restore***
+```console
+mariadb -u admin -padminpassword firstapp_db < STUDENT_2/firstapp_db.sql
+```
+
+Schoolwork directory
+```console
+mv 501 STUDENT_1/
+mv STUDENT_2/501 .
+```
+
+Re-ready the CLI
+
+```console
+cd ~/School/VIP/501
+```
+
 ### This lesson uses two terminals and two browser tabs!
 Ready the secondary SQL terminal and secondary SQL browser
 

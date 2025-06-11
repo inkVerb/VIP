@@ -19,6 +19,25 @@ Debian/Ubuntu
 sudo systemctl start apache2 mariadb
 ```
 
+If teaching multiple students
+
+Prep directory
+```console
+cd ~/School/VIP
+```
+
+Schoolwork directory
+```console
+mv 501 STUDENT_1/
+mv STUDENT_2/501 .
+```
+
+Re-ready the CLI
+
+```console
+cd ~/School/VIP/501
+```
+
 - [Tests: Ternary Statements](https://github.com/inkVerb/vip/blob/master/Cheat-Sheets/Tests.md#xi-ternary-statements-)
 - [Characters](https://github.com/inkVerb/VIP/blob/master/Cheat-Sheets/Characters.md)
 
@@ -53,7 +72,7 @@ ___
   - `<?php ?>` can be used ***inside*** an `.html` file
   - `<?php ?>` can be used ***inline*** with HTML
 
-| **.html** or **.php** :
+| **`.html`** or **`.php`** :
 ```html
 <html>
 <head>
@@ -119,7 +138,7 @@ You will see many tests with `} else {` options for reporting errors, this is wh
 
 #### `$_GET` Method
 
-**_GET**
+**`_GET`**
 ```
 http://webaddress.tld?this_name=something-here
 ```
@@ -172,7 +191,7 @@ localhost/web/phpget.php?go=over there&h=6-hour&time=8:22
 
 #### `$_POST` Method
 
-**_POST**
+**`_POST`**
 ```html
 <form method="post" action="some_page.php">
 <input name="this_name">

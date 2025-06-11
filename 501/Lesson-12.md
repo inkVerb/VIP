@@ -20,6 +20,35 @@ Debian/Ubuntu
 sudo systemctl start apache2 mariadb
 ```
 
+If teaching multiple students
+
+Prep directory
+```console
+cd ~/School/VIP
+```
+
+Webapp database ***dump***
+```console
+mariadb-dump -u admin -padminpassword blog_db > STUDENT_1/blog_db.sql
+```
+
+Webapp database ***restore***
+```console
+mariadb -u admin -padminpassword blog_db < STUDENT_2/blog_db.sql
+```
+
+Schoolwork directory
+```console
+mv 501 STUDENT_1/
+mv STUDENT_2/501 .
+```
+
+Re-ready the CLI
+
+```console
+cd ~/School/VIP/501
+```
+
 ___
 
 ### I. XML Structure

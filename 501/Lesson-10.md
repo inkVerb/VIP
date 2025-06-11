@@ -19,6 +19,35 @@ Debian/Ubuntu
 sudo systemctl start apache2 mariadb
 ```
 
+If teaching multiple students
+
+Prep directory
+```console
+cd ~/School/VIP
+```
+
+Webapp database ***dump***
+```console
+mariadb-dump -u admin -padminpassword webapp_db > STUDENT_1/webapp_db.sql
+```
+
+Webapp database ***restore***
+```console
+mariadb -u admin -padminpassword webapp_db < STUDENT_2/webapp_db.sql
+```
+
+Schoolwork directory
+```console
+mv 501 STUDENT_1/
+mv STUDENT_2/501 .
+```
+
+Re-ready the CLI
+
+```console
+cd ~/School/VIP/501
+```
+
 ### This lesson uses two terminals and two browser tabs!
 Ready the secondary SQL terminal and secondary SQL browser
 
@@ -390,12 +419,6 @@ ls web/uploads
 
 *It should have succeeded*
 
-**File name check**
-
-```php
-file_exists($full_file_path) // If file exists, boolean
-```
-
 | **14** :$
 
 ```console
@@ -425,11 +448,18 @@ ls -l web/uploads
 
 - *PHP overwrote the file because it already existed*
 
+**File name check**
+
+```php
+file_exists($full_file_path) // If file exists, boolean
+```
+
 | **16** :$
 
 ```console
 sudo cp core/10-upload4.php web/upload.php && \
 code core/10-upload4.php && \
+ls web/uploads
 ```
 
 *Note upload.php:*

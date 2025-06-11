@@ -19,6 +19,25 @@ Debian/Ubuntu
 sudo systemctl start apache2 mariadb
 ```
 
+If teaching multiple students
+
+Prep directory
+```console
+cd ~/School/VIP
+```
+
+Webapp database ***dump***
+```console
+mariadb-dump -u admin -padminpassword new_db > STUDENT_1/new_db.sql
+mariadb-dump -u admin -padminpassword food_db > STUDENT_1/food_db.sql
+```
+
+Webapp database ***restore***
+```console
+mariadb -u admin -padminpassword new_db < STUDENT_2/new_db.sql
+mariadb -u admin -padminpassword food_db < STUDENT_2/food_db.sql
+```
+
 Ready SQL *if continuing after not finishing this lesson last time*
 
 ```console
