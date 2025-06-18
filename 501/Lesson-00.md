@@ -268,13 +268,13 @@ git clone https://github.com/inkVerb/501
 | **EP3** :$
 
 ```console
-sudo mkdir -p ~/School/VIP/501/web
+sudo mkdir -p /srv/www/html/web
 ```
 
 | **EP4** :$
 
 ```console
-sudo ln -sfn ~/School/VIP/501/web /srv/www/html/
+sudo ln -sfn /srv/www/html/web ~/School/VIP/501/
 ```
 
 | **EP5** :$

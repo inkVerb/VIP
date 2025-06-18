@@ -36,10 +36,24 @@ Webapp database ***restore***
 mariadb -u admin -padminpassword webapp_db < STUDENT_2/webapp_db.sql
 ```
 
-Schoolwork directory
+Backup Student 1 schoolwork directory
 ```console
 mv 501 STUDENT_1/
+cd STUDENT_1
+rm web
+sudo mv /srv/www/html/web .
+sudo chown -R www:www web
+cd ..
+```
+
+Restore Student 1 schoolwork directory
+```
 mv STUDENT_2/501 .
+cd STUDENT_2
+sudo mv 501/web /srv/www/html/
+sudo chown -R www:www /srv/www/html/web
+sudo ln -sfn /srv/www/html/web .
+sudo chown -R www:www web
 ```
 
 Re-ready the CLI
@@ -840,7 +854,10 @@ Dropzone.options.dropzoneUploader = { // JS: .dropzoneUploader = HTML: id="dropz
 localhost/web/medialibrary.php
 ```
 
-- *If you "Drop to upload!" button instead of a full-width box like before, then try using the URL in another browser or a private window; not all CSS changes load because browsers cache*
+- *Not all CSS changes load because browsers cache*
+- *If you see a "Drop to upload!" button instead of a full-width box like before, try any of these:*
+  - Reload the `style.css` file in a new browser tab to refresh the cache: `localhost/web/style.css`
+  - Try using the URL in another browser or a private window
   - If you need to login again in another browser or private window: `localhost/web/webapp.php`
     - Username: jonboy
     - Password: My#1Password

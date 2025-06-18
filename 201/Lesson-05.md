@@ -149,6 +149,12 @@ ls
 ls -a
 ```
 
+*If the `root` user logs into the GUI a new file is created at `/var/lib/AccountsService/users/root`, which normal users can't access*
+
+- [That `root` user's file has a setting](https://superuser.com/a/1865271/942694) to list it in GUI logins
+  - Change `SystemAccount=false` to `SystemAccount=true` to remove frm GUI login list
+- This only happens with users that have `root` permissions, not normal users like `pinkpink`
+
 *Look at all the hidden directories, these are for settings and config files*
 
 | **11** :$
@@ -199,6 +205,14 @@ su pinkypurple
 ```
 
 *You can't login because `pinkypurple` doesn't have a password!*
+
+*If you login from a `root` prompt, you get locked into a prompt with `%`, just `exit`*
+
+| **exit if needed** :%
+
+```console
+exit
+```
 
 *Set a password for `pinkypurple`*
 
@@ -388,6 +402,7 @@ ls
 - `deluser` vs `userdel`
 - `addgroup` vs `groupadd`
 - `delgroup` vs `groupdel`
+- Ubuntu/RedHat vs Arch/OpenSUSE
 
 *Now exit as `pinkypurple`*
 

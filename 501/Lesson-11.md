@@ -36,10 +36,24 @@ Webapp database ***restore***
 mariadb -u admin -padminpassword blog_db < STUDENT_2/blog_db.sql
 ```
 
-Schoolwork directory
+Backup Student 1 schoolwork directory
 ```console
 mv 501 STUDENT_1/
+cd STUDENT_1
+rm web
+sudo mv /srv/www/html/web .
+sudo chown -R www:www web
+cd ..
+```
+
+Restore Student 1 schoolwork directory
+```
 mv STUDENT_2/501 .
+cd STUDENT_2
+sudo mv 501/web /srv/www/html/
+sudo chown -R www:www /srv/www/html/web
+sudo ln -sfn /srv/www/html/web .
+sudo chown -R www:www web
 ```
 
 Re-ready the CLI
