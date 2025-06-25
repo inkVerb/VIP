@@ -38,22 +38,18 @@ mariadb -u admin -padminpassword webapp_db < STUDENT_2/webapp_db.sql
 
 Backup Student 1 schoolwork directory
 ```console
+rm 501/web
+sudo mv /srv/www/html/web 501/
 mv 501 STUDENT_1/
-cd STUDENT_1
-rm web
-sudo mv /srv/www/html/web .
-sudo chown -R www:www web
-cd ..
 ```
 
-Restore Student 1 schoolwork directory
-```
+Restore Student 2 schoolwork directory
+```console
 mv STUDENT_2/501 .
-cd STUDENT_2
 sudo mv 501/web /srv/www/html/
 sudo chown -R www:www /srv/www/html/web
-sudo ln -sfn /srv/www/html/web .
-sudo chown -R www:www web
+sudo ln -sfn /srv/www/html/web 501/
+sudo chown -R www:www 501/web
 ```
 
 Re-ready the CLI
