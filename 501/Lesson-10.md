@@ -1211,7 +1211,7 @@ sudo mkdir web/tinymce_uploads && \
 sudo cp core/10-tiny-image-upload.html web/tiny.html && \
 sudo cp core/10-tiny-upload1.php web/tiny-upload.php && \
 sudo chown -R www:www /srv/www/html && \
-code core/10-tiny-image-upload.html core/10-tiny-upload.php && \
+code core/10-tiny-image-upload.html core/10-tiny-upload1.php && \
 ls web
 ```
 
@@ -1233,7 +1233,7 @@ localhost/web/tiny.html
 
 1. Browse files in ~/School/VIP/501/test_uploads/
 2. In TinyMCE: Click the "image" button > Upload
-3. Drag in any .png or .jpg file to the upload area
+3. Drag in or browse for any .png or .jpg file to the upload area
 4. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
 
 | **39** :$
@@ -1357,6 +1357,8 @@ localhost/web/tiny.html
 
 **Insert media into Medium Editor**
 
+*This ws buggy and is an example of what won't work*
+
 | **44** :$
 
 ```console
@@ -1372,8 +1374,11 @@ localhost/web/medium.html
 ```
 
 1. Click each "add ..." button, probably each on a new line; if they don't appear, try reloading the webpage
-2. Try to delete media items
-3. Note it is difficult to delete the audio entry
+2. Try to delete media items, if you can get that far
+3. Note any difficulties
+
+- *Some of the bugs can come from CSS changes, which take time for a browser to recognize*
+- *Such problems are common and significantly affect a developer's choice of dependencies, libraries, and stacked apps like TinyMCE, Dropzone, and Medium's editor*
 
 **UX product roadmap dilemma:**
 
