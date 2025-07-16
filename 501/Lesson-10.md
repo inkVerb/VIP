@@ -133,7 +133,7 @@ ls test_uploads
 | **2** :$
 
 ```console
-sudo mkdir web/uploads && \
+sudo mkdir -p web/uploads && \
 sudo chown -R www:www /srv/www/html && \
 ls web
 ```
@@ -728,7 +728,7 @@ On your own, learn more about implementation at [dropzonejs.com](https://www.dro
 | **26** :$
 
 ```console
-sudo mkdir web/dropzone_uploads && \
+sudo mkdir -p web/dropzone_uploads && \
 sudo chown -R www:www web/dropzone_uploads && \
 git clone https://github.com/inkVerb/dropzone.git && \
 sudo cp dropzone/dist/min/dropzone.min.css web/ && \
@@ -1207,7 +1207,7 @@ The directory "tinymce-dist" is at "web/tinymce"
 | **38** :$
 
 ```console
-sudo mkdir web/tinymce_uploads && \
+sudo mkdir -p web/tinymce_uploads && \
 sudo cp core/10-tiny-image-upload.html web/tiny.html && \
 sudo cp core/10-tiny-upload1.php web/tiny-upload.php && \
 sudo chown -R www:www /srv/www/html && \
@@ -1242,12 +1242,12 @@ localhost/web/tiny.html
 ls web/tinymce_uploads
 ```
 
-**Upload "automatically"**
+**Upload "automatically"** *(might not work at this point)*
 
 1. Browse files in ~/School/VIP/501/test_uploads/
 2. Drag any image directly into the TinyMCE editor area; only images will work
 3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
-4. Note the file name was preserved
+4. Note whether the file name was preserved
 
 | **40** :$
 
@@ -1283,10 +1283,10 @@ localhost/web/tiny.html
 
 **Upload with the "file picker"**
 
-1. In TinyMCE: Click the "image" button > General: "upload" icon
+1. In TinyMCE: Click the "image" button > General: upload "Source" icon
 2. Select an image file from ~/School/VIP/501/test_uploads; only images will work
 3. Check the tinymce_uploads directory:$ `ls web/tinymce_uploads`
-4. Note the file name was preserved
+4. Note whether the file name was preserved
 
 | **42** :$
 
