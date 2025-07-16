@@ -40,12 +40,18 @@ Backup Student 1 schoolwork directory
 ```console
 rm 501/web
 sudo mv /srv/www/html/web 501/
+```
+
+```console
 mv 501 STUDENT_1/
 ```
 
 Restore Student 2 schoolwork directory
 ```console
 mv STUDENT_2/501 .
+```
+
+```console
 sudo mv 501/web /srv/www/html/
 sudo chown -R www:www /srv/www/html/web
 sudo ln -sfn /srv/www/html/web 501/
@@ -58,7 +64,7 @@ Re-ready the CLI
 cd ~/School/VIP/501
 ```
 
-### This lesson uses two terminals and two browser tabs!
+### This lesson uses two terminals and three browser tabs!
 Ready the secondary SQL terminal and secondary SQL browser
 
 *(<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> for new terminal tab; <kbd>Ctrl</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd> to switch tabs)*
@@ -93,6 +99,15 @@ localhost/web/webapp.php
 Username: jonboy
 Password: My#1Password
 ```
+
+### CSS for Reload:
+
+| **C-0** :// (Reload this every time `style.css` is updated)
+
+```console
+localhost/web/style.css
+```
+
 ___
 
 ### Prepare

@@ -40,12 +40,18 @@ Backup Student 1 schoolwork directory
 ```console
 rm 501/web
 sudo mv /srv/www/html/web 501/
+```
+
+```console
 mv 501 STUDENT_1/
 ```
 
 Restore Student 2 schoolwork directory
 ```console
 mv STUDENT_2/501 .
+```
+
+```console
 sudo mv 501/web /srv/www/html/
 sudo chown -R www:www /srv/www/html/web
 sudo ln -sfn /srv/www/html/web 501/
