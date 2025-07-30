@@ -1623,6 +1623,7 @@ imagemagick \
 ffmpeg \
 lame \
 pandoc \
+haskell-dlist \
 texlive-latex \
 texlive-fontsrecommended \
 texlive-latexrecommended
@@ -1638,6 +1639,7 @@ imagemagick \
 ffmpeg \
 libmp3lame0 \
 pandoc \
+libghc-dlist-dev \
 texlive-latex-base \
 texlive-fonts-recommended \
 texlive-latex-recommended
@@ -2098,7 +2100,7 @@ If you need to clear out your media library without using the GUI, use this code
 > | **C1** :$
 >
 > ```console
-> sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/> > media/images/* web/media/original/images/* web/media/original/video/* web/media/original/audio/* web/media/original/docs/* && \
+> sudo rm -f web/media/docs/* web/media/audio/* web/media/video/* web/media/images/* web/media/original/images/* web/media/original/video/* web/media/original/audio/* web/media/original/docs/*
 > ```
 > *Delete all entries in the database...*
 >

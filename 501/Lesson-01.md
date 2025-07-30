@@ -431,6 +431,8 @@ localhost/web/phppost.php
 
 *Try the form and developer view*
 
+*Notice the way we preserve the values in the form*
+
 | **8** :$
 
 ```console
@@ -446,6 +448,8 @@ localhost/web/phppost.php
 ```
 
 *Try the form and developer view*
+
+*Notice the way we preserve the values in the form*
 
 | **9** :$
 
