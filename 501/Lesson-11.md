@@ -104,7 +104,7 @@ A simple way to organize many functions and variables
 
 ```php
 aFunction(); // Use a function
-$aProperty; // Use a variable
+$aVariable; // Use a variable
 ```
 
 | **Objects in PHP** :
@@ -135,29 +135,29 @@ This also reflects the basic thinking inside Javascript
 
 Remember, properties and methods are bound to their object and class
 
-| **Normal PHP** : (Won't work in OOP)
+| **Normal PHP** : (Not OOP)
 
 ```php
 return someFunction();
 return $someVariable;
 ```
 
-| **OOP PHP** : (Class syntax, inside the class statement)
+| **OOP PHP** : (Class syntax, defining inside the class statement)
 
 ```php
-return $this->someMethod();
-return $this->someProperty;
-return self::staticMethod();
-return self::staticProperty;
+return $this->someMethod(); // can change
+return $this->someProperty; // can change
+return self::staticMethod(); // unchanging constant
+return self::staticProperty; // unchanging constant
 ```
 
 | **OOP PHP** : (Object syntax, outside the class statement)
 
 ```php
-return $someObject->someMethod();
-return $someObject->someProperty;
-return someClass::staticMethod();
-return someClass::staticProperty;
+return $someObject->someMethod(); // can change
+return $someObject->someProperty; // can change
+return someClass::staticMethod(); // unchanging constant
+return someClass::staticProperty; // unchanging constant
 ```
 
 *See how it works...*

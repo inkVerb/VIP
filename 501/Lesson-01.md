@@ -467,6 +467,8 @@ localhost/web/phppost.php
 
 *Try the form and developer view*
 
+*Try leaving some `input` fields blank and note that an empty field still sets the `POST` name*
+
 | **10** :$
 
 ```console
