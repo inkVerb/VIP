@@ -197,11 +197,17 @@ We can instantiate as many objects as we want
 // Instantiate the object
 $anObject = new aClass;
 
-// Use the method to set the parameters of the object
+// Use the aMethod method to set the parameters of the object
 $anObject->aMethod('some thing');
 
-// Use the method to return the parameters of the object
+// Use the bMethod method to return the parameters of the object
 $anObject->bMethod();
+
+// Use the aProperty property with echo
+echo $anObject->aProperty;
+
+// Use the aProperty property with return
+return $anObject->aProperty;
 ```
 
 **Examples...**

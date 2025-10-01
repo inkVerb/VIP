@@ -848,6 +848,17 @@ $Variable = mysqli_real_escape_string($Database_Connection, $Variable);
 
 ```
 
+For an example of using HTML entities to escape special characters, view this code in the browser or a code playground like [JSFiddle](https://jsfiddle.net/):
+
+```HTML
+<p>This code:</p>
+<pre>&lt;p&gt;5 &amp;gt; 2&lt;/p&gt;</pre>
+<p>Renders this:</p>
+<p>5 &gt; 2</p>
+<p>Spaces           are forgotten...</p>
+<p>...Without an HTML entity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;preserving them</p>
+```
+
 *Note how `preg_replace()` and `strtolower()` are used to sanitize the values...*
 
 | **15** :$
