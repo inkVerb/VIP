@@ -312,7 +312,7 @@ To run a script at instantiation of an object, use these "magic methods" (native
 **Magic methods** are methods built into PHP
 
 - `__construct()` (runs at start of instantiation)
-- `__destruct()` (runs at end of instantiation)
+- `__destruct()` (runs at end of object life)
 - Magic methods start with double underscore `__someMagicMethod()`
 - These two are most common magic methods, there are many others
 - Other magic methods are basically used to hack into the class by using the underlying code PHP uses to handle classes and objects
@@ -395,7 +395,9 @@ ls web
 localhost/web/oop.php
 ```
 
-##### 2. `__destruct()` end of instantiation
+##### 2. `__destruct()` end of object life
+
+(This usually means it will run at the end of the PHP script, not merely at the end of instantiation)
 
 | **6** :$
 

@@ -944,11 +944,14 @@ function myFunctionName($arg1, $arg2, $arg3) {
 ```php
 
 myFunctionName('John', "Jim", 'Sam');
+```
 
-// Will display:
-'$arg1: John'
-'$arg2: Jim'
-'$arg3: Sam'
+Will display:
+
+```html
+$arg1: John
+$arg2: Jim
+$arg3: Sam
 
 ```
 
