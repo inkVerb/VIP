@@ -454,8 +454,8 @@ localhost/web/oop.php
 
 **Do not confuse** `__destruct()` with `unset()`
 
-- `__destruct` runs at the end of instantiation
-- `unset()` destroys the object and doesn't run anything else
+- `__destruct()` runs at the end of the object's life, such as the end of the PHP script
+- `unset($someObject)` destroys the object, automatically triggering `__destruct()` before the end of the PHP script
 
 Also, for security:
 
