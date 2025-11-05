@@ -588,7 +588,7 @@ localhost/web/oop.php
 
 **Visibility** is a method or property's ability to be directly accessed from outside its class, such as in statements like this:
 
-| **Fail** :
+| **Fail** : (if `protected` or `private`)
 
 ```php
 echo $object->access_property;
@@ -599,6 +599,7 @@ echo $object->access_method();
 
 ```php
 echo $object->method_using_access_property();
+echo $object->method_using_access_method();
 ```
 
 If `$access_property` or `access_method()` are not visible, they will break
