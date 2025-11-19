@@ -913,6 +913,21 @@ echo $NonStaticDemo->$answer;
 localhost/web/oop.php
 ```
 
+##### Class Syntax Summary
+
+*Note these all begin with `class::`:*
+  - *`class::CONSTANT` (constant)*
+  - *`class::staticMethod()` and `class::$staticProperty` (static elements)*
+
+*This is because they all call into the class directly without needing to be instantiated*
+  - *Constants can't change with instantiation anyway*
+  - *Static variables and methods pre-exist instantiation*
+- *It is the `class::` that we call directly when not using instantiated methods, properties, and constants*
+
+*Note:*
+  - *Inside the class, we use `self::` for non-instantiated elements*
+  - *Inside the class, we use `this->` for to-be-instantiated elements*
+
 #### F. Reflection
 
 **Reflection** is the only way to directly access `protected` & `private` methods & properties from outside the class definition, *(see this [Stackoverflow answer](https://stackoverflow.com/a/21902271/10343144))*
