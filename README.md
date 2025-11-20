@@ -1,5 +1,6 @@
 # VIP Code
 ## Learn Command Line Linux and Code
+*This is archived and will continue at *[Codia](https://github.com/JesseSteele/Codia)*
 
 ### Start with Linux.
 Who is this course for?
