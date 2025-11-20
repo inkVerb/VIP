@@ -122,7 +122,7 @@ cp file destination
 ##### 6. Don't put `.` (here) in your `$PATH` setting
 - [Lesson 3 Section I.](https://github.com/inkVerb/vip/blob/master/401/Lesson-03.md#i-the-path-environment-variable) explained how directories can be added to your `$PATH`
   - Probably `~/.bashrc` containing: `export PATH=$PATH:/added/dir:/add/another/dir:/add/more/dirs`
-- It's tempting to add `.` to `$PATH` so testing scrips won't need the "here" path `./` like in these VIP Linux lessons
+- It's tempting to add `.` to `$PATH` so testing scrips won't need the "here" path `./` like in these Codia lessons
   - Developers might do this on test machines to make work faster
 - This would allow a deadly script named `ls` or `sed` do destroy everything
 - This security measure is similar to putting absolute paths in your scripts

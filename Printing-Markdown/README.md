@@ -1,6 +1,6 @@
 # Printing Tools
 - Files in this directory explain parts of the workflow for Markdown documents to be converted into publishable documents
-- This could be used to convert this VIP Linux repository for printing to paper
+- This could be used to convert this Codia repository for printing to paper
 
 | **Example usage with `pandoc`** :
 

@@ -348,7 +348,7 @@ class Topic {
   // Success: Auto-runs at instantiation
   function __construct() {
     echo $this->slogan();
-    echo "<br> That's VIP Linux!";
+    echo "<br> That's Codia!";
   }
 
 }

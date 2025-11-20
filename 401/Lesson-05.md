@@ -807,7 +807,7 @@ printenv MY_NEW_VAR
 | **59** :$
 
 ```console
-export readonly ALSO_VAR="VIP Linux"
+export readonly ALSO_VAR="Codia"
 ```
 
 | **60** :$

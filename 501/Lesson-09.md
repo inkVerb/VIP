@@ -965,7 +965,7 @@ https://verb.red ;;Get inking.
 https://verb.ink;; Ink is a verb.;;inkVerb
 https://verb.blue;; Inky | Blue Ink
 <a href="https://inkisaverb.com">Ink is a verb.</a>
-<a href="https://verb.vip">Get inking. // VIP Linux</a>
+<a href="https://verb.vip">Get inking. // Codia</a>
 <a href="http://poetryiscode.com">Poetry is code. | piC</a>
 ```
 

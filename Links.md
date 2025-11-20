@@ -48,4 +48,4 @@
 
 ## Manjaro
 
-[manjaro.org](https://manjaro.org) - The Linux distro used by VIP Linux
+[manjaro.org](https://manjaro.org) - The Linux distro used by Codia

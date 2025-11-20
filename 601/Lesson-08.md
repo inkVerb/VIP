@@ -352,7 +352,7 @@ Include = /etc/pacman.d/mirrorlist
     - Because this often compiles source code, which requires a normal user
     - Compiling as `root` can create many strange permissions-related issues
     - Installing on the [Linux FHS](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) requires `root` or `sudo`, but not compiling code itself
-    - This can create a trouble, which is why inkVerb (this VIP Linux class maintainer) wrote the ([`yeo` tool](https://github.com/inkVerb/yeo/blob/main/README.md))
+    - This can create a trouble, which is why inkVerb (this Codia class maintainer) wrote the ([`yeo` tool](https://github.com/inkVerb/yeo/blob/main/README.md))
 - There are many *other* [AUR helpers](https://wiki.archlinux.org/title/AUR_helpers) than `yay`:
   - `aura`
   - `pacaur`

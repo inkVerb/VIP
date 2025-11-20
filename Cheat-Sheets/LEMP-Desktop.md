@@ -421,7 +421,7 @@ Now you can use PHP to upload, but php is limited to the www directory and 2MB p
 
 ### Nginx on Debian/Ubuntu (irregular)
 
-VIP Linux not use Nginx on an Ubuntu server, but this will make VIP Linux lessons compatible with your system if you do
+Codia not use Nginx on an Ubuntu server, but this will make Codia lessons compatible with your system if you do
 
 If you are using Nginx, the `www:www` settings would go in these files...
 
@@ -477,7 +477,7 @@ sudo vim /etc/php/7.2/fpm/pool.d/www.conf
 
 *...`user=` & `group=` settings may appear elsewhere, but these must be in the lines right after `[www]`, add them if they aren't*
 
-For VIP Linux rewrites...
+For Codia rewrites...
 
 | **/etc/nginx/nginx.conf** :
 

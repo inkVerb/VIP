@@ -328,7 +328,7 @@ sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 #### Final notes on web folders
 Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
 
-...This is how you will own the web directory from now on and in VIP Linux lessons
+...This is how you will own the web directory from now on and in Codia lessons
 
 **Using your local dev server on desktop**
 
@@ -549,12 +549,12 @@ sudo apachectl -t
 sudo apachectl -S
 ```
 
-### Change the web user to `www` (for VIP Linux lessons)
+### Change the web user to `www` (for Codia lessons)
 - The default web user on Debian & Ubuntu systems is `www-data`
 - This is complex to type every time the web directory needs to be owned
 - This makes commands incompatible with Arch/Manjaro servers
 - You may or may not want to change the web user to `www`
-- VIP Linux lessons assume you are using `www:www`, not `www-data:www-data`, even on Apache servers or Debian/Ubuntu systems
+- Codia lessons assume you are using `www:www`, not `www-data:www-data`, even on Apache servers or Debian/Ubuntu systems
 
 The web user is defined in...
 
@@ -639,7 +639,7 @@ sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 #### Final notes on web folders
 Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
 
-...This is how you will own the web directory from now on and in VIP Linux lessons
+...This is how you will own the web directory from now on and in Codia lessons
 
 **Using your local dev server on desktop**
 
@@ -889,12 +889,12 @@ sudo apachectl -t
 sudo apachectl -S
 ```
 
-### Change the web user to `www` (for VIP Linux lessons)
+### Change the web user to `www` (for Codia lessons)
 - The default web user on CentOS & Fedora systems is `apache`
 - This is longer text to type every time the web directory needs to be owned
 - This makes commands incompatible with Arch/Manjaro servers
 - You may or may not want to change the web user to `www`
-- VIP Linux lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or RedHat/CentOS systems
+- Codia lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or RedHat/CentOS systems
 
 #### Change the web user & group to `www`
 
@@ -972,7 +972,7 @@ sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 
 Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
 
-...This is how you will own the web directory from now on and in VIP Linux lessons
+...This is how you will own the web directory from now on and in Codia lessons
 
 **Using your local dev server on desktop**
 
@@ -1297,12 +1297,12 @@ sudo apachectl -t
 sudo apachectl -S
 ```
 
-### Change the web user to `www` (for VIP Linux lessons)
+### Change the web user to `www` (for Codia lessons)
 - The default web user on CentOS & Fedora systems is `apache`
 - This is longer text to type every time the web directory needs to be owned
 - This makes commands incompatible with Arch/Manjaro servers
 - You may or may not want to change the web user to `www`
-- VIP Linux lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or RedHat/CentOS systems
+- Codia lessons assume you are using `www:www`, not `apache:apache`, even on Apache servers or RedHat/CentOS systems
 
 #### Change the web user & group to `www`
 
@@ -1406,7 +1406,7 @@ sudo cp -r ~/Work/dev/* ~/Work/vip/ && sudo chown -R www:www ~/Work/vip
 
 Always own the web directory (now with `www:www`, whether on Arch, CentOS, or Ubuntu)
 
-...This is how you will own the web directory from now on and in VIP Linux lessons
+...This is how you will own the web directory from now on and in Codia lessons
 
 **Using your local dev server on desktop**
 
@@ -1644,7 +1644,7 @@ sudo apt-get install mariadb-server
 ___
 
 ## Make PHP More Secure
-This is not necessary for VIP Linux lessons, but may be helpful in some situations
+This is not necessary for Codia lessons, but may be helpful in some situations
 
 ### Arch/Manjaro
 

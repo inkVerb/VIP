@@ -224,7 +224,7 @@ ___
 >
 > 6. Do something...
 >
-> `echo "VIP Linux tutorials are $myVariable!"`
+> `echo "Codia tutorials are $myVariable!"`
 >
 > 7. `}` Close the function
 >
